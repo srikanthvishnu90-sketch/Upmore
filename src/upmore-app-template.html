@@ -227,7 +227,7 @@
   .tab[aria-selected="true"] { color: var(--text); }
 
   /* ---------- guide ---------- */
-  #guide::before { content: ""; position: absolute; left: 50%; top: 90px; width: 420px; height: 420px; transform: translateX(-50%);
+  #guide::before { content: ""; position: absolute; left: 50%; top: 90px; width: min(420px, 100vw); height: min(420px, 100vw); transform: translateX(-50%);
     background: radial-gradient(circle, rgba(200,202,208,.10) 0%, rgba(120,124,130,.05) 35%, rgba(0,0,0,0) 70%);
     pointer-events: none; transition: opacity .4s; }
   #guide.talking::before { opacity: .35; }

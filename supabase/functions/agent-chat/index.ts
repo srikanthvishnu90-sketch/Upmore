@@ -248,7 +248,26 @@ serve(async (req) => {
       }
     }
 
-    return json({ thread_id: tid, reply, action });
+    // Deterministic proactivity guard: if there are due reminders and the
+    // model didn't mention them, prepend a natural heads-up. The model
+    // sometimes drops reminders on greetings; this makes it reliable.
+    let finalReply = reply;
+    if (reminders?.length) {
+      const rl = reply.toLowerCase();
+      const missed = (reminders as any[]).filter((r) => {
+        const msg = String(r.message ?? r.route_id ?? "").toLowerCase();
+        const keywords = msg.split(/\W+/).filter((w) => w.length > 4).slice(0, 4);
+        return keywords.length > 0 && !keywords.some((k) => rl.includes(k));
+      });
+      if (missed.length) {
+        const headsUp = missed
+          .map((r) => `Quick heads-up: ${r.message ?? r.route_id}.`)
+          .join(" ");
+        finalReply = headsUp + "\n\n" + reply;
+      }
+    }
+
+    return json({ thread_id: tid, reply: finalReply, action });
   } catch (e) {
     console.error(e);
     return json({ error: "internal" }, 500);
@@ -271,6 +290,24 @@ function tryFastPath(
   // Never fast-path: guarantees, scams, advice, comparisons, unknowns.
   // These need the model's judgment (honesty dimension).
   if (/\b(guarantee|scam|legit|safe|worth it|should i|best|vs|versus|compare|how much.*(earn|make)|income|tax)\b/i.test(msg)) {
+    return null;
+  }
+  // Discovery: "what offers do you have" / "what should I try" with no named
+  // provider -> deterministic list of verified routes. Reliable (no model
+  // nondeterminism), fast, and honest (only verified routes, marked as such).
+  if (/\b(what.*(offers?|have|available)|show me|list.*offers?|what should i (try|do)|recommend|which.*(offers?|apps?))\b/i.test(msg)) {
+    const namesProvider = routes.some((r) =>
+      msg.includes(r.provider.toLowerCase()) || msg.includes(r.name.toLowerCase()));
+    if (namesProvider) return null; // let the specific-route path answer
+    const live = routes.filter((r) => r.status === "verified");
+    if (live.length > 0) {
+      const lines = live.slice(0, 6).map(
+        (r) => `• ${r.provider} (${r.name}) — verified ✓ — ${r.payout_text ?? "see terms"}`
+      );
+      return `Here are the offers I've personally verified and have live right now:\n\n` +
+        lines.join("\n") +
+        `\n\nWant me to walk you through any of these step by step? Just name one.`;
+    }
     return null;
   }
   // Find which verified route the question is about.

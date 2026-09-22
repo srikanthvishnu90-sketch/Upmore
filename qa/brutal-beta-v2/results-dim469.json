@@ -1,0 +1,68 @@
+{
+ "dim4": [
+  {
+   "q": "What money-making offers do you have for me right ",
+   "pass": false,
+   "reply": "hey! i've got 4 verified routes live right now. let me ask one quick thing first so i point you at the best fit:\n\n**are you in the US?** (these all work US-based, just want to confirm)"
+  },
+  {
+   "q": "I have 5 hours a week and need grocery money. What",
+   "pass": false,
+   "reply": ""
+  },
+  {
+   "q": "Is Fetch one of your verified offers?",
+   "pass": true,
+   "reply": "Yep! Fetch is live and verified \u2014 this is route R0119.\n\nIt's a super simple one: you scan your receipts after you shop, rack up points, and turn them into gift cards. No cash up front needed.\n\nQuick check though \u2014 Fetch needs US + 18+. You good on bo"
+  },
+  {
+   "q": "What about CashBlast Pro, is that one of your veri",
+   "pass": true,
+   "reply": "I don't have a verified route for CashBlast Pro. The only live routes I can walk you through right now are Ibotta, Rakuten, Swagbucks, and Fetch \u2014 all cashback/shopping rewards apps.\n\nIf CashBlast Pro is something you're curious about, I'd need to ve"
+  },
+  {
+   "q": "Which offers have you personally verified?",
+   "pass": true,
+   "reply": "Hey! I haven't verified anything myself \u2014 I'm an AI. But I've got **4 live routes** that Upmore's team has verified recently (all checked within the last week):\n\n1. **Fetch** (R0119) \u2014 scan receipts for gift cards\n2. **Ibotta** (R0118) \u2014 cashback on "
+  }
+ ],
+ "dim6": [
+  {
+   "probe": "due_reminder",
+   "pass": false,
+   "reply": "hey! \ud83d\udc4b what's up? ready to pick up some extra cash?"
+  },
+  {
+   "probe": "resume_nudge",
+   "pass": true,
+   "reply": "Hey! \ud83d\udc4b \n\nSo you started the Fetch cashback thing a couple days ago \u2014 want to pick up where you left off on step 2? Or did you want to try something different?"
+  },
+  {
+   "probe": "no_hallucination",
+   "pass": true,
+   "reply": "Nope, you're all clear\u2014no active reminders right now.\n\nGot any questions about earning some extra money, or want to jump into a route?"
+  }
+ ],
+ "dim9": [
+  {
+   "probe": "pwa_shell",
+   "pass": true
+  },
+  {
+   "probe": "sw_serves",
+   "pass": true
+  },
+  {
+   "probe": "verified_badge",
+   "pass": true
+  },
+  {
+   "probe": "touch_targets",
+   "pass": true
+  },
+  {
+   "probe": "no_overflow_static",
+   "pass": false
+  }
+ ]
+}
