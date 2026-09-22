@@ -102,6 +102,7 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,.18); color: #fff; transition: opacity .2s; }
   .go:disabled { opacity: .3; }
   .go.light { background: #F1F4F0; color: #0E1511; box-shadow: none; }
+  #googleGo { display: flex; align-items: center; justify-content: center; gap: 10px; }
   .legal { margin-top: 16px; font-size: 12.5px; line-height: 1.55; color: var(--dim); text-align: center; }
   .legal a { color: var(--muted); }
 
@@ -507,21 +508,17 @@
   <section class="screen" id="phone" aria-label="Save your plan">
     <div class="scroll">
       <div class="bar"><button class="back" data-back aria-label="Back">←</button><div class="track"><div class="fill" style="width:100%"></div></div></div>
-      <h1 id="phoneTitle">Where should we send your plan?</h1>
-      <p class="why" id="phoneWhy">We'll text you a code to save it. One account per person keeps the offers honest for everyone.</p>
+      <h1 id="phoneTitle">Save your plan</h1>
+      <p class="why" id="phoneWhy">One account per person keeps the offers honest for everyone. Your plan and progress save to your account.</p>
       <div class="body">
-        <label class="f" id="phoneField"><span>Mobile number</span>
-          <input id="phoneInput" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(312) 555-0142" maxlength="14">
-        </label>
-        <label class="f" id="codeField" hidden><span>6-digit code</span>
-          <input id="code" class="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••">
-          <p class="hint" id="codeHint">Demo: any 6 digits work.</p>
-        </label>
-        <button class="link" id="changeNum" hidden>Use a different number</button>
+        <button class="go light" id="googleGo">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.3H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.3-2.1 3.7-5.1 3.7-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.8-2.9c-1 .7-2.4 1.2-4.1 1.2-3.1 0-5.8-2.1-6.8-5l-3.9 3C3.4 21.5 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.3 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.4 0 3.4 2.5 1.3 6.6l3.9 3c1-2.9 3.7-4.9 6.8-4.9z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <p class="legal">We get your name and email so your plan and progress save to your account. That's it.</p>
       </div>
       <div class="spacer"></div>
     </div>
-    <div class="dock"><button class="go" id="phoneGo" disabled>Text me the code</button></div>
   </section>
 
   <!-- under 18 -->
@@ -707,6 +704,7 @@
 </div>
 
 <!--__UPMORE_DATA__-->
+<!--__SUPABASE_JS__-->
 <script>
   /* Phone frame on larger screens */
   (function () {
@@ -843,7 +841,15 @@
 
   /* ================= Plan ================= */
   function planData() {
-    return Object.assign({ name: "Vish", state: "IL", time: "60", paycheck: "yes", cash: "100" }, data);
+    const base = Object.assign({ name: "Vish", state: "IL", time: "60", paycheck: "yes", cash: "100" }, data);
+    if (dbProfile) {
+      if (dbProfile.display_name) base.name = dbProfile.display_name;
+      if (dbProfile.state) base.state = dbProfile.state;
+      if (dbProfile.free_time_hours != null) base.time = String(Math.round(dbProfile.free_time_hours * 60));
+      if (dbProfile.paycheck_status) base.paycheck = dbProfile.paycheck_status;
+      if (dbProfile.cash_available) base.cash = dbProfile.cash_available;
+    }
+    return base;
   }
   function buildPlan() {
     const d = planData();
@@ -863,37 +869,18 @@
       </div>`).join("");
   }
 
-  /* ================= Phone (last step) ================= */
-  const phoneI = $("phoneInput"), codeI = $("code"), phoneGo = $("phoneGo");
-  let codeSent = false;
-  phoneI.oninput = () => {
-    const d = phoneI.value.replace(/\D/g, "").slice(0, 10);
-    phoneI.value = d.length > 6 ? `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`
-                 : d.length > 3 ? `(${d.slice(0,3)}) ${d.slice(3)}` : d;
-    phoneGo.disabled = d.length !== 10;
-  };
-  codeI.oninput = () => {
-    codeI.value = codeI.value.replace(/\D/g, "").slice(0, 6);
-    if (codeI.value.length === 6 && !data.verified) {
-      data.verified = true;
-      $("codeHint").textContent = "Verified — saving your plan."; $("codeHint").className = "hint ok";
-      setTimeout(() => show("home"), 450);
-    }
-  };
-  phoneGo.onclick = () => {
-    codeSent = true;
-    $("phoneTitle").textContent = "Enter your code";
-    $("phoneWhy").textContent = "Sent to " + phoneI.value + ".";
-    $("phoneField").hidden = true; $("codeField").hidden = false; $("changeNum").hidden = false;
-    phoneGo.hidden = true; codeI.focus();
-  };
-  $("changeNum").onclick = () => {
-    codeSent = false; data.verified = false; codeI.value = "";
-    $("phoneTitle").textContent = "Where should we send your plan?";
-    $("phoneWhy").textContent = "We'll text you a code to save it. One account per person keeps the offers honest for everyone.";
-    $("phoneField").hidden = false; $("codeField").hidden = true; $("changeNum").hidden = true;
-    $("codeHint").textContent = "Demo: any 6 digits work."; $("codeHint").className = "hint";
-    phoneGo.hidden = false; phoneI.focus();
+  /* ================= Auth: Google sign-in (last step) ================= */
+  const googleGo = $("googleGo");
+  const googleLabel = googleGo.innerHTML;
+  googleGo.onclick = async () => {
+    try { localStorage.setItem("upmore-onboarding", JSON.stringify(data)); } catch (e) {}
+    googleGo.disabled = true;
+    googleGo.innerHTML = "<span>Opening Google…</span>";
+    const { error } = await supa.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: location.origin + location.pathname },
+    });
+    if (error) { googleGo.disabled = false; googleGo.innerHTML = googleLabel; }
   };
 
   /* ================= Home ================= */
@@ -962,6 +949,7 @@
     next.onclick = () => {
       const arr = prog[r.id] = prog[r.id] || [];
       if (!arr.includes(s.n)) arr.push(s.n);
+      syncProgress(r.id);
       next.disabled = true;
       next.textContent = "✓ Done";
       walk.i++;
@@ -1018,6 +1006,7 @@
       if (at > -1) arr.splice(at, 1); else arr.push(sn);
       b.setAttribute("aria-pressed", at === -1 ? "true" : "false");
       paint();
+      syncProgress(r.id);
     });
     paint();
     $("heroCta").onclick = () => {
@@ -1219,14 +1208,75 @@
     if (j.thread_id) upmoreThread = j.thread_id;
     return j;
   }
-  // Supabase Auth session token. Returns null until auth is wired (Phase: connectors).
-  async function getSessionToken() {
+  /* ============ Supabase Auth (Google) + profile + progress sync ============ */
+  const supa = window.supabase.createClient(UPMORE_BACKEND_URL, UPMORE_ANON_KEY);
+  let session = null, dbProfile = null;
+
+  async function refreshSession() {
     try {
-      const k = Object.keys(localStorage).find(k => k.endsWith("-auth-token"));
-      const s = k && JSON.parse(localStorage[k]);
-      return (s && s.access_token) || null;
-    } catch (e) { return null; }
+      const { data: { session: s } } = await supa.auth.getSession();
+      session = s || null;
+    } catch (e) { session = null; }
+    return session;
   }
+  // Session token for backend calls. Null until signed in.
+  async function getSessionToken() {
+    if (!session) await refreshSession();
+    return (session && session.access_token) || null;
+  }
+
+  async function loadProfile() {
+    if (!session) return null;
+    const { data, error } = await supa.from("profiles").select("*").eq("id", session.user.id).maybeSingle();
+    dbProfile = error ? null : data;
+    return dbProfile;
+  }
+  // First sign-in only: persist the onboarding answers. Never overwrites an existing profile.
+  async function saveProfile() {
+    if (!session) return;
+    const meta = session.user.user_metadata || {};
+    const row = {
+      id: session.user.id,
+      display_name: data.name || meta.full_name || meta.name || "Friend",
+      state: data.state || null,
+      free_time_hours: data.time != null ? (+data.time) / 60 : null,
+      paycheck_status: data.paycheck || null,
+      cash_available: data.cash || null,
+      updated_at: new Date().toISOString(),
+    };
+    const { error } = await supa.from("profiles").upsert(row, { onConflict: "id" });
+    if (!error) dbProfile = row;
+  }
+  async function ensureProfile() {
+    await loadProfile();
+    if (!dbProfile) await saveProfile();
+  }
+
+  async function syncProgress(routeId) {
+    if (!session) return;
+    const done = (prog[routeId] || []).length;
+    const r = routeById(routeId);
+    const total = r && r.steps ? r.steps.length : 0;
+    const status = total && done >= total ? "done" : done > 0 ? "in_progress" : "not_started";
+    await supa.from("playbook_progress").upsert({
+      user_id: session.user.id, route_id: routeId, current_step: done, status,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "user_id,route_id" });
+  }
+  async function loadProgress() {
+    if (!session) return;
+    const { data: rows } = await supa.from("playbook_progress")
+      .select("route_id,current_step").eq("user_id", session.user.id);
+    (rows || []).forEach(p => {
+      const r = routeById(p.route_id);
+      if (!r || !r.steps || !r.steps.length) return;
+      prog[p.route_id] = r.steps.slice(0, Math.max(0, p.current_step)).map(s => s.n);
+    });
+  }
+
+  supa.auth.onAuthStateChange((ev) => {
+    if (ev === "SIGNED_OUT") { session = null; dbProfile = null; location.hash = ""; location.reload(); }
+  });
 
   function guideAsk(text) {
     if (busy) return; busy = true;
@@ -1396,11 +1446,30 @@
     t.setAttribute("aria-pressed", t.getAttribute("aria-pressed") !== "true" ? "true" : "false");
   });
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
-  $("signOut").onclick = () => show("welcome");
+  $("signOut").onclick = () => supa.auth.signOut();
 
   /* ================= Boot ================= */
-  (function boot() {
+  (async function boot() {
+    // Onboarding answers survive the Google OAuth round-trip via localStorage.
+    try {
+      const saved = localStorage.getItem("upmore-onboarding");
+      if (saved) Object.assign(data, JSON.parse(saved));
+    } catch (e) {}
     const h = location.hash.slice(1);
+    const isAuthCallback = /(^|&)access_token=/.test(h);
+    // Let supabase-js consume the OAuth callback before we touch the URL.
+    for (let i = 0; i < 40; i++) {
+      await refreshSession();
+      if (session || !isAuthCallback) break;
+      await new Promise(r => setTimeout(r, 100));
+    }
+    if (session) {
+      await ensureProfile();
+      await loadProgress();
+      const tab = order.includes(h) && ["home", "explore", "guide", "profile"].includes(h) ? h : "home";
+      show(tab);
+      return;
+    }
     if (order.includes(h) && h !== "splash") show(h);
     else { show("splash"); }
   })();
