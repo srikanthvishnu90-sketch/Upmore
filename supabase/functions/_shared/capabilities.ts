@@ -41,7 +41,7 @@ interface CashMath {
 const CASH_MATH: Record<string, CashMath> = {
   R0221: { dollars_per_hour: 15, model: "hourly", math: "tests pay ~$10 per 20 min when available; blended ~$15/hr", min_cashout: "$10 per test, paid ~7 days later via PayPal", catch: "You must pass a practice test, and paid tests aren't always available." },
   R0220: { dollars_per_hour: 10, model: "hourly", math: "studies pay at least $8/hr, typically ~$10/hr", min_cashout: "~$6.50 (£5) via PayPal", catch: "Studies appear in waves — some days are quiet." },
-  R0292: { dollars_per_hour: 30, model: "hourly", math: "$20–$60 per case, ~1–2 hrs each — but only when a case is offered to you", min_cashout: "per case, check or PayPal", catch: "Cases are scarce; you can't count on one being there today." },
+  R0292: { dollars_per_hour: 30, model: "hourly", math: "Typical $30–$350 per case, ~1–2 hrs each — but only when a case is offered to you", min_cashout: "per case; payment terms stated upfront", catch: "Cases are scarce; you can't count on one being there today." },
   R0140: { dollars_per_hour: 3, model: "hourly", math: "surveys run ~$0.20–$2 each; realistic ~$3/hr", min_cashout: "100 SB (~$1); first redemption needs ID verification (days)", catch: "Slow grind — $20 takes many hours, and first payout is delayed by verification." },
   R0118: { dollars_per_hour: null, model: "needs_spend", math: "cash back on groceries you're already buying; $20 min to withdraw", min_cashout: "$20 to withdraw", catch: "You have to spend money on groceries first — it's savings, not earnings." },
   R0119: { dollars_per_hour: null, model: "needs_spend", math: "~25+ pts per receipt ≈ a few cents; $20 takes hundreds of receipts", min_cashout: "$10 in points for first gift card", catch: "Very slow — months of receipts to reach $20." },
@@ -51,7 +51,7 @@ const CASH_MATH: Record<string, CashMath> = {
   R0213: { dollars_per_hour: null, model: "slow", math: "passive points for keeping the app installed; slow trickle", min_cashout: "varies", catch: "Passive but very slow — not a $20 plan." },
   R0295: { dollars_per_hour: null, model: "windfall", math: "either $0 or a surprise — can't be planned", min_cashout: "n/a", catch: "Most searches find nothing. Check once, don't count on it." },
   R0302: { dollars_per_hour: null, model: "windfall", math: "$5–$1000+ per settlement, but payouts take months", min_cashout: "n/a", catch: "Slow and uncertain — not a plan for $20 this week." },
-  R0098: { dollars_per_hour: null, model: "bonus_wait", math: "$100–$200 bonus, but requires direct deposit setup; pays in weeks", min_cashout: "n/a — bank bonus", catch: "Real money but slow: direct-deposit requirements, pays weeks later." },
+  R0098: { dollars_per_hour: null, model: "bonus_wait", math: "Your friend gets $100; your referral bonus varies by your offer — requires their direct deposit", min_cashout: "n/a — referral bonus", catch: "Needs a friend to sign up and fund — out of your control; pays after all qualifying steps." },
   R0096: { dollars_per_hour: null, model: "bonus_wait", math: "$25–$300+ bonus with direct deposit; weeks to pay", min_cashout: "n/a — bank bonus", catch: "Bigger payout, but weeks out and needs direct deposit." },
   R0036: { dollars_per_hour: null, model: "bonus_wait", math: "$400 bonus with qualifying direct deposit; pays in ~10 business days after qualifying", min_cashout: "n/a — bank bonus", catch: "Biggest payout here, but you need real direct deposits and patience." },
 };
