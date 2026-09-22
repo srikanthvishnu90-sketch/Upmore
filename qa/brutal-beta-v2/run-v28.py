@@ -450,6 +450,20 @@ def site_get(path):
         os.unlink(tmp)
     return (int(code_s) if code_s.isdigit() else 0), body
 
+st, html = site_get("/")
+results["dim9"].append({"probe": "pwa_shell",
+    "pass": st == 200 and 'name="viewport"' in html and "serviceWorker" in html})
+st, sw = site_get("/sw.js")
+results["dim9"].append({"probe": "sw_serves", "pass": st == 200 and "fetch" in sw and len(sw) > 200})
+results["dim9"].append({"probe": "verified_badge", "pass": "Verified" in html})
+results["dim9"].append({"probe": "touch_targets",
+    "pass": bool(re.search(r"min-height:\s*4[48]px|min-width:\s*4[48]px|44px", html))})
+wide = re.findall(r"width:\s*(\d+)px", html)
+results["dim9"].append({"probe": "no_overflow_static",
+    "pass": not any(int(w) > 390 for w in wide if w.isdigit())})
+for r in results["dim9"]:
+    print(f"D9 {r['probe']}: {'PASS' if r['pass'] else 'FAIL'}", flush=True)
+
 # ---------------- score (all 10 dims, 100 pts) ----------------
 d1_hits = [h for r in results["dim1"] for h in r["hits"]]
 s1 = round(sum(d1_hits) / len(d1_hits) * 15, 1)

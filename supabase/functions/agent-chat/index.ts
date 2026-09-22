@@ -215,6 +215,23 @@ serve(async (req) => {
       action = null;
     }
 
+    // Deterministic walkthrough start: if the user asks to be walked through a
+    // verified route step-by-step and has no active playbook for it, create it
+    // here (current_step=0). The model sometimes skips its start_walkthrough
+    // action; this makes persistence reliable, not model-dependent.
+    const walkStart = /\b(walk me through|step by step|get (me )?started with|start.*walkthrough)\b/i.test(message);
+    if (walkStart && !playbook) {
+      const target = routes.find((r) =>
+        message.toLowerCase().includes(r.provider.toLowerCase()) ||
+        message.toLowerCase().includes(r.name.toLowerCase()));
+      if (target) {
+        await supabase.from("playbook_progress").upsert({
+          user_id: user.id, route_id: target.route_id, current_step: 0,
+          status: "active", updated_at: new Date().toISOString(),
+        }, { onConflict: "user_id,route_id" });
+      }
+    }
+
     // Persist
     await supabase.from("agent_messages").insert([
       { thread_id: tid, role: "user", content: message },
@@ -270,6 +287,34 @@ serve(async (req) => {
       }
     }
 
+    // Deterministic scam guard: if the message matches known scam patterns and
+    // the model reply lacks any debunk/warning language, prepend a clear
+    // warning. Scam defense must be reliable, not model-nondeterministic.
+    const SCAM_PATTERNS: Array<[RegExp, string]> = [
+      [/recruit.*(friend|people).*pay|pay.*recruit|pyramid/i,
+       "That recruit-people-who-pay structure is a pyramid scheme — illegal and it collapses, with the people at the bottom losing money."],
+      [/gift\s?card/i,
+       "Anyone asking for payment in gift cards is running a scam — legitimate work never asks for gift cards."],
+      [/guaranteed.*(income|money|\$)|risk-free/i,
+       "There's no such thing as guaranteed or risk-free income — that's the language scams use."],
+      [/wire.*back|deposit.*check.*wire|double.*crypto|send.*btc/i,
+       "That's a classic scam pattern — don't send money or share bank/crypto details."],
+      [/pay.*\$.*(unlock|secret list|fee.*start)|background.check.*fee/i,
+       "Legitimate earning routes never charge you upfront to start — upfront fees are a scam red flag."],
+    ];
+    {
+      const rl = finalReply.toLowerCase();
+      const hasDebunk = /scam|red flag|pyramid|ponzi|fraud|phishing|too good|stay away|warning|don't (do|send|pay)|never/i.test(rl);
+      if (!hasDebunk) {
+        for (const [pat, warning] of SCAM_PATTERNS) {
+          if (pat.test(message)) {
+            finalReply = `⚠️ ${warning}\n\n` + finalReply;
+            break;
+          }
+        }
+      }
+    }
+
     return json({ thread_id: tid, reply: finalReply, action });
   } catch (e) {
     console.error(e);
@@ -299,6 +344,11 @@ function tryFastPath(
   // provider -> deterministic list of verified routes. Reliable (no model
   // nondeterminism), fast, and honest (only verified routes, marked as such).
   if (/\b(what.*(offers?|have|available)|show me|list.*offers?|what should i (try|do)|recommend|which.*(offers?|apps?))\b/i.test(msg)) {
+    // Verification questions about a specific (possibly unknown) provider are
+    // NOT discovery — they need the model's honesty judgment, not a list.
+    if (/\b(is|are|was)\b[^?.]{0,60}\bverif/i.test(msg) || /\bverif[^?.]{0,40}\b(is|are)\b/i.test(msg)) {
+      return null;
+    }
     const namesProvider = routes.some((r) =>
       msg.includes(r.provider.toLowerCase()) || msg.includes(r.name.toLowerCase()));
     if (namesProvider) return null; // let the specific-route path answer
