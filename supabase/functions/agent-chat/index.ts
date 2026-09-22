@@ -443,17 +443,19 @@ function tryFastPath(
       const age = parseInt(ageMatch[2] ?? ageMatch[1], 10);
       if (!isNaN(age)) {
         verdict = age >= route.min_age
-          ? `Yes — at ${age} you meet the age requirement for ${route.name} (route ${route.route_id}):`
+          ? `Yes, you're good to go — at ${age} you meet the age requirement for ${route.name} (route ${route.route_id}):`
           : `Not yet — ${route.name} needs age ${route.min_age}+ (route ${route.route_id}), so at ${age} you can't join solo:`;
       }
     } else {
       verdict = `Here's who can use ${route.name} (route ${route.route_id}):`;
     }
+    const payoutLine = [route.payout_text, route.payout_timing].filter(Boolean).join(" — ");
     return verdict + "\n" +
-      parts.map((p) => `• ${p}`).join("\n");
+      parts.map((p) => `• ${p}`).join("\n") +
+      (payoutLine ? `\n• Payout: ${payoutLine}` : "");
   }
-  // Rules/catches: "what happens if I stop using" / "how long do I have" / "fees"
-  if (/\b(expire|inactive|stop using|how long.*(upload|submit)|fee|charge)\b/i.test(msg) && catches.length) {
+  // Rules/catches: "what happens if I stop using" / "how long do I have" / "fees" / "what's the catch"
+  if (/\b(expire|inactive|stop using|how long.*(upload|submit)|fee|charge|catch|downside|fine print)\b/i.test(msg) && catches.length) {
     return `${route.name} rules to know (route ${route.route_id}):\n` +
       catches.map((c) => `• ${c}`).join("\n");
   }
