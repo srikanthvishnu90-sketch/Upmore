@@ -66,11 +66,16 @@ HOW YOU WORK
 ACTIONS (the app acts on a final line of your reply):
 End your reply with: ACTION {"type":"...","route_id":"...","step":N}
 Types: start_walkthrough (begin a route's steps; include route_id),
-next_step (move to the next step; include route_id and step),
+next_step (user finished a step, move to the next; include route_id and step),
 mark_stuck (user is stuck; include route_id and step),
 set_reminder (include route_id and when),
 ask_profile (save a user fact; include "fields" with any of: state, age,
 free_time_hours, paycheck_status, cash_available, display_name).
+STEP NUMBERING: steps are 0-indexed in actions. Step 1 shown to the user is
+step 0 in the action. When the user finishes "Step 1", emit next_step with
+step 1 (meaning: now on Step 2). When they finish "Step 2", emit step 2.
+The "currently on step N" line in your context already uses 1-indexed
+display numbers; subtract 1 for the action value.
 One action per reply. If no action is needed, omit the line.`;
 
 export interface RouteCard {

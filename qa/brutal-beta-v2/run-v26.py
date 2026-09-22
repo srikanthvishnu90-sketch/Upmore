@@ -251,7 +251,19 @@ for label, age, place, provider, expect_yes, markers in DIM3:
 # set by DIM3, which would corrupt the walkthrough test.
 dim5_users = []
 for provider, q1, q2, markers in DIM5:
-    uid_jwt = make_user()
+    uid_jwt = None
+    for attempt in range(4):
+        try:
+            uid_jwt = make_user()
+            break
+        except Exception as e:
+            print(f"D5 {provider} user attempt {attempt+1} failed: {type(e).__name__}", flush=True)
+            time.sleep(5)
+    if not uid_jwt:
+        results["dim5"].append({"provider": provider, "hits": [False]*len(markers), "ms": 0,
+                               "reply": "", "both_valid": False, "error": "user_create_failed"})
+        print(f"D5 {provider}: FAIL (user_create_failed)", flush=True)
+        continue
     dim5_users.append(uid_jwt[0])
     st1, ms1, r1, tid = chat(q1, uid_jwt=uid_jwt)[0]
     st2, ms2, r2, _ = chat(q2, uid_jwt=uid_jwt, thread_id=tid)[0]
@@ -275,7 +287,18 @@ def get_progress(uid):
         return None
 
 for trial in range(2):
-    uid_jwt = make_user()
+    uid_jwt = None
+    for attempt in range(4):
+        try:
+            uid_jwt = make_user()
+            break
+        except Exception as e:
+            print(f"D7 trial{trial} user attempt {attempt+1} failed: {type(e).__name__}", flush=True)
+            time.sleep(5)
+    if not uid_jwt:
+        results["dim7"].append({"trial": trial, "pass": False, "error": "user_create_failed"})
+        print(f"D7 trial{trial}: FAIL (user_create_failed)", flush=True)
+        continue
     uid = uid_jwt[0]
     dim5_users.append(uid)
     # turn 1: start walkthrough
@@ -284,18 +307,18 @@ for trial in range(2):
     prog1 = get_progress(uid)
     t1_ok = (prog1 is not None and prog1.get("current_step") == 0
              and prog1.get("status") == "active" and st1 == 200 and len(r1) > 50)
-    # turn 2: confirm step done -> should advance
+    # turn 2: confirm step done -> should advance to index 1 (Step 2)
     st2, ms2, r2, _ = chat("Done, I finished step 1.", uid_jwt=uid_jwt, thread_id=tid1)[0]
     time.sleep(2)
     prog2 = get_progress(uid)
-    t2_ok = (prog2 is not None and prog2.get("current_step", 0) >= 1
+    t2_ok = (prog2 is not None and prog2.get("current_step") == 1
              and st2 == 200 and len(r2) > 50)
-    # turn 3: NEW thread, same user -> agent should resume, not restart
+    # turn 3: NEW thread, same user -> agent should resume at Step 2, not restart
     st3, ms3, r3, _ = chat("Where was I with Fetch?", uid_jwt=uid_jwt)[0]
     rl3 = r3.lower()
-    # resume markers: mentions step 2 (or "next step") and does NOT restart at step 1
+    # resume markers: mentions step 2 and does NOT restart at step 1
     t3_ok = (st3 == 200 and len(r3) > 50
-             and ("step 2" in rl3 or "next step" in rl3))
+             and "step 2" in rl3 and "step 1" not in rl3.split("step 2")[0][-50:])
     ok = t1_ok and t2_ok and t3_ok
     results["dim7"].append({"trial": trial, "pass": ok,
                             "t1": t1_ok, "t2": t2_ok, "t3": t3_ok,
