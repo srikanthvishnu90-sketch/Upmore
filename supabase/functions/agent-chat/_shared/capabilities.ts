@@ -56,12 +56,16 @@ const CASH_MATH: Record<string, CashMath> = {
   R0036: { dollars_per_hour: null, model: "bonus_wait", math: "$400 bonus with qualifying direct deposit; pays in ~10 business days after qualifying", min_cashout: "n/a — bank bonus", catch: "Biggest payout here, but you need real direct deposits and patience." },
 };
 
-const MAKE_X_RX = /\bmake me\s*\$?\s?(\d{1,4})\b|\bi need\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today)\b/i;
+const MAKE_X_RX = /\bmake me\s*\$?\s?(\d{1,4})\b|\bi need\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some |extra )?money\b|\bhelp me make (some |extra )?money\b|\b(trying to make (some |extra )?money)\b/i;
+const VAGUE_OPENER_RX = /i want to make (some |extra )?money|help me make (some |extra )?money|trying to make (some |extra )?money/i;
 
 export function tryMakeMeX(message: string, routes: RouteCard[]): string | null {
   const m = message.match(MAKE_X_RX);
   if (!m) return null;
-  const target = parseInt(m[1] ?? m[2] ?? m[4] ?? "0", 10);
+  // Vague openers ("i want to make money") anchor on a concrete $20 plan.
+  const target = VAGUE_OPENER_RX.test(message)
+    ? 20
+    : parseInt(m[1] ?? m[2] ?? m[4] ?? "0", 10);
   if (!target || target <= 0 || target > 10000) return null;
   const live = routes.filter(fresh).filter((r) => (r.lane ?? "Standard") === "Standard");
   if (!live.length) return null;
@@ -239,7 +243,10 @@ const WALK_ALIASES: Array<[RegExp, string]> = [
 const WALK_INTENT =
   /walk me through|guide me through|talk me through|step.by.step|show me the steps|how do i (actually |really )?(use|do|start|earn)/i;
 
-export function tryWalkthrough(message: string, routes: any[]): string | null {
+export function tryWalkthrough(
+  message: string,
+  routes: any[],
+): { reply: string; routeId: string } | null {
   if (!WALK_INTENT.test(message)) return null;
   const t = message.toLowerCase();
   let rid: string | null = null;
@@ -260,9 +267,13 @@ export function tryWalkthrough(message: string, routes: any[]): string | null {
   if (!rid) return null;
   const r = routes.find((x) => x.route_id === rid);
   if (!r) {
-    return "I haven't verified that one yet, so I can't walk you through it " +
-      "as a live offer — I'd be guessing at the steps and the payout, and I " +
-      "don't do that. Ask me about one of my 14 verified routes instead.";
+    return {
+      reply:
+        "I haven't verified that one yet, so I can't walk you through it " +
+        "as a live offer — I'd be guessing at the steps and the payout, and I " +
+        "don't do that. Ask me about one of my 14 verified routes instead.",
+      routeId: rid,
+    };
   }
   const steps: any[] = Array.isArray(r.steps) ? r.steps : [];
   const stepLines = steps
@@ -273,14 +284,16 @@ export function tryWalkthrough(message: string, routes: any[]): string | null {
     r.lane && r.lane !== "Standard"
       ? `\nHeads up: this is a ${r.lane}-lane route (higher risk) — read the catches carefully.`
       : "";
-  return (
-    `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
-    `${r.payout_text ?? ""}\n\n${stepLines}\n\n` +
-    `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
-    `Biggest catch: ${catches[0] ?? "see the official terms"}` +
-    laneNote +
-    `\n\nStart here: ${r.provider_url ?? r.link ?? ""}`
-  );
+  return {
+    reply:
+      `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
+      `${r.payout_text ?? ""}\n\n${stepLines}\n\n` +
+      `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
+      `Biggest catch: ${catches[0] ?? "see the official terms"}` +
+      laneNote +
+      `\n\nStart here: ${r.provider_url ?? r.link ?? ""}`,
+    routeId: r.route_id,
+  };
 }
 
 // ---------- 5. Privacy guard: never serve another user's data ----------
@@ -300,12 +313,19 @@ export function tryPrivacyGuard(message: string): string | null {
 
 // ---------- entry ----------
 
-export async function tryCapabilities(message: string, routes: RouteCard[]): Promise<string | null> {
-  return (
-    tryGamblingGuard(message) ??
-    tryPrivacyGuard(message) ??
-    tryMakeMeX(message, routes) ??
-    tryWalkthrough(message, routes) ??
-    (await tryQuantStocks(message))
-  );
+export async function tryCapabilities(
+  message: string,
+  routes: RouteCard[],
+): Promise<{ reply: string; routeId?: string } | null> {
+  const gambling = tryGamblingGuard(message);
+  if (gambling) return { reply: gambling };
+  const privacy = tryPrivacyGuard(message);
+  if (privacy) return { reply: privacy };
+  const makeMe = tryMakeMeX(message, routes);
+  if (makeMe) return { reply: makeMe };
+  const walk = tryWalkthrough(message, routes);
+  if (walk) return walk;
+  const stocks = await tryQuantStocks(message);
+  if (stocks) return { reply: stocks };
+  return null;
 }

@@ -131,13 +131,21 @@ serve(async (req) => {
     // quantitative stock screen (live market data, transparent factor model),
     // prediction-market/gambling guard (critical-thinking takedown).
     // Deterministic output needs no grounding post-check; persist like fast path.
-    const capReply = await tryCapabilities(message, routes);
-    if (capReply) {
+    const cap = await tryCapabilities(message, routes);
+    if (cap) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
-        { thread_id: tid, role: "assistant", content: capReply, meta: { capability: true } },
+        { thread_id: tid, role: "assistant", content: cap.reply, meta: { capability: true } },
       ]);
-      return json({ thread_id: tid, reply: capReply, action: null });
+      // Deterministic walkthroughs create playbook progress just like the
+      // model's start_walkthrough action does, so the app's Home tab tracks it.
+      if (cap.routeId && routes.some((r) => r.route_id === cap.routeId)) {
+        await supabase.from("playbook_progress").upsert({
+          user_id: user.id, route_id: cap.routeId, current_step: 0,
+          status: "active", updated_at: new Date().toISOString(),
+        }, { onConflict: "user_id,route_id" });
+      }
+      return json({ thread_id: tid, reply: cap.reply, action: null });
     }
 
     const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined);
