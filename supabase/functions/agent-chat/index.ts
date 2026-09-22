@@ -88,6 +88,15 @@ serve(async (req) => {
       .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
       .order("updated_at", { ascending: false }).limit(1).maybeSingle();
 
+    // Due reminders: surface them so the agent can proactively nudge.
+    // Schema: id, user_id, route_id, kind, message, due_at, sent_at, channel.
+    // A reminder is "due" when due_at has passed and it hasn't been sent yet.
+    const { data: reminders } = await supabase.from("reminders")
+      .select("route_id, kind, message, due_at").eq("user_id", user.id)
+      .is("sent_at", null)
+      .lte("due_at", new Date().toISOString())
+      .order("due_at", { ascending: true }).limit(3);
+
     // Candidate routes: active playbook route + verified Standard-lane routes
     // matching the user's state (simple keyword match v1; semantic search later)
     let routes: RouteCard[] = [];
@@ -104,14 +113,47 @@ serve(async (req) => {
       .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10);
     const hist = (history ?? []).reverse();
 
+    // FAST-PATH: deterministic answers for factual questions about verified
+    // routes. Skips the Anthropic call entirely (<500ms vs ~9s). Only triggers
+    // for safe factual patterns; everything else goes to the model.
+    const fastReply = tryFastPath(message, routes, playbook?.routes as RouteCard | undefined);
+    if (fastReply) {
+      await supabase.from("agent_messages").insert([
+        { thread_id: tid, role: "user", content: message },
+        { thread_id: tid, role: "assistant", content: fastReply, meta: { fast_path: true } },
+      ]);
+      return json({ thread_id: tid, reply: fastReply, action: null });
+    }
+
     const profileLine = profile
       ? `User profile: state=${profile.state ?? "unknown"}, age=${profile.age ?? "unknown"}, free time=${profile.free_time_hours ?? "?"}h/wk, paycheck=${profile.paycheck_status ?? "?"}, cash available=$${profile.cash_available ?? "?"}.`
       : "User profile: unknown — learn it from what the user tells you and save facts with the ask_profile action; never ask for the same fact twice.";
     const playbookLine = playbook
       ? `Active walkthrough: route ${playbook.route_id}, currently on step ${playbook.current_step + 1}.`
       : "No active walkthrough.";
+    // Resume nudge: user started a walkthrough but went quiet > 24h.
+    let resumeLine = "";
+    if (playbook?.updated_at) {
+      const idleHrs = (Date.now() - new Date(playbook.updated_at).getTime()) / 3600000;
+      if (idleHrs > 24) {
+        resumeLine = `PROACTIVE NUDGE: the user started the ${playbook.route_id} walkthrough but hasn't touched it in ${Math.round(idleHrs)} hours. Open with a warm resume offer ("want to pick up where you left off on step ${playbook.current_step + 1}?"), don't just answer and move on.`;
+      }
+    }
+    const reminderLine = (reminders?.length ?? 0) > 0
+      ? `Due reminders (be proactive — mention these naturally): ` +
+        reminders!.map((r: any) => `${r.message ?? r.route_id} (due ${r.due_at})`).join("; ") + "."
+      : "No due reminders.";
+    // Expiry alerts: verified routes expiring within 14 days.
+    const soon = new Date(Date.now() + 14 * 86400000).toISOString();
+    const { data: expiring } = await supabase.from("routes")
+      .select("route_id, name, expires_at").eq("status", "verified")
+      .not("expires_at", "is", null).lte("expires_at", soon).limit(5);
+    const expiryLine = (expiring?.length ?? 0) > 0
+      ? `EXPIRING SOON (warn the user before recommending): ` +
+        expiring!.map((r: any) => `${r.name ?? r.route_id} expires ${r.expires_at}`).join("; ") + "."
+      : "No verified routes expiring within 14 days.";
 
-    const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine +
+    const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
       `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
       (routes.length === 0
         ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
@@ -119,7 +161,7 @@ serve(async (req) => {
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
 
     const systemStatic = SYSTEM_PROMPT; // stable: cacheable
-    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine +
+    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
       `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
       (routes.length === 0
         ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
@@ -215,4 +257,65 @@ serve(async (req) => {
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "content-type": "application/json" } });
+}
+
+// Deterministic fast-path: answer factual questions about verified routes
+// directly from the card, no LLM call. Returns null if the question isn't
+// a safe factual pattern (falls through to the model).
+function tryFastPath(
+  message: string,
+  routes: RouteCard[],
+  playbookRoute?: RouteCard
+): string | null {
+  const msg = message.toLowerCase().trim();
+  // Never fast-path: guarantees, scams, advice, comparisons, unknowns.
+  // These need the model's judgment (honesty dimension).
+  if (/\b(guarantee|scam|legit|safe|worth it|should i|best|vs|versus|compare|how much.*(earn|make)|income|tax)\b/i.test(msg)) {
+    return null;
+  }
+  // Find which verified route the question is about.
+  // Priority: explicit provider/name in the message beats the active playbook.
+  // (A user mid-Fetch-walkthrough asking about Rakuten must get Rakuten.)
+  const named = routes.find((r) =>
+    msg.includes(r.provider.toLowerCase()) || msg.includes(r.name.toLowerCase())
+  );
+  const route = named ?? playbookRoute;
+  if (!route) return null;
+  const fresh =
+    route.status === "verified" && route.verified_at &&
+    Date.now() - new Date(route.verified_at).getTime() < 7 * 24 * 3600 * 1000;
+  if (!fresh) return null;
+
+  const catches = Array.isArray(route.catches) ? route.catches : route.catches ? [String(route.catches)] : [];
+  // "how does X work" / "what is X" / "tell me about X"
+  if (/\b(how does|what is|tell me about|explain)\b/i.test(msg)) {
+    const steps = route.steps.slice(0, 3).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
+    return `${route.name} (${route.provider}) — route ${route.route_id}.\n\n` +
+      `Here's how it works:\n${steps}\n\n` +
+      `Payout: ${route.payout_text ?? "see terms"} (${route.payout_timing ?? "timing varies"}).\n` +
+      (catches.length ? `\nHeads up: ${catches[0]}` : "") +
+      `\n\nWant me to walk you through it step by step?`;
+  }
+  // "requirements" / "do I need" / "eligible"
+  if (/\b(requirement|eligible|do i need|what do i need|qualify)\b/i.test(msg)) {
+    const parts: string[] = [];
+    if (route.min_age != null) parts.push(`Age ${route.min_age}+`);
+    if (route.geo_notes) parts.push(route.geo_notes);
+    if (route.exclusions) parts.push(`Exclusions: ${route.exclusions}`);
+    if (!parts.length) return null;
+    return `${route.name} requirements (route ${route.route_id}):\n` +
+      parts.map((p) => `• ${p}`).join("\n");
+  }
+  // "how do I get paid" / "payout" / "cash out"
+  if (/\b(payout|paid|pay out|cash out|redeem|withdraw)\b/i.test(msg)) {
+    return `${route.name} payout (route ${route.route_id}):\n` +
+      `• ${route.payout_text ?? "See the official terms for payout details."}\n` +
+      `• Timing: ${route.payout_timing ?? "varies"}`;
+  }
+  // "link" / "where do I sign up" / "download"
+  if (/\b(link|sign up|signup|download|where.*(start|app|site))\b/i.test(msg)) {
+    return `Here's the official ${route.name} link (route ${route.route_id}):\n${route.provider_url}\n\n` +
+      `Start at Step 1: ${route.steps[0]?.text ?? "follow the on-screen steps"}.`;
+  }
+  return null;
 }

@@ -23,3 +23,12 @@ out = out.replace(js_ph, "<script>\n" + vendor + "\n</script>", 1)
 dest = HERE / "upmore-app.html"
 dest.write_text(out)
 print(f"built {dest} ({dest.stat().st_size} bytes)")
+
+# Publish to repo root for Vercel: index.html + sw.js
+root = HERE.parent
+(root / "index.html").write_text(out)
+print(f"published {root / 'index.html'}")
+sw_src = HERE / "sw.js"
+if sw_src.exists():
+    (root / "sw.js").write_text(sw_src.read_text())
+    print(f"published {root / 'sw.js'}")
