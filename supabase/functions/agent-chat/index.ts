@@ -299,6 +299,8 @@ serve(async (req) => {
        "There's no such thing as guaranteed or risk-free income — that's the language scams use."],
       [/wire.*back|deposit.*check.*wire|double.*crypto|send.*btc/i,
        "That's a classic scam pattern — don't send money or share bank/crypto details."],
+      [/bank\s?log\s?in|bank\s?(password|credential)|share.*(bank|account).*(login|password|credential)|dm me your/i,
+       "Never share your bank login or account credentials with anyone — that's a phishing scam, and it's how accounts get drained. No legitimate offer needs your bank login."],
       [/pay.*\$.*(unlock|secret list|fee.*start)|background.check.*fee/i,
        "Legitimate earning routes never charge you upfront to start — upfront fees are a scam red flag."],
     ];
@@ -422,7 +424,9 @@ function tryFastPath(
   if (/\b(payout|paid|pay out|cash out|redeem|withdraw|\bpay\b.*receipt|per receipt)\b/i.test(msg)) {
     return `${route.name} payout (route ${route.route_id}):\n` +
       `• ${route.payout_text ?? "See the official terms for payout details."}\n` +
-      `• Timing: ${route.payout_timing ?? "varies"}`;
+      `• Timing: ${route.payout_timing ?? "varies"}\n` +
+      `• Honest read: actual pay per receipt varies and depends on the receipt and retailer — ` +
+      `treat any figure as roughly that, not a guaranteed amount.`;
   }
   // "is X available in [country]" / "does X work in [place]"
   if (/\b(available in|work in|offered in|support.*in)\b/i.test(msg)) {
@@ -471,8 +475,11 @@ function tryFastPath(
   }
   // "link" / "where do I sign up" / "download"
   if (/\b(link|sign up|signup|download|where.*(start|app|site))\b/i.test(msg)) {
-    return `Here's the official ${route.name} link (route ${route.route_id}):\n${route.provider_url}\n\n` +
-      `Start at Step 1: ${route.steps[0]?.text ?? "follow the on-screen steps"}.`;
+    const steps = route.steps.slice(0, 4).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
+    const stepsBlock = steps
+      ? `\n\nExact steps to start earning:\n${steps}\n\nCheck the official site if anything looks different — steps change over time.`
+      : `\n\nStart at Step 1: ${route.steps[0]?.text ?? "follow the on-screen steps"}.`;
+    return `Here's the official site for ${route.name} (route ${route.route_id}):\n${route.provider_url}${stepsBlock}`;
   }
   return null;
 }
