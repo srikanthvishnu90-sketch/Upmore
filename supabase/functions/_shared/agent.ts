@@ -70,6 +70,11 @@ export interface RouteCard {
   expires_at: string | null;
 }
 
+// DB stores catches as a jsonb string; the card type says string[].
+// Normalize at every use so a string row can never crash the function.
+const catchesOf = (r: RouteCard): string[] =>
+  Array.isArray(r.catches) ? r.catches : r.catches ? [String(r.catches)] : [];
+
 // Render route cards into the prompt. Only verified-fresh routes are marked LIVE;
 // everything else is context the agent must NOT present as an offer.
 export function renderRouteCards(routes: RouteCard[]): string {
@@ -90,7 +95,7 @@ export function renderRouteCards(routes: RouteCard[]): string {
         `Payout: ${r.payout_text ?? "not stated"} | Timing: ${r.payout_timing ?? "not stated"}`,
         r.expires_at ? `Expires: ${r.expires_at}` : null,
         `Steps:\n${steps}`,
-        r.catches.length ? `Catches: ${r.catches.join("; ")}` : null,
+        catchesOf(r).length ? `Catches: ${catchesOf(r).join("; ")}` : null,
         r.exclusions ? `Exclusions: ${r.exclusions}` : null,
       ]
         .filter(Boolean)
@@ -138,7 +143,7 @@ export function checkGrounding(
   const normAmt = (m: string) => m.replace(/[^0-9.]/g, "");
   const allowedMoney = new Set<string>();
   for (const r of routes) {
-    const t = `${r.payout_text ?? ""} ${r.catches.join(" ")}`;
+    const t = `${r.payout_text ?? ""} ${catchesOf(r).join(" ")}`;
     for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
   }
   for (const m of userMessage.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
