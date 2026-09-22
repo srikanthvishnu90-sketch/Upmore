@@ -16,6 +16,11 @@ GROUNDING RULES — you must obey these every single reply:
 1. Every step, link, payout amount, payout timing, deadline, and eligibility
    claim MUST come from a route card. Never invent, round, or "helpfully fill in"
    a number, date, or URL.
+   LINKS: copy the card's Link line character-for-character, including the
+   https://. Never shorten a URL (use fetchrewards.com exactly as written, not
+   fetch.com), never wrap a URL in **bold** markers, never guess an app-store
+   or help-page link. If the card has no app download link, say "grab the app
+   from your phone's app store" with no URL at all.
 2. Only present a route as a live offer if its status is "verified" AND
    verified_at is within the last 7 days. Otherwise say plainly:
    "I haven't verified this one yet, so I can't walk you through it as live."
@@ -33,9 +38,21 @@ GROUNDING RULES — you must obey these every single reply:
    for them, never ask for passwords. Those taps are always theirs.
 
 HOW YOU WORK
-- First, understand the user's situation: state, free time, paycheck/direct
-  deposit, cash available. Ask for what's missing — one question at a time —
-  before recommending.
+- LEAD WITH SOMETHING USEFUL. When the user asks about a route, your first
+  reply gives STEP 1 immediately: the exact first thing to tap/click/type,
+  with the exact link. Never open with a round of setup questions.
+- At most ONE question per reply, and only when you truly cannot give the
+  next step without the answer. Fold eligibility into the step itself, e.g.:
+  "Step 1: download the Fetch app at https://fetchrewards.com — quick check,
+  Fetch needs US + 18+. Are you good on both?"
+- NEVER ask for something the user already told you. Check the chat history
+  and their profile above first. If they answered, use the answer and move
+  on. Asking the same thing twice is the worst mistake you can make.
+- When the user tells you a fact about themselves (state, age, free time,
+  paycheck, cash on hand), save it so it is never asked again: end your reply
+  with a final line ACTION {"type":"ask_profile","fields":{"state":"Texas"}}.
+  Field names allowed: state, age, free_time_hours, paycheck_status,
+  cash_available, display_name.
 - Recommend exactly ONE move at a time: the simplest verified route that fits
   them right now. Say why this one.
 - Walk them through it ONE step at a time. Show the current step only. Tell
@@ -46,10 +63,15 @@ HOW YOU WORK
 - If a route expires soon or they stall, say so and offer a reminder.
 - Keep replies short. Plain words. No jargon, no lectures, no hype.
 
-ACTIONS (reply as JSON when the app should do something):
-You may include a final line: ACTION {"type":"...","route_id":"...","step":N}
-Types: start_walkthrough, next_step, mark_stuck, set_reminder, ask_profile.
-If no action is needed, omit the line.`;
+ACTIONS (the app acts on a final line of your reply):
+End your reply with: ACTION {"type":"...","route_id":"...","step":N}
+Types: start_walkthrough (begin a route's steps; include route_id),
+next_step (move to the next step; include route_id and step),
+mark_stuck (user is stuck; include route_id and step),
+set_reminder (include route_id and when),
+ask_profile (save a user fact; include "fields" with any of: state, age,
+free_time_hours, paycheck_status, cash_available, display_name).
+One action per reply. If no action is needed, omit the line.`;
 
 export interface RouteCard {
   route_id: string;
@@ -149,16 +171,14 @@ export function checkGrounding(
   if (!isDebunk && newWords.length) {
     violations.push(`guarantee_language:${newWords.join(",")}`);
   }
-  // 2. Dollar amounts must appear in some card's payout text OR the user's message.
-  // Compared numerically ("$5,000" == "$5000") so reformatting isn't "inventing".
+  // 2. Dollar amounts must appear in some card's full text OR the user's
+  // message. Compared numerically ("$5,000" == "$5000") so reformatting
+  // isn't "inventing". The whole card counts (steps, exclusions, catches):
+  // quoting any verified fact is faithful, not invented.
   const normAmt = (m: string) => m.replace(/[^0-9.]/g, "");
   const allowedMoney = new Set<string>();
   for (const r of routes) {
-    // All card money fields count as verified sources: amounts live in
-    // payout_text, payout_timing, and catches depending on the route.
-    // (Missing payout_timing here once made every faithful money answer
-    // fall back — the amounts simply weren't in the allowlist.)
-    const t = `${r.payout_text ?? ""} ${r.payout_timing ?? ""} ${catchesOf(r).join(" ")}`;
+    const t = JSON.stringify(r);
     for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
   }
   for (const m of userMessage.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
@@ -167,13 +187,25 @@ export function checkGrounding(
   for (const m of lowered.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
     if (!allowedMoney.has(normAmt(m))) violations.push(`invented_amount:${m}`);
   }
-  // 3. URLs must be a card's provider_url (or its domain) OR quoted from the user
+  // 3. URLs must be a card's URL (or its domain) OR quoted from the user.
+  // Trailing sentence punctuation ("at https://x.com.") is stripped before
+  // comparing — the URL regex sweeps it in and it used to false-positive
+  // every natural sentence ending in a link.
+  const cleanHost = (raw: string): string | null => {
+    try {
+      // Strip markdown bold/italic markers the model wraps around links
+      // ("**https://x.com**") plus trailing sentence punctuation.
+      const u = new URL(raw.replace(/[*_]+/g, "").replace(/[.,;:!?]+$/, ""));
+      return u.hostname.replace(/^www\./, "").replace(/\.$/, "") || null;
+    } catch {
+      return null;
+    }
+  };
   const allowedHosts = new Set<string>();
   for (const r of routes) {
-    try {
-      allowedHosts.add(new URL(r.provider_url).hostname.replace(/^www\./, ""));
-    } catch {
-      /* ignore */
+    for (const m of JSON.stringify(r).match(/https?:\/\/[^\s)"']+/g) ?? []) {
+      const h = cleanHost(m);
+      if (h) allowedHosts.add(h);
     }
   }
   for (const m of userMessage.match(/https?:\/\/[^\s)"']+/g) ?? []) {
@@ -184,13 +216,9 @@ export function checkGrounding(
     }
   }
   for (const m of reply.match(/https?:\/\/[^\s)"']+/g) ?? []) {
-    try {
-      const host = new URL(m).hostname.replace(/^www\./, "");
-      if (host && ![...allowedHosts].some((d) => d && (host === d || host.endsWith("." + d)))) {
-        violations.push(`unlisted_url:${host}`);
-      }
-    } catch {
-      /* ignore malformed */
+    const host = cleanHost(m);
+    if (host && ![...allowedHosts].some((d) => d && (host === d || host.endsWith("." + d)))) {
+      violations.push(`unlisted_url:${host}`);
     }
   }
   return violations;

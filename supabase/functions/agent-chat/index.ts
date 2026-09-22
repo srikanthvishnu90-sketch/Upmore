@@ -105,8 +105,8 @@ serve(async (req) => {
     const hist = (history ?? []).reverse();
 
     const profileLine = profile
-      ? `User profile: state=${profile.state ?? "unknown"}, free time=${profile.free_time_hours ?? "?"}h/wk, paycheck=${profile.paycheck_status ?? "?"}, cash available=$${profile.cash_available ?? "?"}.`
-      : "User profile: unknown — ask one question at a time to learn state, free time, paycheck status, cash available.";
+      ? `User profile: state=${profile.state ?? "unknown"}, age=${profile.age ?? "unknown"}, free time=${profile.free_time_hours ?? "?"}h/wk, paycheck=${profile.paycheck_status ?? "?"}, cash available=$${profile.cash_available ?? "?"}.`
+      : "User profile: unknown — learn it from what the user tells you and save facts with the ask_profile action; never ask for the same fact twice.";
     const playbookLine = playbook
       ? `Active walkthrough: route ${playbook.route_id}, currently on step ${playbook.current_step + 1}.`
       : "No active walkthrough.";
@@ -140,14 +140,16 @@ serve(async (req) => {
     const aj = await anthropicRes.json();
     let reply: string = aj.content?.map((b: any) => b.text ?? "").join("") ?? "";
 
-    // Grounding post-check: any violation → safe fallback
-    const violations = checkGrounding(reply, routes, message);
+    // Grounding post-check: any violation → safe fallback.
+    // Parse the ACTION line FIRST and strip it, so the check only sees the
+    // user-facing text (an action's JSON must never trip grounding).
     let action: any = null;
     const m = reply.match(/ACTION\s+(\{.*\})\s*$/);
     if (m) {
       try { action = JSON.parse(m[1]); } catch { /* ignore */ }
       reply = reply.replace(/ACTION\s+\{.*\}\s*$/, "").trim();
     }
+    const violations = checkGrounding(reply, routes, message);
     if (violations.length) {
       console.warn("grounding violations", violations);
       // A blocked debunk still warns: the user asked about a scam, and a
@@ -168,6 +170,20 @@ serve(async (req) => {
         user_id: user.id, route_id: action.route_id, current_step: 0,
         status: "active", updated_at: new Date().toISOString(),
       }, { onConflict: "user_id,route_id" });
+    }
+    // ask_profile: the model learned a fact about the user (state, age, ...).
+    // Persist it so it is never asked for again, across turns and sessions.
+    if (action?.type === "ask_profile" && action.fields && typeof action.fields === "object") {
+      const allowed = ["state", "age", "free_time_hours", "paycheck_status", "cash_available", "display_name"];
+      const patch: Record<string, unknown> = {};
+      for (const k of allowed) {
+        const v = (action.fields as Record<string, unknown>)[k];
+        if (v !== undefined && v !== null && v !== "") patch[k] = v;
+      }
+      if (Object.keys(patch).length) {
+        patch.updated_at = new Date().toISOString();
+        await supabase.from("profiles").update(patch).eq("id", user.id);
+      }
     }
 
     return json({ thread_id: tid, reply, action });
