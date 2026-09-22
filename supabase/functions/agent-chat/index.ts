@@ -182,6 +182,15 @@ serve(async (req) => {
         status: "active", updated_at: new Date().toISOString(),
       }, { onConflict: "user_id,route_id" });
     }
+    if (action?.type === "next_step" && action.route_id) {
+      const step = typeof action.step === "number" ? action.step : null;
+      if (step !== null) {
+        await supabase.from("playbook_progress").upsert({
+          user_id: user.id, route_id: action.route_id, current_step: step,
+          status: "active", updated_at: new Date().toISOString(),
+        }, { onConflict: "user_id,route_id" });
+      }
+    }
     // ask_profile: the model learned a fact about the user (state, age, ...).
     // Persist it so it is never asked for again, across turns and sessions.
     if (action?.type === "ask_profile" && action.fields && typeof action.fields === "object") {
