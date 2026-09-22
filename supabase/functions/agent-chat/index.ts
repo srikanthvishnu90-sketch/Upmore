@@ -377,6 +377,28 @@ function tryFastPath(
   if (!fresh) return null;
 
   const catches = Array.isArray(route.catches) ? route.catches : route.catches ? [String(route.catches)] : [];
+  // Comprehensive brief: the question asks about 2+ aspects (payout + rules +
+  // eligibility). Compose a full deterministic brief from the card — faster
+  // and more complete than the model, and every fact is card-grounded.
+  const aspects = [
+    /\b(payout|paid|pay out|cash out|redeem|minimum|timing|fees?)\b/i,
+    /\b(requirement|eligible|qualify|who can join|age|where.*available)\b/i,
+    /\b(receipt|rules?|terms|catch|convert|points)\b/i,
+  ];
+  const aspectHits = aspects.filter((a) => a.test(msg)).length;
+  if (aspectHits >= 2) {
+    const lines: string[] = [`**${route.provider}** (${route.name}) — verified ✓ (route ${route.route_id})`, ""];
+    lines.push(`**Payout:** ${route.payout_text ?? "see official terms"}${route.payout_timing ? ` — ${route.payout_timing}` : ""}`);
+    const who: string[] = [];
+    if (route.min_age != null) who.push(`age ${route.min_age}+`);
+    if (route.geo_notes) who.push(route.geo_notes);
+    if (who.length) lines.push(`**Who can join:** ${who.join(", ")}`);
+    if (catches.length) lines.push(`**Key rules:** ${catches.join("; ")}`);
+    if (route.exclusions) lines.push(`**Exclusions:** ${route.exclusions}`);
+    if (route.provider_url) lines.push(`**Official link:** ${route.provider_url}`);
+    lines.push("", "Want me to walk you through it step by step?");
+    return lines.join("\n");
+  }
   // "how does X work" / "what is X" / "tell me about X"
   if (/\b(how does|what is|tell me about|explain)\b/i.test(msg)) {
     const steps = route.steps.slice(0, 3).map((s, i) => `${i + 1}. ${s.text}`).join("\n");

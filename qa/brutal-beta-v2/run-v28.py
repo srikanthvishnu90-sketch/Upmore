@@ -484,6 +484,7 @@ out = {"score": total,
                 "discovery_10": s4, "guide_10": s5, "proactivity_10": s6,
                 "persistence_5": s7, "speed_5": s8, "mobile_5": s9, "scam_defense_10": s10},
        "p50_ms": p50, "calls": len(latencies)}
+out["results"] = results
 json.dump(out, open(RESULTS_PATH, "w"), indent=1)
 print(json.dumps({"score": total, "dims": out["dims"], "p50_ms": p50,
                   "n_calls": len(latencies), "results": RESULTS_PATH}, indent=1))
