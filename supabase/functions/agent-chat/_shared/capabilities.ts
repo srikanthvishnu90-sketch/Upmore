@@ -311,7 +311,38 @@ export function tryPrivacyGuard(message: string): string | null {
   return null;
 }
 
-// ---------- entry ----------
+// ---------- 6. Scam guard ----------
+// High-stakes safety patterns get a deterministic hard warning, not a
+// model improvisation. Patterns are narrow (fee + gift cards, not gift
+// cards alone — Microsoft Rewards legitimately pays in gift cards).
+const SCAM_FEE_RX = /fee|upfront|pay.{0,20}(before|first|to start)/i;
+const SCAM_CHECK_RX = /deposit.{0,40}check.{0,40}(wire|send.{0,20}back)|wire.{0,20}back/i;
+const SCAM_CRYPTO_RX = /doubl(e|ing).{0,30}(crypto|bitcoin|btc)|send.{0,30}(btc|bitcoin|crypto).{0,20}first/i;
+const SCAM_LOGIN_RX = /(bank|account).{0,25}(login|password|credentials).{0,40}(send|share|give|dm|tell me)|send.{0,40}(bank|account).{0,25}(login|password)/i;
+const SCAM_RICHES_RX = /guarantee.{0,40}\$[\d,]+.{0,25}(a|per)\s*day/i;
+
+export function tryScamGuard(message: string): string | null {
+  const t = message.toLowerCase();
+  let why: string | null = null;
+  if (/gift\s*card/i.test(t) && SCAM_FEE_RX.test(t)) {
+    why = "No legitimate job or earning route asks you to pay a fee in gift cards — gift cards are untraceable, which is exactly why scammers demand them.";
+  } else if (SCAM_CHECK_RX.test(t)) {
+    why = "This is the classic fake-check scam: their check bounces days later, but the money you wired is gone for good — and your bank holds you responsible.";
+  } else if (SCAM_CRYPTO_RX.test(t)) {
+    why = "Nobody doubles crypto for strangers. You send first, they vanish — it's one of the oldest crypto thefts there is.";
+  } else if (SCAM_LOGIN_RX.test(t)) {
+    why = "Never share bank logins or passwords with anyone, ever — not a person, not me, not a 'support agent'. Anyone asking is stealing.";
+  } else if (SCAM_RICHES_RX.test(t)) {
+    why = "Guaranteed thousands a day with no experience doesn't exist. Real routes pay real rates — anyone promising more is lying to get something from you.";
+  }
+  if (!why) return null;
+  return (
+    `Stop — that's a scam. Don't do it.\n\n${why}\n\n` +
+    `The rule is simple: never pay to start earning, never share logins, ` +
+    `and nobody hands you free money. If you want real earnings without ` +
+    `the risk, ask me to walk you through one of my 14 verified routes.`
+  );
+}
 
 export async function tryCapabilities(
   message: string,
@@ -321,6 +352,8 @@ export async function tryCapabilities(
   if (gambling) return { reply: gambling };
   const privacy = tryPrivacyGuard(message);
   if (privacy) return { reply: privacy };
+  const scam = tryScamGuard(message);
+  if (scam) return { reply: scam };
   const makeMe = tryMakeMeX(message, routes);
   if (makeMe) return { reply: makeMe };
   const walk = tryWalkthrough(message, routes);
