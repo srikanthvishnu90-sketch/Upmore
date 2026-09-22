@@ -418,11 +418,42 @@ function tryFastPath(
     return `${route.name} requirements (route ${route.route_id}):\n` +
       parts.map((p) => `• ${p}`).join("\n");
   }
-  // "how do I get paid" / "payout" / "cash out"
-  if (/\b(payout|paid|pay out|cash out|redeem|withdraw)\b/i.test(msg)) {
+  // "how do I get paid" / "payout" / "cash out" / "how much per receipt"
+  if (/\b(payout|paid|pay out|cash out|redeem|withdraw|\bpay\b.*receipt|per receipt)\b/i.test(msg)) {
     return `${route.name} payout (route ${route.route_id}):\n` +
       `• ${route.payout_text ?? "See the official terms for payout details."}\n` +
       `• Timing: ${route.payout_timing ?? "varies"}`;
+  }
+  // "is X available in [country]" / "does X work in [place]"
+  if (/\b(available in|work in|offered in|support.*in)\b/i.test(msg)) {
+    return `${route.name} availability (route ${route.route_id}): ${route.geo_notes ?? "see official terms"}.`;
+  }
+  // General eligibility: "I'm 25, can I use X?" / "Can I use X in Texas?"
+  // Combines age + geo from the card. Deterministic and fast.
+  if (/\b(can i (use|join)|am i eligible|do i qualify)\b/i.test(msg)) {
+    const parts: string[] = [];
+    if (route.min_age != null) parts.push(`Age ${route.min_age}+`);
+    if (route.geo_notes) parts.push(route.geo_notes);
+    if (route.exclusions) parts.push(`Exclusions: ${route.exclusions}`);
+    if (!parts.length) return null;
+    return `Yes — here's who can use ${route.name} (route ${route.route_id}):\n` +
+      parts.map((p) => `• ${p}`).join("\n") +
+      `\n\nAs long as you meet those, you're good to start.`;
+  }
+  // Rules/catches: "what happens if I stop using" / "how long do I have" / "fees"
+  if (/\b(expire|inactive|stop using|how long.*(upload|submit)|fee|charge)\b/i.test(msg) && catches.length) {
+    return `${route.name} rules to know (route ${route.route_id}):\n` +
+      catches.map((c) => `• ${c}`).join("\n");
+  }
+  if (/\b(\d+\s*(-|\s)?year\s*(-|\s)?old|how old|age (limit|requirement))\b/i.test(msg)) {
+    const parts: string[] = [];
+    if (route.min_age != null) parts.push(`Minimum age: ${route.min_age}`);
+    if (route.geo_notes && /under 18|parent|guardian/i.test(route.geo_notes))
+      parts.push(`Under 18 needs a parent/guardian (${route.geo_notes})`);
+    else if (route.geo_notes) parts.push(route.geo_notes);
+    if (!parts.length) return null;
+    return `${route.name} age rules (route ${route.route_id}):\n` +
+      parts.map((p) => `• ${p}`).join("\n");
   }
   // "link" / "where do I sign up" / "download"
   if (/\b(link|sign up|signup|download|where.*(start|app|site))\b/i.test(msg)) {
