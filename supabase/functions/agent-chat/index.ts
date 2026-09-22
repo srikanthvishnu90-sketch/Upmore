@@ -10,7 +10,9 @@ import {
   SYSTEM_PROMPT,
   renderRouteCards,
   checkGrounding,
+  isDebunkReply,
   SAFE_FALLBACK,
+  SCAM_FALLBACK,
   RouteCard,
 } from "./_shared/agent.ts";
 
@@ -148,7 +150,10 @@ serve(async (req) => {
     }
     if (violations.length) {
       console.warn("grounding violations", violations);
-      reply = SAFE_FALLBACK;
+      // A blocked debunk still warns: the user asked about a scam, and a
+      // generic deflection would leave them unprotected. The scam fallback
+      // names the pattern without inventing any amounts or URLs.
+      reply = isDebunkReply(reply) ? SCAM_FALLBACK : SAFE_FALLBACK;
       action = null;
     }
 

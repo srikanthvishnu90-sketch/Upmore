@@ -61,6 +61,8 @@ export interface RouteCard {
   lane: string;
   payout_text: string | null;
   payout_timing: string | null;
+  min_age: number | null;
+  geo_notes: string | null;
   steps: Array<{ text: string; done_when?: string; warn?: string }>;
   catches: string[];
   exclusions: string | null;
@@ -93,6 +95,8 @@ export function renderRouteCards(routes: RouteCard[]): string {
         `Link: ${r.provider_url}`,
         `Category: ${r.category} | Difficulty: ${r.difficulty} | Lane: ${r.lane}`,
         `Payout: ${r.payout_text ?? "not stated"} | Timing: ${r.payout_timing ?? "not stated"}`,
+        r.min_age != null ? `Minimum age: ${r.min_age}+` : null,
+        r.geo_notes ? `Availability: ${r.geo_notes}` : null,
         r.expires_at ? `Expires: ${r.expires_at}` : null,
         `Steps:\n${steps}`,
         catchesOf(r).length ? `Catches: ${catchesOf(r).join("; ")}` : null,
@@ -102,6 +106,11 @@ export function renderRouteCards(routes: RouteCard[]): string {
         .join("\n");
     })
     .join("\n\n");
+}
+
+// True when a reply names a scam pattern — it is debunking, not promising.
+export function isDebunkReply(reply: string): boolean {
+  return /\b(scam|red flag|too good|warning sign|pyramid|ponzi|stay away|not legit)\b/i.test(reply);
 }
 
 // Hard post-check: scan a reply for money claims not present in the cards.
@@ -121,20 +130,22 @@ export function checkGrounding(
   const lowered = reply.toLowerCase();
   // A reply that names the scam pattern is debunking, not promising. And quoting
   // the USER's own wording is not originating a promise. So the guarantee check
-  // only fires when the reply INTRODUCES guarantee words the user never used
-  // and shows no debunk markers — i.e. the model promising on its own.
-  const isDebunk =
-    /\b(scam|red flag|too good|warning sign|pyramid|ponzi|stay away|not legit)\b/i.test(reply);
-  const GUARANTEE_RX = /\b(guarantee[sd]?|you will earn|you'll make \$|risk-free|no risk)\b/gi;
-  // Normalize word forms so "guaranteeing" (user) vs "guaranteed" (reply)
-  // counts as an echo, not a new promise.
+  // only fires when the reply INTRODUCES absolute guarantee language the user
+  // never used and shows no debunk markers — i.e. the model promising on its own.
+  //
+  // "You will earn points / cash back / money" must NOT fire: describing a
+  // verified route's mechanics is the product's core job. Specific money claims
+  // are policed by the invented_amount check below, which is the precise tool
+  // for them. This check is only for absolutes: guaranteed, risk-free, no risk.
+  const isDebunk = isDebunkReply(reply);
+  const GUARANTEE_WORD_RX = /\bguarantee[sd]?\b|\bguaranteeing\b|\brisk-free\b|\bno risk\b/gi;
   const norm = (w: string) => w.toLowerCase().replace(/(ing|d|s)$/, "");
   const userWords = new Set(
-    (userMessage.toLowerCase().match(GUARANTEE_RX) ?? []).map(norm)
+    (userMessage.toLowerCase().match(GUARANTEE_WORD_RX) ?? []).map(norm)
   );
-  const replyWords = (lowered.match(GUARANTEE_RX) ?? []).map(norm);
+  const replyWords = (lowered.match(GUARANTEE_WORD_RX) ?? []).map(norm);
   const newWords = [...new Set(replyWords)].filter((w) => !userWords.has(w));
-  // 1. Banned guarantee language (model-originated promises only)
+  // 1. Banned guarantee language (model-originated absolutes only)
   if (!isDebunk && newWords.length) {
     violations.push(`guarantee_language:${newWords.join(",")}`);
   }
@@ -143,7 +154,11 @@ export function checkGrounding(
   const normAmt = (m: string) => m.replace(/[^0-9.]/g, "");
   const allowedMoney = new Set<string>();
   for (const r of routes) {
-    const t = `${r.payout_text ?? ""} ${catchesOf(r).join(" ")}`;
+    // All card money fields count as verified sources: amounts live in
+    // payout_text, payout_timing, and catches depending on the route.
+    // (Missing payout_timing here once made every faithful money answer
+    // fall back — the amounts simply weren't in the allowlist.)
+    const t = `${r.payout_text ?? ""} ${r.payout_timing ?? ""} ${catchesOf(r).join(" ")}`;
     for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
   }
   for (const m of userMessage.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
@@ -185,3 +200,13 @@ export const SAFE_FALLBACK =
   "I want to be careful here — I can't verify that claim right now, so I won't " +
   "state it as fact. Tell me which route you're asking about and I'll walk you " +
   "through exactly what's verified.";
+
+// Used when a debunk attempt trips the grounding check (usually because the
+// model invented an example amount/URL while warning about a scam). The user
+// asked about something scammy, so the reply still warns — it names the
+// pattern without inventing any amounts or URLs.
+export const SCAM_FALLBACK =
+  "I can't verify any of the money claims in that offer — and I want to be " +
+  "straight with you: guaranteed daily money with no experience is a classic " +
+  "scam pattern. I'd stay away from this one. If you want, I can walk you " +
+  "through a verified route instead.";
