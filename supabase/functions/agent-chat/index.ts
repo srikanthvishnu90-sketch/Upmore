@@ -96,7 +96,7 @@ serve(async (req) => {
         .is("sent_at", null).lte("due_at", nowIso)
         .order("due_at", { ascending: true }).limit(3),
       supabase.from("routes")
-        .select("*").eq("status", "verified").eq("lane", "Standard").limit(12),
+        .select("*").eq("status", "verified").limit(50),
       supabase.from("agent_messages")
         .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10),
       supabase.from("routes")
@@ -107,8 +107,10 @@ serve(async (req) => {
     const playbook = playRes.data;
     const reminders = remRes.data;
 
-    // Candidate routes: active playbook route + verified Standard-lane routes
-    // matching the user's state (simple keyword match v1; semantic search later)
+    // Candidate routes: active playbook route + verified routes
+    // matching the user's state (simple keyword match v1; semantic search later).
+    // Capabilities (make-me-$X, walkthroughs) see every verified route;
+    // the fast path and the model only see Standard-lane ones.
     let routes: RouteCard[] = [];
     if (playbook?.routes) routes.push(playbook.routes as RouteCard);
     const state = (profile?.state ?? "").toLowerCase();
@@ -116,6 +118,7 @@ serve(async (req) => {
     for (const r of verified ?? []) {
       if (!routes.some((x) => x.route_id === r.route_id)) routes.push(r as RouteCard);
     }
+    const standardRoutes = routes.filter((r) => (r.lane ?? "Standard") === "Standard");
 
     // Recent history
     const hist = ((histRes.data ?? []).reverse());
@@ -137,7 +140,7 @@ serve(async (req) => {
       return json({ thread_id: tid, reply: capReply, action: null });
     }
 
-    const fastReply = tryFastPath(message, routes, playbook?.routes as RouteCard | undefined);
+    const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined);
     if (fastReply) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
@@ -172,19 +175,19 @@ serve(async (req) => {
       : "No verified routes expiring within 14 days.";
 
     const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
-      `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
-      (routes.length === 0
+      `\nVerified LIVE route cards available to you right now: ${standardRoutes.length}. ` +
+      (standardRoutes.length === 0
         ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
         : "Only present routes marked LIVE below as offers.") +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(standardRoutes);
 
     const systemStatic = SYSTEM_PROMPT; // stable: cacheable
     const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
-      `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
-      (routes.length === 0
+      `\nVerified LIVE route cards available to you right now: ${standardRoutes.length}. ` +
+      (standardRoutes.length === 0
         ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
         : "Only present routes marked LIVE below as offers.") +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(standardRoutes);
 
     const anthropicRes = await fetch(ANTHROPIC_URL, {
       method: "POST",

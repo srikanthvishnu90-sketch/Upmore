@@ -63,7 +63,7 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   if (!m) return null;
   const target = parseInt(m[1] ?? m[2] ?? m[4] ?? "0", 10);
   if (!target || target <= 0 || target > 10000) return null;
-  const live = routes.filter(fresh);
+  const live = routes.filter(fresh).filter((r) => (r.lane ?? "Standard") === "Standard");
   if (!live.length) return null;
 
   // Rank verified routes by honest hours to reach the target.
@@ -222,12 +222,90 @@ export function tryGamblingGuard(message: string): string | null {
   );
 }
 
+// ---------- 4. Deterministic full walkthrough (DB-driven) ----------
+// "walk me through X" renders the complete verified method: every step from
+// the official-terms verification, exact link, payout, biggest catch.
+// Data-driven: reads steps/catches/payout/provider_url straight from the
+// verified route rows, so it can never drift from verification.
+const WALK_ALIASES: Array<[RegExp, string]> = [
+  [/fetch/, "R0119"], [/ibotta/, "R0118"], [/rakuten/, "R0116"],
+  [/swagbucks/, "R0140"], [/prolific/, "R0220"],
+  [/user\s?testing/, "R0221"], [/online\s?verdict/, "R0292"],
+  [/google opinion/, "R0446"], [/missing\s?money|unclaimed/, "R0295"],
+  [/class action|\bftc\b|settlement/, "R0302"],
+  [/microsoft rewards|bing rewards/, "R0355"], [/nielsen/, "R0213"],
+  [/\bchime\b/, "R0098"], [/\bsofi\b/, "R0096"], [/\bchase\b/, "R0036"],
+];
+const WALK_INTENT =
+  /walk me through|guide me through|talk me through|step.by.step|show me the steps|how do i (actually |really )?(use|do|start|earn)/i;
+
+export function tryWalkthrough(message: string, routes: any[]): string | null {
+  if (!WALK_INTENT.test(message)) return null;
+  const t = message.toLowerCase();
+  let rid: string | null = null;
+  const idm = t.match(/\br0\d{3}\b/);
+  if (idm) rid = idm[0].toUpperCase();
+  if (!rid) {
+    for (const [re, id] of WALK_ALIASES) {
+      if (re.test(t)) { rid = id; break; }
+    }
+  }
+  if (!rid) {
+    const hit = routes.find(
+      (r) => String(r.provider ?? "").length > 3 &&
+        t.includes(String(r.provider).toLowerCase()),
+    );
+    if (hit) rid = hit.route_id;
+  }
+  if (!rid) return null;
+  const r = routes.find((x) => x.route_id === rid);
+  if (!r) {
+    return "I haven't verified that one yet, so I can't walk you through it " +
+      "as a live offer — I'd be guessing at the steps and the payout, and I " +
+      "don't do that. Ask me about one of my 14 verified routes instead.";
+  }
+  const steps: any[] = Array.isArray(r.steps) ? r.steps : [];
+  const stepLines = steps
+    .map((s, i) => `${i + 1}. ${typeof s === "string" ? s : s.text ?? ""}`)
+    .join("\n");
+  const catches: any[] = Array.isArray(r.catches) ? r.catches : [];
+  const laneNote =
+    r.lane && r.lane !== "Standard"
+      ? `\nHeads up: this is a ${r.lane}-lane route (higher risk) — read the catches carefully.`
+      : "";
+  return (
+    `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
+    `${r.payout_text ?? ""}\n\n${stepLines}\n\n` +
+    `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
+    `Biggest catch: ${catches[0] ?? "see the official terms"}` +
+    laneNote +
+    `\n\nStart here: ${r.provider_url ?? r.link ?? ""}`
+  );
+}
+
+// ---------- 5. Privacy guard: never serve another user's data ----------
+// Fires before the fast path so "show me another user's email" can never be
+// misread as an offers question. Nothing is leaked; the refusal is explicit.
+const PRIVACY_WHO = /another user|someone else'?s|other users?'?|other people'?s/i;
+const PRIVACY_WHAT = /email|password|progress|data|account|info(rmation)?|name|profile|phone/i;
+
+export function tryPrivacyGuard(message: string): string | null {
+  if (PRIVACY_WHO.test(message) && PRIVACY_WHAT.test(message)) {
+    return "I can't show you another person's data — every account here is " +
+      "private, including yours. I can only see your own progress and the " +
+      "public verified offers.\n\nWant to see your own progress instead?";
+  }
+  return null;
+}
+
 // ---------- entry ----------
 
 export async function tryCapabilities(message: string, routes: RouteCard[]): Promise<string | null> {
   return (
     tryGamblingGuard(message) ??
+    tryPrivacyGuard(message) ??
     tryMakeMeX(message, routes) ??
+    tryWalkthrough(message, routes) ??
     (await tryQuantStocks(message))
   );
 }
