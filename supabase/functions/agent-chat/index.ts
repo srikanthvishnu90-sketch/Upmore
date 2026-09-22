@@ -15,6 +15,7 @@ import {
   SCAM_FALLBACK,
   RouteCard,
 } from "./_shared/agent.ts";
+import { tryCapabilities } from "./_shared/capabilities.ts";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5-20251001";
@@ -122,6 +123,20 @@ serve(async (req) => {
     // FAST-PATH: deterministic answers for factual questions about verified
     // routes. Skips the Anthropic call entirely (<500ms vs ~9s). Only triggers
     // for safe factual patterns; everything else goes to the model.
+    // CAPABILITY PATHS: deterministic answers that never touch the model —
+    // "make me $X" (honest time-to-cash math + full steps + exact links),
+    // quantitative stock screen (live market data, transparent factor model),
+    // prediction-market/gambling guard (critical-thinking takedown).
+    // Deterministic output needs no grounding post-check; persist like fast path.
+    const capReply = await tryCapabilities(message, routes);
+    if (capReply) {
+      await supabase.from("agent_messages").insert([
+        { thread_id: tid, role: "user", content: message },
+        { thread_id: tid, role: "assistant", content: capReply, meta: { capability: true } },
+      ]);
+      return json({ thread_id: tid, reply: capReply, action: null });
+    }
+
     const fastReply = tryFastPath(message, routes, playbook?.routes as RouteCard | undefined);
     if (fastReply) {
       await supabase.from("agent_messages").insert([
