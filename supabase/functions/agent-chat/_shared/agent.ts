@@ -103,36 +103,70 @@ export function renderRouteCards(routes: RouteCard[]): string {
 // Returns a list of violations (empty = clean). This runs server-side on every
 // reply before it reaches the user; any violation → the reply is replaced with
 // a safe fallback.
-export function checkGrounding(reply: string, routes: RouteCard[]): string[] {
+//
+// Quoting the USER's own message is not inventing: when the agent debunks a
+// scam it must be free to repeat the scammer's numbers/URLs to warn about
+// them. So amounts/URLs that appear in the user's message are allowed.
+export function checkGrounding(
+  reply: string,
+  routes: RouteCard[],
+  userMessage = ""
+): string[] {
   const violations: string[] = [];
   const lowered = reply.toLowerCase();
-  // 1. Banned guarantee language
-  if (/\b(guarantee[sd]?|you will earn|you'll make \$|risk-free|no risk)\b/.test(lowered)) {
-    violations.push("guarantee_language");
+  // A reply that names the scam pattern is debunking, not promising. And quoting
+  // the USER's own wording is not originating a promise. So the guarantee check
+  // only fires when the reply INTRODUCES guarantee words the user never used
+  // and shows no debunk markers — i.e. the model promising on its own.
+  const isDebunk =
+    /\b(scam|red flag|too good|warning sign|pyramid|ponzi|stay away|not legit)\b/i.test(reply);
+  const GUARANTEE_RX = /\b(guarantee[sd]?|you will earn|you'll make \$|risk-free|no risk)\b/gi;
+  // Normalize word forms so "guaranteeing" (user) vs "guaranteed" (reply)
+  // counts as an echo, not a new promise.
+  const norm = (w: string) => w.toLowerCase().replace(/(ing|d|s)$/, "");
+  const userWords = new Set(
+    (userMessage.toLowerCase().match(GUARANTEE_RX) ?? []).map(norm)
+  );
+  const replyWords = (lowered.match(GUARANTEE_RX) ?? []).map(norm);
+  const newWords = [...new Set(replyWords)].filter((w) => !userWords.has(w));
+  // 1. Banned guarantee language (model-originated promises only)
+  if (!isDebunk && newWords.length) {
+    violations.push(`guarantee_language:${newWords.join(",")}`);
   }
-  // 2. Dollar amounts must appear in some card's payout text
-  const cardMoney = new Set<string>();
+  // 2. Dollar amounts must appear in some card's payout text OR the user's message.
+  // Compared numerically ("$5,000" == "$5000") so reformatting isn't "inventing".
+  const normAmt = (m: string) => m.replace(/[^0-9.]/g, "");
+  const allowedMoney = new Set<string>();
   for (const r of routes) {
     const t = `${r.payout_text ?? ""} ${r.catches.join(" ")}`;
-    for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) cardMoney.add(m);
+    for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
+  }
+  for (const m of userMessage.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
+    allowedMoney.add(normAmt(m));
   }
   for (const m of lowered.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
-    if (!cardMoney.has(m)) violations.push(`invented_amount:${m}`);
+    if (!allowedMoney.has(normAmt(m))) violations.push(`invented_amount:${m}`);
   }
-  // 3. URLs must be a card's provider_url (or its domain)
-  const cardDomains = new Set(
-    routes.map((r) => {
-      try {
-        return new URL(r.provider_url).hostname.replace(/^www\./, "");
-      } catch {
-        return "";
-      }
-    })
-  );
+  // 3. URLs must be a card's provider_url (or its domain) OR quoted from the user
+  const allowedHosts = new Set<string>();
+  for (const r of routes) {
+    try {
+      allowedHosts.add(new URL(r.provider_url).hostname.replace(/^www\./, ""));
+    } catch {
+      /* ignore */
+    }
+  }
+  for (const m of userMessage.match(/https?:\/\/[^\s)"']+/g) ?? []) {
+    try {
+      allowedHosts.add(new URL(m).hostname.replace(/^www\./, ""));
+    } catch {
+      /* ignore */
+    }
+  }
   for (const m of reply.match(/https?:\/\/[^\s)"']+/g) ?? []) {
     try {
       const host = new URL(m).hostname.replace(/^www\./, "");
-      if (host && ![...cardDomains].some((d) => d && (host === d || host.endsWith("." + d)))) {
+      if (host && ![...allowedHosts].some((d) => d && (host === d || host.endsWith("." + d)))) {
         violations.push(`unlisted_url:${host}`);
       }
     } catch {

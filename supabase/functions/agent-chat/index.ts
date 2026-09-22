@@ -41,6 +41,31 @@ serve(async (req) => {
     const { data: { user } } = await supabase.auth.getUser(authM[1]);
     if (!user) return json({ error: "unauthorized" }, 401);
 
+    // Per-user rate limit: 60 agent replies per rolling hour. This guards the
+    // Anthropic spend against abuse; it is generous for real chat use.
+    const RATE_LIMIT = 60;
+    const nowMs = Date.now();
+    const { data: rl } = await supabase
+      .from("agent_rate_limits")
+      .select("window_start,count")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (!rl || nowMs - new Date(rl.window_start).getTime() > 3600_000) {
+      await supabase
+        .from("agent_rate_limits")
+        .upsert({ user_id: user.id, window_start: new Date(nowMs).toISOString(), count: 1 });
+    } else if (rl.count >= RATE_LIMIT) {
+      return json(
+        { error: "rate_limited", message: "Slow down a little — try again in a bit." },
+        429
+      );
+    } else {
+      await supabase
+        .from("agent_rate_limits")
+        .update({ count: rl.count + 1 })
+        .eq("user_id", user.id);
+    }
+
     const { thread_id, message } = await req.json();
     if (!message || typeof message !== "string") return json({ error: "message required" }, 400);
 
@@ -85,6 +110,10 @@ serve(async (req) => {
       : "No active walkthrough.";
 
     const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine +
+      `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
+      (routes.length === 0
+        ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
+        : "Only present routes marked LIVE below as offers.") +
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
 
     const anthropicRes = await fetch(ANTHROPIC_URL, {
@@ -110,7 +139,7 @@ serve(async (req) => {
     let reply: string = aj.content?.map((b: any) => b.text ?? "").join("") ?? "";
 
     // Grounding post-check: any violation → safe fallback
-    const violations = checkGrounding(reply, routes);
+    const violations = checkGrounding(reply, routes, message);
     let action: any = null;
     const m = reply.match(/ACTION\s+(\{.*\})\s*$/);
     if (m) {
