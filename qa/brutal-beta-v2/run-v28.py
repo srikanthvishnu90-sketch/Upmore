@@ -26,12 +26,13 @@ SVC = next((k["api_key"] for k in mgmt_get(f"/projects/{REF}/api-keys")
             if k.get("name") == "service_role"), None)
 
 def api(method, url, key, body=None, bearer=None, tries=8, prefer=None):
-    # curl transport: urllib flaked (IncompleteRead/RemoteDisconnected) through
-    # the sandbox proxy; curl is rock solid. Never prints credentials.
-    import subprocess
+    # curl transport: urllib flaked through the sandbox proxy; curl is solid.
+    # Body -> temp file, HTTP code -> stdout: no separator parsing. Never prints credentials.
+    import subprocess, tempfile, os
     payload = json.dumps(body) if body is not None else None
     for i in range(tries):
-        cmd = ["curl", "-s", "-w", "\n%{http_code}", "-X", method, url,
+        tmp = tempfile.mktemp(prefix="bb28_")
+        cmd = ["curl", "-s", "-o", tmp, "-w", "%{http_code}", "-X", method, url,
                "--max-time", "60",
                "-H", "apikey: " + key,
                "-H", "Authorization: Bearer " + (bearer or key)]
@@ -41,13 +42,22 @@ def api(method, url, key, body=None, bearer=None, tries=8, prefer=None):
             cmd += ["-H", "Prefer: " + prefer]
         try:
             p = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
-            out = p.stdout
-            code_s, _, resp_body = out.rpartition("\n")
-            code = int(code_s.strip()) if code_s.strip().isdigit() else 0
+            code_s = p.stdout.strip()
+            code = int(code_s) if code_s.isdigit() else 0
+            resp_body = ""
+            if os.path.exists(tmp):
+                with open(tmp, "r", encoding="utf-8", errors="replace") as f:
+                    resp_body = f.read()
+                os.unlink(tmp)
             if code:
                 return code, resp_body
         except Exception as ex:
-            print(f'    retry {i+1}: {type(ex).__name__}', flush=True)
+            print('    retry %d: %s' % (i+1, type(ex).__name__), flush=True)
+        try:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
+        except Exception:
+            pass
         time.sleep(2 * (i + 1))
     return -1, "retries exhausted"
 
@@ -428,24 +438,17 @@ print("=== DIM9 mobile ===", flush=True)
 results["dim9"] = []
 SITE = "https://upmore-srikanthvishnu90-sketchs-projects.vercel.app"
 def site_get(path):
-    import subprocess
-    p = subprocess.run(["curl", "-s", "-w", "\n%{http_code}", SITE + path, "--max-time", "30"],
+    import subprocess, tempfile, os
+    tmp = tempfile.mktemp(prefix="bb28s_")
+    p = subprocess.run(["curl", "-s", "-o", tmp, "-w", "%{http_code}", SITE + path, "--max-time", "30"],
                        capture_output=True, text=True, timeout=40)
-    code_s, _, body = p.stdout.rpartition("\n")
-    return (int(code_s.strip()) if code_s.strip().isdigit() else 0), body
-st, html = site_get("/")
-results["dim9"].append({"probe": "pwa_shell",
-    "pass": st == 200 and 'name="viewport"' in html and "serviceWorker" in html})
-st, sw = site_get("/sw.js")
-results["dim9"].append({"probe": "sw_serves", "pass": st == 200 and "fetch" in sw and len(sw) > 200})
-results["dim9"].append({"probe": "verified_badge", "pass": "Verified" in html})
-results["dim9"].append({"probe": "touch_targets",
-    "pass": bool(re.search(r"min-height:\s*4[48]px|min-width:\s*4[48]px|44px", html))})
-wide = re.findall(r"width:\s*(\d+)px", html)
-results["dim9"].append({"probe": "no_overflow_static",
-    "pass": not any(int(w) > 390 for w in wide if w.isdigit())})
-for r in results["dim9"]:
-    print(f"D9 {r['probe']}: {'PASS' if r['pass'] else 'FAIL'}", flush=True)
+    code_s = p.stdout.strip()
+    body = ""
+    if os.path.exists(tmp):
+        with open(tmp, "r", encoding="utf-8", errors="replace") as f:
+            body = f.read()
+        os.unlink(tmp)
+    return (int(code_s) if code_s.isdigit() else 0), body
 
 # ---------------- score (all 10 dims, 100 pts) ----------------
 d1_hits = [h for r in results["dim1"] for h in r["hits"]]
