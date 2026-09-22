@@ -196,9 +196,10 @@ export async function tryQuantStocks(message: string): Promise<string | null> {
   return (
     `Straight talk first: stocks aren't fixed income — prices move both ways and you can lose money. ` +
     `This is a quantitative screen, not financial advice and not a prediction.\n\n` +
-    `I screened ${rows.length} large-cap US stocks on 4 factors (data as of ${asof}):\n` +
-    `momentum (12–1 mo return), value (distance below 52-week high), low volatility (60-day), trend (vs 200-day avg). ` +
-    `Each factor z-scored across the group, equal-weighted into one composite.\n\n` +
+    `I screened ${rows.length} large-cap US stocks on 4 technical factors (data as of ${asof}):\n` +
+    `momentum (12–1 mo return), pullback (distance below 52-week high), low volatility (60-day), trend (vs 200-day avg). ` +
+    `Each factor z-scored across the group, equal-weighted into one composite. ` +
+    `Technical-only: this uses price history alone, no company fundamentals or true valuation.\n\n` +
     `Top 5 by composite score:\n${lines.join("\n")}\n\n` +
     `What the model is saying: these five currently combine the strongest recent momentum with the calmest price action ` +
     `relative to their own highs. It is NOT saying they will go up — past patterns don't predict the future.\n\n` +
