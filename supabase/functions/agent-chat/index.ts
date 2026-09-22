@@ -118,6 +118,14 @@ serve(async (req) => {
         : "Only present routes marked LIVE below as offers.") +
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
 
+    const systemStatic = SYSTEM_PROMPT; // stable: cacheable
+    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine +
+      `\nVerified LIVE route cards available to you right now: ${routes.length}. ` +
+      (routes.length === 0
+        ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
+        : "Only present routes marked LIVE below as offers.") +
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(routes);
+
     const anthropicRes = await fetch(ANTHROPIC_URL, {
       method: "POST",
       headers: {
@@ -128,7 +136,10 @@ serve(async (req) => {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
-        system,
+        system: [
+          { type: "text", text: systemStatic, cache_control: { type: "ephemeral" } },
+          { type: "text", text: systemDynamic },
+        ],
         messages: [...hist.map((m: any) => ({ role: m.role, content: m.content })), { role: "user", content: message }],
       }),
     });
