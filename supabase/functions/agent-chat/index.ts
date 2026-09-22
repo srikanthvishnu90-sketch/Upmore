@@ -436,9 +436,21 @@ function tryFastPath(
     if (route.geo_notes) parts.push(route.geo_notes);
     if (route.exclusions) parts.push(`Exclusions: ${route.exclusions}`);
     if (!parts.length) return null;
-    return `Yes — here's who can use ${route.name} (route ${route.route_id}):\n` +
-      parts.map((p) => `• ${p}`).join("\n") +
-      `\n\nAs long as you meet those, you're good to start.`;
+    // If the user stated their age, give a direct yes/no.
+    const ageMatch = msg.match(/\b(i'm|i am|age)\s*(\d{1,3})\b/i) || msg.match(/\b(\d{1,3})\s*(-|\s)?years?\s*(-|\s)?old\b/i);
+    let verdict = `Here's who can use ${route.name} (route ${route.route_id}):`;
+    if (ageMatch && route.min_age != null) {
+      const age = parseInt(ageMatch[2] ?? ageMatch[1], 10);
+      if (!isNaN(age)) {
+        verdict = age >= route.min_age
+          ? `Yes — at ${age} you meet the age requirement for ${route.name} (route ${route.route_id}):`
+          : `Not yet — ${route.name} needs age ${route.min_age}+ (route ${route.route_id}), so at ${age} you can't join solo:`;
+      }
+    } else {
+      verdict = `Here's who can use ${route.name} (route ${route.route_id}):`;
+    }
+    return verdict + "\n" +
+      parts.map((p) => `• ${p}`).join("\n");
   }
   // Rules/catches: "what happens if I stop using" / "how long do I have" / "fees"
   if (/\b(expire|inactive|stop using|how long.*(upload|submit)|fee|charge)\b/i.test(msg) && catches.length) {
