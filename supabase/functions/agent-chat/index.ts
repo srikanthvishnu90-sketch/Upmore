@@ -80,38 +80,44 @@ serve(async (req) => {
       tid = data.id;
     }
 
-    // Profile
-    const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single();
-
-    // Active playbook (if user is mid-walkthrough, that route is the context)
-    const { data: playbook } = await supabase.from("playbook_progress")
-      .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
-      .order("updated_at", { ascending: false }).limit(1).maybeSingle();
-
-    // Due reminders: surface them so the agent can proactively nudge.
-    // Schema: id, user_id, route_id, kind, message, due_at, sent_at, channel.
-    // A reminder is "due" when due_at has passed and it hasn't been sent yet.
-    const { data: reminders } = await supabase.from("reminders")
-      .select("route_id, kind, message, due_at").eq("user_id", user.id)
-      .is("sent_at", null)
-      .lte("due_at", new Date().toISOString())
-      .order("due_at", { ascending: true }).limit(3);
+    // Parallel fetches: profile, playbook, reminders, verified routes, history,
+    // expiring. Sequential awaits were ~2s; parallel cuts p50 substantially.
+    const nowIso = new Date().toISOString();
+    const soonIso = new Date(Date.now() + 14 * 86400000).toISOString();
+    const [profRes, playRes, remRes, verRes, histRes, expRes] = await Promise.all([
+      supabase.from("profiles").select("*").eq("id", user.id).single(),
+      supabase.from("playbook_progress")
+        .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
+        .order("updated_at", { ascending: false }).limit(1).maybeSingle(),
+      // Due reminders: due_at passed and not yet sent.
+      supabase.from("reminders")
+        .select("route_id, kind, message, due_at").eq("user_id", user.id)
+        .is("sent_at", null).lte("due_at", nowIso)
+        .order("due_at", { ascending: true }).limit(3),
+      supabase.from("routes")
+        .select("*").eq("status", "verified").eq("lane", "Standard").limit(12),
+      supabase.from("agent_messages")
+        .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10),
+      supabase.from("routes")
+        .select("route_id, name, expires_at").eq("status", "verified")
+        .not("expires_at", "is", null).lte("expires_at", soonIso).limit(5),
+    ]);
+    const profile = profRes.data;
+    const playbook = playRes.data;
+    const reminders = remRes.data;
 
     // Candidate routes: active playbook route + verified Standard-lane routes
     // matching the user's state (simple keyword match v1; semantic search later)
     let routes: RouteCard[] = [];
     if (playbook?.routes) routes.push(playbook.routes as RouteCard);
     const state = (profile?.state ?? "").toLowerCase();
-    const { data: verified } = await supabase.from("routes")
-      .select("*").eq("status", "verified").eq("lane", "Standard").limit(12);
+    const verified = verRes.data;
     for (const r of verified ?? []) {
       if (!routes.some((x) => x.route_id === r.route_id)) routes.push(r as RouteCard);
     }
 
     // Recent history
-    const { data: history } = await supabase.from("agent_messages")
-      .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10);
-    const hist = (history ?? []).reverse();
+    const hist = ((histRes.data ?? []).reverse());
 
     // FAST-PATH: deterministic answers for factual questions about verified
     // routes. Skips the Anthropic call entirely (<500ms vs ~9s). Only triggers
@@ -143,11 +149,8 @@ serve(async (req) => {
       ? `Due reminders (be proactive — mention these naturally): ` +
         reminders!.map((r: any) => `${r.message ?? r.route_id} (due ${r.due_at})`).join("; ") + "."
       : "No due reminders.";
-    // Expiry alerts: verified routes expiring within 14 days.
-    const soon = new Date(Date.now() + 14 * 86400000).toISOString();
-    const { data: expiring } = await supabase.from("routes")
-      .select("route_id, name, expires_at").eq("status", "verified")
-      .not("expires_at", "is", null).lte("expires_at", soon).limit(5);
+    // Expiry alerts: verified routes expiring within 14 days (fetched above).
+    const expiring = expRes.data;
     const expiryLine = (expiring?.length ?? 0) > 0
       ? `EXPIRING SOON (warn the user before recommending): ` +
         expiring!.map((r: any) => `${r.name ?? r.route_id} expires ${r.expires_at}`).join("; ") + "."
