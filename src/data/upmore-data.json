@@ -30732,15 +30732,22 @@
    "provider": "Chase Business Complete Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$300-$500",
+   "reward": "$500 checking bonus for new business customers (tiered by new-money deposit)",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Must be a business owner; business banking separate eligibility rules",
-   "url": "https://chase.com/business",
+   "payout_timing": "Deposited within 15 days after completing all requirements",
+   "catches": [
+    "Requires a business: EIN required (single-member LLCs may use SSN/ITIN); LLCs need articles of organization; sole proprietors need a business license or DBA filing.",
+    "'Earn up to $500' is tiered \u2014 the full $500 requires the top new-money deposit tier within 30 days of enrollment; smaller deposits earn less.",
+    "Must complete 5 qualifying transactions (debit purchases, QuickDeposit, ACH credits, wires, bill pay, QuickAccept) within 90 days of enrollment.",
+    "Offer expires 10/15/2026 \u2014 after that date the terms must be re-verified.",
+    "$15 monthly service fee (waivable, e.g., $2,000 minimum balance).",
+    "New Chase business checking customers only; one bonus per account."
+   ],
+   "url": "https://account.chase.com/business/business-checking-offer",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 369,
    "difficulty": 5,
    "tier": "Moderate",
@@ -30748,87 +30755,52 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://chase.com/business and search for the current checking account bonus offer page (search 'Chase Business Complete Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official Chase business offer page https://account.chase.com/business/business-checking-offer and confirm the offer is live (currently expires 10/15/2026) and note the deposit tier needed for the full $500.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Gather business documentation: EIN (or SSN for single-member LLC), articles of organization or business license/DBA, and two forms of personal ID.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Open a new Chase Business Complete Checking account through the offer page (online or in branch) and enroll in the bonus.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Within 30 days of enrollment, deposit the new-money amount for your target tier and maintain that balance for 60 days.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
+     "text": "Within 90 days of enrollment, complete 5 qualifying transactions: debit card purchases, Chase QuickDeposit, ACH credits, wires, bill pay, or QuickAccept.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
+     "text": "Keep the account open and in good standing; the bonus is deposited within 15 days after all requirements are complete.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "To avoid the $15 monthly fee, keep a $2,000 minimum balance or meet another fee waiver.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -30944,15 +30916,22 @@
    "provider": "Citi Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$200-$1,500",
+   "reward": "$500 or $1,500 by day-45 balance tier ($30k / $200k)",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Tiered bonus by deposit amount; monthly fee applies; minimum balance requirements",
-   "url": "https://online.citi.com",
+   "payout_timing": "Bonus earned after completing required activities; paid per the offer's key dates",
+   "catches": [
+    "Bonus is tiered: $500 for a $30,000 minimum balance, $1,500 for a $200,000 minimum balance. The route's claimed $200 low end is wrong \u2014 the minimum tier is $500.",
+    "The balance on the 45th calendar day after account opening determines the bonus \u2014 funds must be new-to-Citibank and posted within 45 days.",
+    "Offer valid for accounts opened 4/14/2026 to 10/26/2026; must enroll in the bonus offer the same day you open the account, directly from the offer page.",
+    "Only new Citi checking customers qualify; opening an account does not guarantee eligibility.",
+    "Monthly service fees apply unless waived ($250+ in Enhanced Direct Deposits avoids fees on Regular Checking).",
+    "Offer cannot be combined with other Citi checking offers; Citi may withdraw the offer."
+   ],
+   "url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 371,
    "difficulty": 5,
    "tier": "Moderate",
@@ -30960,87 +30939,45 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://online.citi.com and search for the current checking account bonus offer page (search 'Citi Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official Citi bonus page https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm and confirm the offer is still live (valid for accounts opened by 10/26/2026).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Open a new Citi Regular Checking account directly from that page and enroll in the bonus offer the SAME day \u2014 opening any other way does not qualify.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Within 45 calendar days of account opening, deposit new-to-Citibank funds: at least $30,000 for the $500 tier or at least $200,000 for the $1,500 tier.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Keep that balance in place through the 45th day \u2014 the balance on day 45 determines your maximum bonus.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
+     "text": "Keep the account open and in good standing until the bonus is paid per the offer's key-dates table.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "To avoid monthly service fees, set up $250+ in Enhanced Direct Deposits or meet another fee waiver.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -31050,15 +30987,22 @@
    "provider": "Citizens Bank Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$300-$500",
+   "reward": "$400 checking bonus (personal; $1,000 in direct deposits within 60 days)",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Regional availability (Northeast); direct deposit required",
-   "url": "https://citizensbank.com",
+   "payout_timing": "Bonus paid by end of day on the payout date in the offer's key-dates table",
+   "catches": [
+    "Current official personal checking offer is $400 (single $1,000 direct deposit within 60 days of account open) \u2014 the route's '$500' top end is not the current personal offer.",
+    "Not eligible if you currently hold a Citizens personal checking account or closed one on or after July 14, 2025.",
+    "Citizens Quest Checking (the featured account) has a $25 monthly maintenance fee \u2014 waivable with $5,000 in deposits per statement period or $25,000 combined balances.",
+    "The $500 figure in the route likely came from Citizens' business checking promo ($300\u2013$1,500 tiered by deposit: $15k\u2013$30k \u2192 $500) \u2014 personal and business offers must not be mixed in-app.",
+    "Bonus paid by the end-of-day date in the offer's key-dates table (e.g., accounts opened September 2026 pay by January 31, 2027).",
+    "Offer cannot be combined with other Citizens checking offers; eligibility at Citizens' sole discretion."
+   ],
+   "url": "https://www.citizensbank.com/promo/checking/26-q3-bau-red.aspx",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 372,
    "difficulty": 5,
    "tier": "Moderate",
@@ -31066,87 +31010,45 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://citizensbank.com and search for the current checking account bonus offer page (search 'Citizens Bank Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official Citizens promo page https://www.citizensbank.com/promo/checking/26-q3-bau-red.aspx and confirm the $400 offer is still live.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Open a new Citizens personal checking account through the promo page (Quest Checking minimum opening balance can be any amount).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Within 60 days of the account open date, receive a single direct deposit of $1,000 or more into the new checking account.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Note your payout date from the key-dates table (e.g., September 2026 opens pay by January 31, 2027) and keep the account open through it.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
+     "text": "To avoid the $25 monthly fee, set up $5,000+ in total deposits per statement period (your bonus-run deposit helps) or meet another waiver.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "The $400 bonus is deposited automatically by the payout date \u2014 no claim form needed.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -31156,15 +31058,23 @@
    "provider": "HSBC Premier Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$500-$2,000",
+   "reward": "$1,000-$3,000 by balance tier ($50k-$500k); the $2,000 tier needs $250k held 3+ months",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Tiered by deposit amount ($500 for $75k, up to $2000 for $500k+); high deposit thresholds",
-   "url": "https://hsbc.com/us",
+   "payout_timing": "Paid within 8 weeks after all offer requirements are met",
+   "catches": [
+    "Bonus is tiered by balance, not flat: $1,000 for $50,000\u2013$99,999; $1,500 for $100,000\u2013$249,999; $2,000 for $250,000\u2013$499,999; $3,000 for $500,000+. The route's claimed $500 low end is wrong \u2014 the minimum tier is $1,000.",
+    "You must deposit/invest within 30 days of account opening and maintain the balance for 3 full consecutive months.",
+    "Premier checking carries a $50 monthly maintenance fee unless you meet Premier qualification criteria (e.g., $100,000 in combined U.S. dollar personal deposit and investment balances).",
+    "Open by December 31, 2026; bonus paid within 8 weeks after all requirements are met.",
+    "Must remain opted in to HSBC marketing emails.",
+    "Investment balances used to qualify are not FDIC insured and may lose value.",
+    "Products and services may vary by state and are not available in all states."
+   ],
+   "url": "https://www.us.hsbc.com/checking-accounts/campaigns/premier-relationship/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 373,
    "difficulty": 5,
    "tier": "Moderate",
@@ -31172,87 +31082,52 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://hsbc.com/us and search for the current checking account bonus offer page (search 'HSBC Premier Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official HSBC Premier offer page https://www.us.hsbc.com/checking-accounts/campaigns/premier-relationship/ and review the tier table to pick the bonus tier you can actually fund.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Open a new HSBC Premier checking account online by December 31, 2026 \u2014 you must be 18+ and a U.S. resident.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Within 30 days of account opening, deposit and/or invest the amount for your target tier (e.g., $250,000\u2013$499,999 for the $2,000 bonus; $50,000\u2013$99,999 for the $1,000 bonus).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Maintain that qualifying balance for 3 full consecutive months \u2014 do not let it dip below your tier's floor.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
+     "text": "Remain opted in to receive HSBC marketing emails for the duration.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
+     "text": "After all requirements are met, the bonus is paid within 8 weeks; keep the account open until it lands.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "To avoid the $50 monthly fee afterward, meet Premier qualification criteria (e.g., $100,000 in combined balances) or plan to close/move funds.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -31368,15 +31243,22 @@
    "provider": "PNC Virtual Wallet",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$100-$400",
+   "reward": "$100-$400; the $400 tier needs Virtual Wallet Performance Select + $5,000 direct deposits in 60 days",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Regional availability; tiered by direct deposit amount",
-   "url": "https://pnc.com",
+   "payout_timing": "Paid after requirements are verified; account must remain open and in good standing",
+   "catches": [
+    "$400 is for Virtual Wallet WITH Performance Select ($5,000 qualifying direct deposits within 60 days); standard Virtual Wallet pays only $100 ($500 direct deposit within 60 days).",
+    "Qualifying direct deposit must be a workplace payroll direct deposit (or other qualifying ACH credit) \u2014 transfers, wires, P2P payments (Zelle/Venmo), branch/ATM/mobile/mail deposits do NOT count.",
+    "Ineligible if any account signer: has an existing PNC consumer checking account, closed a PNC consumer checking account within the past 12 months, or was a primary signer on an account that received a PNC premium within the past 24 months.",
+    "Performance Select has a $25 monthly service charge unless waived \u2014 check the waiver rules before choosing it.",
+    "Offer valid 9/1/2026\u20131/7/2027 and may vary by market; the offer must be opened via the bonus offer page.",
+    "Account must remain open and in good standing through payout."
+   ],
+   "url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 375,
    "difficulty": 5,
    "tier": "Moderate",
@@ -31384,87 +31266,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://pnc.com and search for the current checking account bonus offer page (search 'PNC Virtual Wallet checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official PNC bonus page https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html and confirm the offer is live (valid through 1/7/2027).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Open a new Virtual Wallet WITH Performance Select account directly from the offer page \u2014 not the standard Virtual Wallet (which only pays $100).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Within the first 60 days, receive a total of $5,000 in qualifying direct deposits into the Spend account \u2014 workplace payroll direct deposit is the safe path (Zelle, transfers, and mobile deposits do NOT count).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Keep the account open and in good standing until the bonus is paid.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
-    },
-    {
-     "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "To avoid the $25 monthly Performance Select charge, meet its fee-waiver criteria (or confirm the waiver rules on the account page before opening).",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -31580,15 +31413,22 @@
    "provider": "Wells Fargo Everyday Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$200-$400",
+   "reward": "$400 checking bonus ($1,000 in direct deposits within 90 days)",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Direct deposit required; monthly fee if balance below threshold",
-   "url": "https://wellsfargo.com",
+   "payout_timing": "Deposited within 30 days after completing all requirements",
+   "catches": [
+    "Current offer ends 10/20/2026 (a second official variant ends 10/6/2026) \u2014 the deadline is imminent; re-verify before recommending.",
+    "New consumer checking customers only; excluded if you received a Wells Fargo consumer checking bonus in the past 12 months, are a Wells Fargo employee, are a nonresident alien, or hold Private Bank accounts.",
+    "Requires $1,000 in qualifying direct deposits within 90 days \u2014 regular transfers don't count.",
+    "The $25 minimum opening deposit for branch openings is your own money in your own account, not a fee \u2014 but it is capital required up front.",
+    "Bonus deposited within 30 days after requirements are completed; account must stay open.",
+    "Offer cannot be combined with other Wells Fargo checking bonus offers."
+   ],
+   "url": "https://accountoffers.wellsfargo.com/checkingthankyou/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 377,
    "difficulty": 5,
    "tier": "Moderate",
@@ -31596,87 +31436,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://wellsfargo.com and search for the current checking account bonus offer page (search 'Wells Fargo Everyday Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official offer page https://accountoffers.wellsfargo.com/checkingthankyou/ and confirm the offer is still live (currently ends 10/20/2026).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Open a new Everyday Checking account through the offer page online or in a branch using the offer code.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Fund the account with the $25 minimum opening deposit (your own money, staying in your account).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Within 90 days of account opening, receive at least $1,000 in qualifying direct deposits (payroll or other qualifying ACH credits \u2014 not regular transfers).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
-    },
-    {
-     "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "Keep the account open and in good standing; the $400 bonus is deposited within 30 days after the requirements are complete.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -31898,15 +31689,22 @@
    "provider": "Truist Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$200-$400",
+   "reward": "$500 checking bonus",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Regional availability (Southeast); direct deposit required",
-   "url": "https://truist.com",
+   "payout_timing": "Paid within 10 business days after requirements are met and verified",
+   "catches": [
+    "Current official personal checking bonus is $500 \u2014 the route's '$400' top end is stale; in-app should show the live $500 figure.",
+    "Not eligible if you currently hold a Truist personal checking account or closed one on or after July 14, 2025.",
+    "Account must remain open, unrestricted, and hold at least $0.01 through payout.",
+    "Bonus is paid within 10 business days AFTER requirements are met and verified \u2014 requirements are set by the promo code/terms on the application page, so read them at application time.",
+    "Truist One Checking: $50 minimum opening deposit, $12/month fee (waivable); Truist Confidence: $25 minimum, $5/month fee (waivable); Truist One Advantage: $100 minimum, $35/month fee (waivable) \u2014 fees waivable, not participation fees.",
+    "A separate Truist BUSINESS checking offer pays $400\u2013$800 with different terms (business-only; do not mix into this personal route)."
+   ],
+   "url": "https://www.truist.com/checking/open-checking",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 380,
    "difficulty": 5,
    "tier": "Moderate",
@@ -31914,87 +31712,45 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://truist.com and search for the current checking account bonus offer page (search 'Truist Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official Truist offer page https://www.truist.com/checking/open-checking and confirm the $500 offer is still live.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Choose your checking account (One, Confidence, or One Advantage) and read the promo's exact qualifying activities and minimum opening deposit at application time.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Open the new personal checking account through the offer page with the promo applied, funding at least the minimum opening deposit.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Complete the promo's stated qualifying activities within the stated window (note what counts \u2014 e.g., direct deposits \u2014 before you start).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
+     "text": "Keep the account open, unrestricted, with at least $0.01 until the bonus is paid \u2014 within 10 business days after requirements are met and verified.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "To avoid monthly fees, meet the fee waiver for your account (e.g., direct deposits or minimum balance) or pick the account with the lowest waivable fee.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -32216,15 +31972,22 @@
    "provider": "Fifth Third Bank Checking",
    "method": "National bank checking bonus",
    "what": "Open account, fund, set up direct deposit, meet requirements, hold through early-closure period",
-   "reward": "$200-$400",
+   "reward": "$300 checking bonus ($500 in deposits within 90 days)",
    "requirements": "18+, US resident in eligible state, new customer (no same-bank checking in restriction period), qualifying direct deposit, account fees may apply",
-   "payout_timing": "After requirements met",
-   "catches": "Regional availability (Midwest/Southeast); deadline Sept 30, 2026 per prior research",
-   "url": "https://53.com",
+   "payout_timing": "Added within 10 business days of making the qualifying deposits",
+   "catches": [
+    "Current official public offer is $300 (requires $500+ in direct deposits within 90 days) \u2014 the route's '$400' top end is not currently on offer.",
+    "Offer expires September 30, 2026 \u2014 8 days from verification; the offer amount/terms rotate and must be re-checked.",
+    "The $500 direct-deposit total can be one deposit or several, but must be qualifying direct deposits within 90 days of account opening \u2014 regular transfers don't count.",
+    "Bonus added within 10 business days of completing qualifying activities.",
+    "Momentum Checking has NO monthly service fee and NO minimum balance \u2014 genuinely fee-free, which is rare in this set.",
+    "A personalized variant page exists with $ placeholders \u2014 always use the concrete $300 public offer page, not the placeholder variant."
+   ],
+   "url": "https://www.53.com/content/fifth-third/en/mkg/checking-offer.html",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 383,
    "difficulty": 5,
    "tier": "Moderate",
@@ -32232,87 +31995,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://53.com and search for the current checking account bonus offer page (search 'Fifth Third Bank Checking checking bonus' if not on homepage)",
-     "who": "User",
-     "done_when": "Current offer page found",
-     "warns": "Upmore shows: bonus amount, direct deposit requirement, deadline, and eligible states pulled from official page"
+     "text": "Go to the official offer page https://www.53.com/content/fifth-third/en/mkg/checking-offer.html and confirm the $300 offer is still live (currently expires 9/30/2026).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you're in an eligible state and haven't held a same-bank checking account within the bank's stated restriction period (commonly 12 months)",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: this is the #1 reason bonuses get clawed back"
+     "text": "Click 'Open Your Account' so the $300 offer code is automatically applied (or take the code to a branch).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Open the account online through the offer link \u2014 copy any promo code shown and apply it during application",
-     "who": "User",
-     "done_when": "Account application submitted",
-     "warns": "Upmore shows: promo code must be applied at account opening, not later"
+     "text": "Open a Fifth Third Momentum Checking account \u2014 no minimum deposit, no monthly service fee.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the application: full legal name, SSN, address, employment info, and funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Within 90 days of account opening, receive direct deposits totaling $500 or more (payroll or other qualifying ACH direct deposits \u2014 not regular transfers).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Fund the account with the minimum opening deposit required (if any)",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": "Upmore shows: opening deposit is usually separate from the qualifying direct deposit requirement"
-    },
-    {
-     "n": 6,
-     "text": "In your payroll/HR system (Workday, ADP, Gusto, etc.), add this new account's routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit set up",
-     "warns": "Upmore shows: tip \u2014 you can often split your deposit, sending only the required amount here"
-    },
-    {
-     "n": 7,
-     "text": "Confirm each direct deposit lands and is categorized by the bank as a qualifying direct deposit",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude transfers from other banks, peer-to-peer payments, or ACH pushes"
-    },
-    {
-     "n": 8,
-     "text": "Make any required qualifying transactions (debit card swipes, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 9,
-     "text": "Wait for the bonus to post \u2014 typically 30-60 days after the qualifying window closes",
+     "text": "The $300 bonus is added to the new account within 10 business days of completing the qualifying deposits.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the window and nudges if a deposit looks like it'll miss the deadline"
-    },
-    {
-     "n": 10,
-     "text": "Keep the account open past the stated early-closure date \u2014 closing early can trigger a fee or clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: the exact early-closure fee date and amount"
-    },
-    {
-     "n": 11,
-     "text": "Screenshot the bonus posting and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 12,
-     "text": "Log the net reward after any monthly fees and note it's taxable as 1099-INT interest income",
-     "who": "User",
-     "done_when": "Net reward recorded",
-     "warns": "Upmore shows: bonus is taxable \u2014 you'll receive a 1099 from the bank"
     }
    ]
   },
@@ -32746,15 +32460,23 @@
    "provider": "Rogue Credit Union",
    "method": "Regional bank/credit union checking bonus",
    "what": "Open account, meet membership/deposit/activity requirements, hold through early-closure period",
-   "reward": "$500 checking candidate",
+   "reward": "$500 bonus (3 months of $1k+ deposits, 10 card transactions/month, paperless)",
    "requirements": "18+, US resident in eligible region, membership eligibility (for credit unions), new customer, qualifying direct deposit, possible account fees",
-   "payout_timing": "After requirements met across cycles",
-   "catches": "Requires eligibility within field of membership; time-limited offer; qualifying-deposit definition varies",
-   "url": "https://roguecu.org",
+   "payout_timing": "Deposited within 30 calendar days after all requirements are met",
+   "catches": [
+    "Offer window: apply 7/20/2026\u20139/30/2026 \u2014 the deadline is days away; re-verify the offer still exists before recommending.",
+    "Three consecutive statement cycles each require: $1,000+ in qualifying deposits per month, 10+ transactions per month, paperless-statement enrollment, and no monthly service fee incurred.",
+    "Qualifying deposits are narrow: payroll/government income via ACH, RTP/FedNow, or eligible card-network credits. Transfers, mobile deposits, Zelle, branch deposits, and ATM deposits do NOT count.",
+    "10 monthly transactions must be signature/credit or debit card transactions \u2014 bill-pay/ACH debits don't count as card transactions.",
+    "MyRewards Checking carries a $10 monthly service fee if the monthly conditions fail \u2014 failing the conditions both loses the bonus and triggers fees.",
+    "Membership eligibility is limited \u2014 Rogue operates in Oregon, California, and Idaho; confirm the user is eligible before they apply.",
+    "One $500 bonus per member and per account; business accounts and members under 18 are excluded; existing MyRewards checking holders may be excluded."
+   ],
+   "url": "https://www.roguecu.org/personal-services/personal-deposit-accounts/checking/myrewards-checking/welcome-bonus-plus",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 388,
    "difficulty": 5,
    "tier": "Moderate",
@@ -32762,86 +32484,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://roguecu.org and search for current checking bonus offers (search 'Rogue Credit Union checking bonus 2026' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: confirm bonus is still active \u2014 regional offers expire fast"
+     "text": "Confirm you are eligible for Rogue Credit Union membership (Oregon, California, Idaho service areas) at https://www.roguecu.org/personal-services/personal-deposit-accounts/checking/myrewards-checking/welcome-bonus-plus.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm you meet the membership or geographic eligibility requirements for this bank or credit union",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: credit unions require field-of-membership qualification \u2014 verify before applying"
+     "text": "Apply for a new MyRewards Checking account NO LATER than September 30, 2026 \u2014 this is a hard deadline.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "If credit union: confirm you qualify for membership (employer, geographic, family, or association eligibility)",
-     "who": "User",
-     "done_when": "Membership eligible",
-     "warns": "Upmore shows: membership application may require documentation"
+     "text": "For each of the next 3 consecutive statement cycles: receive at least $1,000 in qualifying deposits per month (payroll/government income via ACH, RTP/FedNow, or card-network credits \u2014 not Zelle, transfers, or mobile deposits).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Open the account online through the offer link, applying any promo code shown",
-     "who": "User",
-     "done_when": "Account application submitted",
+     "text": "In the same 3 statement cycles: make at least 10 debit/credit card transactions per month.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete application: full name, SSN, address, employment, funding source",
-     "who": "User",
-     "done_when": "Application completed",
+     "text": "Stay enrolled in paperless statements for all 3 cycles and avoid incurring the $10 monthly service fee.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Fund the account with minimum opening deposit if required",
-     "who": "User",
-     "done_when": "Account funded",
-     "warns": ""
-    },
-    {
-     "n": 7,
-     "text": "Set up direct deposit in your payroll/HR system using the new routing and account number",
-     "who": "User",
-     "done_when": "Direct deposit configured",
-     "warns": "Upmore shows: tip \u2014 split deposit to send only the required amount"
-    },
-    {
-     "n": 8,
-     "text": "Confirm direct deposits are categorized as qualifying by the bank",
-     "who": "User",
-     "done_when": "Qualifying deposits confirmed",
-     "warns": "Upmore shows: some banks exclude certain ACH transfers"
-    },
-    {
-     "n": 9,
-     "text": "Make any required qualifying transactions (debit card uses, bill payments) if the offer requires them",
-     "who": "User",
-     "done_when": "Transaction requirements met",
-     "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "Wait for bonus to post after qualifying window closes (typically 30-60 days)",
+     "text": "After the third qualifying cycle, the $500 bonus is deposited within 30 calendar days \u2014 keep the account open until it lands.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": ""
-    },
-    {
-     "n": 11,
-     "text": "Keep account open past early-closure date to avoid clawback",
-     "who": "User",
-     "done_when": "Safe to close or keep",
-     "warns": "Upmore shows: early-closure fee and date"
-    },
-    {
-     "n": 12,
-     "text": "Screenshot bonus and log in Proof Log; note taxable as 1099-INT",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
     }
    ]

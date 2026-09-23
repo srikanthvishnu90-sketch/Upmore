@@ -7,7 +7,7 @@ REF = "mrwngntwmnaqrqhupvlt"
 SB = "/home/hatch/workspace/skills/supabase/bin/sb.py"
 
 IDS = ["R0036","R0096","R0098","R0116","R0118","R0119","R0140",
-       "R0220","R0221","R0292","R0295","R0302","R0355","R0446"]
+       "R0220","R0221","R0292","R0295","R0302","R0355","R0446","R0037","R0039","R0040","R0041","R0043","R0045","R0048","R0051","R0056"]
 db = {}
 for rid in IDS:
     p = subprocess.run([SB, "query",
