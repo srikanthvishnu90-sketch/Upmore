@@ -136,4 +136,56 @@ export const CANCEL_PATHS: Record<string, CancelPath> = {
       "Stay polite, repeat 'no thank you, please complete the cancellation,' and do not hang up without a confirmation number. " +
       "If billed through Apple or Google Play, cancel there instead — SiriusXM cannot touch it.",
   },
+  "microsoft 365": {
+    url: "https://support.microsoft.com/account-billing/how-to-cancel-your-microsoft-subscription-c2c6b0e3-cab3-cb98-d83e-c9ad54620530",
+    steps: [
+      "Sign in to your Microsoft account and find your subscription, then select Manage.",
+      "On the next page, select Cancel and follow the prompts.",
+      "If you see 'Turn on recurring billing' instead of a Manage link, your subscription is already set to expire on the shown date — nothing further to do.",
+    ],
+    retention_warning:
+      "Microsoft will offer plan switches or pauses before letting you cancel — fine to take if you want them. " +
+      "Billed through Apple or a third party? You must cancel there instead.",
+  },
+  "xbox game pass": {
+    url: "https://support.microsoft.com/account-billing/how-to-cancel-your-microsoft-subscription-c2c6b0e3-cab3-cb98-d83e-c9ad54620530",
+    steps: [
+      "Sign in to your Microsoft account and find your Game Pass subscription, then select Manage.",
+      "On the next page, select Cancel and follow the prompts.",
+      "If you see 'Turn on recurring billing' instead of a Manage link, the subscription is already set to expire — nothing further to do.",
+    ],
+    retention_warning:
+      "Access runs until the end of the billing period; any stacked prepaid time stays until it runs out. " +
+      "Billed through a third party? Cancel with them instead.",
+  },
+  "google one": {
+    url: "https://support.google.com/googleone/answer/16897381?hl=en&co=GENIE.Platform%3DDesktop",
+    steps: [
+      "On your computer, go to Google One.",
+      "Click Settings, then Cancel membership.",
+      "Click Cancel membership again to confirm — you'll get a confirmation that it's canceled.",
+    ],
+    retention_warning:
+      "You keep paid storage benefits until the end of the billing period, then drop to the free 15GB — " +
+      "make sure your stored files fit in 15GB before the downgrade takes effect.",
+  },
+  "linkedin premium": {
+    url: "https://www.linkedin.com/help/linkedin/answer/a551618?hcppcid=search",
+    steps: [
+      "Cancel from the LinkedIn desktop website or the LinkedIn mobile app on an Android device — cancellation is not available in the iOS app.",
+      "If you bought Premium on iOS via mobile web, use LinkedIn on desktop to cancel.",
+      "After canceling, the plan expires at the end of the current billing cycle and you return to a free Basic account — you keep your profile, connections, and data.",
+    ],
+    retention_warning:
+      "You lose all Premium features at the end of the billing cycle. The cancel path depends on where you bought it — desktop/Android only for direct purchases.",
+  },
+  "playstation plus": {
+    url: "https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/",
+    steps: [
+      "Web browser: sign in to Account Management, select Subscription from the left menu, then Cancel Subscription next to PlayStation Plus.",
+      "PS5: Settings → Users and Accounts → Account → Payment and Subscriptions → Subscriptions → PlayStation Plus → Cancel Subscription.",
+    ],
+    retention_warning:
+      "Benefits run until the end of the billing period. Check what lapses on cancel (e.g. monthly-games access) before you confirm.",
+  },
 };
