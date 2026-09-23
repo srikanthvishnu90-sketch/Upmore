@@ -68,7 +68,7 @@ const CASH_MATH: Record<string, CashMath> = {
 // verified numeric payout/time fields (all 1500 verified routes have them).
 // Hand-curated CASH_MATH entries above always win when present.
 const BONUS_WAIT_CATS = new Set([
-  "Bank Bonus", "Business Banking", "Credit Card Bonus", "Card Bonus",
+  "Bank Bonus", "Business Banking",
   "Brokerage Promo", "Fintech Bonus", "Fintech/Neobank", "Telecom Promo",
   "Signup Bonus", "Store Signup", "Referral Bonus", "App Referral",
   "Crypto Reward", "Prediction Market",
@@ -79,6 +79,9 @@ const NEEDS_SPEND_CATS = new Set([
   "Student Program", "Mystery Shopping",
 ]);
 const WINDFALL_CATS = new Set(["Unclaimed/Recovery", "Competition"]);
+// Wager routes (bet your own money to win): risk capital, not schedulable
+// income. Tracked by route ID — deterministic, no text guessing.
+const WAGER_IDS = new Set(["R0495"]); // HealthyWage: weight-loss wager
 // Creator / referral / ambassador programs pay per conversion, monthly
 // commission tiers, or one-off bonuses — a payout midpoint divided by
 // active minutes is NOT an hourly rate and must never be presented as one.
@@ -94,6 +97,15 @@ function deriveCashMath(r: RouteCard): CashMath | null {
   const cat = r.category ?? "";
   const catch1 = catchesOf(r)[0] ?? "Conditions apply — read the official terms before you start.";
   const cashout = r.payout_timing ?? "see the official terms";
+  // Risk capital: you bet your own money (HealthyWage-style). Not schedulable
+  // income — you can lose the stake. Never the headline pick.
+  if (WAGER_IDS.has(r.route_id)) {
+    return {
+      dollars_per_hour: null, model: "wager",
+      math: `wager-based — you stake your own money; prize only if you win the bet`,
+      min_cashout: cashout, catch: "You can LOSE your stake. This is a bet, not earnings — never wager money you can't afford to lose.", schedulable: false,
+    };
+  }
   if (BONUS_WAIT_CATS.has(cat)) {
     return {
       dollars_per_hour: null, model: "bonus_wait",
