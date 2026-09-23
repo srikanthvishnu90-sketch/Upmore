@@ -1,16 +1,8 @@
-EXACT AVERAGE ACTIVE TIME CALCULATION
-Date: 2026-09-23
-Dataset: 1,500 verified routes (505 base + 995 new)
-
-FORMULA:
-  For each route: midpoint = (time_min_minutes + time_max_minutes) / 2
-  Average = SUM(all midpoints) / 1500
-
-COMPONENTS:
-  - 995 new routes (R0851+): SUM = 188649.50 min
-  - 499 base routes with evidence files: SUM = 18063.00 min
-  - 6 base routes from app data (R0791, R0801, R0812, R0813, R0816, R0818): 6 × 32.5 = 195.00 min
-
-TOTAL: 206907.50 minutes / 1500 routes = 137.94 minutes
-
-EXACT AVERAGE ACTIVE TIME: 137.94 minutes (2.30 hours)
+Upmore exact average active time — computed 2026-09-23 (CDT) from the SERVED production bundle
+Source: https://upmore-srikanthvishnu90-sketchs-projects.vercel.app/ (HTTP 200), served UPMORE_DATA parsed directly
+Method: mean of (time_min_minutes + time_max_minutes) / 2 across all 1500 verified route cards
+n = 1500
+sum of time_mid = 206907.5000 minutes
+exact average active time = 137.9383 minutes = 137.94 minutes
+median time_mid = 30.00 minutes
+Definition: estimated ACTIVE minutes a typical person spends to earn the card's payout (not calendar waiting time).
