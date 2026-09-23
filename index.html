@@ -276,7 +276,7 @@
 
   /* ---------- v2: color accents + new screens ---------- */
   :root { --sky:#6FB3D6; --sky-soft:rgba(111,179,214,.14); }
-  .tabs { gap:36px; }
+  .tabs { gap:24px; }
   .tab { font-size:10.5px; padding:4px 6px; }
   .avatar { cursor:pointer; }
   .ptitle { margin-top:18px; font-size:29px; line-height:1.18; font-weight:600; letter-spacing:-0.01em; }
@@ -363,6 +363,45 @@
   .walknext{width:100%;margin-top:12px;background:var(--green);color:#fff;border:0;border-radius:14px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
   .walknext:disabled{opacity:.55}
   .walkhelp{width:100%;margin-top:6px;background:none;border:0;color:#5b7a89;font-size:13px;cursor:pointer;padding:6px}
+
+  /* ---------- save side ---------- */
+  .svgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
+  .svbtn{ border:1px solid var(--line); background:var(--surface); border-radius:14px; padding:13px 8px; font-size:13px; font-weight:600; line-height:1.3; }
+  .svbtn:active{ background:var(--surface-2); }
+  .svdetails{ margin-top:12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:0 16px; }
+  .svdetails summary{ padding:15px 0; font-weight:600; font-size:14.5px; cursor:pointer; list-style:none; }
+  .svdetails summary::-webkit-details-marker{ display:none; }
+  .svdetails summary::after{ content:"+"; float:right; color:var(--muted); font-size:18px; line-height:1; }
+  .svdetails[open] summary::after{ content:"\2013"; }
+  .svform{ display:grid; gap:10px; padding-bottom:16px; }
+  .f textarea{ width:100%; min-height:96px; padding:12px 16px; border-radius:14px; border:1.5px solid var(--line);
+    background:var(--surface); font-size:16px; font-family:inherit; resize:vertical; }
+  .f textarea:focus{ border-color:var(--green); outline:none; }
+  .f textarea::placeholder{ color:#56625A; }
+  .ledger5{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+  .lbkt{ border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:var(--surface-2); }
+  .lbkt b{ display:block; font-size:17px; font-weight:600; }
+  .lbkt span{ font-size:11px; color:var(--muted); }
+  .cdl{ font-size:12px; font-weight:600; }
+  .cdl.ok{ color:var(--muted); } .cdl.soon{ color:#E8B25E; } .cdl.over{ color:#E4806B; }
+  .ghostbtn:disabled{ opacity:.35; }
+  .sheet{ position:absolute; inset:0; z-index:60; display:flex; align-items:flex-end; background:rgba(0,0,0,.55); }
+  .sheetcard{ width:100%; max-height:84%; overflow-y:auto; background:var(--surface);
+    border:1px solid var(--line); border-bottom:0; border-radius:22px 22px 0 0;
+    padding:18px 20px calc(var(--bot,0px) + 24px); }
+  .sheetcard::-webkit-scrollbar{ display:none; }
+  .conn{ margin-top:14px; border:1px solid var(--line); border-radius:16px; background:var(--surface-2); padding:14px; }
+  .conn .ct{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .conn .ct b{ font-size:16px; }
+  .conn .why{ font-size:13px; color:var(--muted); margin-top:6px; line-height:1.5; }
+  .consent{ margin-top:10px; display:grid; gap:8px; }
+  .consent .prow{ margin-top:0; }
+  .notavail{ margin-top:10px; font-size:13px; line-height:1.55; color:#EBB96A;
+    background:rgba(232,178,94,.07); border:1px solid rgba(232,178,94,.25); border-radius:12px; padding:10px 12px; }
+  .notavail b{ color:var(--text); }
+  .readbox{ margin-top:10px; font-size:13px; color:var(--muted); border:1px dashed var(--line);
+    border-radius:12px; padding:10px 12px; line-height:1.5; }
+  .readbox b{ color:var(--text); }
 </style>
 </head>
 <body>
@@ -588,6 +627,13 @@
         <div class="foot"><span>Terms not yet verified</span><button id="heroWrong">What could go wrong</button></div>
       </article>
 
+      <div class="sec"><h2>Save money</h2><span>Keep more of what you earn</span></div>
+      <div class="svgrid">
+        <button class="svbtn" id="svAudit">Audit subscriptions</button>
+        <button class="svbtn" id="svScan">Scan a receipt</button>
+        <button class="svbtn" id="svLog">Log a saving</button>
+      </div>
+
       <div class="sec"><h2>Start with an app you know</h2><span class="num">Tap one — I&apos;ll walk you through it</span></div>
       <div class="appcards" id="appCards"></div>
 
@@ -604,6 +650,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="explore">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
         Explore
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="guide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
@@ -642,6 +692,141 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
         Explore
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
+        Guide
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
+        You
+      </button>
+    </nav>
+  </section>
+
+  <!-- ================= SAVE ================= -->
+  <section class="screen" id="save" aria-label="Save money">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <h1 class="ptitle">Save</h1>
+      <p class="psub">Keep more of the money you already earn.</p>
+      <p class="fine">We prepare. You act. Upmore never cancels, files, or moves money for you — you always sign and click.</p>
+
+      <div id="saveSignedOut" hidden>
+        <div class="next" style="margin-top:16px">
+          <div class="row"><span class="pill good">Save side</span></div>
+          <h3>Stop the leaks, keep the cash</h3>
+          <div class="steps">
+            <div class="stepbtn" style="cursor:default"><span class="txt">Track every subscription in one place — and what each one really costs per month</span></div>
+            <div class="stepbtn" style="cursor:default"><span class="txt">Never miss a return window, refund deadline, or renewal again</span></div>
+            <div class="stepbtn" style="cursor:default"><span class="txt">Log every dollar you save — counted honestly, never on intent</span></div>
+          </div>
+          <button class="cta" id="svSignin">Sign in with Google to use Save</button>
+          <p class="fine">Your subscriptions, receipts, and savings log are private to your account.</p>
+        </div>
+      </div>
+
+      <div id="saveSignedIn" hidden>
+        <div class="sec" id="svSubs"><h2>Subscriptions</h2><span class="num" id="subMonthly"></span></div>
+        <div class="list" id="subList"></div>
+        <button class="ghostbtn" id="auditBtn">Audit my subscriptions</button>
+        <details class="svdetails"><summary>Add a subscription</summary>
+          <div class="svform">
+            <label class="f"><span>Merchant</span><input id="subMerchant" placeholder="Netflix" autocomplete="off"></label>
+            <label class="f"><span>Plan name</span><input id="subPlan" placeholder="Standard" autocomplete="off"></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Amount</span><input id="subAmount" inputmode="decimal" placeholder="15.99" autocomplete="off"></label>
+              <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option></select></div></label>
+            </div>
+            <label class="f"><span>Next billing date</span><input id="subNext" type="date"></label>
+            <button class="go" id="subAdd" style="height:50px">Save subscription</button>
+          </div>
+        </details>
+
+        <div class="sec" id="svReceipts"><h2>Receipts</h2><span>Return windows</span></div>
+        <div class="list" id="rcptList"></div>
+        <details class="svdetails"><summary>Add a receipt</summary>
+          <div class="svform">
+            <label class="f"><span>Merchant</span><input id="rcMerchant" placeholder="Target" autocomplete="off"></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Date</span><input id="rcDate" type="date"></label>
+              <label class="f"><span>Total</span><input id="rcTotal" inputmode="decimal" placeholder="42.18" autocomplete="off"></label>
+            </div>
+            <label class="f"><span>Return by (optional)</span><input id="rcReturn" type="date"></label>
+            <label class="f"><span>Paste receipt text</span><textarea id="rcText" placeholder="Paste the text from your receipt or confirmation email…"></textarea></label>
+            <button class="go" id="rcAdd" style="height:50px">Save receipt</button>
+          </div>
+        </details>
+
+        <div class="sec" id="svClaims"><h2>Refunds &amp; claims</h2><span class="num" id="claimOpen"></span></div>
+        <div class="list" id="claimList"></div>
+        <button class="ghostbtn" id="refundBtn">Check a refund</button>
+
+        <div class="sec" id="svBills"><h2>Bills</h2><span>Lower them</span></div>
+        <div class="pcard" style="display:block">
+          <b>Negotiate a bill</b>
+          <p class="psub" style="margin-top:6px">Internet, phone, insurance — most bills have a lower price if you ask the right way. I draft the script; you make the call.</p>
+          <button class="ghostbtn" id="negBtn">Prep a negotiation</button>
+        </div>
+
+        <div class="sec" id="svFees"><h2>Fees</h2><span>Find the leaks</span></div>
+        <div class="pcard" style="display:block">
+          <b>Hidden fees</b>
+          <p class="psub" style="margin-top:6px">Bank fees, subscription add-ons, “convenience” charges — I help you spot them line by line.</p>
+          <button class="ghostbtn" id="feeBtn">Find my fees</button>
+        </div>
+
+        <div class="sec" id="svLedger"><h2>Savings ledger</h2><span>Honestly counted</span></div>
+        <div class="ledger5" id="ledgerGrid"></div>
+        <p class="fine">Nothing counts on intent. Annualized numbers are projections, never results. Saved is never earned. Reversals count against the total.</p>
+        <details class="svdetails"><summary>Log a saving</summary>
+          <div class="svform">
+            <label class="f"><span>Bucket</span><div class="sel"><select id="lgBucket"><option>Received</option><option>Avoided</option><option>Reduced</option><option>Cash flow</option><option>Found</option></select></div></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Amount</span><input id="lgAmount" inputmode="decimal" placeholder="25.00" autocomplete="off"></label>
+              <label class="f"><span>Date</span><input id="lgDate" type="date"></label>
+            </div>
+            <label class="f"><span>What happened</span><input id="lgTitle" placeholder="Cancelled unused streaming plan" autocomplete="off"></label>
+            <button class="go" id="lgAdd" style="height:50px">Log it</button>
+          </div>
+        </details>
+
+        <div class="sec" id="svRenewals"><h2>Renewals</h2><span class="num" id="renCount"></span></div>
+        <div class="list" id="renList"></div>
+        <details class="svdetails"><summary>Add a renewal</summary>
+          <div class="svform">
+            <label class="f"><span>Name</span><input id="rnName" placeholder="Car insurance" autocomplete="off"></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Renews on</span><input id="rnDate" type="date"></label>
+              <label class="f"><span>Kind</span><input id="rnKind" placeholder="Insurance" autocomplete="off"></label>
+            </div>
+            <label class="f"><span>Prep notes</span><input id="rnNotes" placeholder="Shop 2 quotes a week before" autocomplete="off"></label>
+            <button class="go" id="rnAdd" style="height:50px">Add renewal</button>
+          </div>
+        </details>
+
+        <div class="sec" id="svAlt"><h2>Cheaper equivalents</h2><span>Coming soon</span></div>
+        <div class="pcard" style="display:block">
+          <b>Not live yet</b>
+          <p class="psub" style="margin-top:6px">We’ll compare what you buy against cheaper equivalents that do the same job. No fake numbers until it’s real.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="false" data-tab="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        Home
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
+        Explore
+      </button>
+      <button class="tab" role="tab" aria-selected="true" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
+      </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="guide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
         Guide
@@ -669,6 +854,9 @@
       <h3 class="wsec">Notifications</h3>
       <div class="prow"><span class="pl">Payout reminders<small>Nudges before money lands</small></span><button class="tgl prefTgl" id="remTgl" aria-pressed="true" aria-label="Payout reminders"><i></i></button></div>
       <div class="prow"><span class="pl">New offers<small>When a better move appears</small></span><button class="tgl prefTgl" id="newsTgl" aria-pressed="true" aria-label="New offers"><i></i></button></div>
+      <h3 class="wsec">Connections</h3>
+      <button class="prow" id="connGmailRow"><span class="pl">Gmail<small>Receipts &amp; subscription charges · read-only</small></span><span class="pv" id="connGmailPv">Not connected</span></button>
+      <button class="prow" id="connPlaidRow"><span class="pl">Bank (Plaid)<small>Recurring charges · read-only</small></span><span class="pv" id="connPlaidPv">Not connected</span></button>
       <h3 class="wsec">About</h3>
       <button class="prow" id="howMoney"><span class="pl">How Upmore makes money<small>Short version: not from you</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -681,6 +869,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="explore">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
         Explore
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="guide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
@@ -695,9 +887,19 @@
 
   <!-- ================= GUIDE ================= -->
   <section class="screen" id="guide" aria-label="Guide">
+    <div class="sheet" id="connectSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Connect</b><button class="iconbtn" id="connectClose" aria-label="Close connections">✕</button></div>
+        <p class="psub" style="margin-top:6px">Read-only connections. You choose exactly what we can see — nothing ever moves without you.</p>
+        <div id="connGmail"></div>
+        <div id="connPlaid"></div>
+        <p class="fine">Upmore never cancels, files, or moves money for you — you always sign and click.</p>
+      </div>
+    </div>
     <div class="chead">
       <button class="iconbtn" aria-label="History"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></button>
       <div class="title"><b>Guide</b><span>Knows your plan</span></div>
+      <button class="iconbtn" id="connectBtn" aria-label="Connect accounts"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8V3.5M15 8V3.5"/><path d="M7 8h10v4.5a5 5 0 0 1-10 0z"/><path d="M12 17.5V21"/></svg></button>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
     <div class="chat" id="chat"><div class="empty" id="empty"></div></div>
@@ -715,6 +917,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="explore">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
         Explore
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="guide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
@@ -842,7 +1048,7 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
   };
 
   /* ================= Router ================= */
-  const order = ["splash","welcome","time","about","situation","plan","phone","home","explore","guide","profile"];
+  const order = ["splash","welcome","time","about","situation","plan","phone","home","explore","save","guide","profile"];
   let current = "splash";
   function show(id) {
     if (!$(id)) id = "splash";
@@ -853,6 +1059,7 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
     if (id === "plan") buildPlan();
     if (id === "home") renderHome();
     if (id === "explore") renderExplore();
+    if (id === "save") renderSave();
     if (id === "guide") renderGuideEmpty();
     if (id === "profile") renderProfile();
   }
@@ -1147,6 +1354,9 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
     $("heroWrong").onclick = () => { show("guide"); guideAsk("What's the catch with " + r.provider + "?"); };
     $("askbar").onclick = () => { show("guide"); guideAsk("What should I do first?"); };
     renderAppCards();
+    $("svAudit").onclick = () => { show("guide"); guideAsk("Audit my subscriptions"); };
+    $("svScan").onclick = () => gotoSave("svReceipts");
+    $("svLog").onclick = () => gotoSave("svLedger");
   }
 
 
@@ -1254,6 +1464,33 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
       return { paras: [
         "Right now, none of the offers in the catalog pay us anything — you get every dollar the offer promises.",
         "If that ever changes, the offer's card will carry a badge that says so. And we'd rather lose the cut than push a worse offer on you." ] };
+
+    /* Save-side intents: deterministic answers, honest about what the app can do */
+    if (has("audit my subscriptions", "audit subscriptions"))
+      return { paras: [
+        "Here's the audit playbook: list every recurring charge, flag anything you haven't used in 30 days, then cancel from the merchant's own page — I'll give you the exact steps for each one.",
+        "Open the Save tab and add your subscriptions (tap “Add a subscription”). Tell me what you listed and I'll flag the likely waste.",
+        "One rule: I prepare, you click. I never cancel anything for you." ] };
+
+    if (has("negotiat", "lower my bill", "lower a bill"))
+      return { paras: [
+        "Bill negotiation that actually works: call — don't chat. Ask for the retention or loyalty team, name a competitor's price, and ask “what can you do on the rate?” Be ready to actually switch.",
+        "Tell me which bill — internet, phone, insurance — and I'll draft your exact script. You make the call; I never act for you." ] };
+
+    if (has("refund", "owed money", "money back"))
+      return { paras: [
+        "Refund check: most stores give you 14–90 days, and many cards add extra return protection on top. Tell me the merchant and purchase date and I'll lay out the exact steps and the deadline.",
+        "Save the receipt in the Save tab so the window never sneaks past you." ] };
+
+    if (has("find my fees", "hidden fees", "bank fees"))
+      return { paras: [
+        "Fee hunt: pull your last bank or card statement and look for monthly “service”, “maintenance”, and “convenience” charges, plus subscription add-ons you didn't ask for.",
+        "List what you find and I'll help you kill each one — I prep, you click." ] };
+
+    if (has("log a saving", "log saving"))
+      return { paras: [
+        "Nice — open the Save tab, tap “Log a saving” under Savings ledger, and pick the bucket: Received, Avoided, Reduced, Cash flow, or Found — plus the amount and what happened.",
+        "Only real money counts: nothing on intent, and saved is never earned." ] };
 
     for (const [kws, ei, soft] of EXRULES) {
       if (has(...kws)) {
@@ -1586,6 +1823,7 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
     const pay = { yes:"Direct deposit", no:"No direct deposit", unsure:"Paycheck unclear" }[d.paycheck] || "—";
     const cash = { 0:"$0 to park", 100:"Up to $100", 1000:"$100–$1,000", 1001:"Over $1,000" }[d.cash] || "";
     $("pSit").textContent = cash ? pay + " · " + cash : pay;
+    renderProfileConns();
   }
   document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => show(b.dataset.go));
   document.querySelectorAll(".tgl:not(#laneTgl):not(.prefTgl)").forEach(t => t.onclick = e => {
@@ -1627,6 +1865,286 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
   $("signOut").onclick = () => supa.auth.signOut();
 
+  /* ================= Save side =================
+     Tables (created in parallel, all per-user via RLS):
+       save_subscriptions, save_receipts, save_ledger, save_renewals, save_claims.
+     Every query is guarded: no session → empty lists, no crash. */
+  const saveUid = () => (session && session.user && session.user.id) || null;
+  const money$ = v => (v == null || isNaN(Number(v))) ? "—" : "$" + Number(v).toFixed(2);
+  const fdate = d => {
+    if (!d) return "";
+    try { return new Date(String(d).slice(0, 10) + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }); }
+    catch (e) { return String(d).slice(0, 10); }
+  };
+  const daysUntil = d => {
+    if (!d) return null;
+    const t = new Date(); t.setHours(0, 0, 0, 0);
+    return Math.ceil((new Date(String(d).slice(0, 10) + "T12:00:00") - t) / 86400000);
+  };
+  const cdlHtml = d => {
+    const n = daysUntil(d);
+    if (n == null) return `<span class="cdl ok">No deadline set</span>`;
+    if (n < 0) return `<span class="cdl over">${-n} day${-n === 1 ? "" : "s"} overdue</span>`;
+    if (n === 0) return `<span class="cdl soon">Due today</span>`;
+    return `<span class="cdl ${n <= 7 ? "soon" : "ok"}">${n} day${n === 1 ? "" : "s"} left</span>`;
+  };
+  async function saveRows(table, orderCol, asc) {
+    if (!saveUid()) return [];
+    try {
+      const { data, error } = await supa.from(table).select("*").eq("user_id", saveUid()).order(orderCol, { ascending: !!asc });
+      return error ? [] : (data || []);
+    } catch (e) { return []; }
+  }
+  async function saveInsert(table, row) {
+    if (!saveUid()) return false;
+    try {
+      const { error } = await supa.from(table).insert(Object.assign({ user_id: saveUid() }, row));
+      return !error;
+    } catch (e) { return false; }
+  }
+  async function renderSave() {
+    const signed = !!(await getSessionToken());
+    $("saveSignedOut").hidden = signed;
+    $("saveSignedIn").hidden = !signed;
+    if (!signed) return;
+    renderSubs(); renderRcpts(); renderClaims(); renderLedger(); renderRenewals();
+  }
+  function gotoSave(anchor) {
+    show("save");
+    setTimeout(() => { const el = $(anchor); if (el) el.scrollIntoView({ block: "start" }); }, 90);
+  }
+
+  /* ---- Subscriptions ---- */
+  const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
+  const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
+  function subItem(s) {
+    const n = daysUntil(s.next_billing_date);
+    const when = s.next_billing_date ? ` · next ${fdate(s.next_billing_date)}${n != null && n >= 0 ? ` (${n}d)` : ""}` : "";
+    return `<div class="item"><div class="grow">
+      <p class="t">${esc(s.merchant)}${s.plan_name ? ` <span style="color:var(--muted);font-weight:400">· ${esc(s.plan_name)}</span>` : ""}</p>
+      <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${when}</p>
+      ${s.waste_note ? `<p class="m">💡 ${esc(s.waste_note)}</p>` : ""}
+      ${s.cancel_url ? `<p class="m"><a href="${esc(s.cancel_url)}" target="_blank" rel="noopener" style="color:var(--sky);font-weight:600">Cancel page →</a></p>` : ""}
+      ${s.cancel_steps && !s.cancel_url ? `<p class="m">Cancel: ${esc(s.cancel_steps)}</p>` : ""}
+    </div>${s.status === "cancelled"
+      ? `<span class="pill">Cancelled</span>`
+      : `<button class="link" data-subcancel="${esc(s.id)}">Mark cancelled</button>`}
+    </div>`;
+  }
+  async function renderSubs() {
+    const rows = await saveRows("save_subscriptions", "next_billing_date", true);
+    const act = rows.filter(r => r.status !== "cancelled");
+    const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
+    $("subMonthly").textContent = act.length ? `≈${money$(monthly)}/mo · ${act.length} active` : "";
+    $("subList").innerHTML = rows.length ? rows.map(subItem).join("")
+      : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet — add your first subscription below.</p></div></div>`;
+    $("subList").querySelectorAll("[data-subcancel]").forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try { await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", b.dataset.subcancel); } catch (e) {}
+      renderSubs();
+    });
+  }
+
+  /* ---- Receipts ---- */
+  async function renderRcpts() {
+    const rows = await saveRows("save_receipts", "purchased_at", false);
+    $("rcptList").innerHTML = rows.length ? rows.slice(0, 10).map(r => `
+      <div class="item"><div class="grow">
+        <p class="t">${esc(r.merchant || "Receipt")}</p>
+        <p class="m num">${r.purchased_at ? fdate(r.purchased_at) + " · " : ""}${money$(r.total)}</p>
+        ${r.return_window_end ? `<p class="m">Return window: ${cdlHtml(r.return_window_end)}</p>` : ""}
+      </div></div>`).join("")
+      : `<div class="item"><div class="grow"><p class="m">No receipts yet — paste your first one below and never miss a return window.</p></div></div>`;
+  }
+
+  /* ---- Refunds & claims ---- */
+  async function renderClaims() {
+    const rows = await saveRows("save_claims", "deadline", true);
+    const open = rows.filter(r => (r.status || "open") === "open");
+    $("claimOpen").textContent = open.length ? `${open.length} open` : "";
+    $("claimList").innerHTML = rows.length ? rows.map(c => `
+      <div class="item"><div class="grow">
+        <p class="t">${esc(c.kind || "Claim")}${c.merchant ? ` · ${esc(c.merchant)}` : ""}</p>
+        <p class="m num">${c.amount != null ? money$(c.amount) + " · " : ""}${cdlHtml(c.deadline)}</p>
+        ${c.steps ? `<p class="m">${esc(c.steps)}</p>` : ""}
+      </div>${(c.status || "open") === "open"
+        ? `<button class="link" data-claimdone="${esc(c.id)}">Mark done</button>`
+        : `<span class="pill good">Done</span>`}
+      </div>`).join("")
+      : `<div class="item"><div class="grow"><p class="m">No refunds or claims tracked. Price drop, late delivery, double charge — if you're owed money, ask the Guide and I'll log it here.</p></div></div>`;
+    $("claimList").querySelectorAll("[data-claimdone]").forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try { await supa.from("save_claims").update({ status: "done" }).eq("id", b.dataset.claimdone); } catch (e) {}
+      renderClaims();
+    });
+  }
+
+  /* ---- Ledger: 5 buckets, reversals subtract ---- */
+  const BUCKETS = ["Received", "Avoided", "Reduced", "Cash flow", "Found"];
+  async function renderLedger() {
+    const rows = await saveRows("save_ledger", "occurred_on", false);
+    const sums = {}, rev = {};
+    BUCKETS.forEach(b => { sums[b] = 0; rev[b] = 0; });
+    rows.forEach(r => {
+      const b = BUCKETS.includes(r.bucket) ? r.bucket : "Found";
+      if (r.reversed) rev[b] += Number(r.amount || 0); else sums[b] += Number(r.amount || 0);
+    });
+    const total = BUCKETS.reduce((t, b) => t + sums[b] - rev[b], 0);
+    $("ledgerGrid").innerHTML = BUCKETS.map(b =>
+      `<div class="lbkt"><span>${b}</span><b class="num">${money$(sums[b] - rev[b])}</b></div>`).join("") +
+      `<div class="lbkt" style="grid-column:span 2;border-color:rgba(79,163,122,.35)"><span>Total kept</span><b class="num">${money$(total)}</b></div>`;
+  }
+
+  /* ---- Renewals ---- */
+  async function renderRenewals() {
+    const rows = await saveRows("save_renewals", "renews_on", true);
+    const act = rows.filter(r => (r.status || "upcoming") !== "done");
+    $("renCount").textContent = act.length ? `${act.length} upcoming` : "";
+    $("renList").innerHTML = act.length ? act.map(r => `
+      <div class="item"><div class="grow">
+        <p class="t">${esc(r.name)}${r.kind ? ` <span style="color:var(--muted);font-weight:400">· ${esc(r.kind)}</span>` : ""}</p>
+        <p class="m">${r.renews_on ? fdate(r.renews_on) + " · " : ""}${cdlHtml(r.renews_on)}</p>
+        ${r.prep_notes ? `<p class="m">${esc(r.prep_notes)}</p>` : ""}
+      </div><button class="link" data-rn="${esc(r.id)}" data-name="${esc(r.name)}" data-date="${esc(r.renews_on || "")}" data-notes="${esc(r.prep_notes || "")}">Prep</button></div>`).join("")
+      : `<div class="item"><div class="grow"><p class="m">No renewals tracked — add insurance, memberships, and annual plans so they never auto-renew by surprise.</p></div></div>`;
+    $("renList").querySelectorAll("[data-rn]").forEach(b => b.onclick = () => {
+      show("guide");
+      guideAsk(`Help me prep for "${b.dataset.name}" renewing ${b.dataset.date || "soon"}.${b.dataset.notes ? " My notes: " + b.dataset.notes : ""} I want to pay less or cancel.`);
+    });
+  }
+
+  /* ---- Connect sheet: Gmail + Plaid (honest states, manual fallbacks) ---- */
+  const CONN_DEF = {
+    gmail: { title: "Gmail", why: "Find receipts & subscription charges in your email — read-only, so you stop pasting them by hand.",
+      pieces: [["receipts", "Receipts", "Order confirmations & receipts"], ["subs", "Subscription charges", "Billing emails & renewal notices"]],
+      setup: "Gmail needs a Google restricted-scope security assessment before any connection can go live.",
+      fallback: ["paste a receipt manually", "svReceipts"] },
+    plaid: { title: "Bank (Plaid)", why: "Detect recurring charges across your accounts — read-only. We never move money.",
+      pieces: [["recurring", "Recurring charges", "Repeating debits & subscriptions"]],
+      setup: "Bank connections need Plaid API keys before any connection can go live.",
+      fallback: ["list your subscriptions manually", "svSubs"] },
+  };
+  function connState() {
+    const c = { gmail: { connected: false, consent: { receipts: true, subs: true }, read: [] },
+                plaid: { connected: false, consent: { recurring: true }, read: [] } };
+    try {
+      const s = JSON.parse(localStorage.getItem("upmore-connect") || "{}");
+      ["gmail", "plaid"].forEach(k => {
+        if (s[k]) { c[k].connected = !!s[k].connected; c[k].consent = Object.assign(c[k].consent, s[k].consent || {}); c[k].read = s[k].read || []; }
+      });
+    } catch (e) {}
+    return c;
+  }
+  function connSave(c) { try { localStorage.setItem("upmore-connect", JSON.stringify(c)); } catch (e) {} }
+  function renderConnect() {
+    const c = connState();
+    ["gmail", "plaid"].forEach(k => {
+      const def = CONN_DEF[k], st = c[k];
+      const el = $(k === "gmail" ? "connGmail" : "connPlaid");
+      el.innerHTML = `
+        <div class="conn">
+          <div class="ct"><b>${def.title}</b><span class="pill">Read-only</span></div>
+          <p class="why">${def.why}</p>
+          <div class="consent">${def.pieces.map(([pk, pl, sm]) => `
+            <div class="prow"><span class="pl">${pl}<small>${sm} · allowed when available</small></span>
+            <button class="tgl" data-cc="${k}" data-ck="${pk}" aria-pressed="${st.consent[pk] ? "true" : "false"}" aria-label="${pl} consent"><i></i></button></div>`).join("")}
+          </div>
+          <div class="notavail"><b>Not available yet — needs owner setup.</b><br>${def.setup} <b>Owner action.</b><br><br><b>Works right now instead:</b> <button class="link" data-cfb="${k}">${def.fallback[0]}</button></div>
+          <div class="readbox"><b>What was read:</b><br>${st.read.length ? st.read.map(x => esc(x)).join("<br>") : "Nothing yet — we only read what you toggle on, after you connect."}</div>
+          <button class="ghostbtn" data-cdisc="${k}" ${st.connected ? "" : "disabled"}>Disconnect &amp; delete stored data</button>
+        </div>`;
+    });
+    document.querySelectorAll("[data-cc]").forEach(t => t.onclick = e => {
+      e.stopPropagation();
+      const cc = connState(), k = t.dataset.cc, key = t.dataset.ck;
+      cc[k].consent[key] = !cc[k].consent[key]; connSave(cc);
+      t.setAttribute("aria-pressed", String(cc[k].consent[key]));
+    });
+    document.querySelectorAll("[data-cfb]").forEach(b => b.onclick = () => {
+      $("connectSheet").hidden = true;
+      gotoSave(CONN_DEF[b.dataset.cfb].fallback[1]);
+    });
+    document.querySelectorAll("[data-cdisc]").forEach(b => b.onclick = () => {
+      const cc = connState(), k = b.dataset.cdisc;
+      cc[k] = { connected: false, consent: cc[k].consent, read: [] };
+      connSave(cc); renderConnect(); renderProfileConns();
+    });
+  }
+  function openConnect() { renderConnect(); $("connectSheet").hidden = false; }
+  function renderProfileConns() {
+    const c = connState();
+    const g = $("connGmailPv"), p = $("connPlaidPv");
+    if (g) g.textContent = c.gmail.connected ? "Connected · read-only" : "Not connected";
+    if (p) p.textContent = c.plaid.connected ? "Connected · read-only" : "Not connected";
+  }
+
+  /* ---- Save forms (bound once; all no-ops without a session) ---- */
+  let saveInit = false;
+  function initSave() {
+    if (saveInit) return; saveInit = true;
+    const svGo = $("svSignin");
+    if (svGo) { const lbl = svGo.innerHTML; svGo.onclick = () => startGoogleLogin(svGo, lbl); }
+    $("auditBtn").onclick = () => { show("guide"); guideAsk("Audit my subscriptions"); };
+    $("refundBtn").onclick = () => { show("guide"); guideAsk("I want to check if I'm owed a refund"); };
+    $("negBtn").onclick = () => { show("guide"); guideAsk("Help me prep to negotiate a bill"); };
+    $("feeBtn").onclick = () => { show("guide"); guideAsk("Help me find my fees"); };
+    const today = new Date().toISOString().slice(0, 10);
+    $("rcDate").value = today; $("lgDate").value = today;
+    $("subAdd").onclick = async () => {
+      const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
+      if (!m || !(amt > 0) || !saveUid()) return;
+      b.disabled = true;
+      const ok = await saveInsert("save_subscriptions", {
+        merchant: m, plan_name: $("subPlan").value.trim() || null, amount: amt, currency: "USD",
+        billing_interval: $("subInterval").value, next_billing_date: $("subNext").value || null,
+        status: "active", detected_via: "manual",
+      });
+      b.disabled = false;
+      if (ok) { ["subMerchant", "subPlan", "subAmount", "subNext"].forEach(id => $(id).value = ""); renderSubs(); }
+    };
+    $("rcAdd").onclick = async () => {
+      const b = $("rcAdd"), m = $("rcMerchant").value.trim(), tot = parseFloat($("rcTotal").value);
+      if (!m || !(tot > 0) || !saveUid()) return;
+      b.disabled = true;
+      const ok = await saveInsert("save_receipts", {
+        merchant: m, purchased_at: $("rcDate").value || null, total: tot,
+        raw_text: $("rcText").value.trim() || null,
+        return_window_end: $("rcReturn").value || null, source: "manual",
+      });
+      b.disabled = false;
+      if (ok) { ["rcMerchant", "rcTotal", "rcText", "rcReturn"].forEach(id => $(id).value = ""); $("rcDate").value = today; renderRcpts(); }
+    };
+    $("lgAdd").onclick = async () => {
+      const b = $("lgAdd"), amt = parseFloat($("lgAmount").value), ti = $("lgTitle").value.trim();
+      if (!(amt > 0) || !ti || !saveUid()) return;
+      b.disabled = true;
+      const ok = await saveInsert("save_ledger", {
+        bucket: $("lgBucket").value, amount: amt, title: ti,
+        occurred_on: $("lgDate").value || today, reversed: false,
+      });
+      b.disabled = false;
+      if (ok) { $("lgAmount").value = ""; $("lgTitle").value = ""; renderLedger(); }
+    };
+    $("rnAdd").onclick = async () => {
+      const b = $("rnAdd"), nm = $("rnName").value.trim();
+      if (!nm || !saveUid()) return;
+      b.disabled = true;
+      const ok = await saveInsert("save_renewals", {
+        name: nm, renews_on: $("rnDate").value || null, kind: $("rnKind").value.trim() || null,
+        prep_notes: $("rnNotes").value.trim() || null, status: "upcoming",
+      });
+      b.disabled = false;
+      if (ok) { ["rnName", "rnDate", "rnKind", "rnNotes"].forEach(id => $(id).value = ""); renderRenewals(); }
+    };
+    $("connectBtn").onclick = openConnect;
+    $("connectClose").onclick = () => { $("connectSheet").hidden = true; };
+    $("connectSheet").addEventListener("click", e => { if (e.target.id === "connectSheet") $("connectSheet").hidden = true; });
+    const gr = $("connGmailRow"), pr = $("connPlaidRow");
+    if (gr) gr.onclick = () => { show("guide"); openConnect(); };
+    if (pr) pr.onclick = () => { show("guide"); openConnect(); };
+  }
+  initSave();
+
   /* ================= Boot ================= */
   (async function boot() {
     // Onboarding answers survive the Google OAuth round-trip via localStorage.
@@ -1657,7 +2175,7 @@ const UPMORE_DATA = {"version":"1649-route catalog 2026-09-24 (1384 verified, ra
     if (session) {
       await ensureProfile();
       await loadProgress();
-      const tab = order.includes(h) && ["home", "explore", "guide", "profile"].includes(h) ? h : "home";
+      const tab = order.includes(h) && ["home", "explore", "save", "guide", "profile"].includes(h) ? h : "home";
       show(tab);
       return;
     }

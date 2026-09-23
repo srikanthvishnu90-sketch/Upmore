@@ -5,13 +5,17 @@
 // only for model output).
 
 import type { RouteCard } from "./agent.ts";
+import { CANCEL_PATHS, CancelPath } from "./cancel_paths.ts";
 
 // ---------- shared ----------
 
 // Capability precedence (documented): gambling guard > privacy guard > scam
-// guard > make-me-$X > walkthrough > quant stocks. The safety-critical guards
-// always fire before any money-planning path; a money request can never
-// preempt a safety match.
+// guard > sysprompt guard > make-me-$X > walkthrough > save-side five
+// (subscription audit, receipt check, claim deadlines, bill prep, savings
+// ledger) > quant stocks. The safety-critical guards always fire before any
+// money-planning path; a money request can never preempt a safety match.
+// Save-side paths are explicitly ordered AFTER earn-side paths so a
+// "save" keyword can never hijack an "earn" question.
 
 const fresh = (r: RouteCard): boolean =>
   r.status === "verified" &&
@@ -524,9 +528,365 @@ export function tryScamGuard(message: string): string | null {
   );
 }
 
+// ---------- 9. Save-side deterministic capabilities ----------
+// "Save Side": subscription audit, receipt check, claim deadlines, bill prep,
+// and savings ledger. No model needed. These never invent money: every
+// number comes from a DB row or the user's own message, and anything
+// unverified is labeled an estimate or refused outright.
+//
+// Legal lines baked in: we never cancel, file, or move money for the user
+// ("I can't do that for you — here's the exact path, you click it"); we
+// never give tax/legal/investment advice (deflect to a licensed pro); we
+// never state an unverified saving; we never ask for merchant credentials.
+
+export interface CapCtx { supa: any; userId: string }
+
+const fmtMoney = (n: number): string =>
+  `$${(Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, "")}`;
+
+async function readSaveRows(supa: any, table: string, userId: string): Promise<any[]> {
+  try {
+    const { data, error } = await supa.from(table).select("*").eq("user_id", userId).limit(500);
+    if (error) return [];
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
+function findCancelPath(name: string): CancelPath | null {
+  const n = name.toLowerCase().replace(/[^a-z0-9+]/g, "");
+  for (const key of Object.keys(CANCEL_PATHS)) {
+    const k = key.replace(/[^a-z0-9+]/g, "");
+    if (k && (n.includes(k) || k.includes(n))) return CANCEL_PATHS[key];
+  }
+  return null;
+}
+
+// ---- 9a. Subscription audit ----
+// Triggers: "audit my subscriptions", "review my subscriptions",
+// "what am I paying for". DB read (save_subscriptions) when ctx is present;
+// otherwise parse name+$ pairs the user pastes inline; otherwise ask.
+const AUDIT_RX = /\b(audit|review)\b[^.?]{0,40}\bsubscriptions?\b|\bwhat am i paying for\b|\bsubscriptions?\b[^.?]{0,15}\b(audit|review)\b/i;
+
+interface InlineSub { name: string; monthly: number }
+
+function parseInlineSubs(message: string): InlineSub[] {
+  const out: InlineSub[] = [];
+  const re = /([A-Za-z][\w+&' .()-]{1,40}?)\s*\$?\s*(\d{1,3}(?:\.\d{1,2})?)\s*(?:\/mo|\/month|per month|a month)?(?=[,.;\n]|$)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(message)) !== null) {
+    const name = m[1].trim().replace(/^(my|the|audit|review)\s+/i, "");
+    const monthly = parseFloat(m[2]);
+    if (name.length >= 2 && monthly > 0 && monthly < 500) out.push({ name, monthly });
+  }
+  return out;
+}
+
+// Rough duplicate-family grouping by name keywords: two music services or
+// three streamers is the classic leak. Used only for "cut candidate" flags,
+// never for money claims.
+function subFamily(name: string): string {
+  const n = name.toLowerCase();
+  if (/\bspotify\b|apple music|youtube music|amazon music|tidal|pandora/.test(n)) return "music";
+  if (/\bnetflix\b|hulu|disney|peacock|paramount|max\b|hbo|crunchyroll|espn|apple tv/.test(n)) return "tv";
+  if (/\baudible\b|kindle unlimited|scribd/.test(n)) return "books";
+  if (/new york times|\bnyt\b|washington post|\bwsj\b|substack/.test(n)) return "news";
+  if (/\bicloud\b|google one|dropbox/.test(n)) return "storage";
+  return "other";
+}
+
+function cancelPathBlock(name: string): string {
+  const cp = findCancelPath(name);
+  if (!cp) {
+    return (
+      `Cancel path: I don't have a verified path for ${name} yet — cancel from the billing section of ` +
+      `the merchant's own account page (or inside the app's Settings → Subscriptions), and get a written confirmation.`
+    );
+  }
+  const lines = [`Cancel path:`];
+  if (cp.url) lines.push(cp.url);
+  cp.steps.forEach((s, i) => lines.push(`${i + 1}. ${s}`));
+  if (cp.phone) lines.push(`Phone: ${cp.phone}`);
+  lines.push(`Watch for: ${cp.retention_warning}`);
+  return lines.join("\n");
+}
+
+export async function trySubscriptionAudit(
+  message: string,
+  ctx?: CapCtx,
+): Promise<string | null> {
+  // Primary trigger: explicit "audit my subscriptions"-style phrasing.
+  // Secondary trigger: "audit"/"review" plus a pasted list of 2+ priced
+  // items ("audit: Netflix $15.49, Spotify $11.99") — a single priced item
+  // with "audit" alone is not enough to fire, to avoid hijacking.
+  const primary = AUDIT_RX.test(message);
+  let inline: InlineSub[] = [];
+  if (!primary) {
+    if (!/\b(audit|review)\b/i.test(message)) return null;
+    inline = parseInlineSubs(message);
+    if (inline.length < 2) return null;
+  }
+
+  let subs: InlineSub[] = [];
+  if (ctx) {
+    const rows = await readSaveRows(ctx.supa, "save_subscriptions", ctx.userId);
+    subs = rows
+      .map((r) => ({
+        name: String(r.name ?? r.merchant ?? r.service ?? "Unknown").slice(0, 60),
+        monthly: Number(r.amount_monthly ?? r.monthly_amount ?? r.amount ?? r.cost) || 0,
+      }))
+      .filter((s) => s.monthly > 0 || s.name !== "Unknown");
+  }
+  if (!subs.length) {
+    if (!inline.length) inline = parseInlineSubs(message);
+    if (inline.length) subs = inline;
+  }
+  if (!subs.length) {
+    return (
+      `Let's audit your subscriptions. I don't have any on file — tell me each one like this:\n\n` +
+      `"Netflix $15.49, Spotify $11.99, Amazon Prime $14.99"\n\n` +
+      `Name + dollars per month is all I need. I'll rank them by yearly cost, flag the ones that look cuttable, ` +
+      `and give you the exact cancel path for each.`
+    );
+  }
+
+  const ranked = subs
+    .map((s) => ({ ...s, yearly: s.monthly * 12 }))
+    .sort((a, b) => b.yearly - a.yearly);
+  const seenFamilies = new Set<string>();
+  const blocks = ranked.map((s, i) => {
+    const fam = subFamily(s.name);
+    let verdict: string, reason: string;
+    if (fam !== "other" && seenFamilies.has(fam)) {
+      verdict = "CUT CANDIDATE";
+      reason = `you're paying for two services that do the same thing (${fam}) — pick one, cut the other.`;
+    } else if (s.yearly >= 180) {
+      verdict = "QUESTION";
+      reason = `at ${fmtMoney(s.yearly)}/year this one has to earn its spot — if you don't use it weekly, it's cut #1.`;
+    } else {
+      verdict = "QUESTION";
+      reason = `only you know if ${fmtMoney(s.monthly)}/mo is worth it — but ${fmtMoney(s.yearly)}/year for something you barely touch is the leak.`;
+    }
+    seenFamilies.add(fam);
+    const script =
+      `"Hi — please cancel my ${s.name} subscription effective today. ` +
+      `I don't want any other offers or plan changes. Please confirm in writing that billing has stopped."`;
+    return (
+      `**${i + 1}. ${s.name}** — ${fmtMoney(s.monthly)}/mo (${fmtMoney(s.yearly)}/year)\n` +
+      `${verdict}: ${reason}\n` +
+      `${cancelPathBlock(s.name)}\n` +
+      `Say this to kill it: ${script}`
+    );
+  });
+
+  const total = ranked.reduce((a, s) => a + s.monthly, 0);
+  return (
+    `Here's your subscription audit, ranked by yearly cost:\n\n` +
+    blocks.join("\n\n") +
+    `\n\nTotal: ${fmtMoney(total)}/mo — that's ${fmtMoney(total * 12)}/year walking out the door. ` +
+    `Tell me you don't use one and I'll move it to cut #1.\n\n` +
+    `I can't cancel these for you — you click the link and confirm. Tell me when one dies and I'll log the saving.`
+  );
+}
+
+// ---- 9b. Receipt check ----
+// Triggers on pasted receipt text: "receipt", "order #", a dollar total.
+// Extracts merchant, order no, date, total via regex. Flags risks but never
+// states an unverified saving and never invents a return window.
+const RECEIPT_RX = /(\breceipt\b|\border\s*#|\border\s*(?:number|no\.?)\b)[\s\S]*\$\s*\d|\$\s*\d[\d,]*(?:\.\d{2})?[\s\S]*(\breceipt\b|\border\s*#)/i;
+
+export function tryReceiptCheck(message: string): string | null {
+  if (!RECEIPT_RX.test(message)) return null;
+  const t = message;
+  const lines = t.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
+    .filter((l) => !/^(receipt|order|date|total|subtotal|tax)\b/i.test(l));
+  const merchant = lines.length ? lines[0].slice(0, 60) : "the merchant";
+  const orderM = t.match(/\border\s*(?:#|number|no\.?)?\s*:?\s*([a-z0-9-]{3,30})/i);
+  const dateM = t.match(/\b(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}-\d{2}-\d{2}|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? \d{1,2},?\s*\d{2,4})/i);
+  const totalM = t.match(/\btotal\b[^$\n]{0,25}\$\s*(\d[\d,]*(?:\.\d{2})?)/i);
+  const total = totalM ? totalM[1].replace(/,/g, "") : null;
+  const flags: string[] = [];
+  if (/\btrial\b/i.test(t)) {
+    flags.push(
+      `Free-trial conversion risk: this mentions a trial. Find the renewal date now, set a phone reminder 2 days before it, ` +
+      `and cancel before it bills you.`,
+    );
+  }
+  if (/\b(warranty|protection plan|care plan|support plan|installation|setup fee)\b/i.test(t)) {
+    flags.push(
+      `Add-on leak: this receipt has an add-on (warranty, protection plan, or setup fee). Those are usually where the money leaks — ` +
+      `check whether you can return the add-on separately.`,
+    );
+  }
+  flags.push(
+    `Return window: check the return policy on the receipt — most are 14–30 days, but confirm yours there, not from me. ` +
+    `If the item is within the window and you don't need it, that's money back.`,
+  );
+  flags.push(
+    `Double-buy: I can't check your purchase history automatically — did you buy this same thing in the last 90 days? ` +
+    `If yes, one of them should go back.`,
+  );
+  return (
+    `Here's what I pulled from the receipt:\n\n` +
+    `• Merchant: ${merchant}\n` +
+    (orderM ? `• Order #: ${orderM[1]}\n` : "") +
+    (dateM ? `• Date: ${dateM[1]}\n` : "") +
+    (total ? `• Total: $${total}\n` : `• No labeled total found — I won't guess the amount.\n`) +
+    `\nWatch for:\n` +
+    flags.map((f) => `• ${f}`).join("\n")
+  );
+}
+
+// ---- 9c. Claim deadlines ----
+// Triggers on "refund", "claim", "price adjustment", "deadline". Reads
+// save_claims open claims and renders countdowns — the deadline is the
+// product. If none, explains the claim types and offers to track one.
+const CLAIM_RX = /\bprice adjustment\b|\bclaims?\b|\brefund\b|\bdeadline\b/i;
+
+export async function tryClaimDeadlines(
+  message: string,
+  ctx?: CapCtx,
+): Promise<string | null> {
+  if (!CLAIM_RX.test(message)) return null;
+
+  let claims: any[] = [];
+  if (ctx) {
+    const rows = await readSaveRows(ctx.supa, "save_claims", ctx.userId);
+    claims = rows.filter((r) => {
+      const st = String(r.status ?? "").toLowerCase();
+      return !st || ["open", "active", "pending"].includes(st);
+    });
+  }
+  if (claims.length) {
+    const now = Date.now();
+    const parsed = claims.map((r) => {
+      const dl = r.deadline ?? r.due_date ?? r.claim_deadline ?? null;
+      const dms = dl ? new Date(dl).getTime() : NaN;
+      return { r, days: isFinite(dms) ? Math.ceil((dms - now) / 86400000) : NaN };
+    // Upcoming deadlines first (most urgent), then no-deadline rows, then
+    // past-due ones last — they're still visible, just not actionable first.
+    }).sort((a, b) => {
+      const k = (d: number) => !isFinite(d) ? 99998 : d < 0 ? 99999 : d;
+      return k(a.days) - k(b.days);
+    });
+    const lines = parsed.map(({ r, days }) => {
+      const what = String(r.what ?? r.title ?? r.name ?? "claim").slice(0, 60);
+      const merch = String(r.merchant ?? "").slice(0, 40);
+      const amt = Number(r.amount) || 0;
+      const tag = isFinite(days)
+        ? days < 0
+          ? `PAST DUE by ${-days} days — contact the merchant anyway, it may still be fixable`
+          : days === 0
+            ? `due TODAY — the deadline is the product, miss it and the money is gone`
+            : `${days} days left — the deadline is the product, miss it and the money is gone`
+        : `no deadline on file — add one or it will rot`;
+      return `• ${what}${merch ? ` (${merch})` : ""}${amt ? ` — ${fmtMoney(amt)}` : ""}: ${tag}`;
+    });
+    return `Open claims, sorted by urgency:\n\n${lines.join("\n")}`;
+  }
+  return (
+    `No open claims on file. Here's what deadlines actually matter on the save side:\n\n` +
+    `• Price adjustments: if a store drops the price after you bought, they may refund the difference — ` +
+    `but their window is short. Each store sets its own; I won't guess yours, check it on the receipt.\n` +
+    `• Warranty claims: you have until the warranty expires — dig out what the warranty actually covers.\n` +
+    `• Settlement and rebate claims: the filing deadline on the official notice is a hard cutoff. Miss it, the money's gone.\n` +
+    `• Bill errors and double charges: the sooner you dispute, the easier the fix.\n\n` +
+    `Want me to track one? Tell me: what, merchant, amount, deadline.`
+  );
+}
+
+// ---- 9d. Bill negotiation prep ----
+// Triggers on "negotiat" or "lower my (internet|phone|insurance|medical)
+// bill". Emits a prep sheet: what to say, what they'll offer, what it's
+// worth, what NOT to accept. Honest about what doesn't work.
+const BILL_RX = /\bnegotiat/i;
+const BILL_LOWER_RX = /\blower my\b.{0,40}\b(bill|internet|phone|insurance|medical|cable|mobile|utility|utilities|property tax)\b/i;
+
+export function tryBillPrep(message: string): string | null {
+  if (!BILL_RX.test(message) && !BILL_LOWER_RX.test(message)) return null;
+  const t = message.toLowerCase();
+  const cat = /\binsurance\b/.test(t) ? "insurance"
+    : /\bmedical\b|hospital|doctor/.test(t) ? "medical bill"
+    : /\butility|utilities|electric|gas|water\b/.test(t) ? "utility"
+    : /\bproperty tax\b/.test(t) ? "property tax"
+    : /\bphone\b|mobile|wireless/.test(t) ? "mobile"
+    : "internet";
+
+  const worth = `I can't promise a dollar amount — it depends on your bill and their current promos. ` +
+    `Worth = the gap between what you pay now and the best current price for the SAME service. ` +
+    `Don't accept any "deal" that's still above that number.`;
+
+  const sheets: Record<string, string> = {
+    internet: `Before you call: have your current bill, the contract end date, your tenure (years as a customer), and a competitor's current new-customer price ready.\nWhat to say: "Hi, I've been a customer for [X] years paying $[X]/mo. I see [competitor]'s new-customer price is $[Y]/mo. Can you match it or apply a loyalty or retention discount?"\nWhat they'll offer: a retention discount, a free channel bundle, a speed upgrade for the same price.\nWhat NOT to accept: a longer contract for a tiny discount, a faster tier you don't need, or "we'll call you back" — ask for the decision now.`,
+    mobile: `Before you call: know your data usage (check your phone's settings), your bill, and competing prepaid/MVNO prices.\nWhat to say: "I'm paying $[X]/mo and using about [X]GB. Can you match your current new-customer deal, or move me to a cheaper plan that fits my usage?"\nWhat they'll offer: a loyalty discount, a switch to a cheaper tier, a device credit.\nWhat NOT to accept: a new phone contract that locks you in, or add-on insurance you didn't ask for.`,
+    insurance: `Before you call: get 2–3 competing quotes (same coverage levels) — that quote is your leverage.\nWhat to say: "I've been with you [X] years and my premium is $[X]. I have a quote for $[Y] with the same coverage. What can you do to keep me?"\nWhat they'll offer: loyalty or tenure discount, bundled-policy discount, a rate review.\nWhat NOT to accept: lower coverage just to hit a price — make sure coverage matches before you compare dollars.`,
+    "medical bill": `Before you call: request an ITEMIZED bill first — errors are common. Check whether your insurance paid what it should.\nWhat to say: "I'm looking at this itemized bill and I have questions about [line item]. What is the cash-pay price, and do you offer a payment plan or financial-assistance discount?"\nWhat they'll offer: itemized review and error corrections, a cash-pay price (often lower), a payment plan, financial-assistance programs.\nWhat NOT to accept: paying the first number on the bill without the itemized version — that's where the errors hide.`,
+    utility: `Your utility has assistance programs you don't have to negotiate for: low-income discounts, weatherization help, and payment plans.\nWhat to do: call the number on your bill and ask "what assistance and payment-plan programs do I qualify for?" Your state's utility commission site also lists them.\nWhat NOT to accept: late fees piling up while you wait — ask about a payment plan on the first call.`,
+    "property tax": `This one is paperwork, not a phone call: appeal your assessment. Compare your assessment with similar homes in your neighborhood — that comparison is the whole case.\nWhat to do: check your county assessor's site for the appeal form and the filing deadline. Filing is free in most counties.\nWhat NOT to accept: missing the deadline — the appeal window is set by your county and it's usually once a year. That's a licensed pro's call if you hire help; I can only point you at the process.`,
+  };
+  const sheet = sheets[cat] ?? sheets.internet;
+  return (
+    `Let's prep your ${cat} negotiation.\n\n${sheet}\n\nWhat it's worth: ${worth}\n\n` +
+    `What doesn't work, honestly: rent (landlords don't cut existing leases — you shop around at renewal) and ` +
+    `mid-term fixed contracts (you're paying the early-termination fee either way — check it before you call).`
+  );
+}
+
+// ---- 9e. Savings ledger ----
+// Triggers on "savings", "ledger", "how much have I saved". Sums save_ledger
+// by bucket with honesty rules: Received vs others separated, "saved is
+// never earned", reversals subtracted and shown, "annualized = projection",
+// Upmore subscription cost never invented.
+const LEDGER_RX = /\bsavings ledger\b|\bmy savings\b|\bhow much have i saved\b|\bwhat have i saved\b|\bsavings so far\b|\bmy ledger\b/i;
+
+export async function tryLedgerSummary(
+  message: string,
+  ctx?: CapCtx,
+): Promise<string | null> {
+  if (!LEDGER_RX.test(message)) return null;
+
+  let rows: any[] = [];
+  if (ctx) rows = await readSaveRows(ctx.supa, "save_ledger", ctx.userId);
+  if (!rows.length) {
+    return `Nothing logged yet — nothing counts on intent. Kill a subscription or win a price adjustment, ` +
+      `tell me about it, and I'll put it on the ledger.`;
+  }
+  const RECEIVED = new Set(["received", "confirmed", "paid", "collected"]);
+  const PENDING = new Set(["pending", "claimed", "filed", "in progress"]);
+  const REVERSAL = new Set(["reversal", "clawback", "refunded"]);
+  let received = 0, pending = 0, reversals = 0, annualized = false;
+  for (const r of rows) {
+    const amt = Number(r.amount) || 0;
+    const bucket = String(r.bucket ?? r.status ?? r.type ?? "").toLowerCase();
+    if (r.annualized === true || bucket === "annualized") {
+      annualized = true;
+      continue; // projections are not cash — excluded from totals
+    }
+    if (REVERSAL.has(bucket) || amt < 0) reversals += Math.abs(amt);
+    else if (RECEIVED.has(bucket)) received += amt;
+    else if (PENDING.has(bucket)) pending += amt;
+    else received += amt; // unlabeled entries count only if actually logged
+  }
+  const net = received - reversals;
+  let out =
+    `Here's your savings ledger.\n\n` +
+    `• Received: ${fmtMoney(received)} — money actually back in your pocket.\n` +
+    (pending ? `• Pending: ${fmtMoney(pending)} — claimed or filed, not confirmed yet. Doesn't count until it's real.\n` : "") +
+    (reversals ? `• Reversals: -${fmtMoney(reversals)} — money that was clawed back; already subtracted.\n` : "") +
+    `\nNet kept: ${fmtMoney(net)}.\n\n` +
+    `Saved is never earned — this is money kept, not made.`;
+  if (annualized) {
+    out += `\nOne or more entries are annualized — that's a projection, not cash in hand.`;
+  }
+  out += `\nFigures shown before any Upmore subscription cost — minus any Upmore subscription cost. I don't know your plan, so I won't guess it.`;
+  return out;
+}
+
 export async function tryCapabilities(
   message: string,
   routes: RouteCard[],
+  ctx?: CapCtx,
 ): Promise<{ reply: string; routeId?: string } | null> {
   // Note: gambling/privacy/scam guards run even earlier in index.ts (before
   // the catalog fetch) for speed; they're listed here as a fallback in case
@@ -543,6 +903,20 @@ export async function tryCapabilities(
   if (makeMe) return { reply: makeMe };
   const walk = tryWalkthrough(message, routes);
   if (walk) return walk;
+  // Save-side five, explicitly AFTER earn-side paths so a "save" keyword can
+  // never preempt an "earn" intent. ctx is optional: without it the DB-backed
+  // paths degrade gracefully (ask-for-input, inline parsing) instead of
+  // failing.
+  const audit = await trySubscriptionAudit(message, ctx);
+  if (audit) return { reply: audit };
+  const receipt = tryReceiptCheck(message);
+  if (receipt) return { reply: receipt };
+  const claims = await tryClaimDeadlines(message, ctx);
+  if (claims) return { reply: claims };
+  const bill = tryBillPrep(message);
+  if (bill) return { reply: bill };
+  const ledger = await tryLedgerSummary(message, ctx);
+  if (ledger) return { reply: ledger };
   const stocks = await tryQuantStocks(message);
   if (stocks) return { reply: stocks };
   return null;

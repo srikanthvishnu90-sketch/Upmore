@@ -201,7 +201,7 @@ serve(async (req) => {
     // quantitative stock screen (live market data, transparent factor model),
     // prediction-market/gambling guard (critical-thinking takedown).
     // Deterministic output needs no grounding post-check; persist like fast path.
-    const cap = await tryCapabilities(message, routes);
+    const cap = await tryCapabilities(message, routes, { supa: supabase, userId: user.id });
     if (cap) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
