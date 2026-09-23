@@ -113,13 +113,18 @@ n = len(d["routes"])
 nv = sum(1 for r in d["routes"] if r.get("status") == "verified")
 
 # Order the whole catalog by earn_ratio descending (verified with a ratio first,
-# then verified without a ratio, then unverified in stable order); assign rank 1..N.
+# then verified without a ratio, then unverified in stable order); ties break on
+# higher payout midpoint first; assign rank 1..N over verified.
+def _payout_mid(r):
+    a, b = r.get("payout_min"), r.get("payout_max")
+    return (a + b) / 2 if a is not None and b is not None else 0
+
 def _sort_key(r):
     if r.get("status") == "verified" and r.get("earn_ratio"):
-        return (0, -(r["earn_ratio"] or 0))
+        return (0, -(r["earn_ratio"] or 0), -_payout_mid(r))
     if r.get("status") == "verified":
-        return (1, 0)
-    return (2, 0)
+        return (1, 0, 0)
+    return (2, 0, 0)
 
 d["routes"].sort(key=_sort_key)
 rank = 0
