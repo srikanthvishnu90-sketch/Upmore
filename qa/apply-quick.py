@@ -37,6 +37,13 @@ def lane_of(rid):
     if 6900 <= n <= 6999: return ("Referral Bonus", "Referral bonus", "Very Easy", "US only — see eligibility")
     if 7000 <= n <= 7099: return ("Buyback/Resale", "Sell/buyback", "Easy", "US only — see eligibility")
     if 7100 <= n <= 7199: return ("Mystery Shopping", "Mystery shop / local task", "Easy", "US only — see eligibility")
+    if 7200 <= n <= 7299: return ("Focus Group", "Paid research study", "Easy", "US only — see eligibility")
+    if 7300 <= n <= 7399: return ("Cashback", "Cashback reward", "Easy", "US only — see eligibility")
+    if 7400 <= n <= 7499: return ("Gift Card Resale", "Gift-card resale/flip", "Easy", "US only — see eligibility")
+    if 7500 <= n <= 7599: return ("Plasma Donation", "Plasma donation", "Easy", "US only — see eligibility")
+    if 7600 <= n <= 7699: return ("Delivery", "Delivery gig", "Easy", "US only — see eligibility")
+    if 7700 <= n <= 7799: return ("Local Labor", "Local labor gig", "Easy", "US only — see eligibility")
+    if 7800 <= n <= 7899: return ("Tutoring & Gigs", "Tutoring/data gig", "Moderate", "US only — see eligibility")
     return ("Other Online", "Other", "Easy", "US only")
 
 def proof_exists(route_id, checked_at):
@@ -81,7 +88,14 @@ for f in sorted(glob.glob("/home/hatch/workspace/upmore/qa/verification/R*.json"
     steps = [s for s in steps if s["text"]]
     h = host(off)
     provider_url = f"https://{h}" if h else None
-    speed = d.get("speed") if d.get("speed") in ("today", "days", "weeks") else "days"
+    speed = d.get("speed") if d.get("speed") in ("today", "days", "weeks", "unknown") else "days"
+    rep = d.get("repeatable")
+    rep_json = None
+    if isinstance(rep, dict):
+        rep_json = {"value": bool(rep.get("value")), "cadence": str(rep.get("cadence") or "")}
+    # time-sensitive promos: BioLife $700 coupon (offer code 40019) requires first
+    # donation by 2026-09-27 — must expire in the DB, not silently go stale.
+    expires_at = "2026-09-27T23:59:59+00:00" if rid == "R7501" else None
     row = {
         "route_id": rid,
         "name": f"{provider} — {method.lower()}",
@@ -103,7 +117,14 @@ for f in sorted(glob.glob("/home/hatch/workspace/upmore/qa/verification/R*.json"
         "speed": speed,
         "verified_at": NOW,
         "verified_source_url": off[:2000] or None,
-        "expires_at": None,
+        "expires_at": expires_at,
+        "who_pays": (str(d.get("who_pays") or "")[:2000] or None),
+        "who_qualifies": (str(d.get("who_qualifies") or "")[:2000] or None),
+        "work_available": (str(d.get("work_available") or "")[:2000] or None),
+        "what_gets_accepted": (str(d.get("what_gets_accepted") or "")[:2000] or None),
+        "costs_and_unpaid_time": (str(d.get("costs_and_unpaid_time") or "")[:2000] or None),
+        "when_cash_arrives": (str(d.get("when_cash_arrives") or "")[:2000] or None),
+        "repeatable": rep_json,
     }
     if rid in existing:
         st, _ = req("PATCH", f"/rest/v1/routes?route_id=eq.{rid}", row)

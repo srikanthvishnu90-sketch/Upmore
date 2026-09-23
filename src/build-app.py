@@ -8,12 +8,11 @@ tpl = (HERE / "upmore-app-template.html").read_text()
 ph = "<!--__UPMORE_DATA__-->"
 assert ph in tpl, "placeholder missing from template"
 
-# Owner direction 2026-09-23: credit cards are out of the product entirely —
-# drop retired credit-card routes from the served bundle (they stay in the
-# source JSON + DB as retired for audit).
-CC_CATS = {"Credit Card Bonus", "Card Bonus"}
-data["routes"] = [r for r in data.get("routes", [])
-                  if not (r.get("status") == "retired" and r.get("category") in CC_CATS)]
+# Owner direction 2026-09-23: credit cards are out of the product entirely.
+# Retired routes are never displayed anywhere in the app (both list paths
+# filter status !== "retired"), so drop them from the served bundle entirely.
+# They stay in the source JSON + DB as retired for audit.
+data["routes"] = [r for r in data.get("routes", []) if r.get("status") != "retired"]
 
 # JSON with </script> escaped so the inline data can't break the page
 payload = json.dumps(data, separators=(",", ":"), ensure_ascii=False).replace("</script>", "<\\/script>")
