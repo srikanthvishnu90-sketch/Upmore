@@ -423,9 +423,13 @@ export function tryWalkthrough(
     ? `\nHeads up: this is a wager — you stake your own money and can LOSE it. Never bet money you can't afford to lose.`
     : "";
   // If the route needs an app, say so plainly and link the store download.
+  // Prefer the catalog's own ios_url/android_url (data model); APP_LINKS is
+  // the fallback for routes not yet backfilled.
   const appLinks = APP_LINKS[rid];
-  const appLine = appLinks?.ios || appLinks?.android
-    ? `\nDownload the app: ${appLinks.ios ?? appLinks.android}`
+  const iosUrl = (r as any).ios_url || appLinks?.ios;
+  const andUrl = (r as any).android_url || appLinks?.android;
+  const appLine = iosUrl || andUrl
+    ? `\nDownload the app: ${iosUrl ?? andUrl}`
     : "";
   // Vishnu's 7 questions — include every answer the catalog has for this
   // route, nothing invented. demand_side names where the demand actually is.
