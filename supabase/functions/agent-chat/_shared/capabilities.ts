@@ -82,10 +82,13 @@ const WINDFALL_CATS = new Set(["Unclaimed/Recovery", "Competition"]);
 // Wager routes (bet your own money to win): risk capital, not schedulable
 // income. Tracked by route ID — deterministic, no text guessing.
 const WAGER_IDS = new Set(["R0495"]); // HealthyWage: weight-loss wager
-// Creator / referral / ambassador programs pay per conversion, monthly
-// commission tiers, or one-off bonuses — a payout midpoint divided by
-// active minutes is NOT an hourly rate and must never be presented as one.
-const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador"]);
+// Creator / referral / ambassador / freelance programs pay per conversion,
+// per client, monthly commission tiers, or one-off bonuses — a payout
+// midpoint divided by active minutes is NOT an hourly rate and must never
+// be presented as one.
+const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador",
+  "Translation", "Tutoring", "Voiceover/Audio", "AI Training",
+  "Lead Sourcing", "Media/Music"]);
 
 function deriveCashMath(r: RouteCard): CashMath | null {
   const pmin = Number(r.payout_min), pmax = Number(r.payout_max);
@@ -171,24 +174,27 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
 
   // Rank verified routes by honest hours to reach the target. Hand-curated
   // entries win; the rest are derived from DB numerics. Non-schedulable
-  // routes (windfalls, needs-spend, bonus waits) can never be the headline
-  // pick — they only show up as closest honest plays.
-  // Owner direction 2026-09-23: same-day money wins. A route that pays today
-  // beats a higher-rate slow route — effective hours are discounted by speed.
-  const SPEED_DISCOUNT: Record<string, number> = { today: 0.34, days: 0.67, weeks: 1 };
+  // routes (windfalls, needs-spend, bonus waits, wagers, variable gigs) can
+  // never be the headline pick — they only show up as closest honest plays.
+  // Owner direction 2026-09-23: same-day money wins. Pick the best
+  // schedulable route from the fastest-paying tier that has one —
+  // today beats this week beats later, always.
   const ranked = live
     .map((r) => ({ r, cm: CASH_MATH[r.route_id] ?? deriveCashMath(r) }))
     .filter((x) => x.cm)
-    .map((x) => {
-      const base = x.cm!.schedulable && x.cm!.dollars_per_hour
+    .map((x) => ({
+      ...x,
+      hours: x.cm!.schedulable && x.cm!.dollars_per_hour
         ? target / x.cm!.dollars_per_hour
-        : Infinity;
-      const eff = base === Infinity ? Infinity : base * (SPEED_DISCOUNT[x.r.speed ?? "weeks"] ?? 1);
-      return { ...x, hours: base, eff };
-    })
-    .sort((a, b) => a.eff - b.eff);
-
-  const pick = ranked.find((x) => x.hours < Infinity);
+        : Infinity,
+    }))
+    .sort((a, b) => a.hours - b.hours);
+  const SPEED_TIERS = ["today", "days", "weeks"];
+  let pick: typeof ranked[number] | undefined;
+  for (const tier of SPEED_TIERS) {
+    pick = ranked.find((x) => x.hours < Infinity && (x.r.speed ?? "weeks") === tier);
+    if (pick) break;
+  }
   if (!pick) {
     // Nothing verified can earn cash on a schedule — say so honestly.
     const alternates = ranked.filter((x) => x.hours === Infinity).slice(0, 3);
