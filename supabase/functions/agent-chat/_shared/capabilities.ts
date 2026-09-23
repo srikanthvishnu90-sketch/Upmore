@@ -417,6 +417,65 @@ export function tryWalkthrough(
   };
 }
 
+// ---------- Terms-change honesty guard ----------
+// "Did Fetch raise their minimum to $25?" — a rumored terms change the agent
+// cannot verify must never be confirmed, and must never be answered with a
+// different company's data (the verb "raise" once matched the provider
+// "Raise"). Deterministic: match did/has/have + change-verb + terms-noun,
+// disambiguate the provider by earliest word-boundary mention, cite the
+// verified route's terms, and refuse to confirm the rumor.
+const TERMS_CHANGE_RX =
+  /\b(did|has|have)\b[\s\S]{0,80}?\b(rais|lower|chang|increas|decreas|cut|drop)(e|ed|ing)?\b[\s\S]{0,80}?\b(minimum|min|cashout|cash out|payout|bonus|rates?|fees?)\b|\b(did|has|have)\b[\s\S]{0,80}?\b(minimum|min|cashout|cash out|payout|bonus|rates?|fees?)\b[\s\S]{0,80}?\b(rais|lower|chang|increas|decreas|cut|drop)(e|ed|ing)?\b/i;
+
+function escRe(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function tryTermsChangeQuestion(
+  message: string,
+  routes: RouteCard[],
+): string | null {
+  if (!TERMS_CHANGE_RX.test(message)) return null;
+  const t = message.toLowerCase();
+  // Prefer a full provider-name match; fall back to any significant word of a
+  // multi-word provider ("Fetch" for "Fetch Rewards"). Earliest mention in
+  // the message wins — a company name that IS a common verb ("Raise") must
+  // not outrank the actual subject mentioned earlier. Full-name matches win
+  // ties at nearby positions.
+  let best: RouteCard | null = null;
+  let bestKey = "";
+  for (const r of routes) {
+    const p = String(r.provider ?? "").toLowerCase().trim();
+    if (p.length <= 3) continue;
+    const words = p.split(/[^a-z0-9]+/).filter((w) => w.length > 3);
+    const cands: Array<[number, number]> = [];
+    const full = new RegExp(`\\b${escRe(p)}\\b`).exec(t);
+    if (full) cands.push([0, full.index ?? Infinity]);
+    for (const w of words) {
+      const m = new RegExp(`\\b${escRe(w)}\\b`).exec(t);
+      if (m) cands.push([1, m.index ?? Infinity]);
+    }
+    if (!cands.length) continue;
+    cands.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+    const key = `${String(cands[0][1]).padStart(8, "0")}:${cands[0][0]}`;
+    if (!best || key < bestKey) {
+      best = r;
+      bestKey = key;
+    }
+  }
+  const math = best ? CASH_MATH[best.route_id] : undefined;
+  const termsBit = best
+    ? ` The verified terms I have for ${best.provider} (${best.route_id}) list the minimum as ${
+        math?.min_cashout ?? best.payout_text ?? "see the official terms"
+      }.`
+    : "";
+  return (
+    `I haven't seen a verified update on that, so I can't confirm the change — ` +
+    `I won't state a terms change I can't check against the official page.${termsBit} ` +
+    `If you read it somewhere, paste the link and I'll compare it against the official terms.`
+  );
+}
+
 // ---------- 8. Deterministic reminder intent ----------
 // "remind me tomorrow to check my Fetch points for R0119" -> the server
 // creates the reminder itself instead of relying on the model to emit an
@@ -903,6 +962,8 @@ export async function tryCapabilities(
   if (makeMe) return { reply: makeMe };
   const walk = tryWalkthrough(message, routes);
   if (walk) return walk;
+  const termsChange = tryTermsChangeQuestion(message, routes);
+  if (termsChange) return { reply: termsChange };
   // Save-side five, explicitly AFTER earn-side paths so a "save" keyword can
   // never preempt an "earn" intent. ctx is optional: without it the DB-backed
   // paths degrade gracefully (ask-for-input, inline parsing) instead of
