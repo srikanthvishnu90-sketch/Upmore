@@ -1,0 +1,39 @@
+# Watcher sources (v1)
+# Each source: what it covers, URL, cadence. Watchers fetch and extract candidates;
+# verification ALWAYS happens against the provider's official terms, never the source.
+
+- name: doctor-of-credit-bank-bonuses
+  covers: new and updated bank account bonuses (highest $/hour category)
+  url: https://www.doctorofcredit.com/best-bank-account-bonuses/
+  cadence: weekly
+  notes: aggregator — use for DISCOVERY only; verify each bonus on the bank's own site
+
+- name: doctor-of-credit-brokerage-bonuses
+  covers: brokerage promo bonuses
+  url: https://www.doctorofcredit.com/best-brokerage-bonuses/
+  cadence: weekly
+  notes: discovery only
+
+- name: chase-coupon-page
+  covers: Chase Total Checking / Business bonus changes (flagship verified route)
+  url: https://account.chase.com/consumer/banking/seo
+  cadence: weekly
+  notes: direct official source — changes here update R0036 immediately
+
+- name: sofi-checking-offer
+  covers: SoFi checking bonus tiers and promo window
+  url: https://www.sofi.com/banking/checking-offer/
+  cadence: weekly
+  notes: direct official source — changes here update R0096 immediately
+
+- name: ftc-refunds
+  covers: new FTC consumer refund programs (class-action-adjacent)
+  url: https://www.ftc.gov/enforcement/refunds
+  cadence: monthly
+  notes: direct official source; feeds R0302-style routes
+
+- name: missingmoney
+  covers: unclaimed property portal status (not new offers — availability signal)
+  url: https://www.missingmoney.com/
+  cadence: monthly
+  notes: no new offers expected; monitors portal health for R0295
