@@ -5,17 +5,18 @@
 // grounding post-check → save + return reply.
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.0";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/+esm";
 import {
   SYSTEM_PROMPT,
   renderRouteCards,
   checkGrounding,
   isDebunkReply,
+  findFalseNoRouteClaim,
   SAFE_FALLBACK,
   SCAM_FALLBACK,
   RouteCard,
 } from "./_shared/agent.ts";
-import { tryCapabilities } from "./_shared/capabilities.ts";
+import { tryCapabilities, tryReminderIntent, tryGamblingGuard, tryPrivacyGuard, tryScamGuard, trySyspromptGuard } from "./_shared/capabilities.ts";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5-20251001";
@@ -25,6 +26,19 @@ const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, content-type",
 };
+
+// Generic provider words that must never trigger provider matching on their
+// own — they hijack unrelated questions ("this site ..." matched provider "Site").
+const GENERIC_PROVIDER_WORDS = new Set([
+  "site", "app", "website", "online", "money", "cash", "pay", "earn",
+  "free", "best", "new", "top", "get", "make",
+]);
+function isGenericProviderWord(w: string): boolean {
+  return GENERIC_PROVIDER_WORDS.has(w);
+}
+
+// Warm-isolate catalog cache (see the fetch site for the TTL rationale).
+let catalogCache: { at: number; routes: any[] } | null = null;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -44,29 +58,27 @@ serve(async (req) => {
     const { data: { user } } = await supabase.auth.getUser(authM[1]);
     if (!user) return json({ error: "unauthorized" }, 401);
 
-    // Per-user rate limit: 60 agent replies per rolling hour. This guards the
-    // Anthropic spend against abuse; it is generous for real chat use.
+    // The rate limiter FKs to profiles — make sure a profile row exists first
+    // (the app upserts on sign-in, but API/test callers may not). Without this
+    // a missing profile would make the RPC error and look like rate limiting.
+    await supabase.from("profiles").upsert({ id: user.id }, { onConflict: "id" });
+
+    // Rate limiting: 60 chat requests per fixed 60-minute window per user,
+    // enforced on EVERY request (deterministic capabilities included) via
+    // the agent_rl_bump RPC — atomic row-locked increment so concurrent
+    // requests can't double-spend. A false return is a real 429 (with
+    // Retry-After); an RPC *error* is a 500, never a fake "slow down".
     const RATE_LIMIT = 60;
-    const nowMs = Date.now();
-    const { data: rl } = await supabase
-      .from("agent_rate_limits")
-      .select("window_start,count")
-      .eq("user_id", user.id)
-      .maybeSingle();
-    if (!rl || nowMs - new Date(rl.window_start).getTime() > 3600_000) {
-      await supabase
-        .from("agent_rate_limits")
-        .upsert({ user_id: user.id, window_start: new Date(nowMs).toISOString(), count: 1 });
-    } else if (rl.count >= RATE_LIMIT) {
-      return json(
-        { error: "rate_limited", message: "Slow down a little — try again in a bit." },
-        429
+    const { data: rlOk, error: rlErr } = await supabase.rpc("agent_rl_bump", { p_user: user.id, p_limit: RATE_LIMIT });
+    if (rlErr) {
+      console.error("agent_rl_bump failed:", rlErr.message);
+      return json({ error: "internal" }, 500);
+    }
+    if (!rlOk) {
+      return new Response(
+        JSON.stringify({ error: "rate_limited", message: "Slow down a little — try again in a bit." }),
+        { status: 429, headers: { ...cors, "content-type": "application/json", "Retry-After": "3600" } }
       );
-    } else {
-      await supabase
-        .from("agent_rate_limits")
-        .update({ count: rl.count + 1 })
-        .eq("user_id", user.id);
     }
 
     const { thread_id, message } = await req.json();
@@ -81,11 +93,37 @@ serve(async (req) => {
       tid = data.id;
     }
 
-    // Parallel fetches: profile, playbook, reminders, verified routes, history,
-    // expiring. Sequential awaits were ~2s; parallel cuts p50 substantially.
+    // Catalog-independent safety guards run BEFORE the heavy parallel fetches
+    // (1500-route catalog in 5 pages). They need no DB data, so a gambling,
+    // privacy, scam, or system-prompt question returns in ~500ms instead of
+    // waiting for the full catalog. Persist like the other deterministic paths.
+    const earlyGuard = tryGamblingGuard(message) ?? tryPrivacyGuard(message) ?? tryScamGuard(message) ?? trySyspromptGuard(message);
+    if (earlyGuard) {
+      await supabase.from("agent_messages").insert([
+        { thread_id: tid, role: "user", content: message },
+        { thread_id: tid, role: "assistant", content: earlyGuard, meta: { capability: true, guard: true } },
+      ]);
+      return json({ thread_id: tid, reply: earlyGuard, action: null });
+    }
+
+    // Parallel fetches: profile, playbook, reminders, history, expiring.
+    // The verified catalog is cached module-level for 5 minutes: fetching
+    // 1500 full cards in 5 PostgREST pages on every request made even
+    // deterministic replies slow. Deno reuses isolates, so warm requests hit
+    // the cache; the catalog only changes via batch verification, so a 5-min
+    // staleness window is acceptable (expiry checks below are never cached).
     const nowIso = new Date().toISOString();
     const soonIso = new Date(Date.now() + 14 * 86400000).toISOString();
-    const [profRes, playRes, remRes, verRes, histRes, expRes] = await Promise.all([
+    const catalogFresh = catalogCache && Date.now() - catalogCache.at < 5 * 60 * 1000;
+    const routePagesPromise = catalogFresh
+      ? Promise.resolve(null)
+      : Promise.all(
+          [0, 1, 2, 3, 4].map((p) =>
+            supabase.from("routes").select("*").eq("status", "verified")
+              .order("route_id").range(p * 1000, p * 1000 + 999)
+          ),
+        );
+    const [profRes, playRes, remRes, verPages, histRes, expRes, expiredRes] = await Promise.all([
       supabase.from("profiles").select("*").eq("id", user.id).single(),
       supabase.from("playbook_progress")
         .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
@@ -95,17 +133,42 @@ serve(async (req) => {
         .select("route_id, kind, message, due_at").eq("user_id", user.id)
         .is("sent_at", null).lte("due_at", nowIso)
         .order("due_at", { ascending: true }).limit(3),
-      supabase.from("routes")
-        .select("*").eq("status", "verified").limit(50),
+      routePagesPromise,
       supabase.from("agent_messages")
         .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10),
+      // Expiring within 14 days (warn before recommending) vs already
+      // expired (never present as live) — tracked separately.
       supabase.from("routes")
         .select("route_id, name, expires_at").eq("status", "verified")
-        .not("expires_at", "is", null).lte("expires_at", soonIso).limit(5),
+        .not("expires_at", "is", null).gte("expires_at", nowIso).lte("expires_at", soonIso).limit(5),
+      supabase.from("routes")
+        .select("route_id, name, expires_at").eq("status", "verified")
+        .not("expires_at", "is", null).lt("expires_at", nowIso).limit(5),
     ]);
     const profile = profRes.data;
     const playbook = playRes.data;
     const reminders = remRes.data;
+    // Catalog: warm-isolate cache hit, or concatenate the fresh pages.
+    let verRows: RouteCard[];
+    if (verPages) {
+      verRows = [];
+      for (const pg of verPages) for (const r of (pg.data ?? [])) verRows.push(r as RouteCard);
+      catalogCache = { at: Date.now(), routes: verRows };
+    } else {
+      verRows = catalogCache!.routes;
+    }
+
+    // Earn-ratio ordering: payout_mid / max(1, time_mid), ties broken by
+    // higher payout midpoint. This is the same ordering the catalog uses.
+    const ratioOf = (r: any) => {
+      const pm = (Number(r.payout_min ?? 0) + Number(r.payout_max ?? 0)) / 2;
+      const tm = Math.max(1, (Number(r.time_min_minutes ?? 0) + Number(r.time_max_minutes ?? 0)) / 2);
+      return { ratio: pm / tm, pmid: pm };
+    };
+    const verified = (verRows as RouteCard[]).sort((a, b) => {
+      const ra = ratioOf(a), rb = ratioOf(b);
+      return rb.ratio - ra.ratio || rb.pmid - ra.pmid;
+    });
 
     // Candidate routes: active playbook route + verified routes
     // matching the user's state (simple keyword match v1; semantic search later).
@@ -114,11 +177,18 @@ serve(async (req) => {
     let routes: RouteCard[] = [];
     if (playbook?.routes) routes.push(playbook.routes as RouteCard);
     const state = (profile?.state ?? "").toLowerCase();
-    const verified = verRes.data;
-    for (const r of verified ?? []) {
-      if (!routes.some((x) => x.route_id === r.route_id)) routes.push(r as RouteCard);
+    for (const r of verified) {
+      if (!routes.some((x) => x.route_id === r.route_id)) routes.push(r);
     }
     const standardRoutes = routes.filter((r) => (r.lane ?? "Standard") === "Standard");
+    // The model only gets the top 60 by earn ratio in its prompt (full cards
+    // with steps for 1500 routes would blow the context). Capabilities and
+    // the grounding post-check use the full `routes` array.
+    const PROMPT_ROUTE_LIMIT = 60;
+    const promptRoutes = standardRoutes.slice(0, PROMPT_ROUTE_LIMIT);
+    // Fast lookup: route_id → card (validates model actions against reality).
+    const routeIdSet = new Set(routes.map((r) => r.route_id));
+    const routeSteps = (rid: string) => routes.find((r) => r.route_id === rid)?.steps?.length ?? 0;
 
     // Recent history
     const hist = ((histRes.data ?? []).reverse());
@@ -148,6 +218,37 @@ serve(async (req) => {
       return json({ thread_id: tid, reply: cap.reply, action: null });
     }
 
+    // Deterministic reminder intent: the user asked to be reminded about a
+    // known route. Create it directly instead of relying on the model to emit
+    // a set_reminder action (it sometimes promises in words and forgets the
+    // line — the words alone do nothing).
+    const remIntent = tryReminderIntent(message, routes);
+    if (remIntent) {
+      const { error: detRemErr } = await supabase.from("reminders").insert({
+        user_id: user.id,
+        route_id: remIntent.routeId,
+        kind: "nudge",
+        message: remIntent.text.slice(0, 280),
+        due_at: parseDueAt(remIntent.when),
+        channel: "agent",
+      });
+      if (!detRemErr) {
+        const detReply = `Done — I'll remind you ${remIntent.when}: ${remIntent.text}.`;
+        await supabase.from("agent_messages").insert([
+          { thread_id: tid, role: "user", content: message },
+          { thread_id: tid, role: "assistant", content: detReply, meta: { capability: true, deterministic_reminder: true } },
+        ]);
+        return json({ thread_id: tid, reply: detReply, action: null });
+      }
+      console.error("deterministic reminder insert failed:", detRemErr.message);
+      const detFail = `Quick heads-up: I tried to save that reminder but it didn't stick (technical hiccup on my end). Want me to try again?`;
+      await supabase.from("agent_messages").insert([
+        { thread_id: tid, role: "user", content: message },
+        { thread_id: tid, role: "assistant", content: detFail, meta: { capability: true } },
+      ]);
+      return json({ thread_id: tid, reply: detFail, action: null });
+    }
+
     const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined);
     if (fastReply) {
       await supabase.from("agent_messages").insert([
@@ -175,28 +276,39 @@ serve(async (req) => {
       ? `Due reminders (be proactive — mention these naturally): ` +
         reminders!.map((r: any) => `${r.message ?? r.route_id} (due ${r.due_at})`).join("; ") + "."
       : "No due reminders.";
-    // Expiry alerts: verified routes expiring within 14 days (fetched above).
+    // Expiry alerts: verified routes expiring within 14 days (warn before
+    // recommending) and already-expired ones (never present as live).
     const expiring = expRes.data;
-    const expiryLine = (expiring?.length ?? 0) > 0
-      ? `EXPIRING SOON (warn the user before recommending): ` +
-        expiring!.map((r: any) => `${r.name ?? r.route_id} expires ${r.expires_at}`).join("; ") + "."
-      : "No verified routes expiring within 14 days.";
+    const expired = expiredRes.data;
+    const expiryLine = [
+      (expiring?.length ?? 0) > 0
+        ? `EXPIRING SOON (warn the user before recommending): ` +
+          expiring!.map((r: any) => `${r.name ?? r.route_id} expires ${r.expires_at}`).join("; ") + "."
+        : "No verified routes expiring within 14 days.",
+      (expired?.length ?? 0) > 0
+        ? `ALREADY EXPIRED (never present these as live offers): ` +
+          expired!.map((r: any) => `${r.name ?? r.route_id} expired ${r.expires_at}`).join("; ") + "."
+        : "No recently expired verified routes.",
+    ].join("\n");
+
+    const catalogLine =
+      `Verified route catalog: ${verified.length} verified routes total. ` +
+      `Showing the top ${promptRoutes.length} by dollars-per-minute below. ` +
+      (promptRoutes.length === 0
+        ? "You have ZERO verified routes right now. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
+        : "Only present routes marked LIVE below as offers.");
 
     const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
-      `\nVerified LIVE route cards available to you right now: ${standardRoutes.length}. ` +
-      (standardRoutes.length === 0
-        ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
-        : "Only present routes marked LIVE below as offers.") +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(standardRoutes);
+      `\n${catalogLine}\n\n` +
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
 
     const systemStatic = SYSTEM_PROMPT; // stable: cacheable
     const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
-      `\nVerified LIVE route cards available to you right now: ${standardRoutes.length}. ` +
-      (standardRoutes.length === 0
-        ? "You have ZERO verified routes. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
-        : "Only present routes marked LIVE below as offers.") +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(standardRoutes);
+      `\n${catalogLine}\n\n` +
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
 
+    // (rate limit was already enforced for every request at the top of the
+    // handler, before any DB work)
     const anthropicRes = await fetch(ANTHROPIC_URL, {
       method: "POST",
       headers: {
@@ -239,18 +351,47 @@ serve(async (req) => {
       // names the pattern without inventing any amounts or URLs.
       reply = isDebunkReply(reply) ? SCAM_FALLBACK : SAFE_FALLBACK;
       action = null;
+    } else {
+      // False no-route claim: the model said "I don't have a verified route
+      // for X" but the catalog does. Correct it with the real card instead of
+      // letting the lie stand. The correction is question-aware: earnings
+      // questions get honest hedging (never a promised amount), guarantee
+      // questions get an explicit no-guarantee line.
+      const correction = findFalseNoRouteClaim(reply, routes);
+      if (correction) {
+        const cc: string[] = Array.isArray(correction.catches) ? correction.catches : [];
+        const q = message.toLowerCase();
+        let hedge = "";
+        if (/\bhow much will i (make|earn)\b/i.test(q)) {
+          hedge = `\nI can't promise a specific amount — it depends on how much you use it, and varies person to person.`;
+        } else if (/\bguarantee/i.test(q)) {
+          hedge = `\nI can't guarantee speed or earnings — no honest route can promise that.`;
+        }
+        reply =
+          `**${correction.provider}** (${correction.name}) — verified ✓ (route ${correction.route_id})\n\n` +
+          `**Payout:** ${correction.payout_text ?? "see official terms"}` +
+          `${correction.payout_timing ? ` — ${correction.payout_timing}` : ""}` +
+          (cc.length ? `\n**Biggest catch:** ${cc[0]}` : "") +
+          (correction.provider_url ? `\n**Official link:** ${correction.provider_url}` : "") +
+          hedge +
+          `\n\nWant me to walk you through it step by step?`;
+        action = null;
+      }
     }
 
     // Deterministic walkthrough start: if the user asks to be walked through a
     // verified route step-by-step and has no active playbook for it, create it
     // here (current_step=0). The model sometimes skips its start_walkthrough
-    // action; this makes persistence reliable, not model-dependent.
+    // action; this makes persistence reliable, not model-dependent. The target
+    // must be fresh-verified (7 days) — a stale card gets no walkthrough.
     const walkStart = /\b(walk me through|step by step|get (me )?started with|start.*walkthrough)\b/i.test(message);
     if (walkStart && !playbook) {
       const target = routes.find((r) =>
         message.toLowerCase().includes(r.provider.toLowerCase()) ||
         message.toLowerCase().includes(r.name.toLowerCase()));
-      if (target) {
+      const targetFresh = target && target.status === "verified" && target.verified_at &&
+        Date.now() - new Date(target.verified_at).getTime() < 7 * 24 * 3600 * 1000;
+      if (target && targetFresh) {
         await supabase.from("playbook_progress").upsert({
           user_id: user.id, route_id: target.route_id, current_step: 0,
           status: "active", updated_at: new Date().toISOString(),
@@ -263,30 +404,94 @@ serve(async (req) => {
       { thread_id: tid, role: "user", content: message },
       { thread_id: tid, role: "assistant", content: reply, meta: { action, violations } },
     ]);
-    // Apply walkthrough actions to playbook_progress
-    if (action?.type === "start_walkthrough" && action.route_id) {
-      await supabase.from("playbook_progress").upsert({
-        user_id: user.id, route_id: action.route_id, current_step: 0,
-        status: "active", updated_at: new Date().toISOString(),
-      }, { onConflict: "user_id,route_id" });
-    }
-    if (action?.type === "next_step" && action.route_id) {
-      const step = typeof action.step === "number" ? action.step : null;
-      if (step !== null) {
+    // Apply walkthrough actions to playbook_progress. Model actions are
+    // validated against the real route catalog first: a hallucinated
+    // route_id must never create a phantom playbook row, and next_step is
+    // clamped to the route's actual step count.
+    if (action?.type === "start_walkthrough" && typeof action.route_id === "string") {
+      if (routeIdSet.has(action.route_id)) {
         await supabase.from("playbook_progress").upsert({
-          user_id: user.id, route_id: action.route_id, current_step: step,
+          user_id: user.id, route_id: action.route_id, current_step: 0,
           status: "active", updated_at: new Date().toISOString(),
         }, { onConflict: "user_id,route_id" });
+      } else {
+        action = null;
+      }
+    }
+    if (action?.type === "next_step" && typeof action.route_id === "string") {
+      if (routeIdSet.has(action.route_id)) {
+        const maxStep = Math.max(0, routeSteps(action.route_id) - 1);
+        const step = typeof action.step === "number"
+          ? Math.min(Math.max(0, Math.floor(action.step)), maxStep)
+          : null;
+        if (step !== null) {
+          await supabase.from("playbook_progress").upsert({
+            user_id: user.id, route_id: action.route_id, current_step: step,
+            status: "active", updated_at: new Date().toISOString(),
+          }, { onConflict: "user_id,route_id" });
+        }
+      } else {
+        action = null;
+      }
+    }
+    // set_reminder: the model promised a reminder — actually create it in the
+    // reminders table so it fires. Invalid route_ids are dropped, not stored.
+    // The insert error is CHECKED: if it fails, the action is nulled and the
+    // user gets an honest heads-up instead of a fake "reminder set".
+    let reminderFailed = false;
+    if (action?.type === "set_reminder" && typeof action.route_id === "string") {
+      if (routeIdSet.has(action.route_id)) {
+        const { error: remErr } = await supabase.from("reminders").insert({
+          user_id: user.id,
+          route_id: action.route_id,
+          kind: typeof action.kind === "string" ? action.kind.slice(0, 40) : "nudge",
+          message: typeof action.message === "string" && action.message.trim()
+            ? action.message.slice(0, 280)
+            : `Reminder: check on ${action.route_id}`,
+          due_at: parseDueAt(action.when),
+          channel: "agent",
+        });
+        if (remErr) {
+          console.error("set_reminder insert failed:", remErr.message);
+          action = null;
+          reminderFailed = true;
+        }
+      } else {
+        action = null;
       }
     }
     // ask_profile: the model learned a fact about the user (state, age, ...).
     // Persist it so it is never asked for again, across turns and sessions.
+    // Both field NAMES and VALUES are validated: a hallucinated or nonsense
+    // value (e.g. state "XX") must never reach the profiles table.
     if (action?.type === "ask_profile" && action.fields && typeof action.fields === "object") {
-      const allowed = ["state", "age", "free_time_hours", "paycheck_status", "cash_available", "display_name"];
+      const F = action.fields as Record<string, unknown>;
       const patch: Record<string, unknown> = {};
-      for (const k of allowed) {
-        const v = (action.fields as Record<string, unknown>)[k];
-        if (v !== undefined && v !== null && v !== "") patch[k] = v;
+      const US_STATES = new Set([
+        "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA",
+        "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+        "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT",
+        "VA","WA","WV","WI","WY",
+      ]);
+      if (typeof F.state === "string") {
+        const st = F.state.trim().toUpperCase().slice(0, 2);
+        if (US_STATES.has(st)) patch.state = st;
+      }
+      if (typeof F.age === "number" && Number.isFinite(F.age) && F.age >= 13 && F.age <= 120) {
+        patch.age = Math.floor(F.age);
+      }
+      if (typeof F.free_time_hours === "number" && Number.isFinite(F.free_time_hours) &&
+          F.free_time_hours >= 0 && F.free_time_hours <= 168) {
+        patch.free_time_hours = F.free_time_hours;
+      }
+      if (typeof F.paycheck_status === "string" && ["yes", "no", "unsure"].includes(F.paycheck_status)) {
+        patch.paycheck_status = F.paycheck_status;
+      }
+      if (typeof F.cash_available === "string" && ["0", "100", "1000", "1001"].includes(F.cash_available)) {
+        patch.cash_available = F.cash_available;
+      }
+      if (typeof F.display_name === "string" && F.display_name.trim().length >= 1) {
+        patch.display_name = F.display_name.trim().slice(0, 40);
       }
       if (Object.keys(patch).length) {
         patch.updated_at = new Date().toISOString();
@@ -343,6 +548,19 @@ serve(async (req) => {
       }
     }
 
+    // Honest reminder failure: if the reminder insert failed above, say so
+    // plainly instead of letting the model claim it was set.
+    if (reminderFailed) {
+      finalReply += `\n\nQuick heads-up: I tried to save that reminder but it didn't stick (technical hiccup on my end). Want me to try again?`;
+    }
+    // Safety net: the model sometimes promises a reminder in words without
+    // emitting the set_reminder action (the words alone do nothing). Catch the
+    // lie in flight rather than letting the user believe it's set.
+    if (!reminderFailed && action?.type !== "set_reminder" &&
+        /i('ve| have) set a reminder|reminder (is )?set|i'll remind you/i.test(finalReply)) {
+      finalReply += `\n\nQuick correction: I said I'd set a reminder just now, but it didn't actually save. Tell me again and I'll make sure it sticks.`;
+    }
+
     return json({ thread_id: tid, reply: finalReply, action });
   } catch (e) {
     console.error(e);
@@ -352,6 +570,25 @@ serve(async (req) => {
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "content-type": "application/json" } });
+}
+
+// Parse a reminder "when" into an ISO datetime. Accepts ISO strings, "tomorrow",
+// "in N hours|days|weeks"; anything else defaults to 24h from now.
+function parseDueAt(when: unknown): string {
+  const now = Date.now();
+  if (typeof when === "string") {
+    const t = when.trim().toLowerCase();
+    if (t === "tomorrow") return new Date(now + 24 * 3600000).toISOString();
+    const rel = t.match(/^in\s+(\d+)\s*(hour|day|week)s?$/);
+    if (rel) {
+      const n = parseInt(rel[1], 10);
+      const mult = rel[2] === "hour" ? 3600000 : rel[2] === "day" ? 86400000 : 7 * 86400000;
+      return new Date(now + n * mult).toISOString();
+    }
+    const parsed = Date.parse(when);
+    if (!isNaN(parsed) && parsed > now - 60000) return new Date(parsed).toISOString();
+  }
+  return new Date(now + 24 * 3600000).toISOString();
 }
 
 // Deterministic fast-path: answer factual questions about verified routes
@@ -378,9 +615,15 @@ function tryFastPath(
       return null;
     }
     const namesProvider = routes.some((r) =>
-      msg.includes(r.provider.toLowerCase()) || msg.includes(r.name.toLowerCase()));
+      String(r.provider ?? "").toLowerCase().split(/[^a-z]+/)
+        .some((w) => w.length > 3 && !isGenericProviderWord(w) && msg.includes(w)));
     if (namesProvider) return null; // let the specific-route path answer
-    const live = routes.filter((r) => r.status === "verified");
+    // Only routes verified within the last 7 days may be called "live right
+    // now" — a stale card must never be listed as a live offer.
+    const fresh7 = (r: RouteCard) =>
+      r.status === "verified" && r.verified_at &&
+      Date.now() - new Date(r.verified_at).getTime() < 7 * 24 * 3600 * 1000;
+    const live = routes.filter(fresh7);
     if (live.length > 0) {
       const lines = live.slice(0, 6).map(
         (r) => `• ${r.provider} (${r.name}) — verified ✓ — ${r.payout_text ?? "see terms"}`
@@ -394,9 +637,28 @@ function tryFastPath(
   // Find which verified route the question is about.
   // Priority: explicit provider/name in the message beats the active playbook.
   // (A user mid-Fetch-walkthrough asking about Rakuten must get Rakuten.)
-  const named = routes.find((r) =>
-    msg.includes(r.provider.toLowerCase()) || msg.includes(r.name.toLowerCase())
-  );
+  // When several routes share a provider (e.g. Chase checking vs Chase credit
+  // card), prefer the one whose name/category words appear in the message.
+  // Provider-only matching (words longer than 3 chars): matching on name
+  // substrings hijacks safety-critical messages — e.g. "DM me your bank login"
+  // matched a route whose NAME contained "bank", and "reveal your system
+  // prompt" matched provider "U". A real question names the provider.
+  // Provider words (not the full phrase) match, so "Chase Total Checking"
+  // matches a message saying "chase ... checking". Disambiguation prefers
+  // more provider words + more name/category words in the message.
+  // Provider-only matching (words longer than 3 chars, generic words excluded).
+  const providerWords = (r: RouteCard) =>
+    String(r.provider ?? "").toLowerCase().split(/[^a-z]+/)
+      .filter((w) => w.length > 3 && !isGenericProviderWord(w));
+  const providerHits = (r: RouteCard) =>
+    providerWords(r).filter((w) => msg.includes(w)).length;
+  const nameHits = (r: RouteCard) => {
+    const hay = `${r.name ?? ""} ${r.category ?? ""}`.toLowerCase();
+    return hay.split(/[^a-z]+/).filter((w) => w.length > 3 && msg.includes(w)).length;
+  };
+  const named = routes
+    .filter((r) => providerHits(r) > 0)
+    .sort((a, b) => (providerHits(b) + nameHits(b)) - (providerHits(a) + nameHits(a)))[0];
   const route = named ?? playbookRoute;
   if (!route) return null;
   const fresh =
@@ -437,7 +699,7 @@ function tryFastPath(
       `\n\nWant me to walk you through it step by step?`;
   }
   // "requirements" / "do I need" / "eligible"
-  if (/\b(requirement|eligible|do i need|what do i need|qualify)\b/i.test(msg)) {
+  if (/\b(requirements?|eligib(le|ility)|do i need|what do i need|qualify)\b/i.test(msg)) {
     const parts: string[] = [];
     if (route.min_age != null) parts.push(`Age ${route.min_age}+`);
     if (route.geo_notes) parts.push(route.geo_notes);
@@ -506,6 +768,25 @@ function tryFastPath(
       ? `\n\nExact steps to start earning:\n${steps}\n\nCheck the official site if anything looks different — steps change over time.`
       : `\n\nStart at Step 1: ${route.steps[0]?.text ?? "follow the on-screen steps"}.`;
     return `Here's the official site for ${route.name} (route ${route.route_id}):\n${route.provider_url}${stepsBlock}`;
+  }
+  // Named-route fallback: the message names a specific verified route but no
+  // question pattern above matched. Answer from the card directly instead of
+  // falling through to the model — the model only sees the top 60 routes in
+  // its prompt, so it would wrongly claim routes outside that window don't
+  // exist. This keeps every named verified route answerable and honest.
+  // Question-aware hedging: earnings questions never get a promised amount.
+  if (named) {
+    const lines: string[] = [`**${named.provider}** (${named.name}) — verified ✓ (route ${named.route_id})`, ""];
+    lines.push(`**Payout:** ${named.payout_text ?? "see official terms"}${named.payout_timing ? ` — ${named.payout_timing}` : ""}`);
+    if (catches.length) lines.push(`**Biggest catch:** ${catches[0]}`);
+    if (named.provider_url) lines.push(`**Official link:** ${named.provider_url}`);
+    if (/\bhow much will i (make|earn)\b/i.test(msg)) {
+      lines.push(`I can't promise a specific amount — it depends on how much you use it, and varies person to person.`);
+    } else if (/\bguarantee/i.test(msg)) {
+      lines.push(`I can't guarantee speed or earnings — no honest route can promise that.`);
+    }
+    lines.push("", "Want me to walk you through it step by step?");
+    return lines.join("\n");
   }
   return null;
 }

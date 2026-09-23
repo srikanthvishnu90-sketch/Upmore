@@ -68,7 +68,8 @@ End your reply with: ACTION {"type":"...","route_id":"...","step":N}
 Types: start_walkthrough (begin a route's steps; include route_id),
 next_step (user finished a step, move to the next; include route_id and step),
 mark_stuck (user is stuck; include route_id and step),
-set_reminder (include route_id and when),
+set_reminder (include route_id, when as an ISO datetime or "tomorrow"/"in 3 days",
+and a short message like "check your Fetch points"),
 ask_profile (save a user fact; include "fields" with any of: state, age,
 free_time_hours, paycheck_status, cash_available, display_name).
 STEP NUMBERING: steps are 0-indexed in actions. Step 1 shown to the user is
@@ -76,7 +77,14 @@ step 0 in the action. When the user finishes "Step 1", emit next_step with
 step 1 (meaning: now on Step 2). When they finish "Step 2", emit step 2.
 The "currently on step N" line in your context already uses 1-indexed
 display numbers; subtract 1 for the action value.
-One action per reply. If no action is needed, omit the line.`;
+One action per reply. If no action is needed, omit the line.
+CRITICAL: the words alone do nothing. Never tell the user you set a reminder,
+started a walkthrough, or saved anything unless you emitted the matching ACTION
+line in the same reply — saying it without the action is a lie.
+You only see the top 60 routes below, but the full 1,500-route verified catalog
+backs every action. If the user names a provider or route ID that isn't shown,
+NEVER claim it doesn't exist — emit the action with the ID they gave you and
+the server validates it against all 1,500.`;
 
 export interface RouteCard {
   route_id: string;
@@ -97,6 +105,13 @@ export interface RouteCard {
   status: string;
   verified_at: string | null;
   expires_at: string | null;
+  // Verified numeric payout/time fields (DB numerics backfill; all 1500
+  // verified routes carry them). Used for earn-ratio ordering and the
+  // generated make-me-$X math.
+  payout_min: number | null;
+  payout_max: number | null;
+  time_min_minutes: number | null;
+  time_max_minutes: number | null;
 }
 
 // DB stores catches as a jsonb string; the card type says string[].
@@ -105,15 +120,20 @@ const catchesOf = (r: RouteCard): string[] =>
   Array.isArray(r.catches) ? r.catches : r.catches ? [String(r.catches)] : [];
 
 // Render route cards into the prompt. Only verified-fresh routes are marked LIVE;
+// expired routes (expires_at in the past) are marked EXPIRED deterministically;
 // everything else is context the agent must NOT present as an offer.
 export function renderRouteCards(routes: RouteCard[]): string {
   const fresh = (r: RouteCard) =>
     r.status === "verified" &&
     r.verified_at &&
     Date.now() - new Date(r.verified_at).getTime() < 7 * 24 * 3600 * 1000;
+  const now = Date.now();
   return routes
     .map((r) => {
-      const live = fresh(r) ? "LIVE (verified " + r.verified_at + ")" : "NOT LIVE — do not present as an offer";
+      const expired = r.expires_at && new Date(r.expires_at).getTime() < now;
+      const live = expired
+        ? "EXPIRED — do not present as an offer"
+        : fresh(r) ? "LIVE (verified " + r.verified_at + ")" : "NOT LIVE — do not present as an offer";
       const steps = r.steps
         .map((s, i) => `  ${i + 1}. ${s.text}` + (s.done_when ? ` [done when: ${s.done_when}]` : ""))
         .join("\n");
@@ -243,3 +263,31 @@ export const SCAM_FALLBACK =
   "straight with you: guaranteed daily money with no experience is a classic " +
   "scam pattern. I'd stay away from this one. If you want, I can walk you " +
   "through a verified route instead.";
+
+// False no-route claim: the model says "I don't have a verified route for X"
+// but the full catalog DOES contain a fresh-verified route for X. The model
+// only sees the top 60 routes in its prompt, so it lies about the other 1440.
+// Returns the matching route so the handler can correct with the real card.
+export function findFalseNoRouteClaim(
+  reply: string,
+  routes: RouteCard[],
+): RouteCard | null {
+  // Two phrasings: "don't have a verified route for X" (provider after "for")
+  // and "don't have a verified X route card" (provider between "verified" and "route").
+  const m = reply.match(
+    /don't have a verified route(?: card)? for ([A-Z][\w&' .-]{1,40}?)(?:,|\.| in my| so|\n|$)/i
+  ) ?? reply.match(
+    /don't have a verified ([A-Z][\w&' .-]{1,40}?) route card/i
+  ) ?? reply.match(/no verified route for ([A-Z][\w&' .-]{1,40}?)(?:,|\.| in my|\n|$)/i);
+  if (!m) return null;
+  const claimed = m[1].trim().toLowerCase();
+  const hit = routes.find((r) => {
+    const p = String(r.provider ?? "").toLowerCase();
+    return p.length > 3 && (claimed.includes(p) || p.includes(claimed));
+  });
+  if (!hit) return null;
+  const fresh =
+    hit.status === "verified" && hit.verified_at &&
+    Date.now() - new Date(hit.verified_at).getTime() < 7 * 24 * 3600 * 1000;
+  return fresh ? hit : null;
+}

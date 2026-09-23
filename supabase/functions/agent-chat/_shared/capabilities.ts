@@ -8,6 +8,11 @@ import type { RouteCard } from "./agent.ts";
 
 // ---------- shared ----------
 
+// Capability precedence (documented): gambling guard > privacy guard > scam
+// guard > make-me-$X > walkthrough > quant stocks. The safety-critical guards
+// always fire before any money-planning path; a money request can never
+// preempt a safety match.
+
 const fresh = (r: RouteCard): boolean =>
   r.status === "verified" &&
   !!r.verified_at &&
@@ -30,34 +35,116 @@ export const APP_LINKS: Record<string, { ios?: string; android?: string }> = {
 
 // Honest earning math per route. dollars_per_hour is a CONSERVATIVE blended
 // rate (accounts for availability, not the advertised best case). model tells
-// how the money actually arrives.
+// how the money actually arrives. schedulable=false routes can never be the
+// headline pick for "make me $X" (windfalls, needs-spend savings, slow
+// trickles, bonus waits) — they only appear as "closest honest plays".
 interface CashMath {
   dollars_per_hour: number | null;
   model: "hourly" | "needs_spend" | "windfall" | "slow" | "credit_only" | "bonus_wait";
   math: string;      // one-line honest math, e.g. "~$10/hr of studies"
   min_cashout: string;
   catch: string;     // biggest catch in one line
+  schedulable: boolean;
 }
 const CASH_MATH: Record<string, CashMath> = {
-  R0221: { dollars_per_hour: 15, model: "hourly", math: "tests pay ~$10 per 20 min when available; blended ~$15/hr", min_cashout: "$10 per test, paid ~7 days later via PayPal", catch: "You must pass a practice test, and paid tests aren't always available." },
-  R0220: { dollars_per_hour: 10, model: "hourly", math: "studies pay at least $8/hr, typically ~$10/hr", min_cashout: "~$6.50 (£5) via PayPal", catch: "Studies appear in waves — some days are quiet." },
-  R0292: { dollars_per_hour: 30, model: "hourly", math: "Typical $30–$350 per case, ~1–2 hrs each — but only when a case is offered to you", min_cashout: "per case; payment terms stated upfront", catch: "Cases are scarce; you can't count on one being there today." },
-  R0140: { dollars_per_hour: 3, model: "hourly", math: "surveys run ~$0.20–$2 each; realistic ~$3/hr", min_cashout: "100 SB (~$1); first redemption needs ID verification (days)", catch: "Slow grind — $20 takes many hours, and first payout is delayed by verification." },
-  R0118: { dollars_per_hour: null, model: "needs_spend", math: "cash back on groceries you're already buying; $20 min to withdraw", min_cashout: "$20 to withdraw", catch: "You have to spend money on groceries first — it's savings, not earnings." },
-  R0119: { dollars_per_hour: null, model: "needs_spend", math: "~25+ pts per receipt ≈ a few cents; $20 takes hundreds of receipts", min_cashout: "$10 in points for first gift card", catch: "Very slow — months of receipts to reach $20." },
-  R0116: { dollars_per_hour: null, model: "slow", math: "1–15% cash back, but pays quarterly (Feb/May/Aug/Nov)", min_cashout: "$5.01", catch: "Payout takes 3–14 weeks to confirm, then quarterly. Too slow for fast cash." },
-  R0446: { dollars_per_hour: null, model: "credit_only", math: "$0.10–$1.00 per survey — paid as Google Play credit, NOT cash", min_cashout: "n/a — credit only", catch: "It's Play Store credit, not spendable cash. Doesn't count toward $20 cash." },
-  R0355: { dollars_per_hour: null, model: "slow", math: "~$5–$10/month in gift cards from daily searching", min_cashout: "gift card thresholds", catch: "Months to reach $20, and it's gift cards, not cash." },
-  R0213: { dollars_per_hour: null, model: "slow", math: "passive points for keeping the app installed; slow trickle", min_cashout: "varies", catch: "Passive but very slow — not a $20 plan." },
-  R0295: { dollars_per_hour: null, model: "windfall", math: "either $0 or a surprise — can't be planned", min_cashout: "n/a", catch: "Most searches find nothing. Check once, don't count on it." },
-  R0302: { dollars_per_hour: null, model: "windfall", math: "$5–$1000+ per settlement, but payouts take months", min_cashout: "n/a", catch: "Slow and uncertain — not a plan for $20 this week." },
-  R0098: { dollars_per_hour: null, model: "bonus_wait", math: "Your friend gets $100; your referral bonus varies by your offer — requires their direct deposit", min_cashout: "n/a — referral bonus", catch: "Needs a friend to sign up and fund — out of your control; pays after all qualifying steps." },
-  R0096: { dollars_per_hour: null, model: "bonus_wait", math: "$25–$300+ bonus with direct deposit; weeks to pay", min_cashout: "n/a — bank bonus", catch: "Bigger payout, but weeks out and needs direct deposit." },
-  R0036: { dollars_per_hour: null, model: "bonus_wait", math: "$400 bonus with qualifying direct deposit; pays in ~10 business days after qualifying", min_cashout: "n/a — bank bonus", catch: "Biggest payout here, but you need real direct deposits and patience." },
+  R0221: { dollars_per_hour: 15, model: "hourly", math: "tests pay ~$10 per 20 min when available; blended ~$15/hr", min_cashout: "$10 per test, paid ~7 days later via PayPal", catch: "You must pass a practice test, and paid tests aren't always available.", schedulable: true },
+  R0220: { dollars_per_hour: 10, model: "hourly", math: "studies pay at least $8/hr, typically ~$10/hr", min_cashout: "~$6.50 (£5) via PayPal", catch: "Studies appear in waves — some days are quiet.", schedulable: true },
+  R0292: { dollars_per_hour: 30, model: "hourly", math: "Typical $30–$350 per case, ~1–2 hrs each — but only when a case is offered to you", min_cashout: "per case; payment terms stated upfront", catch: "Cases are scarce; you can't count on one being there today.", schedulable: true },
+  R0140: { dollars_per_hour: 3, model: "hourly", math: "surveys run ~$0.20–$2 each; realistic ~$3/hr", min_cashout: "100 SB (~$1); first redemption needs ID verification (days)", catch: "Slow grind — $20 takes many hours, and first payout is delayed by verification.", schedulable: true },
+  R0118: { dollars_per_hour: null, model: "needs_spend", math: "cash back on groceries you're already buying; $20 min to withdraw", min_cashout: "$20 to withdraw", catch: "You have to spend money on groceries first — it's savings, not earnings.", schedulable: false },
+  R0119: { dollars_per_hour: null, model: "needs_spend", math: "~25+ pts per receipt ≈ a few cents; $20 takes hundreds of receipts", min_cashout: "$10 in points for first gift card", catch: "Very slow — months of receipts to reach $20.", schedulable: false },
+  R0116: { dollars_per_hour: null, model: "slow", math: "1–15% cash back, but pays quarterly (Feb/May/Aug/Nov)", min_cashout: "$5.01", catch: "Payout takes 3–14 weeks to confirm, then quarterly. Too slow for fast cash.", schedulable: false },
+  R0446: { dollars_per_hour: null, model: "credit_only", math: "$0.10–$1.00 per survey — paid as Google Play credit, NOT cash", min_cashout: "n/a — credit only", catch: "It's Play Store credit, not spendable cash. Doesn't count toward $20 cash.", schedulable: false },
+  R0355: { dollars_per_hour: null, model: "slow", math: "~$5–$10/month in gift cards from daily searching", min_cashout: "gift card thresholds", catch: "Months to reach $20, and it's gift cards, not cash.", schedulable: false },
+  R0213: { dollars_per_hour: null, model: "slow", math: "passive points for keeping the app installed; slow trickle", min_cashout: "varies", catch: "Passive but very slow — not a $20 plan.", schedulable: false },
+  R0295: { dollars_per_hour: null, model: "windfall", math: "either $0 or a surprise — can't be planned", min_cashout: "n/a", catch: "Most searches find nothing. Check once, don't count on it.", schedulable: false },
+  R0302: { dollars_per_hour: null, model: "windfall", math: "$5–$1000+ per settlement, but payouts take months", min_cashout: "n/a", catch: "Slow and uncertain — not a plan for $20 this week.", schedulable: false },
+  R0098: { dollars_per_hour: null, model: "bonus_wait", math: "Your friend gets $100; your referral bonus varies by your offer — requires their direct deposit", min_cashout: "n/a — referral bonus", catch: "Needs a friend to sign up and fund — out of your control; pays after all qualifying steps.", schedulable: false },
+  R0096: { dollars_per_hour: null, model: "bonus_wait", math: "$25–$300+ bonus with direct deposit; weeks to pay", min_cashout: "n/a — bank bonus", catch: "Bigger payout, but weeks out and needs direct deposit.", schedulable: false },
+  R0036: { dollars_per_hour: null, model: "bonus_wait", math: "$400 bonus with qualifying direct deposit; pays in ~10 business days after qualifying", min_cashout: "n/a — bank bonus", catch: "Biggest payout here, but you need real direct deposits and patience.", schedulable: false },
 };
 
-const MAKE_X_RX = /\bmake me\s*\$?\s?(\d{1,4})\b|\bi need\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some |extra )?money\b|\bhelp me make (some |extra )?money\b|\b(trying to make (some |extra )?money)\b/i;
-const VAGUE_OPENER_RX = /i want to make (some |extra )?money|help me make (some |extra )?money|trying to make (some |extra )?money/i;
+// Derived earning math for the rest of the catalog, generated from the DB's
+// verified numeric payout/time fields (all 1500 verified routes have them).
+// Hand-curated CASH_MATH entries above always win when present.
+const BONUS_WAIT_CATS = new Set([
+  "Bank Bonus", "Business Banking", "Credit Card Bonus", "Card Bonus",
+  "Brokerage Promo", "Fintech Bonus", "Fintech/Neobank", "Telecom Promo",
+  "Signup Bonus", "Store Signup", "Referral Bonus", "App Referral",
+  "Crypto Reward", "Prediction Market",
+]);
+const NEEDS_SPEND_CATS = new Set([
+  "Rebate/Incentive", "Cashback/Shopping", "Energy Switching", "Buyback",
+  "Recycling", "Receipt/Loyalty", "Insurance/Quote", "Government",
+  "Student Program", "Mystery Shopping",
+]);
+const WINDFALL_CATS = new Set(["Unclaimed/Recovery", "Competition"]);
+// Creator / referral / ambassador programs pay per conversion, monthly
+// commission tiers, or one-off bonuses — a payout midpoint divided by
+// active minutes is NOT an hourly rate and must never be presented as one.
+const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador"]);
+
+function deriveCashMath(r: RouteCard): CashMath | null {
+  const pmin = Number(r.payout_min), pmax = Number(r.payout_max);
+  const tmin = Number(r.time_min_minutes), tmax = Number(r.time_max_minutes);
+  if (!isFinite(pmin) || !isFinite(pmax) || pmin < 0 || pmax < 0) return null;
+  const pmid = (pmin + pmax) / 2;
+  const tmid = isFinite(tmin) && isFinite(tmax) && tmin >= 0 && tmax >= 0
+    ? Math.max(1, (tmin + tmax) / 2) : NaN;
+  const cat = r.category ?? "";
+  const catch1 = catchesOf(r)[0] ?? "Conditions apply — read the official terms before you start.";
+  const cashout = r.payout_timing ?? "see the official terms";
+  if (BONUS_WAIT_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "bonus_wait",
+      math: `$${Math.round(pmid)} bonus with qualifying activity; pays weeks after you qualify`,
+      min_cashout: cashout, catch: catch1, schedulable: false,
+    };
+  }
+  if (NEEDS_SPEND_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "needs_spend",
+      math: pmid > 0 ? `up to ~$${Math.round(pmid)} back on spending you're already doing` : "savings on spending you're already doing",
+      min_cashout: cashout, catch: "You have to spend first — it's savings on intended spending, not earnings.", schedulable: false,
+    };
+  }
+  if (WINDFALL_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "windfall",
+      math: pmid > 0 ? `up to ~$${Math.round(pmid)} — but only if there's money with your name on it` : "either $0 or a surprise — can't be planned",
+      min_cashout: "n/a", catch: "Most checks find nothing. Check once, don't count on it.", schedulable: false,
+    };
+  }
+  if (VARIABLE_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "variable",
+      math: pmid > 0 ? `variable earnings — up to ~$${Math.round(pmid)} per conversion/payout, no reliable hourly rate` : "variable earnings — no reliable hourly rate",
+      min_cashout: cashout, catch: "Earnings depend on conversions or volume, not hours worked — one payout could cover it, or nothing could.", schedulable: false,
+    };
+  }
+  // Hourly math needs a real earnings floor. A $0 minimum (bounties,
+  // competitions, winner-take-all tiers, finders fees) is variable income —
+  // presenting a midpoint as "$/hr of active effort" would be a lie.
+  if (pmin <= 0) {
+    return {
+      dollars_per_hour: null, model: "variable",
+      math: pmax > 0 ? `variable — up to ~$${Math.round(pmax)} if it pays out, $0 floor` : "variable earnings — no reliable hourly rate",
+      min_cashout: cashout, catch: "You could earn nothing here — only count money that's actually paid out.", schedulable: false,
+    };
+  }
+  // Default: variable paid work — honest $/hr from the verified terms.
+  if (!isFinite(tmid) || pmid <= 0) return null;
+  const dph = pmid / (tmid / 60);
+  const dphTxt = dph >= 20 ? `~$${Math.round(dph)}` : dph >= 1 ? `~$${dph.toFixed(1)}` : `~$${dph.toFixed(2)}`;
+  return {
+    dollars_per_hour: Math.round(dph * 10) / 10, model: "hourly",
+    math: `${dphTxt}/hr of active effort from the verified terms`,
+    min_cashout: cashout, catch: catch1, schedulable: true,
+  };
+}
+
+const MAKE_X_RX = /\bmake me\s*\$?\s?(\d{1,4})\b|\bmake \$?\s?(\d{1,4})\b|\bi need\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some )?(extra )?money\b|\bhelp me make (some )?(extra )?money\b|\b(trying to make (some )?(extra )?money)\b/i;
+const VAGUE_OPENER_RX = /i want to make (some )?(extra )?money|help me make (some )?(extra )?money|trying to make (some )?(extra )?money/i;
 
 export function tryMakeMeX(message: string, routes: RouteCard[]): string | null {
   const m = message.match(MAKE_X_RX);
@@ -65,19 +152,22 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   // Vague openers ("i want to make money") anchor on a concrete $20 plan.
   const target = VAGUE_OPENER_RX.test(message)
     ? 20
-    : parseInt(m[1] ?? m[2] ?? m[4] ?? "0", 10);
+    : parseInt(m[1] ?? m[2] ?? m[3] ?? m[5] ?? "0", 10);
   if (!target || target <= 0 || target > 10000) return null;
   const live = routes.filter(fresh).filter((r) => (r.lane ?? "Standard") === "Standard");
   if (!live.length) return null;
 
-  // Rank verified routes by honest hours to reach the target.
+  // Rank verified routes by honest hours to reach the target. Hand-curated
+  // entries win; the rest are derived from DB numerics. Non-schedulable
+  // routes (windfalls, needs-spend, bonus waits) can never be the headline
+  // pick — they only show up as closest honest plays.
   const ranked = live
-    .map((r) => ({ r, cm: CASH_MATH[r.route_id] }))
+    .map((r) => ({ r, cm: CASH_MATH[r.route_id] ?? deriveCashMath(r) }))
     .filter((x) => x.cm)
     .map((x) => ({
       ...x,
-      hours: x.cm.model === "hourly" && x.cm.dollars_per_hour
-        ? target / x.cm.dollars_per_hour
+      hours: x.cm!.schedulable && x.cm!.dollars_per_hour
+        ? target / x.cm!.dollars_per_hour
         : Infinity,
     }))
     .sort((a, b) => a.hours - b.hours);
@@ -85,14 +175,14 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const pick = ranked.find((x) => x.hours < Infinity);
   if (!pick) {
     // Nothing verified can earn cash on a schedule — say so honestly.
+    const alternates = ranked.filter((x) => x.hours === Infinity).slice(0, 3);
     return (
       `Real talk on $${target}: none of my verified routes can get you there on a schedule — ` +
       `they're cashback (needs spending), slow trickles, or one-time windfalls.\n\n` +
       `The closest honest plays:\n` +
-      live.slice(0, 3).map((r) => {
-        const cm = CASH_MATH[r.route_id];
-        return `• ${r.provider} (${r.route_id}) — ${cm ? cm.math : r.payout_text ?? ""}`;
-      }).join("\n") +
+      (alternates.length
+        ? alternates.map((x) => `• ${x.r.provider} (${x.r.route_id}) — ${x.cm!.math}`).join("\n")
+        : live.slice(0, 3).map((r) => `• ${r.provider} (${r.route_id}) — ${r.payout_text ?? ""}`).join("\n")) +
       `\n\nWant the full step-by-step for any of these?`
     );
   }
@@ -102,10 +192,12 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const links = APP_LINKS[r.route_id];
   const linkLine = r.provider_url +
     (links?.ios || links?.android ? `\nApp: ${links.ios ?? links.android}` : "");
-  const honest =
-    hours <= 4
-      ? `about ${Math.max(1, Math.round(hours))} hour${Math.round(hours) === 1 ? "" : "s"} of work`
+  const honest = (() => {
+    const h = Math.max(1, Math.round(hours));
+    return hours <= 4
+      ? `about ${h} hour${h === 1 ? "" : "s"} of work`
       : `roughly ${Math.round(hours)} hours of work`;
+  })();
   const others = ranked.filter((x) => x.r.route_id !== r.route_id && x.hours < Infinity).slice(0, 2);
 
   return (
@@ -272,7 +364,7 @@ export function tryWalkthrough(
       reply:
         "I haven't verified that one yet, so I can't walk you through it " +
         "as a live offer — I'd be guessing at the steps and the payout, and I " +
-        "don't do that. Ask me about one of my 14 verified routes instead.",
+        "don't do that. Ask me about one of my verified routes instead.",
       routeId: rid,
     };
   }
@@ -297,6 +389,50 @@ export function tryWalkthrough(
   };
 }
 
+// ---------- 8. Deterministic reminder intent ----------
+// "remind me tomorrow to check my Fetch points for R0119" -> the server
+// creates the reminder itself instead of relying on the model to emit an
+// action line (the model sometimes promises in words and forgets the line).
+const REMIND_RX = /\bremind me\b/i;
+const WHEN_WORDS_RX = /\btomorrow\b|in\s+\d+\s*(hour|day|week)s?\b|\b\d{4}-\d{2}-\d{2}/i;
+
+export function tryReminderIntent(
+  message: string,
+  routes: any[],
+): { routeId: string; when: string; text: string } | null {
+  if (!REMIND_RX.test(message)) return null;
+  const t = message.toLowerCase();
+  let rid: string | null = null;
+  const idm = t.match(/\br0\d{3}\b/);
+  if (idm) rid = idm[0].toUpperCase();
+  let provider = "";
+  if (!rid) {
+    const hit = routes.find(
+      (r) => String(r.provider ?? "").length > 3 &&
+        t.includes(String(r.provider).toLowerCase()),
+    );
+    if (hit) { rid = hit.route_id; provider = String(hit.provider); }
+  } else {
+    const r = routes.find((x) => x.route_id === rid);
+    if (r) provider = String(r.provider ?? "");
+  }
+  if (!rid) return null;
+  const r = routes.find((x) => x.route_id === rid);
+  if (!r) return null; // unknown route id — leave it to the model
+  const whenM = message.match(WHEN_WORDS_RX);
+  const when = whenM ? whenM[0] : "tomorrow";
+  // Extract the "what": strip framing, when-words, route id, provider name.
+  let text = message
+    .replace(/\bremind me\b/i, " ")
+    .replace(WHEN_WORDS_RX, " ")
+    .replace(new RegExp(`\\b${rid}\\b`, "i"), " ");
+  if (provider) text = text.replace(new RegExp(provider.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), " ");
+  text = text.replace(/^\s*to\s+/i, "").replace(/\s+for\s*$/i, "")
+    .replace(/\s{2,}/g, " ").trim();
+  if (!text) text = `check on ${provider || rid}`;
+  return { routeId: rid, when, text };
+}
+
 // ---------- 5. Privacy guard: never serve another user's data ----------
 // Fires before the fast path so "show me another user's email" can never be
 // misread as an offers question. Nothing is leaked; the refusal is explicit.
@@ -312,14 +448,33 @@ export function tryPrivacyGuard(message: string): string | null {
   return null;
 }
 
+// ---------- 5b. System-prompt extraction guard ----------
+// Deterministic refusal: the model sometimes leaks implementation details
+// (table names, "edge function") when asked for its instructions. A fixed
+// refusal is reliable and never leaks.
+const SYSPROMPT_RX = /\bsystem prompt\b|reveal your (instructions|prompt)|show me your (instructions|prompt)/i;
+
+export function trySyspromptGuard(message: string): string | null {
+  if (SYSPROMPT_RX.test(message)) {
+    return "I can't do that — my instructions stay private so I can do my job " +
+      "reliably. I'm here to walk you through verified money-making routes: " +
+      "real steps, real links, real catches. What do you want to earn first?";
+  }
+  return null;
+}
+
 // ---------- 6. Scam guard ----------
 // High-stakes safety patterns get a deterministic hard warning, not a
 // model improvisation. Patterns are narrow (fee + gift cards, not gift
 // cards alone — Microsoft Rewards legitimately pays in gift cards).
 const SCAM_FEE_RX = /fee|upfront|pay.{0,20}(before|first|to start)/i;
 const SCAM_CHECK_RX = /deposit.{0,40}check.{0,40}(wire|send.{0,20}back)|wire.{0,20}back/i;
-const SCAM_CRYPTO_RX = /doubl(e|ing).{0,30}(crypto|bitcoin|btc)|send.{0,30}(btc|bitcoin|crypto).{0,20}first/i;
-const SCAM_LOGIN_RX = /(bank|account).{0,25}(login|password|credentials).{0,40}(send|share|give|dm|tell me)|send.{0,40}(bank|account).{0,25}(login|password)/i;
+// Crypto-doubling scams, widened: catches "double it" phrasing with a crypto
+// noun anywhere in the message (not just adjacent), plus send-first and
+// they'll-send-back variants. Still narrow enough not to fire on legit
+// questions about a route's crypto reward (no "double"/send-first language).
+const SCAM_CRYPTO_RX = /doubl(e|ing).{0,30}(crypto|bitcoin|btc)|(crypto|bitcoin|btc).{0,40}doubl(e|ing)|send.{0,30}(btc|bitcoin|crypto).{0,20}(first|back)|send.{0,30}(btc|bitcoin|crypto).{0,30}(he'll|they'll|it'll).{0,15}(double|send.{0,10}back)/i;
+const SCAM_LOGIN_RX = /(bank|account).{0,25}(login|password|credentials).{0,40}(send|share|give|dm|tell me)|send.{0,40}(bank|account).{0,25}(login|password)|\bdm\b.{0,40}(bank|account).{0,25}(login|password|credentials)/i;
 const SCAM_RICHES_RX = /guarantee.{0,40}\$[\d,]+.{0,25}(a|per)\s*day/i;
 
 export function tryScamGuard(message: string): string | null {
@@ -341,7 +496,7 @@ export function tryScamGuard(message: string): string | null {
     `Stop — that's a scam. Don't do it.\n\n${why}\n\n` +
     `The rule is simple: never pay to start earning, never share logins, ` +
     `and nobody hands you free money. If you want real earnings without ` +
-    `the risk, ask me to walk you through one of my 14 verified routes.`
+    `the risk, ask me to walk you through one of my verified routes.`
   );
 }
 
@@ -349,12 +504,17 @@ export async function tryCapabilities(
   message: string,
   routes: RouteCard[],
 ): Promise<{ reply: string; routeId?: string } | null> {
+  // Note: gambling/privacy/scam guards run even earlier in index.ts (before
+  // the catalog fetch) for speed; they're listed here as a fallback in case
+  // that path is ever bypassed.
   const gambling = tryGamblingGuard(message);
   if (gambling) return { reply: gambling };
   const privacy = tryPrivacyGuard(message);
   if (privacy) return { reply: privacy };
   const scam = tryScamGuard(message);
   if (scam) return { reply: scam };
+  const sysprompt = trySyspromptGuard(message);
+  if (sysprompt) return { reply: sysprompt };
   const makeMe = tryMakeMeX(message, routes);
   if (makeMe) return { reply: makeMe };
   const walk = tryWalkthrough(message, routes);

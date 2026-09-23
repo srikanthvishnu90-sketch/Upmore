@@ -145,6 +145,7 @@
   .move.first { background: linear-gradient(150deg, #24573F 0%, #102A1E 100%); border-color: rgba(79,163,122,.3); padding: 18px; }
   .move .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .badge { font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 999px; background: rgba(79,163,122,.16); color: #9BD6B6; white-space: nowrap; }
+  .xearn { display: block; font-size: 12.5px; font-weight: 700; color: #9BD6B6; margin-top: 2px; }
   .badge.warn { background: var(--sky-soft); color: #A9D4EC; }
   .step { font-size: 13px; color: var(--muted); }
   .move.first .step { color: rgba(255,255,255,.7); }
@@ -318,6 +319,7 @@
   .xpill { font-size:11.5px; font-weight:600; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 9px; white-space:nowrap; align-self:center; }
   .rbadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:var(--sky); border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .vbadge { font-size:10.5px; font-weight:700; color:#fff; background:#1F7A4D; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
+  .abadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:#FFD666; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .xfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; font-size:12.5px; color:var(--dim); }
   .xfoot a { color:var(--sky); font-weight:600; text-decoration:none; white-space:nowrap; }
   .ghostbtn { width:100%; margin-top:12px; padding:14px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:14.5px; font-weight:600; cursor:pointer; }
@@ -599,7 +601,7 @@
       <p class="psub" id="xcount"></p>
       <div class="xsearch">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="xq" type="search" placeholder="Search 535 ways to earn…" autocomplete="off" aria-label="Search offers">
+        <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
       </div>
       <div class="chips" id="xchips" role="group" aria-label="Filter by difficulty"></div>
       <div class="xcats" id="xcats" role="group" aria-label="Filter by category"></div>
@@ -642,8 +644,8 @@
       <button class="prow" data-go="about"><span class="pl">Name and state<small>Who&apos;s earning, and where</small></span><span class="pv" id="pAbout">Vish &middot; Illinois</span></button>
       <button class="prow" data-go="situation"><span class="pl">Money setup<small>Paycheck and cash you can park</small></span><span class="pv" id="pSit">Direct deposit &middot; Up to $100</span></button>
       <h3 class="wsec">Notifications</h3>
-      <div class="prow"><span class="pl">Payout reminders<small>Nudges before money lands</small></span><button class="tgl" aria-pressed="true" aria-label="Payout reminders"><i></i></button></div>
-      <div class="prow"><span class="pl">New offers<small>When a better move appears</small></span><button class="tgl" aria-pressed="true" aria-label="New offers"><i></i></button></div>
+      <div class="prow"><span class="pl">Payout reminders<small>Nudges before money lands</small></span><button class="tgl prefTgl" id="remTgl" aria-pressed="true" aria-label="Payout reminders"><i></i></button></div>
+      <div class="prow"><span class="pl">New offers<small>When a better move appears</small></span><button class="tgl prefTgl" id="newsTgl" aria-pressed="true" aria-label="New offers"><i></i></button></div>
       <h3 class="wsec">About</h3>
       <button class="prow" id="howMoney"><span class="pl">How Upmore makes money<small>Short version: not from you</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -738,12 +740,14 @@
   };
 
   /* ================= Real offer data =================
-     Built from the Upmore Money Methods catalog (535 routes, 4,953 playbook
-     steps). Injected at build time by build-app.py. Every route in the
-     catalog is currently CONFIRM OFFICIAL: researched, but live provider
-     terms not yet captured — the UI must say so honestly. */
+     Built from the Upmore Money Methods catalog. Injected at build time by
+     build-app.py — route counts below are dynamic (see build-time counters). */
   const D = UPMORE_DATA;
-  const stdRoutes = () => D.routes.filter(r => r.lane === "Standard");
+  // Platform-aware: prefer per-platform app store links when the route has them.
+  const IS_IOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  // Retired routes (offer ended) never render as earnable anywhere.
+  const stdRoutes = () => D.routes.filter(r => r.lane === "Standard" && r.status !== "retired");
   const routeById = id => D.routes.find(r => r.id === id);
   const CATICON = {
     "Cashback/Shopping":"tag", "Bank Bonus":"card", "Unclaimed/Recovery":"bank",
@@ -753,12 +757,29 @@
     "UGC/Creator":"gift", "Game/Offerwall":"gift", "AI Training":"flask",
     "Media/Music":"tag", "Rebate/Incentive":"tag", "Student Program":"bank",
     "Prediction Market":"chart", "Crypto Reward":"chart", "Brand Ambassador":"gift",
-    "Voiceover/Audio":"chart", "Other Online":"tag"
+    "Voiceover/Audio":"chart", "Other Online":"tag",
+    "Insurance/Quote":"tag", "Telecom Promo":"tag", "Plasma Donation":"flask",
+    "Clinical Trial":"flask", "Mock Jury":"bank", "Microtask":"chart",
+    "Receipt/Loyalty":"tag", "Buyback":"gift", "Recycling":"tag",
+    "Government":"bank", "Pet Sitting":"gift", "Tutoring":"chart",
+    "Design Market":"gift", "Mystery Shopping":"chart", "Car Advertising":"tag",
+    "Energy Switching":"tag", "Store Signup":"gift"
   };
   const XTILE = { green:"rgba(79,163,122,.20)", sky:"rgba(111,179,214,.20)" };
   const tileColor = r => r.tier === "Very Easy" ? XTILE.green : XTILE.sky;
   const routeTitle = r => `${r.provider} — ${r.method}`;
   const routeMeta = r => [r.reward, r.time_to_first].filter(Boolean).join(" · ");
+  const fmt$= v => v == null ? "—" : (Number.isInteger(v) ? "$" + v : "$" + v.toFixed(2));
+  const earnLine = r => {
+    if (r.payout_max == null || r.time_max_minutes == null) return "";
+    const pm = (r.payout_min === 0 && r.payout_max === 0) ? "Varies"
+      : r.payout_min === r.payout_max ? `≈${fmt$(r.payout_max)}`
+      : `≈${fmt$(r.payout_min)}–${fmt$(r.payout_max)}`;
+    const tm = r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min`
+      : `≈${r.time_min_minutes}–${r.time_max_minutes} min`;
+    const rt = r.earn_ratio == null ? "" : ` · ≈${r.earn_ratio >= 100 ? Math.round(r.earn_ratio) : r.earn_ratio >= 10 ? r.earn_ratio.toFixed(1) : r.earn_ratio.toFixed(2)}/min`;
+    return `${pm} · ${tm}${rt}`;
+  };
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   }
@@ -841,9 +862,40 @@
   };
   $("sitGo").onclick = next;
 
-  /* ================= Plan ================= */
+  /* ================= Plan =================
+     Moves are ranked per user: earn ratio adjusted for their weekly time and
+     cash on hand. Persisted in PLAN_MOVES so Home, Guide, and Profile all see
+     the same 3 moves (buildPlan runs once; the others reattach). */
+  let PLAN_MOVES = null;
+  const earnRatioOf = r => {
+    if (r.payout_max == null || r.time_max_minutes == null) return 0;
+    const pm = ((r.payout_min ?? 0) + r.payout_max) / 2;
+    const tm = Math.max(1, ((r.time_min_minutes ?? 0) + r.time_max_minutes) / 2);
+    return pm / tm;
+  };
+  const NEEDS_SPEND_CATS = ["Rebate/Incentive","Cashback/Shopping","Energy Switching","Buyback","Recycling","Receipt/Loyalty","Insurance/Quote","Government","Student Program","Mystery Shopping"];
+  function rankMoves() {
+    const d = planData();
+    const mins = parseInt(d.time, 10) || 60;
+    const cash = parseInt(d.cash, 10);
+    const noCash = (cash || 0) <= 0;
+    const scored = stdRoutes()
+      // $0 cash: spend-dependent routes are NOT actionable first moves —
+      // showing a broke user a "move" that requires spending is a broken
+      // promise. They stay discoverable in Explore; they just can't lead.
+      .filter(r => !(noCash && NEEDS_SPEND_CATS.includes(r.category)))
+      .map(r => {
+      let s = earnRatioOf(r);
+      const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
+      if (tmid > 60 && tmid > mins * 3) s *= 0.5;   // needs more active time than they have
+      return { r, s };
+    });
+    scored.sort((a, b) => b.s - a.s);
+    return scored.map(x => x.r);
+  }
   function planData() {
     const base = Object.assign({ name: "Vish", state: "IL", time: "60", paycheck: "yes", cash: "100" }, data);
+    if (PLAN_MOVES) base._moves = PLAN_MOVES;
     if (dbProfile) {
       if (dbProfile.display_name) base.name = dbProfile.display_name;
       if (dbProfile.state) base.state = dbProfile.state;
@@ -856,9 +908,10 @@
   function buildPlan() {
     const d = planData();
     const st = NAMES[d.state] || "your state";
-    const moves = stdRoutes().slice(0, 3);
+    const moves = rankMoves();
+    PLAN_MOVES = moves;
     d._moves = moves;
-    const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time];
+    const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";
     $("planTitle").textContent = `${d.name}, here are your first 3 moves`;
     $("based").innerHTML = `Picked for ${st} · ${tl} a week · <button type="button" id="editBtn">Edit answers</button>`;
     $("editBtn").onclick = () => show("about");
@@ -867,7 +920,7 @@
         <div class="top"><span class="step">Move ${n + 1}</span><span class="badge">${esc(r.tier)}</span></div>
         <h3>${esc(routeTitle(r))}</h3>
         <p class="meta">${esc(routeMeta(r))}</p>
-        <p class="reason">Why this one: the easiest route in the catalog, ${esc(short(r.time_to_first || "quick to start", 60))}.</p>
+        <p class="reason">Why this one: the best earn rate for your time and budget, ${esc(short(r.time_to_first || "quick to start", 60))}.</p>
       </div>`).join("");
   }
 
@@ -915,7 +968,12 @@
   function stepLinks(step, route, isFirst) {
     const found = (step.text.match(/https?:\/\/[^\s)"']+/g) || []).filter((u, i, a) => a.indexOf(u) === i);
     const links = [...found];
-    if (isFirst && route.url && !links.includes(route.url)) links.unshift(route.url);
+    // Platform-aware app link: prefer the route's per-platform store URL.
+    const appLink = IS_IOS ? route.ios_url : route.android_url;
+    if (isFirst) {
+      if (appLink && !links.includes(appLink)) links.unshift(appLink);
+      else if (route.url && !links.includes(route.url)) links.unshift(route.url);
+    }
     return links;
   }
 
@@ -974,7 +1032,7 @@
 
   function renderHome() {
     const d = planData();
-    const moves = d._moves || stdRoutes().slice(0, 3);
+    const moves = d._moves || rankMoves();
     const r = moves[0];
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
@@ -1036,22 +1094,25 @@
   function guideCtx() {
     const d = planData();
     const st = NAMES[d.state] || "your state";
-    const tl = { "15": "15 min", "60": "about an hour", "180": "a few hours" }[d.time];
+    const tl = { "15": "15 min", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";
     const pay = { yes: "direct deposit", no: "no direct deposit", unsure: "paycheck unclear" }[d.paycheck];
     return `Your plan: ${st} · ${pay} · ${tl} a week`;
   }
 
   function routeCard(r) {
-    return { tag: `${r.category} · ${r.tier || "Unranked"}`, title: routeTitle(r), meta: routeMeta(r) };
+    return { tag: `${r.category} · ${r.tier || "Unranked"}`, title: routeTitle(r), meta: routeMeta(r),
+      aff: r.affiliate ? "We may earn a commission on this offer — it never comes out of your pocket." : "" };
   }
   function routeParas(r) {
-    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.`];
+    const verified = r.status === "verified";
+    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.${verified ? " Checked against " + r.provider + "'s own official terms." : ""}`];
     if (r.requirements) p.push(`You'll need: ${r.requirements}`);
     if (r.payout_timing) p.push(`When it pays: ${r.payout_timing}`);
     if (r.catches) p.push(`The catch, straight: ${r.catches}`);
     if (r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0)
       p.push(`Important: this pays as ${r.cash_or_credit} — not cash in hand.`);
-    p.push(`One honest note: we haven't verified the live terms on this one yet. I'll check the provider's own page with you before you start.`);
+    if (!verified)
+      p.push(`One honest note: we haven't verified the live terms on this one yet. I'll check the provider's own page with you before you start.`);
     return p;
   }
 
@@ -1121,8 +1182,8 @@
 
     if (has("how does upmore make money", "how do you make money", "how upmore makes money", "how are you paid"))
       return { paras: [
-        "Some offers pay us a small cut for sending you their way. It never comes out of your pocket — you still get every dollar the offer promises.",
-        "We'll always tell you when we're earning from an offer. And we'd rather lose the cut than push a worse offer on you." ] };
+        "Right now, none of the offers in the catalog pay us anything — you get every dollar the offer promises.",
+        "If that ever changes, the offer's card will carry a badge that says so. And we'd rather lose the cut than push a worse offer on you." ] };
 
     for (const [kws, ei, soft] of EXRULES) {
       if (has(...kws)) {
@@ -1147,20 +1208,25 @@
     }
 
     if (has("next move")) {
-      const d = planData(); const mv = (d._moves || stdRoutes().slice(0, 3))[1];
+      const d = planData(); const mv = (d._moves || rankMoves())[1];
       if (mv) return { paras: [`After this one: ${esc(routeTitle(mv))}.`, esc(`${mv.reward || "Reward varies."}${mv.time_to_first ? ` First money ${mv.time_to_first.toLowerCase()}.` : ""}`)], card: routeCard(mv) };
     }
 
-    if (has("verif", "legit", "trustworthy", " is this real", "scam"))
+    if (has("verif", "legit", "trustworthy", " is this real", "scam")) {
+      const nv = D.routes.filter(r => r.status === "verified").length;
+      const nt = D.routes.length;
       return { paras: [
-        "Straight answer: every route in the catalog is researched, but we have not verified live provider terms yet.",
-        "So the reward, requirements, and dates you see come from our research — I'll confirm them against the provider's own page before you start anything.",
+        `Straight answer: ${nv} of ${nt} routes are verified against the provider's own official terms — reward, requirements, and dates included.`,
+        "The rest are researched but not yet verified — I'll confirm them against the provider's own page before you start anything.",
         "If terms changed or an offer died, I'll tell you and pick the next-best one." ] };
+    }
 
-    if (has("catch", "risk", "downside", "wrong", "lose", "safe"))
+    if (has("catch", "risk", "downside", "wrong", "lose", "safe")) {
+      const nRisk = D.routes.filter(r => r.lane !== "Standard").length;
       return { paras: [
         "Every offer shows its catch before you start — that's the rule. The common ones: rewards paid as points or credit instead of cash, direct-deposit definitions that exclude app transfers, strict deadlines, and bonuses clawed back if you close early.",
-        "23 routes in the catalog sit in a higher-risk lane — things like trading credits you can't withdraw. They're hidden from Explore by default. Name one and I'll walk you through the risk first." ] };
+        `${nRisk} routes in the catalog sit in a higher-risk lane — things like trading credits you can't withdraw. They're hidden from Explore by default. Name one and I'll walk you through the risk first.` ] };
+    }
 
     if (has("payout", "withdraw", "cash out", "when do i get", "how long", "get paid"))
       return { paras: [
@@ -1172,19 +1238,19 @@
         "Usually, yes. Bank bonuses and free stock count as income, and banks often send a tax form even for small amounts.",
         "A simple habit: set aside a slice of each reward. We're not tax advisors though — for your exact situation, check with one." ] };
 
+    if (has("no deposit", "without deposit", "free to start", "no money", "broke"))
+      return { paras: [
+        "Start where it costs $0. The unclaimed-money search is free and takes five minutes — most people find nothing, but when it hits, it's money already yours.",
+        "After that: Fetch for receipt cashback and Microsoft Rewards for searches you already do. All three are in your first moves on Home." ] };
+
     if (has("easiest", "first", "start", "begin", "simplest")) {
       const r = topList(stdRoutes(), 3, "The 3 easiest routes in the whole catalog:");
       r.paras = r.paras.map(esc); r.card.title = esc(r.card.title); r.card.meta = esc(r.card.meta); r.card.tag = esc(r.card.tag);
       return r;
     }
 
-    if (has("no deposit", "without deposit", "free to start", "no money", "broke"))
-      return { paras: [
-        "Start where it costs $0. The unclaimed-money search is free and takes five minutes — most people find nothing, but when it hits, it's money already yours.",
-        "After that: Fetch for receipt cashback and Microsoft Rewards for searches you already do. All three are in your first moves on Home." ] };
-
     return { paras: [
-      "I can look up any of the 535 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.",
+      `I can look up any of the ${D.routes.length} routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.`,
       "Or ask me what's the catch with any offer, and I'll give it to you straight." ] };
   }
 
@@ -1325,7 +1391,7 @@
       m.querySelector(".typing").remove();
       m.insertAdjacentHTML("beforeend", paras.map(p => `<p>${p}</p>`).join(""));
       if (card) m.insertAdjacentHTML("beforeend",
-        `<div class="mini"><span>${card.tag}</span><b>${card.title}</b><span>${card.meta}</span><button data-open>Open move</button></div>`);
+        `<div class="mini"><span>${card.tag}</span><b>${card.title}</b><span>${card.meta}</span>${card.aff ? `<span class="abadge">Affiliate</span>` : ""}<button data-open>Open move</button></div>`);
       const b = m.querySelector("[data-open]"); if (b) b.onclick = () => show("home");
       chat.scrollTop = chat.scrollHeight; busy = false;
     }, 900);
@@ -1341,7 +1407,7 @@
   input.onkeydown = e => { if (e.key === "Enter") submit(); };
   $("newchat").onclick = () => { guideInit = false; busy = false; renderGuideEmpty(); };
 
-  /* ================= Explore: the real 535-route catalog ================= */
+  /* ================= Explore: the real route catalog ================= */
   const XICONS = {
     bank: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M5 10v9M19 10v9M9 10v9M15 10v9M3 21h18"/></svg>',
     card: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>',
@@ -1354,7 +1420,7 @@
   const TIERS = ["Very Easy", "Easy", "Moderate", "Hard", "Very Hard"];
 
   function xFiltered() {
-    let list = xState.lane ? D.routes.slice() : stdRoutes();
+    let list = xState.lane ? D.routes.filter(r => r.status !== "retired") : stdRoutes();
     if (xState.tier !== "all") list = list.filter(r => r.tier === xState.tier);
     if (xState.cat !== "all") list = list.filter(r => r.category === xState.cat);
     if (xState.q) {
@@ -1366,7 +1432,7 @@
 
   function renderExplore() {
     const list = xFiltered();
-    $("xcount").textContent = `${list.length} ways to earn, easiest first. Tap one for the honest catch.`;
+    $("xcount").textContent = `${list.length} ways to earn, highest earn rate first. Tap one for the honest catch.`;
     const box = $("xlist");
     box.innerHTML = "";
     list.slice(0, xState.shown).forEach(r => {
@@ -1376,7 +1442,7 @@
       const verifiedBadge = r.status === "verified" ? `<span class="vbadge">✓ Verified</span>` : "";
       el.innerHTML = `<div class="xrow">
           <span class="xtile" style="background:${tileColor(r)}">${XICONS[CATICON[r.category]] || XICONS.tag}</span>
-          <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${verifiedBadge}</b><span>${esc(routeMeta(r))}</span></span>
+          <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${verifiedBadge}</b><span>${esc(routeMeta(r))}</span>${earnLine(r) ? `<span class="xearn">${esc(earnLine(r))}</span>` : ""}</span>
           <span class="xpill">${esc(r.tier || "—")}</span>
         </div>
         <div class="xdetail" hidden>
@@ -1385,6 +1451,7 @@
           ${r.payout_timing ? `<div><b>Paid:</b> ${esc(r.payout_timing)}</div>` : ""}
           ${r.catches ? `<div class="catch"><b>The catch:</b> ${esc(r.catches)}</div>` : ""}
           ${(r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0) ? `<div class="catch"><b>Note:</b> pays as ${esc(r.cash_or_credit)} — not cash in hand.</div>` : ""}
+          ${r.affiliate ? `<div><span class="abadge">Affiliate</span> We may earn a commission if you use this link — it never comes out of your pocket.</div>` : ""}
           <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
         </div>`;
       el.style.cursor = "pointer";
@@ -1397,6 +1464,7 @@
   }
 
   function initExplore() {
+    $("xq").placeholder = `Search ${D.routes.length} ways to earn…`;
     const tc = $("xchips");
     const mkChip = (parent, val, label, get, set) => {
       const b = document.createElement("button");
@@ -1444,20 +1512,64 @@
     $("pSit").textContent = cash ? pay + " · " + cash : pay;
   }
   document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => show(b.dataset.go));
-  document.querySelectorAll(".tgl:not(#laneTgl)").forEach(t => t.onclick = e => {
+  document.querySelectorAll(".tgl:not(#laneTgl):not(.prefTgl)").forEach(t => t.onclick = e => {
     e.stopPropagation();
     t.setAttribute("aria-pressed", t.getAttribute("aria-pressed") !== "true" ? "true" : "false");
   });
+  /* Reminder/preference toggles: persist in localStorage, and in the signed-in
+     profile's prefs when we have one. Restored on boot. */
+  function readPrefs() {
+    let p = {};
+    try { p = JSON.parse(localStorage.getItem("upmore-prefs") || "{}"); } catch (e) {}
+    if (dbProfile && dbProfile.prefs && typeof dbProfile.prefs === "object") p = Object.assign({}, dbProfile.prefs, p);
+    return p;
+  }
+  async function writePrefs(p) {
+    try { localStorage.setItem("upmore-prefs", JSON.stringify(p)); } catch (e) {}
+    if (session) {
+      const merged = Object.assign({}, (dbProfile && dbProfile.prefs) || {}, p);
+      const { error } = await supa.from("profiles").update({ prefs: merged }).eq("id", session.user.id);
+      if (!error && dbProfile) dbProfile.prefs = merged;
+    }
+  }
+  function initPrefs() {
+    const p = readPrefs();
+    if (p.reminders === false) $("remTgl").setAttribute("aria-pressed", "false");
+    if (p.newOffers === false) $("newsTgl").setAttribute("aria-pressed", "false");
+    document.querySelectorAll(".prefTgl").forEach(t => {
+      t.onclick = e => {
+        e.stopPropagation();
+        const on = t.getAttribute("aria-pressed") !== "true";
+        t.setAttribute("aria-pressed", String(on));
+        const p2 = readPrefs();
+        if (t.id === "remTgl") p2.reminders = on;
+        if (t.id === "newsTgl") p2.newOffers = on;
+        writePrefs(p2);
+      };
+    });
+  }
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
   $("signOut").onclick = () => supa.auth.signOut();
 
   /* ================= Boot ================= */
   (async function boot() {
     // Onboarding answers survive the Google OAuth round-trip via localStorage.
+    // Restored values are validated against known choices so a stale or
+    // hand-edited blob can never break the app ("undefined a week" bug).
     try {
       const saved = localStorage.getItem("upmore-onboarding");
-      if (saved) Object.assign(data, JSON.parse(saved));
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const clean = {};
+        if (typeof parsed.name === "string" && parsed.name.trim()) clean.name = parsed.name.trim().slice(0, 40);
+        if (parsed.state && NAMES[parsed.state]) clean.state = parsed.state;
+        if (["15", "60", "180"].indexOf(String(parsed.time)) >= 0) clean.time = String(parsed.time);
+        if (["yes", "no", "unsure"].indexOf(parsed.paycheck) >= 0) clean.paycheck = parsed.paycheck;
+        if (["0", "100", "1000", "1001"].indexOf(String(parsed.cash)) >= 0) clean.cash = String(parsed.cash);
+        Object.assign(data, clean);
+      }
     } catch (e) {}
+    initPrefs();
     const h = location.hash.slice(1);
     const isAuthCallback = /(^|&)access_token=/.test(h);
     // Let supabase-js consume the OAuth callback before we touch the URL.

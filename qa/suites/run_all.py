@@ -69,8 +69,14 @@ def chat(jwt, msg, thread_id=None):
         return st, ms, rb[:400], None
 
 def verified_ids():
-    st, rb = api("GET", PROJ + "/rest/v1/routes?select=route_id&status=eq.verified", SVC)
-    return set(x["route_id"] for x in json.loads(rb))
+    ids, off = set(), 0
+    while True:
+        st, rb = api("GET", PROJ + f"/rest/v1/routes?select=route_id&status=eq.verified&limit=1000&offset={off}", SVC)
+        batch = json.loads(rb)
+        ids.update(x["route_id"] for x in batch)
+        if len(batch) < 1000: break
+        off += 1000
+    return ids
 
 GENERIC_STEPS = ["complete the required action", "wait for reward", "cash out or redeem when you reach"]
 
@@ -275,13 +281,21 @@ def suite_backend(jwt, uid):
     res["checks"].append({"rate_limit_429": {"pts": c, "code61": code61}})
     # reset rate limit so later suites aren't blocked
     api("DELETE", PROJ + f"/rest/v1/agent_rate_limits?user_id=eq.{uid}", SVC)
-    # D4 data integrity
-    st, rb = api("GET", PROJ + "/rest/v1/routes?select=route_id", SVC)
-    n = len(json.loads(rb))
-    ver = verified_ids()
-    c = 5 if n == 535 and len(ver) == 14 else (3 if n == 535 else 0)
+    # D4 data integrity (pagination-safe: REST caps pages at 1000 rows)
+    def count_all(path):
+        n, off = 0, 0
+        while True:
+            st, rb = api("GET", PROJ + path + f"&limit=1000&offset={off}", SVC)
+            batch = json.loads(rb)
+            n += len(batch)
+            if len(batch) < 1000: break
+            off += 1000
+        return n
+    n = count_all("/rest/v1/routes?select=route_id")
+    nv = count_all("/rest/v1/routes?select=route_id&status=eq.verified")
+    c = 5 if n == 1767 and nv == 1500 else (3 if n == 1767 else 0)
     pts += c
-    res["checks"].append({"data_integrity": {"pts": c, "routes": n, "verified": len(ver)}})
+    res["checks"].append({"data_integrity": {"pts": c, "routes": n, "verified": nv}})
     res["score"] = pts
     res["max"] = 20
     return res

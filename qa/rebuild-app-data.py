@@ -72,6 +72,10 @@ for rid, v in dbm.items():
             "payout_timing": v.get("payout_timing") or "",
             "catches": v.get("catches") or [],
             "url": v.get("provider_url") or "",
+            "affiliate": bool(v.get("affiliate_note")),
+            "affiliate_note": v.get("affiliate_note") or "",
+            "ios_url": v.get("ios_url") or "",
+            "android_url": v.get("android_url") or "",
             "cash_or_credit": "Cash or usable value",
             "earnings_class": "Count only actual received cash",
             "lane": v.get("lane") or "Standard",
@@ -92,12 +96,16 @@ for rid, v in dbm.items():
         c[k] = nu.get(k)
     # sync verified fields + status from DB for every card
     c["status"] = v.get("status") or "unverified"
+    c["affiliate"] = bool(v.get("affiliate_note"))
+    c["affiliate_note"] = v.get("affiliate_note") or ""
+    c["ios_url"] = v.get("ios_url") or ""
+    c["android_url"] = v.get("android_url") or ""
+    c["steps"] = app_steps(v.get("steps")) or c["steps"]
     if v.get("status") == "verified":
         c["reward"] = v.get("payout_text") or c["reward"]
         c["payout_timing"] = v.get("payout_timing") or c["payout_timing"]
         c["url"] = v.get("provider_url") or c["url"]
         c["catches"] = v.get("catches") or c["catches"]
-        c["steps"] = app_steps(v.get("steps")) or c["steps"]
         c["provider"] = v.get("provider") or c["provider"]
         synced += 1
 
