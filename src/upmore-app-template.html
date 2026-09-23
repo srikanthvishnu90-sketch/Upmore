@@ -394,6 +394,11 @@
     border:1px solid var(--line); border-bottom:0; border-radius:22px 22px 0 0;
     padding:18px 20px calc(var(--bot,0px) + 24px); }
   .sheetcard::-webkit-scrollbar{ display:none; }
+  .legalbody{ margin-top:10px; font-size:13.5px; line-height:1.65; color:var(--text); }
+  .legalbody p{ margin:0 0 12px; }
+  .legalbody p b{ color:var(--text); }
+  .legalbody p i{ color:var(--muted); font-style:normal; }
+  .legalbody a{ color:inherit; text-decoration:underline; }
   .conn{ margin-top:14px; border:1px solid var(--line); border-radius:16px; background:var(--surface-2); padding:14px; }
   .conn .ct{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .conn .ct b{ font-size:16px; }
@@ -495,7 +500,7 @@
     <div class="dock">
       <button class="go light" data-next>Get started</button>
       <p class="legal">Already have an account? <a href="#" id="welcomeLogin">Log in</a></p>
-      <p class="legal">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Some offers pay us a small cut — you still get every dollar.</p>
+      <p class="legal">By continuing you agree to the <a href="#" id="welcomeTerms">Terms</a> and <a href="#" id="welcomePrivacy">Privacy Policy</a>. Some offers pay us a small cut — you still get every dollar.</p>
     </div>
   </section>
 
@@ -884,6 +889,7 @@
       <button class="prow" id="connPlaidRow"><span class="pl">Bank (Plaid)<small>Recurring charges · read-only</small></span><span class="pv" id="connPlaidPv">Not connected</span></button>
       <h3 class="wsec">About</h3>
       <button class="prow" id="howMoney"><span class="pl">How Upmore makes money<small>Short version: not from you</small></span><span class="pv">&#8250;</span></button>
+      <button class="prow" id="privacyRow"><span class="pl">Privacy Policy<small>What we collect, and what we never do</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
     </div>
     <nav class="tabs" role="tablist">
@@ -963,6 +969,24 @@
 
 <!--__UPMORE_DATA__-->
 <!--__SUPABASE_JS__-->
+    <div class="sheet" id="privacySheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Privacy Policy</b><button class="iconbtn" id="privacyClose" aria-label="Close privacy policy">✕</button></div>
+        <p class="psub" style="margin-top:6px">Last updated: September 23, 2026</p>
+        <div class="legalbody">
+          <p><b>The short version.</b> We collect the minimum needed to run your account and your money plan: your name, email, onboarding answers, plan progress, things you save, and your Guide chats. We never sell your data. No ads, no third-party trackers. Your chat messages are processed by our AI provider to answer you. You can ask us to export or delete everything at any time.</p>
+          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences.</p>
+          <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. Bank and Gmail connections aren't live yet — when they are, they'll be read-only, optional, and this policy will be updated first.</p>
+          <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it). Nobody else. We never sell your data.</p>
+          <p><b>Cookies &amp; tracking.</b> Your sign-in session lives in your browser's local storage so you stay signed in. No third-party analytics or ad trackers.</p>
+          <p><b>How long we keep it.</b> While your account is active. Ask us to delete your account and we delete your profile, chats, progress, and saved items.</p>
+          <p><b>Your rights.</b> Ask us any time to see, correct, export, or delete your data: <a href="#" id="privacyEmail">support@upmore.app</a>.</p>
+          <p><b>Children.</b> Upmore isn't for under-13s.</p>
+          <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
+          <p id="termsSection"><b>Terms of Service (plain English).</b> Upmore is a guide, not a guarantee — payouts come from third-party companies with their own terms. You're responsible for your own accounts and actions; never share passwords with anyone, including us. Don't use Upmore for fraud or fake accounts. Upmore is in beta and things may change; we may suspend accounts that abuse the service.</p>
+        </div>
+      </div>
+    </div>
 <script>
   /* Phone frame on larger screens */
   (function () {
@@ -1908,6 +1932,22 @@
   }
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
   $("signOut").onclick = () => supa.auth.signOut();
+
+  /* ---- Privacy sheet ---- */
+  const SUPPORT_EMAIL = "support@upmore.app"; // provisional — swap for the real support address
+  function openPrivacy(scrollToTerms) {
+    $("privacySheet").hidden = false;
+    const em = $("privacyEmail");
+    if (em) { em.textContent = SUPPORT_EMAIL; em.href = "mailto:" + SUPPORT_EMAIL; em.onclick = (e) => e.stopPropagation(); }
+    if (scrollToTerms) setTimeout(() => { const t = $("termsSection"); if (t) t.scrollIntoView(); }, 50);
+  }
+  $("privacyRow").onclick = () => openPrivacy(false);
+  $("privacyClose").onclick = () => { $("privacySheet").hidden = true; };
+  $("privacySheet").addEventListener("click", (e) => { if (e.target.id === "privacySheet") $("privacySheet").hidden = true; });
+  ["welcomePrivacy", "welcomeTerms"].forEach(id => {
+    const a = $(id);
+    if (a) a.onclick = (e) => { e.preventDefault(); openPrivacy(id === "welcomeTerms"); };
+  });
 
   /* ================= Save side =================
      Tables (created in parallel, all per-user via RLS):
