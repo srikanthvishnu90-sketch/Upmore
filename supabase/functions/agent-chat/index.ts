@@ -16,7 +16,7 @@ import {
   SCAM_FALLBACK,
   RouteCard,
 } from "./_shared/agent.ts";
-import { tryCapabilities, tryReminderIntent, tryGamblingGuard, tryPrivacyGuard, tryScamGuard, trySyspromptGuard } from "./_shared/capabilities.ts";
+import { tryCapabilities, tryReminderIntent, tryGamblingGuard, tryPrivacyGuard, tryScamGuard, trySyspromptGuard, tryGiftRewardSafe } from "./_shared/capabilities.ts";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5-20251001";
@@ -97,7 +97,7 @@ serve(async (req) => {
     // (1500-route catalog in 5 pages). They need no DB data, so a gambling,
     // privacy, scam, or system-prompt question returns in ~500ms instead of
     // waiting for the full catalog. Persist like the other deterministic paths.
-    const earlyGuard = tryGamblingGuard(message) ?? tryPrivacyGuard(message) ?? tryScamGuard(message) ?? trySyspromptGuard(message);
+    const earlyGuard = tryGiftRewardSafe(message) ?? tryGamblingGuard(message) ?? tryPrivacyGuard(message) ?? tryScamGuard(message) ?? trySyspromptGuard(message);
     if (earlyGuard) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },

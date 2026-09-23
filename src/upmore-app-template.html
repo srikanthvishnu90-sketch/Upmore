@@ -763,6 +763,20 @@
         <div class="sec" id="svClaims"><h2>Refunds &amp; claims</h2><span class="num" id="claimOpen"></span></div>
         <div class="list" id="claimList"></div>
         <button class="ghostbtn" id="refundBtn">Check a refund</button>
+        <details class="svdetails"><summary>Add a claim</summary>
+          <div class="svform">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>What</span><input id="clWhat" placeholder="Price adjustment" autocomplete="off"></label>
+              <label class="f"><span>Merchant</span><input id="clMerchant" placeholder="Target" autocomplete="off"></label>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Amount (optional)</span><input id="clAmount" inputmode="decimal" placeholder="12.50" autocomplete="off"></label>
+              <label class="f"><span>Deadline (optional)</span><input id="clDeadline" type="date"></label>
+            </div>
+            <label class="f"><span>Steps / notes</span><input id="clSteps" placeholder="Call support, reference order #" autocomplete="off"></label>
+            <button class="go" id="clAdd" style="height:50px">Track claim</button>
+          </div>
+        </details>
 
         <div class="sec" id="svBills"><h2>Bills</h2><span>Lower them</span></div>
         <div class="pcard" style="display:block">
@@ -783,12 +797,13 @@
         <p class="fine">Nothing counts on intent. Annualized numbers are projections, never results. Saved is never earned. Reversals count against the total.</p>
         <details class="svdetails"><summary>Log a saving</summary>
           <div class="svform">
-            <label class="f"><span>Bucket</span><div class="sel"><select id="lgBucket"><option>Received</option><option>Avoided</option><option>Reduced</option><option>Cash flow</option><option>Found</option></select></div></label>
+            <label class="f"><span>Bucket</span><div class="sel"><select id="lgBucket"><option>Received</option><option>Avoided</option><option>Reduced</option><option>Cash flow</option><option>Found</option><option>Pending</option></select></div></label>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <label class="f"><span>Amount</span><input id="lgAmount" inputmode="decimal" placeholder="25.00" autocomplete="off"></label>
               <label class="f"><span>Date</span><input id="lgDate" type="date"></label>
             </div>
             <label class="f"><span>What happened</span><input id="lgTitle" placeholder="Cancelled unused streaming plan" autocomplete="off"></label>
+            <label class="frow"><input type="checkbox" id="lgAnnual"> <span>This is an annualized projection (not cash in hand — excluded from the total)</span></label>
             <button class="go" id="lgAdd" style="height:50px">Log it</button>
           </div>
         </details>
@@ -1975,7 +1990,10 @@
     const rows = await saveRows("save_ledger", "occurred_on", false);
     const sums = {}, rev = {};
     BUCKETS.forEach(b => { sums[b] = 0; rev[b] = 0; });
+    let pending = 0, annualized = 0;
     rows.forEach(r => {
+      if (r.annualized) { annualized += Number(r.amount || 0); return; } // projections never count — the Guide agrees
+      if (r.bucket === "Pending") { if (!r.reversed) pending += Number(r.amount || 0); return; } // pending never counts until real
       const b = BUCKETS.includes(r.bucket) ? r.bucket : "Found";
       if (r.reversed) rev[b] += Number(r.amount || 0); else sums[b] += Number(r.amount || 0);
     });
@@ -1983,6 +2001,10 @@
     $("ledgerGrid").innerHTML = BUCKETS.map(b =>
       `<div class="lbkt"><span>${b}</span><b class="num">${money$(sums[b] - rev[b])}</b></div>`).join("") +
       `<div class="lbkt" style="grid-column:span 2;border-color:rgba(79,163,122,.35)"><span>Total kept</span><b class="num">${money$(total)}</b></div>`;
+    if (pending) $("ledgerGrid").innerHTML +=
+      `<div class="lbkt" style="grid-column:span 2"><span>Pending — doesn't count until it's real</span><b class="num">${money$(pending)}</b></div>`;
+    if (annualized) $("ledgerGrid").innerHTML +=
+      `<div class="lbkt" style="grid-column:span 2"><span>Annualized projections — excluded</span><b class="num">${money$(annualized)}/yr</b></div>`;
   }
 
   /* ---- Renewals ---- */
@@ -2111,9 +2133,24 @@
       const ok = await saveInsert("save_ledger", {
         bucket: $("lgBucket").value, amount: amt, title: ti,
         occurred_on: $("lgDate").value || today, reversed: false,
+        annualized: $("lgAnnual").checked,
       });
       b.disabled = false;
-      if (ok) { $("lgAmount").value = ""; $("lgTitle").value = ""; renderLedger(); }
+      if (ok) { $("lgAmount").value = ""; $("lgTitle").value = ""; $("lgAnnual").checked = false; renderLedger(); }
+    };
+    $("clAdd").onclick = async () => {
+      const b = $("clAdd"), what = $("clWhat").value.trim() || "claim";
+      if (!saveUid()) return;
+      b.disabled = true;
+      const amt = parseFloat($("clAmount").value);
+      const ok = await saveInsert("save_claims", {
+        kind: what, merchant: $("clMerchant").value.trim() || null,
+        amount: amt > 0 ? amt : null,
+        deadline: $("clDeadline").value || null, steps: $("clSteps").value.trim() || null,
+        status: "open",
+      });
+      b.disabled = false;
+      if (ok) { ["clWhat", "clMerchant", "clAmount", "clDeadline", "clSteps"].forEach(id => $(id).value = ""); renderClaims(); }
     };
     $("rnAdd").onclick = async () => {
       const b = $("rnAdd"), nm = $("rnName").value.trim();

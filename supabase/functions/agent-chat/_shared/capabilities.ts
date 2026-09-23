@@ -405,13 +405,18 @@ export function tryWalkthrough(
     r.lane && r.lane !== "Standard"
       ? `\nHeads up: this is a ${r.lane}-lane route (higher risk) — read the catches carefully.`
       : "";
+  // Wager routes (you stake your own money) are Standard-lane but still need
+  // an explicit stake warning — the lane system alone won't flag them.
+  const wagerNote = WAGER_IDS.has(rid)
+    ? `\nHeads up: this is a wager — you stake your own money and can LOSE it. Never bet money you can't afford to lose.`
+    : "";
   return {
     reply:
       `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
       `${r.payout_text ?? ""}\n\n${stepLines}\n\n` +
       `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
       `Biggest catch: ${catches[0] ?? "see the official terms"}` +
-      laneNote +
+      laneNote + wagerNote +
       `\n\nStart here: ${r.provider_url ?? r.link ?? ""}`,
     routeId: r.route_id,
   };
@@ -550,6 +555,26 @@ export function trySyspromptGuard(message: string): string | null {
   return null;
 }
 
+// ---------- 5b. Gift-card reward safe clarification ----------
+// "Can I get paid in gift cards with Microsoft Rewards, is that legit?"
+// Receiving gift cards AS the payout from a legit rewards program is fine —
+// most of them pay out that way. The scam is the reverse (pay THEM in gift
+// cards). The scam guard owns pay-first language; this fires only on pure
+// receive-as-payout phrasing, before the model fallback can false-positive.
+const GIFT_RECEIVE_RX = /\b(get paid in|paid in|receive|receiving|redeem|redeeming|earn|earning|payout).{0,50}\bgift cards?\b/i;
+const GIFT_PAYFIRST_RX = /\b(pay|send|buy|purchase).{0,40}\bgift cards?\b|\bgift cards?.{0,40}\b(fee|tax|payment|unlock|verification|send (it|them))\b/i;
+
+export function tryGiftRewardSafe(message: string): string | null {
+  if (!GIFT_RECEIVE_RX.test(message)) return null;
+  if (GIFT_PAYFIRST_RX.test(message)) return null; // let the scam guard own it
+  return (
+    `Getting paid IN gift cards is legit — that's how most rewards programs actually pay out. ` +
+    `Microsoft Rewards, Fetch, Swagbucks, and the other verified programs all pay in gift cards; receiving one is not a red flag.\n\n` +
+    `The scam is the reverse: anyone who asks YOU to pay THEM in gift cards — a "fee", "tax", or "verification" via gift card — is always a scam. ` +
+    `Real programs never ask you to buy gift cards to unlock a reward.`
+  );
+}
+
 // ---------- 6. Scam guard ----------
 // High-stakes safety patterns get a deterministic hard warning, not a
 // model improvisation. Patterns are narrow (fee + gift cards, not gift
@@ -628,7 +653,7 @@ function findCancelPath(name: string): CancelPath | null {
 // otherwise parse name+$ pairs the user pastes inline; otherwise ask.
 const AUDIT_RX = /\b(audit|review)\b[^.?]{0,40}\bsubscriptions?\b|\bwhat am i paying for\b|\bsubscriptions?\b[^.?]{0,15}\b(audit|review)\b/i;
 
-interface InlineSub { name: string; monthly: number }
+interface InlineSub { name: string; monthly: number; raw?: number; per?: string }
 
 function parseInlineSubs(message: string): InlineSub[] {
   const out: InlineSub[] = [];
@@ -691,10 +716,25 @@ export async function trySubscriptionAudit(
   if (ctx) {
     const rows = await readSaveRows(ctx.supa, "save_subscriptions", ctx.userId);
     subs = rows
-      .map((r) => ({
-        name: String(r.name ?? r.merchant ?? r.service ?? "Unknown").slice(0, 60),
-        monthly: Number(r.amount_monthly ?? r.monthly_amount ?? r.amount ?? r.cost) || 0,
-      }))
+      // Cancelled subscriptions are dead money — never count them.
+      .filter((r) => String(r.status ?? "active").toLowerCase() !== "cancelled")
+      .map((r) => {
+        const raw = Number(r.amount_monthly ?? r.monthly_amount ?? r.amount ?? r.cost) || 0;
+        // Normalize to monthly: the app stores amount + billing_interval.
+        // Reading a $139/year plan as $139/mo would triple-count it.
+        let monthly = raw, per = "";
+        if (r.amount_monthly == null && r.monthly_amount == null) {
+          const iv = String(r.billing_interval ?? r.interval ?? "monthly").toLowerCase();
+          if (iv === "yearly" || iv === "annual" || iv === "annually") { monthly = raw / 12; per = "/yr"; }
+          else if (iv === "weekly") { monthly = raw * 52 / 12; per = "/wk"; }
+          else if (iv === "quarterly") { monthly = raw / 3; per = "/qtr"; }
+          else { per = "/mo"; }
+        }
+        return {
+          name: String(r.name ?? r.merchant ?? r.service ?? "Unknown").slice(0, 60),
+          monthly, raw, per,
+        };
+      })
       .filter((s) => s.monthly > 0 || s.name !== "Unknown");
   }
   if (!subs.length) {
@@ -731,8 +771,11 @@ export async function trySubscriptionAudit(
     const script =
       `"Hi — please cancel my ${s.name} subscription effective today. ` +
       `I don't want any other offers or plan changes. Please confirm in writing that billing has stopped."`;
+    const priceBit = s.raw != null && s.per && s.per !== "/mo"
+      ? `${fmtMoney(s.raw)}${s.per} (${fmtMoney(s.monthly)}/mo, ${fmtMoney(s.yearly)}/year)`
+      : `${fmtMoney(s.monthly)}/mo (${fmtMoney(s.yearly)}/year)`;
     return (
-      `**${i + 1}. ${s.name}** — ${fmtMoney(s.monthly)}/mo (${fmtMoney(s.yearly)}/year)\n` +
+      `**${i + 1}. ${s.name}** — ${priceBit}\n` +
       `${verdict}: ${reason}\n` +
       `${cancelPathBlock(s.name)}\n` +
       `Say this to kill it: ${script}`
@@ -758,9 +801,13 @@ const RECEIPT_RX = /(\breceipt\b|\border\s*#|\border\s*(?:number|no\.?)\b)[\s\S]
 export function tryReceiptCheck(message: string): string | null {
   if (!RECEIPT_RX.test(message)) return null;
   const t = message;
-  const lines = t.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
-    .filter((l) => !/^(receipt|order|date|total|subtotal|tax)\b/i.test(l));
-  const merchant = lines.length ? lines[0].slice(0, 60) : "the merchant";
+  let lines = t.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
+    .filter((l) => !/^(receipt|order|date|total|subtotal|tax)\b/i.test(l))
+    // Chat framing ("here's a receipt:", "my receipt below") is not the merchant.
+    .filter((l) => !/^here'?s\b/i.test(l) && !/\bhere'?s (a|my|the) receipts?\b/i.test(l));
+  let merchant = lines.length ? lines[0].slice(0, 60) : "the merchant";
+  // A framing line ending in ":" (e.g. "Receipt:") precedes the real merchant.
+  if (/:[\s]*$/.test(merchant) && lines[1]) merchant = lines[1].slice(0, 60);
   const orderM = t.match(/\border\s*(?:#|number|no\.?)?\s*:?\s*([a-z0-9-]{3,30})/i);
   const dateM = t.match(/\b(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}-\d{2}-\d{2}|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? \d{1,2},?\s*\d{2,4})/i);
   const totalM = t.match(/\btotal\b[^$\n]{0,25}\$\s*(\d[\d,]*(?:\.\d{2})?)/i);
@@ -797,6 +844,85 @@ export function tryReceiptCheck(message: string): string | null {
   );
 }
 
+// ---- 9c-i. Deterministic claim-tracking intent ----
+// "track a claim: $12.50 price adjustment at Target, deadline 2026-10-15"
+// The server inserts the claim itself (mirrors the reminder-intent pattern).
+// Without this, "ask the Guide and I'll log it" is a promise nothing keeps.
+// Runs BEFORE the deadlines view: the intent message contains "claim", which
+// would otherwise trigger the read-only deadlines path.
+const CLAIM_INTENT_RX = /\b(track|log|add|save)\b[^.?]{0,40}\bclaims?\b/i;
+
+const CLAIM_MONTHS: Record<string, number> = {
+  jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+  jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+};
+
+function parseClaimDeadline(message: string): string | null {
+  const iso = message.match(/\b(20\d\d)-(\d\d)-(\d\d)\b/);
+  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+  const md = message.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s*(20\d\d))?/i);
+  if (md) {
+    const year = md[3] ? parseInt(md[3], 10) : new Date().getUTCFullYear();
+    const m = CLAIM_MONTHS[md[1].slice(0, 3).toLowerCase()];
+    return `${year}-${String(m).padStart(2, "0")}-${md[2].padStart(2, "0")}`;
+  }
+  const inN = message.match(/\bin\s+(\d{1,3})\s+days?\b/i);
+  if (inN) return new Date(Date.now() + parseInt(inN[1], 10) * 86400000).toISOString().slice(0, 10);
+  if (/\btomorrow\b/i.test(message)) return new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+  return null;
+}
+
+export interface ClaimIntent { what: string; merchant: string | null; amount: number | null; deadline: string | null }
+
+export function tryClaimIntent(message: string): ClaimIntent | null {
+  if (!CLAIM_INTENT_RX.test(message)) return null;
+  const amtM = message.match(/\$\s*(\d[\d,]*(?:\.\d{1,2})?)/);
+  const amount = amtM ? parseFloat(amtM[1].replace(/,/g, "")) : null;
+  const merchM = message.match(/\bat\b\s+([A-Za-z][\w&' .()-]{1,40}?)(?=[,.;\n]|$|\s+(?:deadline|due\b|in\s+\d))/i);
+  const merchant = merchM ? merchM[1].trim() : null;
+  const deadline = parseClaimDeadline(message);
+  // "what": strip the intent framing, amount, merchant, and deadline bits.
+  let what = message
+    .replace(/\b(track|log|add|save)\b[^.?]{0,40}?\bclaims?:?\s*/i, " ")
+    .replace(/\$\s*\d[\d,]*(?:\.\d{1,2})?/, " ")
+    .replace(/\bat\b\s+[A-Za-z][\w&' .()-]{1,40}?(?=[,.;\n]|$|\s+(?:deadline|due\b|in\s+\d))/i, " ")
+    .replace(/\b20\d\d-\d\d-\d\d\b/, " ")
+    .replace(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s*20\d\d)?/i, " ")
+    .replace(/\bin\s+\d{1,3}\s+days?\b/i, " ")
+    .replace(/\btomorrow\b/i, " ")
+    .replace(/\bdeadline\b:?\s*/i, " ")
+    .replace(/\b(due|by)\b\s*/i, " ")
+    .replace(/[.,;:\s]+$/g, "").replace(/\s{2,}/g, " ").trim();
+  if (!what) what = "claim";
+  return { what: what.slice(0, 80), merchant, amount, deadline };
+}
+
+async function insertClaimIntent(
+  intent: ClaimIntent,
+  ctx?: CapCtx,
+): Promise<string | null> {
+  if (!ctx) return null;
+  const { error } = await ctx.supa.from("save_claims").insert({
+    user_id: ctx.userId,
+    kind: intent.what,
+    merchant: intent.merchant,
+    amount: intent.amount,
+    deadline: intent.deadline,
+    status: "open",
+  });
+  if (error) {
+    return (
+      `I tried to log that claim but the save failed — use the Save tab's "Add a claim" form instead and I'll pick it up from there.`
+    );
+  }
+  return (
+    `Logged: **${intent.what}**${intent.merchant ? ` at ${intent.merchant}` : ""}` +
+    `${intent.amount != null ? ` — ${fmtMoney(intent.amount)}` : ""}` +
+    `${intent.deadline ? `, deadline ${intent.deadline}` : `, no deadline set — add one or it will rot`}. ` +
+    `I'll count it down with your other claims.`
+  );
+}
+
 // ---- 9c. Claim deadlines ----
 // Triggers on "refund", "claim", "price adjustment", "deadline". Reads
 // save_claims open claims and renders countdowns — the deadline is the
@@ -830,7 +956,7 @@ export async function tryClaimDeadlines(
       return k(a.days) - k(b.days);
     });
     const lines = parsed.map(({ r, days }) => {
-      const what = String(r.what ?? r.title ?? r.name ?? "claim").slice(0, 60);
+      const what = String(r.kind ?? r.what ?? r.title ?? r.name ?? "claim").slice(0, 60);
       const merch = String(r.merchant ?? "").slice(0, 40);
       const amt = Number(r.amount) || 0;
       const tag = isFinite(days)
@@ -851,7 +977,7 @@ export async function tryClaimDeadlines(
     `• Warranty claims: you have until the warranty expires — dig out what the warranty actually covers.\n` +
     `• Settlement and rebate claims: the filing deadline on the official notice is a hard cutoff. Miss it, the money's gone.\n` +
     `• Bill errors and double charges: the sooner you dispute, the easier the fix.\n\n` +
-    `Want me to track one? Tell me: what, merchant, amount, deadline.`
+    `Want me to track one? Say it like this: "Track a claim: $12.50 price adjustment at Target, deadline 2026-10-15".`
   );
 }
 
@@ -911,33 +1037,54 @@ export async function tryLedgerSummary(
     return `Nothing logged yet — nothing counts on intent. Kill a subscription or win a price adjustment, ` +
       `tell me about it, and I'll put it on the ledger.`;
   }
-  const RECEIVED = new Set(["received", "confirmed", "paid", "collected"]);
+  // Buckets mirror the Save tab's ledger grid exactly, so the Guide and the
+  // tab can never disagree. Honesty rules: the reversed flag always wins
+  // (a clawed-back entry subtracts even if its bucket says "Received");
+  // pending never counts; annualized is a projection, never cash.
+  const UI_BUCKETS = ["received", "avoided", "reduced", "cash flow", "found"];
+  const LEGACY_RECEIVED = new Set(["confirmed", "paid", "collected"]);
   const PENDING = new Set(["pending", "claimed", "filed", "in progress"]);
   const REVERSAL = new Set(["reversal", "clawback", "refunded"]);
-  let received = 0, pending = 0, reversals = 0, annualized = false;
+  const sums: Record<string, number> = { received: 0, avoided: 0, reduced: 0, "cash flow": 0, found: 0 };
+  let pending = 0, reversals = 0, annualized = 0;
   for (const r of rows) {
     const amt = Number(r.amount) || 0;
-    const bucket = String(r.bucket ?? r.status ?? r.type ?? "").toLowerCase();
+    const bucket = String(r.bucket ?? "").toLowerCase().trim();
     if (r.annualized === true || bucket === "annualized") {
-      annualized = true;
+      annualized += amt;
       continue; // projections are not cash — excluded from totals
     }
-    if (REVERSAL.has(bucket) || amt < 0) reversals += Math.abs(amt);
-    else if (RECEIVED.has(bucket)) received += amt;
-    else if (PENDING.has(bucket)) pending += amt;
-    else received += amt; // unlabeled entries count only if actually logged
+    if (r.reversed === true || REVERSAL.has(bucket) || amt < 0) {
+      reversals += Math.abs(amt);
+      continue;
+    }
+    if (PENDING.has(bucket)) {
+      pending += amt;
+      continue;
+    }
+    const key = UI_BUCKETS.includes(bucket) ? bucket
+      : LEGACY_RECEIVED.has(bucket) ? "received" : "found";
+    sums[key] += amt;
   }
-  const net = received - reversals;
-  let out =
-    `Here's your savings ledger.\n\n` +
-    `• Received: ${fmtMoney(received)} — money actually back in your pocket.\n` +
-    (pending ? `• Pending: ${fmtMoney(pending)} — claimed or filed, not confirmed yet. Doesn't count until it's real.\n` : "") +
-    (reversals ? `• Reversals: -${fmtMoney(reversals)} — money that was clawed back; already subtracted.\n` : "") +
-    `\nNet kept: ${fmtMoney(net)}.\n\n` +
+  const kept = UI_BUCKETS.reduce((t, b) => t + sums[b], 0);
+  const net = kept - reversals;
+  const disp = (b: string) => b === "cash flow" ? "Cash flow" : b[0].toUpperCase() + b.slice(1);
+  const note: Record<string, string> = {
+    received: "cash actually back in your pocket",
+    avoided: "spending you skipped — not cash in hand",
+    reduced: "lower bills, not cash in hand",
+    "cash flow": "timing wins, not cash in hand",
+    found: "money found, counted when received",
+  };
+  let out = `Here's your savings ledger.\n\n`;
+  for (const b of UI_BUCKETS) {
+    out += `• ${disp(b)}: ${fmtMoney(sums[b])} — ${note[b]}.\n`;
+  }
+  if (pending) out += `• Pending: ${fmtMoney(pending)} — claimed but not confirmed. Doesn't count until it's real.\n`;
+  if (reversals) out += `• Reversals: -${fmtMoney(reversals)} — clawed back; already subtracted.\n`;
+  if (annualized) out += `• Annualized: ${fmtMoney(annualized)}/yr — a projection, not cash in hand. Excluded from the total.\n`;
+  out += `\nNet kept: ${fmtMoney(net)}.\n\n` +
     `Saved is never earned — this is money kept, not made.`;
-  if (annualized) {
-    out += `\nOne or more entries are annualized — that's a projection, not cash in hand.`;
-  }
   out += `\nFigures shown before any Upmore subscription cost — minus any Upmore subscription cost. I don't know your plan, so I won't guess it.`;
   return out;
 }
@@ -972,6 +1119,11 @@ export async function tryCapabilities(
   if (audit) return { reply: audit };
   const receipt = tryReceiptCheck(message);
   if (receipt) return { reply: receipt };
+  const claimIntent = tryClaimIntent(message);
+  if (claimIntent) {
+    const logged = await insertClaimIntent(claimIntent, ctx);
+    if (logged) return { reply: logged };
+  }
   const claims = await tryClaimDeadlines(message, ctx);
   if (claims) return { reply: claims };
   const bill = tryBillPrep(message);
