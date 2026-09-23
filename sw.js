@@ -1,5 +1,5 @@
 // Upmore service worker: app-shell cache + offline fallback
-const CACHE = "upmore-v2";
+const CACHE = "upmore-v3";
 const SHELL = [
   "/",
   "/index.html",
