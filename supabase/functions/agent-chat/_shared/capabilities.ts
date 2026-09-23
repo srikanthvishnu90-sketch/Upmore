@@ -436,17 +436,16 @@ function escRe(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-export function tryTermsChangeQuestion(
+// Shared provider disambiguation: prefer a full provider-name match, fall
+// back to any significant word of a multi-word provider ("Fetch" for
+// "Fetch Rewards"). Earliest mention in the message wins — a company name
+// that IS a common verb ("Raise") must not outrank the actual subject
+// mentioned earlier. Full-name matches win ties at nearby positions.
+function findProviderRoute(
   message: string,
   routes: RouteCard[],
-): string | null {
-  if (!TERMS_CHANGE_RX.test(message)) return null;
+): RouteCard | null {
   const t = message.toLowerCase();
-  // Prefer a full provider-name match; fall back to any significant word of a
-  // multi-word provider ("Fetch" for "Fetch Rewards"). Earliest mention in
-  // the message wins — a company name that IS a common verb ("Raise") must
-  // not outrank the actual subject mentioned earlier. Full-name matches win
-  // ties at nearby positions.
   let best: RouteCard | null = null;
   let bestKey = "";
   for (const r of routes) {
@@ -468,6 +467,15 @@ export function tryTermsChangeQuestion(
       bestKey = key;
     }
   }
+  return best;
+}
+
+export function tryTermsChangeQuestion(
+  message: string,
+  routes: RouteCard[],
+): string | null {
+  if (!TERMS_CHANGE_RX.test(message)) return null;
+  const best = findProviderRoute(message, routes);
   const math = best ? CASH_MATH[best.route_id] : undefined;
   const termsBit = best
     ? ` The verified terms I have for ${best.provider} (${best.route_id}) list the minimum as ${
@@ -478,6 +486,71 @@ export function tryTermsChangeQuestion(
     `I haven't seen a verified update on that, so I can't confirm the change — ` +
     `I won't state a terms change I can't check against the official page.${termsBit} ` +
     `If you read it somewhere, paste the link and I'll compare it against the official terms.`
+  );
+}
+
+// ---------- Monthly earnings estimate ----------
+// "How much will I make per month with Fetch if I scan 20 receipts a week?"
+// Deterministic: parse the stated usage rate, multiply the card's verified
+// per-unit figure, and label the result an estimate — never a promise.
+// Points are reported as points; a cash conversion is only stated when the
+// card itself verifies a rate, otherwise the commonly-reported rate is named
+// as unverified. Deterministic replies bypass the grounding post-check, so
+// every number here must come from the card or be flagged as an estimate.
+const MONTHLY_RX =
+  /\bhow much\b[\s\S]{0,60}?\b(make|earn)\b[\s\S]{0,40}?\bper month\b|\bper month\b[\s\S]{0,60}?\bwith\b/i;
+const USAGE_RX =
+  /(\d+)\s*(receipts?|surveys?|tests?|tasks?|videos?|hours?|photos?|offers?)\s*(a|per)\s*(day|week|month)/i;
+const PER_UNIT_PTS_RX = /(\d[\d,]*)\+?\s*pts?\s*(?:per|\/)\s*(receipt|survey|test|task|video|hour|photo|offer)/i;
+
+export function tryMonthlyEstimate(
+  message: string,
+  routes: RouteCard[],
+): string | null {
+  if (!MONTHLY_RX.test(message)) return null;
+  const best = findProviderRoute(message, routes);
+  if (!best) return null;
+  const use = USAGE_RX.exec(message);
+  const stepsText = Array.isArray(best.steps)
+    ? best.steps.map((s: any) => s.text ?? s).join(" ")
+    : "";
+  const cardText = `${best.payout_text ?? ""} ${best.name ?? ""} ${stepsText}`;
+  const perUnit = PER_UNIT_PTS_RX.exec(cardText);
+  const name = best.provider ?? "this";
+  const id = best.route_id ? ` (${best.route_id})` : "";
+  const rateLine = best.payout_text ?? best.name ?? "see the route card";
+
+  if (use && perUnit) {
+    const qty = parseInt(use[1], 10);
+    const unit = use[2].toLowerCase();
+    const cadence = use[4].toLowerCase();
+    const ptsPerUnit = parseInt(perUnit[1].replace(/,/g, ""), 10);
+    const perWeek = cadence === "day" ? qty * 7 : cadence === "month" ? qty / 4.33 : qty;
+    const ptsPerMonth = Math.round(perWeek * ptsPerUnit * 4.33);
+    const conv = /1[\d,]*\s*pts?\s*[≈=~]\s*\$1|1000\s*pts?\s*(=|≈|~|per)\s*\$1/i.test(cardText)
+      ? Math.round(ptsPerMonth / 1000)
+      : null;
+    let out =
+      `Rough estimate for ${name}${id}: ${qty} ${unit} a ${cadence} × ${ptsPerUnit}+ points per ${perUnit[2]} ` +
+      `≈ ${ptsPerMonth.toLocaleString()}+ points a month. `;
+    out += conv !== null
+      ? `At ~1,000 points ≈ $1 in gift cards, that's roughly $${conv}/month in gift cards. `
+      : `The verified terms don't fix a cash value per point — users commonly report ~1,000 points ≈ $1 in gift cards, ` +
+        `which would put you around $${(ptsPerMonth / 1000).toFixed(0)}/month, but that conversion isn't verified. `;
+    out += `That's an estimate, not a promise — it varies with your ${unit} and point values can change.`;
+    return out;
+  }
+  if (use) {
+    return (
+      `It depends on your volume, but here's the verified math for ${name}${id}: ` +
+      `${rateLine}. ` +
+      `Tell me roughly how many ${use[2].toLowerCase()} a ${use[4].toLowerCase()} and I'll estimate — roughly, since payouts vary.`
+    );
+  }
+  return (
+    `I can estimate it if you give me a volume — e.g. "how much per month with ${name} if I do 20 a week?" ` +
+    `The verified rate for ${name}${id}: ${rateLine}. ` +
+    `Any monthly figure is an estimate, never a promise.`
   );
 }
 
@@ -1121,6 +1194,8 @@ export async function tryCapabilities(
   if (makeMe) return { reply: makeMe };
   const walk = tryWalkthrough(message, routes);
   if (walk) return walk;
+  const monthly = tryMonthlyEstimate(message, routes);
+  if (monthly) return { reply: monthly };
   const termsChange = tryTermsChangeQuestion(message, routes);
   if (termsChange) return { reply: termsChange };
   // Save-side five, explicitly AFTER earn-side paths so a "save" keyword can

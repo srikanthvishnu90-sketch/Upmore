@@ -134,6 +134,10 @@ for rid, v in dbm.items():
         c["url"] = v.get("provider_url") or c["url"]
         c["catches"] = v.get("catches") or c["catches"]
         c["provider"] = v.get("provider") or c["provider"]
+        # category sync (2026-09-23): DB is source of truth; previously stale
+        # Competition labels survived in served cards after DB recategorization
+        if v.get("category"):
+            c["category"] = v["category"]
         synced += 1
 
 # recompute categories

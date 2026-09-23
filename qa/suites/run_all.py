@@ -293,10 +293,10 @@ def suite_backend(jwt, uid):
         return n
     n = count_all("/rest/v1/routes?select=route_id")
     nv = count_all("/rest/v1/routes?select=route_id&status=eq.verified")
-    # 2026-09-23: post-contest-removal pins — 1969 rows total (320 retired),
-    # 1384 verified, 1649 served in the bundle. Update these pins whenever the
+    # 2026-09-23: post-xlsx144 pins — 1986 rows total (320 retired),
+    # 1401 verified, 1666 served in the bundle. Update these pins whenever the
     # catalog changes size; the point is catching sync drift, not the number.
-    c = 5 if n == 1969 and nv == 1384 else (3 if n == 1969 else 0)
+    c = 5 if n == 1986 and nv == 1401 else (3 if n == 1986 else 0)
     pts += c
     res["checks"].append({"data_integrity": {"pts": c, "routes": n, "verified": nv}})
     res["score"] = pts
