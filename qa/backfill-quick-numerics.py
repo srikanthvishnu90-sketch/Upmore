@@ -14,7 +14,7 @@ num = json.load(open(NUM_PATH))
 added = 0
 for f in sorted(glob.glob(os.path.join(VER_DIR, "R*.json"))):
     rid = os.path.basename(f)[:5]
-    if not ("R6600" <= rid < "R7900"):
+    if not ("R6600" <= rid < "R7900") and not ("R8000" <= rid <= "R8399"):
         continue
     d = json.load(open(f))
     if d.get("verdict") != "verify":

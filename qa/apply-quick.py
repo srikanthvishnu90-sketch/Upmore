@@ -44,6 +44,16 @@ def lane_of(rid):
     if 7600 <= n <= 7699: return ("Delivery", "Delivery gig", "Easy", "US only — see eligibility")
     if 7700 <= n <= 7799: return ("Local Labor", "Local labor gig", "Easy", "US only — see eligibility")
     if 7800 <= n <= 7899: return ("Tutoring & Gigs", "Tutoring/data gig", "Moderate", "US only — see eligibility")
+    if 8000 <= n <= 8039: return ("Beta Testing", "Paid beta test", "Easy", "US only — see eligibility")
+    if 8040 <= n <= 8079: return ("Feedback Bounties", "Founder feedback gig", "Easy", "US only — see eligibility")
+    if 8080 <= n <= 8119: return ("Human Judgment", "Taste/judgment test", "Easy", "US only — see eligibility")
+    if 8120 <= n <= 8159: return ("Lived Experience", "Experience panel", "Easy", "US only — see eligibility")
+    if 8160 <= n <= 8199: return ("Human Conversation", "Interview/diary study", "Easy", "US only — see eligibility")
+    if 8200 <= n <= 8239: return ("Proofreading & Voice", "Proofreading/voice task", "Moderate", "US only — see eligibility")
+    if 8240 <= n <= 8279: return ("Code Bounties", "Code/bug bounty", "Hard", "US only — see eligibility")
+    if 8280 <= n <= 8319: return ("Regional Surveys", "Regional survey panel", "Easy", "Varies — see eligibility")
+    if 8320 <= n <= 8359: return ("Niche Buyback", "Niche buyback", "Easy", "US only — see eligibility")
+    if 8360 <= n <= 8399: return ("Fast Online Gigs", "Quick online gig", "Easy", "US only — see eligibility")
     return ("Other Online", "Other", "Easy", "US only")
 
 def proof_exists(route_id, checked_at):
@@ -124,6 +134,7 @@ for f in sorted(glob.glob("/home/hatch/workspace/upmore/qa/verification/R*.json"
         "what_gets_accepted": (str(d.get("what_gets_accepted") or "")[:2000] or None),
         "costs_and_unpaid_time": (str(d.get("costs_and_unpaid_time") or "")[:2000] or None),
         "when_cash_arrives": (str(d.get("when_cash_arrives") or "")[:2000] or None),
+        "demand_side": (str(d.get("demand_side") or "")[:2000] or None),
         "repeatable": rep_json,
     }
     if rid in existing:

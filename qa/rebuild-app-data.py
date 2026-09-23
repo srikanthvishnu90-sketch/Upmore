@@ -123,7 +123,7 @@ for rid, v in dbm.items():
     c["steps"] = app_steps(v.get("steps")) or c["steps"]
     # 7-field quality framework (quick lanes): sync from DB for every card
     for _k in ("who_pays", "who_qualifies", "work_available", "what_gets_accepted",
-               "costs_and_unpaid_time", "when_cash_arrives"):
+               "costs_and_unpaid_time", "when_cash_arrives", "demand_side"):
         if v.get(_k):
             c[_k] = v[_k]
     if v.get("repeatable") is not None:

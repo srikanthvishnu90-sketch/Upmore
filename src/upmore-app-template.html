@@ -811,7 +811,8 @@
   const short = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n).trimEnd() + "…" : s; };
   // 7-field quality framework (quick lanes): who pays, who qualifies, work
   // available, what gets accepted, costs & unpaid time, when cash arrives,
-  // repeatable cadence. Rendered in the route detail when present.
+  // where the demand lives, repeatable cadence. Rendered in the route detail
+  // when present.
   const sevenFields = r => {
     const rows = [
       ["Who pays you", r.who_pays],
@@ -820,6 +821,7 @@
       ["What gets accepted", r.what_gets_accepted],
       ["Costs & unpaid time", r.costs_and_unpaid_time],
       ["When cash arrives", r.when_cash_arrives],
+      ["Where the demand is", r.demand_side],
     ].filter(([, v]) => v);
     const rep = r.repeatable && r.repeatable.cadence ? r.repeatable.cadence : "";
     if (!rows.length && !rep) return "";
