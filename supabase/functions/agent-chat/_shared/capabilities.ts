@@ -657,12 +657,24 @@ interface InlineSub { name: string; monthly: number; raw?: number; per?: string 
 
 function parseInlineSubs(message: string): InlineSub[] {
   const out: InlineSub[] = [];
-  const re = /([A-Za-z][\w+&' .()-]{1,40}?)\s*\$?\s*(\d{1,3}(?:\.\d{1,2})?)\s*(?:\/mo|\/month|per month|a month)?(?=[,.;\n]|$)/g;
+  const re =
+    /([A-Za-z][\w+&' .()-]{1,40}?)\s*\$?\s*(\d{1,3}(?:\.\d{1,2})?)\s*(\/mo(?:nth)?|per month|a month|\/y(?:ea)?r|\/annual(?:ly)?|per year|a year|\/wk|\/week|per week|\/qtr|\/quarter(?:ly)?)?(?=[,.;\n]|$)/gi;
   let m: RegExpExecArray | null;
   while ((m = re.exec(message)) !== null) {
     const name = m[1].trim().replace(/^(my|the|audit|review)\s+/i, "");
-    const monthly = parseFloat(m[2]);
-    if (name.length >= 2 && monthly > 0 && monthly < 500) out.push({ name, monthly });
+    const raw = parseFloat(m[2]);
+    const iv = (m[3] ?? "").toLowerCase().replace(/^\//, "");
+    // Normalize everything to monthly: a $139/yr plan is $11.58/mo, not $139/mo.
+    let monthly = raw, per = "/mo";
+    if (/^(yr|y|year|annual|annually)$/.test(iv) || iv === "per year" || iv === "a year") {
+      monthly = raw / 12; per = "/yr";
+    } else if (/^(wk|week)$/.test(iv) || iv === "per week") {
+      monthly = (raw * 52) / 12; per = "/wk";
+    } else if (/^(qtr|quarter|quarterly)$/.test(iv)) {
+      monthly = raw / 3; per = "/qtr";
+    }
+    if (name.length >= 2 && raw > 0 && raw < 10000 && monthly > 0)
+      out.push({ name, monthly, raw, per });
   }
   return out;
 }
@@ -745,7 +757,7 @@ export async function trySubscriptionAudit(
     return (
       `Let's audit your subscriptions. I don't have any on file — tell me each one like this:\n\n` +
       `"Netflix $15.49, Spotify $11.99, Amazon Prime $14.99"\n\n` +
-      `Name + dollars per month is all I need. I'll rank them by yearly cost, flag the ones that look cuttable, ` +
+      `Name + dollars is all I need — monthly, yearly, weekly, whatever's on the bill, I'll normalize it. I'll rank them by yearly cost, flag the ones that look cuttable, ` +
       `and give you the exact cancel path for each.`
     );
   }
