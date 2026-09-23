@@ -23,6 +23,7 @@ DEMOTE = {
     "R0516": "sub-feature of R0441 (FeaturePoints daily check-in is a feature of the same app)",
     "R0523": "Toluna: official toluna.com terms page not fetched — reviews only, insufficient",
     "R0527": "Receipt Hog: official terms not fetched — reviews only, insufficient",
+    "R0049": "duplicate of verified R0079 — same M&T Bank personal checking promotion; counted once",
 }
 
 def norm_verdict(v):
