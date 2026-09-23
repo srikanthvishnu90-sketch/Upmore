@@ -91,6 +91,7 @@ const BONUS_WAIT_CATS = new Set([
 ]);
 const NEEDS_SPEND_CATS = new Set([
   "Rebate/Incentive", "Cashback/Shopping", "Energy Switching", "Buyback",
+  "Buyback/Resale", "Gift Card Resale",
   "Recycling", "Receipt/Loyalty", "Insurance/Quote", "Government",
   "Student Program", "Mystery Shopping",
 ]);
@@ -174,17 +175,18 @@ function deriveCashMath(r: RouteCard): CashMath | null {
   };
 }
 
-const MAKE_X_RX = /\bmake me\s*\$?\s?(\d{1,4})\b|\bmake \$?\s?(\d{1,4})\b|\bi need\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?(\d{1,4})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some )?(extra )?money\b|\bhelp me make (some )?(extra )?money\b|\b(trying to make (some )?(extra )?money)\b/i;
+const MAKE_X_RX = /\bmake me\s*\$?\s?([\d,]{1,7})\b|\bmake \$?\s?([\d,]{1,7})\b|\bi need\s*\$?\s?([\d,]{1,7})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?([\d,]{1,7})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some )?(extra )?money\b|\bhelp me make (some )?(extra )?money\b|\b(trying to make (some )?(extra )?money)\b/i;
 const VAGUE_OPENER_RX = /i want to make (some )?(extra )?money|help me make (some )?(extra )?money|trying to make (some )?(extra )?money/i;
 
 export function tryMakeMeX(message: string, routes: RouteCard[]): string | null {
   const m = message.match(MAKE_X_RX);
   if (!m) return null;
   // Vague openers ("i want to make money") anchor on a concrete $20 plan.
+  const rawTarget = m[1] ?? m[2] ?? m[3] ?? m[5] ?? "0";
   const target = VAGUE_OPENER_RX.test(message)
     ? 20
-    : parseInt(m[1] ?? m[2] ?? m[3] ?? m[5] ?? "0", 10);
-  if (!target || target <= 0 || target > 10000) return null;
+    : parseInt(rawTarget.replace(/,/g, ""), 10);
+  if (!target || target <= 0 || target > 100000) return null;
   const live = routes.filter(fresh).filter((r) => (r.lane ?? "Standard") === "Standard");
   if (!live.length) return null;
 
@@ -230,8 +232,10 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
     : (pick.r.speed === "days") ? " Pays within about a week." : "";
   const steps = r.steps.slice(0, 5).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
   const links = APP_LINKS[r.route_id];
+  const iosUrl = (r as any).ios_url || links?.ios;
+  const andUrl = (r as any).android_url || links?.android;
   const linkLine = r.provider_url +
-    (links?.ios || links?.android ? `\nDownload the app: ${links.ios ?? links.android}` : "");
+    (iosUrl || andUrl ? `\nDownload the app: ${iosUrl ?? andUrl}` : "");
   const honest = (() => {
     const h = Math.max(1, Math.round(hours));
     return hours <= 4
