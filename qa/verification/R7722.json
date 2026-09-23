@@ -1,0 +1,90 @@
+{
+  "route_id": "R7722",
+  "provider": "Bacon Work",
+  "official_url": "https://www.baconwork.com/findwork",
+  "terms_url": "https://www.baconwork.com/blog/why-be-a-1099-contractor",
+  "payout_quote": "Official Bacon blog: 'Quick Pay pays out in 2 business days after the shift is completed'; alternative is payment the following Friday. Businesses set shift wages; workers see expected wages before applying \u2014 but no public official listing with a numeric wage was found.",
+  "payout_min_usd": 100,
+  "payout_max_usd": 160,
+  "time_min_minutes": 240,
+  "time_max_minutes": 480,
+  "timing": "Quick Pay: 2 business days after shift; otherwise the following Friday.",
+  "speed": "days",
+  "eligibility": [
+    "18+",
+    "Bacon app profile and screening",
+    "Job-specific requirements per shift"
+  ],
+  "steps": [
+    "Sign up on Bacon",
+    "Browse shifts with expected wages shown upfront",
+    "Apply and work the shift",
+    "Get paid via Quick Pay (2 business days) or Friday pay"
+  ],
+  "catches": [
+    "No public official numeric wage listing found \u2014 wages are visible only inside the app",
+    "Quick Pay's 2-business-day window excludes weekends/holidays"
+  ],
+  "biggest_catch": "Timing is officially documented, but no public official shift listing with a numeric wage exists \u2014 the pay amount can't be verified without signing in.",
+  "upfront_fee": "$0.",
+  "verdict": "reject",
+  "checked_at": "2026-09-23",
+  "notes": "Rejected: official payout timing is verified (Quick Pay, 2 business days), but no official public numeric shift wage could be found, failing the numeric requirement.",
+  "critical": {
+    "c1": {
+      "pass": false,
+      "evidence": "No official public numeric wage found."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Platform dispatches shifts; businesses set wages."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official: Quick Pay in 2 business days after shift completion."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "App profile and screening requirements known."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is a real, operating platform."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Pay mechanism is platform-mediated per-task/shift."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements are stated honestly."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No deceptive income promise relied upon."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payout speed characterized from official terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility reflects official requirements."
+    },
+    "s7": {
+      "pass": true,
+      "note": "File written from public official sources; no sign-in required."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Unverifiable on pay \u2014 only pursue after confirming a numeric wage inside the app; Wonolo (R7719) covers the same shift-work lane with verified timing."
+}

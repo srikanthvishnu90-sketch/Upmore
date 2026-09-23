@@ -1,0 +1,89 @@
+{
+ "biggest_catch": "StockX takes roughly a tenth-plus off the top before you see a dollar: 9% transaction fee plus processing plus shipping, then another 2% if you cash out to a Visa debit card - and none of it exists until a buyer takes your Ask and the item passes verification.",
+ "catches": [
+  "Seller fees are steep: 9% base transaction fee at level one, plus payment processing, plus a shipping fee - and Visa debit cash-out costs 2% (min $1.95, max $9.95).",
+  "Nothing sells until a buyer bids/buys at your Ask; price depends on market demand.",
+  "Verification can fail the sale if the item is not authentic or not as described.",
+  "You must ship quickly after a sale; late shipment penalties apply.",
+  "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official StockX help center documents selling and seller payouts.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official help: payout to seller's chosen payout method.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official help: daily payout cycle, processed within ~30 minutes once eligible.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Listing/Ask is free; no upfront fee.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+, must own the item; new/verified-authentic condition standards.",
+ "maximize": "Sell during hype peaks (release week), not months later - resale prices decay fast. Set your Ask above your floor to absorb the 9% + fees; check Bid history to price it right. Ship immediately after a sale to avoid penalties.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate of R7432 (gift-card/flips lane: StockX). The R74 version is better grounded with official seller-tier fee table and $50-$400 range vs this $0-$500 variable. Original: Observed 2026-09-23 on stockx.com official help center. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+ "official_url": "https://stockx.com/",
+ "payout_max_usd": 500,
+ "payout_min_usd": 0,
+ "payout_quote": "Sell your sneakers or streetwear through the live marketplace; after your item passes verification, payouts run on a daily cycle and are processed within about 30 minutes once eligible - minus seller fees (level-one base transaction fee 9%, plus payment processing and shipping).",
+ "provider": "StockX",
+ "repeatable": {
+  "cadence": "per item",
+  "value": true
+ },
+ "route_id": "R7034",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "9% base fee, processing, shipping, and 2% debit cash-out fee disclosed in official help.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Daily-cycle payout timing stated plainly.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Age/ownership/authenticity terms documented.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Listing is free.",
+   "pass": true
+  },
+  "s5": {
+   "note": "You set the Ask and see the fee structure before selling.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Sale price varies with market demand; verification can fail - disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "No guaranteed sale or amount.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "List an Ask or accept a Bid for your item",
+  "Buyer buys; you ship to StockX within the deadline",
+  "StockX verifies authenticity and condition",
+  "Payout processed on the daily cycle (within ~30 minutes once eligible) to your chosen method"
+ ],
+ "terms_url": "https://stockx.com/help/en-GB/articles/as-a-seller-how-and-when-do-i-get-paid",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Payouts on a daily cycle, processed within ~30 minutes once eligible, after sale and verification.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

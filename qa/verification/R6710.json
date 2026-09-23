@@ -1,0 +1,100 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=net.roamler&hl=en_US",
+  "ios": "https://apps.apple.com/app/roamler/id456853356"
+ },
+ "biggest_catch": "Tasks are location-dependent and approval-gated \u2014 rural users see far fewer tasks, and pay varies per task with a 3% PayPal withdrawal fee under \u00a325.",
+ "catches": [
+  "Task availability depends heavily on your city/metro; rural users see few tasks.",
+  "Each withdrawal to PayPal carries a 3% fee unless cashing out over \u00a325 via bank transfer (third-party reports; official page confirms PayPal-only in some flows and 48-hour payment window).",
+  "Some Roamler programs require an invite code or onboarding test before paid tasks unlock.",
+  "Payment only after the Review Team accepts your submission; rejections earn nothing."
+ ],
+ "checked_at": "2026-09-23T12:50:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Roamler Google Play listing (provider's own copy): '1. Book a task. 2. Complete the task. 3. Pocket your winnings. Our team validates your submission, and you can then withdraw your winnings immediately via PayPal or bank transfer.' 'Fast and secure payment by PayPal or bank transfer (no minimum winnings).'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official roamler.com FAQ: 'Tasks are at a fixed rate... Before accepting tasks, in the App you will be able to see what the payment will be.' 'There are 2 ways that you may be paid... you will be paid directly via your PayPal account (via the App) once the task has been accepted by the Review Team. Payment takes up to 48 hours.' Per-task amount shown in-app before accepting; no fixed global range officially stated (varies by task).",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Free app; no fee to join in official materials.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: paid once the Review Team accepts the task; 'Payment takes up to 48 hours' via PayPal. Days, not instant.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+ implied; smartphone with location; PayPal account; tasks shown by location (UK/EU + other markets).",
+ "notes": "Checked 2026-09-23. Roamler Tech FAQ (roamler.com/roamlers/support/faq/tech/) is official. Per user rule, 0/0 payout allowed where amount varies by task \u2014 amounts are shown in-app before accepting. Distinct from Gigwalk/Field Agent/BeMyEye.",
+ "numeric_basis": "payout: fixed per task, shown in-app before accepting (officially task-variable); time: typical field audits 10-25 min",
+ "official_url": "https://www.roamler.com",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "Tasks are at a fixed rate... Before accepting tasks, in the App you will be able to see what the payment will be. (roamler.com) | you will be paid directly via your PayPal account (via the App) once the task has been accepted by the Review Team. Payment takes up to 48 hours. (roamler.com)",
+ "payout_value_note": "fixed rate per task, shown in-app before accepting; no official global range",
+ "provider": "Roamler",
+ "route_id": "R6710",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "Smartphone, location, PayPal; eligibility implied adult.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fees to join in official materials (PayPal withdrawal fee reported by third parties, not official).",
+   "pass": true
+  },
+  "s3": {
+   "note": "Review-team approval + up to 48h PayPal payment \u2014 days.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official roamler.com FAQ + provider app listing.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from other field apps.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the free Roamler app, register and complete onboarding.",
+  "Browse the map/list of tasks near you; each shows its fixed payment before you accept.",
+  "Book and complete the task at the location, submitting photos/answers in-app.",
+  "The Review Team validates your submission.",
+  "Payment goes to your PayPal account within 48 hours of acceptance."
+ ],
+ "terms_url": "https://www.roamler.com/roamlers/support/faq/tech/",
+ "time_max_minutes": 25,
+ "time_min_minutes": 10,
+ "timing": "Paid via PayPal within 48 hours after the Review Team accepts your task.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Roamler pays you a fixed rate per completed task \u2014 you see exactly what each task pays in the app before you accept it.",
+ "who_qualifies": "A smartphone with location on and a PayPal account. Tasks are shown based on your location (UK/EU and other markets); some programs need an invite code or onboarding test.",
+ "work_available": "Heavily metro-dependent \u2014 cities see regular tasks, rural users see few. Some programs are invite-only.",
+ "what_gets_accepted": "The Review Team must accept your submitted task; rejected tasks earn nothing. You see the fixed payment in the app before accepting, so there are no surprises on the rate.",
+ "costs_and_unpaid_time": "No fees to join. Unpaid time: rejected tasks, onboarding tests for some programs, and travel to task locations. PayPal withdrawals under \u00a325 carry a 3% fee (bank transfer over \u00a325 avoids it \u2014 the fee detail is third-party reported; Roamler confirms the 48-hour PayPal window).",
+ "when_cash_arrives": "Paid via PayPal within 48 hours after the Review Team accepts your task.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New tasks post in your area \u2014 complete a task, pass review, get paid via PayPal within 48 hours, and claim the next one."
+ }
+}

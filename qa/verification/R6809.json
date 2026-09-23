@@ -1,0 +1,92 @@
+{
+  "route_id": "R6809",
+  "provider": "Webull",
+  "official_url": "https://www.webull.com",
+  "terms_url": "https://www.webull.com/help/faq/1018-Claiming-Your-Rewards",
+  "payout_quote": "Initial Deposit Amount | Rewards: $500+ -> 20 Free Fractional Shares; $100 - $499.99 -> 3 Free Fractional Shares. Each share is valued between $3 - $3,000. (Official FAQ) Initial Deposit Bonus Promotion: $3-$3000 per share. You have 30 days to claim your free stock... deposited into your Webull brokerage account within 15 business days after the date you claimed... you can sell the free stock once it has settled... proceeds can be used to invest in other stocks or withdrawn as funds.",
+  "payout_min_usd": 9,
+  "payout_max_usd": 9000,
+  "time_min_minutes": 20,
+  "time_max_minutes": 40,
+  "timing": "Claim reward within 30 days; shares deposited within 15 business days after claiming; sellable after settlement, proceeds withdrawable",
+  "speed": "weeks",
+  "eligibility": "New Webull brokerage customers (never previously funded a Webull account); US residents; initial deposit of $100+; KYC/SSN required for brokerage account",
+  "steps": [
+    "Open a Webull brokerage account",
+    "Make an initial deposit of $100 or more (any $100-$499.99 tier)",
+    "Claim the 3 free fractional shares in Menu -> My Rewards within 30 days",
+    "Shares arrive within 15 business days; sell after settlement",
+    "Withdraw the proceeds as cash or keep invested"
+  ],
+  "catches": [
+    "The 3 shares are RANDOMLY selected fractional shares worth $3-$3,000 each - most people land near the $9 minimum; treat this like a lottery ticket, not $9,000.",
+    "You must deposit $100 of your own money into a brokerage account (you can withdraw your deposit, but it must stay long enough to fund/settle).",
+    "Shares take up to 15 business days to arrive after you claim; you must claim within 30 days or lose them.",
+    "Brokerage account requires SSN and identity verification - this is a real securities account, not a signup form.",
+    "Reward shares are taxable income and may be reported on Form 1099.",
+    "Higher tiers ($500+ deposit for 20 shares) exist but tie up more of your own money for the same random odds."
+  ],
+  "biggest_catch": "You deposit $100 of real money and get 3 random fractional shares worth $3-$3,000 each - statistically you'll get about $9, not the headline 'up to 75 free shares'; and you can't touch them until weeks later.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "REJECTED 2026-09-23 strict audit: the tier table in this file ($100-$499.99 -> 3 shares; $500+ -> 20 shares; $3-$3,000/share) no longer matches Webull's current official campaign. Indexed official campaign content (act.webull.com, crawled Sept 2026) now shows 10 free fractional shares for a $100+ initial deposit, $30-$3,000 total, $3-$300 per share - materially different terms. The live campaign page could not be fetched to rewrite the route accurately, so the route is rejected rather than kept on stale terms.",
+  "critical": {
+    "c1": {
+      "pass": false,
+      "evidence": "Official webull.com promotion page loaded live: tier table with 'Initial Deposit Amount / Rewards' and '$3 - $3,000' per-share value.",
+      "note": "FAIL: the tier table in this file no longer matches Webull's current official campaign; live page unfetchable for rewrite."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official steps: open account, initial deposit of $100+; claim in My Rewards."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; deposit is user's own brokerage funds."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official: 3 free fractional shares ($3-$3,000 each) for $100-$499.99 deposit; claim within 30 days; delivered within 15 business days; sellable after settlement with withdrawable proceeds."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (new customers, US, initial deposit tiers) on official pages."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees; own deposit refundable after settlement."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official delivery timing: claim 30 days, delivered 15 business days, sell after settlement."
+    },
+    "s4": {
+      "pass": false,
+      "note": "FAIL: claimed amounts ($3-$3,000/share tiers) are stale vs current campaign ($30-$3,000 total, 10 shares)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official webull.com claiming FAQ is stable, but the campaign tier table it describes is outdated."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Random-value lottery mechanics, deposit requirement, claim/deadline, SSN/KYC, tax disclosed."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct campaign (Webull initial-deposit free-stock promotion)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Take the $100 tier, not the $500 tier - the random share odds are the same either way, so the extra $400 locked up buys you nothing. Claim on day one in Menu -> My Rewards: the 30-day claim clock plus 15-business-day delivery means every day you wait pushes your cash-out weeks later."
+}

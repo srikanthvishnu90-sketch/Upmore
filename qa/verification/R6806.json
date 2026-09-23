@@ -1,0 +1,91 @@
+{
+  "route_id": "R6806",
+  "provider": "Venmo",
+  "official_url": "https://venmo.com",
+  "terms_url": "https://help.venmo.com/cs/articles/venmo-debit-card-referrals-faq-terms-vhel361",
+  "payout_quote": "Both you and your friend can earn a reward through the referral program if your friend spends $50 with their Venmo Debit Card within 30 days of starting the referral process. ... The reward amount is $10 cash (\"Reward\"). ... Rewards will be credited to the Venmo Account of participants within 30 days after qualifying to receive the Reward.",
+  "payout_min_usd": 10,
+  "payout_max_usd": 10,
+  "time_min_minutes": 15,
+  "time_max_minutes": 25,
+  "timing": "$10 cash credited to the Venmo account within 30 days after the referee's $50 in debit-card purchases (usually ~14 days)",
+  "speed": "weeks",
+  "eligibility": "Referrer and referee each need a Venmo account in good standing + Venmo Debit Card; referee must never have been issued/used a Venmo Debit Card; referee spends $50+ in purchases (ATM withdrawals and quasi-cash excluded) within 30 days of the referral link creation; referrer cap of 10 rewards ($100 max)",
+  "steps": [
+    "Get a Venmo Debit Card referral invitation in-app",
+    "Share your referral link privately with a friend (not in public forums - against terms)",
+    "Friend signs up for the Venmo Debit Card via the link and completes identity verification",
+    "Friend spends at least $50 in purchases with the Venmo Debit Card within 30 days",
+    "Both receive $10 cash credited to Venmo within 30 days"
+  ],
+  "catches": [
+    "Your friend must spend $50 of THEIR OWN money on debit-card purchases (not ATM withdrawals, not P2P transfers, not digital-wallet funding) before either of you gets the $10.",
+    "The reward can take up to 30 days to credit after qualifying.",
+    "Referral links may only be shared privately with people you know - public posting can void the referral and the reward.",
+    "Referrer is capped at 10 rewards ($100 total).",
+    "The general Venmo P2P referral bonus ($5/$10) is campaign-set and not documented in static official terms - this route is the Debit Card referral only."
+  ],
+  "biggest_catch": "REJECTED 2026-09-23: requires the referee to spend $50 of their own money on debit-card purchases to earn $10. Owner rule bans promotions requiring spending merely to earn (only permitted gambling wagers are exempt, and this is not gambling). Official terms confirmed (help.venmo.com debit-card referral FAQ).",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "Official Venmo Help Center referral terms (updated May 2025) loaded and quoted verbatim 2026-09-23. $10 is cash to the Venmo account (withdrawable to bank). No gambling. REJECTED 2026-09-23: requires the referee to spend $50 of their own money on debit-card purchases to earn $10. Owner rule bans promotions requiring spending merely to earn (only permitted gambling wagers are exempt, and this is not gambling). Official terms confirmed (help.venmo.com debit-card referral FAQ).",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official help.venmo.com Debit Card Referrals FAQ + Terms page loaded live."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official reward criteria: referee signs up via invitation, spends $50+ in purchases within 30 days of link creation; ATM/quasi-cash excluded."
+    },
+    "c3": {
+      "pass": false,
+      "evidence": "No fee to participate.",
+      "note": "FAIL: requires $50 in debit-card spending to earn the $10 - spending merely to earn, rejected per owner rule."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official: 'The reward amount is $10 cash'; credited 'within 30 days after qualifying'; referrer cap 10 rewards ($100)."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (good standing, debit card, never-issued referee) documented in official terms."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official payout timing: within 30 days after qualifying."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete $10/$50 amounts from official terms."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official help.venmo.com page loaded live 2026-09-23."
+    },
+    "s6": {
+      "pass": false,
+      "note": "FAIL: spend-to-earn requirement violates the no-pay-to-play rule."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct campaign (Venmo Debit Card referral)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No play - rejected: earning the $10 requires spending $50 of your own money first, which violates the no-spending-to-earn rule."
+}

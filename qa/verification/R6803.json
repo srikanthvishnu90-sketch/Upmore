@@ -1,0 +1,91 @@
+{
+  "route_id": "R6803",
+  "provider": "BetMGM",
+  "official_url": "https://www.betmgm.com",
+  "terms_url": "https://www.nj.betmgm.com/en/promo/offers/p/sportsbook",
+  "payout_quote": "First Bet Offer: Score Big On Your First Bet! Sign up with BetMGM, make a deposit, and place your first wager of at least $10 on any game. If that bet wins, you will receive $150 Bonus Bets! Bonus Bets expire within seven (7) days.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 150,
+  "time_min_minutes": 15,
+  "time_max_minutes": 30,
+  "timing": "$150 in bonus bets issued only if the first $10+ wager wins; bonus bets expire 7 days after issue (per official NJ promo hub quote)",
+  "speed": "days",
+  "eligibility": "New BetMGM customers only; 21+; physically present in a BetMGM online sportsbook state (this promo page is NJ; offer varies by state and may not be available in all jurisdictions)",
+  "steps": [
+    "Sign up for BetMGM Sportsbook as a new customer and verify identity",
+    "Make a deposit",
+    "Place your first wager of at least $10 on any game",
+    "If the first bet wins, $150 in bonus bets is issued; use them within 7 days",
+    "Withdraw only winnings from bonus bets (stake excluded)"
+  ],
+  "catches": [
+    "this is a bet, not income: this variant pays the $150 ONLY IF your first $10+ bet wins - if your first bet loses, you get zero bonus. Your qualifying wager can lose 100%.",
+    "The $150 arrives as bonus bets that expire in 7 days; per BetMGM's standard bonus-bet mechanics the stake is not returned and only winnings become cash - confirm the exact bonus-bet withdrawal treatment in the promotion's full terms in your account before counting on it.",
+    "Realistic cash value is well under $150: at typical -110 odds a winning $150 bonus bet returns ~$68 in withdrawable profit, and only if it wins.",
+    "Offer terms vary by state; this page is the NJ promo hub.",
+    "Gambling problem: call 1-800-GAMBLER."
+  ],
+  "biggest_catch": "REJECTED 2026-09-23: the official BetMGM promo hub proves the $150 amount and the win-required first-bet trigger, but its visible terms do not state the bonus-bet withdrawal treatment (stake exclusion / only-winnings-withdrawable). Owner rule requires official provider terms to prove withdrawal/redemption treatment; only third-party affiliates describe the stake-not-returned mechanic. Re-audited the live official page 2026-09-23 - full T&C text not present.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "Official BetMGM promo hub (nj.betmgm.com) loaded and quoted verbatim 2026-09-23. The same official page also advertises a 'Refer Friends' offer ('you can both earn a $100 bonus') - referral terms need a separate official source before it can be its own route. REJECTED 2026-09-23: official terms prove the $150 amount and the first-bet-wins trigger but do not state the bonus-bet withdrawal treatment (stake exclusion); only third-party affiliates describe it. Owner rule requires official terms to prove withdrawal/redemption treatment.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official BetMGM promo page loaded live with the First Bet Offer quoted verbatim."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official: sign up, deposit, first wager >=$10; $150 bonus bets only if that bet wins; expire 7 days."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate; the $10 is the user's own wager."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Official: $150 in bonus bets, expire within seven (7) days; bonus bets non-withdrawable (standard, stated in BetMGM terms boilerplate).",
+      "note": "FAIL: official page does not prove bonus-bet withdrawal/stake-exclusion treatment - cannot verify the bonus becomes withdrawable."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New customers only; 21+; state availability noted as varying (NJ page)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Payout timing: after first bet wins; 7-day expiry."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete amounts ($150, $10 first wager) from official page; realistic cash value disclosed."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official betmgm.com promo page loaded live 2026-09-23."
+    },
+    "s6": {
+      "pass": false,
+      "note": "FAIL: gambling withdrawal treatment unproven on the official page."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct campaign (BetMGM First Bet Offer)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No play - rejected: the official BetMGM page doesn't publish the bonus-bet withdrawal terms, so the real cash value can't be verified from official sources."
+}

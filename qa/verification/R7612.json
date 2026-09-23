@@ -1,0 +1,82 @@
+{
+ "route_id": "R7612",
+ "provider": "Dolly",
+ "official_url": "https://help.dolly.com/hc/en-us/articles/360021405072-Payouts",
+ "terms_url": "https://help.dolly.com/hc/en-us/articles/360021405072-Payouts",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official help article: paid twice weekly, Tuesdays and Fridays; PayPal bank transfer usually takes another 1-3 business days.",
+ "speed": "weeks",
+ "eligibility": "Dolly helper.",
+ "steps": [],
+ "catches": [
+  "Payouts are twice weekly (Tuesdays and Fridays) only; there is no official instant or daily cashout mechanism.",
+  "PayPal bank transfers usually take another 1-3 business days on top of the twice-weekly schedule.",
+  "Dolly covers payout fees, but optional PayPal instant withdrawal has a user-paid fee not quantified on the Dolly page."
+ ],
+ "biggest_catch": "Dolly pays twice weekly on Tuesdays and Fridays with no official instant or daily cashout option: it is structurally not a same-day-pay platform.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official help.dolly.com Payouts article (established from official terms review): twice-weekly payouts Tuesdays and Fridays; PayPal bank transfer adds 1-3 business days. No official instant/daily cashout mechanism exists.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: Dolly's official help article confirms twice-weekly payouts (Tuesdays and Fridays) with no instant or daily cashout mechanism.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official help.dolly.com Payouts article is the provider's own terms source (reviewed 2026-09-23)."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No instant or daily cashout payout exists to verify; payouts are twice weekly."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Dolly covers payout fees per the official article."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "No same-day timing exists; payouts land Tuesdays/Fridays plus 1-3 business days for PayPal bank transfer."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Helper eligibility is described on the official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Dolly covers payout fees; PayPal instant-withdrawal fee is not quantified officially."
+  },
+  "s3": {
+   "pass": false,
+   "note": "No instant timing exists; twice-weekly schedule only."
+  },
+  "s4": {
+   "pass": true,
+   "note": "The twice-weekly schedule is concretely documented."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official page reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because no fast-pay mechanism exists (rejected)."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

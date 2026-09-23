@@ -1,0 +1,101 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.gigwalk",
+  "ios": "https://apps.apple.com/app/gigwalk/id343199164"
+ },
+ "biggest_catch": "You are paid only after the client approves your work \u2014 gigs are location-based and competitive, so in smaller towns there may be few or no gigs at all.",
+ "catches": [
+  "Gigs are location-based (US, Canada, UK, select cities); availability in smaller towns can be near zero \u2014 check the map before counting on it.",
+  "PayPal account required to get paid; no other payout method on the official page.",
+  "Payment comes after client approval of your submission; rejections mean redoing the gig or no pay.",
+  "Gig density varies wildly by metro \u2014 big-city users see daily gigs, others see none.",
+  "Must be 18+; smartphone with location services required."
+ ],
+ "checked_at": "2026-09-23T12:20:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official gigwalk.com/gigwalkers page: 'So you want to become a Gigwalker? ... Work when and where you want... The Gigwalk app is available on both iOS and Android devices.'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official gigwalk.com: 'You can pick Gigs that take anywhere from 5 minutes to a few hours or based on how much you want to make - from $3 to $100 or more.' Payment: 'Link your PayPal account to get paid. All payments are made through PayPal.' 'Gigwalk links to PayPal, so once a job is finished and approved, the money is sent directly to your personal account.'",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to join on official page; app is free to download.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: 'once a job is finished and approved, the money is sent directly to your personal account' via PayPal. Approval-gated, so timing is days, not instant.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+; smartphone (iOS/Android) with location services; PayPal account; US, Canada, UK + select cities in Europe/Asia.",
+ "notes": "Checked 2026-09-23 via official gigwalk.com gigwalkers page. Distinct from Field Agent (R6707) and other field-task apps.",
+ "numeric_basis": "payout: official gig range $3-$100+; time: official 5 min to a few hours per gig",
+ "official_url": "https://www.gigwalk.com",
+ "payout_max_usd": 100,
+ "payout_min_usd": 3,
+ "payout_quote": "You can pick Gigs that take anywhere from 5 minutes to a few hours or based on how much you want to make - from $3 to $100 or more. (gigwalk.com) | Link your PayPal account to get paid. All payments are made through PayPal... once a job is finished and approved, the money is sent directly to your personal account. (gigwalk.com)",
+ "payout_value_note": "per gig, official range $3-$100+",
+ "provider": "Gigwalk",
+ "route_id": "R6706",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "18+, smartphone + location, PayPal; geographic coverage stated.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fees stated; free app.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Paid after client approval via PayPal \u2014 days, not same-day.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Range stated as picker range, no earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official gigwalk.com page content via search snippets.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct provider from Field Agent etc.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false matches official page.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the Gigwalk app (iOS/Android) and register with email + a few basic questions.",
+  "Link your PayPal email in app settings.",
+  "Browse the map/list for gigs near you; each listing shows payment amount, description, location.",
+  "Apply ('Apply to this Gig'), complete the gig per instructions, submit photos/answers in-app.",
+  "Client approves; payment is sent directly to your PayPal account."
+ ],
+ "terms_url": "https://www.gigwalk.com/gigwalkers/",
+ "time_max_minutes": 180,
+ "time_min_minutes": 5,
+ "timing": "PayPal payout after the client approves your submitted gig \u2014 payment sent directly to your PayPal account on approval.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "The clients (brands and businesses posting gigs on Gigwalk) pay you per completed gig; Gigwalk sends the money to your PayPal once the client approves.",
+ "who_qualifies": "18+; a smartphone (iOS/Android) with location services on; a PayPal account. Available in the US, Canada, the UK, and select cities in Europe and Asia.",
+ "work_available": "Location-based and competitive \u2014 big-city users see daily gigs, while smaller towns can have near zero. Check the gig map before counting on this.",
+ "what_gets_accepted": "You are paid only after the client approves your submitted gig. You must be at the correct location with GPS on; rejections mean redoing the gig or no pay.",
+ "costs_and_unpaid_time": "No fees. Unpaid time: travel to gig locations, time spent checking the app for gigs (they're first-come, first-served), and any gig the client rejects.",
+ "when_cash_arrives": "Once the client approves your gig, the money is sent directly to your PayPal account.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New gigs post in your area \u2014 complete a gig, get client approval, get paid via PayPal, and claim the next one."
+ }
+}

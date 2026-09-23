@@ -1,0 +1,102 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Pay per HIT is set by each requester and is often a few cents; requesters have up to 30 days to approve work, so approved cash can take weeks to reach your bank even though the schedule is flexible.",
+ "catches": [
+  "Per-HIT pay is set by each requester (Amazon states no minimum); most small HITs pay pennies, so effective hourly pay is often well below minimum wage.",
+  "Requesters 'determine whether to approve your work and pay you within 30 days' \u2014 approval is not instant and rejections lower your approval rating, which gates access to better HITs.",
+  "New workers face a 10-day holding period before any rewards move to the earnings balance.",
+  "One transfer per calendar day; scheduled transfers every 3, 7, 14 or 30 days \u2014 this is not same-day cash.",
+  "US tax interview (taxpayer ID) is required before you can work on any HIT.",
+  "Daily HIT limits apply; MTurk warns about scams/phishing in requester-hosted HITs \u2014 never hand personal data to a requester."
+ ],
+ "checked_at": "2026-09-23T11:45:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Amazon Mechanical Turk worker help page (mturk.com/worker/help): 'Amazon Mechanical Turk (MTurk) is a marketplace for completion of virtual tasks' \u2014 HITs defined as single self-contained tasks (identifying objects in photos, data de-duplication, transcribing audio, researching data details).",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official mturk.com help: 'All amounts paid will be in US Dollars or Amazon.com gift cards.' Per-HIT pay is requester-set; official terms state no per-task pay range, so numerics are 0/0 variable with honest note. Timing quote: 'You have the option of scheduling payments every 3, 7, 14 or 30 days' and 'You can transfer your earnings to your U.S. Bank account or to an Amazon.com gift card.'",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee or upfront fee on the official help page; worker sign-up is an account request reviewed within 3 business days. MTurk never charges workers to join.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official concrete timing: 'Requesters determine whether to approve your work and pay you within 30 days'; 'rewards are held until you have been active on Amazon Mechanical Turk for at least 10 days'; 'You are limited to one transfer per calendar day'; transfer cutoff = HITs approved at least one day prior to transfer date.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+ (account request + agreement to MTurk Participation Agreement); US workers must complete IRS tax information interview before working; US: bank transfer or Amazon gift card; international: gift card (some eligible for US bank transfer).",
+ "notes": "Checked 2026-09-23 via official mturk.com worker help page (full page read). Distinct from the survey-lane microtask routes (Clickworker R0214, Microworkers R0216, Prolific R0220) \u2014 different provider and mechanism (requester-priced HIT marketplace with bank-transfer payout).",
+ "numeric_basis": "payout: requester-set per HIT, no official per-task range stated (0/0 variable); time: typical small HIT 2-5 min active",
+ "official_url": "https://www.mturk.com",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "All amounts paid will be in US Dollars or Amazon.com gift cards. You will be able to schedule a transfer of funds from your available earnings balance... You have the option of scheduling payments every 3, 7, 14 or 30 days... You can transfer your earnings to your U.S. Bank account or to an Amazon.com gift card. (mturk.com worker help)",
+ "payout_value_note": "variable \u2014 per-HIT pay set by each requester; official terms state no per-task pay range",
+ "provider": "Amazon Mechanical Turk",
+ "route_id": "R6700",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "18+; US tax interview required; US/international payout paths stated on official page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No worker fees on official page; Amazon charges requesters, not workers.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Approval up to 30 days; transfers on 3/7/14/30-day schedule; 10-day new-worker hold. Not same-day \u2014 speed 'days'.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No guaranteed earnings claims; all timing facts verbatim from official help page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Full official mturk.com worker help page read this session (790 lines).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Mechanism distinct from other verified microtask routes (requester-priced HITs, bank transfer).",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false matches official free sign-up.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Request a worker account on worker.mturk.com (name, email, country; agree to Participation Agreement; decision within 3 business days).",
+  "Complete the US tax information interview (required before any HIT).",
+  "Browse HITs you qualify for, click Accept & Work, complete per requester instructions, submit.",
+  "Requester approves (or auto-approves) within 30 days; approved reward shows on Dashboard/Earnings.",
+  "On Account Settings, schedule transfers to your US bank account or Amazon gift card every 3, 7, 14 or 30 days (one transfer per calendar day; 10-day hold for new workers)."
+ ],
+ "terms_url": "https://www.mturk.com/worker/help?ref=hackernoon.com",
+ "time_max_minutes": 5,
+ "time_min_minutes": 2,
+ "timing": "Approved HIT rewards credit to your earnings balance; transfer to US bank account or Amazon.com gift card on a schedule you choose (every 3, 7, 14 or 30 days); 10-day holding period for new workers; one transfer per calendar day.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "The individual requesters who post tasks (HITs) on Amazon Mechanical Turk pay you per approved task; Amazon holds your balance and handles the transfer to your bank.",
+ "who_qualifies": "You must be 18+ and request a worker account (decision within about 3 business days). US workers must complete the IRS tax information interview before they can do any HIT.",
+ "work_available": "MTurk is an open task marketplace, but new workers face daily HIT limits and your approval rating gates access to better-paying HITs, so how much work you actually qualify for varies day to day.",
+ "what_gets_accepted": "Each requester sets the bar for their own HITs and has up to 30 days to approve or reject your work. Rejections don't just lose you that task's pay \u2014 they lower your approval rating, which locks you out of better HITs.",
+ "costs_and_unpaid_time": "No fees to join or work \u2014 Amazon charges requesters, not workers. Unpaid time: the account request and tax interview, learning which requesters are worth your time, and any HIT a requester rejects (no pay for it).",
+ "when_cash_arrives": "Approved rewards credit to your earnings balance, then you transfer to a US bank account or Amazon gift card on a schedule you choose (every 3, 7, 14, or 30 days, one transfer per day). New workers have a 10-day holding period before anything moves.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New HITs post constantly \u2014 complete a HIT, get it approved, earn the reward, and pick up the next one."
+ }
+}

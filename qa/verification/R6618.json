@@ -1,0 +1,83 @@
+{
+  "biggest_catch": "No accessible official Test IO (test.io) tester page states a concrete payout amount or payment schedule \u2014 only third-party sites quote 'up to $50 per bug' and 'monthly payment'.",
+  "catches": [
+    "test.io/become-a-tester/ fetch failed (blocked/empty response), and searches surfaced no indexed official Test IO FAQ/help page with tester pay terms.",
+    "'Up to $50 per bug' and 'paid once a month via PayPal/Payoneer/Skrill' claims come only from third-party review sites.",
+    "No official statement on payment timing found on test.io's own accessible pages.",
+    "Cannot tell a friend 'this pays X within days' on official evidence."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Test IO (test.io) is a real crowd-testing platform with a tester program.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No concrete payout amount on any accessible official Test IO page. 'Up to $50 per bug' is quoted only by third-party review sites.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "Tester side appears free; no fee evident.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No official payment-timing statement found; 'monthly payout' claims are third-party only.",
+      "pass": false
+    }
+  },
+  "eligibility": "Tester signup exists at test.io; eligibility terms not publicly documented.",
+  "notes": "Checked 2026-09-23. Per hard rule: concrete payout AND timing from official provider terms, or reject. No accessible official Test IO page states either. Third parties quote up to $50/bug paid monthly. Revisit if Test IO publishes accessible official tester pay terms.",
+  "official_url": "https://www.test.io",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": null,
+  "provider": "Test IO",
+  "route_id": "R6618",
+  "speed": "weeks",
+  "standard": {
+    "s1": {
+      "note": "Tester program exists; payout steps not publicly documented.",
+      "pass": false
+    },
+    "s2": {
+      "note": "No upfront fee evident.",
+      "pass": true
+    },
+    "s3": {
+      "note": "No official payment timing.",
+      "pass": false
+    },
+    "s4": {
+      "note": "No earnings guarantee made in this file.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official test.io become-a-tester page fetch failed; no indexed official pay/FAQ page found.",
+      "pass": false
+    },
+    "s6": {
+      "note": "Official site live; no accessible official pay terms.",
+      "pass": false
+    },
+    "s7": {
+      "note": "No pay-to-play, MLM, or academic-misconduct elements.",
+      "pass": true
+    }
+  },
+  "steps": [],
+  "terms_url": "https://www.test.io",
+  "time_max_minutes": 0,
+  "time_min_minutes": 0,
+  "timing": "No official payment timing published for testers.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No playbook \u2014 rejected: no accessible official Test IO tester page states a concrete payout amount or payment schedule \u2014 only third-party sites. If Test IO publishes official pay terms with \u22647-day timing, the repeat loop is bug-testing tasks."
+}

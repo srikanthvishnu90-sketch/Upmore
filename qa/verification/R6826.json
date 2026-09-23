@@ -1,0 +1,92 @@
+{
+ "route_id": "R6826",
+ "provider": "Interactive Brokers",
+ "official_url": "https://www.interactivebrokers.com/en/index.php?f=45764",
+ "terms_url": "https://www.interactivebrokers.com/en/index.php?f=45764",
+ "payout_quote": "Our Refer a Friend program allows eligible clients to earn USD 200 for each friend they refer to IBKR... You will receive USD 200 for each referred friend who: Opens an individual or joint account using your unique referral link; Deposits at least USD 10,000 (or equivalent) within 30 days; Maintains a balance of at least USD 10,000 (or equivalent) for 1 year. (Official Interactive Brokers referral page)",
+ "payout_min_usd": 200,
+ "payout_max_usd": 200,
+ "time_min_minutes": 10,
+ "time_max_minutes": 15,
+ "timing": "Paid after the referred friend meets all conditions including the 1-year balance maintenance",
+ "speed": "months",
+ "eligibility": "Referrer must be an IBKR client with an individual or joint account, account net liquidation value of at least USD 2,000, and at least one securities trade placed; friend must open via your unique link; tax-deferred accounts ineligible; several countries excluded",
+ "steps": [
+  "Open and fund your own IBKR individual or joint account ($2,000+ value) and place at least one trade",
+  "Generate your unique referral link in the IBKR portal",
+  "Share it with a friend who genuinely wants a brokerage account",
+  "Friend opens an individual/joint account via your link, deposits $10,000+ within 30 days, and maintains $10,000+ for 1 year",
+  "You receive USD 200 per qualifying friend (up to 15 per calendar year, 30 total)"
+ ],
+ "catches": [
+  "HIGH BAR: your friend must deposit at least $10,000 within 30 days AND keep $10,000+ in the account for a full year - most people you know won't qualify",
+  "You don't get paid until the 1-year maintenance is complete",
+  "You must already be an IBKR client with $2,000+ in the account and at least one trade to refer anyone",
+  "Capped at 15 referrals per calendar year and 30 total - not unlimited",
+  "Tax-deferred (IRA) accounts don't count for either side",
+  "Residents of Japan, Denmark, Spain, Portugal, Poland, mainland China and Israel are ineligible",
+  "Only refer people who genuinely want IBKR - manufacturing referrals or coaching friends to game the deposit would violate the program terms"
+ ],
+ "biggest_catch": "Your friend must park $10,000 for a full year before you see a cent - this only pays if you know serious investors, and you're capped at 15 referrals a year.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0030 (Interactive Brokers, catalog). Original: Official Interactive Brokers referral page (interactivebrokers.com, collected 2026-09-23): USD 200 per referred friend meeting the $10k/30-day/1-year conditions; referrer eligibility and caps stated. Repeatable per referral - a true recurring mechanism (up to 15/year).",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "This only works in investing circles: share your link in contexts where people are already moving serious money to a broker - never spam it. Vet before you share: only send it to friends who actually plan to deposit $10,000+ and leave it for a year, because unqualified signups earn you nothing and burn goodwill. Track each referral's 1-year anniversary so you can confirm the $200 posted; with the 15-per-year cap, prioritize the friends most likely to complete the full year.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official IBKR: earn USD 200 for each referred friend who opens via your link, deposits $10,000+ within 30 days, maintains $10,000+ for 1 year."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: be an eligible client, share unique link, friend opens/funds/maintains."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: USD 200 per qualifying referral; up to 15 per calendar year, 30 total."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (client with $2,000+ value and one trade; country exclusions; no tax-deferred accounts) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: paid after all conditions including 1-year maintenance."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $200 per referral; caps disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Interactive Brokers referral page, collected 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "High deposit bar, 1-year wait, caps, exclusions disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (brokerage referral) - repeatable per referral."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

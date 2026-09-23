@@ -30,7 +30,9 @@ out = out.replace("I can look up any of the 535 routes in the catalog",
                   f"I can look up any of the {n_routes} routes in the catalog")
 out = out.replace("the real 535-route catalog", f"the real {n_routes}-route catalog")
 out = out.replace('"Rebate/Incentive":"tag"',
-                  '"Rebate/Incentive":"tag", "Credit Card Bonus":"card"')
+                  '"Rebate/Incentive":"tag", "Credit Card Bonus":"card",'
+                  ' "UGC Video":"gift", "User Testing":"flask", "Promo Arbitrage":"chart",'
+                  ' "Buyback/Resale":"gift", "Mystery Shopping":"tag"')
 assert "535" not in out.split("const UPMORE_DATA")[0], "stale 535 count remains in template copy"
 
 # Vendor supabase-js inline so the app has zero external script dependencies

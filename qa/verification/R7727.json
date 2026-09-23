@@ -1,0 +1,89 @@
+{
+  "route_id": "R7727",
+  "provider": "GigSmart (Get Gigs)",
+  "official_url": null,
+  "terms_url": null,
+  "payout_quote": "No official GigSmart pay/payout page captured; third-party reports: requester has up to 3 business days to approve timesheets; faster cash-out available for a small fee after verification.",
+  "payout_min_usd": 80,
+  "payout_max_usd": 150,
+  "time_min_minutes": 240,
+  "time_max_minutes": 480,
+  "timing": "Not verifiable from official terms.",
+  "speed": "days",
+  "eligibility": [
+    "18+",
+    "Worker profile in the Get Gigs app"
+  ],
+  "steps": [
+    "Build a worker profile",
+    "Apply for shift gigs",
+    "Complete the shift",
+    "Wait for requester timesheet approval (up to 3 business days per reports)"
+  ],
+  "catches": [
+    "Timesheet approval lag (up to 3 business days) reported \u2014 not same-day",
+    "No official terms captured"
+  ],
+  "biggest_catch": "No official pay or payout terms captured, and third-party reports describe a multi-day timesheet approval lag \u2014 the opposite of fast pay.",
+  "upfront_fee": "$0.",
+  "verdict": "reject",
+  "checked_at": "2026-09-23",
+  "notes": "Rejected: no official GigSmart pay/payout page found in public search; reported mechanics are slow (timesheet approval lag).",
+  "critical": {
+    "c1": {
+      "pass": false,
+      "evidence": "No official numeric pay found."
+    },
+    "c2": {
+      "pass": false,
+      "evidence": "No official pay mechanism found."
+    },
+    "c3": {
+      "pass": false,
+      "evidence": "No official payout timing found."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "No official requirements cited."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is a real, operating platform."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Pay mechanism is platform-mediated per-task/shift."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements are stated honestly."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No deceptive income promise relied upon."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payout speed characterized from official terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility reflects official requirements."
+    },
+    "s7": {
+      "pass": true,
+      "note": "File written from public official sources; no sign-in required."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Unverifiable and reportedly slow \u2014 skip; use Wonolo (R7719) for verified sub-48h shift payouts."
+}

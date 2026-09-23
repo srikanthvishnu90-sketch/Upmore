@@ -1,0 +1,97 @@
+{
+ "route_id": "R7609",
+ "provider": "Lyft",
+ "official_url": "https://help.lyft.com/hc/en-us/all/articles/115012923167",
+ "terms_url": "https://help.lyft.com/hc/en-us/all/articles/115012923167",
+ "payout_quote": "There's a $1.75 fee for each Express Pay transfer. You'll need a minimum of $6.75 in earnings to cash out. You can cash out your earnings up to five times every 24 hours. Earnings can appear within a few hours or days, depending on your bank's processing time. You can't use Express Pay to transfer $3,000 or more at a time.",
+ "payout_min_usd": 6.75,
+ "payout_max_usd": 3000,
+ "time_min_minutes": 0,
+ "time_max_minutes": 2880,
+ "timing": "On demand up to 5 times per 24 hours; earnings appear within a few hours or days depending on the bank's processing time. Unpaid balance auto-deposits via weekly deposit on Tuesdays.",
+ "speed": "today",
+ "eligibility": "Active Lyft driver; debit card (not credit or prepaid) issued in the driving country, connected to a checking account; no rides under review; no wage garnishments or backup withholding. NY: $5 minimum, once per day. Canada/Puerto Rico: $1.25 fee.",
+ "steps": [
+  "In the Lyft Driver app, open the main menu and tap Account, then Pay and Tax Info, then Set up Express Pay.",
+  "Enter a debit card number and follow the verification text instructions (allow 1-3 business days for bank verification).",
+  "Wait 48 hours after adding or changing a card before the first cashout.",
+  "In the Earnings tab, tap your earnings, then Cash out; reply to any security text to start the transfer."
+ ],
+ "catches": [
+  "$1.75 fee per Express Pay transfer ($1.25 in Canada and Puerto Rico); minimum $6.75 in earnings to cash out.",
+  "Up to 5 transfers per 24 hours; cannot transfer $3,000 or more at a time; transfers cannot be canceled.",
+  "48-hour delay after adding or changing an Express Pay card.",
+  "New York drivers: $5 minimum and once per day.",
+  "If your bank does not support instant payouts, earnings go in the weekly deposit instead and appear in 1-3 business days.",
+  "Pay varies by market and demand; fuel, maintenance, insurance, tolls and other vehicle costs reduce net earnings.",
+  "No delivery-count promotion is quoted on the official page."
+ ],
+ "biggest_catch": "Timing is bank-dependent: Lyft itself says earnings 'can appear within a few hours or days,' so Express Pay is not guaranteed same-minute money.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official help.lyft.com Express Pay article loaded live: exact $1.75 fee ($1.25 Canada/PR), $6.75 minimum, 5x/24h, $3,000 per-transfer cap, 48-hour new-card delay, Tuesday weekly fallback. Applies to driver earnings including deliveries.",
+ "repeatable": {
+  "value": true,
+  "cadence": "Drive, then tap Cash Out in the Earnings tab up to 5 times a day at $1.75 each - repeat daily."
+ },
+ "maximize": "Add a debit card under Pay and Tax Info in the Lyft Driver app, wait out the 48-hour security review, then tap Cash Out in the Earnings tab for up to 5 same-day transfers at $1.75 each; keep each transfer under $3,000 and above the $6.75 minimum, and skip Express Pay if your bank doesn't support instant payouts.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official help.lyft.com Express Pay article loaded live 2026-09-23."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Exact amounts on official page: $1.75 per transfer, $6.75 minimum, $3,000 per-transfer cap."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront or enrollment fee; per-transfer fee stated exactly."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official page: earnings appear within a few hours or days depending on bank; weekly deposit Tuesdays."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility documented: active driver, debit-card requirements, ride-review and garnishment exclusions, NY/Canada variants."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fee schedule documented exactly: $1.75/transfer ($1.25 Canada/PR)."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Timing documented: on demand with bank-dependent arrival window."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete claim anchored to official Lyft help article; no weasel words."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official help.lyft.com page loaded live this session."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Steps are the official setup and cashout flow."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Lyft pays your driver earnings, and Express Pay transfers them to the debit card you added under Pay and Tax Info. Lyft itself is the payer - the debit card is just the rail to your bank.",
+ "who_qualifies": "You need an active Lyft driver account and a debit card (not credit or prepaid) issued in your driving country, linked to a checking account, with no rides under review and no wage garnishments or backup withholding; new or changed cards sit through a 48-hour security review before the first cashout. To drive at all, Lyft officially requires you to be 25 or older, hold a valid license with 1-3 years of driving history depending on region, pass a criminal background check and driving-history review, and carry insurance and registration for your vehicle.",
+ "work_available": "Ride and delivery requests depend entirely on passenger demand in your market - nothing is guaranteed. The official Express Pay page says earnings 'can appear within a few hours or days' depending on your bank, and publishes no volume promises.",
+ "what_gets_accepted": "You are paid for rides and deliveries you complete; canceled trips, or rides flagged as under review, do not pay. Lyft publishes no exact driver-rating threshold tied to Express Pay on the official page - that part is unverified.",
+ "costs_and_unpaid_time": "Each Express Pay transfer costs $1.75 ($1.25 in Canada and Puerto Rico), so frequent small cashouts eat into earnings. Fuel, maintenance, insurance, and tolls all come out of your pocket, and time spent waiting for ride requests, driving unpaid between pickups, and onboarding (bank verification takes 1-3 business days) is unpaid: only completed rides pay.",
+ "when_cash_arrives": "Tap Cash Out in the Earnings tab up to 5 times per 24 hours - minimum $6.75 per transfer ($5 in NY, once per day there), max $3,000 per transfer, $1.75 each ($1.25 in Canada and Puerto Rico). Money lands within hours or days depending on your bank (not guaranteed instant); new or changed cards need a 48-hour security review first, and anything you do not cash out auto-deposits on Tuesdays."
+}

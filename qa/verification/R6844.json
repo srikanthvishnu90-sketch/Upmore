@@ -1,0 +1,91 @@
+{
+ "route_id": "R6844",
+ "provider": "U.S. Bank",
+ "official_url": "https://www.usbank.com/splash/checking/2026-all-market-checking-offer-var-four.html",
+ "terms_url": "https://www.usbank.com/splash/checking/2026-all-market-checking-offer-var-four.html",
+ "payout_quote": "You must open a new U.S. Bank Smartly Checking account either online through the promotional offer web page, in a branch, or over the phone from September 10, 2026, through and including November 10, 2026. The account must be funded with at least $25 within 60 days of account opening... Additionally, you must enroll in the U.S. Bank Mobile App or online banking within 90 days of opening your account. You must also complete two or more direct deposits within 90 days of opening your account that total: $2,000 to $4,999.99 to earn the $250 bonus, $5,000 to $7,999.99 to earn the $350 bonus, or $8,000 or more to earn the $450 bonus. A direct deposit is an electronic deposit of your paycheck made through the Automated Clearing House (ACH) network or an electronic deposit of your government benefits... Other electronic deposits or person-to-person payments are not considered a direct deposit. Your checking bonus will be credited to your new checking account within 30 days following the completion of all the offer requirements. (Official U.S. Bank offer disclosures, crawled 2026-09-23)",
+ "payout_min_usd": 250,
+ "payout_max_usd": 450,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus credited within 30 days after all requirements are completed",
+ "speed": "months",
+ "eligibility": "New U.S. Bank consumer checking customers (no existing account, none in last 12 months, no U.S. Bank checking bonus in past 12 months); open 9/10/26 - 11/10/26",
+ "steps": [
+  "Open a new U.S. Bank Smartly Checking account through the promotional offer page (or in branch/phone with banker activation) by November 10, 2026",
+  "Fund with at least $25 within 60 days",
+  "Enroll in the U.S. Bank mobile app or online banking within 90 days",
+  "Complete 2+ direct deposits within 90 days totaling $2,000+ ($250), $5,000+ ($350), or $8,000+ ($450)",
+  "Bonus credits within 30 days of completing everything"
+ ],
+ "catches": [
+  "TIME-BOUND: must open 9/10/26 - 11/10/26",
+  "Requires TWO or more direct deposits (not one lump sum) totaling the tier threshold",
+  "Direct deposit = paycheck/government ACH only - Venmo, Zelle, Cash App, and bank transfers do NOT count",
+  "Must open through the promotional page or have a banker activate it - a regular application may not attach the offer",
+  "New customers only: no U.S. Bank checking in the last 12 months",
+  "Bonus is taxable (1099-INT)"
+ ],
+ "biggest_catch": "You need at least two separate direct deposits totaling $2,000+ within 90 days - and they must be real payroll/government ACH deposits, not transfers from your other accounts.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0047 (U.S. Bank, catalog). Original: Official U.S. Bank offer disclosures (usbank.com, crawled 2026-09-23): $250/$350/$450 tiers on 2+ direct deposits; current window 9/10/26-11/10/26. One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Open through the promotional offer web page so the offer auto-applies. If your paycheck is $2,500+/month, two pay periods hit the $5,000 tier for $350 with the same effort as the $250 tier. Enroll in mobile banking the same day you open - it's a separate requirement people forget. Fund with at least $25 within 60 days and confirm the bonus posts within the promised 30 days of completing everything.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official U.S. Bank: $250/$350/$450 for 2+ direct deposits totaling $2k/$5k/$8k within 90 days."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open via promo page by 11/10/26, fund $25+, enroll in mobile/online banking, complete direct deposits."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to earn the bonus; $25 minimum funding within 60 days per official disclosures."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $250, $350, or $450 by tier."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 9/10/26-11/10/26 window) per official disclosures."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No extra fee to earn the bonus beyond the account's own terms; fee schedule not detailed in the offer disclosures."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: credited within 30 days of completing requirements."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $250/$350/$450 tiers."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official U.S. Bank offer page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "2+ deposit rule, strict DD definition, promo-page requirement, tax disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Major bank bonus - one-time, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

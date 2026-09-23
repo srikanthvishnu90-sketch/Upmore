@@ -1,0 +1,96 @@
+{
+ "route_id": "R7601",
+ "provider": "Uber",
+ "official_url": "https://help.uber.com/prs-AF/driving-and-delivering/article/instant%C2%A0pay-einrichten?nodeId=5bac3e84-baa4-424a-9780-14b279bcb2cc",
+ "terms_url": "https://uber-regulatory-documents.s3.amazonaws.com/reddog/country/United%20States/p2p/Rasier%2C%20LLC%20-%20Instant%20Pay%20Terms%20.pdf",
+ "payout_quote": "Instant Pay lets you access your earnings at any time. You can cash out your available earnings to a bank account or debit card up to 6 times a day (once a day in NYC). You must have at least $1 in available earnings to cash out, and a $1.75 fee (free in NYC) applies each time. You can cash out up to $6,000 each week and $3000 per cashout.",
+ "payout_min_usd": 1,
+ "payout_max_usd": 3000,
+ "time_min_minutes": 0,
+ "time_max_minutes": 4320,
+ "timing": "On demand, up to 6 cashouts/day (once/day NYC). Typically instant; some banks take 2-3 days and failed payments reroute to the bank account in 1-3 business days. Uncashed funds auto-deposit via direct deposit after 4am Mondays.",
+ "speed": "today",
+ "eligibility": "Active Uber driver/courier account; bank account or debit card added in Wallet (card name must match Uber account). Not eligible with wage garnishments, taxi partners, or accounts flagged for security review.",
+ "steps": [
+  "In the Driver app, open the menu and tap Wallet, then Payment Methods.",
+  "Add a Bank Account or debit card (the name on the card must match your Uber account).",
+  "Tap Cash Out to transfer available earnings.",
+  "Optional: sign up for the Uber Pro Card by Branch for free automatic payouts after each completed trip (approval via Branch not guaranteed; other cashout options require turning automatic payouts off)."
+ ],
+ "catches": [
+  "$1.75 fee per transfer (free in NYC); minimum $1 in available earnings to cash out.",
+  "Limits: up to $3,000 per cashout, $6,000 per week, 6 cashouts per day (once per day in NYC).",
+  "Some banks take 2-3 days to process an Instant Pay cashout; not all debit cards accept fast funds.",
+  "Pay varies by market and demand; fuel, maintenance, insurance, tolls and other vehicle costs reduce net earnings.",
+  "The Uber Pro Card has no annual fees or credit checks, but enrollment and approval are managed by Branch and not guaranteed.",
+  "No delivery-count promotion is quoted on the official page."
+ ],
+ "biggest_catch": "The $1.75 fee applies to every single cashout: cashing out daily for a month costs over $50 in fees alone, so frequent small cashouts quietly eat a meaningful share of earnings.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official Uber Help 'Setting up Instant Pay' page loaded live with exact fee, minimum, and limits. Uber Pro Card by Branch offers free automatic payouts after each completed trip as the no-fee alternative. Rasier Instant Pay Terms PDF cited as terms source.",
+ "repeatable": {
+  "value": true,
+  "cadence": "Drive or deliver, then tap Cash Out in the Wallet up to 6 times a day - repeat after every shift."
+ },
+ "maximize": "Add a debit card in the Driver app Wallet and use Cash Out when you need money the same day, but batch into fewer, larger cashouts since each one costs $1.75; if you drive often, consider the free Uber Pro Card by Branch for automatic after-trip payouts instead of paying per cashout.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Uber Help 'Setting up Instant Pay' page loaded live 2026-09-23; Rasier Instant Pay Terms PDF is Uber's official regulatory document."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Exact amounts on official page: $1.75 per transfer (free NYC), $1 minimum, $3,000 max per cashout, $6,000 max per week."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront or enrollment fee; the only cost is the per-transfer fee, stated exactly."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official page: transfers typically instant; some banks 2-3 days; uncashed funds auto-deposit Mondays 4am."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility documented: active account, Wallet payment method, wage-garnishment and security-review exclusions."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fee schedule documented exactly: $1.75/transfer, free in NYC."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Timing documented: on demand with bank-dependent arrival window."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete claim anchored to official help page; no weasel words."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official help.uber.com page loaded live this session."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Steps are the official Wallet setup flow from the help page."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Uber pays your trip and delivery earnings, and Instant Pay pushes them to the bank account or debit card you added in the Driver app's Wallet. The no-fee alternative is the Uber Pro Card, a debit card run by Branch that Uber loads automatically after each completed trip.",
+ "who_qualifies": "You need an active Uber driver/courier account plus a bank account or debit card whose name matches your Uber account; accounts with wage garnishments, flagged for security review, or taxi partners are excluded. To drive at all, Uber officially requires the minimum age for your market (21 in most places, 23 or 25 in many states), at least a year of US driving experience, a passed background screening of driving record and criminal history, and an eligible 4-door vehicle - drivers 19 and older may qualify for delivery-only services like Uber Eats.",
+ "work_available": "Trip and delivery offers depend entirely on demand in your market - the official page states earnings vary and promises no guaranteed volume. Slow periods mean fewer requests and more unpaid idle time.",
+ "what_gets_accepted": "You are paid for trips and deliveries you complete; canceled or unfulfilled trips do not pay. Uber also enforces driver quality standards that can affect account standing, but the official Instant Pay page publishes no exact rating threshold tied to withheld pay - that part is unverified.",
+ "costs_and_unpaid_time": "Every Instant Pay cashout costs $1.75 (free in NYC) - cashing out daily for a month costs over $50 in fees alone. Fuel, maintenance, insurance, and tolls all come out of your pocket, and time spent waiting for requests, driving unpaid between trips, and onboarding is unpaid: you earn only on completed trips.",
+ "when_cash_arrives": "Tap Cash Out in the Wallet anytime, up to 6 times per day (once per day in NYC), each transfer costing $1.75 (free in NYC), capped at $3,000 per cashout and $6,000 per week, with at least $1 in available earnings to cash out. Money usually arrives instantly but some banks take 2-3 days; anything you do not cash out auto-deposits to your bank after 4am on Mondays."
+}

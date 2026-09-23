@@ -1,0 +1,83 @@
+{
+  "biggest_catch": "Official usercrowd.com states concrete per-minute rates ($0.20/min tests, $0.75/min+ interviews) but no official page states when or how testers actually receive their money.",
+  "catches": [
+    "No official page states a payout schedule, payout threshold, or withdrawal timing \u2014 third parties cite a $10 minimum and ~14-30 day PayPal payments, none of it official.",
+    "Tests are short (avg 1-5 min at $0.20/min = $0.20-$1.00 per test), so reaching any threshold takes many tests.",
+    "Test availability is first-come-first-served and sporadic; some testers wait weeks for invites.",
+    "Tester answers are reviewed and can be rejected, forfeiting the reward."
+  ],
+  "checked_at": "2026-09-23T12:30:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "UserCrowd is a real research panel; official homepage with tester FAQ loaded live at usercrowd.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official FAQ: 'For tests, you'll get US$0.20 per minute. For interviews, you'll get US$0.75 per minute or more, depending on the duration.' Average test 1-5 min; interviews 15 min-2h (official interview table: $30 for 15 min up to $82.50 for 120 min) via help.usercrowd.com.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to apply; official FAQ: 'Do I have to pay to apply? No.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No official UserCrowd page states payout timing/schedule. Official interview FAQ says incentives are credited to the UserCrowd balance after the session and payouts go via PayPal \u2014 but when the money reaches the tester is unstated.",
+      "pass": false
+    }
+  },
+  "eligibility": "18+, computer or mobile with internet, SMS-verified account, PayPal account; desktop/laptop/tablet/smartphone.",
+  "notes": "Checked 2026-09-23. Per hard rule: reject. Payout rates are officially published ($0.20/min tests; $0.75/min+ interviews with a fixed incentive table), but no official page gives a payout schedule or timing \u2014 'would I tell a friend this pays within days?' cannot be answered from official terms. Revisit if UserCrowd publishes official payout-timing terms. official per-minute rates confirmed; payout timing not stated officially \u2014 reject",
+  "official_url": "https://www.usercrowd.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "'For tests, you'll get US$0.20 per minute. For interviews, you'll get US$0.75 per minute or more, depending on the duration.'",
+  "provider": "UserCrowd",
+  "route_id": "R6606",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "Free apply; complete profile to get invites.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No upfront fee; explicit 'No' on official FAQ.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing unconfirmed officially \u2014 cannot assign.",
+      "pass": false
+    },
+    "s4": {
+      "note": "No earnings guarantee made in this file.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official usercrowd.com FAQ loaded live this session.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Official FAQ and help-center interview table current.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No pay-to-play, MLM, or academic-misconduct elements.",
+      "pass": true
+    }
+  },
+  "steps": [],
+  "terms_url": "https://www.usercrowd.com",
+  "time_max_minutes": 0,
+  "time_min_minutes": 0,
+  "timing": "Not confirmed in official terms.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No playbook \u2014 rejected: UserCrowd officially states $0.20/min for tests and $0.75/min+ for interviews, but no official page states when testers get paid. If UserCrowd publishes official payment timing of \u22647 days, the repeat loop is short tests and interviews at the per-minute rates."
+}

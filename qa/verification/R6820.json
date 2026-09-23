@@ -1,0 +1,91 @@
+{
+  "route_id": "R6820",
+  "provider": "Swagbucks",
+  "official_url": "https://www.swagbucks.com/",
+  "terms_url": "https://www.swagbucks.com/p/prize/34640/Amazon-com-25-Gift-Card",
+  "payout_quote": "You'll earn points called SB for taking online surveys and other activities. Redeem your points for an Amazon.com Gift Card, PayPal cash, or other gift cards to popular stores. PayPal account funds can be transferred to your bank account. It takes 100 SB to reach $1.00 in rewards. You can cash out once you have enough for at least a $1 Amazon.com Gift Card. (Official Swagbucks rewards page, indexed 2026-09-23; page blocked direct fetch, captured via search index)",
+  "payout_min_usd": 1,
+  "payout_max_usd": 5,
+  "time_min_minutes": 15,
+  "time_max_minutes": 30,
+  "timing": "SB credits after each activity; redeem any time once you have enough (from $1 Amazon cards); rewards take up to 10 business days to arrive",
+  "speed": "days",
+  "eligibility": "13+; free account; available in US, UK, Canada, Australia and other supported countries",
+  "steps": [
+    "Create a free Swagbucks account",
+    "Earn SB: surveys, grocery receipt scans (Magic Receipts), online shopping cashback, games, daily polls, web search",
+    "Accumulate SB - 100 SB = $1",
+    "Redeem from as little as $1 (Amazon gift card) or save for PayPal cash",
+    "PayPal funds can be transferred to your bank"
+  ],
+  "catches": [
+    "Most activities pay pennies - surveys and videos are the classic 'beer money' grind; typical daily earnings are $1-$5",
+    "PayPal cash-out has a higher minimum ($25) than gift cards ($1-$3), so cash takes much longer than gift cards",
+    "Some high-paying 'discover deals' require signing up for trials or services - skip any that cost money or are hard to cancel",
+    "SB can be revoked if an offer advertiser doesn't confirm your action - game and shopping SB often takes weeks to credit",
+    "This is not hourly work; the effective rate is usually a few dollars an hour at best"
+  ],
+  "biggest_catch": "REJECTED 2026-09-23: the official Swagbucks rewards page could not be loaded directly (blocked fetch; evidence captured only via search index), and the only officially documented figure is the 100 SB = $1 conversion rate - no concrete per-task payout is proven from official terms. Owner rule requires official provider terms to prove concrete amount.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "Official Swagbucks rewards page (swagbucks.com) states the mechanics: earn SB from surveys and activities, redeem for Amazon gift cards, PayPal cash or other gift cards, 100 SB = $1.00, cash out from a $1 Amazon card. REJECTED 2026-09-23: page blocked direct fetch (evidence via search index only); no concrete per-task payout proven from official terms. Owner rule requires official provider terms to prove concrete amount.",
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No play - rejected: the official page couldn't be loaded directly and no concrete per-task payout is proven from official terms.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Swagbucks page: earn SB for surveys and activities; redeem for Amazon gift cards, PayPal cash, or other gift cards; 100 SB = $1.00; cash out from $1 Amazon card."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official steps: earn SB across activities, redeem in the rewards store."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Free to join; no deposit."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Official: 100 SB = $1; PayPal funds transferable to bank; rewards up to 10 business days.",
+      "note": "FAIL: official evidence proves only the 100-SB-=$1 conversion, not a concrete per-task payout amount."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (13+, free account, supported countries) per official pages."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official timing: redeem any time at threshold; up to 10 business days delivery."
+    },
+    "s4": {
+      "pass": false,
+      "note": "FAIL: no concrete per-task payout officially proven."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official Swagbucks rewards page, indexed 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Low per-task pay, higher PayPal minimum, paid-offer trap disclosed."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct mechanism (multi-activity rewards points) - repeatable per task."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

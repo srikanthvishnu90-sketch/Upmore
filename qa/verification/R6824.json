@@ -1,0 +1,90 @@
+{
+ "route_id": "R6824",
+ "provider": "Huntington Bank",
+ "official_url": "https://www.huntington.com/landing-pages/acquisition-consumer/cyclical/homepage-offer",
+ "terms_url": "https://www.huntington.com/landing-pages/acquisition-consumer/cyclical/homepage-offer",
+ "payout_quote": "To qualify for a $400 cash bonus, you are required to do ALL of the following: 1) Open a new Huntington Perks Checking account with your promotion code by December 31, 2026. 2) Set up and receive total qualifying direct deposits of $500 or more within 90 days from account opening. Qualifying direct deposits are regular, periodic automated clearing house (ACH) credits, which may include payroll, salary, pension or government payments (such as Social Security). Deposits that DO NOT QUALIFY are those through the Real-Time Payments (RTP) network, and payments through peer-to-peer networks such as PayPal, Zelle, Venmo or others... 3) Maintain an open account status in the eligible checking account for 90 days. The bonus will be deposited into your new checking account within 14 days of meeting the promotion requirements. (Official Huntington Bank offer page, crawled 2026-09-23)",
+ "payout_min_usd": 400,
+ "payout_max_usd": 400,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus deposited within 14 days of meeting all requirements (90-day direct-deposit window + 90-day open-account requirement)",
+ "speed": "months",
+ "eligibility": "New Huntington personal checking customers only; no existing Huntington checking relationship and none closed within the last 12 months; must reside in CO, IL, IN, KY, MI, MN, NC, OH, PA, SC, TX, WV or WI; one account-related gift incentive per rolling 12-month period",
+ "steps": [
+  "Apply online from Huntington's promotion page so the promotion code is claimed at account opening (by Dec 31, 2026)",
+  "Set up ACH direct deposit (paycheck, pension, Social Security) totaling $500+ within 90 days",
+  "Keep the account open for 90 days",
+  "The $400 bonus posts within 14 days of meeting all requirements"
+ ],
+ "catches": [
+  "Geographic lock: only 13 states (CO, IL, IN, KY, MI, MN, NC, OH, PA, SC, TX, WV, WI) - most of the country is ineligible",
+  "Zelle, PayPal, Venmo, RTP payments and transfers from another Huntington account do NOT count as qualifying direct deposits",
+  "$10 monthly maintenance fee unless you make $1,000 in total monthly deposits or keep $5,000 in relationship balances",
+  "Only one Huntington gift incentive per rolling 12 months across all deposit accounts",
+  "Bonus is taxable - Huntington sends a Form 1099-INT",
+  "The offer page with the Dec 31, 2026 deadline is the current one; earlier versions expired Sept 30, 2026 - always open from the live promotion page so the code attaches"
+ ],
+ "biggest_catch": "Only 13 states qualify, and the $500 must be real ACH direct deposits - Zelle, Venmo, PayPal and moving your own money don't count. $10/month fee unless you keep $1,000/month flowing through.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0053 (Huntington, catalog). Original: Official Huntington Bank offer page (huntington.com, crawled 2026-09-23): $400 for new Perks Checking, promo code by Dec 31 2026, $500+ qualifying ACH direct deposits within 90 days, account open 90 days, bonus within 14 days. One-time signup bonus - explicitly labeled as such.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "If you live in one of the 13 eligible states, redirect a single paycheck's direct deposit to Huntington and you'll clear the $500 threshold immediately - then keep $1,000/month in total deposits flowing (even your own transfers in count for the fee waiver, just not for the bonus) to kill the $10 monthly fee. Set a calendar reminder for day 95: confirm the $400 bonus posted within the promised 14 days.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Huntington: $400 cash bonus for new Perks Checking with promotion code by Dec 31, 2026 and $500+ qualifying ACH direct deposits within 90 days."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: apply from promotion page, receive qualifying deposits, keep account open 90 days, bonus within 14 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No minimum deposit to open; no fee to earn the bonus."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $400; deposited within 14 days of meeting requirements."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 12-month closure rule, 13 states, one incentive per 12 months) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "$10 monthly fee waivable; disclosed."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: 90-day window + 14 days for bonus."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $400 with $500 deposit threshold."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Huntington Bank offer page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Geographic lock, P2P exclusions, fee, taxability disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (bank account bonus) - one-time signup bonus, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

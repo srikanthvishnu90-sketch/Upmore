@@ -1,0 +1,90 @@
+{
+ "route_id": "R6836",
+ "provider": "Octapharma Plasma",
+ "official_url": "https://www.octapharmaplasma.com/refer-a-friend/",
+ "terms_url": "https://www.octapharmaplasma.com/refer-a-friend/",
+ "payout_quote": "Refer a Friend and Earn Up to $50 per New Donor! FOR RETURN DONORS... Refer friends to donate plasma through the OctaApp and earn up to $50! Get $25 after their first donation and another $25 after their second. (Official Octapharma Plasma referral page, crawled 2026-09-23)",
+ "payout_min_usd": 50,
+ "payout_max_usd": 50,
+ "time_min_minutes": 5,
+ "time_max_minutes": 10,
+ "timing": "Paid $25 after the referred donor's first donation and $25 after their second; payments typically within 48-72 hours",
+ "speed": "weeks",
+ "eligibility": "Octapharma return donor; referred person must be a new donor who completes donations; referrals made through the OctaApp",
+ "steps": [
+  "Be an Octapharma donor with the OctaApp installed",
+  "Share your referral through the OctaApp with someone eligible to donate plasma",
+  "They complete their first donation - you get $25",
+  "They complete their second donation - you get another $25",
+  "Payments land on your card typically within 48-72 hours"
+ ],
+ "catches": [
+  "Your referral must complete TWO donations for the full $50 - one donation only earns $25",
+  "Amounts are 'up to' and may vary by location",
+  "You must be a return donor to refer - brand-new donors can't refer until they've donated",
+  "Your friend must pass the center's health screening - ineligible friends earn you nothing",
+  "There's a 7-day waiting period if they recently donated at a different company's center"
+ ],
+ "biggest_catch": "You only get the full $50 if your friend donates twice - and they have to pass the health screening first. One-and-done referrals earn just $25.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R7502 (Octapharma, new plasma lane). Original: Official Octapharma Plasma referral page (octapharmaplasma.com/refer-a-friend/, crawled 2026-09-23): up to $50 per new donor ($25+$25). Repeatable per referral. Distinct from the new-donor bonus (up to $750/35 days).",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Refer friends who are clearly eligible to donate so their first two visits complete cleanly - one donation earns you only $25, so the full $50 depends on them coming back a second time. Only refer people genuinely interested in donating plasma, never pressure anyone into a medical procedure.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Octapharma: up to $50 per new donor referred - $25 after their first donation, $25 after their second."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official flow: refer through OctaApp, friend completes 1st and 2nd donations."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $25 + $25 = $50 per referred donor."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (return donor referrer; new donor via OctaApp) per official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: typically 48-72 hours after each qualifying donation."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $50 per referred donor."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Octapharma referral page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Two-donation requirement, location variance, eligibility disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (plasma referral) - repeatable per referral."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

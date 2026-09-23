@@ -1,0 +1,80 @@
+{
+ "route_id": "R7611",
+ "provider": "Bungii",
+ "official_url": "https://bungii.com/resources/pickup-truck-load-boards/",
+ "terms_url": "https://bungii.com/resources/pickup-truck-load-boards/",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official page mentions twice-weekly payouts or same-day payouts for a 'small fee', with no timing detail.",
+ "speed": "weeks",
+ "eligibility": "Bungii driver.",
+ "steps": [],
+ "catches": [
+  "The official page says same-day payouts cost a 'small fee' but never states the amount."
+ ],
+ "biggest_catch": "Bungii's official page offers same-day payouts only 'for a small fee' with no dollar amount, so the exact-fee rule fails: a same-day payout of unknown cost cannot be verified.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official bungii.com resources page (established from official terms review): twice-weekly payouts or same-day payouts 'for a small fee' with no amount stated. Revisit if Bungii publishes the exact same-day payout fee.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: Bungii's official page offers same-day payouts only 'for a small fee' without stating the amount, so the mechanism fails the exact-fee verification rule.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official bungii.com resources page is the provider's own terms source (reviewed 2026-09-23)."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "Same-day payout fee described only as a 'small fee' with no exact amount on the official page."
+  },
+  "c3": {
+   "pass": false,
+   "evidence": "No exact fee disclosed."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "No exact same-day timing detail beyond the 'same-day' label."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Driver eligibility is described on the official page."
+  },
+  "s2": {
+   "pass": false,
+   "note": "No exact same-day payout fee on the official page."
+  },
+  "s3": {
+   "pass": false,
+   "note": "No concrete same-day timing beyond the label."
+  },
+  "s4": {
+   "pass": false,
+   "note": "The fee claim cannot be anchored to an exact official figure."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official page reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because the mechanism is rejected on the fee rule."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

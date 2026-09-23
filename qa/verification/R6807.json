@@ -1,0 +1,91 @@
+{
+ "route_id": "R6807",
+ "provider": "Robinhood",
+ "official_url": "https://robinhood.com",
+ "terms_url": "https://robinhood.com/us/en/support/articles/invite-friends-get-free-stock/",
+ "payout_quote": "You'll earn a bonus stock reward each time you reach a qualifying referral milestone. You can earn up to $15,000 in bonus stock rewards per year. | Qualifying Referrals: 1 referral -> $50 ... You can sell your stock reward 3 trading days after it's granted. ... To withdraw the proceeds, you must keep the cash value of the stock reward in your account for at least 60 days after claiming it.",
+ "payout_min_usd": 50,
+ "payout_max_usd": 50,
+ "time_min_minutes": 10,
+ "time_max_minutes": 20,
+ "timing": "Milestone reward credited within ~1 week after claiming; must claim within 60 days; stock sellable after 3 trading days; cash withdrawable after 60 days",
+ "speed": "weeks",
+ "eligibility": "US residents only; referrer needs an active Robinhood individual brokerage account in good standing; each referred friend must open a Robinhood individual taxable brokerage account, link bank/debit card, and fund it with a settled deposit greater than $0; referrals counted from Sep 1, 2026",
+ "steps": [
+  "Open/fund your own Robinhood brokerage account",
+  "Share your Robinhood referral link with a friend",
+  "Friend opens a Robinhood account, links a bank, and funds it with a settled deposit",
+  "Claim your $50 milestone reward in Rewards within 60 days",
+  "Sell after 3 trading days; withdraw cash after 60 days"
+ ],
+ "catches": [
+  "A signup alone does nothing - your friend must FUND the account with a settled deposit, or the referral doesn't count.",
+  "Milestones only: referral #2 alone earns nothing; you get paid at 1 ($50), 3 ($150), 10 ($800), 50 ($4,000), 200 ($10,000).",
+  "The reward is STOCK (whole/fractional shares from a fixed list), not cash - you must wait 3 trading days to sell and 60 days to withdraw the proceeds.",
+  "Stock can fall in value between grant and sale; the $50 is a grant-date value.",
+  "Referral rewards are taxable and may be reported on Form 1099.",
+  "US residents only; Washington state texting restriction."
+ ],
+ "biggest_catch": "Your friend must actually fund a brokerage account for you to get anything - and the $50 arrives as stock you can't sell for 3 trading days or withdraw as cash for 60 days.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0016 (Robinhood, catalog). Original: Official Robinhood support article ('Tiered Referrals Program', effective Sep 1, 2026) loaded and quoted verbatim 2026-09-23. This route is the first milestone ($50 at 1 qualifying referral). Higher milestones are progressively harder and not separate quick routes for a typical user. The separate new-user sign-up stock reward is a different article.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official robinhood.com support article loaded live: 'Tiered Referrals Program' with the milestone table."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official: friend must open account, link bank/debit, and fund with settled deposit >$0; referrer claims in Rewards."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; friend's deposit is their own money."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official milestone table: 1 referral -> $50; credited within ~1 week of claiming; 60-day claim window; 3-trading-day sale hold; 60-day withdrawal hold."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (US residents, good standing, funded referrals, Sep 1 2026 start) in official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official payout timing: credited ~1 week after claim; sale/withdrawal holds stated."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $50 milestone from official table; holds and tax disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official robinhood.com support article loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Funding requirement, milestone-only payouts, sale/withdrawal holds, tax, US-only disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (Tiered Referrals Program, Sep 2026)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Milestones pay in jumps, so batch your referrals: the 3rd funded friend unlocks $150 total, meaning referral #2 and #3 together are worth $100. Line up 3 friends and walk them all through funding in the same week. Every friend must make a SETTLED deposit - a signup alone earns nothing - and you must claim each reward within 60 days or it vanishes."
+}

@@ -1,0 +1,101 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=me.lyft.android",
+  "ios": "https://apps.apple.com/app/lyft/id529379082"
+ },
+ "biggest_catch": "Every same-day cashout costs a fee, and new debit cards sit in a 48-hour review before Express Pay works at all.",
+ "catches": [
+  "Express Pay costs $1.25\u2013$1.75 per transfer (Lyft's own pages differ; current help says $1.25, min $6.25; driver blog says $1.75, min $6.75) \u2014 check your app's current terms.",
+  "48-hour delay after adding or changing your Express Pay card before you can cash out.",
+  "Up to 5 cashouts per 24 hours; some banks need an extra business day for deposits to appear.",
+  "Unpaid when you cash out early: anything not cashed out waits for the weekly Tuesday deposit.",
+  "Express Pay unavailable if you have rides in review or wage garnishment."
+ ],
+ "checked_at": "2026-09-23T14:20:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Lyft driver blog (lyft.com/hub/posts/express-pay): 'Express Pay makes it easier to fund life outside of the driver's seat. It's a first-of-its-kind feature that provides instant access to cash out whenever you want.'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official Lyft: per-ride fares shown in the Driver app; amounts vary per ride. Express Pay cashes out 'your earnings anytime.' No fixed official per-ride range.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to sign up; Express Pay fee is per-transfer ($1.25\u2013$1.75 per Lyft's own pages), not upfront.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official Lyft help: 'You can use Express Pay to cash out your earnings anytime. Earnings can appear within a few hours or days, depending on your bank's processing time... You can cash out your earnings up to five times every 24 hours.' Same-day cashout confirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "21+ for rideshare (region-dependent); eligible car + insurance; background check; debit card for Express Pay.",
+ "notes": "Checked 2026-09-23. Official evidence from lyft.com driver blog + Lyft help. Note fee/minimum discrepancy between Lyft's own pages ($1.25/$6.25 help vs $1.75/$6.75 blog) \u2014 disclosed. Distinct from Uber.",
+ "numeric_basis": "payout: per-ride fare + tips shown in app (official, varies); time: per ride typically 10-30 min",
+ "official_url": "https://www.lyft.com",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "Express Pay makes it easier to fund life outside of the driver's seat. It's a first-of-its-kind feature that provides instant access to cash out whenever you want. (lyft.com) | You can use Express Pay to cash out your earnings anytime. Earnings can appear within a few hours or days, depending on your bank's processing time. (Lyft Help)",
+ "payout_value_note": "per-ride fare + 100% tips (varies by ride); Express Pay fee $1.25-$1.75 per transfer per Lyft's own pages",
+ "provider": "Lyft",
+ "route_id": "R6721",
+ "speed": "today",
+ "standard": {
+  "s1": {
+   "note": "21+, eligible car, insurance, background check, debit card.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Express Pay fee disclosed on official pages.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Express Pay cashout anytime, hours-to-day arrival \u2014 today.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official lyft.com blog + Lyft help.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from Uber.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Sign up to drive with Lyft (eligible car, insurance, background check).",
+  "Set up Express Pay: add your debit card in Account > Pay and Tax Info (48-hour review for new cards).",
+  "Go online and complete rides; fares + tips accrue in your earnings.",
+  "Tap Cash out on the Earnings screen \u2014 up to 5 times per 24 hours.",
+  "Earnings land via push-to-debit (usually within hours; some banks need a business day)."
+ ],
+ "terms_url": "https://www.lyft.com/hub/posts/express-pay",
+ "time_max_minutes": 30,
+ "time_min_minutes": 10,
+ "timing": "Express Pay: cash out anytime up to 5x/day (~$1.25\u2013$1.75 fee), earnings appear within hours to a day depending on bank. Default weekly deposit on Tuesdays is free.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Lyft pays you per ride \u2014 fares plus bonuses plus tips; the free default payout is a weekly Tuesday deposit.",
+ "who_qualifies": "21+ for rideshare (region-dependent); an eligible car plus insurance; a background check; a debit card for Express Pay.",
+ "work_available": "Open once you're approved \u2014 go online and take rides; demand varies by market and time of day.",
+ "what_gets_accepted": "Rides pay the offered fare. Express Pay is unavailable if you have rides in review or a wage garnishment.",
+ "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting between rides, plus the background check and approval process. Your vehicle costs are yours. Express Pay costs about $1.25\u2013$1.75 per transfer (Lyft's own pages differ \u2014 check your app's current terms).",
+ "when_cash_arrives": "Express Pay: cash out up to 5 times a day, with earnings appearing within hours to a day depending on your bank (new cards sit in a 48-hour review first). The free weekly deposit lands on Tuesdays.",
+ "repeatable": {
+  "value": true,
+  "cadence": "Drive whenever you want \u2014 each ride earns, cash out up to 5x a day with Express Pay, and keep driving."
+ }
+}

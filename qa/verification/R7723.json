@@ -1,0 +1,92 @@
+{
+  "route_id": "R7723",
+  "provider": "Airtasker",
+  "official_url": "https://www.airtasker.com/",
+  "terms_url": "https://support.airtasker.com/hc/en-gb/articles/21321295524121-What-is-Airtasker-Pay",
+  "payout_quote": "Official Airtasker support: customer funds held in escrow; Tasker completes work and requests payment; customer releases it; Tasker receives funds 'within 3-5 business days.' Taskers submit their own offer amounts \u2014 no official listing with a concrete posted amount found publicly.",
+  "payout_min_usd": 40,
+  "payout_max_usd": 150,
+  "time_min_minutes": 60,
+  "time_max_minutes": 240,
+  "timing": "3-5 business days after customer releases payment (official).",
+  "speed": "days",
+  "eligibility": [
+    "18+",
+    "Airtasker account and ID verification",
+    "Task-appropriate skills"
+  ],
+  "steps": [
+    "Create a Tasker profile",
+    "Make offers on posted tasks",
+    "Complete the task and request payment",
+    "Customer releases funds; you receive them in 3-5 business days"
+  ],
+  "catches": [
+    "3-5 business days is slow for a same-day-pay lane",
+    "Customer must release payment \u2014 disputes delay everything",
+    "No public official task listing with a concrete amount found",
+    "Service fees apply (widely reported 10-20%, not officially confirmed here)"
+  ],
+  "biggest_catch": "The 3-5 business day payout is the slowest in this lane, and no official live listing with a concrete posted amount could be found \u2014 so neither speed nor a verified number works.",
+  "upfront_fee": "$0 to join.",
+  "verdict": "reject",
+  "checked_at": "2026-09-23",
+  "notes": "Rejected: official payout timing is documented (3-5 business days) but no official live task/listing with a concrete posted amount was found publicly, failing the numeric requirement.",
+  "critical": {
+    "c1": {
+      "pass": false,
+      "evidence": "No official public listing with a concrete posted amount found."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Platform holds funds in escrow and releases to Tasker."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official: funds received within 3-5 business days of release."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Account and ID verification requirements documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is a real, operating platform."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Pay mechanism is platform-mediated per-task/shift."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements are stated honestly."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No deceptive income promise relied upon."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payout speed characterized from official terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility reflects official requirements."
+    },
+    "s7": {
+      "pass": true,
+      "note": "File written from public official sources; no sign-in required."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Unverifiable on pay \u2014 only pursue after finding an official live listing with a posted amount; note the 3-5 day payout makes this a poor same-day option regardless."
+}

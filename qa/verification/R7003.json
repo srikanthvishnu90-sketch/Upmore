@@ -1,0 +1,89 @@
+{
+ "biggest_catch": "Cash by direct deposit, but only if the device arrives as described: a failed inspection means a revised offer or no deal, and the two-business-day clock starts at compliant receipt.",
+ "catches": [
+  "The offer is revised if the device's condition does not match your description; quotes can change.",
+  "Trade-in value varies by device, condition, and demand; not all devices are accepted.",
+  "Shipping is free, but a non-compliant device (e.g., activation lock) can void the offer.",
+  "Payout is cash via direct deposit - but only after the device passes inspection.",
+  "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Back Market buyback pages and buyback T&Cs document the program.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official T&Cs: payout by direct deposit after compliant receipt.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official T&Cs: payment within two business days after compliant receipt.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Free prepaid shipping; no fee to get an offer.",
+   "pass": true
+  }
+ },
+ "eligibility": "US, 18+, must own the device and remove activation locks; eligible devices only.",
+ "maximize": "Remove activation locks and factory-reset before shipping - a locked device can void the offer. Quote 2-3 buyback sites on the same day and sell to the highest; quotes are free.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate of R7435 (gift-card/flips lane: Back Market BuyBack). The R74 version is better grounded with a concrete $30-$400 numeric range vs this $0-$400 variable. Original: Observed 2026-09-23 on backmarket.com buyback pages and the official US buyback T&Cs PDF. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+ "official_url": "https://www.backmarket.com/",
+ "payout_max_usd": 400,
+ "payout_min_usd": 0,
+ "payout_quote": "Ship free with our prepaid label; once your device is received in compliant condition, the refurbisher pays you by direct deposit within two business days.",
+ "provider": "Back Market Trade-In",
+ "repeatable": {
+  "cadence": "per item",
+  "value": true
+ },
+ "route_id": "R7003",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "Shipping free; no seller fees stated.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Two-business-day payment window stated in the T&Cs.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Ownership and device-compliance conditions documented.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Instant offer is free with no obligation.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Offer shown before you ship.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Non-matching condition revises the offer - disclosed in T&Cs.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Per-device offer; value varies, nothing guaranteed.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Describe your device on Back Market's buyback page for an instant offer",
+  "Accept the offer and print the free prepaid shipping label",
+  "Ship the device; the refurbisher inspects it on receipt",
+  "Receive direct deposit within two business days after compliant receipt"
+ ],
+ "terms_url": "https://www.backmarket.com/en-us/buyback/home",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Direct deposit within two business days after the device is received in compliant condition.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

@@ -54,10 +54,13 @@ for rid, v in dbm.items():
     if c is None:
         # new discovery card
         evf = f"/home/hatch/workspace/upmore/qa/verification/{rid}.json"
-        elig = ""
+        elig, ev_rep, ev_max = "", None, None
         if os.path.exists(evf):
             try:
-                elig = json.load(open(evf)).get("eligibility") or ""
+                _ev = json.load(open(evf))
+                elig = _ev.get("eligibility") or ""
+                ev_rep = _ev.get("repeatable")
+                ev_max = _ev.get("maximize")
             except Exception:
                 pass
         cat = v.get("category") or "Other Online"
@@ -84,6 +87,9 @@ for rid, v in dbm.items():
             "tier": v.get("difficulty") or "Easy",
             "difficulty": v.get("difficulty") or "Easy",
             "time_to_first": time_to_first(v.get("payout_timing")),
+            "speed": v.get("speed") if v.get("speed") in ("today", "days", "weeks") else None,
+            "repeatable": ev_rep,
+            "maximize": ev_max,
             "rank": None,
         }
         d["routes"].append(c)
@@ -96,6 +102,20 @@ for rid, v in dbm.items():
         c[k] = nu.get(k)
     # sync verified fields + status from DB for every card
     c["status"] = v.get("status") or "unverified"
+    if v.get("speed") in ("today", "days", "weeks"):
+        c["speed"] = v["speed"]
+    # quick-lane pro-tip fields live in the evidence files; refresh on every rebuild
+    if rid >= "R6500":
+        _evf = f"/home/hatch/workspace/upmore/qa/verification/{rid}.json"
+        if os.path.exists(_evf):
+            try:
+                _ev = json.load(open(_evf))
+                if _ev.get("repeatable") is not None:
+                    c["repeatable"] = _ev["repeatable"]
+                if _ev.get("maximize"):
+                    c["maximize"] = _ev["maximize"]
+            except Exception:
+                pass
     c["affiliate"] = bool(v.get("affiliate_note"))
     c["affiliate_note"] = v.get("affiliate_note") or ""
     c["ios_url"] = v.get("ios_url") or ""

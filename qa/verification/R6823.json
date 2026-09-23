@@ -1,0 +1,90 @@
+{
+ "route_id": "R6823",
+ "provider": "PNC Bank",
+ "official_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
+ "terms_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
+ "payout_quote": "You may earn a $400 reward if you open a new Virtual Wallet with Performance Select or a $100 reward if you open new Virtual Wallet and meet all qualifying conditions... To receive the reward: 1) Open a new, eligible PNC checking product online via the application links on this page. 2) Set up and receive total qualifying direct deposit(s) within the first 60 days... The total amount of all qualifying direct deposits received into your Spend account must be at least $500 for Virtual Wallet or $5,000 for Virtual Wallet with Performance Select... Offer is valid 9/1/2026 through 1/7/2027. (Official PNC bonus offer page)",
+ "payout_min_usd": 100,
+ "payout_max_usd": 100,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Reward credited to the account within 60-90 days after all conditions are met",
+ "speed": "months",
+ "eligibility": "New PNC consumer checking customers; no existing PNC consumer checking and none closed within the past 12 months; no PNC promotional premium received in the past 24 months; offer may vary by market",
+ "steps": [
+  "Open a new PNC Virtual Wallet online via the bonus offer page",
+  "Set up direct deposit of paycheck, pension, Social Security or other regular income into the Spend account",
+  "Receive at least $500 in total qualifying direct deposits within the first 60 days",
+  "Keep the account open; the $100 reward credits within 60-90 days after conditions are met"
+ ],
+ "catches": [
+  "The $100 tier needs $500 in qualifying direct deposits within 60 days - cash advances, wire transfers, person-to-person transfers, account-to-account transfers, and branch/ATM/mobile deposits do NOT count",
+  "NOT eligible if you have any PNC consumer checking now, closed one in the past 12 months, or got a PNC promo in the past 24 months",
+  "The $100 tier uses the standard Virtual Wallet account, which carries a $7 monthly service charge - waived when you have a qualifying direct deposit (the same $500+ that earns the bonus waives it) or are under 25",
+  "The reward takes 60-90 days AFTER you qualify to arrive - this is a 4-5 month wait for $100",
+  "Bonus is taxable interest income (1099-INT)",
+  "Offer varies by market and can be modified or discontinued at any time"
+ ],
+ "biggest_catch": "You wait 60 days to qualify and then another 60-90 days for the $100 to arrive - roughly 4-5 months total - and the Virtual Wallet account used for the $100 tier has a $7 monthly fee unless your qualifying direct deposit waives it.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0581 (PNC, catalog). Original: Official PNC bonus offer page (pnc.com, collected 2026-09-23): $100 for new Virtual Wallet with $500+ qualifying direct deposits within 60 days; $400 tier exists for Performance Select with $5,000. Offer valid 9/1/2026-1/7/2027. One-time signup bonus - explicitly labeled as such. Route uses the accessible $100 tier.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Redirect one month of your paycheck's direct deposit to the new PNC Spend account and you'll clear the $500 in a single pay cycle - plus that same qualifying direct deposit waives the Virtual Wallet's $7 monthly fee automatically. Don't move money between your own accounts and expect it to count: PNC explicitly excludes account-to-account transfers. Expect a long wait: the reward credits 60-90 days after you meet all conditions, so this is a 4-5 month play for $100.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official PNC: $100 reward for new Virtual Wallet with $500+ qualifying direct deposits within first 60 days (offer 9/1/2026-1/7/2027)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open online via offer page, receive qualifying direct deposits, reward credited within 60-90 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No minimum to open online; no fee to earn the bonus."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $100; credited within 60-90 days after conditions met."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 12-month closure rule, 24-month promo rule, market variance) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "$7 monthly fee waivable; disclosed."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: 60-day qualification, reward within 60-90 days after."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $100 tier with $500 threshold; $400 tier noted."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official PNC bonus offer page, collected 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Long payout wait, fee, transfer exclusions, taxability disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (bank account bonus) - one-time signup bonus, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

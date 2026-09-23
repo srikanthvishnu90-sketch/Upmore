@@ -1,0 +1,81 @@
+{
+ "route_id": "R7620",
+ "provider": "FRAYT",
+ "official_url": "https://www.frayt.com/drivers/preferred-driver-program",
+ "terms_url": "https://www.frayt.com/drivers/preferred-driver-program",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official Preferred Driver page says 'Get paid in 24 hours'; official Play listing says within 48 hours. No exact payout fee is stated on any official page.",
+ "speed": "weeks",
+ "eligibility": "FRAYT driver (Preferred Driver program).",
+ "steps": [],
+ "catches": [
+  "Faster-pay claims conflict across official sources: 24 hours (Preferred Driver page), next day (company overview), 48 hours (Play listing).",
+  "No exact payout fee (or $0-fee statement) is stated on any official FRAYT page."
+ ],
+ "biggest_catch": "FRAYT advertises faster pay (24 hours for Preferred Drivers) but states no exact payout fee anywhere officially: without a concrete $0-or-amount fee statement, the mechanism fails the exact-fee rule.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official frayt.com pages reviewed: Preferred Driver page says 'Get paid in 24 hours'; company overview says next day; Play listing says within 48 hours. No official page states an exact payout fee. Revisit if FRAYT publishes exact faster-pay terms with a fee.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: FRAYT's official pages advertise faster pay but state no exact payout fee, so the mechanism fails the exact-fee verification rule.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official frayt.com driver pages reviewed 2026-09-23."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No exact payout fee is stated on any official FRAYT page."
+  },
+  "c3": {
+   "pass": false,
+   "evidence": "No fee disclosed."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "Timing claims conflict across official sources (24h vs next day vs 48h)."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Driver eligibility is described on the official pages."
+  },
+  "s2": {
+   "pass": false,
+   "note": "No exact payout fee on any official page."
+  },
+  "s3": {
+   "pass": false,
+   "note": "Timing claims conflict across official sources."
+  },
+  "s4": {
+   "pass": false,
+   "note": "No exact-fee claim can be anchored officially."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official pages reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because the mechanism is rejected on the fee rule."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

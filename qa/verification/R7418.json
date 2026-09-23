@@ -1,0 +1,97 @@
+{
+  "biggest_catch": "Only Costco's own price drops count — Costco never matches Amazon, Walmart, or any competitor's price.",
+  "catches": [
+    "30-day window from purchase date is strict (discretionary day 31-33 exceptions are not guaranteed).",
+    "Only Costco's own lower price qualifies; competitor prices are explicitly excluded.",
+    "Resellers are excluded from price adjustments entirely.",
+    "Online vs. warehouse are separate: request online orders online, warehouse purchases at the membership counter.",
+    "Item must be in stock at the lower price; gold bars, bullion, and silver coins are excluded.",
+    "Membership is required ($65/yr Gold Star)."
+  ],
+  "checked_at": "2026-09-23T12:34:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Costco customer-service official article (customerservice.costco.com, linked by clark.com): 30-day price adjustment on Costco.com orders; priceva.com (2026), dealnews.com, groupon.com, krazycouponlady.com document warehouse + online flows",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete: refund of price difference to original payment method within 30 days; no need to bring the item back; purchase history tracked on membership",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee beyond the Costco membership itself.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Concrete: groupon example — $799 adjusted to $699 = $100 back (example-based); typical example range $10-$100",
+      "pass": true
+    }
+  },
+  "eligibility": "Costco members; non-reseller purchases within 30 days; exact same item",
+  "maximize": "Make Costco the place you buy anything whose price fluctuates — electronics, appliances, big-ticket items — because you get 30 days of built-in price insurance no competitor offers. Set a calendar reminder for day 28 after every big Costco purchase to check the current price; if it dropped, claim the difference at the membership counter or through the online form. No receipt needed — your membership purchase history does the work, and you don't even have to bring the item back. Pair this with the Costco app's digital receipts so the check takes seconds.",
+  "notes": "Savings, not income: payout fields = price difference refunded (example-based, flagged). Terms from Costco's official customer-service article + 2026 coverage. Distinct from Target/Best Buy routes: own-price adjustment only, membership required.",
+  "official_url": "https://customerservice.costco.com/app/answers/detail/a_id/628/~/price-adjustment---costco.com-orders",
+  "payout_max_usd": 100,
+  "payout_min_usd": 10,
+  "payout_quote": "If an item you purchased goes on sale within that timeframe, you can request a refund of the price difference. For online orders, submit a request through Costco's customer service website. For in-store purchases, visit the returns counter at the warehouse.",
+  "provider": "Costco",
+  "repeatable": {
+    "cadence": "Repeatable within the 30-day window on every purchase — claim the adjustment whenever Costco's own price drops on something you bought.",
+    "value": true
+  },
+  "route_id": "R7418",
+  "speed": "today",
+  "standard": {
+    "s1": {
+      "note": "Costco members within 30 days documented.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee beyond membership.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Refund to original payment method at counter or via online form.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete terms; example $100 adjustment documented by groupon.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official Costco customer-service article + 2026 coverage.",
+      "pass": true
+    },
+    "s6": {
+      "note": "5 steps: buy, track price, request, verify, get refund.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Buy an item from a Costco warehouse or Costco.com",
+    "Watch the price for 30 days after purchase",
+    "If Costco drops the price, submit the online adjustment form (online orders) or visit the warehouse membership counter (in-store purchases)",
+    "Staff verify your membership purchase history — no receipt or return needed",
+    "Receive the price difference refunded to your original payment method"
+  ],
+  "terms_url": "https://customerservice.costco.com/app/answers/detail/a_id/628/~/price-adjustment---costco.com-orders",
+  "time_max_minutes": 20,
+  "time_min_minutes": 10,
+  "timing": "Refund processed at request (counter) or after online form submission",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "who_pays": "Nobody pays you — Costco refunds the difference to your original payment method when its own price drops. It's savings, not income.",
+  "who_qualifies": "Costco members (membership required) making non-reseller purchases within 30 days; the exact same item at a lower Costco price.",
+  "work_available": "Costco's price-adjustment policy is active — 30 days from purchase.",
+  "what_gets_accepted": "Only Costco's own lower price qualifies — competitor prices are explicitly excluded. The item must be the exact same and in stock at the lower price; resellers are excluded entirely, as are gold bars, bullion, and silver coins.",
+  "costs_and_unpaid_time": "No fee beyond your Costco membership ($65/yr Gold Star). Unpaid time goes to noticing the price drop and requesting the adjustment at the counter or via the online form.",
+  "when_cash_arrives": "No cash arrives — the difference is refunded to your original payment method when you request it at the membership counter (warehouse purchases) or through the online form (online orders)."
+}

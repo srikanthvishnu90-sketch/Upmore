@@ -1,0 +1,96 @@
+{
+  "route_id": "R6800",
+  "provider": "Kalshi",
+  "official_url": "https://kalshi.com",
+  "terms_url": "http://kalshi.com/tc/500",
+  "payout_quote": "Each qualifying claim from the Programs is eligible to receive a bonus credit of up to $500. ... the bonus credit value that an eligible user receives is between $15 and $500. 70% of participants will receive a cash value of $15, 24% of participants will receive a cash value of $35, 5% of participants will receive a cash value of $75, 0.65% of participants will receive a cash value of $100 and 0.35% of participants will receive a cash value of $500 ... The Bonus credit itself cannot be withdrawn from your Kalshi account. It must be used to place trades within Kalshi's Predictions product ... Any bonus credit granted under the Programs must be used within 7 days of being granted. Bonus credit not used within that 7-day period will expire and be forfeited.",
+  "payout_min_usd": 15,
+  "payout_max_usd": 500,
+  "time_min_minutes": 15,
+  "time_max_minutes": 30,
+  "timing": "Bonus credit posts after you transact $25 on Predictions within 30 days of opening; credit expires 7 days after grant; credit is non-withdrawable - only profits from trading it may be withdrawn",
+  "speed": "days",
+  "eligibility": "New Kalshi users only; US person; complete Kalshi identity verification (KYC); transact at least $25 on the Predictions product within 30 days of opening; limit one offer per account; promo code OR referral link, not both",
+  "steps": [
+    "Sign up for Kalshi as a new user and enter a promo code at registration",
+    "Complete identity verification (KYC) with government ID",
+    "Transact at least $25 on Kalshi's Predictions product within 30 days of opening",
+    "Bonus credit (variable $15-$500) is granted to the account",
+    "Trade the credit within 7 days before it expires; withdraw only profits earned from trading it"
+  ],
+  "catches": [
+    "this is a bet, not income: event contracts can lose 100%; the bonus credit is non-withdrawable, must be traded (playthrough) before anything can be withdrawn, and only profits from trading the credit can ever become cash.",
+    "The headline 'up to $500' is a lottery: Kalshi's own terms say 70% of participants receive only $15, 24% receive $35, 5% receive $75, 0.65% receive $100, and 0.35% receive $500. Receipt of any particular tier is not guaranteed.",
+    "You must transact $25 of your own trading activity to qualify - that activity itself can lose money.",
+    "Bonus credit expires 7 days after grant; unused credit is forfeited.",
+    "Gambling problem help: 1-800-GAMBLER. Kalshi is a federally regulated exchange; not available in all jurisdictions (see kalshi.com/regulatory)."
+  ],
+  "biggest_catch": "this is a bet, not income: 70% of participants get just $15 in non-withdrawable credit that expires in 7 days, and you must risk $25 of your own trading activity to qualify - only profits from trading the credit can ever be withdrawn.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "Official Kalshi-hosted terms document (kalshi.com/tc/500, 'Kalshi Referral Program / Promo Code Program Terms & Conditions') loaded and quoted verbatim 2026-09-23. Covers both the promo code program and referral program; the variable-reward tier table ($15/$35/$75/$100/$500 with 70/24/5/0.65/0.35% odds) is the honest expected value: ~$21.35 per participant.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Kalshi terms page http://kalshi.com/tc/500 loaded live; titled 'Kalshi Referral Program / Promo Code Program Terms & Conditions'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Terms state eligibility: new Kalshi user, KYC, transact at least $25 on Predictions within 30 days of account opening; one offer per account."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee charged to participate; the $25 is trading volume on the user's own account, not a payment to Kalshi."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official tier table: $15 (70%), $35 (24%), $75 (5%), $100 (0.65%), $500 (0.35%); bonus credit non-withdrawable, 7-day expiry, only trading profits withdrawable."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (new user, US person, KYC, $25 in trades within 30 days) documented verbatim in official terms."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees; $25 is own-account trading activity."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Payout timing documented: credit granted after qualification, must be used within 7 days, forfeited if unused."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete amounts ($15-$500 tiered) from official terms; honest EV disclosed in notes."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official kalshi.com terms document loaded live 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Non-withdrawable credit, gambling risk, 7-day expiry, and variable-reward odds all disclosed as catches."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Route is a distinct campaign (Promo Code Program) from the referral program (R6802)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": false,
+    "cadence": "one-time new-customer promo; one offer per person, ever - cannot be repeated"
+  },
+  "maximize": "One per person, ever - and the terms let you use a promo code OR a referral link, not both. So don't burn the code if a friend is joining too: have them sign up with YOUR referral link instead (R6802) and you each get the credit. After that the well is dry - no repeat loop here.",
+  "who_pays": "Kalshi, the prediction-market exchange, pays the bonus credit out of its own promo budget.",
+  "who_qualifies": "New Kalshi users who are US persons, complete identity verification (KYC), and transact at least $25 on the Predictions product within 30 days of opening. One offer per account, ever - promo code OR referral link, not both. Minimum age and exact state availability: unverified (Kalshi notes it is not available in all jurisdictions; see kalshi.com/regulatory).",
+  "work_available": "unverified",
+  "what_gets_accepted": "Transact at least $25 on Kalshi's Predictions product within 30 days of opening your account. Once you qualify, a variable bonus credit ($15-$500 per the official tier table) is granted to your account.",
+  "costs_and_unpaid_time": "The $25 is your own trading activity, not a fee - but event contracts can lose 100%, so your stake is fully at risk and can be lost completely. Unpaid time: ~15-30 minutes for signup, KYC, and the qualifying trades.",
+  "when_cash_arrives": "Nothing arrives as cash. The credit posts after you qualify, expires 7 days after grant, is non-withdrawable, and only profits earned from trading the credit can ever be withdrawn."
+}

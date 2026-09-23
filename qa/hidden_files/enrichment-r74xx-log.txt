@@ -1,0 +1,21 @@
+7-field quality enrichment — R74xx gift-card resale / retail flips lane
+Date: 2026-09-23 (subagent 41c15a94)
+Files processed: 31 (R7400, R7401, R7402, R7403, R7404, R7405, R7408, R7412, R7413, R7414, R7417, R7418, R7419, R7420, R7422, R7423, R7424, R7425, R7426, R7430, R7432, R7433, R7435, R7436, R7437, R7438, R7439, R7440, R7441, R7442, R7443)
+Fields added per file: who_pays, who_qualifies, work_available, what_gets_accepted, costs_and_unpaid_time, when_cash_arrives (all strings)
+Also: repeatable.cadence rewritten in plain user-facing language (repeatable.value untouched = true)
+Writes: atomic (json.tmp + os.replace), re-parsed after each; verdict/provider/payout/time numerics verified unchanged.
+
+Unverified counts per field: 0 for all 7 fields (no field marked "unverified").
+
+External research used (3 targeted searches only):
+- CardSell (R7402): CardSell's own App Store description confirms it pays out directly to PayPal within 48h — supports "who_pays: CardSell pays you directly".
+- Vinted (R7426): Telegraph + eboots guides confirm mechanics — funds to Vinted Balance within 2 working days after buyer confirms/auto-complete; bank withdrawal up to 5 business days. Folded into when_cash_arrives (not official-source, framed via established outlet mechanics).
+- Depop (R7424): conflicting/third-party payout-timing coverage; field keeps the honest caveat to check Depop's help centre before selling (file's own evidence already flagged this gap).
+
+Coordinator flags:
+1. R7405 / R7414 (GiftCardGranny sell/buy): Granny is a comparison directory only — never a payer. The 6 fields handle this explicitly (who_pays/when_cash_arrives name the partner), but the app UI should be careful the Granny route cards don't read like direct payouts.
+2. R7412, R7413, R7414, R7417, R7418, R7419, R7420: savings routes, not income. when_cash_arrives states plainly "no cash arrives". Payout numerics on these files represent dollars SAVED (already flagged in file notes).
+3. R7424 (Depop): payout timing still the thinnest evidence in the lane — the when_cash_arrives field hedges honestly; if the coordinator wants it tightened, the official Depop help centre page needs a live fetch.
+4. R7402 provider naming: file says "CardSell (CardsSell)" — the app/publisher is CardSell by CardSwapper; no change made, but coordinator may want to normalize the provider string.
+5. R7437 (The RealReal): consignor keeps 55-70% by tier (RealReal keeps 30-45%) — fields state it in user-facing terms; item-level rates (85%/80%/70%/40%) included in what_gets_accepted.
+6. No Anthropic API used; no outbound sends; no protected fields modified.

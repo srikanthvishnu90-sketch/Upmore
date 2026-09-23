@@ -1,0 +1,89 @@
+{
+ "biggest_catch": "You only get paid if a stranger buys your listing: fees come off the top, the buyer holds your money until they rate (or three days pass), and the free cash-out takes up to a week.",
+ "catches": [
+  "Mercari charges selling and payment-processing fees that reduce proceeds; the buyer can also dispute during the rating window.",
+  "Nothing sells until a buyer buys - listing is free but a sale is not guaranteed; price depends on demand.",
+  "Instant Pay costs $3 per transfer; free ACH takes 5-7 business days.",
+  "You must ship the item yourself; shipping cost choices affect your net.",
+  "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Mercari help center documents selling and getting paid.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official help: ACH bank transfer or Instant Pay cash-out of sales funds.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official help: release after rating or 3 days post-delivery; ACH 5-7 business days; Instant Pay ~30 minutes.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Listing is free; no upfront fee.",
+   "pass": true
+  }
+ },
+ "eligibility": "US, 18+, must own the item; prohibited-item rules apply.",
+ "maximize": "Price 10-15% above your walk-away number so buyer offers land where you want. Ship within your handling time to avoid cancellation. Use free ACH unless you need money today - Instant Pay costs $3.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate of R7423 (gift-card/flips lane: Mercari). The R74 version is better grounded with the official Jan 2025 fee structure and $15-$200 range vs this $0-$300 variable. Original: Observed 2026-09-23 on mercari.com official help center. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+ "official_url": "https://www.mercari.com/",
+ "payout_max_usd": 300,
+ "payout_min_usd": 0,
+ "payout_quote": "Your sales funds are released after the buyer rates you, or automatically three days after delivery; cash out free via ACH (generally 5-7 business days) or use Instant Pay (about 30 minutes) for a $3 fee.",
+ "provider": "Mercari",
+ "repeatable": {
+  "cadence": "per item",
+  "value": true
+ },
+ "route_id": "R7012",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "Selling fees and the $3 Instant Pay fee disclosed in help articles.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Release and cash-out timing stated plainly.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Age, ownership, and prohibited-item rules documented.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Listing is free.",
+   "pass": true
+  },
+  "s5": {
+   "note": "You set the price and see the fee structure before selling.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Sale price varies with demand; no sale guaranteed - inherent to marketplace.",
+   "pass": true
+  },
+  "s7": {
+   "note": "No guaranteed sale or amount.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "List your item with photos and a price (free to list)",
+  "Buyer purchases; you ship within the stated handling time",
+  "Buyer rates the transaction, or funds auto-release three days after delivery",
+  "Cash out: free ACH (5-7 business days) or Instant Pay (~30 minutes, $3 fee)"
+ ],
+ "terms_url": "https://www.mercari.com/us/help_center/article/91/",
+ "time_max_minutes": 90,
+ "time_min_minutes": 30,
+ "timing": "Funds released after buyer rating or auto-release 3 days after delivery; ACH 5-7 business days, Instant Pay ~30 min ($3).",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.ubercab.driver",
+  "ios": "https://apps.apple.com/app/uber-driver/id1131342792"
+ },
+ "biggest_catch": "Same-day cashout costs $1.25 per cashout \u2014 and Uber doesn't promise a fixed per-delivery amount; what you earn depends on the trip, promotions, and tips.",
+ "catches": [
+  "Instant Pay costs $1.25 per cashout to a personal debit card (up to 6x/day); free only with the Uber Pro Card (automatic after every trip).",
+  "In most cases cash lands 'right away,' but some banks take a few business days (official FAQ).",
+  "New delivery people must complete their first trip to unlock Instant Pay.",
+  "Per-delivery pay is not fixed \u2014 it varies by trip with promotions and tips on top; the app shows what each trip pays before you accept."
+ ],
+ "checked_at": "2026-09-23T14:05:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Uber Eats delivery is a real mechanism; official uber.com Instant Pay page: 'Most US drivers and delivery people can use Instant Pay once you complete your first trip. All you need is a debit card.'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official uber.com: 'Cash out with Instant Pay up to 6 times per day.' The Driver app shows trip earnings (fare + tips) before/after each delivery; amounts vary per trip (no fixed official range).",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to sign up; $1.25 per cashout is per-payout, not upfront.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official uber.com/info/instant-pay: 'Your personal debit card: $1.25 per cash out... Cash out up to 6 times per day.' 'The Uber Pro Card: Free automatic payouts after every trip.' FAQ: 'In most cases, you'll receive cash in your debit card account right away.' Same-day confirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+ (19+ in some markets); background check; vehicle/bike depending on market; debit card for Instant Pay.",
+ "notes": "Checked 2026-09-23. Official evidence from uber.com/info/instant-pay (opened directly). Same mechanism family as Uber driving (R6719) but a distinct app/mode (delivery vs. rideshare).",
+ "numeric_basis": "payout: per-trip fare + tips, shown in app (official, varies); time: per delivery typically 10-30 min",
+ "official_url": "https://www.uber.com",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "Most US drivers and delivery people can use Instant Pay once you complete your first trip. All you need is a debit card. (uber.com) | Your personal debit card: $1.25 per cash out... Cash out up to 6 times per day. (uber.com) | In most cases, you'll receive cash in your debit card account right away. (uber.com)",
+ "payout_value_note": "per-trip fare + promotions + 100% of tips (varies by trip)",
+ "provider": "Uber Eats",
+ "route_id": "R6718",
+ "speed": "today",
+ "standard": {
+  "s1": {
+   "note": "18+, background check, vehicle/bike, debit card stated.",
+   "pass": true
+  },
+  "s2": {
+   "note": "$1.25/cashout disclosed officially; Pro Card free.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Instant Pay up to 6x/day, cash usually right away \u2014 today.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official uber.com instant-pay page.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct mechanism from Uber rideshare driving (R6719).",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Sign up as an Uber delivery person and pass the background check.",
+  "Complete your first delivery to unlock Instant Pay.",
+  "Add a debit card in the Driver app (most Visa/Mastercard/Discover).",
+  "Accept delivery requests; each trip's earnings (fare + tips) show in the app.",
+  "Cash out with Instant Pay up to 6 times per day ($1.25 each; free and automatic after every trip with the Uber Pro Card)."
+ ],
+ "terms_url": "https://www.uber.com/info/instant-pay/",
+ "time_max_minutes": 30,
+ "time_min_minutes": 10,
+ "timing": "Instant Pay: cash out up to 6x/day to your debit card ($1.25 each), cash usually right away. Uber Pro Card: free automatic payout after every trip.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Uber pays you per delivery \u2014 base pay plus promotions plus 100% of tips; the app shows what each trip pays before you accept.",
+ "who_qualifies": "18+ (19+ in some markets); a background check; a vehicle or bike depending on the market; a debit card for Instant Pay.",
+ "work_available": "Open once you're activated \u2014 you go online and take deliveries; order volume varies by market and time of day. You must complete your first trip to unlock Instant Pay.",
+ "what_gets_accepted": "Each delivery pays what the app offered before you accepted \u2014 pay isn't rejected after the fact, but per-delivery amounts vary with promotions and tips.",
+ "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting between orders and the background check before your first trip. Your vehicle costs (fuel, maintenance, depreciation) come out of your earnings, and Instant Pay costs $1.25 per cashout (free with the Uber Pro Card).",
+ "when_cash_arrives": "Instant Pay: cash out up to 6 times a day to your debit card ($1.25 each) \u2014 cash usually lands right away. Uber Pro Card holders get free automatic payout after every trip.",
+ "repeatable": {
+  "value": true,
+  "cadence": "Deliver whenever you want \u2014 each delivery earns, cash out daily with Fast Pay, and keep delivering."
+ }
+}

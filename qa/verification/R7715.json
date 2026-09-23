@@ -1,0 +1,101 @@
+{
+  "route_id": "R7715",
+  "provider": "GreenPal",
+  "official_url": "https://www.yourgreenpal.com/vendor-handbook/getting-started-and-completing-work",
+  "terms_url": "https://www.yourgreenpal.com/vendor-handbook/getting-started-and-completing-work",
+  "payout_quote": "Official GreenPal vendor handbook: 'So for example if you win a new customer at $50 per mowing... Customer payment: $50.00 / GreenPal Platform Fee: $2.50 / Estimated Stripe processing fee: $1.75 / Estimated Vendor balance: $45.75.' Also: 'It's totally free to bid... bid often and bid fast as they usually pick the first price they like.' Customer payments go through your connected Stripe account.",
+  "payout_min_usd": 30,
+  "payout_max_usd": 75,
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "timing": "Paid through your own Stripe account after job completion; Stripe controls payout schedule (typically ~2 business days to bank).",
+  "speed": "days",
+  "eligibility": [
+    "Own lawn-care equipment (mower, edger, blower)",
+    "Appropriate skills/licenses to operate a lawn-care business",
+    "Stripe account connected for payouts",
+    "Smartphone for bids, job photos, and customer texts"
+  ],
+  "steps": [
+    "Sign up as a GreenPal vendor and connect your Stripe account",
+    "Bid fast on lawns near you (free to bid; first good price usually wins)",
+    "Win the job and complete the mow + edge + blow",
+    "Upload a photo of the completed work to trigger payment",
+    "Customer payment flows to your Stripe, minus 5% GreenPal fee and Stripe processing"
+  ],
+  "catches": [
+    "5% GreenPal platform fee + ~2.9% + $0.30 Stripe fee on every job",
+    "You set the price — bid too high and you lose; too low and you work for nothing",
+    "Equipment, gas, and maintenance are entirely yours",
+    "First mow is an 'audition' — no recurring revenue until the customer rebooks",
+    "Seasonal: demand dies in winter in most markets"
+  ],
+  "biggest_catch": "You set your own bid, so the $50 example is just math — in competitive neighborhoods vendors undercut each other, and after the 5% + Stripe fees plus your gas and equipment, the margin on a cheap bid is thin.",
+  "upfront_fee": "$0 to bid; equipment and Stripe setup are worker-provided.",
+  "verdict": "verify",
+  "checked_at": "2026-09-23",
+  "notes": "Official vendor handbook gives the exact $50 mow fee breakdown ($45.75 vendor balance). Range $30-$75 per typical single mow. Timing via own Stripe account (~2 business days) — 'days' speed.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official handbook: $50 mow example -> $45.75 vendor balance after 5% platform fee and Stripe fee. Range $30-$75 per typical job."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official handbook: bid on jobs, complete work, upload photo, get paid through Stripe."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official handbook: payments processed through connected Stripe account; Stripe controls payout timing (standard ~2 business days)."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Equipment, Stripe account, and business-skill requirements on the official handbook page."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is a real, operating platform."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Pay mechanism is platform-mediated per-task/shift."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements are stated honestly."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No deceptive income promise relied upon."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payout speed characterized from official terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility reflects official requirements."
+    },
+    "s7": {
+      "pass": true,
+      "note": "File written from public official sources; no sign-in required."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "Bid fast, win the lawn, complete the mow, upload the photo to trigger payment — and convert first mows into weekly repeat customers so the loop runs itself."
+  },
+  "maximize": "Bid within minutes of a job posting — GreenPal's own handbook says the first good price usually wins; price tight but never below your gas+time floor; convert every first mow into a recurring weekly customer (that's where the real money is); stack jobs by neighborhood to cut drive time; upsell hedge trimming and leaf cleanup in-app; photo-document every finished lawn to get paid without disputes.",
+  "who_pays": "The customer pays you directly — their payment flows into your own connected Stripe account, with GreenPal taking a 5% platform fee (plus Stripe's processing fee). GreenPal never holds your pay.",
+  "who_qualifies": "You need your own lawn-care equipment (mower, edger, blower), the skills or licenses to run a lawn-care business, a connected Stripe account for payouts, and a smartphone for bidding, job photos, and customer texts.",
+  "work_available": "You bid on lawns near you and it's free to bid — but the first good price usually wins, so expect bidding wars in competitive neighborhoods. Also seasonal: demand dies in winter in most markets.",
+  "what_gets_accepted": "You get paid when you complete the mow and upload a photo of the finished lawn — the photo is what triggers payment, so document every job. Win the first mow and the real money comes from customers rebooking you weekly. GreenPal's specific removal policy is not publicly stated.",
+  "costs_and_unpaid_time": "Bidding is officially free, but everything else is yours: mower, edger, blower, gas, and maintenance — plus the 5% GreenPal fee and about 2.9% + $0.30 Stripe fee on every job. On a $50 mow the official breakdown leaves you $45.75 before gas and equipment. Unpaid time: bidding, driving between lawns, and first mows that don't convert to repeat customers.",
+  "when_cash_arrives": "Customer payments go to your Stripe account after you complete the job and upload the photo; Stripe's standard schedule then applies — typically about 2 business days to your bank."
+}

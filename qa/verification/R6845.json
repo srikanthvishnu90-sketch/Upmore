@@ -1,0 +1,91 @@
+{
+ "route_id": "R6845",
+ "provider": "E*TRADE (Morgan Stanley)",
+ "official_url": "https://us.etrade.com/promo/savings",
+ "terms_url": "https://us.etrade.com/promo/savings",
+ "payout_quote": "Open and fund a new Premium Savings Account by 1/10/2027. Use promo code: SAVE800. You'll earn a cash bonus when you deposit at least $20,000 of qualifying new money within the first 30 days of account opening. Maintain your balance for 45 additional days after the 30-day funding period ends to earn your cash bonus. Deposit Amount / Cash Bonus: $20,000 - $99,999 -> $400 | $100,000 or more -> $800. Award-winning high-yield savings: market-leading APY, no minimum deposit, no monthly account fees. (Official E*TRADE promo page, crawled 2026-09-23)",
+ "payout_min_usd": 400,
+ "payout_max_usd": 800,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus earned after the 30-day funding period plus the 45-day maintenance period; the page does not state the exact credit date",
+ "speed": "months",
+ "eligibility": "New Premium Savings Account customers (IRA and brokerage ineligible); U.S. residents; lifetime limit of two PSA bonus offers per customer; open by 1/10/2027 with promo code SAVE800",
+ "steps": [
+  "Open a new Premium Savings Account on etrade.com by January 10, 2027 using promo code SAVE800",
+  "Deposit at least $20,000 of qualifying new money within the first 30 days of account opening",
+  "Maintain your balance for 45 additional days after the 30-day funding period ends",
+  "Bonus is earned after the 45-day maintenance period (the page does not state the exact credit date)"
+ ],
+ "catches": [
+  "Requires $20,000+ of qualifying new money - only works if you already have this much liquid cash to move",
+  "New money only - funds already at E*TRADE/Morgan Stanley affiliates do not count",
+  "Money must stay parked for ~75 days total to earn the bonus",
+  "One PSA bonus offer at a time; lifetime maximum of two PSA bonuses per customer",
+  "Must apply promo code SAVE800 at account opening - single use",
+  "The page does not state the exact date the bonus credits after the maintenance period",
+  "Offer may be removed at any time"
+ ],
+ "biggest_catch": "This only works if you have $20,000+ in cash you can park for 75 days - it's a bonus on money you already have, not money from nothing. Do not borrow or invest money you can't afford to lock up to chase this.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0026 (E*TRADE, catalog). Original: Official E*TRADE promo page (us.etrade.com, crawled 2026-09-23): $400/$800 tiers on $20k/$100k new money; open by 1/10/2027 with code SAVE800. One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Only do this if you already keep $20k+ in savings earning less than the boosted rate - this is a windfall on money that's already sitting still, not a reason to move money you need. Open and deposit early in the window so the 75-day clock finishes well before the promo's end date. Note the lifetime cap of two PSA bonuses per customer.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official E*TRADE: $400 on $20k-$99,999 new money, $800 on $100k+, in a new Premium Savings Account with code SAVE800."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open by 1/10/2027 with code, deposit within 30 days, maintain 45 more days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no minimum deposit to open, no monthly account fees."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $400 or $800 by deposit tier."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new PSA customers, U.S., code SAVE800) per official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Official page states no minimum deposit and no monthly account fees on the Premium Savings Account."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official: earned after 30-day funding + 45-day maintenance; exact credit date not stated."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $400/$800 tiers."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official E*TRADE promo page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "$20k minimum, new-money rule, lifetime cap, no exact credit date disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Savings bonus - one-time, labeled as such; not for people without the cash."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "route_id": "R6843",
+ "provider": "Fifth Third Bank",
+ "official_url": "https://www.53.com/content/fifth-third/en/mkg/checking-offer.html",
+ "terms_url": "https://www.53.com/content/fifth-third/en/mkg/checking-offer.html",
+ "payout_quote": "Earn $300 when opening an eligible Fifth Third checking account with qualifying activities. Offer expires September 30, 2026. Your $300 offer code will be automatically applied when you select 'Open Your Account.' How to qualify: 1. Open an account - Apply online or take your offer code to a nearby branch. 2. Make direct deposits totaling $500 or more within 90 days of opening an account. 3. Enjoy your $300 - You'll get $300 within 10 business days of making your qualifying deposits. (Official Fifth Third Bank offer page, crawled 2026-09-23)",
+ "payout_min_usd": 300,
+ "payout_max_usd": 300,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus paid within 10 business days of completing qualifying direct deposits",
+ "speed": "months",
+ "eligibility": "New Fifth Third checking customers (not available to existing checking customers); offer expires September 30, 2026",
+ "steps": [
+  "Click 'Open Your Account' on Fifth Third's checking offer page (offer code auto-applies)",
+  "Open an eligible checking account online or in-branch",
+  "Set up direct deposits totaling $500+ within 90 days of opening",
+  "Receive $300 within 10 business days of qualifying"
+ ],
+ "catches": [
+  "TIME-SENSITIVE: offer expires September 30, 2026 (7 days from verification)",
+  "Requires $500+ in direct deposits within 90 days - the official page does not define which transfers count, so use real employer payroll deposits to be safe",
+  "Not available to existing Fifth Third checking customers"
+ ],
+ "biggest_catch": "The offer EXPIRES in 7 days (Sept 30, 2026) - you must open the account before then, though you get 90 days after opening to complete the deposits.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0051 (Fifth Third, catalog). Original: Official Fifth Third Bank offer page (53.com, crawled 2026-09-23): $300 for $500+ direct deposits within 90 days; expires 9/30/26; bonus within 10 business days. One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Open the account THIS WEEK - the September 30 expiration is 7 days away and extensions are not guaranteed. Use the online application so the offer code auto-applies. Route at least $500 of payroll direct deposit immediately - don't wait, since the 90-day clock starts at account opening. The 10-business-day payout is fast for bank bonuses, so calendar a check 2 weeks after your deposits post.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Fifth Third: earn $300 opening an eligible checking account with qualifying activities; expires 9/30/26."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open with auto-applied code, $500+ direct deposits within 90 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to earn the bonus stated in the offer page."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $300."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 9/30/26 expiration) per official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No extra fee to earn the bonus stated; the account's own fee schedule is not detailed on the offer page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: within 10 business days of qualifying deposits."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $300."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Fifth Third Bank offer page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Expiration, DD requirement, new-customer-only, tax disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Regional bank bonus - one-time, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

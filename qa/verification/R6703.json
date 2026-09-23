@@ -1,0 +1,101 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Real-world pay for basic tasks is roughly $2-$3/hr and training is unpaid; high per-hour claims require advanced (lidar) skills plus scarce task supply, and payments only arrive weekly.",
+ "catches": [
+  "Basic image-annotation tasks pay on the order of $0.02-$0.10 per task; typical new-worker effective pay is about $2-$3/hr \u2014 very low for the time.",
+  "Training courses and bootcamps are free but UNPAID (bootcamp ~10-14 days) and you must pass accuracy assessments to unlock paid tasks.",
+  "Accuracy gates pay: work below quality thresholds can be rejected; account tiers (Attempter > Reviewer > Super Reviewer) control task access and pay.",
+  "Task supply is competitive and intermittent; most workers never reach the advertised 'up to $18/hr' or '$720/week'.",
+  "Must be 18+; laptop + stable internet required for most tasks."
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Remotasks is Scale AI's task platform (remotasks.com). Official Remotasks 'Introduction to Remotasks' payment document: 'Remotasks sends payment to Taskers via PayPal and AirTM.'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official Remotasks payment doc: 'Payment happens every week on Wednesday morning (generally 9:00 AM to 12:00 PM UTC...). The Pay Period is from 12:00 AM UTC Wednesday through the cutoff time the following Tuesday at 12:00 AM UTC. You can't withdraw straight from your Remotasks Account Page, and we don't require minimums.' Pay per task varies by complexity/difficulty tier.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Free to join; official doc lists no fees. Training free (unpaid).",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: weekly Wednesday payout via PayPal/AirTM, no minimums, pay period Wed-Tue with cutoff Tuesday 12:00 AM UTC. Per-task pay varies by difficulty (basic $0.02-$0.10/task per published task tables; advanced lidar higher).",
+   "pass": true
+  }
+ },
+ "eligibility": "18+; global (90+ countries); task availability varies by region; laptop + stable internet for most tasks.",
+ "notes": "Checked 2026-09-23. Covers both 'Remotasks' and 'Scale AI Remotasks' from the lane brief \u2014 same platform, one route. Distinct from Appen (R6701) and Telus (R6702).",
+ "numeric_basis": "payout: per-task $0.02-$0.10 basic tasks (published task tables), higher for advanced tiers; time: per-task active minutes",
+ "official_url": "https://www.remotasks.com",
+ "payout_max_usd": 0.1,
+ "payout_min_usd": 0.02,
+ "payout_quote": "Remotasks sends payment to Taskers via PayPal and AirTM... Payment happens every week on Wednesday morning (generally 9:00 AM to 12:00 PM UTC)... The Pay Period is from 12:00 AM UTC Wednesday through the cutoff time the following Tuesday at 12:00 AM UTC. You can't withdraw straight from your Remotasks Account Page, and we don't require minimums. (Remotasks official 'Introduction to Remotasks' payment document)",
+ "payout_value_note": "per basic task ($0.02-$0.10); advanced tiers pay more per task",
+ "provider": "Remotasks (Scale AI)",
+ "route_id": "R6703",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "18+, 90+ countries, task availability varies by region.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fees to join; training free but unpaid.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Weekly Wednesday payout \u2014 days, not same-day.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Per-task pay varies by difficulty; advertised high hourly rates require advanced skills + task supply; honesty kept.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official Remotasks payment document read this session.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from other AI-data routes; Scale AI Remotasks = same platform, single route.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false matches official no-fee join.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Create a free account at remotasks.com.",
+  "Complete the free (unpaid) training courses for your chosen task category and pass the accuracy assessment.",
+  "Access paid tasks on your dashboard (image annotation, lidar, NLP labeling, transcription) \u2014 pay per task, varies by difficulty.",
+  "Add your PayPal/AirTM email on the Account Page before the Tuesday 12:00 AM UTC cutoff.",
+  "Get paid automatically every Wednesday morning (no minimum payout)."
+ ],
+ "terms_url": "https://www.remotasks.com",
+ "time_max_minutes": 10,
+ "time_min_minutes": 1,
+ "timing": "Weekly payout every Wednesday morning (9:00 AM-12:00 PM UTC) via PayPal or AirTM; pay period Wed-Tue with Tuesday 12:00 AM UTC cutoff; no minimum payout.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Remotasks (Scale AI) pays you per completed task.",
+ "who_qualifies": "18+, in one of 90+ supported countries. Most tasks need a laptop and stable internet.",
+ "work_available": "Competitive and intermittent \u2014 task supply is not steady, and your account tier (Attempter \u2192 Reviewer \u2192 Super Reviewer) controls which tasks you can even see.",
+ "what_gets_accepted": "Tasks must meet accuracy thresholds; work below the quality bar can be rejected with no pay. You must pass unpaid training courses and bootcamps (about 10\u201314 days) plus accuracy assessments before any paid tasks unlock.",
+ "costs_and_unpaid_time": "No fees \u2014 training and bootcamps are free but unpaid (roughly 10\u201314 days). Unpaid time: training, accuracy assessments, and waiting on scarce task supply.",
+ "when_cash_arrives": "Weekly, every Wednesday morning (9:00 AM\u201312:00 PM UTC) via PayPal or AirTM. The pay period runs Wednesday\u2013Tuesday, and there's no minimum payout.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New tasks post regularly \u2014 complete tasks, get paid every Wednesday via PayPal, and keep going."
+ }
+}

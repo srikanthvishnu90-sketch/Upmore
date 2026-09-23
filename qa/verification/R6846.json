@@ -1,0 +1,88 @@
+{
+ "route_id": "R6846",
+ "provider": "M&T Bank",
+ "official_url": "https://campaigns.mtb.com/personal/banking/checking-cash-bonus",
+ "terms_url": "https://campaigns.mtb.com/personal/banking/checking-cash-bonus",
+ "payout_quote": "Enjoy up to a $300 Bonus. Open your checking account: Apply online or visit your local M&T Bank to open an eligible account by October 8, 2026 using the promo code found on the application page. Set up Direct Deposits: Set up and receive qualifying direct deposits totaling at least $500 within 90 days of account opening. Earn up to a $300 cash bonus: Your cash bonus will be awarded within 90 days after completing the qualifying direct deposits. Eligible: EZChoice Checking, MyChoice Plus Checking, MyChoice Plus Checking with Interest, or MyChoice Premium Checking. Tiers: MYCHOICE PREMIUM $300 cash bonus | MYCHOICE PLUS $250 cash bonus | EZCHOICE $200 cash bonus. Monthly maintenance: MyChoice Premium $24.95/month (waived with $7,500+ avg daily balance or $25,000+ combined balances); MyChoice Plus $14.95/month (waived with $2,500+ avg daily balance or $1,500+ direct deposits per cycle); EZChoice: no monthly maintenance charge, no minimum balance requirement. (Official M&T Bank campaigns pages, crawled 2026-09-23)",
+ "payout_min_usd": 200,
+ "payout_max_usd": 300,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus awarded within 90 days after completing the qualifying direct deposits",
+ "speed": "months",
+ "eligibility": "New M&T personal checking customers; offers and products may vary by location (ZIP-gated); open by 10/8/2026 with promo code",
+ "steps": [
+  "Enter your ZIP on M&T's checking bonus page and open an eligible account by October 8, 2026 using the promo code on the application page",
+  "Set up qualifying direct deposits totaling $500+ within 90 days of opening",
+  "Bonus ($200 EZChoice / $250 Plus / $300 Premium) awarded within 90 days of completing deposits"
+ ],
+ "catches": [
+  "TIME-BOUND: must open by October 8, 2026",
+  "Offers vary by location - you must enter your ZIP; M&T's footprint is Northeast/Mid-Atlantic",
+  "MyChoice Plus has a $14.95/month fee and Premium has a $24.95/month fee - pick EZChoice (no monthly fee) unless you can meet waiver rules",
+  "Qualifying direct deposits required - verify what counts before relying on transfers",
+  "New customers only"
+ ],
+ "biggest_catch": "The $300 tier (MyChoice Premium) carries a $24.95/month maintenance fee unless you hold a $7,500+ balance - pick the no-monthly-fee EZChoice account ($200 bonus) if you can't meet a waiver, or the Plus tier ($250) if your direct deposits clear $1,500/month.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0049 (M&T Bank, catalog). Original: Official M&T Bank campaigns pages (campaigns.mtb.com, crawled 2026-09-23): $200/$250/$300 tiers; open by 10/8/2026; $500+ DD within 90 days. One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Enter your ZIP first - the offer varies by location and you may not be eligible outside M&T's footprint. Default to the EZChoice account: $200 bonus with NO monthly maintenance charge and no minimum balance, so fees can never eat the bonus. If your paycheck deposits exceed $1,500/month, the MyChoice Plus $250 tier waives its $14.95 fee automatically via the direct-deposit rule. Calendar a 90-day check after your deposits complete to confirm the bonus posts.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official M&T: up to $300 - $200 EZChoice / $250 Plus / $300 Premium - for $500+ qualifying direct deposits within 90 days."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open by 10/8/2026 with promo code, $500+ DD in 90 days, bonus within 90 days of completion."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No opening fee stated on the official bonus page; EZChoice has no monthly maintenance charge."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $200, $250, or $300 by account tier."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, ZIP-gated, 10/8/2026 deadline) per official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; monthly fees and waivers disclosed on the official page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: within 90 days after completing qualifying deposits."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $200/$250/$300 tiers."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official M&T Bank campaigns pages, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Deadline, location gating, DD requirement, fee structure disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Regional bank bonus - one-time, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

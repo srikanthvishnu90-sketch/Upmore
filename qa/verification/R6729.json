@@ -1,0 +1,101 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.upshift",
+  "ios": "https://apps.apple.com/app/upshift/id1234567890"
+ },
+ "biggest_catch": "You are a W-2 employee with a 12% acceptance rate, an in-person onboarding, and a weekly paycheck \u2014 this is real temp work, not walk-in cash.",
+ "catches": [
+  "Only ~12% of applicants are accepted (per Upshift's own site); in-person onboarding with e-verification required.",
+  "Standard pay is weekly: direct deposit each Friday for the prior week.",
+  "Daily pay exists only via third-party Earnin, and only after 2+ weeks / 2 paychecks \u2014 it's an advance app, not Upshift's own payout.",
+  "Waiting lists in many markets can delay start.",
+  "Taxes are withheld (W-2) \u2014 that's a plus vs 1099 gigs."
+ ],
+ "checked_at": "2026-09-23T15:10:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official upshift.work: W-2 staffing platform; you apply for posted shifts with listed pay rates.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official: shifts are posted with their pay rates in the app (higher-paying jobs unlocked as your profile improves). Per-shift concrete rate shown before accepting.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee; application + assessment free. Only 12% acceptance is competitive, not a fee.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: 'You will get paid directly to your bank account or cash card each Friday for the prior week.' Bounded weekly timing; daily pay via Earnin only after two paychecks. Speed is days, not today.",
+   "pass": true
+  }
+ },
+ "eligibility": "Pass application + assessment (~12% accepted); in-person onboarding; valid ID; metro-dependent availability.",
+ "notes": "Checked 2026-09-23. Official evidence from upshift.work. Distinct from Wonolo/Instawork (different platform, W-2 employment). Speed is days: weekly Friday pay; Earnin daily-pay is a third-party advance, disclosed honestly.",
+ "numeric_basis": "payout: posted per-shift hourly rate (official, varies by shift); time: per shift 240-480 min",
+ "official_url": "https://upshift.work",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "You will get paid directly to your bank account or cash card each Friday for the prior week. (upshift.work) | You can also get paid every day after you have worked on Upshift for at least two weeks through our partnership with Earnin! (upshift.work)",
+ "payout_value_note": "posted per-shift hourly rate shown in app (varies by shift)",
+ "provider": "Upshift",
+ "route_id": "R6729",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "Application + assessment + in-person onboarding.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fees.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Weekly Friday direct deposit \u2014 days.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official upshift.work.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from Wonolo/Instawork (W-2 staffing).",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Apply to Upshift and complete the online assessment.",
+  "Complete in-person onboarding with valid ID (e-verified).",
+  "Apply for shifts in the app; each posting shows its pay rate.",
+  "Clock in/out in the app and complete the shift.",
+  "Get paid by direct deposit each Friday for the prior week (or daily via Earnin after 2 paychecks)."
+ ],
+ "terms_url": "https://upshift.work/findshifts2/",
+ "time_max_minutes": 480,
+ "time_min_minutes": 240,
+ "timing": "Weekly: direct deposit each Friday for the prior week. Daily pay available only through third-party Earnin after 2+ weeks (2 paychecks).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Upshift pays you as a W-2 employee \u2014 taxes are withheld, via direct deposit to your bank account or a cash card.",
+ "who_qualifies": "You must pass Upshift's application and assessment (about 12% accepted, per Upshift's own site), plus in-person onboarding with e-verification and a valid ID; in metro areas with waiting lists in many markets.",
+ "work_available": "Selective \u2014 roughly 12% of applicants are accepted, and waiting lists in many markets can delay your start. This is real temp work with an interview, not walk-in cash.",
+ "what_gets_accepted": "Complete your shifts as a W-2 employee.",
+ "costs_and_unpaid_time": "No fees. Unpaid time: the application, assessment, and in-person onboarding before your first shift.",
+ "when_cash_arrives": "Weekly direct deposit each Friday for the prior week. Daily pay exists only through the third-party Earnin app after 2+ weeks (2 paychecks) \u2014 that's an advance app, not Upshift's own payout.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New shifts post regularly \u2014 work a shift, get paid weekly via direct deposit, and claim the next one."
+ }
+}

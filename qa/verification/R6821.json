@@ -1,0 +1,90 @@
+{
+  "route_id": "R6821",
+  "provider": "CSL Plasma",
+  "official_url": "http://www.cslplasma.com/be-rewarded",
+  "terms_url": "http://www.cslplasma.com/be-rewarded",
+  "payout_quote": "Receive up to $100* your first donation. *Varies by location and is subject to change. Receive up to $800* your first month as a new donor. *Varies by location and is subject to change. Earn iGive Rewards points to redeem for cash for every new donor you refer. After your first donation, your payment will be loaded onto a prepaid card, similar to a debit card. Deposits are automatic. Use your funds right away. (Official CSL Plasma rewards page, crawled 2026-09-23)",
+  "payout_min_usd": 100,
+  "payout_max_usd": 800,
+  "time_min_minutes": 150,
+  "time_max_minutes": 720,
+  "timing": "Paid to a prepaid debit card after each donation; deposits automatic and usable right away; the up-to-$800 figure spans the first month of donations",
+  "speed": "weeks",
+  "eligibility": "18+; must pass CSL's health screening and blood tests at each visit - check your local center's current new-donor fee schedule, as amounts vary by location",
+  "steps": [
+    "Find your nearest CSL Plasma center and check new-donor fees in your area",
+    "Pass the health screening at your first visit (bring ID and proof of address - confirm exactly what your center requires when you book)",
+    "Complete your first donation - up to $100 loaded to a prepaid card",
+    "Donate up to twice a week during your first month toward the up-to-$800 new-donor total"
+  ],
+  "catches": [
+    "The $800 is a location-variable CEILING for the whole first month, not a guarantee - regular per-visit pay is lower, and amounts vary by center and body weight",
+    "You must pass the health screening EVERY visit - fail it and there's no donation and no pay that day",
+    "Each donation takes well over an hour plus travel and waiting; this is a real time commitment across ~8 visits in month one",
+    "This involves a needle in your arm for an extended session, up to twice a week - bruising, dizziness and fatigue are common",
+    "The up-to-$800 figure is the NEW-DONOR first-month offer only - ongoing per-visit pay after month one is lower and varies by center"
+  ],
+  "biggest_catch": "Up to $800 is the best-case NEW-DONOR first-month total across ~8 donations - and only if you pass every health screening. Regular per-visit pay after month one is lower. Amounts vary by location.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "REJECTED 2026-09-23 strict audit: the official page proves only variable ceilings (\"up to $100* first donation\", \"up to $800* first month\", *varies by location and is subject to change). No fixed official fee schedule exists - amounts differ by center. Fails the concrete-amount rule. BioLife (R6835) remains the verified plasma route with an exact official schedule.",
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Call your local center before your first visit and ask for the exact current new-donor fee schedule - it varies by location and changes often, and some centers run limited-time higher promos. Book all ~8 first-month donations up front so you capture the full new-donor total; missed visits shrink it. The iGive Rewards referral program pays cash for every new donor you refer - that's the repeatable layer after month one, when per-visit rates drop to the regular schedule.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official CSL Plasma: 'Receive up to $100* your first donation' and 'Receive up to $800* your first month as a new donor' (*varies by location)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official steps: sign up, bring ID/SSN/address proof, pass screening, donate; payment loaded to prepaid card automatically."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Free; no fee to donate."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Official: prepaid-card payout after each donation, automatic, usable right away; iGive referral points redeemable for cash.",
+      "note": "FAIL: official page proves only variable ceilings (\"up to $100/$800, varies by location\") - not a concrete amount."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (18+, 110+ lbs, good health, ID/SSN/address, medical screening) per official pages."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official timing: paid after each donation; first-month total spans ~8 donations."
+    },
+    "s4": {
+      "pass": false,
+      "note": "FAIL: no fixed official fee schedule; amounts vary by center."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official CSL Plasma rewards page, crawled 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Location variance, screening risk, needle/time burden, taxable disclosed."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct mechanism (plasma donation compensation) - repeatable per donation."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

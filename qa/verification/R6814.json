@@ -1,0 +1,91 @@
+{
+ "route_id": "R6814",
+ "provider": "Robinhood",
+ "official_url": "https://robinhood.com",
+ "terms_url": "https://robinhood.com/us/en/support/articles/open-account-get-free-stock-terms/",
+ "payout_quote": "The cash value you receive could be anywhere between $5 and $200. Keep in mind that approximately 99% of customers will get stock worth $5. ... You're allowed to sell your gift stock 3 trading days after you claim it. ... If you want to withdraw the proceeds, however, you must keep the cash value of that stock in your account for at least 30 days after claiming it. ... Approximately 99% of participants will receive a cash value of $5, approximately 0.9% of participants will receive a cash value of $10, and approximately 0.1% of participants will receive a cash value of $200.",
+ "payout_min_usd": 5,
+ "payout_max_usd": 200,
+ "time_min_minutes": 15,
+ "time_max_minutes": 30,
+ "timing": "Stock credited within ~1 week of claiming; sellable after 3 trading days; proceeds withdrawable after 30 days",
+ "speed": "weeks",
+ "eligibility": "New Robinhood customers (never had a Robinhood individual taxable brokerage account); US residents; account approved and bank/debit card linked; claim within 60 days",
+ "steps": [
+  "Open your first Robinhood individual taxable brokerage account",
+  "Get approved and link your bank account or debit card (no deposit required)",
+  "Claim your gift stock and pick from the 26 eligible companies",
+  "Sell the stock 3 trading days after claiming",
+  "Withdraw the proceeds 30 days after claiming"
+ ],
+ "catches": [
+  "Approximately 99% of people get $5 - the $200 headline is a 1-in-1,000 lottery. Expect $5.",
+  "No deposit is required, but you must link a bank account or debit card and pass identity verification.",
+  "You cannot sell for 3 trading days and cannot withdraw for 30 days - the reward is locked for a month.",
+  "The reward is stock, so its value can move between grant and sale.",
+  "Reward is taxable and may be reported on Form 1099.",
+  "US residents only; one offer per customer; must claim within 60 days."
+ ],
+ "biggest_catch": "No deposit is required, but 99% of people get exactly $5 in stock - and you can't sell for 3 trading days or withdraw for 30 days. The $200 version happens to about 1 person in 1,000.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0016 (Robinhood, catalog). Original: Official Robinhood support article ('Open account, pick your stock') loaded and quoted verbatim 2026-09-23, including the official probability distribution (99% $5 / 0.9% $10 / 0.1% $200). Distinct from the Tiered Referrals Program (R6807). No gambling.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official robinhood.com support article loaded live: 'Open account, pick your stock' with full Terms & Conditions."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open first account, get approved, link bank/debit, claim gift stock within 60 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee and no deposit required; identity verification only."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $5-$200 with published distribution (99%/$5); credited ~1 week after claim; sell after 3 trading days; withdraw after 30 days."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, US residents, approved account, 60-day claim) in official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; no deposit required."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: credited ~1 week; 3-day sale hold; 30-day withdrawal hold."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $5-$200 with official probabilities; lottery nature disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official robinhood.com support article loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "99%-get-$5 odds, holds, tax, US-only disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (Fractional Stock Reward Offer for new customers)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Claim the day you open the account and set a calendar reminder for day 31: sell at 3 trading days, withdraw at 30. Ninety-nine percent of people get exactly $5, so don't waste time picking the 'best' stock - the only real deadline is the 60-day claim window."
+}

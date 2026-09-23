@@ -1,0 +1,89 @@
+{
+ "route_id": "R6838",
+ "provider": "Rover",
+ "official_url": "https://support-ca.rover.com/hc/en-ca/articles/360037417511-How-do-I-refer-pet-owners-and-earn-credit",
+ "terms_url": "https://support-ca.rover.com/hc/en-ca/articles/360037417511-How-do-I-refer-pet-owners-and-earn-credit",
+ "payout_quote": "Give your friends $20 to use on Rover. When they complete a service, you'll earn a $20 credit towards your next booking... Once your friend completes their first service, you'll be emailed a $20 promo code within 24-48 hours that you can upload to your account to use towards your next booking. (Official Rover Help Center, crawled 2026-09-23)",
+ "payout_min_usd": 20,
+ "payout_max_usd": 20,
+ "time_min_minutes": 5,
+ "time_max_minutes": 10,
+ "timing": "$20 promo code emailed 24-48 hours after the friend completes their first service",
+ "speed": "weeks",
+ "eligibility": "Existing Rover account holder; friend must be a new Rover customer who signs up through your unique referral link (household members with existing accounts are ineligible)",
+ "steps": [
+  "Log into Rover and copy your unique referral link (app: More menu; desktop: Give $20, Get $20 button)",
+  "Send the link to a friend with a pet who has never used Rover",
+  "They sign up through your link and complete their first pet-care service",
+  "You get a $20 promo code emailed within 24-48 hours",
+  "Apply it to your next Rover booking"
+ ],
+ "catches": [
+  "CREDIT, NOT CASH: the $20 is a promo code for Rover bookings only - it has zero value unless you book pet care on Rover",
+  "Your friend must complete a full paid service (not just sign up) before you earn anything",
+  "Friend must sign up through YOUR unique link; existing Rover accounts (including household members) are ineligible",
+  "UK amount is 15 pounds; US/Canada is $20 - amounts vary by country"
+ ],
+ "biggest_catch": "This is $20 of Rover booking credit, not money - worthless unless you actually pay for pet sitting or dog walking on Rover.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0817 (Rover US referral, catalog). Original: Official Rover Help Center (support-ca.rover.com, crawled 2026-09-23): Give $20, Get $20; promo code emailed 24-48 hours after friend's first completed service. Framed explicitly as booking credit per the owner's discount-on-spending framing rule.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Only chase this if you already book pet care on Rover - then every referral is $20 off a bill you'd pay anyway. Target friends with pets who have never used Rover, since they must complete a real paid service for your credit to trigger. Make sure they sign up through your unique link - any other signup path earns you nothing.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Rover: give friends $20, earn $20 credit toward your next booking when they complete a service."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official flow: share unique link, friend signs up and completes first service, promo code emailed."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $20 credit per qualifying referral."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers via unique link) per official help center."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: promo code emailed 24-48 hours after first completed service."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $20 booking credit per referral."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Rover Help Center, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Credit-not-cash, service-completion requirement, new-customer-only disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Pet-care marketplace referral - repeatable per referral; labeled as credit."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

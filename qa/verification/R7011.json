@@ -1,0 +1,95 @@
+{
+  "biggest_catch": "Real same-day money, but tiny: trade values change daily and expire the same day, and the cash option pays less than store credit - think single dollars per game, not tens.",
+  "catches": [
+    "Trade values are low - the official example observed was $2 credit / $1.40 cash for a game; quotes can change daily.",
+    "The quote expires the same business day; tomorrow's value can be different.",
+    "Cash-equivalent means Venmo or prepaid Mastercard, not paper cash in hand.",
+    "Store credit pays more than the cash option; both depend on condition and demand.",
+    "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official gamestop.com trade pages document the in-store trade-in program.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages: cash-equivalent (Venmo/prepaid Mastercard) or store credit, paid in store.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official pages: same-day in-store payment; quotes expire same business day.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee to get a trade quote.",
+      "pass": true
+    }
+  },
+  "eligibility": "Any age can trade with ID requirements per store policy; must own the item; games, consoles, and electronics in acceptable condition.",
+  "maximize": "Quotes expire the same day, so check values online and bring everything in one trip - bundling beats multiple visits. Take store credit over cash if you'd shop there anyway; it pays more.",
+  "notes": "Official example captured 2026-09-23 from gamestop.com trade details page. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+  "official_url": "https://www.gamestop.com/",
+  "payout_max_usd": 150,
+  "payout_min_usd": 0,
+  "payout_quote": "Trade in store for same-day cash (via Venmo or prepaid Mastercard), or store credit; quotes expire the same business day and values change daily. Example observed 2026-09-23: Blood Drive - up to $2.00 store credit or $1.40 cash-equivalent.",
+  "provider": "GameStop Trade-In",
+  "repeatable": {
+    "cadence": "You can do this once per item you own - it is bounded by the games and consoles you already have, not a daily income stream.",
+    "value": true
+  },
+  "route_id": "R7011",
+  "speed": "today",
+  "standard": {
+    "s1": {
+      "note": "No fees to trade in.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Same-day payment and same-day quote expiry stated plainly.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Item-ownership and condition terms documented.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Quote is free with no obligation.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Value shown before you hand over the item.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Values change daily and condition affects value - disclosed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Per-item value; varies, nothing guaranteed.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Check your item's trade value on gamestop.com or in store",
+    "Bring the item to a GameStop store the same business day (quotes expire daily)",
+    "Staff inspect the item and confirm the value",
+    "Get paid same-day: cash-equivalent (Venmo/prepaid Mastercard) or store credit"
+  ],
+  "terms_url": "https://www.gamestop.com/trade/details/?pid=10078286",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Same-day in-store payment (cash-equivalent or store credit); quotes expire the same business day.",
+  "who_pays": "GameStop - the store pays you directly, in store, either as store credit or cash-equivalent.",
+  "who_qualifies": "Any age can trade, with ID requirements per store policy, and you must own the item. Games, consoles, and electronics in acceptable condition only.",
+  "work_available": "Yes - trade-in was live in GameStop stores as of 2026-09-23. But values change daily and quotes expire the same business day, so a good price is never guaranteed.",
+  "what_gets_accepted": "Staff inspect the item and confirm the value on the spot. Only items in acceptable condition in categories GameStop wants are accepted; per-game values are tiny (the official example was $2.00 store credit / $1.40 cash-equivalent).",
+  "costs_and_unpaid_time": "No fees; you bring the item in yourself, so no shipping. Your unpaid time is checking values online and making the same-day trip to the store - the quote dies that business day.",
+  "when_cash_arrives": "Same day in store - but the 'cash' option is cash-equivalent (Venmo or prepaid Mastercard), not paper cash, and it pays less than store credit. If you shop at GameStop anyway, take store credit for the higher number.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

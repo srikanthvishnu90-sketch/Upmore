@@ -1,0 +1,91 @@
+{
+ "route_id": "R6831",
+ "provider": "SoFi",
+ "official_url": "https://www.sofi.com/offers/invest-referral/",
+ "terms_url": "https://www.sofi.com/offers/invest-referral/",
+ "payout_quote": "To earn bonuses, the Eligible Invest Recipient must: (1) open a new SoFi Invest Self-Directed Account using the Eligible Invest Referrer's unique referral link; (2) fund the new account with a minimum deposit of $25.00; and (3) complete both steps within 90 calendar days... SoFi Securities LLC will: (a) credit the Eligible Invest Referrer's account with a $75 cash bonus if the Eligible Invest Referrer satisfies the eligibility requirements... (b) otherwise, credit the Eligible Invest Referrer's account with a $50 cash bonus; and (c) credit the new account of the Eligible Invest Recipient with a $25 stock bonus. (Official SoFi Invest Referral terms, crawled 2026-09-23)",
+ "payout_min_usd": 50,
+ "payout_max_usd": 75,
+ "time_min_minutes": 10,
+ "time_max_minutes": 15,
+ "timing": "Credited to the referrer's Invest account after the recipient opens and funds within the 90-day window",
+ "speed": "weeks",
+ "eligibility": "SoFi member with an Invest account; recipient must be new to SoFi Invest (no current or prior SoFi Invest account), open a Self-Directed account via your unique link, and fund $25+ within 90 days",
+ "steps": [
+  "Open your own SoFi Invest account",
+  "Share your unique Invest referral link with someone interested in investing",
+  "Recipient opens a new SoFi Invest Self-Directed account via your link",
+  "Recipient funds at least $25 within 90 days",
+  "You receive $50 cash (or $75 if you meet the higher eligibility tier); they get a $25 stock bonus"
+ ],
+ "catches": [
+  "The friend must actually FUND $25 within 90 days - signups alone earn nothing",
+  "Only Self-Directed accounts qualify - Automated Invest and IRA referrals earn nothing",
+  "You can't earn on anyone who already had a SoFi Invest account",
+  "$10,000 annual cap across ALL SoFi referral programs per calendar year",
+  "SoFi won't disclose recipient account info to you - you must trust the friend completed funding",
+  "You must have express consent to send promotional messages about SoFi products"
+ ],
+ "biggest_catch": "Only Self-Directed (not IRA, not automated) accounts count, the friend must fund $25 within 90 days, and there's a $10,000/year cap across all SoFi referral programs.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0018/R0430 (SoFi, catalog). Original: Official SoFi Invest Referral terms (sofi.com/offers/invest-referral/, crawled 2026-09-23): $50-$75 cash to referrer, $25 stock bonus to recipient. Repeatable per qualifying referral.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Share with people already curious about investing - the $25 funding minimum is trivial for anyone serious, which makes this one of the easiest referrals to actually complete. Follow up around day 60 with anyone who signed up but hasn't funded; most lost referrals die in the funding step, not the signup step. Don't waste links on existing SoFi users - check first, since prior SoFi Invest accounts disqualify the bonus entirely.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official SoFi: $75 (or $50) cash bonus to referrer when recipient opens a Self-Directed Invest account via link and funds $25+ within 90 days."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official flow: share link, recipient opens and funds $25 in 90 days, bonuses credited."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $50-$75 cash to referrer; $25 stock bonus to recipient."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new-to-Invest recipient; self-directed only; consent rules) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: after 90-day funding window completes."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $50-$75 per qualifying referral."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official SoFi invest-referral page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Funding requirement, account-type exclusions, annual cap disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (brokerage referral) - repeatable per referral."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

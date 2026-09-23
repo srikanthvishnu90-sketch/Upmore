@@ -1,0 +1,102 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Payouts are monthly and project-based: rates are stated per project before you start, work availability is inconsistent, and small balances can be held until they exceed payout fees.",
+ "catches": [
+  "Pay is per project, not a fixed hourly wage \u2014 rates are stated before you begin and vary by project, country, and complexity.",
+  "CrowdGen pays via its Dots payout partner: PayPal, local bank transfer, Airtm, SWIFT, Payoneer, or gift card \u2014 fees apply per method (e.g., US ACH free 1x/month, extra payouts $0.20; PayPal free 1x/month).",
+  "Appen will hold your payment 'where we know the payment is less than the fees that will be incurred' and pay it in a subsequent month once it exceeds the fee threshold \u2014 tiny balances wait.",
+  "Most projects require passing an unpaid qualification assessment before any paid work.",
+  "Task availability is inconsistent; projects can end suddenly.",
+  "Payment timing example on the official page is monthly ('Your total payment for work totals $100 for the month') \u2014 this is not same-day or weekly cash."
+ ],
+ "checked_at": "2026-09-23T11:50:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official crowdgen.com (Appen's contributor platform) FAQ: 'How does CrowdGen pay contributors? Your expertise is valuable, and we offer competitive rates, stated clearly before you begin... withdraw through bank transfer, PayPal, Payoneer, Airtm, and more. We will never ask you to pay anything to join our projects.'",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official crowdgen.com payout-options page (Dots partnership): 'Available Payout Options: PayPal, Local Bank Transfer, Airtm, SWIFT, Payoneer, Gift Card'; fee table concrete: 'Domestic ACH: Free - 1 payment per month', 'PayPal: Free - 1 payment per month', 'Domestic same day ACH: $0.30', 'Domestic RTP: $0.45 Instant bank transfer via RTP'. Appen's own job posting copy: 'Each task has a set payment rate, clearly displayed in the tool. For example: Task A pays $0.10 per judgment. Completing 100 judgments in one hour earns you $10'.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official crowdgen.com: 'We will never ask you to pay anything to join our projects.' No upfront fee.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official fee/timing facts: payouts via Dots monthly cycle ('Your total payment for work totals $100 for the month'); same-day ACH $0.30 and instant RTP $0.45 options exist in the US; small balances held until they exceed fees. Timing is monthly cadence, not instant \u2014 speed 'days'.",
+   "pass": true
+  }
+ },
+ "eligibility": "18+; global (rates and payout methods vary by country); ID verification on qualification; no fee to join (official: never asked to pay).",
+ "notes": "Checked 2026-09-23: crowdgen.com FAQ + full payout-options docs page read. 'Appen/Centaur' combined per lane brief \u2014 Appen's crowd platform is CrowdGen. Distinct from Remotasks (R6703) and Telus (R6702).",
+ "numeric_basis": "payout: per-project rates stated before start; Appen posting example $0.10/judgment (~$10/hr at 100/hr); time: per-task active minutes",
+ "official_url": "https://crowdgen.com",
+ "payout_max_usd": 10,
+ "payout_min_usd": 0.1,
+ "payout_quote": "How does CrowdGen pay contributors? Your expertise is valuable, and we offer competitive rates, stated clearly before you begin... withdraw through bank transfer, PayPal, Payoneer, Airtm, and more. We will never ask you to pay anything to join our projects. (crowdgen.com FAQ) | Each task has a set payment rate, clearly displayed in the tool. For example: Task A pays $0.10 per judgment. Completing 100 judgments in one hour earns you $10. (Appen project posting)",
+ "payout_value_note": "per-task rate example from Appen's own project posting ($0.10/judgment; ~$10/hr at pace); actual rates per project, stated before start",
+ "provider": "Appen (CrowdGen)",
+ "route_id": "R6701",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "18+, global, ID verification on qualification; no-fee-to-join stated officially.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Official fee table: ACH/PayPal free 1x/month (US), same-day ACH $0.30, RTP $0.45; fees charged by third parties, not Appen.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Monthly payout cadence on official page; not same-day \u2014 speed 'days'.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Rates 'stated clearly before you begin' \u2014 no guaranteed earnings claim; per-project variability disclosed.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official crowdgen.com FAQ + full Dots payout-options docs page read this session.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct provider/mechanism from Remotasks/Telus/Appen-adjacent routes.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false matches official 'never ask you to pay' statement.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Create a free CrowdGen account and complete your profile (languages, country, device).",
+  "Browse projects and apply; pass each project's qualification assessment (unpaid).",
+  "Complete tasks (data annotation, transcription, evaluation, search rating) at the project's stated per-task rate.",
+  "Track hours/earnings in the dashboard; choose payout method via Dots (PayPal, bank transfer, Payoneer, Airtm, etc.).",
+  "Receive payout on the monthly cycle (US ACH/PayPal free once per month; same-day ACH $0.30, instant RTP $0.45)."
+ ],
+ "terms_url": "https://crowdgen.com/docs/payments/general-payments-faq/payout-options-and-fees/",
+ "time_max_minutes": 60,
+ "time_min_minutes": 5,
+ "timing": "Monthly payout cycle via Dots: PayPal, local bank transfer, Airtm, SWIFT, Payoneer, or gift card; US domestic ACH and PayPal free once per month; same-day ACH $0.30 / instant RTP $0.45; balances below fee thresholds are held to a later month.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Appen pays you per project through its payout partner Dots \u2014 each task or project has a set rate shown before you begin.",
+ "who_qualifies": "18+, anywhere in the world (rates and payout methods vary by country). Most projects require passing an unpaid qualification assessment plus ID verification. Joining is free \u2014 CrowdGen states it will never ask you to pay.",
+ "work_available": "Inconsistent \u2014 projects open and close irregularly and can end suddenly, so this is occasional project work, not a steady stream.",
+ "what_gets_accepted": "Rates are stated before you begin and pay is per completed task that meets the project's quality bar. Failing a project's qualification assessment means no access to that project at all.",
+ "costs_and_unpaid_time": "No fees to join. Unpaid time: qualification assessments and guideline study for each project, plus gaps between projects. Small balances can be held to a later month when they don't cover the payout fees.",
+ "when_cash_arrives": "Monthly payouts via Dots: PayPal, local bank transfer, Airtm, SWIFT, Payoneer, or gift card. In the US, ACH and PayPal withdrawals are free once a month (same-day ACH $0.30, instant RTP $0.45 after that).",
+ "repeatable": {
+  "value": true,
+  "cadence": "New crowd tasks post regularly \u2014 complete tasks through the month, get paid in the monthly payout cycle, and keep going."
+ }
+}

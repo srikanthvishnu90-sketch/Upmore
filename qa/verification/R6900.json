@@ -1,0 +1,94 @@
+{
+ "app_links": {},
+ "biggest_catch": "You only get paid if the other person actually signs up and completes the requirement \u2014 this is never guaranteed. The friend must activate both a parent account and a child's card; payout is in GBP to a GoHenry parent account (UK only), not cash to your bank.",
+ "catches": [
+  "you only get paid if the other person actually signs up and completes the requirement \u2014 this is never guaranteed.",
+  "UK only \u2014 friend must be a UK resident over 18 at a different address",
+  "Referrer must already have an active GoHenry account with at least \u00a330 loaded and a child card activated",
+  "Friend must activate both their parent account and their child's card; sign-up alone does not trigger the reward",
+  "If the friend closes their new GoHenry account within 1 month, the \u00a330 reward is not refunded",
+  "Reward is paid in GBP into a GoHenry parent account, not as cash to a bank account",
+  "Offer can be varied or withdrawn at any time without prior notice"
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Friend must sign up through the referrer's link and not be an existing customer"
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Friend must activate their parent account AND their child's card"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Friend must be a UK resident over 18 living at a different address than the referrer"
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "legacy repair 2026-09-23: covered by payout_quote/timing/eligibility in file"
+  }
+ },
+ "eligibility": "Referrer must be an existing GoHenry customer with an active account; Referred friend must be a genuine person over 18 and a UK resident; Friend must not live at the same address as the referrer; Friend must not be an existing GoHenry customer; Only one referrer per household; only one friend per referred household qualifies",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: UK-only referral program (UK residency + UK address required) - US users cannot earn. The catalog serves US users; a route requiring foreign residency/bank cannot be acted on. Real program, wrong audience. Original: Official GoHenry Refer-a-Friend terms PDF (gohenry.com). \u00a330 to both sides, paid within 5 working days of activation. Fast-paying referral lane.",
+ "numeric_basis": "payout: flat \u00a330 in official terms (converted to USD); time: category default App Referral (5-15min active)",
+ "official_url": "https://cdn.gohenry.com/site-furniture/amp-uk/pdfs/30_RAF_Terms_and_Condition_UK.pdf",
+ "payout_max_usd": 38.0,
+ "payout_min_usd": 38.0,
+ "payout_quote": "For every friend that joins gohenry we'll add \u00a330 to both your parent accounts. The money is paid when your friend activates their children's card.",
+ "payout_value_note": "\u00a330 GBP per successful referral, converted to USD at ~1.27 (documented estimate; official payout is in GBP)",
+ "provider": "GoHenry (UK)",
+ "repeatable": {
+  "cadence": "per referral",
+  "value": true
+ },
+ "maximize": "The friend must ACTIVATE the child's card \u2014 sign-up alone pays nothing. Walk your friend through activation the day they join so the \u00a330 lands within 5 working days. Target parent friends (school gates, playgroups); only one friend per referred household qualifies, so spread links across different households.",
+ "route_id": "R6900",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s2": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s3": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s4": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s5": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s6": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s7": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  }
+ },
+ "steps": [
+  "Existing GoHenry customer with an active account (at least \u00a330 loaded to parent account and at least one child account/card activated) gets their referral link",
+  "Share the referral link with a friend who is a UK resident over 18, not living at the same address, and not an existing GoHenry customer",
+  "Friend signs up via the referral link, opens a parent account and activates their child's card",
+  "\u00a330 is added to both the referrer's and the friend's GoHenry parent accounts within 5 working days"
+ ],
+ "terms_url": "https://cdn.gohenry.com/site-furniture/amp-uk/pdfs/30_RAF_Terms_and_Condition_UK.pdf",
+ "time_max_minutes": 15.0,
+ "time_min_minutes": 5.0,
+ "timing": "\u00a330 is added to the referrer's GoHenry parent account within 5 working days of the friend activating their parent account and child's card.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

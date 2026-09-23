@@ -1,0 +1,91 @@
+{
+ "route_id": "R6842",
+ "provider": "Associated Bank",
+ "official_url": "https://www.associatedbank.com/offer",
+ "terms_url": "https://www.associatedbank.com/offer",
+ "payout_quote": "This offer is limited to a new Associated Bank business checking account opened and funded through October 2, 2026. Open a new Associated business checking account with a minimum opening deposit of $100 and receive up to a $750 Bonus with one of three options: A. Open a Business Access Checking account and receive a $100 bonus with a minimum deposit of $2,000 in new money within 30 days of account opening. Also, must maintain a minimum daily balance of $2,000 between days 31 to 90 after opening your account. OR B. ... $400 bonus ... $5,000 ... OR C. ... $750 bonus ... $20,000... The bonus is deposited into the new Associated Bank business checking account within 120 days of account opening. Account must be open at the time the bonus is paid and must remain open for a minimum of 12 months. If the account is closed within 12 months, Associated Bank reserves the right to deduct the monetary bonus from the account prior to closing. (Official Associated Bank offer page, crawled 2026-09-23)",
+ "payout_min_usd": 100,
+ "payout_max_usd": 750,
+ "time_min_minutes": 60,
+ "time_max_minutes": 90,
+ "timing": "Bonus deposited within 120 days of account opening; account must remain open 12 months or bonus is clawed back",
+ "speed": "months",
+ "eligibility": "Business owners; new Associated Bank business checking account; opened and funded through October 2, 2026; new money must come from outside Associated Bank",
+ "steps": [
+  "Choose your tier: Business Access ($100 / $2,000), Business Balanced ($400 / $5,000), or Business Choice ($750 / $20,000)",
+  "Open the new business checking account with $100+ before October 2, 2026",
+  "Deposit the required new money (from outside Associated Bank) within 30 days",
+  "Maintain the minimum daily balance every day from day 31 to day 90",
+  "Keep the account open 12 months; bonus posts within 120 days of opening"
+ ],
+ "catches": [
+  "BUSINESS ACCOUNT REQUIRED - you need a real business to open this; not for personal banking",
+  "TIME-BOUND: must open and fund by October 2, 2026 (9 days from verification)",
+  "12-MONTH CLAWBACK: close the account within a year and they deduct the bonus back",
+  "Slow payout: bonus posts within 120 days of opening",
+  "You must park $2,000-$20,000 for 90 days - the money is tied up",
+  "New money only - transfers from existing Associated Bank accounts don't count"
+ ],
+ "biggest_catch": "This requires a real business and parking $2,000+ for 90 days - plus the bonus is clawed back if you close the account within 12 months. Only makes sense if you actually need a business checking account.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0070 (Associated Bank, catalog). Original: Official Associated Bank offer page (associatedbank.com/offer, crawled 2026-09-23): business checking $100/$400/$750 tiers with new-money and 90-day balance requirements. One-time business bonus, explicitly labeled. Distinct from any personal checking offer.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Only do this if you genuinely need a business checking account - don't form a business just for $100. The Business Access tier ($100 for $2,000 parked 90 days) is the sensible play; the higher tiers tie up serious cash for marginal extra bonus. Fund with new money on day one and set a calendar reminder for day 90 to confirm the balance never dipped. Keep the account open the full 12 months - the clawback makes early closure a guaranteed loss.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Associated Bank: $100/$400/$750 business checking bonus based on new-money tier ($2k/$5k/$20k)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open by 10/2/26, deposit new money in 30 days, maintain daily balance days 31-90."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No extra fee to earn the bonus; $100 minimum opening deposit per official offer. Business checking accounts may carry their own monthly fees - check the account's fee schedule."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $100, $400, or $750 by tier."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (business owners, new account, 10/2/26 deadline, outside funds) per official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No extra fee to earn the bonus beyond the account's own terms; business checking fee schedule not detailed in the offer page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: bonus within 120 days; 12-month account requirement."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $100-$750 tiers."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Associated Bank offer page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Business requirement, deadline, clawback, slow payout, tied-up funds disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Business banking bonus - one-time, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

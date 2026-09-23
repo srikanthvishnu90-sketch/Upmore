@@ -1,0 +1,96 @@
+{
+  "biggest_catch": "Fees reset every calendar quarter — a strong quarter gets you Level 3 pricing, but a slow quarter drops you back to Level 1 with no warning.",
+  "catches": [
+    "Level 1 (new sellers): 9.0% transaction fee; higher quarterly volume unlocks Level 2–5 (8.5%–7.0% transaction).",
+    "Level 3–5 sellers who fail to ship 5%+ of orders in a month face a penalty fee the following month for each unfulfilled sale.",
+    "Quarterly reset (Jan 1 / Apr 1 / Jul 1 / Oct 1); once you achieve a level you keep its benefits for the current quarter and the following quarter.",
+    "Items must be new and pass StockX verification — a failed sale is void, not just fee-reduced.",
+    "Visa debit payouts cost a debit fee ($1.95–$9.95); use bank transfer instead."
+  ],
+  "checked_at": "2026-09-23T14:05:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Direct official stockx.com help page 'What is the StockX Seller Program? What are Seller Levels?' (fetched 2026-09-23): five levels — Level 1 (no sales) 9.0%; Level 2 (12 sales or $1,500) 8.5%; Level 3 (40 sales or $5,000) 8.0%; Level 4 (200 sales or $25,000) 7.5%; Level 5 (800 sales or $100,000) 7.0%; quarterly resets; penalty fees for unfulfilled orders. Official stockx.com payout help page ('As a Seller, how and when do I get paid?'): payout methods and debit fees.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete: Level 1 9.0% transaction fee, quarterly thresholds, quarterly reset, penalty fees, payouts after verification.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No listing fees documented.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Concrete: $200 sneaker at Level 1 → $18.00 transaction fee → ~$182.00 before processing/payout fees (example-based on documented 9.0% rate; processing rate per official payout page).",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone 18+; items must be new and pass StockX verification",
+  "maximize": "StockX is a volume game: the quarterly level system means concentrated selling in one quarter unlocks 8.0–7.0% transaction fees for two quarters — time your sales accordingly. Always use bank transfer for payouts (debit cards cost $1.95–$9.95). Only sell items that are new with original packaging, because verification failures void payment entirely. Set asks using the live bid/ask board — price discovery is StockX's real advantage over fixed-price platforms. Maintain at least 95% on-time shipping once you're Level 3+ to avoid penalty fees.",
+  "notes": "Rewritten 2026-09-23 using StockX's own seller-program help page (fetched directly) for the tier table and the official payout help page for payout methods. Example math flagged example-based. Distinct mechanism: bid/ask live marketplace, authentication-based trust, quarterly seller tiers.",
+  "official_url": "https://stockx.com/help/articles/what-is-the-stockx-seller-program-what-are-seller-levels?source=mobile",
+  "payout_max_usd": 400,
+  "payout_min_usd": 50,
+  "payout_quote": "Seller Levels: Level 1 (Quarterly sales required: None) Base Transaction Fee 9.0%; Level 5 (800 sales or $100,000 USD) Base Transaction Fee 7.0%. Activity resets at the end of each calendar quarter.",
+  "provider": "StockX",
+  "repeatable": {
+    "cadence": "Repeatable per item — sell again every time you have new, authentic sneakers or collectibles to flip.",
+    "value": true
+  },
+  "route_id": "R7432",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "18+; new items only, verification documented.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No listing fees.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Paid after verification; payout methods on official help page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete tiers; example math flagged example-based.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Direct official stockx.com help pages fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "5 steps: list ask, bid match, ship for authentication, verification, payout.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "List your new item at an ask price (or accept a bid)",
+    "When your ask matches a buyer's bid, the sale executes automatically",
+    "Ship the item to StockX with their UPS label for authentication",
+    "StockX authenticates and delivers to the buyer",
+    "Receive payout (bank transfer, PayPal, Venmo, or debit) minus the tiered transaction fee"
+  ],
+  "terms_url": "https://stockx.com/help/articles/what-is-the-stockx-seller-program-what-are-seller-levels?source=mobile",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "Paid after authentication; quarterly tier resets Jan 1/Apr 1/Jul 1/Oct 1",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "who_pays": "The buyer pays through StockX, and StockX pays you after your item passes its authentication.",
+  "who_qualifies": "Anyone 18+; items must be brand new and pass StockX verification.",
+  "work_available": "StockX is active and open to new sellers — seller levels reset quarterly (Jan 1 / Apr 1 / Jul 1 / Oct 1).",
+  "what_gets_accepted": "Items must be new and pass StockX's authentication — a failed sale is void. Higher quarterly volume unlocks lower fee levels (Levels 2–5), but sellers at Levels 3–5 who fail to ship 5%+ of orders in a month face a penalty fee the next month.",
+  "costs_and_unpaid_time": "New sellers (Level 1) pay a 9.0% transaction fee; higher volume drops it to 8.5%–7.0%. Visa debit payouts cost $1.95–$9.95 — use bank transfer instead. Unpaid time goes to listing and shipping the item to StockX for authentication.",
+  "when_cash_arrives": "After your item passes authentication, StockX releases your payout — via bank transfer (free) or debit card (fee applies)."
+}

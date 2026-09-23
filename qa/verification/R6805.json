@@ -1,0 +1,89 @@
+{
+ "route_id": "R6805",
+ "provider": "Chime",
+ "official_url": "https://www.chime.com",
+ "terms_url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
+ "payout_quote": "For both you and your friend to earn a bonus, three things need to happen: 1. Your friend signs up for a Chime Checking Account using your referral link. 2. They receive a single qualifying direct deposit of $200 or more within 45 days of opening their account. 3. They activate their physical card within 14 calendar days of receiving that qualifying direct deposit. Once all three steps are complete, your friend receives $100, and you earn a bonus.",
+ "payout_min_usd": 100,
+ "payout_max_usd": 100,
+ "time_min_minutes": 20,
+ "time_max_minutes": 30,
+ "timing": "$100 deposited to the Chime Checking Account typically within 2 days after the qualifying $200+ direct deposit lands and the physical card is activated (per chime.com referral pages)",
+ "speed": "weeks",
+ "eligibility": "New Chime Checking Account opened via a referral link; a single qualifying direct deposit of $200+ within 45 days of opening; physical card activated within 14 days of that direct deposit",
+ "steps": [
+  "Open a Chime Checking Account using a referral link",
+  "Set up direct deposit and receive a single qualifying direct deposit of $200+ within 45 days",
+  "Activate the physical Chime debit card within 14 days of the direct deposit",
+  "$100 is deposited to the checking account, typically within 2 days"
+ ],
+ "catches": [
+  "Requires a REAL $200+ paycheck-style direct deposit within 45 days - bank transfers, P2P payments, and cash deposits generally do not count as qualifying direct deposits.",
+  "You must also activate the physical debit card within 14 days of the direct deposit - miss either step and there is no bonus.",
+  "The referrer-side bonus amount varies by offer ('you earn a bonus' - amount not fixed), so this route is the new-user $100 side only.",
+  "Referrer is capped at 10 successful referrals per calendar year.",
+  "This is a bank-account switch: fine if you want the account, but don't open it solely for $100 if you won't use it."
+ ],
+ "biggest_catch": "No bonus without a real $200+ employer-style direct deposit landing within 45 days plus physical card activation - casual transfers don't qualify, and the direct deposit is the slow step (weeks, not days).",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0330 (Chime referral, catalog). Original: Official Chime Help Center terms loaded and quoted verbatim 2026-09-23; official chime.com referral landing pages confirm '$100 deposited to your Checking Account typically within 2 days' of the qualifying deposit. The $100 is real cash in the checking account (withdrawable). Speed is 'weeks' because the $200+ direct deposit must arrive first.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official help.chime.com referral program page loaded live with the $100 new-user terms."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official 3-step qualification: referral-link signup, single $200+ qualifying direct deposit within 45 days, card activation within 14 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; Chime checking has no monthly fees."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: 'your friend receives $100'; chime.com referral pages: 'typically within 2 days' after qualification."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility and all three qualifying steps documented on the official help page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; no monthly fee account."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official payout timing: typically within 2 days of qualification."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $100/$200 amounts from official pages."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official chime.com + help.chime.com pages loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Direct-deposit requirement, card activation, referrer-amount gap, annual cap disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (Chime standard referral, new-user side)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "One single $200+ direct deposit is what counts - split paychecks don't stack, so point one full paycheck (or payroll-split one deposit of $200+) at Chime inside the 45-day window. Activate the physical debit card the day it arrives; missing the 14-day card deadline kills the whole bonus. Then flip to the other side: your own referral link pays per friend, up to 10 per calendar year."
+}

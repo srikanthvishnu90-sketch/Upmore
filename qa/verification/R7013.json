@@ -1,0 +1,95 @@
+{
+  "biggest_catch": "eBay moves money on its own schedule, not yours: payouts initiate within two days of the buyer's payment and take 1-3 more business days to reach your bank, with final value and processing fees off the top.",
+  "catches": [
+    "eBay charges final value fees plus payment-processing fees that reduce proceeds; shipping costs are on you unless charged to the buyer.",
+    "Nothing sells until a buyer buys - a sale at your price is not guaranteed; market demand sets the price.",
+    "Express (on-demand) payout to debit card carries a fee; standard bank payout takes 1-3 business days.",
+    "New sellers may face payout holds; returns and disputes can claw back funds.",
+    "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official eBay seller center documents managed-payments payouts.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official seller center: payouts to bank account or debit card.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official seller center: initiation within 2 days of confirmed payment; 1-3 business days to bank; express ~30 min.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Listing within the free monthly allowance; no upfront fee.",
+      "pass": true
+    }
+  },
+  "eligibility": "18+, must own the item; seller account in good standing; prohibited-item rules apply.",
+  "maximize": "Use calculated shipping so postage doesn't eat your margin. Skip the express payout fee - the standard bank payout is free and arrives in 1-3 business days.",
+  "notes": "Observed 2026-09-23 on ebay.com official seller center. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+  "official_url": "https://www.ebay.com/",
+  "payout_max_usd": 500,
+  "payout_min_usd": 0,
+  "payout_quote": "Payouts are initiated daily within two days of confirmed buyer payment, then normally reach your bank in 1-3 business days; eligible express payouts reach your debit card in about 30 minutes for a fee.",
+  "provider": "eBay",
+  "repeatable": {
+    "cadence": "You can do this once per item you own - it is bounded by the things you already have to sell, not a daily income stream.",
+    "value": true
+  },
+  "route_id": "R7013",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "Final value and payment-processing fees plus optional express-payout fee disclosed.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Payout initiation and arrival windows stated plainly.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Seller eligibility and item rules documented.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Free listing allowance; no pay-to-list.",
+      "pass": true
+    },
+    "s5": {
+      "note": "You set the price and see fees before listing.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Sale price varies with demand; no sale guaranteed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No guaranteed sale or amount.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "List your item (free listings within monthly allowance)",
+    "Buyer pays; you ship within your stated handling time",
+    "eBay initiates your payout daily, within two days of confirmed payment",
+    "Funds arrive in 1-3 business days to bank, or ~30 minutes via express payout to debit card (fee applies)"
+  ],
+  "terms_url": "https://www.ebay.com/sellercenter/payments-and-fees/payouts-on-demand",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Payouts initiated daily within 2 days of confirmed buyer payment; 1-3 business days to bank; express ~30 min for a fee.",
+  "who_pays": "Your buyer - eBay is the marketplace, not the buyer. eBay collects the buyer's payment and routes your payout.",
+  "who_qualifies": "You must be 18+, own the item, and keep your seller account in good standing. Prohibited-item rules apply - not everything can be listed.",
+  "work_available": "This is a marketplace, not a guaranteed buyer: nothing sells until someone actually buys your listing at your price. Demand for your specific item sets both the price and the wait.",
+  "what_gets_accepted": "Anything within eBay's listing rules can be listed - but a sale only happens if a buyer bids or buys. Returns and disputes can claw back funds after the sale.",
+  "costs_and_unpaid_time": "eBay takes final value fees plus payment-processing fees off the top, and shipping is on you unless charged to the buyer. New sellers may face payout holds. Your unpaid time is photographing, listing, answering buyer questions, packing, and shipping within your stated handling time.",
+  "when_cash_arrives": "Real cash to your bank - payouts initiate daily, within two days of the buyer's confirmed payment, then normally reach your bank in 1-3 business days. An express payout to your debit card arrives in about 30 minutes but costs a fee.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

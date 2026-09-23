@@ -1,0 +1,95 @@
+{
+  "biggest_catch": "Gift card, not cash: the payout is locked to Amazon spending, and the appraisal after you ship can cut the estimate.",
+  "catches": [
+    "Payout is an Amazon gift card only, not cash - it locks value inside Amazon.",
+    "The appraisal can lower the estimate if condition does not match; quotes can change.",
+    "Trade-in value varies by device, condition, and demand; not every device is eligible.",
+    "Free shipping, but the gift card cannot be cashed out.",
+    "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Amazon's official newsroom and retail pages document the Trade-In program.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: payout is an Amazon gift card issued after appraisal.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official terms: appraisal and gift-card issuance follow receipt of the device.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free shipping label; no fee to get a quote.",
+      "pass": true
+    }
+  },
+  "eligibility": "US, 18+, must own the device; eligible electronics categories only.",
+  "maximize": "Treat the gift card like cash by spending it on things you'd buy anyway, like household staples. Grade the condition conservatively - the appraisal only cuts the estimate, never raises it.",
+  "notes": "Distinct from catalog R0369 (Amazon Textbook Trade-in, a student/textbook program): this is the general electronics/device Trade-In program. Observed 2026-09-23. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+  "official_url": "https://www.amazon.com/",
+  "payout_max_usd": 300,
+  "payout_min_usd": 0,
+  "payout_quote": "Ship your eligible device for free and receive an Amazon gift card after appraisal.",
+  "provider": "Amazon Trade-In",
+  "repeatable": {
+    "cadence": "You can do this once per device you own - it is bounded by the eligible electronics you already have, not a daily income stream.",
+    "value": true
+  },
+  "route_id": "R7001",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "Shipping is free; no seller fees.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Post-receipt appraisal flow stated plainly.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility (ownership, eligible categories) documented.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Quote is free with no obligation.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Estimated value shown before you ship.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Appraisal can revise the value down - disclosed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No guaranteed value; per-device appraisal.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Check your device's eligibility on the Amazon Trade-In page and answer condition questions",
+    "Accept the estimated trade-in value",
+    "Ship the device free with the prepaid label (or drop off where offered)",
+    "Amazon appraises the device and deposits an Amazon gift card to your account"
+  ],
+  "terms_url": "https://www.aboutamazon.com/news/devices/amazon-trade-in-program",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Gift card issued after the device is received and appraised; free shipping both stages.",
+  "who_pays": "Amazon - the payout comes directly from Amazon as an Amazon gift card, not cash from a third party.",
+  "who_qualifies": "You must be 18+, in the US, and own the device. Only electronics in Amazon's eligible categories are accepted - not everything qualifies.",
+  "work_available": "Yes - the general device trade-in program was live on amazon.com as of 2026-09-23. It covers eligible electronics only; some devices are not eligible at all.",
+  "what_gets_accepted": "The device must be in an eligible category and pass Amazon's post-receipt appraisal. The appraisal only adjusts the estimate downward if the condition does not match - it never raises it.",
+  "costs_and_unpaid_time": "No fees; shipping is free with the prepaid label or drop-off. Your unpaid time is checking eligibility, packaging, and waiting for receipt and appraisal.",
+  "when_cash_arrives": "NOT cash - the payout is an Amazon gift card deposited to your Amazon account after the device is received and appraised. It can only be spent on Amazon and can never be cashed out.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

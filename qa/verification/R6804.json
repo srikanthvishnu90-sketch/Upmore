@@ -1,0 +1,88 @@
+{
+ "route_id": "R6804",
+ "provider": "Cash App",
+ "official_url": "https://cash.app",
+ "terms_url": "https://cash.app/refer/8R12NPV",
+ "payout_quote": "Get a $15 bonus and download the app over 50 million people trust with their money. ... When you create your account, remember to enter this referral code ... Send money within 14 days to unlock $15 for you and a referral bonus for Joey.",
+ "payout_min_usd": 15,
+ "payout_max_usd": 15,
+ "time_min_minutes": 10,
+ "time_max_minutes": 20,
+ "timing": "$15 bonus unlocks after you send $5+ to another Cash App user within 14 days of creating the account; paid to your Cash App balance (cash out to bank via Cash App's standard Cash Out)",
+ "speed": "days",
+ "eligibility": "New Cash App users only (US); enter a referral code when creating the account; send at least $5 to another Cash App user within 14 days",
+ "steps": [
+  "Download Cash App and create a new account",
+  "Enter the referrer's referral code during account creation",
+  "Send at least $5 to another Cash App user within 14 days",
+  "$15 bonus is unlocked to your Cash App balance"
+ ],
+ "catches": [
+  "You must send $5 of YOUR OWN money to another person first - the $15 only unlocks after that send. Net new cash from the bonus is $10 after the $5 you sent, unless that $5 was paying someone you owed anyway (split a bill, pay a friend back).",
+  "The referral code must be entered at account creation; it cannot be added later.",
+  "The referrer-side bonus amount is not stated on the official page ('a referral bonus') - only the new-user $15 is officially documented, so this route is the new-user side only.",
+  "Bonus amounts can change by promotion; confirm the $15 in the app before funding."
+ ],
+ "biggest_catch": "You must send $5 of your own money to someone else before the $15 unlocks - net new cash is $10 unless that $5 was a payment you owed anyway - and the referral code must be entered at signup, never after.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0325 (Cash App referral, catalog). Original: Official Cash App invite page (cash.app/refer/...) loaded and quoted verbatim 2026-09-23. The $15 is cash to the Cash App balance (withdrawable to a linked bank/debit card). No gambling, no wagering - a straight referral bonus.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official cash.app referral invite page loaded live: 'Get a $15 bonus'."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: enter referral code at account creation; 'Send money within 14 days to unlock $15' (page header: 'Send $5+')."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; the $5 is a peer payment, not a charge."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: '$15 bonus' to the new user; referrer amount not stated, so route covers the new-user side only."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "New-user, code-at-signup, $5-in-14-days requirements on the official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Bonus unlocks after the qualifying send; paid to Cash App balance."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $15/$5 amounts from official page; net-cash math disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official cash.app page loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "$5-first requirement, code-at-signup, referrer-amount gap disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (Cash App new-user referral bonus)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Make the $5 qualifying send do double duty: use it to pay someone you actually owe (split a bill, repay a friend), so the $5 isn't a sunk cost and the full $15 bonus is net-new money. The one unforgivable mistake is forgetting the referral code at signup: it can never be added later."
+}

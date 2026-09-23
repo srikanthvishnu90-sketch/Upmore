@@ -1,0 +1,91 @@
+{
+  "route_id": "R6818",
+  "provider": "eJury",
+  "official_url": "https://EJury.com/jurors_learn_about.html",
+  "terms_url": "https://attorney-faq.com/can-i-work-for-ejury-when-my-daughter-is-an-attorney",
+  "payout_quote": "How much do e-jurors get paid? For each verdict rendered, eJurors are paid $5 - $10 depending on the length of the case. The amount to be paid will be shown at the top of each case. (eJury's published FAQ, as mirrored; eJury's own juror page confirms the case mechanics: attorney posts facts and jury questions, eJurors review and click Submit Verdict, minimum ~50 verdicts per case)",
+  "payout_min_usd": 5,
+  "payout_max_usd": 10,
+  "time_min_minutes": 30,
+  "time_max_minutes": 40,
+  "timing": "Payment via PayPal after the case concludes (once the minimum ~50 verdicts are in)",
+  "speed": "weeks",
+  "eligibility": "18+, US citizen, able to read and write English, sound mind and good moral character, no felony convictions, not under indictment, not a practicing paralegal/legal assistant/insurance adjuster and not working with an attorney or law firm",
+  "steps": [
+    "Register as an eJuror on eJury with your county and demographics",
+    "Wait for an email notification when a case posts in your county",
+    "Log in, read the case facts and answer the jury questions plus personal questions",
+    "Click Submit Verdict",
+    "Receive $5-$10 via PayPal once the case concludes"
+  ],
+  "catches": [
+    "Cases are NOT steady work - frequency depends entirely on how many attorneys in your county use eJury; outside Dallas/Tarrant County, Texas it can be months between cases",
+    "Cases are first-come, first-served: once 50 verdicts are in, the case closes and late jurors earn nothing",
+    "US citizens only; legal professionals and anyone with a felony are excluded",
+    "You are an independent contractor - no taxes withheld, report the income",
+    "Payment only arrives after the case concludes, not the moment you submit"
+  ],
+  "biggest_catch": "REJECTED 2026-09-23: the $5-$10 per-verdict pay figure comes from a third-party mirror of eJury's FAQ (attorney-faq.com), not from eJury's own first-party pages - eJury's official juror page (opened 2026-09-23) confirms case mechanics but does not state the pay amount or PayPal redemption terms. Owner rule requires official provider terms to prove concrete amount and withdrawal treatment.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "eJury's own juror page (EJury.com/jurors_learn_about.html, opened 2026-09-23) confirms the mechanics: cases posted to eJurors in the county of selection, email notification, review facts, Submit Verdict, case concludes at ~50 verdicts. REJECTED 2026-09-23: the $5-$10 per-verdict pay figure is from a third-party mirror of eJury's FAQ (attorney-faq.com), not first-party - eJury's official pages do not state the pay amount or redemption terms. Owner rule requires official provider terms to prove concrete amount and withdrawal treatment.",
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No play - rejected: the pay amount and redemption terms can't be verified from eJury's own official pages.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "eJury's published FAQ: '$5 - $10 depending on the length of the case' per verdict rendered, amount shown at top of each case."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official steps: register, get emailed when a case posts in your county, review facts, answer questions, Submit Verdict."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Free to join; no deposit; paid via PayPal."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Official: $5-$10 per verdict; paid after case concludes at ~50 verdicts.",
+      "note": "FAIL: $5-$10 payout and redemption terms found only through a third-party mirror, not first-party official terms."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (18+, US citizen, literate, good moral character, no felony, no legal-industry ties) per eJury FAQ."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official timing: paid after case concludes; ~35 min per case."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete $5-$10 per verdict; shown per case."
+    },
+    "s5": {
+      "pass": false,
+      "note": "FAIL: no official first-party source proves the payout amount and redemption treatment."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Irregular frequency, first-come closure, US-only disclosed."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct mechanism (mock jury verdicts) - repeatable per case."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

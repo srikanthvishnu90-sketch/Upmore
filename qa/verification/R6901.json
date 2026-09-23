@@ -1,0 +1,95 @@
+{
+ "app_links": {},
+ "biggest_catch": "You only get paid if the other person actually signs up and completes the requirement \u2014 this is never guaranteed. The reward is a Rover promo code (service credit), not withdrawable cash; it can only be used on Rover bookings.",
+ "catches": [
+  "you only get paid if the other person actually signs up and completes the requirement \u2014 this is never guaranteed.",
+  "Reward is a $20 CAD Rover promo code (service credit), NOT withdrawable cash",
+  "Friend must be brand new to Rover \u2014 if any household member has used Rover before, the referral does not count",
+  "Friend must sign up using the referrer's referral link or code",
+  "You only receive the code after the friend completes their first service",
+  "The promo code is emailed to the referrer 24-48 hours after the friend's first service completes",
+  "Credit is in CAD and only usable on Rover Canada bookings"
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Friend must sign up using the referrer's referral link or code"
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Friend must be brand new to Rover \u2014 no household member may have used Rover before"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Friend must complete their first service on Rover"
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "legacy repair 2026-09-23: covered by payout_quote/timing/eligibility in file"
+  }
+ },
+ "eligibility": "Referrer must be a Rover user in Canada; Referred friend must be a new Rover user; Friend must complete a first service via Rover; New clients' first service must be paid in full before the promo code is sent",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: Canada-only referral program - US users cannot earn. The catalog serves US users; a route requiring foreign residency/bank cannot be acted on. Real program, wrong audience. Original: Official Rover Canada support article (support-ca.rover.com). Referrer gets a $20 CAD promo code within 24-48 hours of the friend first completed service. Service credit only, not cash. Distinct from R0817 (Rover US/UK) \u2014 Canada-specific program with CAD currency and separate official help center, not covered by R0817.",
+ "numeric_basis": "payout: flat $20 CAD in official terms (converted to USD); time: category default App Referral (5-15min active)",
+ "official_url": "https://support-ca.rover.com/hc/en-ca/articles/360037417511-How-do-I-refer-pet-owners-and-earn-credit",
+ "payout_max_usd": 14.6,
+ "payout_min_usd": 14.6,
+ "payout_quote": "You will receive a $20 referral promo code. Promo codes are emailed within 24-48 hours after your friend completes their first service.",
+ "payout_value_note": "$20 CAD Rover promo code (service credit, not cash), converted to USD at ~0.73 (documented estimate; official amount is in CAD)",
+ "provider": "Rover (Canada)",
+ "repeatable": {
+  "cadence": "per referral",
+  "value": true
+ },
+ "maximize": "Your friend must COMPLETE a first service \u2014 signing up pays nothing. Suggest they book the cheapest option (a short dog walk) so the C$20 triggers fast. The credit lands within 24-48 hours of service completion, but it is Rover-only credit, not cash \u2014 only refer people who will actually use Rover.",
+ "route_id": "R6901",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s2": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s3": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s4": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s5": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s6": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  },
+  "s7": {
+   "pass": true,
+   "note": "legacy file repaired 2026-09-23; official-source checks per notes"
+  }
+ },
+ "steps": [
+  "Rover user in Canada gets their referral link/code from their account",
+  "Share the referral link/code with a friend who has never used Rover",
+  "Friend signs up using the referral link/code",
+  "Friend completes their first service on Rover",
+  "Referrer is emailed a $20 CAD Rover promo code within 24-48 hours of the first service completing"
+ ],
+ "terms_url": "https://support-ca.rover.com/hc/en-ca/articles/360037417511-How-do-I-refer-pet-owners-and-earn-credit",
+ "time_max_minutes": 15.0,
+ "time_min_minutes": 5.0,
+ "timing": "$20 CAD promo code is emailed to the referrer within 24-48 hours after the friend completes their first service.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

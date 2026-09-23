@@ -1,0 +1,92 @@
+{
+  "route_id": "R6808",
+  "provider": "PayPal",
+  "official_url": "https://www.paypal.com",
+  "terms_url": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms",
+  "payout_quote": "When they spend at least $5 (within 30 days of signup), you both can earn 1,000 points (redeemable for $10 cash back). ... The reward amount is (1,000) PayPal Rewards Points ('Points'), which can be redeemed for $10 cash or other options ('Reward'). ... Rewards should be available in Eligible Participant's Account Overview section of their PayPal Account to redeem within fourteen (14) days after qualifying to receive the Reward.",
+  "payout_min_usd": 10,
+  "payout_max_usd": 10,
+  "time_min_minutes": 15,
+  "time_max_minutes": 25,
+  "timing": "1,000 points redeemable for $10 cash available within 14 days after the referee's qualifying transaction",
+  "speed": "weeks",
+  "eligibility": "US personal PayPal accounts in good standing; referee signs up via referral link, links bank/card, verifies cell number, and completes an Eligible Transaction within 30 days; limit 1 reward per referee, 10 per referrer per calendar year; links may only be shared privately with family/personal friends",
+  "steps": [
+    "Get your PayPal referral link in the app (Offers/Invite section)",
+    "Share it privately with a friend who doesn't have PayPal",
+    "Friend signs up, links bank/card, verifies cell number",
+    "Friend completes an Eligible Transaction: a $5+ online/in-app PayPal checkout payment (not P2P) within 30 days",
+    "Both receive 1,000 points; redeem for $10 cash within 14 days"
+  ],
+  "catches": [
+    "The $5 qualifying spend must be an online or in-app PayPal CHECKOUT purchase of $5+ - sending money to a friend (P2P) does NOT count. Your friend has to actually buy something.",
+    "Cancelled, refunded, or reversed transactions don't count; PayPal decides eligibility solely.",
+    "The reward is 1,000 Rewards Points, not instant cash - you must redeem the points for the $10 cash.",
+    "Referral links may only be shared privately with people you know; public posting can void the reward.",
+    "Referrer capped at 10 rewards ($100) per calendar year.",
+    "The terms page was served from PayPal's sandbox domain (sandbox.paypal.com/us/webapps/mpp/invite/terms) - same official terms content as the live invite page."
+  ],
+  "biggest_catch": "REJECTED 2026-09-23: requires the referee to complete a $5+ online/in-app PayPal checkout purchase (P2P excluded) to earn 1,000 points (~$10). Owner rule bans promotions requiring spending merely to earn. Also the only full official terms found were served from PayPal's sandbox host, not the live production page.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "Official PayPal 'Invite Friends' terms (paypal.com domain, served via sandbox host) loaded and quoted verbatim 2026-09-23. $10 cash-back value per side, withdrawable after points redemption. No gambling. REJECTED 2026-09-23: requires the referee to complete a $5+ online/in-app PayPal checkout purchase (P2P excluded) to earn 1,000 points (~$10). Owner rule bans promotions requiring spending merely to earn. Also the only full official terms found were served from PayPal's sandbox host, not the live production page.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official PayPal invite terms page loaded live: 'you both can earn 1,000 points (redeemable for $10 cash back)'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official reward criteria: signup via link, link bank/card, verify cell, Eligible Transaction within 30 days."
+    },
+    "c3": {
+      "pass": false,
+      "evidence": "No fee; the $5 is the referee's own purchase.",
+      "note": "FAIL: requires a $5+ checkout purchase to earn - spending merely to earn."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official: 1,000 points = $10 cash; available to redeem within 14 days; 1 per referee, 10 per referrer/year."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (US personal accounts, good standing, private sharing) in official terms."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official payout timing: redeemable within 14 days after qualifying."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete $10/$5 amounts; checkout-only requirement disclosed."
+    },
+    "s5": {
+      "pass": false,
+      "note": "FAIL: complete official terms were only available via a sandbox host, not the live official page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Checkout-only spend, points-not-cash, private-sharing rule, caps disclosed; sandbox host noted."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct campaign (PayPal Invite Friends)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "No play - rejected: earning requires a $5+ checkout purchase (P2P doesn't count), which violates the no-spending-to-earn rule."
+}

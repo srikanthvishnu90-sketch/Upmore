@@ -1,0 +1,80 @@
+{
+ "route_id": "R7617",
+ "provider": "Postmates",
+ "official_url": "https://businesswire.com/news/home/20201201005727/en/Uber-Completes-Acquisition-of-Postmates",
+ "terms_url": "https://businesswire.com/news/home/20201201005727/en/Uber-Completes-Acquisition-of-Postmates",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Postmates was acquired by Uber (completed December 2020); delivery requests moved to Uber's driver app. No independent Postmates payout mechanism exists.",
+ "speed": "weeks",
+ "eligibility": "None as an independent platform; couriers operate through Uber.",
+ "steps": [],
+ "catches": [
+  "Postmates was acquired by Uber in December 2020; an independent Postmates instant-pay mechanism no longer exists and would double-count Uber Instant Pay (R7601)."
+ ],
+ "biggest_catch": "Postmates is not an independent platform: Uber completed the acquisition in December 2020 and delivery moved to Uber's driver app, so any fast-pay route belongs to Uber Instant Pay (R7601), not Postmates.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Uber's official acquisition announcement (Business Wire, December 1, 2020): Uber completed the acquisition of Postmates. Rejected as an independent mechanism to avoid double-counting Uber Instant Pay (R7601).",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: Postmates was acquired by Uber in December 2020, so its fast-pay mechanism is Uber Instant Pay (R7601); counting Postmates separately would double-count Uber.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Uber acquisition announcement via Business Wire, December 1, 2020."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No independent Postmates payout mechanism exists post-acquisition."
+  },
+  "c3": {
+   "pass": false,
+   "evidence": "No independent mechanism exists."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "No independent mechanism exists."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": false,
+   "note": "No independent eligibility: couriers operate through Uber."
+  },
+  "s2": {
+   "pass": false,
+   "note": "No independent fee schedule."
+  },
+  "s3": {
+   "pass": false,
+   "note": "No independent timing."
+  },
+  "s4": {
+   "pass": false,
+   "note": "No independent claim to anchor."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official acquisition source reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps: merged platform (rejected)."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

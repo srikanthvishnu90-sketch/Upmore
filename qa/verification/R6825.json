@@ -1,0 +1,90 @@
+{
+ "route_id": "R6825",
+ "provider": "tastytrade",
+ "official_url": "https://tastytrade.com/bringit/",
+ "terms_url": "https://tastytrade.com/bringit/",
+ "payout_quote": "YOUR PARTICIPATION IN THE TASTYTRADE 3% MATCH WELCOME BONUS... The Promotion begins at 12:00 AM CT on 07/22/2026 and ends at 11:59 pm CT on 9/30/2026... Qualified Customers must enter 'BRINGIT2026' in the Promotional Code field... must make their first deposit within the Promotional Period, with total deposits across one or more Qualified Account(s) totaling at least $1,000 USD. (Official tastytrade promotion terms, crawled 2026-09-23)",
+ "payout_min_usd": 30,
+ "payout_max_usd": 3000,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Match credited to the account per the promotion's award schedule after the promotional period",
+ "speed": "months",
+ "eligibility": "New tastytrade platform users only (never opened or funded any tastytrade account, never received a new-account bonus); legal US resident 18+; eligible accounts: Individual Cash/Margin/Portfolio Margin or Traditional/Roth/SEP IRA",
+ "steps": [
+  "Open an eligible tastytrade account (Individual or IRA) during the promotion period",
+  "Enter promotional code BRINGIT2026 when applying or on the Account Summary page",
+  "Make a first deposit totaling at least $1,000 within the promotional period",
+  "tastytrade matches 3% of deposits (up to $3,000 total match)"
+ ],
+ "catches": [
+  "TIME-SENSITIVE: this promotion ends 11:59 PM CT on September 30, 2026 - 7 days from verification",
+  "The minimum $1,000 deposit earns only a $30 match - meaningful bonuses require large deposits ($100,000 for the full $3,000)",
+  "New users only - anyone who ever opened or funded a tastytrade account is excluded",
+  "You must enter the code BRINGIT2026; without it there is no match",
+  "Brokerage bonuses can have holding-period/clawback conditions - read the full award terms before withdrawing",
+  "Investing involves risk, including loss of principal - only deposit money you can afford to have invested"
+ ],
+ "biggest_catch": "This promo EXPIRES September 30, 2026, and the realistic payout on the minimum $1,000 deposit is just $30 - the $3,000 headline requires a $100,000 deposit.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R1061 (tastytrade, catalog). Original: Official tastytrade promotion terms (tastytrade.com/bringit/, crawled 2026-09-23): 3% match welcome bonus, code BRINGIT2026, min $1,000 deposit, new users only, ends 9/30/2026. Route framed at the accessible minimum: $1,000 deposit -> $30 match. One-time signup bonus - explicitly labeled as such. Time-sensitive: expires in 7 days.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Only do this if you genuinely want a tastytrade account for options trading - don't park $1,000 just to earn $30. If you're already planning to fund a brokerage account, enter BRINGIT2026 at application and deposit before September 30, 2026; the match is free money on capital you'd deploy anyway. Note the deadline: after 11:59 PM CT on September 30, 2026 the code does nothing.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official tastytrade: 3% match welcome bonus, code BRINGIT2026, min $1,000 first deposit, 7/22/2026-9/30/2026."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open eligible account, enter code, deposit $1,000+ in the promotional period."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; deposit is your own investable capital."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: 3% of deposits up to $3,000 match; $30 on the $1,000 minimum."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new users, US 18+, eligible account types) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: promotional period through 9/30/2026; award per promotion schedule."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete: $30 minimum-realistic, $3,000 cap; formula disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official tastytrade promotion page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Expiry, small minimum payout, new-user-only, investment risk disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (brokerage deposit match) - one-time signup bonus, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

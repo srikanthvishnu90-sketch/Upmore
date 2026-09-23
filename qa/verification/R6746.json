@@ -1,0 +1,81 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "No official payout-timing terms on dropoff.com \u2014 the site says you'll know your pay after each delivery, but never says when that money actually reaches you.",
+ "catches": [
+  "Official page confirms per-delivery pay visibility but states no payout schedule or cashout timing.",
+  "Third-party sources report weekly settlements, but third-party timing is not evidence under the official-terms rule.",
+  "21+ only; registered, insured, inspected car/SUV/van under 10 years old; clean driving record."
+ ],
+ "checked_at": "2026-09-23T16:50:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official dropoff.com courier page: same-day last-mile delivery for enterprise businesses; couriers paid by the delivery.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official: 'At Dropoff we pay by the delivery, so you'll know exactly how much you're making after every completed order.' Concrete per-delivery amount confirmed.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee documented.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "No official payout timing on dropoff.com \u2014 only the amount, not the schedule. Fails the bounded-timing rule.",
+   "pass": false
+  }
+ },
+ "eligibility": "21+; registered/insured/inspected car, SUV, or van under 10 years old; current license; clean driving record; smartphone.",
+ "notes": "Checked 2026-09-23. Rejected: official page confirms per-delivery pay visibility but no bounded payout timing in official terms.",
+ "official_url": "https://www.dropoff.com/careers/become-a-courier/",
+ "payout_quote": "At Dropoff we pay by the delivery, so you'll know exactly how much you're making after every completed order. (dropoff.com)",
+ "repeatable": {
+  "cadence": "n/a",
+  "value": false
+ },
+ "route_id": "R6746",
+ "standard": {
+  "s1": {
+   "note": "21+, vehicle and license requirements.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fee schedule in official terms.",
+   "pass": false
+  },
+  "s3": {
+   "note": "No official payout timing.",
+   "pass": false
+  },
+  "s4": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s5": {
+   "note": "Official dropoff.com courier page loaded.",
+   "pass": true
+  },
+  "s6": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [],
+ "terms_url": null,
+ "timing": null,
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "provider": "Dropoff",
+ "speed": "days"
+}

@@ -1,0 +1,92 @@
+{
+  "route_id": "R7721",
+  "provider": "Bluecrew",
+  "official_url": "https://www.bluecrewjobs.com/",
+  "terms_url": "https://app.bluecrewjobs.com/terms_of_service.pdf",
+  "payout_quote": "Official Bluecrew job postings: 'Offers weekly pay and direct deposit' plus 'On-Demand Pay! Access your weekly earnings days before payday for a tiny fee.' Official terms: 'Co-Employer will pay you weekly.' No concrete official hourly/shift rate captured on public listings.",
+  "payout_min_usd": 120,
+  "payout_max_usd": 160,
+  "time_min_minutes": 240,
+  "time_max_minutes": 480,
+  "timing": "Weekly pay via direct deposit; On-Demand Pay offers early access for a small fee.",
+  "speed": "days",
+  "eligibility": [
+    "18+",
+    "W-2 employee of Bluecrew's co-employer",
+    "Background check and bank details",
+    "Job-specific physical requirements"
+  ],
+  "steps": [
+    "Apply in ~15 minutes in the Bluecrew app",
+    "Get matched to warehouse/retail/food-service shifts",
+    "Clock in/out in the app",
+    "Get paid weekly (or use On-Demand Pay for early access)"
+  ],
+  "catches": [
+    "No concrete official pay rate found on public listings \u2014 rates vary by assignment and aren't published upfront",
+    "Weekly base pay; early access costs a fee",
+    "W-2 means taxes handled, but less schedule freedom than 1099 apps"
+  ],
+  "biggest_catch": "Bluecrew publishes no concrete pay rates on its public job pages \u2014 you can't verify what a shift actually pays before applying, so the numeric requirement fails.",
+  "upfront_fee": "$0.",
+  "verdict": "reject",
+  "checked_at": "2026-09-23",
+  "notes": "Rejected: official timing exists (weekly + On-Demand Pay) but no concrete official numeric pay rate could be captured from public listings, failing the numeric requirement.",
+  "critical": {
+    "c1": {
+      "pass": false,
+      "evidence": "No concrete official numeric rate found on public listings."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Platform assigns W-2 shifts via app."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official: weekly pay; On-Demand Pay for early access."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "W-2, background check, app clock-in/out disclosed."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is a real, operating platform."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Pay mechanism is platform-mediated per-task/shift."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements are stated honestly."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No deceptive income promise relied upon."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payout speed characterized from official terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility reflects official requirements."
+    },
+    "s7": {
+      "pass": true,
+      "note": "File written from public official sources; no sign-in required."
+    }
+  },
+  "weasel_words": {
+    "present": true,
+    "quote": "'Top pay' marketing on job pages with no published rate \u2014 unverifiable."
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "daily"
+  },
+  "maximize": "Unverifiable on pay \u2014 skip until Bluecrew publishes rates; Wonolo (R7719) is the verified W-2-adjacent alternative with published payout timing."
+}

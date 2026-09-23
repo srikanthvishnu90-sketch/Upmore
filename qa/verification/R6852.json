@@ -1,0 +1,92 @@
+{
+ "biggest_catch": "The $600 is paid as six separate $100 monthly bonuses - each month requires $1,000+ in qualifying direct deposits, and missing a month forfeits that month's $100 - plus the offer is limited to 14 states and excludes anyone with a BMO personal checking account in the last 12 months.",
+ "catches": [
+  "BONUS IS MONTHLY: $100 per month for up to 6 consecutive months, each requiring a cumulative $1,000+ in qualifying direct deposits that month - miss a month and that $100 is gone (later months still count)",
+  "GEO-LOCKED: primary applicant must reside in AZ, CA, CO, FL, IA, IL, IN, MN, NM, NV, OR, UT, WA, or WI at application - proof of address may be required",
+  "Not available to existing BMO personal checking clients or anyone who closed a BMO personal checking account within the past 12 months",
+  "Qualifying direct deposit = regular income from an employer or similar third party (salary, paycheck, pension, Social Security, government benefits); explicitly excluded: teller deposits, wires, ATM transfers, BMO digital transfers, bank/brokerage transfers, Zelle, Venmo, Square and other P2P/merchant platforms",
+  "Tracking begins the first day of the month after account opening - each month's $100 is paid approximately 10 days after the beginning of the next month",
+  "Account must be opened 9/9/2026-12/15/2026 with the promo code (auto-applied online); $25 minimum opening deposit",
+  "One bonus offer per client; account must be open, in good standing, with balance above zero at payout",
+  "Bonuses may be reported to the IRS for tax purposes"
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official bmo.com/en-us/main/personal/checking-accounts/digital-offer/ (fetched 2026-09-23): 'Earn a $100 cash bonus per month (up to $600 for 6 months)' on new Smart Money/Smart Advantage/Relationship Checking with qualifying activities.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official steps: open 9/9/2026-12/15/2026 with promo code; beginning the month after opening, post $1,000+ cumulative qualifying direct deposits each month; $100 paid ~10 days after the start of the next month.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to earn the bonus; $25 minimum opening deposit required for BMO personal checking per official page.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: $100 per qualifying month, up to $600 over 6 months, paid ~10 days after the beginning of the following month.",
+   "pass": true
+  }
+ },
+ "eligibility": "New BMO personal checking customers only (no BMO personal checking in past 12 months); primary applicant resident in one of 14 listed states; must be able to route $1,000+/month in employer/government direct deposits",
+ "maximize": "Open online between now and December 15, 2026 so the promo code auto-applies, and time it so tracking starts cleanly on the first of next month - then keep $1,000+ of real payroll direct deposit flowing every single month for six months. Each month is independent, so a missed month only costs that month's $100, but the full $600 needs all six. Do not try to manufacture deposits with Zelle, Venmo, or bank transfers - BMO names those as non-qualifying and can ask for a pay stub.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0052 (BMO, catalog). Original: Official BMO offer page (bmo.com, fetched 2026-09-23): $100/month for 6 months with $1,000+/month qualifying direct deposits; 14-state eligibility; 12-month prior-account exclusion; full qualifying-deposit definition. Monthly amounts are fixed and first-party - only the number of qualifying months varies. One offer per client - one-time, explicitly labeled.",
+ "official_url": "https://www.bmo.com/en-us/main/personal/checking-accounts/digital-offer/",
+ "payout_max_usd": 600,
+ "payout_min_usd": 100,
+ "payout_quote": "Earn a $100 cash bonus per month (up to $600 for 6 months) when you open a new BMO Smart Money Checking, BMO Smart Advantage Checking, or BMO Relationship Checking account and have qualifying activities... Beginning the month following account opening, earn a $100 cash bonus each consecutive month you have a cumulative total of $1,000 or more in qualifying direct deposits post to your account. (BMO official offer page, fetched 2026-09-23)",
+ "provider": "BMO",
+ "repeatable": {
+  "cadence": "per task",
+  "value": true
+ },
+ "route_id": "R6852",
+ "speed": "months",
+ "standard": {
+  "s1": {
+   "note": "New-customer, 12-month closure, 14-state rules per official terms.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fee to earn; $25 minimum opening deposit disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Official timing: tracking from month after opening; $100 paid ~10 days after next month starts.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Concrete $100/month with $1,000 threshold; $600 total over 6 months.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official bmo.com offer page, fetched 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Monthly structure, state lock, DD exclusions, tax, deadline disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Distinct mechanism (monthly recurring bank bonus) - one-time per client, labeled as such.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new BMO Smart Money, Smart Advantage, or Relationship Checking account online between 9/9/2026 and 12/15/2026 (promo code auto-applies)",
+  "Beginning the first calendar day of the month after opening, post a cumulative $1,000+ in qualifying direct deposits (employer/government regular income) each month",
+  "Each qualifying month's $100 is paid approximately 10 days after the beginning of the next month",
+  "Repeat for up to 6 months to earn up to $600 total; keep the account open, in good standing, with balance above zero"
+ ],
+ "terms_url": "https://www.bmo.com/en-us/main/personal/checking-accounts/digital-offer/",
+ "time_max_minutes": 45,
+ "time_min_minutes": 30,
+ "timing": "$100 paid ~10 days after the start of the month following each qualifying month; up to $600 over 6 months",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "route_id": "R7602",
+ "provider": "Grubhub",
+ "official_url": "https://driver.grubhub.com/driver-pay/",
+ "terms_url": "https://driver.grubhub.com/faq/",
+ "payout_quote": "Instant Cash Out whenever you want to your bank account-free for Chase Bank customers and $0.50 each for other bank customers. Or cash out directly to your debit card for $0.50 per transaction. Drivers are able to cash their earnings out up to $500 a day using the Instant Cash Out feature.",
+ "payout_min_usd": 0,
+ "payout_max_usd": 500,
+ "time_min_minutes": 0,
+ "time_max_minutes": 4320,
+ "timing": "On demand. Funds typically transfer right away if your bank supports real-time payments (RTP); otherwise a few days. Unused balance goes out via direct deposit every Thursday.",
+ "speed": "today",
+ "eligibility": "Grubhub delivery partner with a bank account or debit card.",
+ "steps": [
+  "Open the Grubhub for Drivers app.",
+  "Use the Instant Cash Out feature to cash out available earnings to your bank account or debit card.",
+  "Chase Bank customers cash out to a bank account free; all other bank customers pay $0.50; debit-card cashouts are $0.50 per transaction.",
+  "Any balance above the $500/day cap, or not cashed out, is sent via direct deposit on Thursdays."
+ ],
+ "catches": [
+  "$0.50 per cashout to a bank account, except free for Chase Bank customers; $0.50 per transaction to a debit card.",
+  "$500 per day cashout cap; anything above it waits for the Thursday direct deposit.",
+  "Banks without real-time payments may take a few days for funds to appear.",
+  "Pay varies by market and time of day; Grubhub states delivery partners are responsible for all driving costs (gas, vehicle maintenance, insurance).",
+  "No delivery-count promotion is quoted on the official page."
+ ],
+ "biggest_catch": "The $500/day cap means a strong day's earnings get split: up to $500 instantly, the rest only on the Thursday weekly deposit.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official driver.grubhub.com driver-pay page loaded live: exact $0.50 fee (free for Chase bank-account cashouts), $500/day cap, RTP timing, Thursday weekly direct deposit fallback.",
+ "repeatable": {
+  "value": true,
+  "cadence": "Deliver, tap Instant Cash Out after your shift (up to $500 per day), and repeat - the rest rides the free Thursday deposit."
+ },
+ "maximize": "In the Grubhub for Drivers app use Instant Cash Out after a shift for up to $500/day at $0.50 a time (free if you bank with Chase); let any balance above $500 ride the free Thursday direct deposit instead of paying extra fees.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official driver.grubhub.com driver-pay page loaded live 2026-09-23; driver FAQ is the linked terms source."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Exact amounts on official page: $0.50 per cashout (free for Chase bank customers), $0.50 per debit-card transaction, $500/day cap."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront or enrollment fee; per-cashout fee stated exactly."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official page: funds typically transfer right away with RTP banks, otherwise a few days; weekly direct deposit every Thursday."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility documented: Grubhub delivery partner with bank account or debit card."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fee schedule documented exactly: $0.50, free for Chase bank-account cashouts."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Timing documented: on demand, RTP-dependent arrival."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete claim anchored to official driver-pay page; no weasel words."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official driver.grubhub.com page loaded live this session."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Steps reflect the official Instant Cash Out flow."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "Grubhub pays your delivery earnings, and Instant Cash Out sends them to your bank account or debit card. Anything you do not cash out rides Grubhub's free direct deposit every Thursday.",
+ "who_qualifies": "You must be an active Grubhub delivery partner with a bank account or debit card on file. Grubhub officially requires you to be 18 or older (21 or older in Las Vegas), hold a valid Social Security number, pass a background check, and - if driving a car - hold a valid license (for at least 2 years if you are 18) plus auto insurance; bicycle partners need valid ID instead of a license.",
+ "work_available": "Order volume and pay vary by market and time of day - the official pay page promises no order volume and says partners cover their own driving costs. Grubhub officially runs a market waitlist for new partners, so in full markets you may wait before you can start delivering at all.",
+ "what_gets_accepted": "You are paid for deliveries you complete and confirm in the Grubhub for Drivers app; canceled or undelivered orders do not pay. Grubhub publishes no exact rating or acceptance threshold tied to payouts on the official pay page - that part is unverified.",
+ "costs_and_unpaid_time": "Each Instant Cash Out costs $0.50 - free only when cashing out to a Chase bank account; debit-card cashouts are $0.50 per transaction. Beyond fees, fuel, maintenance, insurance, and any tolls come out of your pocket, and time spent waiting between orders, driving to restaurants, and onboarding is unpaid: you only earn on completed deliveries.",
+ "when_cash_arrives": "Cash out anytime up to $500 per day at $0.50 per cashout (free for Chase bank-account cashouts); money typically lands right away if your bank supports real-time payments, otherwise it takes a few days. Anything above the $500 cap, or left untouched, pays out free via direct deposit every Thursday."
+}

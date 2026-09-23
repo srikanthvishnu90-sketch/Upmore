@@ -1,0 +1,84 @@
+{
+  "biggest_catch": "REJECTED: eBay official selling-fees help page (ebay.com/help/selling/fees-credits-invoices/selling-fees) could not be fetched in this audit round \u2014 all fee figures (13.25% FVF, per-order fees) come from third-party 2026 explainers, not from eBay official terms.",
+  "catches": [
+    "Multiple 2026 third-party fee explainers are consistent (13.25% base FVF no-store, $0.40/$0.30 per-order, 250 free listings) \u2014 but none is eBay own page.",
+    "The official page URL is identified and can be fetched in a later pass; re-audit is trivial.",
+    "Per the lane official-terms-only rule this cannot be a verify until the official page is confirmed."
+  ],
+  "checked_at": "2026-09-23T14:50:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official ebay.com selling-fees help page could not be fetched this round; all figures from third-party explainers. FAILS the direct-official-terms requirement.",
+      "pass": false
+    },
+    "c2": {
+      "evidence": "Cannot establish official fee mechanics.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "N/A.",
+      "pass": false
+    },
+    "c4": {
+      "evidence": "N/A.",
+      "pass": false
+    }
+  },
+  "eligibility": "18+; global buyers (130M+ active)",
+  "maximize": "Lawful, ToS-compliant, and honest: eBay cannot be recommended in this lane until its own fee page is verified. If you sell on eBay anyway, read the current selling-fees article at ebay.com/help before listing \u2014 third-party guides agree on 13.25% FVF + per-order fees but only eBay own page binds.",
+  "notes": "REJECTED 2026-09-23: the official ebay.com selling-fees help page (https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees) could not be fetched; all fee figures from third-party 2026 explainers. Re-audit once the official page is confirmed.",
+  "official_url": "https://www.ebay.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Rejected \u2014 official fee page unconfirmed; see notes.",
+  "provider": "eBay",
+  "repeatable": {
+    "value": false,
+    "cadence": "never"
+  },
+  "route_id": "R7428",
+  "speed": "n/a",
+  "standard": {
+    "s1": {
+      "note": "Unverifiable from official sources.",
+      "pass": false
+    },
+    "s2": {
+      "note": "N/A.",
+      "pass": false
+    },
+    "s3": {
+      "note": "N/A.",
+      "pass": false
+    },
+    "s4": {
+      "note": "N/A.",
+      "pass": false
+    },
+    "s5": {
+      "note": "Official page unconfirmed \u2014 reject pending re-fetch.",
+      "pass": false
+    },
+    "s6": {
+      "note": "Cannot document steps from official terms.",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Rejected \u2014 see notes"
+  ],
+  "terms_url": null,
+  "time_max_minutes": 0,
+  "time_min_minutes": 0,
+  "timing": "N/A",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

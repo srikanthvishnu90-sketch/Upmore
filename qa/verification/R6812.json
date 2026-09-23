@@ -1,0 +1,89 @@
+{
+ "route_id": "R6812",
+ "provider": "Public",
+ "official_url": "https://public.com",
+ "terms_url": "https://public.com/disclosures/matchprogram",
+ "payout_quote": "For each Eligible Contribution made by a Customer to their Public IRA Account, Public Investing will fund a Match Amount of 1% of the value of such contribution... A $6,000 contribution earns a $60 match, paid as $5.00/month over 12 months.",
+ "payout_min_usd": 60,
+ "payout_max_usd": 60,
+ "time_min_minutes": 20,
+ "time_max_minutes": 40,
+ "timing": "$60 match on a $6,000 contribution, paid as $5.00/month for 12 months starting ~1 month after the contribution settles",
+ "speed": "months",
+ "eligibility": "Public IRA account in good standing; contribution must be within the IRS annual IRA contribution limit and requires earned income; offer period ongoing since March 24, 2025 until ended by Public",
+ "steps": [
+  "Open a Public IRA account (Traditional or Roth)",
+  "Make a $6,000 eligible IRA contribution (within the IRS annual limit; requires earned income)",
+  "The 1% match ($60) is credited in 12 monthly $5.00 installments starting about a month after settlement",
+  "Keep the funds in the account - withdrawals shrink future monthly match payments"
+ ],
+ "catches": [
+  "The match DRIBBLES out over 12 months - a $6,000 contribution earns $60 total, paid as $5.00/month. There is no quick lump sum.",
+  "This is RETIREMENT money: IRA early withdrawals face taxes plus a 10% penalty (under 59 1/2). This is not spendable cash.",
+  "You need EARNED income to contribute to an IRA at all, and you're capped by the IRS annual limit.",
+  "Withdrawing funds reduces future monthly match payments - and closing the account kills the remaining match.",
+  "Public can change or end the match program at any time (only contributions already settled keep the old terms)."
+ ],
+ "biggest_catch": "A $6,000 IRA contribution earns a $60 match that arrives as $5/month for a year - and the money is locked in a retirement account with tax penalties if you touch it early. This is a retirement-saver bonus, not quick cash.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R2214 (Public, catalog). Original: Official public.com 'ACATS & IRA Match Program' disclosure loaded and quoted verbatim 2026-09-23. Route uses the IRA-contribution variant (12-month payout): exactly $60 on a $6,000 contribution per Public's 1% formula. Retirement money, not quick cash.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official public.com disclosure 'Public ACATS & IRA Match Program' loaded live with the 1% contribution match and monthly-payment mechanics."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open Public IRA, make eligible contribution within annual limit; match paid monthly."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; contribution is user's own retirement savings."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: 1% of contribution (e.g. $60 on $6,000), 12 monthly payments starting ~1 month after settlement."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (Public IRA in good standing, IRS annual limit, earned income) in official disclosure."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: 12 monthly installments from ~1 month after settlement; honest 'months' speed."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete 1% amounts; dribble-out and withdrawal-reduction disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official public.com disclosure loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "12-month dribble, IRA withdrawal penalties, earned-income requirement, program-change risk disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (Public ACATS & IRA Match Program)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Contribute early in the calendar year: the 12 monthly $5 payments start about a month after settlement, so a January contribution finishes paying by next February while a December one dribbles for over a year. Every tax year's contribution restarts the 1% clock up to the IRS annual limit - this is the rare signup-style bonus you can harvest again each year you have earned income."
+}

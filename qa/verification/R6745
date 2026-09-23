@@ -1,0 +1,89 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Miss any completion step (photos, scans, marking the route complete) and your pay slips a full week to the next pay period.",
+ "catches": [
+  "A route only counts as completed when all photos are uploaded, all packages delivered/scanned, and the route is marked complete in the app \u2014 otherwise pay moves to the next period.",
+  "Scheduled deposits take 2\u20133 business days after twice-weekly processing (Mon and Wed 3AM ET).",
+  "Instant Cash Out fees are tiered by driver level: Pro free, Plus $0.75, Core 0.75% with a $1.25 minimum.",
+  "Need a large sedan or bigger (pickup trucks need hard bed covers); no tipping \u2014 the shown route pay is final.",
+  "Consistent failure to complete deliveries on time can lead to deactivation."
+ ],
+ "checked_at": "2026-09-23T16:50:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official shipveho.com: parcel delivery platform; drivers run scheduled routes from Veho facilities in 42+ US cities.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official Driver Terms 9.1: 'Driver Partner will be paid by the route... he or she will be paid that amount in full if the route is successfully completed.' Route pay reviewed and shown before the route.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee; instant cashout fee is per-transaction, disclosed.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official earnings schedule: Mon\u2013Tue routes processed Wed 3AM ET (deposits in 2\u20133 days); Wed\u2013Sun routes processed Mon 3AM (2\u20133 days). Plus: 'drivers can use instant cash out to deposit their earnings within minutes.' Bounded timing + same-day option confirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "Large sedan or bigger (pickup trucks need hard bed covers); valid license + insurance; eligible bank account for Instant Cash Out.",
+ "maximize": "Climb Veho's driver levels fast \u2014 the Instant Cash Out fee is tiered by level and Pro drivers cash out FREE, so every rating point you earn cuts your payout cost to zero. Treat the completion checklist like law: upload every photo, scan every package, and mark the route complete in the app before leaving, because one missed step pushes your whole route's pay a full week. Routes run mainly Mondays, Tuesdays, and Fridays \u2014 run DoorDash or another food app on the off days to fill the gaps.",
+ "notes": "Checked 2026-09-23. Official evidence from shipveho.com driver terms + earnings schedule + instant cashout help pages. Verified: per-route pay shown before route + bounded twice-weekly payouts + minutes-fast instant cashout option. Distinct from Amazon Flex/Veho-style route apps.",
+ "official_url": "https://www.shipveho.com/drive",
+ "payout_quote": "Driver Partner will be paid by the route, not by the hour... he or she will be paid that amount in full if the route is successfully completed. (Veho Driver Terms) | With an eligible bank account, drivers can use instant cash out to deposit their earnings within minutes instead of waiting for twice a week scheduled deposits. (shipveho.com earnings schedule)",
+ "repeatable": {
+  "cadence": "per route",
+  "value": true
+ },
+ "route_id": "R6745",
+ "standard": {
+  "s1": {
+   "note": "Large sedan+; license, insurance.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; tiered instant-cashout fee disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Scheduled deposits 2\u20133 days; Instant Cash Out in minutes with eligible bank \u2014 today option.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official shipveho.com terms and help center.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct route-delivery parcel mechanism.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Register to drive at shipveho.com/drive and complete onboarding.",
+  "Claim scheduled routes from a Veho facility; review the anticipated route pay before accepting.",
+  "Pick up packages, deliver each with in-app scans and proof-of-delivery photos.",
+  "Mark the route complete in the app once every package is delivered.",
+  "Get paid: twice-weekly scheduled deposits (2\u20133 business days) or Instant Cash Out in minutes (fee by driver level; free at Pro)."
+ ],
+ "terms_url": "https://www.shipveho.com/drive/terms",
+ "timing": "Scheduled: Mon\u2013Tue routes processed Wed 3AM ET, Wed\u2013Sun routes Mon 3AM ET; deposits reach bank in 2\u20133 business days. Instant Cash Out: earnings in minutes with an eligible bank account (fee: Pro free, Plus $0.75, Core 0.75% min $1.25).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "provider": "Veho"
+}

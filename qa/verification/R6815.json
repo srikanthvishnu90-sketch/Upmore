@@ -1,0 +1,90 @@
+{
+ "route_id": "R6815",
+ "provider": "Prolific",
+ "official_url": "https://www.prolific.com/participants",
+ "terms_url": "https://www.prolific.com/pricing",
+ "payout_quote": "Typically, we recommend you pay participants at least \u00a39.00 / $12.00 per hour, while the minimum pay allowed is \u00a36.00 / $8.00 per hour. (prolific.com/pricing) ... After your first 4 cashouts, payments are instantly transferred to your PayPal. You'll always receive cash, never gift cards or points. Once you've earned at least $6/\u00a36, you can cash out directly from your Prolific account. (prolific.com/participants FAQ)",
+ "payout_min_usd": 8,
+ "payout_max_usd": 12,
+ "time_min_minutes": 60,
+ "time_max_minutes": 60,
+ "timing": "Each study shows its pay before you accept; studies typically run 2-30 minutes; cash out to PayPal once your balance hits $6/\u00a36 (instant after your first 4 cashouts)",
+ "speed": "days",
+ "eligibility": "18+; complete Prolific's identity verification (Protocol checks) and profile; studies matched to your demographics; availability varies by profile and academic calendar",
+ "steps": [
+  "Create a Prolific participant account and pass identity verification",
+  "Complete your full 'About You' profile so studies match you",
+  "Accept studies from your dashboard - each shows exact pay and time before you start",
+  "Complete the study carefully (attention checks; rejections hurt your approval rate)",
+  "Cash out to PayPal once your balance reaches $6/\u00a36"
+ ],
+ "catches": [
+  "Study volume is NOT guaranteed - your demographics and the academic calendar (Sep-May is busiest) control how many studies you get; some weeks there is little available",
+  "There can be a waitlist to join as a participant",
+  "Failed attention checks or rushed answers get submissions rejected, which lowers your approval rate and future study flow",
+  "PayPal is the only cash-out method",
+  "First 4 cashouts are processed manually before instant cashouts unlock"
+ ],
+ "biggest_catch": "Prolific enforces a real $8/hour minimum - but study volume is never guaranteed. Your demographics decide how many studies you see, and slow weeks pay $0 no matter the minimum.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R6634 (Prolific, new user-testing lane) + R0220 (catalog). Original: Official prolific.com pages loaded live 2026-09-23: /pricing confirms the enforced $8.00/hr minimum ($12/hr recommended); /participants FAQ confirms PayPal cashouts from $6/\u00a36, cash not points/gift cards. Repeatable per study - the lane's first truly recurring mechanism.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Fill out your entire 'About You' profile on day one - Prolific's own FAQ says eligibility filters tailor tasks to your profile, so a complete profile is literally how you get more studies. Check your dashboard regularly and sort available studies by reward-to-time ratio; slots fill fast. Never rush: one rejected submission for failed attention checks costs more in future study flow than the minutes you saved.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official prolific.com/pricing loaded live: 'the minimum pay allowed is \u00a36.00 / $8.00 per hour' (recommended $12/hr)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: sign up, pass identity verification, complete profile, accept studies showing pay upfront, complete carefully."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to join; no deposit; PayPal account needed for cashout."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $8/hr minimum enforced, $12/hr recommended; PayPal cashout from $6/\u00a36; instant after first 4 cashouts."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (18+, ID verification, profile-matched studies, availability varies) per official pages."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; free to join."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: pay shown pre-accept; cashout threshold $6/\u00a36; first 4 manual then instant."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $8-$12/hr official floor/recommendation; volume variability disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official prolific.com/pricing and prolific.com/participants loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Waitlist, volume variability, rejection risk, PayPal-only disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (paid research studies) - first repeatable per-task route in lane."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

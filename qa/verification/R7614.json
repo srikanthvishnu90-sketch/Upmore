@@ -1,0 +1,80 @@
+{
+ "route_id": "R7614",
+ "provider": "Jitsu",
+ "official_url": "https://gojitsu.com/support/drivers/when-paid",
+ "terms_url": "https://gojitsu.com/support/drivers/when-paid",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official support page: routes completed Monday-Sunday are paid the following Wednesday. No official instant or daily cashout mechanism.",
+ "speed": "weeks",
+ "eligibility": "Jitsu (formerly AxleHire) driver.",
+ "steps": [],
+ "catches": [
+  "Weekly payouts only: routes completed Monday-Sunday are paid the following Wednesday; no official instant or daily cashout mechanism is documented."
+ ],
+ "biggest_catch": "Jitsu pays weekly on Wednesdays for the prior week's routes: a pure weekly-pay platform with no official faster option.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official gojitsu.com driver support page (established from official terms review; Jitsu is the former AxleHire): routes completed Monday-Sunday are paid the following Wednesday. No official instant/daily cashout mechanism.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: Jitsu's official driver support page confirms weekly Wednesday payouts for the prior week's routes, with no instant or daily cashout mechanism.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official gojitsu.com driver support page is the provider's own terms source (reviewed 2026-09-23)."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No instant or daily cashout payout exists to verify."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee documented for the weekly payout."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "Weekly Wednesday timing only, not same-day."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Driver eligibility is described on the official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No payout fee documented for weekly pay."
+  },
+  "s3": {
+   "pass": false,
+   "note": "No instant timing exists; weekly Wednesday schedule only."
+  },
+  "s4": {
+   "pass": true,
+   "note": "The weekly schedule is concretely documented."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official page reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because no fast-pay mechanism exists (rejected)."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "route_id": "R6847",
+ "provider": "Chase (JPMorgan)",
+ "official_url": "https://www.chase.com/personal/checking",
+ "terms_url": "https://www.chase.com/personal/checking",
+ "payout_quote": "Get $300 - Chase Total Checking: For new Chase checking customers: Open a new Chase Total Checking account and set up direct deposit within 90 days of offer enrollment... To receive the checking bonus: 1) Open a new Chase Total Checking account, which is subject to approval; AND 2) Have your direct deposit made into the new checking account within 90 days of coupon enrollment. Your direct deposit needs to be an electronic deposit of your paycheck, pension or government benefits (such as Social Security) from your employer or the government. Person to Person payments (such as Zelle) are not considered a direct deposit... After you have completed all the above checking requirements, we'll deposit the bonus in your new account within 15 days... Offer expires 10/14/2026. (Official Chase offer page snapshot, terms captured 2026-09-23)",
+ "payout_min_usd": 300,
+ "payout_max_usd": 300,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus deposited within 15 days of completing the direct-deposit requirement (90-day window)",
+ "speed": "months",
+ "eligibility": "New Chase checking customers only; not available to existing checking customers or those whose accounts were closed within 90 days; one checking bonus every two years; account subject to approval",
+ "steps": [
+  "Open a new Chase Total Checking account online with the offer code (by October 14, 2026)",
+  "Set up direct deposit (paycheck, pension, or government benefits) into the new account within 90 days of enrollment",
+  "Confirm the deposit is a real employer/government electronic deposit - Zelle and micro-deposits do not count",
+  "The $300 bonus posts within 15 days of completing the requirement"
+ ],
+ "catches": [
+  "TIME-BOUND: offer expires October 14, 2026",
+  "Direct deposit means employer/government electronic deposits only - Zelle, cash, checks, wires, and micro-deposits do NOT count",
+  "Not available to existing Chase checking customers or anyone who closed a Chase checking account within 90 days; one bonus per two years",
+  "$15 monthly service fee unless waived ($500+/month in qualifying electronic deposits, $1,500+ daily balance, $5,000+ average linked balances, or linked qualifying account) - no fee for the first two statement periods",
+  "Bonus is taxable interest reported on Form 1099-INT",
+  "Account must not be closed or restricted at the time of payout"
+ ],
+ "biggest_catch": "The $300 requires a real employer/government direct deposit within 90 days - Zelle and personal transfers don't count - and the offer expires October 14, 2026.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0664 (Chase, catalog). Original: Official Chase offer page (chase.com, terms captured 2026-09-23): $300 for new Total Checking with direct deposit within 90 days; bonus within 15 days; expires 10/14/2026. The current terms state no minimum direct-deposit dollar amount for the bonus ($500 is the monthly-fee waiver threshold, not the bonus threshold). One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Redirect one paycheck to the new Chase account and the bonus requirement is done - the current terms set no minimum dollar amount, just a real employer direct deposit within 90 days. That same $500+/month in qualifying electronic deposits waives the $15 monthly fee automatically, so keep the direct deposit flowing until the bonus posts. Open before October 14, 2026 - the offer code applies when you choose 'Open an account'.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Chase: $300 bonus for new Total Checking customers who set up direct deposit within 90 days of enrollment; expires 10/14/2026."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open with offer code, direct deposit within 90 days, bonus within 15 days of completion."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to earn the bonus; $15/month account fee waivable per official terms."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $300; paid within 15 days of completing requirements."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 90-day closure rule, one bonus per two years) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fee structure ($15/month, waiver options, first two periods free) disclosed on the official page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: 90-day window + bonus within 15 days."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $300 with direct-deposit requirement."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Chase offer page, terms captured 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Expiry, strict DD definition, new-customer-only, fee, tax disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (major bank account bonus) - one-time signup bonus, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

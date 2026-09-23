@@ -1,0 +1,91 @@
+{
+ "route_id": "R6810",
+ "provider": "moomoo",
+ "official_url": "https://www.moomoo.com",
+ "terms_url": "https://www.moomoo.com/us/support/topic4_410",
+ "payout_quote": "Complete a net deposit of $500 during the promotion period, and you will receive $30 in NVDA stock, as fractional shares of NVDA. After receiving your free stocks, you'll need to maintain average assets of $500 or more for 60 days to unlock these stocks... Promotion Period: January 1, 2026, 00:00 ET - December 31, 2026, 23:59 ET. ... Deposit bonuses are only eligible for those who deposit via ACH, WIRE or instant transfer... Within 5 trading days following the conclusion of the 60-day waiting period, your free stocks will be added to your account and available for trading... Customers may hold or sell awarded stocks once credited to their accounts. The value from sale of the stock can be withdrawn or used to buy other eligible securities in the account. (Official moomoo.com US help center terms, fetched 2026-09-23)",
+ "payout_min_usd": 30,
+ "payout_max_usd": 30,
+ "time_min_minutes": 20,
+ "time_max_minutes": 40,
+ "timing": "Stocks tradable within 5 trading days after the 60-day average-asset hold; sale proceeds officially withdrawable per terms",
+ "speed": "months",
+ "eligibility": "US residents 18+ with valid SSN; new Moomoo Financial customers (no account opened before Jan 1, 2026, or existing account with no prior deposit); net deposit via ACH/WIRE/instant transfer that settles by Dec 31, 2026",
+ "steps": [
+  "Open a moomoo brokerage account",
+  "Make a net deposit of $500+ via ACH or instant transfer (not ACAT/FOP)",
+  "Claim the $30 NVDA stock reward in the app",
+  "Maintain average daily assets of $500+ for 60 days starting the day after claiming",
+  "Stocks unlock within 5 trading days after the 60-day period; sell or keep"
+ ],
+ "catches": [
+  "$500 of YOUR OWN money must sit in the account for 60 days to earn $30 - that's the price of admission; withdraw below $500 during the freeze and you lose the reward.",
+  "ACAT transfers from another brokerage and FOP transfers do NOT count as qualifying deposits.",
+  "The $30 is fractional NVDA shares valued at the claim-time price - NVDA can fall during the 60-day lock, and fractional shares can't be transferred out.",
+  "Requires SSN and full brokerage KYC.",
+  "If the reward doesn't credit, you must contact customer service within 14 business days.",
+  "moomoo can adjust or discontinue the incentive at its discretion."
+ ],
+ "biggest_catch": "$500 of your own money is locked up for 60 days to earn $30 in NVDA stock that can lose value while you wait - and ACAT transfers from another broker don't count.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0023 (moomoo, catalog). Original: Official moomoo.com US help center terms ('Welcome Bonus - Deposit (January 1, 2026 - December 31, 2026) Terms and Conditions') loaded and quoted verbatim 2026-09-23. Smallest tier ($500 -> $30 NVDA) used for the route; higher tiers ($2k->$100, $10k->$200, $50k->$400, $100k->$1,000) exist with longer holds but are capital-intensive variants, not separate routes. No gambling.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official moomoo.com US help center terms loaded live: 'Welcome Bonus - Deposit (January 1, 2026 - December 31, 2026) Terms and Conditions'."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open account, net deposit >=$500 via ACH/WIRE/instant transfer by Dec 31, 2026, claim in app."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee; deposit is user's own brokerage funds."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $500 -> $30 in NVDA fractional shares; 60-day average-asset hold; tradable within 5 trading days after; proceeds withdrawable per terms ('The value from sale of the stock can be withdrawn')."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (US residents 18+, SSN, new/no-deposit customers, deposit channel rules) in official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; own deposit retrievable after hold."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: tradable within 5 trading days after the 60-day hold."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $30 NVDA; 60-day lock and ACAT exclusion disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official moomoo.com help center loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "60-day lock, ACAT/FOP exclusion, price fluctuation, 14-day claim-dispute window disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (moomoo 2026 Welcome Bonus - Deposit)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Take the smallest tier ($500 -> $30 NVDA) - higher tiers lock up thousands for a worse dollar ratio. Fund by ACH only: ACAT transfers from another broker do NOT count and will silently disqualify you. Keep a small buffer above $500 all 60 days so a fee never dips your average assets below the threshold and kills the reward."
+}

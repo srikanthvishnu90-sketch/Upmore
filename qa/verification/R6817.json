@@ -1,0 +1,90 @@
+{
+ "route_id": "R6817",
+ "provider": "Amazon Shopper Panel",
+ "official_url": "https://panel.amazon.com/",
+ "terms_url": "https://panel.amazon.com/FAQRewards.html",
+ "payout_quote": "Earning rewards is easy. Simply upload eligible receipts by using the Amazon Shopper Panel app to take pictures of paper receipts or by forwarding email receipts to receipts@panel.amazon.com and you'll earn up to $10 per month towards either an Amazon Balance or a charitable donation. (panel.amazon.com) ... Receipts: You will earn a reward for each eligible receipt uploaded through the receipts tab, with an opportunity to earn up to a $10 reward each month. (panel.amazon.com/FAQRewards.html)",
+ "payout_min_usd": 0,
+ "payout_max_usd": 10,
+ "time_min_minutes": 10,
+ "time_max_minutes": 20,
+ "timing": "Monthly: upload receipts any time during the month; the up-to-$10 reward posts toward your Amazon Balance each month",
+ "speed": "months",
+ "eligibility": "18+; Amazon customer in US, UK, Canada, Germany, France, Spain or Japan; invitation-only - join the waitlist in the app if you weren't invited",
+ "steps": [
+  "Download the Amazon Shopper Panel app (or join the waitlist if not invited)",
+  "Photograph paper receipts in the app OR forward email receipts to receipts@panel.amazon.com",
+  "Upload enough eligible receipts each month to hit the $10 cap",
+  "Complete any short surveys offered for extra rewards",
+  "Rewards land as Amazon Balance (or charitable donation) each month"
+ ],
+ "catches": [
+  "This pays in AMAZON BALANCE (store credit), not cash - you cannot withdraw it to a bank",
+  "Invitation-only with a waitlist - you may not get in right away; the official site says to join the waitlist in the app if you weren't invited",
+  "Only receipts from purchases OUTSIDE Amazon count; Amazon/Whole Foods receipts are excluded",
+  "Extra receipts beyond the $10 monthly cap earn nothing and don't roll over",
+  "You are trading your purchase data for the reward - Amazon says it deletes sensitive info like prescriptions, but your shopping history is the product here"
+ ],
+ "biggest_catch": "Up to $10 a month in Amazon store credit - not cash - and entry is invitation-only with a waitlist, so you may not get in right away. Your receipt data is what you're selling.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R7304 (Amazon Shopper Panel, new cashback lane) + R1522 (catalog). Original: Official panel.amazon.com pages collected 2026-09-23: homepage confirms up-to-$10/month Amazon Balance for receipts; FAQRewards page confirms per-receipt rewards and the $10 monthly cap. Repeatable monthly - a true recurring mechanism.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Amazon's own instructions allow forwarding email receipts to receipts@panel.amazon.com, so forward every online order confirmation the day it arrives - that is zero-effort earnings. For paper receipts, snap them in the app the same day you shop so none expire past the month-end cutoff. Check the Surveys tab in the app too: completed surveys add rewards on top of the receipt earnings, up to the $10 monthly cap.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official panel.amazon.com: 'earn up to $10 per month towards either an Amazon Balance or a charitable donation' via receipts."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: download app, photograph paper receipts or forward email receipts to receipts@panel.amazon.com."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no purchase required beyond receipts you already have."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: up to $10/month; Amazon Balance or charity; receipts must be in by month-end."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (18+, select countries, invitation-only/waitlist) per official site."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: monthly rewards; month-end receipt deadline."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $0-$10/month; cap and non-rollover disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official panel.amazon.com pages collected 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Store-credit-not-cash, waitlist, data tradeoff disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (receipt sharing) - repeatable monthly."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

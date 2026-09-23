@@ -1,0 +1,97 @@
+{
+  "biggest_catch": "Savings, not income — and the biggest denial triggers are Prime-exclusive Amazon prices and Black Friday blackout dates.",
+  "catches": [
+    "Only qualified competitors (Amazon, Target, Walmart, Costco, Sam's Club, BJ's, B&H, Crutchfield, Apple, Dell, HP, Home Depot, Lowe's, Microcenter, Menards, etc.) — no eBay or any third-party marketplace sellers.",
+    "Amazon Prime-exclusive prices do not qualify; Thanksgiving-through-Cyber-Monday pricing excluded.",
+    "No open-box, refurbished, clearance, bundle, gift-card, coupon, or limited-quantity deals.",
+    "Post-purchase matches must fall within your return/exchange window.",
+    "One price match per identical item, per customer, at the current pre-tax price.",
+    "Puerto Rico stores have separate terms and don't match online prices."
+  ],
+  "checked_at": "2026-09-23T12:31:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official bestbuy.com Price Match Guarantee page (crawled within hours): qualified competitor list, exclusion list, one-match-per-item rule",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete: post-purchase match within return/exchange window; refund to original payment method; matches competitors' current pre-tax prices and Best Buy's own price drops",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Concrete: difference refunded on electronics typically $10-$100+ (example-based)",
+      "pass": true
+    }
+  },
+  "eligibility": "Best Buy shoppers; item must be identical, in stock, sold and shipped by Best Buy and the qualified competitor",
+  "maximize": "This is one of the strongest price-match plays in the lane: after buying any electronics item, keep the receipt and check Amazon, Target, Walmart, and Costco prices during your entire return/exchange window — if Best Buy or a competitor drops the price, you get the difference refunded to your original payment method. At checkout, ask for the match before paying so you never overpay in the first place. Avoid the two classic denials: don't bother with Amazon Prime-exclusive prices or third-party marketplace sellers, and don't expect Black Friday-weekend matches (suspended).",
+  "notes": "Savings route: payout fields = price difference recovered (example-based, flagged). Terms from Best Buy's official price-match page. Distinct from R7415 (Target): different competitor list, holiday blackout, return-window-based post-purchase matching.",
+  "official_url": "https://www.bestbuy.com",
+  "payout_max_usd": 100,
+  "payout_min_usd": 10,
+  "payout_quote": "One price match at the time of purchase, per identical item, per customer, at the current pre-tax price available to all customers is allowed.",
+  "provider": "Best Buy",
+  "repeatable": {
+    "cadence": "Repeatable on every qualifying purchase — request a match each time you spot a lower price on an identical item.",
+    "value": true
+  },
+  "route_id": "R7417",
+  "speed": "today",
+  "standard": {
+    "s1": {
+      "note": "Best Buy shoppers; identical item, in stock, qualified competitors documented.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Match at checkout or refund to original payment method within return window.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete terms; savings example-based.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official bestbuy.com price-match guarantee page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "5 steps: find lower price, confirm qualified competitor, show proof, request, receive refund.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Find the identical new item cheaper at a qualified competitor or a Best Buy price drop",
+    "Confirm it is sold and shipped by the competitor (not a marketplace seller)",
+    "Show the competitor's current price at checkout, or bring your receipt back within your return/exchange window",
+    "Staff verify the item, price, and stock status",
+    "Receive the matched price at checkout or the difference refunded to your original payment method"
+  ],
+  "terms_url": "https://www.bestbuy.com/site/help-topics/price-match-guarantee/pcmcat290300050002.c?id=pcmcat290300050002",
+  "time_max_minutes": 25,
+  "time_min_minutes": 10,
+  "timing": "At checkout or within your return/exchange window after purchase",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "who_pays": "Nobody pays you — Best Buy charges you less (at checkout) or refunds the difference to your original payment method. It's savings, not income.",
+  "who_qualifies": "Best Buy shoppers buying an identical, in-stock item that Best Buy sells and ships itself, with a matching lower price at a qualified competitor.",
+  "work_available": "Best Buy's price-match policy is active — requestable at checkout or within your return/exchange window after purchase.",
+  "what_gets_accepted": "The item must be identical and in stock at both stores, sold and shipped by Best Buy and the competitor. Qualified competitors include Amazon, Target, Walmart, Costco, and others — but no eBay or third-party marketplace sellers, no open-box/refurbished/clearance items, no Prime-exclusive prices, and no Thanksgiving-through-Cyber-Monday pricing. One match per identical item, per customer.",
+  "costs_and_unpaid_time": "No fee. Unpaid time goes to finding the lower price, showing proof at the register, and post-purchase matches within your return window.",
+  "when_cash_arrives": "No cash arrives — it's a lower price, or a refund to your original payment method. Request the match at checkout, or claim it after purchase within your return/exchange window."
+}

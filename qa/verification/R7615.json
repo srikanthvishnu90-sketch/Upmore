@@ -1,0 +1,81 @@
+{
+ "route_id": "R7615",
+ "provider": "CitizenShipper",
+ "official_url": "http://citizenshipper.com/blog/bids-shipping/",
+ "terms_url": "http://citizenshipper.com/blog/bids-shipping/",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official article says escrow is typically released after delivery, but gives no exact arrival timing or fees and no platform instant-cashout feature.",
+ "speed": "weeks",
+ "eligibility": "CitizenShipper driver.",
+ "steps": [],
+ "catches": [
+  "CitizenShipper is a customer-direct marketplace: payment runs through customer-funded escrow, not a platform instant-cashout product.",
+  "The official article says escrow is typically released after delivery but states no exact arrival timing and no cashout fees."
+ ],
+ "biggest_catch": "There is no CitizenShipper instant-cashout mechanism at all: payment is customer-direct escrow 'typically released after delivery' with no exact timing or fees stated officially.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official citizenshipper.com blog article (established from official terms review): escrow typically released after delivery; no exact timing, no fees, no platform instant-cashout feature documented.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: CitizenShipper has no platform instant-cashout mechanism; payment is customer-direct escrow typically released after delivery with no exact timing or fees in official terms.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official citizenshipper.com blog article is the provider's own source (reviewed 2026-09-23)."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No exact payout amount, timing, or fee is stated in official terms."
+  },
+  "c3": {
+   "pass": false,
+   "evidence": "No fee schedule stated officially."
+  },
+  "c4": {
+   "pass": false,
+   "evidence": "No exact arrival timing stated; escrow 'typically released after delivery' only."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Driver participation is described on the official page."
+  },
+  "s2": {
+   "pass": false,
+   "note": "No official fee schedule."
+  },
+  "s3": {
+   "pass": false,
+   "note": "No exact payout timing officially."
+  },
+  "s4": {
+   "pass": false,
+   "note": "No concrete payout claim can be anchored officially."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official page reviewed 2026-09-23."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because no mechanism exists (rejected)."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

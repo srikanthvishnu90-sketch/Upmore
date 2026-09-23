@@ -1,0 +1,89 @@
+{
+ "biggest_catch": "Nearly an eighth of your sale evaporates in fees before cash-out: 9.5% commission plus $5, then 2.9% to actually withdraw - and authentication time is not firmly stated, so the total wait is variable.",
+ "catches": [
+  "Fees stack: from 9.5% commission plus a $5 US seller fee, then 2.9% more to cash out.",
+  "Nothing sells until a buyer buys at your price; market demand sets the price.",
+  "Authentication can fail the sale if the item is not as described.",
+  "No firm public authentication duration - the verification step adds variable delay.",
+  "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official GOAT support center documents selling and seller payouts.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official support: cash out of available earnings.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official support: earnings available after authentication; fee schedule published.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Listing is free; no upfront fee.",
+   "pass": true
+  }
+ },
+ "eligibility": "Must own the item; GOAT account in good standing; authenticity/condition standards.",
+ "maximize": "Same marketplace math as StockX: build the 9.5% + $5 + 2.9% cash-out fees into your list price. Ship the moment it sells; authentication timing is the wildcard.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate of R7433 (gift-card/flips lane: GOAT). The R74 version is better grounded with official commission schedule and $50-$400 range vs this $0-$500 variable. Original: Observed 2026-09-23 on GOAT official support center. Included: concrete payout mechanism plus published fee schedule; authentication-duration softness is flagged. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+ "official_url": "https://www.goat.com/",
+ "payout_max_usd": 500,
+ "payout_min_usd": 0,
+ "payout_quote": "Sell through the marketplace; once your item is authenticated, earnings become available for cash out - minus commission (from 9.5%) plus a $5 seller fee (US) and a 2.9% cash-out fee.",
+ "provider": "GOAT",
+ "repeatable": {
+  "cadence": "per item",
+  "value": true
+ },
+ "route_id": "R7035",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "9.5%+ commission, $5 seller fee, 2.9% cash-out fee disclosed in official support.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Post-authentication availability stated; authentication duration not firmly stated - flagged in catches.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Account/item terms documented.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Listing is free.",
+   "pass": true
+  },
+  "s5": {
+   "note": "You set the price and see fees before selling.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Sale price varies with demand; authentication can fail - disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "No guaranteed sale or amount.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "List your sneakers/apparel or accept an offer",
+  "Buyer buys; you ship to GOAT",
+  "GOAT authenticates the item; earnings become available",
+  "Cash out available earnings (2.9% cash-out fee)"
+ ],
+ "terms_url": "https://support.goat.com/hc/en-us/articles/115004608487-When-do-sellers-get-paid",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Earnings available for cash out after authentication; no firm authentication duration published.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

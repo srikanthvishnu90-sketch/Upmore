@@ -1,0 +1,88 @@
+{
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=health.clipboard.worker",
+  "ios": null
+ },
+ "biggest_catch": "Instant pay costs a small fee \u2014 the free payout takes a few days, and you need an active healthcare credential to work at all.",
+ "catches": [
+  "Instant Pay within minutes carries a small fee; the free option pays within a few days.",
+  "You need an active healthcare license/credential (CNA, LPN, RN, caregiver) \u2014 this is not open to the general public.",
+  "Shift pay is posted per shift in the app; facilities choose from worker profiles, so thin profiles get fewer shifts.",
+  "Attendance and rating issues can limit future shift access."
+ ],
+ "checked_at": "2026-09-23T17:10:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Clipboard Health app listing (published by Clipboard Health): apply, onboard, and pick up healthcare shifts at facilities.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official app listing: shifts posted in-app with pay; workers pick shifts that fit their goals.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee documented; only the optional instant-pay fee.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official app listing: 'Get Paid Fast with Instant Pay: Work shifts and get paid within minutes for a small fee or within a few days for free.' Bounded timing confirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "Active healthcare credential (CNA, LPN/LVN, RN, caregiver); onboarding + credentialing through the app.",
+ "maximize": "Only use paid Instant Pay when you actually need cash tonight \u2014 Clipboard's own listing says the free payout lands within a few days, so default to free and pay the small fee only when the money can't wait. Stack the referral bonus: the official site says you get a bonus for every colleague you invite who completes their first shift, so bring coworkers onto the platform and collect on their first shifts too. Book AM, PM, and overnight (NOC) shifts the app lists to keep your calendar full.",
+ "notes": "Checked 2026-09-23. Evidence from Clipboard Health's own app listing + clipboardworks.com. Verified: per-shift posted pay + instant (minutes, small fee) or free (few days). Distinct from Nursa (different platform/mechanism).",
+ "official_url": "https://www.clipboardworks.com",
+ "payout_quote": "Get Paid Fast with Instant Pay: Work shifts and get paid within minutes for a small fee or within a few days for free. (Clipboard - Workers app listing)",
+ "repeatable": {
+  "cadence": "per shift",
+  "value": true
+ },
+ "route_id": "R6750",
+ "standard": {
+  "s1": {
+   "note": "Healthcare credential required.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; optional instant-pay fee disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Minutes (paid) or a few days (free) \u2014 today option.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official app listing + clipboardworks.com.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from Nursa.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the Clipboard - Workers app and complete onboarding/credentialing.",
+  "Browse posted shifts (AM, PM, overnight) with per-shift pay shown.",
+  "Book and complete shifts at healthcare facilities.",
+  "Submit your timesheet in the app.",
+  "Get paid within minutes via Instant Pay (small fee) or within a few days for free."
+ ],
+ "terms_url": null,
+ "timing": "Instant Pay: within minutes after the shift (small fee). Free payout: within a few days.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "provider": "Clipboard Health"
+}

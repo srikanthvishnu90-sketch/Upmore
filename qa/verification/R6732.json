@@ -1,0 +1,100 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Jobble's own Terms say instant payouts are 'not guaranteed' and create 'no right or entitlement' \u2014 standard payout takes up to 7 business days after the shift.",
+ "catches": [
+  "Hiring company must approve/initiate payment, usually within 7 business days of the last shift.",
+  "After approval, 2\u20137 more business days to reach your account depending on bank/method.",
+  "5% Safety and Support Fee deducted from gross earnings per shift (background checks, insurance, processing).",
+  "Instant payout eligibility varies and can change at any time without notice."
+ ],
+ "checked_at": "2026-09-23T15:25:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official jobble.com Terms of Service: Jobble is a real staffing marketplace; jobs list hourly rates.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official: businesses list jobs 'with the designated hourly rate'; Jobble Board filterable by pay rate. Per-job concrete rate shown before applying.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee; the 5% fee is deducted from earnings, not upfront.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official ToS: payment usually within 7 business days of shift; instant payout explicitly not guaranteed. Bounded timing confirmed; speed is days.",
+   "pass": true
+  }
+ },
+ "eligibility": "Background check on first accepted shift; eligible to work in the US; location tracking on shift days.",
+ "notes": "Checked 2026-09-23. Official evidence from jobble.com Terms + info.jobble.com help. Verified with speed days (not today): Jobble explicitly denies any entitlement to instant payout. Distinct from Upshift/GigSmart.",
+ "numeric_basis": "payout: posted per-job hourly rate shown before applying (official, varies); time: per shift 240-480 min",
+ "official_url": "https://jobble.com",
+ "payout_max_usd": 0,
+ "payout_min_usd": 0,
+ "payout_quote": "The hiring company is responsible for approving payment, usually within 7 business days following the shift... Most payouts are received within 2\u20137 business days of payment approval... Instant payouts are not guaranteed and are provided subject to eligibility requirements. Nothing in these Terms creates a right or entitlement to receive an instant payout. (jobble.com Terms)",
+ "payout_value_note": "posted per-job hourly rate shown before applying (varies); 5% fee deducted",
+ "provider": "Jobble",
+ "route_id": "R6732",
+ "speed": "days",
+ "standard": {
+  "s1": {
+   "note": "Background check, US work eligibility.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; 5% earnings fee disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "7 business days + 2\u20137 days standard \u2014 days.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official jobble.com Terms.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from Upshift/GigSmart.",
+   "pass": true
+  },
+  "s7": {
+   "note": "upfront_fee false.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the Jobble app and build your Jobbler profile.",
+  "Find jobs on the Jobble Board (filter by pay rate); apply within the app.",
+  "Complete background check on first accepted shift; check in/out with location on.",
+  "Complete the job; hiring company approves payment (usually within 7 business days).",
+  "Payout via direct deposit, typically 2\u20137 business days after approval."
+ ],
+ "terms_url": "https://jobble.com/terms-of-service/",
+ "time_max_minutes": 480,
+ "time_min_minutes": 240,
+ "timing": "Payment initiated usually within 7 business days of last shift; received 2\u20137 business days after approval. Instant payout not guaranteed.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "who_pays": "The hiring company pays you through Jobble \u2014 Jobble deducts a 5% Safety and Support Fee from your gross earnings per shift.",
+ "who_qualifies": "A background check on your first accepted shift; eligible to work in the US; location tracking on during shift days.",
+ "work_available": "Shifts posted by hiring companies in the app; availability depends on employer demand in your market.",
+ "what_gets_accepted": "The hiring company must approve and initiate payment, usually within 7 business days of your last shift.",
+ "costs_and_unpaid_time": "No join fee; 5% Safety and Support Fee comes out of each shift's gross earnings. Unpaid time: up to 7 business days waiting for the company to approve payment, plus 2\u20137 more business days for the money to reach your account.",
+ "when_cash_arrives": "The hiring company approves payment usually within 7 business days of the shift; payout lands 2\u20137 business days after approval. Instant payouts are explicitly not guaranteed.",
+ "repeatable": {
+  "value": true,
+  "cadence": "New jobs post regularly \u2014 finish a job, get paid within about 7 business days, and claim the next one."
+ }
+}

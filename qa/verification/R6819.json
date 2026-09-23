@@ -1,0 +1,90 @@
+{
+  "route_id": "R6819",
+  "provider": "Survey Junkie",
+  "official_url": "https://www.surveyjunkie.com/how-it-works",
+  "terms_url": "https://www.surveyjunkie.com/help?a=7463&s1=93374_cd3a3c4f8ef",
+  "payout_quote": "Click 'Redeem Now'... Members can redeem their points for valuable rewards including cash through PayPal or bank transfer and gift cards... You must reach a minimum of 500 points to redeem. There is no maximum limit for redemption. (Official Survey Junkie Help Center) ... Redeem your points instantly for cash via PayPal or e-Giftcards. (Official How It Works page)",
+  "payout_min_usd": 1,
+  "payout_max_usd": 3,
+  "time_min_minutes": 10,
+  "time_max_minutes": 20,
+  "timing": "Points credit after each survey; redeem instantly for PayPal cash once you hit 500 points ($5); bank transfers take 3-4 business days",
+  "speed": "days",
+  "eligibility": "13+ (minors need parental permission); US, Canada, Australia and UK residents; free account",
+  "steps": [
+    "Create a free Survey Junkie account (email, Google or Facebook)",
+    "Complete your profile surveys so you get matched to relevant surveys",
+    "Take surveys from the feed - each shows its point value and estimated time",
+    "Reach 500 points ($5)",
+    "Redeem instantly for PayPal cash, bank transfer or e-gift cards"
+  ],
+  "catches": [
+    "100 points = $1, and you cannot cash out until 500 points ($5) - small surveys pay 20-50 cents each, so the first payout takes a while",
+    "You will get disqualified from many surveys after answering pre-screeners (you get a few consolation points, not the full amount)",
+    "Survey Junkie is explicit that brands need specific demographics - not everyone qualifies for every survey",
+    "Earnings are modest - this is pocket money per survey, not a wage; heavy users earn more only by completing many surveys"
+  ],
+  "biggest_catch": "Expect roughly $1-$3 per completed survey at ~15 minutes each, and you can't touch a cent until 500 points ($5). This is pocket money with a slow first payout, not a wage.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "REJECTED 2026-09-23 strict audit: official evidence proves redemption mechanics (500-point minimum, instant PayPal cash, bank transfer, e-gift cards) but no first-party source proves a concrete current per-survey payout amount or the 100-points-=$1 conversion. The $1-$3/survey range and 20-50-cent small-survey claims are unsupported. Fails the concrete-amount rule.",
+  "repeatable": {
+    "value": true,
+    "cadence": "per task"
+  },
+  "maximize": "Finish every profile questionnaire on day one - Survey Junkie's matching runs on your profile, so a complete profile is how you qualify for more surveys. In the survey feed, each survey shows its point value and estimated time upfront: divide points by minutes and take the best ratios first. Answer pre-screeners carefully and consistently - rushing or contradicting yourself triggers disqualifications that waste your time.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Help Center: minimum 500 points to redeem; rewards include cash through PayPal or bank transfer and gift cards."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official steps: create account, complete profiles, take surveys showing points + estimated time, redeem at 500 points."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Free to join; no deposit."
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Official: 500-point ($5) minimum; instant PayPal redemption; bank transfer 3-4 business days.",
+      "note": "FAIL: no first-party source proves a concrete current per-survey payout amount or the points-to-dollars conversion."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility (13+ with parental permission for minors; US/CA/AU/UK) per official pages."
+    },
+    "s2": {
+      "pass": true,
+      "note": "No hidden fees."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Official timing: points after surveys; instant PayPal redemption at 500 points."
+    },
+    "s4": {
+      "pass": false,
+      "note": "FAIL: the $1-$3/survey range is unsupported by official evidence."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official Survey Junkie Help Center + How It Works, collected 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Disqualification rates, slow first payout, modest earnings disclosed."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct mechanism (survey points for PayPal cash) - repeatable per survey."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

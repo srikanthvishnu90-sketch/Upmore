@@ -1,0 +1,83 @@
+{
+  "biggest_catch": "No cash option at all: rewards are gift cards only (Amazon/iTunes depending on platform), behind a $10 threshold, with frequent account-suspension complaints.",
+  "catches": [
+    "Gift cards only \u2014 no PayPal or cash payout option.",
+    "$10 minimum payout threshold.",
+    "Frequent user complaints about account suspension and support.",
+    "Surveys award $0.50-$3 each, so reaching $10 takes many surveys."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Third-party reviews: 'android users can only redeem their points for Amazon gift cards while iOS users can only redeem their points for iTunes gift cards. The minimum payout amount is $10.' No cash/PayPal option.",
+      "pass": false
+    },
+    "c2": {
+      "evidence": "Surveys award $0.50-$3 each, but payout is gift-card-only with a $10 floor \u2014 fails the fast-cash payout bar for this lane.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "Free app, no upfront fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "$10 threshold with gift-card-only redemption is not 'pays within days' cash.",
+      "pass": false
+    }
+  },
+  "eligibility": "16+; mobile app (iOS/Android).",
+  "notes": "Checked 2026-09-23. QuickThoughts pays in gift cards only (Amazon on Android, iTunes on iOS), no PayPal/cash option, $10 minimum threshold, plus recurring account-suspension complaints. Honestly rejected for the fast-payout lane: it cannot answer 'would I tell a friend this pays within days?' with cash.",
+  "official_url": null,
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": null,
+  "provider": "QuickThoughts",
+  "route_id": "R6622",
+  "speed": null,
+  "standard": {
+    "s1": {
+      "note": "Sign-up is simple, but payout mechanics fail the lane bar.",
+      "pass": false
+    },
+    "s2": {
+      "note": "Free app, but gift-card-only redemption.",
+      "pass": false
+    },
+    "s3": {
+      "note": "$10 threshold, gift cards only \u2014 not fast cash.",
+      "pass": false
+    },
+    "s4": {
+      "note": "$0.50-$3 per survey, but locked behind gift-card redemption.",
+      "pass": false
+    },
+    "s5": {
+      "note": "No official pay-terms page with cash payout found; third-party reviews consistent on gift-card-only.",
+      "pass": false
+    },
+    "s6": {
+      "note": "App still operates, but payout model unchanged.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No pay-to-play/MLM issues found.",
+      "pass": true
+    }
+  },
+  "steps": [],
+  "terms_url": null,
+  "time_max_minutes": 0,
+  "time_min_minutes": 0,
+  "timing": null,
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": true,
+    "cadence": "daily"
+  },
+  "maximize": "No playbook \u2014 rejected: QuickThoughts pays in gift cards only (no cash), behind a $10 threshold. If a cash option is ever added with \u22647-day official timing, the repeat loop is daily surveys with PayPal redemption."
+}

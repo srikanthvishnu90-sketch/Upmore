@@ -1,0 +1,80 @@
+{
+ "route_id": "R7610",
+ "provider": "Dispatch",
+ "official_url": "https://www.dispatchit.com/blog/how-we-pay-our-drivers",
+ "terms_url": "https://www.dispatchit.com/blog/how-we-pay-our-drivers",
+ "payout_quote": null,
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "time_min_minutes": 0,
+ "time_max_minutes": 0,
+ "timing": "Official page says Instant Pay puts earnings in your account 'within minutes of completing a delivery'; weekly deposits may take a few days.",
+ "speed": "weeks",
+ "eligibility": "Dispatch Delivery Pro with completed deliveries.",
+ "steps": [],
+ "catches": [
+  "Timing is stated (within minutes) but no exact Instant Pay fee is stated anywhere on the official page."
+ ],
+ "biggest_catch": "The official page does not state an exact Instant Pay fee: its 'no hidden fees or deductions' language concerns delivery pay, and earlier official material referenced an unspecified 'small fee' without an amount. Without a concrete $0-or-amount fee statement, the mechanism fails the exact-fee rule.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "Checked 2026-09-23. Official dispatchit.com driver-pay page loaded live: Instant Pay timing ('within minutes of completing a delivery') is confirmed, but the page never states an exact per-transfer fee; 'no hidden fees or deductions' refers to delivery pay. Revisit if Dispatch publishes an exact Instant Pay fee or an explicit $0-fee statement.",
+ "repeatable": {
+  "value": true,
+  "cadence": "daily"
+ },
+ "maximize": "No playbook - rejected: Dispatch's official driver-pay page confirms Instant Pay timing (within minutes) but never states an exact per-transfer fee, so the mechanism fails the exact-fee verification rule.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official dispatchit.com driver-pay page loaded live 2026-09-23."
+  },
+  "c2": {
+   "pass": false,
+   "evidence": "No exact Instant Pay fee is stated on the official page; 'no hidden fees or deductions' language concerns delivery pay, not a $0 cashout fee."
+  },
+  "c3": {
+   "pass": false,
+   "evidence": "No exact fee statement; earlier official material referenced an unspecified 'small fee'."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Timing confirmed: Instant Pay earnings available 'within minutes of completing a delivery'."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Delivery Pro eligibility is described on the official page."
+  },
+  "s2": {
+   "pass": false,
+   "note": "No exact Instant Pay fee on the official page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Timing stated: within minutes."
+  },
+  "s4": {
+   "pass": false,
+   "note": "The fee claim cannot be anchored to an exact official figure."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official page loaded live this session."
+  },
+  "s6": {
+   "pass": false,
+   "note": "No steps given because the mechanism is rejected on the fee rule."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

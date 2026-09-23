@@ -1,0 +1,90 @@
+{
+ "biggest_catch": "Only recurring employer/payroll/government ACH counts - Zelle, Venmo, PayPal, bank-to-bank ACH transfers, wires, and tax refunds are explicitly excluded - and the bonus tier depends on your total direct deposits in the 25-day window ($1,000-$4,999.99 earns $50; $5,000+ earns $400).",
+ "catches": [
+  "TIERED PAYOUT: $50 for $1,000-$4,999.99 in total eligible direct deposits; $400 requires $5,000+; under $1,000 earns $0",
+  "Eligible direct deposit means recurring ACH of regular income from an employer, payroll/benefits provider, or government agency only - SoFi explicitly excludes peer-to-peer transfers (Zelle, PayPal, Venmo, Wise), check deposits, merchant transactions, bank ACH transfers, wires, and IRS tax refunds",
+  "The 25-calendar-day clock starts when SoFi receives and recognizes your first eligible direct deposit of $1 or more - first deposit must land on or before 12/31/2026",
+  "One bonus per SoFi member; only members who have never set up direct deposit with SoFi are eligible",
+  "Account must be open and in good standing at bonus payment",
+  "Bonus is miscellaneous income reportable on Form 1099-MISC - recipient responsible for taxes"
+ ],
+ "checked_at": "2026-09-23T12:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official sofi.com/banking/checking-offer/ (fetched 2026-09-23): Direct Deposit Bonus tiers - $50 for $1,000-$4,999.99 total eligible direct deposits, $400 for $5,000+ within 25 calendar days of first eligible DD of $1+.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official steps: set up first eligible direct deposit (received by 12/31/26); SoFi totals eligible DDs over the next 25 calendar days; bonus paid within 7 business days of completing all requirements.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to earn; official page: 'We do not charge any account, service, or maintenance fees for SoFi Checking and Savings.'",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: $50 or $400 per the tier table, paid into the SoFi Checking account within 7 business days of completing requirements.",
+   "pass": true
+  }
+ },
+ "eligibility": "New and existing SoFi members who have never set up direct deposit with SoFi; one bonus per member; must be able to route recurring payroll/government ACH to SoFi",
+ "maximize": "Point your full paycheck at the new SoFi account - not a split - so the 25-day total clears the $5,000 tier and you earn the $400 instead of the $50 tier. The clock starts on the first eligible deposit, so move the direct deposit before the first paycheck hits and let a full pay cycle run inside the window. Only recurring employer or government ACH counts, so do not try to manufacture it with Zelle, Venmo, or a transfer from another bank - SoFi names those as ineligible. First deposit must land by December 31, 2026.",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0018/R0430 (SoFi, catalog). Original: Official SoFi offer page (sofi.com/banking/checking-offer/, fetched 2026-09-23): tiered direct-deposit bonus $50/$400 with full tier table, eligible-deposit definition, 25-day window, 7-business-day payout, and 12/31/2026 promotion end. Tiered but fully concrete - both tiers and thresholds are first-party. One bonus per member - one-time, explicitly labeled.",
+ "official_url": "https://www.sofi.com/banking/checking-offer/",
+ "payout_max_usd": 400,
+ "payout_min_usd": 50,
+ "payout_quote": "$1,000.00 - $4,999.99 | $50 ... $5,000.00 or more | $400 ... You will receive the bonus amount in your SoFi Checking account within 7 business days of completing all requirements listed above. (SoFi official Direct Deposit Bonus terms, fetched 2026-09-23)",
+ "provider": "SoFi",
+ "repeatable": {
+  "cadence": "per task",
+  "value": true
+ },
+ "route_id": "R6850",
+ "speed": "weeks",
+ "standard": {
+  "s1": {
+   "note": "Never-set-up-DD members only, one bonus per member, per official terms.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No account/service/maintenance fees per official fee policy.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Official timing: 25-day window + bonus within 7 business days after.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Concrete tiered amounts $50/$400 with stated thresholds.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official sofi.com offer page, fetched 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Tier thresholds, DD exclusions, 12/31/2026 end, 1099-MISC tax disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Distinct mechanism (fintech bank DD bonus) - one-time per member, labeled as such.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a SoFi Checking and Savings account (new or existing member who has never set up direct deposit with SoFi)",
+  "Set up recurring direct deposit of payroll, pension, or government benefits so the first eligible deposit of $1+ is received by SoFi on or before 12/31/2026",
+  "Let eligible direct deposits accumulate over the next 25 calendar days - $5,000+ total earns $400, $1,000-$4,999.99 earns $50",
+  "Keep the account open and in good standing; the bonus posts to SoFi Checking within 7 business days of completing the requirements"
+ ],
+ "terms_url": "https://www.sofi.com/banking/checking-offer/",
+ "time_max_minutes": 45,
+ "time_min_minutes": 30,
+ "timing": "Bonus paid within 7 business days after the 25-day qualification window (first eligible deposit by 12/31/2026)",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

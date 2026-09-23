@@ -1,0 +1,101 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You're only paid if Bungii collects from the customer — if the customer's card fails, your pay waits on Bungii resolving it.",
+ "catches": [
+  "Driver Agreement: 'You agree that you are only paid if Bungii is able to collect the payment from the User.'",
+  "Same-day payout costs a small extra fee; standard paydays are only Tuesdays and Fridays.",
+  "Bungii doesn't disclose its cut — third-party analysis suggests drivers see roughly a third of the customer fee.",
+  "More than 2 trip cancellations in 3 months is grounds for termination; all deliveries are 150 miles or less."
+ ],
+ "checked_at": "2026-09-23T16:40:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official bungii.com: on-demand big-and-bulky last-mile delivery; drivers browse, accept, and complete delivery requests in the Bungii Driver app.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official Driver Agreement: 'Your acceptance of a Delivery request with the associated driver earnings will constitute your acceptance of the Service Fee' — per-trip earnings shown at acceptance.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No signup fee documented.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official driver FAQ: 'our standard payment dates are Tuesdays and Fridays. For a small fee, you can also set up a same-day payment option.' Bounded timing + same-day option confirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "Pickup truck (or helper role); smartphone; background check; 1099-NEC at $600+/year.",
+ "maximize": "Stay online in the app — Bungii's own driver FAQ says online drivers get first trip priority, so you'll earn more simply by being available instead of toggling. Take multi-stop deliveries when offered; Bungii's own resource page says stacking multiple deliveries in a single trip is the key to raising earnings. Stack the driver referral program on top: Bungii pays you for every driver you refer who completes the required deliveries, with the amount listed on your in-app referral page.",
+ "notes": "Checked 2026-09-23. Official evidence from bungii.com/driverfaq/ + bungii.com/legal/driver-agreement/. Verified: per-trip earnings at acceptance + twice-weekly standard paydays + same-day option for a small fee. Distinct from Lugg/GoShare/Dolly.",
+ "official_url": "http://bungii.com/driverfaq/",
+ "payout_quote": "Once your account is set up, our standard payment dates are Tuesdays and Fridays. For a small fee, you can also set up a same-day payment option. (bungii.com driver FAQ) | Your acceptance of a Delivery request with the associated driver earnings will constitute your acceptance of the Service Fee. (Bungii Driver Agreement)",
+ "repeatable": {
+  "cadence": "Per delivery: accept a delivery request, complete it, get paid on the Tue/Fri payday (or same-day for a small fee), and repeat.",
+  "value": true
+ },
+ "route_id": "R6744",
+ "standard": {
+  "s1": {
+   "note": "Pickup truck (or helper); background check.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; same-day option costs a small fee.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Tue/Fri standard paydays; same-day available for a fee — today option.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No earnings guarantee; Bungii's cut undisclosed.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official bungii.com pages.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Distinct from Lugg/GoShare.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the Bungii Driver app and complete onboarding (background check; onboarded with Branch for payments).",
+  "Go online — online drivers get first trip priority.",
+  "Browse and accept delivery requests; per-trip driver earnings shown before you accept.",
+  "Complete local deliveries (150 miles or less; point-to-point or multi-stop).",
+  "Get paid Tuesdays and Fridays, or use the same-day payout option for a small fee."
+ ],
+ "terms_url": "http://bungii.com/legal/driver-agreement/",
+ "timing": "Standard paydays Tuesdays and Fridays; same-day payout available for a small fee. Payments via Branch.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "provider": "Bungii",
+ "speed": "today",
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "variable per-task pay shown in-app before accepting; no fixed amount in official terms",
+ "numeric_basis": "remediation 2026-09-23: official terms confirm pay mechanism + timing but no fixed amount; set 0-0 variable (R0004 precedent); time defaulted 15-120min active (flagged for review)",
+ "time_min_minutes": 15.0,
+ "time_max_minutes": 120.0,
+ "who_pays": "The delivery customer pays through Bungii — and Bungii's Driver Agreement says you're only paid if Bungii is able to collect the payment from the customer.",
+ "who_qualifies": "A pickup truck (or the helper role); a smartphone; a background check; you'll get a 1099-NEC at $600+/year.",
+ "work_available": "Delivery requests appear in the app when you're online; availability depends on customer demand in your market. More than 2 trip cancellations in 3 months is grounds for termination.",
+ "what_gets_accepted": "Complete the delivery as requested; if the customer's payment fails, your pay waits on Bungii resolving the collection.",
+ "costs_and_unpaid_time": "No fees. Unpaid time: waiting between deliveries; your truck's fuel and wear. Same-day payout costs a small extra fee.",
+ "when_cash_arrives": "Standard paydays are Tuesdays and Fridays via Branch. Same-day payout is available for a small fee."
+}

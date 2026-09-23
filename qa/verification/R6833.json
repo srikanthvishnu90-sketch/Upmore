@@ -1,0 +1,90 @@
+{
+ "route_id": "R6833",
+ "provider": "Public",
+ "official_url": "https://public-aut.com/disclosures/referral-terms",
+ "terms_url": "https://public-aut.com/disclosures/referral-terms",
+ "payout_quote": "If you become a 'qualified' Referrer or 'qualified' Referee, then you can choose a stock or ETF of your choice from a selection of available stocks and/or ETF's and receive a notional value of $20 of this asset (your 'Reward')... The Referee (i) uses the Referrer's unique link to open a brokerage account with Public Investing, (ii) is approved by Public Investing for this brokerage account, and (iii) successfully deposits at least $1,000 as an initial onetime deposit into this brokerage account... You have 30 days to claim your Reward... The cash value of the Reward received through this Referral Program may not be withdrawn for 12 months after it is claimed or else your brokerage account may be subject to an early withdrawal fee of up to $20. (Official Public Referral Program Terms & Conditions)",
+ "payout_min_usd": 20,
+ "payout_max_usd": 20,
+ "time_min_minutes": 15,
+ "time_max_minutes": 20,
+ "timing": "Reward claimable after qualification; cash value locked 12 months from claim",
+ "speed": "weeks",
+ "eligibility": "Referrer must be an existing Public Investing member with a funded account in good standing; referee must be a personal friend/family member with a direct relationship, no existing Public account, and deposit $1,000 as a one-time initial deposit",
+ "steps": [
+  "Open and fund your own Public Investing brokerage account",
+  "Share your unique referral link with a friend or family member",
+  "They open an account via your link, get approved, and make a $1,000 one-time initial deposit",
+  "Both of you claim the $20 stock/ETF reward within 30 days",
+  "Reward value is locked for 12 months before the cash can be withdrawn"
+ ],
+ "catches": [
+  "HIGH BAR: the friend must deposit $1,000 as a one-time initial deposit - most casual referrals won't qualify",
+  "The $20 reward is LOCKED for 12 months - withdrawing early triggers a fee of up to $20 (wiping out the reward)",
+  "You have only 30 days to claim the reward or it expires forever",
+  "Referee must be someone you have a direct personal relationship with - no mass-posting to strangers",
+  "Referrer needs a funded account in good standing first"
+ ],
+ "biggest_catch": "Your friend must drop $1,000 in one deposit, and the $20 reward is locked for 12 months - cash out early and the fee eats the entire reward.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R2214 (Public, catalog). Original: Official Public Referral Program Terms & Conditions (public-aut.com disclosures, collected 2026-09-23): $20 stock/ETF per side on $1,000 one-time deposit, 30-day claim, 12-month withdrawal lock. Repeatable per qualifying referral.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Only refer people who genuinely want a brokerage account and have $1,000 ready to invest - this is a high bar, so pre-qualify before sharing. Set a reminder for day 25 to claim the reward (30-day expiry is the most common way people lose it), then set a second reminder at month 12 to sell or withdraw - cashing out at month 11 triggers the fee and erases the reward.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Public: $20 stock/ETF reward per side when referee opens via link, is approved, and deposits $1,000 as a one-time initial deposit."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official flow: share link, friend opens/deposits $1,000, both claim within 30 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Free; no fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $20 notional value per side."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (funded referrer; personal-relationship referee; $1,000 one-time deposit) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees; early-withdrawal fee disclosed."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: claim within 30 days; cash locked 12 months."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $20 per side."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Public referral T&Cs, collected 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "$1,000 bar, 12-month lock, 30-day claim window, relationship requirement disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (brokerage referral) - repeatable per referral."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

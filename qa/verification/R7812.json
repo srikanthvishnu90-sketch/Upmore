@@ -1,0 +1,93 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Concrete worker pay and a $20 payout threshold are published, but there is no official statement of WHEN payouts are actually sent after you request one - no processing schedule, no payout day, no timing SLA.",
+  "catches": [
+    "No official payout processing schedule: the $20 minimum is stated, but Translate.com publishes no payout day, frequency, or processing-time SLA.",
+    "Pay is per word/page, not per hour: post-machine-translation $0.025/word and document translation $0.02/word mean a 500-word order pays roughly $10-12.50 before fees.",
+    "Average order values ($10-$100 for document translation) are examples, not guarantees - actual orders vary with client demand.",
+    "Application requires passing Translate.com's translator tests before any paid work is offered."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "translate.com/translators: post-machine translation $0.025/word (avg $15-$20/order); copy edit $0.015/word (avg $10-$15/order); document translation $0.02/word (avg $10-$100/order); scanned files est. $10/page (avg $50-$400/order); presentations est. $15/page (avg $70-$500/order).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states a $20 payout threshold and methods (PayPal, Wise, Revolut, Payoneer, Paxum, AdvCash) but no processing schedule, payout day, or timing SLA.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No upfront fee documented in official terms.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Numeric per-word/per-page rates and $20 minimum are official, but concrete payout timing is missing.",
+      "pass": false
+    }
+  },
+  "eligibility": "Bilingual fluency in a supported language pair; pass Translate.com's translator screening tests.",
+  "maximize": "If Translate.com ever publishes a payout schedule, maximize by prioritizing scanned-file and presentation orders ($10-$15/page beats $0.02/word on dense pages), building a text-expander glossary for your top language pair, and batching similar-domain orders so terminology research pays off across multiple jobs.",
+  "notes": "Strongest translation-platform pay disclosure found: official numeric per-word/per-page worker rates and a $20 payout threshold. Rejected solely because no official payout timing (processing schedule) is published.",
+  "official_url": "https://www.translate.com/translators",
+  "payout_quote": "Official worker rates: post-machine translation $0.025/word (average $15-$20/order); copy edit $0.015/word (average $10-$15/order); document translation $0.02/word (average $10-$100/order); scanned files estimated $10/page (average $50-$400/order); presentations estimated $15/page (average $70-$500/order). $20 minimum payout threshold via PayPal, Wise, Revolut, Payoneer, Paxum, or AdvCash.",
+  "repeatable": {
+    "cadence": "per order",
+    "value": true
+  },
+  "route_id": "R7812",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "",
+      "pass": true
+    },
+    "s2": {
+      "note": "",
+      "pass": true
+    },
+    "s3": {
+      "note": "",
+      "pass": true
+    },
+    "s4": {
+      "note": "",
+      "pass": true
+    },
+    "s5": {
+      "note": "",
+      "pass": true
+    },
+    "s6": {
+      "note": "Fails only on published payout timing.",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply as a translator at translate.com/translators and select your language pair.",
+    "Pass Translate.com's translator screening tests.",
+    "Claim translation, editing, or post-editing orders from the work queue.",
+    "Complete orders to the style guide and request payout once your balance reaches $20."
+  ],
+  "terms_url": "https://www.translate.com/translators",
+  "timing": "Official page states a $20 minimum payout threshold and lists methods (PayPal, Wise, Revolut, Payoneer, Paxum, AdvCash), but publishes no payout processing schedule, payout day, or timing SLA - timing is not concrete.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "Rejected - no official payout timing; official rates ($0.025/word post-editing, $0.02/word document translation) are per-word, not per-job payouts",
+  "time_min_minutes": 0.0,
+  "time_max_minutes": 0.0,
+  "numeric_basis": "backfill: Rejected - no official payout schedule"
+}

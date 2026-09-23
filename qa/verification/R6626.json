@@ -1,0 +1,83 @@
+{
+  "biggest_catch": "Payouts are monthly and crypto-only: earnings are paid in Tether (USDT) to a digital wallet between the 1st and 5th of each month \u2014 no PayPal, no fast cash.",
+  "catches": [
+    "Crypto-only payout (USDT) \u2014 requires a digital wallet and conversion to spend.",
+    "Monthly payout window (1st-5th) \u2014 up to ~5 weeks wait after a test.",
+    "Points system: you earn points per day of testing, converted to dollars at payout.",
+    "$10-per-test marketing vs. official $5-$20 range and points mechanics."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TesterMob Terms of Service: 'Testers earn points for every day they test the app for at least 20 minutes. These points are converted to dollars and paid in Tether (USDT) to their digital wallets between the 1st and 5th of each month.'",
+      "pass": false
+    },
+    "c2": {
+      "evidence": "Official FAQ: 'On average, testers can earn between $5 to $20 per test. Payments are made in cryptocurrency, such as Tether (USDT).' Concrete per-test pay exists, but monthly crypto-only payout fails the fast-cash bar.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "Free to join as tester.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Monthly payout in USDT only \u2014 not payable within days and not cash.",
+      "pass": false
+    }
+  },
+  "eligibility": "Android/iOS device; Gmail login.",
+  "notes": "Checked 2026-09-23. TesterMob does pay testers ($5-$20/test per official FAQ) but only in Tether (USDT) crypto, paid monthly between the 1st and 5th. For the fast-payout lane this fails the 'would I tell a friend this pays within days' test: up to 5 weeks wait plus a crypto wallet requirement. Honestly rejected for this lane.",
+  "official_url": "https://testermob.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": null,
+  "provider": "TesterMob",
+  "route_id": "R6626",
+  "speed": null,
+  "standard": {
+    "s1": {
+      "note": "Sign-up is free and simple, but payout mechanics fail the lane bar.",
+      "pass": false
+    },
+    "s2": {
+      "note": "Free to join, but crypto-only monthly payout.",
+      "pass": false
+    },
+    "s3": {
+      "note": "Paid 1st-5th of each month in USDT \u2014 weeks of delay.",
+      "pass": false
+    },
+    "s4": {
+      "note": "$5-$20/test official, but locked behind monthly crypto payout.",
+      "pass": false
+    },
+    "s5": {
+      "note": "Official FAQ + Terms of Service crawled in this session.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Platform still operating in 2026.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No pay-to-play/MLM issues found.",
+      "pass": true
+    }
+  },
+  "steps": [],
+  "terms_url": "https://www.testermob.com/terms",
+  "time_max_minutes": 0,
+  "time_min_minutes": 0,
+  "timing": null,
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "repeatable": {
+    "value": false,
+    "cadence": "one-time"
+  },
+  "maximize": "No playbook \u2014 rejected: TesterMob pays monthly in USDT crypto only, which fails this lane's fast-payout bar. Requires a digital wallet and a monthly payout cycle."
+}

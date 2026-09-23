@@ -1,0 +1,95 @@
+{
+  "biggest_catch": "It is store credit, not cash: the 'instant' value only exists inside a qualifying Samsung purchase, and Samsung can charge you back if the device you send does not match your answers.",
+  "catches": [
+    "The payout is Samsung purchase credit only, not cash - it only has value if you are buying a Samsung device.",
+    "You must send the old device within 15 days; a condition mismatch can trigger a chargeback of the credit.",
+    "Trade-in value varies by device model, condition, and demand; quotes can change.",
+    "No fees or shipping cost to participate, but the credit cannot be converted to cash.",
+    "Resale catch-all: value varies by condition and demand; quotes and market prices can change; fees or shipping can reduce your actual proceeds."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official samsung.com shop pages document the Trade-In program with an instant-quote tool.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: trade-in value is applied as instant credit toward a qualifying purchase.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official terms: device must be sent within 15 days; inspection follows receipt.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free quote and free return shipping; no upfront fee.",
+      "pass": true
+    }
+  },
+  "eligibility": "US, 18+, must own the trade-in device; a qualifying Samsung purchase is required to use the credit.",
+  "maximize": "Stack the credit on a Samsung sale - the trade-in credit combines with sale pricing at checkout. Ship inside the 15-day window and describe the condition exactly as it is; a mismatch triggers a chargeback of the credit.",
+  "notes": "Observed 2026-09-23 on samsung.com official trade-in offer pages. Numeric keys are example-based estimates for a typical single item, labeled per lane rules; official terms give no payout floor and state value varies by condition and demand - actual offers are per-item and can be $0 if the item is not accepted.",
+  "official_url": "https://www.samsung.com/us/",
+  "payout_max_usd": 400,
+  "payout_min_usd": 0,
+  "payout_quote": "Get instant trade-in credit toward your new device purchase; send us your old device within 15 days.",
+  "provider": "Samsung Trade-In",
+  "repeatable": {
+    "cadence": "You can do this once per device you own - it is bounded by the phones and devices you already have, not a daily income stream.",
+    "value": true
+  },
+  "route_id": "R7000",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "No fees or shipping charges to the seller.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Credit timing (instant at checkout) and 15-day send window stated plainly.",
+      "pass": true
+    },
+    "s3": {
+      "note": "US/18+/device-ownership and qualifying-purchase conditions documented.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Quote is free; no purchase required to see the value.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Instant quote shown before you commit to the purchase.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Condition mismatch can reduce the credit or trigger a chargeback - disclosed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Value is per-device and varies; nothing guaranteed.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Answer the condition questions on samsung.com to get an instant trade-in value",
+    "Apply the credit to a qualifying Samsung purchase at checkout",
+    "Ship your old device to Samsung within 15 days of purchase",
+    "Samsung inspects the device; matching condition keeps the full credit"
+  ],
+  "terms_url": "https://www.samsung.com/us/shop/cell-phone-offers/",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Instant credit at purchase; device must be received within 15 days; inspection adjustments after receipt.",
+  "who_pays": "Samsung - the payout comes directly from Samsung as trade-in credit on samsung.com, not cash from a third party.",
+  "who_qualifies": "You must be 18+, in the US, and own the device you are trading in. The credit only works with a qualifying Samsung purchase, so you also need to be buying a new Samsung device.",
+  "work_available": "Yes - the program was live on samsung.com as of 2026-09-23. It accepts eligible phones and devices, but value varies by model, condition, and demand, and some items get a $0 offer.",
+  "what_gets_accepted": "Your device must power on and match the condition you described in the quote tool. If Samsung's inspection finds a mismatch, the credit is reduced or charged back; unaccepted devices are worth $0.",
+  "costs_and_unpaid_time": "No fees and free return shipping. Your unpaid time is answering the condition questions (about 15-30 minutes), packing, and waiting through the 15-day send window and inspection.",
+  "when_cash_arrives": "This is NOT cash - the value arrives as instant Samsung purchase credit at checkout, usable only on a qualifying Samsung purchase. It cannot be converted to cash.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

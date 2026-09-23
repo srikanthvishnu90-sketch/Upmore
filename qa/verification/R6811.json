@@ -1,0 +1,89 @@
+{
+ "route_id": "R6811",
+ "provider": "SoFi",
+ "official_url": "https://www.sofi.com",
+ "terms_url": "https://www.sofi.com/banking/direct-deposit/",
+ "payout_quote": "New and existing SoFi members who have never set up direct deposit with SoFi are eligible for the Direct Deposit Bonus. Bonuses are limited to one bonus per SoFi member. ... Total Eligible Direct Deposit: $1,000.00 - $4,999.99 -> $50; $5,000.00 or more -> $400. ... we will add up the Total Eligible Direct Deposits received over the next 25 calendar days. This total will determine the bonus amount. ... SoFi must receive [your first Eligible Direct Deposit] on or before 12/31/26. You will receive the bonus amount in your SoFi Checking account within 7 business days of completing all requirements listed above. (Official sofi.com 'How to Set Up Direct Deposit' page, re-loaded 2026-09-23; FAQ confirms 'within seven business days following the 25-day promotional period')",
+ "payout_min_usd": 50,
+ "payout_max_usd": 400,
+ "time_min_minutes": 20,
+ "time_max_minutes": 40,
+ "timing": "Bonus paid to your SoFi Checking account within 7 business days of completing all requirements (i.e., within ~7 business days after the 25-day window closes) - proven in official terms re-loaded 2026-09-23; first deposit must land on or before 12/31/26",
+ "speed": "weeks",
+ "eligibility": "New and existing SoFi Checking and Savings members who have never set up direct deposit with SoFi; one bonus per member; qualifying Eligible Direct Deposit must be received by 12/31/2026",
+ "steps": [
+  "Open a SoFi Checking and Savings account",
+  "Set up an Eligible Direct Deposit (e.g. your employer's payroll deposit)",
+  "Receive $1,000+ in total Eligible Direct Deposits within 25 calendar days of the first one",
+  "Bonus amount is determined by the 25-day total: $1,000-$4,999.99 -> $50; $5,000+ -> $400"
+ ],
+ "catches": [
+  "You need a REAL direct deposit - typically payroll or government benefits. Bank-to-bank ACH transfers you send yourself usually do NOT count as 'Eligible Direct Deposits'.",
+  "The clock starts on your FIRST eligible deposit: all $1,000+ must land within 25 calendar days, or you get nothing.",
+  "Under $1,000 total in the window = $0 bonus.",
+  "One bonus per member ever - you can't do this twice.",
+  "You must be able to redirect real income into SoFi - this is easy for employees, hard for anyone without qualifying income."
+ ],
+ "biggest_catch": "This only works if you have real payroll or benefits to redirect: your own bank transfers don't count, and all $1,000 must land within a 25-day window or the bonus is $0.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R0018/R0430 (SoFi, catalog). Original: Official sofi.com 'How to Set Up Direct Deposit' page loaded live 2026-09-23 with full tier table ($1,000->$50, $5,000->$400), 25-day window, and 12/31/2026 first-deposit deadline. Payout timing PROVEN on re-audit 2026-09-23: 'You will receive the bonus amount in your SoFi Checking account within 7 business days of completing all requirements' (FAQ: 'within seven business days following the 25-day promotional period'). The $50 tier is the realistic quick route. No gambling.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official sofi.com direct-deposit page loaded live with the tier table ($1,000->$50, $5,000->$400) and eligibility rules."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open account, set up first Eligible Direct Deposit, accumulate $1,000+ within 25 days."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No account fees; deposit is user's own income."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $50 for $1,000-$4,999.99 / $400 for $5,000+ in eligible DD within 25 days; paid to Checking account after the window."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (never set up DD with SoFi, one bonus per member, deadline 12/31/26) on official page."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No hidden fees stated."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Bonus paid to Checking after the 25-day window; honest 'weeks' speed."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $50/$400 tiers; real-DD requirement disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official sofi.com page loaded live 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Real-DD-only rule, 25-day window, one-per-member, under-$1,000=$0 disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct campaign (SoFi Direct Deposit Bonus through 12/31/2026)."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "The 25-day clock starts at your FIRST deposit, so time it early in a pay cycle - two paychecks landing inside 25 days beats one. The real prize is the jump: $5,000+ in the window pays $400 instead of $50, so if your pay is close, ask payroll to accelerate or split a deposit into the window. One bonus per member ever - no repeats."
+}

@@ -1,0 +1,81 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "iVueit states payout timing in its official help center, but no official per-Vue payout amount could be located \u2014 amounts only appear third-party.",
+ "catches": [
+  "Official Zendesk: allow up to 2 business days for review (+24\u201348h more for specialized review); wallet withdrawal paid via PayPal within 24 hours.",
+  "Per-Vue pay ($7\u2013$50) is reported only by third-party reviewers, not ivueit.com terms.",
+  "Approval-dependent: rejected Vues are not paid."
+ ],
+ "checked_at": "2026-09-23T18:00:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official ivueit.zendesk.com help: Vuers complete Vues (site audits) at locations; wallet credited on completion.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "No official per-Vue payout amount \u2014 third-party only. Same pattern as Favor/Veho/Dispatch: in-app shown amount without official public task payout.",
+   "pass": false
+  },
+  "c3": {
+   "evidence": "n/a",
+   "pass": false
+  },
+  "c4": {
+   "evidence": "Official bounded: up to 2 business days review (plus 24\u201348h for specialized review), PayPal within 24 hours of withdrawal.",
+   "pass": true
+  }
+ },
+ "eligibility": "Smartphone.",
+ "notes": "Checked 2026-09-23. Rejected: official timing is bounded, but no official per-Vue payout amount \u2014 fails the concrete-payout rule.",
+ "official_url": "https://ivueit.com/",
+ "payout_quote": null,
+ "repeatable": {
+  "cadence": "n/a",
+  "value": false
+ },
+ "route_id": "R6763",
+ "standard": {
+  "s1": {
+   "note": "No eligibility page located.",
+   "pass": false
+  },
+  "s2": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s3": {
+   "note": "Official help-center timing.",
+   "pass": true
+  },
+  "s4": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s5": {
+   "note": "Official ivueit.zendesk.com article loaded.",
+   "pass": true
+  },
+  "s6": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [],
+ "terms_url": "https://ivueit.zendesk.com/hc/en-us/articles/7554579914132-How-soon-will-I-be-paid-after-submitting-a-Vue",
+ "timing": "Review up to 2 business days (specialized +24\u201348h); PayPal within 24h of withdrawal",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "provider": "Ivueit",
+ "speed": "days"
+}

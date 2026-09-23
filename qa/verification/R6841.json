@@ -1,0 +1,92 @@
+{
+ "route_id": "R6841",
+ "provider": "Wintrust",
+ "official_url": "https://www.wintrust.com/solutions-and-services/community-banking/total-access-checking.html",
+ "terms_url": "https://www.wintrust.com/solutions-and-services/community-banking/total-access-checking.html",
+ "payout_quote": "Enjoy Up To a $500 Bonus... Earn $300: 1. Open a new account 2. Enroll in online banking & e-statements 3. Have $500+ in direct deposits each month of the Qualification Period OR Earn $500: $2,000+ in direct deposits each month of the Qualification Period... To qualify for a $300 bonus payment, you must (i) Mention offer during in-branch account opening, visit URL provided, or enter Builder when applying online; (ii) have direct deposits totaling at least $500 or more to your new account each month for the 2 consecutive calendar months after the calendar month your new account was opened; & (iii) enroll in online banking & e-statements within the Qualification Period. (Official Wintrust site, crawled 2026-09-23)",
+ "payout_min_usd": 300,
+ "payout_max_usd": 500,
+ "time_min_minutes": 45,
+ "time_max_minutes": 60,
+ "timing": "Bonus deposited into the new account within 30 calendar days after the Qualification Period (2 consecutive calendar months after account-opening month)",
+ "speed": "months",
+ "eligibility": "New personal checking customers only (no existing or closed Wintrust personal checking); limit 1 bonus per customer; offer valid for eligible accounts opened 5/13/26 - 11/3/26",
+ "steps": [
+  "Open a new Total Access Checking account (mention offer in branch, use the URL, or enter promo code 'Builder' online)",
+  "Enroll in online banking and activate e-statements within the Qualification Period",
+  "Set up direct deposits totaling $500+/month ($300 tier) or $2,000+/month ($500 tier) for the 2 consecutive calendar months after your account-opening month",
+  "Keep the account open with balance above $0 through the Qualification Period",
+  "Bonus posts within 30 calendar days after the Qualification Period"
+ ],
+ "catches": [
+  "TIME-BOUND: offer valid for accounts opened 5/13/26 - 11/3/26",
+  "Direct deposit means employer/government/3rd-party electronic deposit - NOT Zelle, Venmo, bank-to-bank transfers, mobile deposits, or wires",
+  "You must hit the deposit threshold in EACH of the 2 consecutive months - one short month disqualifies you",
+  "Must mention the offer / enter 'Builder' code at opening - no retroactive credit",
+  "Existing or former Wintrust checking customers are ineligible",
+  "Account must be open with balance > $0 at end of Qualification Period",
+  "Bonus is taxable (1099-INT)"
+ ],
+ "biggest_catch": "The direct-deposit definition is strict - Zelle, Venmo, and transfers from your own other bank accounts do NOT count. Only real payroll/government/benefit deposits qualify.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R3203 (Wintrust, catalog). Original: Official Wintrust site (wintrust.com total-access-checking page + bonus terms, crawled 2026-09-23): $300 ($500+/mo DD) or $500 ($2,000+/mo DD) for 2 consecutive months. One-time new-customer bonus, explicitly labeled.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Choose your tier honestly: if your paycheck is $2,000+/month, go for the $500 tier - same effort, $200 more. Set up the direct deposit on day one and verify the first deposit posts as a qualifying direct deposit (check your statement description). Enroll in online banking and e-statements the same day you open - people lose this bonus by forgetting that step.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Wintrust: earn $300 with $500+/month direct deposits (or $500 with $2,000+/month) for 2 consecutive months."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open account with offer code, enroll in online banking + e-statements, meet monthly direct deposit totals."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to earn the bonus; account fees per the account's own terms (not detailed on the offer page)."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $300 or $500 based on deposit tier."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, 5/13/26-11/3/26 window, 1 per customer) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "No extra fee to earn the bonus beyond the account's own terms; fee schedule not detailed in the offer page."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: bonus within 30 calendar days after Qualification Period."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $300/$500 tiers."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Wintrust site, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Strict DD definition, monthly threshold, code-at-opening, tax disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Regional bank bonus - one-time, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}

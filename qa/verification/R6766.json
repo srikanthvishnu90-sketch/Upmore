@@ -1,0 +1,80 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "GrabPoints' own site claims same-day cashout, but no official per-survey/task payout amount \u2014 each survey pays variable points.",
+ "catches": [
+  "Official site says surveys take 5\u201315 min and 'cash out same day,' but no per-survey point amount is stated in official terms.",
+  "Minimum redemption is $3 (3,000 points) per third-party reviews \u2014 not stated on the official homepage."
+ ],
+ "checked_at": "2026-09-23T18:05:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "grabpoints.com: survey points platform; official homepage loaded.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "No official concrete per-survey payout amount \u2014 variable points per survey. Fails the concrete-payout rule.",
+   "pass": false
+  },
+  "c3": {
+   "evidence": "n/a",
+   "pass": false
+  },
+  "c4": {
+   "evidence": "Official: 'cash out same day' \u2014 timing bounded, but amount rule fails.",
+   "pass": true
+  }
+ },
+ "eligibility": "n/a",
+ "notes": "Checked 2026-09-23. Rejected: no official per-survey/task payout amount; variable points only.",
+ "official_url": "https://grabpoints.com",
+ "payout_quote": "Cash out same day. Redeem your points for PayPal cash, gift cards, and more. (grabpoints.com)",
+ "repeatable": {
+  "cadence": "n/a",
+  "value": false
+ },
+ "route_id": "R6766",
+ "standard": {
+  "s1": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s2": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s3": {
+   "note": "Official homepage states same-day cashout.",
+   "pass": true
+  },
+  "s4": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s5": {
+   "note": "Official grabpoints.com loaded.",
+   "pass": true
+  },
+  "s6": {
+   "note": "n/a",
+   "pass": false
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [],
+ "terms_url": null,
+ "timing": "same day per official site",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "weasel_words": {
+  "present": true,
+  "quote": "The highest paying survey platform on the internet (grabpoints.com)"
+ },
+ "provider": "Grabpoints",
+ "speed": "today"
+}

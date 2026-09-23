@@ -1,0 +1,89 @@
+{
+ "route_id": "R6822",
+ "provider": "Wells Fargo",
+ "official_url": "https://accountoffers.wellsfargo.com/denovo23/",
+ "terms_url": "https://accountoffers.wellsfargo.com/denovo23/",
+ "payout_quote": "To receive the $325 bonus: you must use your bonus offer code when opening a new Wells Fargo consumer checking account, which is subject to approval, by January 12, 2027 and receive $1,000 or more in qualifying electronic deposits within 90 calendar days of account opening (the 'qualification period'). Once you have met all requirements, we will deposit the bonus into your new account within 30 calendar days. The Wells Fargo Everyday Checking account monthly service fee is $15. The monthly service fee can be avoided with one of the following each fee period: $1,500 minimum daily balance; $5,000 or more in qualifying deposit balances, investment balances, or both; $500 or more in total qualifying electronic deposits; a primary account owner who is 17 to 24 years old. (Official Wells Fargo offer page, re-loaded 2026-09-23)",
+ "payout_min_usd": 325,
+ "payout_max_usd": 325,
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "timing": "Bonus deposited into the new checking account within 30 days after the 90-day qualification period ends",
+ "speed": "months",
+ "eligibility": "New Wells Fargo consumer checking customers only; primary account owner; no Wells Fargo consumer checking bonus in the past 12 months; not a Wells Fargo employee; US person (no W-8 filers); account subject to approval",
+ "steps": [
+  "Open a new Wells Fargo Everyday Checking account online using the bonus offer code",
+  "Set up direct deposit (paycheck, government benefits) totaling $1,000+ within 90 days of opening",
+  "Make sure deposits are qualifying: ACH direct deposit, RTP/FedNow instant payments, or debit-card-network credits - NOT Zelle, mobile deposits, branch/ATM deposits, or account-to-account transfers",
+  "Wait for the 90-day qualification period to end; the $325 bonus posts within 30 days"
+ ],
+ "catches": [
+  "$15 monthly service fee on Everyday Checking unless you keep a $1,500 minimum daily balance, receive $500+/month in qualifying electronic deposits, or are 17-24 - route $500+/month of direct deposits through the account so the fee never eats the bonus",
+  "NOT eligible if you received any Wells Fargo consumer checking bonus in the past 12 months",
+  "Zelle, mobile check deposits, cash deposits and transfers between your own accounts do NOT count toward the $1,000 - only real direct deposits and qualifying electronic credits",
+  "The bonus is taxable interest income - Wells Fargo will send a 1099-INT",
+  "You must remember to use the bonus offer code at opening; without it there is no bonus"
+ ],
+ "biggest_catch": "The $1,000 must be real qualifying electronic deposits - Zelle, mobile deposits and moving your own money between accounts don't count - and a $15 monthly fee applies unless you keep a $1,500 balance or route $500+/month in qualifying deposits.",
+ "upfront_fee": false,
+ "verdict": "reject",
+ "checked_at": "2026-09-23T12:00:00Z",
+ "notes": "DEMOTED by coordinator adjudication 2026-09-23: duplicate - same provider and same bonus mechanism already verified at R5361/R5362 (Wells Fargo, catalog). Original: Official Wells Fargo offer page (accountoffers.wellsfargo.com, crawled 2026-09-23): $325 for new consumer checking, $1,000+ qualifying electronic deposits within 90 days, open by Jan 12 2027, bonus within 30 days after qualification. One-time signup bonus - explicitly labeled as such.",
+ "repeatable": {
+  "value": true,
+  "cadence": "per task"
+ },
+ "maximize": "Time this with a real paycheck: redirect one or two pay periods of direct deposit to the new account and you'll clear the $1,000 without thinking about it. The same $500+/month in qualifying electronic deposits that earns the bonus also waives the $15 monthly fee each fee period - so keep the direct deposit flowing until the bonus posts. Use the bonus offer code at application; without it there is no bonus.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official Wells Fargo: $325 bonus for new consumer checking with $1,000+ qualifying electronic deposits within 90 days, opened by Jan 12, 2027."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official steps: open with bonus offer code, receive qualifying deposits, bonus posts within 30 days after qualification period."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to earn the bonus itself; $15/month account fee waivable per official terms."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official: $325; paid within 30 days after the 90-day qualification period."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Eligibility (new customers, no bonus in past 12 months, US persons, approval) per official terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "$15 monthly fee waivable via balance, deposits, or age 17-24; disclosed per official terms."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Official timing: 90-day qualification + up to 30 days for bonus."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Concrete $325; exact deposit threshold disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official Wells Fargo offer page, crawled 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Fee, Zelle exclusion, 12-month rule, taxability disclosed."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct mechanism (bank account bonus) - one-time signup bonus, labeled as such."
+  }
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ }
+}
