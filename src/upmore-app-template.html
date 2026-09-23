@@ -624,6 +624,7 @@
         <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
       </div>
       <div class="chips" id="xchips" role="group" aria-label="Filter by difficulty"></div>
+      <div class="chips" id="xspeed" role="group" aria-label="Filter by payout speed"></div>
       <div class="xcats" id="xcats" role="group" aria-label="Filter by category"></div>
       <div class="lane"><button class="tgl" id="laneTgl" aria-pressed="false" aria-label="Include higher-risk routes"></button><span>Include higher-risk routes <span id="laneN"></span></span></div>
       <div class="xlist" id="xlist"></div>
@@ -909,6 +910,10 @@
       let s = earnRatioOf(r);
       const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
       if (tmid > 60 && tmid > mins * 3) s *= 0.5;   // needs more active time than they have
+      // Owner direction 2026-09-23: same-day money leads. A same-day route
+      // beats a higher-ratio slow route for first moves — the goal is money TODAY.
+      if (r.speed === "today") s *= 3;
+      else if (r.speed === "days") s *= 1.5;
       return { r, s };
     });
     scored.sort((a, b) => b.s - a.s);
@@ -1446,12 +1451,13 @@
     tag: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>',
     gift: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v9h14v-9M12 8v13"/></svg>'
   };
-  const xState = { q: "", tier: "all", cat: "all", lane: false, shown: 40 };
+  const xState = { q: "", tier: "all", cat: "all", speed: "all", lane: false, shown: 40 };
   const TIERS = ["Very Easy", "Easy", "Moderate", "Hard", "Very Hard"];
 
   function xFiltered() {
     let list = xState.lane ? D.routes.filter(r => r.status !== "retired") : stdRoutes();
     if (xState.tier !== "all") list = list.filter(r => r.tier === xState.tier);
+    if (xState.speed !== "all") list = list.filter(r => r.speed === xState.speed);
     if (xState.cat !== "all") list = list.filter(r => r.category === xState.cat);
     if (xState.q) {
       const q = xState.q.toLowerCase();
@@ -1510,6 +1516,10 @@
     };
     mkChip(tc, "all", "All", () => xState.tier, v => xState.tier = v);
     TIERS.forEach(t => mkChip(tc, t, t, () => xState.tier, v => xState.tier = v));
+    const sc = $("xspeed");
+    mkChip(sc, "all", "Any speed", () => xState.speed, v => xState.speed = v);
+    mkChip(sc, "today", "⚡ Pays today", () => xState.speed, v => xState.speed = v);
+    mkChip(sc, "days", "Pays this week", () => xState.speed, v => xState.speed = v);
     const cc = $("xcats");
     mkChip(cc, "all", "All", () => xState.cat, v => xState.cat = v);
     D.categories.forEach(c => mkChip(cc, c.name, `${c.name} (${c.count})`, () => xState.cat, v => xState.cat = v));

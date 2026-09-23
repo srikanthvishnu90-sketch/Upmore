@@ -161,16 +161,20 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   // entries win; the rest are derived from DB numerics. Non-schedulable
   // routes (windfalls, needs-spend, bonus waits) can never be the headline
   // pick — they only show up as closest honest plays.
+  // Owner direction 2026-09-23: same-day money wins. A route that pays today
+  // beats a higher-rate slow route — effective hours are discounted by speed.
+  const SPEED_DISCOUNT: Record<string, number> = { today: 0.34, days: 0.67, weeks: 1 };
   const ranked = live
     .map((r) => ({ r, cm: CASH_MATH[r.route_id] ?? deriveCashMath(r) }))
     .filter((x) => x.cm)
-    .map((x) => ({
-      ...x,
-      hours: x.cm!.schedulable && x.cm!.dollars_per_hour
+    .map((x) => {
+      const base = x.cm!.schedulable && x.cm!.dollars_per_hour
         ? target / x.cm!.dollars_per_hour
-        : Infinity,
-    }))
-    .sort((a, b) => a.hours - b.hours);
+        : Infinity;
+      const eff = base === Infinity ? Infinity : base * (SPEED_DISCOUNT[x.r.speed ?? "weeks"] ?? 1);
+      return { ...x, hours: base, eff };
+    })
+    .sort((a, b) => a.eff - b.eff);
 
   const pick = ranked.find((x) => x.hours < Infinity);
   if (!pick) {
@@ -188,6 +192,8 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   }
 
   const { r, cm, hours } = pick;
+  const speedTag = (pick.r.speed === "today") ? " ⚡ Pays today."
+    : (pick.r.speed === "days") ? " Pays within about a week." : "";
   const steps = r.steps.slice(0, 5).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
   const links = APP_LINKS[r.route_id];
   const linkLine = r.provider_url +
@@ -201,7 +207,7 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const others = ranked.filter((x) => x.r.route_id !== r.route_id && x.hours < Infinity).slice(0, 2);
 
   return (
-    `Fastest honest path to $${target}: **${r.provider}** (${r.route_id}).\n\n` +
+    `Fastest honest path to $${target}: **${r.provider}** (${r.route_id}).${speedTag}\n\n` +
     `The math: ${cm.math}, so $${target} ≈ ${honest}. ` +
     `Cash out: ${cm.min_cashout}.\n\n` +
     `Steps:\n${steps}\n\n` +

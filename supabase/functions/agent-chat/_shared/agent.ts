@@ -112,6 +112,9 @@ export interface RouteCard {
   payout_max: number | null;
   time_min_minutes: number | null;
   time_max_minutes: number | null;
+  // Payout speed: 'today' | 'days' | 'weeks' (owner direction 2026-09-23:
+  // same-day money leads). Used to rank make-me-$X picks.
+  speed: string | null;
 }
 
 // DB stores catches as a jsonb string; the card type says string[].
