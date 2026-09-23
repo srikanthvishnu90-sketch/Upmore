@@ -32,8 +32,20 @@ export const APP_LINKS: Record<string, { ios?: string; android?: string }> = {
   R0116: { ios: "https://apps.apple.com/app/rakuten-coupons-cash-back/id328264585", android: "https://play.google.com/store/apps/details?id=com.rakuten.android" },
   R0140: { ios: "https://apps.apple.com/app/swagbucks/id639773064", android: "https://play.google.com/store/apps/details?id=com.swagbucks.mobile" },
   R0446: { ios: "https://apps.apple.com/app/google-opinion-rewards/id736535642", android: "https://play.google.com/store/apps/details?id=com.google.android.apps.paidtasks" },
-  R0355: { ios: "https://apps.apple.com/app/microsoft-bing/id345323231", android: "https://play.google.com/store/apps/details?id=com.microsoft.bing" },
+  R0355: { ios: "https://apps.apple.com/app/microsoft-bing/id345323231", android: "https://play.google.com/store/apps/details?id=com.microsoft.bing" },,
+R0098: { ios: "https://apps.apple.com/us/app/chime-mobile-banking/id836215269", android: "https://play.google.com/store/apps/details?id=com.onedebit.chime" },
+  R0535: { ios: "https://apps.apple.com/us/app/fluz-cashback/id1419812499", android: "https://play.google.com/store/apps/details?id=com.fluznyc" },
+  R0192: { ios: "https://apps.apple.com/us/app/attapoll-paid-surveys/id1107631390", android: "https://play.google.com/store/apps/details?id=com.requapp.requ" },
+  R0360: { ios: "https://apps.apple.com/us/app/receipt-hog-shopping-rewards/id525373618", android: "https://play.google.com/store/apps/details?id=com.infoscout.receipthog" },
+  R0221: { ios: "https://apps.apple.com/us/app/usertesting/id1485452102", android: "https://play.google.com/store/apps/details?id=com.usertesting.recorder.krsna" },
+  R0515: { android: "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards" },
+  R0363: { android: "https://play.google.com/store/apps/details?id=com.coinout.scan" },
+  R0500: { android: "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp" },
+  R0358: { android: "https://play.google.com/store/apps/details?id=com.checkpoints.app" },
+  R0364: { ios: "https://apps.apple.com/us/app/upside-cash-back-gas-food/id1099997174", android: "https://play.google.com/store/apps/details?id=com.upside.consumer.android" },
+  R0438: { android: "https://play.google.com/store/apps/details?id=company.coinpop.coinpop" },
 };
+
 
 // ---------- 1. "make me $X" ----------
 
@@ -219,7 +231,7 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const steps = r.steps.slice(0, 5).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
   const links = APP_LINKS[r.route_id];
   const linkLine = r.provider_url +
-    (links?.ios || links?.android ? `\nApp: ${links.ios ?? links.android}` : "");
+    (links?.ios || links?.android ? `\nDownload the app: ${links.ios ?? links.android}` : "");
   const honest = (() => {
     const h = Math.max(1, Math.round(hours));
     return hours <= 4
@@ -410,6 +422,11 @@ export function tryWalkthrough(
   const wagerNote = WAGER_IDS.has(rid)
     ? `\nHeads up: this is a wager — you stake your own money and can LOSE it. Never bet money you can't afford to lose.`
     : "";
+  // If the route needs an app, say so plainly and link the store download.
+  const appLinks = APP_LINKS[rid];
+  const appLine = appLinks?.ios || appLinks?.android
+    ? `\nDownload the app: ${appLinks.ios ?? appLinks.android}`
+    : "";
   return {
     reply:
       `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
@@ -417,7 +434,7 @@ export function tryWalkthrough(
       `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
       `Biggest catch: ${catches[0] ?? "see the official terms"}` +
       laneNote + wagerNote +
-      `\n\nStart here: ${r.provider_url ?? r.link ?? ""}`,
+      `\n\nStart here: ${r.provider_url ?? r.link ?? ""}` + appLine,
     routeId: r.route_id,
   };
 }
