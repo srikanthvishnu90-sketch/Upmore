@@ -236,7 +236,7 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
     `Start here: ${linkLine}\n\n` +
     `Biggest catch: ${cm.catch}` +
     (others.length
-      ? `\n\nAlso real: ` + others.map((x) => `${x.r.provider} (~${Math.round(x.hours)}h)`).join(", ") + `.`
+      ? `\n\nAlso real: ` + others.map((x) => x.hours > 0 ? `${x.r.provider} (~${Math.round(x.hours)}h)` : `${x.r.provider}`).join(", ") + `.`
       : "") +
     `\n\nWant me to walk you through step 1?`
   );

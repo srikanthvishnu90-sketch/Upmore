@@ -1729,13 +1729,18 @@
     $("guide").classList.add("talking");
     const m = document.createElement("div"); m.className = "msg me"; m.textContent = text; chat.appendChild(m);
   }
+  // Minimal chat markdown: escape HTML first, then **bold**, bare links, newlines.
+  const md = (s) => esc(s)
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')
+    .replace(/\n/g, "<br>");
   function addAI(paras, card) {
     const m = document.createElement("div"); m.className = "msg ai";
     m.innerHTML = `<div class="who"><span class="orb"></span>Guide</div><div class="typing"><i></i><i></i><i></i></div>`;
     chat.appendChild(m); chat.scrollTop = chat.scrollHeight;
     setTimeout(() => {
       m.querySelector(".typing").remove();
-      m.insertAdjacentHTML("beforeend", paras.map(p => `<p>${p}</p>`).join(""));
+      m.insertAdjacentHTML("beforeend", paras.map(p => `<p>${md(p)}</p>`).join(""));
       if (card) m.insertAdjacentHTML("beforeend",
         `<div class="mini"><span>${card.tag}</span><b>${card.title}</b><span>${card.meta}</span>${card.aff ? `<span class="abadge">Affiliate</span>` : ""}<button data-open>Open move</button></div>`);
       const b = m.querySelector("[data-open]"); if (b) b.onclick = () => show("home");
