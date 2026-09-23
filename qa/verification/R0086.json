@@ -1,0 +1,83 @@
+{
+  "route_id": "R0086",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:38:00Z",
+  "official_url": "https://www.washtrust.com/free-checking",
+  "terms_url": "https://www.washtrust.com/free-checking",
+  "payout_quote": "Open any new Washington Trust personal checking account and get $200 when you have your paychecks direct deposited: minimum $25 opening deposit, promo code PLUS200 at opening, 2 payroll/SS/pension/government-benefits direct deposits within 90 days (P2P excluded); $200 deposited within 30 days after the second direct deposit.",
+  "timing": "$200 deposited to the new account within 30 days after the second qualifying direct deposit.",
+  "steps": [
+    "Confirm the route intends The Washington Trust Company of Westerly, RI (washtrust.com) — NOT Washington Trust Bank of Spokane, WA, which has no bonus.",
+    "Go to https://www.washtrust.com/free-checking and open a new personal checking account with promo code PLUS200 (minimum $25 opening deposit).",
+    "Have two qualifying direct deposits (paycheck, SS, pension, or government benefits — not P2P) post within 90 days.",
+    "Keep the account open; the $200 is deposited within 30 days after the second direct deposit (reported on 1099)."
+  ],
+  "catches": [
+    "ENTITY WARNING: official $200 offer lives at washtrust.com (The Washington Trust Company, Westerly, RI), NOT watrust.com (Washington Trust Bank, Spokane, WA), which advertises fee-free checking only. If the catalog entry intended the Spokane bank, there is no bonus and this route must be rejected.",
+    "Official amount is $200, not the catalog's $250 — correct downward.",
+    "Requires promo code PLUS200 at account opening; minimum $25 opening deposit.",
+    "Two qualifying direct deposits from payroll/SS/pension/government benefits within 90 days; P2P transfers excluded.",
+    "One per tax-reported owner; not available to customers who received a bonus in the last 2 years.",
+    "Bonus reported on 1099; limited-time offer — the bank may withdraw it at any time."
+  ],
+  "biggest_catch": "ENTITY IDENTITY WARNING: this offer is from The Washington Trust Company of Westerly, RI (washtrust.com) — a different bank from Washington Trust Bank of Spokane, WA (watrust.com), which has no checking bonus. Confirm the route intends the RI bank before treating this as verified.",
+  "eligibility": "New personal-checking customers of The Washington Trust Company (RI), 18+; no bonus received from the bank in the last 2 years; one per tax-reported owner.",
+  "notes": "VERIFIED with a loud entity-identity caveat: the official $200 offer (washtrust.com/free-checking, code PLUS200) belongs to The Washington Trust Company of Westerly, RI — NOT to watrust.com (Washington Trust Bank, Spokane, WA), which has no bonus. Aggregator corroboration ($200, Free200) confirms the offer is live. The parent should confirm which entity the R0086 route targets; if it is the Spokane bank, this file's verdict must flip to reject. Catalog's $250 claim is above the official $200 — corrected. App links left null.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "The Washington Trust Company (Westerly, RI) — real FDIC-insured bank; official offer on washtrust.com. (Identity caveat in biggest_catch.)"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page https://www.washtrust.com/free-checking with $200 bonus, PLUS200 code, and full requirements."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee; $25 minimum opening deposit (not a fee)."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official terms: $200, two-direct-deposit requirement, and 30-day-after-second-DD credit timing."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New personal-checking customers 18+; no bonus from the bank in the last 2 years; one per tax-reported owner."
+    },
+    "s2": {
+      "pass": true,
+      "note": "PLUS200 code at opening; $25 minimum deposit; 2 qualifying direct deposits within 90 days (P2P excluded)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "$200 deposited within 30 days after the second qualifying direct deposit."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No weasel words on core payout — $200, code, requirements, and timing stated flatly."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.washtrust.com/free-checking — official bank domain (RI bank, not Spokane)."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: open with PLUS200, deposit $25, route 2 qualifying direct deposits within 90 days, keep account open 30 more days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Researched via official washtrust.com domain 2026-09-23."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "upfront_fee": false
+}

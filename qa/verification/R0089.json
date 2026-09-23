@@ -1,0 +1,82 @@
+{
+  "route_id": "R0089",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:38:00Z",
+  "official_url": "https://www.boh.com/personal/bank-accounts/pr/checking-offer/",
+  "terms_url": "https://www.boh.com/personal/bank-accounts/pr/checking-offer/",
+  "payout_quote": "Official checking offer page: $100 bonus on new Convenience Checking, $300 bonus on new Bankohana Level I Checking — with $500 opening deposit and qualifying direct deposits totaling $2,000+ (Convenience) or $3,500+ (Bankohana Level I) within 60 days of account opening.",
+  "timing": "Statement credit applied within 120 days of account opening date.",
+  "steps": [
+    "Go to https://www.boh.com/personal/bank-accounts/pr/checking-offer/ and choose the tier: Convenience Checking ($100 bonus) or Bankohana Level I ($300 bonus).",
+    "Open the new checking account with a $500 initial deposit.",
+    "Set up qualifying direct deposits totaling $2,000+ (Convenience) or $3,500+ (Bankohana Level I) within 60 days of account opening.",
+    "Keep the account open; the bonus is applied as a statement credit within 120 days of the account opening date (reported on 1099-INT)."
+  ],
+  "catches": [
+    "New checking-account bonus only (new customers / new accounts).",
+    "Requires $500 initial opening deposit plus qualifying direct deposits totaling $2,000+ (Convenience, $100) or $3,500+ (Bankohana Level I, $300) within 60 days of opening.",
+    "Statement credit lands within 120 days of account opening — slow payout.",
+    "Availability is Hawaii-focused; bonus reported on 1099-INT.",
+    "The old $400 tier (Bankohana II/III) was discontinued ~July 2026 per aggregators — official page now shows only $100/$300 tiers; do not present a $400 figure."
+  ],
+  "biggest_catch": "The bonus tiers scale with the account: only $100 on the basic Convenience Checking — the $300 requires the Bankohana Level I account and $3,500 in direct deposits within 60 days.",
+  "eligibility": "New Bank of Hawaii checking customers; Hawaii-focused availability; 18+.",
+  "notes": "Verified 2026-09-23 via the official boh.com checking-offer page (content confirmed through indexed official-domain content; the page itself did not load directly — flagged in standard.s7). Catalog's $300 claim matches the Bankohana Level I tier exactly. Do not use the discontinued $400 tier. App links left null.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Bank of Hawaii — real operating bank; official offer on boh.com."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official boh.com checking-offer page with $100/$300 tiers, requirements, and timing."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee; $500 opening deposit is not a fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page states concrete $100/$300 amounts with requirements and 120-day credit timing."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New checking-account bonus; Hawaii-focused availability."
+    },
+    "s2": {
+      "pass": true,
+      "note": "$500 opening deposit; $2,000+/$3,500+ qualifying direct deposits within 60 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Statement credit applied within 120 days of account opening."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No weasel words on core payout — amounts, requirements, and timing stated flatly."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.boh.com/personal/bank-accounts/pr/checking-offer/ — official bank domain."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: open the tiered account, deposit $500, route qualifying direct deposits within 60 days, wait for credit within 120 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official-domain content verified 2026-09-23 via indexed boh.com page (direct page load failed; amounts cross-checked via aggregator corroboration of the same page)."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "upfront_fee": false
+}

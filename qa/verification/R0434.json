@@ -1,0 +1,83 @@
+{
+  "route_id": "R0434",
+  "verdict": "verify",
+  "critical": {
+    "c1": {
+      "evidence": "Capital One — real operating US bank; official 360 Performance Savings page live on capitalone.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page discloses the account mechanics: variable APY, FDIC insurance, no fees, no minimums, interest accrual/compounding rules.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee: 'There are no fees to open or keep your account' and no minimum balance required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: 'APY (Annual Percentage Yield) is variable and effective 9/22/2026.' 'Interest accrues daily and compounds monthly.' The exact headline APY figure is rendered client-side and could not be captured this session — the mechanics (variable, FDIC-insured, daily accrual) are verified; the number is not claimed. Interest, not a signup bonus.",
+      "pass": true
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Requires name, date of birth, mailing address, email, phone number, employment information, annual income, Tax ID (SSN or ITIN), citizenship information; approval required; 60 days to fund after approval.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No monthly fees or minimums. No ATM/debit card on 360 Performance Savings — withdraw online/at a branch, or transfer to a 360 Checking for ATM access. Savings transfer limits are currently not enforced (would be reimposed with notice).",
+      "pass": true
+    },
+    "s3": {
+      "note": "No signup bonus on the official page; variable APY (effective 9/22/2026), interest accrues daily and compounds monthly.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words on the mechanics; the variable-rate disclosure is honest. The JS-rendered headline number is a display limitation, not a claim.",
+      "pass": true
+    },
+    "s5": {
+      "note": "http://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/ — official Capital One page, loaded live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: apply online (~5 minutes), verify identity, fund within 60 days, earn variable interest.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-22/23.",
+      "pass": true
+    }
+  },
+  "payout_quote": "360 Performance Savings: 'APY (Annual Percentage Yield) is variable and effective 9/22/2026.' 'Unlike tiered savings accounts, Capital One's 360 Performance Savings account offers the same high-yield savings rate on your entire balance.' 'Interest accrues daily and compounds monthly.' FDIC-insured up to the allowable limits. No fees to open or keep; no minimum balance. This is interest on your own deposits, not a signup bonus.",
+  "timing": "No signup bonus exists. Variable APY effective 9/22/2026; interest accrues daily and compounds monthly. Approved applicants have 60 days to fund the account.",
+  "eligibility": "Name, date of birth, mailing address, email, phone number, employment information, annual income, Tax ID Number (SSN or ITIN), and citizenship information required. Account subject to approval; denial possible. Must fund within 60 days of approval.",
+  "biggest_catch": "There is no signup bonus — the only 'payout' is variable interest on your own deposits, and the exact current APY figure is rendered client-side on capitalone.com (it could not be captured this session), so confirm the live rate yourself before opening.",
+  "catches": [
+    "No signup bonus exists on capitalone.com — the only 'payout' is variable interest on your own deposits.",
+    "The headline APY number is JS-rendered on capitalone.com and could not be captured this session; the rate is variable and can change at any time before or after opening.",
+    "360 Performance Savings has no ATM or debit card — withdraw online or at a branch, or transfer to a 360 Checking account for ATM access.",
+    "A separate 360 Performance Savings referral program exists ($100 per referred friend who opens and completes steps; friend 'welcome bonus of up to $1,500' by deposit tier, paid within 60 days) — but it is referral-based, not a signup bonus for opening an account.",
+    "Deposit accounts opened on or after May 18, 2025 are immediately counted with your other Capital One accounts for FDIC insurance purposes."
+  ],
+  "steps": [
+    "Go to http://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/ and start the application (about 5 minutes).",
+    "Provide name, DOB, mailing address, email, phone, employment info, income, SSN/ITIN, and citizenship info; agree to terms.",
+    "On approval, fund the account within 60 days — no minimum balance required (your first-deposit account links automatically).",
+    "Keep funds parked; interest accrues daily and compounds monthly at the variable APY (effective 9/22/2026).",
+    "Withdraw online or at a branch; to use an ATM, first transfer to a linked 360 Checking account."
+  ],
+  "notes": "Checked 2026-09-22/23. The official 360 Performance Savings page loaded live with full mechanics disclosed (variable APY effective 9/22/2026, FDIC-insured, no fees/minimums, daily accrual/monthly compounding). The headline APY numeral itself is client-side rendered ('NaN' in fetched text) — not claimed here. App links left null (no verbatim official store URL obtained).",
+  "official_url": "http://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/",
+  "terms_url": "http://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/",
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T01:40:11Z"
+}

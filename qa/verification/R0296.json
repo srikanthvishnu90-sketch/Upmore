@@ -1,0 +1,83 @@
+{
+ "route_id": "R0296",
+ "verdict": "verify",
+ "official_url": "https://unclaimed.org/search/",
+ "terms_url": "https://unclaimed.org/can-i-really-search-for-free/",
+ "payout_quote": "NAUPA on unclaimed.org: 'Yes! It is free to search for and claim your missing money! There is no fee to search for and claim your unclaimed property — if you use your official state program.' This finds money ALREADY OWED TO YOU (a forgotten account, uncashed check, security deposit) if it exists in a state database — it never promises anyone has any.",
+ "timing": "Search is instant. Claim processing is handled by each state's official program — typically weeks to a few months after you submit proof of identity and ownership.",
+ "biggest_catch": "This finds YOUR OWN money only if it exists in a state database — most searches return nothing, and that is the normal result. You must claim through the official state program; third-party 'finder' services take a cut of your money for something you can do yourself for free.",
+ "eligibility": "Anyone who has lived or done business in a US state, province, or territory. To claim a match you must prove your identity and ownership (e.g., SSN, utility bill, pay stub, old address).",
+ "steps": [
+  "Go to https://unclaimed.org/search/ and use the interactive map to pick your state, or use MissingMoney.com (the free multi-state search sponsored by NAUPA) to check participating states at once.",
+  "Search EVERY state you have lived or done business in — property is reported to the state where the company resides, so matches commonly span multiple states.",
+  "If your name matches, click through to that state's official unclaimed-property program website (never a third-party finder).",
+  "File the claim on the state site and upload proof of identity and ownership (pay stub, utility bill, SSN, old address records).",
+  "Track the claim on the state site; expect weeks to a few months for verification and payout."
+ ],
+ "catches": [
+  "Most searches return nothing — NAUPA says 1 in 10 people have unclaimed property, which means 9 in 10 do not.",
+  "Third-party 'finder' firms may legally take a percentage of your money; the official state program is always free — use it directly.",
+  "You must prove ownership with documents (SSN, old addresses, pay stubs, utility bills); a name match alone pays nothing.",
+  "Impostor sites mimic state programs — always reach the state site from unclaimed.org's map or MissingMoney.com.",
+  "Claims are verified by the state before payout, so even a confirmed match takes weeks to months."
+ ],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "upfront_fee": false,
+ "checked_at": "2026-09-23T01:45:00Z",
+ "notes": "Verified live 2026-09-22/23: unclaimed.org search page and 'Is it really free to search?' FAQ both loaded (crawled within hours). NAUPA is the official association of state unclaimed-property administrators; the site routes users to official state programs and sponsors MissingMoney.com. In-app, this route must push users ONLY to official state sites and warn against fee-charging finders. No app exists — website only.",
+ "critical": {
+  "c1": {
+   "evidence": "NAUPA — the National Association of Unclaimed Property Administrators, the official body of state unclaimed-property programs — runs unclaimed.org.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official unclaimed.org pages describe the free search, the per-state official program links, and the free multi-state MissingMoney.com search.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Official FAQ: 'There is no fee to search for and claim your unclaimed property — if you use your official state program.'",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official pages confirm the claim mechanism: match on the state site, then file the state's claim form with proof of ownership for verification and payout.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Available to anyone who has lived/done business in a participating state/province; must prove identity and ownership to claim.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Free via official state programs; third-party finders may take a percentage — avoided by using the state site directly.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Instant search; weeks to months for claim verification and payout.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the core terms — free search and claim stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://unclaimed.org/search/ — the official NAUPA search page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: pick state, search name, follow official state link, file claim with proof.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official NAUPA pages loaded live 2026-09-22/23.",
+   "pass": true
+  }
+ }
+}

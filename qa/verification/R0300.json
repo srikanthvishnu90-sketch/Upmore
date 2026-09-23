@@ -1,0 +1,81 @@
+{
+ "route_id": "R0300",
+ "verdict": "verify",
+ "official_url": "https://ncua.gov/support-services/conservatorships-liquidations/unclaimed-deposits",
+ "terms_url": "https://ncua.gov/support-services/conservatorships-liquidations/unclaimed-deposits",
+ "payout_quote": "NCUA: 'If you believe the NCUA may be holding funds for you, please review our current list of unclaimed deposits.' Step 1: 'Confirm your credit union was liquidated by the NCUA' via its list of involuntary liquidations. This finds YOUR OWN share-account money from a liquidated credit union if it exists — it never promises anyone has any.",
+ "timing": "Reviewing the list is instant. Claims go through the Member Verification Form sent to NCUA's Asset Management and Assistance Center (mail or amacmail@ncua.gov); timing is per-case.",
+ "biggest_catch": "Only applies if YOUR credit union was liquidated by the NCUA — step 1 of the official process. And the 18-month clock matters: shares claimed within 18 months of liquidation are paid at full insured amount; after that they are considered uninsured and paid only pro-rata from whatever funds remain.",
+ "eligibility": "Members of federally insured credit unions that were involuntarily liquidated. The published list shows last names and first initials; you confirm identity via the Member Verification Form.",
+ "steps": [
+  "Go to https://ncua.gov/support-services/conservatorships-liquidations/unclaimed-deposits and confirm your credit union appears on NCUA's list of involuntary liquidations.",
+  "Review the current list of unclaimed deposits (last names + first initials) for your name.",
+  "If listed, complete the Member Verification Form with as much account information as you can provide.",
+  "Send the form to NCUA's Asset Management and Assistance Center — by mail (10910 Domain Drive, Suite 200, Austin, TX 78758) or email (amacmail@ncua.gov) — and await their verification."
+ ],
+ "catches": [
+  "Only covers liquidated federally insured credit unions — almost nobody will have a match.",
+  "The 18-month insurance window is the key catch: claim late and shares are uninsured, paid only pro-rata from remaining funds.",
+  "In some cases funds are transferred to the state's unclaimed-property section instead — then R0296 (state search) is the path.",
+  "The public list shows only last names and first initials, so you must verify identity through the form."
+ ],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "upfront_fee": false,
+ "checked_at": "2026-09-23T01:45:00Z",
+ "notes": "Verified 2026-09-22/23: the NCUA unclaimed-deposits page is current (crawled within a day) with the 3-step process and the unclaimed-deposits dataset is public on catalog.data.gov (updated Feb 2025, catalog checked Sept 2026). In-app, this route must lead with the 18-month warning and the liquidated-credit-union prerequisite. No app — website/mail/email only.",
+ "critical": {
+  "c1": {
+   "evidence": "NCUA — the National Credit Union Administration, the federal regulator/insurer of credit unions — operates the unclaimed-deposits process via its Asset Management and Assistance Center.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official ncua.gov page lays out the 3 steps: confirm liquidation, review the unclaimed-deposits list, complete the Member Verification Form.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee anywhere in the official process; the form is submitted directly to NCUA by mail or email.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official page states the payout rules: full insured amount within the 18-month insurance period, pro-rata after shares become uninsured.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Members of liquidated federally insured credit unions; identity verified via the Member Verification Form.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Free; no fee in the official process.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Instant list review; per-case claim verification.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words — the 18-month pro-rata rule is stated plainly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://ncua.gov/support-services/conservatorships-liquidations/unclaimed-deposits — official NCUA page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: confirm liquidation, check the list, submit the verification form.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official NCUA page loaded live 2026-09-22/23.",
+   "pass": true
+  }
+ }
+}

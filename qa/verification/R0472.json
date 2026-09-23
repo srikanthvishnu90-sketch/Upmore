@@ -1,0 +1,77 @@
+{
+  "route_id": "R0472",
+  "verdict": "reject",
+  "critical": {
+    "c1": {
+      "evidence": "Tomo (TomoCredit) is a real operating fintech offering the Tomo Mastercard (2026 reviews confirm the card is live).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No concrete official cash welcome bonus exists in Tomo's official terms: third-party reviews of the card state it offers 'No sign-up bonus' and Tomo's 2026 product removed its cashback rewards.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No enrollment fee found; 2026 third-party reviews report a $2.99/month membership fee on the Tomo card (not confirmed on tomo.com this session).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No concrete official confirmation of any cash bonus amount exists; credit limits are set from bank-account cash flow and are borrowing power, not money — they do not qualify.",
+      "pass": false
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Tomo approves based on bank-account activity (via Plaid), not FICO; requires SSN/ITIN and a US bank account; weekly autopay of the full balance.",
+      "pass": true
+    },
+    "s2": {
+      "note": "2026 reviews report a $2.99/month membership fee added in 2026 (not confirmed on tomo.com this session); no annual/late/foreign-transaction fees per reviews.",
+      "pass": false
+    },
+    "s3": {
+      "note": "No bonus payout timing exists because no bonus exists.",
+      "pass": false
+    },
+    "s4": {
+      "note": "The catalog claim ('check for signup bonus') is concrete but cannot be anchored to any official Tomo terms — there is no signup bonus to find.",
+      "pass": false
+    },
+    "s5": {
+      "note": "https://tomocard.com — Tomo's card site (catalog URL); official-domain confirmation of a cash bonus could not be obtained this session.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No steps given: no concrete official cash bonus exists (reject).",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-22/23.",
+      "pass": true
+    }
+  },
+  "payout_quote": null,
+  "timing": null,
+  "eligibility": "US bank account (Plaid-compatible), valid SSN or ITIN, government-issued ID; approval based on bank-account cash flow, not credit score. Balance auto-paid weekly from the linked bank account.",
+  "biggest_catch": "Tomo is a credit-building charge card with no signup bonus and no rewards program — there is no official cash mechanism at all, and its credit limit is borrowing power, not money.",
+  "catches": [
+    "No sign-up bonus: Tomo's card offers no welcome bonus and (per 2026 reviews) removed its cashback rewards in late 2024.",
+    "The credit limit is borrowing power based on your bank-account cash flow — borrowing is not income and never counts as money.",
+    "2026 reviews report a $2.99/month membership fee (~$35.88/year), so the card can cost you money rather than make you any.",
+    "Balances are auto-deducted weekly; if your bank balance cannot cover the payment, the card freezes until paid in full.",
+    "Credit-building only helps indirectly (better credit profile over time); it puts no cash in your pocket."
+  ],
+  "steps": [],
+  "notes": "Checked 2026-09-22/23. Tomo's card is live (2026 reviews on finder.com, joinkudos.com, karmanow.com confirm an active product), so this is not a 'dead product' reject — it is rejected because the route's money claim fails: no concrete official cash welcome bonus exists anywhere in Tomo's offering. Official-domain (tomo.com/tomocard.com) page fetch was unavailable this session; the absence-of-bonus finding rests on multiple independent 2026 product reviews. App links left null.",
+  "official_url": "https://tomocard.com",
+  "terms_url": null,
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T01:40:11Z"
+}

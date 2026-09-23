@@ -1,0 +1,83 @@
+{
+  "route_id": "R0049",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:40:00Z",
+  "official_url": "https://www.mtb.com/personal/banking/checking/cash-bonus",
+  "terms_url": "https://www.mtb.com/personal/banking/checking/cash-bonus",
+  "payout_quote": "M&T Bank personal checking promotion: open a new eligible M&T personal checking account by December 31, 2026 and receive up to $300 — $300 on MyChoice Premium or MyChoice Plus ($250 on some co-branded pages), $200 on EZChoice — with qualifying direct deposits totaling $500+ within 90 days of account opening; bonus awarded within 90 days after completing the direct deposits.",
+  "timing": "Bonus awarded within 90 days after completing the qualifying direct deposits.",
+  "steps": [
+    "Go to mtb.com's Checking Account Cash Bonus and Promotions page and enter your ZIP to see your footprint's exact offer.",
+    "Open a new eligible M&T personal checking account (MyChoice Premium or Plus for the $300 tier; EZChoice for $200) by December 31, 2026.",
+    "Set up qualifying direct deposits totaling at least $500 within 90 days of account opening.",
+    "Keep the account open and meet a fee waiver; the bonus is awarded within 90 days after you complete the direct deposits."
+  ],
+  "catches": [
+    "DUPLICATE: R0049 ('M&T Bank Checking') and R0079 ('Manufacturers and Traders Trust (M&T)') are the same offer — Manufacturers and Traders Trust Company is M&T Bank's legal name. Treat as one offer.",
+    "Bonus is tiered by account type: $300 MyChoice Premium / MyChoice Plus, $200 EZChoice; MyWay Banking is ineligible for a bonus.",
+    "Requires opening by 12/31/2026 and qualifying direct deposits totaling $500+ within 90 days of opening.",
+    "Offers and products may vary by location (ZIP-code prompt on campaign pages); co-branded variants have their own expiries (Ravens 10/31/2026, UConn 10/8/2026).",
+    "Monthly maintenance charges apply: MyChoice Plus $14.95/mo, MyChoice Premium $24.95/mo (waivable); account must remain open until bonus is awarded.",
+    "Source limitation: exact promo page URL was not directly readable — terms confirmed via official mtb.com and campaigns.mtb.com crawls; re-confirm on the live page before presenting."
+  ],
+  "biggest_catch": "This is the same offer under both route IDs (Manufacturers and Traders Trust = M&T Bank's legal name) — and the $300 tier requires the Premium/Plus account, which carries a $24.95/$14.95 monthly maintenance fee if not waived.",
+  "eligibility": "New M&T personal checking customers 18+ within the M&T footprint (exact offer varies by ZIP); new account by 12/31/2026.",
+  "notes": "Verified 2026-09-23 via official mtb.com and campaigns.mtb.com crawls (exact promo URL not directly readable — see standard.s7). DUPLICATE FLAG: R0049 covers the same M&T Bank checking promotion as its sibling route ID ('Manufacturers and Traders Trust Company' is the bank's legal name). Recommend merging R0049 and R0079 into a single verified route. Main offer expires 12/31/2026; co-branded variants expire sooner. App links left null.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "M&T Bank (Manufacturers and Traders Trust Company) — real operating bank; official promos on mtb.com and campaigns.mtb.com."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official M&T 'Checking Account Cash Bonus and Promotions' pages with tiers, $500 DD requirement, and 12/31/2026 expiry."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee; monthly maintenance charges are waivable, not participation fees."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official terms: up-to-$300 tiers, $500 DD requirement, 90-day award timing."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New M&T personal checking customers 18+; footprint varies by ZIP; new account by 12/31/2026."
+    },
+    "s2": {
+      "pass": true,
+      "note": "$500+ qualifying direct deposits within 90 days; $14.95/$24.95 mo fees waivable; MyWay ineligible."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Bonus awarded within 90 days after completing the qualifying direct deposits."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No weasel words on core payout — tiers, $500 requirement, and timing stated; location-variance disclosed."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official M&T domains (mtb.com / campaigns.mtb.com) — exact promo URL not directly readable."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: check ZIP, open eligible account by 12/31/26, route $500+ DDs within 90 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official-domain content confirmed 2026-09-23 via mtb.com and campaigns.mtb.com crawls; exact promo page could not be opened directly."
+    }
+  },
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "upfront_fee": false
+}

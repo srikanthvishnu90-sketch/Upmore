@@ -1,0 +1,77 @@
+{
+  "route_id": "R0471",
+  "verdict": "reject",
+  "critical": {
+    "c1": {
+      "evidence": "Monzo is a real operating bank (UK-licensed), but it no longer has a US offering — real company, exited market.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No current US product or offer page exists on monzo.com: the sign-up and current-account pages serve the UK and Ireland only ('UK residents only', FSCS protection, GBP/EUR products).",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No upfront fee is documented for a product that does not exist for US users.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No concrete payout or bonus exists in official terms for US users because Monzo closed its US operations; there is no official offer to anchor any amount to.",
+      "pass": false
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Eligibility documented on monzo.com: accounts for UK residents (and Ireland via monzo.com/ie); US residents cannot open accounts. Monzo withdrew its US banking license application in October 2021 (documented on community.monzo.com, Monzo's official community domain).",
+      "pass": true
+    },
+    "s2": {
+      "note": "No US fee schedule exists; nothing to verify.",
+      "pass": false
+    },
+    "s3": {
+      "note": "No payout timing exists; nothing to verify.",
+      "pass": false
+    },
+    "s4": {
+      "note": "The catalog claim ('check for signup bonus') is concrete but cannot be anchored to any official Monzo US terms because the US product is gone.",
+      "pass": false
+    },
+    "s5": {
+      "note": "https://monzo.com/sign-up — official Monzo sign-up page, loaded live; serves UK/Ireland only, no US offering.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No steps given: the product does not exist for US users (reject).",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-22/23.",
+      "pass": true
+    }
+  },
+  "payout_quote": null,
+  "timing": null,
+  "eligibility": "US residents cannot open Monzo accounts. Monzo serves the UK (and Ireland) only; its US venture is closed.",
+  "biggest_catch": "Monzo exited the US — it announced in March/April 2026 (company-confirmed) that it would stop onboarding new US customers, cut ~50 US roles, and close existing US accounts in June 2026. There is no US product left.",
+  "catches": [
+    "Monzo's company spokesperson confirmed the US exit to press in April 2026: 'a deliberate, strategic decision to focus on scaling in our home market and Europe and to step away from the US' (reported by Bloomberg, Retail Banker International, Irish Times).",
+    "Existing US accounts closed in June 2026 — before this check — so no US offering remains.",
+    "Monzo had already withdrawn its US banking license application in October 2021 after regulators signaled it would not be approved (documented on Monzo's official community site, community.monzo.com).",
+    "monzo.com's current sign-up pages offer UK and Ireland accounts only; no US signup path exists.",
+    "There is no Monzo signup bonus for US users because there is no US product to sign up for."
+  ],
+  "steps": [],
+  "notes": "Checked 2026-09-22/23. Monzo's US exit is company-confirmed and complete (accounts closed June 2026); monzo.com currently serves only the UK and Ireland. This route cannot produce any bonus for a US user — a US resident cannot even open the account. App links left null.",
+  "official_url": "https://monzo.com/sign-up",
+  "terms_url": null,
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T01:40:11Z"
+}

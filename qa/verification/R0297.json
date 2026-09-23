@@ -1,0 +1,75 @@
+{
+ "route_id": "R0297",
+ "verdict": "reject",
+ "official_url": "https://www.treasurydirect.gov/savings-bonds/treasury-hunt/",
+ "terms_url": "https://www.treasurydirect.gov/savings-bonds/treasury-hunt/",
+ "payout_quote": null,
+ "timing": null,
+ "biggest_catch": "The Treasury Hunt online search tool was discontinued on September 30, 2025 — the route's named mechanism no longer exists. TreasuryDirect's own page now reads: 'As of September 30, 2025, the Treasury Hunt tool is no longer available.' (Reporting as of July 2026 notes the state's systems were supposed to receive Treasury's matured-bond data under the Secure 2.0 Act but no replacement system is in place.) Lost, stolen, or destroyed savings bonds can still be claimed via FS Form 1048 on TreasuryDirect's forms page — but that is a different mechanism and would need its own route.",
+ "eligibility": null,
+ "steps": [],
+ "catches": [
+  "The named search tool is gone; sending users to it returns a discontinuation notice, not a search.",
+  "Treasury's redirect tells users to check state unclaimed-property programs, but those programs do not currently hold the Treasury bond data.",
+  "Paperwork-heavy alternative (FS Form 1048, Claim for Lost, Stolen, or Destroyed United States Savings Bonds) still exists but is out of scope for this route as defined."
+ ],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "upfront_fee": false,
+ "checked_at": "2026-09-23T01:45:00Z",
+ "notes": "Checked 2026-09-22/23: loaded the official Treasury Hunt page live — it displays only the discontinuation notice dated September 30, 2025, plus a pointer to the TreasuryDirect savings-bonds forms page for lost/stolen/destroyed bond claims. Do not route users here. If a lost-savings-bond route is wanted, create a new one anchored on FS Form 1048 and verify that separately.",
+ "critical": {
+  "c1": {
+   "evidence": "TreasuryDirect is a real US Treasury (Bureau of the Fiscal Service) service, but the named program — the Treasury Hunt search tool — no longer exists.",
+   "pass": false
+  },
+  "c2": {
+   "evidence": "No live search/claim mechanism under this route's name: the official page shows only a discontinuation notice. FS Form 1048 exists but is a different mechanism, not verified under this route.",
+   "pass": false
+  },
+  "c3": {
+   "evidence": "The tool was free, but it is discontinued, so the fee question is moot.",
+   "pass": false
+  },
+  "c4": {
+   "evidence": "No payout terms can be quoted for a discontinued tool.",
+   "pass": false
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Route as defined is anchored on a discontinued tool.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fee involved, but there is also no live mechanism.",
+   "pass": true
+  },
+  "s3": {
+   "note": "No timing applicable — tool is gone.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words; the discontinuation is stated plainly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.treasurydirect.gov/savings-bonds/treasury-hunt/ — official page, loaded live, shows only the discontinuation notice.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No actionable steps exist for the named mechanism.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official TreasuryDirect page loaded live 2026-09-23.",
+   "pass": true
+  }
+ }
+}

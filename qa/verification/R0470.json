@@ -1,0 +1,76 @@
+{
+  "route_id": "R0470",
+  "verdict": "reject",
+  "critical": {
+    "c1": {
+      "evidence": "N26 is a real operating digital bank (German banking license), but it has no US offering whatsoever — real company, wrong market.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No US product or offer page exists: N26's official account-availability page (support.n26.com) lists 21 European countries only — the US is absent.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No upfront fee is documented for a product that does not exist for US users.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No concrete payout or bonus exists in official terms for US users because N26 discontinued its US operations; there is no official offer to anchor any amount to.",
+      "pass": false
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Eligibility documented on N26's official support page: accounts available only in Austria, Belgium, Denmark, Estonia, Finland, France, Germany, Greece, Iceland, Ireland, Italy, Liechtenstein, Luxembourg, the Netherlands, Norway, Poland, Portugal, Slovenia, Spain, Sweden, and Switzerland — the US is not eligible.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No US fee schedule exists; nothing to verify.",
+      "pass": false
+    },
+    "s3": {
+      "note": "No payout timing exists; nothing to verify.",
+      "pass": false
+    },
+    "s4": {
+      "note": "The catalog claim ('check for signup bonus') is concrete but cannot be anchored to any official N26 US terms because the US product is gone.",
+      "pass": false
+    },
+    "s5": {
+      "note": "https://support.n26.com/en-eu/account-and-personal-details/opening-an-account/can-i-open-an-n26-account-in-my-country — official N26 support page loaded live; US absent from the availability list.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No steps given: the product does not exist for US users (reject).",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-22/23.",
+      "pass": true
+    }
+  },
+  "payout_quote": null,
+  "timing": null,
+  "eligibility": "US residents cannot open N26 accounts. N26 accounts are available only to residents of the 21 European countries listed on N26's official support page.",
+  "biggest_catch": "N26 has no US product at all — it discontinued its US operations on January 11, 2022, and has not returned.",
+  "catches": [
+    "N26 announced on November 18, 2021 that its US operations would end after January 11, 2022; ~500,000 US customers were wound down (official N26 press statement, hosted on N26's own Contentful asset host).",
+    "N26's official account-availability page lists only European countries; the US is not among them.",
+    "There is no N26 signup bonus for US users because there is no US product to sign up for.",
+    "n26.com's US site (previously n26.com/en-us) no longer exists."
+  ],
+  "steps": [],
+  "notes": "Checked 2026-09-22/23. N26 exited the US years ago per its own official announcement; its current official availability page confirms the US is excluded. This route is not a candidate for any bonus — a US user cannot even open the account. App links left null.",
+  "official_url": "https://support.n26.com/en-eu/account-and-personal-details/opening-an-account/can-i-open-an-n26-account-in-my-country",
+  "terms_url": null,
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T01:40:11Z"
+}

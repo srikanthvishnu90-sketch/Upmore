@@ -1,0 +1,77 @@
+{
+  "route_id": "R0473",
+  "verdict": "reject",
+  "critical": {
+    "c1": {
+      "evidence": "X1 was a real credit-card startup, but it no longer exists as a standalone product.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No X1 card product or offer page exists: Robinhood acquired X1 for ~$95M in 2023 and relaunched the card as the Robinhood Gold Card; the standalone X1 card is discontinued.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No upfront fee is documented for a product that no longer exists.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No concrete payout exists: the X1 card is dead, and even its successor (Robinhood Gold Card) carries 'no initial bonus offer' per third-party coverage.",
+      "pass": false
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "No one can apply for the X1 card — it no longer exists as a product.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee schedule exists for a dead product; nothing to verify.",
+      "pass": false
+    },
+    "s3": {
+      "note": "No payout timing exists; nothing to verify.",
+      "pass": false
+    },
+    "s4": {
+      "note": "The catalog claim ('check for signup bonus') cannot be anchored to any official terms because the card is discontinued.",
+      "pass": false
+    },
+    "s5": {
+      "note": "https://x1.co/ — X1's domain (named in the task as the official domain); the standalone X1 card product no longer exists there.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No steps given: the card is discontinued (reject).",
+      "pass": false
+    },
+    "s7": {
+      "note": "Checked 2026-09-22/23.",
+      "pass": true
+    }
+  },
+  "payout_quote": null,
+  "timing": null,
+  "eligibility": "Nobody — the standalone X1 credit card no longer exists and cannot be applied for.",
+  "biggest_catch": "The X1 card is dead — Robinhood acquired X1 for ~$95M in 2023 and relaunched it as the Robinhood Gold Card, which itself offers no initial bonus and requires a $50/year Robinhood Gold subscription.",
+  "catches": [
+    "Robinhood Markets acquired credit-card startup X1 for ~$95 million (announced June 2023, closed Q3 2023); X1's co-founders joined Robinhood.",
+    "The X1 card was rebranded and relaunched as the Robinhood Gold Card in March 2024 — the standalone X1 card no longer accepts applications.",
+    "The successor Gold Card has 'no initial bonus offer' (viewfromthewing.com) and requires a Robinhood Gold subscription ($5/month or $50/year) to hold the card.",
+    "x1.co no longer hosts an X1 card product page.",
+    "Credit limits are borrowing power, not money — and there is no card left to open anyway."
+  ],
+  "steps": [],
+  "notes": "Checked 2026-09-22/23. The X1 card's discontinuation is documented across Bloomberg Law, TechCrunch, Finextra, Nasdaq, and Doctor of Credit coverage of the Robinhood acquisition and Gold Card relaunch. No standalone X1 card product exists to verify — reject as dead. App links left null.",
+  "official_url": "https://x1.co/",
+  "terms_url": null,
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T01:40:11Z"
+}

@@ -1,0 +1,81 @@
+{
+ "route_id": "R0298",
+ "verdict": "verify",
+ "official_url": "https://www.pbgc.gov/search/unclaimed-pensions",
+ "terms_url": "https://www.pbgc.gov/search/unclaimed-pensions",
+ "payout_quote": "PBGC (pbgc.gov): 'Did you earn a retirement benefit from a private-sector employer who lost track of you when your plan ended? If so, your employer may have transferred those benefits to PBGC for safekeeping. Search for your unclaimed retirement benefit.' This finds YOUR OWN pension money if it exists in PBGC's records — it never promises anyone has any.",
+ "timing": "Search is instant. If matched, you contact PBGC (found@pbgc.gov / 800-400-7242) and provide employment details; benefit verification and payout timing are per-case.",
+ "biggest_catch": "PBGC only holds benefits from terminated private-sector defined-benefit pension plans whose employers lost track of participants — if your plan is still active, was a 401(k), or was taken over by an insurer, you will not be here. Most searches return nothing, which is the normal result. PBGC warns it does not endorse firms that charge a fee to find these benefits — the search is free.",
+ "eligibility": "Anyone who may have earned a pension from a private-sector employer whose plan ended and was transferred to PBGC. Searchable by last name, company name, or state. PBGC does not have information on multiemployer plans.",
+ "steps": [
+  "Go to https://www.pbgc.gov/search/unclaimed-pensions and search by your last name, former employer name, or the state where the company was headquartered.",
+  "If your name appears, email found@pbgc.gov (or missing@pbgc.gov) with your current mailing address and dates of employment, or call PBGC's customer contact center at 800-400-7242.",
+  "Provide the employment details and identity documents PBGC requests to verify you are the missing participant.",
+  "If verified, PBGC pays the benefit it is holding for you."
+ ],
+ "catches": [
+  "Only covers terminated defined-benefit plans transferred to PBGC — active plans, 401(k)s, and multiemployer plans are not in this database.",
+  "Most searches return nothing; that is the expected outcome.",
+  "Never pay a 'finder' firm for this — PBGC explicitly says the information is available free and it does not endorse fee-based search firms.",
+  "You may not even know you are owed a benefit (e.g., a short stint at an old employer decades ago)."
+ ],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "upfront_fee": false,
+ "checked_at": "2026-09-23T01:45:00Z",
+ "notes": "Verified 2026-09-22/23: pbgc.gov Workers & Retirees page and the unclaimed-pension search page are live and current (a DOL release cites the same search URL; the program has run since 1996 and reunited 19,000+ workers with $75M+). In-app, this route must stress it is pension-only and free, and warn against fee-charging finder firms. No app — website/phone/email only.",
+ "critical": {
+  "c1": {
+   "evidence": "PBGC — the Pension Benefit Guaranty Corporation, the federal insurer of private-sector defined-benefit pension plans — operates the search.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official pbgc.gov pages describe the unclaimed-pension search and how to contact PBGC (found@pbgc.gov, 800-400-7242) to verify entitlement.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Search and claim are free; PBGC explicitly does not endorse firms offering to find benefits for a fee.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official pages confirm the mechanism: search the directory, then contact PBGC with employment details to determine entitlement; verified participants are paid the benefit owed.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Anyone who may have earned a benefit from a terminated private-sector plan; no multiemployer plan data.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Free; PBGC warns against fee-charging finder firms.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Instant search; per-case verification and payout timing.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the core mechanism — search and contact steps stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.pbgc.gov/search/unclaimed-pensions — official PBGC search, live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: search directory, contact PBGC with employment details, verify identity.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official PBGC pages loaded live 2026-09-22/23.",
+   "pass": true
+  }
+ }
+}
