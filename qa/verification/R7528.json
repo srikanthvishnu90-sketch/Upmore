@@ -1,95 +1,98 @@
 {
- "biggest_catch": "$50 per referral with no stated cap is genuinely good — but you only get paid after your friend donates twice, so refer people who'll actually stick around.",
- "catches": [
-  "You must be a current donor to earn referral pay.",
-  "No pay until the referred donor completes TWO donations — one-and-done friends earn you nothing.",
-  "Referred donor must be brand new to Proesis.",
-  "The six-month clock starts at their first donation."
- ],
- "checked_at": "2026-09-23T12:00:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official proesisbio.com/compensation: 'Receive $50 per each New Donor referral when they complete two donations within the first six months'",
-   "pass": true
+  "biggest_catch": "$50 per referral with no stated cap is genuinely good \u2014 but you only get paid after your friend donates twice, so refer people who'll actually stick around.",
+  "catches": [
+    "You must be a current donor to earn referral pay.",
+    "No pay until the referred donor completes TWO donations \u2014 one-and-done friends earn you nothing.",
+    "Referred donor must be brand new to Proesis.",
+    "The six-month clock starts at their first donation."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official proesisbio.com/compensation: 'Receive $50 per each New Donor referral when they complete two donations within the first six months'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "$50 per referral, paid to prepaid Visa debit card after referred donor's second donation",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No credit card or bank sign-up; donor referral program",
+      "pass": true
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official proesisbio.com: referrals paid to the donor's prepaid Visa debit card after the referred donor's 2nd donation."
+    }
   },
-  "c2": {
-   "evidence": "$50 per referral, paid to prepaid Visa debit card after referred donor's second donation",
-   "pass": true
+  "eligibility": "Must be a current Proesis donor; referred person must be a new donor who completes two donations within their first 6 months",
+  "maximize": "Refer through the ProesisPlus app so referrals are tracked. Target friends who live near a center and can donate twice \u2014 the two-donation threshold is where most referral bonuses die. Stack with the $30 weekly frequency bonus and $5-$10 student/military per-donation bonus on your own donations.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Official proesisbio.com/compensation page verified 2026-09-23. Distinct mechanism from the donation route (R7512): referral income.",
+  "official_url": "https://www.proesisbio.com",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Refer a new donor to earn an additional $50. ... Receive $50 per each New Donor referral when they complete two donations within the first six months. You must be a current donor to qualify.",
+  "provider": "Proesis Bio (Buddy Bonus referral)",
+  "repeatable": {
+    "cadence": "Per qualifying referral, with no stated cap \u2014 every new friend who completes two donations within 6 months earns you another $50.",
+    "note": "$50 per qualifying referral; no stated cap on number of referrals.",
+    "value": true
   },
-  "c3": {
-   "evidence": "No credit card or bank sign-up; donor referral program",
-   "pass": true
+  "route_id": "R7528",
+  "speed": "weeks",
+  "standard": {
+    "s1": {
+      "note": "Official proesisbio.com page verified 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Paid per qualifying referral",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches: must be current donor, two-donation threshold, new donors only",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card, loan, or gambling offer",
+      "pass": true
+    },
+    "s5": {
+      "note": "App-tracked referrals; official site linked",
+      "pass": true
+    },
+    "s6": {
+      "note": "Numeric per-referral amount",
+      "pass": true
+    },
+    "s7": {
+      "note": "Current-donor eligibility, officially stated",
+      "pass": true
+    }
   },
-  "c4": {
-   "pass": true,
-   "evidence": "Official proesisbio.com: referrals paid to the donor's prepaid Visa debit card after the referred donor's 2nd donation."
-  }
- },
- "eligibility": "Must be a current Proesis donor; referred person must be a new donor who completes two donations within their first 6 months",
- "maximize": "Refer through the ProesisPlus app so referrals are tracked. Target friends who live near a center and can donate twice — the two-donation threshold is where most referral bonuses die. Stack with the $30 weekly frequency bonus and $5-$10 student/military per-donation bonus on your own donations.",
- "notes": "Official proesisbio.com/compensation page verified 2026-09-23. Distinct mechanism from the donation route (R7512): referral income.",
- "official_url": "https://www.proesisbio.com",
- "payout_max_usd": 50,
- "payout_min_usd": 50,
- "payout_quote": "Refer a new donor to earn an additional $50. ... Receive $50 per each New Donor referral when they complete two donations within the first six months. You must be a current donor to qualify.",
- "provider": "Proesis Bio (Buddy Bonus referral)",
- "repeatable": {
-  "cadence": "Per qualifying referral, with no stated cap — every new friend who completes two donations within 6 months earns you another $50.",
-  "note": "$50 per qualifying referral; no stated cap on number of referrals.",
-  "value": true
- },
- "route_id": "R7528",
- "speed": "weeks",
- "standard": {
-  "s1": {
-   "note": "Official proesisbio.com page verified 2026-09-23",
-   "pass": true
+  "steps": [
+    "Become a Proesis donor yourself first",
+    "Refer friends/family via the ProesisPlus app",
+    "Each referred new donor completes two donations within 6 months",
+    "Collect $50 per referral on your prepaid Visa debit card"
+  ],
+  "terms_url": "https://www.proesisbio.com/compensation",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 paid after the referred donor completes two donations within their first six months; paid to your prepaid Visa debit card",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "Paid per qualifying referral",
-   "pass": true
-  },
-  "s3": {
-   "note": "Catches: must be current donor, two-donation threshold, new donors only",
-   "pass": true
-  },
-  "s4": {
-   "note": "Not a credit card, loan, or gambling offer",
-   "pass": true
-  },
-  "s5": {
-   "note": "App-tracked referrals; official site linked",
-   "pass": true
-  },
-  "s6": {
-   "note": "Numeric per-referral amount",
-   "pass": true
-  },
-  "s7": {
-   "note": "Current-donor eligibility, officially stated",
-   "pass": true
-  }
- },
- "steps": [
-  "Become a Proesis donor yourself first",
-  "Refer friends/family via the ProesisPlus app",
-  "Each referred new donor completes two donations within 6 months",
-  "Collect $50 per referral on your prepaid Visa debit card"
- ],
- "terms_url": "https://www.proesisbio.com/compensation",
- "time_max_minutes": 15,
- "time_min_minutes": 5,
- "timing": "$50 paid after the referred donor completes two donations within their first six months; paid to your prepaid Visa debit card",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "Proesis Bio pays the $50 referral bonus onto YOUR reloadable prepaid Visa debit card (Paysign) after the referred donor completes their second donation.",
- "who_qualifies": "You must already be a current Proesis donor — non-donors can't earn it. Your referred friend must be brand new to Proesis AND complete two donations within 6 months of their first donation. Refer through the ProesisPlus app so it's tracked.",
- "work_available": "Live as posted on proesisbio.com/compensation as of 2026-09-23. No stated cap on the number of referrals — but it only works at Proesis centers (TX, NC, ID), so your friends need to be near one.",
- "what_gets_accepted": "A referral only pays after the friend completes TWO donations within their first 6 months — one-and-done friends earn you nothing. The six-month clock starts at their first donation.",
- "costs_and_unpaid_time": "Nearly zero of your own time — about 5-15 minutes to refer someone in the app. But your pay depends entirely on someone else following through with two needle donations, which is the real risk.",
- "when_cash_arrives": "$50 per qualifying referral, paid to your prepaid Visa debit card after the referred donor's second donation."
+  "who_pays": "Proesis Bio pays the $50 referral bonus onto YOUR reloadable prepaid Visa debit card (Paysign) after the referred donor completes their second donation.",
+  "who_qualifies": "You must already be a current Proesis donor \u2014 non-donors can't earn it. Your referred friend must be brand new to Proesis AND complete two donations within 6 months of their first donation. Refer through the ProesisPlus app so it's tracked.",
+  "work_available": "Live as posted on proesisbio.com/compensation as of 2026-09-23. No stated cap on the number of referrals \u2014 but it only works at Proesis centers (TX, NC, ID), so your friends need to be near one.",
+  "what_gets_accepted": "A referral only pays after the friend completes TWO donations within their first 6 months \u2014 one-and-done friends earn you nothing. The six-month clock starts at their first donation.",
+  "costs_and_unpaid_time": "Nearly zero of your own time \u2014 about 5-15 minutes to refer someone in the app. But your pay depends entirely on someone else following through with two needle donations, which is the real risk.",
+  "when_cash_arrives": "$50 per qualifying referral, paid to your prepaid Visa debit card after the referred donor's second donation.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

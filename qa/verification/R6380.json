@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Both credits arrive 90 days after all services are installed — and if the new customer cancels before day 90, neither side gets anything.",
+ "catches": [
+  "Credits applied 90 days after all services are installed; both parties must still be active TDS customers at that time",
+  "If the referred customer cancels within 90 days of installation, neither party receives bill credits",
+  "Credit is $25/$50/$75 per side based on the bundle the friend orders ($25 per service added: Internet, TV, phone; max $75 per referred account)",
+  "Friend must be new to TDS (no TDS service in the past 6 months) and keep services for 90 days",
+  "$450 credit maximum per 12 months for the referrer",
+  "Residential customers in TDS serving areas only; TDS employees and affiliates ineligible; no self-referrals"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official TDS Referral Terms on tdstelecom.com/Terms/referral-terms.html (crawled 3 days ago): 'Existing and referred customers will receive a $25, $50, or $75 bill credit based on which bundle package the referred customer orders.' The referral landing page (hellotds.com) confirms: 'After you're a customer for 90 days, we'll both receive bill credits - $25 for each service you add: Internet, TV, and phone.'",
+   "pass": true
   },
-  "biggest_catch": "Both credits arrive 90 days after all services are installed \u2014 and if the new customer cancels before day 90, neither side gets anything.",
-  "catches": [
-    "Credits applied 90 days after all services are installed; both parties must still be active TDS customers at that time",
-    "If the referred customer cancels within 90 days of installation, neither party receives bill credits",
-    "Credit is $25/$50/$75 per side based on the bundle the friend orders ($25 per service added: Internet, TV, phone; max $75 per referred account)",
-    "Friend must be new to TDS (no TDS service in the past 6 months) and keep services for 90 days",
-    "$450 credit maximum per 12 months for the referrer",
-    "Residential customers in TDS serving areas only; TDS employees and affiliates ineligible; no self-referrals"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official TDS Referral Terms on tdstelecom.com/Terms/referral-terms.html (crawled 3 days ago): 'Existing and referred customers will receive a $25, $50, or $75 bill credit based on which bundle package the referred customer orders.' The referral landing page (hellotds.com) confirms: 'After you're a customer for 90 days, we'll both receive bill credits - $25 for each service you add: Internet, TV, and phone.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Terms page crawled 3 days ago; copyright 2026.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'a $25, $50, or $75 bill credit based on which bundle package the referred customer orders' / '$25 for each service you add: Internet, TV, and phone.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "90-day install/keep-service rule, 6-month no-prior-service rule, $450/12-month cap, active-customer-at-credit-time rule, and employee/self-referral exclusions all stated officially.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Terms page crawled 3 days ago; copyright 2026.",
+   "pass": true
   },
-  "eligibility": "Existing residential TDS customer in a TDS serving area (referrer); friend must be new to TDS (no service in past 6 months), order Internet, phone, and/or TV, and keep services for 90 days.",
-  "notes": "Verified 2026-09-23 from official tdstelecom.com referral terms (crawled 3 days ago). Deduped: no TDS Telecom routes in catalog, existing-providers.txt, or rejects-g60 (the 3 fuzzy evidence-file hits were unrelated Texas utility routes). TDS can amend or discontinue the program at any time.",
-  "numeric_basis": "payout from official terms ($25-$75 bill credit to each side by bundle); time: referral share 5-15 min active",
-  "official_url": "https://tdstelecom.com/Terms/referral-terms.html",
-  "payout_max_usd": 75,
-  "payout_min_usd": 25,
-  "payout_quote": "Existing and referred customers will receive a $25, $50, or $75 bill credit based on which bundle package the referred customer orders. After you're a customer for 90 days, we'll both receive bill credits - $25 for each service you add: Internet, TV, and phone.",
-  "payout_value_note": "$25-$75 bill credit to both referrer and friend depending on the bundle \u2014 offsets planned TDS spending, not cash.",
-  "route_id": "R6380",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim in the official terms ($25/$50/$75 by bundle).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned TDS spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official pages (share link, friend orders bundle, both keep service 90 days, credits applied).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 90-day wait and mutual cancellation risk.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own TDS service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against tdstelecom.com (provider's own domain). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'a $25, $50, or $75 bill credit based on which bundle package the referred customer orders' / '$25 for each service you add: Internet, TV, and phone.'",
+   "pass": true
   },
-  "steps": [
-    "Existing TDS customer shares their referral link",
-    "Friend signs up for TDS Internet, phone, and/or TV as a new customer",
-    "Friend keeps all services active for 90 days",
-    "Both sides remain active TDS customers at credit time",
-    "Both receive a $25-$75 bill credit ($25 per service added, max $75) 90 days after installation"
-  ],
-  "terms_url": "https://tdstelecom.com/Terms/referral-terms.html",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits applied 90 days after all services are installed.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "90-day install/keep-service rule, 6-month no-prior-service rule, $450/12-month cap, active-customer-at-credit-time rule, and employee/self-referral exclusions all stated officially.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing residential TDS customer in a TDS serving area (referrer); friend must be new to TDS (no service in past 6 months), order Internet, phone, and/or TV, and keep services for 90 days.",
+ "notes": "Verified 2026-09-23 from official tdstelecom.com referral terms (crawled 3 days ago). Deduped: no TDS Telecom routes in catalog, existing-providers.txt, or rejects-g60 (the 3 fuzzy evidence-file hits were unrelated Texas utility routes). TDS can amend or discontinue the program at any time.",
+ "numeric_basis": "payout from official terms ($25-$75 bill credit to each side by bundle); time: referral share 5-15 min active",
+ "official_url": "https://tdstelecom.com/Terms/referral-terms.html",
+ "payout_max_usd": 75,
+ "payout_min_usd": 25,
+ "payout_quote": "Existing and referred customers will receive a $25, $50, or $75 bill credit based on which bundle package the referred customer orders. After you're a customer for 90 days, we'll both receive bill credits - $25 for each service you add: Internet, TV, and phone.",
+ "payout_value_note": "$25-$75 bill credit to both referrer and friend depending on the bundle — offsets planned TDS spending, not cash.",
+ "route_id": "R6380",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim in the official terms ($25/$50/$75 by bundle).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned TDS spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official pages (share link, friend orders bundle, both keep service 90 days, credits applied).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 90-day wait and mutual cancellation risk.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own TDS service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against tdstelecom.com (provider's own domain). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Existing TDS customer shares their referral link",
+  "Friend signs up for TDS Internet, phone, and/or TV as a new customer",
+  "Friend keeps all services active for 90 days",
+  "Both sides remain active TDS customers at credit time",
+  "Both receive a $25-$75 bill credit ($25 per service added, max $75) 90 days after installation"
+ ],
+ "terms_url": "https://tdstelecom.com/Terms/referral-terms.html",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits applied 90 days after all services are installed.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits applied 90 days after all services are installed.",
+ "maximize": "Fastest honest path: Credits applied 90 days after all services are installed. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

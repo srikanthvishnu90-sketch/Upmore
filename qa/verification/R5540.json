@@ -1,1 +1,89 @@
-{"app_links":{"android":null,"ios":null},"biggest_catch":"The $150 bonus requires a 2-year fixed or mixed electricity + natural gas bundle (single fuel only gets $75), and the credit lands up to 90 days after activation — it applies to energy charges only, not delivery or regulated fees.","catches":["Alberta only — ATCO Energy is a competitive retailer in Alberta, Canada.","New customers only: you must not have had an active site with ATCO Energy in the last 6 months.","Bonus applies to energy charges only; delivery charges, government fees and other regulated charges still apply.","Credit is applied within 90 days of activation, not immediately.","$150 requires enrolling in the 2-year fixed or mixed dual-fuel bundle; electricity or gas alone gets $75."],"checked_at":"2026-09-23T09:37:00Z","critical":{"c1":{"evidence":"atcoenergy.com — ATCO Energy's own official domain hosting the welcome-bonus offer page","pass":true},"c2":{"evidence":"Offer page live; search index crawled it 9 days ago; 'Fall Special' framing indicates a current promotion","pass":true},"c3":{"evidence":"No existing evidence file covers ATCO Energy; dedupe-check.py 'ATCO' returns only false-positive substring hits (Sweatcoin, WECU, cleanheatconnect)","pass":true},"c4":{"evidence":"Zero hits: grep qa/existing-providers.txt, python3 qa/dedupe-check.py 'ATCO', and glob qa/verification/R*.json — ATCO Energy not previously covered","pass":true}},"eligibility":"New ATCO Energy residential or business customers in Alberta with no active site with ATCO Energy in the last 6 months.","notes":"Verified 2026-09-23. ATCO Energy (Alberta, Canada) offers a $150 welcome bonus as a bill credit for new customers enrolling in the 2-year fixed or mixed electricity + natural gas bundle, or $75 for electricity or gas alone. Priced in CAD; converted at CAD→USD 0.713 (2026-09-23): $150 ≈ $107, $75 ≈ $53. Credit applied within 90 days of site activation; energy charges only.","numeric_basis":"payout from official terms ($150 CAD bundle / $75 CAD single-fuel bill credit → $107/$53 at CAD→USD 0.713); time: energy-supplier signup/switch est. 15–30 min active","official_url":"https://atcoenergy.com/offers/fixed-rate-energy-savings","payout_max_usd":107,"payout_min_usd":53,"payout_quote":"Bundle electricity and natural gas as a new ATCO Energy customer and we'll apply the $150 welcome bonus as a credit on your bill. ... You can unlock the best savings of a $150 welcome bonus when you enroll in the 2-year fixed or mixed electricity and natural gas bundle. If you prefer to sign up for electricity or natural gas alone, we offer competitive rates on either option, plus a $75 welcome bonus.","payout_value_note":"ATCO prices in CAD; converted at CAD→USD 0.713 (2026-09-23): $150 bundle bonus ≈ $107, $75 single-fuel bonus ≈ $53.","route_id":"R5540","standard":{"s1":{"note":"Official offer page on atcoenergy.com (supplier-owned domain)","pass":true},"s2":{"note":"Page current as of crawl 9 days ago; promotion actively advertised","pass":true},"s3":{"note":"Distinct mechanism (new-customer welcome bill credit) from all previously covered suppliers","pass":true},"s4":{"note":"Framed as savings on planned energy spending (bill credit), not income","pass":true},"s5":{"note":"90-day credit timing, 6-month new-customer rule, energy-charges-only scope, and Alberta territory all stated","pass":true},"s6":{"note":"No upfront payment to enroll; signup is the normal service switch","pass":true},"s7":{"note":"Official page text copied verbatim from atcoenergy.com/offers/fixed-rate-energy-savings on 2026-09-23","pass":true}},"steps":["Go to atcoenergy.com and shop the home energy plans.","Choose the 2-year fixed or mixed electricity and natural gas bundle (for the $150 bonus) or a single-fuel plan (for the $75 bonus).","Sign up online or by phone as a new customer (ATCO says signup takes about 10 minutes).","Your site is activated and electricity/gas starts flowing; ATCO handles the switch from your current provider.","The welcome bonus credit is applied to your bill within 90 days of activation."],"terms_url":"https://atcoenergy.com/offers/fixed-rate-energy-savings","time_max_minutes":30,"time_min_minutes":15,"timing":"Welcome bonus credit applied to the bill within 90 days of site activation.","upfront_fee":false,"verdict":"verify","weasel_words":[]}
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $150 bonus requires a 2-year fixed or mixed electricity + natural gas bundle (single fuel only gets $75), and the credit lands up to 90 days after activation — it applies to energy charges only, not delivery or regulated fees.",
+ "catches": [
+  "Alberta only — ATCO Energy is a competitive retailer in Alberta, Canada.",
+  "New customers only: you must not have had an active site with ATCO Energy in the last 6 months.",
+  "Bonus applies to energy charges only; delivery charges, government fees and other regulated charges still apply.",
+  "Credit is applied within 90 days of activation, not immediately.",
+  "$150 requires enrolling in the 2-year fixed or mixed dual-fuel bundle; electricity or gas alone gets $75."
+ ],
+ "checked_at": "2026-09-23T09:37:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "atcoenergy.com — ATCO Energy's own official domain hosting the welcome-bonus offer page",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Offer page live; search index crawled it 9 days ago; 'Fall Special' framing indicates a current promotion",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No existing evidence file covers ATCO Energy; dedupe-check.py 'ATCO' returns only false-positive substring hits (Sweatcoin, WECU, cleanheatconnect)",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Zero hits: grep qa/existing-providers.txt, python3 qa/dedupe-check.py 'ATCO', and glob qa/verification/R*.json — ATCO Energy not previously covered",
+   "pass": true
+  }
+ },
+ "eligibility": "New ATCO Energy residential or business customers in Alberta with no active site with ATCO Energy in the last 6 months.",
+ "notes": "Verified 2026-09-23. ATCO Energy (Alberta, Canada) offers a $150 welcome bonus as a bill credit for new customers enrolling in the 2-year fixed or mixed electricity + natural gas bundle, or $75 for electricity or gas alone. Priced in CAD; converted at CAD→USD 0.713 (2026-09-23): $150 ≈ $107, $75 ≈ $53. Credit applied within 90 days of site activation; energy charges only.",
+ "numeric_basis": "payout from official terms ($150 CAD bundle / $75 CAD single-fuel bill credit → $107/$53 at CAD→USD 0.713); time: energy-supplier signup/switch est. 15–30 min active",
+ "official_url": "https://atcoenergy.com/offers/fixed-rate-energy-savings",
+ "payout_max_usd": 107,
+ "payout_min_usd": 53,
+ "payout_quote": "Bundle electricity and natural gas as a new ATCO Energy customer and we'll apply the $150 welcome bonus as a credit on your bill. ... You can unlock the best savings of a $150 welcome bonus when you enroll in the 2-year fixed or mixed electricity and natural gas bundle. If you prefer to sign up for electricity or natural gas alone, we offer competitive rates on either option, plus a $75 welcome bonus.",
+ "payout_value_note": "ATCO prices in CAD; converted at CAD→USD 0.713 (2026-09-23): $150 bundle bonus ≈ $107, $75 single-fuel bonus ≈ $53.",
+ "route_id": "R5540",
+ "standard": {
+  "s1": {
+   "note": "Official offer page on atcoenergy.com (supplier-owned domain)",
+   "pass": true
+  },
+  "s2": {
+   "note": "Page current as of crawl 9 days ago; promotion actively advertised",
+   "pass": true
+  },
+  "s3": {
+   "note": "Distinct mechanism (new-customer welcome bill credit) from all previously covered suppliers",
+   "pass": true
+  },
+  "s4": {
+   "note": "Framed as savings on planned energy spending (bill credit), not income",
+   "pass": true
+  },
+  "s5": {
+   "note": "90-day credit timing, 6-month new-customer rule, energy-charges-only scope, and Alberta territory all stated",
+   "pass": true
+  },
+  "s6": {
+   "note": "No upfront payment to enroll; signup is the normal service switch",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official page text copied verbatim from atcoenergy.com/offers/fixed-rate-energy-savings on 2026-09-23",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Go to atcoenergy.com and shop the home energy plans.",
+  "Choose the 2-year fixed or mixed electricity and natural gas bundle (for the $150 bonus) or a single-fuel plan (for the $75 bonus).",
+  "Sign up online or by phone as a new customer (ATCO says signup takes about 10 minutes).",
+  "Your site is activated and electricity/gas starts flowing; ATCO handles the switch from your current provider.",
+  "The welcome bonus credit is applied to your bill within 90 days of activation."
+ ],
+ "terms_url": "https://atcoenergy.com/offers/fixed-rate-energy-savings",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Welcome bonus credit applied to the bill within 90 days of site activation.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Welcome bonus credit applied to the bill within 90 days of site activation.",
+ "maximize": "Fastest honest path: Welcome bonus credit applied to the bill within 90 days of site activation. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
+}

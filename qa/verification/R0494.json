@@ -1,89 +1,101 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Ordinary Sweatcoins are NOT cash: official terms state 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates' \u2014 real money only comes via the separate $SWEAT crypto route (Sweat Wallet \u2192 exchange sale), and the token's value is tiny (fractions of a cent).",
+ "catches": [
+  "Official terms (sweatco.in/tnc): 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.'",
+  "Cash requires the crypto path: earn Sweatcoins \u2192 install Sweat Wallet \u2192 mint $SWEAT (first 5,000 steps/day) \u2192 transfer to a crypto exchange \u2192 sell. Each step adds friction and fees.",
+  "$SWEAT price is extremely low (~$0.0006/token reported) \u2014 realistic earnings are dollars per year, not dollars per day.",
+  "In-app rewards are mostly discounts, subscriptions, and merchandise \u2014 not money.",
+  "Battery/data drain from step tracking; standard health-app privacy tradeoff."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Sweatcoin live: official terms page https://sweatco.in/tnc fetched live; app active on Google Play and App Store; Sweat Economy/Sweat Wallet ecosystem operational.",
+   "pass": true
   },
-  "biggest_catch": "Ordinary Sweatcoins are NOT cash: official terms state 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates' — real money only comes via the separate $SWEAT crypto route (Sweat Wallet → exchange sale), and the token's value is tiny (fractions of a cent).",
-  "catches": [
-    "Official terms (sweatco.in/tnc): 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.'",
-    "Cash requires the crypto path: earn Sweatcoins → install Sweat Wallet → mint $SWEAT (first 5,000 steps/day) → transfer to a crypto exchange → sell. Each step adds friction and fees.",
-    "$SWEAT price is extremely low (~$0.0006/token reported) — realistic earnings are dollars per year, not dollars per day.",
-    "In-app rewards are mostly discounts, subscriptions, and merchandise — not money.",
-    "Battery/data drain from step tracking; standard health-app privacy tradeoff."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Sweatcoin live: official terms page https://sweatco.in/tnc fetched live; app active on Google Play and App Store; Sweat Economy/Sweat Wallet ecosystem operational.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official terms define the reward; the cash path is the documented Sweat Wallet → $SWEAT crypto → external exchange sale mechanism (per task expectation).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Free app; no upfront fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official terms explicitly deny direct cash conversion; the concrete mechanism is $SWEAT sale on exchanges.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official terms define the reward; the cash path is the documented Sweat Wallet \u2192 $SWEAT crypto \u2192 external exchange sale mechanism (per task expectation).",
+   "pass": true
   },
-  "eligibility": "Worldwide; free app (Android/iOS). Crypto exchange accounts subject to local age/KYC rules.",
-  "notes": "Verified 2026-09-22 on official terms https://sweatco.in/tnc: 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.' This is a VERIFY because the task expects the current steps → $SWEAT crypto → external sale mechanism rather than direct cash redemption; the official terms themselves document why direct cash is impossible. Cashout difficulty and tiny token value are the documented catches. Sweat Wallet app must be installed separately to mint $SWEAT from the first 5,000 steps/day. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)]",
-  "official_url": "https://sweatco.in",
-  "payout_quote": "Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.",
-  "route_id": "R0494",
-  "standard": {
-    "s1": {
-      "note": "Free worldwide; exchange sales need KYC-compliant crypto accounts.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Real but tiny: fractions of a cent per token; dollars-per-year realistic.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Multi-step crypto path; minting, transfer, and sale each take time and may incur fees.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Official terms are blunt about no cash redemption; no inflated claims.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official site and apps live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Walk, install Sweat Wallet, mint $SWEAT, send to exchange, sell for fiat.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Source limitation: $SWEAT exchange-sale mechanics and token price come from reviews; Sweat Economy docs not fetched this pass.",
-      "pass": false
-    }
+  "c3": {
+   "evidence": "Free app; no upfront fee.",
+   "pass": true
   },
-  "steps": [
-    "Install the free Sweatcoin app and walk to earn Sweatcoins (first 5,000 steps/day count).",
-    "Install the Sweat Wallet app and link your Sweatcoin account.",
-    "Mint/convert Sweatcoins into $SWEAT crypto tokens inside Sweat Wallet.",
-    "Transfer $SWEAT to a supported crypto exchange.",
-    "Sell $SWEAT for fiat currency and withdraw to your bank or wallet."
-  ],
-  "terms_url": "https://sweatco.in/tnc",
-  "timing": "Sweatcoin accrual daily; minting, exchange transfer, and sale each add processing time plus potential fees.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official terms explicitly deny direct cash conversion; the concrete mechanism is $SWEAT sale on exchanges.",
+   "pass": true
+  }
+ },
+ "eligibility": "Worldwide; free app (Android/iOS). Crypto exchange accounts subject to local age/KYC rules.",
+ "notes": "Verified 2026-09-22 on official terms https://sweatco.in/tnc: 'Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.' This is a VERIFY because the task expects the current steps \u2192 $SWEAT crypto \u2192 external sale mechanism rather than direct cash redemption; the official terms themselves document why direct cash is impossible. Cashout difficulty and tiny token value are the documented catches. Sweat Wallet app must be installed separately to mint $SWEAT from the first 5,000 steps/day. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)]",
+ "official_url": "https://sweatco.in",
+ "payout_quote": "Sweatcoins cannot be redeemed for cash from SweatCo or any of its affiliates, unless we expressly agree otherwise with you in writing.",
+ "route_id": "R0494",
+ "standard": {
+  "s1": {
+   "note": "Free worldwide; exchange sales need KYC-compliant crypto accounts.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 0.0,
-  "payout_value_note": "no parseable amount; variable",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Other Online (20-60min active)"
+  "s2": {
+   "note": "Real but tiny: fractions of a cent per token; dollars-per-year realistic.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Multi-step crypto path; minting, transfer, and sale each take time and may incur fees.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Official terms are blunt about no cash redemption; no inflated claims.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official site and apps live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Walk, install Sweat Wallet, mint $SWEAT, send to exchange, sell for fiat.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Source limitation: $SWEAT exchange-sale mechanics and token price come from reviews; Sweat Economy docs not fetched this pass.",
+   "pass": false
+  }
+ },
+ "steps": [
+  "Install the free Sweatcoin app and walk to earn Sweatcoins (first 5,000 steps/day count).",
+  "Install the Sweat Wallet app and link your Sweatcoin account.",
+  "Mint/convert Sweatcoins into $SWEAT crypto tokens inside Sweat Wallet.",
+  "Transfer $SWEAT to a supported crypto exchange.",
+  "Sell $SWEAT for fiat currency and withdraw to your bank or wallet."
+ ],
+ "terms_url": "https://sweatco.in/tnc",
+ "timing": "Sweatcoin accrual daily; minting, exchange transfer, and sale each add processing time plus potential fees.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "no parseable amount; variable",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Other Online (20-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Sweatcoin accrual is daily, but Sweatcoins cannot be redeemed for cash from SweatCo; any crypto path needs minting, exchange transfer, and sale with fees.",
+ "maximize": "Accumulate daily.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "No direct cash redemption exists \u2014 the structural blocker is the missing payout rail.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

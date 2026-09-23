@@ -1,100 +1,103 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=com.taskrabbit.tasker",
-  "ios": "https://apps.apple.com/app/taskrabbit-tasker/id745443667"
- },
- "biggest_catch": "Getting your first tasks takes time \u2014 you need a background check, an approved profile, and reviews before clients pick you, and clients are charged only after your invoice goes in.",
- "catches": [
-  "Taskers must pass a background check and register before working; onboarding takes days.",
-  "You set your own rates but compete with other Taskers on price, reviews, and responsiveness.",
-  "Payment requires invoicing after the task; the client is charged within 24 hours of your invoice, then Stripe processing adds 1\u20133 business days.",
-  "Taskers are independent contractors \u2014 no guaranteed work, no benefits; all payments must go through the platform (off-platform payment is banned)."
- ],
- "checked_at": "2026-09-23T13:15:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official TaskRabbit blog (taskrabbit.com, updated July 2026): 'Being a Tasker is a flexible and consistent way to earn... Work as little or as much as you like.' Official support.taskrabbit.com documents Tasker onboarding and invoicing.",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.taskrabbit.tasker",
+    "ios": "https://apps.apple.com/app/taskrabbit-tasker/id745443667"
   },
-  "c2": {
-   "evidence": "Official taskrabbit.com blog: 'Get Paid Fast: Most payouts arrive within 1\u20133 business days. Tips too!' Taskers set their own hourly/fixed rates; invoice = hours worked + agreed expenses; Taskers keep 100% of expenses and tips. Amounts are tasker-set per task (no fixed official range).",
-   "pass": true
+  "biggest_catch": "Getting your first tasks takes time \u2014 you need a background check, an approved profile, and reviews before clients pick you, and clients are charged only after your invoice goes in.",
+  "catches": [
+    "Taskers must pass a background check and register before working; onboarding takes days.",
+    "You set your own rates but compete with other Taskers on price, reviews, and responsiveness.",
+    "Payment requires invoicing after the task; the client is charged within 24 hours of your invoice, then Stripe processing adds 1\u20133 business days.",
+    "Taskers are independent contractors \u2014 no guaranteed work, no benefits; all payments must go through the platform (off-platform payment is banned)."
+  ],
+  "checked_at": "2026-09-23T13:15:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TaskRabbit blog (taskrabbit.com, updated July 2026): 'Being a Tasker is a flexible and consistent way to earn... Work as little or as much as you like.' Official support.taskrabbit.com documents Tasker onboarding and invoicing.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official taskrabbit.com blog: 'Get Paid Fast: Most payouts arrive within 1\u20133 business days. Tips too!' Taskers set their own hourly/fixed rates; invoice = hours worked + agreed expenses; Taskers keep 100% of expenses and tips. Amounts are tasker-set per task (no fixed official range).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join stated on official pages reviewed; earnings paid via direct deposit.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official taskrabbit.com blog FAQ: 'How often do I get paid? Taskrabbit processes payments through Stripe. Most arrive within 1\u20133 business days after task completion.' Support: 'Taskers can receive payouts when transactions have finished processing (usually around 2 to 4 business days).'",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to join stated on official pages reviewed; earnings paid via direct deposit.",
-   "pass": true
+  "eligibility": "18+; ID + SSN; background check; smartphone; active checking account (direct deposit only \u2014 no savings/prepaid); available in TaskRabbit metro areas.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from taskrabbit.com blog + support.taskrabbit.com. Payout amounts are tasker-set per task (variable). Distinct from Airtasker.",
+  "numeric_basis": "payout: tasker-set rate per task (official, variable); time: typical tasks 1-3 hours",
+  "official_url": "https://www.taskrabbit.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Most payouts arrive within 1-3 business days. Tips too! (taskrabbit.com blog) | How often do I get paid? Taskrabbit processes payments through Stripe. Most arrive within 1-3 business days after task completion. (taskrabbit.com blog) | Taskers can receive payouts when transactions have finished processing (usually around 2 to 4 business days). (support.taskrabbit.com)",
+  "payout_value_note": "tasker-set rate per task (no official fixed range); taskers receive 100% of expenses and tips",
+  "provider": "TaskRabbit",
+  "route_id": "R6713",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "18+, ID/SSN, background check, checking account stated.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fees in official pages reviewed.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Stripe payout 1-3 business days after completion \u2014 days.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee on official pages.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official taskrabbit.com blog + support.taskrabbit.com.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Distinct from Airtasker.",
+      "pass": true
+    },
+    "s7": {
+      "note": "upfront_fee false.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official taskrabbit.com blog FAQ: 'How often do I get paid? Taskrabbit processes payments through Stripe. Most arrive within 1\u20133 business days after task completion.' Support: 'Taskers can receive payouts when transactions have finished processing (usually around 2 to 4 business days).'",
-   "pass": true
-  }
- },
- "eligibility": "18+; ID + SSN; background check; smartphone; active checking account (direct deposit only \u2014 no savings/prepaid); available in TaskRabbit metro areas.",
- "notes": "Checked 2026-09-23. Official evidence from taskrabbit.com blog + support.taskrabbit.com. Payout amounts are tasker-set per task (variable). Distinct from Airtasker.",
- "numeric_basis": "payout: tasker-set rate per task (official, variable); time: typical tasks 1-3 hours",
- "official_url": "https://www.taskrabbit.com",
- "payout_max_usd": 0,
- "payout_min_usd": 0,
- "payout_quote": "Most payouts arrive within 1-3 business days. Tips too! (taskrabbit.com blog) | How often do I get paid? Taskrabbit processes payments through Stripe. Most arrive within 1-3 business days after task completion. (taskrabbit.com blog) | Taskers can receive payouts when transactions have finished processing (usually around 2 to 4 business days). (support.taskrabbit.com)",
- "payout_value_note": "tasker-set rate per task (no official fixed range); taskers receive 100% of expenses and tips",
- "provider": "TaskRabbit",
- "route_id": "R6713",
- "speed": "days",
- "standard": {
-  "s1": {
-   "note": "18+, ID/SSN, background check, checking account stated.",
-   "pass": true
+  "steps": [
+    "Register as a Tasker (18+, ID/SSN, background check) and enter bank info for direct deposit.",
+    "Set your rates and skills; get hired by clients for tasks (assembly, moving, cleaning, errands, etc.).",
+    "Complete the task and submit your invoice in the Tasker app (hours + agreed expenses).",
+    "Client is charged within 24 hours of your invoice.",
+    "Stripe processes the payout to your checking account \u2014 most arrive within 1\u20133 business days."
+  ],
+  "terms_url": "https://www.taskrabbit.com/blog/how-pricing-works-on-taskrabbit-and-what-it-means-for-your-earnings/",
+  "time_max_minutes": 180,
+  "time_min_minutes": 60,
+  "timing": "Invoice after task \u2192 client charged within 24h \u2192 Stripe direct deposit, most arriving within 1\u20133 business days.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "No fees in official pages reviewed.",
-   "pass": true
+  "who_pays": "The client who booked you pays through TaskRabbit's platform \u2014 you're an independent contractor.",
+  "who_qualifies": "18+; ID plus SSN; pass a background check; a smartphone; an active checking account (direct deposit only); in TaskRabbit metro areas.",
+  "work_available": "An open marketplace \u2014 you set your own rates but compete with other Taskers on price, reviews, and responsiveness. First tasks come slowly: you need an approved profile and reviews before clients pick you.",
+  "what_gets_accepted": "You invoice after the task and the client is charged within 24 hours of your invoice. All payments must go through the platform \u2014 off-platform payment is banned.",
+  "costs_and_unpaid_time": "No fee to join, but onboarding takes days (background check plus profile approval). Unpaid time: building your profile and winning your first clients with zero reviews.",
+  "when_cash_arrives": "You invoice after the task, the client is charged within 24 hours, and Stripe direct deposit lands in your checking account in 1\u20133 business days.",
+  "repeatable": {
+    "value": true,
+    "cadence": "New tasks post daily \u2014 get hired, complete the task, invoice through the app, get paid via Stripe, and take the next one."
   },
-  "s3": {
-   "note": "Stripe payout 1-3 business days after completion \u2014 days.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee on official pages.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official taskrabbit.com blog + support.taskrabbit.com.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Distinct from Airtasker.",
-   "pass": true
-  },
-  "s7": {
-   "note": "upfront_fee false.",
-   "pass": true
-  }
- },
- "steps": [
-  "Register as a Tasker (18+, ID/SSN, background check) and enter bank info for direct deposit.",
-  "Set your rates and skills; get hired by clients for tasks (assembly, moving, cleaning, errands, etc.).",
-  "Complete the task and submit your invoice in the Tasker app (hours + agreed expenses).",
-  "Client is charged within 24 hours of your invoice.",
-  "Stripe processes the payout to your checking account \u2014 most arrive within 1\u20133 business days."
- ],
- "terms_url": "https://www.taskrabbit.com/blog/how-pricing-works-on-taskrabbit-and-what-it-means-for-your-earnings/",
- "time_max_minutes": 180,
- "time_min_minutes": 60,
- "timing": "Invoice after task \u2192 client charged within 24h \u2192 Stripe direct deposit, most arriving within 1\u20133 business days.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "The client who booked you pays through TaskRabbit's platform \u2014 you're an independent contractor.",
- "who_qualifies": "18+; ID plus SSN; pass a background check; a smartphone; an active checking account (direct deposit only); in TaskRabbit metro areas.",
- "work_available": "An open marketplace \u2014 you set your own rates but compete with other Taskers on price, reviews, and responsiveness. First tasks come slowly: you need an approved profile and reviews before clients pick you.",
- "what_gets_accepted": "You invoice after the task and the client is charged within 24 hours of your invoice. All payments must go through the platform \u2014 off-platform payment is banned.",
- "costs_and_unpaid_time": "No fee to join, but onboarding takes days (background check plus profile approval). Unpaid time: building your profile and winning your first clients with zero reviews.",
- "when_cash_arrives": "You invoice after the task, the client is charged within 24 hours, and Stripe direct deposit lands in your checking account in 1\u20133 business days.",
- "repeatable": {
-  "value": true,
-  "cadence": "New tasks post daily \u2014 get hired, complete the task, invoice through the app, get paid via Stripe, and take the next one."
- }
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

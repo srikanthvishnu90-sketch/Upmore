@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Only the referrer earns the $50 bill credit - the friend gets no stated reward, and the friend must be a new Texas customer on a qualifying term plan with service active for at least 10 days before anything pays out.",
+ "catches": [
+  "The referrer's own electricity service must be active for at least 10 days to qualify.",
+  "The referred customer must be a new Texas customer who enrolls in a qualifying term plan using the referral code and keeps service active for at least 10 days.",
+  "The credit is applied within two billing cycles after the referred customer's 10th active day - not immediately.",
+  "Rewards limited to eligible Texas residential customers; excludes month-to-month plans, sales agents, and mass or automated referrals."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (greenmountainenergy.com); referral page with FAQ terms."
   },
-  "biggest_catch": "Only the referrer earns the $50 bill credit - the friend gets no stated reward, and the friend must be a new Texas customer on a qualifying term plan with service active for at least 10 days before anything pays out.",
-  "catches": [
-    "The referrer's own electricity service must be active for at least 10 days to qualify.",
-    "The referred customer must be a new Texas customer who enrolls in a qualifying term plan using the referral code and keeps service active for at least 10 days.",
-    "The credit is applied within two billing cycles after the referred customer's 10th active day - not immediately.",
-    "Rewards limited to eligible Texas residential customers; excludes month-to-month plans, sales agents, and mass or automated referrals."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (greenmountainenergy.com); referral page with FAQ terms."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Full qualifying conditions, timing, and exclusions stated in the official FAQ."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (bill credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; no existing evidence for Green Mountain Energy (dedupe returned zero hits)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Full qualifying conditions, timing, and exclusions stated in the official FAQ."
   },
-  "eligibility": "Existing Green Mountain Energy customers as referrers; new Texas residential customers enrolling in qualifying term plans as referees.",
-  "notes": "Referrer-only bill credit framed as savings on planned energy spending, never income. The referred friend receives no stated reward - same referrer-only structure as the TriEagle Energy referral (R5491).",
-  "numeric_basis": "payout $50 from official page ('qualify for the $50 bill credit'); time: 5-15 minutes for referral sharing",
-  "official_url": "https://www.GreenMountainEnergy.com/en/referral-page",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Your electricity service must be active for at least 10 days to qualify for the $50 bill credit.",
-  "payout_value_note": "$50 bill credit to the referrer per qualifying referral; the referred friend receives no stated reward.",
-  "route_id": "R5500",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Green Mountain Energy customer with service active at least 10 days."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Share your referral code with a friend in Texas."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Your friend enrolls as a new Green Mountain Energy customer in a qualifying term plan using your referral code."
-    },
-    "s4": {
-      "pass": true,
-      "note": "After your friend's service stays active for at least 10 days, the $50 bill credit is applied to your bill within two billing cycles."
-    },
-    "s5": {
-      "pass": true,
-      "note": "No reward is stated for the referred friend."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Texas residential customers only; month-to-month plans excluded."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Mass or automated referrals and sales agents are excluded."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (bill credit), never income."
   },
-  "steps": [
-    "As an existing Green Mountain Energy customer, get your referral code.",
-    "Share the code with a Texas friend who is not yet a customer.",
-    "Your friend enrolls in a qualifying term plan and keeps service active for 10+ days.",
-    "A $50 bill credit is applied to your bill within two billing cycles."
-  ],
-  "terms_url": "https://www.GreenMountainEnergy.com/en/referral-page",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Sharing the referral code takes 5-15 minutes of active effort; the credit posts within two billing cycles after the friend's 10th active day.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; no existing evidence for Green Mountain Energy (dedupe returned zero hits)."
+  }
+ },
+ "eligibility": "Existing Green Mountain Energy customers as referrers; new Texas residential customers enrolling in qualifying term plans as referees.",
+ "notes": "Referrer-only bill credit framed as savings on planned energy spending, never income. The referred friend receives no stated reward - same referrer-only structure as the TriEagle Energy referral (R5491).",
+ "numeric_basis": "payout $50 from official page ('qualify for the $50 bill credit'); time: 5-15 minutes for referral sharing",
+ "official_url": "https://www.GreenMountainEnergy.com/en/referral-page",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Your electricity service must be active for at least 10 days to qualify for the $50 bill credit.",
+ "payout_value_note": "$50 bill credit to the referrer per qualifying referral; the referred friend receives no stated reward.",
+ "route_id": "R5500",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Green Mountain Energy customer with service active at least 10 days."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Share your referral code with a friend in Texas."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Your friend enrolls as a new Green Mountain Energy customer in a qualifying term plan using your referral code."
+  },
+  "s4": {
+   "pass": true,
+   "note": "After your friend's service stays active for at least 10 days, the $50 bill credit is applied to your bill within two billing cycles."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No reward is stated for the referred friend."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Texas residential customers only; month-to-month plans excluded."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Mass or automated referrals and sales agents are excluded."
+  }
+ },
+ "steps": [
+  "As an existing Green Mountain Energy customer, get your referral code.",
+  "Share the code with a Texas friend who is not yet a customer.",
+  "Your friend enrolls in a qualifying term plan and keeps service active for 10+ days.",
+  "A $50 bill credit is applied to your bill within two billing cycles."
+ ],
+ "terms_url": "https://www.GreenMountainEnergy.com/en/referral-page",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Sharing the referral code takes 5-15 minutes of active effort; the credit posts within two billing cycles after the friend's 10th active day.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Sharing the referral code takes 5-15 minutes of active effort; the credit posts within two billing cycles after the friend's 10th active day.",
+ "maximize": "Fastest honest path: Sharing the referral code takes 5-15 minutes of active effort; the credit posts within two billing cycles after the friend's 10th active day. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

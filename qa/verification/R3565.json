@@ -1,88 +1,100 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $250\u2013$500 is a state contribution added to your 529 account \u2014 savings on planned college saving, not cash in hand. And receiving a state contribution in a given year makes you INELIGIBLE for Maryland's income-subtraction tax break on your own contributions that year, which can offset part of the benefit.",
+ "catches": [
+  "Savings, not income: the state contribution goes into the 529 account \u2014 it is a boost to planned college savings, not spendable cash.",
+  "Income-banded: individual AGI $49,999 or less (joint $74,999 or less) contributing $25+ gets $500; individual $50,000\u2013$87,499 (joint $75,000\u2013$124,999) contributing $100+ gets $500; individual $87,500\u2013$112,500 (joint $125,000\u2013$175,000) contributing $250+ gets $250. Over the cap = ineligible.",
+  "Receiving a state contribution in a year forfeits the Maryland income subtraction (up to $2,500/year/beneficiary) on your own contributions that year \u2014 the net benefit is smaller than the headline.",
+  "Application deadline: 11:59 pm ET May 31; the minimum contribution must be made by 11:59 pm ET November 1 of the application year. Miss either and you get nothing.",
+  "Beneficiary must be a Maryland resident under age 26 in the calendar year before application; account must have been opened after December 31, 2016.",
+  "One application per account owner/beneficiary relationship; a beneficiary may receive only two state contributions in any year; prior $9,000 in state contributions = ineligible.",
+  "Subject to changes by the Maryland General Assembly \u2014 the legislature can alter or end the program.",
+  "Standard 529 tax risk: non-qualified withdrawals face federal income tax plus a 10% federal penalty on earnings (and Maryland may recapture deductions) \u2014 consult a tax professional."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Maryland529 is the official administrator of the Maryland College Investment Plan; the Save4College State Contribution Program page is on the official maryland529.com domain, fetched live 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "The $250–$500 is a state contribution added to your 529 account — savings on planned college saving, not cash in hand. And receiving a state contribution in a given year makes you INELIGIBLE for Maryland's income-subtraction tax break on your own contributions that year, which can offset part of the benefit.",
-  "catches": [
-    "Savings, not income: the state contribution goes into the 529 account — it is a boost to planned college savings, not spendable cash.",
-    "Income-banded: individual AGI $49,999 or less (joint $74,999 or less) contributing $25+ gets $500; individual $50,000–$87,499 (joint $75,000–$124,999) contributing $100+ gets $500; individual $87,500–$112,500 (joint $125,000–$175,000) contributing $250+ gets $250. Over the cap = ineligible.",
-    "Receiving a state contribution in a year forfeits the Maryland income subtraction (up to $2,500/year/beneficiary) on your own contributions that year — the net benefit is smaller than the headline.",
-    "Application deadline: 11:59 pm ET May 31; the minimum contribution must be made by 11:59 pm ET November 1 of the application year. Miss either and you get nothing.",
-    "Beneficiary must be a Maryland resident under age 26 in the calendar year before application; account must have been opened after December 31, 2016.",
-    "One application per account owner/beneficiary relationship; a beneficiary may receive only two state contributions in any year; prior $9,000 in state contributions = ineligible.",
-    "Subject to changes by the Maryland General Assembly — the legislature can alter or end the program.",
-    "Standard 529 tax risk: non-qualified withdrawals face federal income tax plus a 10% federal penalty on earnings (and Maryland may recapture deductions) — consult a tax professional."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Maryland529 is the official administrator of the Maryland College Investment Plan; the Save4College State Contribution Program page is on the official maryland529.com domain, fetched live 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official maryland529.com table: individual $49,999 or less / joint $74,999 or less, $25 minimum, $500 state contribution; individual $50,000–$87,499 / joint $75,000–$124,999, $100 minimum, $500; individual $87,500–$112,500 / joint $125,000–$175,000, $250 minimum, $250 state contribution.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; the minimum contribution is the participant's own 529 savings (as low as $25).",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Program page live on maryland529.com as fetched 2026-09-23 (UTC), referencing the 2026 application year — current as of verification.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official maryland529.com table: individual $49,999 or less / joint $74,999 or less, $25 minimum, $500 state contribution; individual $50,000\u2013$87,499 / joint $75,000\u2013$124,999, $100 minimum, $500; individual $87,500\u2013$112,500 / joint $125,000\u2013$175,000, $250 minimum, $250 state contribution.",
+   "pass": true
   },
-  "eligibility": "Maryland resident account owner 18+; Maryland resident beneficiary under 26 in the prior calendar year; AGI within the published bands (individual ≤$112,500 / joint ≤$175,000); account opened after 12/31/2016; minimum contribution by Nov 1; application by May 31; prior state contributions under $9,000.",
-  "notes": "Verified on official maryland529.com save4college page 2026-09-23 (UTC). The Maryland Comptroller verifies the AGI provided. The income-subtraction forfeiture is stated verbatim on the page and is the key net-math caveat.",
-  "official_url": "https://maryland529.com/home/save4college.html",
-  "payout_max_usd": 500,
-  "payout_min_usd": 250,
-  "payout_quote": "$49,999 or less | $74,999 or less | $25 | $500; $50,000 - $87,499 | $75,000 - $124,999 | $100 | $500; $87,500 - $112,500 | $125,000 - $175,000 | $250 | $250",
-  "payout_value_note": "state contribution of $250 or $500 by income band, per the official Maryland529 table",
-  "route_id": "R3565",
-  "standard": {
-    "s1": {
-      "note": "State 529 contribution mechanism; no Maryland 529 route exists in the catalog or verification files.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Concrete steps: open/have an eligible MCIP account, submit application by May 31, make the band's minimum contribution by Nov 1.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Annual cycle: apply by May 31, minimum contribution by Nov 1; 2026 application year referenced on the live page.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Catches include income-band payout tiers, income-subtraction forfeiture (net math), twin deadlines, age/residency/account-age gates, two-contributions-per-year limit, legislative-change risk, and non-qualified-withdrawal tax/penalty risk.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; the minimum contribution ($25–$250 by band) is ordinary 529 savings.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Public program on maryland529.com — no invitation required; AGI band is the gate.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Dedupe: grep/dedupe-check/verification-file search — no Maryland 529 / Save4College route in catalog.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; the minimum contribution is the participant's own 529 savings (as low as $25).",
+   "pass": true
   },
-  "steps": [
-    "Open a Maryland College Investment Plan 529 account if you don't have one (must be an account opened after December 31, 2016).",
-    "Check your AGI against the official table to find your band and minimum contribution ($25 for $500, $100 for $500, or $250 for $250).",
-    "Submit the Save4College State Contribution Program application by 11:59 pm ET on May 31.",
-    "Make at least the band's minimum contribution to the applied-for account by 11:59 pm ET on November 1 of the application year."
-  ],
-  "terms_url": "https://maryland529.com/home/save4college.html",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Annual program: application by May 31; minimum contribution by November 1 of the application year.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "numeric_basis": "payout from official Maryland529 table ($250/$500 by income band); time: account opening + program application est. 30-60 min active"
+  "c4": {
+   "evidence": "Program page live on maryland529.com as fetched 2026-09-23 (UTC), referencing the 2026 application year \u2014 current as of verification.",
+   "pass": true
+  }
+ },
+ "eligibility": "Maryland resident account owner 18+; Maryland resident beneficiary under 26 in the prior calendar year; AGI within the published bands (individual \u2264$112,500 / joint \u2264$175,000); account opened after 12/31/2016; minimum contribution by Nov 1; application by May 31; prior state contributions under $9,000.",
+ "notes": "Verified on official maryland529.com save4college page 2026-09-23 (UTC). The Maryland Comptroller verifies the AGI provided. The income-subtraction forfeiture is stated verbatim on the page and is the key net-math caveat.",
+ "official_url": "https://maryland529.com/home/save4college.html",
+ "payout_max_usd": 500,
+ "payout_min_usd": 250,
+ "payout_quote": "$49,999 or less | $74,999 or less | $25 | $500; $50,000 - $87,499 | $75,000 - $124,999 | $100 | $500; $87,500 - $112,500 | $125,000 - $175,000 | $250 | $250",
+ "payout_value_note": "state contribution of $250 or $500 by income band, per the official Maryland529 table",
+ "route_id": "R3565",
+ "standard": {
+  "s1": {
+   "note": "State 529 contribution mechanism; no Maryland 529 route exists in the catalog or verification files.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Concrete steps: open/have an eligible MCIP account, submit application by May 31, make the band's minimum contribution by Nov 1.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Annual cycle: apply by May 31, minimum contribution by Nov 1; 2026 application year referenced on the live page.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Catches include income-band payout tiers, income-subtraction forfeiture (net math), twin deadlines, age/residency/account-age gates, two-contributions-per-year limit, legislative-change risk, and non-qualified-withdrawal tax/penalty risk.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; the minimum contribution ($25\u2013$250 by band) is ordinary 529 savings.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Public program on maryland529.com \u2014 no invitation required; AGI band is the gate.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Dedupe: grep/dedupe-check/verification-file search \u2014 no Maryland 529 / Save4College route in catalog.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a Maryland College Investment Plan 529 account if you don't have one (must be an account opened after December 31, 2016).",
+  "Check your AGI against the official table to find your band and minimum contribution ($25 for $500, $100 for $500, or $250 for $250).",
+  "Submit the Save4College State Contribution Program application by 11:59 pm ET on May 31.",
+  "Make at least the band's minimum contribution to the applied-for account by 11:59 pm ET on November 1 of the application year."
+ ],
+ "terms_url": "https://maryland529.com/home/save4college.html",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Annual program: application by May 31; minimum contribution by November 1 of the application year.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "numeric_basis": "payout from official Maryland529 table ($250/$500 by income band); time: account opening + program application est. 30-60 min active",
+ "speed": "weeks",
+ "when_cash_arrives": "Annual program: application by May 31; minimum contribution by November 1 of the application year.",
+ "maximize": "Apply and contribute before the deadlines.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The annual cycle is the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

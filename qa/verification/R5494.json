@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "This only pays off if you actually paid an early-termination fee to your old provider - it is reimbursement of a cost you already incurred, not free money - and you must repay Amigo if you leave them within 12 months.",
+ "catches": [
+  "Only available on Amigo Energy Texas term agreements of 12 months or more.",
+  "You must submit your old provider's final bill showing the cancellation fee within 90 days of enrollment.",
+  "The credit is applied only after your first full-service period bill with Amigo is paid in full.",
+  "You must repay the reimbursement to Amigo Energy if you switch away within 12 months of starting your Agreement."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (amigoenergy.com); full program terms stated on the page."
   },
-  "biggest_catch": "This only pays off if you actually paid an early-termination fee to your old provider - it is reimbursement of a cost you already incurred, not free money - and you must repay Amigo if you leave them within 12 months.",
-  "catches": [
-    "Only available on Amigo Energy Texas term agreements of 12 months or more.",
-    "You must submit your old provider's final bill showing the cancellation fee within 90 days of enrollment.",
-    "The credit is applied only after your first full-service period bill with Amigo is paid in full.",
-    "You must repay the reimbursement to Amigo Energy if you switch away within 12 months of starting your Agreement."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (amigoenergy.com); full program terms stated on the page."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Official program page text states the offer terms verbatim; signup phone 866-223-3479 and Houston HQ listed on the same page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (bill credit), not income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Mechanism is distinct from R1880 (Amigo referral) and R1881 (Amigo demand-response); cancellation-fee reimbursement verified on same official domain."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Official program page text states the offer terms verbatim; signup phone 866-223-3479 and Houston HQ listed on the same page."
   },
-  "eligibility": "New Amigo Energy Texas customers on term agreements of 12+ months who paid an early-termination/cancellation fee to their previous electric provider.",
-  "notes": "Cancellation-fee reimbursement framed as savings on planned energy spending, never income. Repayment clause if customer switches away within 12 months. Distinct from R1880 (Amigo refer-a-friend) and R1881 (Amigo demand-response rewards).",
-  "numeric_basis": "payout up to $150 from official page text ('reimburse up to $150', applied as a bill credit); time: 15-30 minutes for switching/signup per user constraint",
-  "official_url": "https://amigoenergy.com/social/",
-  "payout_max_usd": 150,
-  "payout_min_usd": 0,
-  "payout_quote": "We're always looking to make electricity transfer easier, which is why we're ready to reimburse up to $150 of the cancellation fee your old provider charges. Specifically, this applies for Texas electricity plans with term agreements of 12 months or more.",
-  "payout_value_note": "Up to $150 as a bill credit reimbursing the cancellation fee charged by the previous provider; actual amount depends on the fee the customer paid (up to $150).",
-  "route_id": "R5494",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "New Amigo Energy Texas customer on a term agreement of 12 months or greater."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Paid a cancellation/early-termination fee to the previous electric provider."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Submit the old provider's final bill showing the cancellation fee within 90 days of enrollment."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Credit posts as a bill credit after the first full-service-period bill with Amigo is paid in full."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Retention risk: reimbursement must be repaid to Amigo Energy if the customer switches away within 12 months of starting the Agreement."
-    },
-    "s6": {
-      "pass": true,
-      "note": "No direct cash payout; credit applies to the Amigo Energy bill only."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Texas deregulated areas only, per page FAQ."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (bill credit), not income."
   },
-  "steps": [
-    "Compare and enroll in an Amigo Energy Texas plan with a term of 12 months or more.",
-    "Keep the final bill from your previous provider that shows the cancellation fee.",
-    "Submit that bill within 90 days of enrollment via email to customersupport@amigoenergy.com, mail, or fax.",
-    "Pay your first full-service-period Amigo Energy bill in full; the reimbursement credit is applied to your account."
-  ],
-  "terms_url": "https://amigoenergy.com/social/",
-  "time_max_minutes": 30,
-  "time_min_minutes": 15,
-  "timing": "Switching/signup is 15-30 minutes of active effort; the credit appears after the first full-service-period bill is paid in full.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Mechanism is distinct from R1880 (Amigo referral) and R1881 (Amigo demand-response); cancellation-fee reimbursement verified on same official domain."
+  }
+ },
+ "eligibility": "New Amigo Energy Texas customers on term agreements of 12+ months who paid an early-termination/cancellation fee to their previous electric provider.",
+ "notes": "Cancellation-fee reimbursement framed as savings on planned energy spending, never income. Repayment clause if customer switches away within 12 months. Distinct from R1880 (Amigo refer-a-friend) and R1881 (Amigo demand-response rewards).",
+ "numeric_basis": "payout up to $150 from official page text ('reimburse up to $150', applied as a bill credit); time: 15-30 minutes for switching/signup per user constraint",
+ "official_url": "https://amigoenergy.com/social/",
+ "payout_max_usd": 150,
+ "payout_min_usd": 0,
+ "payout_quote": "We're always looking to make electricity transfer easier, which is why we're ready to reimburse up to $150 of the cancellation fee your old provider charges. Specifically, this applies for Texas electricity plans with term agreements of 12 months or more.",
+ "payout_value_note": "Up to $150 as a bill credit reimbursing the cancellation fee charged by the previous provider; actual amount depends on the fee the customer paid (up to $150).",
+ "route_id": "R5494",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "New Amigo Energy Texas customer on a term agreement of 12 months or greater."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Paid a cancellation/early-termination fee to the previous electric provider."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Submit the old provider's final bill showing the cancellation fee within 90 days of enrollment."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Credit posts as a bill credit after the first full-service-period bill with Amigo is paid in full."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Retention risk: reimbursement must be repaid to Amigo Energy if the customer switches away within 12 months of starting the Agreement."
+  },
+  "s6": {
+   "pass": true,
+   "note": "No direct cash payout; credit applies to the Amigo Energy bill only."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Texas deregulated areas only, per page FAQ."
+  }
+ },
+ "steps": [
+  "Compare and enroll in an Amigo Energy Texas plan with a term of 12 months or more.",
+  "Keep the final bill from your previous provider that shows the cancellation fee.",
+  "Submit that bill within 90 days of enrollment via email to customersupport@amigoenergy.com, mail, or fax.",
+  "Pay your first full-service-period Amigo Energy bill in full; the reimbursement credit is applied to your account."
+ ],
+ "terms_url": "https://amigoenergy.com/social/",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Switching/signup is 15-30 minutes of active effort; the credit appears after the first full-service-period bill is paid in full.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Switching/signup is 15-30 minutes of active effort; the credit appears after the first full-service-period bill is paid in full.",
+ "maximize": "Fastest honest path: Switching/signup is 15-30 minutes of active effort; the credit appears after the first full-service-period bill is paid in full. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

@@ -1,85 +1,96 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You must open through the official promotions.bankofamerica.com offer page by 2026-12-31 (online only) and the balance must never drop below $5,000 on any day of the maintenance period, or no bonus is paid.",
+ "catches": [
+  "Online-only offer: you must open the account through the official BofA promotional webpage; other channels do not qualify.",
+  "Not eligible if you were an owner or signer on a Bank of America Business Advantage checking account within the last 12 months.",
+  "New Money only: deposits cannot come from another Bank of America or Merrill account.",
+  "One bonus per business customer, regardless of the number of businesses owned.",
+  "If your daily balance drops below $5,000 at any point during the Maintenance Period (days 31-90), you lose eligibility entirely.",
+  "Bank of America employees are not eligible."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Bank of America, N.A. - real FDIC-insured bank; bonus terms published on official promotions.bankofamerica.com offer page (search crawl of the official domain, 2026-09-23).",
+   "pass": true
   },
-  "biggest_catch": "You must open through the official promotions.bankofamerica.com offer page by 2026-12-31 (online only) and the balance must never drop below $5,000 on any day of the maintenance period, or no bonus is paid.",
-  "catches": [
-    "Online-only offer: you must open the account through the official BofA promotional webpage; other channels do not qualify.",
-    "Not eligible if you were an owner or signer on a Bank of America Business Advantage checking account within the last 12 months.",
-    "New Money only: deposits cannot come from another Bank of America or Merrill account.",
-    "One bonus per business customer, regardless of the number of businesses owned.",
-    "If your daily balance drops below $5,000 at any point during the Maintenance Period (days 31-90), you lose eligibility entirely.",
-    "Bank of America employees are not eligible."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Bank of America, N.A. - real FDIC-insured bank; bonus terms published on official promotions.bankofamerica.com offer page (search crawl of the official domain, 2026-09-23).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page states: open a new eligible Business Advantage Banking account through the webpage by December 31, 2026; $400 for $5,000 in New Money Deposits, $750 for $15,000; maintain a daily balance during the Maintenance Period (days 31-90); below $5,000 = no bonus.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to enroll; standard Business Advantage account monthly fees may apply (avoidable per account terms).",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Concrete payout: $400 for $5,000 deposited and maintained, $750 for $15,000 deposited and maintained.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page states: open a new eligible Business Advantage Banking account through the webpage by December 31, 2026; $400 for $5,000 in New Money Deposits, $750 for $15,000; maintain a daily balance during the Maintenance Period (days 31-90); below $5,000 = no bonus.",
+   "pass": true
   },
-  "eligibility": "New business customers only; must apply online through the promotional page; US residents with a qualifying business.",
-  "notes": "VERIFIED via official-domain search crawl of promotions.bankofamerica.com (captured 2026-09-23). Two official tiers: $400 ($5,000) and $750 ($15,000). Note: an aggregator (doctorofcredit, 2026-07-07 update) mentions higher tiers up to $2,500 ($50k/$100k/$250k deposits) possibly on a different promotional page; this JSON verifies only the $400/$750 tiers confirmed on the official page.",
-  "numeric_basis": "payout from official terms ($400/$750 flat tiers); time: online application + deposit of new money est. 30-60 min active.",
-  "official_url": "https://promotions.bankofamerica.com/smallbusiness/biz2toffer",
-  "payout_max_usd": 750,
-  "payout_min_usd": 400,
-  "payout_quote": "Open a new eligible Business Advantage Banking account through this webpage by December 31, 2026. Deposit New Money directly into that new eligible Business Advantage Banking account within 30 days of account opening (\"Deposit Period\"). At the end of the Deposit Period, all New Money deposits will be totaled to determine which Cash Bonus you are eligible for. $400: $5,000 in New Money Deposits. $750: $15,000 in New Money Deposits. Maintain a daily balance during the Maintenance Period. During the Maintenance Period, if your daily balance drops below $5,000, you will no longer be eligible for a cash bonus.",
-  "payout_value_note": "Flat $400 or $750 cash tiers depending on the amount deposited and maintained.",
-  "route_id": "R0956",
-  "standard": {
-    "s1": {
-      "note": "Official provider domain (promotions.bankofamerica.com) via search crawl.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Verbatim official terms quoted in payout_quote.",
-      "pass": true
-    },
-    "s3": {
-      "note": "No direct-deposit requirement; new-money deposit only.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Expiration 2026-12-31 confirmed on the official page.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Account monthly fees may apply; no purchase required.",
-      "pass": true
-    },
-    "s6": {
-      "note": "One bonus per business customer; 12-month prior-owner exclusion.",
-      "pass": true
-    },
-    "s7": {
-      "note": "New-money and daily-balance mechanics confirmed in official terms.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to enroll; standard Business Advantage account monthly fees may apply (avoidable per account terms).",
+   "pass": true
   },
-  "steps": [
-    "Open a new eligible Business Advantage Banking account through the official BofA promotional webpage by December 31, 2026.",
-    "Within 30 days of account opening (Deposit Period), deposit New Money directly into the new account: at least $5,000 for the $400 bonus or at least $15,000 for the $750 bonus.",
-    "Maintain a daily balance at or above the qualifying threshold ($5,000 / $15,000) during the Maintenance Period (days 31-90 after account opening)."
-  ],
-  "terms_url": "https://promotions.bankofamerica.com/smallbusiness/biz2toffer",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Bonus deposited into the new Business Advantage Banking account after all requirements are met; the official captured crawl does not state an exact payout window.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Concrete payout: $400 for $5,000 deposited and maintained, $750 for $15,000 deposited and maintained.",
+   "pass": true
+  }
+ },
+ "eligibility": "New business customers only; must apply online through the promotional page; US residents with a qualifying business.",
+ "notes": "VERIFIED via official-domain search crawl of promotions.bankofamerica.com (captured 2026-09-23). Two official tiers: $400 ($5,000) and $750 ($15,000). Note: an aggregator (doctorofcredit, 2026-07-07 update) mentions higher tiers up to $2,500 ($50k/$100k/$250k deposits) possibly on a different promotional page; this JSON verifies only the $400/$750 tiers confirmed on the official page.",
+ "numeric_basis": "payout from official terms ($400/$750 flat tiers); time: online application + deposit of new money est. 30-60 min active.",
+ "official_url": "https://promotions.bankofamerica.com/smallbusiness/biz2toffer",
+ "payout_max_usd": 750,
+ "payout_min_usd": 400,
+ "payout_quote": "Open a new eligible Business Advantage Banking account through this webpage by December 31, 2026. Deposit New Money directly into that new eligible Business Advantage Banking account within 30 days of account opening (\"Deposit Period\"). At the end of the Deposit Period, all New Money deposits will be totaled to determine which Cash Bonus you are eligible for. $400: $5,000 in New Money Deposits. $750: $15,000 in New Money Deposits. Maintain a daily balance during the Maintenance Period. During the Maintenance Period, if your daily balance drops below $5,000, you will no longer be eligible for a cash bonus.",
+ "payout_value_note": "Flat $400 or $750 cash tiers depending on the amount deposited and maintained.",
+ "route_id": "R0956",
+ "standard": {
+  "s1": {
+   "note": "Official provider domain (promotions.bankofamerica.com) via search crawl.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Verbatim official terms quoted in payout_quote.",
+   "pass": true
+  },
+  "s3": {
+   "note": "No direct-deposit requirement; new-money deposit only.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Expiration 2026-12-31 confirmed on the official page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Account monthly fees may apply; no purchase required.",
+   "pass": true
+  },
+  "s6": {
+   "note": "One bonus per business customer; 12-month prior-owner exclusion.",
+   "pass": true
+  },
+  "s7": {
+   "note": "New-money and daily-balance mechanics confirmed in official terms.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new eligible Business Advantage Banking account through the official BofA promotional webpage by December 31, 2026.",
+  "Within 30 days of account opening (Deposit Period), deposit New Money directly into the new account: at least $5,000 for the $400 bonus or at least $15,000 for the $750 bonus.",
+  "Maintain a daily balance at or above the qualifying threshold ($5,000 / $15,000) during the Maintenance Period (days 31-90 after account opening)."
+ ],
+ "terms_url": "https://promotions.bankofamerica.com/smallbusiness/biz2toffer",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Bonus deposited into the new Business Advantage Banking account after all requirements are met; the official captured crawl does not state an exact payout window.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $400–$750. Per official terms: Bonus deposited into the new Business Advantage Banking account after all requirements are met; the official captured crawl does not state an exact payout window. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

@@ -1,87 +1,98 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The headline $1,000 requires stacking all three components: a $50,000+ average balance in the third statement cycle plus both a Positive Pay enrollment and a Merchant Services enrollment - the pure checking balance alone pays at most $700.",
+ "catches": [
+  "New business customers only; the account must remain open and active through the qualifying statement cycle.",
+  "Must complete 10 or more customer-initiated transactions within 90 days of account opening.",
+  "Balance is measured as the average balance during the third full statement cycle only (not a daily minimum).",
+  "The Positive Pay add-on bonus ($125/$150) requires enrollment in Positive Pay within 90 days of account opening.",
+  "The Merchant Services add-on bonus ($125/$150) requires establishing WaterStone Bank Merchant Services within 180 days of account opening - do not sign up for services you do not need just to chase the add-on.",
+  "Do not close the account before bonuses are credited."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "WaterStone Bank (WI) - real FDIC-insured bank; tiered bonus terms published on official wsbonline.com promotion page (search crawl of the official domain, 2026-09-23).",
+   "pass": true
   },
-  "biggest_catch": "The headline $1,000 requires stacking all three components: a $50,000+ average balance in the third statement cycle plus both a Positive Pay enrollment and a Merchant Services enrollment - the pure checking balance alone pays at most $700.",
-  "catches": [
-    "New business customers only; the account must remain open and active through the qualifying statement cycle.",
-    "Must complete 10 or more customer-initiated transactions within 90 days of account opening.",
-    "Balance is measured as the average balance during the third full statement cycle only (not a daily minimum).",
-    "The Positive Pay add-on bonus ($125/$150) requires enrollment in Positive Pay within 90 days of account opening.",
-    "The Merchant Services add-on bonus ($125/$150) requires establishing WaterStone Bank Merchant Services within 180 days of account opening - do not sign up for services you do not need just to chase the add-on.",
-    "Do not close the account before bonuses are credited."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "WaterStone Bank (WI) - real FDIC-insured bank; tiered bonus terms published on official wsbonline.com promotion page (search crawl of the official domain, 2026-09-23).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page states: $300 for average balance $5,000.00-$24,499.99; $500 for $25,000.00-$49,999.99; $700 for $50,000.00+ during the third full statement cycle; 10+ transactions within 90 days; +$125/$150 for Positive Pay enrollment (90 days); +$125/$150 for Merchant Services (180 days).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee stated.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Concrete payout: $300-$700 base by balance tier, plus up to $300 in add-on service bonuses ($1,000 total max).",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page states: $300 for average balance $5,000.00-$24,499.99; $500 for $25,000.00-$49,999.99; $700 for $50,000.00+ during the third full statement cycle; 10+ transactions within 90 days; +$125/$150 for Positive Pay enrollment (90 days); +$125/$150 for Merchant Services (180 days).",
+   "pass": true
   },
-  "eligibility": "New business customers opening an eligible WaterStone Bank Business Checking account.",
-  "notes": "VERIFIED via official-domain search crawl of wsbonline.com (captured 2026-09-23). Aggregators describe the offer as WI-only and in-branch, but the official captured text does not state geography; geography note recorded as Wisconsin per bank footprint. No expiry date in the captured official text.",
-  "numeric_basis": "payout from official terms ($300/$500/$700 tiers + $125/$150 service add-ons); time: application + 10 transactions + enrollments est. 60-120 min active.",
-  "official_url": "https://www.wsbonline.com/promotion/earn-up-to-1000-business-checking-bonus/",
-  "payout_max_usd": 1000,
-  "payout_min_usd": 300,
-  "payout_quote": "New business customers who open an eligible Business Checking account may qualify for a one time cash bonus based on the average balance maintained during the third full statement cycle, provided the account remains open and active and the customer completes ten (10) or more customer initiated transactions within ninety (90) days of account opening. A $300.00 bonus will be paid if the account maintains an average balance between $5,000.00 and $24,499.99 during the third full statement cycle. A $500.00 bonus will be paid if the account maintains an average balance between $25,000.00 and $49,999.99 during the third full statement cycle. A $700.00 bonus will be paid if the account maintains an average balance of $50,000.00 or more during the third full statement cycle. An additional $125.00 bonus (for accounts qualifying for the $300.00 tier) or $150.00 bonus (for accounts qualifying for the $500.00 or $700.00 tiers) will be paid if the customer enrolls in Positive Pay services within ninety (90) days of Business Checking account opening. An additional $125.00/$150.00 bonus will be paid if the customer establishes WaterStone Bank Merchant Services within one hundred eighty (180) days of account opening.",
-  "payout_value_note": "$300/$500/$700 base by third-cycle average balance; +$125/$150 Positive Pay and +$125/$150 Merchant Services add-ons; $1,000 total maximum.",
-  "route_id": "R0959",
-  "standard": {
-    "s1": {
-      "note": "Official provider domain (wsbonline.com) via search crawl.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Verbatim official terms quoted in payout_quote.",
-      "pass": true
-    },
-    "s3": {
-      "note": "10-transaction and balance mechanics confirmed in official terms.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No expiry stated in the captured official text.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No purchase or fee required for the base bonus; warn against unneeded service enrollments.",
-      "pass": true
-    },
-    "s6": {
-      "note": "New business customers only; account must remain open and active.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Credit timing confirmed: third full statement cycle (sixth for Merchant Services).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee stated.",
+   "pass": true
   },
-  "steps": [
-    "Open an eligible WaterStone Bank Business Checking account as a new business customer and keep it open and active.",
-    "Complete 10 or more customer-initiated transactions within 90 days of account opening.",
-    "Maintain an average balance during the third full statement cycle: $5,000-$24,499.99 ($300), $25,000-$49,999.99 ($500), or $50,000+ ($700).",
-    "Optionally enroll in Positive Pay services within 90 days of account opening for the add-on bonus.",
-    "Optionally establish WaterStone Bank Merchant Services within 180 days of account opening for the second add-on bonus."
-  ],
-  "terms_url": "https://www.wsbonline.com/promotion/earn-up-to-1000-business-checking-bonus/",
-  "time_max_minutes": 120,
-  "time_min_minutes": 60,
-  "timing": "Base bonuses credited as one-time deposits to the qualifying Business Checking account on the third full statement cycle; Merchant Services bonus paid on the sixth full statement cycle.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Concrete payout: $300-$700 base by balance tier, plus up to $300 in add-on service bonuses ($1,000 total max).",
+   "pass": true
+  }
+ },
+ "eligibility": "New business customers opening an eligible WaterStone Bank Business Checking account.",
+ "notes": "VERIFIED via official-domain search crawl of wsbonline.com (captured 2026-09-23). Aggregators describe the offer as WI-only and in-branch, but the official captured text does not state geography; geography note recorded as Wisconsin per bank footprint. No expiry date in the captured official text.",
+ "numeric_basis": "payout from official terms ($300/$500/$700 tiers + $125/$150 service add-ons); time: application + 10 transactions + enrollments est. 60-120 min active.",
+ "official_url": "https://www.wsbonline.com/promotion/earn-up-to-1000-business-checking-bonus/",
+ "payout_max_usd": 1000,
+ "payout_min_usd": 300,
+ "payout_quote": "New business customers who open an eligible Business Checking account may qualify for a one time cash bonus based on the average balance maintained during the third full statement cycle, provided the account remains open and active and the customer completes ten (10) or more customer initiated transactions within ninety (90) days of account opening. A $300.00 bonus will be paid if the account maintains an average balance between $5,000.00 and $24,499.99 during the third full statement cycle. A $500.00 bonus will be paid if the account maintains an average balance between $25,000.00 and $49,999.99 during the third full statement cycle. A $700.00 bonus will be paid if the account maintains an average balance of $50,000.00 or more during the third full statement cycle. An additional $125.00 bonus (for accounts qualifying for the $300.00 tier) or $150.00 bonus (for accounts qualifying for the $500.00 or $700.00 tiers) will be paid if the customer enrolls in Positive Pay services within ninety (90) days of Business Checking account opening. An additional $125.00/$150.00 bonus will be paid if the customer establishes WaterStone Bank Merchant Services within one hundred eighty (180) days of account opening.",
+ "payout_value_note": "$300/$500/$700 base by third-cycle average balance; +$125/$150 Positive Pay and +$125/$150 Merchant Services add-ons; $1,000 total maximum.",
+ "route_id": "R0959",
+ "standard": {
+  "s1": {
+   "note": "Official provider domain (wsbonline.com) via search crawl.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Verbatim official terms quoted in payout_quote.",
+   "pass": true
+  },
+  "s3": {
+   "note": "10-transaction and balance mechanics confirmed in official terms.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No expiry stated in the captured official text.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No purchase or fee required for the base bonus; warn against unneeded service enrollments.",
+   "pass": true
+  },
+  "s6": {
+   "note": "New business customers only; account must remain open and active.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Credit timing confirmed: third full statement cycle (sixth for Merchant Services).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open an eligible WaterStone Bank Business Checking account as a new business customer and keep it open and active.",
+  "Complete 10 or more customer-initiated transactions within 90 days of account opening.",
+  "Maintain an average balance during the third full statement cycle: $5,000-$24,499.99 ($300), $25,000-$49,999.99 ($500), or $50,000+ ($700).",
+  "Optionally enroll in Positive Pay services within 90 days of account opening for the add-on bonus.",
+  "Optionally establish WaterStone Bank Merchant Services within 180 days of account opening for the second add-on bonus."
+ ],
+ "terms_url": "https://www.wsbonline.com/promotion/earn-up-to-1000-business-checking-bonus/",
+ "time_max_minutes": 120,
+ "time_min_minutes": 60,
+ "timing": "Base bonuses credited as one-time deposits to the qualifying Business Checking account on the third full statement cycle; Merchant Services bonus paid on the sixth full statement cycle.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $300–$1000. Per official terms: Base bonuses credited as one-time deposits to the qualifying Business Checking account on the third full statement cycle; Merchant Services bonus paid on the sixth full statement cycle. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

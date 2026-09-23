@@ -1,95 +1,98 @@
 {
- "biggest_catch": "PSG only pays if you match their current research criteria — but at $200 per plasma donation, it pays roughly 3-4x what a regular plasma center pays per visit.",
- "catches": [
-  "This is niche by design: PSG recruits people with specific conditions/medications for diagnostic-research plasma (specialty/disease-state donors).",
-  "Payment method and timing are not published — confirm before donating.",
-  "Plasma collections happen at FDA-registered centers — travel may be involved.",
-  "One study at a time; not an everyday side hustle for everyone."
- ],
- "checked_at": "2026-09-23T12:00:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official plasmaservicesgroup.com/donor-form/: 'We generally compensate all of our donors $200.00 per donation for their time and efforts.'",
-   "pass": true
+  "biggest_catch": "PSG only pays if you match their current research criteria \u2014 but at $200 per plasma donation, it pays roughly 3-4x what a regular plasma center pays per visit.",
+  "catches": [
+    "This is niche by design: PSG recruits people with specific conditions/medications for diagnostic-research plasma (specialty/disease-state donors).",
+    "Payment method and timing are not published \u2014 confirm before donating.",
+    "Plasma collections happen at FDA-registered centers \u2014 travel may be involved.",
+    "One study at a time; not an everyday side hustle for everyone."
+  ],
+  "checked_at": "2026-09-23T12:00:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official plasmaservicesgroup.com/donor-form/: 'We generally compensate all of our donors $200.00 per donation for their time and efforts.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: '$200.00 per donation' for specialty plasma donors \u2014 numeric, official terms.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No credit card, bank sign-up, or fee; paid research participation.",
+      "pass": true
+    },
+    "c4": {
+      "pass": false,
+      "evidence": "Per-donation $200 confirmed officially; payment method/timing not published \u2014 flagged in catches."
+    }
   },
-  "c2": {
-   "evidence": "Official: '$200.00 per donation' for specialty plasma donors — numeric, official terms.",
-   "pass": true
+  "eligibility": "Varies by study \u2014 PSG recruits specialty plasma donors (people with recent medical diagnoses or autoimmune conditions); standard donor screening applies; FDA donation limits (2x per 7 days)",
+  "maximize": "Fill out PSG's donor form at plasmaservicesgroup.com/donor-form/ and list every diagnosis and medication \u2014 matching is how you get picked for the $200/donation studies. Their site also runs 'current paid studies' (see PSGDonors.com); each new study is a new payout. Ask about payment method and timing when they contact you.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Official plasmaservicesgroup.com/donor-form/ verified 2026-09-23: '$200.00 per donation'. PSG's Director of Business Development also stated on the record (PhillyVoice Q&A) that PSG pays $100 for at-home blood sample collections \u2014 kept as secondary context only, not the verified route.",
+  "official_url": "https://www.plasmaservicesgroup.com",
+  "payout_max_usd": 200,
+  "payout_min_usd": 200,
+  "payout_quote": "We are a medical research and diagnostics company that is always looking for specialty plasma donors (people with recent medical diagnoses or autoimmune conditions who are willing to donate plasma). We generally compensate all of our donors $200.00 per donation for their time and efforts.",
+  "provider": "Plasma Services Group (PSG)",
+  "repeatable": {
+    "cadence": "Per paid collection: each study or collection event is a separate $200 payout, repeatable across studies as long as you keep matching their research criteria.",
+    "note": "Each collection/study is a separate paid event at $200/donation; repeatable across studies while you qualify.",
+    "value": true
   },
-  "c3": {
-   "evidence": "No credit card, bank sign-up, or fee; paid research participation.",
-   "pass": true
+  "route_id": "R7513",
+  "speed": "unknown",
+  "standard": {
+    "s1": {
+      "note": "Official plasmaservicesgroup.com page verified 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Paid per donation",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches: condition-matching, unpublished payment timing, center travel",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card, loan, or gambling offer",
+      "pass": true
+    },
+    "s5": {
+      "note": "Apply via official donor form",
+      "pass": true
+    },
+    "s6": {
+      "note": "Numeric per-donation payout",
+      "pass": true
+    },
+    "s7": {
+      "note": "Eligibility from official program description",
+      "pass": true
+    }
   },
-  "c4": {
-   "pass": false,
-   "evidence": "Per-donation $200 confirmed officially; payment method/timing not published — flagged in catches."
-  }
- },
- "eligibility": "Varies by study — PSG recruits specialty plasma donors (people with recent medical diagnoses or autoimmune conditions); standard donor screening applies; FDA donation limits (2x per 7 days)",
- "maximize": "Fill out PSG's donor form at plasmaservicesgroup.com/donor-form/ and list every diagnosis and medication — matching is how you get picked for the $200/donation studies. Their site also runs 'current paid studies' (see PSGDonors.com); each new study is a new payout. Ask about payment method and timing when they contact you.",
- "notes": "Official plasmaservicesgroup.com/donor-form/ verified 2026-09-23: '$200.00 per donation'. PSG's Director of Business Development also stated on the record (PhillyVoice Q&A) that PSG pays $100 for at-home blood sample collections — kept as secondary context only, not the verified route.",
- "official_url": "https://www.plasmaservicesgroup.com",
- "payout_max_usd": 200,
- "payout_min_usd": 200,
- "payout_quote": "We are a medical research and diagnostics company that is always looking for specialty plasma donors (people with recent medical diagnoses or autoimmune conditions who are willing to donate plasma). We generally compensate all of our donors $200.00 per donation for their time and efforts.",
- "provider": "Plasma Services Group (PSG)",
- "repeatable": {
-  "cadence": "Per paid collection: each study or collection event is a separate $200 payout, repeatable across studies as long as you keep matching their research criteria.",
-  "note": "Each collection/study is a separate paid event at $200/donation; repeatable across studies while you qualify.",
-  "value": true
- },
- "route_id": "R7513",
- "speed": "unknown",
- "standard": {
-  "s1": {
-   "note": "Official plasmaservicesgroup.com page verified 2026-09-23",
-   "pass": true
+  "steps": [
+    "Check plasmaservicesgroup.com for the donor program and current recruiting needs",
+    "Fill out the official donor form with your diagnoses and medications",
+    "If matched, donate specialty plasma at an FDA-registered center at $200 per donation",
+    "Stay on file for future paid studies"
+  ],
+  "terms_url": "https://plasmaservicesgroup.com/donor-form/",
+  "time_max_minutes": 120,
+  "time_min_minutes": 60,
+  "timing": "$200 per donation (official); payment method/timing not published \u2014 confirm with PSG",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "Paid per donation",
-   "pass": true
-  },
-  "s3": {
-   "note": "Catches: condition-matching, unpublished payment timing, center travel",
-   "pass": true
-  },
-  "s4": {
-   "note": "Not a credit card, loan, or gambling offer",
-   "pass": true
-  },
-  "s5": {
-   "note": "Apply via official donor form",
-   "pass": true
-  },
-  "s6": {
-   "note": "Numeric per-donation payout",
-   "pass": true
-  },
-  "s7": {
-   "note": "Eligibility from official program description",
-   "pass": true
-  }
- },
- "steps": [
-  "Check plasmaservicesgroup.com for the donor program and current recruiting needs",
-  "Fill out the official donor form with your diagnoses and medications",
-  "If matched, donate specialty plasma at an FDA-registered center at $200 per donation",
-  "Stay on file for future paid studies"
- ],
- "terms_url": "https://plasmaservicesgroup.com/donor-form/",
- "time_max_minutes": 120,
- "time_min_minutes": 60,
- "timing": "$200 per donation (official); payment method/timing not published — confirm with PSG",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "Plasma Services Group pays $200 per donation — but the official site does not name the payment method, so ask how (check, card, direct deposit) before you donate.",
- "who_qualifies": "This is specialty research plasma: PSG recruits people with specific conditions or medications (recent diagnoses, autoimmune conditions) — healthy donors don't qualify. Standard donor screening still applies, and FDA donation limits apply (2x per 7 days).",
- "work_available": "PSG's $200-per-donation donor program is posted live on plasmaservicesgroup.com as of 2026-09-23, but this is niche by design — you only get in if you match their current research criteria, one study at a time. Fill out their donor form to be considered.",
- "what_gets_accepted": "You must match their recruiting criteria AND pass the screening AND complete the donation — failing any of those means no pay. This is diagnostic-research plasma, not a walk-in donation center.",
- "costs_and_unpaid_time": "Collections happen at FDA-registered centers — travel may be involved. Screening, the donation session itself (up to about 2 hours), and any waiting are unpaid. This is a research setting with a needle, not everyday side-hustle money for everyone.",
- "when_cash_arrives": "Payment method and timing are not published on PSG's official site — confirm when and how you're paid before donating."
+  "who_pays": "Plasma Services Group pays $200 per donation \u2014 but the official site does not name the payment method, so ask how (check, card, direct deposit) before you donate.",
+  "who_qualifies": "This is specialty research plasma: PSG recruits people with specific conditions or medications (recent diagnoses, autoimmune conditions) \u2014 healthy donors don't qualify. Standard donor screening still applies, and FDA donation limits apply (2x per 7 days).",
+  "work_available": "PSG's $200-per-donation donor program is posted live on plasmaservicesgroup.com as of 2026-09-23, but this is niche by design \u2014 you only get in if you match their current research criteria, one study at a time. Fill out their donor form to be considered.",
+  "what_gets_accepted": "You must match their recruiting criteria AND pass the screening AND complete the donation \u2014 failing any of those means no pay. This is diagnostic-research plasma, not a walk-in donation center.",
+  "costs_and_unpaid_time": "Collections happen at FDA-registered centers \u2014 travel may be involved. Screening, the donation session itself (up to about 2 hours), and any waiting are unpaid. This is a research setting with a needle, not everyday side-hustle money for everyone.",
+  "when_cash_arrives": "Payment method and timing are not published on PSG's official site \u2014 confirm when and how you're paid before donating.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

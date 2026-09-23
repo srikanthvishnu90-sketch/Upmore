@@ -1,90 +1,93 @@
 {
-  "app_links": {
-    "android": "",
-    "ios": ""
+ "app_links": {
+  "android": "",
+  "ios": ""
+ },
+ "biggest_catch": "Both you and your friend only qualify after the referred customer keeps active service for at least 10 days (30 days in East/Midwest); month-to-month plans and commercial entities are excluded.",
+ "catches": [
+  "New customer must sign up for a term plan using a current customer's referral code.",
+  "Referred customer must keep active service at least 10 days (Texas) or 30 days (East/Midwest).",
+  "Texas: bill credits applied within two billing cycles; Midwest/Northeast: gift cards (new customer after 30 days, referrer after 90 days of referred service).",
+  "Rewards limited to eligible residential customers; exclude month-to-month plans, sales agents, mass/automated referrals.",
+  "Commercial entities not eligible; program unavailable in CT, MA, NY for Midwest/Northeast.",
+  "Rewards are the current offer amount ($50 at verification) and Direct Energy may change the amount without notice.",
+  "Texas bill credits apply only to the kWh usage portion of the bill, not taxes/fees.",
+  "Participants earning ~$550+/year in gift cards may need to submit a W-9.",
+  "Framed as savings on planned energy spending, never income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider is Direct Energy, retail electricity/gas supplier (directenergy.com); page is their own Refer a Friend Referral Program with full terms of use.",
+   "pass": true
   },
-  "biggest_catch": "Both you and your friend only qualify after the referred customer keeps active service for at least 10 days (30 days in East/Midwest); month-to-month plans and commercial entities are excluded.",
-  "catches": [
-    "New customer must sign up for a term plan using a current customer's referral code.",
-    "Referred customer must keep active service at least 10 days (Texas) or 30 days (East/Midwest).",
-    "Texas: bill credits applied within two billing cycles; Midwest/Northeast: gift cards (new customer after 30 days, referrer after 90 days of referred service).",
-    "Rewards limited to eligible residential customers; exclude month-to-month plans, sales agents, mass/automated referrals.",
-    "Commercial entities not eligible; program unavailable in CT, MA, NY for Midwest/Northeast.",
-    "Rewards are the current offer amount ($50 at verification) and Direct Energy may change the amount without notice.",
-    "Texas bill credits apply only to the kWh usage portion of the bill, not taxes/fees.",
-    "Participants earning ~$550+/year in gift cards may need to submit a W-9.",
-    "Framed as savings on planned energy spending, never income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider is Direct Energy, retail electricity/gas supplier (directenergy.com); page is their own Refer a Friend Referral Program with full terms of use.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official program page opened live 2026-09-23 at directenergy.com; page states the current $50 reward with active-service qualification rules; terms of use updated and accessible.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "'Your electricity service must be active for at least 10 days (30 days in East/Midwest) to qualify for the $50' and 'Once that happens, the rewards for both the new customer and the current customer will be processed.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Both the new customer and the current (referring) customer receive the $50 reward under the same program; no customer-only restriction.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official program page opened live 2026-09-23 at directenergy.com; page states the current $50 reward with active-service qualification rules; terms of use updated and accessible.",
+   "pass": true
   },
-  "eligibility": "Referrer: current Direct Energy residential customer with an active term plan. Referred: new Direct Energy customer signing up for a term plan (not month-to-month) with the referral code; active service 10 days (Texas) / 30 days (East/Midwest); unavailable in CT, MA, NY for Midwest/Northeast.",
-  "notes": "Verified 2026-09-23 from Direct Energy's official US refer-a-friend page and terms of use. $50 per side (Texas: bill credit; East/Midwest: gift card). Framed as savings on planned energy spending.",
-  "numeric_basis": "payout from official program page ($50 reward each side for new + referring customer; Texas = bill credit, East/Midwest = gift card); time: share/use referral code + signup est. 5-15 min active",
-  "official_url": "https://www.directenergy.com/en/residential/customer-support/refer-a-friend",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Your electricity service must be active for at least 10 days (30 days in East/Midwest) to qualify for the $50... Once that happens, the rewards for both the new customer and the current customer will be processed.",
-  "payout_value_note": "$50 per side per qualifying referral (Texas: bill credit; East/Midwest: gift card); reward amount is Direct Energy's current offer and may change without notice.",
-  "route_id": "R4066",
-  "standard": {
-    "s1": {
-      "note": "Concrete payout $50 each side stated on official program page and terms of use.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Conditions stated: term plan, referral code, active service periods, exclusions (month-to-month, commercial, CT/MA/NY).",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bill credit/gift card framed as savings on planned energy spending; processed after service period.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Steps concrete: share referral code, friend signs up for term plan, keeps service active, rewards processed.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; enrollment is normal energy plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No inflated conversion; $50 face value used.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Amount may change without notice per terms — disclosed; current stated amount $50.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "'Your electricity service must be active for at least 10 days (30 days in East/Midwest) to qualify for the $50' and 'Once that happens, the rewards for both the new customer and the current customer will be processed.'",
+   "pass": true
   },
-  "steps": [
-    "Be a current Direct Energy residential customer with an active term plan.",
-    "Share your referral code with a friend (found in your account manager).",
-    "Friend signs up for a Direct Energy term plan using your referral code.",
-    "Friend keeps active electricity service for at least 10 days (Texas) or 30 days (East/Midwest).",
-    "$50 reward processed to both: Texas bill credit within two billing cycles; East/Midwest gift card."
-  ],
-  "terms_url": "https://www.directenergy.com/en/about/legal/terms-of-use/refer-a-friend-terms-of-use",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Rewards processed after the referred customer completes 10 days (Texas) or 30 days (East/Midwest) of active service; Texas bill credits within two billing cycles.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Both the new customer and the current (referring) customer receive the $50 reward under the same program; no customer-only restriction.",
+   "pass": true
+  }
+ },
+ "eligibility": "Referrer: current Direct Energy residential customer with an active term plan. Referred: new Direct Energy customer signing up for a term plan (not month-to-month) with the referral code; active service 10 days (Texas) / 30 days (East/Midwest); unavailable in CT, MA, NY for Midwest/Northeast.",
+ "notes": "Verified 2026-09-23 from Direct Energy's official US refer-a-friend page and terms of use. $50 per side (Texas: bill credit; East/Midwest: gift card). Framed as savings on planned energy spending.",
+ "numeric_basis": "payout from official program page ($50 reward each side for new + referring customer; Texas = bill credit, East/Midwest = gift card); time: share/use referral code + signup est. 5-15 min active",
+ "official_url": "https://www.directenergy.com/en/residential/customer-support/refer-a-friend",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Your electricity service must be active for at least 10 days (30 days in East/Midwest) to qualify for the $50... Once that happens, the rewards for both the new customer and the current customer will be processed.",
+ "payout_value_note": "$50 per side per qualifying referral (Texas: bill credit; East/Midwest: gift card); reward amount is Direct Energy's current offer and may change without notice.",
+ "route_id": "R4066",
+ "standard": {
+  "s1": {
+   "note": "Concrete payout $50 each side stated on official program page and terms of use.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Conditions stated: term plan, referral code, active service periods, exclusions (month-to-month, commercial, CT/MA/NY).",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bill credit/gift card framed as savings on planned energy spending; processed after service period.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Steps concrete: share referral code, friend signs up for term plan, keeps service active, rewards processed.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; enrollment is normal energy plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No inflated conversion; $50 face value used.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Amount may change without notice per terms — disclosed; current stated amount $50.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Be a current Direct Energy residential customer with an active term plan.",
+  "Share your referral code with a friend (found in your account manager).",
+  "Friend signs up for a Direct Energy term plan using your referral code.",
+  "Friend keeps active electricity service for at least 10 days (Texas) or 30 days (East/Midwest).",
+  "$50 reward processed to both: Texas bill credit within two billing cycles; East/Midwest gift card."
+ ],
+ "terms_url": "https://www.directenergy.com/en/about/legal/terms-of-use/refer-a-friend-terms-of-use",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Rewards processed after the referred customer completes 10 days (Texas) or 30 days (East/Midwest) of active service; Texas bill credits within two billing cycles.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Rewards processed after the referred customer completes 10 days (Texas) or 30 days (East/Midwest) of active service; Texas bill credits within two billing cycles.",
+ "maximize": "Fastest honest path: Rewards processed after the referred customer completes 10 days (Texas) or 30 days (East/Midwest) of active service; Texas bill credits within two billing cycles. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

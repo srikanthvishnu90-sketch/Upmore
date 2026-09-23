@@ -1,90 +1,102 @@
 {
-  "app_links": {
-    "android": "https://play.google.com/store/apps/details?id=com.onedebit.chimebank",
-    "ios": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269"
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.onedebit.chimebank",
+  "ios": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269"
+ },
+ "biggest_catch": "The current official Chime referral page guarantees the friend $100, but the referrer's bonus amount varies with the active offer when the friend enrolls \u2014 Chime does not publish a fixed referrer amount on the page. The route's fixed '$200' is not supported by current official terms.",
+ "catches": [
+  "The official page states the friend receives $100; the referrer's bonus 'varies based on the offer when they enroll' \u2014 no fixed referrer amount is published.",
+  "The $100 friend bonus requires a qualifying direct deposit of $200+ (not transfers from personal accounts, bank transfers, or crypto) within 45 days of account opening, AND physical card activation within 14 days of that deposit.",
+  "Referrer cap: up to 10 successful referral rewards per calendar year.",
+  "The referral offer can change or end at any time; amounts depend on the offer active when the friend enrolls.",
+  "Chime accounts are provided by The Bancorp Bank N.A. or Stride Bank N.A. \u2014 friend must be eligible to open an account."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Chime (official help center) \u2014 real financial technology company; official 'Chime's Standard Referral Program' page on help.chime.com.",
+   "pass": true
   },
-  "biggest_catch": "The current official Chime referral page guarantees the friend $100, but the referrer's bonus amount varies with the active offer when the friend enrolls — Chime does not publish a fixed referrer amount on the page. The route's fixed '$200' is not supported by current official terms.",
-  "catches": [
-    "The official page states the friend receives $100; the referrer's bonus 'varies based on the offer when they enroll' — no fixed referrer amount is published.",
-    "The $100 friend bonus requires a qualifying direct deposit of $200+ (not transfers from personal accounts, bank transfers, or crypto) within 45 days of account opening, AND physical card activation within 14 days of that deposit.",
-    "Referrer cap: up to 10 successful referral rewards per calendar year.",
-    "The referral offer can change or end at any time; amounts depend on the offer active when the friend enrolls.",
-    "Chime accounts are provided by The Bancorp Bank N.A. or Stride Bank N.A. — friend must be eligible to open an account."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Chime (official help center) — real financial technology company; official 'Chime's Standard Referral Program' page on help.chime.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Chime help article 'What is Chime's standard referral program?' loaded live 2026-09-23, states: 'your friend will get a $100 bonus once they meet the requirements. You, as the referrer, will also earn a bonus based on the offer when they enroll.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; no deposit by the referrer required. Friend's requirement is their own direct deposit.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: 'Bonuses are typically posted within 10 business days after your friend meets all the requirements.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Chime help article 'What is Chime's standard referral program?' loaded live 2026-09-23, states: 'your friend will get a $100 bonus once they meet the requirements. You, as the referrer, will also earn a bonus based on the offer when they enroll.'",
+   "pass": true
   },
-  "eligibility": "Referrer: existing Chime member. Friend: new Chime customer who signs up through your referral link and (a) receives a qualifying direct deposit of $200+ within 45 days of opening, and (b) activates their physical card within 14 days of the qualifying deposit.",
-  "notes": "CORRECTION: the route's fixed '$200 referral' figure is unsupported. Current official terms guarantee $100 to the friend and give NO fixed referrer amount — the referrer bonus varies with the offer active at enrollment. Displaying '$200' would be misinformation. Verified only as: friend guaranteed $100; referrer bonus amount varies by current offer (check in-app); 10 referrals/year cap. Official page loaded live on help.chime.com 2026-09-23. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)]",
-  "official_url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
-  "payout_quote": "Your friend will get a $100 bonus once they meet the requirements. You, as the referrer, will also earn a bonus based on the offer when they enroll. | Bonuses are typically posted within 10 business days after your friend meets all the requirements. | You can earn up to 10 successful referral rewards per calendar year.",
-  "route_id": "R0330",
-  "standard": {
-    "s1": {
-      "note": "Friend must be a new Chime customer; qualifying direct deposit must be $200+ within 45 days; physical card activated within 14 days of deposit; referrer limited to 10 successful referrals per calendar year.",
-      "pass": true
-    },
-    "s2": {
-      "note": "All explicit: variable referrer amount, $100 friend guarantee, qualifying deposit rules, annual cap.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonuses posted within 10 business days after requirements met.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No weasel words on the friend's $100 or the 10/year cap; the variable referrer bonus is honestly stated as offer-dependent.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30 — official Chime help center, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: share referral link from app, friend signs up, sets up direct deposit, activates card.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Chime help article loaded live 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; no deposit by the referrer required. Friend's requirement is their own direct deposit.",
+   "pass": true
   },
-  "steps": [
-    "Open the Chime app and go to Settings (gear icon) > Refer Friends to get your referral link: https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
-    "Send the link to a friend who does not already have Chime — they must sign up through your link.",
-    "Your friend receives a qualifying direct deposit of $200 or more within 45 days of opening the account (payroll or benefits; personal transfers and crypto do not count).",
-    "Your friend activates their physical Chime card within 14 days of the qualifying direct deposit.",
-    "Bonuses are typically posted within 10 business days after all requirements are met — your friend gets $100; your bonus matches the offer shown when you referred.",
-    "You can earn up to 10 successful referral rewards per calendar year."
-  ],
-  "terms_url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
-  "timing": "Bonuses typically posted within 10 business days after the friend meets all requirements.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page: 'Bonuses are typically posted within 10 business days after your friend meets all the requirements.'",
+   "pass": true
+  }
+ },
+ "eligibility": "Referrer: existing Chime member. Friend: new Chime customer who signs up through your referral link and (a) receives a qualifying direct deposit of $200+ within 45 days of opening, and (b) activates their physical card within 14 days of the qualifying deposit.",
+ "notes": "CORRECTION: the route's fixed '$200 referral' figure is unsupported. Current official terms guarantee $100 to the friend and give NO fixed referrer amount \u2014 the referrer bonus varies with the offer active at enrollment. Displaying '$200' would be misinformation. Verified only as: friend guaranteed $100; referrer bonus amount varies by current offer (check in-app); 10 referrals/year cap. Official page loaded live on help.chime.com 2026-09-23. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)]",
+ "official_url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
+ "payout_quote": "Your friend will get a $100 bonus once they meet the requirements. You, as the referrer, will also earn a bonus based on the offer when they enroll. | Bonuses are typically posted within 10 business days after your friend meets all the requirements. | You can earn up to 10 successful referral rewards per calendar year.",
+ "route_id": "R0330",
+ "standard": {
+  "s1": {
+   "note": "Friend must be a new Chime customer; qualifying direct deposit must be $200+ within 45 days; physical card activated within 14 days of deposit; referrer limited to 10 successful referrals per calendar year.",
+   "pass": true
   },
-  "payout_min_usd": 100.0,
-  "payout_max_usd": 100.0,
-  "payout_value_note": "flat bonus amount in official terms",
-  "time_min_minutes": 5.0,
-  "time_max_minutes": 15.0,
-  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)"
+  "s2": {
+   "note": "All explicit: variable referrer amount, $100 friend guarantee, qualifying deposit rules, annual cap.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonuses posted within 10 business days after requirements met.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the friend's $100 or the 10/year cap; the variable referrer bonus is honestly stated as offer-dependent.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30 \u2014 official Chime help center, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: share referral link from app, friend signs up, sets up direct deposit, activates card.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Chime help article loaded live 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open the Chime app and go to Settings (gear icon) > Refer Friends to get your referral link: https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
+  "Send the link to a friend who does not already have Chime \u2014 they must sign up through your link.",
+  "Your friend receives a qualifying direct deposit of $200 or more within 45 days of opening the account (payroll or benefits; personal transfers and crypto do not count).",
+  "Your friend activates their physical Chime card within 14 days of the qualifying direct deposit.",
+  "Bonuses are typically posted within 10 business days after all requirements are met \u2014 your friend gets $100; your bonus matches the offer shown when you referred.",
+  "You can earn up to 10 successful referral rewards per calendar year."
+ ],
+ "terms_url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
+ "timing": "Bonuses typically posted within 10 business days after the friend meets all requirements.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 100.0,
+ "payout_max_usd": 100.0,
+ "payout_value_note": "flat bonus amount in official terms",
+ "time_min_minutes": 5.0,
+ "time_max_minutes": 15.0,
+ "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonuses typically posted within 10 business days after the friend meets all requirements.",
+ "maximize": "Have the friend meet all requirements immediately.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The friend's qualifying actions plus 10 business days are the blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

@@ -1,96 +1,99 @@
 {
- "route_id": "R7603",
- "provider": "Shipt",
- "official_url": "https://shoppers.shipt.com/app-functionality/instant-payout",
- "terms_url": "https://help.shipt.com/being-a-shopper/how-do-shoppers-get-paid",
- "payout_quote": "With Instant Payout, you'll be able to receive your pay, including tips, from the shopper app up to 3 times per day (7 p.m. to 7 p.m. CT) within an hour of requesting a payout. A transaction fee of $0.49 will be collected from the transfer amount and sent to Stripe Connect.",
- "payout_min_usd": 0,
- "payout_max_usd": 500,
- "time_min_minutes": 0,
- "time_max_minutes": 60,
- "timing": "On demand, up to 3 transfers/day (7pm-7pm CT), typically within an hour. $500 daily limit; withdrawals after 7pm CT are captured the next day. Unrequested balance goes out via weekly direct deposit on Friday.",
- "speed": "today",
- "eligibility": "Shipt shopper who has agreed to the Stripe Connect terms in the app and received at least one successful weekly payout via direct deposit; debit card on file (new cards can take up to 24 hours to process).",
- "steps": [
-  "Receive at least one successful weekly payout via direct deposit from Shipt.",
-  "Agree to the Stripe Connect terms and conditions in the shopper app.",
-  "Add a debit card under Account > Payment info (allow up to 24 hours for processing).",
-  "When Instant Payout is active, tap Withdraw on the main menu, review the balance, transaction fee and checking account, then tap transfer."
- ],
- "catches": [
-  "$0.49 transaction fee per transfer, collected from the transfer amount and sent to Stripe Connect.",
-  "Up to 3 transfers per day (7pm-7pm CT); $500 daily limit; withdrawals after 7pm CT are captured the next day.",
-  "Not all earnings are eligible: tips of $50 or more and manually applied bonuses/incentives (including milestone rewards) are excluded and paid weekly.",
-  "A new debit card can take up to 24 hours before it can be used for Instant Payout.",
-  "Pay varies by market and demand; fuel, maintenance, insurance and other vehicle costs reduce net earnings.",
-  "No delivery-count promotion is quoted on the official page."
- ],
- "biggest_catch": "Tips of $50 or more are not eligible for Instant Payout at all: a big tip always waits for the weekly payout, so same-day access only covers smaller amounts.",
- "upfront_fee": false,
- "verdict": "verify",
- "checked_at": "2026-09-23T12:00:00Z",
- "notes": "Checked 2026-09-23. Official shoppers.shipt.com Instant Payout page loaded live: exact $0.49 fee, 3/day and $500/day limits, within-an-hour timing, Stripe Connect + first-weekly-payout prerequisites, $50+ tip exclusion.",
- "repeatable": {
-  "value": true,
-  "cadence": "Complete batches, tap Withdraw up to 3 times a day before the 7pm CT cutoff, and repeat."
- },
- "maximize": "After your first weekly direct deposit posts, accept the Stripe Connect terms and add a debit card in the Shipt shopper app; then use Withdraw for up to 3 same-day payouts ($500/day cap) at $0.49 each whenever you need cash within the hour.",
- "critical": {
-  "c1": {
-   "pass": true,
-   "evidence": "Official shoppers.shipt.com Instant Payout page loaded live 2026-09-23; help.shipt.com getting-paid article is the terms source."
+  "route_id": "R7603",
+  "provider": "Shipt",
+  "official_url": "https://shoppers.shipt.com/app-functionality/instant-payout",
+  "terms_url": "https://help.shipt.com/being-a-shopper/how-do-shoppers-get-paid",
+  "payout_quote": "With Instant Payout, you'll be able to receive your pay, including tips, from the shopper app up to 3 times per day (7 p.m. to 7 p.m. CT) within an hour of requesting a payout. A transaction fee of $0.49 will be collected from the transfer amount and sent to Stripe Connect.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 500,
+  "time_min_minutes": 0,
+  "time_max_minutes": 60,
+  "timing": "On demand, up to 3 transfers/day (7pm-7pm CT), typically within an hour. $500 daily limit; withdrawals after 7pm CT are captured the next day. Unrequested balance goes out via weekly direct deposit on Friday.",
+  "speed": "today",
+  "eligibility": "Shipt shopper who has agreed to the Stripe Connect terms in the app and received at least one successful weekly payout via direct deposit; debit card on file (new cards can take up to 24 hours to process).",
+  "steps": [
+    "Receive at least one successful weekly payout via direct deposit from Shipt.",
+    "Agree to the Stripe Connect terms and conditions in the shopper app.",
+    "Add a debit card under Account > Payment info (allow up to 24 hours for processing).",
+    "When Instant Payout is active, tap Withdraw on the main menu, review the balance, transaction fee and checking account, then tap transfer."
+  ],
+  "catches": [
+    "$0.49 transaction fee per transfer, collected from the transfer amount and sent to Stripe Connect.",
+    "Up to 3 transfers per day (7pm-7pm CT); $500 daily limit; withdrawals after 7pm CT are captured the next day.",
+    "Not all earnings are eligible: tips of $50 or more and manually applied bonuses/incentives (including milestone rewards) are excluded and paid weekly.",
+    "A new debit card can take up to 24 hours before it can be used for Instant Payout.",
+    "Pay varies by market and demand; fuel, maintenance, insurance and other vehicle costs reduce net earnings.",
+    "No delivery-count promotion is quoted on the official page."
+  ],
+  "biggest_catch": "Tips of $50 or more are not eligible for Instant Payout at all: a big tip always waits for the weekly payout, so same-day access only covers smaller amounts.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official shoppers.shipt.com Instant Payout page loaded live: exact $0.49 fee, 3/day and $500/day limits, within-an-hour timing, Stripe Connect + first-weekly-payout prerequisites, $50+ tip exclusion.",
+  "repeatable": {
+    "value": true,
+    "cadence": "Complete batches, tap Withdraw up to 3 times a day before the 7pm CT cutoff, and repeat."
   },
-  "c2": {
-   "pass": true,
-   "evidence": "Exact amounts on official page: $0.49 per transfer, 3 transfers/day, $500 daily limit."
+  "maximize": "After your first weekly direct deposit posts, accept the Stripe Connect terms and add a debit card in the Shipt shopper app; then use Withdraw for up to 3 same-day payouts ($500/day cap) at $0.49 each whenever you need cash within the hour.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official shoppers.shipt.com Instant Payout page loaded live 2026-09-23; help.shipt.com getting-paid article is the terms source."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Exact amounts on official page: $0.49 per transfer, 3 transfers/day, $500 daily limit."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront or enrollment fee; per-transfer fee stated exactly."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: available funds typically post within an hour; 7pm CT cutoff rules stated."
+    }
   },
-  "c3": {
-   "pass": true,
-   "evidence": "No upfront or enrollment fee; per-transfer fee stated exactly."
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility documented: Stripe Connect acceptance, one successful weekly payout, debit card on file."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Fee schedule documented exactly: $0.49 per transfer to Stripe Connect."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Timing documented: within an hour, 3/day window, 7pm CT cutoff."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete claim anchored to official Instant Payout page; no weasel words."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official shoppers.shipt.com page loaded live this session."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are the official in-app Withdraw flow."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+    }
   },
-  "c4": {
-   "pass": true,
-   "evidence": "Official page: available funds typically post within an hour; 7pm CT cutoff rules stated."
-  }
- },
- "standard": {
-  "s1": {
-   "pass": true,
-   "note": "Eligibility documented: Stripe Connect acceptance, one successful weekly payout, debit card on file."
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "pass": true,
-   "note": "Fee schedule documented exactly: $0.49 per transfer to Stripe Connect."
-  },
-  "s3": {
-   "pass": true,
-   "note": "Timing documented: within an hour, 3/day window, 7pm CT cutoff."
-  },
-  "s4": {
-   "pass": true,
-   "note": "Concrete claim anchored to official Instant Payout page; no weasel words."
-  },
-  "s5": {
-   "pass": true,
-   "note": "Official shoppers.shipt.com page loaded live this session."
-  },
-  "s6": {
-   "pass": true,
-   "note": "Steps are the official in-app Withdraw flow."
-  },
-  "s7": {
-   "pass": true,
-   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
-  }
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "Shipt pays your shopper earnings, and Instant Payout pushes them through Stripe Connect to your debit card - the $0.49 per-transfer fee goes to Stripe Connect. Anything you do not withdraw goes out via Shipt's free weekly direct deposit on Fridays.",
- "who_qualifies": "You must be an active Shipt shopper who has accepted the Stripe Connect terms in the app, received at least one successful weekly direct-deposit payout, and has a debit card on file. To shop at all, Shipt requires you to be 18 or older, pass a background check, and have a reliable insured vehicle and a valid license.",
- "work_available": "Batch availability and pay vary by market and demand - the official page promises no minimum number of orders. In slow markets you may see few or no batches, so nothing about your volume is guaranteed.",
- "what_gets_accepted": "You are paid for batches you complete and deliver; canceled or never-completed orders do not pay. Tips of $50 or more and manually applied bonuses (like milestone rewards) are excluded from Instant Payout entirely and only pay weekly. Shipt publishes no exact shopper-rating cutoff tied to instant payouts on the official page - that part is unverified.",
- "costs_and_unpaid_time": "Each Instant Payout costs $0.49, deducted from the transfer, and you are limited to 3 transfers per day between 7pm and 7pm CT. Your fuel, maintenance, and insurance come out of your pocket, and time spent waiting for batches and onboarding is unpaid: you only earn on completed batches.",
- "when_cash_arrives": "Tap Withdraw in the shopper app up to 3 times per day (7pm-7pm CT), max $500 per day, and money typically lands within an hour, minus the $0.49 fee. Withdrawals after 7pm CT count toward the next day, tips of $50+ and manual bonuses skip Instant Payout and pay weekly, and anything left over deposits free every Friday."
+  "who_pays": "Shipt pays your shopper earnings, and Instant Payout pushes them through Stripe Connect to your debit card - the $0.49 per-transfer fee goes to Stripe Connect. Anything you do not withdraw goes out via Shipt's free weekly direct deposit on Fridays.",
+  "who_qualifies": "You must be an active Shipt shopper who has accepted the Stripe Connect terms in the app, received at least one successful weekly direct-deposit payout, and has a debit card on file. To shop at all, Shipt requires you to be 18 or older, pass a background check, and have a reliable insured vehicle and a valid license.",
+  "work_available": "Batch availability and pay vary by market and demand - the official page promises no minimum number of orders. In slow markets you may see few or no batches, so nothing about your volume is guaranteed.",
+  "what_gets_accepted": "You are paid for batches you complete and deliver; canceled or never-completed orders do not pay. Tips of $50 or more and manually applied bonuses (like milestone rewards) are excluded from Instant Payout entirely and only pay weekly. Shipt publishes no exact shopper-rating cutoff tied to instant payouts on the official page - that part is unverified.",
+  "costs_and_unpaid_time": "Each Instant Payout costs $0.49, deducted from the transfer, and you are limited to 3 transfers per day between 7pm and 7pm CT. Your fuel, maintenance, and insurance come out of your pocket, and time spent waiting for batches and onboarding is unpaid: you only earn on completed batches.",
+  "when_cash_arrives": "Tap Withdraw in the shopper app up to 3 times per day (7pm-7pm CT), max $500 per day, and money typically lands within an hour, minus the $0.49 fee. Withdrawals after 7pm CT count toward the next day, tips of $50+ and manual bonuses skip Instant Payout and pay weekly, and anything left over deposits free every Friday.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

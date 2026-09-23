@@ -1,85 +1,92 @@
 {
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "biggest_catch": "The Referred must submit a valid referral code during the application process — without the code, no bonus.",
- "catches": [
-  "The Referred must submit a valid referral code during the application process.",
-  "Cap: up to a maximum $500 (10 referrals).",
-  "Bonus is tax reportable on IRS Form 1099-INT.",
-  "Businesses and Purdue Federal Credit Union employees are not eligible.",
-  "Both parties must be 18+ with a valid SSN and accounts in good standing.",
-  "The promotion can be changed or cancelled without notice."
- ],
- "checked_at": "2026-09-23T08:32:10Z",
- "critical": {
-  "c1": {
-   "evidence": "Verifiable program on institution's official domain: Purdue Federal Credit Union's official refer-a-friend page (purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend) pays the referring member $50 for each qualifying new member.",
-   "pass": true
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Concrete per-referral payout: the referring member earns a $50 cash bonus for each qualifying new member (referred) who opens a new membership with a checking account, up to a maximum $500.",
-   "pass": true
+  "biggest_catch": "The Referred must submit a valid referral code during the application process — without the code, no bonus.",
+  "catches": [
+    "The Referred must submit a valid referral code during the application process.",
+    "Cap: up to a maximum $500 (10 referrals).",
+    "Bonus is tax reportable on IRS Form 1099-INT.",
+    "Businesses and Purdue Federal Credit Union employees are not eligible.",
+    "Both parties must be 18+ with a valid SSN and accounts in good standing.",
+    "The promotion can be changed or cancelled without notice."
+  ],
+  "checked_at": "2026-09-23T08:32:10Z",
+  "critical": {
+    "c1": {
+      "evidence": "Verifiable program on institution's official domain: Purdue Federal Credit Union's official refer-a-friend page (purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend) pays the referring member $50 for each qualifying new member.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete per-referral payout: the referring member earns a $50 cash bonus for each qualifying new member (referred) who opens a new membership with a checking account, up to a maximum $500.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Mechanism: the referring member shares a referral code; the referred person submits the valid referral code during the application process and opens a new membership with a checking account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: bonus timing not fully disclosed on the observed snippet; QA follow-up advised.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "Mechanism: the referring member shares a referral code; the referred person submits the valid referral code during the application process and opens a new membership with a checking account.",
-   "pass": true
+  "eligibility": "Purdue Federal Credit Union members referring new members who open a membership with a checking account (businesses and employees excluded).",
+  "notes": "Distinct from R0569's $400 checking signup bonus promo page. Thin-terms caveat: reward timing not captured on the observed snippet.",
+  "numeric_basis": "Per-referral cash bonus of $50.00.",
+  "official_url": "https://www.purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend",
+  "payout_max_usd": 50.0,
+  "payout_min_usd": 50.0,
+  "payout_quote": "Referring Member will earn $50 cash bonus for each qualifying New Member (Referred) who opens a new membership with checking account, up to a maximum $500.",
+  "payout_value_note": "$50 cash bonus per qualifying new member.",
+  "route_id": "R4368",
+  "standard": {
+    "s1": {
+      "note": "No upfront fee charged to the referrer.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Referral is free; no cost to refer.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus is tax reportable on IRS Form 1099-INT.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Cap: up to a maximum $500 (10 referrals).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Program live on the current official page (observed 2026-09-23); promotion can be changed or cancelled without notice.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Referral mechanics stated on the official page: share a referral code; the referred submits it during the application.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Friend-side qualifying actions: open a new membership with a checking account; the Referred must submit the valid referral code during the application process.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Timing: bonus timing not fully disclosed on the observed snippet; QA follow-up advised.",
-   "pass": true
-  }
- },
- "eligibility": "Purdue Federal Credit Union members referring new members who open a membership with a checking account (businesses and employees excluded).",
- "notes": "Distinct from R0569's $400 checking signup bonus promo page. Thin-terms caveat: reward timing not captured on the observed snippet.",
- "numeric_basis": "Per-referral cash bonus of $50.00.",
- "official_url": "https://www.purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend",
- "payout_max_usd": 50.0,
- "payout_min_usd": 50.0,
- "payout_quote": "Referring Member will earn $50 cash bonus for each qualifying New Member (Referred) who opens a new membership with checking account, up to a maximum $500.",
- "payout_value_note": "$50 cash bonus per qualifying new member.",
- "route_id": "R4368",
- "standard": {
-  "s1": {
-   "note": "No upfront fee charged to the referrer.",
-   "pass": true
-  },
-  "s2": {
-   "note": "Referral is free; no cost to refer.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Bonus is tax reportable on IRS Form 1099-INT.",
-   "pass": true
-  },
-  "s4": {
-   "note": "Cap: up to a maximum $500 (10 referrals).",
-   "pass": true
-  },
-  "s5": {
-   "note": "Program live on the current official page (observed 2026-09-23); promotion can be changed or cancelled without notice.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Referral mechanics stated on the official page: share a referral code; the referred submits it during the application.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Friend-side qualifying actions: open a new membership with a checking account; the Referred must submit the valid referral code during the application process.",
-   "pass": true
-  }
- },
- "steps": [
-  "Share your referral code with a friend or family member.",
-  "Friend submits the code during the application and opens a new membership with a checking account.",
-  "You earn a $50 cash bonus per qualifying new member, up to $500."
- ],
- "terms_url": "https://www.purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend",
- "time_max_minutes": 15.0,
- "time_min_minutes": 5.0,
- "timing": "Bonus timing not fully disclosed on the observed snippet.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": []
+  "steps": [
+    "Share your referral code with a friend or family member.",
+    "Friend submits the code during the application and opens a new membership with a checking account.",
+    "You earn a $50 cash bonus per qualifying new member, up to $500."
+  ],
+  "terms_url": "https://www.purduefed.com/About/Membership/Become-a-Member/Refer-a-Friend",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Bonus timing not fully disclosed on the observed snippet.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "when_cash_arrives": "Bonus timing not fully disclosed on the observed snippet.",
+  "maximize": [
+    "Have your friend complete qualification immediately - with no published window, the invisible payout clock should start ASAP.",
+    "Ask the institution for the exact payout timing before referring; unpublished windows in this wave have turned out to be mailed checks weeks later.",
+    "Structural reason it cannot be faster: no fast path can be verified because the terms do not state one - do not promise anyone a fast payout."
+  ],
+  "speed": "weeks"
 }

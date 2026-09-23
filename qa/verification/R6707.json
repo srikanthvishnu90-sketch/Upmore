@@ -1,101 +1,104 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=net.fieldagent&hl=en-us",
-  "ios": "https://apps.apple.com/app/field-agent/id367105289"
- },
- "biggest_catch": "You must qualify through unpaid 'ticket jobs' before you unlock paying jobs \u2014 and paying jobs are first-come, first-served, so they vanish fast in busy markets.",
- "catches": [
-  "New agents start on unpaid 'ticket jobs' to qualify for paying jobs (official app listing).",
-  "Jobs are usually first come, first serve \u2014 you have to check the app often.",
-  "Submissions that are not approved earn nothing; Field Agent does not pay for denied work.",
-  "GPS/location services must be on; you must be at the correct store location.",
-  "Only the client's approval triggers payment; payout is real cash (not points) via PayPal."
- ],
- "checked_at": "2026-09-23T12:25:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official Field Agent app listing (play.google.com): 'Make Money While You Shop with Field Agent... We send our agents all over the United States to gather information, take photos, and share their opinions. Join over one-million shoppers who have already joined!'",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=net.fieldagent&hl=en-us",
+    "ios": "https://apps.apple.com/app/field-agent/id367105289"
   },
-  "c2": {
-   "evidence": "Official app listing: 'Location Jobs generally pay between $3-$20.' '4. Get Paid - Your data will go through our quality process, and once approved funds are added to your Field Agent Balance. Payment is real cash (not vouchers or points) which you can cash out to PayPal.' Official participation agreement (app.fieldagent.net): agents disburse funds from their Payment Account to their Preferred Payment Method.",
-   "pass": true
+  "biggest_catch": "You must qualify through unpaid 'ticket jobs' before you unlock paying jobs \u2014 and paying jobs are first-come, first-served, so they vanish fast in busy markets.",
+  "catches": [
+    "New agents start on unpaid 'ticket jobs' to qualify for paying jobs (official app listing).",
+    "Jobs are usually first come, first serve \u2014 you have to check the app often.",
+    "Submissions that are not approved earn nothing; Field Agent does not pay for denied work.",
+    "GPS/location services must be on; you must be at the correct store location.",
+    "Only the client's approval triggers payment; payout is real cash (not points) via PayPal."
+  ],
+  "checked_at": "2026-09-23T12:25:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Field Agent app listing (play.google.com): 'Make Money While You Shop with Field Agent... We send our agents all over the United States to gather information, take photos, and share their opinions. Join over one-million shoppers who have already joined!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official app listing: 'Location Jobs generally pay between $3-$20.' '4. Get Paid - Your data will go through our quality process, and once approved funds are added to your Field Agent Balance. Payment is real cash (not vouchers or points) which you can cash out to PayPal.' Official participation agreement (app.fieldagent.net): agents disburse funds from their Payment Account to their Preferred Payment Method.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to join; no fee in official materials.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official: funds added to balance once approved; 'once approved, your money is ready for you to deposit into your account' then cash out to PayPal. Approval-gated, so days.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "Free to join; no fee in official materials.",
-   "pass": true
+  "eligibility": "US agents (separate Field Agent Australia/UK apps); smartphone with GPS/location; PayPal for cashout.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from provider's own app-store listing + participation agreement. Distinct from Gigwalk (R6706).",
+  "numeric_basis": "payout: official $3-$20 location jobs; time: store-audit tasks typically 10-60 min active",
+  "official_url": "https://app.fieldagent.net",
+  "payout_max_usd": 20,
+  "payout_min_usd": 3,
+  "payout_quote": "Location Jobs generally pay between $3-$20. (Field Agent, Google Play listing) | Once approved, your money is ready for you to deposit into your account... Payment is real cash (not vouchers or points) which you can cash out to PayPal. (Field Agent, Google Play listing) | Agents may disburse funds from their Payment Account to the Preferred Payment Method. (Field Agent participation agreement, app.fieldagent.net)",
+  "payout_value_note": "per location job, official $3-$20 range",
+  "provider": "Field Agent",
+  "route_id": "R6707",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "US app; smartphone + GPS + PayPal stated.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fees in official materials.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Balance on approval, PayPal cashout \u2014 days.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Range, no earnings guarantee.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official app listing + participation agreement.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Distinct from Gigwalk.",
+      "pass": true
+    },
+    "s7": {
+      "note": "upfront_fee false.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official: funds added to balance once approved; 'once approved, your money is ready for you to deposit into your account' then cash out to PayPal. Approval-gated, so days.",
-   "pass": true
-  }
- },
- "eligibility": "US agents (separate Field Agent Australia/UK apps); smartphone with GPS/location; PayPal for cashout.",
- "notes": "Checked 2026-09-23. Official evidence from provider's own app-store listing + participation agreement. Distinct from Gigwalk (R6706).",
- "numeric_basis": "payout: official $3-$20 location jobs; time: store-audit tasks typically 10-60 min active",
- "official_url": "https://app.fieldagent.net",
- "payout_max_usd": 20,
- "payout_min_usd": 3,
- "payout_quote": "Location Jobs generally pay between $3-$20. (Field Agent, Google Play listing) | Once approved, your money is ready for you to deposit into your account... Payment is real cash (not vouchers or points) which you can cash out to PayPal. (Field Agent, Google Play listing) | Agents may disburse funds from their Payment Account to the Preferred Payment Method. (Field Agent participation agreement, app.fieldagent.net)",
- "payout_value_note": "per location job, official $3-$20 range",
- "provider": "Field Agent",
- "route_id": "R6707",
- "speed": "days",
- "standard": {
-  "s1": {
-   "note": "US app; smartphone + GPS + PayPal stated.",
-   "pass": true
+  "steps": [
+    "Download the Field Agent app and register (a Payment Account is created automatically).",
+    "Complete unpaid 'ticket jobs' to qualify for paying jobs.",
+    "Reserve a paying job (first come, first serve), complete it at the correct location within the time frame.",
+    "Submission passes quality review; funds are added to your Field Agent balance.",
+    "Disburse from your Payment Account to PayPal."
+  ],
+  "terms_url": "https://app.fieldagent.net/participation-agreement",
+  "time_max_minutes": 60,
+  "time_min_minutes": 10,
+  "timing": "Once your submission is approved, funds go to your Field Agent balance, ready to deposit/cash out to PayPal.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "No fees in official materials.",
-   "pass": true
+  "who_pays": "The brands posting jobs on Field Agent pay you per approved job; approved money lands in your Field Agent balance, then you cash it out.",
+  "who_qualifies": "A smartphone with GPS/location on and a PayPal account for cashout. US agents (separate Field Agent apps exist for Australia and the UK).",
+  "work_available": "First-come, first-served \u2014 paying jobs vanish fast in busy markets, so you have to check the app often. New agents must first complete unpaid 'ticket jobs' to qualify for paying work.",
+  "what_gets_accepted": "Only approved submissions earn \u2014 Field Agent does not pay for denied work. You must be at the correct store location with location services on.",
+  "costs_and_unpaid_time": "No fees. Unpaid time: the qualifying 'ticket jobs' you must do before paying jobs unlock, travel to stores, and any rejected submission.",
+  "when_cash_arrives": "Once your submission is approved, the money goes to your Field Agent balance, ready to deposit or cash out to PayPal as real cash (not points).",
+  "repeatable": {
+    "value": true,
+    "cadence": "New jobs post in the app \u2014 complete a job, get approved, funds hit your balance, and claim the next one."
   },
-  "s3": {
-   "note": "Balance on approval, PayPal cashout \u2014 days.",
-   "pass": true
-  },
-  "s4": {
-   "note": "Range, no earnings guarantee.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official app listing + participation agreement.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Distinct from Gigwalk.",
-   "pass": true
-  },
-  "s7": {
-   "note": "upfront_fee false.",
-   "pass": true
-  }
- },
- "steps": [
-  "Download the Field Agent app and register (a Payment Account is created automatically).",
-  "Complete unpaid 'ticket jobs' to qualify for paying jobs.",
-  "Reserve a paying job (first come, first serve), complete it at the correct location within the time frame.",
-  "Submission passes quality review; funds are added to your Field Agent balance.",
-  "Disburse from your Payment Account to PayPal."
- ],
- "terms_url": "https://app.fieldagent.net/participation-agreement",
- "time_max_minutes": 60,
- "time_min_minutes": 10,
- "timing": "Once your submission is approved, funds go to your Field Agent balance, ready to deposit/cash out to PayPal.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "The brands posting jobs on Field Agent pay you per approved job; approved money lands in your Field Agent balance, then you cash it out.",
- "who_qualifies": "A smartphone with GPS/location on and a PayPal account for cashout. US agents (separate Field Agent apps exist for Australia and the UK).",
- "work_available": "First-come, first-served \u2014 paying jobs vanish fast in busy markets, so you have to check the app often. New agents must first complete unpaid 'ticket jobs' to qualify for paying work.",
- "what_gets_accepted": "Only approved submissions earn \u2014 Field Agent does not pay for denied work. You must be at the correct store location with location services on.",
- "costs_and_unpaid_time": "No fees. Unpaid time: the qualifying 'ticket jobs' you must do before paying jobs unlock, travel to stores, and any rejected submission.",
- "when_cash_arrives": "Once your submission is approved, the money goes to your Field Agent balance, ready to deposit or cash out to PayPal as real cash (not points).",
- "repeatable": {
-  "value": true,
-  "cadence": "New jobs post in the app \u2014 complete a job, get approved, funds hit your balance, and claim the next one."
- }
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

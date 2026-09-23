@@ -1,84 +1,95 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's a $25 renewal credit — usable only toward Ultra Mobile plan renewals, not cash — and it only appears 15 days after your friend activates, with earnings capped at $100 per year.",
+ "catches": [
+  "Renewal credit only — usable solely toward Ultra Mobile plan renewals; not cash, not transferable, no other value",
+  "Credit appears 15 days after the friend's activation, only if the friend is an active Ultra Mobile customer",
+  "Friend must purchase and activate through YOUR unique referral link — no link, no credit",
+  "Up to $100 in renewal credits per year"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Ultra Mobile Refer a Friend page on ultramobile.com/refer, fetched live 2026-09-23: 'Refer a friend, you get $25, they get $25. It's that simple!' plus full FAQ.",
+   "pass": true
   },
-  "biggest_catch": "It's a $25 renewal credit \u2014 usable only toward Ultra Mobile plan renewals, not cash \u2014 and it only appears 15 days after your friend activates, with earnings capped at $100 per year.",
-  "catches": [
-    "Renewal credit only \u2014 usable solely toward Ultra Mobile plan renewals; not cash, not transferable, no other value",
-    "Credit appears 15 days after the friend's activation, only if the friend is an active Ultra Mobile customer",
-    "Friend must purchase and activate through YOUR unique referral link \u2014 no link, no credit",
-    "Up to $100 in renewal credits per year"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Ultra Mobile Refer a Friend page on ultramobile.com/refer, fetched live 2026-09-23: 'Refer a friend, you get $25, they get $25. It's that simple!' plus full FAQ.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23 with the $25/$25 amounts.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'we will credit you $25 towards your next renewal, and $25 to your friend or family member for his/her next renewal.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "15-day wait, active-customer condition, link-required rule, renewal-only restriction, and $100/year cap all stated on the live official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23 with the $25/$25 amounts.",
+   "pass": true
   },
-  "eligibility": "Active Ultra Mobile customer; friend purchases and activates an Ultra Mobile plan through the referrer's unique sharing link.",
-  "notes": "Verified 2026-09-23 by live fetch of ultramobile.com/refer (official domain). Deduped: no Ultra Mobile routes in catalog, evidence files, or rejects-g60. Note: an older Ultra Mobile T&C page (last updated ~7 years ago) describes a $10 credit structure for 1/3-month plans, but both current program pages (refer FAQ and why-ultra-mobile, crawled 19 days ago) and the live page state $25/$25 \u2014 the live page governs.",
-  "numeric_basis": "payout from official terms ($25 renewal credit to both sides); time: referral share 5-15 min active",
-  "official_url": "https://www.ultramobile.com/refer/",
-  "payout_max_usd": 25,
-  "payout_min_usd": 25,
-  "payout_quote": "Refer a friend, you get $25, they get $25. It's that simple! For each friend or family member you refer and purchases a plan we will credit you $25 towards your next renewal, and $25 to your friend or family member for his/her next renewal.",
-  "payout_value_note": "$25 renewal credit to both the referrer and the friend \u2014 offsets Ultra Mobile plan renewals only, not cash.",
-  "route_id": "R6358",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim on the official page ($25 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: renewal credits offset planned Ultra Mobile spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (share unique link, friend buys and activates via link, credit lands 15 days later).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: renewal-only credit, 15-day wait, $100/year cap.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Ultra Mobile plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against ultramobile.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'we will credit you $25 towards your next renewal, and $25 to your friend or family member for his/her next renewal.'",
+   "pass": true
   },
-  "steps": [
-    "Log in to Ultra Mobile account management or the Ultra app and get your unique referral link",
-    "Share the link with friends and family",
-    "Friend purchases an Ultra Mobile plan through your link and activates it",
-    "15 days after activation (friend still active), both sides receive a $25 renewal credit, notified by email"
-  ],
-  "terms_url": "https://www.ultramobile.com/ultra-mobile-refer-a-friend-program-terms-conditions/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Renewal credit appears in the account 15 days after the friend's activation, while the friend is an active Ultra Mobile customer; email notification sent.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "15-day wait, active-customer condition, link-required rule, renewal-only restriction, and $100/year cap all stated on the live official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Active Ultra Mobile customer; friend purchases and activates an Ultra Mobile plan through the referrer's unique sharing link.",
+ "notes": "Verified 2026-09-23 by live fetch of ultramobile.com/refer (official domain). Deduped: no Ultra Mobile routes in catalog, evidence files, or rejects-g60. Note: an older Ultra Mobile T&C page (last updated ~7 years ago) describes a $10 credit structure for 1/3-month plans, but both current program pages (refer FAQ and why-ultra-mobile, crawled 19 days ago) and the live page state $25/$25 — the live page governs.",
+ "numeric_basis": "payout from official terms ($25 renewal credit to both sides); time: referral share 5-15 min active",
+ "official_url": "https://www.ultramobile.com/refer/",
+ "payout_max_usd": 25,
+ "payout_min_usd": 25,
+ "payout_quote": "Refer a friend, you get $25, they get $25. It's that simple! For each friend or family member you refer and purchases a plan we will credit you $25 towards your next renewal, and $25 to your friend or family member for his/her next renewal.",
+ "payout_value_note": "$25 renewal credit to both the referrer and the friend — offsets Ultra Mobile plan renewals only, not cash.",
+ "route_id": "R6358",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim on the official page ($25 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: renewal credits offset planned Ultra Mobile spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (share unique link, friend buys and activates via link, credit lands 15 days later).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: renewal-only credit, 15-day wait, $100/year cap.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Ultra Mobile plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against ultramobile.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log in to Ultra Mobile account management or the Ultra app and get your unique referral link",
+  "Share the link with friends and family",
+  "Friend purchases an Ultra Mobile plan through your link and activates it",
+  "15 days after activation (friend still active), both sides receive a $25 renewal credit, notified by email"
+ ],
+ "terms_url": "https://www.ultramobile.com/ultra-mobile-refer-a-friend-program-terms-conditions/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Renewal credit appears in the account 15 days after the friend's activation, while the friend is an active Ultra Mobile customer; email notification sent.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "days",
+ "when_cash_arrives": "$25 renewal credit appears in the account 15 days after the friend's activation.",
+ "maximize": "Hidden fast path: Ultra Mobile's official refer page (ultramobile.com/refer/): both sides get $25 toward plan renewal once a referred friend activates and purchases a plan, with the referrer's credit appearing '15 days after the friend's activation' — no 60/90-day good-standing tail. Honest framing: renewal credit only (not cash), capped at $100/year, friend must stay active.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "days",
+   "rationale": "Hidden fast path: Ultra Mobile's official refer page (ultramobile.com/refer/): both sides get $25 toward plan renewal once a referred friend activates and purchases a plan, with the referrer's credit appearing '15 days after the friend's activation' — no 60/90-day good-standing tail. Honest framing: renewal credit only (not cash), capped at $100/year, friend must stay active."
+  }
+ ]
 }

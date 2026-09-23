@@ -3,7 +3,7 @@
     "android": null,
     "ios": null
   },
-  "biggest_catch": "You earn a $100 Visa Reward Card (not cash) per referral — paid 4-6 weeks after the friend completes all requirements ($25 minimum opening deposit, $250+ in direct deposits, and 25 debit-card transactions within 90 days); capped at $500 per calendar year.",
+  "biggest_catch": "You earn a $100 Visa Reward Card (not cash) per referral \u2014 paid 4-6 weeks after the friend completes all requirements ($25 minimum opening deposit, $250+ in direct deposits, and 25 debit-card transactions within 90 days); capped at $500 per calendar year.",
   "catches": [
     "Friend must open a new checking account and within 90 days complete: $25 minimum opening deposit, at least $250 in direct deposits, and 25 debit-card transactions (ATM transactions excluded)",
     "Referral must be registered and shared via the Fort Financial referral link/portal; both referrer and friend receive a $100 Visa Reward Card",
@@ -27,7 +27,7 @@
       "pass": true
     },
     "c4": {
-      "evidence": "dedupe-check 'Fort Financial': only fuzzy false positive (utility rebate R0786) — no duplicate",
+      "evidence": "dedupe-check 'Fort Financial': only fuzzy false positive (utility rebate R0786) \u2014 no duplicate",
       "pass": true
     }
   },
@@ -83,5 +83,20 @@
   "timing": "Registering and sharing the referral link takes ~10 minutes active; the $100 reward card arrives 4-6 weeks after the friend completes all requirements.",
   "upfront_fee": false,
   "verdict": "verify",
-  "weasel_words": []
+  "weasel_words": [],
+  "speed": "weeks",
+  "when_cash_arrives": "Per official terms: Registering and sharing the referral link takes ~10 minutes active; the $100 reward card arrives 4-6 weeks after the friend completes all requirements. \u2014 structural: the reward is fulfilled as a mailed physical card (4-6 weeks) \u2014 no electronic payout option per terms.",
+  "maximize": [
+    "Front-load the friend's qualifying activity: terms give the friend a multi-week window, but the payout clock starts at completion \u2014 a friend who finishes in week 1 gets you paid weeks earlier.",
+    "The reward arrives as a physical card by mail (4-6 weeks); no expedite option exists in the terms \u2014 factor mail time into expectations.",
+    "Volume constraint noted in terms: Capped at $500 per calendar year (5 paid referrals)', 'See full Refer-A-Friend term \u2014 plan referral count against the cap, not the calendar."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "weeks",
+      "rationale": "Speed audit 2026-09-23: confirmed weeks \u2014 structural: the reward is fulfilled as a mailed physical card (4-6 weeks) \u2014 no electronic payout option per terms."
+    }
+  ]
 }

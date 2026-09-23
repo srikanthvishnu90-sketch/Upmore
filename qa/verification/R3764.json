@@ -1,88 +1,99 @@
 {
-  "route_id": "R3764",
-  "verdict": "verify",
-  "official_url": "https://www.schertzbank.com/personal/consumer-products/personal-checking",
-  "terms_url": "https://www.schertzbank.com/personal/consumer-products/personal-checking",
-  "payout_quote": "DirectPlus Checking: Set up and receive a new Direct Deposit totaling $500 or more per month and maintain a minimum daily balance of $500 for 90 days and receive a one time bonus of $300. Must be new money and new direct deposit to the bank. One bonus per customer will be paid if conditions are met. Bonus may be taxable. All other service charges apply.",
-  "steps": [
-    "Confirm you live in Schertz Bank & Trust's Texas service area.",
-    "Open a new DirectPlus Checking account.",
-    "Set up and receive a new direct deposit totaling $500 or more per month.",
-    "Maintain a minimum daily balance of $500 for 90 days.",
-    "Receive the one-time $300 bonus once conditions are met."
-  ],
-  "catches": [
-    "Must be NEW money and a NEW direct deposit to the bank.",
-    "Maintain $500 minimum daily balance for 90 days - no dips allowed.",
-    "$500+ direct deposit required per month.",
-    "One bonus per customer.",
-    "The bonus is generally treated as taxable income; consult a tax advisor - general bank-bonus tax treatment, not stated in the captured official terms.",
-    "DirectPlus has a $5 monthly service charge if the $500 minimum daily balance is not maintained - but the bonus requires maintaining that balance, so the fee is avoided during the 90-day period.",
-    "Texas availability only."
-  ],
-  "biggest_catch": "You must be a NEW customer with new money, receive $500+ in direct deposits per month, AND maintain a $500 minimum daily balance for 90 days with no dips.",
-  "eligibility": "New customers in Schertz Bank & Trust's Texas service area with new money and a new direct deposit; one bonus per customer.",
-  "timing": "Bonus paid after the 90-day $500 minimum daily balance period once conditions are met; no payout timing beyond that is stated on the page.",
-  "upfront_fee": false,
-  "weasel_words": [],
-  "app_links": {
-    "android": null,
-    "ios": null
+ "route_id": "R3764",
+ "verdict": "verify",
+ "official_url": "https://www.schertzbank.com/personal/consumer-products/personal-checking",
+ "terms_url": "https://www.schertzbank.com/personal/consumer-products/personal-checking",
+ "payout_quote": "DirectPlus Checking: Set up and receive a new Direct Deposit totaling $500 or more per month and maintain a minimum daily balance of $500 for 90 days and receive a one time bonus of $300. Must be new money and new direct deposit to the bank. One bonus per customer will be paid if conditions are met. Bonus may be taxable. All other service charges apply.",
+ "steps": [
+  "Confirm you live in Schertz Bank & Trust's Texas service area.",
+  "Open a new DirectPlus Checking account.",
+  "Set up and receive a new direct deposit totaling $500 or more per month.",
+  "Maintain a minimum daily balance of $500 for 90 days.",
+  "Receive the one-time $300 bonus once conditions are met."
+ ],
+ "catches": [
+  "Must be NEW money and a NEW direct deposit to the bank.",
+  "Maintain $500 minimum daily balance for 90 days - no dips allowed.",
+  "$500+ direct deposit required per month.",
+  "One bonus per customer.",
+  "The bonus is generally treated as taxable income; consult a tax advisor - general bank-bonus tax treatment, not stated in the captured official terms.",
+  "DirectPlus has a $5 monthly service charge if the $500 minimum daily balance is not maintained - but the bonus requires maintaining that balance, so the fee is avoided during the 90-day period.",
+  "Texas availability only."
+ ],
+ "biggest_catch": "You must be a NEW customer with new money, receive $500+ in direct deposits per month, AND maintain a $500 minimum daily balance for 90 days with no dips.",
+ "eligibility": "New customers in Schertz Bank & Trust's Texas service area with new money and a new direct deposit; one bonus per customer.",
+ "timing": "Bonus paid after the 90-day $500 minimum daily balance period once conditions are met; no payout timing beyond that is stated on the page.",
+ "upfront_fee": false,
+ "weasel_words": [],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Schertz Bank & Trust is a real operating Texas bank; $300 DirectPLUS bonus terms are published on its official schertzbank.com checking page."
   },
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Schertz Bank & Trust is a real operating Texas bank; $300 DirectPLUS bonus terms are published on its official schertzbank.com checking page."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Official page states the $300 one-time bonus with the $500/month direct deposit and 90-day $500 minimum daily balance requirements."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "No upfront fee; the account's $5 monthly service charge is waived by the $500 balance the bonus requires anyway."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Offer listed on the official checking page (captured 2026-09-23 UTC); no expiry stated."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Official page states the $300 one-time bonus with the $500/month direct deposit and 90-day $500 minimum daily balance requirements."
   },
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "New customers in the bank's Texas service area; new money and new direct deposit; one bonus per customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Open new DirectPlus Checking; $500+/month direct deposit; maintain $500 minimum daily balance for 90 days."
-    },
-    "s3": {
-      "pass": true,
-      "note": "One-time $300 bonus paid once conditions are met (after the 90-day balance period)."
-    },
-    "s4": {
-      "pass": true,
-      "note": "No weasel words - flat $300 bonus."
-    },
-    "s5": {
-      "pass": true,
-      "note": "No monthly fees while the qualifying $500 balance is maintained; fees can resume if the balance drops after the bonus."
-    },
-    "s6": {
-      "pass": true,
-      "note": "No stated expiry; outside the 14-day flag."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Distinct provider: Schertz Bank & Trust not in existing-providers.txt or prior evidence files."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront fee; the account's $5 monthly service charge is waived by the $500 balance the bonus requires anyway."
   },
-  "notes": "Verified against official schertzbank.com Personal Checking page (official-domain search capture, 2026-09-23 UTC; page fetch tooling unavailable this turn). Flat $300; new-money/new-DD rules prevent churning an existing deposit stream.",
-  "payout_min_usd": 300,
-  "payout_max_usd": 300,
-  "payout_value_note": "flat $300 bonus stated on official page",
-  "time_min_minutes": 30,
-  "time_max_minutes": 60,
-  "numeric_basis": "payout from official terms ($300 flat); time: account opening + DD setup est. 30-60 min active (excludes 90-day balance maintenance)"
+  "c4": {
+   "pass": true,
+   "evidence": "Offer listed on the official checking page (captured 2026-09-23 UTC); no expiry stated."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "New customers in the bank's Texas service area; new money and new direct deposit; one bonus per customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Open new DirectPlus Checking; $500+/month direct deposit; maintain $500 minimum daily balance for 90 days."
+  },
+  "s3": {
+   "pass": true,
+   "note": "One-time $300 bonus paid once conditions are met (after the 90-day balance period)."
+  },
+  "s4": {
+   "pass": true,
+   "note": "No weasel words - flat $300 bonus."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No monthly fees while the qualifying $500 balance is maintained; fees can resume if the balance drops after the bonus."
+  },
+  "s6": {
+   "pass": true,
+   "note": "No stated expiry; outside the 14-day flag."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct provider: Schertz Bank & Trust not in existing-providers.txt or prior evidence files."
+  }
+ },
+ "notes": "Verified against official schertzbank.com Personal Checking page (official-domain search capture, 2026-09-23 UTC; page fetch tooling unavailable this turn). Flat $300; new-money/new-DD rules prevent churning an existing deposit stream.",
+ "payout_min_usd": 300,
+ "payout_max_usd": 300,
+ "payout_value_note": "flat $300 bonus stated on official page",
+ "time_min_minutes": 30,
+ "time_max_minutes": 60,
+ "numeric_basis": "payout from official terms ($300 flat); time: account opening + DD setup est. 30-60 min active (excludes 90-day balance maintenance)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $300. Per official terms: Bonus paid after the 90-day $500 minimum daily balance period once conditions are met; no payout timing beyond that is stated on the page. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

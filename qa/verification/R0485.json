@@ -1,88 +1,100 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Zero guaranteed subscribers: you must build and keep a paying readership yourself, Substack takes 10% of paid subscription revenue plus Stripe processing fees, and income stops the moment subscribers cancel.",
+ "catches": [
+  "10% platform fee on paid subscription revenue, plus Stripe's processing fees on top.",
+  "Publishing is free; costs are purely a share of what you earn \u2014 but you earn only what subscribers pay.",
+  "Requires ongoing writing and publishing; lapses kill renewals and income.",
+  "Variable income: subscriber counts fluctuate month to month \u2014 this is not a wage."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Substack is a real operating newsletter platform; its official support article documents the cost model.",
+   "pass": true
   },
-  "biggest_catch": "Zero guaranteed subscribers: you must build and keep a paying readership yourself, Substack takes 10% of paid subscription revenue plus Stripe processing fees, and income stops the moment subscribers cancel.",
-  "catches": [
-    "10% platform fee on paid subscription revenue, plus Stripe's processing fees on top.",
-    "Publishing is free; costs are purely a share of what you earn — but you earn only what subscribers pay.",
-    "Requires ongoing writing and publishing; lapses kill renewals and income.",
-    "Variable income: subscriber counts fluctuate month to month — this is not a wage."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Substack is a real operating newsletter platform; its official support article documents the cost model.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Substack support article: publishing is free; Substack takes 10% of paid subscription revenue; Stripe fees are additional.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Publishing is free; the 10% fee is deducted from revenue, not charged up front.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "No official fixed payout figure exists — earnings are whatever subscribers pay, so payout_quote is null; mechanism-only verify.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Substack support article: publishing is free; Substack takes 10% of paid subscription revenue; Stripe fees are additional.",
+   "pass": true
   },
-  "eligibility": "Anyone can publish free on Substack; paid subscriptions require your own readership — Substack supplies no audience.",
-  "notes": "Per Substack's official support article (support.substack.com): publishing is free; Substack takes 10% of paid subscription revenue; Stripe processing fees are additional. Mechanism-only verify — payout_quote null. [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)]",
-  "official_url": "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost",
-  "payout_quote": null,
-  "route_id": "R0485",
-  "standard": {
-    "s1": {
-      "note": "Anyone can publish; paid revenue requires a readership you build yourself.",
-      "pass": true
-    },
-    "s2": {
-      "note": "10% platform fee plus Stripe processing; ongoing-writing requirement and cancellable income disclosed.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Paid subscriptions pay out via Stripe; Substack's 10% is deducted as revenue comes in.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Substack makes no earnings promise — income depends on subscribers you attract.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost — official Substack support.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: create publication → set price → connect Stripe → publish consistently → retain subscribers.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Substack support article content verified via official-domain result 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Publishing is free; the 10% fee is deducted from revenue, not charged up front.",
+   "pass": true
   },
-  "steps": [
-    "Create a Substack publication for free.",
-    "Set a paid subscription price and connect Stripe for payouts.",
-    "Publish consistently to grow free and paid subscribers.",
-    "Substack deducts 10% plus Stripe processing fees from paid revenue automatically.",
-    "Receive payouts via Stripe; retain subscribers with ongoing content — income stops if they cancel."
-  ],
-  "terms_url": null,
-  "timing": "Paid subscriptions pay out via Stripe; Substack's 10% is deducted as revenue comes in.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "No official fixed payout figure exists \u2014 earnings are whatever subscribers pay, so payout_quote is null; mechanism-only verify.",
+   "pass": true
+  }
+ },
+ "eligibility": "Anyone can publish free on Substack; paid subscriptions require your own readership \u2014 Substack supplies no audience.",
+ "notes": "Per Substack's official support article (support.substack.com): publishing is free; Substack takes 10% of paid subscription revenue; Stripe processing fees are additional. Mechanism-only verify \u2014 payout_quote null. [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)]",
+ "official_url": "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost",
+ "payout_quote": null,
+ "route_id": "R0485",
+ "standard": {
+  "s1": {
+   "note": "Anyone can publish; paid revenue requires a readership you build yourself.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 0.0,
-  "payout_value_note": "no stated amount in official terms; variable",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)"
+  "s2": {
+   "note": "10% platform fee plus Stripe processing; ongoing-writing requirement and cancellable income disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Paid subscriptions pay out via Stripe; Substack's 10% is deducted as revenue comes in.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Substack makes no earnings promise \u2014 income depends on subscribers you attract.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://support.substack.com/hc/en-us/articles/360037607131-How-much-does-Substack-cost \u2014 official Substack support.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: create publication \u2192 set price \u2192 connect Stripe \u2192 publish consistently \u2192 retain subscribers.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Substack support article content verified via official-domain result 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Create a Substack publication for free.",
+  "Set a paid subscription price and connect Stripe for payouts.",
+  "Publish consistently to grow free and paid subscribers.",
+  "Substack deducts 10% plus Stripe processing fees from paid revenue automatically.",
+  "Receive payouts via Stripe; retain subscribers with ongoing content \u2014 income stops if they cancel."
+ ],
+ "terms_url": null,
+ "timing": "Paid subscriptions pay out via Stripe; Substack's 10% is deducted as revenue comes in.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "no stated amount in official terms; variable",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: no stated amount in official terms; variable; time: category default Other Online (20-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Paid subscriptions pay out via Stripe as revenue comes in (Substack's 10% deducted).",
+ "maximize": "Get paid subscribers.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "Subscriber revenue is the blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

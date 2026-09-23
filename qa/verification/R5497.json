@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The reward is 35 gallons of fuel priced at Suburban Propane's own per-gallon rate, so its cash value moves with propane prices (ranges $1.64-$4.71 by state); the account credit cannot be refunded in cash.",
+ "catches": [
+  "Only available to existing Suburban Propane customers.",
+  "The referred person must be accepted as a new Residential Fuel Delivery Customer and receive their first fuel delivery before credit is issued.",
+  "Only one credit is issued for each new customer; no cash refunds if the credit is not fully used.",
+  "Offer void where prohibited."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (suburbanpropane.com); referral program page crawled 1 hour ago."
   },
-  "biggest_catch": "The reward is 35 gallons of fuel priced at Suburban Propane's own per-gallon rate, so its cash value moves with propane prices (ranges $1.64-$4.71 by state); the account credit cannot be refunded in cash.",
-  "catches": [
-    "Only available to existing Suburban Propane customers.",
-    "The referred person must be accepted as a new Residential Fuel Delivery Customer and receive their first fuel delivery before credit is issued.",
-    "Only one credit is issued for each new customer; no cash refunds if the credit is not fully used.",
-    "Offer void where prohibited."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (suburbanpropane.com); referral program page crawled 1 hour ago."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Full program terms stated on the official page, including mention code 2618 and delivery conditions."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (free fuel credited to account), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; no existing evidence for Suburban Propane (dedupe returned zero hits)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Full program terms stated on the official page, including mention code 2618 and delivery conditions."
   },
-  "eligibility": "Existing Suburban Propane customers; referred person must become a new Residential Fuel Delivery Customer and receive their first fuel delivery.",
-  "notes": "In-kind fuel reward framed as savings on planned energy spending, never income. USD value derived from EIA last-published U.S. average residential propane price ($2.674/gal, Mar 30 2026, checked Sept 23 2026); actual value varies with local propane prices.",
-  "numeric_basis": "payout 35 gallons from official page text; valued at EIA U.S. average residential propane price $2.674/gal (Mar 30 2026) = 35 x 2.674 = $93.59, rounded to $94; time: 5-15 minutes for referral sharing",
-  "official_url": "https://www.suburbanpropane.com/support/referral-program/",
-  "payout_max_usd": 94,
-  "payout_min_usd": 94,
-  "payout_quote": "When they become a customer, you'll earn 35 Free Gallons!",
-  "payout_value_note": "35 free gallons credited to the referrer's account, valued at ~$94 using EIA's last-published U.S. average residential propane price of $2.674/gal (Mar 30, 2026). Actual value varies with state/local propane prices ($1.64-$4.71 range nationally).",
-  "route_id": "R5497",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Suburban Propane customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Submit your referral via the online form or call 1-800-PROPANE, mentioning code 2618."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referred person is accepted as a new Residential Fuel Delivery Customer."
-    },
-    "s4": {
-      "pass": true,
-      "note": "After the referral's first fuel delivery, an account credit for 35 gallons is applied to your account."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Only one credit per new customer; no cash refunds for unused credit."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Service areas where Suburban Propane operates (42 states)."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Offer void where prohibited."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (free fuel credited to account), never income."
   },
-  "steps": [
-    "As an existing Suburban Propane customer, submit a referral via the online form or call 1-800-PROPANE (mention code 2618).",
-    "Your friend or family member becomes a new Residential Fuel Delivery Customer.",
-    "After they receive their first fuel delivery, 35 free gallons are credited to your account.",
-    "The gallons offset your future propane deliveries; no cash payout."
-  ],
-  "terms_url": "https://www.suburbanpropane.com/support/referral-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Submitting a referral takes 5-15 minutes of active effort; the gallon credit posts after the referral's first fuel delivery.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; no existing evidence for Suburban Propane (dedupe returned zero hits)."
+  }
+ },
+ "eligibility": "Existing Suburban Propane customers; referred person must become a new Residential Fuel Delivery Customer and receive their first fuel delivery.",
+ "notes": "In-kind fuel reward framed as savings on planned energy spending, never income. USD value derived from EIA last-published U.S. average residential propane price ($2.674/gal, Mar 30 2026, checked Sept 23 2026); actual value varies with local propane prices.",
+ "numeric_basis": "payout 35 gallons from official page text; valued at EIA U.S. average residential propane price $2.674/gal (Mar 30 2026) = 35 x 2.674 = $93.59, rounded to $94; time: 5-15 minutes for referral sharing",
+ "official_url": "https://www.suburbanpropane.com/support/referral-program/",
+ "payout_max_usd": 94,
+ "payout_min_usd": 94,
+ "payout_quote": "When they become a customer, you'll earn 35 Free Gallons!",
+ "payout_value_note": "35 free gallons credited to the referrer's account, valued at ~$94 using EIA's last-published U.S. average residential propane price of $2.674/gal (Mar 30, 2026). Actual value varies with state/local propane prices ($1.64-$4.71 range nationally).",
+ "route_id": "R5497",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Suburban Propane customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Submit your referral via the online form or call 1-800-PROPANE, mentioning code 2618."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referred person is accepted as a new Residential Fuel Delivery Customer."
+  },
+  "s4": {
+   "pass": true,
+   "note": "After the referral's first fuel delivery, an account credit for 35 gallons is applied to your account."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Only one credit per new customer; no cash refunds for unused credit."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Service areas where Suburban Propane operates (42 states)."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Offer void where prohibited."
+  }
+ },
+ "steps": [
+  "As an existing Suburban Propane customer, submit a referral via the online form or call 1-800-PROPANE (mention code 2618).",
+  "Your friend or family member becomes a new Residential Fuel Delivery Customer.",
+  "After they receive their first fuel delivery, 35 free gallons are credited to your account.",
+  "The gallons offset your future propane deliveries; no cash payout."
+ ],
+ "terms_url": "https://www.suburbanpropane.com/support/referral-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Submitting a referral takes 5-15 minutes of active effort; the gallon credit posts after the referral's first fuel delivery.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Submitting a referral takes 5-15 minutes of active effort; the gallon credit posts after the referral's first fuel delivery.",
+ "maximize": "Fastest honest path: Submitting a referral takes 5-15 minutes of active effort; the gallon credit posts after the referral's first fuel delivery. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

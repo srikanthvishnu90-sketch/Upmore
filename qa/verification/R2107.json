@@ -1,88 +1,99 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "No stated end date — 'limited time offer' only — and the $150 tier requires $2,000 in recurring payroll/pension/government direct deposits within 90 days; you cannot earn both tiers (you get the higher one only).",
+ "catches": [
+  "No stated expiry date — 'limited time offer' only; verify the promo is live before opening.",
+  "Two tiers, one bonus only: $100 for opening a new Free Checking for Life account with a minimum opening deposit of $500; $150 requires satisfying the $100 requirements PLUS recurring direct deposit(s) totaling $2,000+ within 90 days. Eligible customers who meet both receive the higher amount, NOT both.",
+  "Qualifying recurring direct deposit = ACH credit for payroll, pension, or government payments (e.g. Social Security).",
+  "Accounts must be open and funded within 90 days of account opening; bonus posted after the 90-day qualifying period concludes.",
+  "Use promo code FREECASH when opening online.",
+  "Not valid for individuals with an existing Embassy Bank checking account or anyone who previously received a new account bonus from Embassy.",
+  "Limit one bonus per household; bonus may be subject to 1099 tax reporting.",
+  "Free Checking for Life has no monthly maintenance fee and no minimum balance requirement beyond the $500 opening deposit for the bonus.",
+  "Embassy Bank is a Lehigh Valley (PA) community bank — 10 locations; online opening available, but service area is local."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Embassy Bank for the Lehigh Valley — real operating community bank in PA (10 Lehigh Valley locations); official promo page on embassybank.com.",
+   "pass": true
   },
-  "biggest_catch": "No stated end date — 'limited time offer' only — and the $150 tier requires $2,000 in recurring payroll/pension/government direct deposits within 90 days; you cannot earn both tiers (you get the higher one only).",
-  "catches": [
-    "No stated expiry date — 'limited time offer' only; verify the promo is live before opening.",
-    "Two tiers, one bonus only: $100 for opening a new Free Checking for Life account with a minimum opening deposit of $500; $150 requires satisfying the $100 requirements PLUS recurring direct deposit(s) totaling $2,000+ within 90 days. Eligible customers who meet both receive the higher amount, NOT both.",
-    "Qualifying recurring direct deposit = ACH credit for payroll, pension, or government payments (e.g. Social Security).",
-    "Accounts must be open and funded within 90 days of account opening; bonus posted after the 90-day qualifying period concludes.",
-    "Use promo code FREECASH when opening online.",
-    "Not valid for individuals with an existing Embassy Bank checking account or anyone who previously received a new account bonus from Embassy.",
-    "Limit one bonus per household; bonus may be subject to 1099 tax reporting.",
-    "Free Checking for Life has no monthly maintenance fee and no minimum balance requirement beyond the $500 opening deposit for the bonus.",
-    "Embassy Bank is a Lehigh Valley (PA) community bank — 10 locations; online opening available, but service area is local."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Embassy Bank for the Lehigh Valley — real operating community bank in PA (10 Lehigh Valley locations); official promo page on embassybank.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Embassy page 'Free Checking + $150 Bonus' with full qualifying terms: $100 for $500 opening deposit, $150 with $2,000 recurring DD within 90 days, promo code FREECASH, higher-bonus-only rule.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; Free Checking for Life has no monthly maintenance fee; $500 is an opening deposit, not a fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: bonus 'will be posted to the account after the 90-day qualifying period has concluded.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Embassy page 'Free Checking + $150 Bonus' with full qualifying terms: $100 for $500 opening deposit, $150 with $2,000 recurring DD within 90 days, promo code FREECASH, higher-bonus-only rule.",
+   "pass": true
   },
-  "eligibility": "New Embassy Bank customers only; not valid for anyone with an existing Embassy Bank checking account or who previously received a new account bonus from Embassy. Limit one bonus per household. Use promo code FREECASH when opening online. PA Lehigh Valley service area.",
-  "notes": "Verified on Embassy Bank's official domain 2026-09-23 (UTC). No explicit promo end date — 'limited time offer.' App links left null rather than guessed.",
-  "official_url": "https://embassybank.com/free-checking-cash-bonus/",
-  "payout_max_usd": 150.0,
-  "payout_min_usd": 100.0,
-  "payout_quote": "To qualify for a $100 bonus, open a new Free Checking for Life account either online or in-person, with a minimum opening deposit of at least $500. To qualify for a $150 bonus, satisfy the requirements for the $100 bonus and make a recurring direct deposit(s) totaling $2,000 or more within 90 days of account opening... Eligible customers who meet the requirements of both offers will receive the higher bonus amount, not both, which will be posted to the account after the 90-day qualifying period has concluded... Use Promo Code FREECASH for opening an account online. Limited time offer. Limit of one bonus per household. Bonus may be subject to 1099 reporting.",
-  "payout_value_note": "tiered: $100 for opening deposit; $150 (not both) with $2,000 recurring direct deposits",
-  "route_id": "R2107",
-  "standard": {
-    "s1": {
-      "note": "New customers only; no existing Embassy checking or prior new-account bonus; one per household; FREECASH code online.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Open Free Checking for Life with $500+ deposit using FREECASH; for the $150 tier, add $2,000+ in recurring payroll/pension/government DD within 90 days.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus posted to the account after the 90-day qualifying period concludes.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amounts stated precisely; 'limited time offer' is the only availability soft language.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://embassybank.com/free-checking-cash-bonus/ — official Embassy Bank promo page, fetched 2026-09-23 (UTC).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: open online with FREECASH, fund $500, set up qualifying recurring DD for the higher tier, keep account open 90 days.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Embassy Bank page fetched 2026-09-23 (UTC).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; Free Checking for Life has no monthly maintenance fee; $500 is an opening deposit, not a fee.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Free Checking for Life account at Embassy Bank online (use promo code FREECASH) or in person, with a minimum opening deposit of $500, to qualify for the $100 bonus.",
-    "For the $150 tier: within 90 days of opening, set up recurring direct deposit(s) totaling $2,000 or more (ACH credit for payroll, pension, or government payments).",
-    "Keep the account open and funded; the bonus (the higher tier you qualify for, not both) is posted to the account after the 90-day qualifying period concludes."
-  ],
-  "terms_url": "https://embassybank.com/free-checking-cash-bonus/",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Bonus posted to the account after the 90-day qualifying period has concluded.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "numeric_basis": "payout from official terms ($100.0-$150.0); time: active minutes est. 30.0-60.0. Quote: To qualify for a $100 bonus, open a new Free Checking for Life account either online or in-person, with a minimum openin"
+  "c4": {
+   "evidence": "Official page: bonus 'will be posted to the account after the 90-day qualifying period has concluded.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New Embassy Bank customers only; not valid for anyone with an existing Embassy Bank checking account or who previously received a new account bonus from Embassy. Limit one bonus per household. Use promo code FREECASH when opening online. PA Lehigh Valley service area.",
+ "notes": "Verified on Embassy Bank's official domain 2026-09-23 (UTC). No explicit promo end date — 'limited time offer.' App links left null rather than guessed.",
+ "official_url": "https://embassybank.com/free-checking-cash-bonus/",
+ "payout_max_usd": 150.0,
+ "payout_min_usd": 100.0,
+ "payout_quote": "To qualify for a $100 bonus, open a new Free Checking for Life account either online or in-person, with a minimum opening deposit of at least $500. To qualify for a $150 bonus, satisfy the requirements for the $100 bonus and make a recurring direct deposit(s) totaling $2,000 or more within 90 days of account opening... Eligible customers who meet the requirements of both offers will receive the higher bonus amount, not both, which will be posted to the account after the 90-day qualifying period has concluded... Use Promo Code FREECASH for opening an account online. Limited time offer. Limit of one bonus per household. Bonus may be subject to 1099 reporting.",
+ "payout_value_note": "tiered: $100 for opening deposit; $150 (not both) with $2,000 recurring direct deposits",
+ "route_id": "R2107",
+ "standard": {
+  "s1": {
+   "note": "New customers only; no existing Embassy checking or prior new-account bonus; one per household; FREECASH code online.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open Free Checking for Life with $500+ deposit using FREECASH; for the $150 tier, add $2,000+ in recurring payroll/pension/government DD within 90 days.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus posted to the account after the 90-day qualifying period concludes.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amounts stated precisely; 'limited time offer' is the only availability soft language.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://embassybank.com/free-checking-cash-bonus/ — official Embassy Bank promo page, fetched 2026-09-23 (UTC).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: open online with FREECASH, fund $500, set up qualifying recurring DD for the higher tier, keep account open 90 days.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Embassy Bank page fetched 2026-09-23 (UTC).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Free Checking for Life account at Embassy Bank online (use promo code FREECASH) or in person, with a minimum opening deposit of $500, to qualify for the $100 bonus.",
+  "For the $150 tier: within 90 days of opening, set up recurring direct deposit(s) totaling $2,000 or more (ACH credit for payroll, pension, or government payments).",
+  "Keep the account open and funded; the bonus (the higher tier you qualify for, not both) is posted to the account after the 90-day qualifying period concludes."
+ ],
+ "terms_url": "https://embassybank.com/free-checking-cash-bonus/",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Bonus posted to the account after the 90-day qualifying period has concluded.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "numeric_basis": "payout from official terms ($100.0-$150.0); time: active minutes est. 30.0-60.0. Quote: To qualify for a $100 bonus, open a new Free Checking for Life account either online or in-person, with a minimum openin",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $100–$150. Per official terms: Bonus posted to the account after the 90-day qualifying period has concluded. Earliest realistic: ~4 months (fixed 90-day qualification period + the payout window — finishing early does not pay sooner).",
+ "maximize": "Fastest honest path. The qualification period is a fixed calendar window — finishing the required transactions early does NOT pay the bonus sooner; the bank calculates the bonus only after the period closes. Fastest honest path: complete the required transactions in the first week so you can't forget them, then wait out the period with the account open and in good standing.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'fixed-qual-period'"
+  }
+ ]
 }

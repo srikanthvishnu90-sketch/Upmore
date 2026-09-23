@@ -1,88 +1,100 @@
 {
-  "route_id": "R0431",
-  "verdict": "verify",
-  "critical": {
-    "c1": {
-      "evidence": "Ally Bank — real operating US bank (Member FDIC); official savings pages live on ally.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Ally rates page lists the Online Savings Account with current APY mechanics, fee schedule, and FDIC terms.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee: $0 monthly maintenance fees, $0 minimum opening deposit, $0 for standard/expedited ACH transfers.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official rates page: 3.00% APY on all balance tiers, APYs accurate as of 09/22/2026, rate variable; interest compounded daily. This is interest mechanics, not a signup bonus — framed honestly as such.",
-      "pass": true
-    }
+ "route_id": "R0431",
+ "verdict": "verify",
+ "critical": {
+  "c1": {
+   "evidence": "Ally Bank \u2014 real operating US bank (Member FDIC); official savings pages live on ally.com.",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "18+, US resident; Ally asks for name, address, Social Security number to open. No minimum opening deposit.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No fees to open or keep the account; $0 ACH transfers; $20 outgoing domestic wire / $15 expedited delivery are the only disclosed fees. Limit of 10 withdrawals per statement cycle.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Interest compounds daily (no signup bonus exists); earnings accrue only while your own money is parked.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No weasel words on the mechanics: 3.00% APY stated flatly with the honest qualifier that the rate is variable.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.ally.com/bank/savings-account-rates/ — official Ally rates page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: apply on ally.com, verify identity, fund via ACH (no minimum), keep balance parked, withdraw within the 10-per-cycle limit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Checked 2026-09-22/23.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Ally rates page lists the Online Savings Account with current APY mechanics, fee schedule, and FDIC terms.",
+   "pass": true
   },
-  "payout_quote": "3.00% Annual Percentage Yield on all balance tiers. 'Annual Percentage Yields (APYs) displayed are accurate as of 09/22/2026.' 'Rate is variable and may change after the account is opened.' Interest is compounded daily. This is interest on your own deposits, not a signup bonus.",
-  "timing": "Interest compounds daily; no signup bonus exists. Earnings accrue only while your own funds are parked in the account.",
-  "eligibility": "18+, US resident. Ally requires personal info including address and Social Security number to open. No minimum opening deposit; approval required.",
-  "biggest_catch": "There is no signup bonus — Ally pays interest only, so you earn nothing without parking your own money, and the 3.00% APY is variable and can drop at any time.",
-  "catches": [
-    "No signup bonus exists on ally.com — the only 'payout' is variable interest on your own deposits.",
-    "The 3.00% APY is variable and may change after the account is opened; Ally can lower it at any time.",
-    "Limit of 10 withdrawals per statement cycle.",
-    "FDIC insurance applies up to the maximum allowed by law; amounts above limits are uninsured."
-  ],
-  "steps": [
-    "Go to https://www.ally.com/bank/online-savings-account/ and click Open New Account.",
-    "Provide personal info (name, address, Social Security number, email) and complete identity verification.",
-    "Fund the account via ACH transfer from your bank — there is no minimum opening deposit; the faster you fund, the sooner you earn interest.",
-    "Keep funds parked; interest compounds daily at the variable APY (3.00% as of 09/22/2026).",
-    "Withdraw via ACH when needed, staying within the 10-withdrawals-per-statement-cycle limit."
-  ],
-  "notes": "Checked 2026-09-22/23. ally.com savings and rates pages loaded live with the 3.00% APY figure dated 09/22/2026. No signup bonus or promo bonus exists anywhere on Ally's official savings pages — the mechanics verify stands on interest alone, per the task's framing rule. App links left null (no verbatim official store URL obtained). [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)]",
-  "official_url": "https://www.ally.com/bank/savings-account-rates/",
-  "terms_url": "https://www.ally.com/bank/online-savings-account/?CP=75597467%3B0",
-  "upfront_fee": false,
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c3": {
+   "evidence": "No upfront fee: $0 monthly maintenance fees, $0 minimum opening deposit, $0 for standard/expedited ACH transfers.",
+   "pass": true
   },
-  "app_links": {
-    "android": null,
-    "ios": null
+  "c4": {
+   "evidence": "Official rates page: 3.00% APY on all balance tiers, APYs accurate as of 09/22/2026, rate variable; interest compounded daily. This is interest mechanics, not a signup bonus \u2014 framed honestly as such.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "18+, US resident; Ally asks for name, address, Social Security number to open. No minimum opening deposit.",
+   "pass": true
   },
-  "checked_at": "2026-09-23T07:21:24Z",
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 0.0,
-  "payout_value_note": "no parseable amount; variable",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Other Online (20-60min active)"
+  "s2": {
+   "note": "No fees to open or keep the account; $0 ACH transfers; $20 outgoing domestic wire / $15 expedited delivery are the only disclosed fees. Limit of 10 withdrawals per statement cycle.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Interest compounds daily (no signup bonus exists); earnings accrue only while your own money is parked.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the mechanics: 3.00% APY stated flatly with the honest qualifier that the rate is variable.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.ally.com/bank/savings-account-rates/ \u2014 official Ally rates page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: apply on ally.com, verify identity, fund via ACH (no minimum), keep balance parked, withdraw within the 10-per-cycle limit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-22/23.",
+   "pass": true
+  }
+ },
+ "payout_quote": "3.00% Annual Percentage Yield on all balance tiers. 'Annual Percentage Yields (APYs) displayed are accurate as of 09/22/2026.' 'Rate is variable and may change after the account is opened.' Interest is compounded daily. This is interest on your own deposits, not a signup bonus.",
+ "timing": "Interest compounds daily; no signup bonus exists. Earnings accrue only while your own funds are parked in the account.",
+ "eligibility": "18+, US resident. Ally requires personal info including address and Social Security number to open. No minimum opening deposit; approval required.",
+ "biggest_catch": "There is no signup bonus \u2014 Ally pays interest only, so you earn nothing without parking your own money, and the 3.00% APY is variable and can drop at any time.",
+ "catches": [
+  "No signup bonus exists on ally.com \u2014 the only 'payout' is variable interest on your own deposits.",
+  "The 3.00% APY is variable and may change after the account is opened; Ally can lower it at any time.",
+  "Limit of 10 withdrawals per statement cycle.",
+  "FDIC insurance applies up to the maximum allowed by law; amounts above limits are uninsured."
+ ],
+ "steps": [
+  "Go to https://www.ally.com/bank/online-savings-account/ and click Open New Account.",
+  "Provide personal info (name, address, Social Security number, email) and complete identity verification.",
+  "Fund the account via ACH transfer from your bank \u2014 there is no minimum opening deposit; the faster you fund, the sooner you earn interest.",
+  "Keep funds parked; interest compounds daily at the variable APY (3.00% as of 09/22/2026).",
+  "Withdraw via ACH when needed, staying within the 10-withdrawals-per-statement-cycle limit."
+ ],
+ "notes": "Checked 2026-09-22/23. ally.com savings and rates pages loaded live with the 3.00% APY figure dated 09/22/2026. No signup bonus or promo bonus exists anywhere on Ally's official savings pages \u2014 the mechanics verify stands on interest alone, per the task's framing rule. App links left null (no verbatim official store URL obtained). [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)]",
+ "official_url": "https://www.ally.com/bank/savings-account-rates/",
+ "terms_url": "https://www.ally.com/bank/online-savings-account/?CP=75597467%3B0",
+ "upfront_fee": false,
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T07:21:24Z",
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "no parseable amount; variable",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Other Online (20-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "No signup bonus exists \u2014 earnings accrue only as variable interest while your own funds sit in the account.",
+ "maximize": "None available for a bonus; this is interest-only.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "No bonus mechanism exists; interest accrual is inherently slow.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

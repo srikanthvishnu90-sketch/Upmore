@@ -1,90 +1,101 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Your account is reviewed only ONCE during days 60-90, and closing within 90 days costs a $15 fee - miss the window and you wait or lose it.",
+ "catches": [
+  "$200 with promo code CHECKING200; you must have no current 1st Advantage checking.",
+  "Eligible accounts: Premier, Preferred, or Free Advantage Checking.",
+  "Within 60 days: enroll in eStatements, set up recurring direct deposit, and spend $200+ on the debit card.",
+  "Account reviewed once during days 60-90; bonus paid 60-90 days after opening.",
+  "$15 closing fee if the account is closed within 90 days.",
+  "'Limited time' with no fixed expiry."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "1st Advantage Federal Credit Union (Virginia/North Carolina) - real operating credit union; official page 1stadvantage.org."
   },
-  "biggest_catch": "Your account is reviewed only ONCE during days 60-90, and closing within 90 days costs a $15 fee - miss the window and you wait or lose it.",
-  "catches": [
-    "$200 with promo code CHECKING200; you must have no current 1st Advantage checking.",
-    "Eligible accounts: Premier, Preferred, or Free Advantage Checking.",
-    "Within 60 days: enroll in eStatements, set up recurring direct deposit, and spend $200+ on the debit card.",
-    "Account reviewed once during days 60-90; bonus paid 60-90 days after opening.",
-    "$15 closing fee if the account is closed within 90 days.",
-    "'Limited time' with no fixed expiry."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "1st Advantage Federal Credit Union (Virginia/North Carolina) - real operating credit union; official page 1stadvantage.org."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Official checking-offer page with $200 amount, CHECKING200 code, 60-day activity terms, and 60-90 day payout."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "No enrollment fee."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Official page: reviewed during days 60-90, paid 60-90 days after opening - concrete."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Official checking-offer page with $200 amount, CHECKING200 code, 60-day activity terms, and 60-90 day payout."
   },
-  "eligibility": "No current 1st Advantage checking. VA/NC.",
-  "notes": "Official 1st Advantage checking-offer page fetched 2026-09-23. Candidate '$200 checking, VA/NC' verified. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://www.1stadvantage.org/checkingoffer/",
-  "payout_quote": "$200 with CHECKING200: eStatements, recurring direct deposit, and $200+ in debit spending within 60 days - reviewed once during days 60-90 and paid 60-90 days after account opening.",
-  "route_id": "R0642",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "No current 1st Advantage checking."
-    },
-    "s2": {
-      "pass": true,
-      "note": "eStatements + recurring DD + $200 debit spend in 60 days; $15 fee if closed within 90 days; limited time, no fixed expiry."
-    },
-    "s3": {
-      "pass": true,
-      "note": "60-90 days after account opening."
-    },
-    "s4": {
-      "pass": true,
-      "note": "'Limited time' with no fixed expiry - flagged in weasel_words; amount and timing stated flatly."
-    },
-    "s5": {
-      "pass": true,
-      "note": "https://www.1stadvantage.org/checkingoffer/ - official 1st Advantage page, loaded live."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Steps are concrete: open with code, eStatements, recurring DD, $200 debit spend in 60 days, keep open 90 days."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Official 1st Advantage page loaded live 2026-09-23."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "No enrollment fee."
   },
-  "steps": [
-    "Open a Premier, Preferred, or Free Advantage Checking account at https://www.1stadvantage.org/checkingoffer/ with promo code CHECKING200 (no current 1st Advantage checking).",
-    "Enroll in eStatements immediately.",
-    "Within 60 days: set up recurring direct deposit and spend $200+ on the debit card.",
-    "Keep the account open and in good standing for 90 days - closing earlier triggers the $15 fee.",
-    "Expect the $200 bonus 60-90 days after opening, after the single day 60-90 review."
-  ],
-  "terms_url": "https://www.1stadvantage.org/checkingoffer/",
-  "timing": "Paid 60-90 days after account opening (reviewed once during days 60-90).",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "Limited time - no fixed expiration date stated on the official page."
+  "c4": {
+   "pass": true,
+   "evidence": "Official page: reviewed during days 60-90, paid 60-90 days after opening - concrete."
+  }
+ },
+ "eligibility": "No current 1st Advantage checking. VA/NC.",
+ "notes": "Official 1st Advantage checking-offer page fetched 2026-09-23. Candidate '$200 checking, VA/NC' verified. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://www.1stadvantage.org/checkingoffer/",
+ "payout_quote": "$200 with CHECKING200: eStatements, recurring direct deposit, and $200+ in debit spending within 60 days - reviewed once during days 60-90 and paid 60-90 days after account opening.",
+ "route_id": "R0642",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "No current 1st Advantage checking."
   },
-  "payout_min_usd": 200.0,
-  "payout_max_usd": 200.0,
-  "payout_value_note": "minimum stated amount in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "pass": true,
+   "note": "eStatements + recurring DD + $200 debit spend in 60 days; $15 fee if closed within 90 days; limited time, no fixed expiry."
+  },
+  "s3": {
+   "pass": true,
+   "note": "60-90 days after account opening."
+  },
+  "s4": {
+   "pass": true,
+   "note": "'Limited time' with no fixed expiry - flagged in weasel_words; amount and timing stated flatly."
+  },
+  "s5": {
+   "pass": true,
+   "note": "https://www.1stadvantage.org/checkingoffer/ - official 1st Advantage page, loaded live."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Steps are concrete: open with code, eStatements, recurring DD, $200 debit spend in 60 days, keep open 90 days."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Official 1st Advantage page loaded live 2026-09-23."
+  }
+ },
+ "steps": [
+  "Open a Premier, Preferred, or Free Advantage Checking account at https://www.1stadvantage.org/checkingoffer/ with promo code CHECKING200 (no current 1st Advantage checking).",
+  "Enroll in eStatements immediately.",
+  "Within 60 days: set up recurring direct deposit and spend $200+ on the debit card.",
+  "Keep the account open and in good standing for 90 days - closing earlier triggers the $15 fee.",
+  "Expect the $200 bonus 60-90 days after opening, after the single day 60-90 review."
+ ],
+ "terms_url": "https://www.1stadvantage.org/checkingoffer/",
+ "timing": "Paid 60-90 days after account opening (reviewed once during days 60-90).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "Limited time - no fixed expiration date stated on the official page."
+ },
+ "payout_min_usd": 200.0,
+ "payout_max_usd": 200.0,
+ "payout_value_note": "minimum stated amount in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $200. Per official terms: Paid 60-90 days after account opening (reviewed once during days 60-90). Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

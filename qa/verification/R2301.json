@@ -1,92 +1,103 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Must reside in Kern, Kings, Tulare, or Fresno County, California, and the account must be opened online — in-branch openings do not qualify.",
+ "catches": [
+  "Must reside in Kern, Kings, Tulare or Fresno County, California.",
+  "Account MUST be opened online; in-branch openings are not eligible.",
+  "Use promo code SAFE1! when applying.",
+  "Open or hold a regular share savings account with a $5.00 minimum initial deposit.",
+  "Within 60 days of account opening: set up recurring direct deposit of $500 or more per month OR complete at least 10 debit card transactions, AND enroll in eDocuments.",
+  "No monthly maintenance fee or minimum balance on the checking account itself.",
+  "$200 is deposited to the share savings account within 60 days AFTER account opening (payout can lag up to 60 days even after requirements are met).",
+  "Bonus posted as a dividend and reported to the IRS on a 1099 form — taxable as interest/dividends."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Safe 1 Credit Union — real federally insured credit union headquartered in Bakersfield, CA; official promo page on safe1.org.",
+   "pass": true
   },
-  "biggest_catch": "Must reside in Kern, Kings, Tulare, or Fresno County, California, and the account must be opened online — in-branch openings do not qualify.",
-  "catches": [
-    "Must reside in Kern, Kings, Tulare or Fresno County, California.",
-    "Account MUST be opened online; in-branch openings are not eligible.",
-    "Use promo code SAFE1! when applying.",
-    "Open or hold a regular share savings account with a $5.00 minimum initial deposit.",
-    "Within 60 days of account opening: set up recurring direct deposit of $500 or more per month OR complete at least 10 debit card transactions, AND enroll in eDocuments.",
-    "No monthly maintenance fee or minimum balance on the checking account itself.",
-    "$200 is deposited to the share savings account within 60 days AFTER account opening (payout can lag up to 60 days even after requirements are met).",
-    "Bonus posted as a dividend and reported to the IRS on a 1099 form — taxable as interest/dividends."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Safe 1 Credit Union — real federally insured credit union headquartered in Bakersfield, CA; official promo page on safe1.org.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Safe 1 page 'OPEN A NEW FREE CHECKING ACCOUNT AND RECEIVE $200!' with promo code SAFE1!, qualification requirements, and payout terms.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; no monthly maintenance fee or minimum balance on the checking account; only a $5 share-savings membership deposit.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official terms: 'Qualified members will have $200 deposited to their share savings account within sixty (60) days after account opening.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Safe 1 page 'OPEN A NEW FREE CHECKING ACCOUNT AND RECEIVE $200!' with promo code SAFE1!, qualification requirements, and payout terms.",
+   "pass": true
   },
-  "eligibility": "New checking account customers who reside in Kern, Kings, Tulare, or Fresno County, CA; must hold a regular share savings account ($5 minimum deposit).",
-  "notes": "Terms confirmed on the official Safe 1 Credit Union promo page 2026-09-23 (page shows rate disclosures 'Effective as of September 1, 2026', current). App: Safe 1 mobile app exists but no verbatim official store URL obtained — left null rather than guessed.",
-  "numeric_basis": "payout from official terms ($200 flat); time: online application + DD/debit setup est. 30-60 min active",
-  "official_url": "https://www.safe1.org/checking-account-promotion/",
-  "payout_max_usd": 200,
-  "payout_min_usd": 200,
-  "payout_quote": "Qualified members will have $200 deposited to their share savings account within sixty (60) days after account opening.",
-  "payout_value_note": "Flat $200 cash bonus stated in official terms; posted as a dividend to the share savings account.",
-  "route_id": "R2301",
-  "standard": {
-    "s1": {
-      "note": "New checking account; residency in Kern/Kings/Tulare/Fresno County; share savings account required; online opening only.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Apply online with promo code SAFE1!, fund $5 share savings, set recurring $500+/mo direct deposit OR 10 debit transactions within 60 days, enroll in eDocuments.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$200 deposited to share savings within 60 days after account opening, conditional on all requirements.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Flat $200 stated verbatim; soft language limited to 'Other restrictions apply' and standard tax reporting.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.safe1.org/checking-account-promotion/ — the official Safe 1 Credit Union promo page, fetched 2026-09-23 (UTC).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: online application with promo code, $5 savings deposit, DD-or-10-debits within 60 days, eDocuments enrollment.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Safe 1 Credit Union page fetched 2026-09-23 (UTC).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; no monthly maintenance fee or minimum balance on the checking account; only a $5 share-savings membership deposit.",
+   "pass": true
   },
-  "steps": [
-    "Apply online for a new Safe 1 checking account using promo code SAFE1!.",
-    "Open or fund a regular share savings account with at least $5.00.",
-    "Within 60 days of account opening, set up a recurring direct deposit of $500 or more per month OR make at least 10 debit card transactions.",
-    "Enroll in eDocuments (electronic statements)."
-  ],
-  "terms_url": "https://www.safe1.org/checking-account-promotion/",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "$200 deposited to the share savings account within sixty (60) days after account opening.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [
-    "Other restrictions apply",
-    "posted as a dividend",
-    "reported to the IRS on a 1099 form"
-  ]
+  "c4": {
+   "evidence": "Official terms: 'Qualified members will have $200 deposited to their share savings account within sixty (60) days after account opening.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New checking account customers who reside in Kern, Kings, Tulare, or Fresno County, CA; must hold a regular share savings account ($5 minimum deposit).",
+ "notes": "Terms confirmed on the official Safe 1 Credit Union promo page 2026-09-23 (page shows rate disclosures 'Effective as of September 1, 2026', current). App: Safe 1 mobile app exists but no verbatim official store URL obtained — left null rather than guessed.",
+ "numeric_basis": "payout from official terms ($200 flat); time: online application + DD/debit setup est. 30-60 min active",
+ "official_url": "https://www.safe1.org/checking-account-promotion/",
+ "payout_max_usd": 200,
+ "payout_min_usd": 200,
+ "payout_quote": "Qualified members will have $200 deposited to their share savings account within sixty (60) days after account opening.",
+ "payout_value_note": "Flat $200 cash bonus stated in official terms; posted as a dividend to the share savings account.",
+ "route_id": "R2301",
+ "standard": {
+  "s1": {
+   "note": "New checking account; residency in Kern/Kings/Tulare/Fresno County; share savings account required; online opening only.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Apply online with promo code SAFE1!, fund $5 share savings, set recurring $500+/mo direct deposit OR 10 debit transactions within 60 days, enroll in eDocuments.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$200 deposited to share savings within 60 days after account opening, conditional on all requirements.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Flat $200 stated verbatim; soft language limited to 'Other restrictions apply' and standard tax reporting.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.safe1.org/checking-account-promotion/ — the official Safe 1 Credit Union promo page, fetched 2026-09-23 (UTC).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: online application with promo code, $5 savings deposit, DD-or-10-debits within 60 days, eDocuments enrollment.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Safe 1 Credit Union page fetched 2026-09-23 (UTC).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Apply online for a new Safe 1 checking account using promo code SAFE1!.",
+  "Open or fund a regular share savings account with at least $5.00.",
+  "Within 60 days of account opening, set up a recurring direct deposit of $500 or more per month OR make at least 10 debit card transactions.",
+  "Enroll in eDocuments (electronic statements)."
+ ],
+ "terms_url": "https://www.safe1.org/checking-account-promotion/",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "$200 deposited to the share savings account within sixty (60) days after account opening.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [
+  "Other restrictions apply",
+  "posted as a dividend",
+  "reported to the IRS on a 1099 form"
+ ],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $200. Per official terms: $200 deposited to the share savings account within sixty (60) days after account opening. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The 90-day active-account requirement means the $50 takes at least three months to arrive — early cancellation kills it.",
+ "catches": [
+  "Both referrer and referee must be active with no past-due balance, and the referee must be active for 90 days.",
+  "Both parties must be enrolled with the same Spark brand.",
+  "The reward is a $50 bill credit or a $50 prepaid Visa card depending on the service address state.",
+  "Fraudulent or self-referrals are excluded."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider's own refer-a-friend page (sparkenergy.com/refer-a-friend/) loaded and states the $50/$50 terms.",
+   "pass": true
   },
-  "biggest_catch": "The 90-day active-account requirement means the $50 takes at least three months to arrive — early cancellation kills it.",
-  "catches": [
-    "Both referrer and referee must be active with no past-due balance, and the referee must be active for 90 days.",
-    "Both parties must be enrolled with the same Spark brand.",
-    "The reward is a $50 bill credit or a $50 prepaid Visa card depending on the service address state.",
-    "Fraudulent or self-referrals are excluded."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider's own refer-a-friend page (sparkenergy.com/refer-a-friend/) loaded and states the $50/$50 terms.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Concrete amount on the provider's own page: $50 credit or $50 prepaid Visa per qualifying referral, each side.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to refer; joining Spark is normal energy service.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Terms live and current as of the 2026-09-23 check.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Concrete amount on the provider's own page: $50 credit or $50 prepaid Visa per qualifying referral, each side.",
+   "pass": true
   },
-  "eligibility": "Spark Energy customers in good standing; referred friend must enroll with the same Spark brand and stay active 90 days.",
-  "notes": "Referral rewards framed as savings on planned energy spending (bill credit) or the card value, not income.",
-  "numeric_basis": "payout from official refer-a-friend page ($50 flat per side); time: enter friend details est. 5-15 min active",
-  "official_url": "https://www.sparkenergy.com/refer-a-friend/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "When you refer your friends to sign up with Spark Energy, you'll both get rewarded. Once your referral signs up, you'll each receive a $50 credit on your energy bill or a $50 prepaid Visa card, depending on the service address state.",
-  "payout_value_note": "$50 bill credit or $50 prepaid Visa card per qualifying referral, to each side.",
-  "route_id": "R1878",
-  "standard": {
-    "s1": {
-      "note": "Active customers in good standing; referee active 90 days on the same Spark brand, per the provider's own page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No referral fee.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Reward posts after the referee's 90-day active period.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Payout stated exactly with no weasel words.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official refer-a-friend page loaded live on 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: submit friend details, friend enrolls, both stay active 90 days, reward posts.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Checked 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to refer; joining Spark is normal energy service.",
+   "pass": true
   },
-  "steps": [
-    "Log into your Spark Energy account and open the refer-a-friend option.",
-    "Enter your friends' names and email addresses.",
-    "Once the referee has been active 90 days with both accounts active and in good standing, you each receive the $50 reward (bill credit or prepaid Visa depending on state)."
-  ],
-  "terms_url": "https://www.sparkenergy.com/refer-a-friend/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Entering friend details takes minutes; the reward posts after the referee's 90-day active period.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Terms live and current as of the 2026-09-23 check.",
+   "pass": true
+  }
+ },
+ "eligibility": "Spark Energy customers in good standing; referred friend must enroll with the same Spark brand and stay active 90 days.",
+ "notes": "Referral rewards framed as savings on planned energy spending (bill credit) or the card value, not income.",
+ "numeric_basis": "payout from official refer-a-friend page ($50 flat per side); time: enter friend details est. 5-15 min active",
+ "official_url": "https://www.sparkenergy.com/refer-a-friend/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "When you refer your friends to sign up with Spark Energy, you'll both get rewarded. Once your referral signs up, you'll each receive a $50 credit on your energy bill or a $50 prepaid Visa card, depending on the service address state.",
+ "payout_value_note": "$50 bill credit or $50 prepaid Visa card per qualifying referral, to each side.",
+ "route_id": "R1878",
+ "standard": {
+  "s1": {
+   "note": "Active customers in good standing; referee active 90 days on the same Spark brand, per the provider's own page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No referral fee.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Reward posts after the referee's 90-day active period.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Payout stated exactly with no weasel words.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official refer-a-friend page loaded live on 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: submit friend details, friend enrolls, both stay active 90 days, reward posts.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log into your Spark Energy account and open the refer-a-friend option.",
+  "Enter your friends' names and email addresses.",
+  "Once the referee has been active 90 days with both accounts active and in good standing, you each receive the $50 reward (bill credit or prepaid Visa depending on state)."
+ ],
+ "terms_url": "https://www.sparkenergy.com/refer-a-friend/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Entering friend details takes minutes; the reward posts after the referee's 90-day active period.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Entering friend details takes minutes; the reward posts after the referee's 90-day active period.",
+ "maximize": "Fastest honest path: Entering friend details takes minutes; the reward posts after the referee's 90-day active period. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

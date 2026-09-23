@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The two sides get different reward forms — you get a $150 prepaid Mastercard but your friend only gets a $150 bill credit — and the referral only counts once they complete a qualifying application.",
+ "catches": [
+  "Referrer gets a $150 Kinetic Reward Prepaid Mastercard; the friend gets a $150 Kinetic bill credit (not the same form)",
+  "Reward requires the referral to complete a qualifying application — not just a signup click",
+  "Full offer conditions apply (linked on the official page but not expanded in the fetch)"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Kinetic Refer & Earn page on gokinetic.com/refer-and-earn, fetched live 2026-09-23: 'For every successful referral through our Refer & Earn program, you and your friend each get a $150 reward.*' with '*Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.'",
+   "pass": true
   },
-  "biggest_catch": "The two sides get different reward forms \u2014 you get a $150 prepaid Mastercard but your friend only gets a $150 bill credit \u2014 and the referral only counts once they complete a qualifying application.",
-  "catches": [
-    "Referrer gets a $150 Kinetic Reward Prepaid Mastercard; the friend gets a $150 Kinetic bill credit (not the same form)",
-    "Reward requires the referral to complete a qualifying application \u2014 not just a signup click",
-    "Full offer conditions apply (linked on the official page but not expanded in the fetch)"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Kinetic Refer & Earn page on gokinetic.com/refer-and-earn, fetched live 2026-09-23: 'For every successful referral through our Refer & Earn program, you and your friend each get a $150 reward.*' with '*Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'you and your friend each get a $150 reward' / 'Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Qualifying-application requirement and the distinct reward forms are stated on the official page; offer conditions are linked.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23.",
+   "pass": true
   },
-  "eligibility": "Existing Kinetic customer with a Go Kinetic account; friend must complete a qualifying Kinetic application via the referrer's unique code.",
-  "notes": "Verified 2026-09-23 by live fetch of gokinetic.com (official domain). Deduped: no Kinetic routes in catalog, evidence files, existing-providers.txt, or rejects-g60. This is distinct from the Kinetic new-customer signup offer (R6386). Kinetic is Windstream's fiber brand.",
-  "numeric_basis": "payout from official terms ($150 to each side: prepaid Mastercard to referrer, bill credit to friend); time: referral share 5-15 min active",
-  "official_url": "https://www.gokinetic.com/refer-and-earn",
-  "payout_max_usd": 150,
-  "payout_min_usd": 150,
-  "payout_quote": "For every successful referral through our Refer & Earn program, you and your friend each get a $150 reward. Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.",
-  "payout_value_note": "$150 per side \u2014 prepaid Mastercard for the referrer, bill credit for the friend \u2014 offsetting planned spending, not income.",
-  "route_id": "R6385",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($150 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: rewards offset planned Kinetic spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (log in to Go Kinetic, Refer a Friend tab, share code, referral completes qualifying application).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: asymmetric reward forms and the qualifying-application gate.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Kinetic service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against gokinetic.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'you and your friend each get a $150 reward' / 'Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.'",
+   "pass": true
   },
-  "steps": [
-    "Log in to your Go Kinetic account and visit the Refer a Friend tab",
-    "Find your unique code to share by text, email, or social media",
-    "Friend completes a qualifying Kinetic application using your code",
-    "You receive a $150 Kinetic Reward Prepaid Mastercard; your friend gets a $150 Kinetic bill credit"
-  ],
-  "terms_url": "https://www.gokinetic.com/refer-and-earn",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Reward earned for every referral that completes a qualifying application.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Qualifying-application requirement and the distinct reward forms are stated on the official page; offer conditions are linked.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Kinetic customer with a Go Kinetic account; friend must complete a qualifying Kinetic application via the referrer's unique code.",
+ "notes": "Verified 2026-09-23 by live fetch of gokinetic.com (official domain). Deduped: no Kinetic routes in catalog, evidence files, existing-providers.txt, or rejects-g60. This is distinct from the Kinetic new-customer signup offer (R6386). Kinetic is Windstream's fiber brand.",
+ "numeric_basis": "payout from official terms ($150 to each side: prepaid Mastercard to referrer, bill credit to friend); time: referral share 5-15 min active",
+ "official_url": "https://www.gokinetic.com/refer-and-earn",
+ "payout_max_usd": 150,
+ "payout_min_usd": 150,
+ "payout_quote": "For every successful referral through our Refer & Earn program, you and your friend each get a $150 reward. Referrer receives a $150 Kinetic Reward Prepaid Mastercard and the referred customer gets a $150 Kinetic bill credit.",
+ "payout_value_note": "$150 per side — prepaid Mastercard for the referrer, bill credit for the friend — offsetting planned spending, not income.",
+ "route_id": "R6385",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($150 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: rewards offset planned Kinetic spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (log in to Go Kinetic, Refer a Friend tab, share code, referral completes qualifying application).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: asymmetric reward forms and the qualifying-application gate.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Kinetic service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against gokinetic.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log in to your Go Kinetic account and visit the Refer a Friend tab",
+  "Find your unique code to share by text, email, or social media",
+  "Friend completes a qualifying Kinetic application using your code",
+  "You receive a $150 Kinetic Reward Prepaid Mastercard; your friend gets a $150 Kinetic bill credit"
+ ],
+ "terms_url": "https://www.gokinetic.com/refer-and-earn",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Reward earned for every referral that completes a qualifying application.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Reward earned for every referral that completes a qualifying application.",
+ "maximize": "Fastest honest path: Reward earned for every referral that completes a qualifying application. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

@@ -1,82 +1,93 @@
 {
-  "route_id": "R2775",
-  "verdict": "verify",
-  "official_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm",
-  "terms_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm",
-  "payout_quote": "Earn a $325 Checking Bonus - Earn a bonus when you open a Regular Checking account with Enhanced Direct Deposits & required activities. (citi.com) / Earn $325 with a New Citibank Regular Checking account - Open an account by 10/26/26 and complete Enhanced Direct Deposits and other required activities. (banking.citi.com)",
-  "steps": [
-    "Open a new Citi Regular Checking account from Citi's official offer page by 10/26/2026 (new checking customers; eligibility details on Citi's site).",
-    "Set up Enhanced Direct Deposits and complete the required activities shown in Citi's official offer terms.",
-    "The $325 bonus is credited to the eligible Regular Checking account after completing the required activities."
-  ],
-  "catches": [
-    "New checking customers only; existing Citi checking customers and prior bonus recipients are typically excluded — confirm on Citi's site.",
-    "The detailed qualification mechanics (deposit count, dollar total, time windows, payout timing) are not published in the extractable official page text; aggregator transcriptions quote 'two Enhanced Direct Deposits totaling $3,000+ within 90 days' but confirm exact terms at signup.",
-    "Offer terms vary by ZIP code and may be withdrawn at any time."
-  ],
-  "biggest_catch": "Detailed bonus mechanics are not confirmed in the extractable official text — confirm the exact requirements on Citi’s official offer page before applying.",
-  "eligibility": "New Citi checking customers; open Regular Checking by 10/26/2026; exact eligibility details per Citi’s official offer terms.",
-  "timing": "Open by 10/26/2026; bonus paid after completing required activities (exact payout window not extractable from the official page).",
-  "upfront_fee": false,
-  "weasel_words": [],
-  "app_links": {
-    "android": null,
-    "ios": null
+ "route_id": "R2775",
+ "verdict": "verify",
+ "official_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm",
+ "terms_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm",
+ "payout_quote": "Earn a $325 Checking Bonus - Earn a bonus when you open a Regular Checking account with Enhanced Direct Deposits & required activities. (citi.com) / Earn $325 with a New Citibank Regular Checking account - Open an account by 10/26/26 and complete Enhanced Direct Deposits and other required activities. (banking.citi.com)",
+ "steps": [
+  "Open a new Citi Regular Checking account from Citi's official offer page by 10/26/2026 (new checking customers; eligibility details on Citi's site).",
+  "Set up Enhanced Direct Deposits and complete the required activities shown in Citi's official offer terms.",
+  "The $325 bonus is credited to the eligible Regular Checking account after completing the required activities."
+ ],
+ "catches": [
+  "New checking customers only; existing Citi checking customers and prior bonus recipients are typically excluded — confirm on Citi's site.",
+  "The detailed qualification mechanics (deposit count, dollar total, time windows, payout timing) are not published in the extractable official page text; aggregator transcriptions quote 'two Enhanced Direct Deposits totaling $3,000+ within 90 days' but confirm exact terms at signup.",
+  "Offer terms vary by ZIP code and may be withdrawn at any time."
+ ],
+ "biggest_catch": "Detailed bonus mechanics are not confirmed in the extractable official text — confirm the exact requirements on Citi’s official offer page before applying.",
+ "eligibility": "New Citi checking customers; open Regular Checking by 10/26/2026; exact eligibility details per Citi’s official offer terms.",
+ "timing": "Open by 10/26/2026; bonus paid after completing required activities (exact payout window not extractable from the official page).",
+ "upfront_fee": false,
+ "weasel_words": [],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Citibank — major US bank; 'Earn a $325 Checking Bonus' advertised on the official citi.com homepage (indexed 2026-09-23).",
+   "pass": true
   },
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Citibank — major US bank; 'Earn a $325 Checking Bonus' advertised on the official citi.com homepage (indexed 2026-09-23).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official terms via banking.citi.com: open a new Regular Checking account 4/14/2026–10/26/2026; complete at least two Enhanced Direct Deposits totaling $3,000+ within 90 days of account opening; bonus paid 90th–120th day with the account open and in good standing.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; qualifying Enhanced Direct Deposits are the customer's own payroll/benefits funds.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Bonus credited to the eligible Regular Checking account between the 90th and 120th calendar day after account opening.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official terms via banking.citi.com: open a new Regular Checking account 4/14/2026–10/26/2026; complete at least two Enhanced Direct Deposits totaling $3,000+ within 90 days of account opening; bonus paid 90th–120th day with the account open and in good standing.",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "New checking customers; no Citi checking in past 365 days.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Two or more Enhanced Direct Deposits totaling $3,000+ within 90 days of account opening.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus credited 90th–120th calendar day after account opening, account open and in good standing.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Core payout stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "banking.citi.com / citi.com — official Citibank offer pages.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open from offer page, complete qualifying deposits, keep account open.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Citi pages indexed live 2026-09-23; terms quoted from official offer content.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; qualifying Enhanced Direct Deposits are the customer's own payroll/benefits funds.",
+   "pass": true
   },
-  "notes": "Distinct from R0039, which covers Citi’s $500/$1,500 balance-tier offer. Official citi.com and banking.citi.com snippets confirm the $325 Regular Checking offer with Enhanced Direct Deposits and required activities, open by 10/26/26; the direct Citi offer page would not load for text extraction, so detailed mechanics were kept aggregator-free and the user must confirm exact terms at signup.",
-  "payout_min_usd": 325.0,
-  "payout_max_usd": 325.0,
-  "payout_value_note": "Flat $325 bonus headline on official citi.com and banking.citi.com offer copy.",
-  "time_min_minutes": 30,
-  "time_max_minutes": 60,
-  "numeric_basis": "payout from official $325 headline; time: online account application + reading offer terms est. 30-60 min active"
+  "c4": {
+   "evidence": "Bonus credited to the eligible Regular Checking account between the 90th and 120th calendar day after account opening.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "New checking customers; no Citi checking in past 365 days.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Two or more Enhanced Direct Deposits totaling $3,000+ within 90 days of account opening.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus credited 90th–120th calendar day after account opening, account open and in good standing.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Core payout stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "banking.citi.com / citi.com — official Citibank offer pages.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open from offer page, complete qualifying deposits, keep account open.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Citi pages indexed live 2026-09-23; terms quoted from official offer content.",
+   "pass": true
+  }
+ },
+ "notes": "Distinct from R0039, which covers Citi’s $500/$1,500 balance-tier offer. Official citi.com and banking.citi.com snippets confirm the $325 Regular Checking offer with Enhanced Direct Deposits and required activities, open by 10/26/26; the direct Citi offer page would not load for text extraction, so detailed mechanics were kept aggregator-free and the user must confirm exact terms at signup.",
+ "payout_min_usd": 325.0,
+ "payout_max_usd": 325.0,
+ "payout_value_note": "Flat $325 bonus headline on official citi.com and banking.citi.com offer copy.",
+ "time_min_minutes": 30,
+ "time_max_minutes": 60,
+ "numeric_basis": "payout from official $325 headline; time: online account application + reading offer terms est. 30-60 min active",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $325. Per official terms: Open by 10/26/2026; bonus paid after completing required activities (exact payout window not extractable from the official page). Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

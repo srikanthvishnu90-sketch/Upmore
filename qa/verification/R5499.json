@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The referee's $50 is tied to the current Refer-a-Friend offer, which expires for enrollments processed after 10/04/2026; the referrer's credits only arrive if they stay an active Georgia Natural Gas customer and pay every billed charge on time through the credit period.",
+ "catches": [
+  "Referee must enroll in an eligible GNG price plan, provide the promotion code at enrollment, and begin active service.",
+  "Referee's $10/month credit is cancelled if they stop being an active GNG customer or miss paying billed charges by the due date; they then continue at the regular price-plan rate.",
+  "The referrer's credits require them to be an active Georgia Natural Gas customer through the bill-credit payment schedule.",
+  "The referee offer in this evidence is valid only for qualifying enrollments processed between 09/05/2026 and 10/04/2026; the referrer award follows the then-current RAF Program rules.",
+  "Referees cannot combine this offer with any other offer."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (gng.com); Refer-a-Friend FAQ and RAF50 promo pages crawled 2 days ago."
   },
-  "biggest_catch": "The referee's $50 is tied to the current Refer-a-Friend offer, which expires for enrollments processed after 10/04/2026; the referrer's credits only arrive if they stay an active Georgia Natural Gas customer and pay every billed charge on time through the credit period.",
-  "catches": [
-    "Referee must enroll in an eligible GNG price plan, provide the promotion code at enrollment, and begin active service.",
-    "Referee's $10/month credit is cancelled if they stop being an active GNG customer or miss paying billed charges by the due date; they then continue at the regular price-plan rate.",
-    "The referrer's credits require them to be an active Georgia Natural Gas customer through the bill-credit payment schedule.",
-    "The referee offer in this evidence is valid only for qualifying enrollments processed between 09/05/2026 and 10/04/2026; the referrer award follows the then-current RAF Program rules.",
-    "Referees cannot combine this offer with any other offer."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (gng.com); Refer-a-Friend FAQ and RAF50 promo pages crawled 2 days ago."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Full program terms and offer window (09/05/2026-10/04/2026) stated on official pages."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (bill credits), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; no existing evidence for Georgia Natural Gas (dedupe returned zero hits)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Full program terms and offer window (09/05/2026-10/04/2026) stated on official pages."
   },
-  "eligibility": "Existing Georgia Natural Gas customers as referrers; new residential/commercial customers in GNG's service area as referees.",
-  "notes": "Bill-credit referral framed as savings on planned energy spending, never income. gngHub (real-estate-professional program with Visa Reward Card) is a separate professional-only mechanism and is not claimed here.",
-  "numeric_basis": "payout $50 each side: referrer $10 bill credit x 5 bills ($50 total) from official FAQ; referee $50 bill credits ($10/month x 5 months) from official RAF50 promo page; time: 5-15 minutes for referral sharing",
-  "official_url": "https://gng.com/refer/faq",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "As long as you are an active Georgia Natural Gas customer when this happens and through the term of the bill credit payment schedule, you will get a $10 bill credit on each of your next five bills - for a total of $50 in bill credits.",
-  "payout_value_note": "Referrer: $50 total in bill credits ($10 per bill across five bills). Referee (current RAF50 offer): $50 total in bill credits ($10/month for 5 consecutive months).",
-  "route_id": "R5499",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Georgia Natural Gas customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Generate your referral code at gng.com/refer and share it with friends by email or social media."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Your friend enrolls with Georgia Natural Gas in an eligible price plan, providing the RAF promotion code and your referral code."
-    },
-    "s4": {
-      "pass": true,
-      "note": "After their service activates (3-5 weeks), you receive $10 bill credits on each of your next five bills."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Your friend receives $50 in bill credits ($10/month for 5 months) as long as they stay active and pay on time."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Georgia Natural Gas service area; eligibility subject to GNG credit and payment policies."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Current referee offer valid for enrollments processed 09/05/2026-10/04/2026; cannot combine with other offers."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (bill credits), never income."
   },
-  "steps": [
-    "As an existing GNG customer, create your referral code at gng.com/refer.",
-    "Share the code with friends by email or social media (5-15 minutes of active effort).",
-    "Your friend enrolls online or by phone using the RAF promotion code and your referral code.",
-    "Once their gas service activates, both sides start receiving $10/month bill credits for five months."
-  ],
-  "terms_url": "https://gng.com/raf50",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Sharing the referral code takes 5-15 minutes of active effort; service activation takes 3-5 weeks and credits post over the next five bills.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; no existing evidence for Georgia Natural Gas (dedupe returned zero hits)."
+  }
+ },
+ "eligibility": "Existing Georgia Natural Gas customers as referrers; new residential/commercial customers in GNG's service area as referees.",
+ "notes": "Bill-credit referral framed as savings on planned energy spending, never income. gngHub (real-estate-professional program with Visa Reward Card) is a separate professional-only mechanism and is not claimed here.",
+ "numeric_basis": "payout $50 each side: referrer $10 bill credit x 5 bills ($50 total) from official FAQ; referee $50 bill credits ($10/month x 5 months) from official RAF50 promo page; time: 5-15 minutes for referral sharing",
+ "official_url": "https://gng.com/refer/faq",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "As long as you are an active Georgia Natural Gas customer when this happens and through the term of the bill credit payment schedule, you will get a $10 bill credit on each of your next five bills - for a total of $50 in bill credits.",
+ "payout_value_note": "Referrer: $50 total in bill credits ($10 per bill across five bills). Referee (current RAF50 offer): $50 total in bill credits ($10/month for 5 consecutive months).",
+ "route_id": "R5499",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Georgia Natural Gas customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Generate your referral code at gng.com/refer and share it with friends by email or social media."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Your friend enrolls with Georgia Natural Gas in an eligible price plan, providing the RAF promotion code and your referral code."
+  },
+  "s4": {
+   "pass": true,
+   "note": "After their service activates (3-5 weeks), you receive $10 bill credits on each of your next five bills."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Your friend receives $50 in bill credits ($10/month for 5 months) as long as they stay active and pay on time."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Georgia Natural Gas service area; eligibility subject to GNG credit and payment policies."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Current referee offer valid for enrollments processed 09/05/2026-10/04/2026; cannot combine with other offers."
+  }
+ },
+ "steps": [
+  "As an existing GNG customer, create your referral code at gng.com/refer.",
+  "Share the code with friends by email or social media (5-15 minutes of active effort).",
+  "Your friend enrolls online or by phone using the RAF promotion code and your referral code.",
+  "Once their gas service activates, both sides start receiving $10/month bill credits for five months."
+ ],
+ "terms_url": "https://gng.com/raf50",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Sharing the referral code takes 5-15 minutes of active effort; service activation takes 3-5 weeks and credits post over the next five bills.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Sharing the referral code takes 5-15 minutes of active effort; service activation takes 3-5 weeks and credits post over the next five bills.",
+ "maximize": "Fastest honest path: Sharing the referral code takes 5-15 minutes of active effort; service activation takes 3-5 weeks and credits post over the next five bills. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

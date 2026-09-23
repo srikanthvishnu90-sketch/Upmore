@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Both credits depend on your friend enrolling in a qualifying TERM plan (month-to-month plans excluded) and keeping service active 10+ days — and Texas-only, residential only.",
+ "catches": [
+  "The referred person must be a new Texas customer who enrolls in a qualifying term plan using your referral code; month-to-month plans are excluded.",
+  "Rewards are issued only after the referred customer completes at least 10 days of active electricity service, typically applied within two billing cycles.",
+  "Limited to eligible Texas residential customers; excludes sales agents and mass/automated referrals.",
+  "You must already be (or become) a Discount Power customer to hold a referral code.",
+  "Bill credits reduce future bills — savings on planned energy spending, not income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url discountpowertx.com/en/customer-care/member-benefits (the $50 offer statement) and terms_url discountpowertx.com/en/customer-care/empower-your-friends (official conditions/FAQ) — provider's own domain.",
+   "pass": true
   },
-  "biggest_catch": "Both credits depend on your friend enrolling in a qualifying TERM plan (month-to-month plans excluded) and keeping service active 10+ days — and Texas-only, residential only.",
-  "catches": [
-    "The referred person must be a new Texas customer who enrolls in a qualifying term plan using your referral code; month-to-month plans are excluded.",
-    "Rewards are issued only after the referred customer completes at least 10 days of active electricity service, typically applied within two billing cycles.",
-    "Limited to eligible Texas residential customers; excludes sales agents and mass/automated referrals.",
-    "You must already be (or become) a Discount Power customer to hold a referral code.",
-    "Bill credits reduce future bills — savings on planned energy spending, not income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url discountpowertx.com/en/customer-care/member-benefits (the $50 offer statement) and terms_url discountpowertx.com/en/customer-care/empower-your-friends (official conditions/FAQ) — provider's own domain.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Current: both pages live and crawled within the last 5-85 days with the $50 offer stated.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount and who gets it stated verbatim: 'you'll both get a $50 bill credit when they sign up'; conditions stated verbatim on the official FAQ.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount, conditions, timing, and eligibility restrictions are all stated on the official pages; nothing material hidden.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Current: both pages live and crawled within the last 5-85 days with the $50 offer stated.",
+   "pass": true
   },
-  "eligibility": "Existing Discount Power customers (Texas) referring a new Texas residential customer who enrolls in a qualifying term plan with the referrer's code and stays active 10+ days.",
-  "notes": "Verified 2026-09-23 against discountpowertx.com (official $50 offer on member-benefits page; official conditions on empower-your-friends FAQ). Dedupe: no Discount Power routes in catalog or evidence files.",
-  "numeric_basis": "payout from official terms ($50 bill credit to referrer and $50 to the new customer); time: referral share 5-15 min active",
-  "official_url": "https://www.discountpowertx.com/en/customer-care/member-benefits",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Recommend us to a friend and you'll both get a $50 bill credit when they sign up.",
-  "payout_value_note": "$50 bill credit to the referrer and $50 to the new customer per qualified referral; credits reduce future energy bills — savings, not income.",
-  "route_id": "R5488",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50 each side) stated verbatim on the official member-benefits page; conditions stated verbatim on the official FAQ page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits reduce future planned energy spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete process from the official pages (get code, friend enrolls with code in a term plan, credits post after 10 days active).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: qualifying term plan required (no month-to-month) and Texas-residential only.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a code costs nothing.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against discountpowertx.com (provider's own domain). Deduped: no Discount Power routes in catalog, evidence files, or rejects-g51.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount and who gets it stated verbatim: 'you'll both get a $50 bill credit when they sign up'; conditions stated verbatim on the official FAQ.",
+   "pass": true
   },
-  "steps": [
-    "Get your Discount Power referral code from your MyAccount.",
-    "Share the code with a friend in Texas.",
-    "Your friend enrolls in a qualifying Discount Power term plan using your code.",
-    "Your friend keeps service active for at least 10 days.",
-    "You each receive a $50 bill credit, typically applied within two billing cycles."
-  ],
-  "terms_url": "https://www.discountpowertx.com/en/customer-care/empower-your-friends",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits issued after the referred customer completes 10 days of active service; typically applied within two billing cycles.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount, conditions, timing, and eligibility restrictions are all stated on the official pages; nothing material hidden.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Discount Power customers (Texas) referring a new Texas residential customer who enrolls in a qualifying term plan with the referrer's code and stays active 10+ days.",
+ "notes": "Verified 2026-09-23 against discountpowertx.com (official $50 offer on member-benefits page; official conditions on empower-your-friends FAQ). Dedupe: no Discount Power routes in catalog or evidence files.",
+ "numeric_basis": "payout from official terms ($50 bill credit to referrer and $50 to the new customer); time: referral share 5-15 min active",
+ "official_url": "https://www.discountpowertx.com/en/customer-care/member-benefits",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Recommend us to a friend and you'll both get a $50 bill credit when they sign up.",
+ "payout_value_note": "$50 bill credit to the referrer and $50 to the new customer per qualified referral; credits reduce future energy bills — savings, not income.",
+ "route_id": "R5488",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50 each side) stated verbatim on the official member-benefits page; conditions stated verbatim on the official FAQ page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits reduce future planned energy spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete process from the official pages (get code, friend enrolls with code in a term plan, credits post after 10 days active).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: qualifying term plan required (no month-to-month) and Texas-residential only.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a code costs nothing.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against discountpowertx.com (provider's own domain). Deduped: no Discount Power routes in catalog, evidence files, or rejects-g51.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Get your Discount Power referral code from your MyAccount.",
+  "Share the code with a friend in Texas.",
+  "Your friend enrolls in a qualifying Discount Power term plan using your code.",
+  "Your friend keeps service active for at least 10 days.",
+  "You each receive a $50 bill credit, typically applied within two billing cycles."
+ ],
+ "terms_url": "https://www.discountpowertx.com/en/customer-care/empower-your-friends",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits issued after the referred customer completes 10 days of active service; typically applied within two billing cycles.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits issued after the referred customer completes 10 days of active service; typically applied within two billing cycles.",
+ "maximize": "Fastest honest path: Credits issued after the referred customer completes 10 days of active service; typically applied within two billing cycles. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

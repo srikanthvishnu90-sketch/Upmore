@@ -62,7 +62,7 @@
     },
     "c4": {
       "pass": true,
-      "evidence": "grep + dedupe-check 'North Shore Bank': 0 catalog hits; evidence-file hits are unrelated (R0564 is a signup-bonus reject, R0588 is Abington Bank/TruNorth MA — different institution)"
+      "evidence": "grep + dedupe-check 'North Shore Bank': 0 catalog hits; evidence-file hits are unrelated (R0564 is a signup-bonus reject, R0588 is Abington Bank/TruNorth MA \u2014 different institution)"
     }
   },
   "app_links": {
@@ -78,12 +78,26 @@
     "New personal households only; referred customers cannot be from an existing North Shore Bank household",
     "Customers who have closed accounts in the past year do not qualify; excludes Student Checking Account",
     "One new customer incentive bonus per household every 24 months",
-    "Friend's $25: credited within 45 days of direct deposit posting — payroll, Social Security, pension or other government benefit direct deposit within 75 days of account opening",
+    "Friend's $25: credited within 45 days of direct deposit posting \u2014 payroll, Social Security, pension or other government benefit direct deposit within 75 days of account opening",
     "Not valid with other offers; when opening online the friend uses promo code TAF25"
   ],
   "time_min_minutes": 5,
   "time_max_minutes": 15,
   "timing": "Submitting friend names/emails takes ~10 minutes active; the $25 credit arrives within 45 days of the new customer account opening.",
   "upfront_fee": false,
-  "notes": "Verified 2026-09-23 from official northshorebank.com (North Shore Bank, Brookfield WI, IL/WI branches). $25/referral with $500/year cap. Note: 'North Shore Bank' in Massachusetts (trunorthbank, formerly Abington Bank) is a different institution with a separate limited-time offer — not this route."
+  "notes": "Verified 2026-09-23 from official northshorebank.com (North Shore Bank, Brookfield WI, IL/WI branches). $25/referral with $500/year cap. Note: 'North Shore Bank' in Massachusetts (trunorthbank, formerly Abington Bank) is a different institution with a separate limited-time offer \u2014 not this route.",
+  "speed": "weeks",
+  "when_cash_arrives": "Per official terms: Submitting friend names/emails takes ~10 minutes active; the $25 credit arrives within 45 days of the new customer account opening. \u2014 a ~45-day window in the terms elapses before the bonus posts.",
+  "maximize": [
+    "Front-load the friend's qualifying activity: terms give the friend a multi-week window, but the payout clock starts at completion \u2014 a friend who finishes in week 1 gets you paid weeks earlier.",
+    "Volume constraint noted in terms: Cap: 'Earn up to $500 in referral payments during a calendar year'\", '1099 issued f \u2014 plan referral count against the cap, not the calendar."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "weeks",
+      "rationale": "Speed audit 2026-09-23: confirmed weeks \u2014 a ~45-day window in the terms elapses before the bonus posts."
+    }
+  ]
 }

@@ -1,89 +1,100 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Payout takes up to ~145 days (100-day assessment + up to 45 days processing), and anyone ever paid a prior PSECU new-member incentive is permanently excluded.",
+ "catches": [
+  "Two PAYROLL direct deposits of $500+ each required within 100 days - not any ACH.",
+  "Bonus assessed after the 100-day period plus up to 45 days processing: up to ~145 days total before payout.",
+  "Excludes current members, accounts closed within 12 months, and anyone EVER paid a prior PSECU new-member incentive.",
+  "Fraud adjustment/removal language in the terms; bonus is taxable income.",
+  "Must be a U.S. citizen/permanent resident, U.S. resident, 18+."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "PSECU (Pennsylvania State Employees Credit Union) - real operating credit union; official page go.psecu.com."
   },
-  "biggest_catch": "Payout takes up to ~145 days (100-day assessment + up to 45 days processing), and anyone ever paid a prior PSECU new-member incentive is permanently excluded.",
-  "catches": [
-    "Two PAYROLL direct deposits of $500+ each required within 100 days - not any ACH.",
-    "Bonus assessed after the 100-day period plus up to 45 days processing: up to ~145 days total before payout.",
-    "Excludes current members, accounts closed within 12 months, and anyone EVER paid a prior PSECU new-member incentive.",
-    "Fraud adjustment/removal language in the terms; bonus is taxable income.",
-    "Must be a U.S. citizen/permanent resident, U.S. resident, 18+."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "PSECU (Pennsylvania State Employees Credit Union) - real operating credit union; official page go.psecu.com."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Official referral page with $300 amount, 2026REFER promo, 2026 window, direct-deposit terms, and exclusions."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "No upfront fee; the $5 Regular Savings share is funded by PSECU itself."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Official page: assessment after 100 days plus up to 45 days processing - concrete payout schedule."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Official referral page with $300 amount, 2026REFER promo, 2026 window, direct-deposit terms, and exclusions."
   },
-  "eligibility": "New PSECU members only, 18+, U.S. citizen/permanent resident and U.S. resident. Excludes current members, accounts closed within 12 months, and anyone ever paid a prior PSECU new-member incentive.",
-  "notes": "Official PSECU referral page fetched 2026-09-23: $300 with promo 2026REFER, applications 2026-01-01 through 2026-12-31. Candidate '$300 checking, PA' verified against these official terms. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://go.psecu.com/refer",
-  "payout_quote": "$300 new-member referral bonus (promo 2026REFER) for applications 2026-01-01 through 2026-12-31, paid after the 100-day assessment period plus up to 45 days processing.",
-  "route_id": "R0630",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "New members only; 18+; US citizen/PR and US resident; current members, 12-month re-openers, and prior incentive recipients excluded."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Two payroll DDs $500+ within 100 days; up to ~145 days to payout; fraud removal language; bonus taxable."
-    },
-    "s3": {
-      "pass": true,
-      "note": "100-day assessment + up to 45 days processing."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Amount, window, and payout schedule stated flatly on the official page."
-    },
-    "s5": {
-      "pass": true,
-      "note": "https://go.psecu.com/refer - official PSECU referral page, loaded live."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Steps are concrete: apply with promo, open both accounts, two $500+ payroll DDs in 100 days, wait."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Official PSECU page loaded live 2026-09-23."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront fee; the $5 Regular Savings share is funded by PSECU itself."
   },
-  "steps": [
-    "Go to the official page https://go.psecu.com/refer and start the application with promo code 2026REFER before 2026-12-31.",
-    "Open both a Regular Savings share and a checking account; PSECU funds the $5 Regular Savings share.",
-    "Set up payroll direct deposit so at least two deposits of $500+ each land within 100 days of account opening.",
-    "Keep the accounts open and in good standing through the 100-day assessment and the payout window.",
-    "Expect the $300 after the 100-day assessment plus up to 45 days processing (budget ~145 days)."
-  ],
-  "terms_url": "https://go.psecu.com/refer",
-  "timing": "Paid after the 100-day assessment period plus up to 45 days processing (up to ~145 days total).",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "pass": true,
+   "evidence": "Official page: assessment after 100 days plus up to 45 days processing - concrete payout schedule."
+  }
+ },
+ "eligibility": "New PSECU members only, 18+, U.S. citizen/permanent resident and U.S. resident. Excludes current members, accounts closed within 12 months, and anyone ever paid a prior PSECU new-member incentive.",
+ "notes": "Official PSECU referral page fetched 2026-09-23: $300 with promo 2026REFER, applications 2026-01-01 through 2026-12-31. Candidate '$300 checking, PA' verified against these official terms. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://go.psecu.com/refer",
+ "payout_quote": "$300 new-member referral bonus (promo 2026REFER) for applications 2026-01-01 through 2026-12-31, paid after the 100-day assessment period plus up to 45 days processing.",
+ "route_id": "R0630",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "New members only; 18+; US citizen/PR and US resident; current members, 12-month re-openers, and prior incentive recipients excluded."
   },
-  "payout_min_usd": 300.0,
-  "payout_max_usd": 300.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "pass": true,
+   "note": "Two payroll DDs $500+ within 100 days; up to ~145 days to payout; fraud removal language; bonus taxable."
+  },
+  "s3": {
+   "pass": true,
+   "note": "100-day assessment + up to 45 days processing."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Amount, window, and payout schedule stated flatly on the official page."
+  },
+  "s5": {
+   "pass": true,
+   "note": "https://go.psecu.com/refer - official PSECU referral page, loaded live."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Steps are concrete: apply with promo, open both accounts, two $500+ payroll DDs in 100 days, wait."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Official PSECU page loaded live 2026-09-23."
+  }
+ },
+ "steps": [
+  "Go to the official page https://go.psecu.com/refer and start the application with promo code 2026REFER before 2026-12-31.",
+  "Open both a Regular Savings share and a checking account; PSECU funds the $5 Regular Savings share.",
+  "Set up payroll direct deposit so at least two deposits of $500+ each land within 100 days of account opening.",
+  "Keep the accounts open and in good standing through the 100-day assessment and the payout window.",
+  "Expect the $300 after the 100-day assessment plus up to 45 days processing (budget ~145 days)."
+ ],
+ "terms_url": "https://go.psecu.com/refer",
+ "timing": "Paid after the 100-day assessment period plus up to 45 days processing (up to ~145 days total).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 300.0,
+ "payout_max_usd": 300.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $300. Per official terms: Paid after the 100-day assessment period plus up to 45 days processing (up to ~145 days total). Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 100-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

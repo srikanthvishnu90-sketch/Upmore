@@ -1,82 +1,85 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The card amount depends on the plan you pick — $100 on the $59.99/mo plan, $200 on the $74.99/mo Best Value plan — and it's new users only, with terms and restrictions applying.",
+ "catches": [
+  "New users only; terms, conditions, and restrictions apply",
+  "Card value is plan-dependent: $100 prepaid Mastercard on the $59.99/mo plan, $200 on the $74.99/mo Best Value plan",
+  "Prices shown include a $5/mo AutoPay credit; services billed separately"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Kinetic fiber internet offer page on gokinetic.com/kinetic-fiber-internet-offer, fetched live 2026-09-23: hero banner 'Plus a $200 prepaid Mastercard. New users only. Terms apply.' Plan cards show '$100 prepaid Mastercard' on the $59.99/mo plan and '$200 prepaid Mastercard' on the $74.99/mo Best Value plan.",
+   "pass": true
   },
-  "biggest_catch": "The card amount depends on the plan you pick \u2014 $100 on the $59.99/mo plan, $200 on the $74.99/mo Best Value plan \u2014 and it's new users only, with terms and restrictions applying.",
-  "catches": [
-    "New users only; terms, conditions, and restrictions apply",
-    "Card value is plan-dependent: $100 prepaid Mastercard on the $59.99/mo plan, $200 on the $74.99/mo Best Value plan",
-    "Prices shown include a $5/mo AutoPay credit; services billed separately"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Kinetic fiber internet offer page on gokinetic.com/kinetic-fiber-internet-offer, fetched live 2026-09-23: hero banner 'Plus a $200 prepaid Mastercard. New users only. Terms apply.' Plan cards show '$100 prepaid Mastercard' on the $59.99/mo plan and '$200 prepaid Mastercard' on the $74.99/mo Best Value plan.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: '$100 prepaid Mastercard' and '$200 prepaid Mastercard' on the respective plan cards; hero: 'Plus a $200 prepaid Mastercard.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "New-users-only rule and terms/restrictions are stated on the official page; plan-to-card mapping shown on the plan cards.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23.",
+   "pass": true
   },
-  "eligibility": "New Kinetic users only, signing up for a qualifying Kinetic Fiber internet plan.",
-  "notes": "Verified 2026-09-23 by live fetch of gokinetic.com (official domain). Deduped: no Kinetic routes in catalog, evidence files, existing-providers.txt, or rejects-g60. This is distinct from the Kinetic Refer & Earn referral program (R6385). Kinetic is Windstream's fiber brand.",
-  "numeric_basis": "payout from official terms ($100-$200 prepaid Mastercard by plan); time: signup 15-30 min active",
-  "official_url": "https://www.gokinetic.com/kinetic-fiber-internet-offer",
-  "payout_max_usd": 200,
-  "payout_min_usd": 100,
-  "payout_quote": "Plus a $200 prepaid Mastercard. New users only. Terms apply. $100 prepaid Mastercard ($59.99/mo plan). $200 prepaid Mastercard ($74.99/mo Best Value plan).",
-  "payout_value_note": "$100-$200 prepaid Mastercard for new Kinetic customers depending on plan \u2014 offsets planned spending, not income.",
-  "route_id": "R6386",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim on the official plan cards ($100 / $200).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: prepaid card offsets planned Kinetic spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps: new user signs up for a qualifying Kinetic Fiber plan.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: plan-dependent card value, new-users-only.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the chosen Kinetic plan itself.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions stated.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against gokinetic.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: '$100 prepaid Mastercard' and '$200 prepaid Mastercard' on the respective plan cards; hero: 'Plus a $200 prepaid Mastercard.'",
+   "pass": true
   },
-  "steps": [
-    "Choose a qualifying Kinetic Fiber internet plan ($100 card on the $59.99/mo plan; $200 on the $74.99/mo Best Value plan)",
-    "Sign up as a new Kinetic user",
-    "Receive the Kinetic Reward Prepaid Mastercard per the offer terms"
-  ],
-  "terms_url": "https://www.gokinetic.com/kinetic-fiber-internet-offer",
-  "time_max_minutes": 30,
-  "time_min_minutes": 15,
-  "timing": "Signup offer; card fulfillment per the offer terms.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "New-users-only rule and terms/restrictions are stated on the official page; plan-to-card mapping shown on the plan cards.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Kinetic users only, signing up for a qualifying Kinetic Fiber internet plan.",
+ "notes": "Verified 2026-09-23 by live fetch of gokinetic.com (official domain). Deduped: no Kinetic routes in catalog, evidence files, existing-providers.txt, or rejects-g60. This is distinct from the Kinetic Refer & Earn referral program (R6385). Kinetic is Windstream's fiber brand.",
+ "numeric_basis": "payout from official terms ($100-$200 prepaid Mastercard by plan); time: signup 15-30 min active",
+ "official_url": "https://www.gokinetic.com/kinetic-fiber-internet-offer",
+ "payout_max_usd": 200,
+ "payout_min_usd": 100,
+ "payout_quote": "Plus a $200 prepaid Mastercard. New users only. Terms apply. $100 prepaid Mastercard ($59.99/mo plan). $200 prepaid Mastercard ($74.99/mo Best Value plan).",
+ "payout_value_note": "$100-$200 prepaid Mastercard for new Kinetic customers depending on plan — offsets planned spending, not income.",
+ "route_id": "R6386",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim on the official plan cards ($100 / $200).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: prepaid card offsets planned Kinetic spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps: new user signs up for a qualifying Kinetic Fiber plan.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: plan-dependent card value, new-users-only.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the chosen Kinetic plan itself.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions stated.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against gokinetic.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Choose a qualifying Kinetic Fiber internet plan ($100 card on the $59.99/mo plan; $200 on the $74.99/mo Best Value plan)",
+  "Sign up as a new Kinetic user",
+  "Receive the Kinetic Reward Prepaid Mastercard per the offer terms"
+ ],
+ "terms_url": "https://www.gokinetic.com/kinetic-fiber-internet-offer",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Signup offer; card fulfillment per the offer terms.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Signup offer; card fulfillment per the offer terms.",
+ "maximize": "Fastest honest path: Signup offer; card fulfillment per the offer terms. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

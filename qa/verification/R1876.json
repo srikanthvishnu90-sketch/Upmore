@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Everything hinges on crossing 1,000 kWh each cycle — fall short and you pay the full rate with no credit.",
+ "catches": [
+  "No credit below 1,000 kWh.",
+  "12-month term with $150 early cancellation fee.",
+  "$9.95/month base charge plus energy charges apply regardless of the credit.",
+  "Credit is savings on planned energy spending, not cash."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider's own EFL (residential.txu.com, dated 2026-08-08) loaded and states the $100 bill credit terms.",
+   "pass": true
   },
-  "biggest_catch": "Everything hinges on crossing 1,000 kWh each cycle — fall short and you pay the full rate with no credit.",
-  "catches": [
-    "No credit below 1,000 kWh.",
-    "12-month term with $150 early cancellation fee.",
-    "$9.95/month base charge plus energy charges apply regardless of the credit.",
-    "Credit is savings on planned energy spending, not cash."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider's own EFL (residential.txu.com, dated 2026-08-08) loaded and states the $100 bill credit terms.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Concrete amounts on the provider's own disclosure: $100.00 bill credit at >=1,000 kWh, plus $25.00 summer credit.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; the plan is normal energy service with usage-gated bill credits.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "EFL dated 2026-08-08, current as of the 2026-09-23 check.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Concrete amounts on the provider's own disclosure: $100.00 bill credit at >=1,000 kWh, plus $25.00 summer credit.",
+   "pass": true
   },
-  "eligibility": "Texas residential customers enrolling on the TXU Energy Smart 1000 Select 12 plan.",
-  "notes": "Bill credits framed as savings on planned energy spending, not income. Distinct from R0845 TXU refer-a-friend (different mechanism).",
-  "numeric_basis": "payout from official EFL ($100 flat, +$25 summer); time: online enrollment est. 20-30 min active",
-  "official_url": "https://residential.txu.com/Handlers/PDFGenerator.ashx?comProdId=TNXSMSL1KD12AA&lang=en&formType=EnergyFactsLabel&custClass=3&tdsp=AEPTNC",
-  "payout_max_usd": 100,
-  "payout_min_usd": 0,
-  "payout_quote": "A bill credit of $100.00 will be applied for each billing cycle in which usage is 1000 kWh or more. A $25.00 summer bill credit will be applied for each billing cycle ending in July, August, and September in which usage is 1000 kWh or more.",
-  "payout_value_note": "$100/month bill credit when usage >=1,000 kWh; extra $25 summer credit for billing cycles ending July, August, and September (also >=1,000 kWh).",
-  "route_id": "R1876",
-  "standard": {
-    "s1": {
-      "note": "Texas residential customers on the Smart 1000 Select 12 plan, per the provider's own EFL.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No signup fee; $150 early cancellation fee disclosed.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Credits apply automatically each qualifying billing cycle.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Payout stated exactly with no weasel words.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official EFL loaded live on 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: enroll, use >=1,000 kWh, credit applies automatically.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Checked 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; the plan is normal energy service with usage-gated bill credits.",
+   "pass": true
   },
-  "steps": [
-    "Enroll on TXU Energy Smart 1000 Select 12.",
-    "Use 1,000 kWh or more in a billing cycle.",
-    "The $100 credit (plus $25 for billing cycles ending in July, August, or September) applies automatically to that cycle's bill."
-  ],
-  "terms_url": "https://residential.txu.com/Handlers/PDFGenerator.ashx?comProdId=TNXSMSL1KD12AA&lang=en&formType=EnergyFactsLabel&custClass=3&tdsp=AEPTNC",
-  "time_max_minutes": 30,
-  "time_min_minutes": 20,
-  "timing": "Enrollment ~20 minutes online; credits apply automatically each qualifying billing cycle.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "EFL dated 2026-08-08, current as of the 2026-09-23 check.",
+   "pass": true
+  }
+ },
+ "eligibility": "Texas residential customers enrolling on the TXU Energy Smart 1000 Select 12 plan.",
+ "notes": "Bill credits framed as savings on planned energy spending, not income. Distinct from R0845 TXU refer-a-friend (different mechanism).",
+ "numeric_basis": "payout from official EFL ($100 flat, +$25 summer); time: online enrollment est. 20-30 min active",
+ "official_url": "https://residential.txu.com/Handlers/PDFGenerator.ashx?comProdId=TNXSMSL1KD12AA&lang=en&formType=EnergyFactsLabel&custClass=3&tdsp=AEPTNC",
+ "payout_max_usd": 100,
+ "payout_min_usd": 0,
+ "payout_quote": "A bill credit of $100.00 will be applied for each billing cycle in which usage is 1000 kWh or more. A $25.00 summer bill credit will be applied for each billing cycle ending in July, August, and September in which usage is 1000 kWh or more.",
+ "payout_value_note": "$100/month bill credit when usage >=1,000 kWh; extra $25 summer credit for billing cycles ending July, August, and September (also >=1,000 kWh).",
+ "route_id": "R1876",
+ "standard": {
+  "s1": {
+   "note": "Texas residential customers on the Smart 1000 Select 12 plan, per the provider's own EFL.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; $150 early cancellation fee disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Credits apply automatically each qualifying billing cycle.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Payout stated exactly with no weasel words.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official EFL loaded live on 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: enroll, use >=1,000 kWh, credit applies automatically.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Enroll on TXU Energy Smart 1000 Select 12.",
+  "Use 1,000 kWh or more in a billing cycle.",
+  "The $100 credit (plus $25 for billing cycles ending in July, August, or September) applies automatically to that cycle's bill."
+ ],
+ "terms_url": "https://residential.txu.com/Handlers/PDFGenerator.ashx?comProdId=TNXSMSL1KD12AA&lang=en&formType=EnergyFactsLabel&custClass=3&tdsp=AEPTNC",
+ "time_max_minutes": 30,
+ "time_min_minutes": 20,
+ "timing": "Enrollment ~20 minutes online; credits apply automatically each qualifying billing cycle.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Enrollment ~20 minutes online; credits apply automatically each qualifying billing cycle.",
+ "maximize": "Fastest honest path: Enrollment ~20 minutes online; credits apply automatically each qualifying billing cycle. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

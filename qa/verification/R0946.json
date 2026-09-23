@@ -1,70 +1,81 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Business savings accounts only, opened IN A BRANCH with code 2026EM; requires $5,000 of NEW money (not already at Banner Bank) parked for 90 days. Offer expires 2026-10-31; OR/WA/CA/ID only.",
+ "catches": [
+  "Open a new Banner Bank business savings or money market account at a Banner Bank branch and use promotional code 2026EM at account opening.",
+  "Deposit a minimum of $5,000 of new money (not held at Banner Bank) into the account within 60 days.",
+  "Maintain a minimum balance of $5,000 for 90 days.",
+  "Must not already have a Banner Bank business savings or money market account; not available to government entities, nonprofits, PACs, or campaign accounts.",
+  "Not available to businesses whose Banner accounts were closed within the last 2 years, or closed within 90 days / closed with a negative balance in the last 3 years.",
+  "One new-account-opening bonus every 2 years per business entity with a unique tax ID on business savings or money market.",
+  "Offer available to residents of OR, WA, CA, and ID only.",
+  "Bonus deposited into the new account within 30 days after requirements are met; account must be open and in good standing at payout.",
+  "Offer expires 10/31/2026; subject to change without notice; may not be combined with any other offer.",
+  "Bonus is considered interest and reported on IRS Form 1099-INT."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Banner Bank (bannerbank.com) is a real regional bank; its business savings bonus terms are published on the official 'View Business Savings Bonus Details' page (official search crawls, confirmed ~3 days ago).",
+   "pass": true
   },
-  "biggest_catch": "Business savings accounts only, opened IN A BRANCH with code 2026EM; requires $5,000 of NEW money (not already at Banner Bank) parked for 90 days. Offer expires 2026-10-31; OR/WA/CA/ID only.",
-  "catches": [
-    "Open a new Banner Bank business savings or money market account at a Banner Bank branch and use promotional code 2026EM at account opening.",
-    "Deposit a minimum of $5,000 of new money (not held at Banner Bank) into the account within 60 days.",
-    "Maintain a minimum balance of $5,000 for 90 days.",
-    "Must not already have a Banner Bank business savings or money market account; not available to government entities, nonprofits, PACs, or campaign accounts.",
-    "Not available to businesses whose Banner accounts were closed within the last 2 years, or closed within 90 days / closed with a negative balance in the last 3 years.",
-    "One new-account-opening bonus every 2 years per business entity with a unique tax ID on business savings or money market.",
-    "Offer available to residents of OR, WA, CA, and ID only.",
-    "Bonus deposited into the new account within 30 days after requirements are met; account must be open and in good standing at payout.",
-    "Offer expires 10/31/2026; subject to change without notice; may not be combined with any other offer.",
-    "Bonus is considered interest and reported on IRS Form 1099-INT."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Banner Bank (bannerbank.com) is a real regional bank; its business savings bonus terms are published on the official 'View Business Savings Bonus Details' page (official search crawls, confirmed ~3 days ago).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page: 'To receive the business savings offers, you must open your account at a Banner Bank branch and use the promotional code 2026EM at account opening... To receive the $250 savings bonus: Open any new Banner Bank business savings or money market account AND deposit a minimum of $5,000 of new money (not held at Banner Bank) into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Amount, new-money requirement, 60-day funding window, 90-day maintenance, branch/code requirements, geography, and 10/31/2026 expiry are quoted verbatim from the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page: 'To receive the business savings offers, you must open your account at a Banner Bank branch and use the promotional code 2026EM at account opening... To receive the $250 savings bonus: Open any new Banner Bank business savings or money market account AND deposit a minimum of $5,000 of new money (not held at Banner Bank) into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days.'",
+   "pass": true
   },
-  "eligibility": "New Banner Bank business savings/money market customers (none existing); not government/nonprofit/PAC/campaign accounts; no Banner accounts closed within 2 years; OR/WA/CA/ID residents only; one bonus per 2 years per tax ID.",
-  "notes": "Official bannerbank.com business-savings-bonus page (crawl ~3 days). Distinct from R0945 (business checking tiers) and R0947 (business High Yield Relationship Savings $500). No sibling duplicate in R0851-R0945. Expires 2026-10-31.",
-  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
-  "official_url": "http://www.bannerbank.com/new-account-offers/business-account-offers/business-savings-bonus",
-  "payout_max_usd": 250.0,
-  "payout_min_usd": 250.0,
-  "payout_quote": "To receive the $250 savings bonus: Open any new Banner Bank business savings or money market account AND deposit a minimum of $5,000 of new money (not held at Banner Bank) into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days.",
-  "payout_value_note": "flat bonus amount in official terms",
-  "route_id": "R0946",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "New business savings customers; OR/WA/CA/ID; one bonus per 2 years per tax ID."
-    },
-    "s2": {
-      "pass": true,
-      "evidence": "$5,000 of new money within 60 days; $5,000 minimum balance maintained 90 days."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "Bonus within 30 days after requirements; expires 10/31/2026; 1099-INT reporting."
-    }
+  "c3": {
+   "evidence": "Amount, new-money requirement, 60-day funding window, 90-day maintenance, branch/code requirements, geography, and 10/31/2026 expiry are quoted verbatim from the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Banner Bank business savings/money market customers (none existing); not government/nonprofit/PAC/campaign accounts; no Banner accounts closed within 2 years; OR/WA/CA/ID residents only; one bonus per 2 years per tax ID.",
+ "notes": "Official bannerbank.com business-savings-bonus page (crawl ~3 days). Distinct from R0945 (business checking tiers) and R0947 (business High Yield Relationship Savings $500). No sibling duplicate in R0851-R0945. Expires 2026-10-31.",
+ "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "official_url": "http://www.bannerbank.com/new-account-offers/business-account-offers/business-savings-bonus",
+ "payout_max_usd": 250.0,
+ "payout_min_usd": 250.0,
+ "payout_quote": "To receive the $250 savings bonus: Open any new Banner Bank business savings or money market account AND deposit a minimum of $5,000 of new money (not held at Banner Bank) into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days.",
+ "payout_value_note": "flat bonus amount in official terms",
+ "route_id": "R0946",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "New business savings customers; OR/WA/CA/ID; one bonus per 2 years per tax ID."
   },
-  "steps": [
-    "Open a new Banner Bank business savings or money market account at a branch with promotional code 2026EM.",
-    "Deposit at least $5,000 of new money (not held at Banner Bank) within 60 days.",
-    "Maintain a minimum balance of $5,000 for 90 days.",
-    "The $250 bonus is deposited into the new account within 30 days after the requirements are met."
-  ],
-  "terms_url": "http://www.bannerbank.com/new-account-offers/business-account-offers/business-savings-bonus",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Fund within 60 days; maintain minimum balance 90 days; bonus within 30 days after requirements; offer expires 2026-10-31.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": true,
+   "evidence": "$5,000 of new money within 60 days; $5,000 minimum balance maintained 90 days."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "Bonus within 30 days after requirements; expires 10/31/2026; 1099-INT reporting."
+  }
+ },
+ "steps": [
+  "Open a new Banner Bank business savings or money market account at a branch with promotional code 2026EM.",
+  "Deposit at least $5,000 of new money (not held at Banner Bank) within 60 days.",
+  "Maintain a minimum balance of $5,000 for 90 days.",
+  "The $250 bonus is deposited into the new account within 30 days after the requirements are met."
+ ],
+ "terms_url": "http://www.bannerbank.com/new-account-offers/business-account-offers/business-savings-bonus",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Fund within 60 days; maintain minimum balance 90 days; bonus within 30 days after requirements; offer expires 2026-10-31.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $250. Per official terms: Fund within 60 days; maintain minimum balance 90 days; bonus within 30 days after requirements; offer expires 2026-10-31. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's a $30 account reward, not cash — and the public page's eligibility wording is thin ('eligible account', 'eligible plan'), so confirm the current conditions in your US Mobile rewards center before counting on it.",
+ "catches": [
+  "Reward is US Mobile account credit via the rewards center — offsets your US Mobile bill, not cash",
+  "Friend must activate their line on an eligible US Mobile plan through your personal link",
+  "The public page states only 'eligible account' — full eligibility conditions live in the US Mobile rewards center terms"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official US Mobile referral page on usmobile.com (crawled 22 hours ago): 'Earn $30 for each referral. Unlimited referrals and fast payout!'",
+   "pass": true
   },
-  "biggest_catch": "It's a $30 account reward, not cash \u2014 and the public page's eligibility wording is thin ('eligible account', 'eligible plan'), so confirm the current conditions in your US Mobile rewards center before counting on it.",
-  "catches": [
-    "Reward is US Mobile account credit via the rewards center \u2014 offsets your US Mobile bill, not cash",
-    "Friend must activate their line on an eligible US Mobile plan through your personal link",
-    "The public page states only 'eligible account' \u2014 full eligibility conditions live in the US Mobile rewards center terms"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official US Mobile referral page on usmobile.com (crawled 22 hours ago): 'Earn $30 for each referral. Unlimited referrals and fast payout!'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page live and current on usmobile.com with the $30/$30 amounts.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'Give $30. Get $30.' / 'You and your friend each get a $30 reward, sent to the rewards center of your US Mobile account.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Core mechanics stated (share link, friend activates on eligible plan, reward to rewards center); public page is thin on full eligibility, flagged in catches.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page live and current on usmobile.com with the $30/$30 amounts.",
+   "pass": true
   },
-  "eligibility": "Existing US Mobile customer with a personal referral link; friend activates a line on an eligible US Mobile plan through the link.",
-  "notes": "Verified 2026-09-23 against usmobile.com/referrer (official domain). Deduped: no US Mobile routes in catalog, evidence files, or rejects-g60. Older aggregator articles describe different/variant structures; the official current page states $30/$30.",
-  "numeric_basis": "payout from official terms ($30 reward to both referrer and friend, account credit); time: referral share 5-15 min active",
-  "official_url": "https://www.usmobile.com/referrer",
-  "payout_max_usd": 30,
-  "payout_min_usd": 30,
-  "payout_quote": "Give $30. Get $30. Fast payouts and unlimited rewards. Get $30 for each eligible account you refer. You and your friend each get a $30 reward, sent to the rewards center of your US Mobile account.",
-  "payout_value_note": "$30 US Mobile account reward to both the referrer and the friend \u2014 offsets US Mobile service, not cash.",
-  "route_id": "R6351",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim on the official page ($30 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: account reward offsets planned US Mobile spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (share link, friend activates on eligible plan, rewards to rewards center).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: account credit only, thin public eligibility wording.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the friend's own US Mobile plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; 'eligible' qualifier flagged.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against usmobile.com (provider's own domain). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'Give $30. Get $30.' / 'You and your friend each get a $30 reward, sent to the rewards center of your US Mobile account.'",
+   "pass": true
   },
-  "steps": [
-    "Existing US Mobile customer gets their personal referral link",
-    "Share the link with a friend or family member",
-    "Friend activates their line on an eligible US Mobile plan through the link",
-    "Both sides receive a $30 reward in the rewards center of their US Mobile account"
-  ],
-  "terms_url": "https://www.usmobile.com/referrer",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Fast payouts per the official page; rewards land in the US Mobile account rewards center.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [
-    "eligible"
-  ]
+  "c4": {
+   "evidence": "Core mechanics stated (share link, friend activates on eligible plan, reward to rewards center); public page is thin on full eligibility, flagged in catches.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing US Mobile customer with a personal referral link; friend activates a line on an eligible US Mobile plan through the link.",
+ "notes": "Verified 2026-09-23 against usmobile.com/referrer (official domain). Deduped: no US Mobile routes in catalog, evidence files, or rejects-g60. Older aggregator articles describe different/variant structures; the official current page states $30/$30.",
+ "numeric_basis": "payout from official terms ($30 reward to both referrer and friend, account credit); time: referral share 5-15 min active",
+ "official_url": "https://www.usmobile.com/referrer",
+ "payout_max_usd": 30,
+ "payout_min_usd": 30,
+ "payout_quote": "Give $30. Get $30. Fast payouts and unlimited rewards. Get $30 for each eligible account you refer. You and your friend each get a $30 reward, sent to the rewards center of your US Mobile account.",
+ "payout_value_note": "$30 US Mobile account reward to both the referrer and the friend — offsets US Mobile service, not cash.",
+ "route_id": "R6351",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim on the official page ($30 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: account reward offsets planned US Mobile spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (share link, friend activates on eligible plan, rewards to rewards center).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: account credit only, thin public eligibility wording.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the friend's own US Mobile plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; 'eligible' qualifier flagged.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against usmobile.com (provider's own domain). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Existing US Mobile customer gets their personal referral link",
+  "Share the link with a friend or family member",
+  "Friend activates their line on an eligible US Mobile plan through the link",
+  "Both sides receive a $30 reward in the rewards center of their US Mobile account"
+ ],
+ "terms_url": "https://www.usmobile.com/referrer",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Fast payouts per the official page; rewards land in the US Mobile account rewards center.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [
+  "eligible"
+ ],
+ "speed": "weeks",
+ "when_cash_arrives": "Fast payouts per the official page; rewards land in the US Mobile account rewards center.",
+ "maximize": "Fastest honest path: Fast payouts per the official page; rewards land in the US Mobile account rewards center. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

@@ -1,90 +1,101 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $400 tier requires the Performance Select package with $5,000 in direct deposits within 60 days — users who open the standard Virtual Wallet by mistake get only $100. Eligibility also excludes anyone who has (or recently had) a PNC consumer checking account.",
+ "catches": [
+  "$400 is for Virtual Wallet WITH Performance Select ($5,000 qualifying direct deposits within 60 days); standard Virtual Wallet pays only $100 ($500 direct deposit within 60 days).",
+  "Qualifying direct deposit must be a workplace payroll direct deposit (or other qualifying ACH credit) — transfers, wires, P2P payments (Zelle/Venmo), branch/ATM/mobile/mail deposits do NOT count.",
+  "Ineligible if any account signer: has an existing PNC consumer checking account, closed a PNC consumer checking account within the past 12 months, or was a primary signer on an account that received a PNC premium within the past 24 months.",
+  "Performance Select has a $25 monthly service charge unless waived — check the waiver rules before choosing it.",
+  "Offer valid 9/1/2026–1/7/2027 and may vary by market; the offer must be opened via the bonus offer page.",
+  "Account must remain open and in good standing through payout."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "PNC Bank, N.A. — real operating bank, Member FDIC.",
+   "pass": true
   },
-  "biggest_catch": "The $400 tier requires the Performance Select package with $5,000 in direct deposits within 60 days — users who open the standard Virtual Wallet by mistake get only $100. Eligibility also excludes anyone who has (or recently had) a PNC consumer checking account.",
-  "catches": [
-    "$400 is for Virtual Wallet WITH Performance Select ($5,000 qualifying direct deposits within 60 days); standard Virtual Wallet pays only $100 ($500 direct deposit within 60 days).",
-    "Qualifying direct deposit must be a workplace payroll direct deposit (or other qualifying ACH credit) — transfers, wires, P2P payments (Zelle/Venmo), branch/ATM/mobile/mail deposits do NOT count.",
-    "Ineligible if any account signer: has an existing PNC consumer checking account, closed a PNC consumer checking account within the past 12 months, or was a primary signer on an account that received a PNC premium within the past 24 months.",
-    "Performance Select has a $25 monthly service charge unless waived — check the waiver rules before choosing it.",
-    "Offer valid 9/1/2026–1/7/2027 and may vary by market; the offer must be opened via the bonus offer page.",
-    "Account must remain open and in good standing through payout."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "PNC Bank, N.A. — real operating bank, Member FDIC.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official PNC page 'PNC Bank Checking Bonus Offers' on pnc.com with tier table ($100 / $400), direct-deposit requirements, offer dates, and exclusion rules.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee to enroll; the $25 Performance Select service charge is disclosed and waivable, not a participation fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official: 'Open a new Virtual Wallet with Performance Select account by 1/7/2027 and receive $5,000 in qualifying direct deposits within the first 60 days to earn a $400 bonus.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official PNC page 'PNC Bank Checking Bonus Offers' on pnc.com with tier table ($100 / $400), direct-deposit requirements, offer dates, and exclusion rules.",
+   "pass": true
   },
-  "eligibility": "New PNC consumer checking customers. No signer may have an existing PNC consumer checking account, have closed one within 12 months, or have received a PNC premium as primary signer within 24 months. Open via the bonus offer page 9/1/2026–1/7/2027.",
-  "notes": "Verified against the official PNC page (pnc.com) via live indexed content 2026-09-23. Route claimed '$100-$400' — matches official exactly. In-app, force the user to the Performance Select variant: opening standard Virtual Wallet silently caps the bonus at $100. The 24-month 'one bonus per customer' rule is a hard exclusion. App links: 'PNC Mobile' exists in both stores but no verbatim official store URL was obtained — left null rather than guessed. [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
-  "payout_quote": "Open a new Virtual Wallet with Performance Select account by 1/7/2027 and receive $5,000 in qualifying direct deposits within the first 60 days to earn a $400 bonus. Open a new Virtual Wallet account by 1/7/2027 and receive $500 in qualifying direct deposits within the first 60 days to earn a $100 bonus.",
-  "route_id": "R0043",
-  "standard": {
-    "s1": {
-      "note": "New consumer checking customers; strict exclusion for existing/recent PNC checking holders and 24-month bonus recipients; offer window 9/1/2026–1/7/2027.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Qualifying direct deposit narrowly defined (workplace payroll); transfers, wires, P2P, branch/ATM/mobile deposits excluded; $25/month Performance Select charge unless waived.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus paid after requirements are verified; account must remain open and in good standing.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No weasel words on the tier amounts or the $5,000/$500 direct-deposit thresholds.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html — the official PNC checking bonus page.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open via the offer page, choose Performance Select, get $5,000 in payroll direct deposits within 60 days.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official PNC page content confirmed via PNC's own indexed page copy 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee to enroll; the $25 Performance Select service charge is disclosed and waivable, not a participation fee.",
+   "pass": true
   },
-  "steps": [
-    "Go to the official PNC bonus page https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html and confirm the offer is live (valid through 1/7/2027).",
-    "Open a new Virtual Wallet WITH Performance Select account directly from the offer page — not the standard Virtual Wallet (which only pays $100).",
-    "Within the first 60 days, receive a total of $5,000 in qualifying direct deposits into the Spend account — workplace payroll direct deposit is the safe path (Zelle, transfers, and mobile deposits do NOT count).",
-    "Keep the account open and in good standing until the bonus is paid.",
-    "To avoid the $25 monthly Performance Select charge, meet its fee-waiver criteria (or confirm the waiver rules on the account page before opening)."
-  ],
-  "terms_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
-  "timing": "Bonus paid after requirements are verified; account must remain open and in good standing through payout.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official: 'Open a new Virtual Wallet with Performance Select account by 1/7/2027 and receive $5,000 in qualifying direct deposits within the first 60 days to earn a $400 bonus.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New PNC consumer checking customers. No signer may have an existing PNC consumer checking account, have closed one within 12 months, or have received a PNC premium as primary signer within 24 months. Open via the bonus offer page 9/1/2026–1/7/2027.",
+ "notes": "Verified against the official PNC page (pnc.com) via live indexed content 2026-09-23. Route claimed '$100-$400' — matches official exactly. In-app, force the user to the Performance Select variant: opening standard Virtual Wallet silently caps the bonus at $100. The 24-month 'one bonus per customer' rule is a hard exclusion. App links: 'PNC Mobile' exists in both stores but no verbatim official store URL was obtained — left null rather than guessed. [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
+ "payout_quote": "Open a new Virtual Wallet with Performance Select account by 1/7/2027 and receive $5,000 in qualifying direct deposits within the first 60 days to earn a $400 bonus. Open a new Virtual Wallet account by 1/7/2027 and receive $500 in qualifying direct deposits within the first 60 days to earn a $100 bonus.",
+ "route_id": "R0043",
+ "standard": {
+  "s1": {
+   "note": "New consumer checking customers; strict exclusion for existing/recent PNC checking holders and 24-month bonus recipients; offer window 9/1/2026–1/7/2027.",
+   "pass": true
   },
-  "payout_min_usd": 100.0,
-  "payout_max_usd": 100.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "note": "Qualifying direct deposit narrowly defined (workplace payroll); transfers, wires, P2P, branch/ATM/mobile deposits excluded; $25/month Performance Select charge unless waived.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus paid after requirements are verified; account must remain open and in good standing.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the tier amounts or the $5,000/$500 direct-deposit thresholds.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html — the official PNC checking bonus page.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open via the offer page, choose Performance Select, get $5,000 in payroll direct deposits within 60 days.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official PNC page content confirmed via PNC's own indexed page copy 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Go to the official PNC bonus page https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html and confirm the offer is live (valid through 1/7/2027).",
+  "Open a new Virtual Wallet WITH Performance Select account directly from the offer page — not the standard Virtual Wallet (which only pays $100).",
+  "Within the first 60 days, receive a total of $5,000 in qualifying direct deposits into the Spend account — workplace payroll direct deposit is the safe path (Zelle, transfers, and mobile deposits do NOT count).",
+  "Keep the account open and in good standing until the bonus is paid.",
+  "To avoid the $25 monthly Performance Select charge, meet its fee-waiver criteria (or confirm the waiver rules on the account page before opening)."
+ ],
+ "terms_url": "https://pnc.com/en/personal-banking/banking/checking/bonus-offer.html",
+ "timing": "Bonus paid after requirements are verified; account must remain open and in good standing through payout.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 100.0,
+ "payout_max_usd": 100.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $100. Per official terms: Bonus paid after requirements are verified; account must remain open and in good standing through payout. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

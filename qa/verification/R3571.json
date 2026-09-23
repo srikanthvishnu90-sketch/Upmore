@@ -1,89 +1,101 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "This is the FirstNet (first-responder) referral program \u2014 both you and the people you refer must be eligible, verified FirstNet Subscriber Paid users (public-safety employees/volunteers). It is not open to general AT&T wireless customers.",
+ "catches": [
+  "FirstNet-only: eligibility is limited to eligible & verified employees/volunteers of qualifying public safety entities (or supporting entities); the new customer must qualify for FirstNet service and complete verification within 30 days.",
+  "The new customer must open a NEW line on an eligible FirstNet unlimited voice-and-data plan (minimum $54/month) \u2014 upgrades are not eligible; tablets, wearables, and hotspots are excluded.",
+  "The new line must remain active with the qualifying plan for a minimum of 30 days from activation or no reward is issued.",
+  "Reward card (not cash): the AT&T Visa Reward Card has no cash access, expires 6 months after issuance (month-end), and must be redeemed within 75 days of the reward notification \u2014 miss the redemption window and it's gone.",
+  "Redemption and delivery take time: notification within 60 days of eligible activation, then the card is delivered 3\u20134 weeks after redemption.",
+  "Lifetime maximum of 10 referral reward cards per customer \u2014 the lifetime cap belongs in catches, per lane rules (10 x $100 = $1,000 lifetime).",
+  "Offer 'subject to change and may be discontinued at any time.'",
+  "Excludes FirstNet Agency Paid users and migrations from Cricket, GoPhone, Lifeline, Residential Wireless, and AT&T Partner exchange.",
+  "The general consumer AT&T refer-a-friend program (prepaid, historically $25\u2013$75) is a different, older mechanism and was not verified here."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "AT&T / FirstNet is a real carrier program; the Refer-A-Friend flyer is on AT&T's own CDN (mst-att-com.s3.amazonaws.com), marked '\u00a9 2026 AT&T Intellectual Property', fetched live 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "This is the FirstNet (first-responder) referral program — both you and the people you refer must be eligible, verified FirstNet Subscriber Paid users (public-safety employees/volunteers). It is not open to general AT&T wireless customers.",
-  "catches": [
-    "FirstNet-only: eligibility is limited to eligible & verified employees/volunteers of qualifying public safety entities (or supporting entities); the new customer must qualify for FirstNet service and complete verification within 30 days.",
-    "The new customer must open a NEW line on an eligible FirstNet unlimited voice-and-data plan (minimum $54/month) — upgrades are not eligible; tablets, wearables, and hotspots are excluded.",
-    "The new line must remain active with the qualifying plan for a minimum of 30 days from activation or no reward is issued.",
-    "Reward card (not cash): the AT&T Visa Reward Card has no cash access, expires 6 months after issuance (month-end), and must be redeemed within 75 days of the reward notification — miss the redemption window and it's gone.",
-    "Redemption and delivery take time: notification within 60 days of eligible activation, then the card is delivered 3–4 weeks after redemption.",
-    "Lifetime maximum of 10 referral reward cards per customer — the lifetime cap belongs in catches, per lane rules (10 x $100 = $1,000 lifetime).",
-    "Offer 'subject to change and may be discontinued at any time.'",
-    "Excludes FirstNet Agency Paid users and migrations from Cricket, GoPhone, Lifeline, Residential Wireless, and AT&T Partner exchange.",
-    "The general consumer AT&T refer-a-friend program (prepaid, historically $25–$75) is a different, older mechanism and was not verified here."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "AT&T / FirstNet is a real carrier program; the Refer-A-Friend flyer is on AT&T's own CDN (mst-att-com.s3.amazonaws.com), marked '© 2026 AT&T Intellectual Property', fetched live 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official AT&T flyer: 'Reward Card: $100 reward card for existing customer per referral. $100 reward card for new customer. Lifetime maximum of 10 referral reward cards per customer.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; sharing the referral link is free. (The new customer's plan is their own service cost, not a cost of this route.)",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Flyer dated 05.12.2026 / version 040726, © 2026 AT&T Intellectual Property, live as fetched 2026-09-23 (UTC) — current as of verification.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official AT&T flyer: 'Reward Card: $100 reward card for existing customer per referral. $100 reward card for new customer. Lifetime maximum of 10 referral reward cards per customer.'",
+   "pass": true
   },
-  "eligibility": "Existing AT&T wireless or FirstNet Subscriber Paid customers referring new customers; new customer must be eligible & verified for FirstNet (public-safety employee/volunteer), complete verification within 30 days, and open a new line on an eligible FirstNet unlimited plan (min $54/month).",
-  "notes": "Verified on the official AT&T FirstNet Refer-A-Friend flyer (AT&T CDN) 2026-09-23 (UTC). This is distinct from the existing catalog's T-Mobile (R0831) and Verizon (R0832) referral routes — no AT&T referral route exists in the catalog. The $100 is paid to the existing customer per referral; the new customer also gets $100 (their side is not counted in this route's payout).",
-  "official_url": "https://mst-att-com.s3.amazonaws.com/brochures/RAF%20Flyer%20editable_05.12.2026.pdf",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "Reward Card: $100 reward card for existing customer per referral. $100 reward card for new customer. Lifetime maximum of 10 referral reward cards per customer.",
-  "payout_value_note": "flat $100 reward card per qualifying referral to the existing customer; $1,000 lifetime cap (10 referrals) in catches only",
-  "route_id": "R3571",
-  "standard": {
-    "s1": {
-      "note": "Per-referral bonus mechanism; no AT&T referral route exists in the catalog or verification files (T-Mobile R0831 and Verizon R0832 are different carriers).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Concrete steps: request your referral link/QR from the Refer-a-Friend portal, give it to an eligible new FirstNet customer, they order and activate a new line with the referral offer; both receive a $100 card after the 30-day active-line requirement.",
-      "pass": true
-    },
-    "s3": {
-      "note": "No expiry on the current flyer (subject to change); payout timing: notification within 60 days of eligible activation, redemption within 75 days, card delivered 3–4 weeks after redemption; 30-day active-line requirement captured.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Catches include FirstNet-only eligibility, new-line/plan requirements, 30-day active requirement, reward-card-not-cash with expiry, 75-day redemption window, delivery timing, 10-referral lifetime cap, and discontinuation risk.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Referral portal access requires being an AT&T wireless or FirstNet Subscriber Paid customer — a standing customer relationship, not a purchased invitation.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Dedupe: grep/dedupe-check/verification-file search — no AT&T referral route in catalog (only T-Mobile R0831 and Verizon R0832).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; sharing the referral link is free. (The new customer's plan is their own service cost, not a cost of this route.)",
+   "pass": true
   },
-  "steps": [
-    "As an existing AT&T wireless or FirstNet Subscriber Paid customer, request your referral link (or QR code) from the Refer-a-Friend portal.",
-    "Give the link to a prospective new customer who is eligible for FirstNet service (public-safety employee/volunteer, or supporting entity).",
-    "The new customer verifies FirstNet eligibility within 30 days, orders a new line on an eligible FirstNet unlimited plan (minimum $54/month), and activates the Referral Offer.",
-    "Keep the new line active for 30 days; AT&T sends reward notification within 60 days of eligible activation — redeem within 75 days; the $100 Visa Reward Card arrives 3–4 weeks after redemption."
-  ],
-  "terms_url": "https://mst-att-com.s3.amazonaws.com/brochures/RAF%20Flyer%20editable_05.12.2026.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "No expiry on the current flyer (subject to change); reward notification within 60 days of eligible activation, redemption within 75 days of notification, card delivered 3–4 weeks after redemption.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "numeric_basis": "payout from official terms ($100 per qualifying referral); time: referral share 5-15 min active (per schema referral-share guide)"
+  "c4": {
+   "evidence": "Flyer dated 05.12.2026 / version 040726, \u00a9 2026 AT&T Intellectual Property, live as fetched 2026-09-23 (UTC) \u2014 current as of verification.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing AT&T wireless or FirstNet Subscriber Paid customers referring new customers; new customer must be eligible & verified for FirstNet (public-safety employee/volunteer), complete verification within 30 days, and open a new line on an eligible FirstNet unlimited plan (min $54/month).",
+ "notes": "Verified on the official AT&T FirstNet Refer-A-Friend flyer (AT&T CDN) 2026-09-23 (UTC). This is distinct from the existing catalog's T-Mobile (R0831) and Verizon (R0832) referral routes \u2014 no AT&T referral route exists in the catalog. The $100 is paid to the existing customer per referral; the new customer also gets $100 (their side is not counted in this route's payout).",
+ "official_url": "https://mst-att-com.s3.amazonaws.com/brochures/RAF%20Flyer%20editable_05.12.2026.pdf",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "Reward Card: $100 reward card for existing customer per referral. $100 reward card for new customer. Lifetime maximum of 10 referral reward cards per customer.",
+ "payout_value_note": "flat $100 reward card per qualifying referral to the existing customer; $1,000 lifetime cap (10 referrals) in catches only",
+ "route_id": "R3571",
+ "standard": {
+  "s1": {
+   "note": "Per-referral bonus mechanism; no AT&T referral route exists in the catalog or verification files (T-Mobile R0831 and Verizon R0832 are different carriers).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Concrete steps: request your referral link/QR from the Refer-a-Friend portal, give it to an eligible new FirstNet customer, they order and activate a new line with the referral offer; both receive a $100 card after the 30-day active-line requirement.",
+   "pass": true
+  },
+  "s3": {
+   "note": "No expiry on the current flyer (subject to change); payout timing: notification within 60 days of eligible activation, redemption within 75 days, card delivered 3\u20134 weeks after redemption; 30-day active-line requirement captured.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Catches include FirstNet-only eligibility, new-line/plan requirements, 30-day active requirement, reward-card-not-cash with expiry, 75-day redemption window, delivery timing, 10-referral lifetime cap, and discontinuation risk.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Referral portal access requires being an AT&T wireless or FirstNet Subscriber Paid customer \u2014 a standing customer relationship, not a purchased invitation.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Dedupe: grep/dedupe-check/verification-file search \u2014 no AT&T referral route in catalog (only T-Mobile R0831 and Verizon R0832).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "As an existing AT&T wireless or FirstNet Subscriber Paid customer, request your referral link (or QR code) from the Refer-a-Friend portal.",
+  "Give the link to a prospective new customer who is eligible for FirstNet service (public-safety employee/volunteer, or supporting entity).",
+  "The new customer verifies FirstNet eligibility within 30 days, orders a new line on an eligible FirstNet unlimited plan (minimum $54/month), and activates the Referral Offer.",
+  "Keep the new line active for 30 days; AT&T sends reward notification within 60 days of eligible activation \u2014 redeem within 75 days; the $100 Visa Reward Card arrives 3\u20134 weeks after redemption."
+ ],
+ "terms_url": "https://mst-att-com.s3.amazonaws.com/brochures/RAF%20Flyer%20editable_05.12.2026.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "No expiry on the current flyer (subject to change); reward notification within 60 days of eligible activation, redemption within 75 days of notification, card delivered 3\u20134 weeks after redemption.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "numeric_basis": "payout from official terms ($100 per qualifying referral); time: referral share 5-15 min active (per schema referral-share guide)",
+ "speed": "weeks",
+ "when_cash_arrives": "Reward notification within 60 days of eligible activation; redemption within 75 days of notification; card delivered 3-4 weeks after redemption.",
+ "maximize": "Activate and watch for the notification; redeem immediately when it arrives.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The 60-day notification plus 3-4 week delivery are the structural blockers.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

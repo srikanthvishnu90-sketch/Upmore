@@ -16,14 +16,14 @@
   ],
   "catches": [
     "Referrer cap: maximum $400 in credits per calendar year (4 referrals).",
-    "Friend must receive $500+/month direct deposit for THREE consecutive months — the heaviest activity requirement in this wave.",
+    "Friend must receive $500+/month direct deposit for THREE consecutive months \u2014 the heaviest activity requirement in this wave.",
     "Only Beacon One checking and Beacon One University checking qualify.",
     "Referral link must be sent before account opening and the code entered at application; missing/wrong code means no credit for either party.",
     "Credits may be reportable to the IRS on Form 1099-MISC.",
     "Campaign ends December 31, 2026; program may be discontinued or changed at any time.",
     "Referrer and referred person cannot be the same person or joint account holder."
   ],
-  "biggest_catch": "Capped at $400/year (4 referrals), and the friend must receive $500+/month in direct deposits for three straight months — payout takes 4+ months.",
+  "biggest_catch": "Capped at $400/year (4 referrals), and the friend must receive $500+/month in direct deposits for three straight months \u2014 payout takes 4+ months.",
   "eligibility": "Beacon Bank customers; friend must be a new Beacon Bank customer 18+.",
   "timing": "Link sharing ~5 min active; credits paid the calendar month after the third qualifying direct deposit (~4-5 months).",
   "upfront_fee": false,
@@ -84,5 +84,19 @@
   "time_min_minutes": 5.0,
   "time_max_minutes": 15.0,
   "numeric_basis": "payout from official beaconbank.com/refer ('will receive $100 for each eligible individual referred' ... 'maximum of $400 within a calendar year'); time: referral link sharing est. 5-15 min active",
-  "notes": "Verified 2026-09-23 from the official Beacon Bank Refer a Friend page (Rev. 7/26). No Beacon Bank referral evidence file existed before (R0589 is a reject)."
+  "notes": "Verified 2026-09-23 from the official Beacon Bank Refer a Friend page (Rev. 7/26). No Beacon Bank referral evidence file existed before (R0589 is a reject).",
+  "speed": "weeks",
+  "when_cash_arrives": "Per official terms: Link sharing ~5 min active; credits paid the calendar month after the third qualifying direct deposit (~4-5 months). \u2014 structural: credits land the calendar month after the third qualifying direct deposit (~4-5 months).",
+  "maximize": [
+    "Front-load the friend's qualifying activity: terms give the friend a multi-week window, but the payout clock starts at completion \u2014 a friend who finishes in week 1 gets you paid weeks earlier.",
+    "Volume constraint noted in terms: cap: maximum $400 in credits per calendar year (4 referrals) \u2014 plan referral count against the cap, not the calendar."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "weeks",
+      "rationale": "Speed audit 2026-09-23: confirmed weeks \u2014 structural: credits land the calendar month after the third qualifying direct deposit (~4-5 months)."
+    }
+  ]
 }

@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Your income must be at or below the United Way ALICE budget — and it's a one-time $200 credit, not an ongoing discount.",
+ "catches": [
+  "Income-qualified: income at or below the United Way ALICE budget.",
+  "One-time $200 bill credit — not recurring.",
+  "You participate in the Saving Steps program and its energy-saving practices.",
+  "FPL residential customer.",
+  "No fee."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Florida Power & Light Company — real operating Florida utility; official assistance page on fpl.com.",
+   "pass": true
   },
-  "biggest_catch": "Your income must be at or below the United Way ALICE budget — and it's a one-time $200 credit, not an ongoing discount.",
-  "catches": [
-    "Income-qualified: income at or below the United Way ALICE budget.",
-    "One-time $200 bill credit — not recurring.",
-    "You participate in the Saving Steps program and its energy-saving practices.",
-    "FPL residential customer.",
-    "No fee."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Florida Power & Light Company — real operating Florida utility; official assistance page on fpl.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official FPL page: 'Receive a one-time $200 bill credit when you participate in [Saving Steps] while learning energy-saving practices.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to participate.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page states a one-time $200 bill credit upon participation — payout event published.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official FPL page: 'Receive a one-time $200 bill credit when you participate in [Saving Steps] while learning energy-saving practices.'",
+   "pass": true
   },
-  "eligibility": "FPL residential customer with income at or below the United Way ALICE budget, participating in FPL Saving Steps.",
-  "notes": "Verified on the official FPL assistance page 2026-09-22. Income-qualified lane; framed as $200 off the electric bill. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.fpl.com/assistance.html",
-  "payout_quote": "FPL Saving Steps: receive a one-time $200 bill credit when you participate in this program while learning energy-saving practices to help you save even more.",
-  "route_id": "R0778",
-  "standard": {
-    "s1": {
-      "note": "FPL residential customer; income at or below the United Way ALICE budget.",
-      "pass": true
-    },
-    "s2": {
-      "note": "One-time credit; participation in the program's energy-saving practices required.",
-      "pass": true
-    },
-    "s3": {
-      "note": "One-time $200 bill credit upon participation — payout event published on the official page.",
-      "pass": true
-    },
-    "s4": {
-      "note": "$200 stated flatly on the official page.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.fpl.com/assistance.html — official FPL page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: confirm income eligibility, take the first step in Saving Steps, credit follows.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official FPL page loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to participate.",
+   "pass": true
   },
-  "steps": [
-    "Confirm your household income is at or below the United Way ALICE budget.",
-    "Start FPL Saving Steps on the official FPL assistance page ('Take the first step').",
-    "Participate in the program and its energy-saving practices.",
-    "Receive your one-time $200 bill credit."
-  ],
-  "terms_url": "https://www.fpl.com/assistance.html",
-  "timing": "One-time $200 bill credit upon participation in Saving Steps.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page states a one-time $200 bill credit upon participation — payout event published.",
+   "pass": true
+  }
+ },
+ "eligibility": "FPL residential customer with income at or below the United Way ALICE budget, participating in FPL Saving Steps.",
+ "notes": "Verified on the official FPL assistance page 2026-09-22. Income-qualified lane; framed as $200 off the electric bill. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.fpl.com/assistance.html",
+ "payout_quote": "FPL Saving Steps: receive a one-time $200 bill credit when you participate in this program while learning energy-saving practices to help you save even more.",
+ "route_id": "R0778",
+ "standard": {
+  "s1": {
+   "note": "FPL residential customer; income at or below the United Way ALICE budget.",
+   "pass": true
   },
-  "payout_min_usd": 200.0,
-  "payout_max_usd": 200.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "One-time credit; participation in the program's energy-saving practices required.",
+   "pass": true
+  },
+  "s3": {
+   "note": "One-time $200 bill credit upon participation — payout event published on the official page.",
+   "pass": true
+  },
+  "s4": {
+   "note": "$200 stated flatly on the official page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.fpl.com/assistance.html — official FPL page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: confirm income eligibility, take the first step in Saving Steps, credit follows.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official FPL page loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm your household income is at or below the United Way ALICE budget.",
+  "Start FPL Saving Steps on the official FPL assistance page ('Take the first step').",
+  "Participate in the program and its energy-saving practices.",
+  "Receive your one-time $200 bill credit."
+ ],
+ "terms_url": "https://www.fpl.com/assistance.html",
+ "timing": "One-time $200 bill credit upon participation in Saving Steps.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 200.0,
+ "payout_max_usd": 200.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "One-time $200 bill credit upon participation in Saving Steps.",
+ "maximize": "Fastest honest path: One-time $200 bill credit upon participation in Saving Steps. Structural blocker: assistance/income-qualified programs pay the vendor directly or as bill credits on their own schedule — there is no cash acceleration path; these are not income."
 }

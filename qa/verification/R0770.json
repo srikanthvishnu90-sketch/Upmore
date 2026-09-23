@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The appliance must be replacing an existing electric appliance — a brand-new install where no appliance existed before doesn't qualify.",
+ "catches": [
+  "Must be replacing an existing electric appliance to be eligible; products must be new (refurbished excluded).",
+  "Lansing Board of Water & Light residential customer.",
+  "Rebate cannot exceed the purchase price; per-product limits apply (e.g., limit 1 washer, 4 room ACs).",
+  "LBWL does not publish a payout timeline in the 2026 application — s3 honestly marked false.",
+  "The appliance purchase is a condition, not an upfront fee."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Lansing Board of Water & Light (BWL) — real Michigan municipal utility; official 2026 residential rebate application PDF on lbwl.com.",
+   "pass": true
   },
-  "biggest_catch": "The appliance must be replacing an existing electric appliance — a brand-new install where no appliance existed before doesn't qualify.",
-  "catches": [
-    "Must be replacing an existing electric appliance to be eligible; products must be new (refurbished excluded).",
-    "Lansing Board of Water & Light residential customer.",
-    "Rebate cannot exceed the purchase price; per-product limits apply (e.g., limit 1 washer, 4 room ACs).",
-    "LBWL does not publish a payout timeline in the 2026 application — s3 honestly marked false.",
-    "The appliance purchase is a condition, not an upfront fee."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Lansing Board of Water & Light (BWL) — real Michigan municipal utility; official 2026 residential rebate application PDF on lbwl.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official LBWL 2026 application: room AC $50, dehumidifier $50, air purifier $50, heat-pump dryer $100, refrigerator $50, washer $25, dryer $25, dishwasher $25, freezer $25.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; appliance purchase is a purchase condition.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "LBWL does not publish a payout timeline in the 2026 application — s3 honestly marked false rather than invented.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official LBWL 2026 application: room AC $50, dehumidifier $50, air purifier $50, heat-pump dryer $100, refrigerator $50, washer $25, dryer $25, dishwasher $25, freezer $25.",
+   "pass": true
   },
-  "eligibility": "LBWL residential customer. New ENERGY STAR appliance replacing an existing electric appliance; installed at the service address. Per-product quantity limits apply.",
-  "notes": "Verified from the official LBWL 2026 Hometown Energy Savers residential application PDF 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.lbwl.com/sites/default/files/documents/BWL HES_Residential Application_2026_v01.09.pdf",
-  "payout_quote": "2026 ENERGY STAR appliance rebates: room air conditioner $50, dehumidifier $50, air purifier $50, heat-pump clothes dryer $100, refrigerator $50, clothes washer $25, clothes dryer $25, dishwasher $25, freezer $25 — must be replacing an existing electric appliance; rebate cannot exceed purchase price.",
-  "route_id": "R0770",
-  "standard": {
-    "s1": {
-      "note": "LBWL residential customer; new ENERGY STAR product replacing an existing electric appliance.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Replacement requirement; refurbished excluded; per-product limits; rebate capped at purchase price.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Payout timeline not published in the official 2026 application — not invented.",
-      "pass": false
-    },
-    "s4": {
-      "note": "Amounts stated flatly in the official application table.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official LBWL 2026 residential application PDF on lbwl.com, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: buy, install as a replacement, submit the 2026 application with details.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official LBWL application PDF loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; appliance purchase is a purchase condition.",
+   "pass": true
   },
-  "steps": [
-    "Buy a new ENERGY STAR appliance that replaces an existing electric appliance at your LBWL-served address.",
-    "Install it and record the manufacturer, model number, and install date.",
-    "Complete the official LBWL 2026 Hometown Energy Savers residential application.",
-    "Submit it per the application's instructions; LBWL does not publish the exact payout timeline."
-  ],
-  "terms_url": "https://www.lbwl.com/sites/default/files/documents/BWL HES_Residential Application_2026_v01.09.pdf",
-  "timing": "LBWL does not publish a payout timeline for these rebates in the official 2026 application.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "LBWL does not publish a payout timeline in the 2026 application — s3 honestly marked false rather than invented.",
+   "pass": false
+  }
+ },
+ "eligibility": "LBWL residential customer. New ENERGY STAR appliance replacing an existing electric appliance; installed at the service address. Per-product quantity limits apply.",
+ "notes": "Verified from the official LBWL 2026 Hometown Energy Savers residential application PDF 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.lbwl.com/sites/default/files/documents/BWL HES_Residential Application_2026_v01.09.pdf",
+ "payout_quote": "2026 ENERGY STAR appliance rebates: room air conditioner $50, dehumidifier $50, air purifier $50, heat-pump clothes dryer $100, refrigerator $50, clothes washer $25, clothes dryer $25, dishwasher $25, freezer $25 — must be replacing an existing electric appliance; rebate cannot exceed purchase price.",
+ "route_id": "R0770",
+ "standard": {
+  "s1": {
+   "note": "LBWL residential customer; new ENERGY STAR product replacing an existing electric appliance.",
+   "pass": true
   },
-  "payout_min_usd": 50.0,
-  "payout_max_usd": 50.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Replacement requirement; refurbished excluded; per-product limits; rebate capped at purchase price.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Payout timeline not published in the official 2026 application — not invented.",
+   "pass": false
+  },
+  "s4": {
+   "note": "Amounts stated flatly in the official application table.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official LBWL 2026 residential application PDF on lbwl.com, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: buy, install as a replacement, submit the 2026 application with details.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official LBWL application PDF loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Buy a new ENERGY STAR appliance that replaces an existing electric appliance at your LBWL-served address.",
+  "Install it and record the manufacturer, model number, and install date.",
+  "Complete the official LBWL 2026 Hometown Energy Savers residential application.",
+  "Submit it per the application's instructions; LBWL does not publish the exact payout timeline."
+ ],
+ "terms_url": "https://www.lbwl.com/sites/default/files/documents/BWL HES_Residential Application_2026_v01.09.pdf",
+ "timing": "LBWL does not publish a payout timeline for these rebates in the official 2026 application.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 50.0,
+ "payout_max_usd": 50.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "LBWL does not publish a payout timeline for these rebates in the official 2026 application.",
+ "maximize": "Fastest honest path: LBWL does not publish a payout timeline for these rebates in the official 2026 application. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You must install through an Energy Trust trade ally contractor — a DIY install or your own non-participating contractor won't unlock the incentive.",
+ "catches": [
+  "Installation must be performed by an Energy Trust trade ally contractor.",
+  "Customer of Portland General Electric, Pacific Power, NW Natural, Cascade Natural Gas, or Avista in Oregon.",
+  "Incentive amounts are 'up to' — the exact amount depends on the equipment and project.",
+  "Energy Trust does not publish a payout timeline on the fact sheet — s3 honestly marked false.",
+  "The heat-pump purchase/installation is a condition, not an upfront fee."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Energy Trust of Oregon — real nonprofit administering Oregon utility efficiency programs; official fact sheet on energytrust.org.",
+   "pass": true
   },
-  "biggest_catch": "You must install through an Energy Trust trade ally contractor — a DIY install or your own non-participating contractor won't unlock the incentive.",
-  "catches": [
-    "Installation must be performed by an Energy Trust trade ally contractor.",
-    "Customer of Portland General Electric, Pacific Power, NW Natural, Cascade Natural Gas, or Avista in Oregon.",
-    "Incentive amounts are 'up to' — the exact amount depends on the equipment and project.",
-    "Energy Trust does not publish a payout timeline on the fact sheet — s3 honestly marked false.",
-    "The heat-pump purchase/installation is a condition, not an upfront fee."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Energy Trust of Oregon — real nonprofit administering Oregon utility efficiency programs; official fact sheet on energytrust.org.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Energy Trust fact sheet: cash incentives for single-family homes — heat pump up to $1,000, ductless heat pump up to $800.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; equipment purchase/installation is a purchase condition.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Energy Trust does not publish a payout timeline on the fact sheet — s3 honestly marked false rather than invented.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official Energy Trust fact sheet: cash incentives for single-family homes — heat pump up to $1,000, ductless heat pump up to $800.",
+   "pass": true
   },
-  "eligibility": "Oregon single-family homeowner served by Portland General Electric, Pacific Power, NW Natural, Cascade Natural Gas, or Avista. Installation by an Energy Trust trade ally contractor.",
-  "notes": "Verified on the official Energy Trust of Oregon fact sheet 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/",
-  "payout_quote": "Cash incentives for single-family homes: heat pump up to $1,000; ductless heat pump up to $800 — installed by an Energy Trust trade ally.",
-  "route_id": "R0764",
-  "standard": {
-    "s1": {
-      "note": "Oregon customer of a participating utility; single-family home; trade-ally installation.",
-      "pass": true
-    },
-    "s2": {
-      "note": "'Up to' amounts vary by equipment/project; trade-ally installation required.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Payout timeline not published on the official fact sheet — not invented.",
-      "pass": false
-    },
-    "s4": {
-      "note": "Amounts published as 'up to' — the official fact-sheet values.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/ — official Energy Trust page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: find a trade ally, install qualifying heat pump, incentive follows.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Energy Trust fact sheet loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; equipment purchase/installation is a purchase condition.",
+   "pass": true
   },
-  "steps": [
-    "Confirm your home is served by a participating Oregon utility (PGE, Pacific Power, NW Natural, Cascade Natural Gas, or Avista).",
-    "Find an Energy Trust trade ally contractor on the official site.",
-    "Have the qualifying heat pump or ductless heat pump installed by that contractor.",
-    "Receive your cash incentive (up to $1,000 for a heat pump, up to $800 for ductless); Energy Trust does not publish the exact payout timeline."
-  ],
-  "terms_url": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/",
-  "timing": "Cash incentive after trade-ally installation; Energy Trust does not publish an exact payout timeline.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "Incentives published as 'up to $1,000' / 'up to $800' — the official fact-sheet values."
+  "c4": {
+   "evidence": "Energy Trust does not publish a payout timeline on the fact sheet — s3 honestly marked false rather than invented.",
+   "pass": false
+  }
+ },
+ "eligibility": "Oregon single-family homeowner served by Portland General Electric, Pacific Power, NW Natural, Cascade Natural Gas, or Avista. Installation by an Energy Trust trade ally contractor.",
+ "notes": "Verified on the official Energy Trust of Oregon fact sheet 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/",
+ "payout_quote": "Cash incentives for single-family homes: heat pump up to $1,000; ductless heat pump up to $800 — installed by an Energy Trust trade ally.",
+ "route_id": "R0764",
+ "standard": {
+  "s1": {
+   "note": "Oregon customer of a participating utility; single-family home; trade-ally installation.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 1000.0,
-  "payout_value_note": "'up to' amount in official terms; floor $0",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "'Up to' amounts vary by equipment/project; trade-ally installation required.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Payout timeline not published on the official fact sheet — not invented.",
+   "pass": false
+  },
+  "s4": {
+   "note": "Amounts published as 'up to' — the official fact-sheet values.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/ — official Energy Trust page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: find a trade ally, install qualifying heat pump, incentive follows.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Energy Trust fact sheet loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm your home is served by a participating Oregon utility (PGE, Pacific Power, NW Natural, Cascade Natural Gas, or Avista).",
+  "Find an Energy Trust trade ally contractor on the official site.",
+  "Have the qualifying heat pump or ductless heat pump installed by that contractor.",
+  "Receive your cash incentive (up to $1,000 for a heat pump, up to $800 for ductless); Energy Trust does not publish the exact payout timeline."
+ ],
+ "terms_url": "https://www.energytrust.org/fact-sheets/oregon-cash-incentives-single-family-homes/",
+ "timing": "Cash incentive after trade-ally installation; Energy Trust does not publish an exact payout timeline.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "Incentives published as 'up to $1,000' / 'up to $800' — the official fact-sheet values."
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 1000.0,
+ "payout_value_note": "'up to' amount in official terms; floor $0",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Cash incentive after trade-ally installation; Energy Trust does not publish an exact payout timeline.",
+ "maximize": "Fastest honest path: Cash incentive after trade-ally installation; Energy Trust does not publish an exact payout timeline. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

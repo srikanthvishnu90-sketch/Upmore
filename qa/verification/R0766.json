@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's $50 off a smart thermostat purchase — you still have to buy the thermostat, and Dominion doesn't publish the exact rebate payout timeline.",
+ "catches": [
+  "Qualifying smart thermostat model required; check Dominion's eligible list.",
+  "Dominion Energy residential customer in its service territory.",
+  "The thermostat purchase is required — a purchase condition, not an upfront fee.",
+  "Dominion does not publish an exact payout timeline for this rebate — s3 honestly marked false."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Dominion Energy — real operating utility; official savings page on dominionenergy.com.",
+   "pass": true
   },
-  "biggest_catch": "It's $50 off a smart thermostat purchase — you still have to buy the thermostat, and Dominion doesn't publish the exact rebate payout timeline.",
-  "catches": [
-    "Qualifying smart thermostat model required; check Dominion's eligible list.",
-    "Dominion Energy residential customer in its service territory.",
-    "The thermostat purchase is required — a purchase condition, not an upfront fee.",
-    "Dominion does not publish an exact payout timeline for this rebate — s3 honestly marked false."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Dominion Energy — real operating utility; official savings page on dominionenergy.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Dominion Energy page: save $50 on a smart thermostat purchase.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; thermostat purchase is a purchase condition.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Dominion does not publish an exact payout timeline — s3 honestly marked false rather than invented.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official Dominion Energy page: save $50 on a smart thermostat purchase.",
+   "pass": true
   },
-  "eligibility": "Dominion Energy residential customer; qualifying smart thermostat model purchased per program terms.",
-  "notes": "Verified on the official Dominion Energy savings page 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.dominionenergy.com/findyoursavings",
-  "payout_quote": "Stack your savings — save $50 on a smart thermostat purchase through Dominion Energy's rebate.",
-  "route_id": "R0766",
-  "standard": {
-    "s1": {
-      "note": "Dominion Energy residential customer; qualifying smart thermostat model.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Eligible model list; purchase required.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Payout timeline not published on the official page — not invented.",
-      "pass": false
-    },
-    "s4": {
-      "note": "$50 stated flatly on the official page.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.dominionenergy.com/findyoursavings — official Dominion Energy page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: buy an eligible thermostat, claim the $50 rebate.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Dominion Energy page loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; thermostat purchase is a purchase condition.",
+   "pass": true
   },
-  "steps": [
-    "Check Dominion Energy's eligible smart thermostat list.",
-    "Buy a qualifying smart thermostat.",
-    "Submit the rebate claim per the instructions on Dominion's savings page.",
-    "Receive your $50 rebate; Dominion does not publish the exact payout timeline."
-  ],
-  "terms_url": "https://www.dominionenergy.com/findyoursavings",
-  "timing": "$50 rebate on a smart thermostat purchase; Dominion does not publish an exact payout timeline.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Dominion does not publish an exact payout timeline — s3 honestly marked false rather than invented.",
+   "pass": false
+  }
+ },
+ "eligibility": "Dominion Energy residential customer; qualifying smart thermostat model purchased per program terms.",
+ "notes": "Verified on the official Dominion Energy savings page 2026-09-22. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.dominionenergy.com/findyoursavings",
+ "payout_quote": "Stack your savings — save $50 on a smart thermostat purchase through Dominion Energy's rebate.",
+ "route_id": "R0766",
+ "standard": {
+  "s1": {
+   "note": "Dominion Energy residential customer; qualifying smart thermostat model.",
+   "pass": true
   },
-  "payout_min_usd": 50.0,
-  "payout_max_usd": 50.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Eligible model list; purchase required.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Payout timeline not published on the official page — not invented.",
+   "pass": false
+  },
+  "s4": {
+   "note": "$50 stated flatly on the official page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.dominionenergy.com/findyoursavings — official Dominion Energy page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: buy an eligible thermostat, claim the $50 rebate.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Dominion Energy page loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Check Dominion Energy's eligible smart thermostat list.",
+  "Buy a qualifying smart thermostat.",
+  "Submit the rebate claim per the instructions on Dominion's savings page.",
+  "Receive your $50 rebate; Dominion does not publish the exact payout timeline."
+ ],
+ "terms_url": "https://www.dominionenergy.com/findyoursavings",
+ "timing": "$50 rebate on a smart thermostat purchase; Dominion does not publish an exact payout timeline.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 50.0,
+ "payout_max_usd": 50.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "$50 rebate on a smart thermostat purchase; Dominion does not publish an exact payout timeline.",
+ "maximize": "Fastest honest path: $50 rebate on a smart thermostat purchase; Dominion does not publish an exact payout timeline. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The referred friend must keep their new account in good standing for 30 consecutive days before anything pays; the referrer's reward is a Virtual Mastercard with no cash access, valid only 6 months before unused funds forfeit.",
+ "catches": [
+  "The new customer must maintain the account in good standing for a minimum of 30 consecutive days (a Qualifying Purchase) before any reward is paid.",
+  "The referred friend receives their $50 as a bill credit on the first bill following 30 days of active service — not instantly at signup.",
+  "The referrer receives a $50 Virtual Mastercard (no cash access, no recurring payments, online use only); unused funds forfeit after the 6-month valid-thru date.",
+  "The offer is available only by forwarding the Encor referral email to friends — the friend must sign up via that link without navigating away so the promo code populates.",
+  "A separate time-limited marketing offer of a $50 grocery card for the referrer for referrals made Oct 1–Dec 31 was observed on the Encor marketing page; it is not part of the year-round base offer and is not counted in the payout.",
+  "Savings framing: the bill credit reduces a future energy bill in Alberta (CAD amounts), not cash income; you must already be an Encor customer to earn the referrer-side reward."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url host epcor.com is the provider's own domain; page title is 'Encor by EPCOR Referral Program | EPCOR Alberta'.",
+   "pass": true
   },
-  "biggest_catch": "The referred friend must keep their new account in good standing for 30 consecutive days before anything pays; the referrer's reward is a Virtual Mastercard with no cash access, valid only 6 months before unused funds forfeit.",
-  "catches": [
-    "The new customer must maintain the account in good standing for a minimum of 30 consecutive days (a Qualifying Purchase) before any reward is paid.",
-    "The referred friend receives their $50 as a bill credit on the first bill following 30 days of active service — not instantly at signup.",
-    "The referrer receives a $50 Virtual Mastercard (no cash access, no recurring payments, online use only); unused funds forfeit after the 6-month valid-thru date.",
-    "The offer is available only by forwarding the Encor referral email to friends — the friend must sign up via that link without navigating away so the promo code populates.",
-    "A separate time-limited marketing offer of a $50 grocery card for the referrer for referrals made Oct 1–Dec 31 was observed on the Encor marketing page; it is not part of the year-round base offer and is not counted in the payout.",
-    "Savings framing: the bill credit reduces a future energy bill in Alberta (CAD amounts), not cash income; you must already be an Encor customer to earn the referrer-side reward."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url host epcor.com is the provider's own domain; page title is 'Encor by EPCOR Referral Program | EPCOR Alberta'.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page is current (search crawl 2 days ago); the $50/$50 offer is stated in the live page text and matches the official referral terms PDF. No expired dates.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Conditions are explicit: 30 days of active service, friend signs up via the forwarded referral email with promo code, no limit on referrals. No hidden qualifiers beyond the stated terms.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($50 each side), reward type per side (bill credit vs Virtual Mastercard), conditions, and timing are all stated verbatim; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page is current (search crawl 2 days ago); the $50/$50 offer is stated in the live page text and matches the official referral terms PDF. No expired dates.",
+   "pass": true
   },
-  "eligibility": "Existing Encor by EPCOR residential customer who received the Encor referral email; referred person must be a new customer opening a natural gas and/or electricity account with Encor via the referral link and maintaining 30 days of active service in good standing. Alberta, Canada.",
-  "notes": "Verified 2026-09-23 from Encor by EPCOR's official referral program page. Referee receives a $50 bill credit; referrer receives a $50 Virtual Mastercard prepaid card (CAD). Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being an Encor customer. Distinct supplier vs prior-wave set and vs ENMAX (R2654); no Encor/EPCOR routes in catalog, discovery cards, or prior verification evidence files.",
-  "numeric_basis": "payout from official terms ($50 per side: bill credit to referee, Virtual Mastercard to referrer); time: referral email forward 5-15 min active",
-  "official_url": "https://www.epcor.com/ca/en/ab/other/account/encor-customer-benefits/referral-program.html",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "After signing up, the new customer will receive a $50 bill credit on the first bill following 30 days of active service. The original Encor customer will receive a $50 Mastercard Virtual reward.",
-  "payout_value_note": "$50 bill credit to the referee and $50 Virtual Mastercard prepaid card to the referrer (CAD; savings on planned spending / spend-anywhere-online credit, not cash income).",
-  "route_id": "R2656",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50), who gets what (bill credit vs virtual card), and timing (after 30 days of active service) are quoted verbatim from the official page and terms.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: a bill credit on a required utility bill plus a prepaid card, not wages or income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps follow the official page: forward the Encor referral email, friend clicks the signup link, creates the account without navigating away, keeps 30 days of active service.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: nothing pays until the new account has 30 consecutive days of active service in good standing.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; forwarding the referral email and enrolling cost nothing beyond the friend's normal plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement; conditions are explicit (30-day good-standing rule, email-forward-only mechanics).",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against epcor.com (provider's own domain). Deduped: no Encor/EPCOR routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Conditions are explicit: 30 days of active service, friend signs up via the forwarded referral email with promo code, no limit on referrals. No hidden qualifiers beyond the stated terms.",
+   "pass": true
   },
-  "steps": [
-    "Receive the Encor referral email as an existing Encor by EPCOR customer.",
-    "Forward the referral email to your friend or family member.",
-    "Friend clicks the signup link in the email and creates their account without navigating away (promo code auto-populates).",
-    "Friend maintains the new natural gas/electricity account in good standing for 30 consecutive days.",
-    "New customer receives a $50 bill credit on the first bill after 30 days of active service; you receive a $50 Mastercard Virtual reward (valid 6 months)."
-  ],
-  "terms_url": "https://www.epcor.com/content/dam/epcor/documents/supporting-documents/encor-by-epcor-referral-program-terms-and-conditions.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Referee's $50 bill credit appears on the first bill following 30 days of active service; referrer's $50 Virtual Mastercard arrives in the same 30-60 day timeframe.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($50 each side), reward type per side (bill credit vs Virtual Mastercard), conditions, and timing are all stated verbatim; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Encor by EPCOR residential customer who received the Encor referral email; referred person must be a new customer opening a natural gas and/or electricity account with Encor via the referral link and maintaining 30 days of active service in good standing. Alberta, Canada.",
+ "notes": "Verified 2026-09-23 from Encor by EPCOR's official referral program page. Referee receives a $50 bill credit; referrer receives a $50 Virtual Mastercard prepaid card (CAD). Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being an Encor customer. Distinct supplier vs prior-wave set and vs ENMAX (R2654); no Encor/EPCOR routes in catalog, discovery cards, or prior verification evidence files.",
+ "numeric_basis": "payout from official terms ($50 per side: bill credit to referee, Virtual Mastercard to referrer); time: referral email forward 5-15 min active",
+ "official_url": "https://www.epcor.com/ca/en/ab/other/account/encor-customer-benefits/referral-program.html",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "After signing up, the new customer will receive a $50 bill credit on the first bill following 30 days of active service. The original Encor customer will receive a $50 Mastercard Virtual reward.",
+ "payout_value_note": "$50 bill credit to the referee and $50 Virtual Mastercard prepaid card to the referrer (CAD; savings on planned spending / spend-anywhere-online credit, not cash income).",
+ "route_id": "R2656",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50), who gets what (bill credit vs virtual card), and timing (after 30 days of active service) are quoted verbatim from the official page and terms.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: a bill credit on a required utility bill plus a prepaid card, not wages or income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps follow the official page: forward the Encor referral email, friend clicks the signup link, creates the account without navigating away, keeps 30 days of active service.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: nothing pays until the new account has 30 consecutive days of active service in good standing.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; forwarding the referral email and enrolling cost nothing beyond the friend's normal plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement; conditions are explicit (30-day good-standing rule, email-forward-only mechanics).",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against epcor.com (provider's own domain). Deduped: no Encor/EPCOR routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Receive the Encor referral email as an existing Encor by EPCOR customer.",
+  "Forward the referral email to your friend or family member.",
+  "Friend clicks the signup link in the email and creates their account without navigating away (promo code auto-populates).",
+  "Friend maintains the new natural gas/electricity account in good standing for 30 consecutive days.",
+  "New customer receives a $50 bill credit on the first bill after 30 days of active service; you receive a $50 Mastercard Virtual reward (valid 6 months)."
+ ],
+ "terms_url": "https://www.epcor.com/content/dam/epcor/documents/supporting-documents/encor-by-epcor-referral-program-terms-and-conditions.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Referee's $50 bill credit appears on the first bill following 30 days of active service; referrer's $50 Virtual Mastercard arrives in the same 30-60 day timeframe.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Referee's $50 bill credit appears on the first bill following 30 days of active service; referrer's $50 Virtual Mastercard arrives in the same 30-60 day timeframe.",
+ "maximize": "Fastest honest path: Referee's $50 bill credit appears on the first bill following 30 days of active service; referrer's $50 Virtual Mastercard arrives in the same 30-60 day timeframe. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

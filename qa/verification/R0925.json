@@ -1,68 +1,79 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $620 is a composite of multiple CashBack+ tasks (direct deposit, debit card use, eStatements, etc.) - it is not one flat bonus; the exact per-task rewards are subject to change without notice. One bonus per household; the spending account must remain open at least three months. Aggregators quote up to $625, but the live official page (2026-09-23) states up to $620 - this row uses the official figure.",
+ "catches": [
+  "Offer is not available to existing members; open a Stanford FCU Everyday, Premier, or High Yield Spending account.",
+  "Log in to Digital Banking and activate each CashBack+ activity before completing it - unactivated tasks do not earn.",
+  "Complete the tasks (direct deposit, debit card use, eStatements, and other activities) within the new member period (day of opening plus the following three full calendar months).",
+  "Rewards are credited to the CashBack+ wallet within 35 days from satisfaction of requirements, redeemable as cash or gift cards.",
+  "One bonus per household; spending account must remain open a minimum of three months.",
+  "Tasks and rewards are subject to change without notice.",
+  "Membership eligibility required (Stanford community/partner companies or qualifying association membership).",
+  "Not valid with any other Stanford FCU promotional offer; taxes on bonus are the recipient's responsibility."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Stanford Federal Credit Union (sfcu.org) is a real credit union serving the Stanford community; the new-member CashBack+ offer is on its official page at sfcu.org/bonus, fetched live 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "The $620 is a composite of multiple CashBack+ tasks (direct deposit, debit card use, eStatements, etc.) - it is not one flat bonus; the exact per-task rewards are subject to change without notice. One bonus per household; the spending account must remain open at least three months. Aggregators quote up to $625, but the live official page (2026-09-23) states up to $620 - this row uses the official figure.",
-  "catches": [
-    "Offer is not available to existing members; open a Stanford FCU Everyday, Premier, or High Yield Spending account.",
-    "Log in to Digital Banking and activate each CashBack+ activity before completing it - unactivated tasks do not earn.",
-    "Complete the tasks (direct deposit, debit card use, eStatements, and other activities) within the new member period (day of opening plus the following three full calendar months).",
-    "Rewards are credited to the CashBack+ wallet within 35 days from satisfaction of requirements, redeemable as cash or gift cards.",
-    "One bonus per household; spending account must remain open a minimum of three months.",
-    "Tasks and rewards are subject to change without notice.",
-    "Membership eligibility required (Stanford community/partner companies or qualifying association membership).",
-    "Not valid with any other Stanford FCU promotional offer; taxes on bonus are the recipient's responsibility."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Stanford Federal Credit Union (sfcu.org) is a real credit union serving the Stanford community; the new-member CashBack+ offer is on its official page at sfcu.org/bonus, fetched live 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page (live): 'New members earn up to $620 ... Log in to Digital Banking to activate your special offers and start earning today! CashBack+ makes it fun and easy to get rewarded by completing simple tasks like signing up for direct deposit, using your debit card, and choosing eStatements.' Disclosures: 'Open a Stanford FCU Everyday, Premier or High Yield Spending account beginning 2/20/25, activate the Cashback+ offers in Digital Banking, then complete each task within your new member period to earn the assigned reward in your choice of cash or gift cards.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Amount ($620 max), task types (direct deposit, debit card, eStatements), activation requirement, 3-4 month new member period, 35-day payout, one-per-household limit, and membership eligibility are all from the live official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page (live): 'New members earn up to $620 ... Log in to Digital Banking to activate your special offers and start earning today! CashBack+ makes it fun and easy to get rewarded by completing simple tasks like signing up for direct deposit, using your debit card, and choosing eStatements.' Disclosures: 'Open a Stanford FCU Everyday, Premier or High Yield Spending account beginning 2/20/25, activate the Cashback+ offers in Digital Banking, then complete each task within your new member period to earn the assigned reward in your choice of cash or gift cards.'",
+   "pass": true
   },
-  "eligibility": "New members only; open an Everyday, Premier, or High Yield Spending account; membership eligibility required; one bonus per household; not valid with other Stanford FCU promotional offers.",
-  "notes": "Live fetch of sfcu.org/bonus on 2026-09-23 shows the current figure is up to $620 (aggregators citing $625 are stale; the official /relo/ page crawl also showed $625, likely an older cached version). The amount varies per completed task - a composite mechanism, not a single flat bonus. No sibling duplicate found in R0851-R0924.",
-  "numeric_basis": "payout: official headline max ($620); variable per-task amounts; time: account opening + Digital Banking activation + simple tasks est. 30-60 min active",
-  "official_url": "https://sfcu.org/bonus",
-  "payout_max_usd": 620.0,
-  "payout_min_usd": 0,
-  "payout_quote": "New members earn up to $620 ... completing simple tasks like signing up for direct deposit, using your debit card, and choosing eStatements ... Open a Stanford FCU Everyday, Premier or High Yield Spending account beginning 2/20/25, activate the Cashback+ offers in Digital Banking, then complete each task within your new member period to earn the assigned reward in your choice of cash or gift cards.",
-  "payout_value_note": "Variable composite: per-task rewards vary (official headline max $620); floor $0 per schema rule for 'up to $X' with no official floor. Rewards paid in cash or gift cards at member's choice.",
-  "route_id": "R0925",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "New members only; membership eligibility required; one bonus per household."
-    },
-    "s2": {
-      "pass": true,
-      "evidence": "No monthly fee stated for the spending accounts in the offer disclosures; account must stay open at least three months."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "Rewards credited to CashBack+ wallet within 35 days of completing requirements; taxes on bonus are the recipient's responsibility; tasks subject to change."
-    }
+  "c3": {
+   "evidence": "Amount ($620 max), task types (direct deposit, debit card, eStatements), activation requirement, 3-4 month new member period, 35-day payout, one-per-household limit, and membership eligibility are all from the live official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "New members only; open an Everyday, Premier, or High Yield Spending account; membership eligibility required; one bonus per household; not valid with other Stanford FCU promotional offers.",
+ "notes": "Live fetch of sfcu.org/bonus on 2026-09-23 shows the current figure is up to $620 (aggregators citing $625 are stale; the official /relo/ page crawl also showed $625, likely an older cached version). The amount varies per completed task - a composite mechanism, not a single flat bonus. No sibling duplicate found in R0851-R0924.",
+ "numeric_basis": "payout: official headline max ($620); variable per-task amounts; time: account opening + Digital Banking activation + simple tasks est. 30-60 min active",
+ "official_url": "https://sfcu.org/bonus",
+ "payout_max_usd": 620.0,
+ "payout_min_usd": 0,
+ "payout_quote": "New members earn up to $620 ... completing simple tasks like signing up for direct deposit, using your debit card, and choosing eStatements ... Open a Stanford FCU Everyday, Premier or High Yield Spending account beginning 2/20/25, activate the Cashback+ offers in Digital Banking, then complete each task within your new member period to earn the assigned reward in your choice of cash or gift cards.",
+ "payout_value_note": "Variable composite: per-task rewards vary (official headline max $620); floor $0 per schema rule for 'up to $X' with no official floor. Rewards paid in cash or gift cards at member's choice.",
+ "route_id": "R0925",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "New members only; membership eligibility required; one bonus per household."
   },
-  "steps": [
-    "Open a Stanford FCU Everyday, Premier, or High Yield Spending account as a new member.",
-    "Log in to Digital Banking and click Activate for each CashBack+ activity you plan to complete.",
-    "Complete the tasks within your new member period (account opening day plus the following three full calendar months): direct deposit, debit card use, eStatements, and other listed activities.",
-    "Cashback appears in the CashBack+ wallet within 35 days of each completed requirement; transfer it as cash or redeem for gift cards."
-  ],
-  "terms_url": "https://sfcu.org/bonus",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "New member period: account opening day plus the following three full calendar months; rewards credited within 35 days of each completed requirement; account must remain open at least three months.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": true,
+   "evidence": "No monthly fee stated for the spending accounts in the offer disclosures; account must stay open at least three months."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "Rewards credited to CashBack+ wallet within 35 days of completing requirements; taxes on bonus are the recipient's responsibility; tasks subject to change."
+  }
+ },
+ "steps": [
+  "Open a Stanford FCU Everyday, Premier, or High Yield Spending account as a new member.",
+  "Log in to Digital Banking and click Activate for each CashBack+ activity you plan to complete.",
+  "Complete the tasks within your new member period (account opening day plus the following three full calendar months): direct deposit, debit card use, eStatements, and other listed activities.",
+  "Cashback appears in the CashBack+ wallet within 35 days of each completed requirement; transfer it as cash or redeem for gift cards."
+ ],
+ "terms_url": "https://sfcu.org/bonus",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "New member period: account opening day plus the following three full calendar months; rewards credited within 35 days of each completed requirement; account must remain open at least three months.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus up to $620. Per official terms: New member period: account opening day plus the following three full calendar months; rewards credited within 35 days of each completed requirement; account must remain open at least three months. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

@@ -1,87 +1,90 @@
 {
-  "route_id": "R0310",
-  "checked_at": "2026-09-23T07:21:24Z",
-  "app_links": {
-    "ios": null,
-    "android": null
+ "route_id": "R0310",
+ "checked_at": "2026-09-23T07:21:24Z",
+ "app_links": {
+  "ios": null,
+  "android": null
+ },
+ "upfront_fee": false,
+ "verdict": "verify",
+ "official_url": "https://www.energystar.gov/rebate-finder",
+ "terms_url": "https://www.energystar.gov/rebate-finder",
+ "critical": {
+  "c1": {
+   "evidence": "The EPA ENERGY STAR Rebate Finder is a live directory of concrete utility/retailer rebates on certified products; the route's '$25-$500+ per appliance' range matches the concrete amounts listed in the finder.",
+   "pass": true
   },
-  "upfront_fee": false,
-  "verdict": "verify",
-  "official_url": "https://www.energystar.gov/rebate-finder",
-  "terms_url": "https://www.energystar.gov/rebate-finder",
-  "critical": {
-    "c1": {
-      "evidence": "The EPA ENERGY STAR Rebate Finder is a live directory of concrete utility/retailer rebates on certified products; the route's '$25-$500+ per appliance' range matches the concrete amounts listed in the finder.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official EPA ENERGY STAR Rebate Finder page (energystar.gov), loaded live 2026-09-22.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to use. Note: rebates require buying the appliance — discounts on spending, not income.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Varies by rebate offer: instant at participating retailers or mail-in rebates typically paid in 4-8 weeks.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official EPA ENERGY STAR Rebate Finder page (energystar.gov), loaded live 2026-09-22.",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "Set by each rebate offer: usually must buy an ENERGY STAR certified model from a participating retailer/utility program within the offer window.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Every rebate requires buying the appliance first — a discount, not cash earned; typical amounts are $25-$150 per product, not $500.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Instant or 4-8 weeks depending on the offer.",
-      "pass": true
-    },
-    "s4": {
-      "note": "EPA finder makes no inflated claim; individual offers state concrete amounts.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.energystar.gov/rebate-finder — official EPA page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: enter zip in the finder, pick a live offer, buy the certified model, submit the rebate.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official EPA page loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to use. Note: rebates require buying the appliance — discounts on spending, not income.",
+   "pass": true
   },
-  "payout_quote": "Find rebates and special offers near you on ENERGY STAR certified products.",
-  "timing": "Varies by offer: instant rebates at participating retailers, or mail-in/online rebates typically paid 4-8 weeks after purchase.",
-  "eligibility": "Set by each rebate offer in the finder: generally must purchase an ENERGY STAR certified product (specific model numbers) from a participating retailer or through your utility's program during the offer window.",
-  "catches": [
-    "Every rebate requires buying the appliance first — this is a discount on spending, not money earned.",
-    "Typical rebates are $25-$150 per product; the $500 top end is rare and offer-specific.",
-    "Offers are local and expire — always confirm the offer is live before buying.",
-    "The product must be on the certified list; a non-certified model, even efficient, does not qualify."
-  ],
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Varies by rebate offer: instant at participating retailers or mail-in rebates typically paid in 4-8 weeks.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Set by each rebate offer: usually must buy an ENERGY STAR certified model from a participating retailer/utility program within the offer window.",
+   "pass": true
   },
-  "steps": [
-    "Go to https://www.energystar.gov/rebate-finder and enter your zip code to see live rebates near you.",
-    "Open a specific offer and confirm it is current, the exact qualifying model numbers, and the purchase window.",
-    "Buy the qualifying ENERGY STAR certified product from a participating retailer.",
-    "Submit the rebate form with proof of purchase; the rebate arrives as a check, gift card, or bill credit, typically in 4-8 weeks."
-  ],
-  "biggest_catch": "A live EPA directory of real rebates — but every one requires buying the appliance first; it is a discount on spending, not money earned, and typical amounts are $25-$150 per product, not $500.",
-  "notes": "Verified the live EPA Rebate Finder 2026-09-22. PRODUCT NOTE: appliance rebates are purchase discounts, not earnings — honest framing is 'save on appliances you're already buying.' [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 0.0,
-  "payout_value_note": "no parseable amount; variable",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Every rebate requires buying the appliance first — a discount, not cash earned; typical amounts are $25-$150 per product, not $500.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Instant or 4-8 weeks depending on the offer.",
+   "pass": true
+  },
+  "s4": {
+   "note": "EPA finder makes no inflated claim; individual offers state concrete amounts.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.energystar.gov/rebate-finder — official EPA page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: enter zip in the finder, pick a live offer, buy the certified model, submit the rebate.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official EPA page loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "payout_quote": "Find rebates and special offers near you on ENERGY STAR certified products.",
+ "timing": "Varies by offer: instant rebates at participating retailers, or mail-in/online rebates typically paid 4-8 weeks after purchase.",
+ "eligibility": "Set by each rebate offer in the finder: generally must purchase an ENERGY STAR certified product (specific model numbers) from a participating retailer or through your utility's program during the offer window.",
+ "catches": [
+  "Every rebate requires buying the appliance first — this is a discount on spending, not money earned.",
+  "Typical rebates are $25-$150 per product; the $500 top end is rare and offer-specific.",
+  "Offers are local and expire — always confirm the offer is live before buying.",
+  "The product must be on the certified list; a non-certified model, even efficient, does not qualify."
+ ],
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "steps": [
+  "Go to https://www.energystar.gov/rebate-finder and enter your zip code to see live rebates near you.",
+  "Open a specific offer and confirm it is current, the exact qualifying model numbers, and the purchase window.",
+  "Buy the qualifying ENERGY STAR certified product from a participating retailer.",
+  "Submit the rebate form with proof of purchase; the rebate arrives as a check, gift card, or bill credit, typically in 4-8 weeks."
+ ],
+ "biggest_catch": "A live EPA directory of real rebates — but every one requires buying the appliance first; it is a discount on spending, not money earned, and typical amounts are $25-$150 per product, not $500.",
+ "notes": "Verified the live EPA Rebate Finder 2026-09-22. PRODUCT NOTE: appliance rebates are purchase discounts, not earnings — honest framing is 'save on appliances you're already buying.' [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "no parseable amount; variable",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Varies by offer: instant rebates at participating retailers, or mail-in/online rebates typically paid 4-8 weeks after purchase.",
+ "maximize": "Fastest honest path: Varies by offer: instant rebates at participating retailers, or mail-in/online rebates typically paid 4-8 weeks after purchase. Structural blocker: this route is a directory of offers, not a single payment. Actual rebates pay per program: typically 4-8 weeks mail-in/online, or instant point-of-sale discounts in-store. These are purchase discounts (savings on planned spending), not cash income."
 }

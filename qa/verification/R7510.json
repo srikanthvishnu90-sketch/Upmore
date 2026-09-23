@@ -1,95 +1,98 @@
 {
- "route_id": "R7510",
- "provider": "DB Plasma",
- "official_url": "https://dbplasma.com",
- "terms_url": "https://dbplasma.com/donors/compensation/",
- "payout_quote": "After each donation, your compensation will be loaded on your payment card. A qualified donor can donate plasma twice in every 7 days period at the most. You will receive up to $100 per donation. ... To be eligible for the compensation bonus, you must donate twice in one calendar week. This means that the two donations must be made between Monday and Sunday to be eligible for the bonus compensation on the second visit of the week.",
- "payout_min_usd": 40,
- "payout_max_usd": 100,
- "time_min_minutes": 90,
- "time_max_minutes": 180,
- "timing": "Paid after each donation loaded onto payment card (typically within a day)",
- "speed": "today",
- "eligibility": "18+, 110+ lbs, good health; pass screening; become a qualified donor after 2nd donation with acceptable test results; twice per 7 days max; weekly bonus requires both donations Mon-Sun in the same calendar week",
- "steps": [
-  "Visit a DB Plasma center with ID and documentation",
-  "Pass screening; complete 2nd donation to become a qualified donor",
-  "Always complete BOTH weekly donations Monday through Sunday to trigger the second-visit weekly bonus",
-  "Compensation loads to your payment card after each donation"
- ],
- "catches": [
-  "You only become a qualified donor after your second donation clears testing.",
-  "The weekly bonus only counts if both donations fall in the same Monday-Sunday calendar week — bad scheduling loses it.",
-  "Smaller independent chain; per-visit base pay is modest.",
-  "First visit takes 2-3 hours with screening; not everyone qualifies."
- ],
- "biggest_catch": "The money multiplier is calendar-week discipline: miss getting both donations inside Monday-Sunday and you forfeit the second-visit bonus.",
- "upfront_fee": false,
- "verdict": "verify",
- "checked_at": "2026-09-23T12:00:00Z",
- "repeatable": {
-  "value": true,
-  "cadence": "Up to twice per 7 days indefinitely as long as you keep passing screening — the twice-in-one-calendar-week bonus recurs every week you complete both visits Monday-Sunday.",
-  "note": "Ongoing: up to twice per 7 days indefinitely; the twice-in-calendar-week bonus recurs every week."
- },
- "maximize": "Book your two donations Monday-Sunday every week without exception — that's what triggers the second-visit bonus. Don't straddle weeks (e.g. Sunday + Monday kills the bonus). Ask your center what the exact second-visit bonus is and treat that number as your real per-week target.",
- "notes": "Official dbplasma.com compensation page verified 2026-09-23.",
- "critical": {
-  "c1": {
-   "pass": true,
-   "evidence": "Official dbplasma.com/donors/compensation: 'You will receive up to $100 per donation' + twice-in-calendar-week bonus on second visit"
+  "route_id": "R7510",
+  "provider": "DB Plasma",
+  "official_url": "https://dbplasma.com",
+  "terms_url": "https://dbplasma.com/donors/compensation/",
+  "payout_quote": "After each donation, your compensation will be loaded on your payment card. A qualified donor can donate plasma twice in every 7 days period at the most. You will receive up to $100 per donation. ... To be eligible for the compensation bonus, you must donate twice in one calendar week. This means that the two donations must be made between Monday and Sunday to be eligible for the bonus compensation on the second visit of the week.",
+  "payout_min_usd": 40,
+  "payout_max_usd": 100,
+  "time_min_minutes": 90,
+  "time_max_minutes": 180,
+  "timing": "Paid after each donation loaded onto payment card (typically within a day)",
+  "speed": "today",
+  "eligibility": "18+, 110+ lbs, good health; pass screening; become a qualified donor after 2nd donation with acceptable test results; twice per 7 days max; weekly bonus requires both donations Mon-Sun in the same calendar week",
+  "steps": [
+    "Visit a DB Plasma center with ID and documentation",
+    "Pass screening; complete 2nd donation to become a qualified donor",
+    "Always complete BOTH weekly donations Monday through Sunday to trigger the second-visit weekly bonus",
+    "Compensation loads to your payment card after each donation"
+  ],
+  "catches": [
+    "You only become a qualified donor after your second donation clears testing.",
+    "The weekly bonus only counts if both donations fall in the same Monday-Sunday calendar week \u2014 bad scheduling loses it.",
+    "Smaller independent chain; per-visit base pay is modest.",
+    "First visit takes 2-3 hours with screening; not everyone qualifies."
+  ],
+  "biggest_catch": "The money multiplier is calendar-week discipline: miss getting both donations inside Monday-Sunday and you forfeit the second-visit bonus.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "repeatable": {
+    "value": true,
+    "cadence": "Up to twice per 7 days indefinitely as long as you keep passing screening \u2014 the twice-in-one-calendar-week bonus recurs every week you complete both visits Monday-Sunday.",
+    "note": "Ongoing: up to twice per 7 days indefinitely; the twice-in-calendar-week bonus recurs every week."
   },
-  "c2": {
-   "pass": true,
-   "evidence": "'After each donation, your compensation will be loaded on your payment card'"
+  "maximize": "Book your two donations Monday-Sunday every week without exception \u2014 that's what triggers the second-visit bonus. Don't straddle weeks (e.g. Sunday + Monday kills the bonus). Ask your center what the exact second-visit bonus is and treat that number as your real per-week target.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Official dbplasma.com compensation page verified 2026-09-23.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official dbplasma.com/donors/compensation: 'You will receive up to $100 per donation' + twice-in-calendar-week bonus on second visit"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "'After each donation, your compensation will be loaded on your payment card'"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No credit card or bank sign-up; plasma donation compensation"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official dbplasma.com: 'After each donation, your compensation will be loaded on your payment card.'"
+    }
   },
-  "c3": {
-   "pass": true,
-   "evidence": "No credit card or bank sign-up; plasma donation compensation"
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official dbplasma.com page verified 2026-09-23"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Paid after each donation onto payment card (today speed)"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches: qualified-donor wait, calendar-week scheduling rule, first-visit time"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Not a credit card, loan, or gambling offer"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Center-based; official site linked"
+    },
+    "s6": {
+      "pass": true,
+      "note": "Numeric per-donation range with bonus rule"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Eligibility from official compensation page"
+    }
   },
-  "c4": {
-   "pass": true,
-   "evidence": "Official dbplasma.com: 'After each donation, your compensation will be loaded on your payment card.'"
-  }
- },
- "standard": {
-  "s1": {
-   "pass": true,
-   "note": "Official dbplasma.com page verified 2026-09-23"
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "pass": true,
-   "note": "Paid after each donation onto payment card (today speed)"
-  },
-  "s3": {
-   "pass": true,
-   "note": "Catches: qualified-donor wait, calendar-week scheduling rule, first-visit time"
-  },
-  "s4": {
-   "pass": true,
-   "note": "Not a credit card, loan, or gambling offer"
-  },
-  "s5": {
-   "pass": true,
-   "note": "Center-based; official site linked"
-  },
-  "s6": {
-   "pass": true,
-   "note": "Numeric per-donation range with bonus rule"
-  },
-  "s7": {
-   "pass": true,
-   "note": "Eligibility from official compensation page"
-  }
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "DB Plasma loads your compensation onto your payment card after each donation.",
- "who_qualifies": "You must be 18+, weigh at least 110 lbs, be in good health, and pass the screening. You only become a \"qualified donor\" after your second donation clears lab testing, so full pay starts after that. Every visit re-screens you; failing means no donation and no pay.",
- "work_available": "DB Plasma is a smaller independent chain — confirm a location near you and its current pay rate before visiting, since per-visit base pay is modest.",
- "what_gets_accepted": "Completed donations only — pass the day's health screening and finish the donation. The weekly second-visit bonus only fires if BOTH donations fall in the same Monday-Sunday calendar week.",
- "costs_and_unpaid_time": "The first visit takes 2-3 hours with screening before any pay; return visits run about 90-180 minutes. A needle in your arm, twice-weekly trips, travel and waiting — all unpaid. Scheduling discipline matters: straddling calendar weeks forfeits the bonus.",
- "when_cash_arrives": "Loaded onto your payment card after each donation, typically within a day."
+  "who_pays": "DB Plasma loads your compensation onto your payment card after each donation.",
+  "who_qualifies": "You must be 18+, weigh at least 110 lbs, be in good health, and pass the screening. You only become a \"qualified donor\" after your second donation clears lab testing, so full pay starts after that. Every visit re-screens you; failing means no donation and no pay.",
+  "work_available": "DB Plasma is a smaller independent chain \u2014 confirm a location near you and its current pay rate before visiting, since per-visit base pay is modest.",
+  "what_gets_accepted": "Completed donations only \u2014 pass the day's health screening and finish the donation. The weekly second-visit bonus only fires if BOTH donations fall in the same Monday-Sunday calendar week.",
+  "costs_and_unpaid_time": "The first visit takes 2-3 hours with screening before any pay; return visits run about 90-180 minutes. A needle in your arm, twice-weekly trips, travel and waiting \u2014 all unpaid. Scheduling discipline matters: straddling calendar weeks forfeits the bonus.",
+  "when_cash_arrives": "Loaded onto your payment card after each donation, typically within a day.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

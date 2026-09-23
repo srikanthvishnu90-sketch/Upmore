@@ -1,88 +1,91 @@
 {
-  "route_id": "R0313",
-  "checked_at": "2026-09-23T07:21:24Z",
-  "app_links": {
-    "ios": null,
-    "android": null
+ "route_id": "R0313",
+ "checked_at": "2026-09-23T07:21:24Z",
+ "app_links": {
+  "ios": null,
+  "android": null
+ },
+ "upfront_fee": false,
+ "verdict": "verify",
+ "official_url": "https://afdc.energy.gov/laws",
+ "terms_url": "https://afdc.energy.gov/laws",
+ "critical": {
+  "c1": {
+   "evidence": "DOE's Alternative Fuels Data Center lists live federal and state EV-charger incentives with concrete figures; the route's '$100-$1,000+ per charger' range remains real via state/utility programs. The federal 30C credit (up to $1,000 / 30%) is CONFIRMED EXPIRED for property placed in service after June 30, 2026 (statutory termination text).",
+   "pass": true
   },
-  "upfront_fee": false,
-  "verdict": "verify",
-  "official_url": "https://afdc.energy.gov/laws",
-  "terms_url": "https://afdc.energy.gov/laws",
-  "critical": {
-    "c1": {
-      "evidence": "DOE's Alternative Fuels Data Center lists live federal and state EV-charger incentives with concrete figures; the route's '$100-$1,000+ per charger' range remains real via state/utility programs. The federal 30C credit (up to $1,000 / 30%) is CONFIRMED EXPIRED for property placed in service after June 30, 2026 (statutory termination text).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "AFDC Laws and Incentives page (afdc.energy.gov) loaded live 2026-09-22; 30C termination confirmed in the statute text as amended by OBBBA.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to use the database. Note: incentives require buying and installing a charger ($500-$2,000+) — discounts, not income.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "State/utility incentive timing varies; the federal 30C credit is closed for property placed in service after June 30, 2026.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "AFDC Laws and Incentives page (afdc.energy.gov) loaded live 2026-09-22; 30C termination confirmed in the statute text as amended by OBBBA.",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "State/utility programs set their own rules. The expired federal 30C additionally required the charger be in an eligible low-income or non-urban census tract.",
-      "pass": true
-    },
-    "s2": {
-      "note": "The federal 30C EV charger credit (30%, up to $1,000) EXPIRED June 30, 2026 — it cannot be claimed for new installs. Remaining incentives are state/utility-specific and all require buying the charger first.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Varies by state/utility program; federal credit closed after 6/30/2026.",
-      "pass": true
-    },
-    "s4": {
-      "note": "AFDC presents program facts without hype; its own disclaimer says to verify incentives are still applicable.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://afdc.energy.gov/laws — official DOE Alternative Fuels Data Center, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: search your state on the AFDC laws page, confirm the incentive is active, buy/install a qualifying charger, claim per program rules.",
-      "pass": true
-    },
-    "s7": {
-      "note": "AFDC page loaded live 2026-09-22; 30C termination text via the amended statute.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to use the database. Note: incentives require buying and installing a charger ($500-$2,000+) — discounts, not income.",
+   "pass": true
   },
-  "payout_quote": "Find federal and state laws and incentives for alternative fuels and vehicles, air quality, fuel efficiency, and other transportation-related topics. Termination: 'This section [30C] shall not apply to any property placed in service after June 30, 2026.'",
-  "timing": "State and utility EV-charger incentive timing varies by program. The federal 30C credit expired for property placed in service after June 30, 2026 (claims for pre-deadline installs go on the 2026 tax return).",
-  "eligibility": "Set by each state/utility program (many are utility-customer-only or income-targeted). The expired federal 30C credit was worth 30% up to $1,000 for home chargers and required installation in an eligible low-income-community or non-urban census tract.",
-  "catches": [
-    "The federal EV charger tax credit (30%, up to $1,000) EXPIRED June 30, 2026 — do not promise it for new installations.",
-    "What remains are state and utility rebates that vary by location; many areas have nothing.",
-    "Every incentive requires buying and installing a charger ($500-$2,000+) first — a discount on spending, not money earned.",
-    "AFDC's own disclaimer: verify each incentive is still applicable before acting."
-  ],
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "State/utility incentive timing varies; the federal 30C credit is closed for property placed in service after June 30, 2026.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "State/utility programs set their own rules. The expired federal 30C additionally required the charger be in an eligible low-income or non-urban census tract.",
+   "pass": true
   },
-  "steps": [
-    "Go to https://afdc.energy.gov/laws and search incentives for your state, filtering for electric-vehicle charging infrastructure.",
-    "Open each listed program and confirm it is currently funded and accepting applications — do not rely on the AFDC summary alone.",
-    "Also check your electric utility's website for charger rebates not listed federally.",
-    "Buy and install a qualifying Level 2 charger per the program's rules (some require pre-approval or a licensed electrician).",
-    "Submit the rebate application or claim the tax treatment per the program's instructions; keep all receipts and installation dates."
-  ],
-  "biggest_catch": "The federal EV charger tax credit (30%, up to $1,000) expired June 30, 2026 — what remains are state/utility rebates that vary by location, and all of them require buying and installing a $500-$2,000+ charger first; it is a discount, not income.",
-  "notes": "CORRECTION vs the route's framing: the $1,000 top end was the federal 30C credit, now expired. State/utility charger rebates are live in many areas via the AFDC database. PRODUCT NOTE: charger incentives reduce purchase cost; they are not earnings. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 0.0,
-  "payout_value_note": "no parseable amount; variable",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "The federal 30C EV charger credit (30%, up to $1,000) EXPIRED June 30, 2026 — it cannot be claimed for new installs. Remaining incentives are state/utility-specific and all require buying the charger first.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Varies by state/utility program; federal credit closed after 6/30/2026.",
+   "pass": true
+  },
+  "s4": {
+   "note": "AFDC presents program facts without hype; its own disclaimer says to verify incentives are still applicable.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://afdc.energy.gov/laws — official DOE Alternative Fuels Data Center, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: search your state on the AFDC laws page, confirm the incentive is active, buy/install a qualifying charger, claim per program rules.",
+   "pass": true
+  },
+  "s7": {
+   "note": "AFDC page loaded live 2026-09-22; 30C termination text via the amended statute.",
+   "pass": true
+  }
+ },
+ "payout_quote": "Find federal and state laws and incentives for alternative fuels and vehicles, air quality, fuel efficiency, and other transportation-related topics. Termination: 'This section [30C] shall not apply to any property placed in service after June 30, 2026.'",
+ "timing": "State and utility EV-charger incentive timing varies by program. The federal 30C credit expired for property placed in service after June 30, 2026 (claims for pre-deadline installs go on the 2026 tax return).",
+ "eligibility": "Set by each state/utility program (many are utility-customer-only or income-targeted). The expired federal 30C credit was worth 30% up to $1,000 for home chargers and required installation in an eligible low-income-community or non-urban census tract.",
+ "catches": [
+  "The federal EV charger tax credit (30%, up to $1,000) EXPIRED June 30, 2026 — do not promise it for new installations.",
+  "What remains are state and utility rebates that vary by location; many areas have nothing.",
+  "Every incentive requires buying and installing a charger ($500-$2,000+) first — a discount on spending, not money earned.",
+  "AFDC's own disclaimer: verify each incentive is still applicable before acting."
+ ],
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "steps": [
+  "Go to https://afdc.energy.gov/laws and search incentives for your state, filtering for electric-vehicle charging infrastructure.",
+  "Open each listed program and confirm it is currently funded and accepting applications — do not rely on the AFDC summary alone.",
+  "Also check your electric utility's website for charger rebates not listed federally.",
+  "Buy and install a qualifying Level 2 charger per the program's rules (some require pre-approval or a licensed electrician).",
+  "Submit the rebate application or claim the tax treatment per the program's instructions; keep all receipts and installation dates."
+ ],
+ "biggest_catch": "The federal EV charger tax credit (30%, up to $1,000) expired June 30, 2026 — what remains are state/utility rebates that vary by location, and all of them require buying and installing a $500-$2,000+ charger first; it is a discount, not income.",
+ "notes": "CORRECTION vs the route's framing: the $1,000 top end was the federal 30C credit, now expired. State/utility charger rebates are live in many areas via the AFDC database. PRODUCT NOTE: charger incentives reduce purchase cost; they are not earnings. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 0.0,
+ "payout_value_note": "no parseable amount; variable",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "State and utility EV-charger incentive timing varies by program. The federal 30C credit expired for property placed in service after June 30, 2026 (claims for pre-deadline installs go on the 2026 tax return).",
+ "maximize": "Fastest honest path: State and utility EV-charger incentive timing varies by program. The federal 30C credit expired for property placed in service after June 30, 2026 (claims for pre-deadline installs go on the 2026 tax return). Structural blocker: this route is a directory of offers, not a single payment. Actual rebates pay per program: typically 4-8 weeks mail-in/online, or instant point-of-sale discounts in-store. These are purchase discounts (savings on planned spending), not cash income."
 }

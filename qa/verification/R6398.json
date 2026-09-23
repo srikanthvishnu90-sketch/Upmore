@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The split is uneven — you get $30 but your friend only gets $15 — and the credit is only applied after the new customer is installed.",
+ "catches": [
+  "Asymmetric split: $30 bill credit to the referrer, $15 to the friend",
+  "Credit applied only after the new customer is installed",
+  "Terms and conditions apply; service subject to availability"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Shawnee Communications referral page on shawnee.com/referral/ (per current search index, crawled 80 days ago): 'Refer your friends to Shawnee Internet and earn a $30 bill credit - plus, they'll get $15 too!' 'Credit will be applied after the new customer is installed.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+   "pass": true
   },
-  "biggest_catch": "The split is uneven \u2014 you get $30 but your friend only gets $15 \u2014 and the credit is only applied after the new customer is installed.",
-  "catches": [
-    "Asymmetric split: $30 bill credit to the referrer, $15 to the friend",
-    "Credit applied only after the new customer is installed",
-    "Terms and conditions apply; service subject to availability"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Shawnee Communications referral page on shawnee.com/referral/ (per current search index, crawled 80 days ago): 'Refer your friends to Shawnee Internet and earn a $30 bill credit - plus, they'll get $15 too!' 'Credit will be applied after the new customer is installed.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page currently listed on shawnee.com (index crawl 80 days ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'earn a $30 bill credit' and 'they'll get $15 too.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "After-installation timing, terms/conditions, and service-availability limits are stated on the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page currently listed on shawnee.com (index crawl 80 days ago).",
+   "pass": true
   },
-  "eligibility": "Existing Shawnee customer; friend must sign up for Shawnee Internet.",
-  "notes": "Verified 2026-09-23 from the official shawnee.com referral page. Deduped: no Shawnee routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (single fuzzy hit was Xcel Energy R0797, manually confirmed unrelated). Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 80 days ago).",
-  "numeric_basis": "payout from official terms ($30 referrer / $15 friend bill credits); time: referral share 5-15 min active",
-  "official_url": "https://shawnee.com/referral/",
-  "payout_max_usd": 30,
-  "payout_min_usd": 15,
-  "payout_quote": "Refer your friends to Shawnee Internet and earn a $30 bill credit - plus, they'll get $15 too! Credit will be applied after the new customer is installed.",
-  "payout_value_note": "$30 bill credit to the referrer, $15 to the friend \u2014 offsets planned Shawnee spending, not income.",
-  "route_id": "R6398",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim on the official page ($30 / $15).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Shawnee spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (fill out the referral form with your friend's details).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: uneven split, credit only after installation.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Shawnee service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against shawnee.com (provider's own domain) via current official-page content. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'earn a $30 bill credit' and 'they'll get $15 too.'",
+   "pass": true
   },
-  "steps": [
-    "Fill out the Shawnee referral form with your name and your friend's contact details",
-    "Your friend signs up for Shawnee Internet",
-    "Credit is applied after the new customer is installed",
-    "You get a $30 bill credit; your friend gets $15"
-  ],
-  "terms_url": "https://shawnee.com/referral/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit applied after the new customer's installation.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "After-installation timing, terms/conditions, and service-availability limits are stated on the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Shawnee customer; friend must sign up for Shawnee Internet.",
+ "notes": "Verified 2026-09-23 from the official shawnee.com referral page. Deduped: no Shawnee routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (single fuzzy hit was Xcel Energy R0797, manually confirmed unrelated). Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 80 days ago).",
+ "numeric_basis": "payout from official terms ($30 referrer / $15 friend bill credits); time: referral share 5-15 min active",
+ "official_url": "https://shawnee.com/referral/",
+ "payout_max_usd": 30,
+ "payout_min_usd": 15,
+ "payout_quote": "Refer your friends to Shawnee Internet and earn a $30 bill credit - plus, they'll get $15 too! Credit will be applied after the new customer is installed.",
+ "payout_value_note": "$30 bill credit to the referrer, $15 to the friend — offsets planned Shawnee spending, not income.",
+ "route_id": "R6398",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim on the official page ($30 / $15).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Shawnee spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (fill out the referral form with your friend's details).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: uneven split, credit only after installation.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Shawnee service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against shawnee.com (provider's own domain) via current official-page content. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Fill out the Shawnee referral form with your name and your friend's contact details",
+  "Your friend signs up for Shawnee Internet",
+  "Credit is applied after the new customer is installed",
+  "You get a $30 bill credit; your friend gets $15"
+ ],
+ "terms_url": "https://shawnee.com/referral/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit applied after the new customer's installation.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit applied after the new customer's installation.",
+ "maximize": "Fastest honest path: Credit applied after the new customer's installation. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

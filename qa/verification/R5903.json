@@ -1,89 +1,100 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "verdict": "verify",
+ "route_id": "R5903",
+ "checked_at": "2026-09-23T05:34:54Z",
+ "weasel_words": [],
+ "official_url": "https://info.ffbf.com/business-accounts",
+ "terms_url": "https://info.ffbf.com/business-accounts",
+ "payout_min_usd": 200,
+ "payout_max_usd": 400,
+ "payout_quote": "$400 Checking Bonus limited to new business customers who deposit at least $10,000 or more of new money into a business checking account at time of opening. Balance must be maintained for at least 60 days to qualify. ... $200 Checking Bonus limited to new business customers who deposit at least $5,000 or more of new money into a business checking account at opening.",
+ "payout_value_note": "flat: $200 with $5,000+ deposit, $400 with $10,000+ deposit",
+ "biggest_catch": "Offer limited to the first 50 qualifying customers — availability is capped; and if you close the account within 6 months the bank can claw back the bonus.",
+ "catches": [
+  "Offer limited to the first 50 customers who meet the criteria — availability is capped.",
+  "Bank transfers from an existing personal or business First Federal Bank account do not qualify; must be new money.",
+  "Not valid for anyone whose accounts were closed within 90 days, or closed with a negative balance within the past three years.",
+  "One offer (up to $400) per business account; cannot be combined with any other offer.",
+  "Early closure clawback: if the account is closed within 6 months of opening, the bank reserves the right to deduct the bonus at closing.",
+  "Limited time offer; may be discontinued.",
+  "$50 minimum to open any new Business Checking account.",
+  "eCorp services may incur an additional service fee depending on business checking account type.",
+  "Bonus credited no later than 120 days from the open date; taxes apply."
+ ],
+ "eligibility": "New First Federal Bank business customers in Florida (no existing First Federal accounts; no accounts closed in the past 90 days or with a negative balance in the past 3 years) who can deposit $5,000+ or $10,000+ in new money at account opening.",
+ "numeric_basis": "payout from official First Federal Bank terms ($200/$400 flat); time: account opening with large new-money deposit, est. 45-90 min active",
+ "time_min_minutes": 45,
+ "time_max_minutes": 90,
+ "timing": "Deposit new money at account opening; maintain balance for at least 60 days; bonus credited no later than 120 days from the open date; keep account open at least 6 months.",
+ "upfront_fee": false,
+ "steps": [
+  "Open a new First Federal Bank business checking account with $5,000+ ($200 bonus) or $10,000+ ($400 bonus) in new money at opening ($50 minimum to open).",
+  "Maintain the balance for at least 60 days.",
+  "Bonus is credited to the new account no later than 120 days from the open date.",
+  "Keep the account open at least 6 months to avoid the early-closure bonus deduction."
+ ],
+ "critical": {
+  "c1": {
+   "evidence": "First Federal Bank — real Florida bank; business bonus terms quoted verbatim on the official info.ffbf.com domain.",
+   "pass": true
   },
-  "verdict": "verify",
-  "route_id": "R5903",
-  "checked_at": "2026-09-23T05:34:54Z",
-  "weasel_words": [],
-  "official_url": "https://info.ffbf.com/business-accounts",
-  "terms_url": "https://info.ffbf.com/business-accounts",
-  "payout_min_usd": 200,
-  "payout_max_usd": 400,
-  "payout_quote": "$400 Checking Bonus limited to new business customers who deposit at least $10,000 or more of new money into a business checking account at time of opening. Balance must be maintained for at least 60 days to qualify. ... $200 Checking Bonus limited to new business customers who deposit at least $5,000 or more of new money into a business checking account at opening.",
-  "payout_value_note": "flat: $200 with $5,000+ deposit, $400 with $10,000+ deposit",
-  "biggest_catch": "Offer limited to the first 50 qualifying customers \u2014 availability is capped; and if you close the account within 6 months the bank can claw back the bonus.",
-  "catches": [
-    "Offer limited to the first 50 customers who meet the criteria \u2014 availability is capped.",
-    "Bank transfers from an existing personal or business First Federal Bank account do not qualify; must be new money.",
-    "Not valid for anyone whose accounts were closed within 90 days, or closed with a negative balance within the past three years.",
-    "One offer (up to $400) per business account; cannot be combined with any other offer.",
-    "Early closure clawback: if the account is closed within 6 months of opening, the bank reserves the right to deduct the bonus at closing.",
-    "Limited time offer; may be discontinued.",
-    "$50 minimum to open any new Business Checking account.",
-    "eCorp services may incur an additional service fee depending on business checking account type.",
-    "Bonus credited no later than 120 days from the open date; taxes apply."
-  ],
-  "eligibility": "New First Federal Bank business customers in Florida (no existing First Federal accounts; no accounts closed in the past 90 days or with a negative balance in the past 3 years) who can deposit $5,000+ or $10,000+ in new money at account opening.",
-  "numeric_basis": "payout from official First Federal Bank terms ($200/$400 flat); time: account opening with large new-money deposit, est. 45-90 min active",
-  "time_min_minutes": 45,
-  "time_max_minutes": 90,
-  "timing": "Deposit new money at account opening; maintain balance for at least 60 days; bonus credited no later than 120 days from the open date; keep account open at least 6 months.",
-  "upfront_fee": false,
-  "steps": [
-    "Open a new First Federal Bank business checking account with $5,000+ ($200 bonus) or $10,000+ ($400 bonus) in new money at opening ($50 minimum to open).",
-    "Maintain the balance for at least 60 days.",
-    "Bonus is credited to the new account no later than 120 days from the open date.",
-    "Keep the account open at least 6 months to avoid the early-closure bonus deduction."
-  ],
-  "critical": {
-    "c1": {
-      "evidence": "First Federal Bank \u2014 real Florida bank; business bonus terms quoted verbatim on the official info.ffbf.com domain.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official terms: '$200 Checking Bonus' for '$5,000 or more of new money' and '$400 Checking Bonus' for '$10,000 or more of new money' \u2014 deterministic flat payout.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "$50 minimum to open; the qualifying deposit ($5,000/$10,000) is new money in the account, not a fee. No purchase required.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Bonus credited to the new account no later than 120 days from the open date once the 60-day balance hold is met, per official terms.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official terms: '$200 Checking Bonus' for '$5,000 or more of new money' and '$400 Checking Bonus' for '$10,000 or more of new money' — deterministic flat payout.",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "Eligibility concrete: new business customers only, Florida footprint, 90-day/negative-balance exclusions, one offer per business account.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Requirements concrete: $5,000+ or $10,000+ new money at opening, maintain balance at least 60 days.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Timing concrete: bonus credited no later than 120 days from open date; 6-month clawback window.",
-      "pass": true
-    },
-    "s4": {
-      "note": "$200/$400 stated flatly by deposit tier; stated condition, not weasel language.",
-      "pass": true
-    },
-    "s5": {
-      "note": "info.ffbf.com is First Federal Bank's official marketing domain; terms match third-party coverage verbatim.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No earnings promise beyond the conditional bonus; first-50 cap and 6-month clawback disclosed.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Numbers consistent: 200/400 USD flat; 45-90 active minutes for opening and funding.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "$50 minimum to open; the qualifying deposit ($5,000/$10,000) is new money in the account, not a fee. No purchase required.",
+   "pass": true
   },
-  "notes": "Distinct from existing R0971 (First Federal Bank personal Enhanced Checking $200 offer) \u2014 this is the business checking $200/$400 offer. Re-verified live 2026-09-23: official info.ffbf.com/business-accounts still shows the offer (new money $5,000/$10,000 at opening, maintain 60 days, first 50 customers, 6-month clawback)."
+  "c4": {
+   "evidence": "Bonus credited to the new account no later than 120 days from the open date once the 60-day balance hold is met, per official terms.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Eligibility concrete: new business customers only, Florida footprint, 90-day/negative-balance exclusions, one offer per business account.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Requirements concrete: $5,000+ or $10,000+ new money at opening, maintain balance at least 60 days.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Timing concrete: bonus credited no later than 120 days from open date; 6-month clawback window.",
+   "pass": true
+  },
+  "s4": {
+   "note": "$200/$400 stated flatly by deposit tier; stated condition, not weasel language.",
+   "pass": true
+  },
+  "s5": {
+   "note": "info.ffbf.com is First Federal Bank's official marketing domain; terms match third-party coverage verbatim.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No earnings promise beyond the conditional bonus; first-50 cap and 6-month clawback disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Numbers consistent: 200/400 USD flat; 45-90 active minutes for opening and funding.",
+   "pass": true
+  }
+ },
+ "notes": "Distinct from existing R0971 (First Federal Bank personal Enhanced Checking $200 offer) — this is the business checking $200/$400 offer. Re-verified live 2026-09-23: official info.ffbf.com/business-accounts still shows the offer (new money $5,000/$10,000 at opening, maintain 60 days, first 50 customers, 6-month clawback).",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $200–$400. Per official terms: Deposit new money at account opening; maintain balance for at least 60 days; bonus credited no later than 120 days from the open date; keep account open at least 6 months. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

@@ -6,7 +6,7 @@
   "biggest_catch": "You earn $50 cash per referral only after the friend opens a new GO2bank account through your unique share link by December 31, 2026 and receives a qualifying ACH direct deposit of $200+ (employer, payroll, government, or unemployment) within 45 days of account opening; capped at $1,500 per calendar year.",
   "catches": [
     "Friend must be a brand-new GO2bank customer opening a new deposit account through the referrer's unique share link by December 31, 2026",
-    "Friend must receive a qualifying direct deposit of $200+ within 45 days of account opening — ACH from employer/payroll provider/government benefits/unemployment only; bank transfers, trial deposits, tax refunds, mobile check cashing, and cash deposits do NOT qualify",
+    "Friend must receive a qualifying direct deposit of $200+ within 45 days of account opening \u2014 ACH from employer/payroll provider/government benefits/unemployment only; bank transfers, trial deposits, tax refunds, mobile check cashing, and cash deposits do NOT qualify",
     "Referrer needs an activated, personalized debit card to refer friends",
     "Both accounts must be in good standing to receive the reward",
     "Reward is paid to both parties within 48 hours after qualifying funds first deposit into the friend's new account",
@@ -28,12 +28,12 @@
       "pass": true
     },
     "c4": {
-      "evidence": "dedupe-check 'GO2bank': catalog hit R0630 is PSECU's $300 referral (mislabeled 'Go') — distinct; no duplicate",
+      "evidence": "dedupe-check 'GO2bank': catalog hit R0630 is PSECU's $300 referral (mislabeled 'Go') \u2014 distinct; no duplicate",
       "pass": true
     }
   },
   "eligibility": "GO2bank accountholders in good standing with an activated personalized debit card. Referred friends must be new GO2bank customers (never opened a GO2bank deposit account).",
-  "notes": "Official go2bank.com Refer a Friend pages and share.go2bank.com terms confirm $50 per qualifying referral, cap $1,500/calendar year (30 referrals). Offer open through December 31, 2026 for new accounts opened by referred friends. Catalog hit R0630 ('Go') is actually PSECU's $300 referral — not a duplicate.",
+  "notes": "Official go2bank.com Refer a Friend pages and share.go2bank.com terms confirm $50 per qualifying referral, cap $1,500/calendar year (30 referrals). Offer open through December 31, 2026 for new accounts opened by referred friends. Catalog hit R0630 ('Go') is actually PSECU's $300 referral \u2014 not a duplicate.",
   "numeric_basis": "payout from official GO2bank referral terms ($50 to the referrer per qualifying friend; $1,500/year cap); time: logging in and sharing the referral link est. 5-15 min active",
   "official_url": "http://www.go2bank.com/features/refer-a-friend",
   "payout_max_usd": 50,
@@ -85,5 +85,20 @@
   "timing": "Sharing the referral link takes ~10 minutes active; the $50 reward arrives within 48 hours of the friend's qualifying direct deposit (up to ~45 days after their account opening).",
   "upfront_fee": false,
   "verdict": "verify",
-  "weasel_words": []
+  "weasel_words": [],
+  "speed": "days",
+  "when_cash_arrives": "Both parties receive $50 within 48 hours of the friend's qualifying direct deposit \u2014 per official terms. Qualifying: $200+ ACH direct deposit from employer/payroll/government/unemployment within 45 days of account opening (bank transfers, P2P, tax refunds don't count). The 48-hour clock starts at the deposit, so a friend whose payroll hits in week 1 gets you paid in ~1 week. Cap $1,500/year.",
+  "maximize": [
+    "Refer friends with an upcoming payroll date \u2014 the only wait is their first $200+ paycheck landing.",
+    "Confirm the deposit codes as ACH direct deposit (employer/payroll/government); P2P transfers from Cash App/Venmo do NOT qualify and waste the 45-day window.",
+    "Prioritize friends with regular payroll \u2014 cap is $1,500/year (30 referrals)."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "days",
+      "rationale": "Official terms: $50 reward 'within 48 hours' of the friend's qualifying direct deposit."
+    }
+  ]
 }

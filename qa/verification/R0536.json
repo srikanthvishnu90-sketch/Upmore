@@ -1,92 +1,103 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You must open the account in person at an ACNB Bank branch — there is no online application path — and the $25,000 average-balance tier means parking serious cash for 3+ months to get the $2,000.",
+ "catches": [
+  "Account must be opened at a local ACNB Bank office — in-branch only, no online opening.",
+  "Use promo code Earn2000; offices apply the code when you open.",
+  "Within 60 days of opening: enroll in online banking with eDocuments, and get a Mastercard debit card with 10 unique transactions (posting can take 2+ days).",
+  "Bonus tier depends on average monthly balance for three consecutive months following the first statement cycle: $25,000+ = $2,000; $10,000-$24,999 = $1,000.",
+  "No stated promo end date — 'Offer is limited and subject to change or cancellation without notice.'",
+  "Not for existing Traditions Bank or ACNB Bank business checking customers or anyone who closed a business checking account in the last 12 months; trust/estate accounts, government entities, and municipalities are not eligible.",
+  "One gift per entity, up to 3 entities with common ownership; 1099-INT reporting applies.",
+  "Only available where ACNB Bank has offices (south-central PA and Maryland via NWSB division)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "ACNB Bank — real operating bank headquartered in Gettysburg, PA; official promo page on acnb.com.",
+   "pass": true
   },
-  "biggest_catch": "You must open the account in person at an ACNB Bank branch — there is no online application path — and the $25,000 average-balance tier means parking serious cash for 3+ months to get the $2,000.",
-  "catches": [
-    "Account must be opened at a local ACNB Bank office — in-branch only, no online opening.",
-    "Use promo code Earn2000; offices apply the code when you open.",
-    "Within 60 days of opening: enroll in online banking with eDocuments, and get a Mastercard debit card with 10 unique transactions (posting can take 2+ days).",
-    "Bonus tier depends on average monthly balance for three consecutive months following the first statement cycle: $25,000+ = $2,000; $10,000-$24,999 = $1,000.",
-    "No stated promo end date — 'Offer is limited and subject to change or cancellation without notice.'",
-    "Not for existing Traditions Bank or ACNB Bank business checking customers or anyone who closed a business checking account in the last 12 months; trust/estate accounts, government entities, and municipalities are not eligible.",
-    "One gift per entity, up to 3 entities with common ownership; 1099-INT reporting applies.",
-    "Only available where ACNB Bank has offices (south-central PA and Maryland via NWSB division)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "ACNB Bank — real operating bank headquartered in Gettysburg, PA; official promo page on acnb.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official ACNB Bank page titled 'Earn $2,000' with $1,000/$2,000 business checking terms, requirements, and eligibility.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; the Free Business Checking account has no monthly fee disclosed in the promo.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: 'Cash gift will be deposited in the new account after all requirements have been met and verified.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official ACNB Bank page titled 'Earn $2,000' with $1,000/$2,000 business checking terms, requirements, and eligibility.",
+   "pass": true
   },
-  "eligibility": "New ACNB/Traditions Bank business checking customers only; not existing business checking customers or those who closed one in the last 12 months. Trust/estate accounts, government entities, and municipalities excluded. Limit one gift per entity (up to 3 entities with common ownership). Must be able to open in person at an ACNB Bank office in PA/MD.",
-  "notes": "Bonus tiers ($1,000 at $10k-$24,999; $2,000 at $25k+) confirmed on the official ACNB Bank page 2026-09-23. This is the ACNB Bank (Pennsylvania, acnb.com) business offer — Traditions Bank is a division of ACNB Bank, not a separate institution. App: 'ACNB Bank' mobile banking app exists; no verbatim official store URL obtained, left null rather than guessed. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://www.acnb.com/earn2000",
-  "payout_quote": "Cash Gift: Accounts maintaining $25,000 or more qualify for a $2,000 cash gift; accounts maintaining between $10,000 and $24,999 qualify for a $1,000 cash gift.",
-  "route_id": "R0536",
-  "standard": {
-    "s1": {
-      "note": "New business customers only; no existing/closed-within-12-months business checking; one per entity (3 with common ownership); trust/estate/government excluded.",
-      "pass": true
-    },
-    "s2": {
-      "note": "In-branch opening required; 10 unique debit transactions + online banking/eDocuments within 60 days; balance tier held for 3 consecutive months after the first statement cycle.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Cash gift deposited in the new account after all requirements are met and verified.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Bonus tiers stated flatly; the only soft language is 'limited and subject to change or cancellation' on availability.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.acnb.com/earn2000 — the official ACNB Bank promo page, fetched 2026-09-23 (UTC).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: visit branch with promo code, enroll online banking/eDocuments, use debit card 10 times, hold the balance tier for 3 months.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official ACNB Bank page fetched 2026-09-23 (UTC).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; the Free Business Checking account has no monthly fee disclosed in the promo.",
+   "pass": true
   },
-  "steps": [
-    "Visit your local ACNB Bank office to open a Free Business Checking account and use promo code Earn2000.",
-    "Within 60 days of opening, enroll in online banking with eDocuments.",
-    "Get a Mastercard debit card and make 10 unique transactions within 60 days (allow 2+ days for transactions to post).",
-    "Maintain an average monthly balance of $25,000+ (for $2,000) or $10,000-$24,999 (for $1,000) for the three consecutive months following your first statement cycle.",
-    "After all requirements are met and verified, the cash gift is deposited directly into your new account."
-  ],
-  "terms_url": "https://www.acnb.com/earn2000",
-  "timing": "Cash gift deposited in the new account after all requirements have been met and verified.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page: 'Cash gift will be deposited in the new account after all requirements have been met and verified.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New ACNB/Traditions Bank business checking customers only; not existing business checking customers or those who closed one in the last 12 months. Trust/estate accounts, government entities, and municipalities excluded. Limit one gift per entity (up to 3 entities with common ownership). Must be able to open in person at an ACNB Bank office in PA/MD.",
+ "notes": "Bonus tiers ($1,000 at $10k-$24,999; $2,000 at $25k+) confirmed on the official ACNB Bank page 2026-09-23. This is the ACNB Bank (Pennsylvania, acnb.com) business offer — Traditions Bank is a division of ACNB Bank, not a separate institution. App: 'ACNB Bank' mobile banking app exists; no verbatim official store URL obtained, left null rather than guessed. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://www.acnb.com/earn2000",
+ "payout_quote": "Cash Gift: Accounts maintaining $25,000 or more qualify for a $2,000 cash gift; accounts maintaining between $10,000 and $24,999 qualify for a $1,000 cash gift.",
+ "route_id": "R0536",
+ "standard": {
+  "s1": {
+   "note": "New business customers only; no existing/closed-within-12-months business checking; one per entity (3 with common ownership); trust/estate/government excluded.",
+   "pass": true
   },
-  "payout_min_usd": 1000.0,
-  "payout_max_usd": 2000.0,
-  "payout_value_note": "tiered bonus amounts in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "note": "In-branch opening required; 10 unique debit transactions + online banking/eDocuments within 60 days; balance tier held for 3 consecutive months after the first statement cycle.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Cash gift deposited in the new account after all requirements are met and verified.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Bonus tiers stated flatly; the only soft language is 'limited and subject to change or cancellation' on availability.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.acnb.com/earn2000 — the official ACNB Bank promo page, fetched 2026-09-23 (UTC).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: visit branch with promo code, enroll online banking/eDocuments, use debit card 10 times, hold the balance tier for 3 months.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official ACNB Bank page fetched 2026-09-23 (UTC).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Visit your local ACNB Bank office to open a Free Business Checking account and use promo code Earn2000.",
+  "Within 60 days of opening, enroll in online banking with eDocuments.",
+  "Get a Mastercard debit card and make 10 unique transactions within 60 days (allow 2+ days for transactions to post).",
+  "Maintain an average monthly balance of $25,000+ (for $2,000) or $10,000-$24,999 (for $1,000) for the three consecutive months following your first statement cycle.",
+  "After all requirements are met and verified, the cash gift is deposited directly into your new account."
+ ],
+ "terms_url": "https://www.acnb.com/earn2000",
+ "timing": "Cash gift deposited in the new account after all requirements have been met and verified.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 1000.0,
+ "payout_max_usd": 2000.0,
+ "payout_value_note": "tiered bonus amounts in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $1000–$2000. Per official terms: Cash gift deposited in the new account after all requirements have been met and verified. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. No online path exists — this bonus requires an in-person branch visit to open the account (flagged per audit rules). Fastest honest path: visit the branch with the required ID/deposit, complete any qualifying activity stated in the offer terms (debit transactions or direct deposit) as early as possible; the bank's post-qualification payout window is then fixed.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'branch'; requires in-person branch visit (flagged)"
+  }
+ ]
 }

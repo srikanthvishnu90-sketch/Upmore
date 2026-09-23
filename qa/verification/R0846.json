@@ -1,42 +1,54 @@
 {
-  "app_links": {},
-  "biggest_catch": "Texas-only bill credit that takes up to two billing cycles to arrive — slow, and useless outside Texas.",
-  "catches": [
-    "Texas residential only; month-to-month plans excluded",
-    "Electricity service must be active at least 10 days",
-    "Credit applied within two billing cycles — slow payout",
-    "Bill credit, not cash"
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": [
-    "Active Green Mountain customer",
-    "Friend enrolls on a qualifying term plan with the referral code",
-    "Service active for at least 10 days"
-  ],
-  "eligibility": [
-    "Active Green Mountain Energy residential customer in Texas",
-    "Friend is a new Texas customer who enrolls on a qualifying term plan with the referral code and keeps service active 10 days"
-  ],
-  "notes": "Official referral page and FAQ state the $50 bill credit, 10-day service requirement, and two-billing-cycle timing. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)]",
-  "official_url": "https://www.GreenMountainEnergy.com/en/referral-page",
-  "payout_quote": "$50 bill credit to the referrer when a referred new Texas customer enrolls on a qualifying term plan and stays active 10 days (referred friend also qualifies per official FAQ)",
-  "route_id": "R0846",
-  "standard": true,
-  "steps": [
-    "Active Green Mountain customer shares their referral code",
-    "Friend enrolls as a new Texas customer on a qualifying term plan with the code",
-    "Friend keeps electricity service active for at least 10 days",
-    "Bill credit applied within two billing cycles"
-  ],
-  "terms_url": "https://www.GreenMountainEnergy.com/en/referral-page",
-  "timing": "Bill credit applied within two billing cycles after the friend completes 10 days of active service.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "payout_min_usd": 50.0,
-  "payout_max_usd": 50.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 5.0,
-  "time_max_minutes": 15.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default App Referral (5-15min active)"
+ "app_links": {},
+ "biggest_catch": "Texas-only bill credit that takes up to two billing cycles to arrive \u2014 slow, and useless outside Texas.",
+ "catches": [
+  "Texas residential only; month-to-month plans excluded",
+  "Electricity service must be active at least 10 days",
+  "Credit applied within two billing cycles \u2014 slow payout",
+  "Bill credit, not cash"
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": [
+  "Active Green Mountain customer",
+  "Friend enrolls on a qualifying term plan with the referral code",
+  "Service active for at least 10 days"
+ ],
+ "eligibility": [
+  "Active Green Mountain Energy residential customer in Texas",
+  "Friend is a new Texas customer who enrolls on a qualifying term plan with the referral code and keeps service active 10 days"
+ ],
+ "notes": "Official referral page and FAQ state the $50 bill credit, 10-day service requirement, and two-billing-cycle timing. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)]",
+ "official_url": "https://www.GreenMountainEnergy.com/en/referral-page",
+ "payout_quote": "$50 bill credit to the referrer when a referred new Texas customer enrolls on a qualifying term plan and stays active 10 days (referred friend also qualifies per official FAQ)",
+ "route_id": "R0846",
+ "standard": true,
+ "steps": [
+  "Active Green Mountain customer shares their referral code",
+  "Friend enrolls as a new Texas customer on a qualifying term plan with the code",
+  "Friend keeps electricity service active for at least 10 days",
+  "Bill credit applied within two billing cycles"
+ ],
+ "terms_url": "https://www.GreenMountainEnergy.com/en/referral-page",
+ "timing": "Bill credit applied within two billing cycles after the friend completes 10 days of active service.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "payout_min_usd": 50.0,
+ "payout_max_usd": 50.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 5.0,
+ "time_max_minutes": 15.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default App Referral (5-15min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bill credit applied within two billing cycles after the friend completes 10 days of active service.",
+ "maximize": "Activate service immediately.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "Two billing cycles are the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

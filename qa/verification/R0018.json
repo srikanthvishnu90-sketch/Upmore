@@ -87,5 +87,16 @@
   "payout_value_note": "'up to' amount in official terms; floor $0",
   "time_min_minutes": 30.0,
   "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Brokerage Promo (30-60min active)"
+  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Brokerage Promo (30-60min active)",
+  "speed": "days",
+  "when_cash_arrives": "1% match paid in cash within 5 business days after the ACAT-transferred funds settle (up to $50,000 match). Funds must stay 5 years to keep the full match.",
+  "maximize": "Fastest path: initiate an ACAT transfer of an existing brokerage balance (settles in ~5-7 business days); the cash match posts within 5 business days of settlement. Blocker: requires an existing portfolio to transfer; 5-year maintenance to keep the match.",
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "days",
+      "rationale": "Official SoFi terms: matches 'paid in cash within 5 business days from the date which the funds settle'."
+    }
+  ]
 }

@@ -1,91 +1,102 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Close the account within 12 months and Bankers Trust charges a $400 early-closing fee — the entire bonus is wiped out if you bail early.",
+ "catches": [
+  "A $400 early-closing fee applies if the account is closed within 12 months of opening.",
+  "The account must be opened in person with a $25 opening deposit.",
+  "Within 60 days of opening: complete 25 qualifying debits (ACH, Bankers Trust bill pay, checks, or debit-card purchases — ATM withdrawals excluded) and two direct ACH and/or mobile deposits of at least $200 each (ATM, teller, and account transfers excluded).",
+  "Existing checking customers and anyone with a Bankers Trust checking account in the prior six months are excluded; one bonus per household.",
+  "Employees and affiliates are excluded.",
+  "A $10.99 inactivity fee applies unless the account receives $500 in ACH/mobile deposits per statement cycle or the primary owner is 55+.",
+  "The account must remain open with a positive balance through payout."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Bankers Trust is a real bank; the bonus terms are published in an official PDF on bankerstrust.com.",
+   "pass": true
   },
-  "biggest_catch": "Close the account within 12 months and Bankers Trust charges a $400 early-closing fee — the entire bonus is wiped out if you bail early.",
-  "catches": [
-    "A $400 early-closing fee applies if the account is closed within 12 months of opening.",
-    "The account must be opened in person with a $25 opening deposit.",
-    "Within 60 days of opening: complete 25 qualifying debits (ACH, Bankers Trust bill pay, checks, or debit-card purchases — ATM withdrawals excluded) and two direct ACH and/or mobile deposits of at least $200 each (ATM, teller, and account transfers excluded).",
-    "Existing checking customers and anyone with a Bankers Trust checking account in the prior six months are excluded; one bonus per household.",
-    "Employees and affiliates are excluded.",
-    "A $10.99 inactivity fee applies unless the account receives $500 in ACH/mobile deposits per statement cycle or the primary owner is 55+.",
-    "The account must remain open with a positive balance through payout."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Bankers Trust is a real bank; the bonus terms are published in an official PDF on bankerstrust.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Direct Checking Plus $400 bonus PDF (Rev. 04/25) states the $400 bonus, the 25-debit and two-$200-deposit requirements within 60 days, and the 75-day payout.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee to participate; the $25 opening deposit is a disclosed account-opening deposit.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official PDF states the bonus is paid within 75 days of account opening, after requirements are reviewed at day 60.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Direct Checking Plus $400 bonus PDF (Rev. 04/25) states the $400 bonus, the 25-debit and two-$200-deposit requirements within 60 days, and the 75-day payout.",
+   "pass": true
   },
-  "eligibility": "New checking customers only; existing checking customers and anyone with a Bankers Trust checking account in the prior six months excluded; one bonus per household; employees and affiliates excluded.",
-  "notes": "Official Bankers Trust Direct Checking Plus $400 bonus PDF (Rev. 04/25) reviewed 2026-09-23. The PDF shows no fixed expiration. The offer requires in-person account opening. This is Bankers Trust, not Bank of Texas. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf",
-  "payout_quote": "$400 bonus for new Direct Checking Plus accounts opened in person with $25 that complete 25 qualifying debits and two direct ACH and/or mobile deposits of at least $200 each within 60 days; paid within 75 days of account opening after requirements are reviewed at day 60.",
-  "route_id": "R0567",
-  "standard": {
-    "s1": {
-      "note": "New checking customers only; six-month prior-checking exclusion; one per household; employees/affiliates excluded.",
-      "pass": true
-    },
-    "s2": {
-      "note": "25 qualifying debits plus two $200+ direct ACH/mobile deposits within 60 days with strict exclusions; $400 early-closing fee within 12 months; $10.99 inactivity fee unless waived; account must stay open and positive.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus paid within 75 days of account opening, after requirements are reviewed at day 60.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No weasel words on the payout in the official PDF — $400 and the 75-day payment are stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf — the official Bankers Trust bonus PDF.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open Direct Checking Plus in person with $25, complete the 25 debits and two $200+ deposits within 60 days, keep the account open and positive.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Bankers Trust PDF reviewed 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee to participate; the $25 opening deposit is a disclosed account-opening deposit.",
+   "pass": true
   },
-  "steps": [
-    "Open a Direct Checking Plus account in person with a $25 opening deposit.",
-    "Within 60 days of opening: complete 25 qualifying debits — ACH transactions, Bankers Trust bill pay, checks, or debit-card purchases. ATM withdrawals do not count.",
-    "Within the same 60 days: receive two direct ACH and/or mobile deposits of at least $200 each. ATM deposits, teller deposits, and account transfers do not count.",
-    "Keep the account open with a positive balance through payout — and do not close it within 12 months, or a $400 early-closing fee applies.",
-    "Receive the $400 bonus within 75 days of account opening, after the bank reviews the requirements at day 60."
-  ],
-  "terms_url": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf",
-  "timing": "Bonus paid within 75 days of account opening, after requirements are reviewed at day 60.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official PDF states the bonus is paid within 75 days of account opening, after requirements are reviewed at day 60.",
+   "pass": true
+  }
+ },
+ "eligibility": "New checking customers only; existing checking customers and anyone with a Bankers Trust checking account in the prior six months excluded; one bonus per household; employees and affiliates excluded.",
+ "notes": "Official Bankers Trust Direct Checking Plus $400 bonus PDF (Rev. 04/25) reviewed 2026-09-23. The PDF shows no fixed expiration. The offer requires in-person account opening. This is Bankers Trust, not Bank of Texas. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf",
+ "payout_quote": "$400 bonus for new Direct Checking Plus accounts opened in person with $25 that complete 25 qualifying debits and two direct ACH and/or mobile deposits of at least $200 each within 60 days; paid within 75 days of account opening after requirements are reviewed at day 60.",
+ "route_id": "R0567",
+ "standard": {
+  "s1": {
+   "note": "New checking customers only; six-month prior-checking exclusion; one per household; employees/affiliates excluded.",
+   "pass": true
   },
-  "payout_min_usd": 400.0,
-  "payout_max_usd": 400.0,
-  "payout_value_note": "flat bonus amount in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "note": "25 qualifying debits plus two $200+ direct ACH/mobile deposits within 60 days with strict exclusions; $400 early-closing fee within 12 months; $10.99 inactivity fee unless waived; account must stay open and positive.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus paid within 75 days of account opening, after requirements are reviewed at day 60.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the payout in the official PDF — $400 and the 75-day payment are stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf — the official Bankers Trust bonus PDF.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open Direct Checking Plus in person with $25, complete the 25 debits and two $200+ deposits within 60 days, keep the account open and positive.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Bankers Trust PDF reviewed 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a Direct Checking Plus account in person with a $25 opening deposit.",
+  "Within 60 days of opening: complete 25 qualifying debits — ACH transactions, Bankers Trust bill pay, checks, or debit-card purchases. ATM withdrawals do not count.",
+  "Within the same 60 days: receive two direct ACH and/or mobile deposits of at least $200 each. ATM deposits, teller deposits, and account transfers do not count.",
+  "Keep the account open with a positive balance through payout — and do not close it within 12 months, or a $400 early-closing fee applies.",
+  "Receive the $400 bonus within 75 days of account opening, after the bank reviews the requirements at day 60."
+ ],
+ "terms_url": "https://www.bankerstrust.com/wp-content/uploads/2025/09/Direct-Checking-Plus-400-Bonus_0425.pdf",
+ "timing": "Bonus paid within 75 days of account opening, after requirements are reviewed at day 60.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 400.0,
+ "payout_max_usd": 400.0,
+ "payout_value_note": "flat bonus amount in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $400. Per official terms: Bonus paid within 75 days of account opening, after requirements are reviewed at day 60. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. No online path exists — this bonus requires an in-person branch visit to open the account (flagged per audit rules). Fastest honest path: visit the branch with the required ID/deposit, complete any qualifying activity stated in the offer terms (debit transactions or direct deposit) as early as possible; the bank's post-qualification payout window is then fixed.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'branch'; requires in-person branch visit (flagged)"
+  }
+ ]
 }

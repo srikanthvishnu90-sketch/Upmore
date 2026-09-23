@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Credit offsets your bills only - it is never paid out as cash, cannot be refunded, and if you add a second supply (e.g., gas after electricity) after the reward is calculated, that extra supply earns nothing.",
+ "catches": [
+  "The referred customer must be supplied by Fuse Energy with at least one eligible supply (import electricity or gas); export-only supplies do not count.",
+  "The credit is a flat £100 per referred customer regardless of whether they take one or both supplies.",
+  "The credit is applied as an offset against subsequent bills only - not available for refund or redeemable for cash.",
+  "Fuse Energy reserves the right to cancel or amend the campaign without notice, and only one promotional reward credit per customer where multiple apply."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (fuseenergy.com); Promotions and Referrals T&C updated 10 August 2026."
   },
-  "biggest_catch": "Credit offsets your bills only - it is never paid out as cash, cannot be refunded, and if you add a second supply (e.g., gas after electricity) after the reward is calculated, that extra supply earns nothing.",
-  "catches": [
-    "The referred customer must be supplied by Fuse Energy with at least one eligible supply (import electricity or gas); export-only supplies do not count.",
-    "The credit is a flat £100 per referred customer regardless of whether they take one or both supplies.",
-    "The credit is applied as an offset against subsequent bills only - not available for refund or redeemable for cash.",
-    "Fuse Energy reserves the right to cancel or amend the campaign without notice, and only one promotional reward credit per customer where multiple apply."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (fuseenergy.com); Promotions and Referrals T&C updated 10 August 2026."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Full terms stated on the official page; last-updated date shown (10 August 2026)."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (bill offset credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; no existing evidence for Fuse Energy referral (dedupe returned zero hits)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Full terms stated on the official page; last-updated date shown (10 August 2026)."
   },
-  "eligibility": "Existing Fuse Energy customers; referred friends or family must become supplied Fuse Energy customers (import electricity and/or gas).",
-  "notes": "Referral credit framed as savings on planned energy spending, never income. UK supplier; GBP amounts converted to USD at documented mid-market rate.",
-  "numeric_basis": "payout £100 each side from official T&C ('each receive £100 of credit'), converted at 1 GBP = 1.334 USD (mid-market, Sept 22-23 2026) = $133.40; time: 5-15 minutes for referral sharing",
-  "official_url": "https://www.fuseenergy.com/promotions-and-referrals-terms-and-conditions-mobile",
-  "payout_max_usd": 133,
-  "payout_min_usd": 133,
-  "payout_quote": "The referring customer and the referred customer will each receive £100 of credit (inclusive of VAT) when the referred customer is supplied by Fuse Energy with at least one eligible supply (import electricity or gas).",
-  "payout_value_note": "£100 (inclusive of VAT) account credit to both the referring and the referred customer per successful referral; ~$133 USD at 1 GBP = 1.334 USD mid-market Sept 22-23 2026.",
-  "route_id": "R5496",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Fuse Energy customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Share your referral with friends or family."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referred customer signs up and is supplied by Fuse Energy with import electricity and/or gas."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Both customers receive £100 credit applied as an offset against subsequent bills until used in full."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credit is bill-offset only; it is not refundable and not redeemable for cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "UK service areas where Fuse Energy supplies customers."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Campaign can be cancelled or amended at any time; terms last updated 10 August 2026."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (bill offset credit), never income."
   },
-  "steps": [
-    "As an existing Fuse Energy customer, share your referral with a friend or family member.",
-    "Your referral signs up with Fuse Energy for import electricity and/or gas.",
-    "Once Fuse Energy supplies them, £100 credit is applied to each of your accounts.",
-    "The credit offsets your subsequent bills until fully used."
-  ],
-  "terms_url": "https://www.fuseenergy.com/promotions-and-referrals-terms-and-conditions-mobile",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Sharing a referral takes 5-15 minutes of active effort; the credit applies once the referred customer is being supplied.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; no existing evidence for Fuse Energy referral (dedupe returned zero hits)."
+  }
+ },
+ "eligibility": "Existing Fuse Energy customers; referred friends or family must become supplied Fuse Energy customers (import electricity and/or gas).",
+ "notes": "Referral credit framed as savings on planned energy spending, never income. UK supplier; GBP amounts converted to USD at documented mid-market rate.",
+ "numeric_basis": "payout £100 each side from official T&C ('each receive £100 of credit'), converted at 1 GBP = 1.334 USD (mid-market, Sept 22-23 2026) = $133.40; time: 5-15 minutes for referral sharing",
+ "official_url": "https://www.fuseenergy.com/promotions-and-referrals-terms-and-conditions-mobile",
+ "payout_max_usd": 133,
+ "payout_min_usd": 133,
+ "payout_quote": "The referring customer and the referred customer will each receive £100 of credit (inclusive of VAT) when the referred customer is supplied by Fuse Energy with at least one eligible supply (import electricity or gas).",
+ "payout_value_note": "£100 (inclusive of VAT) account credit to both the referring and the referred customer per successful referral; ~$133 USD at 1 GBP = 1.334 USD mid-market Sept 22-23 2026.",
+ "route_id": "R5496",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Fuse Energy customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Share your referral with friends or family."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referred customer signs up and is supplied by Fuse Energy with import electricity and/or gas."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Both customers receive £100 credit applied as an offset against subsequent bills until used in full."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credit is bill-offset only; it is not refundable and not redeemable for cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "UK service areas where Fuse Energy supplies customers."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Campaign can be cancelled or amended at any time; terms last updated 10 August 2026."
+  }
+ },
+ "steps": [
+  "As an existing Fuse Energy customer, share your referral with a friend or family member.",
+  "Your referral signs up with Fuse Energy for import electricity and/or gas.",
+  "Once Fuse Energy supplies them, £100 credit is applied to each of your accounts.",
+  "The credit offsets your subsequent bills until fully used."
+ ],
+ "terms_url": "https://www.fuseenergy.com/promotions-and-referrals-terms-and-conditions-mobile",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Sharing a referral takes 5-15 minutes of active effort; the credit applies once the referred customer is being supplied.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Sharing a referral takes 5-15 minutes of active effort; the credit applies once the referred customer is being supplied.",
+ "maximize": "Fastest honest path: Sharing a referral takes 5-15 minutes of active effort; the credit applies once the referred customer is being supplied. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

@@ -1,87 +1,90 @@
 {
-  "route_id": "R0318",
-  "checked_at": "2026-09-23T07:21:24Z",
-  "app_links": {
-    "ios": null,
-    "android": null
+ "route_id": "R0318",
+ "checked_at": "2026-09-23T07:21:24Z",
+ "app_links": {
+  "ios": null,
+  "android": null
+ },
+ "upfront_fee": false,
+ "verdict": "verify",
+ "official_url": "https://dsireusa.org",
+ "terms_url": "https://dsireusa.org",
+ "critical": {
+  "c1": {
+   "evidence": "Concrete live figures exist at the utility level and are listed on DSIRE (e.g., documented 2026 utility insulation bonuses around $600); the route's '$100-$1,000+ per upgrade' range is consistent with live utility insulation/air-sealing rebates. The federal 25C insulation credit (up to $1,200/yr) is CONFIRMED EXPIRED 12/31/2025.",
+   "pass": true
   },
-  "upfront_fee": false,
-  "verdict": "verify",
-  "official_url": "https://dsireusa.org",
-  "terms_url": "https://dsireusa.org",
-  "critical": {
-    "c1": {
-      "evidence": "Concrete live figures exist at the utility level and are listed on DSIRE (e.g., documented 2026 utility insulation bonuses around $600); the route's '$100-$1,000+ per upgrade' range is consistent with live utility insulation/air-sealing rebates. The federal 25C insulation credit (up to $1,200/yr) is CONFIRMED EXPIRED 12/31/2025.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "DSIRE loaded live 2026-09-22; 25C expiry confirmed across 2026 tax-law sources; the energy.gov/savings page itself failed to load this session (recorded, not guessed).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to apply. Note: rebates require paying for insulation work first — discounts on spending, not income.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Utility rebates typically paid 4-8 weeks after installation; the federal credit is closed for 2026 work.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "DSIRE loaded live 2026-09-22; 25C expiry confirmed across 2026 tax-law sources; the energy.gov/savings page itself failed to load this session (recorded, not guessed).",
+   "pass": true
   },
-  "standard": {
-    "s1": {
-      "note": "Set by each utility: typically must be a residential customer, use qualifying insulation/air-sealing measures, and often get pre-approval or a home energy audit first.",
-      "pass": true
-    },
-    "s2": {
-      "note": "The federal insulation tax credit (25C, up to $1,200/yr) EXPIRED December 31, 2025. Remaining rebates are utility-specific, usually a few hundred dollars, and require paying for the work first.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Utility rebates typically 4-8 weeks post-installation.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Utility programs state concrete dollar amounts; no federal weasel-wording remains because the federal credit is gone.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://dsireusa.org — live database; energy.gov/savings could not be loaded this session.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: find your utility's insulation rebate on DSIRE, get pre-approval/audit if required, have the work done, submit receipts.",
-      "pass": true
-    },
-    "s7": {
-      "note": "DSIRE loaded live; energy.gov/savings fetch failed this session — flagged rather than treated as verified.",
-      "pass": false
-    }
+  "c3": {
+   "evidence": "No fee to apply. Note: rebates require paying for insulation work first — discounts on spending, not income.",
+   "pass": true
   },
-  "payout_quote": "Under Section 25C rules applicable through December 31, 2025: up to $1,200 combined annual cap for insulation, windows, doors, and energy audits. For 2026 work: live utility insulation rebates as listed per-utility on DSIRE (e.g., ~$600 insulation bonuses offered by major utilities in 2026).",
-  "timing": "Utility rebates are typically paid 4-8 weeks after the insulation work is completed and documented. The federal 25C credit is closed for property placed in service after December 31, 2025.",
-  "eligibility": "Set by each utility program: generally must be a residential customer of the utility; measures must meet the program's specs (R-value, air-sealing); many programs require a home energy audit or pre-approval before work begins.",
-  "catches": [
-    "The federal insulation tax credit (25C, up to $1,200/year) EXPIRED December 31, 2025 — not available for 2026 work.",
-    "Remaining rebates are utility-specific and typically a few hundred dollars, not $1,000.",
-    "You must pay for the insulation work first — this is a discount on spending, not money earned.",
-    "Many programs require pre-approval or an energy audit BEFORE the work; doing the work first can disqualify you."
-  ],
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Utility rebates typically paid 4-8 weeks after installation; the federal credit is closed for 2026 work.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Set by each utility: typically must be a residential customer, use qualifying insulation/air-sealing measures, and often get pre-approval or a home energy audit first.",
+   "pass": true
   },
-  "steps": [
-    "Find insulation and air-sealing rebates for your zip code at https://dsireusa.org and on your utility's website.",
-    "Check whether the program requires pre-approval or a home energy audit before work — complete that step first if so.",
-    "Have the qualifying insulation/air-sealing work done by a qualified contractor and keep all invoices.",
-    "Submit the utility's rebate form with proof of purchase/installation; the rebate arrives as a bill credit or check, typically in 4-8 weeks."
-  ],
-  "biggest_catch": "The federal insulation tax credit expired December 31, 2025 — remaining rebates are utility-specific, typically a few hundred dollars, and require paying for the insulation work first; it is a discount, not income.",
-  "notes": "CORRECTION vs the route: the $1,000 top end was reachable under the old federal 25C credit; 2026 reality is utility rebates in the low hundreds. energy.gov/savings failed to load this session, so the live-utility channel is verified via DSIRE instead. PRODUCT NOTE: insulation rebates are purchase discounts, not earnings. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 1200.0,
-  "payout_value_note": "'up to' amount in official terms; floor $0",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "The federal insulation tax credit (25C, up to $1,200/yr) EXPIRED December 31, 2025. Remaining rebates are utility-specific, usually a few hundred dollars, and require paying for the work first.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Utility rebates typically 4-8 weeks post-installation.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Utility programs state concrete dollar amounts; no federal weasel-wording remains because the federal credit is gone.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://dsireusa.org — live database; energy.gov/savings could not be loaded this session.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: find your utility's insulation rebate on DSIRE, get pre-approval/audit if required, have the work done, submit receipts.",
+   "pass": true
+  },
+  "s7": {
+   "note": "DSIRE loaded live; energy.gov/savings fetch failed this session — flagged rather than treated as verified.",
+   "pass": false
+  }
+ },
+ "payout_quote": "Under Section 25C rules applicable through December 31, 2025: up to $1,200 combined annual cap for insulation, windows, doors, and energy audits. For 2026 work: live utility insulation rebates as listed per-utility on DSIRE (e.g., ~$600 insulation bonuses offered by major utilities in 2026).",
+ "timing": "Utility rebates are typically paid 4-8 weeks after the insulation work is completed and documented. The federal 25C credit is closed for property placed in service after December 31, 2025.",
+ "eligibility": "Set by each utility program: generally must be a residential customer of the utility; measures must meet the program's specs (R-value, air-sealing); many programs require a home energy audit or pre-approval before work begins.",
+ "catches": [
+  "The federal insulation tax credit (25C, up to $1,200/year) EXPIRED December 31, 2025 — not available for 2026 work.",
+  "Remaining rebates are utility-specific and typically a few hundred dollars, not $1,000.",
+  "You must pay for the insulation work first — this is a discount on spending, not money earned.",
+  "Many programs require pre-approval or an energy audit BEFORE the work; doing the work first can disqualify you."
+ ],
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "steps": [
+  "Find insulation and air-sealing rebates for your zip code at https://dsireusa.org and on your utility's website.",
+  "Check whether the program requires pre-approval or a home energy audit before work — complete that step first if so.",
+  "Have the qualifying insulation/air-sealing work done by a qualified contractor and keep all invoices.",
+  "Submit the utility's rebate form with proof of purchase/installation; the rebate arrives as a bill credit or check, typically in 4-8 weeks."
+ ],
+ "biggest_catch": "The federal insulation tax credit expired December 31, 2025 — remaining rebates are utility-specific, typically a few hundred dollars, and require paying for the insulation work first; it is a discount, not income.",
+ "notes": "CORRECTION vs the route: the $1,000 top end was reachable under the old federal 25C credit; 2026 reality is utility rebates in the low hundreds. energy.gov/savings failed to load this session, so the live-utility channel is verified via DSIRE instead. PRODUCT NOTE: insulation rebates are purchase discounts, not earnings. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 1200.0,
+ "payout_value_note": "'up to' amount in official terms; floor $0",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Utility rebates are typically paid 4-8 weeks after the insulation work is completed and documented. The federal 25C credit is closed for property placed in service after December 31, 2025.",
+ "maximize": "Fastest honest path: Utility rebates are typically paid 4-8 weeks after the insulation work is completed and documented. The federal 25C credit is closed for property placed in service after December 31, 2025. Structural blocker: this route is a directory of offers, not a single payment. Actual rebates pay per program: typically 4-8 weeks mail-in/online, or instant point-of-sale discounts in-store. These are purchase discounts (savings on planned spending), not cash income."
 }

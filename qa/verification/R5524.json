@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Both sides must take action for either to be paid: the friend must not only sign up for service but also create an online account with Hall via MyFuelPortal — a friend who signs up offline or never registers online earns neither of you anything.",
+ "catches": [
+  "Both you and the friend each earn $50 only after the friend signs up for service AND creates an online account with Hall.",
+  "Referrals are made through the MyFuelPortal customer portal — you need an online account to refer.",
+  "Credits are account credits that offset planned propane spending, never cash.",
+  "Hall serves North Carolina and Virginia communities only (Walnut Cove, Clemmons, Mt. Airy NC; Stuart, Galax, Wytheville, Rocky Mount VA).",
+  "No stated referral cap or end date — confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (hallpropane.com); referral program confirmed on the live propane FAQs page."
   },
-  "biggest_catch": "Both sides must take action for either to be paid: the friend must not only sign up for service but also create an online account with Hall via MyFuelPortal — a friend who signs up offline or never registers online earns neither of you anything.",
-  "catches": [
-    "Both you and the friend each earn $50 only after the friend signs up for service AND creates an online account with Hall.",
-    "Referrals are made through the MyFuelPortal customer portal — you need an online account to refer.",
-    "Credits are account credits that offset planned propane spending, never cash.",
-    "Hall serves North Carolina and Virginia communities only (Walnut Cove, Clemmons, Mt. Airy NC; Stuart, Galax, Wytheville, Rocky Mount VA).",
-    "No stated referral cap or end date — confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (hallpropane.com); referral program confirmed on the live propane FAQs page."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts and dual-trigger conditions stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Hall Propane."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts and dual-trigger conditions stated on the official page."
   },
-  "eligibility": "Existing Hall Propane customers with a MyFuelPortal online account; referred person must be a new customer who signs up for service and creates an online account with Hall in NC/VA.",
-  "notes": "Two-sided referral: both you and the friend earn a $50 account credit. Credits offset planned propane spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($50 account credit per side per qualifying referral); time: referral share 5-15 min active",
-  "official_url": "https://hallpropane.com/propane-faqs/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Both you and your friend can earn a $50 account credit once they sign up for service and create an online account with Hall.",
-  "payout_value_note": "$50 account credit per side (referrer and referred customer) per qualifying referral; offsets planned propane spending (savings).",
-  "route_id": "R5524",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Hall Propane customer with a MyFuelPortal account."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Refer a friend through MyFuelPortal."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The friend signs up for Hall service and creates an online account with Hall."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Both you and your friend earn a $50 account credit."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credits are account credits offsetting propane purchases; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Hall's North Carolina and Virginia service area."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No referral cap stated; confirm program currency before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
   },
-  "steps": [
-    "As an existing Hall Propane customer, refer a friend through MyFuelPortal.",
-    "The friend signs up for Hall Propane service.",
-    "The friend creates an online account with Hall.",
-    "Both you and your friend receive a $50 account credit."
-  ],
-  "terms_url": "https://hallpropane.com/propane-faqs/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits are earned after the friend signs up for service and creates an online account.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Hall Propane."
+  }
+ },
+ "eligibility": "Existing Hall Propane customers with a MyFuelPortal online account; referred person must be a new customer who signs up for service and creates an online account with Hall in NC/VA.",
+ "notes": "Two-sided referral: both you and the friend earn a $50 account credit. Credits offset planned propane spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($50 account credit per side per qualifying referral); time: referral share 5-15 min active",
+ "official_url": "https://hallpropane.com/propane-faqs/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Both you and your friend can earn a $50 account credit once they sign up for service and create an online account with Hall.",
+ "payout_value_note": "$50 account credit per side (referrer and referred customer) per qualifying referral; offsets planned propane spending (savings).",
+ "route_id": "R5524",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Hall Propane customer with a MyFuelPortal account."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Refer a friend through MyFuelPortal."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The friend signs up for Hall service and creates an online account with Hall."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Both you and your friend earn a $50 account credit."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credits are account credits offsetting propane purchases; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Hall's North Carolina and Virginia service area."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No referral cap stated; confirm program currency before sharing."
+  }
+ },
+ "steps": [
+  "As an existing Hall Propane customer, refer a friend through MyFuelPortal.",
+  "The friend signs up for Hall Propane service.",
+  "The friend creates an online account with Hall.",
+  "Both you and your friend receive a $50 account credit."
+ ],
+ "terms_url": "https://hallpropane.com/propane-faqs/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits are earned after the friend signs up for service and creates an online account.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits are earned after the friend signs up for service and creates an online account.",
+ "maximize": "Fastest honest path: Credits are earned after the friend signs up for service and creates an online account. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

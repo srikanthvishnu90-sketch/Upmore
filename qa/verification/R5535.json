@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Neither of you gets anything unless the friend is a homeowner AND takes at least two eligible services (energy, broadband, mobile, insurance) — a renter, or a friend who takes only energy, earns you both nothing.",
+ "catches": [
+  "The friend must be a homeowner and switch at least two eligible services (Energy, Broadband, Mobile, Home Cover, Income Protector Insurance); Home Insurance and Bill Protector are excluded.",
+  "If the friend takes only one service, neither of you receives a Referral Bonus.",
+  "The Referral Bonus is paid on the second bill in the Credits & Debits section, only once all eligible services go live.",
+  "If the friend leaves during the cooling-off period or cancels a qualifying service, no bonus is paid.",
+  "For non-commercial use only — no paid promotions to share your personalised link.",
+  "UK homeowners only; confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (uw.co.uk); UW Customer Referrals page live with detailed FAQs."
   },
-  "biggest_catch": "Neither of you gets anything unless the friend is a homeowner AND takes at least two eligible services (energy, broadband, mobile, insurance) — a renter, or a friend who takes only energy, earns you both nothing.",
-  "catches": [
-    "The friend must be a homeowner and switch at least two eligible services (Energy, Broadband, Mobile, Home Cover, Income Protector Insurance); Home Insurance and Bill Protector are excluded.",
-    "If the friend takes only one service, neither of you receives a Referral Bonus.",
-    "The Referral Bonus is paid on the second bill in the Credits & Debits section, only once all eligible services go live.",
-    "If the friend leaves during the cooling-off period or cancels a qualifying service, no bonus is paid.",
-    "For non-commercial use only — no paid promotions to share your personalised link.",
-    "UK homeowners only; confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (uw.co.uk); UW Customer Referrals page live with detailed FAQs."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts, two-service requirement, and payout timing stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned utility spending (bill credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Utility Warehouse."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts, two-service requirement, and payout timing stated on the official page."
   },
-  "eligibility": "Existing Utility Warehouse customers; referred person must be a UK homeowner taking at least two eligible services.",
-  "notes": "Two-sided referral: you and the friend each get a £50 bill credit once the friend's two eligible services are live. Credit offsets planned utility spending (savings), never income.",
-  "numeric_basis": "payout from official terms (£50 bill credit per side per qualifying referral, converted at GBP→USD 1.334); time: referral share 5-15 min active",
-  "official_url": "https://uw.co.uk/ref/customer/JHMKVG3",
-  "payout_max_usd": 67,
-  "payout_min_usd": 67,
-  "payout_quote": "When your services are live, you'll get a £50 referral bonus on your bill.",
-  "payout_value_note": "£50 bill credit per side (≈$66.70 at GBP→USD 1.334); offsets planned utility spending (savings).",
-  "route_id": "R5535",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Utility Warehouse customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Share your referral link with a friend via My Account or the UW app."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The friend joins as a homeowner with at least two eligible services."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Once the friend's eligible services are live, your Referral Bonus is paid on your second bill."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credits are bill credits offsetting utility spending; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "United Kingdom."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No referral limit; non-commercial use only; confirm program currency before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned utility spending (bill credit), never income."
   },
-  "steps": [
-    "As an existing Utility Warehouse customer, share your referral link with a friend.",
-    "The friend joins as a homeowner, switching at least two eligible services.",
-    "The friend's eligible services go live.",
-    "The £50 Referral Bonus is paid on your second bill in the Credits & Debits section."
-  ],
-  "terms_url": "https://uw.co.uk/ref/customer/JHMKVG3",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Referral Bonus is paid on the second bill once all eligible services go live.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Utility Warehouse."
+  }
+ },
+ "eligibility": "Existing Utility Warehouse customers; referred person must be a UK homeowner taking at least two eligible services.",
+ "notes": "Two-sided referral: you and the friend each get a £50 bill credit once the friend's two eligible services are live. Credit offsets planned utility spending (savings), never income.",
+ "numeric_basis": "payout from official terms (£50 bill credit per side per qualifying referral, converted at GBP→USD 1.334); time: referral share 5-15 min active",
+ "official_url": "https://uw.co.uk/ref/customer/JHMKVG3",
+ "payout_max_usd": 67,
+ "payout_min_usd": 67,
+ "payout_quote": "When your services are live, you'll get a £50 referral bonus on your bill.",
+ "payout_value_note": "£50 bill credit per side (≈$66.70 at GBP→USD 1.334); offsets planned utility spending (savings).",
+ "route_id": "R5535",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Utility Warehouse customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Share your referral link with a friend via My Account or the UW app."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The friend joins as a homeowner with at least two eligible services."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Once the friend's eligible services are live, your Referral Bonus is paid on your second bill."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credits are bill credits offsetting utility spending; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "United Kingdom."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No referral limit; non-commercial use only; confirm program currency before sharing."
+  }
+ },
+ "steps": [
+  "As an existing Utility Warehouse customer, share your referral link with a friend.",
+  "The friend joins as a homeowner, switching at least two eligible services.",
+  "The friend's eligible services go live.",
+  "The £50 Referral Bonus is paid on your second bill in the Credits & Debits section."
+ ],
+ "terms_url": "https://uw.co.uk/ref/customer/JHMKVG3",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Referral Bonus is paid on the second bill once all eligible services go live.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Referral Bonus is paid on the second bill once all eligible services go live.",
+ "maximize": "Fastest honest path: Referral Bonus is paid on the second bill once all eligible services go live. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

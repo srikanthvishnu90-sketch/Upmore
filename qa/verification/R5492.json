@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Threshold trap: the $150 credit ONLY applies in months you use 2,000 kWh or more — use less and you get no credit at all, while the plan's underlying rate may still be higher than a cheaper basic plan.",
+ "catches": [
+  "The $150 bill credit applies only in billing cycles where your usage is at or above 2,000 kWh; below the threshold there is no credit.",
+  "Plan-rate risk: always compare the Discount Deals plan's total bill against competing plans at YOUR usage level — the credit only wins for high-usage households.",
+  "Early-termination fees may apply if you leave the plan early — check the plan's disclosure PDF before enrolling.",
+  "Credit reduces the bill — savings on planned energy spending, not income.",
+  "Texas-only plan from Discount Power.",
+  "No credit in any billing cycle with usage below 2,000 kWh; the $150 is a bill credit, not cash."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url discountpowertx.com/en/our-plans/discount-deals (official Discount Deals plan page); terms_url is the official plan disclosure PDF (defl) on discountpowertx.com dated 2026-09-01.",
+   "pass": true
   },
-  "biggest_catch": "Threshold trap: the $150 credit ONLY applies in months you use 2,000 kWh or more — use less and you get no credit at all, while the plan's underlying rate may still be higher than a cheaper basic plan.",
-  "catches": [
-    "The $150 bill credit applies only in billing cycles where your usage is at or above 2,000 kWh; below the threshold there is no credit.",
-    "Plan-rate risk: always compare the Discount Deals plan's total bill against competing plans at YOUR usage level — the credit only wins for high-usage households.",
-    "Early-termination fees may apply if you leave the plan early — check the plan's disclosure PDF before enrolling.",
-    "Credit reduces the bill — savings on planned energy spending, not income.",
-    "Texas-only plan from Discount Power.",
-    "No credit in any billing cycle with usage below 2,000 kWh; the $150 is a bill credit, not cash."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url discountpowertx.com/en/our-plans/discount-deals (official Discount Deals plan page); terms_url is the official plan disclosure PDF (defl) on discountpowertx.com dated 2026-09-01.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Current: plan page and disclosure PDF (dated 2026-09-01) live.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact credit amount and usage threshold stated verbatim on the official plan page/disclosure.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount and threshold stated; ETF and rate comparison are the standard plan-rate caveats, disclosed in the plan's official disclosure PDF.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Current: plan page and disclosure PDF (dated 2026-09-01) live.",
+   "pass": true
   },
-  "eligibility": "Texas residential customer enrolling in Discount Power's Discount Deals plan and using 2,000+ kWh in a billing cycle.",
-  "notes": "Verified 2026-09-23. Discount Power's Bill Credit Bundle 2000 kWh plans (marketed under Discount Deals) pay a $150 usage credit in each billing cycle with usage >= 2,000 kWh, per current EFLs on discountpowertx.com (Oncor 06/01/2026; AEP Texas North 03/20/2026; CenterPoint 05/18/2026). Credit reduces the electricity bill — savings on planned spending, not income.",
-  "numeric_basis": "payout from official terms ($150 bill credit in any month with 2,000+ kWh usage); time: plan signup 15-30 min active",
-  "official_url": "https://www.discountpowertx.com/en/our-plans/discount-deals",
-  "payout_max_usd": 150,
-  "payout_min_usd": 150,
-  "payout_quote": "A Usage Credit of $150.00 will be included for each billing cycle when your usage on this plan is above or equal to 2,000 kWh. There is no Usage Credit for a billing cycle when usage on this plan is below 2,000 kWh.",
-  "payout_value_note": "$150 bill credit applied in each month the household uses 2,000 kWh or more — reduces your electricity bill; savings, not income.",
-  "route_id": "R5492",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($150/month) and threshold (2,000+ kWh) stated verbatim on the official plan page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credit reduces planned electricity spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete process (shop plan, read disclosure PDF, enroll, credit applies on qualifying bills).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: threshold trap plus plan-rate/ETF risk.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the plan itself; no extra purchase.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; amount and threshold explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against discountpowertx.com (provider's own domain). Deduped: distinct mechanism from R5488 referral.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact credit amount and usage threshold stated verbatim on the official plan page/disclosure.",
+   "pass": true
   },
-  "steps": [
-    "Go to the Discount Power Discount Deals plan page.",
-    "Read the plan's disclosure PDF (defl) for rates, terms, and early-termination fees.",
-    "Compare the total bill at your usage level against other plans.",
-    "Enroll in the Discount Deals plan.",
-    "Receive a $150 bill credit in every month your usage is 2,000 kWh or more."
-  ],
-  "terms_url": "https://www.discountpowertx.com/defl/M1F00176415199C.pdf",
-  "time_max_minutes": 30,
-  "time_min_minutes": 15,
-  "timing": "Credit applies on each monthly bill where usage reaches 2,000+ kWh.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount and threshold stated; ETF and rate comparison are the standard plan-rate caveats, disclosed in the plan's official disclosure PDF.",
+   "pass": true
+  }
+ },
+ "eligibility": "Texas residential customer enrolling in Discount Power's Discount Deals plan and using 2,000+ kWh in a billing cycle.",
+ "notes": "Verified 2026-09-23. Discount Power's Bill Credit Bundle 2000 kWh plans (marketed under Discount Deals) pay a $150 usage credit in each billing cycle with usage >= 2,000 kWh, per current EFLs on discountpowertx.com (Oncor 06/01/2026; AEP Texas North 03/20/2026; CenterPoint 05/18/2026). Credit reduces the electricity bill — savings on planned spending, not income.",
+ "numeric_basis": "payout from official terms ($150 bill credit in any month with 2,000+ kWh usage); time: plan signup 15-30 min active",
+ "official_url": "https://www.discountpowertx.com/en/our-plans/discount-deals",
+ "payout_max_usd": 150,
+ "payout_min_usd": 150,
+ "payout_quote": "A Usage Credit of $150.00 will be included for each billing cycle when your usage on this plan is above or equal to 2,000 kWh. There is no Usage Credit for a billing cycle when usage on this plan is below 2,000 kWh.",
+ "payout_value_note": "$150 bill credit applied in each month the household uses 2,000 kWh or more — reduces your electricity bill; savings, not income.",
+ "route_id": "R5492",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($150/month) and threshold (2,000+ kWh) stated verbatim on the official plan page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credit reduces planned electricity spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete process (shop plan, read disclosure PDF, enroll, credit applies on qualifying bills).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: threshold trap plus plan-rate/ETF risk.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the plan itself; no extra purchase.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; amount and threshold explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against discountpowertx.com (provider's own domain). Deduped: distinct mechanism from R5488 referral.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Go to the Discount Power Discount Deals plan page.",
+  "Read the plan's disclosure PDF (defl) for rates, terms, and early-termination fees.",
+  "Compare the total bill at your usage level against other plans.",
+  "Enroll in the Discount Deals plan.",
+  "Receive a $150 bill credit in every month your usage is 2,000 kWh or more."
+ ],
+ "terms_url": "https://www.discountpowertx.com/defl/M1F00176415199C.pdf",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Credit applies on each monthly bill where usage reaches 2,000+ kWh.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit applies on each monthly bill where usage reaches 2,000+ kWh.",
+ "maximize": "Fastest honest path: Credit applies on each monthly bill where usage reaches 2,000+ kWh. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

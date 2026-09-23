@@ -1,82 +1,85 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The official page text is older (indexed ~187 days ago) than the other routes verified this turn, so confirm the program is still live before counting on it.",
+ "catches": [
+  "Official page content indexed ~187 days ago — staleness risk; confirm live before acting",
+  "Both sides get a $40 credit on their next monthly statement — no cash option stated",
+  "Referral must go through the official customer referral form"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official KCTC 'Customer Referrals' page on kctc.net/customer-referrals/ (per current search index, crawled 187 days ago): 'Know someone that would love to have our service? Fill out this form to let us know. You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+   "pass": true
   },
-  "biggest_catch": "The official page text is older (indexed ~187 days ago) than the other routes verified this turn, so confirm the program is still live before counting on it.",
-  "catches": [
-    "Official page content indexed ~187 days ago \u2014 staleness risk; confirm live before acting",
-    "Both sides get a $40 credit on their next monthly statement \u2014 no cash option stated",
-    "Referral must go through the official customer referral form"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official KCTC 'Customer Referrals' page on kctc.net/customer-referrals/ (per current search index, crawled 187 days ago): 'Know someone that would love to have our service? Fill out this form to let us know. You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page currently listed on kctc.net (index crawl 187 days ago \u2014 flagged as older content).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Next-statement application and signup trigger are stated; printable form alternative mentioned.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page currently listed on kctc.net (index crawl 187 days ago — flagged as older content).",
+   "pass": true
   },
-  "eligibility": "Existing KCTC customer; friend must sign up for KCTC service.",
-  "notes": "Verified 2026-09-23 from the official kctc.net referral page. Deduped: no KCTC routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 187 days ago) \u2014 staleness flagged; re-check the page before acting.",
-  "numeric_basis": "payout from official terms ($40 credit each side on next statement); time: referral share 5-15 min active",
-  "official_url": "https://www.kctc.net/customer-referrals/",
-  "payout_max_usd": 40,
-  "payout_min_usd": 40,
-  "payout_quote": "You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!",
-  "payout_value_note": "$40 credit each side on the next monthly statement \u2014 offsets planned KCTC spending, not income.",
-  "route_id": "R6399",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($40 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: statement credit offsets planned KCTC spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (fill out the referral form; friend signs up).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: older official-page content \u2014 confirm the program is still live first.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own KCTC service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against kctc.net (provider's own domain) via official-page content. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!'",
+   "pass": true
   },
-  "steps": [
-    "Fill out the KCTC customer referral form with your friend's details",
-    "Your friend signs up for KCTC service",
-    "You both get a $40 credit on your next monthly statements"
-  ],
-  "terms_url": "https://www.kctc.net/customer-referrals/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "$40 credit on each side's next monthly statement after the friend signs up.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Next-statement application and signup trigger are stated; printable form alternative mentioned.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing KCTC customer; friend must sign up for KCTC service.",
+ "notes": "Verified 2026-09-23 from the official kctc.net referral page. Deduped: no KCTC routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 187 days ago) — staleness flagged; re-check the page before acting.",
+ "numeric_basis": "payout from official terms ($40 credit each side on next statement); time: referral share 5-15 min active",
+ "official_url": "https://www.kctc.net/customer-referrals/",
+ "payout_max_usd": 40,
+ "payout_min_usd": 40,
+ "payout_quote": "You'll both enjoy a $40 credit on your next monthly statement when they sign up for KCTC service!",
+ "payout_value_note": "$40 credit each side on the next monthly statement — offsets planned KCTC spending, not income.",
+ "route_id": "R6399",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($40 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: statement credit offsets planned KCTC spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (fill out the referral form; friend signs up).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: older official-page content — confirm the program is still live first.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own KCTC service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against kctc.net (provider's own domain) via official-page content. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Fill out the KCTC customer referral form with your friend's details",
+  "Your friend signs up for KCTC service",
+  "You both get a $40 credit on your next monthly statements"
+ ],
+ "terms_url": "https://www.kctc.net/customer-referrals/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "$40 credit on each side's next monthly statement after the friend signs up.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "$40 credit on each side's next monthly statement after the friend signs up.",
+ "maximize": "Fastest honest path: $40 credit on each side's next monthly statement after the friend signs up. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

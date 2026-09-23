@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The credit size depends on the fuel mix: £60 if the referred person switches both fuels (dual fuel), but only £30 if they switch a single fuel — and the credit is only applied once the referred individual has remained on supply for at least 28 days.",
+ "catches": [
+  "The credit is applied only after the referred individual switches to ScottishPower and remains on supply for at least 28 days.",
+  "£60 credit for a dual fuel switch; £30 credit for a single fuel switch.",
+  "The page headline says 'share up to £120 credit,' implying the £60 dual-fuel credit can be shared between both parties.",
+  "Referrer must be a ScottishPower energy customer.",
+  "UK only; page last updated 14 April 2026 — confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (scottishpower.co.uk); referral terms live on an official support page, last updated 14 April 2026."
   },
-  "biggest_catch": "The credit size depends on the fuel mix: £60 if the referred person switches both fuels (dual fuel), but only £30 if they switch a single fuel — and the credit is only applied once the referred individual has remained on supply for at least 28 days.",
-  "catches": [
-    "The credit is applied only after the referred individual switches to ScottishPower and remains on supply for at least 28 days.",
-    "£60 credit for a dual fuel switch; £30 credit for a single fuel switch.",
-    "The page headline says 'share up to £120 credit,' implying the £60 dual-fuel credit can be shared between both parties.",
-    "Referrer must be a ScottishPower energy customer.",
-    "UK only; page last updated 14 April 2026 — confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (scottishpower.co.uk); referral terms live on an official support page, last updated 14 April 2026."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts, fuel-dependent tiers, and the 28-day supply condition stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for ScottishPower."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts, fuel-dependent tiers, and the 28-day supply condition stated on the official page."
   },
-  "eligibility": "Existing ScottishPower energy customers; referred person must switch to ScottishPower and remain on supply for at least 28 days. UK.",
-  "notes": "Referral earns a £60 account credit for a dual fuel switch or £30 for a single fuel switch; the 'up to £120' headline implies the credit is shared between referrer and friend. Credit offsets planned energy spending (savings), never income.",
-  "numeric_basis": "payout from official terms (£60 dual fuel / £30 single fuel per qualifying referral, converted at GBP→USD 1.334); time: referral share 5-15 min active",
-  "official_url": "https://www.scottishpower.co.uk/referral-offer",
-  "payout_max_usd": 80,
-  "payout_min_usd": 40,
-  "payout_quote": "Eligible account credits will be applied once the Referred Individual switches to ScottishPower and remains on supply for at least 28 days. A £60 credit will apply to a dual fuel switch. A £30 credit will apply to a single fuel switch. Official referral page: 'Once you've been on supply for 28 days, you both celebrate getting up to £60 credit each!'",
-  "payout_value_note": "£60 account credit EACH (referrer and referred) for a dual-fuel switch / £30 each for a single-fuel switch (≈$80 / ≈$40 each at GBP→USD 1.334); offsets planned energy spending (savings).",
-  "route_id": "R5528",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing ScottishPower energy customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Refer a friend to switch to ScottishPower."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referred person switches and remains on supply for at least 28 days."
-    },
-    "s4": {
-      "pass": true,
-      "note": "A £60 (dual fuel) or £30 (single fuel) credit is applied to the account."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credits are account credits offsetting energy bills; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "United Kingdom."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Unlimited invites stated; confirm program currency before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (account credit), never income."
   },
-  "steps": [
-    "As an existing ScottishPower energy customer, refer a friend to switch.",
-    "The referred person switches their energy supply to ScottishPower.",
-    "The referred person remains on supply for at least 28 days.",
-    "The account credit is applied: £60 for dual fuel, £30 for single fuel."
-  ],
-  "terms_url": "https://www.scottishpower.co.uk/referral-offer",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit is applied after the referred individual has remained on supply for at least 28 days.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for ScottishPower."
+  }
+ },
+ "eligibility": "Existing ScottishPower energy customers; referred person must switch to ScottishPower and remain on supply for at least 28 days. UK.",
+ "notes": "Referral earns a £60 account credit for a dual fuel switch or £30 for a single fuel switch; the 'up to £120' headline implies the credit is shared between referrer and friend. Credit offsets planned energy spending (savings), never income.",
+ "numeric_basis": "payout from official terms (£60 dual fuel / £30 single fuel per qualifying referral, converted at GBP→USD 1.334); time: referral share 5-15 min active",
+ "official_url": "https://www.scottishpower.co.uk/referral-offer",
+ "payout_max_usd": 80,
+ "payout_min_usd": 40,
+ "payout_quote": "Eligible account credits will be applied once the Referred Individual switches to ScottishPower and remains on supply for at least 28 days. A £60 credit will apply to a dual fuel switch. A £30 credit will apply to a single fuel switch. Official referral page: 'Once you've been on supply for 28 days, you both celebrate getting up to £60 credit each!'",
+ "payout_value_note": "£60 account credit EACH (referrer and referred) for a dual-fuel switch / £30 each for a single-fuel switch (≈$80 / ≈$40 each at GBP→USD 1.334); offsets planned energy spending (savings).",
+ "route_id": "R5528",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing ScottishPower energy customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Refer a friend to switch to ScottishPower."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referred person switches and remains on supply for at least 28 days."
+  },
+  "s4": {
+   "pass": true,
+   "note": "A £60 (dual fuel) or £30 (single fuel) credit is applied to the account."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credits are account credits offsetting energy bills; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "United Kingdom."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Unlimited invites stated; confirm program currency before sharing."
+  }
+ },
+ "steps": [
+  "As an existing ScottishPower energy customer, refer a friend to switch.",
+  "The referred person switches their energy supply to ScottishPower.",
+  "The referred person remains on supply for at least 28 days.",
+  "The account credit is applied: £60 for dual fuel, £30 for single fuel."
+ ],
+ "terms_url": "https://www.scottishpower.co.uk/referral-offer",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit is applied after the referred individual has remained on supply for at least 28 days.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit is applied after the referred individual has remained on supply for at least 28 days.",
+ "maximize": "Fastest honest path: Credit is applied after the referred individual has remained on supply for at least 28 days. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

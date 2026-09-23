@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The headline $50 is a one-time bill credit tied to demand-response enrollment and participation — not recurring monthly income.",
+ "catches": [
+  "Requires a compatible smart thermostat or the app.",
+  "The reward is a bill credit plus a discount on energy charges — savings on planned spending, not cash.",
+  "Demand-response event participation terms apply."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider's own benefit-programs page (amigoenergy.com/benefit-programs/) loaded and states the $50 bill credit terms.",
+   "pass": true
   },
-  "biggest_catch": "The headline $50 is a one-time bill credit tied to demand-response enrollment and participation — not recurring monthly income.",
-  "catches": [
-    "Requires a compatible smart thermostat or the app.",
-    "The reward is a bill credit plus a discount on energy charges — savings on planned spending, not cash.",
-    "Demand-response event participation terms apply."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider's own benefit-programs page (amigoenergy.com/benefit-programs/) loaded and states the $50 bill credit terms.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Concrete amount on the provider's own page: $50 bill credit plus a half-cent per kWh discount.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to enroll in the program.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Terms live and current as of the 2026-09-23 check.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Concrete amount on the provider's own page: $50 bill credit plus a half-cent per kWh discount.",
+   "pass": true
   },
-  "eligibility": "Amigo Energy customers on eligible plans with a compatible smart thermostat or the app.",
-  "notes": "Demand-response reward framed as savings on planned energy spending, not income. Distinct from R1880 Amigo refer-a-friend (different mechanism).",
-  "numeric_basis": "payout from official benefit-programs page ($50 bill credit); time: program enrollment est. 10-20 min active",
-  "official_url": "https://amigoenergy.com/benefit-programs/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "When energy demand peaks, we'll give your smart thermostat or app a heads-up to help you conserve energy. You will enjoy a cool $50 bill credit and a slick half-cent discount per kWh off your energy charges.",
-  "payout_value_note": "$50 bill credit plus a half-cent per kWh discount on energy charges via demand-response program enrollment.",
-  "route_id": "R1881",
-  "standard": {
-    "s1": {
-      "note": "Amigo customers on eligible plans with a compatible smart thermostat or app, per the provider's own page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No enrollment fee.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bill credit issued on program enrollment/participation.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Payout stated exactly with no weasel words.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official benefit-programs page loaded live on 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: enroll, connect thermostat/app, respond to peak-demand events.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Checked 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to enroll in the program.",
+   "pass": true
   },
-  "steps": [
-    "Enroll in an eligible Amigo Energy plan.",
-    "Opt into the Stat Rewards demand-response program with a compatible smart thermostat or the app.",
-    "Respond to peak-demand conservation events.",
-    "Receive the $50 bill credit and the half-cent per kWh discount on your energy charges."
-  ],
-  "terms_url": "https://amigoenergy.com/benefit-programs/",
-  "time_max_minutes": 20,
-  "time_min_minutes": 10,
-  "timing": "Enrollment takes 10-20 minutes; the credit applies on program enrollment/participation.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Terms live and current as of the 2026-09-23 check.",
+   "pass": true
+  }
+ },
+ "eligibility": "Amigo Energy customers on eligible plans with a compatible smart thermostat or the app.",
+ "notes": "Demand-response reward framed as savings on planned energy spending, not income. Distinct from R1880 Amigo refer-a-friend (different mechanism).",
+ "numeric_basis": "payout from official benefit-programs page ($50 bill credit); time: program enrollment est. 10-20 min active",
+ "official_url": "https://amigoenergy.com/benefit-programs/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "When energy demand peaks, we'll give your smart thermostat or app a heads-up to help you conserve energy. You will enjoy a cool $50 bill credit and a slick half-cent discount per kWh off your energy charges.",
+ "payout_value_note": "$50 bill credit plus a half-cent per kWh discount on energy charges via demand-response program enrollment.",
+ "route_id": "R1881",
+ "standard": {
+  "s1": {
+   "note": "Amigo customers on eligible plans with a compatible smart thermostat or app, per the provider's own page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No enrollment fee.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bill credit issued on program enrollment/participation.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Payout stated exactly with no weasel words.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official benefit-programs page loaded live on 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: enroll, connect thermostat/app, respond to peak-demand events.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Enroll in an eligible Amigo Energy plan.",
+  "Opt into the Stat Rewards demand-response program with a compatible smart thermostat or the app.",
+  "Respond to peak-demand conservation events.",
+  "Receive the $50 bill credit and the half-cent per kWh discount on your energy charges."
+ ],
+ "terms_url": "https://amigoenergy.com/benefit-programs/",
+ "time_max_minutes": 20,
+ "time_min_minutes": 10,
+ "timing": "Enrollment takes 10-20 minutes; the credit applies on program enrollment/participation.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Enrollment takes 10-20 minutes; the credit applies on program enrollment/participation.",
+ "maximize": "Fastest honest path: Enrollment takes 10-20 minutes; the credit applies on program enrollment/participation. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

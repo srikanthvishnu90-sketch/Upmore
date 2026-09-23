@@ -1,85 +1,96 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's $20 in H2O Rewards credit per side — usable only toward H2O Wireless refills, not cash — and your credit only lands after your friend activates their service.",
+ "catches": [
+  "Rewards credit only — applied toward H2O Wireless refills, not cash and not transferable",
+  "Your $20 credit arrives only after your referred friend activates their H2O Wireless service (within 1-7 business days)",
+  "Up to 10 referrals per month (120 per year)",
+  "An older H2O page mentions a $30 promo from 2022; the current official figure is $20 each"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official H2O Wireless blog on h2owireless.com (fetched live 2026-09-23): 'You + Your Bestie = $20 Bucks Each. For every friend you refer to H2O Wireless, you get a $20 bill credit, and your friend does, too.' Official referral coupon page on h2owireless.com confirms the friend's $20 H2O Rewards Credit at activation/port-in.",
+   "pass": true
   },
-  "biggest_catch": "It's $20 in H2O Rewards credit per side \u2014 usable only toward H2O Wireless refills, not cash \u2014 and your credit only lands after your friend activates their service.",
-  "catches": [
-    "Rewards credit only \u2014 applied toward H2O Wireless refills, not cash and not transferable",
-    "Your $20 credit arrives only after your referred friend activates their H2O Wireless service (within 1-7 business days)",
-    "Up to 10 referrals per month (120 per year)",
-    "An older H2O page mentions a $30 promo from 2022; the current official figure is $20 each"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official H2O Wireless blog on h2owireless.com (fetched live 2026-09-23): 'You + Your Bestie = $20 Bucks Each. For every friend you refer to H2O Wireless, you get a $20 bill credit, and your friend does, too.' Official referral coupon page on h2owireless.com confirms the friend's $20 H2O Rewards Credit at activation/port-in.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official blog crawled 1 day ago and fetched live 2026-09-23; referral coupon page crawled 3 days ago \u2014 current.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'you get a $20 bill credit, and your friend does, too.' Friend-side: '$20 H2O Rewards Credit ... added on your rewards account at the time of activation/port in'.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "1-7 business day payout window, activation requirement, and 10/month cap stated on the official pages.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official blog crawled 1 day ago and fetched live 2026-09-23; referral coupon page crawled 3 days ago — current.",
+   "pass": true
   },
-  "eligibility": "Existing H2O Wireless customer enrolled in the Refer a Friend program; friend signs up for H2O Wireless with the referrer's code and activates service.",
-  "notes": "Verified 2026-09-23 by live fetch of h2owireless.com/blog article plus the official h2owireless.com/refer-a-friend coupon page (official domains). Deduped: no H2O Wireless routes in catalog, evidence files, or rejects-g60.",
-  "numeric_basis": "payout from official terms ($20 bill/rewards credit to both sides); time: referral share 5-15 min active",
-  "official_url": "https://www.h2owireless.com/blog/unlock-rewards-the-perks-of-participating-in-customer-referral-programs",
-  "payout_max_usd": 20,
-  "payout_min_usd": 20,
-  "payout_quote": "You + Your Bestie = $20 Bucks Each. For every friend you refer to H2O Wireless, you get a $20 bill credit, and your friend does, too.",
-  "payout_value_note": "$20 H2O Rewards/bill credit to both the referrer and the friend \u2014 offsets H2O Wireless service, not cash.",
-  "route_id": "R6359",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($20 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned H2O Wireless spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official pages (enroll online, get unique code, friend signs up with code and activates, credit within 1-7 business days).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: rewards credit only, paid after friend activates.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own H2O Wireless plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against h2owireless.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'you get a $20 bill credit, and your friend does, too.' Friend-side: '$20 H2O Rewards Credit ... added on your rewards account at the time of activation/port in'.",
+   "pass": true
   },
-  "steps": [
-    "Sign up for the H2O Wireless Refer a Friend program online",
-    "Receive your unique referral code",
-    "Share the code with friends and family",
-    "Friend signs up for H2O Wireless using your code and activates their service",
-    "Friend's $20 rewards credit is added at activation/port-in; your $20 credit arrives within 1-7 business days"
-  ],
-  "terms_url": "https://www.h2owireless.com/refer-a-friend/coupon/ZzU3c3I5",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Friend's $20 credit lands at activation/port-in; referrer's $20 credit arrives within 1-7 business days after the friend activates.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "1-7 business day payout window, activation requirement, and 10/month cap stated on the official pages.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing H2O Wireless customer enrolled in the Refer a Friend program; friend signs up for H2O Wireless with the referrer's code and activates service.",
+ "notes": "Verified 2026-09-23 by live fetch of h2owireless.com/blog article plus the official h2owireless.com/refer-a-friend coupon page (official domains). Deduped: no H2O Wireless routes in catalog, evidence files, or rejects-g60.",
+ "numeric_basis": "payout from official terms ($20 bill/rewards credit to both sides); time: referral share 5-15 min active",
+ "official_url": "https://www.h2owireless.com/blog/unlock-rewards-the-perks-of-participating-in-customer-referral-programs",
+ "payout_max_usd": 20,
+ "payout_min_usd": 20,
+ "payout_quote": "You + Your Bestie = $20 Bucks Each. For every friend you refer to H2O Wireless, you get a $20 bill credit, and your friend does, too.",
+ "payout_value_note": "$20 H2O Rewards/bill credit to both the referrer and the friend — offsets H2O Wireless service, not cash.",
+ "route_id": "R6359",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($20 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned H2O Wireless spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official pages (enroll online, get unique code, friend signs up with code and activates, credit within 1-7 business days).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: rewards credit only, paid after friend activates.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own H2O Wireless plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against h2owireless.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Sign up for the H2O Wireless Refer a Friend program online",
+  "Receive your unique referral code",
+  "Share the code with friends and family",
+  "Friend signs up for H2O Wireless using your code and activates their service",
+  "Friend's $20 rewards credit is added at activation/port-in; your $20 credit arrives within 1-7 business days"
+ ],
+ "terms_url": "https://www.h2owireless.com/refer-a-friend/coupon/ZzU3c3I5",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Friend's $20 credit lands at activation/port-in; referrer's $20 credit arrives within 1-7 business days after the friend activates.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "days",
+ "when_cash_arrives": "Friend's $20 credit lands at activation/port-in; referrer's $20 within 1-7 business days of friend activation.",
+ "maximize": "Hidden fast path: H2O Wireless official blog (h2owireless.com, verified live 2026-09-23): 'When your referred friend activates their H2O Wireless service, your rewards credit will be received within 1-7 business days.' Friend's $20 lands at activation/port-in. Honest framing: H2O Rewards credit for refills only, not cash.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "days",
+   "rationale": "Hidden fast path: H2O Wireless official blog (h2owireless.com, verified live 2026-09-23): 'When your referred friend activates their H2O Wireless service, your rewards credit will be received within 1-7 business days.' Friend's $20 lands at activation/port-in. Honest framing: H2O Rewards credit for refills only, not cash."
+  }
+ ]
 }

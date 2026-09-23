@@ -1,101 +1,104 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=com.instawork",
-  "ios": "https://apps.apple.com/app/instawork-be-your-own-boss/id1074573288"
- },
- "biggest_catch": "Same-day pay (Instapay) costs you 5% of every payout ($5 flat in CA) \u2014 free weekly pay exists, but then you're waiting until Saturday.",
- "catches": [
-  "Instapay charges an expedited fee: 5% of the payout everywhere, $5 flat in California \u2014 on a $100 payout that's $5 gone.",
-  "Free option is Weekly pay only (checking: money in account Saturday after the pay period).",
-  "Instapay to a personal debit card lands ~1 hour after the shift ends; to checking it takes 3 business days.",
-  "Instapay is 1099-earnings only in the help article; W-2 shifts have different timing; not available for some shifts.",
-  "1099 gigs: you get 100% of earnings but owe your own taxes; W-2 shifts have taxes deducted."
- ],
- "checked_at": "2026-09-23T13:35:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official Instawork Help Center (help.instawork.com): 'Payment settings for Pros (US)' documents account types, frequencies, fees, and timing.",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.instawork",
+    "ios": "https://apps.apple.com/app/instawork-be-your-own-boss/id1074573288"
   },
-  "c2": {
-   "evidence": "Official help.instawork.com: 'You can choose where you get paid (account type) and when you get paid (frequency) in Payment settings for your 1099 earnings.' Each shift shows its pay before booking; amounts vary by shift (no fixed official range).",
-   "pass": true
+  "biggest_catch": "Same-day pay (Instapay) costs you 5% of every payout ($5 flat in CA) \u2014 free weekly pay exists, but then you're waiting until Saturday.",
+  "catches": [
+    "Instapay charges an expedited fee: 5% of the payout everywhere, $5 flat in California \u2014 on a $100 payout that's $5 gone.",
+    "Free option is Weekly pay only (checking: money in account Saturday after the pay period).",
+    "Instapay to a personal debit card lands ~1 hour after the shift ends; to checking it takes 3 business days.",
+    "Instapay is 1099-earnings only in the help article; W-2 shifts have different timing; not available for some shifts.",
+    "1099 gigs: you get 100% of earnings but owe your own taxes; W-2 shifts have taxes deducted."
+  ],
+  "checked_at": "2026-09-23T13:35:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Instawork Help Center (help.instawork.com): 'Payment settings for Pros (US)' documents account types, frequencies, fees, and timing.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official help.instawork.com: 'You can choose where you get paid (account type) and when you get paid (frequency) in Payment settings for your 1099 earnings.' Each shift shows its pay before booking; amounts vary by shift (no fixed official range).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join; weekly pay is free. Instapay fee is a per-payout charge, not an upfront cost.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official help.instawork.com table: Instapay to personal debit = 'One hour after shift ends'; Instapay to checking = '3 business days after shift ends'; Weekly to checking = 'Saturday after pay period' (free). Same-day cashout confirmed for Instapay-to-debit.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to join; weekly pay is free. Instapay fee is a per-payout charge, not an upfront cost.",
-   "pass": true
+  "eligibility": "18+; ID + eligibility to work in the US; approved for position categories; 1099 or W-2 depending on shift.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from Instawork Help Center. Speed 'today' reflects Instapay-to-debit (~1 hour post-shift); weekly pay is slower but free. Distinct from Wonolo.",
+  "numeric_basis": "payout: per-shift rate shown before booking (official, variable); time: shift-based, typically 4-8 hours",
+  "official_url": "https://www.instawork.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "You can choose where you get paid (account type) and when you get paid (frequency) in Payment settings for your 1099 earnings. (help.instawork.com) | Instapay | Personal debit | One hour after shift ends | 5% of the payout amount outside of CA... $5 in CA regardless of the payout amount. (help.instawork.com) | You can always get paid for free by choosing Weekly pay in your Payment settings. (help.instawork.com)",
+  "payout_value_note": "per-shift rate shown before booking (varies); Instapay fee 5% (or $5 in CA) per payout",
+  "provider": "Instawork",
+  "route_id": "R6715",
+  "speed": "today",
+  "standard": {
+    "s1": {
+      "note": "18+, US work eligibility, position approval stated.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Instapay 5%/$5 fee disclosed officially; weekly free.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Instapay-to-debit: ~1 hour after shift ends \u2014 same-day.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official help.instawork.com.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Distinct from Wonolo.",
+      "pass": true
+    },
+    "s7": {
+      "note": "upfront_fee false.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official help.instawork.com table: Instapay to personal debit = 'One hour after shift ends'; Instapay to checking = '3 business days after shift ends'; Weekly to checking = 'Saturday after pay period' (free). Same-day cashout confirmed for Instapay-to-debit.",
-   "pass": true
-  }
- },
- "eligibility": "18+; ID + eligibility to work in the US; approved for position categories; 1099 or W-2 depending on shift.",
- "notes": "Checked 2026-09-23. Official evidence from Instawork Help Center. Speed 'today' reflects Instapay-to-debit (~1 hour post-shift); weekly pay is slower but free. Distinct from Wonolo.",
- "numeric_basis": "payout: per-shift rate shown before booking (official, variable); time: shift-based, typically 4-8 hours",
- "official_url": "https://www.instawork.com",
- "payout_max_usd": 0,
- "payout_min_usd": 0,
- "payout_quote": "You can choose where you get paid (account type) and when you get paid (frequency) in Payment settings for your 1099 earnings. (help.instawork.com) | Instapay | Personal debit | One hour after shift ends | 5% of the payout amount outside of CA... $5 in CA regardless of the payout amount. (help.instawork.com) | You can always get paid for free by choosing Weekly pay in your Payment settings. (help.instawork.com)",
- "payout_value_note": "per-shift rate shown before booking (varies); Instapay fee 5% (or $5 in CA) per payout",
- "provider": "Instawork",
- "route_id": "R6715",
- "speed": "today",
- "standard": {
-  "s1": {
-   "note": "18+, US work eligibility, position approval stated.",
-   "pass": true
+  "steps": [
+    "Sign up on Instawork, create your profile, and get approved for position categories.",
+    "Book a shift \u2014 the app shows the pay before you accept.",
+    "Clock in/out via the app's GPS time tracker during the shift.",
+    "Choose payment settings: Instapay (same-day, 5%/$5 fee) or Weekly (free).",
+    "Instapay to a personal debit card lands about 1 hour after the shift ends."
+  ],
+  "terms_url": "https://help.instawork.com/en/articles/7245785-payment-settings-for-pros-us",
+  "time_max_minutes": 480,
+  "time_min_minutes": 240,
+  "timing": "Instapay to a personal debit card: ~1 hour after the shift ends (5% fee, $5 in CA). Weekly pay to checking is free, landing Saturday after the pay period.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "Instapay 5%/$5 fee disclosed officially; weekly free.",
-   "pass": true
+  "who_pays": "Instawork pays you for the shift \u2014 1099 shifts pay you 100% of earnings (you handle your own taxes); W-2 shifts have taxes deducted.",
+  "who_qualifies": "18+; ID plus eligibility to work in the US; approved for the position categories you want to work; 1099 or W-2 depending on the shift.",
+  "work_available": "Shifts are posted in the app per market, and you must be approved for the right position categories to see them. Availability depends on your metro.",
+  "what_gets_accepted": "Complete the shift as booked. Same-day Instapay is available for eligible 1099 earnings only \u2014 W-2 shifts follow different timing.",
+  "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting between shifts; 1099 gigs leave taxes to you. Same-day Instapay costs 5% of each payout ($5 flat in California).",
+  "when_cash_arrives": "Instapay to a personal debit card lands about an hour after the shift ends (5% fee, $5 in CA). The free option is weekly pay to checking, landing Saturday after the pay period.",
+  "repeatable": {
+    "value": true,
+    "cadence": "New shifts post regularly \u2014 finish a shift, use Instapay about an hour later, and claim the next shift."
   },
-  "s3": {
-   "note": "Instapay-to-debit: ~1 hour after shift ends \u2014 same-day.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official help.instawork.com.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Distinct from Wonolo.",
-   "pass": true
-  },
-  "s7": {
-   "note": "upfront_fee false.",
-   "pass": true
-  }
- },
- "steps": [
-  "Sign up on Instawork, create your profile, and get approved for position categories.",
-  "Book a shift \u2014 the app shows the pay before you accept.",
-  "Clock in/out via the app's GPS time tracker during the shift.",
-  "Choose payment settings: Instapay (same-day, 5%/$5 fee) or Weekly (free).",
-  "Instapay to a personal debit card lands about 1 hour after the shift ends."
- ],
- "terms_url": "https://help.instawork.com/en/articles/7245785-payment-settings-for-pros-us",
- "time_max_minutes": 480,
- "time_min_minutes": 240,
- "timing": "Instapay to a personal debit card: ~1 hour after the shift ends (5% fee, $5 in CA). Weekly pay to checking is free, landing Saturday after the pay period.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "Instawork pays you for the shift \u2014 1099 shifts pay you 100% of earnings (you handle your own taxes); W-2 shifts have taxes deducted.",
- "who_qualifies": "18+; ID plus eligibility to work in the US; approved for the position categories you want to work; 1099 or W-2 depending on the shift.",
- "work_available": "Shifts are posted in the app per market, and you must be approved for the right position categories to see them. Availability depends on your metro.",
- "what_gets_accepted": "Complete the shift as booked. Same-day Instapay is available for eligible 1099 earnings only \u2014 W-2 shifts follow different timing.",
- "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting between shifts; 1099 gigs leave taxes to you. Same-day Instapay costs 5% of each payout ($5 flat in California).",
- "when_cash_arrives": "Instapay to a personal debit card lands about an hour after the shift ends (5% fee, $5 in CA). The free option is weekly pay to checking, landing Saturday after the pay period.",
- "repeatable": {
-  "value": true,
-  "cadence": "New shifts post regularly \u2014 finish a shift, use Instapay about an hour later, and claim the next shift."
- }
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

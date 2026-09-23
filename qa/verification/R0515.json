@@ -1,91 +1,103 @@
 {
-  "app_links": {
-    "android": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN",
-    "ios": null
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN",
+  "ios": null
+ },
+ "biggest_catch": "The only fixed official amount is 400 Nanas a day \u2014 the Play listing states no dollar value per Nana and no published redemption threshold, so the catalog's '$0.30/day' and '20,000' figures are unconfirmed and reward availability varies by country.",
+ "catches": [
+  "Tiny earnings: 400 Nanas per day is the only fixed official amount; the dollar value of a Nana is not published.",
+  "Payout threshold: the Play listing states no minimum \u2014 redemption levels and gift-code delivery (up to 48 hours) are inside the app, and availability varies by country.",
+  "Privacy/data collection: a rewards app funded by offer partners; tasks include installing other apps and sharing activity data.",
+  "Variable availability: reward types, amounts, and Nana offers differ by country \u2014 some listed rewards may not be available where you live.",
+  "Recent user reviews complain about missing PayPal payouts and slow support \u2014 redemption is not friction-free."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "AppNana is a real operating app by Mapiz Inc, live on the official Google Play Store (com.appnana.android.giftcardrewards) and also on iOS.",
+   "pass": true
   },
-  "biggest_catch": "The only fixed official amount is 400 Nanas a day — the Play listing states no dollar value per Nana and no published redemption threshold, so the catalog's '$0.30/day' and '20,000' figures are unconfirmed and reward availability varies by country.",
-  "catches": [
-    "Tiny earnings: 400 Nanas per day is the only fixed official amount; the dollar value of a Nana is not published.",
-    "Payout threshold: the Play listing states no minimum — redemption levels and gift-code delivery (up to 48 hours) are inside the app, and availability varies by country.",
-    "Privacy/data collection: a rewards app funded by offer partners; tasks include installing other apps and sharing activity data.",
-    "Variable availability: reward types, amounts, and Nana offers differ by country — some listed rewards may not be available where you live.",
-    "Recent user reviews complain about missing PayPal payouts and slow support — redemption is not friction-free."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "AppNana is a real operating app by Mapiz Inc, live on the official Google Play Store (com.appnana.android.giftcardrewards) and also on iOS.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Play listing confirms the mechanism: complete tasks from Nana Offers to earn Nanas, redeem Nanas for gift cards, 400 daily points for coming back every day, gift codes emailed within up to 48 hours.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "The app is free; no upfront fee to install or earn.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official listing states the daily amount (400 Nanas for returning daily) but no dollar conversion or redemption threshold — payout_quote uses the official daily amount; the mechanism (tasks → Nanas → gift cards) is verified, the catalog's '$0.30/day' and '20,000' figures are corrected as unconfirmed.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Play listing confirms the mechanism: complete tasks from Nana Offers to earn Nanas, redeem Nanas for gift cards, 400 daily points for coming back every day, gift codes emailed within up to 48 hours.",
+   "pass": true
   },
-  "eligibility": "iOS and Android; reward types, amounts, and availability vary by country — some rewards may not be available in some countries.",
-  "notes": "Verified from the exact official Play listing (observed 2026-09-23; iOS App Store listing also exists via AppAgg). Catalog corrections: '$0.30/day' and the '20,000' threshold do not appear in official material — the only fixed official figure is 400 daily Nanas, with no published dollar value or redemption minimum. Reward methods and amounts vary by country/continent per official text. No commits, no DB writes. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)]",
-  "official_url": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN",
-  "payout_quote": "Get 400 daily points just by coming back every day.",
-  "route_id": "R0515",
-  "standard": {
-    "s1": {
-      "note": "Free app on iOS and Android; enter your email correctly so reward codes can be delivered; reward availability varies by country.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No fees; Nana Offers (install apps, play games, watch videos) and referrals earn Nanas; gift codes arrive by email within up to 48 hours.",
-      "pass": true
-    },
-    "s3": {
-      "note": "400 Nanas credited for daily return; reward codes emailed within up to 48 hours of redemption.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No weasel words on the core mechanism; the listing's 'most popular mobile rewards app' and '$10 million paid' are marketing claims, not payout terms.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN — the exact official Play listing, observed live 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: install, complete Nana Offers, return daily, redeem Nanas for gift cards, receive code by email.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Play listing read 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "The app is free; no upfront fee to install or earn.",
+   "pass": true
   },
-  "steps": [
-    "Install the AppNana app from the official Google Play listing (or the App Store on iOS).",
-    "Register with a correct email address — reward gift codes are sent to your inbox.",
-    "Complete tasks from Nana Offers (install apps, play games, watch videos) to earn Nanas.",
-    "Open the app every day — you get 400 Nanas just for coming back.",
-    "Optionally invite friends with your code for extra Nanas.",
-    "When you have enough Nanas, redeem for a gift card (Amazon, iTunes, Google Play, Xbox, PlayStation, Roblox, and more; availability varies by country).",
-    "Wait up to 48 hours for the gift code to arrive in your email."
-  ],
-  "terms_url": null,
-  "timing": "400 Nanas credited for daily return; gift code emailed within up to 48 hours of redemption.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official listing states the daily amount (400 Nanas for returning daily) but no dollar conversion or redemption threshold \u2014 payout_quote uses the official daily amount; the mechanism (tasks \u2192 Nanas \u2192 gift cards) is verified, the catalog's '$0.30/day' and '20,000' figures are corrected as unconfirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "iOS and Android; reward types, amounts, and availability vary by country \u2014 some rewards may not be available in some countries.",
+ "notes": "Verified from the exact official Play listing (observed 2026-09-23; iOS App Store listing also exists via AppAgg). Catalog corrections: '$0.30/day' and the '20,000' threshold do not appear in official material \u2014 the only fixed official figure is 400 daily Nanas, with no published dollar value or redemption minimum. Reward methods and amounts vary by country/continent per official text. No commits, no DB writes. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)]",
+ "official_url": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN",
+ "payout_quote": "Get 400 daily points just by coming back every day.",
+ "route_id": "R0515",
+ "standard": {
+  "s1": {
+   "note": "Free app on iOS and Android; enter your email correctly so reward codes can be delivered; reward availability varies by country.",
+   "pass": true
   },
-  "payout_min_usd": 4.0,
-  "payout_max_usd": 4.0,
-  "payout_value_note": "points at assumed 1¢/pt base redemption (400 pts); provider may vary",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: points at assumed 1¢/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)"
+  "s2": {
+   "note": "No fees; Nana Offers (install apps, play games, watch videos) and referrals earn Nanas; gift codes arrive by email within up to 48 hours.",
+   "pass": true
+  },
+  "s3": {
+   "note": "400 Nanas credited for daily return; reward codes emailed within up to 48 hours of redemption.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the core mechanism; the listing's 'most popular mobile rewards app' and '$10 million paid' are marketing claims, not payout terms.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://play.google.com/store/apps/details?id=com.appnana.android.giftcardrewards&hl=en_IN \u2014 the exact official Play listing, observed live 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: install, complete Nana Offers, return daily, redeem Nanas for gift cards, receive code by email.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Play listing read 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Install the AppNana app from the official Google Play listing (or the App Store on iOS).",
+  "Register with a correct email address \u2014 reward gift codes are sent to your inbox.",
+  "Complete tasks from Nana Offers (install apps, play games, watch videos) to earn Nanas.",
+  "Open the app every day \u2014 you get 400 Nanas just for coming back.",
+  "Optionally invite friends with your code for extra Nanas.",
+  "When you have enough Nanas, redeem for a gift card (Amazon, iTunes, Google Play, Xbox, PlayStation, Roblox, and more; availability varies by country).",
+  "Wait up to 48 hours for the gift code to arrive in your email."
+ ],
+ "terms_url": null,
+ "timing": "400 Nanas credited for daily return; gift code emailed within up to 48 hours of redemption.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 4.0,
+ "payout_max_usd": 4.0,
+ "payout_value_note": "points at assumed 1\u00a2/pt base redemption (400 pts); provider may vary",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: points at assumed 1\u00a2/pt base redemption (400 pts); provider may vary; time: category default Other Online (20-60min active)",
+ "speed": "days",
+ "when_cash_arrives": "Gift code emailed within up to 48 hours of redemption.",
+ "maximize": "Redeem as soon as you have enough Nanas; the gift code lands within ~2 days.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "days",
+   "rationale": "Official Play listing copy: gift code emailed within up to 48 hours of redemption.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's referrer-only — your friend gets nothing — and the printed coupon must be surrendered at the time of the service request; no referral credit can be given after the fact.",
+ "catches": [
+  "Referrer-only: the $100 one-time bill credit goes to the referring customer; no stated reward for the friend",
+  "Printed coupon must be surrendered at the time of service request — no credit after the fact",
+  "Applies to qualifying residential DFT Lightspeed Fiber-optic internet services only; certain restrictions apply, no cash value"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official DFT Communications referral program page on dftcommunications.com/dft-referral-program/ (per current search index, crawled 12 days ago): '$100 One-Time Bill Credit. Certain restrictions apply. No cash value. Prior sales excluded. No limit on successful referrals. One-time $100 bill credit given to referring customer after new customer's first billing cycle. This offer applies to qualifying residential DFT Lightspeed Fiber-optic internet services only.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+   "pass": true
   },
-  "biggest_catch": "It's referrer-only \u2014 your friend gets nothing \u2014 and the printed coupon must be surrendered at the time of the service request; no referral credit can be given after the fact.",
-  "catches": [
-    "Referrer-only: the $100 one-time bill credit goes to the referring customer; no stated reward for the friend",
-    "Printed coupon must be surrendered at the time of service request \u2014 no credit after the fact",
-    "Applies to qualifying residential DFT Lightspeed Fiber-optic internet services only; certain restrictions apply, no cash value"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official DFT Communications referral program page on dftcommunications.com/dft-referral-program/ (per current search index, crawled 12 days ago): '$100 One-Time Bill Credit. Certain restrictions apply. No cash value. Prior sales excluded. No limit on successful referrals. One-time $100 bill credit given to referring customer after new customer's first billing cycle. This offer applies to qualifying residential DFT Lightspeed Fiber-optic internet services only.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page currently listed on dftcommunications.com (index crawl 12 days ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'One-time $100 bill credit given to referring customer after new customer's first billing cycle.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "First-billing-cycle trigger, no-cash-value, qualifying-services-only limits, and printed-coupon-at-request rule are stated in the official terms.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page currently listed on dftcommunications.com (index crawl 12 days ago).",
+   "pass": true
   },
-  "eligibility": "Existing DFT Communications customer; friend must sign up for a qualifying residential DFT Lightspeed Fiber-optic internet service.",
-  "notes": "Verified 2026-09-23 from the official dftcommunications.com referral program page. Deduped: no DFT routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 12 days ago). Also has a 'Refer Three, Get One Free' tier (one year of Lightspeed Fiber free after 3 referrals) \u2014 value varies by plan, so only the concrete $100 per-referral credit is claimed here.",
-  "numeric_basis": "payout from official terms ($100 one-time bill credit to referrer); time: referral share 5-15 min active",
-  "official_url": "https://dftcommunications.com/dft-referral-program/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "$100 One-Time Bill Credit. No limit on successful referrals. One-time $100 bill credit given to referring customer after new customer's first billing cycle. This offer applies to qualifying residential DFT Lightspeed Fiber-optic internet services only.",
-  "payout_value_note": "$100 bill credit to the referrer per qualifying referral \u2014 offsets planned DFT spending, not income.",
-  "route_id": "R6391",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($100).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credit offsets planned DFT spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from official terms (fill out referral card, friend presents it at signup, credit after first billing cycle).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: referrer-only, coupon-at-request, no after-the-fact credit.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own DFT service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against dftcommunications.com (provider's own domain) via current official-page content. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'One-time $100 bill credit given to referring customer after new customer's first billing cycle.'",
+   "pass": true
   },
-  "steps": [
-    "Fill out your DFT referral card with your name and account number",
-    "Have your friend present the card when they sign up for qualifying DFT Lightspeed Fiber-optic internet service",
-    "Coupon is surrendered at the time of the service request",
-    "After the new customer's first billing cycle, you receive a one-time $100 bill credit"
-  ],
-  "terms_url": "https://dftcommunications.com/dft-referral-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "$100 credit applied after the new customer's first billing cycle.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "First-billing-cycle trigger, no-cash-value, qualifying-services-only limits, and printed-coupon-at-request rule are stated in the official terms.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing DFT Communications customer; friend must sign up for a qualifying residential DFT Lightspeed Fiber-optic internet service.",
+ "notes": "Verified 2026-09-23 from the official dftcommunications.com referral program page. Deduped: no DFT routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 12 days ago). Also has a 'Refer Three, Get One Free' tier (one year of Lightspeed Fiber free after 3 referrals) — value varies by plan, so only the concrete $100 per-referral credit is claimed here.",
+ "numeric_basis": "payout from official terms ($100 one-time bill credit to referrer); time: referral share 5-15 min active",
+ "official_url": "https://dftcommunications.com/dft-referral-program/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "$100 One-Time Bill Credit. No limit on successful referrals. One-time $100 bill credit given to referring customer after new customer's first billing cycle. This offer applies to qualifying residential DFT Lightspeed Fiber-optic internet services only.",
+ "payout_value_note": "$100 bill credit to the referrer per qualifying referral — offsets planned DFT spending, not income.",
+ "route_id": "R6391",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($100).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credit offsets planned DFT spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from official terms (fill out referral card, friend presents it at signup, credit after first billing cycle).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: referrer-only, coupon-at-request, no after-the-fact credit.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own DFT service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against dftcommunications.com (provider's own domain) via current official-page content. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Fill out your DFT referral card with your name and account number",
+  "Have your friend present the card when they sign up for qualifying DFT Lightspeed Fiber-optic internet service",
+  "Coupon is surrendered at the time of the service request",
+  "After the new customer's first billing cycle, you receive a one-time $100 bill credit"
+ ],
+ "terms_url": "https://dftcommunications.com/dft-referral-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "$100 credit applied after the new customer's first billing cycle.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "$100 credit applied after the new customer's first billing cycle.",
+ "maximize": "Fastest honest path: $100 credit applied after the new customer's first billing cycle. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

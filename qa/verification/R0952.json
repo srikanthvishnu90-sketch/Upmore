@@ -1,69 +1,80 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Only available to existing Ameriprise Financial investment clients - this is a relationship bonus, not open to the general public. The $1,000 top tier requires parking $100,000+ for 90 days after a 30-day deposit window. Window ends 2026-12-29.",
+ "catches": [
+  "Only available to existing Ameriprise Financial investment clients and employees of Ameriprise Financial, Inc. and its affiliates.",
+  "Open a new Ameriprise Bank Savings Account between July 1, 2026 and December 29, 2026.",
+  "Make one or more eligible deposits within 30 calendar days of opening that total one of the qualifying tiers: $25,000-$49,999.99 for $350; $50,000-$99,999.99 for $650; $100,000 or more for $1,000.",
+  "Eligible deposits are from external accounts outside of Ameriprise Bank, FSB and its affiliates (including eligible Ameriprise brokerage credits within seven business days of crediting/settlement).",
+  "Maintain the daily balance for the assigned bonus tier for 90 calendar days from the end of the deposit period; if the daily balance drops below the tier minimum, the client may qualify for a lower tier based on the lowest daily balance, provided it does not drop below $25,000; balances above the assigned tier do not qualify for a higher tier.",
+  "Account must be open and in good standing when the bonus is credited.",
+  "Limit one savings bonus per Group ID; clients who previously received any Ameriprise Bank Savings Account bonus are not eligible.",
+  "Bonus credited to the new Savings Account within 14 business days after the maintenance period; reported as interest on IRS Form 1099-INT.",
+  "Companion checking bonus: $400 for $1,500+ qualifying DDs in 90 days (taken as R0951)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Ameriprise Bank (ameriprise.com) is a real bank; the savings bonus tier terms are published on its official 'Earn up to a $1,400 bonus' and savings account pages (official search crawls, confirmed ~5-21 days ago).",
+   "pass": true
   },
-  "biggest_catch": "Only available to existing Ameriprise Financial investment clients - this is a relationship bonus, not open to the general public. The $1,000 top tier requires parking $100,000+ for 90 days after a 30-day deposit window. Window ends 2026-12-29.",
-  "catches": [
-    "Only available to existing Ameriprise Financial investment clients and employees of Ameriprise Financial, Inc. and its affiliates.",
-    "Open a new Ameriprise Bank Savings Account between July 1, 2026 and December 29, 2026.",
-    "Make one or more eligible deposits within 30 calendar days of opening that total one of the qualifying tiers: $25,000-$49,999.99 for $350; $50,000-$99,999.99 for $650; $100,000 or more for $1,000.",
-    "Eligible deposits are from external accounts outside of Ameriprise Bank, FSB and its affiliates (including eligible Ameriprise brokerage credits within seven business days of crediting/settlement).",
-    "Maintain the daily balance for the assigned bonus tier for 90 calendar days from the end of the deposit period; if the daily balance drops below the tier minimum, the client may qualify for a lower tier based on the lowest daily balance, provided it does not drop below $25,000; balances above the assigned tier do not qualify for a higher tier.",
-    "Account must be open and in good standing when the bonus is credited.",
-    "Limit one savings bonus per Group ID; clients who previously received any Ameriprise Bank Savings Account bonus are not eligible.",
-    "Bonus credited to the new Savings Account within 14 business days after the maintenance period; reported as interest on IRS Form 1099-INT.",
-    "Companion checking bonus: $400 for $1,500+ qualifying DDs in 90 days (taken as R0951)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Ameriprise Bank (ameriprise.com) is a real bank; the savings bonus tier terms are published on its official 'Earn up to a $1,400 bonus' and savings account pages (official search crawls, confirmed ~5-21 days ago).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page: 'The bonus tiers are as follows: Qualifying Balance Amount / Bonus: $25,000 - $49,999.99 / $350; $50,000 - $99,999.99 / $650; $100,000 or more / $1,000 ... Maintain the daily balance for the assigned bonus tier in your Savings Account for 90 calendar days from the end of the Deposit Period ... This offer is only available to existing Ameriprise Financial investment clients and employees of Ameriprise Financial, Inc. and its affiliates.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "All three tiers, deposit thresholds, 30-day deposit period, 90-day maintenance, existing-client restriction, and 14-business-day payout are quoted verbatim from the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page: 'The bonus tiers are as follows: Qualifying Balance Amount / Bonus: $25,000 - $49,999.99 / $350; $50,000 - $99,999.99 / $650; $100,000 or more / $1,000 ... Maintain the daily balance for the assigned bonus tier in your Savings Account for 90 calendar days from the end of the Deposit Period ... This offer is only available to existing Ameriprise Financial investment clients and employees of Ameriprise Financial, Inc. and its affiliates.'",
+   "pass": true
   },
-  "eligibility": "Existing Ameriprise Financial investment clients (and employees) only; no prior Ameriprise Bank savings bonus; one savings bonus per Group ID.",
-  "notes": "Official ameriprise.com deposit-bonus and savings pages (crawls ~5-21 days). Recorded as one row covering all three savings tiers (min $350, max $1,000). Distinct from R0951 (checking $400). No sibling duplicate in verification corpus. Window ends 2026-12-29.",
-  "numeric_basis": "payout: flat bonus amounts in official terms (tiered); time: category default Bank Bonus (30-60min active)",
-  "official_url": "https://www.ameriprise.com/products/ameriprise-bank/savings",
-  "payout_max_usd": 1000.0,
-  "payout_min_usd": 350.0,
-  "payout_quote": "The bonus tiers are as follows: Qualifying Balance Amount / Bonus: $25,000 - $49,999.99 / $350; $50,000 - $99,999.99 / $650; $100,000 or more / $1,000.",
-  "payout_value_note": "flat bonus amounts in official terms (tiered)",
-  "route_id": "R0952",
-  "standard": {
-    "s1": {
-      "evidence": "Existing Ameriprise investment clients/employees only; no prior savings bonus.",
-      "pass": true
-    },
-    "s2": {
-      "evidence": "Eligible deposits totaling the tier within 30 days; tier daily balance maintained 90 days.",
-      "pass": true
-    },
-    "s3": {
-      "evidence": "Bonus within 14 business days after maintenance period; account open and in good standing; 1099-INT reporting.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "All three tiers, deposit thresholds, 30-day deposit period, 90-day maintenance, existing-client restriction, and 14-business-day payout are quoted verbatim from the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Ameriprise Financial investment clients (and employees) only; no prior Ameriprise Bank savings bonus; one savings bonus per Group ID.",
+ "notes": "Official ameriprise.com deposit-bonus and savings pages (crawls ~5-21 days). Recorded as one row covering all three savings tiers (min $350, max $1,000). Distinct from R0951 (checking $400). No sibling duplicate in verification corpus. Window ends 2026-12-29.",
+ "numeric_basis": "payout: flat bonus amounts in official terms (tiered); time: category default Bank Bonus (30-60min active)",
+ "official_url": "https://www.ameriprise.com/products/ameriprise-bank/savings",
+ "payout_max_usd": 1000.0,
+ "payout_min_usd": 350.0,
+ "payout_quote": "The bonus tiers are as follows: Qualifying Balance Amount / Bonus: $25,000 - $49,999.99 / $350; $50,000 - $99,999.99 / $650; $100,000 or more / $1,000.",
+ "payout_value_note": "flat bonus amounts in official terms (tiered)",
+ "route_id": "R0952",
+ "standard": {
+  "s1": {
+   "evidence": "Existing Ameriprise investment clients/employees only; no prior savings bonus.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Ameriprise Bank Savings Account between July 1, 2026 and December 29, 2026 (must already be an Ameriprise Financial investment client).",
-    "Make eligible deposits totaling $25,000+ ($350 tier), $50,000+ ($650 tier), or $100,000+ ($1,000 tier) within 30 calendar days of opening.",
-    "Maintain the tier's daily balance for 90 calendar days from the end of the deposit period.",
-    "The bonus is credited to the new Savings Account within 14 business days after the maintenance period."
-  ],
-  "terms_url": "https://www.ameriprise.com/products/ameriprise-bank/deposit-bonus",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Open by 2026-12-29; fund within 30 days; maintain tier balance 90 days; bonus within 14 business days after maintenance period.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "evidence": "Eligible deposits totaling the tier within 30 days; tier daily balance maintained 90 days.",
+   "pass": true
+  },
+  "s3": {
+   "evidence": "Bonus within 14 business days after maintenance period; account open and in good standing; 1099-INT reporting.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Ameriprise Bank Savings Account between July 1, 2026 and December 29, 2026 (must already be an Ameriprise Financial investment client).",
+  "Make eligible deposits totaling $25,000+ ($350 tier), $50,000+ ($650 tier), or $100,000+ ($1,000 tier) within 30 calendar days of opening.",
+  "Maintain the tier's daily balance for 90 calendar days from the end of the deposit period.",
+  "The bonus is credited to the new Savings Account within 14 business days after the maintenance period."
+ ],
+ "terms_url": "https://www.ameriprise.com/products/ameriprise-bank/deposit-bonus",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Open by 2026-12-29; fund within 30 days; maintain tier balance 90 days; bonus within 14 business days after maintenance period.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $350–$1000. Per official terms: Open by 2026-12-29; fund within 30 days; maintain tier balance 90 days; bonus within 14 business days after maintenance period. Earliest realistic: ~4 months (tier balance held through the maintenance period + the payout window).",
+ "maximize": "Fastest honest path. The tier-balance maintenance period is the blocker. Fastest honest path: fund the target tier balance at opening with one wire/same-day transfer, keep the balance above the tier line every single day of the maintenance period (one dip can disqualify you), and confirm the payout lands after the period ends.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'balance-tier'"
+  }
+ ]
 }

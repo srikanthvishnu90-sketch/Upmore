@@ -1,87 +1,99 @@
 {
-  "app_links": {
-    "android": "https://play.google.com/store/apps/details?id=com.squareup.cash",
-    "ios": "https://apps.apple.com/us/app/cash-app/id711923939"
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.squareup.cash",
+  "ios": "https://apps.apple.com/us/app/cash-app/id711923939"
+ },
+ "biggest_catch": "The official example referral page confirms only what the FRIEND gets ($15). The inviter's bonus amount is not stated on the official page \u2014 the $15 in the route title for the referrer comes from third-party reports, not official terms.",
+ "catches": [
+  "Official cash.app referral landing page states the referred person gets $15; the inviter's amount is shown only in-app after the friend completes the action.",
+  "Friend must enter the referral code and send $5+ within 14 days of entering the code; the inviter bonus triggers only after that completes.",
+  "Referral program amounts are set per-offer and can change; Cash App can modify or end the program.",
+  "Both parties must be eligible US users in good standing; self-referrals and duplicate accounts void bonuses."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Cash App (Block, Inc.) \u2014 real company; official cash.app referral landing page loaded live 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "The official example referral page confirms only what the FRIEND gets ($15). The inviter's bonus amount is not stated on the official page — the $15 in the route title for the referrer comes from third-party reports, not official terms.",
-  "catches": [
-    "Official cash.app referral landing page states the referred person gets $15; the inviter's amount is shown only in-app after the friend completes the action.",
-    "Friend must enter the referral code and send $5+ within 14 days of entering the code; the inviter bonus triggers only after that completes.",
-    "Referral program amounts are set per-offer and can change; Cash App can modify or end the program.",
-    "Both parties must be eligible US users in good standing; self-referrals and duplicate accounts void bonuses."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Cash App (Block, Inc.) — real company; official cash.app referral landing page loaded live 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official example referral page at cash.app/refer/MH15S3K: referred person gets $15 when they enter the code and send $5+ within 14 days. The page states the inviter also gets a 'referral bonus' but does not name its amount on the public page.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee to refer; friend sends $5+ of their own money.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Timing not stated on the public landing page — bonus appears after the friend completes the $5+ send; exact timing is shown in-app.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official example referral page at cash.app/refer/MH15S3K: referred person gets $15 when they enter the code and send $5+ within 14 days. The page states the inviter also gets a 'referral bonus' but does not name its amount on the public page.",
+   "pass": true
   },
-  "eligibility": "Referrer: existing Cash App user who shares their referral code. Friend: new Cash App user who enters the referral code at signup and sends $5 or more within 14 days of entering the code.",
-  "notes": "CORRECTION: the route is verified only in the limited sense that the friend's $15 bonus is official. The referrer's own amount is NOT stated on the public official page (only in-app). Do not display '$15 referral' as the referrer's guaranteed payout from official terms — the verified display must say: friend gets $15; your inviter bonus is shown in the Cash App app after your friend completes the $5+ send. Official example page loaded live on cash.app 2026-09-23. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)]",
-  "official_url": "https://cash.app/refer/MH15S3K",
-  "payout_quote": "You'll get $15! | To earn the reward, enter the referral code when you sign up and send $5 or more within 14 days. | (Inviter bonus: page states the inviter also receives a referral bonus — amount shown in-app, not stated on the public page.)",
-  "route_id": "R0325",
-  "standard": {
-    "s1": {
-      "note": "Explicit on the friend side: new user, code entry, $5+ send within 14 days.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Friend-side conditions explicit; inviter-side amount not stated publicly — must not be shown as $15.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Public page does not name payout timing; bonus posts after the friend completes the action.",
-      "pass": false
-    },
-    "s4": {
-      "note": "No weasel words on the friend's $15; the route title's '$15 referral' overstates what is official for the referrer.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://cash.app/refer/MH15S3K — official Cash App referral landing page loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: share code, friend signs up and sends $5+ within 14 days.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Cash App referral page loaded live 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee to refer; friend sends $5+ of their own money.",
+   "pass": true
   },
-  "steps": [
-    "In the Cash App app, tap your profile icon and copy your referral code: https://cash.app/refer/MH15S3K",
-    "Share the code with a friend who does not already use Cash App.",
-    "Your friend enters your code when signing up and sends $5 or more within 14 days of entering the code.",
-    "Your friend gets $15; your inviter bonus is shown in the app after they complete the send."
-  ],
-  "terms_url": "https://cash.app/refer/MH15S3K",
-  "timing": "Bonus posts after the friend enters the code and sends $5+ within 14 days; exact timing shown in-app.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Timing not stated on the public landing page \u2014 bonus appears after the friend completes the $5+ send; exact timing is shown in-app.",
+   "pass": false
+  }
+ },
+ "eligibility": "Referrer: existing Cash App user who shares their referral code. Friend: new Cash App user who enters the referral code at signup and sends $5 or more within 14 days of entering the code.",
+ "notes": "CORRECTION: the route is verified only in the limited sense that the friend's $15 bonus is official. The referrer's own amount is NOT stated on the public official page (only in-app). Do not display '$15 referral' as the referrer's guaranteed payout from official terms \u2014 the verified display must say: friend gets $15; your inviter bonus is shown in the Cash App app after your friend completes the $5+ send. Official example page loaded live on cash.app 2026-09-23. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)]",
+ "official_url": "https://cash.app/refer/MH15S3K",
+ "payout_quote": "You'll get $15! | To earn the reward, enter the referral code when you sign up and send $5 or more within 14 days. | (Inviter bonus: page states the inviter also receives a referral bonus \u2014 amount shown in-app, not stated on the public page.)",
+ "route_id": "R0325",
+ "standard": {
+  "s1": {
+   "note": "Explicit on the friend side: new user, code entry, $5+ send within 14 days.",
+   "pass": true
   },
-  "payout_min_usd": 15.0,
-  "payout_max_usd": 15.0,
-  "payout_value_note": "flat bonus amount in official terms",
-  "time_min_minutes": 5.0,
-  "time_max_minutes": 15.0,
-  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)"
+  "s2": {
+   "note": "Friend-side conditions explicit; inviter-side amount not stated publicly \u2014 must not be shown as $15.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Public page does not name payout timing; bonus posts after the friend completes the action.",
+   "pass": false
+  },
+  "s4": {
+   "note": "No weasel words on the friend's $15; the route title's '$15 referral' overstates what is official for the referrer.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://cash.app/refer/MH15S3K \u2014 official Cash App referral landing page loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: share code, friend signs up and sends $5+ within 14 days.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Cash App referral page loaded live 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "In the Cash App app, tap your profile icon and copy your referral code: https://cash.app/refer/MH15S3K",
+  "Share the code with a friend who does not already use Cash App.",
+  "Your friend enters your code when signing up and sends $5 or more within 14 days of entering the code.",
+  "Your friend gets $15; your inviter bonus is shown in the app after they complete the send."
+ ],
+ "terms_url": "https://cash.app/refer/MH15S3K",
+ "timing": "Bonus posts after the friend enters the code and sends $5+ within 14 days; exact timing shown in-app.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 15.0,
+ "payout_max_usd": 15.0,
+ "payout_value_note": "flat bonus amount in official terms",
+ "time_min_minutes": 5.0,
+ "time_max_minutes": 15.0,
+ "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default App Referral (5-15min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus posts after the friend enters the code and sends $5+ within 14 days; exact timing is shown in-app.",
+ "maximize": "Have the friend complete the $5 send in minutes \u2014 the bonus posts fastest right after qualification; the timing display is in-app.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The friend's qualifying action is the trigger; official terms do not publish a payout clock.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

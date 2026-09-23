@@ -1,89 +1,101 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Invitation-only with a waitlist (space is limited) \u2014 you cannot just sign up and start earning; and the receipt reward is capped at $10/month paid as Amazon Balance (store credit), not cash.",
+ "catches": [
+  "Invitation-only program; download the app to join a waitlist and wait for an email invitation \u2014 no guaranteed timeline.",
+  "Receipt rewards capped at up to $10/month; per-receipt values vary by retailer type (some receipt types pay $0.15\u2013$0.25 each).",
+  "Reward is Amazon Balance (spendable at Amazon.com) or charitable donation \u2014 not cash.",
+  "Receipts must be shared by 11:59 PM PST on the last day of the month; extra receipts don't carry over.",
+  "Only one reward type per month; receipts from Amazon-owned businesses and certain categories (medical, gambling, firearms, housing, transit, tuition, childcare, legal/financial) are ineligible.",
+  "Amazon uses the receipt data to improve product selection and ad relevance \u2014 the data-for-reward trade-off is inherent.",
+  "Surveys and ad-verification rewards vary; disabling ad verification >48 cumulative hours in a month forfeits that month's reward."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Amazon Shopper Panel \u2014 real Amazon program; official panel.amazon.com site with Rewards FAQ page.",
+   "pass": true
   },
-  "biggest_catch": "Invitation-only with a waitlist (space is limited) — you cannot just sign up and start earning; and the receipt reward is capped at $10/month paid as Amazon Balance (store credit), not cash.",
-  "catches": [
-    "Invitation-only program; download the app to join a waitlist and wait for an email invitation — no guaranteed timeline.",
-    "Receipt rewards capped at up to $10/month; per-receipt values vary by retailer type (some receipt types pay $0.15–$0.25 each).",
-    "Reward is Amazon Balance (spendable at Amazon.com) or charitable donation — not cash.",
-    "Receipts must be shared by 11:59 PM PST on the last day of the month; extra receipts don't carry over.",
-    "Only one reward type per month; receipts from Amazon-owned businesses and certain categories (medical, gambling, firearms, housing, transit, tuition, childcare, legal/financial) are ineligible.",
-    "Amazon uses the receipt data to improve product selection and ad relevance — the data-for-reward trade-off is inherent.",
-    "Surveys and ad-verification rewards vary; disabling ad verification >48 cumulative hours in a month forfeits that month's reward."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Amazon Shopper Panel — real Amazon program; official panel.amazon.com site with Rewards FAQ page.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official FAQ: 'with an opportunity to earn up to a $10 reward each month' redeemable 'for either an Amazon Balance or a charitable donation'; per-receipt rewards vary by retailer type.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Official: free, voluntary, opt-in; no fee stated.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official FAQ: 'You will earn a reward for each eligible receipt uploaded... with an opportunity to earn up to a $10 reward each month.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official FAQ: 'with an opportunity to earn up to a $10 reward each month' redeemable 'for either an Amazon Balance or a charitable donation'; per-receipt rewards vary by retailer type.",
+   "pass": true
   },
-  "eligibility": "Amazon customers 18+ in the US (also UK, Canada, Germany, France, Spain, Japan); invitation-only with waitlist; only eligible for parts of the program shown in-app.",
-  "notes": "Strong official evidence on panel.amazon.com Rewards FAQ: exact $10/month receipt cap, Amazon Balance payout, monthly issuance within first 48 hours of the following month. Framed as a data-for-reward panel, not passive income — you share receipts Amazon would otherwise not see.",
-  "numeric_basis": "payout from official FAQ (up to $10/month for receipts; surveys variable); time: 5-15 min active per receipt batch per Lane A standard",
-  "official_url": "https://panel.amazon.com/FAQRewards.html",
-  "payout_max_usd": 10,
-  "payout_min_usd": 0,
-  "payout_quote": "You will earn a reward for each eligible receipt uploaded through the receipts tab, with an opportunity to earn up to a $10 reward each month.",
-  "payout_value_note": "Monthly receipt reward capped at $10, paid as Amazon Balance (Amazon store credit), not cash.",
-  "route_id": "R1522",
-  "standard": {
-    "s1": {
-      "note": "Invitation-only; download app, join waitlist, upload eligible receipts via app or receipts@panel.amazon.com, pick reward, receive monthly.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No fees; free and voluntary.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Official FAQ: rewards issued once per month, within the first 48 hours of the following month, plus email confirmation.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Official copy is plain about caps, eligibility, and data use; no inflated promise.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official panel.amazon.com Rewards FAQ observed 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: waitlist → invitation → app → receipts → monthly reward.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Amazon Shopper Panel pages observed 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Official: free, voluntary, opt-in; no fee stated.",
+   "pass": true
   },
-  "steps": [
-    "Download the Amazon Shopper Panel app and join the waitlist (invitation-only; space is limited).",
-    "When invited, accept the invitation and sign in with your Amazon account.",
-    "Each month, upload eligible receipts from non-Amazon purchases: snap paper receipts in the app or forward e-receipts to receipts@panel.amazon.com.",
-    "Optionally complete short surveys and enable ad verification for additional rewards.",
-    "Choose your monthly reward type: Amazon Balance (default) or charitable donation.",
-    "Receive the reward within the first 48 hours of the following month, with an email confirmation."
-  ],
-  "terms_url": "https://panel.amazon.com/FAQRewards.html",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Rewards issued once per month, within the first 48 hours of the following month; receipts must be shared by 11:59 PM PST on the last day of the month.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Official FAQ: 'You will earn a reward for each eligible receipt uploaded... with an opportunity to earn up to a $10 reward each month.'",
+   "pass": true
+  }
+ },
+ "eligibility": "Amazon customers 18+ in the US (also UK, Canada, Germany, France, Spain, Japan); invitation-only with waitlist; only eligible for parts of the program shown in-app.",
+ "notes": "Strong official evidence on panel.amazon.com Rewards FAQ: exact $10/month receipt cap, Amazon Balance payout, monthly issuance within first 48 hours of the following month. Framed as a data-for-reward panel, not passive income \u2014 you share receipts Amazon would otherwise not see.",
+ "numeric_basis": "payout from official FAQ (up to $10/month for receipts; surveys variable); time: 5-15 min active per receipt batch per Lane A standard",
+ "official_url": "https://panel.amazon.com/FAQRewards.html",
+ "payout_max_usd": 10,
+ "payout_min_usd": 0,
+ "payout_quote": "You will earn a reward for each eligible receipt uploaded through the receipts tab, with an opportunity to earn up to a $10 reward each month.",
+ "payout_value_note": "Monthly receipt reward capped at $10, paid as Amazon Balance (Amazon store credit), not cash.",
+ "route_id": "R1522",
+ "standard": {
+  "s1": {
+   "note": "Invitation-only; download app, join waitlist, upload eligible receipts via app or receipts@panel.amazon.com, pick reward, receive monthly.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No fees; free and voluntary.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Official FAQ: rewards issued once per month, within the first 48 hours of the following month, plus email confirmation.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Official copy is plain about caps, eligibility, and data use; no inflated promise.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official panel.amazon.com Rewards FAQ observed 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: waitlist \u2192 invitation \u2192 app \u2192 receipts \u2192 monthly reward.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Amazon Shopper Panel pages observed 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Download the Amazon Shopper Panel app and join the waitlist (invitation-only; space is limited).",
+  "When invited, accept the invitation and sign in with your Amazon account.",
+  "Each month, upload eligible receipts from non-Amazon purchases: snap paper receipts in the app or forward e-receipts to receipts@panel.amazon.com.",
+  "Optionally complete short surveys and enable ad verification for additional rewards.",
+  "Choose your monthly reward type: Amazon Balance (default) or charitable donation.",
+  "Receive the reward within the first 48 hours of the following month, with an email confirmation."
+ ],
+ "terms_url": "https://panel.amazon.com/FAQRewards.html",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Rewards issued once per month, within the first 48 hours of the following month; receipts must be shared by 11:59 PM PST on the last day of the month.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Rewards issued once per month, within the first 48 hours of the following month; receipts must be shared by month end.",
+ "maximize": "Submit receipts before the month-end deadline.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The monthly issuance is the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

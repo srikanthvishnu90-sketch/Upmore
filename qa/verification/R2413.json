@@ -1,93 +1,104 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You need two payroll direct deposits of $500 or more each within 100 days of joining, and the $300 bonus is paid to your Regular savings share up to 145 days after membership is established.",
+ "catches": [
+  "Membership application must be started between 1/1/26 and 12/31/26, using promotional code 2026PROMO at the time of application.",
+  "Must be approved for and open at least one savings account and one checking account.",
+  "Set up and receive two (2) Qualifying Payroll Direct Deposits of $500 or more each into either the new savings or checking account within 100 calendar days of establishing membership.",
+  "Qualifying Payroll Direct Deposits are recurring electronic deposits from an employer, Social Security payments, and pension payments. P2P transfers, transfers between demand deposit accounts, and ACH/bank transfers not originating directly from an employer or the government do NOT qualify.",
+  "All requirements must be completed within the 100-day window; failure to do so disqualifies the promotion.",
+  "After the first 100 days, PSECU assesses eligibility; if eligible, the $300 bonus is deposited into the Regular savings share within up to 45 additional days (up to 145 days total).",
+  "Limited to U.S. citizens or permanent resident aliens residing in the U.S. who are 18 or older at the time membership is established.",
+  "Limit one $300 New Member Bonus per tax identification number. Joint owners are not eligible unless they open their own account.",
+  "Not eligible if you are a current PSECU member, closed an account within the past 12 months, or ever received any PSECU new member incentive bonus.",
+  "The fetched official pages do not state tax reporting for this bonus."
+ ],
+ "checked_at": "2026-09-23T08:12:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official go.psecu.com page: 'From 1.1.26 to 12.31.26, PSECU is running a new member incentive bonus.' Crawled 1 hour ago.",
+   "pass": true
   },
-  "biggest_catch": "You need two payroll direct deposits of $500 or more each within 100 days of joining, and the $300 bonus is paid to your Regular savings share up to 145 days after membership is established.",
-  "catches": [
-    "Membership application must be started between 1/1/26 and 12/31/26, using promotional code 2026PROMO at the time of application.",
-    "Must be approved for and open at least one savings account and one checking account.",
-    "Set up and receive two (2) Qualifying Payroll Direct Deposits of $500 or more each into either the new savings or checking account within 100 calendar days of establishing membership.",
-    "Qualifying Payroll Direct Deposits are recurring electronic deposits from an employer, Social Security payments, and pension payments. P2P transfers, transfers between demand deposit accounts, and ACH/bank transfers not originating directly from an employer or the government do NOT qualify.",
-    "All requirements must be completed within the 100-day window; failure to do so disqualifies the promotion.",
-    "After the first 100 days, PSECU assesses eligibility; if eligible, the $300 bonus is deposited into the Regular savings share within up to 45 additional days (up to 145 days total).",
-    "Limited to U.S. citizens or permanent resident aliens residing in the U.S. who are 18 or older at the time membership is established.",
-    "Limit one $300 New Member Bonus per tax identification number. Joint owners are not eligible unless they open their own account.",
-    "Not eligible if you are a current PSECU member, closed an account within the past 12 months, or ever received any PSECU new member incentive bonus.",
-    "The fetched official pages do not state tax reporting for this bonus."
-  ],
-  "checked_at": "2026-09-23T08:12:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official go.psecu.com page: 'From 1.1.26 to 12.31.26, PSECU is running a new member incentive bonus.' Crawled 1 hour ago.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page: use promotional code 2026PROMO at the time of application; be approved for and open at least one savings and one checking account.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Official page: 'set up and receiving two (2) Qualifying Payroll Direct Deposits of $500 or more each' within 100 calendar days of membership.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Public go.psecu.com landing page with a self-serve promo code; no login, invite, or referral required.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page: use promotional code 2026PROMO at the time of application; be approved for and open at least one savings and one checking account.",
+   "pass": true
   },
-  "eligibility": "US citizen or permanent resident alien, 18+, new to PSECU (no current membership, no account closed within 12 months, never received a PSECU new-member bonus). Subject to membership approval.",
-  "notes": "Verified live 2026-09-23 (UTC) on go.psecu.com. One flat $300 new-member offer \u2014 do not split. Official pages fetched do not state tax reporting; assume tax liability.",
-  "numeric_basis": "300.00",
-  "official_url": "https://go.psecu.com/pennstatesports",
-  "payout_max_usd": 300.0,
-  "payout_min_usd": 300.0,
-  "payout_quote": "$300 New Member Bonus (must be completed within 100 calendar days of establishing membership)",
-  "payout_value_note": "Fixed $300 deposited into the member's Regular savings share.",
-  "route_id": "R2413",
-  "standard": {
-    "s1": {
-      "note": "Bonus deposited into Regular savings within up to 145 days of membership establishment (100 days to qualify + up to 45 days processing).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Pennsylvania-based; U.S. citizens/permanent residents residing in the U.S.",
-      "pass": true
-    },
-    "s3": {
-      "note": "No forced paid add-ons; checking and savings have no minimum balance requirements per PSECU.",
-      "pass": true
-    },
-    "s4": {
-      "note": "No forced paid add-ons.",
-      "pass": true
-    },
-    "s5": {
-      "note": "New members only; one bonus per tax ID; never received a prior PSECU new-member bonus.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Tax reporting not stated on the fetched official pages.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified live on go.psecu.com 2026-09-23; applications must start 1/1/26\u201312/31/26.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Official page: 'set up and receiving two (2) Qualifying Payroll Direct Deposits of $500 or more each' within 100 calendar days of membership.",
+   "pass": true
   },
-  "steps": [
-    "Start your PSECU membership application between 1/1/26 and 12/31/26, entering promotional code 2026PROMO.",
-    "Open at least one savings account and one checking account.",
-    "Set up and receive two qualifying payroll direct deposits of $500+ each (employer payroll, Social Security, or pension \u2014 not P2P or bank transfers) within 100 days of joining.",
-    "Wait up to 145 days from membership establishment for the $300 to land in your Regular savings share."
-  ],
-  "terms_url": "https://go.psecu.com/pennstatesports",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Apply 1/1/26\u201312/31/26; complete all requirements within 100 days of membership; bonus paid within up to 145 days of membership.",
-  "upfront_fee": 0.0,
-  "verdict": "verify",
-  "weasel_words": [
-    "PSECU reserves the right to verify deposit sources",
-    "processing may take up to an additional 45 days"
-  ]
+  "c4": {
+   "evidence": "Public go.psecu.com landing page with a self-serve promo code; no login, invite, or referral required.",
+   "pass": true
+  }
+ },
+ "eligibility": "US citizen or permanent resident alien, 18+, new to PSECU (no current membership, no account closed within 12 months, never received a PSECU new-member bonus). Subject to membership approval.",
+ "notes": "Verified live 2026-09-23 (UTC) on go.psecu.com. One flat $300 new-member offer — do not split. Official pages fetched do not state tax reporting; assume tax liability.",
+ "numeric_basis": "300.00",
+ "official_url": "https://go.psecu.com/pennstatesports",
+ "payout_max_usd": 300.0,
+ "payout_min_usd": 300.0,
+ "payout_quote": "$300 New Member Bonus (must be completed within 100 calendar days of establishing membership)",
+ "payout_value_note": "Fixed $300 deposited into the member's Regular savings share.",
+ "route_id": "R2413",
+ "standard": {
+  "s1": {
+   "note": "Bonus deposited into Regular savings within up to 145 days of membership establishment (100 days to qualify + up to 45 days processing).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Pennsylvania-based; U.S. citizens/permanent residents residing in the U.S.",
+   "pass": true
+  },
+  "s3": {
+   "note": "No forced paid add-ons; checking and savings have no minimum balance requirements per PSECU.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No forced paid add-ons.",
+   "pass": true
+  },
+  "s5": {
+   "note": "New members only; one bonus per tax ID; never received a prior PSECU new-member bonus.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Tax reporting not stated on the fetched official pages.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified live on go.psecu.com 2026-09-23; applications must start 1/1/26–12/31/26.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Start your PSECU membership application between 1/1/26 and 12/31/26, entering promotional code 2026PROMO.",
+  "Open at least one savings account and one checking account.",
+  "Set up and receive two qualifying payroll direct deposits of $500+ each (employer payroll, Social Security, or pension — not P2P or bank transfers) within 100 days of joining.",
+  "Wait up to 145 days from membership establishment for the $300 to land in your Regular savings share."
+ ],
+ "terms_url": "https://go.psecu.com/pennstatesports",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Apply 1/1/26–12/31/26; complete all requirements within 100 days of membership; bonus paid within up to 145 days of membership.",
+ "upfront_fee": 0.0,
+ "verdict": "verify",
+ "weasel_words": [
+  "PSECU reserves the right to verify deposit sources",
+  "processing may take up to an additional 45 days"
+ ],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $300. Per official terms: Apply 1/1/26–12/31/26; complete all requirements within 100 days of membership; bonus paid within up to 145 days of membership. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

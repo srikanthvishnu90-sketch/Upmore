@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's bill credit, not cash — $75 for an internet-only referral or $100 for internet-plus-mobile, and your friend must keep Astound service active and in good standing for 60 days before either of you sees a cent (credit posts ~60 days after their install).",
+ "catches": [
+  "Bill credits only — no cash value, not redeemable for cash, not transferable",
+  "Referred friend must be new to Astound (no Astound service within 60 days), activate within 30 days of the referral, and keep service active in good standing for 60 days",
+  "Credit posts approximately 60 days after the referred customer's install; forfeited if either account is cancelled before it applies",
+  "Max $1,200 in referral credits per person/account per calendar year",
+  "Bulk-agreement (apartment bulk billing) accounts and Astound employees/sales agents excluded",
+  "May not be combined with other referral rewards or similar programs"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official 'Astound Refer-A-Friend Terms & Conditions' PDF on astound.com (Astound's own domain): 'Under the Program, eligible Ambassadors and Referred Customers satisfying all Program and Reward eligibility criteria shall each receive a reward.'",
+   "pass": true
   },
-  "biggest_catch": "It's bill credit, not cash \u2014 $75 for an internet-only referral or $100 for internet-plus-mobile, and your friend must keep Astound service active and in good standing for 60 days before either of you sees a cent (credit posts ~60 days after their install).",
-  "catches": [
-    "Bill credits only \u2014 no cash value, not redeemable for cash, not transferable",
-    "Referred friend must be new to Astound (no Astound service within 60 days), activate within 30 days of the referral, and keep service active in good standing for 60 days",
-    "Credit posts approximately 60 days after the referred customer's install; forfeited if either account is cancelled before it applies",
-    "Max $1,200 in referral credits per person/account per calendar year",
-    "Bulk-agreement (apartment bulk billing) accounts and Astound employees/sales agents excluded",
-    "May not be combined with other referral rewards or similar programs"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official 'Astound Refer-A-Friend Terms & Conditions' PDF on astound.com (Astound's own domain): 'Under the Program, eligible Ambassadors and Referred Customers satisfying all Program and Reward eligibility criteria shall each receive a reward.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "2025 terms PDF live on astound.com; referral program still advertised by Astound (cabletv.com quotes current Astound terms page with $100/$150 figures, and the official PDF states $75/$100 \u2014 amounts per the official PDF used).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts in official terms: 'a onetime $75 bill credit per qualified internet referral or a $100 bill credit per qualified internet & mobile referral.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Eligibility, 30-day activation window, 60-day good-standing requirement, $1,200/year cap, and non-cash nature all stated in the official terms.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "2025 terms PDF live on astound.com; referral program still advertised by Astound (cabletv.com quotes current Astound terms page with $100/$150 figures, and the official PDF states $75/$100 — amounts per the official PDF used).",
+   "pass": true
   },
-  "eligibility": "Existing Astound residential customer 18+ with account in good standing; referred friend must be new (no Astound service within 60 days), enroll via the referral link, activate qualifying service within 30 days, and keep it 60 days in good standing.",
-  "notes": "Verified 2026-09-23 against the official Astound Refer-A-Friend T&Cs PDF on astound.com. Distinct mechanism from R1194 (Astound $100 signup gift card): this route is the ongoing refer-a-friend bill-credit program. Deduped: no other Astound referral in catalog/evidence.",
-  "numeric_basis": "payout from official terms ($75 bill credit per internet referral, $100 per internet+mobile referral); time: referral share 5-15 min active",
-  "official_url": "http://www.astound.com/wp-content/uploads/2025/03/Terms-and-Conditions.-Customer-Referral-Program-2025.pdf",
-  "payout_max_usd": 100,
-  "payout_min_usd": 75,
-  "payout_quote": "The Reward for the Ambassador is a onetime $75 bill credit per qualified internet referral or a $100 bill credit per qualified internet & mobile referral applied to the monthly billing statement.",
-  "payout_value_note": "$75 Astound bill credit per qualified internet referral, $100 per qualified internet+mobile referral \u2014 credits offset the Astound bill, not cash.",
-  "route_id": "R6344",
-  "standard": {
-    "s1": {
-      "note": "Exact amounts stated verbatim in the official T&Cs PDF ($75 internet, $100 internet+mobile).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Astound internet spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from official terms (enroll on referral site, share link, friend enrolls/activates, both maintain 60 days).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: credit-only, and the 60-day good-standing wait before it posts.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the friend's own Astound plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; reward type 'determined by Astound' noted but current amounts fixed in the 2025 terms.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against astound.com (provider's own domain). Deduped clean; distinct from R1194 signup gift card.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts in official terms: 'a onetime $75 bill credit per qualified internet referral or a $100 bill credit per qualified internet & mobile referral.'",
+   "pass": true
   },
-  "steps": [
-    "Existing Astound customer enrolls in the Refer-A-Friend program at astound.getambassador.com and accepts the terms",
-    "Share the referral link from the Ambassador dashboard via email or social",
-    "Friend clicks the link, enrolls, and activates qualifying Astound service within 30 days",
-    "Both accounts stay active and in good standing for 60 consecutive days",
-    "Bill credit posts to the Ambassador's monthly statement ~60 days after the friend's install"
-  ],
-  "terms_url": "http://www.astound.com/wp-content/uploads/2025/03/Terms-and-Conditions.-Customer-Referral-Program-2025.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit posted approximately 60 days after the referred customer installs and keeps qualifying service for the 60-day good-standing period.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Eligibility, 30-day activation window, 60-day good-standing requirement, $1,200/year cap, and non-cash nature all stated in the official terms.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Astound residential customer 18+ with account in good standing; referred friend must be new (no Astound service within 60 days), enroll via the referral link, activate qualifying service within 30 days, and keep it 60 days in good standing.",
+ "notes": "Verified 2026-09-23 against the official Astound Refer-A-Friend T&Cs PDF on astound.com. Distinct mechanism from R1194 (Astound $100 signup gift card): this route is the ongoing refer-a-friend bill-credit program. Deduped: no other Astound referral in catalog/evidence.",
+ "numeric_basis": "payout from official terms ($75 bill credit per internet referral, $100 per internet+mobile referral); time: referral share 5-15 min active",
+ "official_url": "http://www.astound.com/wp-content/uploads/2025/03/Terms-and-Conditions.-Customer-Referral-Program-2025.pdf",
+ "payout_max_usd": 100,
+ "payout_min_usd": 75,
+ "payout_quote": "The Reward for the Ambassador is a onetime $75 bill credit per qualified internet referral or a $100 bill credit per qualified internet & mobile referral applied to the monthly billing statement.",
+ "payout_value_note": "$75 Astound bill credit per qualified internet referral, $100 per qualified internet+mobile referral — credits offset the Astound bill, not cash.",
+ "route_id": "R6344",
+ "standard": {
+  "s1": {
+   "note": "Exact amounts stated verbatim in the official T&Cs PDF ($75 internet, $100 internet+mobile).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Astound internet spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from official terms (enroll on referral site, share link, friend enrolls/activates, both maintain 60 days).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: credit-only, and the 60-day good-standing wait before it posts.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the friend's own Astound plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; reward type 'determined by Astound' noted but current amounts fixed in the 2025 terms.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against astound.com (provider's own domain). Deduped clean; distinct from R1194 signup gift card.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Existing Astound customer enrolls in the Refer-A-Friend program at astound.getambassador.com and accepts the terms",
+  "Share the referral link from the Ambassador dashboard via email or social",
+  "Friend clicks the link, enrolls, and activates qualifying Astound service within 30 days",
+  "Both accounts stay active and in good standing for 60 consecutive days",
+  "Bill credit posts to the Ambassador's monthly statement ~60 days after the friend's install"
+ ],
+ "terms_url": "http://www.astound.com/wp-content/uploads/2025/03/Terms-and-Conditions.-Customer-Referral-Program-2025.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit posted approximately 60 days after the referred customer installs and keeps qualifying service for the 60-day good-standing period.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit posted approximately 60 days after the referred customer installs and keeps qualifying service for the 60-day good-standing period.",
+ "maximize": "Fastest honest path: Credit posted approximately 60 days after the referred customer installs and keeps qualifying service for the 60-day good-standing period. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

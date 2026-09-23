@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $100-per-side payout is tied to the friend installing WOW! Internet service through your referral link — if they don't use the link or don't complete the install, nobody gets paid.",
+ "catches": [
+  "Friend must install WOW! Internet service using the referrer's referral link",
+  "Program terms subject to change at any time; restrictions apply (full terms at wowway.com/referafriend/termsconditions, which could not be fetched at verification time)"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official WOW! 'Refer a Friend' page on wowway.com/phone/mobile/refernow, fetched live 2026-09-23: 'Right now, you can refer your friends to super-fast, ultra-reliable WOW! Internet and you will each get $100* when they install Internet service using your referral link.'",
+   "pass": true
   },
-  "biggest_catch": "The $100-per-side payout is tied to the friend installing WOW! Internet service through your referral link \u2014 if they don't use the link or don't complete the install, nobody gets paid.",
-  "catches": [
-    "Friend must install WOW! Internet service using the referrer's referral link",
-    "Program terms subject to change at any time; restrictions apply (full terms at wowway.com/referafriend/termsconditions, which could not be fetched at verification time)"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official WOW! 'Refer a Friend' page on wowway.com/phone/mobile/refernow, fetched live 2026-09-23: 'Right now, you can refer your friends to super-fast, ultra-reliable WOW! Internet and you will each get $100* when they install Internet service using your referral link.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'you will each get $100* when they install Internet service using your referral link.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "The referral-link and install conditions are stated on the official page; the page flags that full terms and restrictions apply at wowway.com/referafriend/termsconditions.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23.",
+   "pass": true
   },
-  "eligibility": "WOW! customer with a referral link; friend must be a new WOW! Internet customer who installs service using the referrer's link.",
-  "notes": "Verified 2026-09-23 by live fetch of wowway.com (official domain). Deduped: no WOW! routes in catalog, evidence files, existing-providers.txt, or rejects-g60. The dedicated terms page (wowway.com/referafriend/termsconditions) could not be fetched at verification time; the main referral page states the $100-per-side amount and the install-via-link condition. WOW! also notes its mobile referral program is not yet launched \u2014 this route covers Internet only.",
-  "numeric_basis": "payout from official terms ($100 to each side); time: referral share 5-15 min active",
-  "official_url": "https://www.wowway.com/phone/mobile/refernow",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "Right now, you can refer your friends to super-fast, ultra-reliable WOW! Internet and you will each get $100* when they install Internet service using your referral link.",
-  "payout_value_note": "$100 to both referrer and friend \u2014 offsets planned WOW! Internet spending, not income. (Reward form per the asterisked terms; presented as savings.)",
-  "route_id": "R6376",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($100 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: referral reward offsets planned WOW! Internet spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (share referral link, friend installs Internet service via the link).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: link-and-install requirement gates the payout.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own WOW! Internet service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words on the amount; the page flags standard terms/restrictions.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against wowway.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'you will each get $100* when they install Internet service using your referral link.'",
+   "pass": true
   },
-  "steps": [
-    "Get your WOW! referral link",
-    "Share the link with friends",
-    "Friend signs up for WOW! Internet service using your referral link",
-    "Friend installs the Internet service",
-    "Both sides receive $100"
-  ],
-  "terms_url": "https://www.wowway.com/referafriend/termsconditions",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Reward follows the friend's installation of Internet service via the referral link.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "The referral-link and install conditions are stated on the official page; the page flags that full terms and restrictions apply at wowway.com/referafriend/termsconditions.",
+   "pass": true
+  }
+ },
+ "eligibility": "WOW! customer with a referral link; friend must be a new WOW! Internet customer who installs service using the referrer's link.",
+ "notes": "Verified 2026-09-23 by live fetch of wowway.com (official domain). Deduped: no WOW! routes in catalog, evidence files, existing-providers.txt, or rejects-g60. The dedicated terms page (wowway.com/referafriend/termsconditions) could not be fetched at verification time; the main referral page states the $100-per-side amount and the install-via-link condition. WOW! also notes its mobile referral program is not yet launched — this route covers Internet only.",
+ "numeric_basis": "payout from official terms ($100 to each side); time: referral share 5-15 min active",
+ "official_url": "https://www.wowway.com/phone/mobile/refernow",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "Right now, you can refer your friends to super-fast, ultra-reliable WOW! Internet and you will each get $100* when they install Internet service using your referral link.",
+ "payout_value_note": "$100 to both referrer and friend — offsets planned WOW! Internet spending, not income. (Reward form per the asterisked terms; presented as savings.)",
+ "route_id": "R6376",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($100 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: referral reward offsets planned WOW! Internet spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (share referral link, friend installs Internet service via the link).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: link-and-install requirement gates the payout.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own WOW! Internet service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words on the amount; the page flags standard terms/restrictions.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against wowway.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Get your WOW! referral link",
+  "Share the link with friends",
+  "Friend signs up for WOW! Internet service using your referral link",
+  "Friend installs the Internet service",
+  "Both sides receive $100"
+ ],
+ "terms_url": "https://www.wowway.com/referafriend/termsconditions",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Reward follows the friend's installation of Internet service via the referral link.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Reward follows the friend's installation of Internet service via the referral link.",
+ "maximize": "Fastest honest path: Reward follows the friend's installation of Internet service via the referral link. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

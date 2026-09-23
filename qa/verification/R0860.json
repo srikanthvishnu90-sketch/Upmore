@@ -1,86 +1,97 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Requires two separate direct deposits of $400+ in two different months (minimum $800 total) within a 3-month window - one lump deposit does not count.",
+ "catches": [
+  "Two direct deposits of $400 or more for two separate months within a three-month period, totaling at least $800; if direct deposit is not made within the qualification period the bonus is forfeited.",
+  "Account must stay open 3 months and in good standing; must be signed up for e-statements.",
+  "New CRCU members only; limited to one $150 bonus per new personal checking account per member.",
+  "Does not apply to business or multiple checking accounts; cannot be combined with any other offer.",
+  "Bonus may be taxable income; CRCU may issue IRS Form 1099."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "CRCU - Community Resource Credit Union (Texas, crcu.org) - real operating credit union; official reward-checking promotion page crawled 2026-09-22.",
+   "pass": true
   },
-  "biggest_catch": "Requires two separate direct deposits of $400+ in two different months (minimum $800 total) within a 3-month window - one lump deposit does not count.",
-  "catches": [
-    "Two direct deposits of $400 or more for two separate months within a three-month period, totaling at least $800; if direct deposit is not made within the qualification period the bonus is forfeited.",
-    "Account must stay open 3 months and in good standing; must be signed up for e-statements.",
-    "New CRCU members only; limited to one $150 bonus per new personal checking account per member.",
-    "Does not apply to business or multiple checking accounts; cannot be combined with any other offer.",
-    "Bonus may be taxable income; CRCU may issue IRS Form 1099."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "CRCU - Community Resource Credit Union (Texas, crcu.org) - real operating credit union; official reward-checking promotion page crawled 2026-09-22.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official crcu.org promotion page states the $150 bonus, the two-$400-DD / $800-total / 3-month qualification terms, and new-member-only restriction verbatim.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee stated; no upfront payment required to earn the bonus.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Qualification window is 3 months with forfeiture if missed - concrete conditions and timing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official crcu.org promotion page states the $150 bonus, the two-$400-DD / $800-total / 3-month qualification terms, and new-member-only restriction verbatim.",
+   "pass": true
   },
-  "eligibility": "New CRCU members only; Texas (Houston/Baytown area).",
-  "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official crcu.org reward-checking promotion page (crawled 2026-09-22) rather than a direct page read; the payout quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'crcu' = 0 hits).",
-  "numeric_basis": "payout from official terms ($150 flat); time: online membership + checking application + DD setup est. 30-60 min active",
-  "official_url": "https://www.crcu.org/reward-checking-promotion?utm_medium=paid&utm_source=fb&utm_id=120248674388570495&utm_content=120248674388580495&utm_term=120248674388560495&utm_campaign=120248674388570495",
-  "payout_max_usd": 150.0,
-  "payout_min_usd": 150.0,
-  "payout_quote": "To qualify for the $150 bonus, member's account has to be open for 3 months, in good standing, be signed up for e-statements, and must receive at least two direct deposits of $400 or more for two separate months within a three-month period. The two deposits do not need to be consecutive, but must total a minimum of $800 across two months during the 3 month qualification period. If direct deposit is not made within the qualification period, $150 bonus is forfeited. Offer cannot be combined with any other offer and is limited to one $150 bonus per new personal checking account per member. Offer does not apply to business or multiple checking accounts. Offer subject to change or cancelation at any time. Bonus may constitute taxable income for you. CRCU may issue an IRS Form 1099 to you. For new CRCU members only.",
-  "payout_value_note": "flat $150 bonus in official terms",
-  "route_id": "R0860",
-  "standard": {
-    "s1": {
-      "note": "New CRCU members only; Texas.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Two $400+ direct deposits in two separate months ($800 total) within 3 months; account open 3 months in good standing; e-statements.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus forfeited if direct deposits not made within the 3-month qualification period.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amount, DD thresholds, and forfeiture stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.crcu.org/reward-checking-promotion - official CRCU page (search crawl 2026-09-22).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: join as new member, open reward checking, two $400+ DDs in separate months within 3 months, e-statements.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official page confirmed via search crawl 2026-09-22; direct fetch unavailable this session - flag for re-verification.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee stated; no upfront payment required to earn the bonus.",
+   "pass": true
   },
-  "steps": [
-    "Join CRCU as a new member and open a new personal Reward Checking account.",
-    "Sign up for e-statements.",
-    "Receive at least two direct deposits of $400 or more in two separate months within the 3-month qualification period (minimum $800 total; deposits need not be consecutive).",
-    "Keep the account open and in good standing through the 3-month period.",
-    "Collect the $150 bonus after the qualification period."
-  ],
-  "terms_url": "https://www.crcu.org/reward-checking-promotion?utm_medium=paid&utm_source=fb&utm_id=120248674388570495&utm_content=120248674388580495&utm_term=120248674388560495&utm_campaign=120248674388570495",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Qualification period is 3 months; bonus forfeited if direct deposits are not made within the window.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Qualification window is 3 months with forfeiture if missed - concrete conditions and timing.",
+   "pass": true
+  }
+ },
+ "eligibility": "New CRCU members only; Texas (Houston/Baytown area).",
+ "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official crcu.org reward-checking promotion page (crawled 2026-09-22) rather than a direct page read; the payout quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'crcu' = 0 hits).",
+ "numeric_basis": "payout from official terms ($150 flat); time: online membership + checking application + DD setup est. 30-60 min active",
+ "official_url": "https://www.crcu.org/reward-checking-promotion?utm_medium=paid&utm_source=fb&utm_id=120248674388570495&utm_content=120248674388580495&utm_term=120248674388560495&utm_campaign=120248674388570495",
+ "payout_max_usd": 150.0,
+ "payout_min_usd": 150.0,
+ "payout_quote": "To qualify for the $150 bonus, member's account has to be open for 3 months, in good standing, be signed up for e-statements, and must receive at least two direct deposits of $400 or more for two separate months within a three-month period. The two deposits do not need to be consecutive, but must total a minimum of $800 across two months during the 3 month qualification period. If direct deposit is not made within the qualification period, $150 bonus is forfeited. Offer cannot be combined with any other offer and is limited to one $150 bonus per new personal checking account per member. Offer does not apply to business or multiple checking accounts. Offer subject to change or cancelation at any time. Bonus may constitute taxable income for you. CRCU may issue an IRS Form 1099 to you. For new CRCU members only.",
+ "payout_value_note": "flat $150 bonus in official terms",
+ "route_id": "R0860",
+ "standard": {
+  "s1": {
+   "note": "New CRCU members only; Texas.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Two $400+ direct deposits in two separate months ($800 total) within 3 months; account open 3 months in good standing; e-statements.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus forfeited if direct deposits not made within the 3-month qualification period.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amount, DD thresholds, and forfeiture stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.crcu.org/reward-checking-promotion - official CRCU page (search crawl 2026-09-22).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: join as new member, open reward checking, two $400+ DDs in separate months within 3 months, e-statements.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official page confirmed via search crawl 2026-09-22; direct fetch unavailable this session - flag for re-verification.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Join CRCU as a new member and open a new personal Reward Checking account.",
+  "Sign up for e-statements.",
+  "Receive at least two direct deposits of $400 or more in two separate months within the 3-month qualification period (minimum $800 total; deposits need not be consecutive).",
+  "Keep the account open and in good standing through the 3-month period.",
+  "Collect the $150 bonus after the qualification period."
+ ],
+ "terms_url": "https://www.crcu.org/reward-checking-promotion?utm_medium=paid&utm_source=fb&utm_id=120248674388570495&utm_content=120248674388580495&utm_term=120248674388560495&utm_campaign=120248674388570495",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Qualification period is 3 months; bonus forfeited if direct deposits are not made within the window.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $150. Per official terms: Qualification period is 3 months; bonus forfeited if direct deposits are not made within the window. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

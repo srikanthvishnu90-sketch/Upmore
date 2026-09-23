@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The credit size depends on the fuel the referral signs up for: propane pays $100 per side but only if the referred account uses 300 or more annual gallons, while oil pays only $50 per side and must be on automatic delivery — and the referral must be submitted via the form before the new account is activated.",
+ "catches": [
+  "Propane: $100 account credit per side per referral, but the referred propane account must use 300 or more annual gallons.",
+  "Oil: $50 account credit per side per referral, and the referred oil account must be on automatic delivery.",
+  "The referral must be submitted via the official referral form prior to new account activation.",
+  "Properties with an existing Eastern tank or equipment do not qualify as a referred account.",
+  "All new accounts are subject to credit approval; existing installations must meet state/local code.",
+  "Referral incentive is account credit only, not redeemable for cash — offsets planned spending, never cash.",
+  "New England service area only; no end date stated — confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (eastern.com); Refer-A-Friend page live with Terms & Conditions stated on the page."
   },
-  "biggest_catch": "The credit size depends on the fuel the referral signs up for: propane pays $100 per side but only if the referred account uses 300 or more annual gallons, while oil pays only $50 per side and must be on automatic delivery — and the referral must be submitted via the form before the new account is activated.",
-  "catches": [
-    "Propane: $100 account credit per side per referral, but the referred propane account must use 300 or more annual gallons.",
-    "Oil: $50 account credit per side per referral, and the referred oil account must be on automatic delivery.",
-    "The referral must be submitted via the official referral form prior to new account activation.",
-    "Properties with an existing Eastern tank or equipment do not qualify as a referred account.",
-    "All new accounts are subject to credit approval; existing installations must meet state/local code.",
-    "Referral incentive is account credit only, not redeemable for cash — offsets planned spending, never cash.",
-    "New England service area only; no end date stated — confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (eastern.com); Refer-A-Friend page live with Terms & Conditions stated on the page."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts, fuel-dependent conditions, and submission rules stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Eastern Propane & Oil (the Eastern Bank hits are a different company)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts, fuel-dependent conditions, and submission rules stated on the official page."
   },
-  "eligibility": "Existing Eastern Propane & Oil customers; referred person must open a new propane (300+ annual gallons) or oil (automatic delivery) account in Eastern's New England service area.",
-  "notes": "Two-sided referral with fuel-dependent tiers: $100 each side for qualifying propane accounts, $50 each side for qualifying automatic-delivery oil accounts. Credits offset planned energy spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($100 account credit per side for qualifying propane referrals; $50 per side for qualifying oil referrals); time: referral share 5-15 min active",
-  "official_url": "https://eastern.com/offers/refer-a-friend/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 50,
-  "payout_quote": "If your referral signs on as a new Eastern Propane customer, you and your referral will receive an account credit of $100.00 as soon as they receive their first delivery. If your referral signs on as a new Eastern Oil customer on automatic delivery, you and your referral will receive an account credit of $50.00 as soon as they receive their first delivery.",
-  "payout_value_note": "$100 account credit per side for qualifying propane referrals (300+ annual gallons); $50 per side for qualifying automatic-delivery oil referrals; offsets planned energy spending (savings).",
-  "route_id": "R5527",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Eastern Propane & Oil customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Fill out and submit the referral form before the new account is activated."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referral opens a new account: propane with 300+ annual gallons, or oil on automatic delivery."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Both you and the referral receive the account credit upon the first delivery."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Referral incentive is account credit only, not redeemable for cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Eastern's New England service area."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Credit approval required; confirm program currency before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (account credit), never income."
   },
-  "steps": [
-    "As an existing Eastern Propane & Oil customer, submit the referral form before the new account is activated.",
-    "The referral opens a new account: propane with 300+ annual gallons or oil on automatic delivery.",
-    "The referral receives their first delivery.",
-    "You and the referral each receive the account credit ($100 for propane, $50 for oil)."
-  ],
-  "terms_url": "https://eastern.com/offers/refer-a-friend/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Referral credit is applied upon the first delivery to the approved new account.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Eastern Propane & Oil (the Eastern Bank hits are a different company)."
+  }
+ },
+ "eligibility": "Existing Eastern Propane & Oil customers; referred person must open a new propane (300+ annual gallons) or oil (automatic delivery) account in Eastern's New England service area.",
+ "notes": "Two-sided referral with fuel-dependent tiers: $100 each side for qualifying propane accounts, $50 each side for qualifying automatic-delivery oil accounts. Credits offset planned energy spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($100 account credit per side for qualifying propane referrals; $50 per side for qualifying oil referrals); time: referral share 5-15 min active",
+ "official_url": "https://eastern.com/offers/refer-a-friend/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 50,
+ "payout_quote": "If your referral signs on as a new Eastern Propane customer, you and your referral will receive an account credit of $100.00 as soon as they receive their first delivery. If your referral signs on as a new Eastern Oil customer on automatic delivery, you and your referral will receive an account credit of $50.00 as soon as they receive their first delivery.",
+ "payout_value_note": "$100 account credit per side for qualifying propane referrals (300+ annual gallons); $50 per side for qualifying automatic-delivery oil referrals; offsets planned energy spending (savings).",
+ "route_id": "R5527",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Eastern Propane & Oil customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fill out and submit the referral form before the new account is activated."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referral opens a new account: propane with 300+ annual gallons, or oil on automatic delivery."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Both you and the referral receive the account credit upon the first delivery."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Referral incentive is account credit only, not redeemable for cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Eastern's New England service area."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Credit approval required; confirm program currency before sharing."
+  }
+ },
+ "steps": [
+  "As an existing Eastern Propane & Oil customer, submit the referral form before the new account is activated.",
+  "The referral opens a new account: propane with 300+ annual gallons or oil on automatic delivery.",
+  "The referral receives their first delivery.",
+  "You and the referral each receive the account credit ($100 for propane, $50 for oil)."
+ ],
+ "terms_url": "https://eastern.com/offers/refer-a-friend/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Referral credit is applied upon the first delivery to the approved new account.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Referral credit is applied upon the first delivery to the approved new account.",
+ "maximize": "Fastest honest path: Referral credit is applied upon the first delivery to the approved new account. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

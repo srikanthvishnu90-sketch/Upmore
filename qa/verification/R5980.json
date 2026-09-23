@@ -1,1 +1,105 @@
-{"route_id": "R5980", "verdict": "verify", "official_url": "https://www.cutx.org/250-checking-bonus", "terms_url": "https://www.cutx.org/learn/disclosures", "payout_min_usd": 25, "payout_max_usd": 250, "payout_value_note": "$25-$250 matching-deposit bonus: match equals the initial opening deposit; $50 cap on Secure Checking, $250 cap on Secure Plus Checking with $600/month direct deposit", "payout_quote": "You will receive a one-time matching deposit up to $250.00 as a bonus credit to your new checking account once the account has been open for a minimum of 60 days. You must open the account with a minimum balance of $25.00. You must maintain a direct deposit of $600.00 per month to obtain the matching deposit bonus. To earn the matching deposit bonus, the amount will be determined by the initial deposit made at the time the new checking account was opened and will not exceed $250.00.", "steps": ["Join Credit Union of Texas (DFW, TX area; $10 membership fee) and open a new Secure Checking or Secure Plus Checking account in person with the promotion flyer.", "Fund the account with at least $25 (this initial deposit is what gets matched).", "Within 60 days of opening, have a direct deposit of $600+/month (paycheck, pension, or government benefits; electronic) post to the account - required for the up-to-$250 tier (Secure Plus).", "Keep the account open with direct deposit for a minimum of six months.", "Receive the matching bonus credit within 40 business days once all requirements are met."], "catches": ["The 'up to $250' is a MATCH of your initial deposit: to get the full $250 you must open with $250+ and keep $600/month direct deposit.", "The no-DD tier (Secure Checking) caps the match at $50; the $250 tier requires Secure Plus Checking.", "The promotion flyer must be presented at account opening IN PERSON - cannot be done fully online.", "Checking account with direct deposit must remain open for a minimum of six months or the bonus may be debited from the account at closing (clawback).", "One bonus per household; not valid for second checking accounts; cannot be combined with other offers.", "$10 membership fee to join (non-refundable upfront fee); Secure Plus has a $10 monthly fee unless you are a veteran/first responder.", "$600/month direct deposit must be paycheck/pension/government benefits via employer/government.", "Bonus is interest, reported on IRS Form 1099-INT (taxable).", "Offer ends without notice - no stated expiry date."], "biggest_catch": "You must present the promotion flyer in person to open the account, the $250 is only a match of your own initial deposit (open with $250 to earn $250), and closing within six months claws the bonus back - plus a $10 membership fee to join.", "eligibility": "New CUTX checking members; Credit Union of Texas field of membership (Dallas/Fort Worth, TX area). One bonus per household.", "timing": "Bonus credited within 40 business days once all requirements are met, and only after the account has been open at least 60 days. No expiry stated.", "upfront_fee": true, "weasel_words": ["may", "subject to", "restrictions may apply"], "app_links": {"android": null, "ios": null}, "checked_at": "2026-09-23T05:29:06Z", "critical": {"c1": {"pass": true, "evidence": "Official cutx.org $250-checking-bonus page and disclosures page (crawled 2026-09-23) state matching-bonus terms."}, "c2": {"pass": true, "evidence": "Two tiers ($50 no-DD / $250 with $600-mo-DD), match mechanics, 6-month clawback, 1099-INT all stated."}, "c3": {"pass": true, "evidence": "Current on provider domain; anytime-terminable flagged."}, "c4": {"pass": true, "evidence": "No CUTX evidence files; dedupe checks clean."}}, "standard": {"s1": {"pass": true, "note": "Official-domain terms."}, "s2": {"pass": true, "note": "Steps follow the official disclosure sequence."}, "s3": {"pass": true, "note": "Match mechanics, flyer/in-person, clawback, membership fee, and tax treatment disclosed."}, "s4": {"pass": true, "note": "1099-INT interest treatment disclosed."}, "s5": {"pass": true, "note": "$10 membership fee is a real upfront fee (true)."}, "s6": {"pass": true, "note": "Active-time estimate standard."}, "s7": {"pass": true, "note": "No expiry - flagged as end-without-notice."}}, "time_min_minutes": 30, "time_max_minutes": 60, "numeric_basis": "payout from official matching-bonus tiers (up to $50 / up to $250); min reflects matching a $25 minimum opening deposit on the no-DD tier; time standard.", "notes": "VERIFIED. Credit Union of Texas (NCUA, DFW TX) matching-deposit checking bonus, current official terms on cutx.org observed 2026-09-23. Caveats: in-person account opening with the promotion flyer is required; the $250 is a match of the initial deposit, not a flat payout; 6-month open-with-DD requirement backs a clawback; $10 membership fee is a genuine upfront cost. Distinct from any prior CUTX route (none exist)."}
+{
+ "route_id": "R5980",
+ "verdict": "verify",
+ "official_url": "https://www.cutx.org/250-checking-bonus",
+ "terms_url": "https://www.cutx.org/learn/disclosures",
+ "payout_min_usd": 25,
+ "payout_max_usd": 250,
+ "payout_value_note": "$25-$250 matching-deposit bonus: match equals the initial opening deposit; $50 cap on Secure Checking, $250 cap on Secure Plus Checking with $600/month direct deposit",
+ "payout_quote": "You will receive a one-time matching deposit up to $250.00 as a bonus credit to your new checking account once the account has been open for a minimum of 60 days. You must open the account with a minimum balance of $25.00. You must maintain a direct deposit of $600.00 per month to obtain the matching deposit bonus. To earn the matching deposit bonus, the amount will be determined by the initial deposit made at the time the new checking account was opened and will not exceed $250.00.",
+ "steps": [
+  "Join Credit Union of Texas (DFW, TX area; $10 membership fee) and open a new Secure Checking or Secure Plus Checking account in person with the promotion flyer.",
+  "Fund the account with at least $25 (this initial deposit is what gets matched).",
+  "Within 60 days of opening, have a direct deposit of $600+/month (paycheck, pension, or government benefits; electronic) post to the account - required for the up-to-$250 tier (Secure Plus).",
+  "Keep the account open with direct deposit for a minimum of six months.",
+  "Receive the matching bonus credit within 40 business days once all requirements are met."
+ ],
+ "catches": [
+  "The 'up to $250' is a MATCH of your initial deposit: to get the full $250 you must open with $250+ and keep $600/month direct deposit.",
+  "The no-DD tier (Secure Checking) caps the match at $50; the $250 tier requires Secure Plus Checking.",
+  "The promotion flyer must be presented at account opening IN PERSON - cannot be done fully online.",
+  "Checking account with direct deposit must remain open for a minimum of six months or the bonus may be debited from the account at closing (clawback).",
+  "One bonus per household; not valid for second checking accounts; cannot be combined with other offers.",
+  "$10 membership fee to join (non-refundable upfront fee); Secure Plus has a $10 monthly fee unless you are a veteran/first responder.",
+  "$600/month direct deposit must be paycheck/pension/government benefits via employer/government.",
+  "Bonus is interest, reported on IRS Form 1099-INT (taxable).",
+  "Offer ends without notice - no stated expiry date."
+ ],
+ "biggest_catch": "You must present the promotion flyer in person to open the account, the $250 is only a match of your own initial deposit (open with $250 to earn $250), and closing within six months claws the bonus back - plus a $10 membership fee to join.",
+ "eligibility": "New CUTX checking members; Credit Union of Texas field of membership (Dallas/Fort Worth, TX area). One bonus per household.",
+ "timing": "Bonus credited within 40 business days once all requirements are met, and only after the account has been open at least 60 days. No expiry stated.",
+ "upfront_fee": true,
+ "weasel_words": [
+  "may",
+  "subject to",
+  "restrictions may apply"
+ ],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:29:06Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official cutx.org $250-checking-bonus page and disclosures page (crawled 2026-09-23) state matching-bonus terms."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Two tiers ($50 no-DD / $250 with $600-mo-DD), match mechanics, 6-month clawback, 1099-INT all stated."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Current on provider domain; anytime-terminable flagged."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "No CUTX evidence files; dedupe checks clean."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Official-domain terms."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Steps follow the official disclosure sequence."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Match mechanics, flyer/in-person, clawback, membership fee, and tax treatment disclosed."
+  },
+  "s4": {
+   "pass": true,
+   "note": "1099-INT interest treatment disclosed."
+  },
+  "s5": {
+   "pass": true,
+   "note": "$10 membership fee is a real upfront fee (true)."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Active-time estimate standard."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No expiry - flagged as end-without-notice."
+  }
+ },
+ "time_min_minutes": 30,
+ "time_max_minutes": 60,
+ "numeric_basis": "payout from official matching-bonus tiers (up to $50 / up to $250); min reflects matching a $25 minimum opening deposit on the no-DD tier; time standard.",
+ "notes": "VERIFIED. Credit Union of Texas (NCUA, DFW TX) matching-deposit checking bonus, current official terms on cutx.org observed 2026-09-23. Caveats: in-person account opening with the promotion flyer is required; the $250 is a match of the initial deposit, not a flat payout; 6-month open-with-DD requirement backs a clawback; $10 membership fee is a genuine upfront cost. Distinct from any prior CUTX route (none exist).",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $25–$250. Per official terms: Bonus credited within 40 business days once all requirements are met, and only after the account has been open at least 60 days. No expiry stated. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
+}

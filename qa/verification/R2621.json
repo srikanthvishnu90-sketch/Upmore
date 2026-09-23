@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Both credits require the referred friend to enroll in a 12+ month postpaid plan AND pay their first full bill; credits arrive 1-2 billing cycles later, not immediately.",
+ "catches": [
+  "Both $75 credits are paid as bill credits 1-2 billing cycles after the referred friend pays their first full month bill, not instantly at signup.",
+  "Referred friend must enroll in a 12+ month postpaid residential energy plan; short-term or prepaid plans do not qualify.",
+  "Referrer's account must be active and in good standing at payout time.",
+  "Refer-a-Friend is for residential postpaid plans only; business accounts excluded.",
+  "Savings framing: this reduces a future energy bill, not cash income; you must already be (or become) a Just Energy customer to earn referrer-side credits."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url host justenergy.com is the provider's own domain; the page is titled 'Refer A Friend Benefits Program - Just Energy' with program terms and FAQ on the page itself.",
+   "pass": true
   },
-  "biggest_catch": "Both credits require the referred friend to enroll in a 12+ month postpaid plan AND pay their first full bill; credits arrive 1-2 billing cycles later, not immediately.",
-  "catches": [
-    "Both $75 credits are paid as bill credits 1-2 billing cycles after the referred friend pays their first full month bill, not instantly at signup.",
-    "Referred friend must enroll in a 12+ month postpaid residential energy plan; short-term or prepaid plans do not qualify.",
-    "Referrer's account must be active and in good standing at payout time.",
-    "Refer-a-Friend is for residential postpaid plans only; business accounts excluded.",
-    "Savings framing: this reduces a future energy bill, not cash income; you must already be (or become) a Just Energy customer to earn referrer-side credits."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url host justenergy.com is the provider's own domain; the page is titled 'Refer A Friend Benefits Program - Just Energy' with program terms and FAQ on the page itself.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page is current (asset uploads 2025-11 visible); payout quote states '$75 bill credits are added to both your account and your referral's account within 1-2 billing cycles'. No expired dates shown.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Credit conditions are explicit: 'Your friend must enroll in a 12+ month postpaid energy plan', 'Your account must be active and in good standing', 'Your friend must make their first full month bill payment before credits are applied'. No hidden qualifiers beyond stated terms.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($75), both-side credit, conditions (12+ month postpaid plan, first bill paid, active account), and timing (1-2 billing cycles) all stated; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page is current (asset uploads 2025-11 visible); payout quote states '$75 bill credits are added to both your account and your referral's account within 1-2 billing cycles'. No expired dates shown.",
+   "pass": true
   },
-  "eligibility": "Current Just Energy residential postpaid customer with an active account in good standing; referred friend must enroll in a 12+ month postpaid residential energy plan and pay their first full month bill. Texas and other Just Energy service states.",
-  "notes": "Verified 2026-09-23 from the official Just Energy refer-program page. Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being a Just Energy customer. Distinct mechanism vs any signup bill-credit route (no such route exists in catalog for Just Energy).",
-  "numeric_basis": "payout from official terms ($75 flat bill credit each side); time: referral share 5-15 min active",
-  "official_url": "https://justenergy.com/refer-program/",
-  "payout_max_usd": 75,
-  "payout_min_usd": 75,
-  "payout_quote": "$75 in bill credits are added to both your account and your referral's account within 1-2 billing cycles.",
-  "payout_value_note": "Flat $75 bill credit per side, applied to the energy bill (savings on planned spending, not cash).",
-  "route_id": "R2621",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($75), who gets it (both accounts), and timing (1-2 billing cycles) are quoted verbatim from the official page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: a bill credit on a required utility bill, not spendable cash or income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete 3-step process stated on the page (share code, friend enrolls and pays first bill, both earn credits).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: referral must enroll in a 12+ month plan and pay the first bill before either side sees the credit.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a referral code and enrolling cost nothing beyond the friend's normal plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the official payout statement; conditions are listed as numbered explicit conditions.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against justenergy.com (provider's own domain). Deduped: no Just Energy routes in catalog or qa/verification evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Credit conditions are explicit: 'Your friend must enroll in a 12+ month postpaid energy plan', 'Your account must be active and in good standing', 'Your friend must make their first full month bill payment before credits are applied'. No hidden qualifiers beyond stated terms.",
+   "pass": true
   },
-  "steps": [
-    "Find your Just Energy unique referral code on your bill statement or customer portal.",
-    "Send your referral code or link to a friend or family member.",
-    "Friend enrolls in a Just Energy 12+ month postpaid residential energy plan using your code.",
-    "Friend pays their first full month bill.",
-    "$75 bill credits are applied to both your account and your friend's account within 1-2 billing cycles."
-  ],
-  "terms_url": "https://justenergy.com/refer-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit applies within 1-2 billing cycles after the referred friend's first full bill payment; no fixed program end date stated on the page.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($75), both-side credit, conditions (12+ month postpaid plan, first bill paid, active account), and timing (1-2 billing cycles) all stated; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Current Just Energy residential postpaid customer with an active account in good standing; referred friend must enroll in a 12+ month postpaid residential energy plan and pay their first full month bill. Texas and other Just Energy service states.",
+ "notes": "Verified 2026-09-23 from the official Just Energy refer-program page. Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being a Just Energy customer. Distinct mechanism vs any signup bill-credit route (no such route exists in catalog for Just Energy).",
+ "numeric_basis": "payout from official terms ($75 flat bill credit each side); time: referral share 5-15 min active",
+ "official_url": "https://justenergy.com/refer-program/",
+ "payout_max_usd": 75,
+ "payout_min_usd": 75,
+ "payout_quote": "$75 in bill credits are added to both your account and your referral's account within 1-2 billing cycles.",
+ "payout_value_note": "Flat $75 bill credit per side, applied to the energy bill (savings on planned spending, not cash).",
+ "route_id": "R2621",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($75), who gets it (both accounts), and timing (1-2 billing cycles) are quoted verbatim from the official page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: a bill credit on a required utility bill, not spendable cash or income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete 3-step process stated on the page (share code, friend enrolls and pays first bill, both earn credits).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: referral must enroll in a 12+ month plan and pay the first bill before either side sees the credit.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a referral code and enrolling cost nothing beyond the friend's normal plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the official payout statement; conditions are listed as numbered explicit conditions.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against justenergy.com (provider's own domain). Deduped: no Just Energy routes in catalog or qa/verification evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Find your Just Energy unique referral code on your bill statement or customer portal.",
+  "Send your referral code or link to a friend or family member.",
+  "Friend enrolls in a Just Energy 12+ month postpaid residential energy plan using your code.",
+  "Friend pays their first full month bill.",
+  "$75 bill credits are applied to both your account and your friend's account within 1-2 billing cycles."
+ ],
+ "terms_url": "https://justenergy.com/refer-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit applies within 1-2 billing cycles after the referred friend's first full bill payment; no fixed program end date stated on the page.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit applies within 1-2 billing cycles after the referred friend's first full bill payment; no fixed program end date stated on the page.",
+ "maximize": "Fastest honest path: Credit applies within 1-2 billing cycles after the referred friend's first full bill payment; no fixed program end date stated on the page. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

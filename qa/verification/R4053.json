@@ -1,89 +1,92 @@
 {
-  "app_links": {
-    "android": "",
-    "ios": ""
+ "app_links": {
+  "android": "",
+  "ios": ""
+ },
+ "biggest_catch": "Credit posts only if the referred customer actually completes a new propane tank installation; a referral that just gets a quote or signs up without a tank set earns nothing.",
+ "catches": [
+  "Referral reward requires a completed new propane tank set by the referred customer: $50 for a 120-gallon tank set, $100 for 250 gallons or larger.",
+  "Credit is applied to the referrer's Forward Energy account only after installation is complete.",
+  "Duplicate referrals go to the earliest entry received; some exceptions may apply.",
+  "All accounts must meet Forward Energy credit approval criteria.",
+  "Offer subject to change.",
+  "Reward is an account credit only (propane service spending), framed as savings on planned energy spending.",
+  "Frame as savings, never income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider is Forward Energy, propane supplier (forwardenergy.com); page is their own Referral Rewards program.",
+   "pass": true
   },
-  "biggest_catch": "Credit posts only if the referred customer actually completes a new propane tank installation; a referral that just gets a quote or signs up without a tank set earns nothing.",
-  "catches": [
-    "Referral reward requires a completed new propane tank set by the referred customer: $50 for a 120-gallon tank set, $100 for 250 gallons or larger.",
-    "Credit is applied to the referrer's Forward Energy account only after installation is complete.",
-    "Duplicate referrals go to the earliest entry received; some exceptions may apply.",
-    "All accounts must meet Forward Energy credit approval criteria.",
-    "Offer subject to change.",
-    "Reward is an account credit only (propane service spending), framed as savings on planned energy spending.",
-    "Frame as savings, never income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider is Forward Energy, propane supplier (forwardenergy.com); page is their own Referral Rewards program.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official referral page opened live 2026-09-23 at forwardenergy.com/referral-rewards/; 'Earn Up to $100' current with tank-size table, no expiry notice.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "'Tank set of 120, get $50.00' and 'Tank set of 250 or larger, get $100.00' and 'you'll receive a credit between $50 and $100 directly on your account once your referral's tank is installed.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Credit is paid to the referrer (the program's reward recipient); no customer-only restriction stated.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official referral page opened live 2026-09-23 at forwardenergy.com/referral-rewards/; 'Earn Up to $100' current with tank-size table, no expiry notice.",
+   "pass": true
   },
-  "eligibility": "Forward Energy customer; referred person must be a new customer who completes a new propane tank set installation (120-gal or 250+-gal) and meets credit approval.",
-  "notes": "Verified 2026-09-23 from Forward Energy's official Referral Rewards page. Propane supplier referral reward; account-credit only, framed as savings on planned energy spending.",
-  "numeric_basis": "payout from official terms ($50 for 120-gal tank set, $100 for 250+ gal tank set, referrer account credit); time: fill referral form + share est. 5-15 min active",
-  "official_url": "https://forwardenergy.com/referral-rewards/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 50,
-  "payout_quote": "Tank set of 120, get $50.00. Tank set of 250 or larger, get $100.00",
-  "payout_value_note": "$50-$100 account credit per referral depending on installed tank size (120 gal = $50; 250+ gal = $100); referrer-side credit only.",
-  "route_id": "R4053",
-  "standard": {
-    "s1": {
-      "note": "Concrete payout range $50-$100 tied to tank size in official terms.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Conditions stated: new tank set required, credit after installation, credit approval, duplicates to earliest entry.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Account credit framed as savings on planned propane spending; posts after installation.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Steps concrete: fill referral form, referral gets tank set installed, credit applied.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee to refer.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No points conversion; USD account credit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "'Up to $100' qualified by explicit tank-size table; amounts concrete.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "'Tank set of 120, get $50.00' and 'Tank set of 250 or larger, get $100.00' and 'you'll receive a credit between $50 and $100 directly on your account once your referral's tank is installed.'",
+   "pass": true
   },
-  "steps": [
-    "Be a Forward Energy customer.",
-    "Fill out the $50-$100 Referral Form at forwardenergy.com with your contact info and your friend's.",
-    "Your referral signs up and completes a new propane tank set installation.",
-    "Once installation is complete, $50 (120-gal tank) or $100 (250+-gal tank) credit posts to your Forward Energy account."
-  ],
-  "terms_url": "https://forwardenergy.com/referral-rewards/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit applied to your account once the referral's tank installation is complete; duplicate referrals awarded to earliest entry.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [
-    "up to"
-  ]
+  "c4": {
+   "evidence": "Credit is paid to the referrer (the program's reward recipient); no customer-only restriction stated.",
+   "pass": true
+  }
+ },
+ "eligibility": "Forward Energy customer; referred person must be a new customer who completes a new propane tank set installation (120-gal or 250+-gal) and meets credit approval.",
+ "notes": "Verified 2026-09-23 from Forward Energy's official Referral Rewards page. Propane supplier referral reward; account-credit only, framed as savings on planned energy spending.",
+ "numeric_basis": "payout from official terms ($50 for 120-gal tank set, $100 for 250+ gal tank set, referrer account credit); time: fill referral form + share est. 5-15 min active",
+ "official_url": "https://forwardenergy.com/referral-rewards/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 50,
+ "payout_quote": "Tank set of 120, get $50.00. Tank set of 250 or larger, get $100.00",
+ "payout_value_note": "$50-$100 account credit per referral depending on installed tank size (120 gal = $50; 250+ gal = $100); referrer-side credit only.",
+ "route_id": "R4053",
+ "standard": {
+  "s1": {
+   "note": "Concrete payout range $50-$100 tied to tank size in official terms.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Conditions stated: new tank set required, credit after installation, credit approval, duplicates to earliest entry.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Account credit framed as savings on planned propane spending; posts after installation.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Steps concrete: fill referral form, referral gets tank set installed, credit applied.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee to refer.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No points conversion; USD account credit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "'Up to $100' qualified by explicit tank-size table; amounts concrete.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Be a Forward Energy customer.",
+  "Fill out the $50-$100 Referral Form at forwardenergy.com with your contact info and your friend's.",
+  "Your referral signs up and completes a new propane tank set installation.",
+  "Once installation is complete, $50 (120-gal tank) or $100 (250+-gal tank) credit posts to your Forward Energy account."
+ ],
+ "terms_url": "https://forwardenergy.com/referral-rewards/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit applied to your account once the referral's tank installation is complete; duplicate referrals awarded to earliest entry.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [
+  "up to"
+ ],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit applied to your account once the referral's tank installation is complete; duplicate referrals awarded to earliest entry.",
+ "maximize": "Fastest honest path: Credit applied to your account once the referral's tank installation is complete; duplicate referrals awarded to earliest entry. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

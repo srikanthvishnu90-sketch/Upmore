@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The referred friend must stay on Champion service for 60 consecutive days and their $50 credit only posts after those 60 days; a referral who uses your code is ineligible for any other Champion promotion.",
+ "catches": [
+  "Referred customer must be a new Champion customer and keep electric service with Champion for a minimum of 60 consecutive days.",
+  "Referral's $50 bill credit is typically applied only after 60 days of receiving service as a Champion customer; participant's credit typically posts within 30 days of the referral commencing service.",
+  "Participant must be an active Champion residential or commercial customer in good standing (current on all payments).",
+  "Bill credits are never redeemable for cash refunds; if service ends before 60 days Champion may recover the credit via a charge on a future bill.",
+  "Champion may terminate or change the program or credit amounts at any time; over $599 in referral credits per calendar year requires a W-9 for tax purposes.",
+  "Savings framing: this reduces a future Champion bill, not cash income; the friend must enroll with Champion using your Referral ID (referrals using your code cannot stack other promotions)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url is championenergyservices.com/CAF (provider's own domain, title 'Connect-A-Friend (CAF) Referral Program'); terms are the official Connect-A-Friend T&C PDF on Champion's own Azure CDN linked from that page.",
+   "pass": true
   },
-  "biggest_catch": "The referred friend must stay on Champion service for 60 consecutive days and their $50 credit only posts after those 60 days; a referral who uses your code is ineligible for any other Champion promotion.",
-  "catches": [
-    "Referred customer must be a new Champion customer and keep electric service with Champion for a minimum of 60 consecutive days.",
-    "Referral's $50 bill credit is typically applied only after 60 days of receiving service as a Champion customer; participant's credit typically posts within 30 days of the referral commencing service.",
-    "Participant must be an active Champion residential or commercial customer in good standing (current on all payments).",
-    "Bill credits are never redeemable for cash refunds; if service ends before 60 days Champion may recover the credit via a charge on a future bill.",
-    "Champion may terminate or change the program or credit amounts at any time; over $599 in referral credits per calendar year requires a W-9 for tax purposes.",
-    "Savings framing: this reduces a future Champion bill, not cash income; the friend must enroll with Champion using your Referral ID (referrals using your code cannot stack other promotions)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url is championenergyservices.com/CAF (provider's own domain, title 'Connect-A-Friend (CAF) Referral Program'); terms are the official Connect-A-Friend T&C PDF on Champion's own Azure CDN linked from that page.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Terms version 'Connect-A-Friend (50/50) –2026.01.21' — current 2026 program terms; payout quote is explicit and flat.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Qualified-referral criteria (new customer, online enrollment with Referral ID, 60 consecutive days of service) and credit timing are fully stated; no hidden qualifiers.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($50.00 each side), conditions (new customer, Referral ID, 60-day service, participant in good standing), and timing are all stated; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Terms version 'Connect-A-Friend (50/50) –2026.01.21' — current 2026 program terms; payout quote is explicit and flat.",
+   "pass": true
   },
-  "eligibility": "Active Champion residential or commercial customer in good standing who refers a new customer; the new customer enrolls at championenergyservices.com with the participant's Referral ID and keeps service for 60 consecutive days. Primarily Texas (ERCOT) service area.",
-  "notes": "Verified 2026-09-23 from Champion's official CAF page and current 2026.01.21 program T&C on their own CDN. Distinct from all prior-wave suppliers (Champion not in R1871-R1881 set); no other Champion routes in catalog.",
-  "numeric_basis": "payout from official terms ($50.00 flat bill credit each side); time: referral share 5-15 min active",
-  "official_url": "https://www.championenergyservices.com/CAF",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Program Earnings: Both the Qualified Referral and the Participant will earn a $50.00 bill credit for their successful participation in the Program.",
-  "payout_value_note": "Flat $50 bill credit per side, applied to the Champion electric bill (savings on planned spending, never cash).",
-  "route_id": "R2622",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50.00), both parties, and conditions are quoted verbatim from the official T&C.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: a bill credit on the electric bill, explicitly never redeemable for cash.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete process from the official page/T&C (share Referral ID, friend enrolls online, 60-day service, credits post).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 60-day service requirement plus referral's credit posts only after 60 days.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a Referral ID and enrolling cost nothing beyond the friend's normal plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement; amount and conditions are fixed.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against championenergyservices.com (provider's own domain). Deduped: no Champion Energy routes in catalog or evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Qualified-referral criteria (new customer, online enrollment with Referral ID, 60 consecutive days of service) and credit timing are fully stated; no hidden qualifiers.",
+   "pass": true
   },
-  "steps": [
-    "Get your Connect-A-Friend Referral ID from your Champion account or referral tools.",
-    "Share your Referral ID with a friend.",
-    "Friend enrolls as a new Champion customer online at championenergyservices.com and enters your Referral ID.",
-    "Friend keeps electric service with Champion for at least 60 consecutive days.",
-    "You receive a $50 bill credit (typically within 30 days of their service starting); your friend receives a $50 bill credit (typically after 60 days of service)."
-  ],
-  "terms_url": "https://champion-cdn-a8c0crgta3hkfpa3.a02.azurefd.net/assets/pdfs/Customer-Referral-Program-Terms-and-Conditions.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Program effective until terminated by Champion. Participant credit typically within 30 days of referral's service start; referral credit after 60 days of service.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($50.00 each side), conditions (new customer, Referral ID, 60-day service, participant in good standing), and timing are all stated; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Active Champion residential or commercial customer in good standing who refers a new customer; the new customer enrolls at championenergyservices.com with the participant's Referral ID and keeps service for 60 consecutive days. Primarily Texas (ERCOT) service area.",
+ "notes": "Verified 2026-09-23 from Champion's official CAF page and current 2026.01.21 program T&C on their own CDN. Distinct from all prior-wave suppliers (Champion not in R1871-R1881 set); no other Champion routes in catalog.",
+ "numeric_basis": "payout from official terms ($50.00 flat bill credit each side); time: referral share 5-15 min active",
+ "official_url": "https://www.championenergyservices.com/CAF",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Program Earnings: Both the Qualified Referral and the Participant will earn a $50.00 bill credit for their successful participation in the Program.",
+ "payout_value_note": "Flat $50 bill credit per side, applied to the Champion electric bill (savings on planned spending, never cash).",
+ "route_id": "R2622",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50.00), both parties, and conditions are quoted verbatim from the official T&C.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: a bill credit on the electric bill, explicitly never redeemable for cash.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete process from the official page/T&C (share Referral ID, friend enrolls online, 60-day service, credits post).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 60-day service requirement plus referral's credit posts only after 60 days.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a Referral ID and enrolling cost nothing beyond the friend's normal plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement; amount and conditions are fixed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against championenergyservices.com (provider's own domain). Deduped: no Champion Energy routes in catalog or evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Get your Connect-A-Friend Referral ID from your Champion account or referral tools.",
+  "Share your Referral ID with a friend.",
+  "Friend enrolls as a new Champion customer online at championenergyservices.com and enters your Referral ID.",
+  "Friend keeps electric service with Champion for at least 60 consecutive days.",
+  "You receive a $50 bill credit (typically within 30 days of their service starting); your friend receives a $50 bill credit (typically after 60 days of service)."
+ ],
+ "terms_url": "https://champion-cdn-a8c0crgta3hkfpa3.a02.azurefd.net/assets/pdfs/Customer-Referral-Program-Terms-and-Conditions.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Program effective until terminated by Champion. Participant credit typically within 30 days of referral's service start; referral credit after 60 days of service.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Program effective until terminated by Champion. Participant credit typically within 30 days of referral's service start; referral credit after 60 days of service.",
+ "maximize": "Fastest honest path: Program effective until terminated by Champion. Participant credit typically within 30 days of referral's service start; referral credit after 60 days of service. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

@@ -1,82 +1,90 @@
 {
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "biggest_catch": "The referral payout terms are much lighter than typical $100 programs: the friend only needs to open a checking account and both accounts stay open and in good standing for 30 days — no transaction or direct-deposit requirement is stated on the official page.",
- "catches": [
-  "Referrer must be at least 18, have a checking account with Community Choice, and be in good standing.",
-  "No transaction or direct-deposit requirement is stated — both accounts must simply stay open and in good standing for 30 days.",
-  "The friend opens a checking account and lets the team know who referred them."
- ],
- "checked_at": "2026-09-23T07:34:40Z",
- "critical": {
-  "c1": {
-   "evidence": "Verifiable program on institution's official domain: Community Choice Credit Union's official page (communitychoicecu.com/member-referral-1/) runs a member referral program paying the referrer for qualifying referrals.",
-   "pass": true
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Concrete per-referral payout: the referrer earns $100 for each qualifying friend. No limit is stated ('No limits, no hassle').",
-   "pass": true
+  "biggest_catch": "The referral payout terms are much lighter than typical $100 programs: the friend only needs to open a checking account and both accounts stay open and in good standing for 30 days — no transaction or direct-deposit requirement is stated on the official page.",
+  "catches": [
+    "Referrer must be at least 18, have a checking account with Community Choice, and be in good standing.",
+    "No transaction or direct-deposit requirement is stated — both accounts must simply stay open and in good standing for 30 days.",
+    "The friend opens a checking account and lets the team know who referred them."
+  ],
+  "checked_at": "2026-09-23T07:34:40Z",
+  "critical": {
+    "c1": {
+      "evidence": "Verifiable program on institution's official domain: Community Choice Credit Union's official page (communitychoicecu.com/member-referral-1/) runs a member referral program paying the referrer for qualifying referrals.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete per-referral payout: the referrer earns $100 for each qualifying friend. No limit is stated ('No limits, no hassle').",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Mechanism: the referrer fills out the referral form (18+, checking account holder in good standing); the friend opens a checking account and lets the team know who referred them.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: after 30 days with both accounts open and in good standing, the referrer receives $100.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "Mechanism: the referrer fills out the referral form (18+, checking account holder in good standing); the friend opens a checking account and lets the team know who referred them.",
-   "pass": true
+  "eligibility": "Community Choice Credit Union members age 18+ with a checking account in good standing; distinct from R4201's new-member signup bonus.",
+  "notes": "Both parties earn rewards; the official page states 'No limits, no hassle.'",
+  "numeric_basis": "Per-referral reward of $100.00.",
+  "official_url": "https://www.communitychoicecu.com/member-referral-1/",
+  "payout_max_usd": 100.0,
+  "payout_min_usd": 100.0,
+  "payout_quote": "Your friend opens a checking account and lets our team know you sent them. After 30 days, you get your $100!",
+  "payout_value_note": "$100 reward to the referrer.",
+  "route_id": "R4356",
+  "standard": {
+    "s1": {
+      "note": "No upfront fee charged to the referrer.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Referral form is free; no cost to refer.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Tax treatment not disclosed on the official page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No limit is stated.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Offer live on the current official page (observed 2026-09-23); no expiration date is published.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Referral mechanics stated on the official page: fill out the form; the friend opens a checking account and names the referrer.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Friend-side qualifying actions: open a checking account; let the team know who referred them; both accounts stay open and in good standing for 30 days.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Timing: after 30 days with both accounts open and in good standing, the referrer receives $100.",
-   "pass": true
-  }
- },
- "eligibility": "Community Choice Credit Union members age 18+ with a checking account in good standing; distinct from R4201's new-member signup bonus.",
- "notes": "Both parties earn rewards; the official page states 'No limits, no hassle.'",
- "numeric_basis": "Per-referral reward of $100.00.",
- "official_url": "https://www.communitychoicecu.com/member-referral-1/",
- "payout_max_usd": 100.0,
- "payout_min_usd": 100.0,
- "payout_quote": "Your friend opens a checking account and lets our team know you sent them. After 30 days, you get your $100!",
- "payout_value_note": "$100 reward to the referrer.",
- "route_id": "R4356",
- "standard": {
-  "s1": {
-   "note": "No upfront fee charged to the referrer.",
-   "pass": true
-  },
-  "s2": {
-   "note": "Referral form is free; no cost to refer.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Tax treatment not disclosed on the official page.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No limit is stated.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Offer live on the current official page (observed 2026-09-23); no expiration date is published.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Referral mechanics stated on the official page: fill out the form; the friend opens a checking account and names the referrer.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Friend-side qualifying actions: open a checking account; let the team know who referred them; both accounts stay open and in good standing for 30 days.",
-   "pass": true
-  }
- },
- "steps": [
-  "Fill out the referral form on Community Choice's member-referral page.",
-  "Your friend opens a checking account and tells the team you sent them.",
-  "After 30 days with both accounts open and in good standing, you get your $100."
- ],
- "terms_url": "https://www.communitychoicecu.com/member-referral-1/",
- "time_max_minutes": 15.0,
- "time_min_minutes": 5.0,
- "timing": "After 30 days with both accounts open and in good standing.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": []
+  "steps": [
+    "Fill out the referral form on Community Choice's member-referral page.",
+    "Your friend opens a checking account and tells the team you sent them.",
+    "After 30 days with both accounts open and in good standing, you get your $100."
+  ],
+  "terms_url": "https://www.communitychoicecu.com/member-referral-1/",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "After 30 days with both accounts open and in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "when_cash_arrives": "After 30 days with both accounts open and in good standing. Roughly a month from the trigger event to cash in hand.",
+  "maximize": [
+    "Trigger the clock early: have your friend complete qualifying activity (direct deposit, debit transactions) in the first days of the window.",
+    "Route a real payroll direct deposit (not Zelle/P2P transfers, which most programs exclude) as early as possible - payroll timing is usually the gating step.",
+    "If any-amount direct deposit qualifies, a small recurring ACH can trigger it - check the program's 'qualifying deposit' definition first.",
+    "Structural reason it cannot be faster: the payout window itself is 3-4 weeks after qualification - there is no expedited track."
+  ],
+  "speed": "weeks"
 }

@@ -1,84 +1,91 @@
 {
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "biggest_catch": "The per-referral amount depends on which checking account the friend opens: $20 for Shaka/Value Checking, $50 for Exceptional Checking.",
- "catches": [
-  "Tiered payout: $20 referral bonus for Shaka or Value Checking, $50 for Exceptional Checking — the referrer's amount depends on the friend's account choice.",
-  "Limit one bonus per new account per referee.",
-  "The referrer must have an existing CPB Checking account at the time the referee opens theirs.",
-  "Bonuses are reported as interest to the primary account holders.",
-  "Offer is subject to change at any time and cannot be combined with other offers."
- ],
- "checked_at": "2026-09-23T08:42:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Verifiable program on institution's official domain: Central Pacific Bank's official referral page (cpb.bank/personal-banking/checking-accounts/referral/promo) pays the referrer for qualifying referrals.",
-   "pass": true
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Concrete per-referral payout: the referrer receives a $20 referral bonus when the referee opens Shaka or Value Checking, or a $50 referral bonus when the referee opens Exceptional Checking.",
-   "pass": true
+  "biggest_catch": "The per-referral amount depends on which checking account the friend opens: $20 for Shaka/Value Checking, $50 for Exceptional Checking.",
+  "catches": [
+    "Tiered payout: $20 referral bonus for Shaka or Value Checking, $50 for Exceptional Checking — the referrer's amount depends on the friend's account choice.",
+    "Limit one bonus per new account per referee.",
+    "The referrer must have an existing CPB Checking account at the time the referee opens theirs.",
+    "Bonuses are reported as interest to the primary account holders.",
+    "Offer is subject to change at any time and cannot be combined with other offers."
+  ],
+  "checked_at": "2026-09-23T08:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Verifiable program on institution's official domain: Central Pacific Bank's official referral page (cpb.bank/personal-banking/checking-accounts/referral/promo) pays the referrer for qualifying referrals.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete per-referral payout: the referrer receives a $20 referral bonus when the referee opens Shaka or Value Checking, or a $50 referral bonus when the referee opens Exceptional Checking.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Mechanism: the referrer shares their unique referral link; the referee signs up with the link and opens a new CPB checking account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: the referrer and referee each receive the bonus within 60 days by crediting their checking accounts.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "Mechanism: the referrer shares their unique referral link; the referee signs up with the link and opens a new CPB checking account.",
-   "pass": true
+  "eligibility": "CPB customers with an existing CPB Checking account; the referee must open a new CPB checking account meeting the requirements.",
+  "notes": "Central Pacific Bank (Hawaii). Distinct from R0090's (unverified) checking bonus. Tiered payout is explicit, not vague.",
+  "numeric_basis": "Per-referral bonus of $20.00 (Shaka/Value Checking) or $50.00 (Exceptional Checking).",
+  "official_url": "https://www.cpb.bank/personal-banking/checking-accounts/referral/promo",
+  "payout_max_usd": 50.0,
+  "payout_min_usd": 20.0,
+  "payout_quote": "After a Shaka Checking or Value Checking account is opened by the referee and the requirements stated above are met, the referrer and referee will each receive a $20 referral bonus within 60 days. After an Exceptional Checking account is opened by the referee and the requirements stated above are met, the referrer and referee will each receive a $50 referral bonus within 60 days.",
+  "payout_value_note": "$20 per referral for Shaka/Value Checking; $50 per referral for Exceptional Checking.",
+  "route_id": "R4371",
+  "standard": {
+    "s1": {
+      "note": "No upfront fee charged to the referrer.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Referral is free; no cost to refer.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonuses are reported as interest to the primary account holders.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No stated annual cap on the observed snippet; limit one bonus per new account per referee.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Program live on the current official page (observed 2026-09-23); offer subject to change at any time.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Referral mechanics stated on the official page: share the unique referral link; the referee opens a new CPB checking account.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Friend-side qualifying actions: open a new CPB checking account and meet the stated requirements; the amount the referrer earns depends on the account type opened.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Timing: the referrer and referee each receive the bonus within 60 days by crediting their checking accounts.",
-   "pass": true
-  }
- },
- "eligibility": "CPB customers with an existing CPB Checking account; the referee must open a new CPB checking account meeting the requirements.",
- "notes": "Central Pacific Bank (Hawaii). Distinct from R0090's (unverified) checking bonus. Tiered payout is explicit, not vague.",
- "numeric_basis": "Per-referral bonus of $20.00 (Shaka/Value Checking) or $50.00 (Exceptional Checking).",
- "official_url": "https://www.cpb.bank/personal-banking/checking-accounts/referral/promo",
- "payout_max_usd": 50.0,
- "payout_min_usd": 20.0,
- "payout_quote": "After a Shaka Checking or Value Checking account is opened by the referee and the requirements stated above are met, the referrer and referee will each receive a $20 referral bonus within 60 days. After an Exceptional Checking account is opened by the referee and the requirements stated above are met, the referrer and referee will each receive a $50 referral bonus within 60 days.",
- "payout_value_note": "$20 per referral for Shaka/Value Checking; $50 per referral for Exceptional Checking.",
- "route_id": "R4371",
- "standard": {
-  "s1": {
-   "note": "No upfront fee charged to the referrer.",
-   "pass": true
-  },
-  "s2": {
-   "note": "Referral is free; no cost to refer.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Bonuses are reported as interest to the primary account holders.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No stated annual cap on the observed snippet; limit one bonus per new account per referee.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Program live on the current official page (observed 2026-09-23); offer subject to change at any time.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Referral mechanics stated on the official page: share the unique referral link; the referee opens a new CPB checking account.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Friend-side qualifying actions: open a new CPB checking account and meet the stated requirements; the amount the referrer earns depends on the account type opened.",
-   "pass": true
-  }
- },
- "steps": [
-  "Share your unique CPB referral link with a friend.",
-  "Friend opens a new CPB checking account using the link.",
-  "You and the friend each receive the bonus within 60 days: $20 for Shaka/Value Checking, $50 for Exceptional Checking."
- ],
- "terms_url": "https://www.cpb.bank/personal-banking/checking-accounts/referral/promo",
- "time_max_minutes": 15.0,
- "time_min_minutes": 5.0,
- "timing": "The bonus is credited to the referrer's existing checking account within 60 days.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": []
+  "steps": [
+    "Share your unique CPB referral link with a friend.",
+    "Friend opens a new CPB checking account using the link.",
+    "You and the friend each receive the bonus within 60 days: $20 for Shaka/Value Checking, $50 for Exceptional Checking."
+  ],
+  "terms_url": "https://www.cpb.bank/personal-banking/checking-accounts/referral/promo",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "The bonus is credited to the referrer's existing checking account within 60 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "when_cash_arrives": "The bonus is credited to the referrer's existing checking account within 60 days. Terms impose a fixed waiting period after the friend's account opens - nothing arrives before that date.",
+  "maximize": [
+    "Refer early and have your friend complete ALL qualifying activity in the first days of the window - late qualification pushes the fixed payout date even further out.",
+    "Both accounts must stay open and in good standing through the entire wait - early closure forfeits the bonus.",
+    "Structural reason it cannot be faster: the program's terms lock payout to a fixed date (60-120 days out) regardless of how fast your friend qualifies."
+  ],
+  "speed": "weeks"
 }

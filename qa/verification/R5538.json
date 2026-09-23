@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The payout depends entirely on the referred business's annual usage — a small business (15-49 MWh) earns you only $25; the $1,000 tier requires a referred business using 5,000+ MWh a year — and the referred business must stay current and in good standing for two billing cycles.",
+ "catches": [
+  "The referred business must be new to AEP Energy, use at least 15 MWh annually, and sign an energy purchase agreement of at least 12 months.",
+  "The referred business's account must remain current and in good standing for two monthly billing cycles after enrollment before you earn anything.",
+  "You must be a current AEP Energy customer at the time of the bill credit award.",
+  "Bill credit is issued within 90 days of the referred business's enrollment — it is not instant.",
+  "Referral Rewards are not redeemable for cash, are non-transferable, and you are responsible for any applicable taxes.",
+  "Program terms are subject to change at AEP Energy's sole discretion; confirm the tier table is current before referring."
+ ],
+ "checked_at": "2026-09-23T09:10:00Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (aepenergy.com); Business Referral Program page live with the full tier table, FAQ, and linked rules."
   },
-  "biggest_catch": "The payout depends entirely on the referred business's annual usage — a small business (15-49 MWh) earns you only $25; the $1,000 tier requires a referred business using 5,000+ MWh a year — and the referred business must stay current and in good standing for two billing cycles.",
-  "catches": [
-    "The referred business must be new to AEP Energy, use at least 15 MWh annually, and sign an energy purchase agreement of at least 12 months.",
-    "The referred business's account must remain current and in good standing for two monthly billing cycles after enrollment before you earn anything.",
-    "You must be a current AEP Energy customer at the time of the bill credit award.",
-    "Bill credit is issued within 90 days of the referred business's enrollment — it is not instant.",
-    "Referral Rewards are not redeemable for cash, are non-transferable, and you are responsible for any applicable taxes.",
-    "Program terms are subject to change at AEP Energy's sole discretion; confirm the tier table is current before referring."
-  ],
-  "checked_at": "2026-09-23T09:10:00Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (aepenergy.com); Business Referral Program page live with the full tier table, FAQ, and linked rules."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Concrete tiered amounts on the provider's own page: $25 / $100 / $500 / $1,000 based on referred business's annual MWh usage."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (one-time bill credit on your AEP Energy monthly retail electric bill), never income — rewards are expressly not redeemable for cash."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Zero hits across all three sources: grep qa/existing-providers.txt, python3 qa/dedupe-check.py 'AEP Energy' (0 catalog + 0 evidence hits), and glob qa/verification/R*.json for aepenergy.com — no AEP Energy route previously covered"
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Concrete tiered amounts on the provider's own page: $25 / $100 / $500 / $1,000 based on referred business's annual MWh usage."
   },
-  "eligibility": "Current AEP Energy customers who refer a qualifying new business customer (12+ month agreement, 15+ MWh annual usage, enrollment accepted by the local utility, 2-billing-cycle good-standing period).",
-  "notes": "Business referral program: refer a qualifying new business customer to AEP Energy and receive a one-time bill credit of $25 to $1,000 based on the referred business's annual energy usage. Credit offsets planned energy spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($25-$1,000 bill credit per qualifying referral, per the published usage tiers); time: referral form 5-15 min active",
-  "official_url": "https://www.aepenergy.com/?p=18675",
-  "payout_max_usd": 1000,
-  "payout_min_usd": 25,
-  "payout_quote": "you can earn up to $1,000 in bill credits for every new and qualifying business customer you refer.",
-  "payout_value_note": "$25 (15-49 MWh), $100 (50-499 MWh), $500 (500-4,999 MWh), $1,000 (5,000+ MWh) — one-time bill credits per qualifying referral; offsets planned energy spending (savings).",
-  "route_id": "R5538",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are a current AEP Energy customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Fill out the referral form and contact your sales representative to receive your business referral code."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Share your referral code with a business that is not currently an AEP Energy customer."
-    },
-    "s4": {
-      "pass": true,
-      "note": "The referred business signs a 12+ month energy purchase agreement (15+ MWh annual usage) and enrolls through the local utility."
-    },
-    "s5": {
-      "pass": true,
-      "note": "The referred business stays current and in good standing for two monthly billing cycles; AEP Energy notifies you of enrollment."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Select deregulated U.S. markets where AEP Energy sells retail energy; offerings not available in all areas."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Unlimited referrals; credit issued within 90 days of enrollment; program terms subject to change."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (one-time bill credit on your AEP Energy monthly retail electric bill), never income — rewards are expressly not redeemable for cash."
   },
-  "steps": [
-    "As a current AEP Energy customer, fill out the online referral form.",
-    "Contact your sales representative to receive your business referral code.",
-    "Share the referral code with a qualifying new business customer.",
-    "The referred business enrolls on a 12+ month agreement and stays in good standing for two billing cycles.",
-    "You receive a $25-$1,000 bill credit within 90 days of the referred business's enrollment, based on its annual usage."
-  ],
-  "terms_url": "https://www.aepenergy.com/small-business/business-referral/business-referral-program-rules/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Bill credit issued within 90 days of the referred business's enrollment, after the 2-billing-cycle good-standing period.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Zero hits across all three sources: grep qa/existing-providers.txt, python3 qa/dedupe-check.py 'AEP Energy' (0 catalog + 0 evidence hits), and glob qa/verification/R*.json for aepenergy.com — no AEP Energy route previously covered"
+  }
+ },
+ "eligibility": "Current AEP Energy customers who refer a qualifying new business customer (12+ month agreement, 15+ MWh annual usage, enrollment accepted by the local utility, 2-billing-cycle good-standing period).",
+ "notes": "Business referral program: refer a qualifying new business customer to AEP Energy and receive a one-time bill credit of $25 to $1,000 based on the referred business's annual energy usage. Credit offsets planned energy spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($25-$1,000 bill credit per qualifying referral, per the published usage tiers); time: referral form 5-15 min active",
+ "official_url": "https://www.aepenergy.com/?p=18675",
+ "payout_max_usd": 1000,
+ "payout_min_usd": 25,
+ "payout_quote": "you can earn up to $1,000 in bill credits for every new and qualifying business customer you refer.",
+ "payout_value_note": "$25 (15-49 MWh), $100 (50-499 MWh), $500 (500-4,999 MWh), $1,000 (5,000+ MWh) — one-time bill credits per qualifying referral; offsets planned energy spending (savings).",
+ "route_id": "R5538",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are a current AEP Energy customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fill out the referral form and contact your sales representative to receive your business referral code."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Share your referral code with a business that is not currently an AEP Energy customer."
+  },
+  "s4": {
+   "pass": true,
+   "note": "The referred business signs a 12+ month energy purchase agreement (15+ MWh annual usage) and enrolls through the local utility."
+  },
+  "s5": {
+   "pass": true,
+   "note": "The referred business stays current and in good standing for two monthly billing cycles; AEP Energy notifies you of enrollment."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Select deregulated U.S. markets where AEP Energy sells retail energy; offerings not available in all areas."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Unlimited referrals; credit issued within 90 days of enrollment; program terms subject to change."
+  }
+ },
+ "steps": [
+  "As a current AEP Energy customer, fill out the online referral form.",
+  "Contact your sales representative to receive your business referral code.",
+  "Share the referral code with a qualifying new business customer.",
+  "The referred business enrolls on a 12+ month agreement and stays in good standing for two billing cycles.",
+  "You receive a $25-$1,000 bill credit within 90 days of the referred business's enrollment, based on its annual usage."
+ ],
+ "terms_url": "https://www.aepenergy.com/small-business/business-referral/business-referral-program-rules/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Bill credit issued within 90 days of the referred business's enrollment, after the 2-billing-cycle good-standing period.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bill credit issued within 90 days of the referred business's enrollment, after the 2-billing-cycle good-standing period.",
+ "maximize": "Fastest honest path: Bill credit issued within 90 days of the referred business's enrollment, after the 2-billing-cycle good-standing period. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

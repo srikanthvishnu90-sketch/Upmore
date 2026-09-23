@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The credit is only $5 each — a small coupon usable only on genmobile.com or the Gen Mobile Care app — and you only earn yours after your friend places their first successful order.",
+ "catches": [
+  "Each side gets a $5 coupon (not $10 as some aggregators claim — the official page states $5)",
+  "Referrer's $5 coupon is only issued after the friend places their first successful order",
+  "Coupons can only be used on the Gen Mobile website or Gen Mobile Care app, and don't cover any shortfall in a purchase"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Gen Mobile 'Refer a Friend' page on genmobile.com/pages/refer-a-friend (crawled 21 days ago): 'Tell your friend about Gen Mobile and both you and your friend get a $5 credit.' FAQ: friend gets a $5 coupon good for their first purchase on link click; referrer gets a $5 coupon via email once the friend places their first successful order.",
+   "pass": true
   },
-  "biggest_catch": "The credit is only $5 each \u2014 a small coupon usable only on genmobile.com or the Gen Mobile Care app \u2014 and you only earn yours after your friend places their first successful order.",
-  "catches": [
-    "Each side gets a $5 coupon (not $10 as some aggregators claim \u2014 the official page states $5)",
-    "Referrer's $5 coupon is only issued after the friend places their first successful order",
-    "Coupons can only be used on the Gen Mobile website or Gen Mobile Care app, and don't cover any shortfall in a purchase"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Gen Mobile 'Refer a Friend' page on genmobile.com/pages/refer-a-friend (crawled 21 days ago): 'Tell your friend about Gen Mobile and both you and your friend get a $5 credit.' FAQ: friend gets a $5 coupon good for their first purchase on link click; referrer gets a $5 coupon via email once the friend places their first successful order.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page live and currently listed on genmobile.com (crawled 21 days ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'both you and your friend get a $5 credit.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Friend-first-order trigger and website/app-only redemption are stated in the official FAQ.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page live and currently listed on genmobile.com (crawled 21 days ago).",
+   "pass": true
   },
-  "eligibility": "Gen Mobile customer with a referral link; friend must click the link and place a first successful order.",
-  "notes": "Verified 2026-09-23 via official genmobile.com referral page. Deduped: no Gen Mobile routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Amount corrected to the official $5 each (aggregators claim $10, which the official page contradicts).",
-  "numeric_basis": "payout from official terms ($5 credit each); time: referral share 5-15 min active",
-  "official_url": "https://www.genmobile.com/pages/refer-a-friend",
-  "payout_max_usd": 5,
-  "payout_min_usd": 5,
-  "payout_quote": "Tell your friend about Gen Mobile and both you and your friend get a $5 credit. Once your friend clicks on that link, they will receive a $5 coupon good for their first purchase. When your friend places their first successful order, you'll receive a $5 coupon via email.",
-  "payout_value_note": "$5 credit each side \u2014 offsets planned Gen Mobile spending (plan renewal, add-ons), not income.",
-  "route_id": "R6389",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($5 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: credit offsets planned Gen Mobile spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official FAQ (share link, friend clicks, friend's first order, $5 coupon).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: small $5 coupon, website/app-only, referrer paid only after friend's first order.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Gen Mobile purchase.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against genmobile.com (provider's own domain). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'both you and your friend get a $5 credit.'",
+   "pass": true
   },
-  "steps": [
-    "Share your Gen Mobile referral link with friends via email or social media",
-    "Friend clicks the link and gets a $5 coupon good for their first purchase",
-    "Friend places their first successful order",
-    "You receive a $5 coupon via email; redeem it on genmobile.com or the Gen Mobile Care app"
-  ],
-  "terms_url": "https://www.genmobile.com/pages/refer-a-friend",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Friend's $5 coupon on link click; your $5 coupon after their first successful order.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Friend-first-order trigger and website/app-only redemption are stated in the official FAQ.",
+   "pass": true
+  }
+ },
+ "eligibility": "Gen Mobile customer with a referral link; friend must click the link and place a first successful order.",
+ "notes": "Verified 2026-09-23 via official genmobile.com referral page. Deduped: no Gen Mobile routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Amount corrected to the official $5 each (aggregators claim $10, which the official page contradicts).",
+ "numeric_basis": "payout from official terms ($5 credit each); time: referral share 5-15 min active",
+ "official_url": "https://www.genmobile.com/pages/refer-a-friend",
+ "payout_max_usd": 5,
+ "payout_min_usd": 5,
+ "payout_quote": "Tell your friend about Gen Mobile and both you and your friend get a $5 credit. Once your friend clicks on that link, they will receive a $5 coupon good for their first purchase. When your friend places their first successful order, you'll receive a $5 coupon via email.",
+ "payout_value_note": "$5 credit each side — offsets planned Gen Mobile spending (plan renewal, add-ons), not income.",
+ "route_id": "R6389",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($5 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: credit offsets planned Gen Mobile spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official FAQ (share link, friend clicks, friend's first order, $5 coupon).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: small $5 coupon, website/app-only, referrer paid only after friend's first order.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Gen Mobile purchase.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against genmobile.com (provider's own domain). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Share your Gen Mobile referral link with friends via email or social media",
+  "Friend clicks the link and gets a $5 coupon good for their first purchase",
+  "Friend places their first successful order",
+  "You receive a $5 coupon via email; redeem it on genmobile.com or the Gen Mobile Care app"
+ ],
+ "terms_url": "https://www.genmobile.com/pages/refer-a-friend",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Friend's $5 coupon on link click; your $5 coupon after their first successful order.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Friend's $5 coupon on link click; your $5 coupon after their first successful order.",
+ "maximize": "Fastest honest path: Friend's $5 coupon on link click; your $5 coupon after their first successful order. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

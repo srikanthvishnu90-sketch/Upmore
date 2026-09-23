@@ -87,5 +87,16 @@
   "payout_value_note": "flat amount in official terms",
   "time_min_minutes": 30.0,
   "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Brokerage Promo (30-60min active)"
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Brokerage Promo (30-60min active)",
+  "speed": "days",
+  "when_cash_arrives": "Reward normally credits around day 8 after account approval (allow ~1 more week). The reward cash itself cannot be withdrawn for 1 year — dropping below the tier's deposit floor can trigger rescission of the reward.",
+  "maximize": "Fastest path: get approved, then initiate and settle the qualifying deposit inside the 7-day post-approval window (wire settles fastest); the reward credits ~day 8. Smaller tiers share the same fast clock ($1,000-$4,999.99 → $25). Blocker: targeted offer only — no public signup path; deposit and reward locked 1 year.",
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "days",
+      "rationale": "Official Robinhood support article: 'Reward normally credits around day eight, with approximately one additional week allowed' — the credit lands in days; the 1-year withdrawal lock is disclosed in when_cash_arrives."
+    }
+  ]
 }

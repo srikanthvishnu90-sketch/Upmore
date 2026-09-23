@@ -1,43 +1,55 @@
 {
-  "app_links": {},
-  "biggest_catch": "Texas-only, non-cash bill credit that arrives up to two billing cycles later — and any spam-style referral messages disqualify you.",
-  "catches": [
-    "Texas only; month-to-month plans excluded",
-    "Bill credit, not cash and not redeemable for cash",
-    "Credit applied within two billing cycles",
-    "Enrollments through third-party sales agents do not qualify",
-    "Mass or automated referral messages disqualify the referrer"
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": [
-    "Active Reliant customer with a Texas service address",
-    "Friend enrolls on a term plan using the referral ID",
-    "Friend stays active for 10 days"
-  ],
-  "eligibility": [
-    "Active Reliant residential customer with a Texas service address",
-    "Friend is a new Texas residential customer enrolling on a term plan with the referral ID and staying active 10 days"
-  ],
-  "notes": "Official referral terms and conditions (PDF) confirm the $50 residential reward; Reliant's official copy also advertises $200 for small-business referrals. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)]",
-  "official_url": "https://www.reliant.com/en/residential/electricity/electricity-plans/plans/choose-reliant-energy?customer=new",
-  "payout_quote": "$50 bill credit each side for residential referrals ($200 for small-business referrals) after the referred customer completes 10 days of active service on a term plan",
-  "route_id": "R0847",
-  "standard": true,
-  "steps": [
-    "Active Reliant customer shares their referral ID",
-    "Friend enrolls on a qualifying Reliant term plan with the referral ID",
-    "Friend keeps service active for at least 10 days",
-    "Bill credit applied within two billing cycles"
-  ],
-  "terms_url": "https://www.reliant.com/content/dam/reliant/en/media/pdfs/Reliant%20Referral%20Terms%20and%20Conditions.pdf",
-  "timing": "Credit applied within two billing cycles after the friend completes 10 days of active electricity service.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "payout_min_usd": 50.0,
-  "payout_max_usd": 50.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 5.0,
-  "time_max_minutes": 15.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default App Referral (5-15min active)"
+ "app_links": {},
+ "biggest_catch": "Texas-only, non-cash bill credit that arrives up to two billing cycles later \u2014 and any spam-style referral messages disqualify you.",
+ "catches": [
+  "Texas only; month-to-month plans excluded",
+  "Bill credit, not cash and not redeemable for cash",
+  "Credit applied within two billing cycles",
+  "Enrollments through third-party sales agents do not qualify",
+  "Mass or automated referral messages disqualify the referrer"
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": [
+  "Active Reliant customer with a Texas service address",
+  "Friend enrolls on a term plan using the referral ID",
+  "Friend stays active for 10 days"
+ ],
+ "eligibility": [
+  "Active Reliant residential customer with a Texas service address",
+  "Friend is a new Texas residential customer enrolling on a term plan with the referral ID and staying active 10 days"
+ ],
+ "notes": "Official referral terms and conditions (PDF) confirm the $50 residential reward; Reliant's official copy also advertises $200 for small-business referrals. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default App Referral (5-15min active)]",
+ "official_url": "https://www.reliant.com/en/residential/electricity/electricity-plans/plans/choose-reliant-energy?customer=new",
+ "payout_quote": "$50 bill credit each side for residential referrals ($200 for small-business referrals) after the referred customer completes 10 days of active service on a term plan",
+ "route_id": "R0847",
+ "standard": true,
+ "steps": [
+  "Active Reliant customer shares their referral ID",
+  "Friend enrolls on a qualifying Reliant term plan with the referral ID",
+  "Friend keeps service active for at least 10 days",
+  "Bill credit applied within two billing cycles"
+ ],
+ "terms_url": "https://www.reliant.com/content/dam/reliant/en/media/pdfs/Reliant%20Referral%20Terms%20and%20Conditions.pdf",
+ "timing": "Credit applied within two billing cycles after the friend completes 10 days of active electricity service.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "payout_min_usd": 50.0,
+ "payout_max_usd": 50.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 5.0,
+ "time_max_minutes": 15.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default App Referral (5-15min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Credit applied within two billing cycles after the friend completes 10 days of active electricity service.",
+ "maximize": "Activate service immediately.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "Two billing cycles are the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Your $75 credit doesn't post until 60 days after your friend signs up — and if you cancel your Midco account before then, the credit is forfeited.",
+ "catches": [
+  "Referrer's $75 credit posts to their account only after 60 days",
+  "Credit has no cash value and will not be refunded; if the referring customer cancels, all remaining referral credits are forfeited",
+  "Friend must be a new residential customer adding internet, TV and/or phone in a Midco-serviceable area; business services don't qualify",
+  "To receive the credit you must keep your account payment status current",
+  "Limit of seven referral code uses ($525 in account credits) per calendar year",
+  "Midco employees are not eligible"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Midco Connect-A-Friend page on midco.com/connect-a-friend, fetched live 2026-09-23: 'Give $75. Get $75.' / 'Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.'",
+   "pass": true
   },
-  "biggest_catch": "Your $75 credit doesn't post until 60 days after your friend signs up \u2014 and if you cancel your Midco account before then, the credit is forfeited.",
-  "catches": [
-    "Referrer's $75 credit posts to their account only after 60 days",
-    "Credit has no cash value and will not be refunded; if the referring customer cancels, all remaining referral credits are forfeited",
-    "Friend must be a new residential customer adding internet, TV and/or phone in a Midco-serviceable area; business services don't qualify",
-    "To receive the credit you must keep your account payment status current",
-    "Limit of seven referral code uses ($525 in account credits) per calendar year",
-    "Midco employees are not eligible"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Midco Connect-A-Friend page on midco.com/connect-a-friend, fetched live 2026-09-23: 'Give $75. Get $75.' / 'Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'Give $75. Get $75.' / 'Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "60-day credit-posting rule, current-payment-status rule, residential-only rule, $525/year cap, and employee exclusion all stated on the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23.",
+   "pass": true
   },
-  "eligibility": "Existing Midco customer (referrer); friend must be a new residential customer adding Midco internet, TV and/or phone service in a Midco-serviceable area, using the referrer's unique code at signup.",
-  "notes": "Verified 2026-09-23 by live fetch of midco.com (official domain). Deduped: no Midco routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the one fuzzy hit was an unrelated 'Co' utility rebate). Note: aggregator articles describe older tiered figures ($100-$250 referrer / $25 friend); the live official page shows a flat $75 each, which is what this route uses. Midco is a regional provider (MN/ND/SD/WI/KS).",
-  "numeric_basis": "payout from official terms ($75 bill credit to each side); time: referral share 5-15 min active",
-  "official_url": "https://midco.com/connect-a-friend",
-  "payout_max_usd": 75,
-  "payout_min_usd": 75,
-  "payout_quote": "Give $75. Get $75. Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.",
-  "payout_value_note": "$75 bill credit to both referrer and friend \u2014 offsets planned Midco spending, not cash.",
-  "route_id": "R6375",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($75 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Midco spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (get code in My Account, send code, friend signs up, track redemption).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 60-day wait and forfeiture on cancellation.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Midco service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against midco.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'Give $75. Get $75.' / 'Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.'",
+   "pass": true
   },
-  "steps": [
-    "Log in to My Account and get your unique referral code under Popular Topics",
-    "Send the code to friends and family",
-    "Friend uses the code when signing up for new Midco residential service",
-    "Track code redemption on the Connect-A-Friend page in My Account",
-    "Both sides receive a $75 bill credit (referrer's posts after 60 days)"
-  ],
-  "terms_url": "https://midco.com/connect-a-friend",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Referrer's $75 credit posts to their account after 60 days.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "60-day credit-posting rule, current-payment-status rule, residential-only rule, $525/year cap, and employee exclusion all stated on the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Midco customer (referrer); friend must be a new residential customer adding Midco internet, TV and/or phone service in a Midco-serviceable area, using the referrer's unique code at signup.",
+ "notes": "Verified 2026-09-23 by live fetch of midco.com (official domain). Deduped: no Midco routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the one fuzzy hit was an unrelated 'Co' utility rebate). Note: aggregator articles describe older tiered figures ($100-$250 referrer / $25 friend); the live official page shows a flat $75 each, which is what this route uses. Midco is a regional provider (MN/ND/SD/WI/KS).",
+ "numeric_basis": "payout from official terms ($75 bill credit to each side); time: referral share 5-15 min active",
+ "official_url": "https://midco.com/connect-a-friend",
+ "payout_max_usd": 75,
+ "payout_min_usd": 75,
+ "payout_quote": "Give $75. Get $75. Receive a $75 credit on your Midco bill - and $75 for your friend - when they sign up for any new service.",
+ "payout_value_note": "$75 bill credit to both referrer and friend — offsets planned Midco spending, not cash.",
+ "route_id": "R6375",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($75 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Midco spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (get code in My Account, send code, friend signs up, track redemption).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 60-day wait and forfeiture on cancellation.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Midco service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against midco.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log in to My Account and get your unique referral code under Popular Topics",
+  "Send the code to friends and family",
+  "Friend uses the code when signing up for new Midco residential service",
+  "Track code redemption on the Connect-A-Friend page in My Account",
+  "Both sides receive a $75 bill credit (referrer's posts after 60 days)"
+ ],
+ "terms_url": "https://midco.com/connect-a-friend",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Referrer's $75 credit posts to their account after 60 days.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Referrer's $75 credit posts to their account after 60 days.",
+ "maximize": "Fastest honest path: Referrer's $75 credit posts to their account after 60 days. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

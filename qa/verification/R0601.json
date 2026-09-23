@@ -1,92 +1,103 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's three stacked hurdles: the full $300 requires keeping $5,000 parked in a new savings account on day 90 — most people will realistically earn $50–$150.",
+ "catches": [
+  "Expires 12/31/2026; provide offer code PK2 at account opening.",
+  "First $50: have the debit card issued and activated AND enroll in e-statements within 90 days.",
+  "Additional $100: first tier plus two or more direct deposits totaling at least $500 within 90 days.",
+  "Additional $150: first tier plus open a Money Builder Savings account with a $1,000 opening deposit and a $5,000 balance on the 90th calendar day.",
+  "On the 90th calendar day the account must be active, have a positive balance, an active debit card, and be enrolled in e-statements; bonuses credited within 10 calendar days after the day-90 review (by day 100).",
+  "New personal checking only: no current personal checking, none opened in the prior 12 months, and no checking bonus received in the prior 24 months.",
+  "$50 minimum to open checking ($5,000 for Premier Plus); a $50 fee applies if the account is closed within 180 days."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Old Second National Bank — real operating bank; official checking promo page on oldsecond.com.",
+   "pass": true
   },
-  "biggest_catch": "It's three stacked hurdles: the full $300 requires keeping $5,000 parked in a new savings account on day 90 — most people will realistically earn $50–$150.",
-  "catches": [
-    "Expires 12/31/2026; provide offer code PK2 at account opening.",
-    "First $50: have the debit card issued and activated AND enroll in e-statements within 90 days.",
-    "Additional $100: first tier plus two or more direct deposits totaling at least $500 within 90 days.",
-    "Additional $150: first tier plus open a Money Builder Savings account with a $1,000 opening deposit and a $5,000 balance on the 90th calendar day.",
-    "On the 90th calendar day the account must be active, have a positive balance, an active debit card, and be enrolled in e-statements; bonuses credited within 10 calendar days after the day-90 review (by day 100).",
-    "New personal checking only: no current personal checking, none opened in the prior 12 months, and no checking bonus received in the prior 24 months.",
-    "$50 minimum to open checking ($5,000 for Premier Plus); a $50 fee applies if the account is closed within 180 days."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Old Second National Bank — real operating bank; official checking promo page on oldsecond.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official promo page with tiered $50/$100/$150 bonuses, code PK2, direct-deposit and savings-balance thresholds, day-90 review mechanics, and new-customer exclusions.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee to participate; account minimums are the customer's own funds.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: relationship reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official promo page with tiered $50/$100/$150 bonuses, code PK2, direct-deposit and savings-balance thresholds, day-90 review mechanics, and new-customer exclusions.",
+   "pass": true
   },
-  "eligibility": "New personal checking customers: no current personal checking, none opened in the prior 12 months, and no checking bonus in the prior 24 months. $50 minimum to open ($5,000 for Premier Plus). Account active with positive balance, active debit card, and e-statements on day 90.",
-  "notes": "Verified 2026-09-23 on the official Old Second tiered checking promo page. Offer code PK2 is reported for this offer; the official page instructs applicants to 'provide the offer code'. Expires 12/31/2026. Closing within 180 days triggers a $50 account-closure fee. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)]",
-  "official_url": "https://www.oldsecond.com/personal-banking/checking-300-em/",
-  "payout_quote": "To receive the first $50 cash bonus, 1) provide the offer code and open a new personal checking account… To receive $100 cash bonus… two or more direct deposits totaling at least $500… To receive the $150 cash bonus… open a Money Builder Savings account… balance ≥ $5,000 on the 90th calendar day.",
-  "route_id": "R0601",
-  "standard": {
-    "s1": {
-      "note": "New personal checking only; 12-month no-opening and 24-month no-bonus exclusions.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Debit activation + e-statements in 90 days ($50); + $500 in direct deposits in 90 days ($100); + $1,000 savings opening and $5,000 day-90 balance ($150); day-90 active status.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review (by day 100).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Core tiered payout stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.oldsecond.com/personal-banking/checking-300-em/ — official bank promo page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open with PK2, activate debit + e-statements, route $500 in direct deposits, open savings with $1,000 and hold $5,000 on day 90.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Old Second National Bank page loaded live 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee to participate; account minimums are the customer's own funds.",
+   "pass": true
   },
-  "steps": [
-    "Open a new personal checking account at the official promo page https://www.oldsecond.com/personal-banking/checking-300-em/ by 12/31/2026, providing offer code PK2 ($50 minimum to open; $5,000 for Premier Plus).",
-    "Within 90 days, have the debit card issued and activated and enroll in e-statements — this earns the first $50.",
-    "Within 90 days, receive two or more direct deposits totaling at least $500 — this adds $100.",
-    "Open a Money Builder Savings account with a $1,000 opening deposit and keep a $5,000 balance on the 90th calendar day — this adds $150.",
-    "Keep the checking account active with a positive balance, active debit card, and e-statements on the 90th day; bonuses are credited within 10 calendar days after the day-90 review (by day 100).",
-    "Do not close the account within 180 days — a $50 closure fee applies."
-  ],
-  "terms_url": "https://www.oldsecond.com/personal-banking/checking-300-em/",
-  "timing": "Relationship reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review (by day 100).",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page: relationship reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review.",
+   "pass": true
+  }
+ },
+ "eligibility": "New personal checking customers: no current personal checking, none opened in the prior 12 months, and no checking bonus in the prior 24 months. $50 minimum to open ($5,000 for Premier Plus). Account active with positive balance, active debit card, and e-statements on day 90.",
+ "notes": "Verified 2026-09-23 on the official Old Second tiered checking promo page. Offer code PK2 is reported for this offer; the official page instructs applicants to 'provide the offer code'. Expires 12/31/2026. Closing within 180 days triggers a $50 account-closure fee. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)]",
+ "official_url": "https://www.oldsecond.com/personal-banking/checking-300-em/",
+ "payout_quote": "To receive the first $50 cash bonus, 1) provide the offer code and open a new personal checking account… To receive $100 cash bonus… two or more direct deposits totaling at least $500… To receive the $150 cash bonus… open a Money Builder Savings account… balance ≥ $5,000 on the 90th calendar day.",
+ "route_id": "R0601",
+ "standard": {
+  "s1": {
+   "note": "New personal checking only; 12-month no-opening and 24-month no-bonus exclusions.",
+   "pass": true
   },
-  "payout_min_usd": 50.0,
-  "payout_max_usd": 150.0,
-  "payout_value_note": "tiered bonus amounts in official terms",
-  "time_min_minutes": 30.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)"
+  "s2": {
+   "note": "Debit activation + e-statements in 90 days ($50); + $500 in direct deposits in 90 days ($100); + $1,000 savings opening and $5,000 day-90 balance ($150); day-90 active status.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review (by day 100).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Core tiered payout stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.oldsecond.com/personal-banking/checking-300-em/ — official bank promo page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open with PK2, activate debit + e-statements, route $500 in direct deposits, open savings with $1,000 and hold $5,000 on day 90.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Old Second National Bank page loaded live 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new personal checking account at the official promo page https://www.oldsecond.com/personal-banking/checking-300-em/ by 12/31/2026, providing offer code PK2 ($50 minimum to open; $5,000 for Premier Plus).",
+  "Within 90 days, have the debit card issued and activated and enroll in e-statements — this earns the first $50.",
+  "Within 90 days, receive two or more direct deposits totaling at least $500 — this adds $100.",
+  "Open a Money Builder Savings account with a $1,000 opening deposit and keep a $5,000 balance on the 90th calendar day — this adds $150.",
+  "Keep the checking account active with a positive balance, active debit card, and e-statements on the 90th day; bonuses are credited within 10 calendar days after the day-90 review (by day 100).",
+  "Do not close the account within 180 days — a $50 closure fee applies."
+ ],
+ "terms_url": "https://www.oldsecond.com/personal-banking/checking-300-em/",
+ "timing": "Relationship reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review (by day 100).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 50.0,
+ "payout_max_usd": 150.0,
+ "payout_value_note": "tiered bonus amounts in official terms",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: tiered bonus amounts in official terms; time: category default Bank Bonus (30-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $50–$150. Per official terms: Relationship reviewed on the 90th calendar day; bonuses credited within 10 calendar days after review (by day 100). Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

@@ -1,86 +1,94 @@
 {
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "biggest_catch": "The observed official coupon is marked 'Updated August, 2018' — program currency is uncertain; verify it is still live before relying on it.",
- "catches": [
-  "The observed official coupon is marked 'Updated August, 2018'; current program status is uncertain.",
-  "The referred friend must present a completed Refer-a-Friend coupon when opening the new account.",
-  "The referred friend must not currently have, and must not have had, a TSB account within the last 12 months.",
-  "The new account must remain open for at least 30 days.",
-  "Customers can earn up to $250 annually.",
-  "Minimum opening deposit required for the account type."
- ],
- "checked_at": "2026-09-23T10:24:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Verifiable program on institution's official domain: Tennessee State Bank's official Refer-a-Friend coupon (tnstatebank.com) pays the referring customer $25 when the referred friend opens a new account.",
-   "pass": true
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Concrete per-referral payout: the referrer is paid $25 to their checking or savings account when the referred friend opens any new personal or commercial checking, savings, or certificate of deposit and the new account remains open at least 30 days.",
-   "pass": true
+  "biggest_catch": "The observed official coupon is marked 'Updated August, 2018' — program currency is uncertain; verify it is still live before relying on it.",
+  "catches": [
+    "The observed official coupon is marked 'Updated August, 2018'; current program status is uncertain.",
+    "The referred friend must present a completed Refer-a-Friend coupon when opening the new account.",
+    "The referred friend must not currently have, and must not have had, a TSB account within the last 12 months.",
+    "The new account must remain open for at least 30 days.",
+    "Customers can earn up to $250 annually.",
+    "Minimum opening deposit required for the account type."
+  ],
+  "checked_at": "2026-09-23T10:24:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Verifiable program on institution's official domain: Tennessee State Bank's official Refer-a-Friend coupon (tnstatebank.com) pays the referring customer $25 when the referred friend opens a new account.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete per-referral payout: the referrer is paid $25 to their checking or savings account when the referred friend opens any new personal or commercial checking, savings, or certificate of deposit and the new account remains open at least 30 days.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Mechanism: complete the Refer-a-Friend coupon and have the referred friend present it when opening the new account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: within 60 days of the referred friend's account opening.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "Mechanism: complete the Refer-a-Friend coupon and have the referred friend present it when opening the new account.",
-   "pass": true
+  "eligibility": "Tennessee State Bank customers referring friends who open a new personal or commercial checking, savings, or CD.",
+  "notes": "Tennessee State Bank (tnstatebank.com, Tennessee). The official coupon is dated August 2018 — verify program is still current before final acceptance.",
+  "numeric_basis": "Per-referral payout of $25.00.",
+  "official_url": "https://www.tnstatebank.com/assets/files/FU3FCzve",
+  "payout_max_usd": 25.0,
+  "payout_min_usd": 25.0,
+  "payout_quote": "You will be paid $25.00 to your personal or commercial checking or savings account as a bonus when you refer a friend that opens any new personal or commercial checking, savings or certificate of deposit (\"new account\") and the new account remains open for at least 30 days. ... Tennessee State Bank customers can earn up to $250 annually with this program.",
+  "payout_value_note": "$25 per qualifying referral.",
+  "route_id": "R4396",
+  "standard": {
+    "s1": {
+      "note": "No upfront fee charged to the referrer.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Referral is free; no cost to refer.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Tax treatment not disclosed on the observed snippet.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Annual cap: $250 per year per customer.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Coupon live on the institution's official domain but dated August 2018 — currency uncertain.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Referral mechanics stated on the official coupon: complete the Refer-a-Friend coupon and have the friend present it at account opening.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Friend-side qualifying actions: present the coupon, open a new personal or commercial checking/savings/CD, make the minimum opening deposit, and keep it open at least 30 days.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Timing: within 60 days of the referred friend's account opening.",
-   "pass": true
-  }
- },
- "eligibility": "Tennessee State Bank customers referring friends who open a new personal or commercial checking, savings, or CD.",
- "notes": "Tennessee State Bank (tnstatebank.com, Tennessee). The official coupon is dated August 2018 — verify program is still current before final acceptance.",
- "numeric_basis": "Per-referral payout of $25.00.",
- "official_url": "https://www.tnstatebank.com/assets/files/FU3FCzve",
- "payout_max_usd": 25.0,
- "payout_min_usd": 25.0,
- "payout_quote": "You will be paid $25.00 to your personal or commercial checking or savings account as a bonus when you refer a friend that opens any new personal or commercial checking, savings or certificate of deposit (\"new account\") and the new account remains open for at least 30 days. ... Tennessee State Bank customers can earn up to $250 annually with this program.",
- "payout_value_note": "$25 per qualifying referral.",
- "route_id": "R4396",
- "standard": {
-  "s1": {
-   "note": "No upfront fee charged to the referrer.",
-   "pass": true
-  },
-  "s2": {
-   "note": "Referral is free; no cost to refer.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Tax treatment not disclosed on the observed snippet.",
-   "pass": true
-  },
-  "s4": {
-   "note": "Annual cap: $250 per year per customer.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Coupon live on the institution's official domain but dated August 2018 — currency uncertain.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Referral mechanics stated on the official coupon: complete the Refer-a-Friend coupon and have the friend present it at account opening.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Friend-side qualifying actions: present the coupon, open a new personal or commercial checking/savings/CD, make the minimum opening deposit, and keep it open at least 30 days.",
-   "pass": true
-  }
- },
- "steps": [
-  "Complete the Tennessee State Bank Refer-a-Friend coupon.",
-  "Have your friend present it when opening a new account.",
-  "The account remains open at least 30 days.",
-  "You are paid $25 within 60 days of the friend's account opening (up to $250 per year)."
- ],
- "terms_url": "https://www.tnstatebank.com/assets/files/FU3FCzve",
- "time_max_minutes": 15.0,
- "time_min_minutes": 5.0,
- "timing": "Within 60 days of the referred friend's account opening.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": []
+  "steps": [
+    "Complete the Tennessee State Bank Refer-a-Friend coupon.",
+    "Have your friend present it when opening a new account.",
+    "The account remains open at least 30 days.",
+    "You are paid $25 within 60 days of the friend's account opening (up to $250 per year)."
+  ],
+  "terms_url": "https://www.tnstatebank.com/assets/files/FU3FCzve",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Within 60 days of the referred friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "when_cash_arrives": "Within 60 days of the referred friend's account opening. Terms impose a fixed waiting period after the friend's account opens - nothing arrives before that date.",
+  "maximize": [
+    "Refer early and have your friend complete ALL qualifying activity in the first days of the window - late qualification pushes the fixed payout date even further out.",
+    "Both accounts must stay open and in good standing through the entire wait - early closure forfeits the bonus.",
+    "Structural reason it cannot be faster: the program's terms lock payout to a fixed date (60-120 days out) regardless of how fast your friend qualifies.",
+    "The official coupon is marked 'Updated August, 2018' - verify the program is still live before referring anyone."
+  ],
+  "speed": "weeks"
 }

@@ -1,94 +1,97 @@
 {
- "route_id": "R7605",
- "provider": "Curri",
- "official_url": "http://help.curri.com/en/articles/4746386-comprehensive-driver-payout-guide",
- "terms_url": "http://help.curri.com/en/articles/4746386-comprehensive-driver-payout-guide",
- "payout_quote": "Example, 1 delivery, $100 gross: Instant Pay | Occupational Accident Insurance Fee $0.65 | Instant Pay Fee $1.00 + $1.50 (1.5%) | Total Fees $3.15 | Net Payout $96.85. You can choose Instant Pay on a per-payout basis any time you have a debit card or bank account on file, or simply do nothing and receive your free Weekly Payout every Wednesday.",
- "payout_min_usd": 0,
- "payout_max_usd": 0,
- "time_min_minutes": 0,
- "time_max_minutes": 60,
- "timing": "Per-payout choice in the app; free weekly payout every Wednesday (cutoff Wednesday 10:59:59 AM Pacific). Official guide says after an Instant Pay request 'you should see your funds soon' (exact minutes not quantified on the page).",
- "speed": "today",
- "eligibility": "Curri driver with a debit card or bank account on file; Stripe determines instant eligibility per method (ineligible methods fall back to the free weekly payout).",
- "steps": [
-  "Add a debit card or bank account as your payout method in the Curri app.",
-  "When a payout is available, choose Instant Pay for that payout (or do nothing for the free Wednesday weekly payout).",
-  "Confirm; the $1.00 + 1.5% Instant Pay fee and $0.65 per-delivery insurance fee are deducted automatically."
- ],
- "catches": [
-  "Instant Pay fee is $1.00 + 1.5% of the payout, on top of the $0.65 occupational accident insurance fee charged per completed delivery on every payout (weekly included).",
-  "The official guide does not quantify exact arrival time beyond 'you should see your funds soon'.",
-  "Stripe decides whether each card or bank account is instant-eligible; ineligible methods show as ineligible in the app.",
-  "Pay varies by market and demand; fuel, maintenance, insurance, tolls and other vehicle costs reduce net earnings.",
-  "No delivery-count promotion is quoted on the official page."
- ],
- "biggest_catch": "Every payout carries the $0.65 per-delivery insurance fee, and choosing Instant Pay adds $1.00 + 1.5% on top: a $100 single-delivery instant payout nets $96.85, and frequent instant cashouts stack both fees every time.",
- "upfront_fee": false,
- "verdict": "verify",
- "checked_at": "2026-09-23T12:00:00Z",
- "notes": "Checked 2026-09-23. Official Curri Help Center payout guide loaded live: exact $1.00 + 1.5% Instant Pay fee, $0.65/delivery insurance fee with $100/$500 worked examples, per-payout choice, free Wednesday weekly default. Exact arrival minutes are not quantified on the page ('you should see your funds soon').",
- "repeatable": {
-  "value": true,
-  "cadence": "Complete deliveries, choose Instant Pay on each payout when you need cash early ($1.00 + 1.5% fee), or do nothing and collect free every Wednesday."
- },
- "maximize": "In the Curri app choose Instant Pay on a per-payout basis only when you need cash before the free Wednesday weekly payout; keep a Stripe-eligible debit card on file, and remember each instant payout costs $1.00 + 1.5% on top of the $0.65-per-delivery insurance fee.",
- "critical": {
-  "c1": {
-   "pass": true,
-   "evidence": "Official help.curri.com Comprehensive Driver Payout Guide loaded live 2026-09-23."
+  "route_id": "R7605",
+  "provider": "Curri",
+  "official_url": "http://help.curri.com/en/articles/4746386-comprehensive-driver-payout-guide",
+  "terms_url": "http://help.curri.com/en/articles/4746386-comprehensive-driver-payout-guide",
+  "payout_quote": "Example, 1 delivery, $100 gross: Instant Pay | Occupational Accident Insurance Fee $0.65 | Instant Pay Fee $1.00 + $1.50 (1.5%) | Total Fees $3.15 | Net Payout $96.85. You can choose Instant Pay on a per-payout basis any time you have a debit card or bank account on file, or simply do nothing and receive your free Weekly Payout every Wednesday.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "time_min_minutes": 0,
+  "time_max_minutes": 60,
+  "timing": "Per-payout choice in the app; free weekly payout every Wednesday (cutoff Wednesday 10:59:59 AM Pacific). Official guide says after an Instant Pay request 'you should see your funds soon' (exact minutes not quantified on the page).",
+  "speed": "today",
+  "eligibility": "Curri driver with a debit card or bank account on file; Stripe determines instant eligibility per method (ineligible methods fall back to the free weekly payout).",
+  "steps": [
+    "Add a debit card or bank account as your payout method in the Curri app.",
+    "When a payout is available, choose Instant Pay for that payout (or do nothing for the free Wednesday weekly payout).",
+    "Confirm; the $1.00 + 1.5% Instant Pay fee and $0.65 per-delivery insurance fee are deducted automatically."
+  ],
+  "catches": [
+    "Instant Pay fee is $1.00 + 1.5% of the payout, on top of the $0.65 occupational accident insurance fee charged per completed delivery on every payout (weekly included).",
+    "The official guide does not quantify exact arrival time beyond 'you should see your funds soon'.",
+    "Stripe decides whether each card or bank account is instant-eligible; ineligible methods show as ineligible in the app.",
+    "Pay varies by market and demand; fuel, maintenance, insurance, tolls and other vehicle costs reduce net earnings.",
+    "No delivery-count promotion is quoted on the official page."
+  ],
+  "biggest_catch": "Every payout carries the $0.65 per-delivery insurance fee, and choosing Instant Pay adds $1.00 + 1.5% on top: a $100 single-delivery instant payout nets $96.85, and frequent instant cashouts stack both fees every time.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "checked_at": "2026-09-23T12:00:00Z",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official Curri Help Center payout guide loaded live: exact $1.00 + 1.5% Instant Pay fee, $0.65/delivery insurance fee with $100/$500 worked examples, per-payout choice, free Wednesday weekly default. Exact arrival minutes are not quantified on the page ('you should see your funds soon').",
+  "repeatable": {
+    "value": true,
+    "cadence": "Complete deliveries, choose Instant Pay on each payout when you need cash early ($1.00 + 1.5% fee), or do nothing and collect free every Wednesday."
   },
-  "c2": {
-   "pass": true,
-   "evidence": "Exact fee table on official page: Instant Pay $1.00 + 1.5%; insurance $0.65 per delivery; $100 gross -> $96.85 net worked example."
+  "maximize": "In the Curri app choose Instant Pay on a per-payout basis only when you need cash before the free Wednesday weekly payout; keep a Stripe-eligible debit card on file, and remember each instant payout costs $1.00 + 1.5% on top of the $0.65-per-delivery insurance fee.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official help.curri.com Comprehensive Driver Payout Guide loaded live 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Exact fee table on official page: Instant Pay $1.00 + 1.5%; insurance $0.65 per delivery; $100 gross -> $96.85 net worked example."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront or enrollment fee; per-payout fees stated exactly."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official guide: Instant Pay selectable per payout; 'you should see your funds soon'; free weekly payout every Wednesday with stated cutoff."
+    }
   },
-  "c3": {
-   "pass": true,
-   "evidence": "No upfront or enrollment fee; per-payout fees stated exactly."
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility documented: driver with debit card or bank account; Stripe eligibility per method."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Fee schedule documented exactly with worked examples."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Timing documented: per-payout choice vs free Wednesday weekly; exact minutes not quantified (stated plainly in catches)."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Concrete claim anchored to official Curri payout guide; no weasel words."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official help.curri.com page loaded live this session."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are the official per-payout Instant Pay selection flow."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No credit-card, pay-to-play, MLM, or gambling elements."
+    }
   },
-  "c4": {
-   "pass": true,
-   "evidence": "Official guide: Instant Pay selectable per payout; 'you should see your funds soon'; free weekly payout every Wednesday with stated cutoff."
-  }
- },
- "standard": {
-  "s1": {
-   "pass": true,
-   "note": "Eligibility documented: driver with debit card or bank account; Stripe eligibility per method."
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "pass": true,
-   "note": "Fee schedule documented exactly with worked examples."
-  },
-  "s3": {
-   "pass": true,
-   "note": "Timing documented: per-payout choice vs free Wednesday weekly; exact minutes not quantified (stated plainly in catches)."
-  },
-  "s4": {
-   "pass": true,
-   "note": "Concrete claim anchored to official Curri payout guide; no weasel words."
-  },
-  "s5": {
-   "pass": true,
-   "note": "Official help.curri.com page loaded live this session."
-  },
-  "s6": {
-   "pass": true,
-   "note": "Steps are the official per-payout Instant Pay selection flow."
-  },
-  "s7": {
-   "pass": true,
-   "note": "No credit-card, pay-to-play, MLM, or gambling elements."
-  }
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "Curri pays your delivery earnings, and Stripe decides per payout method whether Instant Pay is offered - instant-eligible debit cards and bank accounts get the instant option. If your method is not instant-eligible, you fall back to Curri's free weekly payout.",
- "who_qualifies": "You need to be an active Curri driver with a debit card or bank account on file; Stripe checks each method and marks it instant-eligible or not. Curri's official requirements also include being 18 or older, holding a valid non-provisional license, a sedan/pickup/van you are qualified to drive, auto insurance, and passing motor-vehicle and criminal background checks.",
- "work_available": "Deliveries are posted near your location and vary with customer demand - Curri offers one-off hotshots plus regular and daily routes, but nothing is guaranteed. The official payout guide promises no minimum work; your volume depends on construction-delivery demand in your area.",
- "what_gets_accepted": "You are paid per delivery you complete; incomplete or canceled deliveries do not pay. Curri publishes no exact rating threshold tied to instant payouts in the official payout guide - that part is unverified.",
- "costs_and_unpaid_time": "Every payout carries a $0.65 occupational accident insurance fee per completed delivery - including the free weekly payout - and Instant Pay adds $1.00 + 1.5% of the payout on top, so a $100 single-delivery instant payout nets $96.85. Your fuel, maintenance, tolls, and insurance come out of your pocket, and time waiting for jobs, driving unpaid to pickups, and onboarding is unpaid: only completed deliveries pay.",
- "when_cash_arrives": "Choose Instant Pay on a per-payout basis whenever cash is available and the funds should show up soon - the official guide does not quantify exact minutes. The default is a free weekly payout every Wednesday (cutoff Wednesday 10:59:59 AM Pacific), and if your card or bank account is not instant-eligible, Stripe only offers you the weekly option."
+  "who_pays": "Curri pays your delivery earnings, and Stripe decides per payout method whether Instant Pay is offered - instant-eligible debit cards and bank accounts get the instant option. If your method is not instant-eligible, you fall back to Curri's free weekly payout.",
+  "who_qualifies": "You need to be an active Curri driver with a debit card or bank account on file; Stripe checks each method and marks it instant-eligible or not. Curri's official requirements also include being 18 or older, holding a valid non-provisional license, a sedan/pickup/van you are qualified to drive, auto insurance, and passing motor-vehicle and criminal background checks.",
+  "work_available": "Deliveries are posted near your location and vary with customer demand - Curri offers one-off hotshots plus regular and daily routes, but nothing is guaranteed. The official payout guide promises no minimum work; your volume depends on construction-delivery demand in your area.",
+  "what_gets_accepted": "You are paid per delivery you complete; incomplete or canceled deliveries do not pay. Curri publishes no exact rating threshold tied to instant payouts in the official payout guide - that part is unverified.",
+  "costs_and_unpaid_time": "Every payout carries a $0.65 occupational accident insurance fee per completed delivery - including the free weekly payout - and Instant Pay adds $1.00 + 1.5% of the payout on top, so a $100 single-delivery instant payout nets $96.85. Your fuel, maintenance, tolls, and insurance come out of your pocket, and time waiting for jobs, driving unpaid to pickups, and onboarding is unpaid: only completed deliveries pay.",
+  "when_cash_arrives": "Choose Instant Pay on a per-payout basis whenever cash is available and the funds should show up soon - the official guide does not quantify exact minutes. The default is a free weekly payout every Wednesday (cutoff Wednesday 10:59:59 AM Pacific), and if your card or bank account is not instant-eligible, Stripe only offers you the weekly option.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

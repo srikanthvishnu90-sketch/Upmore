@@ -28,12 +28,12 @@
       "pass": true
     },
     "c4": {
-      "evidence": "dedupe-check 'Stanford FCU': 0 hits; R0542 (Stanford Federal Credit Union) covers the CashBack+ rewards program — distinct",
+      "evidence": "dedupe-check 'Stanford FCU': 0 hits; R0542 (Stanford Federal Credit Union) covers the CashBack+ rewards program \u2014 distinct",
       "pass": true
     }
   },
   "eligibility": "Stanford FCU members (18+) who generate a unique promo code and refer eligible new members. Referred members must join with the code and complete membership/activity requirements.",
-  "notes": "Official sfcu.org referral terms confirm tiered referrer payouts ($250/$400/$500/$600/$750) up to 10 referrals per calendar year. Per schema, per-referral payout range $250-$750 (annual aggregate max $6,250 recorded as cap context, not as payout_max_usd). The official document was crawled ~141 days before verification — flag if a newer version appears.",
+  "notes": "Official sfcu.org referral terms confirm tiered referrer payouts ($250/$400/$500/$600/$750) up to 10 referrals per calendar year. Per schema, per-referral payout range $250-$750 (annual aggregate max $6,250 recorded as cap context, not as payout_max_usd). The official document was crawled ~141 days before verification \u2014 flag if a newer version appears.",
   "numeric_basis": "payout from official Stanford FCU referral terms ($250-$750 per qualifying referral by tier); time: generating and sharing the promo code est. 5-15 min active",
   "official_url": "https://www.sfcu.org/wp-content/uploads/Stanford-Federal-Credit-Union-Exciting-Perks-Meta.pdf",
   "payout_max_usd": 750,
@@ -72,7 +72,7 @@
     }
   },
   "steps": [
-    "Generate your unique promo code in your Stanford FCU account (Open & Apply → Refer a Friend)",
+    "Generate your unique promo code in your Stanford FCU account (Open & Apply \u2192 Refer a Friend)",
     "Share your promo code with friends and family",
     "Friend joins Stanford FCU and provides your promo code at account opening",
     "Friend meets all membership eligibility and qualification requirements (up to 120 days)",
@@ -84,5 +84,20 @@
   "timing": "Sharing the promo code takes ~10 minutes active; the bonus arrives the day after the friend completes all requirements (up to ~120 days after they join).",
   "upfront_fee": false,
   "verdict": "verify",
-  "weasel_words": []
+  "weasel_words": [],
+  "speed": "days",
+  "when_cash_arrives": "Bonus arrives THE DAY AFTER the friend completes all requirements \u2014 per official terms. Honest caveat: completing the requirements can take up to ~120 days. Escalating tiers: $250 (1st referral) up to $750 (5th+ in a calendar year); tiers reset every January 1st.",
+  "maximize": [
+    "Time referrals early in the calendar year \u2014 the $250-to-$750 escalator counts only same-year referrals and resets every January 1.",
+    "Coach the friend through every requirement immediately after joining; the day-after payout clock rewards fast completion.",
+    "This is the highest per-referral payout in the sweep ($250-$750) \u2014 worth the qualification effort despite the wait."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "days",
+      "rationale": "Official terms: bonus 'arrives the day after' requirements complete (requirements can take ~120 days)."
+    }
+  ]
 }

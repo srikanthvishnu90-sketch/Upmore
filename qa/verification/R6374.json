@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $50 comes to you in $10/month dribbles over five months — and only if the new customer names you as their reference and you claim it within 45 days of their install.",
+ "catches": [
+  "Reward is bill credit only — not cash, not applicable to past-due services or fees",
+  "$50 paid as $10/month over five months, not a lump sum",
+  "New customer must state your name as a reference and be an active customer before any credit is issued",
+  "Referral must be claimed within 45 days of the new customer's install",
+  "Maximum $100/month and $1,000/year per referring customer",
+  "Credit applies only to active CASSCOMM services",
+  "Reward goes to the referrer only; no stated reward for the friend"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official CASSCOMM Perks page on home.casscomm.com/casscomm-perks/, fetched live 2026-09-23: 'For every new CASSCOMM customer who signs up for one or any of the following services: broadvision cable, high-speed internet, digital or landline telephone; you will receive $50 off your bill in increments of $10/mo over the course of five months.'",
+   "pass": true
   },
-  "biggest_catch": "The $50 comes to you in $10/month dribbles over five months \u2014 and only if the new customer names you as their reference and you claim it within 45 days of their install.",
-  "catches": [
-    "Reward is bill credit only \u2014 not cash, not applicable to past-due services or fees",
-    "$50 paid as $10/month over five months, not a lump sum",
-    "New customer must state your name as a reference and be an active customer before any credit is issued",
-    "Referral must be claimed within 45 days of the new customer's install",
-    "Maximum $100/month and $1,000/year per referring customer",
-    "Credit applies only to active CASSCOMM services",
-    "Reward goes to the referrer only; no stated reward for the friend"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official CASSCOMM Perks page on home.casscomm.com/casscomm-perks/, fetched live 2026-09-23: 'For every new CASSCOMM customer who signs up for one or any of the following services: broadvision cable, high-speed internet, digital or landline telephone; you will receive $50 off your bill in increments of $10/mo over the course of five months.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'you will receive $50 off your bill in increments of $10/mo over the course of five months.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "45-day claim window, name-as-reference rule, active-customer rule, $100/month and $1,000/year caps, and bill-credit-only rule all stated on the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23.",
+   "pass": true
   },
-  "eligibility": "Existing CASSCOMM customer; the referred friend must be a new CASSCOMM customer signing up for Broadvision cable, high-speed internet, or digital/landline telephone, and must name the referrer as their reference.",
-  "notes": "Verified 2026-09-23 by live fetch of home.casscomm.com (official domain). Deduped: no CASSCOMM routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the one fuzzy hit was an unrelated 'Co' utility rebate). CASSCOMM is a regional provider (Illinois). This is a referrer-only reward; the friend gets no stated reward.",
-  "numeric_basis": "payout from official terms ($50 bill credit to referrer); time: referral share 5-15 min active",
-  "official_url": "https://home.casscomm.com/casscomm-perks/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "For every new CASSCOMM customer who signs up for one or any of the following services: broadvision cable, high-speed internet, digital or landline telephone; you will receive $50 off your bill in increments of $10/mo over the course of five months.",
-  "payout_value_note": "$50 bill credit to the referrer only, offsetting planned CASSCOMM spending \u2014 not cash, not income.",
-  "route_id": "R6374",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($50 in $10/month increments).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credit offsets planned CASSCOMM spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (refer friend, friend names you as reference and signs up, claim within 45 days).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: five-month dribble and 45-day claim window.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the referrer's own CASSCOMM service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against home.casscomm.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'you will receive $50 off your bill in increments of $10/mo over the course of five months.'",
+   "pass": true
   },
-  "steps": [
-    "Tell your friend about CASSCOMM services",
-    "Friend signs up as a new customer for Broadvision cable, high-speed internet, or digital/landline telephone",
-    "Friend states your name as their reference and becomes an active customer",
-    "Claim the referral credit within 45 days of the friend's install",
-    "Receive $50 off your bill as $10/month credits over five months"
-  ],
-  "terms_url": "https://home.casscomm.com/casscomm-perks/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit must be claimed within 45 days of the friend's install; $50 arrives as $10/month over five months.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "45-day claim window, name-as-reference rule, active-customer rule, $100/month and $1,000/year caps, and bill-credit-only rule all stated on the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing CASSCOMM customer; the referred friend must be a new CASSCOMM customer signing up for Broadvision cable, high-speed internet, or digital/landline telephone, and must name the referrer as their reference.",
+ "notes": "Verified 2026-09-23 by live fetch of home.casscomm.com (official domain). Deduped: no CASSCOMM routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the one fuzzy hit was an unrelated 'Co' utility rebate). CASSCOMM is a regional provider (Illinois). This is a referrer-only reward; the friend gets no stated reward.",
+ "numeric_basis": "payout from official terms ($50 bill credit to referrer); time: referral share 5-15 min active",
+ "official_url": "https://home.casscomm.com/casscomm-perks/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "For every new CASSCOMM customer who signs up for one or any of the following services: broadvision cable, high-speed internet, digital or landline telephone; you will receive $50 off your bill in increments of $10/mo over the course of five months.",
+ "payout_value_note": "$50 bill credit to the referrer only, offsetting planned CASSCOMM spending — not cash, not income.",
+ "route_id": "R6374",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($50 in $10/month increments).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credit offsets planned CASSCOMM spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (refer friend, friend names you as reference and signs up, claim within 45 days).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: five-month dribble and 45-day claim window.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the referrer's own CASSCOMM service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against home.casscomm.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Tell your friend about CASSCOMM services",
+  "Friend signs up as a new customer for Broadvision cable, high-speed internet, or digital/landline telephone",
+  "Friend states your name as their reference and becomes an active customer",
+  "Claim the referral credit within 45 days of the friend's install",
+  "Receive $50 off your bill as $10/month credits over five months"
+ ],
+ "terms_url": "https://home.casscomm.com/casscomm-perks/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit must be claimed within 45 days of the friend's install; $50 arrives as $10/month over five months.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit must be claimed within 45 days of the friend's install; $50 arrives as $10/month over five months.",
+ "maximize": "Fastest honest path: Credit must be claimed within 45 days of the friend's install; $50 arrives as $10/month over five months. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

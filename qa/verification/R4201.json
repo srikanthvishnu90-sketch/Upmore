@@ -1,85 +1,96 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Must use promo code NewPartner when opening; 18+; account must be in good standing at payout; Michigan-based credit union with membership eligibility requirements.",
+ "catches": [
+  "Use promo code NewPartner (shown as NEWPARTNER on the join page) when you open the account.",
+  "Open a checking account (online or in person at a member center).",
+  "Within the first 60 days, complete ONE of: $300 or more in combined direct deposits, OR 20 or more individual/combined debit or credit Mastercard transactions.",
+  "After the 60 days are up, $100 is deposited directly into the checking account.",
+  "Must be over 18 and the account must be in good standing at the time of payment.",
+  "Membership eligibility required (Michigan-based credit union)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Community Choice Credit Union — Michigan credit union; official promo pages on communitychoicecu.com.",
+   "pass": true
   },
-  "biggest_catch": "Must use promo code NewPartner when opening; 18+; account must be in good standing at payout; Michigan-based credit union with membership eligibility requirements.",
-  "catches": [
-    "Use promo code NewPartner (shown as NEWPARTNER on the join page) when you open the account.",
-    "Open a checking account (online or in person at a member center).",
-    "Within the first 60 days, complete ONE of: $300 or more in combined direct deposits, OR 20 or more individual/combined debit or credit Mastercard transactions.",
-    "After the 60 days are up, $100 is deposited directly into the checking account.",
-    "Must be over 18 and the account must be in good standing at the time of payment.",
-    "Membership eligibility required (Michigan-based credit union)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Community Choice Credit Union — Michigan credit union; official promo pages on communitychoicecu.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official communitychoicecu.com 'New Member Offer' and 'Become a Member' pages: $100 new-member checking offer with promo code NewPartner, 60-day qualifying window.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No minimum deposit or upfront fee stated to earn the bonus.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: 'Start with $100, on us.' — open a checking account with promo code NewPartner and complete $300+ in direct deposits or 20+ debit/credit Mastercard transactions within 60 days.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official communitychoicecu.com 'New Member Offer' and 'Become a Member' pages: $100 new-member checking offer with promo code NewPartner, 60-day qualifying window.",
+   "pass": true
   },
-  "eligibility": "New members 18+; account open and in good standing at payout; promo code NEWPARTNER at opening; must qualify under Community Choice CU field of membership (Michigan credit union).",
-  "notes": "Direct official-page fetch on 2026-09-23 (supersedes indexed-text evidence). Community Choice Credit Union is a Michigan credit union; field of membership criteria apply.",
-  "numeric_basis": "Fixed $100 cash bonus per official terms; choice of $300+ combined DD in 60 days OR 20+ Mastercard transactions in 60 days; payout Monday after day 60.",
-  "official_url": "https://www.communitychoicecu.com/new-member-offer/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "To claim your $100, you just need to open a checking account (online or in person). Then, in the first 60 days, do one of these things: Set up $300 or more in combined direct deposits, or Make 20 or more individual/combined debit or credit Mastercard transactions. After the 60 days are up, $100 will be deposited directly into your checking account!",
-  "payout_value_note": "flat $100 cash bonus in official terms",
-  "route_id": "R4201",
-  "standard": {
-    "s1": {
-      "note": "Official steps: open checking with promo code NEWPARTNER, then within 60 days do $300+ combined direct deposits OR 20+ debit/credit Mastercard transactions.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Official: incentive payment on the Monday following the 60th day of account opening when all qualifications met.",
-      "pass": true
-    },
-    "s3": {
-      "note": "No account fees mentioned on the offer page; standard account terms apply per site.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Bonus stated flatly at $100; no variable range or soft payout language.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Offer page fetched directly from communitychoicecu.com on 2026-09-23; full terms quoted verbatim.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open with promo code, complete either the $300 DD or 20-transaction track within 60 days.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Active time is the account opening plus setup; requirements and payout timing are explicit in official terms.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No minimum deposit or upfront fee stated to earn the bonus.",
+   "pass": true
   },
-  "steps": [
-    "Open a checking account online or in person with promo code NEWPARTNER.",
-    "Within 60 days of opening, complete either $300+ in combined direct deposits OR 20+ debit/credit Mastercard transactions.",
-    "Receive the $100 bonus in the checking account on the Monday after the 60th day."
-  ],
-  "terms_url": "https://www.communitychoicecu.com/new-member-offer/",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Incentive payment occurs on the Monday following the 60th day of account opening when all qualifications are met.",
-  "upfront_fee": 0,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Official page: 'Start with $100, on us.' — open a checking account with promo code NewPartner and complete $300+ in direct deposits or 20+ debit/credit Mastercard transactions within 60 days.",
+   "pass": true
+  }
+ },
+ "eligibility": "New members 18+; account open and in good standing at payout; promo code NEWPARTNER at opening; must qualify under Community Choice CU field of membership (Michigan credit union).",
+ "notes": "Direct official-page fetch on 2026-09-23 (supersedes indexed-text evidence). Community Choice Credit Union is a Michigan credit union; field of membership criteria apply.",
+ "numeric_basis": "Fixed $100 cash bonus per official terms; choice of $300+ combined DD in 60 days OR 20+ Mastercard transactions in 60 days; payout Monday after day 60.",
+ "official_url": "https://www.communitychoicecu.com/new-member-offer/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "To claim your $100, you just need to open a checking account (online or in person). Then, in the first 60 days, do one of these things: Set up $300 or more in combined direct deposits, or Make 20 or more individual/combined debit or credit Mastercard transactions. After the 60 days are up, $100 will be deposited directly into your checking account!",
+ "payout_value_note": "flat $100 cash bonus in official terms",
+ "route_id": "R4201",
+ "standard": {
+  "s1": {
+   "note": "Official steps: open checking with promo code NEWPARTNER, then within 60 days do $300+ combined direct deposits OR 20+ debit/credit Mastercard transactions.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Official: incentive payment on the Monday following the 60th day of account opening when all qualifications met.",
+   "pass": true
+  },
+  "s3": {
+   "note": "No account fees mentioned on the offer page; standard account terms apply per site.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Bonus stated flatly at $100; no variable range or soft payout language.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Offer page fetched directly from communitychoicecu.com on 2026-09-23; full terms quoted verbatim.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open with promo code, complete either the $300 DD or 20-transaction track within 60 days.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Active time is the account opening plus setup; requirements and payout timing are explicit in official terms.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a checking account online or in person with promo code NEWPARTNER.",
+  "Within 60 days of opening, complete either $300+ in combined direct deposits OR 20+ debit/credit Mastercard transactions.",
+  "Receive the $100 bonus in the checking account on the Monday after the 60th day."
+ ],
+ "terms_url": "https://www.communitychoicecu.com/new-member-offer/",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Incentive payment occurs on the Monday following the 60th day of account opening when all qualifications are met.",
+ "upfront_fee": 0,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $100. Per official terms: Incentive payment occurs on the Monday following the 60th day of account opening when all qualifications are met. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

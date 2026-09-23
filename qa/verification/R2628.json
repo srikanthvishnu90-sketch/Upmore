@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The reward amount is 'determined by Cirro Energy and is subject to change at Cirro Energy's sole discretion' — the $50 is the current stated offer, and the referred friend must keep service active 10 days; the credit posts within two billing cycles.",
+ "catches": [
+  "The official T&C states the reward type and amount 'shall be determined by Cirro Energy and is subject to change at Cirro Energy's sole discretion' — the $50 bill credit is the current offer, not a contractual floor.",
+  "Referred customer must enroll in a qualifying term plan (month-to-month plans do not qualify), provide the referral code at enrollment, and keep the account active for at least 10 days.",
+  "Rewards are limited to eligible Texas residential customers and exclude month-to-month plans, sales agents, and mass or automated referrals.",
+  "Rewards may not be combined with other offers or promotions; rewards are not transferable or redeemable for cash.",
+  "Referrer must not send mass/automated messages — sending them disqualifies the referrer and forfeits rewards.",
+  "Framing: a $50 bill credit reduces a future Cirro bill, not cash income; you must already be (or become) a Cirro customer to earn the referrer side."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url is cirroenergy.com/en_US/lp/good_energy (provider's own domain, 'Keep Your Friends Plugged In'); terms_url is the official Cirro Referral T&C PDF (dated 04292026) on cirroenergy.com.",
+   "pass": true
   },
-  "biggest_catch": "The reward amount is 'determined by Cirro Energy and is subject to change at Cirro Energy's sole discretion' — the $50 is the current stated offer, and the referred friend must keep service active 10 days; the credit posts within two billing cycles.",
-  "catches": [
-    "The official T&C states the reward type and amount 'shall be determined by Cirro Energy and is subject to change at Cirro Energy's sole discretion' — the $50 bill credit is the current offer, not a contractual floor.",
-    "Referred customer must enroll in a qualifying term plan (month-to-month plans do not qualify), provide the referral code at enrollment, and keep the account active for at least 10 days.",
-    "Rewards are limited to eligible Texas residential customers and exclude month-to-month plans, sales agents, and mass or automated referrals.",
-    "Rewards may not be combined with other offers or promotions; rewards are not transferable or redeemable for cash.",
-    "Referrer must not send mass/automated messages — sending them disqualifies the referrer and forfeits rewards.",
-    "Framing: a $50 bill credit reduces a future Cirro bill, not cash income; you must already be (or become) a Cirro customer to earn the referrer side."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url is cirroenergy.com/en_US/lp/good_energy (provider's own domain, 'Keep Your Friends Plugged In'); terms_url is the official Cirro Referral T&C PDF (dated 04292026) on cirroenergy.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Landing page is current and states the $50 bill credit; the T&C is dated 2026-04-29. The change-at-discretion clause is disclosed as the biggest catch.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Eligibility (new Texas customer, qualifying term plan, referral code at signup, 10 days active service) and timing (within two billing cycles) are fully stated; no hidden qualifiers.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($50), conditions, and timing are all stated; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Landing page is current and states the $50 bill credit; the T&C is dated 2026-04-29. The change-at-discretion clause is disclosed as the biggest catch.",
+   "pass": true
   },
-  "eligibility": "Current Cirro Energy customer (referrer) and a new Texas customer (referred) who enrolls in a qualifying term plan (not month-to-month) with the referral code and keeps service active for at least 10 days.",
-  "notes": "Verified 2026-09-23 from Cirro's official referral landing page and current referral T&C (PDF dated 2026-04-29). Distinct supplier vs prior-wave set; no other Cirro routes in catalog.",
-  "numeric_basis": "payout from official terms ($50 bill credit each side); time: referral share 5-15 min active",
-  "official_url": "https://www.cirroenergy.com/en_US/lp/good_energy",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Get plugged in with a $50 bill credit!",
-  "payout_value_note": "Flat $50 bill credit per side (referring and referred), applied to the Cirro electric bill (savings on planned spending, not cash).",
-  "route_id": "R2628",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50 bill credit) is stated verbatim on the official landing page; the both-sides rule comes from the official T&C.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: a bill credit on a required utility bill, not spendable cash or income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete 3-step process from the official page (enter code at signup, choose term plan, credit within two billing cycles).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: Cirro can change the reward amount at its sole discretion.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a referral code and enrolling cost nothing beyond the friend's normal plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the current payout statement; the discretion clause is disclosed rather than hidden.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against cirroenergy.com (provider's own domain). Deduped: no Cirro Energy routes in catalog or evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Eligibility (new Texas customer, qualifying term plan, referral code at signup, 10 days active service) and timing (within two billing cycles) are fully stated; no hidden qualifiers.",
+   "pass": true
   },
-  "steps": [
-    "Get your Cirro Energy referral code (log in to your Cirro account).",
-    "Share the referral code with a friend.",
-    "Friend signs up with Cirro Energy, enters your referral code at signup, and chooses an eligible term plan (not month-to-month).",
-    "Friend keeps electricity service active for at least 10 days.",
-    "You and your friend each receive a $50 bill credit, applied within two billing cycles."
-  ],
-  "terms_url": "https://www.cirroenergy.com/en_US/images/Cirro-Energy-Referral-Terms-and-Conditions-04292026_tcm143-73558.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits applied within two billing cycles after the referred customer completes 10 days of active service; reward amount subject to change at Cirro's discretion.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($50), conditions, and timing are all stated; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Current Cirro Energy customer (referrer) and a new Texas customer (referred) who enrolls in a qualifying term plan (not month-to-month) with the referral code and keeps service active for at least 10 days.",
+ "notes": "Verified 2026-09-23 from Cirro's official referral landing page and current referral T&C (PDF dated 2026-04-29). Distinct supplier vs prior-wave set; no other Cirro routes in catalog.",
+ "numeric_basis": "payout from official terms ($50 bill credit each side); time: referral share 5-15 min active",
+ "official_url": "https://www.cirroenergy.com/en_US/lp/good_energy",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Get plugged in with a $50 bill credit!",
+ "payout_value_note": "Flat $50 bill credit per side (referring and referred), applied to the Cirro electric bill (savings on planned spending, not cash).",
+ "route_id": "R2628",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50 bill credit) is stated verbatim on the official landing page; the both-sides rule comes from the official T&C.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: a bill credit on a required utility bill, not spendable cash or income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete 3-step process from the official page (enter code at signup, choose term plan, credit within two billing cycles).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: Cirro can change the reward amount at its sole discretion.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a referral code and enrolling cost nothing beyond the friend's normal plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the current payout statement; the discretion clause is disclosed rather than hidden.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against cirroenergy.com (provider's own domain). Deduped: no Cirro Energy routes in catalog or evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Get your Cirro Energy referral code (log in to your Cirro account).",
+  "Share the referral code with a friend.",
+  "Friend signs up with Cirro Energy, enters your referral code at signup, and chooses an eligible term plan (not month-to-month).",
+  "Friend keeps electricity service active for at least 10 days.",
+  "You and your friend each receive a $50 bill credit, applied within two billing cycles."
+ ],
+ "terms_url": "https://www.cirroenergy.com/en_US/images/Cirro-Energy-Referral-Terms-and-Conditions-04292026_tcm143-73558.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits applied within two billing cycles after the referred customer completes 10 days of active service; reward amount subject to change at Cirro's discretion.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits applied within two billing cycles after the referred customer completes 10 days of active service; reward amount subject to change at Cirro's discretion.",
+ "maximize": "Fastest honest path: Credits applied within two billing cycles after the referred customer completes 10 days of active service; reward amount subject to change at Cirro's discretion. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

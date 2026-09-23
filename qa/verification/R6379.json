@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $100 credits land only after the new customer has been active for 90 straight days — and if either of you misses a payment in that window, the reward is gone.",
+ "catches": [
+  "Both credits are applied only after the new customer has been with Breezeline for 3 months (90 consecutive days), within 1-2 billing cycles after that",
+  "During the 90-day period both parties must pay all invoices in full when due",
+  "Friend must not have subscribed to any Breezeline service within 120 days before the referral date",
+  "Friend must sign up for a qualifying residential service (Internet, Video, or Voice) and keep it active 90 consecutive days",
+  "One referral code per referred customer; unlimited referral bonuses for the referrer"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Breezeline referral page on breezeline.com/referral (crawled ~10 days ago): 'Plus, we'll give you each a $100 bill credit, and you can keep earning with unlimited referral bonuses.' The official 2026 Refer-A-Friend Terms PDF on es.breezeline.com confirms: 'both the Referrer and the Referred Customer will receive a statement credit in an amount equal to $50 (if referral is received before midnight on February 28, 2026) or equal to $100 (if referral is received after midnight on February 28, 2026)'.",
+   "pass": true
   },
-  "biggest_catch": "The $100 credits land only after the new customer has been active for 90 straight days \u2014 and if either of you misses a payment in that window, the reward is gone.",
-  "catches": [
-    "Both credits are applied only after the new customer has been with Breezeline for 3 months (90 consecutive days), within 1-2 billing cycles after that",
-    "During the 90-day period both parties must pay all invoices in full when due",
-    "Friend must not have subscribed to any Breezeline service within 120 days before the referral date",
-    "Friend must sign up for a qualifying residential service (Internet, Video, or Voice) and keep it active 90 consecutive days",
-    "One referral code per referred customer; unlimited referral bonuses for the referrer"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Breezeline referral page on breezeline.com/referral (crawled ~10 days ago): 'Plus, we'll give you each a $100 bill credit, and you can keep earning with unlimited referral bonuses.' The official 2026 Refer-A-Friend Terms PDF on es.breezeline.com confirms: 'both the Referrer and the Referred Customer will receive a statement credit in an amount equal to $50 (if referral is received before midnight on February 28, 2026) or equal to $100 (if referral is received after midnight on February 28, 2026)'.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Referral page crawled ~10 days ago; 2026 terms are current (post-Feb-28-2026 tier = $100).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'we'll give you each a $100 bill credit' / 'You each get a $100 bill credit'.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "90-day active-service rule, 120-day no-prior-service rule, full-payment rule, and 1-2-billing-cycle fulfillment all stated in the official 2026 terms.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Referral page crawled ~10 days ago; 2026 terms are current (post-Feb-28-2026 tier = $100).",
+   "pass": true
   },
-  "eligibility": "Existing Breezeline customer with a referral code from My Account; friend must be new to Breezeline (no subscription within 120 days), sign up for qualifying residential Internet/Video/Voice via the referral code, and keep service active 90 consecutive days.",
-  "notes": "Verified 2026-09-23 from official breezeline.com referral page and the official 2026 Refer-A-Friend Terms PDF. Deduped: no Breezeline routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Note: referrals received before Feb 28, 2026 earned $50; the current tier is $100 each. Breezeline's separate Referral Partner Program (business) is a different mechanism and not covered here.",
-  "numeric_basis": "payout from official terms ($100 bill credit to each side); time: referral share 5-15 min active",
-  "official_url": "https://breezeline.com/referral",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "Plus, we'll give you each a $100 bill credit, and you can keep earning with unlimited referral bonuses. Credits will be applied to each of your accounts once the new customer has been with Breezeline for 3 months.",
-  "payout_value_note": "$100 bill credit to both referrer and friend \u2014 offsets planned Breezeline spending, not cash.",
-  "route_id": "R6379",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page and in the 2026 terms PDF ($100 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Breezeline spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (get code in My Account, friend uses code at checkout, both credited after 3 active months).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 90-day active-service wait with full-payment requirement.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Breezeline service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against breezeline.com (provider's own domain). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'we'll give you each a $100 bill credit' / 'You each get a $100 bill credit'.",
+   "pass": true
   },
-  "steps": [
-    "Log in to My Account and get your unique referral code",
-    "Share the code with a friend",
-    "Friend uses the referral code at checkout when signing up for Breezeline",
-    "Friend keeps the qualifying service active for 3 months with all invoices paid in full",
-    "Both sides receive a $100 bill credit within 1-2 billing cycles"
-  ],
-  "terms_url": "https://es.breezeline.com/assets/documents/Breezeline-Refer-A-Friend-Program_-Terms-and-Conditions_2026.pdf",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits applied within 1-2 billing cycles after the new customer completes 3 active months.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "90-day active-service rule, 120-day no-prior-service rule, full-payment rule, and 1-2-billing-cycle fulfillment all stated in the official 2026 terms.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Breezeline customer with a referral code from My Account; friend must be new to Breezeline (no subscription within 120 days), sign up for qualifying residential Internet/Video/Voice via the referral code, and keep service active 90 consecutive days.",
+ "notes": "Verified 2026-09-23 from official breezeline.com referral page and the official 2026 Refer-A-Friend Terms PDF. Deduped: no Breezeline routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Note: referrals received before Feb 28, 2026 earned $50; the current tier is $100 each. Breezeline's separate Referral Partner Program (business) is a different mechanism and not covered here.",
+ "numeric_basis": "payout from official terms ($100 bill credit to each side); time: referral share 5-15 min active",
+ "official_url": "https://breezeline.com/referral",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "Plus, we'll give you each a $100 bill credit, and you can keep earning with unlimited referral bonuses. Credits will be applied to each of your accounts once the new customer has been with Breezeline for 3 months.",
+ "payout_value_note": "$100 bill credit to both referrer and friend — offsets planned Breezeline spending, not cash.",
+ "route_id": "R6379",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page and in the 2026 terms PDF ($100 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Breezeline spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (get code in My Account, friend uses code at checkout, both credited after 3 active months).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 90-day active-service wait with full-payment requirement.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Breezeline service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against breezeline.com (provider's own domain). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log in to My Account and get your unique referral code",
+  "Share the code with a friend",
+  "Friend uses the referral code at checkout when signing up for Breezeline",
+  "Friend keeps the qualifying service active for 3 months with all invoices paid in full",
+  "Both sides receive a $100 bill credit within 1-2 billing cycles"
+ ],
+ "terms_url": "https://es.breezeline.com/assets/documents/Breezeline-Refer-A-Friend-Program_-Terms-and-Conditions_2026.pdf",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits applied within 1-2 billing cycles after the new customer completes 3 active months.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits applied within 1-2 billing cycles after the new customer completes 3 active months.",
+ "maximize": "Fastest honest path: Credits applied within 1-2 billing cycles after the new customer completes 3 active months. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

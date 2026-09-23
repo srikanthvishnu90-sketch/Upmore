@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $50 credits have no cash value and 'retire with any account closure' — they're bill credits that vanish if you cancel, and the friend's install must complete before anything posts.",
+ "catches": [
+  "Credits have no cash value and retire with any account closure",
+  "Credit posts only after Ziply Fiber service is fully installed at the new customer's address (within 30 days of installation)",
+  "Residential customers only",
+  "Referrer must register using the same name and email address as their Ziply Fiber account",
+  "An older $100-each promotion (install by September 1, 2026) has expired; the current offer is $50 each"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Ziply Fiber Customer Referral Program help-center article on ziplyfiber.com/helpcenter/Articles/referrals, fetched live 2026-09-23: 'When you refer them to Ziply Fiber and they sign up, you both get a $50 credit on your bill.' / 'If your friend orders and then gets Ziply Fiber internet installed, you'll both receive a $50 account credit.'",
+   "pass": true
   },
-  "biggest_catch": "The $50 credits have no cash value and 'retire with any account closure' \u2014 they're bill credits that vanish if you cancel, and the friend's install must complete before anything posts.",
-  "catches": [
-    "Credits have no cash value and retire with any account closure",
-    "Credit posts only after Ziply Fiber service is fully installed at the new customer's address (within 30 days of installation)",
-    "Residential customers only",
-    "Referrer must register using the same name and email address as their Ziply Fiber account",
-    "An older $100-each promotion (install by September 1, 2026) has expired; the current offer is $50 each"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Ziply Fiber Customer Referral Program help-center article on ziplyfiber.com/helpcenter/Articles/referrals, fetched live 2026-09-23: 'When you refer them to Ziply Fiber and they sign up, you both get a $50 credit on your bill.' / 'If your friend orders and then gets Ziply Fiber internet installed, you'll both receive a $50 account credit.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page fetched live and current on 2026-09-23; expired dated offers ($100 by Sept 1, 2026; $50 by July 1, 2026) are superseded by this current $50-each offer.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim: 'you both get a $50 credit on your bill' / 'you'll both receive a $50 account credit.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Post-install 30-day credit posting, no-cash-value/retire-on-closure rule, residential-only rule, and same-name/email registration rule all stated on the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page fetched live and current on 2026-09-23; expired dated offers ($100 by Sept 1, 2026; $50 by July 1, 2026) are superseded by this current $50-each offer.",
+   "pass": true
   },
-  "eligibility": "Current Ziply Fiber residential customer registered with the same name and email as their account; friend must be a new customer who purchases an internet plan and completes installation.",
-  "notes": "Verified 2026-09-23 by live fetch of ziplyfiber.com (official domain). Deduped: no Ziply routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Note: the page heading 'That's $100 worth of happiness' refers to the combined $50+$50 value; the per-side credit is unambiguously $50. There is no stated limit on the number of referrals.",
-  "numeric_basis": "payout from official terms ($50 bill credit to each side); time: referral share 5-15 min active",
-  "official_url": "https://ziplyfiber.com/helpcenter/Articles/referrals",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "When you refer them to Ziply Fiber and they sign up, you both get a $50 credit on your bill. If your friend orders and then gets Ziply Fiber internet installed, you'll both receive a $50 account credit. That's it!",
-  "payout_value_note": "$50 bill credit to both referrer and friend \u2014 offsets planned Ziply Fiber spending, not cash.",
-  "route_id": "R6378",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($50 each).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Ziply Fiber spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (enroll, refer with unique link, friend orders and installs, credit posts).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: no cash value, retire on closure, install-gated.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Ziply Fiber service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against ziplyfiber.com (provider's own domain) by live fetch. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim: 'you both get a $50 credit on your bill' / 'you'll both receive a $50 account credit.'",
+   "pass": true
   },
-  "steps": [
-    "Register for the referral program with the same name and email as your Ziply Fiber account",
-    "Share your unique referral link with a friend",
-    "Friend orders Ziply Fiber internet and completes installation",
-    "Ziply posts a $50 account credit to each side within 30 days of installation"
-  ],
-  "terms_url": "https://ziplyfiber.com/helpcenter/Articles/referrals",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits post to both accounts within 30 days of the new customer's installation.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Post-install 30-day credit posting, no-cash-value/retire-on-closure rule, residential-only rule, and same-name/email registration rule all stated on the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Current Ziply Fiber residential customer registered with the same name and email as their account; friend must be a new customer who purchases an internet plan and completes installation.",
+ "notes": "Verified 2026-09-23 by live fetch of ziplyfiber.com (official domain). Deduped: no Ziply routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Note: the page heading 'That's $100 worth of happiness' refers to the combined $50+$50 value; the per-side credit is unambiguously $50. There is no stated limit on the number of referrals.",
+ "numeric_basis": "payout from official terms ($50 bill credit to each side); time: referral share 5-15 min active",
+ "official_url": "https://ziplyfiber.com/helpcenter/Articles/referrals",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "When you refer them to Ziply Fiber and they sign up, you both get a $50 credit on your bill. If your friend orders and then gets Ziply Fiber internet installed, you'll both receive a $50 account credit. That's it!",
+ "payout_value_note": "$50 bill credit to both referrer and friend — offsets planned Ziply Fiber spending, not cash.",
+ "route_id": "R6378",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($50 each).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Ziply Fiber spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (enroll, refer with unique link, friend orders and installs, credit posts).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: no cash value, retire on closure, install-gated.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Ziply Fiber service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against ziplyfiber.com (provider's own domain) by live fetch. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Register for the referral program with the same name and email as your Ziply Fiber account",
+  "Share your unique referral link with a friend",
+  "Friend orders Ziply Fiber internet and completes installation",
+  "Ziply posts a $50 account credit to each side within 30 days of installation"
+ ],
+ "terms_url": "https://ziplyfiber.com/helpcenter/Articles/referrals",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits post to both accounts within 30 days of the new customer's installation.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits post to both accounts within 30 days of the new customer's installation.",
+ "maximize": "Fastest honest path: Credits post to both accounts within 30 days of the new customer's installation. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

@@ -1,68 +1,79 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Requires parking $10,000 daily for 90 days plus 3 electronic credits; the $3 monthly maintenance fee applies unless you keep a $250 minimum daily balance. Maximum $200 savings bonus per household - and the household caps are separate ($350 checking + $200 savings = up to $550 combined per household).",
+ "catches": [
+  "Open a new Statement Savings account with $10,000 or more (must not have had an open personal Newtown Savings Bank Statement Savings account within 12 months); use promo code SAVINGS.",
+  "Maintain the $10,000 balance daily for a period of 90 days.",
+  "Receive 3 electronic credits (ACH/Direct Deposit, Round-Up Savings, Mobile Check Deposit; does not include Zelle, Venmo or Cash App) within 90 days of opening the account.",
+  "Bonus is credited to the Statement Savings account on the month-end following the 90-day period; if the balance is negative on or before the month-end following the 90 days, the bonus is not paid.",
+  "Maximum $200 bonus per household; estate and political campaign accounts not eligible.",
+  "$3 monthly maintenance service charge applies unless a $250 minimum daily balance is kept.",
+  "Bonus is taxable income; offer subject to change and may be withdrawn at any time.",
+  "A lesser $75 tier exists (open with $750+, maintain daily for 90 days + 3 electronic credits) - officially confirmed but not separately verified in this row."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Newtown Savings Bank (nsbonline.com) is a real community bank in Connecticut; the savings offer terms are published on its official personal savings page (search crawl, confirmed ~12 days ago).",
+   "pass": true
   },
-  "biggest_catch": "Requires parking $10,000 daily for 90 days plus 3 electronic credits; the $3 monthly maintenance fee applies unless you keep a $250 minimum daily balance. Maximum $200 savings bonus per household - and the household caps are separate ($350 checking + $200 savings = up to $550 combined per household).",
-  "catches": [
-    "Open a new Statement Savings account with $10,000 or more (must not have had an open personal Newtown Savings Bank Statement Savings account within 12 months); use promo code SAVINGS.",
-    "Maintain the $10,000 balance daily for a period of 90 days.",
-    "Receive 3 electronic credits (ACH/Direct Deposit, Round-Up Savings, Mobile Check Deposit; does not include Zelle, Venmo or Cash App) within 90 days of opening the account.",
-    "Bonus is credited to the Statement Savings account on the month-end following the 90-day period; if the balance is negative on or before the month-end following the 90 days, the bonus is not paid.",
-    "Maximum $200 bonus per household; estate and political campaign accounts not eligible.",
-    "$3 monthly maintenance service charge applies unless a $250 minimum daily balance is kept.",
-    "Bonus is taxable income; offer subject to change and may be withdrawn at any time.",
-    "A lesser $75 tier exists (open with $750+, maintain daily for 90 days + 3 electronic credits) - officially confirmed but not separately verified in this row."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Newtown Savings Bank (nsbonline.com) is a real community bank in Connecticut; the savings offer terms are published on its official personal savings page (search crawl, confirmed ~12 days ago).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page: 'To earn the $200 bonus, you must open the account with $10,000 or more and maintain that balance daily for a period of 90 days and receive 3 electronic credits (including ACH/Direct Deposit, Roundup Savings and Mobile Check Deposit. Does not include Zelle, Venmo or Cash App credits) within 90 days of opening the account.' Promo code: SAVINGS.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Amount, balance requirement, 90-day period, 3-credit requirement, promo code, and payout timing are all quoted verbatim from the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page: 'To earn the $200 bonus, you must open the account with $10,000 or more and maintain that balance daily for a period of 90 days and receive 3 electronic credits (including ACH/Direct Deposit, Roundup Savings and Mobile Check Deposit. Does not include Zelle, Venmo or Cash App credits) within 90 days of opening the account.' Promo code: SAVINGS.",
+   "pass": true
   },
-  "eligibility": "Must not have had an open personal Newtown Savings Bank Statement Savings account within 12 months; maximum $200 bonus per household; estate and political campaign accounts excluded.",
-  "notes": "Official nsbonline.com/personal/save-and-spend/savings-iras-cds (search crawl ~12 days ago). Distinct savings mechanism from the $350 Flagship Checking offer (R0921); the combined $550 household bundle figure comes from the two official household caps ($350 checking + $200 savings). The $75 lesser savings tier is officially confirmed on the same page but not counted as a separate row.",
-  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
-  "official_url": "https://www.nsbonline.com/personal/save-and-spend/savings-iras-cds",
-  "payout_max_usd": 200.0,
-  "payout_min_usd": 200.0,
-  "payout_quote": "To earn the $200 bonus, you must open the account with $10,000 or more and maintain that balance daily for a period of 90 days and receive 3 electronic credits (including ACH/Direct Deposit, Roundup Savings and Mobile Check Deposit. Does not include Zelle, Venmo or Cash App credits) within 90 days of opening the account. The bonus will be credited to your Statement Savings account on the month-end following the 90-day period. Promo Code: SAVINGS",
-  "payout_value_note": "flat bonus amount in official terms",
-  "route_id": "R0922",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "No open Statement Savings within 12 months; max $200/household; estate/political accounts excluded."
-    },
-    "s2": {
-      "pass": true,
-      "evidence": "$10,000 new deposit maintained daily for 90 days; $25 minimum to open; $3 monthly fee waived with $250 daily balance."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "Bonus credited month-end following the 90-day period; taxable income; offer may be withdrawn."
-    }
+  "c3": {
+   "evidence": "Amount, balance requirement, 90-day period, 3-credit requirement, promo code, and payout timing are all quoted verbatim from the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Must not have had an open personal Newtown Savings Bank Statement Savings account within 12 months; maximum $200 bonus per household; estate and political campaign accounts excluded.",
+ "notes": "Official nsbonline.com/personal/save-and-spend/savings-iras-cds (search crawl ~12 days ago). Distinct savings mechanism from the $350 Flagship Checking offer (R0921); the combined $550 household bundle figure comes from the two official household caps ($350 checking + $200 savings). The $75 lesser savings tier is officially confirmed on the same page but not counted as a separate row.",
+ "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "official_url": "https://www.nsbonline.com/personal/save-and-spend/savings-iras-cds",
+ "payout_max_usd": 200.0,
+ "payout_min_usd": 200.0,
+ "payout_quote": "To earn the $200 bonus, you must open the account with $10,000 or more and maintain that balance daily for a period of 90 days and receive 3 electronic credits (including ACH/Direct Deposit, Roundup Savings and Mobile Check Deposit. Does not include Zelle, Venmo or Cash App credits) within 90 days of opening the account. The bonus will be credited to your Statement Savings account on the month-end following the 90-day period. Promo Code: SAVINGS",
+ "payout_value_note": "flat bonus amount in official terms",
+ "route_id": "R0922",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "No open Statement Savings within 12 months; max $200/household; estate/political accounts excluded."
   },
-  "steps": [
-    "Open a new Newtown Savings Bank Statement Savings account with $10,000 or more, using promo code SAVINGS.",
-    "Maintain the $10,000 balance daily for 90 days.",
-    "Receive 3 electronic credits (ACH/direct deposit, Round-Up Savings, or mobile check deposit - not Zelle, Venmo, or Cash App) within 90 days of opening the account.",
-    "The $200 bonus is credited on the month-end following the 90-day period."
-  ],
-  "terms_url": "https://www.nsbonline.com/personal/save-and-spend/savings-iras-cds",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Bonus credited on the month-end following the 90-day qualification period.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": true,
+   "evidence": "$10,000 new deposit maintained daily for 90 days; $25 minimum to open; $3 monthly fee waived with $250 daily balance."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "Bonus credited month-end following the 90-day period; taxable income; offer may be withdrawn."
+  }
+ },
+ "steps": [
+  "Open a new Newtown Savings Bank Statement Savings account with $10,000 or more, using promo code SAVINGS.",
+  "Maintain the $10,000 balance daily for 90 days.",
+  "Receive 3 electronic credits (ACH/direct deposit, Round-Up Savings, or mobile check deposit - not Zelle, Venmo, or Cash App) within 90 days of opening the account.",
+  "The $200 bonus is credited on the month-end following the 90-day period."
+ ],
+ "terms_url": "https://www.nsbonline.com/personal/save-and-spend/savings-iras-cds",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Bonus credited on the month-end following the 90-day qualification period.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $200. Per official terms: Bonus credited on the month-end following the 90-day qualification period. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

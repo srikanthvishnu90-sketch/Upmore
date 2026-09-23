@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You get your $10 only after your friend has stayed with Tello for 93 days (~3 months) with active service — and the $10 comes as Tello Dollars that can only pay a full Tello bill, never cash.",
+ "catches": [
+  "Referrer's $10 awarded only after the referred account has been with Tello for 93 days with both accounts active",
+  "Tello Dollars are site credit only — usable for a full Tello phone bill or purchase, no partial payments, cannot create a new line with them",
+  "Tello Dollars expire if no orders are placed in the account in the last 6 months",
+  "Only new customers eligible; referral invalid if the friend already exists in Tello's database",
+  "Friend must use your specific referral link at sign-up — accounts created without the link cannot be linked retroactively",
+  "Referrer must disclose they are a Tello customer who will receive a reward"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Tello Terms of Service on tello.com (crawled 2 hours ago) contains the 'Referral Program Agreement': 'The beneficiaries of Tello's Referral Program are: the person making the referral (the \"Referrer\") and the person who has been referred.'",
+   "pass": true
   },
-  "biggest_catch": "You get your $10 only after your friend has stayed with Tello for 93 days (~3 months) with active service \u2014 and the $10 comes as Tello Dollars that can only pay a full Tello bill, never cash.",
-  "catches": [
-    "Referrer's $10 awarded only after the referred account has been with Tello for 93 days with both accounts active",
-    "Tello Dollars are site credit only \u2014 usable for a full Tello phone bill or purchase, no partial payments, cannot create a new line with them",
-    "Tello Dollars expire if no orders are placed in the account in the last 6 months",
-    "Only new customers eligible; referral invalid if the friend already exists in Tello's database",
-    "Friend must use your specific referral link at sign-up \u2014 accounts created without the link cannot be linked retroactively",
-    "Referrer must disclose they are a Tello customer who will receive a reward"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Tello Terms of Service on tello.com (crawled 2 hours ago) contains the 'Referral Program Agreement': 'The beneficiaries of Tello's Referral Program are: the person making the referral (the \"Referrer\") and the person who has been referred.'",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Terms page live and current on tello.com; referral program active per Tello's own help center articles (crawled 1 day ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'Each eligible referral will result in the Referrer and the Referred each receiving a credit worth ten U.S. Dollars ($10.00) (the \"Tello Dollars\").'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "93-day active-service condition, new-customer-only rule, link requirement, and Tello-Dollar usage/expiry restrictions all stated in the official terms.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Terms page live and current on tello.com; referral program active per Tello's own help center articles (crawled 1 day ago).",
+   "pass": true
   },
-  "eligibility": "Existing Tello customer with active service; referred friend must be a new Tello customer who signs up through the referrer's link and places a successful order.",
-  "notes": "Verified 2026-09-23 against tello.com/terms (official domain). Deduped: no Tello routes in catalog, evidence files, or rejects-g60.",
-  "numeric_basis": "payout from official terms ($10 Tello Dollars to both referrer and referred); time: referral share 5-15 min active",
-  "official_url": "https://tello.com/terms",
-  "payout_max_usd": 10,
-  "payout_min_usd": 10,
-  "payout_quote": "Each eligible referral will result in the Referrer and the Referred each receiving a credit worth ten U.S. Dollars ($10.00) (the \"Tello Dollars\"). The amount will be awarded to the Referred account once he places a successful order. The same amount will be awarded to the Referrer once the Referred account has been with Tello for 93 days.",
-  "payout_value_note": "$10 in Tello Dollars to the referrer (after 93 days of the friend's active service) and $10 to the friend (after first order) \u2014 site credit toward Tello bills/purchases, not cash.",
-  "route_id": "R6349",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim in official terms ($10.00 each to Referrer and Referred).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: Tello Dollars offset planned Tello mobile spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from official terms/help center (share link, friend signs up and orders, referrer credited after 93 days).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 93-day wait and site-credit-only.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the friend's own Tello plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against tello.com (provider's own domain). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'Each eligible referral will result in the Referrer and the Referred each receiving a credit worth ten U.S. Dollars ($10.00) (the \"Tello Dollars\").'",
+   "pass": true
   },
-  "steps": [
-    "Existing Tello customer finds their unique referral link in the Referral Program section of their account",
-    "Share the link with a friend or family member",
-    "Friend clicks the link, creates a new Tello account, and places their first successful order (friend gets $10 Tello Dollars)",
-    "Friend keeps Tello service active for 93 days",
-    "Referrer receives $10 in Tello Dollars"
-  ],
-  "terms_url": "https://tello.com/terms",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Friend's $10 awarded after their first successful order; referrer's $10 awarded after the referred account has been with Tello for 93 days.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "93-day active-service condition, new-customer-only rule, link requirement, and Tello-Dollar usage/expiry restrictions all stated in the official terms.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Tello customer with active service; referred friend must be a new Tello customer who signs up through the referrer's link and places a successful order.",
+ "notes": "Verified 2026-09-23 against tello.com/terms (official domain). Deduped: no Tello routes in catalog, evidence files, or rejects-g60.",
+ "numeric_basis": "payout from official terms ($10 Tello Dollars to both referrer and referred); time: referral share 5-15 min active",
+ "official_url": "https://tello.com/terms",
+ "payout_max_usd": 10,
+ "payout_min_usd": 10,
+ "payout_quote": "Each eligible referral will result in the Referrer and the Referred each receiving a credit worth ten U.S. Dollars ($10.00) (the \"Tello Dollars\"). The amount will be awarded to the Referred account once he places a successful order. The same amount will be awarded to the Referrer once the Referred account has been with Tello for 93 days.",
+ "payout_value_note": "$10 in Tello Dollars to the referrer (after 93 days of the friend's active service) and $10 to the friend (after first order) — site credit toward Tello bills/purchases, not cash.",
+ "route_id": "R6349",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim in official terms ($10.00 each to Referrer and Referred).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: Tello Dollars offset planned Tello mobile spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from official terms/help center (share link, friend signs up and orders, referrer credited after 93 days).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 93-day wait and site-credit-only.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the friend's own Tello plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against tello.com (provider's own domain). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Existing Tello customer finds their unique referral link in the Referral Program section of their account",
+  "Share the link with a friend or family member",
+  "Friend clicks the link, creates a new Tello account, and places their first successful order (friend gets $10 Tello Dollars)",
+  "Friend keeps Tello service active for 93 days",
+  "Referrer receives $10 in Tello Dollars"
+ ],
+ "terms_url": "https://tello.com/terms",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Friend's $10 awarded after their first successful order; referrer's $10 awarded after the referred account has been with Tello for 93 days.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Friend's $10 awarded after their first successful order; referrer's $10 awarded after the referred account has been with Tello for 93 days.",
+ "maximize": "Fastest honest path: Friend's $10 awarded after their first successful order; referrer's $10 awarded after the referred account has been with Tello for 93 days. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

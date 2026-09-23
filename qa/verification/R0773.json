@@ -1,90 +1,93 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The washer rebate is only for customers with an electric water heater, and if you took the Lowe's/Home Depot instant discount you can't also claim the mail-in rebate.",
+ "catches": [
+  "Clothes washer rebate only available to customers with an electric water heater (top-loader $100 ENERGY STAR; front-loader $150 Most Efficient).",
+  "Electric dryer: $100 ENERGY STAR / $300 Most Efficient; gas dryers excluded.",
+  "Refrigerator: $75 ENERGY STAR / $100 Most Efficient.",
+  "Room AC $30; dehumidifier $40.",
+  "Purchased/installed January 1, 2025–June 30, 2027; apply within 90 days with paid receipt and account number.",
+  "Instant-discount recipients at Lowe's/Home Depot cannot also claim the mail-in rebate.",
+  "The appliance purchases are conditions, not upfront fees."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "JCP&L (Jersey Central Power & Light, a FirstEnergy company) — real New Jersey utility; official appliance application PDF on residential.energysavenj.com.",
+   "pass": true
   },
-  "biggest_catch": "The washer rebate is only for customers with an electric water heater, and if you took the Lowe's/Home Depot instant discount you can't also claim the mail-in rebate.",
-  "catches": [
-    "Clothes washer rebate only available to customers with an electric water heater (top-loader $100 ENERGY STAR; front-loader $150 Most Efficient).",
-    "Electric dryer: $100 ENERGY STAR / $300 Most Efficient; gas dryers excluded.",
-    "Refrigerator: $75 ENERGY STAR / $100 Most Efficient.",
-    "Room AC $30; dehumidifier $40.",
-    "Purchased/installed January 1, 2025–June 30, 2027; apply within 90 days with paid receipt and account number.",
-    "Instant-discount recipients at Lowe's/Home Depot cannot also claim the mail-in rebate.",
-    "The appliance purchases are conditions, not upfront fees."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "JCP&L (Jersey Central Power & Light, a FirstEnergy company) — real New Jersey utility; official appliance application PDF on residential.energysavenj.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official JCP&L application: refrigerator $75/$100, washer $100/$150 (electric-water-heater customers), electric dryer $100/$300, room AC $30, dehumidifier $40.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; appliance purchases are purchase conditions.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official terms: processing up to 30 days after all required information is received.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official JCP&L application: refrigerator $75/$100, washer $100/$150 (electric-water-heater customers), electric dryer $100/$300, room AC $30, dehumidifier $40.",
+   "pass": true
   },
-  "eligibility": "New Jersey residential JCP&L customer. Qualifying ENERGY STAR / ENERGY STAR Most Efficient appliances purchased and installed January 1, 2025–June 30, 2027, at the service address. Apply within 90 days with paid receipt and account number. Washer rebate requires an electric water heater.",
-  "notes": "Verified from the official JCP&L residential appliance application PDF 2026-09-22. These are the remaining JCP&L 2026 appliance products not covered by R0756 (heat-pump water heater). [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://residential.energysavenj.com/jersey-central/sites/jersey-central/files/2025-07/JCP%26L_RES_Appliance%20Application__Fillable_FINAL_061125.pdf",
-  "payout_quote": "Refrigerator $75 ENERGY STAR / $100 Most Efficient; clothes washer $100 top-loader / $150 front-loader Most Efficient (electric-water-heater customers only); electric clothes dryer $100 / $300 Most Efficient; room AC $30; dehumidifier $40 — processing up to 30 days after all required information is received.",
-  "route_id": "R0773",
-  "standard": {
-    "s1": {
-      "note": "NJ residential JCP&L customer; installed at service address; purchased/installed Jan 1, 2025–Jun 30, 2027.",
-      "pass": true
-    },
-    "s2": {
-      "note": "ENERGY STAR / Most Efficient tiers; washer needs electric water heater; 90-day application window; instant-discount recipients excluded.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Processing up to 30 days after all required information is received.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amounts stated flatly in the official application.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official JCP&L appliance application PDF on residential.energysavenj.com, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: buy, install, submit application with receipt within 90 days.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official JCP&L application PDF loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; appliance purchases are purchase conditions.",
+   "pass": true
   },
-  "steps": [
-    "Buy a qualifying ENERGY STAR or ENERGY STAR Most Efficient appliance (refrigerator, washer, electric dryer, room AC, or dehumidifier).",
-    "Install it at your JCP&L service address and keep your paid receipt and account number.",
-    "Submit the official JCP&L residential appliance application within 90 days of purchase.",
-    "Your rebate is processed within 30 days after all required information is received."
-  ],
-  "terms_url": "https://residential.energysavenj.com/jersey-central/sites/jersey-central/files/2025-07/JCP%26L_RES_Appliance%20Application__Fillable_FINAL_061125.pdf",
-  "timing": "Processing up to 30 days after all required information is received.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official terms: processing up to 30 days after all required information is received.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Jersey residential JCP&L customer. Qualifying ENERGY STAR / ENERGY STAR Most Efficient appliances purchased and installed January 1, 2025–June 30, 2027, at the service address. Apply within 90 days with paid receipt and account number. Washer rebate requires an electric water heater.",
+ "notes": "Verified from the official JCP&L residential appliance application PDF 2026-09-22. These are the remaining JCP&L 2026 appliance products not covered by R0756 (heat-pump water heater). [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://residential.energysavenj.com/jersey-central/sites/jersey-central/files/2025-07/JCP%26L_RES_Appliance%20Application__Fillable_FINAL_061125.pdf",
+ "payout_quote": "Refrigerator $75 ENERGY STAR / $100 Most Efficient; clothes washer $100 top-loader / $150 front-loader Most Efficient (electric-water-heater customers only); electric clothes dryer $100 / $300 Most Efficient; room AC $30; dehumidifier $40 — processing up to 30 days after all required information is received.",
+ "route_id": "R0773",
+ "standard": {
+  "s1": {
+   "note": "NJ residential JCP&L customer; installed at service address; purchased/installed Jan 1, 2025–Jun 30, 2027.",
+   "pass": true
   },
-  "payout_min_usd": 75.0,
-  "payout_max_usd": 75.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "ENERGY STAR / Most Efficient tiers; washer needs electric water heater; 90-day application window; instant-discount recipients excluded.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Processing up to 30 days after all required information is received.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amounts stated flatly in the official application.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official JCP&L appliance application PDF on residential.energysavenj.com, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: buy, install, submit application with receipt within 90 days.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official JCP&L application PDF loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Buy a qualifying ENERGY STAR or ENERGY STAR Most Efficient appliance (refrigerator, washer, electric dryer, room AC, or dehumidifier).",
+  "Install it at your JCP&L service address and keep your paid receipt and account number.",
+  "Submit the official JCP&L residential appliance application within 90 days of purchase.",
+  "Your rebate is processed within 30 days after all required information is received."
+ ],
+ "terms_url": "https://residential.energysavenj.com/jersey-central/sites/jersey-central/files/2025-07/JCP%26L_RES_Appliance%20Application__Fillable_FINAL_061125.pdf",
+ "timing": "Processing up to 30 days after all required information is received.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 75.0,
+ "payout_max_usd": 75.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Processing up to 30 days after all required information is received.",
+ "maximize": "Fastest honest path: Processing up to 30 days after all required information is received. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Only you (the referrer) need be an existing customer, but both credits are triggered only when the referred person places their first order — a referral who fills the form but never buys earns nothing. Buying groups are excluded (individuals only).",
+ "catches": [
+  "Both £25 credits are issued only when the referred person places their first order; an unconverted referral earns nothing.",
+  "The referral programme applies to individuals only; buying groups are excluded.",
+  "The friend's £25 is a discount on their first order, and yours is a credit on your account — both offset planned fuel spending, not cash.",
+  "UK (Compass Energy) service areas only.",
+  "No stated cap on referrals, but the page carries no end date or last-update stamp — confirm the £25 is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (compassenergy.co.uk); Referral Program page live and readable."
   },
-  "biggest_catch": "Only you (the referrer) need be an existing customer, but both credits are triggered only when the referred person places their first order — a referral who fills the form but never buys earns nothing. Buying groups are excluded (individuals only).",
-  "catches": [
-    "Both £25 credits are issued only when the referred person places their first order; an unconverted referral earns nothing.",
-    "The referral programme applies to individuals only; buying groups are excluded.",
-    "The friend's £25 is a discount on their first order, and yours is a credit on your account — both offset planned fuel spending, not cash.",
-    "UK (Compass Energy) service areas only.",
-    "No stated cap on referrals, but the page carries no end date or last-update stamp — confirm the £25 is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (compassenergy.co.uk); Referral Program page live and readable."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts, mechanics, and the buying-group exclusion stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned fuel spending (account credit / first-order discount), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Compass Energy."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts, mechanics, and the buying-group exclusion stated on the official page."
   },
-  "eligibility": "Existing Compass Energy customers (individuals only; buying groups excluded) in Compass Energy's UK service areas; referred person must be a new customer who places a first order.",
-  "notes": "GBP amounts converted to USD at documented mid-market rate 1 GBP = 1.334 USD. Incentive is savings on planned fuel spending, never income.",
-  "numeric_basis": "payout £25 credit per side from official page, converted at 1 GBP = 1.334 USD (mid-market, Sept 23 2026) = $33.35, rounded to $33; time: 5-15 minutes for referral sharing",
-  "official_url": "http://compassenergy.co.uk/referral-program/",
-  "payout_max_usd": 33,
-  "payout_min_usd": 33,
-  "payout_quote": "Recommend someone to Compass Energy and when they place their first order, we'll credit your account with £25 — and give them £25 off their order too.",
-  "payout_value_note": "£25 (approx. $33 USD at 1 GBP = 1.334 USD) account credit to the referrer and £25 off the referred customer's first order per qualifying referral; offsets planned fuel spending (savings).",
-  "route_id": "R5514",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Compass Energy customer (individual, not a buying group)."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Fill out the recommend-a-friend form with your referral's details."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Compass Energy contacts the referred person."
-    },
-    "s4": {
-      "pass": true,
-      "note": "When the referred person places their first order, your account is credited £25 and they get £25 off their order."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Rewards are account credits and first-order discounts; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Compass Energy UK service areas."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No referral cap stated; no end date stated — confirm currentness before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned fuel spending (account credit / first-order discount), never income."
   },
-  "steps": [
-    "As an existing Compass Energy customer, fill out the recommend-a-friend form with your referral's details.",
-    "Compass Energy contacts the referred person.",
-    "The referred person places their first order with Compass Energy.",
-    "Your account is credited £25; the referred customer gets £25 off their order."
-  ],
-  "terms_url": "http://compassenergy.co.uk/referral-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits are issued when the referred person places their first order.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Compass Energy."
+  }
+ },
+ "eligibility": "Existing Compass Energy customers (individuals only; buying groups excluded) in Compass Energy's UK service areas; referred person must be a new customer who places a first order.",
+ "notes": "GBP amounts converted to USD at documented mid-market rate 1 GBP = 1.334 USD. Incentive is savings on planned fuel spending, never income.",
+ "numeric_basis": "payout £25 credit per side from official page, converted at 1 GBP = 1.334 USD (mid-market, Sept 23 2026) = $33.35, rounded to $33; time: 5-15 minutes for referral sharing",
+ "official_url": "http://compassenergy.co.uk/referral-program/",
+ "payout_max_usd": 33,
+ "payout_min_usd": 33,
+ "payout_quote": "Recommend someone to Compass Energy and when they place their first order, we'll credit your account with £25 — and give them £25 off their order too.",
+ "payout_value_note": "£25 (approx. $33 USD at 1 GBP = 1.334 USD) account credit to the referrer and £25 off the referred customer's first order per qualifying referral; offsets planned fuel spending (savings).",
+ "route_id": "R5514",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Compass Energy customer (individual, not a buying group)."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fill out the recommend-a-friend form with your referral's details."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Compass Energy contacts the referred person."
+  },
+  "s4": {
+   "pass": true,
+   "note": "When the referred person places their first order, your account is credited £25 and they get £25 off their order."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Rewards are account credits and first-order discounts; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Compass Energy UK service areas."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No referral cap stated; no end date stated — confirm currentness before sharing."
+  }
+ },
+ "steps": [
+  "As an existing Compass Energy customer, fill out the recommend-a-friend form with your referral's details.",
+  "Compass Energy contacts the referred person.",
+  "The referred person places their first order with Compass Energy.",
+  "Your account is credited £25; the referred customer gets £25 off their order."
+ ],
+ "terms_url": "http://compassenergy.co.uk/referral-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits are issued when the referred person places their first order.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits are issued when the referred person places their first order.",
+ "maximize": "Fastest honest path: Credits are issued when the referred person places their first order. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

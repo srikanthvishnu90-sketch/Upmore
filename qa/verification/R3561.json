@@ -1,87 +1,99 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The 20% is capped at $100 and the offer is savings on a planned Lowe's purchase \u2014 not cash. The card's purchase APR is 31.99% (36.99% penalty APR), so carrying any balance past the due date quickly costs more than the $100 discount, and applying triggers a hard credit inquiry.",
+ "catches": [
+  "Savings, not income: the $100 maximum is a discount on planned Lowe's spending only \u2014 never buy extra just to chase the discount.",
+  "$0 annual fee, so the fee math is clean, but the 31.99% purchase APR (36.99% penalty APR if you pay late, per the June 2026 Synchrony account agreement) wipes out the $100 discount fast if you carry a balance.",
+  "Applying for the card is a hard inquiry on your credit report \u2014 only worth it if you were already planning a $500+ Lowe's purchase.",
+  "Subject to credit approval; not everyone is approved. In-store accounts must ask the cashier to apply the barcode discount at time of purchase \u2014 it is not automatic.",
+  "Many exclusions: services, rentals, installation/delivery/assembly fees, taxes, gift cards, previous sales, Weber/Kichler/Miele products, contractor/volume pricing programs, military and employee discounts, and the 5% Everyday discount can't be stacked (the greater of the two applies).",
+  "Cannot be combined with special financing offers; one coupon per new account, non-transferable, not redeemable for cash.",
+  "Terms can be altered or discontinued at any time by Lowe's."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Lowe's is a real national retailer; the new-account offer is on the official lowes.com credit terms page, fetched live 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "The 20% is capped at $100 and the offer is savings on a planned Lowe's purchase — not cash. The card's purchase APR is 31.99% (36.99% penalty APR), so carrying any balance past the due date quickly costs more than the $100 discount, and applying triggers a hard credit inquiry.",
-  "catches": [
-    "Savings, not income: the $100 maximum is a discount on planned Lowe's spending only — never buy extra just to chase the discount.",
-    "$0 annual fee, so the fee math is clean, but the 31.99% purchase APR (36.99% penalty APR if you pay late, per the June 2026 Synchrony account agreement) wipes out the $100 discount fast if you carry a balance.",
-    "Applying for the card is a hard inquiry on your credit report — only worth it if you were already planning a $500+ Lowe's purchase.",
-    "Subject to credit approval; not everyone is approved. In-store accounts must ask the cashier to apply the barcode discount at time of purchase — it is not automatic.",
-    "Many exclusions: services, rentals, installation/delivery/assembly fees, taxes, gift cards, previous sales, Weber/Kichler/Miele products, contractor/volume pricing programs, military and employee discounts, and the 5% Everyday discount can't be stacked (the greater of the two applies).",
-    "Cannot be combined with special financing offers; one coupon per new account, non-transferable, not redeemable for cash.",
-    "Terms can be altered or discontinued at any time by Lowe's."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Lowe's is a real national retailer; the new-account offer is on the official lowes.com credit terms page, fetched live 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official lowes.com page: '20% Off When You Open and Use a New Account' — 'Maximum discount is $100 with this offer'; requires opening and using a new MyLowe's Rewards Credit Card, subject to credit approval.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No upfront fee; official Synchrony rates table lists no annual fee. Paper statement fee $1.99/month is a post-account charge, not an upfront fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Offer live on lowes.com/l/Credit/lac-tandc as fetched 2026-09-23 (UTC); no end date stated, subject to change — current as of verification.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official lowes.com page: '20% Off When You Open and Use a New Account' \u2014 'Maximum discount is $100 with this offer'; requires opening and using a new MyLowe's Rewards Credit Card, subject to credit approval.",
+   "pass": true
   },
-  "eligibility": "New MyLowe's Rewards Credit Card accounts only; subject to credit approval. US consumer accounts (excludes business, Visa, and Canada accounts). One coupon per new account.",
-  "notes": "Offer terms verified on official lowes.com credit terms page 2026-09-23 (UTC). APR and fee figures are from the official June 2026 Synchrony Bank MyLowe's Rewards Credit Card Account Agreement and Pricing Addendum (synchronybankterms.com). 20% of $500 = $100 cap: the maximum discount is reached with a $500 qualifying purchase.",
-  "official_url": "https://www.lowes.com/l/Credit/lac-tandc",
-  "payout_max_usd": 100,
-  "payout_min_usd": 0,
-  "payout_quote": "20% Off When You Open and Use a New Account: Subject to credit approval. To qualify for this offer, you must open and use a new MyLowe's Rewards Credit Card. Limit one 20% off coupon per new credit account; offer is not transferable. Maximum discount is $100 with this offer.",
-  "payout_value_note": "'up to' offer with no floor: 20% off new-account purchase, capped at $100 (official terms)",
-  "route_id": "R3561",
-  "standard": {
-    "s1": {
-      "note": "New-account signup discount mechanism; no Lowe's card route exists in the catalog or verification files.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Concrete steps: apply for the card (in-store/online), get approved, make a qualifying purchase on the new account and have the 20% coupon applied (ask cashier in-store).",
-      "pass": true
-    },
-    "s3": {
-      "note": "No end date on the page — framed as ongoing but changeable; no payout-delay timing stated (discount applies at purchase).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Catches include never-spend-extra-to-chase, $0 fee math, 31.99% APR / 36.99% penalty APR balance-carry risk, hard inquiry, approval requirement, broad exclusions.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; no annual fee on the card.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Public offer on lowes.com — no invitation or targeted mailer required.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Dedupe: grep/dedupe-check/verification-file search — no Lowe's route in catalog.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No upfront fee; official Synchrony rates table lists no annual fee. Paper statement fee $1.99/month is a post-account charge, not an upfront fee.",
+   "pass": true
   },
-  "steps": [
-    "Apply for a new MyLowe's Rewards Credit Card (in-store, online, or via text/QR) and get approved.",
-    "Make a qualifying purchase on the new account — plan a $500+ purchase to reach the full $100 maximum (20% of $500).",
-    "In-store: ask the cashier to apply the 20% barcode discount at the time of purchase (not automatic). Online/text/QR: use the one-time coupon/promotional code you receive.",
-    "Pay the statement balance in full by the due date so the 31.99% APR never applies."
-  ],
-  "terms_url": "https://www.lowes.com/l/Credit/lac-tandc",
-  "time_max_minutes": 40,
-  "time_min_minutes": 20,
-  "timing": "One-time discount applied at the time of the first qualifying purchase on the new account; ongoing offer, no stated end date.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": [],
-  "numeric_basis": "payout from official terms (20% off new-account purchase, max $100); time: credit-card application est. 20-40 min active"
+  "c4": {
+   "evidence": "Offer live on lowes.com/l/Credit/lac-tandc as fetched 2026-09-23 (UTC); no end date stated, subject to change \u2014 current as of verification.",
+   "pass": true
+  }
+ },
+ "eligibility": "New MyLowe's Rewards Credit Card accounts only; subject to credit approval. US consumer accounts (excludes business, Visa, and Canada accounts). One coupon per new account.",
+ "notes": "Offer terms verified on official lowes.com credit terms page 2026-09-23 (UTC). APR and fee figures are from the official June 2026 Synchrony Bank MyLowe's Rewards Credit Card Account Agreement and Pricing Addendum (synchronybankterms.com). 20% of $500 = $100 cap: the maximum discount is reached with a $500 qualifying purchase.",
+ "official_url": "https://www.lowes.com/l/Credit/lac-tandc",
+ "payout_max_usd": 100,
+ "payout_min_usd": 0,
+ "payout_quote": "20% Off When You Open and Use a New Account: Subject to credit approval. To qualify for this offer, you must open and use a new MyLowe's Rewards Credit Card. Limit one 20% off coupon per new credit account; offer is not transferable. Maximum discount is $100 with this offer.",
+ "payout_value_note": "'up to' offer with no floor: 20% off new-account purchase, capped at $100 (official terms)",
+ "route_id": "R3561",
+ "standard": {
+  "s1": {
+   "note": "New-account signup discount mechanism; no Lowe's card route exists in the catalog or verification files.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Concrete steps: apply for the card (in-store/online), get approved, make a qualifying purchase on the new account and have the 20% coupon applied (ask cashier in-store).",
+   "pass": true
+  },
+  "s3": {
+   "note": "No end date on the page \u2014 framed as ongoing but changeable; no payout-delay timing stated (discount applies at purchase).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Catches include never-spend-extra-to-chase, $0 fee math, 31.99% APR / 36.99% penalty APR balance-carry risk, hard inquiry, approval requirement, broad exclusions.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; no annual fee on the card.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Public offer on lowes.com \u2014 no invitation or targeted mailer required.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Dedupe: grep/dedupe-check/verification-file search \u2014 no Lowe's route in catalog.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Apply for a new MyLowe's Rewards Credit Card (in-store, online, or via text/QR) and get approved.",
+  "Make a qualifying purchase on the new account \u2014 plan a $500+ purchase to reach the full $100 maximum (20% of $500).",
+  "In-store: ask the cashier to apply the 20% barcode discount at the time of purchase (not automatic). Online/text/QR: use the one-time coupon/promotional code you receive.",
+  "Pay the statement balance in full by the due date so the 31.99% APR never applies."
+ ],
+ "terms_url": "https://www.lowes.com/l/Credit/lac-tandc",
+ "time_max_minutes": 40,
+ "time_min_minutes": 20,
+ "timing": "One-time discount applied at the time of the first qualifying purchase on the new account; ongoing offer, no stated end date.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "numeric_basis": "payout from official terms (20% off new-account purchase, max $100); time: credit-card application est. 20-40 min active",
+ "speed": "today",
+ "when_cash_arrives": "20% off (up to $100) applied at the time of your first qualifying purchase on the newly opened MyLowe's Rewards Credit Card.",
+ "maximize": "Plan a ~$500 already-planned purchase and use the new card at checkout the day you open it for the full $100 value.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "today",
+   "rationale": "Official Lowe's credit terms: the discount applies at the time of the first qualifying purchase on the new account \u2014 value realized same day at checkout.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

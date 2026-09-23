@@ -1,89 +1,92 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Rebate amounts vary by ENERGY STAR vs. ENERGY STAR Most Efficient tier, and a bonus recycling rebate (up to $15) only applies if you recycle the working old unit with a receipt.",
+ "catches": [
+  "Amounts are tiered: e.g., clothes washers $25–$75 ENERGY STAR, $25–$90 Most Efficient; dishwashers $25/$40.",
+  "Bonus recycling rebate up to $15 for recycling a working dehumidifier, refrigerator, freezer, or room AC — recycling receipt required, not to exceed actual recycling cost.",
+  "Austin Utilities (Minnesota municipal utility) residential customer; see the rebate form for full details.",
+  "Austin Utilities does not publish a payout timeline in the 2026 sheet — s3 honestly marked false.",
+  "The appliance purchases are conditions, not upfront fees."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Austin Utilities — real Minnesota municipal utility; official 2026 residential rebate single-page PDF on austinutilities.com.",
+   "pass": true
   },
-  "biggest_catch": "Rebate amounts vary by ENERGY STAR vs. ENERGY STAR Most Efficient tier, and a bonus recycling rebate (up to $15) only applies if you recycle the working old unit with a receipt.",
-  "catches": [
-    "Amounts are tiered: e.g., clothes washers $25–$75 ENERGY STAR, $25–$90 Most Efficient; dishwashers $25/$40.",
-    "Bonus recycling rebate up to $15 for recycling a working dehumidifier, refrigerator, freezer, or room AC — recycling receipt required, not to exceed actual recycling cost.",
-    "Austin Utilities (Minnesota municipal utility) residential customer; see the rebate form for full details.",
-    "Austin Utilities does not publish a payout timeline in the 2026 sheet — s3 honestly marked false.",
-    "The appliance purchases are conditions, not upfront fees."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Austin Utilities — real Minnesota municipal utility; official 2026 residential rebate single-page PDF on austinutilities.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official 2026 sheet: washers $25–$75 ES / $25–$90 ME, heat-pump dryers $25, dishwashers $25/$40, refrigerators $25, induction cooktops $25, dehumidifiers $15–$25, air purifiers $25, room AC $25, bonus recycling up to $15.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; appliance purchases are purchase conditions.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Austin Utilities does not publish a payout timeline in the 2026 sheet — s3 honestly marked false rather than invented.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official 2026 sheet: washers $25–$75 ES / $25–$90 ME, heat-pump dryers $25, dishwashers $25/$40, refrigerators $25, induction cooktops $25, dehumidifiers $15–$25, air purifiers $25, room AC $25, bonus recycling up to $15.",
+   "pass": true
   },
-  "eligibility": "Austin Utilities (MN) residential customer. New ENERGY STAR / ENERGY STAR Most Efficient appliance; see the official rebate form for per-product details.",
-  "notes": "Verified from the official Austin Utilities 2026 residential rebate PDF 2026-09-22. Note: this is Austin Utilities of Minnesota, not Austin Energy of Texas. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.austinutilities.com/assetmanager/downloads/documents/pdf/Rebates/Residential/ResidentialEnergy2026_SinglePage.pdf",
-  "payout_quote": "Clothes washers $25–$75 ENERGY STAR ($25–$90 Most Efficient); heat-pump clothes dryers $25; dishwashers $25/$40; refrigerators $25; electric induction cooktops $25; dehumidifiers $15–$25; air purifiers $25; room air conditioners $25; bonus recycling rebate up to $15 with recycling receipt.",
-  "route_id": "R0774",
-  "standard": {
-    "s1": {
-      "note": "Austin Utilities (MN) residential customer; new qualifying appliance.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Tiered amounts by efficiency level; recycling bonus needs receipt; see rebate form for details.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Payout timeline not published in the official 2026 sheet — not invented.",
-      "pass": false
-    },
-    "s4": {
-      "note": "Amounts published as tiered ranges — the official sheet values.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.austinutilities.com/.../ResidentialEnergy2026_SinglePage.pdf — official Austin Utilities PDF, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: buy a qualifying appliance, submit the rebate form.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Austin Utilities 2026 rebate PDF loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; appliance purchases are purchase conditions.",
+   "pass": true
   },
-  "steps": [
-    "Confirm you are an Austin Utilities (Minnesota) residential customer.",
-    "Buy a new qualifying ENERGY STAR or ENERGY STAR Most Efficient appliance.",
-    "If recycling a working old dehumidifier, refrigerator, freezer, or room AC, keep the recycling receipt for the bonus rebate.",
-    "Submit the official Austin Utilities rebate form with your purchase documentation.",
-    "Austin Utilities does not publish the exact payout timeline."
-  ],
-  "terms_url": "https://www.austinutilities.com/assetmanager/downloads/documents/pdf/Rebates/Residential/ResidentialEnergy2026_SinglePage.pdf",
-  "timing": "Austin Utilities does not publish a payout timeline for these rebates in the official 2026 sheet.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "Amounts published as tiered ranges ('$25–$75', '$25–$90') — the official sheet values."
+  "c4": {
+   "evidence": "Austin Utilities does not publish a payout timeline in the 2026 sheet — s3 honestly marked false rather than invented.",
+   "pass": false
+  }
+ },
+ "eligibility": "Austin Utilities (MN) residential customer. New ENERGY STAR / ENERGY STAR Most Efficient appliance; see the official rebate form for per-product details.",
+ "notes": "Verified from the official Austin Utilities 2026 residential rebate PDF 2026-09-22. Note: this is Austin Utilities of Minnesota, not Austin Energy of Texas. Payout timeline not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.austinutilities.com/assetmanager/downloads/documents/pdf/Rebates/Residential/ResidentialEnergy2026_SinglePage.pdf",
+ "payout_quote": "Clothes washers $25–$75 ENERGY STAR ($25–$90 Most Efficient); heat-pump clothes dryers $25; dishwashers $25/$40; refrigerators $25; electric induction cooktops $25; dehumidifiers $15–$25; air purifiers $25; room air conditioners $25; bonus recycling rebate up to $15 with recycling receipt.",
+ "route_id": "R0774",
+ "standard": {
+  "s1": {
+   "note": "Austin Utilities (MN) residential customer; new qualifying appliance.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 15.0,
-  "payout_value_note": "'up to' amount in official terms; floor $0",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Tiered amounts by efficiency level; recycling bonus needs receipt; see rebate form for details.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Payout timeline not published in the official 2026 sheet — not invented.",
+   "pass": false
+  },
+  "s4": {
+   "note": "Amounts published as tiered ranges — the official sheet values.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.austinutilities.com/.../ResidentialEnergy2026_SinglePage.pdf — official Austin Utilities PDF, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: buy a qualifying appliance, submit the rebate form.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Austin Utilities 2026 rebate PDF loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm you are an Austin Utilities (Minnesota) residential customer.",
+  "Buy a new qualifying ENERGY STAR or ENERGY STAR Most Efficient appliance.",
+  "If recycling a working old dehumidifier, refrigerator, freezer, or room AC, keep the recycling receipt for the bonus rebate.",
+  "Submit the official Austin Utilities rebate form with your purchase documentation.",
+  "Austin Utilities does not publish the exact payout timeline."
+ ],
+ "terms_url": "https://www.austinutilities.com/assetmanager/downloads/documents/pdf/Rebates/Residential/ResidentialEnergy2026_SinglePage.pdf",
+ "timing": "Austin Utilities does not publish a payout timeline for these rebates in the official 2026 sheet.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "Amounts published as tiered ranges ('$25–$75', '$25–$90') — the official sheet values."
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 15.0,
+ "payout_value_note": "'up to' amount in official terms; floor $0",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Austin Utilities does not publish a payout timeline for these rebates in the official 2026 sheet.",
+ "maximize": "Fastest honest path: Austin Utilities does not publish a payout timeline for these rebates in the official 2026 sheet. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

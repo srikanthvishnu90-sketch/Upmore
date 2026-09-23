@@ -1,91 +1,103 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Cashback is a rebate on spending, not income or guaranteed earnings \u2014 and pending cashback typically sits for about 90 days (longer for some merchants) before it becomes payable, so this is slow money.",
+ "catches": [
+  "Cashback is a rebate on spending, not income or guaranteed earnings \u2014 rates and merchants change.",
+  "Pending cashback generally takes about 90 days to become payable and can take longer depending on the merchant.",
+  "You must complete the purchase in the same click-through session \u2014 abandoning the cart or leaving the site breaks tracking.",
+  "Returns or cancellations reverse the rewards.",
+  "The official terms mention inactive-account maintenance charges, but the exact trigger and amount could not be confirmed from the accessible official text \u2014 re-check the live terms.",
+  "$10 minimum balance to withdraw; check or PayPal only."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "MaxRebates \u2014 real, operating cashback site; official site, help, and terms live.",
+   "pass": true
   },
-  "biggest_catch": "Cashback is a rebate on spending, not income or guaranteed earnings — and pending cashback typically sits for about 90 days (longer for some merchants) before it becomes payable, so this is slow money.",
-  "catches": [
-    "Cashback is a rebate on spending, not income or guaranteed earnings — rates and merchants change.",
-    "Pending cashback generally takes about 90 days to become payable and can take longer depending on the merchant.",
-    "You must complete the purchase in the same click-through session — abandoning the cart or leaving the site breaks tracking.",
-    "Returns or cancellations reverse the rewards.",
-    "The official terms mention inactive-account maintenance charges, but the exact trigger and amount could not be confirmed from the accessible official text — re-check the live terms.",
-    "$10 minimum balance to withdraw; check or PayPal only."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "MaxRebates — real, operating cashback site; official site, help, and terms live.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official help/terms document: choose retailer → click through MaxRebates → purchase in same click session; pending ~90 days; $10 minimum; check or PayPal; returns reverse rewards; inactive-account maintenance charges mentioned.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Free to join; no enrollment fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official help: pending generally 90 days; $10 minimum balance to withdraw via check or PayPal.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official help/terms document: choose retailer \u2192 click through MaxRebates \u2192 purchase in same click session; pending ~90 days; $10 minimum; check or PayPal; returns reverse rewards; inactive-account maintenance charges mentioned.",
+   "pass": true
   },
-  "eligibility": "Free; 18+; US; one account per person.",
-  "notes": "Mechanism, ~90-day pending period, $10 minimum, check/PayPal payout, and return-reversal confirmed on the current official site and help pages (https://www.maxrebates.com/, https://maxrebates.com/help/7-8/, https://www.maxrebates.com/help/1-16/) observed live 2026-09-23. The official terms mention inactive-account maintenance charges, but the exact trigger/amount was not confirmed from the accessible official text — only what is supported is stated (see catches). Payout quote paraphrases the official help. App links not verified against official store listings, left null. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping 10-20min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)]",
-  "official_url": "https://www.maxrebates.com/",
-  "payout_quote": "Choose a retailer, click through MaxRebates, and buy in the same session — rewards sit pending for about 90 days (longer for some merchants), then can be withdrawn once your balance reaches $10 via check or PayPal.",
-  "route_id": "R0136",
-  "standard": {
-    "s1": {
-      "note": "18+; one account; purchase must complete in the same click-through session.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Free. Returns/cancellations reverse rewards; session breaks void tracking.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$10 minimum; check or PayPal payouts.",
-      "pass": true
-    },
-    "s4": {
-      "note": "The inactivity-maintenance-charge terms are vague in the accessible official text — disclosed as unverified detail.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.maxrebates.com/ and official help/terms — current official sources, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "6 concrete actions: sign up, click through, buy in session, wait 90 days, reach $10, withdraw.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official site, help, and terms loaded live 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Free to join; no enrollment fee.",
+   "pass": true
   },
-  "steps": [
-    "Create a free account at https://www.maxrebates.com/.",
-    "Choose your retailer on MaxRebates and click through to the store.",
-    "Complete your purchase in the same click session without leaving the site.",
-    "Check your account to confirm the reward shows as pending.",
-    "Wait for the pending period — generally about 90 days, longer for some merchants.",
-    "Once your balance reaches $10, request a payout via check or PayPal."
-  ],
-  "terms_url": "https://www.maxrebates.com/help/1-16/",
-  "timing": "Pending generally 90 days (can exceed 90 days depending on the merchant); $10 minimum balance to withdraw via check or PayPal.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "Official terms mention inactive-account maintenance charges without accessible detail on the exact trigger and amount — confirm on the live terms."
+  "c4": {
+   "evidence": "Official help: pending generally 90 days; $10 minimum balance to withdraw via check or PayPal.",
+   "pass": true
+  }
+ },
+ "eligibility": "Free; 18+; US; one account per person.",
+ "notes": "Mechanism, ~90-day pending period, $10 minimum, check/PayPal payout, and return-reversal confirmed on the current official site and help pages (https://www.maxrebates.com/, https://maxrebates.com/help/7-8/, https://www.maxrebates.com/help/1-16/) observed live 2026-09-23. The official terms mention inactive-account maintenance charges, but the exact trigger/amount was not confirmed from the accessible official text \u2014 only what is supported is stated (see catches). Payout quote paraphrases the official help. App links not verified against official store listings, left null. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping 10-20min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)]",
+ "official_url": "https://www.maxrebates.com/",
+ "payout_quote": "Choose a retailer, click through MaxRebates, and buy in the same session \u2014 rewards sit pending for about 90 days (longer for some merchants), then can be withdrawn once your balance reaches $10 via check or PayPal.",
+ "route_id": "R0136",
+ "standard": {
+  "s1": {
+   "note": "18+; one account; purchase must complete in the same click-through session.",
+   "pass": true
   },
-  "payout_min_usd": 10.0,
-  "payout_max_usd": 10.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 10.0,
-  "time_max_minutes": 20.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)"
+  "s2": {
+   "note": "Free. Returns/cancellations reverse rewards; session breaks void tracking.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$10 minimum; check or PayPal payouts.",
+   "pass": true
+  },
+  "s4": {
+   "note": "The inactivity-maintenance-charge terms are vague in the accessible official text \u2014 disclosed as unverified detail.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.maxrebates.com/ and official help/terms \u2014 current official sources, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "6 concrete actions: sign up, click through, buy in session, wait 90 days, reach $10, withdraw.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official site, help, and terms loaded live 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Create a free account at https://www.maxrebates.com/.",
+  "Choose your retailer on MaxRebates and click through to the store.",
+  "Complete your purchase in the same click session without leaving the site.",
+  "Check your account to confirm the reward shows as pending.",
+  "Wait for the pending period \u2014 generally about 90 days, longer for some merchants.",
+  "Once your balance reaches $10, request a payout via check or PayPal."
+ ],
+ "terms_url": "https://www.maxrebates.com/help/1-16/",
+ "timing": "Pending generally 90 days (can exceed 90 days depending on the merchant); $10 minimum balance to withdraw via check or PayPal.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "Official terms mention inactive-account maintenance charges without accessible detail on the exact trigger and amount \u2014 confirm on the live terms."
+ },
+ "payout_min_usd": 10.0,
+ "payout_max_usd": 10.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 10.0,
+ "time_max_minutes": 20.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Cashback/Shopping (10-20min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Pending generally 90 days (can exceed depending on the merchant); $10 minimum balance to withdraw via check or PayPal.",
+ "maximize": "Shop early; withdraw at the $10 minimum.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The 90-day pending period is the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

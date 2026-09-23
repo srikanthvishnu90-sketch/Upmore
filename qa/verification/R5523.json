@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Only you (the referrer) earn the $50 account credit — the friend gets nothing stated — and the referral form requires your Blue Ridge Energy account number, so you must be an existing customer to refer.",
+ "catches": [
+  "Only the referrer earns the $50 account credit; the referred friend gets no stated reward.",
+  "The referral becomes a new propane customer for the credit to trigger.",
+  "The referral form asks for your Blue Ridge Energy account number — only existing customers can refer.",
+  "The credit offsets planned propane spending (savings), never cash.",
+  "Page ends with 'other terms and conditions may apply' — confirm full terms before sharing.",
+  "Blue Ridge Energy service area only; no stated end date — confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (blueridgeenergy.com); Refer-a-Friend Propane Program page live and readable."
   },
-  "biggest_catch": "Only you (the referrer) earn the $50 account credit — the friend gets nothing stated — and the referral form requires your Blue Ridge Energy account number, so you must be an existing customer to refer.",
-  "catches": [
-    "Only the referrer earns the $50 account credit; the referred friend gets no stated reward.",
-    "The referral becomes a new propane customer for the credit to trigger.",
-    "The referral form asks for your Blue Ridge Energy account number — only existing customers can refer.",
-    "The credit offsets planned propane spending (savings), never cash.",
-    "Page ends with 'other terms and conditions may apply' — confirm full terms before sharing.",
-    "Blue Ridge Energy service area only; no stated end date — confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (blueridgeenergy.com); Refer-a-Friend Propane Program page live and readable."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amount, mechanics, and new-customer trigger stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Blue Ridge Energy."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amount, mechanics, and new-customer trigger stated on the official page."
   },
-  "eligibility": "Existing Blue Ridge Energy Propane and Fuels customers; referred person must become a new propane customer in Blue Ridge Energy's service area.",
-  "notes": "Referrer-only $50 account credit per qualifying referral. Credit offsets planned propane spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
-  "official_url": "https://www.blueridgeenergy.com/residential/products-and-services/propane-fuels/refer-a-friend",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "If your referral becomes a new propane customer, we will credit your account $50.",
-  "payout_value_note": "$50 account credit to the referrer per qualifying referral (referrer-only); offsets planned propane spending (savings).",
-  "route_id": "R5523",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Blue Ridge Energy Propane and Fuels customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Fill out the referral form with your account details and your friend's details."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referred person becomes a new Blue Ridge Energy propane customer."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Blue Ridge Energy credits your account $50."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credit offsets propane purchases; not cash; other terms and conditions may apply."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Blue Ridge Energy service area."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Confirm full terms before sharing; no referral cap stated."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
   },
-  "steps": [
-    "As an existing Blue Ridge Energy customer, fill out the referral form with your name, account number, phone, address, and your friend's details.",
-    "Your referral becomes a new propane customer.",
-    "Blue Ridge Energy applies a $50 credit to your account."
-  ],
-  "terms_url": "https://www.blueridgeenergy.com/residential/products-and-services/propane-fuels/refer-a-friend",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit is applied after the referral becomes a new propane customer.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Blue Ridge Energy."
+  }
+ },
+ "eligibility": "Existing Blue Ridge Energy Propane and Fuels customers; referred person must become a new propane customer in Blue Ridge Energy's service area.",
+ "notes": "Referrer-only $50 account credit per qualifying referral. Credit offsets planned propane spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
+ "official_url": "https://www.blueridgeenergy.com/residential/products-and-services/propane-fuels/refer-a-friend",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "If your referral becomes a new propane customer, we will credit your account $50.",
+ "payout_value_note": "$50 account credit to the referrer per qualifying referral (referrer-only); offsets planned propane spending (savings).",
+ "route_id": "R5523",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Blue Ridge Energy Propane and Fuels customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Fill out the referral form with your account details and your friend's details."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referred person becomes a new Blue Ridge Energy propane customer."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Blue Ridge Energy credits your account $50."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credit offsets propane purchases; not cash; other terms and conditions may apply."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Blue Ridge Energy service area."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Confirm full terms before sharing; no referral cap stated."
+  }
+ },
+ "steps": [
+  "As an existing Blue Ridge Energy customer, fill out the referral form with your name, account number, phone, address, and your friend's details.",
+  "Your referral becomes a new propane customer.",
+  "Blue Ridge Energy applies a $50 credit to your account."
+ ],
+ "terms_url": "https://www.blueridgeenergy.com/residential/products-and-services/propane-fuels/refer-a-friend",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit is applied after the referral becomes a new propane customer.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit is applied after the referral becomes a new propane customer.",
+ "maximize": "Fastest honest path: Credit is applied after the referral becomes a new propane customer. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

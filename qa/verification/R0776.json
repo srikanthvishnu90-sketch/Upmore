@@ -1,90 +1,93 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "This is only for customers who already participated in a Duke income-qualified program (Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot) in the last 36 months — prior participation is the gate.",
+ "catches": [
+  "You must have participated in Duke Energy Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot within the last 36 months.",
+  "Residential electric service in your name; you must occupy the enrolled residence.",
+  "Centrally ducted electric air conditioning and/or heating required (window units do not qualify); home Wi-Fi and an active email required.",
+  "Renters need the Tenant Authorization Form plus landlord/property-owner approval.",
+  "Duke installs the equipment for free and adjusts enrolled appliances a few times per month during peak demand.",
+  "No fee; the thermostat (if you don't have one) is installed free."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Duke Energy — real operating utility; official Power Manager Income Qualified page on duke-energy.com.",
+   "pass": true
   },
-  "biggest_catch": "This is only for customers who already participated in a Duke income-qualified program (Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot) in the last 36 months — prior participation is the gate.",
-  "catches": [
-    "You must have participated in Duke Energy Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot within the last 36 months.",
-    "Residential electric service in your name; you must occupy the enrolled residence.",
-    "Centrally ducted electric air conditioning and/or heating required (window units do not qualify); home Wi-Fi and an active email required.",
-    "Renters need the Tenant Authorization Form plus landlord/property-owner approval.",
-    "Duke installs the equipment for free and adjusts enrolled appliances a few times per month during peak demand.",
-    "No fee; the thermostat (if you don't have one) is installed free."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Duke Energy — real operating utility; official Power Manager Income Qualified page on duke-energy.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Duke page: free smart thermostat installed (or enroll your existing device); $150 off your next bill + $50 off annually while enrolled.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No fee — Duke installs necessary equipment for free.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: '$150 off your next bill' — the next-bill timing is published.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Duke page: free smart thermostat installed (or enroll your existing device); $150 off your next bill + $50 off annually while enrolled.",
+   "pass": true
   },
-  "eligibility": "Duke Energy residential customer who participated in Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot in the last 36 months. Centrally ducted electric AC/heating, home Wi-Fi, active email. Renters need landlord approval.",
-  "notes": "Verified on the official Duke Energy page 2026-09-22. Income-qualified lane: free thermostat + $150 next-bill credit + $50/year. Other enrollment options (AC $50+$8/mo May–Nov; heat strips $50+$8/mo Dec–Apr; water heater $25+$5/mo Dec–Apr) also exist on the same page. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://duke-energy.com/home/products/power-manager/income-qualified",
-  "payout_quote": "Smart Thermostat Option: get a FREE smart thermostat installed (or enroll your qualifying existing device); receive $150 off your next bill + $50 off annually while enrolled.",
-  "route_id": "R0776",
-  "standard": {
-    "s1": {
-      "note": "Prior participation in a listed Duke income-qualified program within 36 months; Duke residential electric service in your name.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Centrally ducted electric AC/heating; Wi-Fi; active email; renter authorization if applicable; peak-period adjustments.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$150 off your next bill — next-bill timing published; $50 annually while enrolled.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amounts stated flatly on the official page.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://duke-energy.com/home/products/power-manager/income-qualified — official Duke Energy page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: confirm prior-program eligibility, enroll, free install, credits follow.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Duke Energy page loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No fee — Duke installs necessary equipment for free.",
+   "pass": true
   },
-  "steps": [
-    "Confirm you participated in Duke Energy Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot in the last 36 months.",
-    "Check you have centrally ducted electric AC/heating, home Wi-Fi, and an active email (renters: get landlord approval via the Tenant Authorization Form).",
-    "Enroll in Power Manager on the official Duke Energy page (or call 866-541-8886 for help).",
-    "Let Duke install the free smart thermostat (or enroll your existing eligible device).",
-    "Receive $150 off your next bill, plus $50 off annually while you stay enrolled."
-  ],
-  "terms_url": "https://duke-energy.com/home/products/power-manager/income-qualified",
-  "timing": "$150 off your next bill after enrollment, plus $50 off annually while enrolled.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page: '$150 off your next bill' — the next-bill timing is published.",
+   "pass": true
+  }
+ },
+ "eligibility": "Duke Energy residential customer who participated in Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot in the last 36 months. Centrally ducted electric AC/heating, home Wi-Fi, active email. Renters need landlord approval.",
+ "notes": "Verified on the official Duke Energy page 2026-09-22. Income-qualified lane: free thermostat + $150 next-bill credit + $50/year. Other enrollment options (AC $50+$8/mo May–Nov; heat strips $50+$8/mo Dec–Apr; water heater $25+$5/mo Dec–Apr) also exist on the same page. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://duke-energy.com/home/products/power-manager/income-qualified",
+ "payout_quote": "Smart Thermostat Option: get a FREE smart thermostat installed (or enroll your qualifying existing device); receive $150 off your next bill + $50 off annually while enrolled.",
+ "route_id": "R0776",
+ "standard": {
+  "s1": {
+   "note": "Prior participation in a listed Duke income-qualified program within 36 months; Duke residential electric service in your name.",
+   "pass": true
   },
-  "payout_min_usd": 150.0,
-  "payout_max_usd": 150.0,
-  "payout_value_note": "flat bonus amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Centrally ducted electric AC/heating; Wi-Fi; active email; renter authorization if applicable; peak-period adjustments.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$150 off your next bill — next-bill timing published; $50 annually while enrolled.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amounts stated flatly on the official page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://duke-energy.com/home/products/power-manager/income-qualified — official Duke Energy page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: confirm prior-program eligibility, enroll, free install, credits follow.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Duke Energy page loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm you participated in Duke Energy Neighborhood Energy Saver, Weatherization, or the High Energy Use pilot in the last 36 months.",
+  "Check you have centrally ducted electric AC/heating, home Wi-Fi, and an active email (renters: get landlord approval via the Tenant Authorization Form).",
+  "Enroll in Power Manager on the official Duke Energy page (or call 866-541-8886 for help).",
+  "Let Duke install the free smart thermostat (or enroll your existing eligible device).",
+  "Receive $150 off your next bill, plus $50 off annually while you stay enrolled."
+ ],
+ "terms_url": "https://duke-energy.com/home/products/power-manager/income-qualified",
+ "timing": "$150 off your next bill after enrollment, plus $50 off annually while enrolled.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 150.0,
+ "payout_max_usd": 150.0,
+ "payout_value_note": "flat bonus amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "$150 off your next bill after enrollment, plus $50 off annually while enrolled.",
+ "maximize": "Fastest honest path: $150 off your next bill after enrollment, plus $50 off annually while enrolled. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

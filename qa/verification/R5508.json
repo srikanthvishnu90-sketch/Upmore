@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The reward is a credit applied on your next delivery — not cash — and the page states no timing, caps, or good-standing conditions, so the exact conditions for the credit to post are vague; confirm with United Propane before referring.",
+ "catches": [
+  "The reward is a credit on your next propane delivery, not cash or a gift card.",
+  "The friend must actually become a customer; a referral that does not convert earns nothing.",
+  "The page states no referral caps, no timing for the credit, and no conditions beyond the friend becoming a customer — the program's full conditions are not spelled out.",
+  "No service-area details on the referral page; United Propane must serve your friend's address.",
+  "Rewards are delivery credits that offset planned propane spending, never income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (united-propane.com); Refer a Friend page live with stated reward amounts."
   },
-  "biggest_catch": "The reward is a credit applied on your next delivery — not cash — and the page states no timing, caps, or good-standing conditions, so the exact conditions for the credit to post are vague; confirm with United Propane before referring.",
-  "catches": [
-    "The reward is a credit on your next propane delivery, not cash or a gift card.",
-    "The friend must actually become a customer; a referral that does not convert earns nothing.",
-    "The page states no referral caps, no timing for the credit, and no conditions beyond the friend becoming a customer — the program's full conditions are not spelled out.",
-    "No service-area details on the referral page; United Propane must serve your friend's address.",
-    "Rewards are delivery credits that offset planned propane spending, never income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (united-propane.com); Refer a Friend page live with stated reward amounts."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts and the qualifying trigger (friend becomes a customer) are stated on the official page; finer conditions are not published."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned propane spending (credit on the next delivery), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for United Propane."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts and the qualifying trigger (friend becomes a customer) are stated on the official page; finer conditions are not published."
   },
-  "eligibility": "You must be an existing United Propane customer; the referred person must become a new United Propane customer. United Propane service areas.",
-  "notes": "Two-sided referral: referrer and referred customer each earn $100. Credit offsets planned propane spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($100 to the referrer per qualifying referral); time: referral share 5-15 min active",
-  "official_url": "https://united-propane.com/refer-a-friend/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "For every friend that becomes a customer, we'll give you $100 and your friend $100 on the next delivery.",
-  "payout_value_note": "$100 credit to the referrer (and $100 to the referred customer) applied on the next delivery per qualifying referral; offsets planned propane spending (savings).",
-  "route_id": "R5508",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing United Propane customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Send United Propane your friend's contact information via the referral form."
-    },
-    "s3": {
-      "pass": true,
-      "note": "United Propane reaches out; the friend becomes a new United Propane customer."
-    },
-    "s4": {
-      "pass": true,
-      "note": "You receive $100 and your friend receives $100 credited on the next delivery."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Rewards are delivery credits, not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "United Propane service areas."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No caps or timing stated on the page; confirm conditions with United Propane."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned propane spending (credit on the next delivery), never income."
   },
-  "steps": [
-    "As an existing United Propane customer, send your friend's contact information to United Propane via the referral form.",
-    "The friend becomes a new United Propane customer.",
-    "You receive $100 and your friend receives $100 credited on the next delivery."
-  ],
-  "terms_url": "https://united-propane.com/refer-a-friend/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit is applied on the next delivery after the referred friend becomes a customer; no stated waiting period on the page.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for United Propane."
+  }
+ },
+ "eligibility": "You must be an existing United Propane customer; the referred person must become a new United Propane customer. United Propane service areas.",
+ "notes": "Two-sided referral: referrer and referred customer each earn $100. Credit offsets planned propane spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($100 to the referrer per qualifying referral); time: referral share 5-15 min active",
+ "official_url": "https://united-propane.com/refer-a-friend/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "For every friend that becomes a customer, we'll give you $100 and your friend $100 on the next delivery.",
+ "payout_value_note": "$100 credit to the referrer (and $100 to the referred customer) applied on the next delivery per qualifying referral; offsets planned propane spending (savings).",
+ "route_id": "R5508",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing United Propane customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Send United Propane your friend's contact information via the referral form."
+  },
+  "s3": {
+   "pass": true,
+   "note": "United Propane reaches out; the friend becomes a new United Propane customer."
+  },
+  "s4": {
+   "pass": true,
+   "note": "You receive $100 and your friend receives $100 credited on the next delivery."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Rewards are delivery credits, not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "United Propane service areas."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No caps or timing stated on the page; confirm conditions with United Propane."
+  }
+ },
+ "steps": [
+  "As an existing United Propane customer, send your friend's contact information to United Propane via the referral form.",
+  "The friend becomes a new United Propane customer.",
+  "You receive $100 and your friend receives $100 credited on the next delivery."
+ ],
+ "terms_url": "https://united-propane.com/refer-a-friend/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit is applied on the next delivery after the referred friend becomes a customer; no stated waiting period on the page.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit is applied on the next delivery after the referred friend becomes a customer; no stated waiting period on the page.",
+ "maximize": "Fastest honest path: Credit is applied on the next delivery after the referred friend becomes a customer; no stated waiting period on the page. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

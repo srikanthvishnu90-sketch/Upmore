@@ -12,14 +12,14 @@
     "You earn a $100 bonus credited to your account within 30 calendar days after the 90-day qualifying period"
   ],
   "catches": [
-    "No stated cap: ‘Existing clients can earn unlimited Refer-A-Friend bonuses’",
+    "No stated cap: \u2018Existing clients can earn unlimited Refer-A-Friend bonuses\u2019",
     "90-day waiting period: friend's account must stay open 90 calendar days with a balance > $0 on day 90",
     "Friend must not have closed a CSB consumer checking account within the past 12 months",
     "Bonus credited within 30 calendar days after the qualifying period; both accounts must be open at payment time",
     "Iowa residents only; cannot be combined with other offers; this is an ongoing offer subject to change without notice",
     "All bonuses reported to the IRS; you are responsible for applicable taxes"
   ],
-  "biggest_catch": "$100 per referral with no cap — but your friend's account must stay open 90 days with money in it, and it's Iowa-only.",
+  "biggest_catch": "$100 per referral with no cap \u2014 but your friend's account must stay open 90 days with money in it, and it's Iowa-only.",
   "eligibility": "Existing Community State Bank consumer clients; referred friends must be new-to-CSB (no closed CSB checking in 12 months), Iowa residents",
   "timing": "90-day qualifying period, then bonus credited within 30 calendar days",
   "upfront_fee": false,
@@ -77,11 +77,26 @@
       "note": "No Community State Bank referral route in catalog"
     }
   },
-  "notes": "Community State Bank (BankCSB, Iowa) Refer A Friend: $100 bonus to the existing (referring) client per qualifying referral — friend opens a new consumer checking account (Iowa only, approval required), keeps it open 90 days with a balance above zero on day 90, and has no closed CSB checking within 12 months. Unlimited: no cap. Ongoing offer, subject to change.",
+  "notes": "Community State Bank (BankCSB, Iowa) Refer A Friend: $100 bonus to the existing (referring) client per qualifying referral \u2014 friend opens a new consumer checking account (Iowa only, approval required), keeps it open 90 days with a balance above zero on day 90, and has no closed CSB checking within 12 months. Unlimited: no cap. Ongoing offer, subject to change.",
   "payout_min_usd": 100,
   "payout_max_usd": 100,
   "payout_value_note": "$100 per referral to the referrer; no cap stated.",
   "time_min_minutes": 5,
   "time_max_minutes": 15,
-  "numeric_basis": "payout from official bankcsb.com ($100 per referral); time: referring a friend est. 5-15 min active"
+  "numeric_basis": "payout from official bankcsb.com ($100 per referral); time: referring a friend est. 5-15 min active",
+  "speed": "weeks",
+  "when_cash_arrives": "Per official terms: 90-day qualifying period, then bonus credited within 30 calendar days \u2014 structural: a 90-day account-open/seasoning requirement must elapse before payout.",
+  "maximize": [
+    "Front-load the friend's qualifying activity: terms give the friend a multi-week window, but the payout clock starts at completion \u2014 a friend who finishes in week 1 gets you paid weeks earlier.",
+    "The 30-day payout window is the binding constraint after qualification \u2014 nothing in the terms shortens it; compress the qualification leg instead.",
+    "The 90-day seasoning/hold is structural \u2014 pick a different referral program if you need money sooner."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "weeks",
+      "rationale": "Speed audit 2026-09-23: confirmed weeks \u2014 structural: a 90-day account-open/seasoning requirement must elapse before payout."
+    }
+  ]
 }

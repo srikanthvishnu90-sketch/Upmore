@@ -1,83 +1,86 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $50 is free propane credited to your account, not cash - it only has value if you are an existing Superior Energy propane customer, and the credit posts only after your referral receives their first delivery.",
+ "catches": [
+  "You must be an existing Superior Energy, LLC customer to participate.",
+  "The credit is applied only after the referral is set up with service and receives their first delivery.",
+  "The reward is propane credited to your account, not a cash payout."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (propanect.com); Star Customer referral page with explicit terms."
   },
-  "biggest_catch": "The $50 is free propane credited to your account, not cash - it only has value if you are an existing Superior Energy propane customer, and the credit posts only after your referral receives their first delivery.",
-  "catches": [
-    "You must be an existing Superior Energy, LLC customer to participate.",
-    "The credit is applied only after the referral is set up with service and receives their first delivery.",
-    "The reward is propane credited to your account, not a cash payout."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (propanect.com); Star Customer referral page with explicit terms."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Terms stated verbatim on the official page; business hours listed."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned energy spending (free propane credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; no existing evidence for Superior Energy (dedupe returned zero relevant hits)."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Terms stated verbatim on the official page; business hours listed."
   },
-  "eligibility": "Existing Superior Energy, LLC propane customers; referred friends and family must set up service and receive their first delivery.",
-  "notes": "Free-propane credit framed as savings on planned energy spending, never income. Concrete $50 value stated on the official page.",
-  "numeric_basis": "payout $50 from official page text ('$50 worth of FREE propane'); time: 5-15 minutes for referral sharing",
-  "official_url": "https://propanect.com/star-customer-form",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Refer your friends and family to Superior Energy, LLC and you'll receive $50 worth of FREE propane!",
-  "payout_value_note": "$50 worth of free propane credited to the referrer's account (stated as a $50 value on the official page).",
-  "route_id": "R5498",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Superior Energy, LLC customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Refer friends and family to Superior Energy via the Star Customer form."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referral sets up service and receives their first delivery."
-    },
-    "s4": {
-      "pass": true,
-      "note": "A $50 free-propane credit is applied to your account."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credit posts after the referral's first delivery, not at signup."
-    },
-    "s6": {
-      "pass": true,
-      "note": "No direct cash payout; propane credited to the account only."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Areas served by Superior Energy, LLC."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned energy spending (free propane credit), never income."
   },
-  "steps": [
-    "As an existing Superior Energy customer, fill out the Star Customer referral form with your referral's details.",
-    "Your referral sets up Superior Energy service.",
-    "After your referral receives their first delivery, the $50 free-propane credit is applied to your account.",
-    "The propane credit offsets your future fuel usage."
-  ],
-  "terms_url": "https://propanect.com/star-customer-form",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Submitting the referral form takes 5-15 minutes of active effort; the credit posts after the referral's first delivery.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; no existing evidence for Superior Energy (dedupe returned zero relevant hits)."
+  }
+ },
+ "eligibility": "Existing Superior Energy, LLC propane customers; referred friends and family must set up service and receive their first delivery.",
+ "notes": "Free-propane credit framed as savings on planned energy spending, never income. Concrete $50 value stated on the official page.",
+ "numeric_basis": "payout $50 from official page text ('$50 worth of FREE propane'); time: 5-15 minutes for referral sharing",
+ "official_url": "https://propanect.com/star-customer-form",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Refer your friends and family to Superior Energy, LLC and you'll receive $50 worth of FREE propane!",
+ "payout_value_note": "$50 worth of free propane credited to the referrer's account (stated as a $50 value on the official page).",
+ "route_id": "R5498",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Superior Energy, LLC customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Refer friends and family to Superior Energy via the Star Customer form."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referral sets up service and receives their first delivery."
+  },
+  "s4": {
+   "pass": true,
+   "note": "A $50 free-propane credit is applied to your account."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credit posts after the referral's first delivery, not at signup."
+  },
+  "s6": {
+   "pass": true,
+   "note": "No direct cash payout; propane credited to the account only."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Areas served by Superior Energy, LLC."
+  }
+ },
+ "steps": [
+  "As an existing Superior Energy customer, fill out the Star Customer referral form with your referral's details.",
+  "Your referral sets up Superior Energy service.",
+  "After your referral receives their first delivery, the $50 free-propane credit is applied to your account.",
+  "The propane credit offsets your future fuel usage."
+ ],
+ "terms_url": "https://propanect.com/star-customer-form",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Submitting the referral form takes 5-15 minutes of active effort; the credit posts after the referral's first delivery.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Submitting the referral form takes 5-15 minutes of active effort; the credit posts after the referral's first delivery.",
+ "maximize": "Fastest honest path: Submitting the referral form takes 5-15 minutes of active effort; the credit posts after the referral's first delivery. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

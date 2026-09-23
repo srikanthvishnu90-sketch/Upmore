@@ -1,84 +1,95 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "A modest $100 for opening a checking account - worth it only if you are already in Navigant's Rhode Island footprint and need a new checking account anyway.",
+ "catches": [
+  "New Journey Rewards Checking accounts only; limit one per member.",
+  "Account must remain active and in good standing to receive the promotional credit.",
+  "Must use promo code Journey100_2026.",
+  "Promotion ends 12/31/2026.",
+  "Promotion value may be reported on IRS Form 1099-INT and considered taxable income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Navigant Credit Union (Rhode Island; navigantcu.org) - real operating credit union; official Journey Rewards Checking bonus page crawled 2026-09-14.",
+   "pass": true
   },
-  "biggest_catch": "A modest $100 for opening a checking account - worth it only if you are already in Navigant's Rhode Island footprint and need a new checking account anyway.",
-  "catches": [
-    "New Journey Rewards Checking accounts only; limit one per member.",
-    "Account must remain active and in good standing to receive the promotional credit.",
-    "Must use promo code Journey100_2026.",
-    "Promotion ends 12/31/2026.",
-    "Promotion value may be reported on IRS Form 1099-INT and considered taxable income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Navigant Credit Union (Rhode Island; navigantcu.org) - real operating credit union; official Journey Rewards Checking bonus page crawled 2026-09-14.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official navigantcu.org page states the $100 promotional credit for new Journey Rewards Checking accounts, 60-day credit timing, promo code, and 12/31/2026 end date verbatim.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; no upfront payment required to earn the bonus.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "$100 deposited within 60 days of account opening - concrete.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official navigantcu.org page states the $100 promotional credit for new Journey Rewards Checking accounts, 60-day credit timing, promo code, and 12/31/2026 end date verbatim.",
+   "pass": true
   },
-  "eligibility": "New Journey Rewards Checking accounts; Rhode Island (Navigant CU footprint). Existing and new members when opening a new Journey Rewards Checking account.",
-  "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official navigantcu.org Journey bonus page (crawled 2026-09-14) rather than a direct page read; the payout quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'navigant' = 0 hits).",
-  "numeric_basis": "payout from official terms ($100 flat); time: online membership + checking application est. 30-60 min active",
-  "official_url": "http://navigantcu.org/jrc-100-bonus/",
-  "payout_max_usd": 100.0,
-  "payout_min_usd": 100.0,
-  "payout_quote": "For existing and new members when a new Journey Rewards Checking account is opened. Bonus Information: Offer available to new Journey Rewards Checking accounts only; limit one per member. $100 will be deposited into your account within 60 days of account opening. Your account must remain active and in good standing to receive the promotional credits. Promotional funds will appear as 'Promotional Credit' on your monthly statement. The value of the promotion may be reported on Internal Revenue Service (IRS) Form 1099-INT and may be considered taxable income. Consult your tax advisor. Please utilize promo code: Journey100_2026. Promotion ends 12/31/2026. Federally insured by NCUA.",
-  "payout_value_note": "flat $100 promotional credit in official terms",
-  "route_id": "R0862",
-  "standard": {
-    "s1": {
-      "note": "New Journey Rewards Checking accounts; RI footprint.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Open account with promo code Journey100_2026 by 12/31/2026; keep active and in good standing.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$100 deposited within 60 days of account opening.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amount, timing, promo code, and end date stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "http://navigantcu.org/jrc-100-bonus/ - official Navigant CU page (search crawl 2026-09-14).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: open Journey Rewards Checking with code Journey100_2026 by 12/31/26, keep account active.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official page confirmed via search crawl 2026-09-14; direct fetch unavailable this session - flag for re-verification.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; no upfront payment required to earn the bonus.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Navigant Credit Union Journey Rewards Checking account by 12/31/2026, using promo code Journey100_2026.",
-    "Keep the account active and in good standing.",
-    "Receive the $100 promotional credit within 60 days of account opening."
-  ],
-  "terms_url": "http://navigantcu.org/jrc-100-bonus/",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "$100 deposited within 60 days of account opening.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "$100 deposited within 60 days of account opening - concrete.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Journey Rewards Checking accounts; Rhode Island (Navigant CU footprint). Existing and new members when opening a new Journey Rewards Checking account.",
+ "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official navigantcu.org Journey bonus page (crawled 2026-09-14) rather than a direct page read; the payout quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'navigant' = 0 hits).",
+ "numeric_basis": "payout from official terms ($100 flat); time: online membership + checking application est. 30-60 min active",
+ "official_url": "http://navigantcu.org/jrc-100-bonus/",
+ "payout_max_usd": 100.0,
+ "payout_min_usd": 100.0,
+ "payout_quote": "For existing and new members when a new Journey Rewards Checking account is opened. Bonus Information: Offer available to new Journey Rewards Checking accounts only; limit one per member. $100 will be deposited into your account within 60 days of account opening. Your account must remain active and in good standing to receive the promotional credits. Promotional funds will appear as 'Promotional Credit' on your monthly statement. The value of the promotion may be reported on Internal Revenue Service (IRS) Form 1099-INT and may be considered taxable income. Consult your tax advisor. Please utilize promo code: Journey100_2026. Promotion ends 12/31/2026. Federally insured by NCUA.",
+ "payout_value_note": "flat $100 promotional credit in official terms",
+ "route_id": "R0862",
+ "standard": {
+  "s1": {
+   "note": "New Journey Rewards Checking accounts; RI footprint.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open account with promo code Journey100_2026 by 12/31/2026; keep active and in good standing.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$100 deposited within 60 days of account opening.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amount, timing, promo code, and end date stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "http://navigantcu.org/jrc-100-bonus/ - official Navigant CU page (search crawl 2026-09-14).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: open Journey Rewards Checking with code Journey100_2026 by 12/31/26, keep account active.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official page confirmed via search crawl 2026-09-14; direct fetch unavailable this session - flag for re-verification.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Navigant Credit Union Journey Rewards Checking account by 12/31/2026, using promo code Journey100_2026.",
+  "Keep the account active and in good standing.",
+  "Receive the $100 promotional credit within 60 days of account opening."
+ ],
+ "terms_url": "http://navigantcu.org/jrc-100-bonus/",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "$100 deposited within 60 days of account opening.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $100. Per official terms: $100 deposited within 60 days of account opening. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

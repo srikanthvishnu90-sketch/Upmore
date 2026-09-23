@@ -3,10 +3,10 @@
     "android": null,
     "ios": null
   },
-  "biggest_catch": "You earn $100 per referral only when the friend opens both new Checking and Savings accounts on the same day and provides your name and account number on the application (it cannot be added later); the bonus lands in your savings within 120 days — the friend may also qualify for a separate $350 new-member bonus on their own.",
+  "biggest_catch": "You earn $100 per referral only when the friend opens both new Checking and Savings accounts on the same day and provides your name and account number on the application (it cannot be added later); the bonus lands in your savings within 120 days \u2014 the friend may also qualify for a separate $350 new-member bonus on their own.",
   "catches": [
     "Friend must be new to Frontwave, 18+, and open new Checking AND Savings accounts on the same day",
-    "The referrer's name and account number must be included on the new member's application at the time of submission — if added later, the incentive is not awarded",
+    "The referrer's name and account number must be included on the new member's application at the time of submission \u2014 if added later, the incentive is not awarded",
     "Referrer must be a current member with a Frontwave savings account in good standing; accounts must remain open and in good standing through processing",
     "Limit one referral bonus per new member; no self-referrals; excludes Frontwave employees and volunteers",
     "Eligibility: friend must live, work, worship, or attend school in San Diego, Riverside, Imperial, or San Bernardino counties (or meet another SEG/military qualification); current members, joint owners, and anyone with a Frontwave account closed in the past 18 months are not eligible",
@@ -28,12 +28,12 @@
       "pass": true
     },
     "c4": {
-      "evidence": "dedupe-check 'Frontwave': R0596 covers the Frontwave $350 new-member bonus (frontwavecu.com/new-member) — a signup bonus, distinct from this referrer-side program",
+      "evidence": "dedupe-check 'Frontwave': R0596 covers the Frontwave $350 new-member bonus (frontwavecu.com/new-member) \u2014 a signup bonus, distinct from this referrer-side program",
       "pass": true
     }
   },
   "eligibility": "Current Frontwave members with a savings account in good standing who refer eligible new members (18+, new to Frontwave, in eligible Southern CA counties or SEG/military-qualified).",
-  "notes": "Official frontwavecu.com/refer-a-friend confirms $100 to the referrer per qualifying new member. R0596 is the separate Frontwave new-member (signup) bonus — not a duplicate. Per schema, payout_min_usd/payout_max_usd = per-referral $100; the 'one referral bonus per new member' rule is a per-referee cap, not an annual aggregate cap.",
+  "notes": "Official frontwavecu.com/refer-a-friend confirms $100 to the referrer per qualifying new member. R0596 is the separate Frontwave new-member (signup) bonus \u2014 not a duplicate. Per schema, payout_min_usd/payout_max_usd = per-referral $100; the 'one referral bonus per new member' rule is a per-referee cap, not an annual aggregate cap.",
   "numeric_basis": "payout from official Frontwave CU referral terms ($100 to the referrer per qualifying referral); time: sharing the referral (name + account number) est. 5-15 min active",
   "official_url": "https://www.frontwavecu.com/refer-a-friend",
   "payout_max_usd": 100,
@@ -84,5 +84,18 @@
   "timing": "Sharing the referral takes ~10 minutes active; the $100 bonus arrives within 120 days after the friend's qualifying account opening.",
   "upfront_fee": false,
   "verdict": "verify",
-  "weasel_words": []
+  "weasel_words": [],
+  "speed": "weeks",
+  "when_cash_arrives": "Per official terms: Sharing the referral takes ~10 minutes active; the $100 bonus arrives within 120 days after the friend's qualifying account opening. \u2014 structural: payout can take up to ~120 days from account opening.",
+  "maximize": [
+    "Front-load the friend's qualifying activity: terms give the friend a multi-week window, but the payout clock starts at completion \u2014 a friend who finishes in week 1 gets you paid weeks earlier."
+  ],
+  "speed_history": [
+    {
+      "date": "2026-09-23",
+      "from": "weeks",
+      "to": "weeks",
+      "rationale": "Speed audit 2026-09-23: confirmed weeks \u2014 structural: payout can take up to ~120 days from account opening."
+    }
+  ]
 }

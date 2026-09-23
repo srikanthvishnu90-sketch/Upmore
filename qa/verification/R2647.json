@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Both $25 Amazon gift cards are paid only after the referred friend's account stays active and in good standing through their second invoice; physical cards are mailed to the service address.",
+ "catches": [
+  "Both $25 Amazon gift cards are issued only after the referred friend's account remains active and in good standing through their second invoice being issued — not at signup.",
+  "Cards are physical and sent to the service address on file for each account.",
+  "You can start sharing your referral link only after your Santanna account has been active for at least one month.",
+  "Self-referrals and referrals within the same household may not be eligible; Santanna reserves the right to deny rewards.",
+  "The friend must not currently be a Santanna customer and must be in Santanna's service area (residential IL/OH/PA observed).",
+  "An Amazon gift card is a reward card offsetting spending you would otherwise make — savings framing, not income.",
+  "Framing: the $25 gift cards reduce planned spending; no upfront cost beyond the friend's normal energy plan enrollment."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url is santannaenergyservices.com/referral-program/ (provider's own domain, title 'Customer Referral Program - Santanna Energy Services'), fetched 2026-09-23.",
+   "pass": true
   },
-  "biggest_catch": "Both $25 Amazon gift cards are paid only after the referred friend's account stays active and in good standing through their second invoice; physical cards are mailed to the service address.",
-  "catches": [
-    "Both $25 Amazon gift cards are issued only after the referred friend's account remains active and in good standing through their second invoice being issued — not at signup.",
-    "Cards are physical and sent to the service address on file for each account.",
-    "You can start sharing your referral link only after your Santanna account has been active for at least one month.",
-    "Self-referrals and referrals within the same household may not be eligible; Santanna reserves the right to deny rewards.",
-    "The friend must not currently be a Santanna customer and must be in Santanna's service area (residential IL/OH/PA observed).",
-    "An Amazon gift card is a reward card offsetting spending you would otherwise make — savings framing, not income.",
-    "Framing: the $25 gift cards reduce planned spending; no upfront cost beyond the friend's normal energy plan enrollment."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url is santannaenergyservices.com/referral-program/ (provider's own domain, title 'Customer Referral Program - Santanna Energy Services'), fetched 2026-09-23.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page is current (search crawl 13 days old for the invite variant, 20 days for the program page); no expiry stated.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Conditions (referral link, friend enrolls in any residential plan, account active through second invoice, physical cards to service address, no self-referrals) are fully stated on the official page.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($25 each side), conditions, and unlimited referrals are stated; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page is current (search crawl 13 days old for the invite variant, 20 days for the program page); no expiry stated.",
+   "pass": true
   },
-  "eligibility": "Current Santanna Energy Services customer with an account active at least one month; refer a new customer in Santanna's service area (residential IL/OH/PA observed) who enrolls via your referral link and whose account remains active and in good standing through their second invoice.",
-  "notes": "Verified 2026-09-23 from Santanna's official referral page. Distinct supplier vs prior wave and G19 set. No other Santanna routes in catalog.",
-  "numeric_basis": "payout from official terms ($25 Amazon gift card each side); time: referral share 5-15 min active",
-  "official_url": "https://santannaenergyservices.com/referral-program/",
-  "payout_max_usd": 25,
-  "payout_min_usd": 25,
-  "payout_quote": "When someone enrolls using your referral link, you'll both receive a $25 Amazon gift card as a thank you!",
-  "payout_value_note": "$25 Amazon gift card per side per successful referral; unlimited referrals. Reward card offsets planned spending (savings framing).",
-  "route_id": "R2647",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($25 each side) is quoted verbatim from the official page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: an Amazon gift card offsets spending the user would otherwise make.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete 3-step process from the official page (share link, friend signs up, both get $25 after second invoice).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: second-invoice qualification plus physical cards mailed to the service address.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a link and enrolling cost nothing beyond the friend's normal plan signup.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement; terms apply is standard and conditions are fully listed.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against santannaenergyservices.com (provider's own domain). Deduped: no Santanna routes in catalog or evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Conditions (referral link, friend enrolls in any residential plan, account active through second invoice, physical cards to service address, no self-referrals) are fully stated on the official page.",
+   "pass": true
   },
-  "steps": [
-    "Wait until your Santanna account has been active at least one month to unlock your referral link.",
-    "Share your unique Santanna referral link with a friend.",
-    "Friend enrolls in any Santanna residential plan in their area using your link.",
-    "Friend's account remains active and in good standing through their second invoice.",
-    "You and your friend each receive a physical $25 Amazon gift card mailed to the service address on file."
-  ],
-  "terms_url": "https://santannaenergyservices.com/referral-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Cards issued after the referred friend's account stays active and in good standing through their second invoice; unlimited referrals; no program end date stated.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($25 each side), conditions, and unlimited referrals are stated; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Current Santanna Energy Services customer with an account active at least one month; refer a new customer in Santanna's service area (residential IL/OH/PA observed) who enrolls via your referral link and whose account remains active and in good standing through their second invoice.",
+ "notes": "Verified 2026-09-23 from Santanna's official referral page. Distinct supplier vs prior wave and G19 set. No other Santanna routes in catalog.",
+ "numeric_basis": "payout from official terms ($25 Amazon gift card each side); time: referral share 5-15 min active",
+ "official_url": "https://santannaenergyservices.com/referral-program/",
+ "payout_max_usd": 25,
+ "payout_min_usd": 25,
+ "payout_quote": "When someone enrolls using your referral link, you'll both receive a $25 Amazon gift card as a thank you!",
+ "payout_value_note": "$25 Amazon gift card per side per successful referral; unlimited referrals. Reward card offsets planned spending (savings framing).",
+ "route_id": "R2647",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($25 each side) is quoted verbatim from the official page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: an Amazon gift card offsets spending the user would otherwise make.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete 3-step process from the official page (share link, friend signs up, both get $25 after second invoice).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: second-invoice qualification plus physical cards mailed to the service address.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a link and enrolling cost nothing beyond the friend's normal plan signup.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement; terms apply is standard and conditions are fully listed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against santannaenergyservices.com (provider's own domain). Deduped: no Santanna routes in catalog or evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Wait until your Santanna account has been active at least one month to unlock your referral link.",
+  "Share your unique Santanna referral link with a friend.",
+  "Friend enrolls in any Santanna residential plan in their area using your link.",
+  "Friend's account remains active and in good standing through their second invoice.",
+  "You and your friend each receive a physical $25 Amazon gift card mailed to the service address on file."
+ ],
+ "terms_url": "https://santannaenergyservices.com/referral-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Cards issued after the referred friend's account stays active and in good standing through their second invoice; unlimited referrals; no program end date stated.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Cards issued after the referred friend's account stays active and in good standing through their second invoice; unlimited referrals; no program end date stated.",
+ "maximize": "Fastest honest path: Cards issued after the referred friend's account stays active and in good standing through their second invoice; unlimited referrals; no program end date stated. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

@@ -1,85 +1,88 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Only you (the referrer) earn the $50 credit — the friend gets nothing stated — and it is only issued after their first delivery is complete, so a referral who signs up but never takes delivery earns you nothing.",
+ "catches": [
+  "Only the referrer earns the $50 credit; the referred friend gets no stated reward.",
+  "The credit is issued only after the friend's first delivery is complete.",
+  "The friend must mention your name during sign-up for the referral to count.",
+  "The credit offsets planned propane spending (savings), never cash.",
+  "Hill Country Texas service area only; post published July 10, 2025, with no stated end date — confirm the program is still current before sharing."
+ ],
+ "checked_at": "2026-09-23T07:08:54Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (hotpropane.com); Propane Perks referral post live, published July 10, 2025."
   },
-  "biggest_catch": "Only you (the referrer) earn the $50 credit — the friend gets nothing stated — and it is only issued after their first delivery is complete, so a referral who signs up but never takes delivery earns you nothing.",
-  "catches": [
-    "Only the referrer earns the $50 credit; the referred friend gets no stated reward.",
-    "The credit is issued only after the friend's first delivery is complete.",
-    "The friend must mention your name during sign-up for the referral to count.",
-    "The credit offsets planned propane spending (savings), never cash.",
-    "Hill Country Texas service area only; post published July 10, 2025, with no stated end date — confirm the program is still current before sharing."
-  ],
-  "checked_at": "2026-09-23T07:08:54Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (hotpropane.com); Propane Perks referral post live, published July 10, 2025."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amount, mechanics, and trigger stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Heart of Texas Propane."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amount, mechanics, and trigger stated on the official page."
   },
-  "eligibility": "Existing Heart of Texas Propane customers; referred person must be a new customer in the Hill Country Texas service area who completes a first delivery.",
-  "notes": "Referrer-only $50 account credit per qualifying referral; no referral limit. Credit offsets planned propane spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
-  "official_url": "https://www.hotpropane.com/blog/propane-perks",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "You'll receive a $50 credit on your account once their first delivery is complete.",
-  "payout_value_note": "$50 account credit to the referrer per qualifying referral (referrer-only); offsets planned propane spending (savings).",
-  "route_id": "R5522",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing Heart of Texas Propane customer."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Tell your friend about Heart of Texas Propane."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The friend signs up as a new customer and mentions your name during sign-up."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Once their first delivery is complete, a $50 credit is applied to your account."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credits are account credits offsetting propane purchases; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Hill Country Texas service area."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No referral limit; confirm program currency before sharing."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned propane spending (account credit), never income."
   },
-  "steps": [
-    "As an existing Heart of Texas Propane customer, tell your friend about Heart of Texas Propane.",
-    "The friend signs up as a new customer, mentioning your name.",
-    "The friend's first delivery is completed.",
-    "You receive a $50 credit on your account."
-  ],
-  "terms_url": "https://www.hotpropane.com/blog/propane-perks",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit is issued after the friend's first delivery is complete.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Heart of Texas Propane."
+  }
+ },
+ "eligibility": "Existing Heart of Texas Propane customers; referred person must be a new customer in the Hill Country Texas service area who completes a first delivery.",
+ "notes": "Referrer-only $50 account credit per qualifying referral; no referral limit. Credit offsets planned propane spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
+ "official_url": "https://www.hotpropane.com/blog/propane-perks",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "You'll receive a $50 credit on your account once their first delivery is complete.",
+ "payout_value_note": "$50 account credit to the referrer per qualifying referral (referrer-only); offsets planned propane spending (savings).",
+ "route_id": "R5522",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing Heart of Texas Propane customer."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Tell your friend about Heart of Texas Propane."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The friend signs up as a new customer and mentions your name during sign-up."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Once their first delivery is complete, a $50 credit is applied to your account."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credits are account credits offsetting propane purchases; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Hill Country Texas service area."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No referral limit; confirm program currency before sharing."
+  }
+ },
+ "steps": [
+  "As an existing Heart of Texas Propane customer, tell your friend about Heart of Texas Propane.",
+  "The friend signs up as a new customer, mentioning your name.",
+  "The friend's first delivery is completed.",
+  "You receive a $50 credit on your account."
+ ],
+ "terms_url": "https://www.hotpropane.com/blog/propane-perks",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit is issued after the friend's first delivery is complete.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit is issued after the friend's first delivery is complete.",
+ "maximize": "Fastest honest path: Credit is issued after the friend's first delivery is complete. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

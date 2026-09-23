@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The credits are only issued after the friend's first delivery — a referral who signs up but never orders earns nothing — and you must be an existing DANO Energy (Day & Nite Oil) customer logged into your account to refer at all.",
+ "catches": [
+  "You must be an existing DANO Energy (Day & Nite Oil) customer logged into your account to participate.",
+  "Both credits are issued only after the referred friend receives their first delivery.",
+  "The friend's $30 credit requires their first delivery as well — a signup with no delivery earns nothing.",
+  "Only available for heating oil deliveries in Pennsylvania or New Jersey.",
+  "Credits are account credits toward future deliveries — they offset planned spending, not cash.",
+  "No stated referral cap or end date; terms on the page are brief — confirm the amounts before sharing."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (dayandniteoil.com); Refer A Friend page live and readable."
   },
-  "biggest_catch": "The credits are only issued after the friend's first delivery — a referral who signs up but never orders earns nothing — and you must be an existing DANO Energy (Day & Nite Oil) customer logged into your account to refer at all.",
-  "catches": [
-    "You must be an existing DANO Energy (Day & Nite Oil) customer logged into your account to participate.",
-    "Both credits are issued only after the referred friend receives their first delivery.",
-    "The friend's $30 credit requires their first delivery as well — a signup with no delivery earns nothing.",
-    "Only available for heating oil deliveries in Pennsylvania or New Jersey.",
-    "Credits are account credits toward future deliveries — they offset planned spending, not cash.",
-    "No stated referral cap or end date; terms on the page are brief — confirm the amounts before sharing."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (dayandniteoil.com); Refer A Friend page live and readable."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Reward amounts, mechanics, and service states stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned heating-oil spending (account credit), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for DANO Energy / Day & Nite Oil."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Reward amounts, mechanics, and service states stated on the official page."
   },
-  "eligibility": "Existing DANO Energy (Day & Nite Oil) customers with an account; referred person must be a new customer in Pennsylvania or New Jersey who receives a first delivery.",
-  "notes": "Asymmetric two-sided referral: referrer earns $50, referred customer earns $30. Credits offset planned heating-oil spending (savings), never income.",
-  "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
-  "official_url": "http://www.dayandniteoil.com/referAFriendAction",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "Refer a friend to our business and you'll get $50.00 credit on your account after their first delivery. Your friend also earns a $30.00 credit after they receive their first delivery.",
-  "payout_value_note": "$50 account credit to the referrer per qualifying referral (referred customer also receives $30); offsets planned heating-oil spending (savings).",
-  "route_id": "R5516",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are an existing DANO Energy (Day & Nite Oil) customer with an online account."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Log into your DANO Energy account and click 'Refer Your Friends'."
-    },
-    "s3": {
-      "pass": true,
-      "note": "The referred friend places an order and receives their first delivery."
-    },
-    "s4": {
-      "pass": true,
-      "note": "A $50 credit is applied to your account; the friend gets a $30 credit."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Credits are account credits toward future heating oil deliveries; not cash."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Pennsylvania or New Jersey."
-    },
-    "s7": {
-      "pass": true,
-      "note": "No referral cap stated; refer as many friends as you like."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned heating-oil spending (account credit), never income."
   },
-  "steps": [
-    "As an existing DANO Energy customer, log into your account and click 'Refer Your Friends'.",
-    "Refer your friend; they place an order with DANO Energy.",
-    "After your friend receives their first delivery, a $50 credit is applied to your account.",
-    "The friend receives a $30 credit toward their own deliveries."
-  ],
-  "terms_url": "http://www.dayandniteoil.com/referAFriendAction",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits are issued after the referred friend receives their first delivery.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for DANO Energy / Day & Nite Oil."
+  }
+ },
+ "eligibility": "Existing DANO Energy (Day & Nite Oil) customers with an account; referred person must be a new customer in Pennsylvania or New Jersey who receives a first delivery.",
+ "notes": "Asymmetric two-sided referral: referrer earns $50, referred customer earns $30. Credits offset planned heating-oil spending (savings), never income.",
+ "numeric_basis": "payout from official terms ($50 account credit to the referrer per qualifying referral); time: referral share 5-15 min active",
+ "official_url": "http://www.dayandniteoil.com/referAFriendAction",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "Refer a friend to our business and you'll get $50.00 credit on your account after their first delivery. Your friend also earns a $30.00 credit after they receive their first delivery.",
+ "payout_value_note": "$50 account credit to the referrer per qualifying referral (referred customer also receives $30); offsets planned heating-oil spending (savings).",
+ "route_id": "R5516",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are an existing DANO Energy (Day & Nite Oil) customer with an online account."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Log into your DANO Energy account and click 'Refer Your Friends'."
+  },
+  "s3": {
+   "pass": true,
+   "note": "The referred friend places an order and receives their first delivery."
+  },
+  "s4": {
+   "pass": true,
+   "note": "A $50 credit is applied to your account; the friend gets a $30 credit."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Credits are account credits toward future heating oil deliveries; not cash."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Pennsylvania or New Jersey."
+  },
+  "s7": {
+   "pass": true,
+   "note": "No referral cap stated; refer as many friends as you like."
+  }
+ },
+ "steps": [
+  "As an existing DANO Energy customer, log into your account and click 'Refer Your Friends'.",
+  "Refer your friend; they place an order with DANO Energy.",
+  "After your friend receives their first delivery, a $50 credit is applied to your account.",
+  "The friend receives a $30 credit toward their own deliveries."
+ ],
+ "terms_url": "http://www.dayandniteoil.com/referAFriendAction",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits are issued after the referred friend receives their first delivery.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits are issued after the referred friend receives their first delivery.",
+ "maximize": "Fastest honest path: Credits are issued after the referred friend receives their first delivery. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

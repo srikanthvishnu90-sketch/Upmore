@@ -1,67 +1,78 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Requires parking $3,000 daily for 90 days; the savings account must be opened on the SAME business day as the FirstView Checking account above (same-day bundle constraint). The companion checking window ends 9PM EST September 25, 2026 (2 days from verification).",
+ "catches": [
+  "Open a new Traditional Savings account within the same business day as the FirstView Checking account (the checking offer window runs 08/03/2026 - 9PM EST 09/25/2026).",
+  "Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening; funds must be deposited directly into the savings account (not routed through a First Horizon checking account).",
+  "Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.",
+  "New funds cannot be money held by the client at First Horizon or its affiliates; $50 minimum opening deposit.",
+  "Bonus paid only to open and active FirstView checking accounts with a positive balance; the primary owner of the checking and savings accounts must be the same person.",
+  "One bonus per customer; offer and account opening subject to bank approval; bonus reported as interest on IRS Form 1099-INT.",
+  "After completing the savings requirements, the extra $250 bonus is deposited into the new checking account within 15 business days."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "First Horizon Bank is a real regional bank; the $250 Traditional Savings component of the up-to-$700 cash offer is described in the official disclosure of deposit cash offer terms hosted on the First Horizon content hub and firsthorizon.com (search crawls, confirmed ~38-48 days ago).",
+   "pass": true
   },
-  "biggest_catch": "Requires parking $3,000 daily for 90 days; the savings account must be opened on the SAME business day as the FirstView Checking account above (same-day bundle constraint). The companion checking window ends 9PM EST September 25, 2026 (2 days from verification).",
-  "catches": [
-    "Open a new Traditional Savings account within the same business day as the FirstView Checking account (the checking offer window runs 08/03/2026 - 9PM EST 09/25/2026).",
-    "Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening; funds must be deposited directly into the savings account (not routed through a First Horizon checking account).",
-    "Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.",
-    "New funds cannot be money held by the client at First Horizon or its affiliates; $50 minimum opening deposit.",
-    "Bonus paid only to open and active FirstView checking accounts with a positive balance; the primary owner of the checking and savings accounts must be the same person.",
-    "One bonus per customer; offer and account opening subject to bank approval; bonus reported as interest on IRS Form 1099-INT.",
-    "After completing the savings requirements, the extra $250 bonus is deposited into the new checking account within 15 business days."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "First Horizon Bank is a real regional bank; the $250 Traditional Savings component of the up-to-$700 cash offer is described in the official disclosure of deposit cash offer terms hosted on the First Horizon content hub and firsthorizon.com (search crawls, confirmed ~38-48 days ago).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official disclosure: '$250 Cash Bonus Offer Eligibility Requirements: To receive the extra $250 bonus (total amount of bonus equal to $700): Client needs to complete all the above requirements for the FirstView checking account and client must: 1) Open a new Traditional Savings account within the same business day as the checking account above which is subject to approval. 2) Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening ... AND 3) Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Amount, same-day account-opening rule, $3,000 new-funds threshold, 30-day funding window, 90-day balance maintenance, and 15-business-day payout are all quoted verbatim from the official disclosure.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official disclosure: '$250 Cash Bonus Offer Eligibility Requirements: To receive the extra $250 bonus (total amount of bonus equal to $700): Client needs to complete all the above requirements for the FirstView checking account and client must: 1) Open a new Traditional Savings account within the same business day as the checking account above which is subject to approval. 2) Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening ... AND 3) Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.'",
+   "pass": true
   },
-  "eligibility": "Must also complete the FirstView Checking $450 requirements (R0936); open the Traditional Savings account the same business day as the checking account; one bonus per customer.",
-  "notes": "Official firsthorizon.com disclosure documents (Q2/Summer 700 cash-offer terms). Distinct savings mechanism from the $450 checking bonus (R0936); combined headline = $700. The related First Horizon Private Client Reserve up-to-$3,000 offer was rejected as aggregator-only evidence; no reject ID was assigned for it (note: R0938 refers to the separate U.S. Bank Smartly duplicate rejection).",
-  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
-  "official_url": "https://firsthorizon.com/-/media/Files/Landing/Deposit/Q2-Retail-Checking-Offer-700-Disclosure.pdf",
-  "payout_max_usd": 250.0,
-  "payout_min_usd": 250.0,
-  "payout_quote": "To receive the extra $250 bonus (total amount of bonus equal to $700): Client needs to complete all the above requirements for the FirstView checking account and client must: 1) Open a new Traditional Savings account within the same business day as the checking account above which is subject to approval. 2) Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening ... AND 3) Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit. After you have completed all the above savings account requirements, we'll deposit the extra $250 bonus into your new checking account within 15 business days.",
-  "payout_value_note": "flat bonus amount in official terms",
-  "route_id": "R0937",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "Must complete the FirstView Checking requirements; same-business-day savings opening; one per customer."
-    },
-    "s2": {
-      "pass": true,
-      "evidence": "$3,000 new funds within 30 days deposited directly to savings; $3,000 daily collected balance for 90 days; $50 minimum opening deposit."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "$250 deposited to the new checking account within 15 business days of completing requirements; reported on 1099-INT; offer subject to approval."
-    }
+  "c3": {
+   "evidence": "Amount, same-day account-opening rule, $3,000 new-funds threshold, 30-day funding window, 90-day balance maintenance, and 15-business-day payout are all quoted verbatim from the official disclosure.",
+   "pass": true
+  }
+ },
+ "eligibility": "Must also complete the FirstView Checking $450 requirements (R0936); open the Traditional Savings account the same business day as the checking account; one bonus per customer.",
+ "notes": "Official firsthorizon.com disclosure documents (Q2/Summer 700 cash-offer terms). Distinct savings mechanism from the $450 checking bonus (R0936); combined headline = $700. The related First Horizon Private Client Reserve up-to-$3,000 offer was rejected as aggregator-only evidence; no reject ID was assigned for it (note: R0938 refers to the separate U.S. Bank Smartly duplicate rejection).",
+ "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "official_url": "https://firsthorizon.com/-/media/Files/Landing/Deposit/Q2-Retail-Checking-Offer-700-Disclosure.pdf",
+ "payout_max_usd": 250.0,
+ "payout_min_usd": 250.0,
+ "payout_quote": "To receive the extra $250 bonus (total amount of bonus equal to $700): Client needs to complete all the above requirements for the FirstView checking account and client must: 1) Open a new Traditional Savings account within the same business day as the checking account above which is subject to approval. 2) Deposit a total of $3,000 or more in new funds into the new savings account within 30 days of the savings account opening ... AND 3) Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit. After you have completed all the above savings account requirements, we'll deposit the extra $250 bonus into your new checking account within 15 business days.",
+ "payout_value_note": "flat bonus amount in official terms",
+ "route_id": "R0937",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "Must complete the FirstView Checking requirements; same-business-day savings opening; one per customer."
   },
-  "steps": [
-    "On the same business day you open the qualifying FirstView Checking account (by 9PM EST 09/25/2026), open a new Traditional Savings account.",
-    "Within 30 days, deposit $3,000 or more in new funds directly into the new savings account.",
-    "Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.",
-    "Complete the checking requirements; the extra $250 is deposited into the new checking account within 15 business days."
-  ],
-  "terms_url": "https://firsthorizon.com/-/media/Files/Landing/Deposit/Q2-Retail-Checking-Offer-700-Disclosure.pdf",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Savings opened same business day as checking; $3,000 in 30 days; balance maintained 90 days; $250 paid within 15 business days of completion.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": true,
+   "evidence": "$3,000 new funds within 30 days deposited directly to savings; $3,000 daily collected balance for 90 days; $50 minimum opening deposit."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "$250 deposited to the new checking account within 15 business days of completing requirements; reported on 1099-INT; offer subject to approval."
+  }
+ },
+ "steps": [
+  "On the same business day you open the qualifying FirstView Checking account (by 9PM EST 09/25/2026), open a new Traditional Savings account.",
+  "Within 30 days, deposit $3,000 or more in new funds directly into the new savings account.",
+  "Maintain a daily collected balance of $3,000 or more for 90 days from the day of the deposit.",
+  "Complete the checking requirements; the extra $250 is deposited into the new checking account within 15 business days."
+ ],
+ "terms_url": "https://firsthorizon.com/-/media/Files/Landing/Deposit/Q2-Retail-Checking-Offer-700-Disclosure.pdf",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Savings opened same business day as checking; $3,000 in 30 days; balance maintained 90 days; $250 paid within 15 business days of completion.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $250. Per official terms: Savings opened same business day as checking; $3,000 in 30 days; balance maintained 90 days; $250 paid within 15 business days of completion. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

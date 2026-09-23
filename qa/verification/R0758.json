@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You must submit the rebate application within 60 days of the date on your paid-in-full invoice — miss that window and you get nothing.",
+ "catches": [
+  "Applications must be submitted within 60 days of the paid-in-full invoice/receipt date.",
+  "You must be a Georgia Power residential customer with your meter number handy.",
+  "Appliance amounts are stated as 'up to' — the smart thermostat is up to $150.",
+  "Some measures require an affiliated program installer; the listed appliances are DIY-eligible.",
+  "The qualifying appliance purchase is a condition, not an upfront fee."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Georgia Power — real operating utility; official Home Energy Improvement Program page on georgiapower.com.",
+   "pass": true
   },
-  "biggest_catch": "You must submit the rebate application within 60 days of the date on your paid-in-full invoice — miss that window and you get nothing.",
-  "catches": [
-    "Applications must be submitted within 60 days of the paid-in-full invoice/receipt date.",
-    "You must be a Georgia Power residential customer with your meter number handy.",
-    "Appliance amounts are stated as 'up to' — the smart thermostat is up to $150.",
-    "Some measures require an affiliated program installer; the listed appliances are DIY-eligible.",
-    "The qualifying appliance purchase is a condition, not an upfront fee."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Georgia Power — real operating utility; official Home Energy Improvement Program page on georgiapower.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official HEIP page rebate tables: washer $50, dryer $50, refrigerator $25, dishwasher $20, smart thermostat up to $150.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; qualifying appliance purchase is a purchase condition.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official FAQ: 'Rebate processing typically takes 6–8 weeks for a complete application.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official HEIP page rebate tables: washer $50, dryer $50, refrigerator $25, dishwasher $20, smart thermostat up to $150.",
+   "pass": true
   },
-  "eligibility": "Georgia Power residential customer. Qualifying appliance purchased and installed; application submitted within 60 days of the paid-in-full invoice/receipt. Meter number required.",
-  "notes": "Verified on the official Georgia Power HEIP page 2026-09-22. Appliance rebates are the DIY track of the same program that covers heat pumps and weatherization. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html",
-  "payout_quote": "Money back on purchases: clothes washer $50, clothes dryer $50, refrigerator $25, dishwasher $20, smart thermostat up to $150 — rebate check; processing typically takes 6–8 weeks for a complete application.",
-  "route_id": "R0758",
-  "standard": {
-    "s1": {
-      "note": "Georgia Power residential customer; meter number; application within 60 days of invoice.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Qualifying appliance models; 'up to' amounts on some items; DIY installation allowed for appliances.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Rebate processing typically takes 6–8 weeks for a complete application.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Appliance amounts stated as 'up to' — mild weasel wording flagged but amounts are the published table values.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html — official Georgia Power page, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: buy, keep paid invoice, apply online within 60 days, check follows.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Georgia Power page loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; qualifying appliance purchase is a purchase condition.",
+   "pass": true
   },
-  "steps": [
-    "Buy a qualifying appliance (washer, dryer, refrigerator, dishwasher, or smart thermostat).",
-    "Keep your paid-in-full invoice or receipt and note your Georgia Power meter number.",
-    "Submit the HEIP rebate application online within 60 days of the invoice date.",
-    "Wait for processing — typically 6–8 weeks for a complete application — then receive your rebate check."
-  ],
-  "terms_url": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html",
-  "timing": "Rebate processing typically takes 6–8 weeks for a complete application.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "Appliance amounts are published as 'up to' (e.g., 'up to $150' smart thermostat) — the official rebate table values."
+  "c4": {
+   "evidence": "Official FAQ: 'Rebate processing typically takes 6–8 weeks for a complete application.'",
+   "pass": true
+  }
+ },
+ "eligibility": "Georgia Power residential customer. Qualifying appliance purchased and installed; application submitted within 60 days of the paid-in-full invoice/receipt. Meter number required.",
+ "notes": "Verified on the official Georgia Power HEIP page 2026-09-22. Appliance rebates are the DIY track of the same program that covers heat pumps and weatherization. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html",
+ "payout_quote": "Money back on purchases: clothes washer $50, clothes dryer $50, refrigerator $25, dishwasher $20, smart thermostat up to $150 — rebate check; processing typically takes 6–8 weeks for a complete application.",
+ "route_id": "R0758",
+ "standard": {
+  "s1": {
+   "note": "Georgia Power residential customer; meter number; application within 60 days of invoice.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 150.0,
-  "payout_value_note": "'up to' amount in official terms; floor $0",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Qualifying appliance models; 'up to' amounts on some items; DIY installation allowed for appliances.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Rebate processing typically takes 6–8 weeks for a complete application.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Appliance amounts stated as 'up to' — mild weasel wording flagged but amounts are the published table values.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html — official Georgia Power page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: buy, keep paid invoice, apply online within 60 days, check follows.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Georgia Power page loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Buy a qualifying appliance (washer, dryer, refrigerator, dishwasher, or smart thermostat).",
+  "Keep your paid-in-full invoice or receipt and note your Georgia Power meter number.",
+  "Submit the HEIP rebate application online within 60 days of the invoice date.",
+  "Wait for processing — typically 6–8 weeks for a complete application — then receive your rebate check."
+ ],
+ "terms_url": "https://www.georgiapower.com/residential/solutions/home-solutions/heip.html",
+ "timing": "Rebate processing typically takes 6–8 weeks for a complete application.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "Appliance amounts are published as 'up to' (e.g., 'up to $150' smart thermostat) — the official rebate table values."
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 150.0,
+ "payout_value_note": "'up to' amount in official terms; floor $0",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Rebate processing typically takes 6–8 weeks for a complete application.",
+ "maximize": "Fastest honest path: Rebate processing typically takes 6–8 weeks for a complete application. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

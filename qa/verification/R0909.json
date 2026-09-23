@@ -1,65 +1,76 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Two strict filters cut most people out: you must live in Maine, New Hampshire, or Vermont, and you must not have held a Bar Harbor Bank & Trust consumer checking account within the last 15 months. The bonus pays on or about 1/15/27 (up to ~3.5 months after opening).",
+ "catches": [
+  "Open a new Simple Checking (or other consumer checking) account between 9/1/26 and 10/31/26 with offer code C10926A02ONLINE; if opening in a branch, present the original postcard/coupon containing the offer code.",
+  "Have at least one direct deposit of $250 or more posted by 12/31/26; qualifying DD = employer/corporate/government/retirement-benefits deposits; person-to-person (PayPal, Venmo, Zelle), teller/ATM deposits do not count.",
+  "Bonus of $200 is credited on or about 1/15/27; account must be open and in good standing then.",
+  "One offer per household; only one account-opening promotion ever per customer; new-to-BHBT consumer checking only (no consumer checking within the last 15 months); employees not eligible.",
+  "Simple Checking is a non-interest-bearing account; fees could reduce earnings.",
+  "Bonus is reported as interest on Form 1099-MISC."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Bar Harbor Bank & Trust is a real FDIC-member community bank operating in Maine, New Hampshire, and Vermont; official offer PDF hosted on barharbor.bank (barharbor.bank/assets/files/9MeQ62xS).",
+   "pass": true
   },
-  "biggest_catch": "Two strict filters cut most people out: you must live in Maine, New Hampshire, or Vermont, and you must not have held a Bar Harbor Bank & Trust consumer checking account within the last 15 months. The bonus pays on or about 1/15/27 (up to ~3.5 months after opening).",
-  "catches": [
-    "Open a new Simple Checking (or other consumer checking) account between 9/1/26 and 10/31/26 with offer code C10926A02ONLINE; if opening in a branch, present the original postcard/coupon containing the offer code.",
-    "Have at least one direct deposit of $250 or more posted by 12/31/26; qualifying DD = employer/corporate/government/retirement-benefits deposits; person-to-person (PayPal, Venmo, Zelle), teller/ATM deposits do not count.",
-    "Bonus of $200 is credited on or about 1/15/27; account must be open and in good standing then.",
-    "One offer per household; only one account-opening promotion ever per customer; new-to-BHBT consumer checking only (no consumer checking within the last 15 months); employees not eligible.",
-    "Simple Checking is a non-interest-bearing account; fees could reduce earnings.",
-    "Bonus is reported as interest on Form 1099-MISC."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Bar Harbor Bank & Trust is a real FDIC-member community bank operating in Maine, New Hampshire, and Vermont; official offer PDF hosted on barharbor.bank (barharbor.bank/assets/files/9MeQ62xS).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official PDF states '$200' Simple Checking offer: 'Get a $200 cash bonus' for opening Simple Checking with a $250 direct deposit; schedule row Sept 1-Oct 31, 2026 (code C10926A02ONLINE), $250 DD by 12/31/26, bonus on or about 1/15/27.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Steps, eligibility, and payout dates are quoted verbatim from the official PDF disclosure section 'Important Information - $200 Simple Checking Offer'.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official PDF states '$200' Simple Checking offer: 'Get a $200 cash bonus' for opening Simple Checking with a $250 direct deposit; schedule row Sept 1-Oct 31, 2026 (code C10926A02ONLINE), $250 DD by 12/31/26, bonus on or about 1/15/27.",
+   "pass": true
   },
-  "eligibility": "Must be a resident of Maine, New Hampshire, or Vermont; must not have held a Bar Harbor Bank & Trust consumer checking account within the last 15 months; one offer per household; one account-opening promotion ever; employees excluded.",
-  "notes": "Official barharbor.bank PDF fetched 2026-09-23. The $200 tier is the Simple Checking tier (code C10926A02ONLINE, $250 DD). The same flyer has a $400 Relationship Rewards tier (already covered by R0554, code C40926A02ONLINE) and a $400 Business tier. Distinct tier: different account type, payout, DD threshold, and promo code from R0554's $400 tier. Verify-with-eyes-open: the tier-vs-campaign adjudication noted in the fleet log (R0890/R0074 precedent accepted separate tier rows).",
-  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
-  "official_url": "https://www.barharbor.bank/assets/files/9MeQ62xS",
-  "payout_max_usd": 200.0,
-  "payout_min_usd": 200.0,
-  "payout_quote": "Open a new Consumer Checking Account between: Sept. 1, 2026 and Oct. 31, 2026 | Have a direct deposit of $250 or more into the account by: Dec. 31, 2026 | receive a $200 bonus on or about: Jan. 15, 2027 | Offer Code: C10926A02ONLINE",
-  "payout_value_note": "flat bonus amount in official terms",
-  "route_id": "R0909",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "No consumer checking with BHBT within last 15 months; ME/NH/VT resident; one offer per household; one promo participation ever; employees excluded."
-    },
-    "s2": {
-      "pass": false,
-      "evidence": "Fund with $25 minimum opening deposit; no required new-money balance stated for this offer."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "Bonus credited 1/15/27; account must be open and in good standing; 1099-MISC reporting; fees could reduce earnings."
-    }
+  "c3": {
+   "evidence": "Steps, eligibility, and payout dates are quoted verbatim from the official PDF disclosure section 'Important Information - $200 Simple Checking Offer'.",
+   "pass": true
+  }
+ },
+ "eligibility": "Must be a resident of Maine, New Hampshire, or Vermont; must not have held a Bar Harbor Bank & Trust consumer checking account within the last 15 months; one offer per household; one account-opening promotion ever; employees excluded.",
+ "notes": "Official barharbor.bank PDF fetched 2026-09-23. The $200 tier is the Simple Checking tier (code C10926A02ONLINE, $250 DD). The same flyer has a $400 Relationship Rewards tier (already covered by R0554, code C40926A02ONLINE) and a $400 Business tier. Distinct tier: different account type, payout, DD threshold, and promo code from R0554's $400 tier. Verify-with-eyes-open: the tier-vs-campaign adjudication noted in the fleet log (R0890/R0074 precedent accepted separate tier rows).",
+ "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "official_url": "https://www.barharbor.bank/assets/files/9MeQ62xS",
+ "payout_max_usd": 200.0,
+ "payout_min_usd": 200.0,
+ "payout_quote": "Open a new Consumer Checking Account between: Sept. 1, 2026 and Oct. 31, 2026 | Have a direct deposit of $250 or more into the account by: Dec. 31, 2026 | receive a $200 bonus on or about: Jan. 15, 2027 | Offer Code: C10926A02ONLINE",
+ "payout_value_note": "flat bonus amount in official terms",
+ "route_id": "R0909",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "No consumer checking with BHBT within last 15 months; ME/NH/VT resident; one offer per household; one promo participation ever; employees excluded."
   },
-  "steps": [
-    "Open a new Simple Checking (or other Bar Harbor Bank & Trust consumer checking) account between September 1, 2026 and October 31, 2026; use offer code C10926A02ONLINE at opening (if opening in branch, present the original coupon/postcard containing the code).",
-    "Set up and receive at least one qualifying direct deposit of $250 or more into the account by December 31, 2026 (employer, corporate, federal/state government agency, or retirement benefits administrator deposits).",
-    "Keep the account open and in good standing through on or about January 15, 2027, when the $200 bonus is credited."
-  ],
-  "terms_url": "https://www.barharbor.bank/assets/files/9MeQ62xS",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Bonus credited on or about 1/15/27 (account opened 9/1/26-10/31/26; qualifying direct deposit by 12/31/26).",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": false,
+   "evidence": "Fund with $25 minimum opening deposit; no required new-money balance stated for this offer."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "Bonus credited 1/15/27; account must be open and in good standing; 1099-MISC reporting; fees could reduce earnings."
+  }
+ },
+ "steps": [
+  "Open a new Simple Checking (or other Bar Harbor Bank & Trust consumer checking) account between September 1, 2026 and October 31, 2026; use offer code C10926A02ONLINE at opening (if opening in branch, present the original coupon/postcard containing the code).",
+  "Set up and receive at least one qualifying direct deposit of $250 or more into the account by December 31, 2026 (employer, corporate, federal/state government agency, or retirement benefits administrator deposits).",
+  "Keep the account open and in good standing through on or about January 15, 2027, when the $200 bonus is credited."
+ ],
+ "terms_url": "https://www.barharbor.bank/assets/files/9MeQ62xS",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Bonus credited on or about 1/15/27 (account opened 9/1/26-10/31/26; qualifying direct deposit by 12/31/26).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $200. Per official terms: Bonus credited on or about 1/15/27 (account opened 9/1/26-10/31/26; qualifying direct deposit by 12/31/26). Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

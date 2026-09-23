@@ -1,87 +1,98 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Requires at least $2,500/month in direct deposits plus 15 debit card purchases per month - a high bar that rules out anyone without substantial payroll direct deposit.",
+ "catches": [
+  "Select New York counties and towns only - confirm your county on the official eligibility list before applying.",
+  "At least $2,500/month in direct deposits to the Boost Checking account.",
+  "15+ debit card purchases with the SFCU debit card each qualification window.",
+  "Must be enrolled in eStatements.",
+  "All three requirements must be met within 60 days of account opening or no bonus is paid.",
+  "New checking accounts only; converting an existing account does not qualify; limit one Boost Checking per account number."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Sidney Federal Credit Union (Sidney, NY) - real operating credit union; official domain sfcuonline.org, page crawled 2026-09-18.",
+   "pass": true
   },
-  "biggest_catch": "Requires at least $2,500/month in direct deposits plus 15 debit card purchases per month - a high bar that rules out anyone without substantial payroll direct deposit.",
-  "catches": [
-    "Select New York counties and towns only - confirm your county on the official eligibility list before applying.",
-    "At least $2,500/month in direct deposits to the Boost Checking account.",
-    "15+ debit card purchases with the SFCU debit card each qualification window.",
-    "Must be enrolled in eStatements.",
-    "All three requirements must be met within 60 days of account opening or no bonus is paid.",
-    "New checking accounts only; converting an existing account does not qualify; limit one Boost Checking per account number."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Sidney Federal Credit Union (Sidney, NY) - real operating credit union; official domain sfcuonline.org, page crawled 2026-09-18.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Boost Checking page disclosures state the $250 account opening credit, 8/1-10/31/2026 eligibility window, and the three qualifying requirements verbatim.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No minimum balance or monthly fee on Boost Checking; no upfront fee to earn the bonus.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official disclosures: credit deposited on the first day of the month following the month all three requirements are met; no bonus if not met within 60 days - concrete.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Boost Checking page disclosures state the $250 account opening credit, 8/1-10/31/2026 eligibility window, and the three qualifying requirements verbatim.",
+   "pass": true
   },
-  "eligibility": "New Boost Checking customers; select New York counties and towns (confirm on official site).",
-  "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official sfcuonline.org Boost Checking page (crawled 2026-09-18) rather than a direct page read; the disclosures quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'sidney federal' = 0 hits).",
-  "numeric_basis": "payout from official disclosures ($250 flat credit); time: online application + DD/debit setup est. 30-60 min active",
-  "official_url": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/",
-  "payout_max_usd": 250.0,
-  "payout_min_usd": 250.0,
-  "payout_quote": "$250 account opening credit is available for eligible accounts opened between 8/1 - 10/31/2026. The credit will be deposited into your Boost Checking account on the first day of the month following the month in which all three qualifying requirements have been met. If qualifications are not met within sixty (60) days, no bonus is paid. Qualifications are as follows: (1) 15+ debit card purchases with SFCU debit card, (2) enrollment in eStatements and (3) at least $2,500/month in direct deposits to your Boost checking account.",
-  "payout_value_note": "flat $250 account opening credit in official disclosures",
-  "route_id": "R0859",
-  "standard": {
-    "s1": {
-      "note": "New checking accounts only; select NY counties/towns.",
-      "pass": true
-    },
-    "s2": {
-      "note": "15+ debit purchases, eStatements, $2,500/mo direct deposits within 60 days of opening.",
-      "pass": true
-    },
-    "s3": {
-      "note": "First day of the month following the month all three requirements are met.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amount, window (8/1-10/31/2026), requirements, and timing stated flatly in disclosures.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/ - official Sidney FCU page (search crawl 2026-09-18).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: open Boost Checking 8/1-10/31/2026, enroll eStatements, $2,500/mo DD, 15 debit purchases.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official page confirmed via search crawl 2026-09-18; direct fetch unavailable this session - flag for re-verification.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No minimum balance or monthly fee on Boost Checking; no upfront fee to earn the bonus.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Sidney FCU Boost Checking account between 8/1/2026 and 10/31/2026 (new checking accounts only; confirm your NY county is eligible).",
-    "Enroll in eStatements.",
-    "Set up direct deposits of at least $2,500/month into the Boost Checking account.",
-    "Make 15+ debit card purchases with the SFCU debit card.",
-    "Complete all three requirements within 60 days of account opening - the $250 credit posts on the first day of the month after all three are met."
-  ],
-  "terms_url": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Credited on the first day of the month following the month in which all three qualifying requirements are met.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Official disclosures: credit deposited on the first day of the month following the month all three requirements are met; no bonus if not met within 60 days - concrete.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Boost Checking customers; select New York counties and towns (confirm on official site).",
+ "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from a search-engine crawl of the official sfcuonline.org Boost Checking page (crawled 2026-09-18) rather than a direct page read; the disclosures quote is verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'sidney federal' = 0 hits).",
+ "numeric_basis": "payout from official disclosures ($250 flat credit); time: online application + DD/debit setup est. 30-60 min active",
+ "official_url": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/",
+ "payout_max_usd": 250.0,
+ "payout_min_usd": 250.0,
+ "payout_quote": "$250 account opening credit is available for eligible accounts opened between 8/1 - 10/31/2026. The credit will be deposited into your Boost Checking account on the first day of the month following the month in which all three qualifying requirements have been met. If qualifications are not met within sixty (60) days, no bonus is paid. Qualifications are as follows: (1) 15+ debit card purchases with SFCU debit card, (2) enrollment in eStatements and (3) at least $2,500/month in direct deposits to your Boost checking account.",
+ "payout_value_note": "flat $250 account opening credit in official disclosures",
+ "route_id": "R0859",
+ "standard": {
+  "s1": {
+   "note": "New checking accounts only; select NY counties/towns.",
+   "pass": true
+  },
+  "s2": {
+   "note": "15+ debit purchases, eStatements, $2,500/mo direct deposits within 60 days of opening.",
+   "pass": true
+  },
+  "s3": {
+   "note": "First day of the month following the month all three requirements are met.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amount, window (8/1-10/31/2026), requirements, and timing stated flatly in disclosures.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/ - official Sidney FCU page (search crawl 2026-09-18).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: open Boost Checking 8/1-10/31/2026, enroll eStatements, $2,500/mo DD, 15 debit purchases.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official page confirmed via search crawl 2026-09-18; direct fetch unavailable this session - flag for re-verification.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Sidney FCU Boost Checking account between 8/1/2026 and 10/31/2026 (new checking accounts only; confirm your NY county is eligible).",
+  "Enroll in eStatements.",
+  "Set up direct deposits of at least $2,500/month into the Boost Checking account.",
+  "Make 15+ debit card purchases with the SFCU debit card.",
+  "Complete all three requirements within 60 days of account opening - the $250 credit posts on the first day of the month after all three are met."
+ ],
+ "terms_url": "https://sfcuonline.org/accounts/compare-checking-accounts/boostchecking/",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Credited on the first day of the month following the month in which all three qualifying requirements are met.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $250. Per official terms: Credited on the first day of the month following the month in which all three qualifying requirements are met. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

@@ -1,90 +1,93 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "This is a reimbursement, not a bonus: T-Mobile pays off your remaining phone balance (up to $800/line) — if you don't owe anything on your old phone, there's nothing to collect. And since July 9, 2026 it's open ONLY to brand-new customer accounts.",
+ "catches": [
+  "You must actually owe a device balance or early termination fee — the card reimburses what you owe, up to $800/line; no balance means no payout.",
+  "Since July 9, 2026: brand-new customer accounts only. Existing T-Mobile customers are not eligible.",
+  "Your phone must have been on a device payment plan with your old carrier for at least 90 days, with at least three successful payments.",
+  "Port-in must be from an eligible carrier (AT&T, Verizon, etc.) — prepaid carriers, Metro, Google Voice, and T-Mobile-network MVNOs are excluded; no T-Mobile service on that number in the past 90 days.",
+  "Submit proof of your balance at promotions.t-mobile.com within 30 days of port-in.",
+  "The payout is a virtual prepaid Mastercard: no cash access, expires in 6 months."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "T-Mobile is a real operating carrier; the Keep and Switch program is documented on t-mobile.com support.",
+   "pass": true
   },
-  "biggest_catch": "This is a reimbursement, not a bonus: T-Mobile pays off your remaining phone balance (up to $800/line) — if you don't owe anything on your old phone, there's nothing to collect. And since July 9, 2026 it's open ONLY to brand-new customer accounts.",
-  "catches": [
-    "You must actually owe a device balance or early termination fee — the card reimburses what you owe, up to $800/line; no balance means no payout.",
-    "Since July 9, 2026: brand-new customer accounts only. Existing T-Mobile customers are not eligible.",
-    "Your phone must have been on a device payment plan with your old carrier for at least 90 days, with at least three successful payments.",
-    "Port-in must be from an eligible carrier (AT&T, Verizon, etc.) — prepaid carriers, Metro, Google Voice, and T-Mobile-network MVNOs are excluded; no T-Mobile service on that number in the past 90 days.",
-    "Submit proof of your balance at promotions.t-mobile.com within 30 days of port-in.",
-    "The payout is a virtual prepaid Mastercard: no cash access, expires in 6 months."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "T-Mobile is a real operating carrier; the Keep and Switch program is documented on t-mobile.com support.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official T-Mobile Keep and Switch support page states: reimbursement of the previous carrier's remaining device payment balance, up to $800 per line via virtual prepaid Mastercard (max 4 per account); open only to brand-new accounts since July 9, 2026.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; you pay for the new T-Mobile line's service.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page states the card typically arrives within 15 days after the rebate submission is approved.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official T-Mobile Keep and Switch support page states: reimbursement of the previous carrier's remaining device payment balance, up to $800 per line via virtual prepaid Mastercard (max 4 per account); open only to brand-new accounts since July 9, 2026.",
+   "pass": true
   },
-  "eligibility": "Brand-new T-Mobile customer account (existing accounts excluded since July 9, 2026). Port a number from an eligible carrier (AT&T/Verizon/etc.; excludes prepaid, Metro, Google Voice, T-Mobile-network MVNOs; no T-Mobile use of that number in 90 days). Bring an eligible phone that has been on a device payment plan with the old carrier for 90+ days with 3+ payments. Submit proof within 30 days.",
-  "notes": "Verified from the official T-Mobile Keep and Switch support page on 2026-09-23. Framed honestly as a device-balance reimbursement (found money only if you owe a balance), not a sign-up bonus. The virtual card is spendable but not cash. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://www.t-mobile.com/support/new-to-tmobile/keep-and-switch",
-  "payout_quote": "We'll reimburse your previous carrier's remaining device payment balance, up to $800 per line via virtual prepaid Mastercard (max 4 per account), when you activate a new voice line and port in from an eligible carrier. Starting July 9, 2026, open only to brand-new customer accounts.",
-  "route_id": "R0789",
-  "standard": {
-    "s1": {
-      "note": "New accounts only (since 7/9/2026); eligible port-in; 90-day/3-payment device-plan history; 30-day submission.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Reimbursement only — no owed balance means no payout; virtual card, no cash access, 6-month expiry — all disclosed.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Card typically arrives within 15 days after the submission is approved.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amounts stated flatly; the reimbursement-not-bonus nature is explicit.",
-      "pass": true
-    },
-    "s5": {
-      "note": "t-mobile.com — T-Mobile's official support page.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: port in, submit proof at promotions.t-mobile.com, receive card.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official T-Mobile page confirmed 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; you pay for the new T-Mobile line's service.",
+   "pass": true
   },
-  "steps": [
-    "Check you qualify: brand-new to T-Mobile, porting from an eligible carrier, and you still owe a balance on your old phone (on a payment plan for 90+ days with 3+ payments made).",
-    "Activate a new T-Mobile voice line and port your number in; unlock your device before porting out.",
-    "Complete activation and port-in with your new phone first.",
-    "Within 30 days, go to promotions.t-mobile.com, log in with your T-Mobile ID, select Keep and Switch, and upload a PDF of your most recent bill/financing details showing the payoff amount.",
-    "Once approved, your virtual prepaid Mastercard (up to $800/line, max 4 lines) arrives — typically within 15 days. Use it online or via mobile payment apps before it expires in 6 months."
-  ],
-  "terms_url": "https://www.t-mobile.com/support/new-to-tmobile/keep-and-switch",
-  "timing": "Card typically arrives within 15 days after the reimbursement submission is approved.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Official page states the card typically arrives within 15 days after the rebate submission is approved.",
+   "pass": true
+  }
+ },
+ "eligibility": "Brand-new T-Mobile customer account (existing accounts excluded since July 9, 2026). Port a number from an eligible carrier (AT&T/Verizon/etc.; excludes prepaid, Metro, Google Voice, T-Mobile-network MVNOs; no T-Mobile use of that number in 90 days). Bring an eligible phone that has been on a device payment plan with the old carrier for 90+ days with 3+ payments. Submit proof within 30 days.",
+ "notes": "Verified from the official T-Mobile Keep and Switch support page on 2026-09-23. Framed honestly as a device-balance reimbursement (found money only if you owe a balance), not a sign-up bonus. The virtual card is spendable but not cash. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://www.t-mobile.com/support/new-to-tmobile/keep-and-switch",
+ "payout_quote": "We'll reimburse your previous carrier's remaining device payment balance, up to $800 per line via virtual prepaid Mastercard (max 4 per account), when you activate a new voice line and port in from an eligible carrier. Starting July 9, 2026, open only to brand-new customer accounts.",
+ "route_id": "R0789",
+ "standard": {
+  "s1": {
+   "note": "New accounts only (since 7/9/2026); eligible port-in; 90-day/3-payment device-plan history; 30-day submission.",
+   "pass": true
   },
-  "payout_min_usd": 0.0,
-  "payout_max_usd": 800.0,
-  "payout_value_note": "'up to' amount in official terms; floor $0",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Reimbursement only — no owed balance means no payout; virtual card, no cash access, 6-month expiry — all disclosed.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Card typically arrives within 15 days after the submission is approved.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amounts stated flatly; the reimbursement-not-bonus nature is explicit.",
+   "pass": true
+  },
+  "s5": {
+   "note": "t-mobile.com — T-Mobile's official support page.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: port in, submit proof at promotions.t-mobile.com, receive card.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official T-Mobile page confirmed 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Check you qualify: brand-new to T-Mobile, porting from an eligible carrier, and you still owe a balance on your old phone (on a payment plan for 90+ days with 3+ payments made).",
+  "Activate a new T-Mobile voice line and port your number in; unlock your device before porting out.",
+  "Complete activation and port-in with your new phone first.",
+  "Within 30 days, go to promotions.t-mobile.com, log in with your T-Mobile ID, select Keep and Switch, and upload a PDF of your most recent bill/financing details showing the payoff amount.",
+  "Once approved, your virtual prepaid Mastercard (up to $800/line, max 4 lines) arrives — typically within 15 days. Use it online or via mobile payment apps before it expires in 6 months."
+ ],
+ "terms_url": "https://www.t-mobile.com/support/new-to-tmobile/keep-and-switch",
+ "timing": "Card typically arrives within 15 days after the reimbursement submission is approved.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 0.0,
+ "payout_max_usd": 800.0,
+ "payout_value_note": "'up to' amount in official terms; floor $0",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Card typically arrives within 15 days after the reimbursement submission is approved.",
+ "maximize": "Fastest honest path: Card typically arrives within 15 days after the reimbursement submission is approved. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

@@ -1,89 +1,101 @@
 {
-  "app_links": {
-    "android": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA",
-    "ios": null
+ "app_links": {
+  "android": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA",
+  "ios": null
+ },
+ "biggest_catch": "Earnings are tiny \u2014 the official Play listing states only that 100 points = $1 and never promises a guaranteed daily rate, so the catalog's $0.10/day is unconfirmed; you also trade lock-screen ad exposure and usage data for pennies.",
+ "catches": [
+  "Tiny earnings: the listing states 100 S'more points = $1 but gives no guaranteed daily point rate \u2014 actual per-day earnings are whatever the app credits.",
+  "Payout threshold in practice: you need enough points for a gift card, and the first redemption is gated behind a 10-day wait after install.",
+  "Privacy/data collection: the app shows ads and content on your lock screen and its model is selling that ad exposure \u2014 you are trading phone-screen space and usage data for pennies.",
+  "Availability: Android only; Apple does not allow third-party lock-screen apps, so iOS users cannot participate.",
+  "The listing's 'Earn over $600 per year!' headline is a marketing claim with no stated methodology \u2014 treat as weasel words."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "S'more is a real operating app by Lab465, live on the official Google Play Store (com.lab465.SmoreApp).",
+   "pass": true
   },
-  "biggest_catch": "Earnings are tiny — the official Play listing states only that 100 points = $1 and never promises a guaranteed daily rate, so the catalog's $0.10/day is unconfirmed; you also trade lock-screen ad exposure and usage data for pennies.",
-  "catches": [
-    "Tiny earnings: the listing states 100 S'more points = $1 but gives no guaranteed daily point rate — actual per-day earnings are whatever the app credits.",
-    "Payout threshold in practice: you need enough points for a gift card, and the first redemption is gated behind a 10-day wait after install.",
-    "Privacy/data collection: the app shows ads and content on your lock screen and its model is selling that ad exposure — you are trading phone-screen space and usage data for pennies.",
-    "Availability: Android only; Apple does not allow third-party lock-screen apps, so iOS users cannot participate.",
-    "The listing's 'Earn over $600 per year!' headline is a marketing claim with no stated methodology — treat as weasel words."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "S'more is a real operating app by Lab465, live on the official Google Play Store (com.lab465.SmoreApp).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Play listing states the mechanism: lock-screen ads/content earn points daily; points redeem for retailer gift cards; 100 S'more reward points equals one dollar.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "The app is subscription-free per the official listing; no upfront fee to install or earn.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official listing states the conversion mechanism (100 points = $1 redeemable as a gift card) and the redemption flow (cash out in-app, gift card emailed). No fixed per-day amount is stated, so payout_quote uses the official conversion rate and the catalog's $0.10/day is corrected as unconfirmed.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Play listing states the mechanism: lock-screen ads/content earn points daily; points redeem for retailer gift cards; 100 S'more reward points equals one dollar.",
+   "pass": true
   },
-  "eligibility": "Android users; the official listing is US-facing. iOS is not available — Apple does not allow third-party lock-screen apps.",
-  "notes": "Verified from the exact official Play listing observed 2026-09-23. Catalog corrections: the '$0.10/day' rate and '$1 minimum' do not appear in the official listing — official text only states the 100-points=$1 conversion, gift-card redemption, a 10-day wait before the first redemption, and that earnings come from the lock screen plus optional surveys/videos/offers/referrals. No commits, no DB writes. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)]",
-  "official_url": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA",
-  "payout_quote": "100 S'more reward points equals one dollar that can be redeemed as a gift card.",
-  "route_id": "R0500",
-  "standard": {
-    "s1": {
-      "note": "Android only; first gift-card redemption requires waiting 10 days after installing.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No fees; points come from lock-screen ads, surveys, videos, offers, and referrals; gift cards are the only listed reward.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Points are credited daily for having the lock screen installed; the first redemption needs a 10-day wait, then anytime with enough points.",
-      "pass": true
-    },
-    "s4": {
-      "note": "The core conversion (100 points = $1) is stated flatly; the 'Earn over $600 per year!' headline is weasel words.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA — the exact official Play listing, observed live 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: install from Play, enable the lock screen, earn points daily, optionally do surveys/offers/referrals, cash out for gift cards in-app.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official Play listing read 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "The app is subscription-free per the official listing; no upfront fee to install or earn.",
+   "pass": true
   },
-  "steps": [
-    "Install the S'more app from the official Google Play listing (com.lab465.SmoreApp).",
-    "Grant the lock-screen permission so S'more can show ads and content on your lock screen.",
-    "Use your phone normally — points are credited daily for having the S'more lock screen installed.",
-    "Optionally earn extra in the Earn section: complete surveys, watch videos, finish offers, and refer friends.",
-    "When you have enough points, open the Rewards section, choose a retailer gift card (100 points = $1), and cash out — the first redemption requires waiting 10 days after install; after that, redeem anytime with enough points."
-  ],
-  "terms_url": null,
-  "timing": "Points credited daily for having the lock screen installed; first gift-card redemption available 10 days after install, then anytime with enough points.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": true,
-    "quote": "'Earn over $600 per year!' — headline marketing claim on the official Play listing with no stated methodology or guaranteed rate."
+  "c4": {
+   "evidence": "Official listing states the conversion mechanism (100 points = $1 redeemable as a gift card) and the redemption flow (cash out in-app, gift card emailed). No fixed per-day amount is stated, so payout_quote uses the official conversion rate and the catalog's $0.10/day is corrected as unconfirmed.",
+   "pass": true
+  }
+ },
+ "eligibility": "Android users; the official listing is US-facing. iOS is not available \u2014 Apple does not allow third-party lock-screen apps.",
+ "notes": "Verified from the exact official Play listing observed 2026-09-23. Catalog corrections: the '$0.10/day' rate and '$1 minimum' do not appear in the official listing \u2014 official text only states the 100-points=$1 conversion, gift-card redemption, a 10-day wait before the first redemption, and that earnings come from the lock screen plus optional surveys/videos/offers/referrals. No commits, no DB writes. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online 20-60min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1\u00a2/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)]",
+ "official_url": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA",
+ "payout_quote": "100 S'more reward points equals one dollar that can be redeemed as a gift card.",
+ "route_id": "R0500",
+ "standard": {
+  "s1": {
+   "note": "Android only; first gift-card redemption requires waiting 10 days after installing.",
+   "pass": true
   },
-  "payout_min_usd": 1.0,
-  "payout_max_usd": 1.0,
-  "payout_value_note": "points at assumed 1¢/pt base redemption (100 pts); provider may vary",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 60.0,
-  "numeric_basis": "backfill: payout: points at assumed 1¢/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)"
+  "s2": {
+   "note": "No fees; points come from lock-screen ads, surveys, videos, offers, and referrals; gift cards are the only listed reward.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Points are credited daily for having the lock screen installed; the first redemption needs a 10-day wait, then anytime with enough points.",
+   "pass": true
+  },
+  "s4": {
+   "note": "The core conversion (100 points = $1) is stated flatly; the 'Earn over $600 per year!' headline is weasel words.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://play.google.com/store/apps/details?id=com.lab465.SmoreApp&hl=en_CA \u2014 the exact official Play listing, observed live 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: install from Play, enable the lock screen, earn points daily, optionally do surveys/offers/referrals, cash out for gift cards in-app.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Play listing read 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Install the S'more app from the official Google Play listing (com.lab465.SmoreApp).",
+  "Grant the lock-screen permission so S'more can show ads and content on your lock screen.",
+  "Use your phone normally \u2014 points are credited daily for having the S'more lock screen installed.",
+  "Optionally earn extra in the Earn section: complete surveys, watch videos, finish offers, and refer friends.",
+  "When you have enough points, open the Rewards section, choose a retailer gift card (100 points = $1), and cash out \u2014 the first redemption requires waiting 10 days after install; after that, redeem anytime with enough points."
+ ],
+ "terms_url": null,
+ "timing": "Points credited daily for having the lock screen installed; first gift-card redemption available 10 days after install, then anytime with enough points.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": true,
+  "quote": "'Earn over $600 per year!' \u2014 headline marketing claim on the official Play listing with no stated methodology or guaranteed rate."
+ },
+ "payout_min_usd": 1.0,
+ "payout_max_usd": 1.0,
+ "payout_value_note": "points at assumed 1\u00a2/pt base redemption (100 pts); provider may vary",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 60.0,
+ "numeric_basis": "backfill: payout: points at assumed 1\u00a2/pt base redemption (100 pts); provider may vary; time: category default Other Online (20-60min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Points credited daily; first gift-card redemption available 10 days after install, then anytime with enough points.",
+ "maximize": "Install and let daily points accrue; first redemption unlocks at day 10.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "The 10-day install gate is the structural blocker.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

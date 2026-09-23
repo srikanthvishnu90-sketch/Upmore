@@ -1,102 +1,105 @@
 {
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "biggest_catch": "Hyer is not obligated to pay you if the customer doesn't pay — your payment requires the customer to confirm the task complete AND remit payment.",
- "catches": [
-  "Official Tasker Terms: 'Frictionless is not obligated to pay you if a Customer does not pay for the services you provide.'",
-  "Payment timing depends on customer confirmation and remittance — no bounded payout window stated.",
-  "You must set up a Stripe account (with identity verification: DOB, SSN, address) before applying for 1099 tasks.",
-  "W-2 tasks are paid on the EOR's regular payroll schedule, not instantly.",
-  "Mandatory background check (national, state, county); 18+ and SSN required; tasks in 27 states."
- ],
- "checked_at": "2026-09-23T16:05:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official gohyer.com: on-demand labor app; Taskers apply to posted tasks across stocking, events, merchandising, restaurant, hospitality, delivery, warehouse, manufacturing, general labor.",
-   "pass": true
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Official Tasker Terms: 'All Taskers will receive the agreed Task payment after the Customer confirms that the Task is Complete, and the Customer remits payment for the Completed task.' Per-task agreed amount is concrete at acceptance.",
-   "pass": true
+  "biggest_catch": "Hyer is not obligated to pay you if the customer doesn't pay \u2014 your payment requires the customer to confirm the task complete AND remit payment.",
+  "catches": [
+    "Official Tasker Terms: 'Frictionless is not obligated to pay you if a Customer does not pay for the services you provide.'",
+    "Payment timing depends on customer confirmation and remittance \u2014 no bounded payout window stated.",
+    "You must set up a Stripe account (with identity verification: DOB, SSN, address) before applying for 1099 tasks.",
+    "W-2 tasks are paid on the EOR's regular payroll schedule, not instantly.",
+    "Mandatory background check (national, state, county); 18+ and SSN required; tasks in 27 states."
+  ],
+  "checked_at": "2026-09-23T16:05:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official gohyer.com: on-demand labor app; Taskers apply to posted tasks across stocking, events, merchandising, restaurant, hospitality, delivery, warehouse, manufacturing, general labor.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Tasker Terms: 'All Taskers will receive the agreed Task payment after the Customer confirms that the Task is Complete, and the Customer remits payment for the Completed task.' Per-task agreed amount is concrete at acceptance.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No signup fee documented.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official gohyer.com: 'Get paid quickly with instant payouts.' Bounded same-day payout claim confirmed, with the customer-confirmation dependency disclosed.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No signup fee documented.",
-   "pass": true
+  "eligibility": "18+; valid SSN; smartphone; mandatory background check; debit card or bank account for payouts.",
+  "maximize": "Finish your Stripe setup and identity verification during profile setup \u2014 Hyer's own support page says payouts can't flow until Stripe has your DOB, SSN, and address verified, so do this before you need money. Then browse local tasks daily, apply only to tasks you can reach and finish cleanly, and request payment in the app the moment the task is marked done to start the customer-confirmation clock.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from gohyer.com + support.gohyer.com. Verified with the customer-payment dependency as the central disclosed risk. Distinct from Wonolo/Instawork/Veryable.",
+  "official_url": "https://gohyer.com/become-a-tasker/",
+  "payout_quote": "All Taskers will receive the agreed Task payment after the Customer confirms that the Task is Complete, and the Customer remits payment for the Completed task. (Hyer Tasker Terms) | Get paid quickly with instant payouts. (gohyer.com)",
+  "repeatable": {
+    "cadence": "Per task: complete the task, get the customer's confirmation and payment, and repeat.",
+    "value": true
   },
-  "c4": {
-   "evidence": "Official gohyer.com: 'Get paid quickly with instant payouts.' Bounded same-day payout claim confirmed, with the customer-confirmation dependency disclosed.",
-   "pass": true
-  }
- },
- "eligibility": "18+; valid SSN; smartphone; mandatory background check; debit card or bank account for payouts.",
- "maximize": "Finish your Stripe setup and identity verification during profile setup — Hyer's own support page says payouts can't flow until Stripe has your DOB, SSN, and address verified, so do this before you need money. Then browse local tasks daily, apply only to tasks you can reach and finish cleanly, and request payment in the app the moment the task is marked done to start the customer-confirmation clock.",
- "notes": "Checked 2026-09-23. Official evidence from gohyer.com + support.gohyer.com. Verified with the customer-payment dependency as the central disclosed risk. Distinct from Wonolo/Instawork/Veryable.",
- "official_url": "https://gohyer.com/become-a-tasker/",
- "payout_quote": "All Taskers will receive the agreed Task payment after the Customer confirms that the Task is Complete, and the Customer remits payment for the Completed task. (Hyer Tasker Terms) | Get paid quickly with instant payouts. (gohyer.com)",
- "repeatable": {
-  "cadence": "Per task: complete the task, get the customer's confirmation and payment, and repeat.",
-  "value": true
- },
- "route_id": "R6738",
- "standard": {
-  "s1": {
-   "note": "18+, SSN, smartphone, background check.",
-   "pass": true
+  "route_id": "R6738",
+  "standard": {
+    "s1": {
+      "note": "18+, SSN, smartphone, background check.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fees documented.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Instant payouts claimed officially; gated on customer confirmation + remittance.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee; customer non-payment risk is explicit in Terms.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official gohyer.com + support.gohyer.com.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Concrete: apply, complete, request payment, customer confirms, instant payout.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
   },
-  "s2": {
-   "note": "No fees documented.",
-   "pass": true
+  "steps": [
+    "Download the Hyer app, complete your profile, and clear the background check.",
+    "Set up your Stripe account for 1099 payouts and complete identity verification (DOB, SSN, address).",
+    "Browse local tasks and apply to ones matching your schedule.",
+    "Complete the task; update status in the app (on the way, started, done) and request payment.",
+    "Once the customer confirms completion and remits payment, receive the agreed Task payment via instant payout."
+  ],
+  "terms_url": "https://gohyer.com/legal/tasker-terms-of-use/",
+  "timing": "Instant payouts after the customer confirms the task complete and remits payment (Stripe handles 1099 payouts). W-2 tasks follow the EOR's regular payroll schedule. No bounded window stated for customer confirmation.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s3": {
-   "note": "Instant payouts claimed officially; gated on customer confirmation + remittance.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee; customer non-payment risk is explicit in Terms.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official gohyer.com + support.gohyer.com.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Concrete: apply, complete, request payment, customer confirms, instant payout.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Checked 2026-09-23.",
-   "pass": true
-  }
- },
- "steps": [
-  "Download the Hyer app, complete your profile, and clear the background check.",
-  "Set up your Stripe account for 1099 payouts and complete identity verification (DOB, SSN, address).",
-  "Browse local tasks and apply to ones matching your schedule.",
-  "Complete the task; update status in the app (on the way, started, done) and request payment.",
-  "Once the customer confirms completion and remits payment, receive the agreed Task payment via instant payout."
- ],
- "terms_url": "https://gohyer.com/legal/tasker-terms-of-use/",
- "timing": "Instant payouts after the customer confirms the task complete and remits payment (Stripe handles 1099 payouts). W-2 tasks follow the EOR's regular payroll schedule. No bounded window stated for customer confirmation.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "provider": "Hyer",
- "speed": "today",
- "payout_min_usd": 0.0,
- "payout_max_usd": 0.0,
- "payout_value_note": "variable per-task pay shown in-app before accepting; no fixed amount in official terms",
- "numeric_basis": "remediation 2026-09-23: official terms confirm pay mechanism + timing but no fixed amount; set 0-0 variable (R0004 precedent); time defaulted 15-120min active (flagged for review)",
- "time_min_minutes": 15.0,
- "time_max_minutes": 120.0,
- "who_pays": "The customer who posted the task pays through Hyer (Stripe handles the 1099 payouts) — and Hyer's own Terms say they are not obligated to pay you if the customer doesn't pay.",
- "who_qualifies": "18+; a valid SSN; a smartphone; a mandatory background check; a debit card or bank account for payouts; a Stripe account (with DOB, SSN, address verification); tasks in 27 states.",
- "work_available": "Tasks posted in the app across 27 states; open once you clear the background check and Stripe setup. W-2 tasks exist too but follow a payroll schedule.",
- "what_gets_accepted": "The customer must confirm the task is complete AND remit payment — Hyer's Terms state they owe you nothing if the customer doesn't pay, and no bounded payout window is stated.",
- "costs_and_unpaid_time": "No fees. Unpaid time: the background check and Stripe setup before you can apply, plus waiting on customer confirmation and remittance with no guaranteed window.",
- "when_cash_arrives": "Instant payouts after the customer confirms the task complete and remits payment (via Stripe). W-2 tasks are paid on the EOR's regular payroll schedule, not instantly."
+  "provider": "Hyer",
+  "speed": "today",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "variable per-task pay shown in-app before accepting; no fixed amount in official terms",
+  "numeric_basis": "remediation 2026-09-23: official terms confirm pay mechanism + timing but no fixed amount; set 0-0 variable (R0004 precedent); time defaulted 15-120min active (flagged for review)",
+  "time_min_minutes": 15.0,
+  "time_max_minutes": 120.0,
+  "who_pays": "The customer who posted the task pays through Hyer (Stripe handles the 1099 payouts) \u2014 and Hyer's own Terms say they are not obligated to pay you if the customer doesn't pay.",
+  "who_qualifies": "18+; a valid SSN; a smartphone; a mandatory background check; a debit card or bank account for payouts; a Stripe account (with DOB, SSN, address verification); tasks in 27 states.",
+  "work_available": "Tasks posted in the app across 27 states; open once you clear the background check and Stripe setup. W-2 tasks exist too but follow a payroll schedule.",
+  "what_gets_accepted": "The customer must confirm the task is complete AND remit payment \u2014 Hyer's Terms state they owe you nothing if the customer doesn't pay, and no bounded payout window is stated.",
+  "costs_and_unpaid_time": "No fees. Unpaid time: the background check and Stripe setup before you can apply, plus waiting on customer confirmation and remittance with no guaranteed window.",
+  "when_cash_arrives": "Instant payouts after the customer confirms the task complete and remits payment (via Stripe). W-2 tasks are paid on the EOR's regular payroll schedule, not instantly.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

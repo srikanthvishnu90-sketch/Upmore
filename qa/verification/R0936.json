@@ -1,68 +1,79 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Account must be opened by 9PM EST September 25, 2026 (2 days from verification). Requires $2,000 in qualifying recurring direct deposits (payroll/pension/SS only - no Zelle/P2P/bank transfers) within 90 days, and the account must stay open 90 days. New checking clients only (no First Horizon consumer checking in the last 24 months); must reside in a state with a First Horizon banking center.",
+ "catches": [
+  "Open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026.",
+  "Applicant must be a new First Horizon Bank checking client (no consumer checking account with First Horizon in the last 24 months).",
+  "Applicant must reside within a state where a First Horizon banking center is present.",
+  "Opening deposit must be new funds from a financial institution other than First Horizon Bank or its affiliates; $50 minimum opening deposit.",
+  "Make qualifying direct deposits totaling at least $2,000 within 90 days of account opening; qualifying = recurring electronic deposits of payroll, pension, or Social Security; non-qualifying = person-to-person, bank, or other electronic transfers (Zelle), internet payment services.",
+  "Checking account must be open for a minimum of 90 days; bonus paid only to open and active accounts with a positive balance.",
+  "Bonus deposited within 15 business days after qualifying activities are met.",
+  "A companion $250 Traditional Savings bonus exists (taken as R0937)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "First Horizon Bank (firsthorizon.com) is a real regional bank; the 'Earn Up to $700 Checking Cash Bonus' offer is published on its official /summer700 landing page and the official disclosure PDF on firsthorizon.com (search crawls, confirmed ~14 hours and ~48 days ago respectively).",
+   "pass": true
   },
-  "biggest_catch": "Account must be opened by 9PM EST September 25, 2026 (2 days from verification). Requires $2,000 in qualifying recurring direct deposits (payroll/pension/SS only - no Zelle/P2P/bank transfers) within 90 days, and the account must stay open 90 days. New checking clients only (no First Horizon consumer checking in the last 24 months); must reside in a state with a First Horizon banking center.",
-  "catches": [
-    "Open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026.",
-    "Applicant must be a new First Horizon Bank checking client (no consumer checking account with First Horizon in the last 24 months).",
-    "Applicant must reside within a state where a First Horizon banking center is present.",
-    "Opening deposit must be new funds from a financial institution other than First Horizon Bank or its affiliates; $50 minimum opening deposit.",
-    "Make qualifying direct deposits totaling at least $2,000 within 90 days of account opening; qualifying = recurring electronic deposits of payroll, pension, or Social Security; non-qualifying = person-to-person, bank, or other electronic transfers (Zelle), internet payment services.",
-    "Checking account must be open for a minimum of 90 days; bonus paid only to open and active accounts with a positive balance.",
-    "Bonus deposited within 15 business days after qualifying activities are met.",
-    "A companion $250 Traditional Savings bonus exists (taken as R0937)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "First Horizon Bank (firsthorizon.com) is a real regional bank; the 'Earn Up to $700 Checking Cash Bonus' offer is published on its official /summer700 landing page and the official disclosure PDF on firsthorizon.com (search crawls, confirmed ~14 hours and ~48 days ago respectively).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page: '$450 Cash Bonus Offer Eligibility Requirements: To qualify for the $450 cash bonus, open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026. Applicant must be a new First Horizon Bank checking client that has not had a consumer checking account with First Horizon Bank in the last twenty-four (24) months ... Make qualifying direct deposits totaling at least $2,000 within ninety (90) days of account opening.'",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Amount, open window, 24-month no-checking rule, residency rule, new-funds rule, DD threshold and window, 90-day account rule, and 15-business-day payout are all quoted verbatim from the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page: '$450 Cash Bonus Offer Eligibility Requirements: To qualify for the $450 cash bonus, open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026. Applicant must be a new First Horizon Bank checking client that has not had a consumer checking account with First Horizon Bank in the last twenty-four (24) months ... Make qualifying direct deposits totaling at least $2,000 within ninety (90) days of account opening.'",
+   "pass": true
   },
-  "eligibility": "New First Horizon Bank checking clients (no consumer checking account in the last 24 months); must reside in a state with a First Horizon banking center; account opened between 08/03/2026 and 9PM EST 09/25/2026.",
-  "notes": "Official firsthorizon.com/summer700 (crawl ~14 hours). Distinct checking mechanism from the companion $250 Traditional Savings bonus (R0937). No sibling duplicate found in R0851-R0935. OFFER ENDS 2026-09-25 (2 days from verification).",
-  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
-  "official_url": "http://firsthorizon.com/summer700",
-  "payout_max_usd": 450.0,
-  "payout_min_usd": 450.0,
-  "payout_quote": "$450 Cash Bonus Offer Eligibility Requirements: To qualify for the $450 cash bonus, open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026 ... Make qualifying direct deposits totaling at least $2,000 within ninety (90) days of account opening ... The cash bonus will be deposited into your account within 15 business days after qualifying activities are met.",
-  "payout_value_note": "flat bonus amount in official terms",
-  "route_id": "R0936",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "evidence": "New checking clients; 24-month no-checking rule; resident of a state with a First Horizon banking center."
-    },
-    "s2": {
-      "pass": true,
-      "evidence": "$50 minimum opening deposit; new-funds opening deposit; $2,000 qualifying DD in 90 days; account open 90 days."
-    },
-    "s3": {
-      "pass": true,
-      "evidence": "Bonus within 15 business days after qualifying; open window ends 9PM EST 2026-09-25; bonus reported as interest on 1099-INT."
-    }
+  "c3": {
+   "evidence": "Amount, open window, 24-month no-checking rule, residency rule, new-funds rule, DD threshold and window, 90-day account rule, and 15-business-day payout are all quoted verbatim from the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "New First Horizon Bank checking clients (no consumer checking account in the last 24 months); must reside in a state with a First Horizon banking center; account opened between 08/03/2026 and 9PM EST 09/25/2026.",
+ "notes": "Official firsthorizon.com/summer700 (crawl ~14 hours). Distinct checking mechanism from the companion $250 Traditional Savings bonus (R0937). No sibling duplicate found in R0851-R0935. OFFER ENDS 2026-09-25 (2 days from verification).",
+ "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+ "official_url": "http://firsthorizon.com/summer700",
+ "payout_max_usd": 450.0,
+ "payout_min_usd": 450.0,
+ "payout_quote": "$450 Cash Bonus Offer Eligibility Requirements: To qualify for the $450 cash bonus, open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026 ... Make qualifying direct deposits totaling at least $2,000 within ninety (90) days of account opening ... The cash bonus will be deposited into your account within 15 business days after qualifying activities are met.",
+ "payout_value_note": "flat bonus amount in official terms",
+ "route_id": "R0936",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "evidence": "New checking clients; 24-month no-checking rule; resident of a state with a First Horizon banking center."
   },
-  "steps": [
-    "Open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026 with new funds (min $50).",
-    "Have qualifying direct deposits totaling at least $2,000 posted within 90 days of account opening (recurring payroll, pension, or Social Security - not Zelle, P2P, or bank transfers).",
-    "Keep the checking account open and active with a positive balance for at least 90 days.",
-    "The $450 bonus is deposited within 15 business days after qualifying activities are met."
-  ],
-  "terms_url": "http://firsthorizon.com/summer700",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "Open by 9PM EST 2026-09-25; $2,000 DD within 90 days; account open 90 days; bonus within 15 business days of qualifying.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "s2": {
+   "pass": true,
+   "evidence": "$50 minimum opening deposit; new-funds opening deposit; $2,000 qualifying DD in 90 days; account open 90 days."
+  },
+  "s3": {
+   "pass": true,
+   "evidence": "Bonus within 15 business days after qualifying; open window ends 9PM EST 2026-09-25; bonus reported as interest on 1099-INT."
+  }
+ },
+ "steps": [
+  "Open a new FirstView Checking account between 08/03/2026 and 9PM EST 09/25/2026 with new funds (min $50).",
+  "Have qualifying direct deposits totaling at least $2,000 posted within 90 days of account opening (recurring payroll, pension, or Social Security - not Zelle, P2P, or bank transfers).",
+  "Keep the checking account open and active with a positive balance for at least 90 days.",
+  "The $450 bonus is deposited within 15 business days after qualifying activities are met."
+ ],
+ "terms_url": "http://firsthorizon.com/summer700",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Open by 9PM EST 2026-09-25; $2,000 DD within 90 days; account open 90 days; bonus within 15 business days of qualifying.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $450. Per official terms: Open by 9PM EST 2026-09-25; $2,000 DD within 90 days; account open 90 days; bonus within 15 business days of qualifying. Earliest realistic: ~3.5 months (90-day account-age gate + up to 2-3 weeks).",
+ "maximize": "Fastest honest path. The account must age the required number of days before the bonus is even calculated — an age gate, not an activity gate. Fastest honest path: open online today so the clock starts now; complete any qualifying activity (direct deposit/debit transactions) promptly in parallel.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'acct-age-gate'"
+  }
+ ]
 }

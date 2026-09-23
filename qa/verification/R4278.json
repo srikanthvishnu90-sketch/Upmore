@@ -1,95 +1,106 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $250 is split into two $125 halves with different requirements: $125 needs 5 debit-card transactions within 60 days, and the second $125 needs $1,000/month qualifying direct deposit (or monthly ACH transfer — the ACH-transfer alternative is not clearly defined) posted and cleared; the bonus is forfeited if the account is closed or not in positive balance at payout.",
+ "catches": [
+  "$250 paid as two $125 halves with different requirements.",
+  "First $125: 5 debit card transactions within 60 days of opening.",
+  "Second $125: $1,000/month qualifying direct deposit or monthly ACH transfer — official page lists an ACH-transfer alternative whose terms are not clearly defined; a qualifying direct deposit is payroll/pension/Social Security/government income from employer or external agency.",
+  "Each $125 deposited within 75 days of meeting that part's requirements.",
+  "Account must be open with a positive balance at payout or bonus is forfeited.",
+  "New customers only: must not have held a Grand Bank checking account within the last 60 days; one bonus per person.",
+  "Customers 18+ only; Grand Bank employees ineligible.",
+  "BankOn Certified (Basic) checking variant is available only to MS residents (Simple Checking has no stated geographic restriction).",
+  "Offer expires October 14, 2026; subject to change."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Grand Bank for Savings, FSB is a real FDIC-insured bank operating at grand.bank; offer page 'Checking Offer $250' is on its own official domain with full bonus terms.",
+   "pass": true
   },
-  "biggest_catch": "The $250 is split into two $125 halves with different requirements: $125 needs 5 debit-card transactions within 60 days, and the second $125 needs $1,000/month qualifying direct deposit (or monthly ACH transfer — the ACH-transfer alternative is not clearly defined) posted and cleared; the bonus is forfeited if the account is closed or not in positive balance at payout.",
-  "catches": [
-    "$250 paid as two $125 halves with different requirements.",
-    "First $125: 5 debit card transactions within 60 days of opening.",
-    "Second $125: $1,000/month qualifying direct deposit or monthly ACH transfer — official page lists an ACH-transfer alternative whose terms are not clearly defined; a qualifying direct deposit is payroll/pension/Social Security/government income from employer or external agency.",
-    "Each $125 deposited within 75 days of meeting that part's requirements.",
-    "Account must be open with a positive balance at payout or bonus is forfeited.",
-    "New customers only: must not have held a Grand Bank checking account within the last 60 days; one bonus per person.",
-    "Customers 18+ only; Grand Bank employees ineligible.",
-    "BankOn Certified (Basic) checking variant is available only to MS residents (Simple Checking has no stated geographic restriction).",
-    "Offer expires October 14, 2026; subject to change."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Grand Bank for Savings, FSB is a real FDIC-insured bank operating at grand.bank; offer page 'Checking Offer $250' is on its own official domain with full bonus terms.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page headline: 'Earn up to a $250 bonus when you open a new Simple or BankOn Certified (Basic) checking account and meet the requirements' — $125 after 5 debit transactions within 60 days, +$125 after $1,000/month qualifying DD/ACH transfer.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Official offer page lists opening minimums ($50 Simple, $50 BankOn) and BankOn monthly-fee waiver rule; full fee schedule linked via separate disclosures ('See separate disclosures for each account listed for current fee information. Fees are subject to change without notice.').",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official terms: each $125 portion deposited into the new checking account within 75 days of meeting that part's requirements; account must be open with positive balance at payout.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page headline: 'Earn up to a $250 bonus when you open a new Simple or BankOn Certified (Basic) checking account and meet the requirements' — $125 after 5 debit transactions within 60 days, +$125 after $1,000/month qualifying DD/ACH transfer.",
+   "pass": true
   },
-  "eligibility": "New Grand Bank checking customers 18+; must not have held a Grand Bank checking account in the last 60 days; one bonus per person; BankOn variant MS residents only.",
-  "notes": "Offer page updated ~20 days ago per crawl metadata; page states 'Offer expires October 14, 2026'. Simple Checking: $50 to open, no minimum balance. BankOn Certified (Basic): no minimum balance, monthly fee waived with direct deposit or 5+ debit purchases/month. Page says 'Please mention this ad to receive the bonus'.",
-  "numeric_basis": "Fixed cash bonus: $125 for debit-transaction half, $125 for direct-deposit half = $250 total. Opening deposit $50 (refundable, returned at account opening). No mandatory upfront fee beyond the $50 opening deposit.",
-  "official_url": "https://grand.bank/checking-offer-250/",
-  "payout_max_usd": 250,
-  "payout_min_usd": 250,
-  "payout_quote": "After you open a new checking account and complete 5 debit card transactions within 60 days of opening, we will deposit a single bonus of a $125 into your checking account within 75 days. Add a qualifying direct deposit or monthly ACH transfer for a minimum of $1,000 per month and we will deposit an additional $125 into your checking account within 75 days of completion for a max of a $250 bonus.",
-  "payout_value_note": "$250 cash paid as two $125 credits into the new checking account, each within 75 days of meeting that part's requirements.",
-  "route_id": "R4278",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "Steps on official offer page: open Simple or BankOn Certified (Basic) checking, make 5 debit card transactions within 60 days for $125; add $1,000/month qualifying direct deposit or monthly ACH transfer for second $125."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Each $125 deposited within 75 days of meeting that part's requirements; account must be open with positive balance at payout."
-    },
-    "s3": {
-      "pass": true,
-      "note": "$50 minimum to open either account; BankOn monthly fee waived with direct deposit or 5+ debit purchases/month; full fees in separate linked disclosures."
-    },
-    "s4": {
-      "pass": true,
-      "note": "Bonus forfeited if account closed or negative balance at payout; new customers only (no account in last 60 days); 18+; one per person; employees ineligible; ACH-transfer alternative not clearly defined; BankOn variant MS-only."
-    },
-    "s5": {
-      "pass": true,
-      "note": "Offer page published by Grand Bank for Savings, FSB at grand.bank; indexed and directly fetched 2026-09-23."
-    },
-    "s6": {
-      "pass": true,
-      "note": "Official page states 'Offer expires October 14, 2026'; offer page current as of 2026-09-23 fetch."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Direct-deposit requirement is income-based ($1,000/month paycheck/pension/government), not a spend requirement; the DD half is optional — the first $125 requires only 5 debit transactions. The $50 opening deposit is a refundable deposit, not spend."
-    }
+  "c3": {
+   "evidence": "Official offer page lists opening minimums ($50 Simple, $50 BankOn) and BankOn monthly-fee waiver rule; full fee schedule linked via separate disclosures ('See separate disclosures for each account listed for current fee information. Fees are subject to change without notice.').",
+   "pass": true
   },
-  "steps": [
-    "Open a new Simple or BankOn Certified (Basic) checking account (mention the offer; $50 to open).",
-    "Complete 5 debit card transactions within 60 days of opening to earn the first $125 (paid within 75 days).",
-    "Add a qualifying direct deposit or monthly ACH transfer of $1,000+/month to earn the second $125 (paid within 75 days)."
-  ],
-  "terms_url": "https://grand.bank/checking-offer-250/",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "First $125 paid within 75 days of 5 debit transactions (within 60 days of opening); second $125 paid within 75 days of meeting $1,000/month DD/ACH requirement.",
-  "upfront_fee": 0,
-  "verdict": "verify",
-  "weasel_words": [
-    "up to a $250 bonus",
-    "Offer availability subject to change",
-    "may be subject to tax reporting",
-    "Fees are subject to change without notice",
-    "Please mention this ad to receive the bonus",
-    "Offer expires October 14, 2026"
-  ]
+  "c4": {
+   "evidence": "Official terms: each $125 portion deposited into the new checking account within 75 days of meeting that part's requirements; account must be open with positive balance at payout.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Grand Bank checking customers 18+; must not have held a Grand Bank checking account in the last 60 days; one bonus per person; BankOn variant MS residents only.",
+ "notes": "Offer page updated ~20 days ago per crawl metadata; page states 'Offer expires October 14, 2026'. Simple Checking: $50 to open, no minimum balance. BankOn Certified (Basic): no minimum balance, monthly fee waived with direct deposit or 5+ debit purchases/month. Page says 'Please mention this ad to receive the bonus'.",
+ "numeric_basis": "Fixed cash bonus: $125 for debit-transaction half, $125 for direct-deposit half = $250 total. Opening deposit $50 (refundable, returned at account opening). No mandatory upfront fee beyond the $50 opening deposit.",
+ "official_url": "https://grand.bank/checking-offer-250/",
+ "payout_max_usd": 250,
+ "payout_min_usd": 250,
+ "payout_quote": "After you open a new checking account and complete 5 debit card transactions within 60 days of opening, we will deposit a single bonus of a $125 into your checking account within 75 days. Add a qualifying direct deposit or monthly ACH transfer for a minimum of $1,000 per month and we will deposit an additional $125 into your checking account within 75 days of completion for a max of a $250 bonus.",
+ "payout_value_note": "$250 cash paid as two $125 credits into the new checking account, each within 75 days of meeting that part's requirements.",
+ "route_id": "R4278",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Steps on official offer page: open Simple or BankOn Certified (Basic) checking, make 5 debit card transactions within 60 days for $125; add $1,000/month qualifying direct deposit or monthly ACH transfer for second $125."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Each $125 deposited within 75 days of meeting that part's requirements; account must be open with positive balance at payout."
+  },
+  "s3": {
+   "pass": true,
+   "note": "$50 minimum to open either account; BankOn monthly fee waived with direct deposit or 5+ debit purchases/month; full fees in separate linked disclosures."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Bonus forfeited if account closed or negative balance at payout; new customers only (no account in last 60 days); 18+; one per person; employees ineligible; ACH-transfer alternative not clearly defined; BankOn variant MS-only."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Offer page published by Grand Bank for Savings, FSB at grand.bank; indexed and directly fetched 2026-09-23."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Official page states 'Offer expires October 14, 2026'; offer page current as of 2026-09-23 fetch."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Direct-deposit requirement is income-based ($1,000/month paycheck/pension/government), not a spend requirement; the DD half is optional — the first $125 requires only 5 debit transactions. The $50 opening deposit is a refundable deposit, not spend."
+  }
+ },
+ "steps": [
+  "Open a new Simple or BankOn Certified (Basic) checking account (mention the offer; $50 to open).",
+  "Complete 5 debit card transactions within 60 days of opening to earn the first $125 (paid within 75 days).",
+  "Add a qualifying direct deposit or monthly ACH transfer of $1,000+/month to earn the second $125 (paid within 75 days)."
+ ],
+ "terms_url": "https://grand.bank/checking-offer-250/",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "First $125 paid within 75 days of 5 debit transactions (within 60 days of opening); second $125 paid within 75 days of meeting $1,000/month DD/ACH requirement.",
+ "upfront_fee": 0,
+ "verdict": "verify",
+ "weasel_words": [
+  "up to a $250 bonus",
+  "Offer availability subject to change",
+  "may be subject to tax reporting",
+  "Fees are subject to change without notice",
+  "Please mention this ad to receive the bonus",
+  "Offer expires October 14, 2026"
+ ],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $250. Per official terms: First $125 paid within 75 days of 5 debit transactions (within 60 days of opening); second $125 paid within 75 days of meeting $1,000/month DD/ACH requirement. Earliest realistic: ~89 days (first payroll DD ~2 weeks + up to 2.5 months); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

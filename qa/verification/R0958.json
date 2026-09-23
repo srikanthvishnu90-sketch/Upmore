@@ -1,85 +1,96 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Existing Walden Savings Bank deposits do not count (new money only), the bonus can be clawed back if the account is closed within 180 days, and the offer can be changed or withdrawn at any time.",
+ "catches": [
+  "Existing deposits at Walden Savings Bank do not count; only New Money qualifies.",
+  "New WSB business checking accounts only; must be opened prior to December 31, 2026.",
+  "Must enroll in online/mobile banking and complete 5 qualifying transactions (deposits, ACH credits, wire transfers, Bill Pay, debit card purchases) within the first 90 days.",
+  "Bonus is subject to IRS reporting and must be repaid if the account is closed within 180 days.",
+  "The offer may change or be withdrawn at any time.",
+  "A $5 monthly maintenance fee applies if the average monthly balance falls below $2,500 (free eStatements avoid the $3 paper fee)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Walden Savings Bank (NY) - real FDIC-insured community bank; tiered bonus terms published on official waldensavings.bank/thewaldenwaybusiness page (search crawl of the official domain, 2026-09-23).",
+   "pass": true
   },
-  "biggest_catch": "Existing Walden Savings Bank deposits do not count (new money only), the bonus can be clawed back if the account is closed within 180 days, and the offer can be changed or withdrawn at any time.",
-  "catches": [
-    "Existing deposits at Walden Savings Bank do not count; only New Money qualifies.",
-    "New WSB business checking accounts only; must be opened prior to December 31, 2026.",
-    "Must enroll in online/mobile banking and complete 5 qualifying transactions (deposits, ACH credits, wire transfers, Bill Pay, debit card purchases) within the first 90 days.",
-    "Bonus is subject to IRS reporting and must be repaid if the account is closed within 180 days.",
-    "The offer may change or be withdrawn at any time.",
-    "A $5 monthly maintenance fee applies if the average monthly balance falls below $2,500 (free eStatements avoid the $3 paper fee)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Walden Savings Bank (NY) - real FDIC-insured community bank; tiered bonus terms published on official waldensavings.bank/thewaldenwaybusiness page (search crawl of the official domain, 2026-09-23).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page states: bonus paid based on the average balance in the new WSB business checking account at 90 days - $250 for $2,500-$9,999 new money, $500 for $10,000-$99,999, $1,000 for $100,000+; online/mobile banking enrollment + 5 qualifying transactions within 90 days.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; $5 monthly maintenance fee if the average balance falls below $2,500.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Concrete tiered payout: $250 / $500 / $1,000 based on new-money average balance at 90 days.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page states: bonus paid based on the average balance in the new WSB business checking account at 90 days - $250 for $2,500-$9,999 new money, $500 for $10,000-$99,999, $1,000 for $100,000+; online/mobile banking enrollment + 5 qualifying transactions within 90 days.",
+   "pass": true
   },
-  "eligibility": "Businesses opening a new WSB business checking account with new money (existing deposits excluded).",
-  "notes": "VERIFIED via official-domain search crawl of waldensavings.bank (captured 2026-09-23). Note: the URL slug 'thewaldenwaybusiness' carries the headline 'Hudson Valley Business Checking | $1,000 Bonus'. Geography is not stated in the captured official bonus text; the bank is a NY (Hudson Valley) community bank.",
-  "numeric_basis": "payout from official terms ($250/$500/$1,000 tiers); time: application + deposit + 5 transactions est. 30-60 min active.",
-  "official_url": "https://waldensavings.bank/thewaldenwaybusiness",
-  "payout_max_usd": 1000,
-  "payout_min_usd": 250,
-  "payout_quote": "New account bonus amount will be paid based on the average balance within your new Walden Savings Bank (WSB) business checking account at 90 days from the date of account opening. $250: New Money of $2,500 to $9,999, $500: New Money of $10,000 to $99,999, $1,000: New Money of $100,000 or more. Existing deposits at Walden Savings Bank will not be considered for the purposes of this promotion. Additionally, businesses must be enrolled with online/mobile banking and perform 5 \"qualifying transactions\" within the first 90 days after account opening.",
-  "payout_value_note": "Tiered $250/$500/$1,000 cash based on new-money average balance at 90 days.",
-  "route_id": "R0958",
-  "standard": {
-    "s1": {
-      "note": "Official provider domain (waldensavings.bank) via search crawl.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Verbatim official terms quoted in payout_quote.",
-      "pass": true
-    },
-    "s3": {
-      "note": "New money and 90-day balance mechanics confirmed in official terms.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Expiration 2026-12-31 (open before this date) confirmed on the official page.",
-      "pass": true
-    },
-    "s5": {
-      "note": "$5 monthly fee below $2,500 average; no purchase required.",
-      "pass": true
-    },
-    "s6": {
-      "note": "New WSB business checking accounts only; 180-day clawback disclosed.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Qualifying transactions enumerated in official terms.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; $5 monthly maintenance fee if the average balance falls below $2,500.",
+   "pass": true
   },
-  "steps": [
-    "Open a new WSB business checking account prior to December 31, 2026, with new money (existing WSB deposits do not count).",
-    "Maintain a qualifying average balance at 90 days: $2,500-$9,999 (for $250), $10,000-$99,999 (for $500), or $100,000+ (for $1,000).",
-    "Enroll in online/mobile banking and complete 5 qualifying transactions (deposits, ACH credits, wire transfers, Bill Pay, debit card purchases) within the first 90 days after account opening."
-  ],
-  "terms_url": "https://waldensavings.bank/thewaldenwaybusiness",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Bonus paid based on the 90-day average balance; the official captured text does not state an exact payout window beyond that.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Concrete tiered payout: $250 / $500 / $1,000 based on new-money average balance at 90 days.",
+   "pass": true
+  }
+ },
+ "eligibility": "Businesses opening a new WSB business checking account with new money (existing deposits excluded).",
+ "notes": "VERIFIED via official-domain search crawl of waldensavings.bank (captured 2026-09-23). Note: the URL slug 'thewaldenwaybusiness' carries the headline 'Hudson Valley Business Checking | $1,000 Bonus'. Geography is not stated in the captured official bonus text; the bank is a NY (Hudson Valley) community bank.",
+ "numeric_basis": "payout from official terms ($250/$500/$1,000 tiers); time: application + deposit + 5 transactions est. 30-60 min active.",
+ "official_url": "https://waldensavings.bank/thewaldenwaybusiness",
+ "payout_max_usd": 1000,
+ "payout_min_usd": 250,
+ "payout_quote": "New account bonus amount will be paid based on the average balance within your new Walden Savings Bank (WSB) business checking account at 90 days from the date of account opening. $250: New Money of $2,500 to $9,999, $500: New Money of $10,000 to $99,999, $1,000: New Money of $100,000 or more. Existing deposits at Walden Savings Bank will not be considered for the purposes of this promotion. Additionally, businesses must be enrolled with online/mobile banking and perform 5 \"qualifying transactions\" within the first 90 days after account opening.",
+ "payout_value_note": "Tiered $250/$500/$1,000 cash based on new-money average balance at 90 days.",
+ "route_id": "R0958",
+ "standard": {
+  "s1": {
+   "note": "Official provider domain (waldensavings.bank) via search crawl.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Verbatim official terms quoted in payout_quote.",
+   "pass": true
+  },
+  "s3": {
+   "note": "New money and 90-day balance mechanics confirmed in official terms.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Expiration 2026-12-31 (open before this date) confirmed on the official page.",
+   "pass": true
+  },
+  "s5": {
+   "note": "$5 monthly fee below $2,500 average; no purchase required.",
+   "pass": true
+  },
+  "s6": {
+   "note": "New WSB business checking accounts only; 180-day clawback disclosed.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Qualifying transactions enumerated in official terms.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new WSB business checking account prior to December 31, 2026, with new money (existing WSB deposits do not count).",
+  "Maintain a qualifying average balance at 90 days: $2,500-$9,999 (for $250), $10,000-$99,999 (for $500), or $100,000+ (for $1,000).",
+  "Enroll in online/mobile banking and complete 5 qualifying transactions (deposits, ACH credits, wire transfers, Bill Pay, debit card purchases) within the first 90 days after account opening."
+ ],
+ "terms_url": "https://waldensavings.bank/thewaldenwaybusiness",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Bonus paid based on the 90-day average balance; the official captured text does not state an exact payout window beyond that.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $250–$1000. Per official terms: Bonus paid based on the 90-day average balance; the official captured text does not state an exact payout window beyond that. Earliest realistic: ~1 month (qualifying transactions doable same-day + the payout window).",
+ "maximize": "Fastest honest path. No direct deposit needed, so qualification can be same-day. Fastest honest path: batch the required debit transactions in one shopping run as soon as the debit card is active (small purchases count; check whether ATM transactions are excluded). After completion, the bank's payout window is fixed.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'debit-txn'"
+  }
+ ]
 }

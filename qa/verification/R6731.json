@@ -1,100 +1,103 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=com.gigsmart.worker",
-  "ios": "https://apps.apple.com/app/gigsmart-get-gigs/id1202344665"
- },
- "biggest_catch": "Same-day pay only starts after the requester approves your timesheet \u2014 and they get up to 3 full business days to do it.",
- "catches": [
-  "Requester has up to 3 full business days to approve your timesheet; no same-day-of-work guarantee.",
-  "Rapid Transfer costs 3% ($0.50 minimum); free standard transfer takes up to 5 business days.",
-  "One-time financial verification required for new workers before Rapid Transfer (<1 hour approval).",
-  "Occupational Accident Insurance is covered at no cost to you."
- ],
- "checked_at": "2026-09-23T15:20:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official gigsmart.com worker guide: shift gigs accepted in the Get Gigs app with posted pay.",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.gigsmart.worker",
+    "ios": "https://apps.apple.com/app/gigsmart-get-gigs/id1202344665"
   },
-  "c2": {
-   "evidence": "Official: shift offers show pay before accepting; Worker Wallet shows timesheet + payment breakdown per shift.",
-   "pass": true
+  "biggest_catch": "Same-day pay only starts after the requester approves your timesheet \u2014 and they get up to 3 full business days to do it.",
+  "catches": [
+    "Requester has up to 3 full business days to approve your timesheet; no same-day-of-work guarantee.",
+    "Rapid Transfer costs 3% ($0.50 minimum); free standard transfer takes up to 5 business days.",
+    "One-time financial verification required for new workers before Rapid Transfer (<1 hour approval).",
+    "Occupational Accident Insurance is covered at no cost to you."
+  ],
+  "checked_at": "2026-09-23T15:20:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official gigsmart.com worker guide: shift gigs accepted in the Get Gigs app with posted pay.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: shift offers show pay before accepting; Worker Wallet shows timesheet + payment breakdown per shift.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to sign up; Rapid Transfer fee is per-transfer, disclosed.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official gigsmart.com: 'Yes \u2014 GigSmart workers can get paid same day using the Rapid Transfer option... funds are transferred immediately after your timesheet is approved.' Same-day cashout of approved funds confirmed.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to sign up; Rapid Transfer fee is per-transfer, disclosed.",
-   "pass": true
+  "eligibility": "18+; profile + ID verification; background check required for some shifts.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from gigsmart.com. Speed is today for cashout of approved funds; the 3-business-day timesheet-approval window is the honest caveat. Distinct from Gigwalk (different platform).",
+  "numeric_basis": "payout: posted per-shift pay shown before accepting (official, varies); time: per shift 240-480 min",
+  "official_url": "https://gigsmart.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Yes \u2014 GigSmart workers can get paid same day using the Rapid Transfer option in your Worker Wallet. For a small 3% fee ($0.50 minimum), funds are transferred immediately after your timesheet is approved. (gigsmart.com)",
+  "payout_value_note": "posted per-shift pay shown before accepting (varies by shift)",
+  "provider": "GigSmart",
+  "route_id": "R6731",
+  "speed": "today",
+  "standard": {
+    "s1": {
+      "note": "18+, profile/ID verification.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No signup fee; 3% per-transfer fee disclosed.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Rapid Transfer same-day once timesheet approved \u2014 today.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official gigsmart.com worker guide.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Distinct from Gigwalk.",
+      "pass": true
+    },
+    "s7": {
+      "note": "upfront_fee false.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official gigsmart.com: 'Yes \u2014 GigSmart workers can get paid same day using the Rapid Transfer option... funds are transferred immediately after your timesheet is approved.' Same-day cashout of approved funds confirmed.",
-   "pass": true
-  }
- },
- "eligibility": "18+; profile + ID verification; background check required for some shifts.",
- "notes": "Checked 2026-09-23. Official evidence from gigsmart.com. Speed is today for cashout of approved funds; the 3-business-day timesheet-approval window is the honest caveat. Distinct from Gigwalk (different platform).",
- "numeric_basis": "payout: posted per-shift pay shown before accepting (official, varies); time: per shift 240-480 min",
- "official_url": "https://gigsmart.com",
- "payout_max_usd": 0,
- "payout_min_usd": 0,
- "payout_quote": "Yes \u2014 GigSmart workers can get paid same day using the Rapid Transfer option in your Worker Wallet. For a small 3% fee ($0.50 minimum), funds are transferred immediately after your timesheet is approved. (gigsmart.com)",
- "payout_value_note": "posted per-shift pay shown before accepting (varies by shift)",
- "provider": "GigSmart",
- "route_id": "R6731",
- "speed": "today",
- "standard": {
-  "s1": {
-   "note": "18+, profile/ID verification.",
-   "pass": true
+  "steps": [
+    "Create your GigSmart worker profile and verify your ID.",
+    "Browse and accept posted shift gigs (pay shown on each offer).",
+    "Complete the shift and confirm your timesheet within 6 hours.",
+    "Wait for requester approval (up to 3 business days); funds land in your Worker Wallet.",
+    "Initiate a Rapid Transfer (3%, $0.50 min) for immediate payout to your bank."
+  ],
+  "terms_url": "https://gigsmart.com/blog/how-to-work-a-shift-gig-and-get-paid",
+  "time_max_minutes": 480,
+  "time_min_minutes": 240,
+  "timing": "Requester approves timesheet (up to 3 business days); then Rapid Transfer pays immediately (3%, $0.50 min). Free standard transfer: up to 5 business days.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "No signup fee; 3% per-transfer fee disclosed.",
-   "pass": true
+  "who_pays": "The requester who posted the shift pays you through GigSmart \u2014 occupational accident insurance is covered at no cost to you.",
+  "who_qualifies": "18+; a profile plus ID verification; a background check for some shifts; a one-time financial verification (under an hour) before you can use Rapid Transfer.",
+  "work_available": "An open marketplace of posted shifts you claim in the app; supply depends on requester demand in your market.",
+  "what_gets_accepted": "The requester must approve your timesheet \u2014 they get up to 3 full business days to do it, and same-day pay only starts after approval.",
+  "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting up to 3 business days for timesheet approval (the same-day clock only starts after approval). Rapid Transfer costs 3% ($0.50 minimum); the free standard transfer takes up to 5 business days.",
+  "when_cash_arrives": "After the requester approves your timesheet (up to 3 business days): Rapid Transfer pays immediately for 3% ($0.50 min); the free standard transfer takes up to 5 business days.",
+  "repeatable": {
+    "value": true,
+    "cadence": "New gigs post on the marketplace \u2014 complete a gig, get your timesheet approved, get paid, and claim the next one."
   },
-  "s3": {
-   "note": "Rapid Transfer same-day once timesheet approved \u2014 today.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official gigsmart.com worker guide.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Distinct from Gigwalk.",
-   "pass": true
-  },
-  "s7": {
-   "note": "upfront_fee false.",
-   "pass": true
-  }
- },
- "steps": [
-  "Create your GigSmart worker profile and verify your ID.",
-  "Browse and accept posted shift gigs (pay shown on each offer).",
-  "Complete the shift and confirm your timesheet within 6 hours.",
-  "Wait for requester approval (up to 3 business days); funds land in your Worker Wallet.",
-  "Initiate a Rapid Transfer (3%, $0.50 min) for immediate payout to your bank."
- ],
- "terms_url": "https://gigsmart.com/blog/how-to-work-a-shift-gig-and-get-paid",
- "time_max_minutes": 480,
- "time_min_minutes": 240,
- "timing": "Requester approves timesheet (up to 3 business days); then Rapid Transfer pays immediately (3%, $0.50 min). Free standard transfer: up to 5 business days.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "The requester who posted the shift pays you through GigSmart \u2014 occupational accident insurance is covered at no cost to you.",
- "who_qualifies": "18+; a profile plus ID verification; a background check for some shifts; a one-time financial verification (under an hour) before you can use Rapid Transfer.",
- "work_available": "An open marketplace of posted shifts you claim in the app; supply depends on requester demand in your market.",
- "what_gets_accepted": "The requester must approve your timesheet \u2014 they get up to 3 full business days to do it, and same-day pay only starts after approval.",
- "costs_and_unpaid_time": "No fees to join. Unpaid time: waiting up to 3 business days for timesheet approval (the same-day clock only starts after approval). Rapid Transfer costs 3% ($0.50 minimum); the free standard transfer takes up to 5 business days.",
- "when_cash_arrives": "After the requester approves your timesheet (up to 3 business days): Rapid Transfer pays immediately for 3% ($0.50 min); the free standard transfer takes up to 5 business days.",
- "repeatable": {
-  "value": true,
-  "cadence": "New gigs post on the marketplace \u2014 complete a gig, get your timesheet approved, get paid, and claim the next one."
- }
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

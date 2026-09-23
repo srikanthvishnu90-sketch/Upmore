@@ -1,89 +1,92 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Slow and mail-in: you get the $100 split into two $50 prepaid cards — one coupon mailed within 90 days after your 1st month of service, the other within 90 days after your 6th month, then 4-6 weeks of processing. You're committing to ~7 months of service for the full $100.",
+ "catches": [
+  "Mail-in process: top $50 coupon must be mailed within 90 days after the 1st month of service; bottom $50 coupon within 90 days after the 6th month of service.",
+  "Each mailing must include a copy of a utility bill showing Verde Energy USA as your provider.",
+  "You must be an active Verde customer on a qualifying plan and remain in good standing (not pending cancellation) at the time of reward processing.",
+  "Limit one $100 Rebate Reward Form per account; allow 4-6 weeks for processing.",
+  "Separate gas rebate exists ($50 for natural gas plans) — this route is the $100 electricity rebate.",
+  "Rebate cards are Pathward-issued Visa prepaid cards, US only, 6-month validity; may not be transferred or redeemed for cash.",
+  "Plan-rate/ETF risk: signing up for an energy plan can carry early-termination fees — check your plan's terms before switching.",
+  "Savings on planned energy spending — the rebate offsets your electricity costs, not income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url verdeenergy.com/wp-content/uploads/2024/01/VerdeEnergy-RewardForm-2x50_wBleeds.pdf (official $100 Rebate Reward Form PDF on Verde's own domain); rebate still advertised on verdeenergy.com/il/ (crawled ~89 days ago): 'competitive fixed rates for 100% renewable energy and our $100 rebate'.",
+   "pass": true
   },
-  "biggest_catch": "Slow and mail-in: you get the $100 split into two $50 prepaid cards — one coupon mailed within 90 days after your 1st month of service, the other within 90 days after your 6th month, then 4-6 weeks of processing. You're committing to ~7 months of service for the full $100.",
-  "catches": [
-    "Mail-in process: top $50 coupon must be mailed within 90 days after the 1st month of service; bottom $50 coupon within 90 days after the 6th month of service.",
-    "Each mailing must include a copy of a utility bill showing Verde Energy USA as your provider.",
-    "You must be an active Verde customer on a qualifying plan and remain in good standing (not pending cancellation) at the time of reward processing.",
-    "Limit one $100 Rebate Reward Form per account; allow 4-6 weeks for processing.",
-    "Separate gas rebate exists ($50 for natural gas plans) — this route is the $100 electricity rebate.",
-    "Rebate cards are Pathward-issued Visa prepaid cards, US only, 6-month validity; may not be transferred or redeemed for cash.",
-    "Plan-rate/ETF risk: signing up for an energy plan can carry early-termination fees — check your plan's terms before switching.",
-    "Savings on planned energy spending — the rebate offsets your electricity costs, not income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url verdeenergy.com/wp-content/uploads/2024/01/VerdeEnergy-RewardForm-2x50_wBleeds.pdf (official $100 Rebate Reward Form PDF on Verde's own domain); rebate still advertised on verdeenergy.com/il/ (crawled ~89 days ago): 'competitive fixed rates for 100% renewable energy and our $100 rebate'.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Current: IL state page (crawled ~89 days ago) still advertises the $100 rebate; official rebate form PDF live on verdeenergy.com.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount and redemption steps stated verbatim on the official rebate form.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount, timing, mailing requirements, and good-standing condition all stated on the official form; nothing material hidden.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Current: IL state page (crawled ~89 days ago) still advertises the $100 rebate; official rebate form PDF live on verdeenergy.com.",
+   "pass": true
   },
-  "eligibility": "New Verde Energy electricity-plan customers; mail each coupon with a utility-bill copy and be active/in good standing at processing. Not combinable with renewals at same address (one form per account).",
-  "notes": "Verified 2026-09-23: official Verde rebate form PDF + current $100 rebate advertised on verdeenergy.com/il/. Distinct mechanism (mail-in signup rebate) from R5489 Verde referral. Dedupe-check clean.",
-  "numeric_basis": "payout from official terms ($100 total: two $50 prepaid rebate cards, 1st-month and 6th-month coupons); time: plan signup 15-30 min active",
-  "official_url": "https://www.verdeenergy.com/il/",
-  "payout_max_usd": 100,
-  "payout_min_usd": 100,
-  "payout_quote": "$100 REBATE REWARD FORM * Must redeem top $50 rebate coupon within ninety (90) days after the 1st month of service. Must redeem bottom $50 rebate coupon within ninety (90) days after the 6th month of service.",
-  "payout_value_note": "$100 in prepaid Visa rebate cards (two $50 coupons), spendable anywhere Visa debit is accepted in the US — offsets your electricity spending, not income.",
-  "route_id": "R5490",
-  "standard": {
-    "s1": {
-      "note": "Exact amount and redemption mechanics stated verbatim on the official rebate form PDF.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: rebate offsets planned electricity spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete process from the official form (sign up, mail each coupon with utility-bill copy within the 90-day windows, wait 4-6 weeks).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: split across 1st and 6th month, ~7 months of service for the full $100.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the plan itself; no extra purchase.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against verdeenergy.com (provider's own domain). Deduped: no Verde Energy routes in catalog, evidence files, or rejects-g51.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount and redemption steps stated verbatim on the official rebate form.",
+   "pass": true
   },
-  "steps": [
-    "Sign up for a qualifying Verde Energy electricity plan.",
-    "Keep your account active and in good standing.",
-    "Mail the top $50 coupon with a utility-bill copy showing Verde as your provider within 90 days after your 1st month of service.",
-    "Mail the bottom $50 coupon with a utility-bill copy within 90 days after your 6th month of service.",
-    "Allow 4-6 weeks processing; receive two $50 prepaid rebate cards."
-  ],
-  "terms_url": "https://www.verdeenergy.com/wp-content/uploads/2024/01/VerdeEnergy-RewardForm-2x50_wBleeds.pdf",
-  "time_max_minutes": 30,
-  "time_min_minutes": 15,
-  "timing": "Cards processed 4-6 weeks after each coupon mailing; full $100 requires staying active through the 6th month of service.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount, timing, mailing requirements, and good-standing condition all stated on the official form; nothing material hidden.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Verde Energy electricity-plan customers; mail each coupon with a utility-bill copy and be active/in good standing at processing. Not combinable with renewals at same address (one form per account).",
+ "notes": "Verified 2026-09-23: official Verde rebate form PDF + current $100 rebate advertised on verdeenergy.com/il/. Distinct mechanism (mail-in signup rebate) from R5489 Verde referral. Dedupe-check clean.",
+ "numeric_basis": "payout from official terms ($100 total: two $50 prepaid rebate cards, 1st-month and 6th-month coupons); time: plan signup 15-30 min active",
+ "official_url": "https://www.verdeenergy.com/il/",
+ "payout_max_usd": 100,
+ "payout_min_usd": 100,
+ "payout_quote": "$100 REBATE REWARD FORM * Must redeem top $50 rebate coupon within ninety (90) days after the 1st month of service. Must redeem bottom $50 rebate coupon within ninety (90) days after the 6th month of service.",
+ "payout_value_note": "$100 in prepaid Visa rebate cards (two $50 coupons), spendable anywhere Visa debit is accepted in the US — offsets your electricity spending, not income.",
+ "route_id": "R5490",
+ "standard": {
+  "s1": {
+   "note": "Exact amount and redemption mechanics stated verbatim on the official rebate form PDF.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: rebate offsets planned electricity spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete process from the official form (sign up, mail each coupon with utility-bill copy within the 90-day windows, wait 4-6 weeks).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: split across 1st and 6th month, ~7 months of service for the full $100.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the plan itself; no extra purchase.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against verdeenergy.com (provider's own domain). Deduped: no Verde Energy routes in catalog, evidence files, or rejects-g51.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Sign up for a qualifying Verde Energy electricity plan.",
+  "Keep your account active and in good standing.",
+  "Mail the top $50 coupon with a utility-bill copy showing Verde as your provider within 90 days after your 1st month of service.",
+  "Mail the bottom $50 coupon with a utility-bill copy within 90 days after your 6th month of service.",
+  "Allow 4-6 weeks processing; receive two $50 prepaid rebate cards."
+ ],
+ "terms_url": "https://www.verdeenergy.com/wp-content/uploads/2024/01/VerdeEnergy-RewardForm-2x50_wBleeds.pdf",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Cards processed 4-6 weeks after each coupon mailing; full $100 requires staying active through the 6th month of service.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Cards processed 4-6 weeks after each coupon mailing; full $100 requires staying active through the 6th month of service.",
+ "maximize": "Fastest honest path: Cards processed 4-6 weeks after each coupon mailing; full $100 requires staying active through the 6th month of service. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

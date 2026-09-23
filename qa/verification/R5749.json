@@ -1,1 +1,91 @@
-{"app_links":{"android":null,"ios":null},"biggest_catch":"You get paid only once your friend becomes a member and meets the eligibility requirements, and the full Program Rules live behind a separate link - check them before promising anyone a payout.","catches":["Refer a friend or family member and earn $100 for each successful referral; up to 10 friends per calendar year ($1,000 annually).","The $100 is deposited directly into your savings account once your friend becomes a member and meets the eligibility requirements.","Your friend also earns a bonus when they open a checking account with direct deposit or get an auto loan.","Full terms live in the linked Program Rules; fetched page text is a marketing summary.","Terms and conditions apply; no stated fee to refer."],"checked_at":"2026-09-23T07:14:30Z","critical":{"c1":{"evidence":"Official Great Erie FCU page (greateriefcu.com): 'you'll earn a fantastic $100 for each successful referral!' and 'You can refer 10 friends per calendar year! Spread the word, help us grow our community, and earn up to $1000 annually.'","pass":true},"c2":{"evidence":"Official Great Erie Federal Credit Union Refer a Friend page on greateriefcu.com, fetched live 2026-09-23","pass":true},"c3":{"evidence":"No fee to refer stated","pass":true},"c4":{"evidence":"dedupe-check.py 'Great Erie Federal Credit Union' 2026-09-23 returned no verified referral route; no greateriefcu.com route in qa/verification","pass":true}},"eligibility":"Referrer: Great Erie FCU member. Friend: new member who meets eligibility requirements.","notes":"Verified 2026-09-23. Great Erie Federal Credit Union (Orchard Park, NY) Refer a Friend Membership Growth Program. Referrer earns $100 per successful referral, capped at 10 per calendar year ($1,000). Caveat: detailed qualification rules live in a linked Program Rules page not visible in fetched text.","numeric_basis":"payout from official Great Erie FCU terms ($100 per successful referral; up to 10 per calendar year = $1,000); time: click 'Start Referring Now' and refer a friend est. 5-15 min active","official_url":"http://www.greateriefcu.com/about/membership/refer-a-friend/","payout_max_usd":100,"payout_min_usd":100,"payout_quote":"you'll earn a fantastic $100 for each successful referral!","payout_value_note":"$100 to the referrer per successful referral; cap 10 per calendar year ($1,000).","route_id":"R5749","standard":{"s1":{"note":"Official Great Erie FCU page live on greateriefcu.com, fetched 2026-09-23","pass":true},"s2":{"note":"Eligibility: referrer is a member; friend becomes a member and meets eligibility requirements","pass":true},"s3":{"note":"Friend requirements: become a member and meet eligibility requirements (full rules in linked Program Rules page)","pass":true},"s4":{"note":"$100 deposited directly into the referrer's savings account once the friend becomes a member and meets eligibility requirements","pass":true},"s5":{"note":"Tax treatment not stated in fetched page text","pass":true},"s6":{"note":"No fee to refer","pass":true},"s7":{"note":"Distinct referrer-side earning mechanism at a new institution","pass":true}},"steps":["Click 'Start Referring Now' and invite a friend or family member to join Great Erie FCU.","Friend becomes a member and meets the eligibility requirements.","Earn $100 per successful referral, deposited directly into your savings account."],"terms_url":"http://www.greateriefcu.com/about/membership/refer-a-friend/","time_max_minutes":15,"time_min_minutes":5,"timing":"Paid once the friend becomes a member and meets the eligibility requirements; deposited directly into the referrer's savings account.","upfront_fee":false,"verdict":"verify","weasel_words":[]}
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You get paid only once your friend becomes a member and meets the eligibility requirements, and the full Program Rules live behind a separate link - check them before promising anyone a payout.",
+  "catches": [
+    "Refer a friend or family member and earn $100 for each successful referral; up to 10 friends per calendar year ($1,000 annually).",
+    "The $100 is deposited as a bonus dividend into your savings account once your friend becomes a member and meets the eligibility requirements - per the official Program Rules that means opening a checking account with direct deposit (a payroll-cycle trigger, so expect weeks).",
+    "Your friend also earns a bonus when they open a checking account with direct deposit or get an auto loan.",
+    "Full terms live in the linked official Program Rules PDF; fetched 2026-09-23. It states no numeric payout window, so a days-scale classification is not defensible.",
+    "Terms and conditions apply; no stated fee to refer."
+  ],
+  "checked_at": "2026-09-23T07:14:30Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Great Erie FCU page (greateriefcu.com): 'you'll earn a fantastic $100 for each successful referral!' and 'You can refer 10 friends per calendar year! Spread the word, help us grow our community, and earn up to $1000 annually.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Great Erie Federal Credit Union Refer a Friend page on greateriefcu.com, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Great Erie Federal Credit Union' 2026-09-23 returned no verified referral route; no greateriefcu.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Great Erie FCU member. Friend: new member who meets eligibility requirements.",
+  "notes": "Verified 2026-09-23. Great Erie Federal Credit Union (Orchard Park, NY) Refer a Friend Membership Growth Program. Referrer earns $100 per successful referral, capped at 10 per calendar year ($1,000). Speed audit 2026-09-23: remains weeks - the official Program Rules PDF (fetched live) requires the referred friend to open a checking account with direct deposit, i.e. a payroll-cycle trigger, so no days-scale payout window is defensible. Official rules PDF: http://www.greateriefcu.com/media/xt2dfeuo/refer-a-friend-program-official-rules-2025_final.pdf",
+  "numeric_basis": "payout from official Great Erie FCU terms ($100 per successful referral; up to 10 per calendar year = $1,000); time: click 'Start Referring Now' and refer a friend est. 5-15 min active",
+  "official_url": "http://www.greateriefcu.com/about/membership/refer-a-friend/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "you'll earn a fantastic $100 for each successful referral!",
+  "payout_value_note": "$100 to the referrer per successful referral; cap 10 per calendar year ($1,000).",
+  "route_id": "R5749",
+  "standard": {
+    "s1": {
+      "note": "Official Great Erie FCU page live on greateriefcu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a member; friend becomes a member and meets eligibility requirements",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: become a member and meet eligibility requirements (full rules in linked Program Rules page)",
+      "pass": true
+    },
+    "s4": {
+      "note": "$100 deposited directly into the referrer's savings account once the friend becomes a member and meets eligibility requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated in fetched page text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Click 'Start Referring Now' and invite a friend or family member to join Great Erie FCU.",
+    "Friend becomes a member and meets the eligibility requirements.",
+    "Earn $100 per successful referral, deposited directly into your savings account."
+  ],
+  "terms_url": "http://www.greateriefcu.com/about/membership/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Paid once the friend becomes a member and meets the eligibility requirements; deposited directly into the referrer's savings account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "speed": "weeks",
+  "when_cash_arrives": "Paid once your friend becomes a member and meets the eligibility requirements - per the official Program Rules that means opening a checking account with direct deposit, so expect the payout to follow a payroll cycle (weeks), deposited directly into your savings account as a bonus dividend.",
+  "maximize": [
+    "Fastest path: friend opens checking and sets up direct deposit immediately - the trigger is direct deposit receipt, so a quicker first payroll deposit speeds this up.",
+    "Confirm the detailed eligibility requirements in the linked Program Rules before referring.",
+    "Direct cash deposit as a bonus dividend - no gift-card mailing delay."
+  ]
+}

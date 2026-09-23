@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "There is a $15 co-op membership fee to join NEC (refundable when service ends); the $50 credit only applies if the referred friend actually joins as a member, and full program rules live in the separate Terms & Conditions and Rules documents.",
+ "catches": [
+  "NEC is a member-owned cooperative: joining costs a $15 membership fee (refundable when service ends), so the referred friend must pay to join before either side earns the credit.",
+  "Both sides receive the $50 bill credit only if the referred friend or business joins NEC Co-op Energy; referrals that do not enroll earn nothing.",
+  "Full program conditions live in the separate 'Terms & Conditions' and 'View All Rules' documents linked from the referral page — review them before relying on the offer.",
+  "The $500/$250 annual referral-leader bonus bill credits are a separate yearly contest announced at the NEC Annual Meeting, not part of the base $50/$50 offer.",
+  "Savings framing: the credit reduces a future electricity bill in the NEC Texas service area, not cash income; you must already be an NEC member to earn referrer-side credits."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url host neccoopenergy.com is the provider's own domain; page title is 'Member Referral Program | NEC Co-op Energy'.",
+   "pass": true
   },
-  "biggest_catch": "There is a $15 co-op membership fee to join NEC (refundable when service ends); the $50 credit only applies if the referred friend actually joins as a member, and full program rules live in the separate Terms & Conditions and Rules documents.",
-  "catches": [
-    "NEC is a member-owned cooperative: joining costs a $15 membership fee (refundable when service ends), so the referred friend must pay to join before either side earns the credit.",
-    "Both sides receive the $50 bill credit only if the referred friend or business joins NEC Co-op Energy; referrals that do not enroll earn nothing.",
-    "Full program conditions live in the separate 'Terms & Conditions' and 'View All Rules' documents linked from the referral page — review them before relying on the offer.",
-    "The $500/$250 annual referral-leader bonus bill credits are a separate yearly contest announced at the NEC Annual Meeting, not part of the base $50/$50 offer.",
-    "Savings framing: the credit reduces a future electricity bill in the NEC Texas service area, not cash income; you must already be an NEC member to earn referrer-side credits."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url host neccoopenergy.com is the provider's own domain; page title is 'Member Referral Program | NEC Co-op Energy'.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Page is current (co-op-means-more page crawled 4 days ago also advertises the $50 Referral Bonus); the $50/$50 offer is stated in the live page text with no expired dates.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Credit conditions are explicit: both sides get $50 if the referred friend or business joins; no limit on referrals. Referenced T&C/Rules documents are linked from the page. No hidden qualifiers beyond the stated terms.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount ($50 bill credit), who gets it (both referrer and referred), condition (join as a member), and unlimited referrals are all stated verbatim; nothing requires guessing.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Page is current (co-op-means-more page crawled 4 days ago also advertises the $50 Referral Bonus); the $50/$50 offer is stated in the live page text with no expired dates.",
+   "pass": true
   },
-  "eligibility": "Current NEC Co-op Energy member referring a friend or business that joins NEC Co-op Energy. Texas deregulated service areas (Corpus Christi and surrounding South Texas).",
-  "notes": "Verified 2026-09-23 from NEC Co-op Energy's official member-referral page. $50 bill credit to both sides with no referral cap. Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being an NEC member. Distinct supplier vs prior-wave set; no NEC routes in catalog, discovery cards, or prior verification evidence files.",
-  "numeric_basis": "payout from official page ($50 flat bill credit each side); time: referral form share 5-15 min active",
-  "official_url": "https://neccoopenergy.com/for-members/member-referral-program/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "When you refer a friend or business, you'll both receive a $50 bill credit if they join. And here's the great part: there's no limit on referrals!",
-  "payout_value_note": "Flat $50 bill credit per side, applied to the electricity bill (savings on planned spending, not cash).",
-  "route_id": "R2655",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50), who gets it (both sides), and condition (they join) are quoted verbatim from the official page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing is natural: a bill credit on a required electricity bill in Texas, not spendable cash or income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps follow the official referral-form page: fill out the form with your details and your friend's email, friend receives the referral email, friend enters your name/account number at enrollment.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: NEC membership costs $15 to join (refundable on service end), and credits only land when the referral actually joins.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Upfront fee: the referred friend must pay the $15 refundable co-op membership fee to join NEC before either side earns the credit; the referral form itself is free.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement; the annual leader bonus is presented separately from the base offer.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against neccoopenergy.com (provider's own domain). Deduped: no NEC routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Credit conditions are explicit: both sides get $50 if the referred friend or business joins; no limit on referrals. Referenced T&C/Rules documents are linked from the page. No hidden qualifiers beyond the stated terms.",
+   "pass": true
   },
-  "steps": [
-    "Log in as an NEC Co-op Energy member and open the Member Referral Program form.",
-    "Fill out the form with your name, account number, and your friend's email address.",
-    "Your friend receives a referral email on your behalf.",
-    "Friend enrolls and joins NEC Co-op Energy, entering your name and account number during the enrollment process.",
-    "You and your friend each receive a $50 bill credit after the new membership is active."
-  ],
-  "terms_url": "https://neccoopenergy.com/for-members/member-referral-program/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credits applied after the referred friend or business joins as a member; annual leader-bonus recipients announced at the NEC Annual Meeting.",
-  "upfront_fee": true,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount ($50 bill credit), who gets it (both referrer and referred), condition (join as a member), and unlimited referrals are all stated verbatim; nothing requires guessing.",
+   "pass": true
+  }
+ },
+ "eligibility": "Current NEC Co-op Energy member referring a friend or business that joins NEC Co-op Energy. Texas deregulated service areas (Corpus Christi and surrounding South Texas).",
+ "notes": "Verified 2026-09-23 from NEC Co-op Energy's official member-referral page. $50 bill credit to both sides with no referral cap. Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being an NEC member. Distinct supplier vs prior-wave set; no NEC routes in catalog, discovery cards, or prior verification evidence files.",
+ "numeric_basis": "payout from official page ($50 flat bill credit each side); time: referral form share 5-15 min active",
+ "official_url": "https://neccoopenergy.com/for-members/member-referral-program/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "When you refer a friend or business, you'll both receive a $50 bill credit if they join. And here's the great part: there's no limit on referrals!",
+ "payout_value_note": "Flat $50 bill credit per side, applied to the electricity bill (savings on planned spending, not cash).",
+ "route_id": "R2655",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50), who gets it (both sides), and condition (they join) are quoted verbatim from the official page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing is natural: a bill credit on a required electricity bill in Texas, not spendable cash or income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps follow the official referral-form page: fill out the form with your details and your friend's email, friend receives the referral email, friend enters your name/account number at enrollment.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: NEC membership costs $15 to join (refundable on service end), and credits only land when the referral actually joins.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Upfront fee: the referred friend must pay the $15 refundable co-op membership fee to join NEC before either side earns the credit; the referral form itself is free.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement; the annual leader bonus is presented separately from the base offer.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against neccoopenergy.com (provider's own domain). Deduped: no NEC routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Log in as an NEC Co-op Energy member and open the Member Referral Program form.",
+  "Fill out the form with your name, account number, and your friend's email address.",
+  "Your friend receives a referral email on your behalf.",
+  "Friend enrolls and joins NEC Co-op Energy, entering your name and account number during the enrollment process.",
+  "You and your friend each receive a $50 bill credit after the new membership is active."
+ ],
+ "terms_url": "https://neccoopenergy.com/for-members/member-referral-program/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credits applied after the referred friend or business joins as a member; annual leader-bonus recipients announced at the NEC Annual Meeting.",
+ "upfront_fee": true,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credits applied after the referred friend or business joins as a member; annual leader-bonus recipients announced at the NEC Annual Meeting.",
+ "maximize": "Fastest honest path: Credits applied after the referred friend or business joins as a member; annual leader-bonus recipients announced at the NEC Annual Meeting. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

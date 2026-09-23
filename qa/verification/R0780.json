@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "You must meet Mass Save's moderate-income qualification (typically 60–80% of area median income) — this tier is not open to all customers.",
+ "catches": [
+  "Moderate-income qualification required (typically 60–80% AMI) — distinct from the standard whole-home tier.",
+  "Massachusetts residential customer of a Mass Save sponsor (National Grid).",
+  "Income-qualified ground-source heat pumps reach $25,000/home under the same sheet.",
+  "Mass Save does not publish a payout timeline in the rebate sheet — s3 honestly marked false.",
+  "The heat-pump installation is a condition, not an upfront fee."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "National Grid / Mass Save — real Massachusetts utility efficiency program; official 2026 rebate sheet PDF on nationalgridus.com.",
+   "pass": true
   },
-  "biggest_catch": "You must meet Mass Save's moderate-income qualification (typically 60–80% of area median income) — this tier is not open to all customers.",
-  "catches": [
-    "Moderate-income qualification required (typically 60–80% AMI) — distinct from the standard whole-home tier.",
-    "Massachusetts residential customer of a Mass Save sponsor (National Grid).",
-    "Income-qualified ground-source heat pumps reach $25,000/home under the same sheet.",
-    "Mass Save does not publish a payout timeline in the rebate sheet — s3 honestly marked false.",
-    "The heat-pump installation is a condition, not an upfront fee."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "National Grid / Mass Save — real Massachusetts utility efficiency program; official 2026 rebate sheet PDF on nationalgridus.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Mass Save rebate sheet: moderate-income heat-pump incentive $16,000/home; income-qualified ground-source $25,000/home.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; heat-pump installation is a purchase condition.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Mass Save does not publish a payout timeline in the rebate sheet — s3 honestly marked false rather than invented.",
-      "pass": false
-    }
+  "c2": {
+   "evidence": "Official Mass Save rebate sheet: moderate-income heat-pump incentive $16,000/home; income-qualified ground-source $25,000/home.",
+   "pass": true
   },
-  "eligibility": "Massachusetts residential customer of National Grid (Mass Save) meeting moderate-income qualification (typically 60–80% AMI).",
-  "notes": "Verified from the official National Grid/Mass Save 2026 rebate sheet PDF 2026-09-22. Income-qualified lane; distinct product/eligibility tier from the standard whole-home heat-pump route (R0771). Payout timing not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
-  "official_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
-  "payout_quote": "Moderate-income heat-pump incentive: $16,000/home; income-qualified ground-source heat pump: $25,000/home.",
-  "route_id": "R0780",
-  "standard": {
-    "s1": {
-      "note": "MA residential National Grid (Mass Save) customer; moderate-income qualification (typically 60–80% AMI).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Income qualification required; program equipment/installation requirements.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Payout timeline not published in the official rebate sheet — not invented.",
-      "pass": false
-    },
-    "s4": {
-      "note": "Amounts stated flatly in the official rebate sheet.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf — official National Grid PDF, loaded live.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: confirm income qualification, install through the program, claim the incentive.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official National Grid/Mass Save rebate sheet loaded live 2026-09-22.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; heat-pump installation is a purchase condition.",
+   "pass": true
   },
-  "steps": [
-    "Confirm you are a Massachusetts National Grid (Mass Save) residential customer meeting the moderate-income threshold (typically 60–80% AMI).",
-    "Have the qualifying heat-pump system installed per Mass Save program requirements.",
-    "Claim the moderate-income incentive ($16,000/home; $25,000/home for income-qualified ground-source) per the rebate sheet.",
-    "Mass Save does not publish the exact payout timeline for this incentive."
-  ],
-  "terms_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
-  "timing": "Mass Save does not publish a payout timeline for this incentive in the official rebate sheet.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": {
-    "present": false,
-    "quote": null
+  "c4": {
+   "evidence": "Mass Save does not publish a payout timeline in the rebate sheet — s3 honestly marked false rather than invented.",
+   "pass": false
+  }
+ },
+ "eligibility": "Massachusetts residential customer of National Grid (Mass Save) meeting moderate-income qualification (typically 60–80% AMI).",
+ "notes": "Verified from the official National Grid/Mass Save 2026 rebate sheet PDF 2026-09-22. Income-qualified lane; distinct product/eligibility tier from the standard whole-home heat-pump route (R0771). Payout timing not published, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+ "official_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
+ "payout_quote": "Moderate-income heat-pump incentive: $16,000/home; income-qualified ground-source heat pump: $25,000/home.",
+ "route_id": "R0780",
+ "standard": {
+  "s1": {
+   "note": "MA residential National Grid (Mass Save) customer; moderate-income qualification (typically 60–80% AMI).",
+   "pass": true
   },
-  "payout_min_usd": 16000.0,
-  "payout_max_usd": 16000.0,
-  "payout_value_note": "flat amount in official terms",
-  "time_min_minutes": 20.0,
-  "time_max_minutes": 45.0,
-  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+  "s2": {
+   "note": "Income qualification required; program equipment/installation requirements.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Payout timeline not published in the official rebate sheet — not invented.",
+   "pass": false
+  },
+  "s4": {
+   "note": "Amounts stated flatly in the official rebate sheet.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf — official National Grid PDF, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: confirm income qualification, install through the program, claim the incentive.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official National Grid/Mass Save rebate sheet loaded live 2026-09-22.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm you are a Massachusetts National Grid (Mass Save) residential customer meeting the moderate-income threshold (typically 60–80% AMI).",
+  "Have the qualifying heat-pump system installed per Mass Save program requirements.",
+  "Claim the moderate-income incentive ($16,000/home; $25,000/home for income-qualified ground-source) per the rebate sheet.",
+  "Mass Save does not publish the exact payout timeline for this incentive."
+ ],
+ "terms_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
+ "timing": "Mass Save does not publish a payout timeline for this incentive in the official rebate sheet.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "payout_min_usd": 16000.0,
+ "payout_max_usd": 16000.0,
+ "payout_value_note": "flat amount in official terms",
+ "time_min_minutes": 20.0,
+ "time_max_minutes": 45.0,
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)",
+ "speed": "weeks",
+ "when_cash_arrives": "Mass Save does not publish a payout timeline for this incentive in the official rebate sheet.",
+ "maximize": "Fastest honest path: Mass Save does not publish a payout timeline for this incentive in the official rebate sheet. Structural blocker: utility rebate processing + check/card delivery timelines are set by the program (typically 4-8 weeks; some publish 'up to 30 days'); an online claim is the fastest path and still lands inside that window. Where the evidence notes an instant in-store / point-of-sale discount alternative, that is same-day savings on the purchase (not cash) — it cannot be stacked with the mail-in rebate."
 }

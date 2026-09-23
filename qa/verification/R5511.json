@@ -1,89 +1,92 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $25 activation bonus is real and fixed, but the rest of the value proposition depends on the plan's supply rate versus your utility — a competitive rate today can become a worse-than-utility rate later, so compare the actual cents-per-kWh before enrolling; the 5% cash back applies only to the supply portion of the bill, not delivery charges.",
+ "catches": [
+  "You must enroll electricity supply through a participating heating oil dealer referral link to get the referral-program terms.",
+  "The $25 activation bonus is paid per meter you sign up.",
+  "The 5% annual cash back applies only to the supply portion of the electricity bill, not the full bill or delivery charges.",
+  "The page says customers are 'currently saving with competitive rates versus your local utility' — plan rates can change; compare the actual supply rate to your utility's default rate before enrolling.",
+  "Early signup does not require a long-term commitment per the page ('no risk, fees, or long-term commitment'), but confirm plan terms at enrollment.",
+  "The rewards offset planned electricity spending (savings), never income.",
+  "Only available in states where Energy Plus supplies residential electricity.",
+  "The official page does not specify whether the $25 activation bonus is paid as a bill credit or by check; only the fixed $25/meter amount is counted (the 5% annual supply-charge cash back is variable and excluded from the payout figure)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Official supplier-owned domain (energypluscompany.com); referral-program page live with stated bonus amounts."
   },
-  "biggest_catch": "The $25 activation bonus is real and fixed, but the rest of the value proposition depends on the plan's supply rate versus your utility — a competitive rate today can become a worse-than-utility rate later, so compare the actual cents-per-kWh before enrolling; the 5% cash back applies only to the supply portion of the bill, not delivery charges.",
-  "catches": [
-    "You must enroll electricity supply through a participating heating oil dealer referral link to get the referral-program terms.",
-    "The $25 activation bonus is paid per meter you sign up.",
-    "The 5% annual cash back applies only to the supply portion of the electricity bill, not the full bill or delivery charges.",
-    "The page says customers are 'currently saving with competitive rates versus your local utility' — plan rates can change; compare the actual supply rate to your utility's default rate before enrolling.",
-    "Early signup does not require a long-term commitment per the page ('no risk, fees, or long-term commitment'), but confirm plan terms at enrollment.",
-    "The rewards offset planned electricity spending (savings), never income.",
-    "Only available in states where Energy Plus supplies residential electricity.",
-    "The official page does not specify whether the $25 activation bonus is paid as a bill credit or by check; only the fixed $25/meter amount is counted (the 5% annual supply-charge cash back is variable and excluded from the payout figure)."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "Official supplier-owned domain (energypluscompany.com); referral-program page live with stated bonus amounts."
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Bonus amounts and mechanics stated on the official page."
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Incentive framed as savings on planned electricity spending (activation bonus and cash back on supply portion), never income."
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Energy Plus."
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Bonus amounts and mechanics stated on the official page."
   },
-  "eligibility": "New customers enrolling residential electricity supply with Energy Plus through a participating heating oil dealer referral link, in states where Energy Plus supplies electricity.",
-  "notes": "Correction: an earlier discovery reject claimed no fixed amount existed; the official page states a fixed $25 activation bonus per meter plus 5% annual cash back on the supply portion. Incentive is savings on planned electricity spending, never income.",
-  "numeric_basis": "payout from official terms ($25 activation bonus per meter flat; 5% annual cash back is variable savings); time: online signup 15-30 min active",
-  "official_url": "https://www.energypluscompany.com/icpaoffer/",
-  "payout_max_usd": 25,
-  "payout_min_usd": 25,
-  "payout_quote": "Receive a $25 activation bonus for each meter you sign up",
-  "payout_value_note": "$25 fixed activation bonus per meter enrolled; additional 5% annual cash back on the supply portion of the bill is variable savings not counted in the payout figure.",
-  "route_id": "R5511",
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "You are a new customer in an Energy Plus service state with residential electricity service."
-    },
-    "s2": {
-      "pass": true,
-      "note": "Select your heating oil dealer on the Energy Plus referral page and enroll your electricity supply with Energy Plus."
-    },
-    "s3": {
-      "pass": true,
-      "note": "Your electricity supply switches to Energy Plus at your next meter read cycle."
-    },
-    "s4": {
-      "pass": true,
-      "note": "You receive a $25 activation bonus for each meter you sign up."
-    },
-    "s5": {
-      "pass": true,
-      "note": "You earn 5% cash back each year on the supply portion of your electricity bill."
-    },
-    "s6": {
-      "pass": true,
-      "note": "States where Energy Plus supplies residential electricity; enrollment must go through a participating dealer link."
-    },
-    "s7": {
-      "pass": true,
-      "note": "Compare the plan's supply rate to your utility's default rate; page claims no fees or long-term commitment."
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Incentive framed as savings on planned electricity spending (activation bonus and cash back on supply portion), never income."
   },
-  "steps": [
-    "On the Energy Plus referral page, select your heating oil dealer to enroll through the referral program.",
-    "Sign up for residential electricity supply with Energy Plus (typically 15-30 minutes online).",
-    "Your supply switches to Energy Plus at the next meter read.",
-    "Receive a $25 activation bonus for each meter you sign up.",
-    "Earn 5% cash back each year on the supply portion of your electricity bill."
-  ],
-  "terms_url": "https://www.energypluscompany.com/icpaoffer/",
-  "time_max_minutes": 30,
-  "time_min_minutes": 15,
-  "timing": "Bonus and cash back begin after your electricity supply switches to Energy Plus.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "pass": true,
+   "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Energy Plus."
+  }
+ },
+ "eligibility": "New customers enrolling residential electricity supply with Energy Plus through a participating heating oil dealer referral link, in states where Energy Plus supplies electricity.",
+ "notes": "Correction: an earlier discovery reject claimed no fixed amount existed; the official page states a fixed $25 activation bonus per meter plus 5% annual cash back on the supply portion. Incentive is savings on planned electricity spending, never income.",
+ "numeric_basis": "payout from official terms ($25 activation bonus per meter flat; 5% annual cash back is variable savings); time: online signup 15-30 min active",
+ "official_url": "https://www.energypluscompany.com/icpaoffer/",
+ "payout_max_usd": 25,
+ "payout_min_usd": 25,
+ "payout_quote": "Receive a $25 activation bonus for each meter you sign up",
+ "payout_value_note": "$25 fixed activation bonus per meter enrolled; additional 5% annual cash back on the supply portion of the bill is variable savings not counted in the payout figure.",
+ "route_id": "R5511",
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "You are a new customer in an Energy Plus service state with residential electricity service."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Select your heating oil dealer on the Energy Plus referral page and enroll your electricity supply with Energy Plus."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Your electricity supply switches to Energy Plus at your next meter read cycle."
+  },
+  "s4": {
+   "pass": true,
+   "note": "You receive a $25 activation bonus for each meter you sign up."
+  },
+  "s5": {
+   "pass": true,
+   "note": "You earn 5% cash back each year on the supply portion of your electricity bill."
+  },
+  "s6": {
+   "pass": true,
+   "note": "States where Energy Plus supplies residential electricity; enrollment must go through a participating dealer link."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Compare the plan's supply rate to your utility's default rate; page claims no fees or long-term commitment."
+  }
+ },
+ "steps": [
+  "On the Energy Plus referral page, select your heating oil dealer to enroll through the referral program.",
+  "Sign up for residential electricity supply with Energy Plus (typically 15-30 minutes online).",
+  "Your supply switches to Energy Plus at the next meter read.",
+  "Receive a $25 activation bonus for each meter you sign up.",
+  "Earn 5% cash back each year on the supply portion of your electricity bill."
+ ],
+ "terms_url": "https://www.energypluscompany.com/icpaoffer/",
+ "time_max_minutes": 30,
+ "time_min_minutes": 15,
+ "timing": "Bonus and cash back begin after your electricity supply switches to Energy Plus.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus and cash back begin after your electricity supply switches to Energy Plus.",
+ "maximize": "Fastest honest path: Bonus and cash back begin after your electricity supply switches to Energy Plus. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

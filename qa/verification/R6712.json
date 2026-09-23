@@ -1,101 +1,104 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=com.airtasker.airtasker",
-  "ios": "https://apps.apple.com/app/airtasker/id615402591"
- },
- "biggest_catch": "You pay the platform a 10\u201320% service fee on every task you win \u2014 and your payment only starts moving after the customer clicks to release it.",
- "catches": [
-  "Tasker service fee is 10\u201320% tiered (lower at higher tiers), taken from your task earnings.",
-  "Payment requires the customer to mark the task complete and release payment \u2014 slow or unresponsive customers delay your money.",
-  "Cash payments are not supported; everything flows through Airtasker Pay (Stripe escrow) to your nominated bank account.",
-  "You compete by bidding against other Taskers, so winning work depends on price, profile, and reviews.",
-  "Stripe KYC verification may be required before payouts work."
- ],
- "checked_at": "2026-09-23T13:05:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Airtasker (founded Sydney 2012) is a real task marketplace; official support centre documents the full Tasker payment flow.",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.airtasker.airtasker",
+    "ios": "https://apps.apple.com/app/airtasker/id615402591"
   },
-  "c2": {
-   "evidence": "Official support.airtasker.com 'When will I get paid?': 'When you complete a task and click Request payment, the Customer is sent a notification alerting them to release the payment. Once the Customer has agreed the task is done and clicks the release button, payment is immediately released from Airtasker and begins its journey to you.' Payment amounts are the Tasker's own offer prices per task (official community guidelines: offers must be a total task price).",
-   "pass": true
+  "biggest_catch": "You pay the platform a 10\u201320% service fee on every task you win \u2014 and your payment only starts moving after the customer clicks to release it.",
+  "catches": [
+    "Tasker service fee is 10\u201320% tiered (lower at higher tiers), taken from your task earnings.",
+    "Payment requires the customer to mark the task complete and release payment \u2014 slow or unresponsive customers delay your money.",
+    "Cash payments are not supported; everything flows through Airtasker Pay (Stripe escrow) to your nominated bank account.",
+    "You compete by bidding against other Taskers, so winning work depends on price, profile, and reviews.",
+    "Stripe KYC verification may be required before payouts work."
+  ],
+  "checked_at": "2026-09-23T13:05:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Airtasker (founded Sydney 2012) is a real task marketplace; official support centre documents the full Tasker payment flow.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official support.airtasker.com 'When will I get paid?': 'When you complete a task and click Request payment, the Customer is sent a notification alerting them to release the payment. Once the Customer has agreed the task is done and clicks the release button, payment is immediately released from Airtasker and begins its journey to you.' Payment amounts are the Tasker's own offer prices per task (official community guidelines: offers must be a total task price).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join; free tier allows offers. Service fee applies only on won tasks (percentage of earnings, not an upfront cost).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official support.airtasker.com: 'Our payments are handled through a world-class third-party payment provider, Stripe. Due to processing times between Stripe and your bank, the payment should arrive in your nominated account within 3-5 business days after release.'",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to join; free tier allows offers. Service fee applies only on won tasks (percentage of earnings, not an upfront cost).",
-   "pass": true
+  "eligibility": "Taskers in AU/UK/US and other Airtasker markets; ID + bank details; Stripe KYC may apply.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Official evidence from Airtasker Support Centre (support.airtasker.com). Payout amounts are per-task offer prices (tasker-set); timing 3-5 business days post-release. Distinct from TaskRabbit.",
+  "numeric_basis": "payout: tasker-set offer price per task (official); time: per-task, typically 1-4 hours of task work",
+  "official_url": "https://www.airtasker.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "When you complete a task and click Request payment, the Customer is sent a notification alerting them to release the payment. Once the Customer has agreed the task is done and clicks the release button, payment is immediately released from Airtasker and begins its journey to you. (support.airtasker.com) | payment should arrive in your nominated account within 3-5 business days after release. (support.airtasker.com)",
+  "payout_value_note": "tasker-set offer price per task (10-20% tiered service fee deducted)",
+  "provider": "Airtasker",
+  "route_id": "R6712",
+  "speed": "days",
+  "standard": {
+    "s1": {
+      "note": "ID/bank/KYC requirements stated.",
+      "pass": true
+    },
+    "s2": {
+      "note": "10-20% tiered service fee on winnings disclosed; no upfront fee.",
+      "pass": true
+    },
+    "s3": {
+      "note": "3-5 business days after customer release \u2014 days.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee; earnings depend on winning bids.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official Airtasker Support Centre articles.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Distinct from TaskRabbit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "upfront_fee false (fee is on earnings).",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official support.airtasker.com: 'Our payments are handled through a world-class third-party payment provider, Stripe. Due to processing times between Stripe and your bank, the payment should arrive in your nominated account within 3-5 business days after release.'",
-   "pass": true
-  }
- },
- "eligibility": "Taskers in AU/UK/US and other Airtasker markets; ID + bank details; Stripe KYC may apply.",
- "notes": "Checked 2026-09-23. Official evidence from Airtasker Support Centre (support.airtasker.com). Payout amounts are per-task offer prices (tasker-set); timing 3-5 business days post-release. Distinct from TaskRabbit.",
- "numeric_basis": "payout: tasker-set offer price per task (official); time: per-task, typically 1-4 hours of task work",
- "official_url": "https://www.airtasker.com",
- "payout_max_usd": 0,
- "payout_min_usd": 0,
- "payout_quote": "When you complete a task and click Request payment, the Customer is sent a notification alerting them to release the payment. Once the Customer has agreed the task is done and clicks the release button, payment is immediately released from Airtasker and begins its journey to you. (support.airtasker.com) | payment should arrive in your nominated account within 3-5 business days after release. (support.airtasker.com)",
- "payout_value_note": "tasker-set offer price per task (10-20% tiered service fee deducted)",
- "provider": "Airtasker",
- "route_id": "R6712",
- "speed": "days",
- "standard": {
-  "s1": {
-   "note": "ID/bank/KYC requirements stated.",
-   "pass": true
+  "steps": [
+    "Create a Tasker account and verify your identity (Stripe KYC may be required).",
+    "Browse posted tasks or get matched; submit an offer with your total task price.",
+    "Win the task \u2014 the customer assigns you and Airtasker Pay holds their payment in Stripe escrow.",
+    "Complete the task and click Request payment.",
+    "Customer confirms completion and releases payment; funds arrive in your nominated bank account within 3-5 business days."
+  ],
+  "terms_url": "https://support.airtasker.com/hc/en-au/articles/205276334-When-will-I-get-paid",
+  "time_max_minutes": 240,
+  "time_min_minutes": 60,
+  "timing": "Customer releases payment after completion; funds land in your bank account within 3-5 business days via Stripe.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "10-20% tiered service fee on winnings disclosed; no upfront fee.",
-   "pass": true
+  "who_pays": "The customer who posted the task pays through Airtasker's escrow \u2014 you keep your offer price minus Airtasker's 10\u201320% tiered service fee.",
+  "who_qualifies": "Taskers in AU, the UK, the US, and other Airtasker markets; ID plus bank details, and Stripe identity verification may apply.",
+  "work_available": "An open bidding marketplace \u2014 you compete with other Taskers on price, profile, and reviews, so winning work depends on how strong your profile looks.",
+  "what_gets_accepted": "The customer must mark the task complete and click to release payment. Cash payments aren't supported \u2014 everything flows through Airtasker Pay.",
+  "costs_and_unpaid_time": "No join fee, but Airtasker takes a 10\u201320% service fee out of every task you win. Unpaid time: bidding on tasks you don't win, and waiting on slow or unresponsive customers to release payment.",
+  "when_cash_arrives": "Once the customer releases payment, it travels via Stripe to your nominated bank account within 3\u20135 business days.",
+  "repeatable": {
+    "value": true,
+    "cadence": "New tasks post on the marketplace \u2014 win a task, complete it, get paid to your bank, and bid on the next one."
   },
-  "s3": {
-   "note": "3-5 business days after customer release \u2014 days.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee; earnings depend on winning bids.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official Airtasker Support Centre articles.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Distinct from TaskRabbit.",
-   "pass": true
-  },
-  "s7": {
-   "note": "upfront_fee false (fee is on earnings).",
-   "pass": true
-  }
- },
- "steps": [
-  "Create a Tasker account and verify your identity (Stripe KYC may be required).",
-  "Browse posted tasks or get matched; submit an offer with your total task price.",
-  "Win the task \u2014 the customer assigns you and Airtasker Pay holds their payment in Stripe escrow.",
-  "Complete the task and click Request payment.",
-  "Customer confirms completion and releases payment; funds arrive in your nominated bank account within 3-5 business days."
- ],
- "terms_url": "https://support.airtasker.com/hc/en-au/articles/205276334-When-will-I-get-paid",
- "time_max_minutes": 240,
- "time_min_minutes": 60,
- "timing": "Customer releases payment after completion; funds land in your bank account within 3-5 business days via Stripe.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "who_pays": "The customer who posted the task pays through Airtasker's escrow \u2014 you keep your offer price minus Airtasker's 10\u201320% tiered service fee.",
- "who_qualifies": "Taskers in AU, the UK, the US, and other Airtasker markets; ID plus bank details, and Stripe identity verification may apply.",
- "work_available": "An open bidding marketplace \u2014 you compete with other Taskers on price, profile, and reviews, so winning work depends on how strong your profile looks.",
- "what_gets_accepted": "The customer must mark the task complete and click to release payment. Cash payments aren't supported \u2014 everything flows through Airtasker Pay.",
- "costs_and_unpaid_time": "No join fee, but Airtasker takes a 10\u201320% service fee out of every task you win. Unpaid time: bidding on tasks you don't win, and waiting on slow or unresponsive customers to release payment.",
- "when_cash_arrives": "Once the customer releases payment, it travels via Stripe to your nominated bank account within 3\u20135 business days.",
- "repeatable": {
-  "value": true,
-  "cadence": "New tasks post on the marketplace \u2014 win a task, complete it, get paid to your bank, and bid on the next one."
- }
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

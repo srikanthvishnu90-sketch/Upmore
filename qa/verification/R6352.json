@@ -1,86 +1,89 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's 5,000 Rewards points — worth a $45 service plan, not cash — and the points aren't claimable until about 60 days after the friend's activation is validated, with both of you still active.",
+ "catches": [
+  "Points, not cash — redeemable only toward Straight Talk service plans; no cash value and not transferable",
+  "Friend must join Straight Talk Rewards and enter your code within 14 days of activation",
+  "Points typically claimable ~60 days after the new account activation is validated; both referrer and friend must remain active at maturity",
+  "Up to 5 referrals per month; a referred device (ESN) earns points once per lifetime",
+  "A minimum $5 payment with a preferred payment method is required when redeeming points toward a plan"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Straight Talk 'Refer a Friend (Loyalty Referral Program)' page on straighttalk.com: 'enter your friend's code within 14 days of activation and you'll both receive 5,000 points'. Fuller terms on official rewards.straighttalk.com/referafriend.",
+   "pass": true
   },
-  "biggest_catch": "It's 5,000 Rewards points \u2014 worth a $45 service plan, not cash \u2014 and the points aren't claimable until about 60 days after the friend's activation is validated, with both of you still active.",
-  "catches": [
-    "Points, not cash \u2014 redeemable only toward Straight Talk service plans; no cash value and not transferable",
-    "Friend must join Straight Talk Rewards and enter your code within 14 days of activation",
-    "Points typically claimable ~60 days after the new account activation is validated; both referrer and friend must remain active at maturity",
-    "Up to 5 referrals per month; a referred device (ESN) earns points once per lifetime",
-    "A minimum $5 payment with a preferred payment method is required when redeeming points toward a plan"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Straight Talk 'Refer a Friend (Loyalty Referral Program)' page on straighttalk.com: 'enter your friend's code within 14 days of activation and you'll both receive 5,000 points'. Fuller terms on official rewards.straighttalk.com/referafriend.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Pages live and current (straighttalk.com page crawled 13 days ago; rewards.straighttalk.com terms crawled 6 days ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'you'll both receive 5,000 points \u2013 enough for a $45 service plan!' \u2014 provider's own stated redemption value.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "14-day code-entry window, ~60-day validation wait, 5/month cap, active-at-maturity rule, and no-cash-value stated across the two official pages.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Pages live and current (straighttalk.com page crawled 13 days ago; rewards.straighttalk.com terms crawled 6 days ago).",
+   "pass": true
   },
-  "eligibility": "Straight Talk Rewards member; friend must be a new Straight Talk customer who activates service, joins Rewards, and enters the referrer's code within 14 days of activation.",
-  "notes": "Verified 2026-09-23 against straighttalk.com and rewards.straighttalk.com (official domains). Deduped: no Straight Talk routes in catalog, evidence files, or rejects-g60.",
-  "numeric_basis": "payout from official terms (5,000 points each = $45 service plan per provider's own redemption value); time: referral share 5-15 min active",
-  "official_url": "https://www.straighttalk.com/whyst/loyalty-program",
-  "payout_max_usd": 45,
-  "payout_min_usd": 45,
-  "payout_quote": "Got a referral code from a friend? Switch to Straight Talk and join Rewards. Then, enter your friend's code within 14 days of activation and you'll both receive 5,000 points \u2013 enough for a $45 service plan!",
-  "payout_value_note": "5,000 Straight Talk Rewards points to both sides = one $45 service plan per the provider's own stated redemption value; points offset service only, not cash.",
-  "route_id": "R6352",
-  "standard": {
-    "s1": {
-      "note": "Exact amount and redemption value stated verbatim in official terms (5,000 points = $45 service plan).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: points offset planned Straight Talk service spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official pages (share code, friend activates and joins Rewards, enters code within 14 days, points claimable ~60 days after validation).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: points not cash, and the ~60-day wait with both sides active.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond the friend's own Straight Talk plan (plus $5 minimum payment when redeeming).",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against straighttalk.com and rewards.straighttalk.com (provider's own domains). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'you'll both receive 5,000 points – enough for a $45 service plan!' — provider's own stated redemption value.",
+   "pass": true
   },
-  "steps": [
-    "Existing Straight Talk customer joins Straight Talk Rewards and gets their unique referral code",
-    "Share the code with a friend or family member",
-    "Friend switches to Straight Talk, activates service, and joins Rewards",
-    "Friend enters the referrer's code within 14 days of activation",
-    "Both sides receive 5,000 points, typically claimable within 60 days after the new activation is validated"
-  ],
-  "terms_url": "https://rewards.straighttalk.com/referafriend",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Points typically available to claim within 60 days after validation of the new account activation; both sides must remain active at maturity.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "14-day code-entry window, ~60-day validation wait, 5/month cap, active-at-maturity rule, and no-cash-value stated across the two official pages.",
+   "pass": true
+  }
+ },
+ "eligibility": "Straight Talk Rewards member; friend must be a new Straight Talk customer who activates service, joins Rewards, and enters the referrer's code within 14 days of activation.",
+ "notes": "Verified 2026-09-23 against straighttalk.com and rewards.straighttalk.com (official domains). Deduped: no Straight Talk routes in catalog, evidence files, or rejects-g60.",
+ "numeric_basis": "payout from official terms (5,000 points each = $45 service plan per provider's own redemption value); time: referral share 5-15 min active",
+ "official_url": "https://www.straighttalk.com/whyst/loyalty-program",
+ "payout_max_usd": 45,
+ "payout_min_usd": 45,
+ "payout_quote": "Got a referral code from a friend? Switch to Straight Talk and join Rewards. Then, enter your friend's code within 14 days of activation and you'll both receive 5,000 points – enough for a $45 service plan!",
+ "payout_value_note": "5,000 Straight Talk Rewards points to both sides = one $45 service plan per the provider's own stated redemption value; points offset service only, not cash.",
+ "route_id": "R6352",
+ "standard": {
+  "s1": {
+   "note": "Exact amount and redemption value stated verbatim in official terms (5,000 points = $45 service plan).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: points offset planned Straight Talk service spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official pages (share code, friend activates and joins Rewards, enters code within 14 days, points claimable ~60 days after validation).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: points not cash, and the ~60-day wait with both sides active.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond the friend's own Straight Talk plan (plus $5 minimum payment when redeeming).",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against straighttalk.com and rewards.straighttalk.com (provider's own domains). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Existing Straight Talk customer joins Straight Talk Rewards and gets their unique referral code",
+  "Share the code with a friend or family member",
+  "Friend switches to Straight Talk, activates service, and joins Rewards",
+  "Friend enters the referrer's code within 14 days of activation",
+  "Both sides receive 5,000 points, typically claimable within 60 days after the new activation is validated"
+ ],
+ "terms_url": "https://rewards.straighttalk.com/referafriend",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Points typically available to claim within 60 days after validation of the new account activation; both sides must remain active at maturity.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Points typically available to claim within 60 days after validation of the new account activation; both sides must remain active at maturity.",
+ "maximize": "Fastest honest path: Points typically available to claim within 60 days after validation of the new account activation; both sides must remain active at maturity. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

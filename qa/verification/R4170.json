@@ -1,91 +1,102 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Your FULL direct deposit must land at HCU every month for a full year, and if you close the account within the first 12 months the $300 is clawed back — this is a 12-month commitment, not a quick flip.",
+ "catches": [
+  "You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit; the direct deposit must be received within 60 days of account opening.",
+  "HCU must receive your full direct deposit during each monthly qualification cycle for a full year — not a one-time switch.",
+  "At least six (6) debit card purchases must clear and post within the first 60 days, OR you must spend $1,000 on an HCU VISA Platinum Credit Card within three months of it being issued.",
+  "You must enroll in online banking and receive eStatements.",
+  "One $300 bonus per member/household.",
+  "Existing HCU checking account holders are excluded.",
+  "If you close the account within the first 12 months, your checking account will be charged $300 (clawback).",
+  "Membership eligibility is live or work in Hampden, Hampshire, Berkshire, Franklin, or Worcester County, MA, or Hartford County, CT per the current official About Us page (holyokecu.com/about-us) — a 2024 by-law amendment expanded the field from the old Hampden/Hampshire-only rule.",
+  "Bank bonuses are generally reported as interest income; expect tax reporting.",
+  "No stated promo end date — the offer could be changed or withdrawn without notice."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Holyoke Credit Union — real Massachusetts credit union (Holyoke, MA; established 1911); official offer on holyokecu.com.",
+   "pass": true
   },
-  "biggest_catch": "Your FULL direct deposit must land at HCU every month for a full year, and if you close the account within the first 12 months the $300 is clawed back — this is a 12-month commitment, not a quick flip.",
-  "catches": [
-    "You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit; the direct deposit must be received within 60 days of account opening.",
-    "HCU must receive your full direct deposit during each monthly qualification cycle for a full year — not a one-time switch.",
-    "At least six (6) debit card purchases must clear and post within the first 60 days, OR you must spend $1,000 on an HCU VISA Platinum Credit Card within three months of it being issued.",
-    "You must enroll in online banking and receive eStatements.",
-    "One $300 bonus per member/household.",
-    "Existing HCU checking account holders are excluded.",
-    "If you close the account within the first 12 months, your checking account will be charged $300 (clawback).",
-    "Membership eligibility is live or work in Hampden, Hampshire, Berkshire, Franklin, or Worcester County, MA, or Hartford County, CT per the current official About Us page (holyokecu.com/about-us) — a 2024 by-law amendment expanded the field from the old Hampden/Hampshire-only rule.",
-    "Bank bonuses are generally reported as interest income; expect tax reporting.",
-    "No stated promo end date — the offer could be changed or withdrawn without notice."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Holyoke Credit Union — real Massachusetts credit union (Holyoke, MA; established 1911); official offer on holyokecu.com.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official HCU Simply FREE Checking page headed 'How to earn your $300' with six numbered qualifications and the $300 clawback for closing within 12 months.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No monthly maintenance fees on Simply FREE Checking; $10 minimum to open; no upfront fee required for the bonus.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Official page: 'You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit.'",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official HCU Simply FREE Checking page headed 'How to earn your $300' with six numbered qualifications and the $300 clawback for closing within 12 months.",
+   "pass": true
   },
-  "eligibility": "New HCU checking customers only (existing HCU checking holders excluded); one bonus per member/household. Membership open to anyone who live or work in Hampden, Hampshire, Berkshire, Franklin, or Worcester County, MA, or Hartford County, CT (per current official About Us page; a 2024 by-law amendment expanded from Hampden/Hampshire only).",
-  "notes": "Direct official-page fetch of the SimplyFREE Checking bonus terms on 2026-09-23 (supersedes indexed-text evidence). Geography updated to current charter per official About Us page. The 12-month $300 clawback is the biggest catch.",
-  "numeric_basis": "payout from official terms ($300 flat); time: online application + DD + eStatements setup est. 30-60 min active",
-  "official_url": "https://www.holyokecu.com/personal/personal-checking/simply-free-checking",
-  "payout_max_usd": 300,
-  "payout_min_usd": 300,
-  "payout_quote": "You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit.",
-  "payout_value_note": "flat $300 cash bonus in official terms",
-  "route_id": "R4170",
-  "standard": {
-    "s1": {
-      "note": "New HCU checking customers only; one per member/household; HCU membership eligibility required.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Direct deposit received within 60 days and maintained every monthly cycle for a full year; 6+ debit purchases in first 60 days (or $1k HCU Visa spend in 3 months); online banking + eStatements.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$300 credited once HCU receives the qualifying direct deposit.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Bonus stated flatly at $300; no weasel softening on the amount — only the implied no-end-date reservation.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Offer page + About Us page on holyokecu.com; geography confirmed from current official About Us (crawled 13 days ago).",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: open online with $10, set up direct deposit, make 6 debit purchases, enroll in online banking/eStatements.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official HCU page fetched 2026-09-23 (UTC).",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No monthly maintenance fees on Simply FREE Checking; $10 minimum to open; no upfront fee required for the bonus.",
+   "pass": true
   },
-  "steps": [
-    "Open a new HCU Simply FREE Checking account online (with $10) or at a branch.",
-    "Set up your direct deposit to HCU so it is received within 60 days of opening, and keep your full direct deposit landing at HCU every monthly statement cycle for a full year.",
-    "Make at least six debit card purchases that clear and post within the first 60 days (or spend $1,000 on an HCU VISA Platinum Credit Card within three months of issuance).",
-    "Enroll in online banking and receive eStatements.",
-    "The $300 bonus is credited once HCU receives the qualifying direct deposit; do not close the account within 12 months or the $300 is charged back."
-  ],
-  "terms_url": "https://www.holyokecu.com/personal/personal-checking/simply-free-checking",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Bonus credited once HCU receives the qualifying direct deposit; the full direct deposit must continue each monthly cycle for a full year and the account must stay open 12 months to avoid the $300 clawback.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Official page: 'You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New HCU checking customers only (existing HCU checking holders excluded); one bonus per member/household. Membership open to anyone who live or work in Hampden, Hampshire, Berkshire, Franklin, or Worcester County, MA, or Hartford County, CT (per current official About Us page; a 2024 by-law amendment expanded from Hampden/Hampshire only).",
+ "notes": "Direct official-page fetch of the SimplyFREE Checking bonus terms on 2026-09-23 (supersedes indexed-text evidence). Geography updated to current charter per official About Us page. The 12-month $300 clawback is the biggest catch.",
+ "numeric_basis": "payout from official terms ($300 flat); time: online application + DD + eStatements setup est. 30-60 min active",
+ "official_url": "https://www.holyokecu.com/personal/personal-checking/simply-free-checking",
+ "payout_max_usd": 300,
+ "payout_min_usd": 300,
+ "payout_quote": "You will receive your $300 bonus once Holyoke Credit Union receives your direct deposit.",
+ "payout_value_note": "flat $300 cash bonus in official terms",
+ "route_id": "R4170",
+ "standard": {
+  "s1": {
+   "note": "New HCU checking customers only; one per member/household; HCU membership eligibility required.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Direct deposit received within 60 days and maintained every monthly cycle for a full year; 6+ debit purchases in first 60 days (or $1k HCU Visa spend in 3 months); online banking + eStatements.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$300 credited once HCU receives the qualifying direct deposit.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Bonus stated flatly at $300; no weasel softening on the amount — only the implied no-end-date reservation.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Offer page + About Us page on holyokecu.com; geography confirmed from current official About Us (crawled 13 days ago).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: open online with $10, set up direct deposit, make 6 debit purchases, enroll in online banking/eStatements.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official HCU page fetched 2026-09-23 (UTC).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new HCU Simply FREE Checking account online (with $10) or at a branch.",
+  "Set up your direct deposit to HCU so it is received within 60 days of opening, and keep your full direct deposit landing at HCU every monthly statement cycle for a full year.",
+  "Make at least six debit card purchases that clear and post within the first 60 days (or spend $1,000 on an HCU VISA Platinum Credit Card within three months of issuance).",
+  "Enroll in online banking and receive eStatements.",
+  "The $300 bonus is credited once HCU receives the qualifying direct deposit; do not close the account within 12 months or the $300 is charged back."
+ ],
+ "terms_url": "https://www.holyokecu.com/personal/personal-checking/simply-free-checking",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Bonus credited once HCU receives the qualifying direct deposit; the full direct deposit must continue each monthly cycle for a full year and the account must stay open 12 months to avoid the $300 clawback.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $300. Per official terms: Bonus credited once HCU receives the qualifying direct deposit; the full direct deposit must continue each monthly cycle for a full year and the account must stay open 12 months to avoid the $300 clawback. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 60-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }

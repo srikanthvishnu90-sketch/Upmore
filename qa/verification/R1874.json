@@ -1,82 +1,85 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $100 credit requires 1,500+ kWh every single billing cycle — most months below that earn nothing.",
+ "catches": [
+  "No credit below 1,500 kWh — high usage threshold.",
+  "12-month fixed-rate term with early termination fee.",
+  "The credit reduces the bill; it is savings on planned energy spending, not cash."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Provider's own EFL (eflviewer.frontierutilities.com, dated 09/01/2026) loaded and states the $100 usage credit.",
+   "pass": true
   },
-  "biggest_catch": "The $100 credit requires 1,500+ kWh every single billing cycle — most months below that earn nothing.",
-  "catches": [
-    "No credit below 1,500 kWh — high usage threshold.",
-    "12-month fixed-rate term with early termination fee.",
-    "The credit reduces the bill; it is savings on planned energy spending, not cash."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Provider's own EFL (eflviewer.frontierutilities.com, dated 09/01/2026) loaded and states the $100 usage credit.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Concrete amount on the provider's own disclosure: $100.00 usage credit at >=1,500 kWh.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; the plan is normal energy service with a usage-gated bill credit.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "EFL dated 2026-09-01, current as of the 2026-09-23 check.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Concrete amount on the provider's own disclosure: $100.00 usage credit at >=1,500 kWh.",
+   "pass": true
   },
-  "eligibility": "Texas residential customers in Frontier Utilities service areas enrolling on the Saver Deluxe 12 plan.",
-  "notes": "Usage credit framed as savings on planned energy spending, not income. Distinct from R0742 (Frontier Airlines credit card miles).",
-  "numeric_basis": "payout from official EFL ($100 flat); time: online enrollment est. 20-30 min active",
-  "official_url": "https://eflviewer.frontierutilities.com/eflviewer.aspx?lang=EN&prodcode=FSVRDLX12&tdspcode=CNP&ppid=193721&logid=83909&filename=CNP_FSVRDLX12_20260901_0000_83909",
-  "payout_max_usd": 100,
-  "payout_min_usd": 0,
-  "payout_quote": "A Usage Credit of $100.00 will be included for each billing cycle when your usage on this plan is equal to or greater than 1500 kWh.",
-  "payout_value_note": "$100/month usage credit when usage is >=1,500 kWh per billing cycle.",
-  "route_id": "R1874",
-  "standard": {
-    "s1": {
-      "note": "Texas residential customers in Frontier service areas on the Saver Deluxe 12 plan, per the EFL.",
-      "pass": true
-    },
-    "s2": {
-      "note": "No signup fee; early termination fee disclosed on the plan.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Credit included automatically each qualifying billing cycle.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Payout stated exactly with no weasel words.",
-      "pass": true
-    },
-    "s5": {
-      "note": "Official EFL loaded live on 2026-09-23.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps are concrete: enroll, use >=1,500 kWh, credit applies automatically.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Checked 2026-09-23.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; the plan is normal energy service with a usage-gated bill credit.",
+   "pass": true
   },
-  "steps": [
-    "Enroll on the Frontier Utilities Frontier Saver Deluxe 12 plan.",
-    "Use 1,500 kWh or more in a billing cycle.",
-    "The $100 usage credit is included automatically on that cycle's bill."
-  ],
-  "terms_url": "https://eflviewer.frontierutilities.com/eflviewer.aspx?lang=EN&prodcode=FSVRDLX12&tdspcode=CNP&ppid=193721&logid=83909&filename=CNP_FSVRDLX12_20260901_0000_83909",
-  "time_max_minutes": 30,
-  "time_min_minutes": 20,
-  "timing": "Enrollment ~20 minutes online; credit applies automatically each qualifying billing cycle.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "EFL dated 2026-09-01, current as of the 2026-09-23 check.",
+   "pass": true
+  }
+ },
+ "eligibility": "Texas residential customers in Frontier Utilities service areas enrolling on the Saver Deluxe 12 plan.",
+ "notes": "Usage credit framed as savings on planned energy spending, not income. Distinct from R0742 (Frontier Airlines credit card miles).",
+ "numeric_basis": "payout from official EFL ($100 flat); time: online enrollment est. 20-30 min active",
+ "official_url": "https://eflviewer.frontierutilities.com/eflviewer.aspx?lang=EN&prodcode=FSVRDLX12&tdspcode=CNP&ppid=193721&logid=83909&filename=CNP_FSVRDLX12_20260901_0000_83909",
+ "payout_max_usd": 100,
+ "payout_min_usd": 0,
+ "payout_quote": "A Usage Credit of $100.00 will be included for each billing cycle when your usage on this plan is equal to or greater than 1500 kWh.",
+ "payout_value_note": "$100/month usage credit when usage is >=1,500 kWh per billing cycle.",
+ "route_id": "R1874",
+ "standard": {
+  "s1": {
+   "note": "Texas residential customers in Frontier service areas on the Saver Deluxe 12 plan, per the EFL.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No signup fee; early termination fee disclosed on the plan.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Credit included automatically each qualifying billing cycle.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Payout stated exactly with no weasel words.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Official EFL loaded live on 2026-09-23.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: enroll, use >=1,500 kWh, credit applies automatically.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Checked 2026-09-23.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Enroll on the Frontier Utilities Frontier Saver Deluxe 12 plan.",
+  "Use 1,500 kWh or more in a billing cycle.",
+  "The $100 usage credit is included automatically on that cycle's bill."
+ ],
+ "terms_url": "https://eflviewer.frontierutilities.com/eflviewer.aspx?lang=EN&prodcode=FSVRDLX12&tdspcode=CNP&ppid=193721&logid=83909&filename=CNP_FSVRDLX12_20260901_0000_83909",
+ "time_max_minutes": 30,
+ "time_min_minutes": 20,
+ "timing": "Enrollment ~20 minutes online; credit applies automatically each qualifying billing cycle.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Enrollment ~20 minutes online; credit applies automatically each qualifying billing cycle.",
+ "maximize": "Fastest honest path: Enrollment ~20 minutes online; credit applies automatically each qualifying billing cycle. Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

@@ -1,84 +1,87 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "It's referrer-only — your friend gets nothing — and they must take a 6-month commitment; the referral card or form must be returned within 30 days of the new install, or no credit is given.",
+ "catches": [
+  "Referrer-only: the $75 credit goes on the referring customer's next internet bill; no stated reward for the friend",
+  "New customer must make a 6-month commitment or no referral credit is paid",
+  "Referral card or form must be returned within 30 days of the new install — credit cannot be given after the fact",
+  "Credit to the account can take up to 60 days to process; program can be changed or discontinued at any time"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Direct Communications Fiber 'Refer a Friend' page on directcomfiber.com/refer-a-friend/ (per current search index, crawled 1 day ago): 'Now earn $75 for every referral.' 'When your friend signs up* for Direct Communications Fiber, you will receive a $75 credit on your next internet bill.' '*A 6-month commitment is required on part of new customer to receive any referral-progam credit.' 'The referral card or form must be returned within 30 days of the new install to receive credit for a referral. We cannot give credit after the fact.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+   "pass": true
   },
-  "biggest_catch": "It's referrer-only \u2014 your friend gets nothing \u2014 and they must take a 6-month commitment; the referral card or form must be returned within 30 days of the new install, or no credit is given.",
-  "catches": [
-    "Referrer-only: the $75 credit goes on the referring customer's next internet bill; no stated reward for the friend",
-    "New customer must make a 6-month commitment or no referral credit is paid",
-    "Referral card or form must be returned within 30 days of the new install \u2014 credit cannot be given after the fact",
-    "Credit to the account can take up to 60 days to process; program can be changed or discontinued at any time"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Direct Communications Fiber 'Refer a Friend' page on directcomfiber.com/refer-a-friend/ (per current search index, crawled 1 day ago): 'Now earn $75 for every referral.' 'When your friend signs up* for Direct Communications Fiber, you will receive a $75 credit on your next internet bill.' '*A 6-month commitment is required on part of new customer to receive any referral-progam credit.' 'The referral card or form must be returned within 30 days of the new install to receive credit for a referral. We cannot give credit after the fact.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official page currently listed on directcomfiber.com (index crawl 1 day ago).",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount verbatim: 'Now earn $75 for every referral.' / 'you will receive a $75 credit on your next internet bill.'",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "6-month commitment gate, 30-day card return window, up-to-60-day processing, and program-change rights are stated on the official page.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official page currently listed on directcomfiber.com (index crawl 1 day ago).",
+   "pass": true
   },
-  "eligibility": "Existing Direct Communications Fiber customer; friend must sign up for Directcom fiber service with a 6-month commitment.",
-  "notes": "Verified 2026-09-23 from the official directcomfiber.com referral page. Deduped: no Direct Communications routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the single fuzzy hit was Xcel Energy R0797, manually confirmed unrelated). Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 1 day ago).",
-  "numeric_basis": "payout from official terms ($75 bill credit to referrer per referral); time: referral share 5-15 min active",
-  "official_url": "https://directcomfiber.com/refer-a-friend/",
-  "payout_max_usd": 75,
-  "payout_min_usd": 75,
-  "payout_quote": "Now earn $75 for every referral. When your friend signs up for Direct Communications Fiber, you will receive a $75 credit on your next internet bill.",
-  "payout_value_note": "$75 credit on the referrer's next internet bill per referral \u2014 offsets planned Direct Communications spending, not income.",
-  "route_id": "R6392",
-  "standard": {
-    "s1": {
-      "note": "Exact amount stated verbatim on the official page ($75).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credit offsets planned internet spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (online form, referral card, or friend gives your name at signup).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: referrer-only, 6-month commitment gate, 30-day card return window.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Direct Communications service.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against directcomfiber.com (provider's own domain) via current official-page content. Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount verbatim: 'Now earn $75 for every referral.' / 'you will receive a $75 credit on your next internet bill.'",
+   "pass": true
   },
-  "steps": [
-    "Fill in the online referral form, or give your friend a completed referral card, or have them give your name at signup",
-    "Friend signs up for Direct Communications Fiber with a 6-month commitment",
-    "Referral card or form is returned within 30 days of the new install",
-    "You receive a $75 credit on your next internet bill (can take up to 60 days to process)"
-  ],
-  "terms_url": "https://directcomfiber.com/refer-a-friend/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Credit can take up to 60 days to process after the install and card return.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "6-month commitment gate, 30-day card return window, up-to-60-day processing, and program-change rights are stated on the official page.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Direct Communications Fiber customer; friend must sign up for Directcom fiber service with a 6-month commitment.",
+ "notes": "Verified 2026-09-23 from the official directcomfiber.com referral page. Deduped: no Direct Communications routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (the single fuzzy hit was Xcel Energy R0797, manually confirmed unrelated). Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 1 day ago).",
+ "numeric_basis": "payout from official terms ($75 bill credit to referrer per referral); time: referral share 5-15 min active",
+ "official_url": "https://directcomfiber.com/refer-a-friend/",
+ "payout_max_usd": 75,
+ "payout_min_usd": 75,
+ "payout_quote": "Now earn $75 for every referral. When your friend signs up for Direct Communications Fiber, you will receive a $75 credit on your next internet bill.",
+ "payout_value_note": "$75 credit on the referrer's next internet bill per referral — offsets planned Direct Communications spending, not income.",
+ "route_id": "R6392",
+ "standard": {
+  "s1": {
+   "note": "Exact amount stated verbatim on the official page ($75).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credit offsets planned internet spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (online form, referral card, or friend gives your name at signup).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: referrer-only, 6-month commitment gate, 30-day card return window.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Direct Communications service.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against directcomfiber.com (provider's own domain) via current official-page content. Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Fill in the online referral form, or give your friend a completed referral card, or have them give your name at signup",
+  "Friend signs up for Direct Communications Fiber with a 6-month commitment",
+  "Referral card or form is returned within 30 days of the new install",
+  "You receive a $75 credit on your next internet bill (can take up to 60 days to process)"
+ ],
+ "terms_url": "https://directcomfiber.com/refer-a-friend/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Credit can take up to 60 days to process after the install and card return.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Credit can take up to 60 days to process after the install and card return.",
+ "maximize": "Fastest honest path: Credit can take up to 60 days to process after the install and card return. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

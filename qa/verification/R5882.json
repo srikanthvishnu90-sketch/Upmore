@@ -1,87 +1,98 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Bonus offer code must be used when opening — this is the public offer page, but you must open 'from this offer webpage' with the code; a bonus received for any Wells Fargo consumer checking account in the past 12 months disqualifies you.",
+ "catches": [
+  "Offer ends October 13, 2026 — must open by that date.",
+  "New consumer checking customers only; excludes anyone who received a Wells Fargo consumer checking bonus in the past 12 months, Wells Fargo employees, and non-resident aliens.",
+  "Bonus offer code must be used when opening the account from the offer webpage.",
+  "10 or more qualifying POSTED transactions within 60 days — pending transactions and ATM/teller transactions do not count; timing of posting can vary from same day to weeks.",
+  "$25 minimum opening deposit; $5 monthly service fee unless waived (waived for primary owner age 13-24).",
+  "Bonus deposited within 30 days of meeting requirements; account must stay open; bonus reported as income to tax authorities.",
+  "Cannot be combined with any other consumer deposit offer; limit one bonus per customer/account.",
+  "Account may be closed and bonus reversed if bonus abuse is suspected."
+ ],
+ "checked_at": "2026-09-23T05:32:46Z",
+ "critical": {
+  "c1": {
+   "evidence": "Wells Fargo Bank, N.A. — real operating bank; official checking-bonus offer page on accountoffers.wellsfargo.com, headed 'Great Choice for Students and more'.",
+   "pass": true
   },
-  "biggest_catch": "Bonus offer code must be used when opening \u2014 this is the public offer page, but you must open 'from this offer webpage' with the code; a bonus received for any Wells Fargo consumer checking account in the past 12 months disqualifies you.",
-  "catches": [
-    "Offer ends October 13, 2026 \u2014 must open by that date.",
-    "New consumer checking customers only; excludes anyone who received a Wells Fargo consumer checking bonus in the past 12 months, Wells Fargo employees, and non-resident aliens.",
-    "Bonus offer code must be used when opening the account from the offer webpage.",
-    "10 or more qualifying POSTED transactions within 60 days \u2014 pending transactions and ATM/teller transactions do not count; timing of posting can vary from same day to weeks.",
-    "$25 minimum opening deposit; $5 monthly service fee unless waived (waived for primary owner age 13-24).",
-    "Bonus deposited within 30 days of meeting requirements; account must stay open; bonus reported as income to tax authorities.",
-    "Cannot be combined with any other consumer deposit offer; limit one bonus per customer/account.",
-    "Account may be closed and bonus reversed if bonus abuse is suspected."
-  ],
-  "checked_at": "2026-09-23T05:32:46Z",
-  "critical": {
-    "c1": {
-      "evidence": "Wells Fargo Bank, N.A. \u2014 real operating bank; official checking-bonus offer page on accountoffers.wellsfargo.com, headed 'Great Choice for Students and more'.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official Wells Fargo offer page with full terms: $125 Clear Access Banking bonus, offer code, 10 qualifying posted transactions in 60 days, ends October 13, 2026.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "$25 minimum opening deposit (branch); $5 monthly service fee avoidable (waived for owners age 13-24). No upfront fee beyond the $25 deposit.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "'Enjoy a $125 checking bonus' \u2014 'To receive the $125 bonus: you must use your bonus offer code when opening a new Wells Fargo consumer checking account... by October 13, 2026 and make 10 or more qualifying posted transactions within 60 calendar days of account opening'.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official Wells Fargo offer page with full terms: $125 Clear Access Banking bonus, offer code, 10 qualifying posted transactions in 60 days, ends October 13, 2026.",
+   "pass": true
   },
-  "eligibility": "New Wells Fargo consumer checking customers (no Wells Fargo consumer checking bonus in past 12 months); primary account owner; not a Wells Fargo employee or non-resident alien. Marketed to students ('Great Choice for Students'); monthly fee waived for owners age 13-24.",
-  "notes": "Distinct from R0045 (Wells Fargo $400 Everyday Checking bonus) \u2014 different product (Clear Access Banking checkless account), different bonus ($125), different requirements. Also distinct from R0932 (Wells Fargo business checking). Offer expiry captured: October 13, 2026. Re-verified live 2026-09-23: official accountoffers.wellsfargo.com/checking125/ still shows $125 Clear Access Banking offer ending October 13, 2026.",
-  "numeric_basis": "payout from official terms ($125 flat); time: account application + 10 qualifying posted transactions, est. 30-60 min active",
-  "official_url": "https://accountoffers.wellsfargo.com/checking125/",
-  "payout_max_usd": 125,
-  "payout_min_usd": 125,
-  "payout_quote": "Enjoy a $125 checking bonus \u2014 To receive the $125 bonus: you must use your bonus offer code when opening a new Wells Fargo consumer checking account, which is subject to approval, by October 13, 2026 and make 10 or more qualifying posted transactions within 60 calendar days of account opening.",
-  "payout_value_note": "flat cash bonus per official terms",
-  "route_id": "R5882",
-  "standard": {
-    "s1": {
-      "note": "New consumer checking customers only; 12-month prior-bonus exclusion; employee and non-resident-alien exclusions stated.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Open with offer code by 10/13/2026; 10+ qualifying posted transactions (Zelle, bill pay, debit purchases, mobile check deposits) within 60 days.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Bonus deposited within 30 calendar days of meeting requirements; account must stay open.",
-      "pass": true
-    },
-    "s4": {
-      "note": "$125 stated flatly; expiry and conditions explicit.",
-      "pass": true
-    },
-    "s5": {
-      "note": "accountoffers.wellsfargo.com is Wells Fargo's official offer domain.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Bonus reported as income to tax authorities per official terms; no earnings promise beyond the conditional bonus.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Numbers consistent: 125/125 USD flat; 30-60 active minutes for application + 10 transactions.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "$25 minimum opening deposit (branch); $5 monthly service fee avoidable (waived for owners age 13-24). No upfront fee beyond the $25 deposit.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Wells Fargo Clear Access Banking account from the offer webpage, using the bonus offer code (or open at a branch with $25 minimum deposit).",
-    "Within 60 calendar days of account opening, make 10 or more qualifying posted transactions (posted Zelle transfers, bill pay, debit card purchases, mobile check deposits \u2014 not ATM/teller or pending transactions).",
-    "The $125 bonus is deposited into the new account within 30 days of meeting the requirements; keep the account open until payout."
-  ],
-  "terms_url": "https://accountoffers.wellsfargo.com/checking125/",
-  "time_max_minutes": 60,
-  "time_min_minutes": 30,
-  "timing": "Open by October 13, 2026; 10+ qualifying posted transactions within 60 calendar days of account opening; bonus deposited within 30 days of meeting requirements.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "'Enjoy a $125 checking bonus' — 'To receive the $125 bonus: you must use your bonus offer code when opening a new Wells Fargo consumer checking account... by October 13, 2026 and make 10 or more qualifying posted transactions within 60 calendar days of account opening'.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Wells Fargo consumer checking customers (no Wells Fargo consumer checking bonus in past 12 months); primary account owner; not a Wells Fargo employee or non-resident alien. Marketed to students ('Great Choice for Students'); monthly fee waived for owners age 13-24.",
+ "notes": "Distinct from R0045 (Wells Fargo $400 Everyday Checking bonus) — different product (Clear Access Banking checkless account), different bonus ($125), different requirements. Also distinct from R0932 (Wells Fargo business checking). Offer expiry captured: October 13, 2026. Re-verified live 2026-09-23: official accountoffers.wellsfargo.com/checking125/ still shows $125 Clear Access Banking offer ending October 13, 2026.",
+ "numeric_basis": "payout from official terms ($125 flat); time: account application + 10 qualifying posted transactions, est. 30-60 min active",
+ "official_url": "https://accountoffers.wellsfargo.com/checking125/",
+ "payout_max_usd": 125,
+ "payout_min_usd": 125,
+ "payout_quote": "Enjoy a $125 checking bonus — To receive the $125 bonus: you must use your bonus offer code when opening a new Wells Fargo consumer checking account, which is subject to approval, by October 13, 2026 and make 10 or more qualifying posted transactions within 60 calendar days of account opening.",
+ "payout_value_note": "flat cash bonus per official terms",
+ "route_id": "R5882",
+ "standard": {
+  "s1": {
+   "note": "New consumer checking customers only; 12-month prior-bonus exclusion; employee and non-resident-alien exclusions stated.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open with offer code by 10/13/2026; 10+ qualifying posted transactions (Zelle, bill pay, debit purchases, mobile check deposits) within 60 days.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus deposited within 30 calendar days of meeting requirements; account must stay open.",
+   "pass": true
+  },
+  "s4": {
+   "note": "$125 stated flatly; expiry and conditions explicit.",
+   "pass": true
+  },
+  "s5": {
+   "note": "accountoffers.wellsfargo.com is Wells Fargo's official offer domain.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Bonus reported as income to tax authorities per official terms; no earnings promise beyond the conditional bonus.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Numbers consistent: 125/125 USD flat; 30-60 active minutes for application + 10 transactions.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Wells Fargo Clear Access Banking account from the offer webpage, using the bonus offer code (or open at a branch with $25 minimum deposit).",
+  "Within 60 calendar days of account opening, make 10 or more qualifying posted transactions (posted Zelle transfers, bill pay, debit card purchases, mobile check deposits — not ATM/teller or pending transactions).",
+  "The $125 bonus is deposited into the new account within 30 days of meeting the requirements; keep the account open until payout."
+ ],
+ "terms_url": "https://accountoffers.wellsfargo.com/checking125/",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Open by October 13, 2026; 10+ qualifying posted transactions within 60 calendar days of account opening; bonus deposited within 30 days of meeting requirements.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $125. Per official terms: Open by October 13, 2026; 10+ qualifying posted transactions within 60 calendar days of account opening; bonus deposited within 30 days of meeting requirements. Earliest realistic: after you complete the qualifying activity — earliest on the fastest schedule the terms allow, then the payout window above.",
+ "maximize": "Fastest honest path. The bank's post-qualification verification and payout window is the fixed floor. Fastest honest path: complete every qualifying requirement as early as possible and keep the account open, unrestricted, and in good standing until the bonus posts.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'payout-window'"
+  }
+ ]
 }

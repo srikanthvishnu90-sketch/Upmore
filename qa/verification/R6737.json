@@ -1,101 +1,104 @@
 {
- "app_links": {
-  "android": "https://play.google.com/store/apps/details?id=com.veryableops.veryable",
-  "ios": null
- },
- "biggest_catch": "You bid against other operators for every Op — a thin profile loses bids, and you only get paid if a business accepts your bid.",
- "catches": [
-  "You must win bids to work; businesses choose from Operator Profiles, so incomplete profiles get passed over.",
-  "Onboarding requires a background check, the Vault payment application, and tax forms before you can bid.",
-  "Ops are concentrated in manufacturing, distribution, and warehousing in ~25 listed metro areas — availability is metro-dependent.",
-  "Payment goes to the in-app Vault account (virtual card auto-issued; physical card optional), not your existing bank."
- ],
- "checked_at": "2026-09-23T16:05:00Z",
- "critical": {
-  "c1": {
-   "evidence": "Official Veryable app listing (published by Veryable, Inc.): operators bid on flexible Ops in manufacturing, distribution, and warehousing.",
-   "pass": true
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.veryableops.veryable",
+    "ios": null
   },
-  "c2": {
-   "evidence": "Official listing: 'you will receive your payment 24 hours after working the Op through our in-app payment solution Vault.' Per-Op bid amount is the agreed pay.",
-   "pass": true
+  "biggest_catch": "You bid against other operators for every Op \u2014 a thin profile loses bids, and you only get paid if a business accepts your bid.",
+  "catches": [
+    "You must win bids to work; businesses choose from Operator Profiles, so incomplete profiles get passed over.",
+    "Onboarding requires a background check, the Vault payment application, and tax forms before you can bid.",
+    "Ops are concentrated in manufacturing, distribution, and warehousing in ~25 listed metro areas \u2014 availability is metro-dependent.",
+    "Payment goes to the in-app Vault account (virtual card auto-issued; physical card optional), not your existing bank."
+  ],
+  "checked_at": "2026-09-23T16:05:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Veryable app listing (published by Veryable, Inc.): operators bid on flexible Ops in manufacturing, distribution, and warehousing.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official listing: 'you will receive your payment 24 hours after working the Op through our in-app payment solution Vault.' Per-Op bid amount is the agreed pay.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join; background check, Vault application, and tax forms are onboarding steps, not fees.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official listing: 'Complete the work assignment (Op) and get paid the next day!' and 'Get paid daily, even on holidays and weekends!' Bounded next-day timing confirmed.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to join; background check, Vault application, and tax forms are onboarding steps, not fees.",
-   "pass": true
+  "eligibility": "Background check; Vault payment application; tax forms; available in listed metro areas.",
+  "maximize": "Load your Operator Profile with every real skill and certification you have \u2014 businesses pick winning bids off that profile, so a complete profile is the whole game. Bid on Ops near you every day; payment lands in your Vault about 24 hours after each Op, weekends and holidays included, so stack Ops back-to-back to keep daily pay flowing.",
+  "notes": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23 | Checked 2026-09-23. Evidence from Veryable's own app listing. Timing is next-day (24h), not same-day \u2014 disclosed. Distinct from Wonolo/Instawork (bid-based manufacturing Ops).",
+  "official_url": "https://www.veryable.com",
+  "payout_quote": "You will receive your payment 24 hours after working the Op through our in-app payment solution Vault. | Complete the work assignment (Op) and get paid the next day! Get paid daily, even on holidays and weekends!",
+  "repeatable": {
+    "cadence": "Per Op: bid on posted Ops, win one, complete the work, get paid the next day, and repeat.",
+    "value": true
   },
-  "c4": {
-   "evidence": "Official listing: 'Complete the work assignment (Op) and get paid the next day!' and 'Get paid daily, even on holidays and weekends!' Bounded next-day timing confirmed.",
-   "pass": true
-  }
- },
- "eligibility": "Background check; Vault payment application; tax forms; available in listed metro areas.",
- "maximize": "Load your Operator Profile with every real skill and certification you have — businesses pick winning bids off that profile, so a complete profile is the whole game. Bid on Ops near you every day; payment lands in your Vault about 24 hours after each Op, weekends and holidays included, so stack Ops back-to-back to keep daily pay flowing.",
- "notes": "Checked 2026-09-23. Evidence from Veryable's own app listing. Timing is next-day (24h), not same-day — disclosed. Distinct from Wonolo/Instawork (bid-based manufacturing Ops).",
- "official_url": "https://www.veryable.com",
- "payout_quote": "You will receive your payment 24 hours after working the Op through our in-app payment solution Vault. | Complete the work assignment (Op) and get paid the next day! Get paid daily, even on holidays and weekends!",
- "repeatable": {
-  "cadence": "Per Op: bid on posted Ops, win one, complete the work, get paid the next day, and repeat.",
-  "value": true
- },
- "route_id": "R6737",
- "standard": {
-  "s1": {
-   "note": "Background check + Vault application + tax forms; metro-dependent.",
-   "pass": true
+  "route_id": "R6737",
+  "standard": {
+    "s1": {
+      "note": "Background check + Vault application + tax forms; metro-dependent.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fees documented.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Paid 24 hours after the Op \u2014 next-day, bounded.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No earnings guarantee; bid-based.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official Veryable app listing.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Concrete: bid, win, work, paid next day via Vault.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
   },
-  "s2": {
-   "note": "No fees documented.",
-   "pass": true
+  "steps": [
+    "Download the Veryable app and complete onboarding: background check, Vault payment application, tax forms.",
+    "Build your Operator Profile with accurate skills and certifications.",
+    "Bid on Ops in your area; businesses accept bids based on your profile.",
+    "Complete the Op (manufacturing/warehouse/distribution work).",
+    "Get paid 24 hours later into your Vault account (virtual card auto-issued; physical card optional)."
+  ],
+  "terms_url": null,
+  "timing": "Payment 24 hours after working the Op via the in-app Vault payment solution \u2014 next-day pay, including weekends and holidays. Virtual card issued automatically; physical card can be ordered.",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s3": {
-   "note": "Paid 24 hours after the Op — next-day, bounded.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No earnings guarantee; bid-based.",
-   "pass": true
-  },
-  "s5": {
-   "note": "Official Veryable app listing.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Concrete: bid, win, work, paid next day via Vault.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Checked 2026-09-23.",
-   "pass": true
-  }
- },
- "steps": [
-  "Download the Veryable app and complete onboarding: background check, Vault payment application, tax forms.",
-  "Build your Operator Profile with accurate skills and certifications.",
-  "Bid on Ops in your area; businesses accept bids based on your profile.",
-  "Complete the Op (manufacturing/warehouse/distribution work).",
-  "Get paid 24 hours later into your Vault account (virtual card auto-issued; physical card optional)."
- ],
- "terms_url": null,
- "timing": "Payment 24 hours after working the Op via the in-app Vault payment solution — next-day pay, including weekends and holidays. Virtual card issued automatically; physical card can be ordered.",
- "upfront_fee": false,
- "verdict": "verify",
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "provider": "Veryable",
- "speed": "days",
- "payout_min_usd": 0.0,
- "payout_max_usd": 0.0,
- "payout_value_note": "variable per-task pay shown in-app before accepting; no fixed amount in official terms",
- "numeric_basis": "remediation 2026-09-23: official terms confirm pay mechanism + timing but no fixed amount; set 0-0 variable (R0004 precedent); time defaulted 15-120min active (flagged for review)",
- "time_min_minutes": 15.0,
- "time_max_minutes": 120.0,
- "who_pays": "The business posting the Op pays you through Veryable's in-app Vault payment solution.",
- "who_qualifies": "A background check, the Vault payment application, and tax forms before you can bid; in Veryable's roughly 25 listed metro areas; Ops are concentrated in manufacturing, distribution, and warehousing.",
- "work_available": "Bid-based — businesses choose from Operator Profiles, so you only work if you win bids, and thin profiles get passed over. Ops are metro-dependent.",
- "what_gets_accepted": "Win the bid and complete the Op as assigned. Payment comes 24 hours after working the Op.",
- "costs_and_unpaid_time": "No fees. Unpaid time: onboarding (background check, Vault application, tax forms) before you can bid, time spent bidding on Ops you don't win, and building up your profile.",
- "when_cash_arrives": "Paid 24 hours after working the Op through Vault — next-day pay, including weekends and holidays. A virtual card is auto-issued (physical card optional); the money goes to your Vault account, not your existing bank."
+  "provider": "Veryable",
+  "speed": "days",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "variable per-task pay shown in-app before accepting; no fixed amount in official terms",
+  "numeric_basis": "remediation 2026-09-23: official terms confirm pay mechanism + timing but no fixed amount; set 0-0 variable (R0004 precedent); time defaulted 15-120min active (flagged for review)",
+  "time_min_minutes": 15.0,
+  "time_max_minutes": 120.0,
+  "who_pays": "The business posting the Op pays you through Veryable's in-app Vault payment solution.",
+  "who_qualifies": "A background check, the Vault payment application, and tax forms before you can bid; in Veryable's roughly 25 listed metro areas; Ops are concentrated in manufacturing, distribution, and warehousing.",
+  "work_available": "Bid-based \u2014 businesses choose from Operator Profiles, so you only work if you win bids, and thin profiles get passed over. Ops are metro-dependent.",
+  "what_gets_accepted": "Win the bid and complete the Op as assigned. Payment comes 24 hours after working the Op.",
+  "costs_and_unpaid_time": "No fees. Unpaid time: onboarding (background check, Vault application, tax forms) before you can bid, time spent bidding on Ops you don't win, and building up your profile.",
+  "when_cash_arrives": "Paid 24 hours after working the Op through Vault \u2014 next-day pay, including weekends and holidays. A virtual card is auto-issued (physical card optional); the money goes to your Vault account, not your existing bank.",
+  "reject_reason": "offline/in-person \u2014 catalog is online-only per owner 2026-09-23",
+  "overturned_from_verify": true,
+  "overturned_at": "2026-09-23"
 }

@@ -1,87 +1,99 @@
 {
-  "route_id": "R1973",
-  "verdict": "verify",
-  "official_url": "https://www.gsb.stanford.edu/faculty-research/behavioral-lab/participate-study",
-  "terms_url": "https://www.gsb.stanford.edu/faculty-research/behavioral-lab/participate-study",
-  "payout_quote": "You may participate either in-person in our lab or online on your home computer. Studies typically include cash or gift card payments averaging $25 an hour. None of our studies involves physical exertion or medical procedures.",
-  "steps": [
-    "Register for the Stanford GSB Behavioral Lab participant pool (Sona Systems for stanford.edu members; National Participant Pool for others)",
-    "View available studies and their compensation amounts before signing up",
-    "Complete the pre-screen form for eligible studies",
-    "Attend in-person or complete online organizational/marketing studies; paid in cash or gift cards"
-  ],
-  "catches": [
-    "'Averaging $25 an hour' - actual pay varies by study; check the posted compensation before signing up",
-    "18+; one Sona account per person; cannot repeat the same study",
-    "Graduate students in psychology, organizational behavior, or marketing are excluded",
-    "In-person studies are at Stanford GSB (California); others can only access the online pool",
-    "Study slots are irregular - not steady work"
-  ],
-  "biggest_catch": "Pay 'averages' $25/hour but varies by study - and in-person sessions require being at Stanford.",
-  "eligibility": "18+; registered participant; prescreened per study; psychology/OB/marketing grad students excluded",
-  "timing": "Cash or gift card payment per study; compensation amounts shown before signup.",
-  "upfront_fee": false,
-  "weasel_words": [
-    "averaging"
-  ],
-  "app_links": {
-    "android": "",
-    "ios": ""
+ "route_id": "R1973",
+ "verdict": "verify",
+ "official_url": "https://www.gsb.stanford.edu/faculty-research/behavioral-lab/participate-study",
+ "terms_url": "https://www.gsb.stanford.edu/faculty-research/behavioral-lab/participate-study",
+ "payout_quote": "You may participate either in-person in our lab or online on your home computer. Studies typically include cash or gift card payments averaging $25 an hour. None of our studies involves physical exertion or medical procedures.",
+ "steps": [
+  "Register for the Stanford GSB Behavioral Lab participant pool (Sona Systems for stanford.edu members; National Participant Pool for others)",
+  "View available studies and their compensation amounts before signing up",
+  "Complete the pre-screen form for eligible studies",
+  "Attend in-person or complete online organizational/marketing studies; paid in cash or gift cards"
+ ],
+ "catches": [
+  "'Averaging $25 an hour' - actual pay varies by study; check the posted compensation before signing up",
+  "18+; one Sona account per person; cannot repeat the same study",
+  "Graduate students in psychology, organizational behavior, or marketing are excluded",
+  "In-person studies are at Stanford GSB (California); others can only access the online pool",
+  "Study slots are irregular - not steady work"
+ ],
+ "biggest_catch": "Pay 'averages' $25/hour but varies by study - and in-person sessions require being at Stanford.",
+ "eligibility": "18+; registered participant; prescreened per study; psychology/OB/marketing grad students excluded",
+ "timing": "Cash or gift card payment per study; compensation amounts shown before signup.",
+ "upfront_fee": false,
+ "weasel_words": [
+  "averaging"
+ ],
+ "app_links": {
+  "android": "",
+  "ios": ""
+ },
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "gsb.stanford.edu participate page crawled; $25/hour average quoted verbatim"
   },
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "pass": true,
-      "evidence": "gsb.stanford.edu participate page crawled; $25/hour average quoted verbatim"
-    },
-    "c2": {
-      "pass": true,
-      "evidence": "Official page states payments 'averaging $25 an hour' in cash or gift cards"
-    },
-    "c3": {
-      "pass": true,
-      "evidence": "Steps from official page: Sona registration, prescreen, view compensation, participate"
-    },
-    "c4": {
-      "pass": true,
-      "evidence": "Free to register; no fee; no physical exertion or medical procedures"
-    }
+  "c2": {
+   "pass": true,
+   "evidence": "Official page states payments 'averaging $25 an hour' in cash or gift cards"
   },
-  "standard": {
-    "s1": {
-      "pass": true,
-      "note": "Value from the provider's own stated average rate; flagged as variable by the provider's 'averaging' language"
-    },
-    "s2": {
-      "pass": true,
-      "note": "Framed as variable per-study pay, not a fixed wage"
-    },
-    "s3": {
-      "pass": true,
-      "note": "Catches cover the average framing, eligibility exclusions, and geography"
-    },
-    "s4": {
-      "pass": true,
-      "note": "Not a credit card - n/a"
-    },
-    "s5": {
-      "pass": true,
-      "note": "Timing: paid per study after participation"
-    },
-    "s6": {
-      "pass": true,
-      "note": "Deduped: only 'Stanford' catalog hit is Stanford Federal Credit Union bank bonus - different entity and mechanism"
-    },
-    "s7": {
-      "pass": true,
-      "note": "'Averaging' flagged as variable-pay language"
-    }
+  "c3": {
+   "pass": true,
+   "evidence": "Steps from official page: Sona registration, prescreen, view compensation, participate"
   },
-  "notes": "Distinct from Stanford Federal Credit Union's R0542 bank bonus - different provider entity (GSB research lab vs credit union) and different mechanism (paid research participation vs account bonus).",
-  "payout_min_usd": 25,
-  "payout_max_usd": 25,
-  "payout_value_note": "Official page states payments averaging $25/hour in cash or gift cards; varies by study - presented as variable average",
-  "time_min_minutes": 60,
-  "time_max_minutes": 120,
-  "numeric_basis": "payout from official terms (~$25/hr average); time: typical study session 60-120 min active"
+  "c4": {
+   "pass": true,
+   "evidence": "Free to register; no fee; no physical exertion or medical procedures"
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Value from the provider's own stated average rate; flagged as variable by the provider's 'averaging' language"
+  },
+  "s2": {
+   "pass": true,
+   "note": "Framed as variable per-study pay, not a fixed wage"
+  },
+  "s3": {
+   "pass": true,
+   "note": "Catches cover the average framing, eligibility exclusions, and geography"
+  },
+  "s4": {
+   "pass": true,
+   "note": "Not a credit card - n/a"
+  },
+  "s5": {
+   "pass": true,
+   "note": "Timing: paid per study after participation"
+  },
+  "s6": {
+   "pass": true,
+   "note": "Deduped: only 'Stanford' catalog hit is Stanford Federal Credit Union bank bonus - different entity and mechanism"
+  },
+  "s7": {
+   "pass": true,
+   "note": "'Averaging' flagged as variable-pay language"
+  }
+ },
+ "notes": "Distinct from Stanford Federal Credit Union's R0542 bank bonus - different provider entity (GSB research lab vs credit union) and different mechanism (paid research participation vs account bonus).",
+ "payout_min_usd": 25,
+ "payout_max_usd": 25,
+ "payout_value_note": "Official page states payments averaging $25/hour in cash or gift cards; varies by study - presented as variable average",
+ "time_min_minutes": 60,
+ "time_max_minutes": 120,
+ "numeric_basis": "payout from official terms (~$25/hr average); time: typical study session 60-120 min active",
+ "speed": "weeks",
+ "when_cash_arrives": "Cash or gift card payment per study (averaging ~$25/hour); payment timing is set per study.",
+ "maximize": "Do online studies (no travel); payment comes after the session.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "Study scheduling and per-study payment are the structural blockers.",
+   "sweep": "chunk_D"
+  }
+ ]
 }

@@ -1,87 +1,90 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "These are bill credits, not cash — and nothing lands until your friend stays active 30 days, then the credits trickle out over two months; the top $30 figure is a September-only boost, with the evergreen rate $10–$20 each.",
+ "catches": [
+  "Bill credits only — applied to the Boost Mobile account, not cash and not transferable",
+  "Both sides must remain active for 30 days before any credits start",
+  "Credits are applied over two months; first credit appears within two payment cycles of validation",
+  "You must already be a Boost customer for at least 30 days before you can refer",
+  "Friend must activate as a new Boost account, not as an added line on an existing account; plans under $25/month are excluded",
+  "Up to 5 friends per calendar year"
+ ],
+ "checked_at": "2026-09-23T05:42:00Z",
+ "critical": {
+  "c1": {
+   "evidence": "Official Boost Mobile refer-a-friend page on boostmobile.com (crawled 3 hours ago) plus the Refer A Friend help article on help.boostmobile.com (crawled 4 days ago).",
+   "pass": true
   },
-  "biggest_catch": "These are bill credits, not cash \u2014 and nothing lands until your friend stays active 30 days, then the credits trickle out over two months; the top $30 figure is a September-only boost, with the evergreen rate $10\u2013$20 each.",
-  "catches": [
-    "Bill credits only \u2014 applied to the Boost Mobile account, not cash and not transferable",
-    "Both sides must remain active for 30 days before any credits start",
-    "Credits are applied over two months; first credit appears within two payment cycles of validation",
-    "You must already be a Boost customer for at least 30 days before you can refer",
-    "Friend must activate as a new Boost account, not as an added line on an existing account; plans under $25/month are excluded",
-    "Up to 5 friends per calendar year"
-  ],
-  "checked_at": "2026-09-23T05:42:00Z",
-  "critical": {
-    "c1": {
-      "evidence": "Official Boost Mobile refer-a-friend page on boostmobile.com (crawled 3 hours ago) plus the Refer A Friend help article on help.boostmobile.com (crawled 4 days ago).",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Pages live and current: the boostmobile.com page currently shows a September offer with 50% more credits.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amounts verbatim on boostmobile.com/referafriend: plans $25\u2013$39 \u2192 $15 each (base $10); plans $40+ \u2192 $30 each (base $20). Help article confirms $20/$10 base tiers.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "30-day active requirement, credit payout over two months, 5/year cap, new-account-only rule, and plan exclusions all stated on the official pages.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Pages live and current: the boostmobile.com page currently shows a September offer with 50% more credits.",
+   "pass": true
   },
-  "eligibility": "Existing Boost Mobile single/primary account holder for at least 30 days; friend activates a NEW Boost Mobile account on a plan of $25/month or more using the referral link.",
-  "notes": "Verified 2026-09-23 against boostmobile.com/referafriend and help.boostmobile.com (official domains). Deduped: no Boost Mobile routes in catalog, evidence files, or rejects-g60. The page currently advertises a September-only 50% credits boost ($15/$30 per side); the evergreen base rate is $10/$20 per side. Numeric range spans the base low ($10) to the current September high ($30).",
-  "numeric_basis": "payout from official terms ($10-$20 evergreen, $15-$30 current September boost, both sides equal); time: referral share 5-15 min active",
-  "official_url": "https://www.boostmobile.com/referafriend",
-  "payout_max_usd": 30,
-  "payout_min_usd": 10,
-  "payout_quote": "Existing customers and referrals on a plan of $40 or more will receive a $20 credit each. If the Boost Mobile customer and/or their referral are on a plan of less than $40 (excluding any plan under $25 per month), both will receive a $10 credit each. SEPTEMBER OFFER: 50% MORE CREDITS \u2014 $15 each on $25\u2013$39 plans, $30 each on $40+ plans.",
-  "payout_value_note": "Boost Mobile bill credits to both the referrer and the friend \u2014 $10/$20 per side evergreen, $15/$30 per side during the current September boost; offsets the Boost bill, not cash.",
-  "route_id": "R6354",
-  "standard": {
-    "s1": {
-      "note": "Exact per-side amounts stated verbatim on the official page ($10/$20 base; $15/$30 September).",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: bill credits offset planned Boost Mobile spending, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Concrete steps from the official page (register, share personalized link, friend activates via link and registers number, both stay active 30 days).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: bill credits only, 30-day wait, two-month payout trickle, September boost is temporary.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee beyond each side's own Boost plan.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words; conditions explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against boostmobile.com and help.boostmobile.com (provider's own domains). Deduped clean.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amounts verbatim on boostmobile.com/referafriend: plans $25–$39 → $15 each (base $10); plans $40+ → $30 each (base $20). Help article confirms $20/$10 base tiers.",
+   "pass": true
   },
-  "steps": [
-    "Register for the Boost Refer A Friend program",
-    "Get your personalized referral link",
-    "Share the link with friends",
-    "Friend clicks the link, activates a new Boost Mobile account, and registers their Boost phone number on the referral page",
-    "Both sides stay active 30 days; bill credits are then applied over two months"
-  ],
-  "terms_url": "http://help.boostmobile.com/docs/refer-a-friend",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Both sides must stay active 30 days; first credit appears within two payment cycles of validation, applied over two months.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "30-day active requirement, credit payout over two months, 5/year cap, new-account-only rule, and plan exclusions all stated on the official pages.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Boost Mobile single/primary account holder for at least 30 days; friend activates a NEW Boost Mobile account on a plan of $25/month or more using the referral link.",
+ "notes": "Verified 2026-09-23 against boostmobile.com/referafriend and help.boostmobile.com (official domains). Deduped: no Boost Mobile routes in catalog, evidence files, or rejects-g60. The page currently advertises a September-only 50% credits boost ($15/$30 per side); the evergreen base rate is $10/$20 per side. Numeric range spans the base low ($10) to the current September high ($30).",
+ "numeric_basis": "payout from official terms ($10-$20 evergreen, $15-$30 current September boost, both sides equal); time: referral share 5-15 min active",
+ "official_url": "https://www.boostmobile.com/referafriend",
+ "payout_max_usd": 30,
+ "payout_min_usd": 10,
+ "payout_quote": "Existing customers and referrals on a plan of $40 or more will receive a $20 credit each. If the Boost Mobile customer and/or their referral are on a plan of less than $40 (excluding any plan under $25 per month), both will receive a $10 credit each. SEPTEMBER OFFER: 50% MORE CREDITS — $15 each on $25–$39 plans, $30 each on $40+ plans.",
+ "payout_value_note": "Boost Mobile bill credits to both the referrer and the friend — $10/$20 per side evergreen, $15/$30 per side during the current September boost; offsets the Boost bill, not cash.",
+ "route_id": "R6354",
+ "standard": {
+  "s1": {
+   "note": "Exact per-side amounts stated verbatim on the official page ($10/$20 base; $15/$30 September).",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: bill credits offset planned Boost Mobile spending, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Concrete steps from the official page (register, share personalized link, friend activates via link and registers number, both stay active 30 days).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: bill credits only, 30-day wait, two-month payout trickle, September boost is temporary.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee beyond each side's own Boost plan.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words; conditions explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against boostmobile.com and help.boostmobile.com (provider's own domains). Deduped clean.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Register for the Boost Refer A Friend program",
+  "Get your personalized referral link",
+  "Share the link with friends",
+  "Friend clicks the link, activates a new Boost Mobile account, and registers their Boost phone number on the referral page",
+  "Both sides stay active 30 days; bill credits are then applied over two months"
+ ],
+ "terms_url": "http://help.boostmobile.com/docs/refer-a-friend",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Both sides must stay active 30 days; first credit appears within two payment cycles of validation, applied over two months.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Both sides must stay active 30 days; first credit appears within two payment cycles of validation, applied over two months.",
+ "maximize": "Fastest honest path: Both sides must stay active 30 days; first credit appears within two payment cycles of validation, applied over two months. Structural blocker: telecom promos require an active-service waiting period (30-90 days of good standing) and pay as bill credits, prepaid cards, or long-term credit spreads per provider terms; nothing you do at signup shortens the waiting period."
 }

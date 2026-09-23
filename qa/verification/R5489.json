@@ -1,88 +1,91 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "Long payout tail: the $50 is only issued AFTER the referred customer stays active and in good standing for 90 days (cards/credits go out at 120 days) — and Illinois residents are excluded entirely.",
+ "catches": [
+  "The referred customer must maintain an active Verde account in good standing (no past-due balance) for 90 days after service begins; bill credits/prepaid cards are not issued until 120 days after service begins.",
+  "Both referrer and referee must be active with no pending drops and no past-due balance at reward time.",
+  "Both must be enrolled with the same Verde brand in a deregulated territory served by Verde Energy USA.",
+  "One $50 reward per service address enrolled; limit one referring customer per new enrollment; renewing customers excluded (new enrollments only).",
+  "Not applicable to Illinois residents.",
+  "Rewards may not be transferred, assigned, or redeemed for cash; the prepaid card is issued by Pathward, valid 6 months.",
+  "Framing: bill credit/prepaid card offsets spending — savings, not income."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "official_url verdeenergy.com/raf/ — provider's own domain with full refer-a-friend terms and conditions inline.",
+   "pass": true
   },
-  "biggest_catch": "Long payout tail: the $50 is only issued AFTER the referred customer stays active and in good standing for 90 days (cards/credits go out at 120 days) — and Illinois residents are excluded entirely.",
-  "catches": [
-    "The referred customer must maintain an active Verde account in good standing (no past-due balance) for 90 days after service begins; bill credits/prepaid cards are not issued until 120 days after service begins.",
-    "Both referrer and referee must be active with no pending drops and no past-due balance at reward time.",
-    "Both must be enrolled with the same Verde brand in a deregulated territory served by Verde Energy USA.",
-    "One $50 reward per service address enrolled; limit one referring customer per new enrollment; renewing customers excluded (new enrollments only).",
-    "Not applicable to Illinois residents.",
-    "Rewards may not be transferred, assigned, or redeemed for cash; the prepaid card is issued by Pathward, valid 6 months.",
-    "Framing: bill credit/prepaid card offsets spending — savings, not income."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "official_url verdeenergy.com/raf/ — provider's own domain with full refer-a-friend terms and conditions inline.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Current: page live, crawled 19 days ago with current $50 offer and terms.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "Exact amount ($50 per side) and all qualifying conditions stated verbatim on the official page.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Amount, conditions, timing (90-day activity + 120-day issuance), and the Illinois exclusion are all stated on the official page; nothing material hidden.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Current: page live, crawled 19 days ago with current $50 offer and terms.",
+   "pass": true
   },
-  "eligibility": "Existing Verde Energy customer (referrer) in a deregulated Verde territory; referred person must be a new customer enrolling with the referrer's code and staying active 90 days. Illinois excluded.",
-  "notes": "Verified 2026-09-23 against verdeenergy.com/raf/ (official terms inline). Distinct mechanism (referral) from Verde's mail-in signup rebate (separate route). Dedupe-check clean for verde energy.",
-  "numeric_basis": "payout from official terms ($50 reward to referrer and $50 to referred customer per qualified referral); time: referral share 5-15 min active",
-  "official_url": "https://www.verdeenergy.com/raf/",
-  "payout_max_usd": 50,
-  "payout_min_usd": 50,
-  "payout_quote": "You and your referral can earn a $50 bill credit or a $50 prepaid Visa card!",
-  "payout_value_note": "$50 reward per side — either a bill credit or a prepaid Visa card (Pathward, US only, 6-month validity); offsets spending — savings, not income.",
-  "route_id": "R5489",
-  "standard": {
-    "s1": {
-      "note": "Exact amount ($50 each side) and qualifying conditions stated verbatim on the official page.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Savings framing explicit: the reward is a bill credit or spendable card that offsets spending — savings, not income.",
-      "pass": true
-    },
-    "s3": {
-      "note": "Steps are the concrete process from the official page (get referrer ID from welcome packet/MyAccount, share URL, friend enrolls, 90-day active wait, reward issued).",
-      "pass": true
-    },
-    "s4": {
-      "note": "Biggest catch is plain: 90-day active-service requirement with issuance at 120 days, and Illinois excluded.",
-      "pass": true
-    },
-    "s5": {
-      "note": "No upfront fee; sharing a code costs nothing.",
-      "pass": true
-    },
-    "s6": {
-      "note": "No weasel words in the payout statement; conditions are explicit.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Verified against verdeenergy.com (provider's own domain). Deduped: no Verde Energy routes in catalog, evidence files, or rejects-g51.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "Exact amount ($50 per side) and all qualifying conditions stated verbatim on the official page.",
+   "pass": true
   },
-  "steps": [
-    "Sign up with Verde Energy and note your unique referrer ID from your welcome packet (or MyAccount).",
-    "Share your referral URL/ID with friends.",
-    "Your friend enrolls in a Verde plan using your referral code.",
-    "Your friend maintains an active account in good standing for 90 days after service begins.",
-    "At 120 days, you and your friend each receive a $50 bill credit or $50 prepaid Visa card."
-  ],
-  "terms_url": "https://www.verdeenergy.com/raf/",
-  "time_max_minutes": 15,
-  "time_min_minutes": 5,
-  "timing": "Reward issued at 120 days after the referred customer's service begins (requires 90 days of active service in good standing).",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Amount, conditions, timing (90-day activity + 120-day issuance), and the Illinois exclusion are all stated on the official page; nothing material hidden.",
+   "pass": true
+  }
+ },
+ "eligibility": "Existing Verde Energy customer (referrer) in a deregulated Verde territory; referred person must be a new customer enrolling with the referrer's code and staying active 90 days. Illinois excluded.",
+ "notes": "Verified 2026-09-23 against verdeenergy.com/raf/ (official terms inline). Distinct mechanism (referral) from Verde's mail-in signup rebate (separate route). Dedupe-check clean for verde energy.",
+ "numeric_basis": "payout from official terms ($50 reward to referrer and $50 to referred customer per qualified referral); time: referral share 5-15 min active",
+ "official_url": "https://www.verdeenergy.com/raf/",
+ "payout_max_usd": 50,
+ "payout_min_usd": 50,
+ "payout_quote": "You and your referral can earn a $50 bill credit or a $50 prepaid Visa card!",
+ "payout_value_note": "$50 reward per side — either a bill credit or a prepaid Visa card (Pathward, US only, 6-month validity); offsets spending — savings, not income.",
+ "route_id": "R5489",
+ "standard": {
+  "s1": {
+   "note": "Exact amount ($50 each side) and qualifying conditions stated verbatim on the official page.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Savings framing explicit: the reward is a bill credit or spendable card that offsets spending — savings, not income.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Steps are the concrete process from the official page (get referrer ID from welcome packet/MyAccount, share URL, friend enrolls, 90-day active wait, reward issued).",
+   "pass": true
+  },
+  "s4": {
+   "note": "Biggest catch is plain: 90-day active-service requirement with issuance at 120 days, and Illinois excluded.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee; sharing a code costs nothing.",
+   "pass": true
+  },
+  "s6": {
+   "note": "No weasel words in the payout statement; conditions are explicit.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Verified against verdeenergy.com (provider's own domain). Deduped: no Verde Energy routes in catalog, evidence files, or rejects-g51.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Sign up with Verde Energy and note your unique referrer ID from your welcome packet (or MyAccount).",
+  "Share your referral URL/ID with friends.",
+  "Your friend enrolls in a Verde plan using your referral code.",
+  "Your friend maintains an active account in good standing for 90 days after service begins.",
+  "At 120 days, you and your friend each receive a $50 bill credit or $50 prepaid Visa card."
+ ],
+ "terms_url": "https://www.verdeenergy.com/raf/",
+ "time_max_minutes": 15,
+ "time_min_minutes": 5,
+ "timing": "Reward issued at 120 days after the referred customer's service begins (requires 90 days of active service in good standing).",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Reward issued at 120 days after the referred customer's service begins (requires 90 days of active service in good standing).",
+ "maximize": "Fastest honest path: Reward issued at 120 days after the referred customer's service begins (requires 90 days of active service in good standing). Structural blocker: the reward unlocks only after the referred friend completes the qualifying action (purchase, account opening, service completion), and payout follows the program's stated timeline after that trigger."
 }

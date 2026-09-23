@@ -1,86 +1,97 @@
 {
-  "app_links": {
-    "android": null,
-    "ios": null
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "No single lump-sum bonus - the bonus is paid as six monthly credits, and every monthly analysis cycle requires eStatements + at least one direct deposit + 5 debit card purchases.",
+ "catches": [
+  "Bonus paid as six monthly credits, not a lump sum: $25/month for Interest Plus (up to $150) or $50/month for Premier (up to $300).",
+  "During EACH monthly analysis cycle: enrolled in eStatements as of cycle end, at least one direct deposit transaction, and 5 or more debit card purchases debited from the account (excludes ATM transactions).",
+  "$25 minimum opening deposit.",
+  "No explicit expiration date on official pages - offer may be withdrawn at any time.",
+  "Available in the Peoples Bank footprint: OH, WV, KY, VA, MD, Washington D.C.",
+  "Workplace Checking has a separate $100 x 3 = $300 variant; this route covers the consumer Interest Plus and Premier tiers."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Peoples Bank (peoplesbancorp.com), Marietta, Ohio - NASDAQ PEBO, real operating bank with 130 branches; offer terms on official peoplesbancorp.com product pages.",
+   "pass": true
   },
-  "biggest_catch": "No single lump-sum bonus - the bonus is paid as six monthly credits, and every monthly analysis cycle requires eStatements + at least one direct deposit + 5 debit card purchases.",
-  "catches": [
-    "Bonus paid as six monthly credits, not a lump sum: $25/month for Interest Plus (up to $150) or $50/month for Premier (up to $300).",
-    "During EACH monthly analysis cycle: enrolled in eStatements as of cycle end, at least one direct deposit transaction, and 5 or more debit card purchases debited from the account (excludes ATM transactions).",
-    "$25 minimum opening deposit.",
-    "No explicit expiration date on official pages - offer may be withdrawn at any time.",
-    "Available in the Peoples Bank footprint: OH, WV, KY, VA, MD, Washington D.C.",
-    "Workplace Checking has a separate $100 x 3 = $300 variant; this route covers the consumer Interest Plus and Premier tiers."
-  ],
-  "checked_at": "2026-09-23T07:21:24Z",
-  "critical": {
-    "c1": {
-      "evidence": "Peoples Bank (peoplesbancorp.com), Marietta, Ohio - NASDAQ PEBO, real operating bank with 130 branches; offer terms on official peoplesbancorp.com product pages.",
-      "pass": true
-    },
-    "c2": {
-      "evidence": "Official peoplesbancorp.com Interest Plus and Premier pages state the monthly credit amounts ($25/$50 x 6 cycles) and the per-cycle qualification conditions verbatim.",
-      "pass": true
-    },
-    "c3": {
-      "evidence": "No enrollment fee; $25 minimum deposit is a deposit, not a fee.",
-      "pass": true
-    },
-    "c4": {
-      "evidence": "Credits paid monthly for the first 6 monthly analysis cycles following account opening - concrete.",
-      "pass": true
-    }
+  "c2": {
+   "evidence": "Official peoplesbancorp.com Interest Plus and Premier pages state the monthly credit amounts ($25/$50 x 6 cycles) and the per-cycle qualification conditions verbatim.",
+   "pass": true
   },
-  "eligibility": "Applicants in OH, WV, KY, VA, MD, or Washington D.C. (Peoples Bank footprint).",
-  "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from search-engine crawls of official peoplesbancorp.com pages (Interest Plus page crawled 2026-06-14; Premier offer page crawled 2026-09-09) rather than a direct page read; payout terms are verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'peoples bank' = 0 hits). Aggregators report a $600 Premier variant (6/10/26 update), but the official Premier page currently states $50/month x 6 = $300, so the route is capped at the officially documented $300.",
-  "numeric_basis": "payout from official terms ($150 flat for Interest Plus; $300 flat for Premier = max); time: online application + DD setup est. 30-60 min active",
-  "official_url": "https://www.peoplesbancorp.com/premier-checking-offer/",
-  "payout_max_usd": 300.0,
-  "payout_min_usd": 150.0,
-  "payout_quote": "Interest Plus Checking: Get Up to $150 When You Open a New Interest Plus Account. Open a new Interest Plus Checking account and receive a $25 credit monthly for the first 6 monthly analysis cycles following the account opening - up to $150 total. To be eligible for the bonus, during each monthly analysis cycle, you must: Be enrolled in eStatements as of the end of the monthly analysis cycle. Have at least one direct deposit transaction. Have 5 or more debit card purchases debited from your account (excludes ATM transactions). Premier Checking: To be eligible for the $50 monthly credit bonus, during each monthly analysis cycle, you must: Be enrolled in eStatements as of the end of the monthly analysis cycle. Have at least one direct deposit transaction. Have 5 or more debit card purchases debited from your account (excludes ATM transactions). Open with a $25 minimum deposit.",
-  "payout_value_note": "$25/month x 6 cycles = $150 (Interest Plus); $50/month x 6 cycles = $300 (Premier)",
-  "route_id": "R0873",
-  "standard": {
-    "s1": {
-      "note": "OH, WV, KY, VA, MD, D.C. residents.",
-      "pass": true
-    },
-    "s2": {
-      "note": "Open new Interest Plus or Premier Checking ($25 min deposit); each monthly analysis cycle: eStatements, 1+ DD, 5+ debit purchases.",
-      "pass": true
-    },
-    "s3": {
-      "note": "$25 or $50 credit monthly for the first 6 monthly analysis cycles.",
-      "pass": true
-    },
-    "s4": {
-      "note": "Amounts, per-cycle conditions, and timing stated flatly.",
-      "pass": true
-    },
-    "s5": {
-      "note": "https://www.peoplesbancorp.com/premier-checking-offer/ and /personal/banking/checking/interest-plus-checking/208 - official pages.",
-      "pass": true
-    },
-    "s6": {
-      "note": "Steps concrete: open account, eStatements, DD, 5 debit purchases per cycle for 6 cycles.",
-      "pass": true
-    },
-    "s7": {
-      "note": "Official pages confirmed via search crawl (Premier page crawled 2026-09-09); direct fetch unavailable this session - flag for re-verification.",
-      "pass": true
-    }
+  "c3": {
+   "evidence": "No enrollment fee; $25 minimum deposit is a deposit, not a fee.",
+   "pass": true
   },
-  "steps": [
-    "Open a new Peoples Bank Interest Plus or Premier Checking account online or in-branch ($25 minimum deposit).",
-    "Enroll in eStatements.",
-    "For each of the first 6 monthly analysis cycles: have at least one direct deposit transaction and 5 or more debit card purchases debited from the account.",
-    "Receive the monthly credit ($25 for Interest Plus, $50 for Premier) each cycle requirements are met - up to $150 or $300 total."
-  ],
-  "terms_url": "https://www.peoplesbancorp.com/personal/banking/checking/interest-plus-checking/208",
-  "time_max_minutes": 60.0,
-  "time_min_minutes": 30.0,
-  "timing": "$25 (Interest Plus) or $50 (Premier) credit paid monthly for the first 6 monthly analysis cycles following account opening when that cycle's requirements are met.",
-  "upfront_fee": false,
-  "verdict": "verify",
-  "weasel_words": []
+  "c4": {
+   "evidence": "Credits paid monthly for the first 6 monthly analysis cycles following account opening - concrete.",
+   "pass": true
+  }
+ },
+ "eligibility": "Applicants in OH, WV, KY, VA, MD, or Washington D.C. (Peoples Bank footprint).",
+ "notes": "FETCH CAVEAT: browser page-fetch tool failed this session, so official terms were confirmed from search-engine crawls of official peoplesbancorp.com pages (Interest Plus page crawled 2026-06-14; Premier offer page crawled 2026-09-09) rather than a direct page read; payout terms are verbatim official text. Recommend re-verification with a direct fetch before adjudication. Not in catalog (dedupe-check 'peoples bank' = 0 hits). Aggregators report a $600 Premier variant (6/10/26 update), but the official Premier page currently states $50/month x 6 = $300, so the route is capped at the officially documented $300.",
+ "numeric_basis": "payout from official terms ($150 flat for Interest Plus; $300 flat for Premier = max); time: online application + DD setup est. 30-60 min active",
+ "official_url": "https://www.peoplesbancorp.com/premier-checking-offer/",
+ "payout_max_usd": 300.0,
+ "payout_min_usd": 150.0,
+ "payout_quote": "Interest Plus Checking: Get Up to $150 When You Open a New Interest Plus Account. Open a new Interest Plus Checking account and receive a $25 credit monthly for the first 6 monthly analysis cycles following the account opening - up to $150 total. To be eligible for the bonus, during each monthly analysis cycle, you must: Be enrolled in eStatements as of the end of the monthly analysis cycle. Have at least one direct deposit transaction. Have 5 or more debit card purchases debited from your account (excludes ATM transactions). Premier Checking: To be eligible for the $50 monthly credit bonus, during each monthly analysis cycle, you must: Be enrolled in eStatements as of the end of the monthly analysis cycle. Have at least one direct deposit transaction. Have 5 or more debit card purchases debited from your account (excludes ATM transactions). Open with a $25 minimum deposit.",
+ "payout_value_note": "$25/month x 6 cycles = $150 (Interest Plus); $50/month x 6 cycles = $300 (Premier)",
+ "route_id": "R0873",
+ "standard": {
+  "s1": {
+   "note": "OH, WV, KY, VA, MD, D.C. residents.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open new Interest Plus or Premier Checking ($25 min deposit); each monthly analysis cycle: eStatements, 1+ DD, 5+ debit purchases.",
+   "pass": true
+  },
+  "s3": {
+   "note": "$25 or $50 credit monthly for the first 6 monthly analysis cycles.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Amounts, per-cycle conditions, and timing stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.peoplesbancorp.com/premier-checking-offer/ and /personal/banking/checking/interest-plus-checking/208 - official pages.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: open account, eStatements, DD, 5 debit purchases per cycle for 6 cycles.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official pages confirmed via search crawl (Premier page crawled 2026-09-09); direct fetch unavailable this session - flag for re-verification.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Open a new Peoples Bank Interest Plus or Premier Checking account online or in-branch ($25 minimum deposit).",
+  "Enroll in eStatements.",
+  "For each of the first 6 monthly analysis cycles: have at least one direct deposit transaction and 5 or more debit card purchases debited from the account.",
+  "Receive the monthly credit ($25 for Interest Plus, $50 for Premier) each cycle requirements are met - up to $150 or $300 total."
+ ],
+ "terms_url": "https://www.peoplesbancorp.com/personal/banking/checking/interest-plus-checking/208",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "$25 (Interest Plus) or $50 (Premier) credit paid monthly for the first 6 monthly analysis cycles following account opening when that cycle's requirements are met.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "speed": "weeks",
+ "when_cash_arrives": "Bonus $150–$300. Per official terms: $25 (Interest Plus) or $50 (Premier) credit paid monthly for the first 6 monthly analysis cycles following account opening when that cycle's requirements are met. Earliest realistic: ~44 days (first payroll DD ~2 weeks + the payout window); the 90-day window is an outer limit.",
+ "maximize": "Fastest honest path. The gating item is almost always your payroll cycle. Fastest honest path: open online today and switch a real payroll/government direct deposit immediately — employer payroll changes take 1–2 pay cycles, so start now; Zelle, bank-to-bank transfers, and microdeposits usually don't count as direct deposit. After the qualifying deposits post, the bank's payout window is fixed and nothing speeds it up.",
+ "speed_history": [
+  {
+   "date": "2026-09-23",
+   "from": "weeks",
+   "to": "weeks",
+   "rationale": "speed audit 2026-09-23: no hidden fast path in official terms — structural gate is 'dd-window'"
+  }
+ ]
 }
