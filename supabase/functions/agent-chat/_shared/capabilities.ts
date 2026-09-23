@@ -427,13 +427,36 @@ export function tryWalkthrough(
   const appLine = appLinks?.ios || appLinks?.android
     ? `\nDownload the app: ${appLinks.ios ?? appLinks.android}`
     : "";
+  // Vishnu's 7 questions — include every answer the catalog has for this
+  // route, nothing invented. demand_side names where the demand actually is.
+  // repeatable is a {value, cadence} object in the catalog, not a string.
+  const rep = (r as any).repeatable;
+  const repText =
+    rep != null && typeof rep === "object"
+      ? `${rep.value ? "Yes" : "No"}${rep.cadence ? ` — ${String(rep.cadence).trim()}` : ""}`
+      : rep;
+  const answers: [string, any][] = [
+    ["Who pays", r.who_pays],
+    ["Who qualifies", r.who_qualifies],
+    ["Work available", r.work_available],
+    ["What gets accepted", r.what_gets_accepted],
+    ["Costs + unpaid time", r.costs_and_unpaid_time],
+    ["When cash arrives", r.when_cash_arrives],
+    ["Repeatable", repText],
+    ["Where demand is", r.demand_side],
+  ];
+  const answerLines = answers
+    .filter(([, v]) => v != null && String(v).trim().length > 0)
+    .map(([k, v]) => `${k}: ${String(v).trim()}`)
+    .join("\n");
+  const answerBlock = answerLines ? `\n\n${answerLines}` : "";
   return {
     reply:
       `**${r.provider}** (${r.route_id}) — verified live.\n\n` +
       `${r.payout_text ?? ""}\n\n${stepLines}\n\n` +
       `Cash out: ${r.payout_timing ?? "see the official terms"}\n` +
       `Biggest catch: ${catches[0] ?? "see the official terms"}` +
-      laneNote + wagerNote +
+      laneNote + wagerNote + answerBlock +
       `\n\nStart here: ${r.provider_url ?? r.link ?? ""}` + appLine,
     routeId: r.route_id,
   };
