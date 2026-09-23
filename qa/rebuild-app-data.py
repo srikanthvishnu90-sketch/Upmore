@@ -27,8 +27,22 @@ def app_steps(db_steps):
              "done_when": s.get("done_when", ""), "warns": s.get("warn", "")}
             for i, s in enumerate(db_steps or [])]
 
-st, rows = req("GET", "/rest/v1/routes?select=*&limit=1500")
+rows = []
+_offset = 0
+while True:
+    st, _batch = req("GET", f"/rest/v1/routes?select=*&limit=1000&offset={_offset}")
+    if not _batch:
+        break
+    rows.extend(_batch)
+    _offset += 1000
+    if len(_batch) < 1000:
+        break
 dbm = {r["route_id"]: r for r in rows}
+
+try:
+    NUMERICS = json.load(open("/home/hatch/workspace/upmore/qa/numerics.json"))
+except Exception:
+    NUMERICS = {}
 
 path = "/home/hatch/workspace/upmore/src/data/upmore-data.json"
 d = json.load(open(path))
@@ -71,6 +85,11 @@ for rid, v in dbm.items():
         d["routes"].append(c)
         cards[rid] = c
         appended += 1
+# attach numeric payout/time fields (verified cards only)
+    nu = NUMERICS.get(rid) or {}
+    for k in ("payout_min", "payout_max", "payout_value_note",
+              "time_min_minutes", "time_max_minutes", "earn_ratio", "numeric_basis"):
+        c[k] = nu.get(k)
     # sync verified fields + status from DB for every card
     c["status"] = v.get("status") or "unverified"
     if v.get("status") == "verified":
@@ -92,7 +111,26 @@ d["categories"] = [{"name": k, "count": cc[k], "steps": stepsum[k]} for k in sor
 
 n = len(d["routes"])
 nv = sum(1 for r in d["routes"] if r.get("status") == "verified")
-d["version"] = f"{n}-route catalog 2026-09-23 ({nv} verified)"
+
+# Order the whole catalog by earn_ratio descending (verified with a ratio first,
+# then verified without a ratio, then unverified in stable order); assign rank 1..N.
+def _sort_key(r):
+    if r.get("status") == "verified" and r.get("earn_ratio"):
+        return (0, -(r["earn_ratio"] or 0))
+    if r.get("status") == "verified":
+        return (1, 0)
+    return (2, 0)
+
+d["routes"].sort(key=_sort_key)
+rank = 0
+for r in d["routes"]:
+    if r.get("status") == "verified":
+        rank += 1
+        r["rank"] = rank
+    else:
+        r["rank"] = None
+
+d["version"] = f"{n}-route catalog 2026-09-24 ({nv} verified, ranked by earn rate)"
 
 json.dump(d, open(path, "w"), indent=1)
 print(f"routes={n} verified={nv} synced={synced} appended={appended}")
