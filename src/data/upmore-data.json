@@ -15136,15 +15136,22 @@
    "provider": "Current",
    "method": "Fintech app signup bonus",
    "what": "Open account via referral/promo link, verify identity, link bank, complete qualifying actions",
-   "reward": "$50 signup bonus",
+   "reward": "$100 referral: new user signs up via referral link/code and completes $200+ in eligible recurring payroll deposits within 45 days; paid within 10 business days; $1,000/year cap per referrer. Limited-time $200 variant expires Oct 1, 2026 ($1,500+ payroll in 35 days)",
    "requirements": "18+, US resident, valid SSN, new customer, referral link may be required, qualifying direct deposit or transaction",
-   "payout_timing": "After direct deposit posts",
-   "catches": "Direct deposit required; bonus amount varies by campaign",
-   "url": "https://current.com",
+   "payout_timing": "$100 paid within 10 business days after qualification, per the official terms.",
+   "catches": [
+    "US",
+    "You must sign up through a referral link or code; the $200+ in eligible recurring payroll deposits must land within 45 days of account opening.",
+    "'Eligible recurring payroll' means employer payroll \u2014 not bank-to-bank transfers, Zelle, or one-off deposits.",
+    "Referral rewards are capped at $1,000 per referrer per year.",
+    "The $100 is paid within 10 business days after you qualify \u2014 not on signup day.",
+    "A separate limited-time $200 offer ran 9/17/2026\u201310/1/2026 (https://current.com/lto-200-200-referral-offer-2609/) requiring $1,500+ in payroll deposits within 35 days \u2014 it expires 10/1/2026 and is the stricter, expiring variant; the route is verified on the standard $100 program."
+   ],
+   "url": "https://dotcom.current.com/referral_program_terms_and_conditions/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 181,
    "difficulty": 3.7,
    "tier": "Easy",
@@ -15152,73 +15159,31 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://current.com or download the Current app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
-     "warns": "Upmore shows: confirm current promo is active before starting"
+     "text": "Sign up for a Current account using a referral link or code \u2014 https://dotcom.current.com/referral_program_terms_and_conditions/ states the $100 terms.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "If signup bonus requires a referral link, use a referral link from a friend or Upmore-provided link",
-     "who": "User",
-     "done_when": "Referral link used",
-     "warns": "Upmore shows: referral links are often required \u2014 going directly may not attach the bonus"
+     "text": "Get approved and open your account; note your account-opening date \u2014 the 45-day payroll window runs from it.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Create your Current account with email/phone and password",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Route at least $200 in eligible recurring payroll direct deposits (employer paycheck, not bank-to-bank transfers) into the account within 45 days of account opening.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: full name, DOB, SSN, address, ID upload if required",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore shows: fintech apps require SSN for banking compliance"
-    },
-    {
-     "n": 5,
-     "text": "Link your existing bank account via Plaid or manual routing/account entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Set up direct deposit in your payroll/HR system if the bonus requires it",
-     "who": "User",
-     "done_when": "Direct deposit configured",
-     "warns": "Upmore shows: direct deposit is the most common requirement for fintech bonuses"
-    },
-    {
-     "n": 7,
-     "text": "Make any required qualifying transactions (first payment, debit card use, etc.)",
-     "who": "User",
-     "done_when": "Qualifying actions completed",
-     "warns": ""
-    },
-    {
-     "n": 8,
-     "text": "Wait for bonus to post to your account",
+     "text": "Keep the account in good standing; the $100 referral reward is paid within 10 business days after you qualify.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the posting timeline"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the bonus and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "Withdraw funds or keep in account per your preference",
-     "who": "User",
-     "done_when": "Money received",
-     "warns": "Upmore shows: only count actual received money as earnings"
     }
    ]
   },
@@ -16007,15 +15972,20 @@
    "provider": "Cash App",
    "method": "Fintech app signup bonus",
    "what": "Open account via referral/promo link, verify identity, link bank, complete qualifying actions",
-   "reward": "$5-$15 signup bonus",
+   "reward": "$15 goes to the NEW USER (enters referral code + sends $5+ within 14 days); inviter's amount shown in-app only, not publicly fixed",
    "requirements": "18+, US resident, valid SSN, new customer, referral link may be required, qualifying direct deposit or transaction",
-   "payout_timing": "After first payment sent",
-   "catches": "Referral required; small bonus; fast to complete",
-   "url": "https://cash.app",
+   "payout_timing": "No explicit payout-day timing captured; the $15 follows the qualifying $5+ send within 14 days per the official terms.",
+   "catches": [
+    "US",
+    "The official $15 goes to the new user (friend) after they enter a referral code and send $5+ within 14 days.",
+    "The inviter's reward amount is shown in-app and is not publicly stated \u2014 it cannot be quoted as a fixed figure.",
+    "New users only; the $5+ send must happen within 14 days of entering the code."
+   ],
+   "url": "https://cash.app/refer/MH15S3K",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 191,
    "difficulty": 3.7,
    "tier": "Easy",
@@ -16023,73 +15993,24 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://cash.app or download the Cash App app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
-     "warns": "Upmore shows: confirm current promo is active before starting"
+     "text": "Sign up for Cash App and enter a friend's referral code \u2014 official terms at https://cash.app/refer/MH15S3K.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "If signup bonus requires a referral link, use a referral link from a friend or Upmore-provided link",
-     "who": "User",
-     "done_when": "Referral link used",
-     "warns": "Upmore shows: referral links are often required \u2014 going directly may not attach the bonus"
+     "text": "Send $5 or more within 14 days of entering the code.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Create your Cash App account with email/phone and password",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": ""
-    },
-    {
-     "n": 4,
-     "text": "Complete identity verification: full name, DOB, SSN, address, ID upload if required",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore shows: fintech apps require SSN for banking compliance"
-    },
-    {
-     "n": 5,
-     "text": "Link your existing bank account via Plaid or manual routing/account entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Set up direct deposit in your payroll/HR system if the bonus requires it",
-     "who": "User",
-     "done_when": "Direct deposit configured",
-     "warns": "Upmore shows: direct deposit is the most common requirement for fintech bonuses"
-    },
-    {
-     "n": 7,
-     "text": "Make any required qualifying transactions (first payment, debit card use, etc.)",
-     "who": "User",
-     "done_when": "Qualifying actions completed",
-     "warns": ""
-    },
-    {
-     "n": 8,
-     "text": "Wait for bonus to post to your account",
+     "text": "Receive the $15 referral bonus as the new user.",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the posting timeline"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the bonus and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "Withdraw funds or keep in account per your preference",
-     "who": "User",
-     "done_when": "Money received",
-     "warns": "Upmore shows: only count actual received money as earnings"
     }
    ]
   },
@@ -16099,15 +16020,21 @@
    "provider": "Venmo",
    "method": "Fintech app signup bonus",
    "what": "Open account via referral/promo link, verify identity, link bank, complete qualifying actions",
-   "reward": "$5-$10 signup bonus",
+   "reward": "$10 each \u2014 VENMO DEBIT CARD referral specifically: friend spends $50+ on purchases within 30 days; 10-reward/$100 cap",
    "requirements": "18+, US resident, valid SSN, new customer, referral link may be required, qualifying direct deposit or transaction",
-   "payout_timing": "After first payment sent",
-   "catches": "Referral required; small bonus; fast to complete",
-   "url": "https://venmo.com",
+   "payout_timing": "No explicit payout-day timing captured; the $10 follows the qualifying $50+ spend within 30 days per the official terms.",
+   "catches": [
+    "US",
+    "The $10-each reward applies to the Venmo Debit Card referral program specifically (help.venmo.com debit-card referrals FAQ).",
+    "The friend must spend $50+ on purchases with the Venmo Debit Card within 30 days \u2014 other activity does not qualify.",
+    "Limited to 10 rewards ($100) per account.",
+    "Both the referrer and the friend receive $10 \u2014 this is not a friend-only payout."
+   ],
+   "url": "https://help.venmo.com/cs/articles/venmo-debit-card-referrals-faq-terms-vhel361",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 192,
    "difficulty": 3.7,
    "tier": "Easy",
@@ -16115,73 +16042,24 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://venmo.com or download the Venmo app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
-     "warns": "Upmore shows: confirm current promo is active before starting"
+     "text": "Accept a Venmo Debit Card referral invite and open your Venmo account \u2014 official terms at https://help.venmo.com/cs/articles/venmo-debit-card-referrals-faq-terms-vhel361.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "If signup bonus requires a referral link, use a referral link from a friend or Upmore-provided link",
-     "who": "User",
-     "done_when": "Referral link used",
-     "warns": "Upmore shows: referral links are often required \u2014 going directly may not attach the bonus"
+     "text": "Get the Venmo Debit Card and spend $50 or more on purchases with it within 30 days.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Create your Venmo account with email/phone and password",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": ""
-    },
-    {
-     "n": 4,
-     "text": "Complete identity verification: full name, DOB, SSN, address, ID upload if required",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore shows: fintech apps require SSN for banking compliance"
-    },
-    {
-     "n": 5,
-     "text": "Link your existing bank account via Plaid or manual routing/account entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Set up direct deposit in your payroll/HR system if the bonus requires it",
-     "who": "User",
-     "done_when": "Direct deposit configured",
-     "warns": "Upmore shows: direct deposit is the most common requirement for fintech bonuses"
-    },
-    {
-     "n": 7,
-     "text": "Make any required qualifying transactions (first payment, debit card use, etc.)",
-     "who": "User",
-     "done_when": "Qualifying actions completed",
-     "warns": ""
-    },
-    {
-     "n": 8,
-     "text": "Wait for bonus to post to your account",
+     "text": "Both you and the person who referred you receive $10 (capped at 10 rewards / $100 per account).",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the posting timeline"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the bonus and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "Withdraw funds or keep in account per your preference",
-     "who": "User",
-     "done_when": "Money received",
-     "warns": "Upmore shows: only count actual received money as earnings"
     }
    ]
   },
@@ -16191,15 +16069,21 @@
    "provider": "PayPal",
    "method": "Fintech app signup bonus",
    "what": "Open account via referral/promo link, verify identity, link bank, complete qualifying actions",
-   "reward": "$5-$10 signup bonus",
+   "reward": "1,000 Rewards points per side when referred friend spends $5+ within 30 days; points redeemable for $10 cash back (not $10 cash); 10-friend/$100 cap",
    "requirements": "18+, US resident, valid SSN, new customer, referral link may be required, qualifying direct deposit or transaction",
-   "payout_timing": "After first payment",
-   "catches": "Referral required; small bonus",
-   "url": "https://paypal.com",
+   "payout_timing": "No explicit payout-day timing captured; the 1,000 points follow the qualifying $5+ spend within 30 days, redeemable for $10 cash back.",
+   "catches": [
+    "US",
+    "Each side earns 1,000 Rewards points, redeemable for $10 cash back \u2014 the reward is points, not directly cash.",
+    "The referred friend must spend $5+ within 30 days for both sides to earn.",
+    "Limited to 10 referred friends ($100 cap) per account.",
+    "New users only via a referral link."
+   ],
+   "url": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 193,
    "difficulty": 3.7,
    "tier": "Easy",
@@ -16207,73 +16091,24 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://paypal.com or download the PayPal app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
-     "warns": "Upmore shows: confirm current promo is active before starting"
+     "text": "Sign up for PayPal through a referral link \u2014 official invite terms at https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "If signup bonus requires a referral link, use a referral link from a friend or Upmore-provided link",
-     "who": "User",
-     "done_when": "Referral link used",
-     "warns": "Upmore shows: referral links are often required \u2014 going directly may not attach the bonus"
+     "text": "Spend $5 or more within 30 days of signing up.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Create your PayPal account with email/phone and password",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": ""
-    },
-    {
-     "n": 4,
-     "text": "Complete identity verification: full name, DOB, SSN, address, ID upload if required",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore shows: fintech apps require SSN for banking compliance"
-    },
-    {
-     "n": 5,
-     "text": "Link your existing bank account via Plaid or manual routing/account entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Set up direct deposit in your payroll/HR system if the bonus requires it",
-     "who": "User",
-     "done_when": "Direct deposit configured",
-     "warns": "Upmore shows: direct deposit is the most common requirement for fintech bonuses"
-    },
-    {
-     "n": 7,
-     "text": "Make any required qualifying transactions (first payment, debit card use, etc.)",
-     "who": "User",
-     "done_when": "Qualifying actions completed",
-     "warns": ""
-    },
-    {
-     "n": 8,
-     "text": "Wait for bonus to post to your account",
+     "text": "Both you and the referrer earn 1,000 Rewards points each, redeemable for $10 cash back (capped at 10 friends / $100 per account).",
      "who": "Upmore",
-     "done_when": "Bonus posted",
-     "warns": "Upmore tracks the posting timeline"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the bonus and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "Withdraw funds or keep in account per your preference",
-     "who": "User",
-     "done_when": "Money received",
-     "warns": "Upmore shows: only count actual received money as earnings"
     }
    ]
   },
@@ -29033,15 +28868,23 @@
    "provider": "Rev",
    "method": "Transcribe audio and video files",
    "what": "Apply, pass transcription test, complete transcription jobs",
-   "reward": "$0.30-$1.10 per audio minute",
+   "reward": "$0.40-$1.10 per audio minute (transcription); captioner $0.54-$1.10; weekly PayPal. Paid per AUDIO minute \u2014 beginners earn a few real dollars/hour; application waitlist",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid weekly via PayPal",
-   "catches": "Competitive application; requires good typing and listening skills",
-   "url": "https://rev.com",
+   "payout_timing": "Paid weekly via PayPal for all approved work.",
+   "catches": [
+    "Pay is per audio/video minute of the FILE, not per hour you work \u2014 difficult audio takes far longer to type, so effective hourly pay can be very low.",
+    "Zero guaranteed tasks: freelancers claim files from a shared job pool; nothing is assigned.",
+    "You must pass a graded English skills assessment plus a transcription/caption sample before any paid work \u2014 the sample is effectively an unpaid test.",
+    "Rev states it currently has an application waitlist due to high volume, with longer response times.",
+    "Earnings vary by role, file complexity, and minutes completed; the '$1' catalog figure sits at the TOP of the stated transcription range, not a typical rate.",
+    "No minimum commitment cuts both ways: there is no boss, but also no floor on your income.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://www.rev.com/freelancers",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 357,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29049,58 +28892,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://rev.com or download the Rev app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.rev.com/freelancers and choose a role: Transcriptionist ($0.40-$1.10/audio min), Captioner ($0.54-$1.10/audio min), or Subtitle Translator ($1.70-$4.00+/audio min).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Submit the application form (note the current waitlist \u2014 applications are processed in order received).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Complete the short skills assessment covering English proficiency and grammar.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Submit a short transcription/caption/translation sample meeting Rev's quality standards.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Once approved, log in and claim audio/video files from the job pool \u2014 you choose when and how much you work.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
+    },
+    {
+     "n": 6,
+     "text": "Submit completed work before deadlines; approved work is paid weekly via PayPal.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29111,15 +28940,23 @@
    "provider": "TranscribeMe",
    "method": "Transcribe short audio clips",
    "what": "Apply, pass entrance exam, complete transcription tasks",
-   "reward": "$15-$22 per audio hour",
+   "reward": "$15-$22 per AUDIO hour (not work hour \u2014 ~4h work per audio hour, beginner reality $4-$6/hr); official average $250/month",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid weekly via PayPal",
-   "catches": "Short audio clips; lower pay but flexible; entrance exam required",
-   "url": "https://transcribeme.com",
+   "payout_timing": "Not stated on the official page read; third-party sources report weekly PayPal payouts (could not confirm officially).",
+   "catches": [
+    "Pay is per AUDIO hour (length of the file), not per hour worked \u2014 one hour of audio routinely takes 3-4 hours to transcribe, so effective hourly pay can be very low.",
+    "Zero guaranteed tasks: work is self-claimed from the WorkHub; availability varies.",
+    "You must pass an English entrance exam before touching any paid work \u2014 an unpaid test.",
+    "WorkHub access and exams require Google Chrome; you need a computer and stable internet (no special equipment).",
+    "The '$22' catalog figure is the TOP of the base range ($15-$22/audio hr) \u2014 most people earn at the bottom, and official average is $250/month.",
+    "Third-party sources cite a $20 PayPal payout threshold and weekly PayPal payouts \u2014 not confirmed on the official page read.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://transcribeme.com/transcription-jobs",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 358,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29127,58 +28964,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://transcribeme.com or download the TranscribeMe app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://transcribeme.com/transcription-jobs and sign up for a Crowd professional account.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Register in the TranscribeMe WorkHub (requires Google Chrome on a computer with stable internet).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Pass the English entrance exam \u2014 no paid work is available until you pass.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Once approved, claim short 2-4 minute audio clips from the WorkHub queue and transcribe them (the system sends the next clip after each completion).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "High-accuracy, fast transcribers can qualify for Special Teams (medical, specialty styles) at higher per-audio-hour rates.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29189,15 +29005,24 @@
    "provider": "GoTranscript",
    "method": "Transcribe audio and video files",
    "what": "Apply, pass test, complete transcription jobs",
-   "reward": "$0.60-$1.20 per audio minute",
+   "reward": "Up to $0.60/audio minute (catalog's $1 NOT officially supported); $150/mo average; Friday PayPal/Payoneer, no minimums",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid weekly via PayPal",
-   "catches": "Competitive; requires good English and typing skills",
-   "url": "https://gotranscript.com",
+   "payout_timing": "Weekly payouts every Friday via PayPal or Payoneer; no minimums.",
+   "catches": [
+    "Catalog claim '$1' is not supported: official company pages state pay 'up to $0.60 per audio or video minute' \u2014 the $1 figure is unsubstantiated.",
+    "Zero guaranteed tasks: after approval you pick files from your dashboard \u2014 'no forced assignments' means no promised volume.",
+    "You must pass a quiz (100% correct using their guidelines) plus a transcription test job \u2014 unpaid tests; review of the test can take up to 60 days.",
+    "New transcribers with a 3.6-or-lower average rating after 3 files can be removed from the team (per the official guidelines video).",
+    "Pay is per audio minute of the file, not per work hour \u2014 effective hourly pay can be low on difficult audio.",
+    "Payout options depend on your region \u2014 see Payouts/Billing settings only after approval.",
+    "Application includes SMS verification, face photo, and real-time photo with verification code on paper (anti-account-sale safeguards).",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://gotranscript.com/transcription-jobs",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 359,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29205,58 +29030,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://gotranscript.com or download the GoTranscript app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://gotranscript.com/transcription-jobs, choose your language from the application links, and apply.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Study the GoTranscript transcription guidelines, then complete the quiz 100% correctly (questions can have multiple correct answers).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
+     "text": "Complete the test job: transcribe the provided audio using clean verbatim, no timestamps.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
+     "text": "Submit for review (reviewing can take up to 60 days; it can be faster if you share the job offer).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "After approval, pick audio/video files from your dashboard \u2014 no forced assignments \u2014 and transcribe them by the listed deadline.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Maintain a high accuracy rating (above 4.5 qualifies you for editor work); editors review samples of your work.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Get paid weekly \u2014 every Friday via PayPal or Payoneer (the company covers the PayPal fee); no minimums.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29267,15 +29085,25 @@
    "provider": "Scribie",
    "method": "Transcribe short audio files",
    "what": "Apply, pass test, complete transcription tasks",
-   "reward": "$5-$20 per audio hour",
+   "reward": "$5-$20 per audio hour, PayPal, no withdrawal limits \u2014 BUT HIRING IS PAUSED per official announcement (migrating to Scribie.ai); NOT actionable now",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid via PayPal (manual withdrawal)",
-   "catches": "Lower pay; short files; good for beginners",
-   "url": "https://scribie.com",
+   "payout_timing": "Paid into your verified PayPal account; no payout schedule stated on the official page ('no withdrawal limits').",
+   "catches": [
+    "NOT ACTIONABLE RIGHT NOW \u2014 hiring/applications paused per official site; check back before spending time on it.",
+    "TEMPORARY HIRING PAUSE: the official page announces freelance transcriber hiring is paused during migration to Scribie.ai \u2014 no new applicants accepted until the new process is announced.",
+    "Pay is per AUDIO hour ($5-$20), not per work hour \u2014 a 6-minute file can take 30-45 minutes to complete, so effective hourly pay is very low at the bottom of the range.",
+    "Zero guaranteed tasks: 'We don't assign files. You can preview and choose files to work on.'",
+    "Certification/test required before any paid work \u2014 unpaid test.",
+    "Requires a verified PayPal account.",
+    "Catalog claim '$20' is the TOP of the official $5-$20/audio-hour range; beginners start at the bottom.",
+    "The job now involves correcting AI-generated transcripts rather than pure transcription \u2014 output quality and pay depend on the AI draft.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://scribie.com/freelance-transcription",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 360,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29283,58 +29111,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://scribie.com or download the Scribie app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://scribie.com/freelance-transcription and check whether the hiring pause has lifted (it was paused during migration to Scribie.ai).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Start the free trial \u2014 no credit card required \u2014 and complete the certification process.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Once certified, preview and choose ~6-minute transcription/review files (files are never assigned).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Correct the provided automated transcript using the transcription guide.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Earnings accumulate in your account; withdraw to your verified PayPal account with no withdrawal limits.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29345,15 +29152,24 @@
    "provider": "CastingWords",
    "method": "Transcribe audio and video files",
    "what": "Apply, pass test, complete transcription jobs",
-   "reward": "$0.17-$1.00+ per audio minute",
+   "reward": "8.5 cents to ~$1 per audio minute; newcomers only get the lowest tier; rejected work unpaid",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid via PayPal weekly",
-   "catches": "Quality-graded; higher pay for higher quality work",
-   "url": "https://castingwords.com",
+   "payout_timing": "Third-party sources report weekly Friday payouts via PayPal MassPay (company covers PayPal fees); could not confirm from official pages read.",
+   "catches": [
+    "Newcomers start at 8.5 cents per audio minute \u2014 the bottom of the range; higher-paying jobs require working up through badge levels.",
+    "Pay is per AUDIO minute of the file, not per work hour \u2014 one audio minute can take 2-10 minutes to transcribe, so effective hourly pay can be ~$1/hour at entry level.",
+    "Rejected work (grades 0-4) is discarded and redone \u2014 you get $0 for it. Grading determines your pay on every job.",
+    "Bonus multipliers only apply from grade 5 up: grade 5 = base pay, grade 9 = 3x base pay \u2014 top pay requires consistently near-perfect grades.",
+    "Zero guaranteed tasks: you pick from an available-jobs list; weekends, US holidays, and US summer months can see fewer jobs posted.",
+    "Must be 18+ and live in a supported country; must be legal to work as an independent contractor.",
+    "The '$1' catalog figure is the TOP of the official range \u2014 entry-level reality is 8.5 cents/audio minute.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://castingwords.com/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 361,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29361,58 +29177,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://castingwords.com or download the CastingWords app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Confirm you are 18+, live in a supported country, and can legally work as an independent contractor.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Apply on the CastingWords site and pass the transcription test (transcribe a short audio file; a failed test may or may not be retakable).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Once accepted, pick assignments from the Available Jobs list \u2014 each job shows its time allotment; click 'Work on This' to claim.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Complete and review the transcription, then submit it to CastingWords for grading.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Grading determines pay: grades 0-4 are rejected and unpaid; grade 5 earns base pay; grades 6-9 earn 1.5x to 3x base pay. Raise your badge level over time to unlock higher-paying jobs.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
+    },
+    {
+     "n": 6,
+     "text": "Get paid via PayPal (third-party sources report weekly Friday payouts).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29501,15 +29303,25 @@
    "provider": "Speechpad",
    "method": "Transcribe audio and video files",
    "what": "Apply, pass test, complete transcription jobs",
-   "reward": "$0.25-$1.00 per audio minute",
+   "reward": "$0.25-$1.00/min; weekly Thursday PayPal \u2014 BUT APPLICATIONS ARE CLOSED (at capacity); entry-level ~$7.50/hr by their own math; NOT actionable now",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid via PayPal",
-   "catches": "Varies by job type; requires good typing skills",
-   "url": "https://speechpad.com",
+   "payout_timing": "Paid every Thursday (generally midnight GMT) via PayPal; each payment includes all jobs submitted and approved since the previous payment.",
+   "catches": [
+    "NOT ACTIONABLE RIGHT NOW \u2014 hiring/applications paused per official site; check back before spending time on it.",
+    "Zero guaranteed tasks: all work is per-job from a job board; nothing promises any volume of work.",
+    "You must score 98+ on the transcription test and 75+ on the grammar test, plus sign the Confidentiality Qualification, before you can do any paid work (official FAQ).",
+    "Applications are currently CLOSED officially \u2014 'at capacity... don't anticipate openings in the near future.'",
+    "Variable task availability: job flow fluctuates; third-party worker reports of slow periods could not be confirmed officially, but no official page guarantees steady work.",
+    "Effective hourly pay can be low: official page says entry-level transcription pays $0.25/min and an experienced transcriber finishes 15-20 audio minutes per elapsed hour \u2014 about $7.50/hr at entry level per their own example.",
+    "Higher rates ($1.00/min) require more experience, high ratings, and invitation-only reviewer/rush qualifications (1,000 minutes + 98 rating for reviewer).",
+    "Workers are independent contractors; no taxes withheld \u2014 you are responsible for declaring income.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://www.speechpad.com/worker/getting-paid",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 363,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29517,58 +29329,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://speechpad.com or download the Speechpad app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Wait for applications to reopen \u2014 the official apply page (speechpad.com/worker/apply) currently says 'Applications Closed... at capacity for new transcriptionist applications and don't anticipate openings in the near future'; follow their socials for reopening.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "When applications reopen, go through the official application process and score above 98 on the basic transcription test and 75 or above on the grammar test (per the official FAQ).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
+     "text": "Once you get a worker account, go to the Qualifications section and complete the Confidentiality Qualification \u2014 read and digitally sign the Worker Confidentiality Agreement.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
+     "text": "Start with entry-level general transcription jobs from the job board at $0.25 per audio minute; use the 30-second audio preview before accepting a job to check quality.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Submit completed transcripts; each job is reviewed by another qualified worker and must be approved to become eligible for payment in the next cycle.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Get paid every Thursday via PayPal (generally midnight GMT) for all approved jobs since the previous payment; no processing fees are deducted.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Build ratings and complete minutes to unlock higher pay: verbatim jobs, rush jobs (500 minutes + 96 rating, invitation), and reviewer roles (1,000 minutes + 98 rating, invitation).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -29579,15 +29384,24 @@
    "provider": "Daily Transcription",
    "method": "Transcribe for entertainment, corporate, and legal",
    "what": "Apply, pass test, complete transcription jobs",
-   "reward": "$0.50-$2.00 per audio minute",
+   "reward": "MECHANISM ONLY: per-assignment rate disclosed upfront, paid weekly by mailed check (US/Canada); 1099 contractor; no rate knowable before joining",
    "requirements": "18+, US resident, good typing skills, headphones, computer, quiet space",
-   "payout_timing": "Paid weekly via PayPal",
-   "catches": "Higher pay for specialized industries; competitive",
-   "url": "https://dailytranscription.com",
+   "payout_timing": "D.T. pays weekly by check only unless you are outside the U.S. or Canada, then other payment arrangements can be made.",
+   "catches": [
+    "Zero guaranteed tasks: you request time on their scheduler and are assigned work \u2014 the official page never promises any amount of work.",
+    "No fixed published rate: you only see the 'pay rate' per assignment once files are listed in the assignment directory (official page: 'pay rate... listed upfront so you can decide whether it's a good fit').",
+    "You must complete the career form, upload a resume, and pass their transcription test to strict standards ('Our HR team will only accept your test if you meet our strictest standards or are a course graduate').",
+    "Variable task availability: work depends on what you are assigned during your requested schedule \u2014 never guaranteed.",
+    "Effective hourly pay can be low: with no official rate published, earnings depend entirely on per-assignment rates and your speed; third-party reports (~$0.75-0.85/audio min) are NOT official and were not used.",
+    "Paid weekly by check only (US/Canada) \u2014 no PayPal/direct deposit option stated officially.",
+    "All transcribers are 1099 independent contractors \u2014 no taxes withheld; you complete a W-9/W-8 and handle your own withholdings.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://dailytranscription.com/careers",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 364,
    "difficulty": 4.9,
    "tier": "Moderate",
@@ -29595,58 +29409,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://dailytranscription.com or download the Daily Transcription app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to the official careers page https://dailytranscription.com/careers and choose the role matching your background (English/General, Legal, Medical, As-Broadcast, Spanish bilingual, etc.).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Click the link under the role to open its career form; complete the form and upload your resume (official: 'Complete the career form and upload your resume').",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
+     "text": "Watch for the automated test-instructions email from no-reply@wufoo.com (check spam) and complete the transcription test to their strict standards \u2014 'Our HR team will only accept your test if you meet our strictest standards or are a course graduate.'",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
+     "text": "If accepted, request the time slots you want on their scheduler; you will be emailed when audio/video files are ready in the assignment directory.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "For each assignment, review the media content, style, subject, pay rate, and due date listed upfront, and only take files that are a good fit for you.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Transcribe assigned files using your own computer, Express Scribe (or similar), and headphones; a foot pedal is recommended.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Get paid weekly by check (US/Canada); complete the W-9 (or W-8 outside the US) at onboarding \u2014 you are a 1099 contractor responsible for your own taxes.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -35467,15 +35274,24 @@
    "provider": "PredictIt",
    "method": "Prediction market promo",
    "what": "Sign up for PredictIt, check for any new-user promotions or bonus credits",
-   "reward": "Check current site for active promos",
+   "reward": "FEE SCHEDULE ONLY (costs, not earnings): 10% fee on profitable trades + 5% withdrawal fee per official docs/CFTC filing",
    "requirements": "18+, US resident, valid identity",
-   "payout_timing": "Per campaign terms",
-   "catches": "PredictIt is a prediction market for political events. Any credit involves risk. Verify current offers.",
+   "payout_timing": "Winning shares redeem at $1 per share when the market resolves; withdrawal processing time was not loadable from official pages this session. No promo payout timing applies - PredictIt advertises no signup promo.",
+   "catches": [
+    "This is gambling, not income: contracts can go to $0; fees eat returns; US-only",
+    "Prediction markets are gambling: Yes/No shares are priced 1c-99c and settle at $1 or $0; losing shares are worthless.",
+    "PredictIt takes a 10% fee on profits (confirmed in the CFTC no-action filing record and PredictIt's official support documentation) AND a 5% fee on withdrawals, so even winning traders keep meaningfully less than they 'won'.",
+    "Per-market position caps apply (CFTC filing records $850 per market historically; a 2026 third-party review reports $3,500 per contract after the 2025 national relaunch - confirm in current official terms), limiting how much anyone can put at risk or win.",
+    "No bonuses or promotions are advertised; the catalog claim is only 'check current site for active promos', which is honest but means there is no promo payout to claim.",
+    "There is no mobile app; trading is via the predictit.org website only.",
+    "Outcomes depend on uncertain real-world events; no prediction strategy guarantees profit.",
+    "Addiction risk: real-money event betting with uncertain outcomes."
+   ],
    "url": "https://predictit.org",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 430,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -35483,45 +35299,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to predictit.org and click Sign Up",
-     "who": "User",
-     "done_when": "Signup page loaded",
+     "text": "Create an account at predictit.org as a U.S. resident 18+ and complete identity verification.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create account with email, password, and personal info",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Deposit funds into the account (your own money; no signup fee).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Verify identity and residential address",
-     "who": "User",
-     "done_when": "Identity verified",
+     "text": "Buy Yes or No shares in a market at 1c-99c per share, within the per-market position cap.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 4,
-     "text": "Check the homepage and promotions section for any current new-user bonus",
-     "who": "User",
-     "done_when": "Promo identified",
-     "warns": "Upmore shows: If no active promo, move to another route"
+     "text": "If the event occurs, winning shares redeem at $1 each; losing shares are worth $0.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "If a promo exists, follow the stated requirements (deposit, trade, etc.)",
-     "who": "User",
-     "done_when": "Requirements met",
-     "warns": "Upmore shows: Trading involves risk \u2014 promo credit is not guaranteed cash"
-    },
-    {
-     "n": 6,
-     "text": "Withdraw any realized gains",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
+     "text": "PredictIt deducts 10% of any profit when shares are sold above cost or redeemed at $1; a 5% fee applies when withdrawing funds.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     }
    ]
   },
@@ -35531,15 +35340,22 @@
    "provider": "Manifold Markets",
    "method": "Prediction market promo / play money",
    "what": "Sign up for Manifold, use free play-money or check for real-money promo offers",
-   "reward": "Free play money (mana) for new users; check for real-money promotions",
+   "reward": "Mana play-money ONLY: M1,000 free grant; ZERO cash value, cannot be converted or withdrawn. Real-money Sweepcash layer discontinued March 2025",
    "requirements": "Account creation only for play money; real-money requires KYC",
    "payout_timing": "Immediate for play money; per terms for real money",
-   "catches": "Manifold offers play-money prediction markets. Real-money features may have promotions. Play money has no cash value.",
-   "url": "https://manifold.markets",
+   "catches": [
+    "This is gambling, not income: mana has zero cash value; leaderboard points are not money",
+    "Mana (M) has no cash value and cannot be withdrawn or converted to USD, crypto, or gift cards",
+    "Free prize drawings for real USDC are sweepstakes \u2014 entry is free but winning is uncertain and never guaranteed",
+    "Real-money 'Sweepcash' trading layer was discontinued in March 2025; the platform is play-money only",
+    "Mana can be purchased with dollars (optional), so the platform can cost money while paying nothing out",
+    "Markets are resolved by the market creator (trust-based, not a regulated oracle)"
+   ],
+   "url": "https://manifold.markets/",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 431,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -35547,45 +35363,31 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to manifold.markets and sign up with Google, GitHub, or email",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Sign up at manifold.markets \u2014 no purchase required",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Receive free play money (mana) to start trading predictions",
-     "who": "User",
-     "done_when": "Play money received",
-     "warns": "Upmore shows: Play money has NO cash value"
+     "text": "Receive M1,000 of play-money Mana automatically on signup",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Check if any real-money promotions or deposit bonuses are active",
-     "who": "User",
-     "done_when": "Promo status confirmed",
-     "warns": "Upmore shows: If real-money promo exists, verify terms carefully"
+     "text": "Trade play-money prediction markets (prices reflect crowd probability, payouts in Mana on resolution)",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "If real-money promo: complete identity verification and deposit",
-     "who": "User",
-     "done_when": "Verified and funded",
-     "warns": "Upmore shows: Real-money trading involves risk"
-    },
-    {
-     "n": 5,
-     "text": "Trade predictions on any market you understand",
-     "who": "User",
-     "done_when": "Trade placed",
-     "warns": "Upmore shows: Upmore does not recommend specific markets or positions"
-    },
-    {
-     "n": 6,
-     "text": "Withdraw any realized gains from real-money trading",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
+     "text": "Optional: claim one free entry per prize drawing for a chance at real USDC (sweepstakes \u2014 no guarantee, crypto wallet needed to receive winnings)",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     }
    ]
   },
@@ -35823,15 +35625,23 @@
    "provider": "Smarkets",
    "method": "Prediction market promo",
    "what": "Sign up for Smarkets, check for new-user promotions",
-   "reward": "Check current site for active promos",
+   "reward": "FEE SCHEDULE ONLY (costs, not earnings): 2% commission on net winnings per market (UKGC-licensed); zero-sum between users minus commission",
    "requirements": "18+, eligible jurisdiction, valid ID",
-   "payout_timing": "Per campaign terms",
-   "catches": "Smarkets is a betting exchange. Promotional credits involve gambling risk. Verify state availability.",
+   "payout_timing": "Commission is charged at market settlement and itemised on the account statement; withdrawal processing times were not loadable from official pages this session. No promo payout timing applies - Smarkets' claim is only to check the site for active promos.",
+   "catches": [
+    "This is betting, not income: exchange bets are zero-sum between users minus commission",
+    "Betting exchange = gambling: you bet against other users (back/lay), and losing bets lose 100% of the stake.",
+    "Smarkets charges 2% commission on net winnings per market (Standard Tier), so every winning position keeps 2% less than the market price implies.",
+    "Commission tiers can change what you pay: accounts can move to Pro (1% on winnings or losses per trade) or Select (3%) tiers; confirm your tier in official terms.",
+    "The catalog claim is only 'check current site for active promos', which is honest but means there is no promo payout to claim; a COMMFREE 60-day code is mentioned in Smarkets' own help text with T&Cs applying (not verified live).",
+    "Smarkets is UKGC-licensed (UK Gambling Commission) - a gambling regulator, which underscores this is a betting product; availability is UK-focused.",
+    "Addiction risk: real-money betting with uncertain outcomes."
+   ],
    "url": "https://smarkets.com",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 436,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -35839,38 +35649,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to smarkets.com and sign up",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Create an account at smarkets.com as an 18+ user in a supported jurisdiction and complete identity verification.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Complete identity and age verification",
-     "who": "User",
-     "done_when": "Identity verified",
+     "text": "Deposit funds into the account (your own money; no signup fee).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Check for current new-user promotional offers",
-     "who": "User",
-     "done_when": "Promo identified",
+     "text": "Back or lay selections on exchange markets; your odds come from other users, not a bookmaker margin.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 4,
-     "text": "If promo: deposit and follow requirements",
-     "who": "User",
-     "done_when": "Requirements met",
-     "warns": "Upmore shows: Betting involves risk \u2014 promo credit can be lost"
+     "text": "When a market settles, Smarkets charges 2% commission on your net winnings for that market (Standard Tier); net losses incur no commission.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Withdraw any winnings after meeting terms",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
+     "text": "Commission paid per settlement is shown on your account statement.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     }
    ]
   },
@@ -35880,15 +35690,25 @@
    "provider": "Binance.US",
    "method": "Crypto exchange promo credit",
    "what": "Sign up for Binance.US, complete KYC, check for signup bonus or trading credit",
-   "reward": "Check current site for active promos \u2014 varies by campaign",
+   "reward": "Current $SOL First Depositor Bonus (Sept 17-Oct 17, 2026): up to $200 in SOL on $250+ first deposit; deposit locked untouched through Nov 17, 2026 or bonus forfeited. 'Crypto may lose the entire value' per Binance's own terms",
    "requirements": "18+, US resident (check state), valid SSN/ID",
-   "payout_timing": "Per campaign terms",
-   "catches": "Binance.US is a crypto exchange. Any promo credit involves crypto market risk. State restrictions apply.",
+   "payout_timing": "Rewards distributed no later than December 18, 2026; official terms state the bonus is credited within 30 business days of the end of the holding period (holding period runs through November 17, 2026).",
+   "catches": [
+    "Bonus paid in SOL \u2014 highly volatile; Binance's own terms say it is NOT an income guarantee",
+    "Bonus paid entirely in SOL; USD value of the SOL received may be higher or lower than the stated USD bonus value at crediting and afterwards due to market movement (terms Section 5.3, 8.1).",
+    "Qualifying first deposit is at least $250; one deposit only \u2014 subsequent deposits cannot combine or upgrade the tier, and the tier is fixed by that single first deposit.",
+    "30-day pre-crediting holding period through November 17, 2026: withdrawing any portion of the qualifying deposit during this window forfeits the bonus in full, even if you redeposit afterward.",
+    "Exact deposit-tier breakpoints are only shown in the promo page's tier calculator; the published figure is 'up to $200 in SOL.'",
+    "One bonus per person, household, wallet, device, IP address, and verified identity; multiple accounts disqualify all bonuses.",
+    "US-only, only in states where Binance.US operates; 18+; must clear KYC; new/first-time depositors only.",
+    "Binance.US may amend, suspend, or terminate the promotion at any time; decisions on eligibility and abuse are final.",
+    "Promotion period: September 17, 2026 at 3:00 PM ET through October 17, 2026 at 11:59 PM ET."
+   ],
    "url": "https://binance.us",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 437,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -35896,45 +35716,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to binance.us and click Register",
-     "who": "User",
-     "done_when": "Signup page loaded",
-     "warns": "Upmore shows: Crypto trading involves risk \u2014 promo credit is not guaranteed cash"
+     "text": "Visit the official promo landing page promo.binance.us/sol and enter your email address, then click 'Enroll & Deposit here'.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Create account with email and password",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Create your Binance.US account at binance.us/register using the SAME email address you entered on the landing page, and complete identity verification (KYC).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Complete KYC: full name, DOB, SSN, address, ID upload",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore shows: SSN required for compliance"
+     "text": "Make a qualifying first deposit of at least $250 (cash or crypto) by October 17, 2026 at 11:59 PM ET \u2014 this single deposit locks in your bonus tier.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Check the promotions page for current signup or deposit bonuses",
-     "who": "User",
-     "done_when": "Promo identified",
-     "warns": "Upmore shows: If no active promo, move to another route"
+     "text": "Keep the entire qualifying deposit in your account untouched from deposit day through November 17, 2026 (withdrawing any portion forfeits the bonus).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "If promo: deposit the required amount and complete qualifying trades",
-     "who": "User",
-     "done_when": "Requirements met",
-     "warns": "Upmore shows: Crypto can lose value \u2014 promo credit is not guaranteed"
-    },
-    {
-     "n": 6,
-     "text": "Withdraw any realized gains to your bank",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
+     "text": "Receive the SOL bonus (up to $200 in SOL, tiered by deposit size) credited to your account within 30 business days after the holding period (distributed no later than December 18, 2026).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     }
    ]
   },
@@ -35944,15 +35757,25 @@
    "provider": "Coinbase Advanced",
    "method": "Crypto trading promo credit",
    "what": "Sign up for Coinbase Advanced Trade, check for trading volume bonus",
-   "reward": "Check current site for active trading promos",
+   "reward": "Official new-user referral: $5/$20/$50 in USDC by 14-day trading-volume tiers; requires trading $100+ of YOUR OWN capital (at risk); referral link required",
    "requirements": "18+, US resident, valid ID, existing or new Coinbase account",
-   "payout_timing": "Per campaign terms",
-   "catches": "Advanced trading promos require qualifying trade volume. Crypto involves market risk.",
+   "payout_timing": "The invitee's reward will be added to their Coinbase account within 24 hours after the 14-day period's expiration, provided the minimum qualifying trading volume was met.",
+   "catches": [
+    "This is not free money: you must risk your own capital trading within 14 days",
+    "Requires signing up through someone's referral link (or after 365 days of no Advanced activity) \u2014 not a plain signup bonus anyone gets for registering directly.",
+    "Only trades on Coinbase Advanced count; purchases on Coinbase Simple Trade or Coinbase Prime do not count toward the $100+ qualifying volume.",
+    "The invitee's qualifying trading volume must be completed within 14 days of becoming trade-eligible, or no reward is paid.",
+    "Payouts are tiered: $100-$5,000 volume \u2192 $5; $5,000-$10,000 \u2192 $20; over $10,000 \u2192 $50 \u2014 you must trade over $10,000 to get the maximum $50.",
+    "The reward to the invitee is subject to change without notice; Coinbase can alter or revoke the program at any time, including revoking invitee rewards.",
+    "Cannot be combined with the Coinbase New User First Buy Spin The Wheel Incentive, Referral Program, or New User First Trade Promo Code.",
+    "Excluded: UK, Turkey, Philippines, and Canada residents; void where prohibited.",
+    "Coinbase includes a spread in the price when you buy or sell \u2014 trading $100+ costs more than $100 in effective terms."
+   ],
    "url": "https://coinbase.com/advanced-trade",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 438,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -35960,38 +35783,31 @@
    "steps": [
     {
      "n": 1,
-     "text": "Log into your Coinbase account or create one",
-     "who": "User",
-     "done_when": "Account accessed",
+     "text": "Sign up for a new Coinbase account using someone's Coinbase Advanced referral link (purchases must be on Advanced; Simple Trade/Prime do not count).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Navigate to Advanced Trade",
-     "who": "User",
-     "done_when": "Advanced Trade loaded",
+     "text": "Complete identity verification to become trade-eligible.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Check for current trading volume promotions on the rewards page",
-     "who": "User",
-     "done_when": "Promo identified",
+     "text": "Trade at least $100 in spot (or perpetual futures) volume on Coinbase Advanced within 14 days of becoming trade-eligible (tiers: $100-$5,000 \u2192 $5; $5,000-$10,000 \u2192 $20; over $10,000 \u2192 $50, paid in USDC).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 4,
-     "text": "If promo: complete required qualifying trade volume",
-     "who": "User",
-     "done_when": "Volume reached",
-     "warns": "Upmore shows: Trading involves risk \u2014 promo credit is not guaranteed cash"
-    },
-    {
-     "n": 5,
-     "text": "Withdraw any realized gains",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
+     "text": "Receive the invitee reward in your Coinbase account within 24 hours after the 14-day period expires, provided the minimum volume was met.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     }
    ]
   },
@@ -36065,15 +35881,24 @@
    "provider": "Gemini",
    "method": "Crypto exchange promo",
    "what": "Sign up for Gemini, complete KYC, check for signup bonus or crypto rewards",
-   "reward": "Check current site for active promos \u2014 varies by campaign",
+   "reward": "Current referral: trade >=$100 in 30 days, both sides get 'up to $50' in crypto \u2014 maximum, not guaranteed; volatile; program revocable",
    "requirements": "18+, US resident (check state), valid ID",
-   "payout_timing": "Per campaign terms",
-   "catches": "Gemini is a crypto exchange. Any promo involves crypto market risk. State restrictions apply.",
+   "payout_timing": "Once a referral passes 32 days on Gemini and qualifies (minimum $100 trade), the reward is processed and made available to both parties; processing may take up to 2 days.",
+   "catches": [
+    "The $50 is not free money: requires trading $100 of your own money within 30 days",
+    "'Up to $50' is a maximum for users in Hong Kong, New Zealand, and the United States \u2014 the exact amount paid is not guaranteed at $50; reward amounts vary by jurisdiction.",
+    "Requires a referral link from an existing Gemini user \u2014 you cannot claim it by signing up directly; you need someone to refer you.",
+    "The referee must trade at least USD $100 within the first 30 days; deposits and withdrawals do not count \u2014 only revenue-generating trades (instant buy/sell/convert, OTC, Active Trader, derivatives where available).",
+    "Reward is processed only after the referral passes 32 days on Gemini, plus up to 2 days processing.",
+    "Recruit-tier referral rewards are capped at USD $1,500 total.",
+    "Referral program is currently eligible in only three jurisdictions per the support article: Hong Kong, New Zealand, United States (the older $15 blog listed more countries \u2014 that offer appears superseded).",
+    "Gemini may modify or cancel the referral program at any time; referral rewards may be taxable (US 1099-MISC threshold applies at $750 of platform income)."
+   ],
    "url": "https://gemini.com",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 440,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36081,45 +35906,31 @@
    "steps": [
     {
      "n": 1,
-     "text": "Download the Gemini app or go to gemini.com",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "The existing Gemini user opens the Rewards hub (Account \u2192 Rewards on web, or the purple Rewards button in the app) and taps 'Share link' to copy their unique referral link.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create account with email and password",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "The new user signs up for Gemini through that referral link (a direct signup without the link does not qualify).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Complete KYC verification",
-     "who": "User",
-     "done_when": "Identity verified",
+     "text": "The new user (referee) trades at least USD $100 in qualifying trades (instant buy/sell/convert, OTC, Active Trader, derivatives where available) within the first 30 days \u2014 deposits and withdrawals do not count.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 4,
-     "text": "Check for current signup bonus or Gemini Earn promotions",
-     "who": "User",
-     "done_when": "Promo identified",
+     "text": "After the referral passes 32 days on Gemini, both the referrer and the referee receive the reward (up to $50 for US users) in the crypto of their choice, within up to 2 days of processing; there is no time limit before you can sell the reward.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 5,
-     "text": "If promo: deposit required amount and complete qualifying actions",
-     "who": "User",
-     "done_when": "Requirements met",
-     "warns": "Upmore shows: Crypto involves risk"
-    },
-    {
-     "n": 6,
-     "text": "Withdraw any realized gains",
-     "who": "User",
-     "done_when": "Funds in bank",
-     "warns": "Upmore shows: Only count withdrawn cash"
     }
    ]
   },
@@ -36129,15 +35940,24 @@
    "provider": "SoFi Invest",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free stock or cash bonus for opening brokerage account and funding with qualifying deposit",
+   "reward": "1% ACAT match up to $50,000, no minimum, ends Sept 30, 2026 \u2014 requires moving EXISTING brokerage assets; 5-year lock; an ordinary user with no other brokerage earns $0",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Bonus posts after deposit verification period",
-   "catches": "Confirm current offer type (stock vs cash) and exact deposit tier on official site before proceeding.",
-   "url": "https://sofi.com/invest",
+   "payout_timing": "Match paid in cash within 5 business days from the date the transferred funds settle; funds must be maintained for five (5) years from settlement to keep the entire match.",
+   "catches": [
+    "US",
+    "Qualifying transfers must remain in the SoFi self-directed account for five (5) years from the settlement date to keep the full match; withdrawing early triggers a proportional early-withdrawal fee and removal of the matching amount.",
+    "The fee can trigger even when losses (not withdrawals) reduce the balance below the pre-promotion equity + deposit + match, and required IRA distributions can also trigger it.",
+    "Offer Period is only September 10, 2026 \u2013 September 30, 2026 \u2014 about a week left at verification time \u2014 and SoFi may modify, suspend, or terminate the offer at any time without advance notice.",
+    "Only ACAT transfers qualify \u2014 new cash deposits do not earn the match.",
+    "This offer may not be combined with any other offers.",
+    "The match is treated as taxable income; it is paid in cash but cannot be rolled into anything else.",
+    "New SoFi customers qualify only if their self-directed IRA or taxable account is in good standing through SoFi Securities LLC."
+   ],
+   "url": "https://www.sofi.com/invest/transfer-start/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 441,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36145,73 +35965,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://sofi.com/invest and open the current promotional offer page (search 'SoFi Invest promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Open or confirm a SoFi self-directed IRA (Traditional/Roth) or taxable brokerage account in good standing through SoFi Securities LLC \u2014 new accounts qualify.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Initiate an ACAT transfer of assets from your existing brokerage account into the SoFi self-directed account (new cash deposits do not qualify).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your SoFi Invest account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Make sure the transferred assets settle before the end of the Offer Period (September 30, 2026); transfers settling later earn nothing.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "The 1% match is paid in cash into the receiving account within 5 business days of the settlement date (e.g. $20,000 transferred = $200 match).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Keep the transferred assets in the SoFi account for five (5) years from the settlement date \u2014 early withdrawal triggers a proportional fee and removal of matching funds.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36221,15 +36006,24 @@
    "provider": "Public.com",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free stock slice for new account signup and referral, or cash bonus per current promotion",
+   "reward": "$100 fractional stock/ETF both sides on a $1,000 initial one-time deposit; no fixed deadline; referral link required; cash value locked 12 months (early-withdrawal fee up to $100)",
    "requirements": "18+, US resident, valid SSN, new account",
-   "payout_timing": "Reward posts after account verification",
-   "catches": "Confirm current promotion terms \u2014 Public rotates offers between free stock and cash bonuses.",
-   "url": "https://public.com",
+   "payout_timing": "Claim within 30 days once cleared to claim; the cash value of the reward may not be withdrawn for 12 months after it is claimed.",
+   "catches": [
+    "US",
+    "There is no public enrollment path: the Referee must use a Referrer's unique link, and the Referrer must have an existing funded Public brokerage account in good standing.",
+    "The qualifying deposit is $1,000+ as an initial one-time deposit \u2014 the catalog's lower funding requirement does not match official terms.",
+    "The cash value of the $100 reward may not be withdrawn for 12 months after it is claimed, or the account may be subject to an early withdrawal fee of up to $100.",
+    "You have 30 days to claim the reward once cleared; expired rewards cannot be revived.",
+    "One promotion per new signup; cannot be combined with other offers; max $500 of rewards through promotions on the Public app.",
+    "'There is no guarantee that the offer will be paid' \u2014 Public reserves the right to change or terminate the program at any time without notice.",
+    "Program term commenced January 20, 2026; U.S. residents only; employees and household members excluded."
+   ],
+   "url": "https://Public.com/disclosures/referral-terms",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 442,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36237,73 +36031,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://public.com and open the current promotional offer page (search 'Public.com promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Get a unique referral link from a friend or family member who already has a funded Public Investing brokerage account in good standing \u2014 there is no public signup path for this offer.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Open a new Public brokerage account through that referral link and get approved.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Public.com account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Make an initial one-time deposit of at least $1,000 into the new brokerage account.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "When Public alerts you that you are cleared to claim, pick your stock or ETF from the designated pool and claim the $100 reward within 30 days.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Do not withdraw the reward's cash value for 12 months after claiming, or the account may be charged an early withdrawal fee of up to $100.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36376,15 +36135,23 @@
    "provider": "Acorns",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free bonus investment ($5-$20) for signing up and linking a card for round-up investing",
+   "reward": "$5 of ETF Reward Shares on a $5 investment (NOT cash); referral link required; $3/mo subscription eats the bonus; lands 30-45 days",
    "requirements": "18+, US resident, valid SSN, linked debit/credit card",
-   "payout_timing": "Bonus invested after first round-up transaction",
-   "catches": "Acorns charges a monthly subscription fee ($3-$12/mo) \u2014 confirm this doesn't exceed the bonus value for light users.",
-   "url": "https://acorns.com",
+   "payout_timing": "Reward Shares typically deposited within 30\u201345 days of the date the initial deposit settles in the Acorns Invest Account.",
+   "catches": [
+    "US",
+    "The reward is $5 of Reward Shares \u2014 fractional ETF shares matching your selected portfolio \u2014 not cash; 'There is no option for a cash alternative to this Promotion.'",
+    "Acorns charges a monthly subscription fee (plans start at $3/month per third-party sources), so a passive account burns through the $5 bonus quickly.",
+    "You must complete an initial deposit or investment of $5+ (excluding Round-Ups) within fourteen (14) days after the end of the Promotional Period and maintain the account in Good Standing.",
+    "'Reward Shares are made at the sole discretion of Acorns' and Acorns reserves the right to change or terminate the promotion at any time with or without notice.",
+    "First-time Acorns users only; legal U.S. residents 18+; gift cards cannot fund the qualifying investment.",
+    "The September 21\u201327, 2026 '$1,400 for 5 referrals' bonus is for the referring client only, not the new user \u2014 do not present it as a signup payout."
+   ],
+   "url": "https://www.acorns.com/ref-terms/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 444,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36392,73 +36159,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://acorns.com and open the current promotional offer page (search 'Acorns promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Get a personal referral link or invitation code from a current Acorns user \u2014 the bonus is only available through a referral, not public signup.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Sign up for a first-time Acorns subscription through that link and set up your Acorns User Account.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Acorns account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Open an Acorns Invest Account and link a bank funding source.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Complete an initial deposit or investment of $5 or more (excluding Round-Ups) in your Acorns Invest Account from the linked bank account within 14 days after the end of the Promotional Period.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Keep the account in Good Standing; the $5 of Reward Shares (ETF shares matching your portfolio) is deposited within 30\u201345 days of the initial deposit settling.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36560,15 +36292,24 @@
    "provider": "Moomoo",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free stock shares (tiered by net deposit, e.g. 5-15 shares) plus cash reward tiers for new account funding",
+   "reward": "NVDA stock tiers: $500->$30, $2,000->$100, $10,000->$200, $50,000->$400, $100,000->$1,000; deposits settle by Oct 15, 2026; 60-180 day maintenance locks; ACH/wire only, ACAT excluded",
    "requirements": "18+, US resident, valid SSN, tiered net deposit within 30-60 days, new account",
-   "payout_timing": "Shares/cash awarded after holding period verification (often 60-90 days)",
-   "catches": "Rewards may be fractional stock, not cash. Exact tier depends on live deposit amount \u2014 confirm on official moomoo.com promo page.",
-   "url": "https://moomoo.com",
+   "payout_timing": "Free stocks added to the account within 5 trading days following the conclusion of the waiting period; assets must be maintained 60 days ($500\u2013$10,000 tiers), 120 days ($50,000 tier extra), or 180 days ($100,000 tier final portion).",
+   "catches": [
+    "US",
+    "Tier table (official): \u2265$500 \u2192 $30 NVDA; \u2265$2,000 \u2192 $100; \u2265$10,000 \u2192 $200; \u2265$50,000 \u2192 $400; \u2265$100,000 \u2192 $1,000 in NVDA stock (fractional shares).",
+    "After receiving the free stocks you must maintain average assets at the tier level for 60 days (120 days for the $50k tier's extra $200; 180 days for the $100k tier's final $400) \u2014 withdrawing below the threshold during the freeze can forfeit the reward.",
+    "Only deposits via ACH, wire, or instant transfer qualify; cash/securities moved via ACATS or FOP are NOT eligible for this deposit bonus.",
+    "The Promotion Period is September 1, 2026 \u2013 October 15, 2026 (or 14 days before Anthropic's first trading day, whichever is earlier) \u2014 deposits must settle in time.",
+    "Fractional NVDA shares are illiquid outside Moomoo and cannot be transferred; the stock's value fluctuates with the market.",
+    "The 8.1% APY booster applies only to the first $20,000 in Cash Sweep for 60 days, requires manual activation in the app, and the base rate is subject to change.",
+    "$100 trading coupons (10 \u00d7 $10) are usable only on single buy-to-open orders over $100 and expire 180 days from issuance."
+   ],
+   "url": "https://www.moomoo.com/us/support/topic4_748",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 446,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36576,73 +36317,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://moomoo.com and open the current promotional offer page (search 'Moomoo promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Open a new Moomoo brokerage account (eligible if you have not opened one before January 1, 2026, or opened one but never deposited).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Complete a net deposit via ACH, wire, or instant transfer that settles before October 15, 2026, 23:59 ET \u2014 ACAT transfers do not count for this bonus. A $100 net deposit also earns $100 in Trading Coupons (10 \u00d7 $10).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Moomoo account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Hit the tier you can afford: $500+ earns $30 in NVDA fractional shares; $2,000+ earns $100 total; $10,000+ earns $200 total; $50,000+ earns $400 total; $100,000+ earns $1,000 total.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Maintain the required average assets for the hold period (60 days for tiers up to $10,000; 120 days for the $50,000 tier's extra portion; 180 days for the $100,000 tier's final portion) \u2014 do not let the balance fall below the tier threshold during the freeze.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "The free NVDA stocks are added to your account and available for trading within 5 trading days after the waiting period ends.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36652,15 +36358,22 @@
    "provider": "Firstrade",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free stock shares for opening account and funding with qualifying deposit",
+   "reward": "1 free stock each side, no deposit required. Weakest verification: only official page is the 2019 launch announcement; stock values ($3-$200) from third-party trackers, not official terms",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Shares granted after deposit verification",
-   "catches": "Reward is stock, value fluctuates. Confirm current tier structure.",
-   "url": "https://firstrade.com",
+   "payout_timing": "Paid once the friend's application is complete and approved \u2014 no official timeline for the stock credit is published.",
+   "catches": [
+    "US",
+    "The official page is a 2019 launch announcement; it states the program mechanics but no stock value or odds \u2014 expect it may have changed since.",
+    "Per third-party trackers as of September 2026, the free stock is typically worth $3\u2013$10 (about 98% of cases); do not treat the official '1-in-100 Apple/Facebook/Microsoft' line as the ordinary outcome.",
+    "Requires a referral link from an existing customer; no public landing page or app-only enrollment path exists for this program.",
+    "Third-party sources say the stock must be claimed within 60 days and deposits around a week after approval \u2014 those timings are NOT in the official terms.",
+    "Firstrade's 2022 blog post described a separate cash bonus (e.g. $50 for $5,000) that expired in November 2022 \u2014 do not confuse it with the current referral program."
+   ],
+   "url": "https://www.firstrade.com/press/pr191003",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 447,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36668,73 +36381,31 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://firstrade.com and open the current promotional offer page (search 'Firstrade promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Get a Firstrade referral link from a current Firstrade customer \u2014 the program has no public enrollment path.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Open a Firstrade brokerage account through that referral link and complete the application, including identity verification.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Firstrade account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Once the friend's application is complete and approved, you and the referrer each receive a free stock from Firstrade (no deposit required).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
-    },
-    {
-     "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Claim the stock from your Firstrade account within the app's claim window (third-party sources report 60 days; not stated in official terms).",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36744,15 +36415,24 @@
    "provider": "tastytrade",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Cash bonus for opening account and funding with qualifying deposit within set window",
+   "reward": "$100 both parties on $1,000 within 60 days; runs through Nov 30, 2026; referral link required; 6-month withdrawal lock; IRAs excluded",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit, options trading experience helpful",
-   "payout_timing": "Bonus posts after deposit and holding period",
-   "catches": "tastytrade skews toward options/derivatives trading \u2014 higher complexity. Confirm current offer.",
-   "url": "https://tastytrade.com",
+   "payout_timing": "Bonus deposited within 45 days of the account being opened and funded; the bonus may be withdrawn as cash only after the 6-month holding period ends.",
+   "catches": [
+    "US",
+    "The $100 requires a current customer's unique referral link \u2014 there is no public signup path on tastytrade.com/welcome for the referral bonus.",
+    "You must fund at least $1,000 within 60 days of opening; if the deposit falls below $1,000 during the 6-month period, the bonus can be revoked.",
+    "The $100 bonus is usable for trading immediately but cannot be withdrawn as cash until the 6-month holding period ends; trading losses do not disqualify you.",
+    "IRAs are excluded \u2014 only Individual, Entity, Joint, and Trust accounts qualify; you must be 18+ and a new U.S. customer who never had a tastytrade account.",
+    "Bonus deposited within 45 days of account opening/funding, not instantly.",
+    "tastytrade can modify, suspend, or cancel the program at any time without notice, and can reverse a referral credit 'for any reason at any time.'",
+    "Referrers are capped at 24 referral bonuses per year."
+   ],
+   "url": "https://tastytrade.com/welcome/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 448,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36760,73 +36440,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://tastytrade.com and open the current promotional offer page (search 'tastytrade promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Get a unique referral link/code from a current tastytrade customer \u2014 there is no public signup path for the referral bonus.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Open a new eligible tastytrade account (Individual, Entity, Joint, or Trust \u2014 not an IRA) through that referral link; you must be 18+ and a new U.S. customer.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your tastytrade account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Fund the account with at least $1,000 within 60 days of opening.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Keep at least $1,000 in the account for 6 months \u2014 trading and market losses are fine, but withdrawing the deposit below $1,000 can revoke the bonus.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "The $100 referral bonus is deposited into the account within 45 days of opening/funding; it is tradable immediately but cannot be withdrawn as cash until the 6-month period ends.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -36906,15 +36551,23 @@
    "provider": "Charles Schwab",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Cash bonus (tiered) for opening account and depositing new funds within set window",
+   "reward": "$50 of fractional shares (Stock Slices of top 5 S&P 500, split equally); $50 own deposit within 30 days; no fixed deadline. $100-$1,000 referral tiers also exist (needs referral code)",
    "requirements": "18+, US resident, valid SSN, tiered deposit amount, new account",
-   "payout_timing": "Bonus posts after deposit verification and holding period",
-   "catches": "Tier thresholds and bonus amounts change frequently \u2014 confirm current live offer.",
-   "url": "https://schwab.com",
+   "payout_timing": "Bonus deposited once the account is funded; Schwab notifies you when the fractional-share orders are placed.",
+   "catches": [
+    "US",
+    "You must enroll through the Schwab Starter Kit offer page \u2014 opening a regular Schwab account any other way does not qualify.",
+    "The $50 arrives as fractional shares (Schwab Stock Slices) of the top 5 S&P 500 stocks by market cap, split equally \u2014 it is not withdrawable cash.",
+    "You must deposit at least $50 of your own (outside) money into the new Schwab One individual taxable brokerage account within 30 days of opening/enrolling.",
+    "New Schwab customers only \u2014 individuals with no existing Charles Schwab & Co. account (other than a Schwab Stock Plan Services account).",
+    "The top-5 stocks change over time; your slices are the top 5 by market cap on the date the orders are placed.",
+    "Schwab's separate referral promo pays more ($100/$300/$500/$1,000 at $25k/$50k/$100k/$500k net deposits within 45 days) but requires a referral code from an existing Schwab client \u2014 it is not available to walk-up new clients."
+   ],
+   "url": "https://www.schwab.com/investing-starter-kit",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 450,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -36922,73 +36575,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://schwab.com and open the current promotional offer page (search 'Charles Schwab promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Go to the official Schwab Starter Kit page https://www.schwab.com/investing-starter-kit and click through to open the account \u2014 this enrolls you in the offer (opening a regular Schwab account elsewhere does not qualify).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Complete the application for a Schwab One individual taxable brokerage account (about 10 minutes) and get approved.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Charles Schwab account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Within 30 days of opening, deposit at least $50 of your own money from an outside source into the new account.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Once funded, Schwab deposits $50 into your account and uses it to buy fractional shares (Stock Slices) of the top 5 S&P 500 stocks by market cap, split equally \u2014 you'll be notified when the orders are placed.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "The $50 of stock slices is yours to keep invested; it is not cash you can withdraw and spend.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -37182,15 +36800,23 @@
    "provider": "Interactive Brokers",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Free stock shares (IBKR promotion) for opening and funding account",
+   "reward": "Referral: referrer gets $200 (friend deposits $10k+ within 30 days AND holds $10k for 1 year; referrer needs $2k+ NLV and 1+ trade); friend gets $1 IBKR stock per $300 deposited, max $1,000. Ordinary new user gets ~$1-$4",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Shares granted via random share draw per terms",
-   "catches": "Reward is a randomly drawn stock share, value varies widely. Confirm current terms.",
-   "url": "https://interactivebrokers.com",
+   "payout_timing": "Exact credit timing not stated in the official terms excerpt reviewed.",
+   "catches": [
+    "US",
+    "This is a referral-only program \u2014 IBKR has no public (non-referral) new-account deposit bonus. Both sides require the new account to be opened via the referrer's unique link.",
+    "Referrer $200 requires: the referred friend opens an individual or joint account via your unique link, deposits at least $10,000 within 30 days, AND maintains a balance of at least $10,000 for a full year.",
+    "Referrer eligibility: must be an IBKR client with an individual or joint account, account net liquidation value of at least $2,000, and at least one securities trade placed.",
+    "Referred friend earns $1 in IBKR stock per $300 deposited, maximum $1,000 of IBKR shares \u2014 an ordinary deposit earns a few dollars of stock.",
+    "Residents of Japan, Denmark, Spain, Portugal, Poland, mainland China, and Israel are ineligible; tax-deferred accounts are ineligible for both the bonus and the stock award; financial advisors, hedge funds, and institutional accounts are ineligible.",
+    "Canadian residents can refer and earn $200, but referred Canadian clients cannot receive the IBKR share award."
+   ],
+   "url": "https://www.interactivebrokers.com/en/index.php?f=45764",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 453,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -37198,73 +36824,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://interactivebrokers.com and open the current promotional offer page (search 'Interactive Brokers promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "To earn as the NEW account opener: get a referral link from an existing IBKR client and open your individual or joint IBKR account through that link \u2014 opening without the link earns nothing.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Deposit funds into the new account ($1 of IBKR stock per $300 deposited; a $1,000 deposit earns about $3 of stock, capped at $1,000 of stock for a $300,000 deposit).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Interactive Brokers account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "To earn the $200 REFERRER payout: you must already be an IBKR client with an individual or joint account, at least $2,000 net liquidation value, and at least one securities trade placed.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Share your unique referral link; your friend must open via that link, deposit at least $10,000 within 30 days, and keep at least $10,000 in the account for a full year.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Confirm neither party falls under an exclusion (listed countries, tax-deferred accounts, advisor/hedge/institutional accounts).",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -37274,15 +36865,22 @@
    "provider": "Betterment",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Cash bonus (fee waiver or match) for opening and funding a new account",
+   "reward": "$100 into self-directed account; $2,500 of outside funds by Oct 22, 2026; paid on/around Oct 29, 2026; new clients only",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Bonus/waiver applied after deposit verification",
-   "catches": "Reward is sometimes a management-fee waiver, not cash \u2014 confirm exact reward type.",
-   "url": "https://betterment.com",
+   "payout_timing": "$100 bonus paid on or around October 29, 2026, provided at least $2,500 of the qualifying deposit remains in the SDI account until the bonus date.",
+   "catches": [
+    "US",
+    "You must ENROLL in the Self-Directed Investing Offer and complete qualifying deposits totaling at least $2,500 by 11:59:59 PM ET on October 22, 2026 (including 2-3 business day settlement time).",
+    "The $100 bonus is paid on or around October 29, 2026 only if you have not withdrawn below $2,500 of your qualifying deposit before the bonus date.",
+    "Qualifying deposits must come from a linked bank or investment account OUTSIDE Betterment \u2014 deposits into Betterment Cash Reserve, joint/trust SDI accounts, and internal transfers from Cash Reserve or managed investing accounts do not qualify.",
+    "New Betterment clients only; one SDI account per person; US residents only; not valid with any other offers (including the Tiered Investing Reward); excludes Betterment Advisor Solutions advised clients, 401(k) plan participants, and Betterment employees.",
+    "The $100 lands inside the SDI investing account \u2014 it is invested cash, subject to market risk if you put it to work."
+   ],
+   "url": "https://www.betterment.com/legal/offers/self-directed-investing-offer-q3-2026",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 454,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -37290,73 +36888,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://betterment.com and open the current promotional offer page (search 'Betterment promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Go to Betterment and open an individual self-directed investing (SDI) account as a new client, and enroll in the Self-Directed Investing Offer during signup.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Link an outside bank or investment account (not another Betterment account).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Betterment account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Deposit new funds totaling at least $2,500 into the SDI account by 11:59:59 PM ET on October 22, 2026 \u2014 allow 2-3 business days for settlement, so start early.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Do not withdraw below $2,500 before the bonus date.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "The $100 SDI Bonus is deposited into your SDI account on or around October 29, 2026.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -37366,15 +36929,24 @@
    "provider": "Wealthfront",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Cash bonus or fee-free balance match for new account with qualifying deposit",
+   "reward": "$30 into first Cash Account; $500 within 30 days; maintain $500 on day 30; paid within 30 days after; promo-landing-page signup only",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Bonus/waiver applied after verification",
-   "catches": "Confirm whether reward is cash or a management-fee waiver on qualifying balance.",
-   "url": "https://wealthfront.com",
+   "payout_timing": "$30 deposited into the first Cash Account within 30 days after meeting the terms (up to ~60 days from account opening).",
+   "catches": [
+    "US",
+    "You must sign up through the promotional landing page \u2014 'solely available to individuals who do not have an existing Investment Account or Cash Account and who sign up through the promotional landing page.'",
+    "Open and fund your FIRST Cash Account at Wealthfront Brokerage with at least $500 within 30 days of account opening, and maintain a balance of at least $500 on the 30th day following account opening.",
+    "Must pass Wealthfront's identity verification process.",
+    "No existing Investment Account or Cash Account \u2014 first-time clients only for this promotion.",
+    "The $30 is deposited within 30 days after meeting the terms \u2014 the full path to cash takes up to ~60 days.",
+    "Wealthfront reserves the right to change the terms or terminate the promotion at any time without notice, and to decline or reclaim the promotion for suspected violations or fraud.",
+    "The 0.50% investing deposit match (3 months, up to $100,000 deposited = up to $500) seen on invited/affiliate pages is a separate, referral-flavored offer \u2014 not part of this $30 promotion. APY boosts (e.g. 0.65% new-client boost for 3 months on up to $150K) are rate bumps, not cash."
+   ],
+   "url": "https://cash.wealthfront.com/thepennyhoarder?utm_source=27856&utm_medium=affiliate&ir_clickid=VSFRkWUtJxyKWFa1KgVDxQoxUkCRyAWdTV8kwg0&irgwc=1",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 455,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -37382,73 +36954,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://wealthfront.com and open the current promotional offer page (search 'Wealthfront promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Sign up for Wealthfront through the official $30 promotional landing page (not the regular homepage) \u2014 the promotion is only available via the promo page.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "Open your first Cash Account at Wealthfront Brokerage and pass identity verification.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Wealthfront account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Fund the Cash Account with at least $500 within 30 days of account opening.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "Keep a balance of at least $500 in the account on the 30th day following account opening.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Wealthfront deposits the $30 bonus into your first Cash Account within 30 days after you meet the terms.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -37642,15 +37179,25 @@
    "provider": "Vantage/Cash Management",
    "method": "Brokerage account bonus",
    "what": "Open account, verify identity, fund with qualifying deposit, hold for required period",
-   "reward": "Cash bonus for opening a cash management or brokerage account with qualifying deposit",
+   "reward": "150% NON-WITHDRAWABLE trading credit on first deposit up to $1,500 (e.g. $50->$75), 25% on later deposits; 6/9/2025-12/31/2026; opt-in first. This is LEVERAGED FOREX/CFD with up to 500:1 leverage \u2014 not cash, never withdrawable",
    "requirements": "18+, US resident, valid SSN, new account, minimum deposit",
-   "payout_timing": "Bonus posts after verification",
-   "catches": "Confirm if any active promotion exists for this account type.",
-   "url": "https://ally.com",
+   "payout_timing": "Credit bonus applied after opt-in and qualifying deposit; exact credit timing not stated in the reviewed official excerpt.",
+   "catches": [
+    "Vantage; high risk",
+    "The credit bonus cannot be withdrawn \u2014 ever. Only profits generated from trading may be withdrawn under the standard withdrawal process.",
+    "Withdrawals and internal transfers result in a proportional or full credit bonus deduction \u2014 the landing page's 'Withdraw Anytime' headline is contradicted by its own terms.",
+    "You must trade forex/CFDs at up to 500:1 leverage to extract any value \u2014 a small market move against you wipes out your deposited funds fast.",
+    "Opt-in via the Client Portal or Vantage App is mandatory BEFORE depositing; the bonus is not applied automatically. Proof of Face (identity verification) is required.",
+    "Eligible account types only: STP, ECN, Cent, Swap Free, Perpetual, or Copy Trading \u2014 Standard and PAMM/MAM accounts are not eligible.",
+    "Deposits via e-wallets or digital coins (USDT, Neteller, Skrill) may disqualify the bonus \u2014 bank transfer or card preferred.",
+    "The promotion mechanism varies by country of residency \u2014 only residents of Eligible Countries/Regions qualify; confirm your country's eligibility before pursuing.",
+    "Catalog label warning: the route is named 'Vantage/Cash Management' \u2014 this is a leveraged forex/CFD trading product, NOT a cash-management account. The route should be recategorized."
+   ],
+   "url": "https://www.vantagemarkets.com/promotions/deposit-bonus-15025-tnc/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 458,
    "difficulty": 5.2,
    "tier": "Hard",
@@ -37658,73 +37205,38 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://ally.com and open the current promotional offer page (search 'Vantage/Cash Management promotion' if not on homepage)",
-     "who": "User",
-     "done_when": "Offer page found",
-     "warns": "Upmore shows: exact reward, deposit tier, and deadline pulled from official page"
+     "text": "Open a live Vantage trading account of an eligible type (STP, ECN, Cent, Swap Free, Perpetual, or Copy Trading) and complete the Proof of Face identity verification.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 2,
-     "text": "Confirm eligibility: age 18+, US residency, and that you don't already have (or recently had) an account there",
-     "who": "User",
-     "done_when": "Eligibility confirmed",
-     "warns": "Upmore shows: most brokerages restrict bonuses to genuinely new customers"
+     "text": "BEFORE depositing, opt in to the Deposit Bonus promotion via the Client Portal or Vantage App \u2014 the bonus is not automatic.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 3,
-     "text": "Click through the offer link (not just the app homepage) so the promo attaches, and create your Vantage/Cash Management account",
-     "who": "User",
-     "done_when": "Account created",
-     "warns": "Upmore shows: using the direct offer link matters \u2014 going in through the app store alone may not attach the bonus"
+     "text": "Deposit at least $50 via bank transfer or card (avoid e-wallets/crypto channels like USDT, Neteller, Skrill, which can disqualify the bonus).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete identity verification: legal name, date of birth, SSN, and address; upload a government ID photo if asked",
-     "who": "User",
-     "done_when": "Identity verified",
-     "warns": "Upmore never stores your SSN or ID"
+     "text": "The credit bonus (e.g. $75 credit on a $50 first deposit at 150%) is applied to your account as non-withdrawable trading margin.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Link your bank account via Plaid or manual routing/account number entry",
-     "who": "User",
-     "done_when": "Bank linked",
-     "warns": ""
-    },
-    {
-     "n": 6,
-     "text": "Deposit the exact qualifying amount stated in the offer \u2014 note the exact tier if reward scales with deposit size",
-     "who": "User",
-     "done_when": "Deposit confirmed",
-     "warns": "Upmore shows: depositing more than needed doesn't increase most rewards, but depositing less may disqualify you entirely"
-    },
-    {
-     "n": 7,
-     "text": "Hold the account open and funded for the entire required period stated in the terms (commonly 30-90 days)",
+     "text": "Trade forex/CFDs \u2014 only profits (not the bonus) can ever be withdrawn, and any withdrawal reduces the bonus proportionally. Understand that leverage up to 500:1 can wipe out your deposit.",
      "who": "Upmore",
-     "done_when": "Holding period tracked",
-     "warns": "Upmore sends a reminder before the early-closure risk window ends"
-    },
-    {
-     "n": 8,
-     "text": "Check your account for the posted stock or cash reward after the verification period",
-     "who": "User",
-     "done_when": "Reward posted",
-     "warns": "Upmore shows: if reward is stock, its value can go up or down before you sell"
-    },
-    {
-     "n": 9,
-     "text": "Screenshot the reward confirmation and log it in Upmore's Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "done_when": "",
      "warns": ""
-    },
-    {
-     "n": 10,
-     "text": "If reward is stock, decide whether to hold or sell; if cash, withdraw or leave invested per your own goals",
-     "who": "User",
-     "done_when": "Reward realized",
-     "warns": "Upmore shows: only count actual cash withdrawn as earned money; stock value is unrealized until sold"
     }
    ]
   },
@@ -41680,15 +41192,23 @@
    "provider": "Translate.com",
    "method": "Translate text for various clients",
    "what": "Apply, pass test, complete translation jobs",
-   "reward": "$0.02-$0.08 per word",
+   "reward": "Post-machine-translation $0.025/word (avg $15-$20/order); copy-edit $0.015/word ($10-$15); document translation $0.02/word ($10-$100); paid once balance exceeds $20 via PayPal/Wise/Revolut/Payoneer",
    "requirements": "18+, bilingual/multilingual, computer, good writing skills in both languages",
-   "payout_timing": "Paid via PayPal",
-   "catches": "General translation; varies by language pair and domain",
-   "url": "https://translate.com",
+   "payout_timing": "Receive your funds once they exceed $20 to your payment system (PayPal, Wise, Revolut, Payoneer, Paxum, or AdvCash); no payment schedule published.",
+   "catches": [
+    "Per-word rates are low: Post-Machine Translation $0.025/word (avg. $15\u2013$20 per order), Copy-Edit $0.015/word (avg. $10\u2013$15 per order), Document Translation $0.02/word (avg. $10\u2013$100 per order).",
+    "Zero guaranteed tasks: 'Every task is first come, first serve. No more bidding or waiting for translations' \u2014 availability depends on client volume in your language pair.",
+    "Must pass Translate.com's internal exams and set language pairs before getting work; certified translators earn more (diploma upload required).",
+    "$20 minimum balance to cash out; no payout until you reach it.",
+    "Must fill in payment details AND submit tax information during account setup.",
+    "Effective hourly pay can be very low for micro-tasks (post-machine editing of short texts).",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://www.translate.com/translators",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 502,
    "difficulty": 5.9,
    "tier": "Hard",
@@ -41696,58 +41216,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://translate.com or download the Translate.com app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Create a free account at https://www.translate.com/translators and attach your certificates, then wait for verification.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "In account setup, pass Translate.com's internal exams and set your language pair(s).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Fill in your payment details and submit your tax information (both required).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Once approved, pick translation tasks from your Task Board \u2014 tasks are first come, first serve, so check regularly.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Complete translations to quality standards; sustained high quality opens the editor role.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
+    },
+    {
+     "n": 6,
+     "text": "Your earnings accumulate per word at the published rates; funds are released to your payment system once the balance exceeds $20.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -41758,15 +41264,23 @@
    "provider": "ProZ",
    "method": "Translation marketplace for professional translators",
    "what": "Create profile, bid on translation projects, deliver",
-   "reward": "Varies by project ($50-$1000+)",
+   "reward": "MECHANISM ONLY: translators set their own rates, bid, and are paid directly by clients \u2014 ProZ NEVER pays anyone; optional ProZ*Pay via Wise/PayPal/Payoneer/Skrill. Catalog's $1,000 is illustrative, not official",
    "requirements": "18+, bilingual/multilingual, computer, good writing skills in both languages",
-   "payout_timing": "Paid per project terms (direct with client)",
-   "catches": "Professional marketplace; requires translation experience",
-   "url": "https://proz.com",
+   "payout_timing": "Per-client terms you negotiate (e.g., net 15/30/45 after invoice); ProZ does not set or process payment timing.",
+   "catches": [
+    "ProZ does not pay translators; it is a directory/marketplace \u2014 you must find clients, agree your own rate, and get paid by them directly.",
+    "Zero guaranteed jobs: income depends entirely on your profile, bids, and winning work; competition is global.",
+    "Rates are set by you and vary wildly by language pair and specialization \u2014 there is no standard ProZ rate.",
+    "Payment terms (method, net days) are negotiated per client; ProZ's own scam-alert center advises demanding a purchase order and exact payment terms up front.",
+    "A paid membership tier exists for full job-board/directory access (optional, not required to register) \u2014 treat membership cost as a business expense.",
+    "ProZ*Pay is only an optional payout channel (Wise/PayPal/Payoneer/Skrill), not a guarantee of payment.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://go.proz.com/blog/how-freelance-translators-get-paid-in-usd",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 503,
    "difficulty": 5.9,
    "tier": "Hard",
@@ -41774,58 +41288,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://proz.com or download the ProZ app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Register a free account on proz.com and build your translator profile (language pairs, specializations, and your own rates).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Browse the translation jobs board and submit competitive bids on posted jobs, or get found via the translator directory.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
-    },
-    {
-     "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Before starting work, agree on clear written terms with the client: scope, exact total cost/rate, delivery date, payment method, and how many days after invoice you are paid (request a purchase order).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Deliver the translation, then invoice the client per the agreed terms \u2014 the client pays you directly, not ProZ.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Optionally receive client payments via ProZ*Pay (Wise, PayPal, Payoneer, or Skrill) to speed up payouts and cut conversion fees.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
+    },
+    {
+     "n": 6,
+     "text": "Optionally take a paid ProZ membership for full job-board and directory visibility, treating it as a business cost.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -41836,15 +41336,23 @@
    "provider": "Translated.com",
    "method": "Translate text for various industries",
    "what": "Apply, pass test, complete translation jobs",
-   "reward": "$0.05-$0.15 per word",
+   "reward": "MECHANISM ONLY: free to set your own per-word rate; paid at end of month. No earnings floor; only vetted pros get steady work",
    "requirements": "18+, bilingual/multilingual, computer, good writing skills in both languages",
-   "payout_timing": "Paid monthly via PayPal",
-   "catches": "Professional translation; competitive but steady work",
-   "url": "https://translated.com",
+   "payout_timing": "Paid once per month, at the end of the month ('Get paid end of the month, as fast as an employee').",
+   "catches": [
+    "No official fixed pay rate exists \u2014 you set your own per-word rate, so earnings depend entirely on the rate you set, your language pair, and whether clients pick you.",
+    "Zero guaranteed tasks: jobs are assigned per project; Translated states 'Hundreds of interesting jobs assigned per hour' but not to you specifically.",
+    "Qualification evaluation is required before you can take paid work; only approved professionals get access.",
+    "Work is variable gig work, not fixed income \u2014 effective hourly pay can be low on cheap language pairs or difficult content.",
+    "Translated charges clients ~$0.10/word on average (per their public pricing page); translators keep only a fraction of what clients pay \u2014 the platform margin is not disclosed.",
+    "Payment is once per month (end of month), so there is a cash-flow lag between completing work and being paid.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://translated.com/work-with-us",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 504,
    "difficulty": 5.9,
    "tier": "Hard",
@@ -41852,58 +41360,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://translated.com or download the Translated.com app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.translated.com/top and start registration (about 10 minutes).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Enter personal details, experience and skills, languages, and your own per-word rates \u2014 you decide your rate.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
+     "text": "Read and accept the Privacy Policy and Conditions linked on the signup form.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
+     "text": "Complete Translated's translator evaluation/qualification process.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Receive project assignments matched to your languages and specialization.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Deliver translations to spec and on deadline.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Get paid once per month, at the end of the month.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -42148,15 +41649,23 @@
    "provider": "Lionbridge (TELUS)",
    "method": "Translation and localization tasks",
    "what": "Apply, pass test, complete translation/localization tasks",
-   "reward": "$12-$25+ per hour",
+   "reward": "MECHANISM ONLY: each project invitation includes a specific compensation offer accepted case-by-case; PayPal/wire/ACH/eCheck/SEPA; $10 PayPal / $100 bank minimums; monthly cycle. Catalog's $25 matched no official figure",
    "requirements": "18+, bilingual/multilingual, computer, good writing skills in both languages",
-   "payout_timing": "Paid monthly via Payoneer/PayPal",
-   "catches": "Established platform; project-based; requires language expertise",
-   "url": "https://lionbridge.com",
+   "payout_timing": "Monthly payment cycle \u2014 earnings for a given month are processed and released within ~30 days after month-end, once the minimum balance is reached and required e-invoices are submitted.",
+   "catches": [
+    "No official fixed pay figure for translation/AI-community work \u2014 rates are set per project invitation and vary by project, locale, and task type.",
+    "Zero guaranteed tasks: this is AI-data gig work (rating, annotation, evaluation, translation, localization) offered per project; availability fluctuates.",
+    "Project-specific qualification exams and ID verification are required; some projects require exams you must pass before any paid work.",
+    "Effective hourly pay can be low: independent-contractor rater work is widely reported in the ~$10-15/hr band and task-based work can pay pennies per task (third-party figures, NOT official).",
+    "Payment is monthly with a lag (earnings processed after month-end, typically within ~30 days per community docs), and minimums apply: $10 for PayPal, $100 for bank transfers \u2014 small balances roll over.",
+    "You work as an independent contractor, not an employee \u2014 no benefits, and the 'TELUS International AI Community' framing means you are crowdsourced labor, not staff.",
+    "Variable gig work, NOT fixed income: zero guaranteed tasks, qualification tests, variable availability, low effective hourly rates, unpaid entry tests."
+   ],
+   "url": "https://www.telusinternational.ai/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 508,
    "difficulty": 5.9,
    "tier": "Hard",
@@ -42164,58 +41673,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://lionbridge.com or download the Lionbridge (TELUS) app from the App Store or Google Play",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Create your AI Community account on the official TELUS Digital AI / AI Community portal.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Complete your contributor profile (languages, services, experience, address).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search for current referral codes before signing up"
+     "text": "Pass the qualification exam(s) for the project(s) you want, and complete ID verification.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete any required setup: link card, install extension, connect accounts, etc.",
-     "who": "User",
-     "done_when": "Setup completed",
-     "warns": "Upmore shows: card linking enables passive earning \u2014 set it up once and earn automatically"
+     "text": "Accept a project invitation \u2014 each invitation states its specific compensation offer; decline if the rate is too low.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Complete the required action: shop, scan, walk, play, watch, or browse",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Complete tasks to the project's quality standards.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 6,
-     "text": "Wait for reward/cash back to be confirmed",
+     "text": "Submit any required e-invoice through the AI Community Portal at month-end.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 7,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 8,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Get paid on the monthly cycle once you clear the minimum ($10 PayPal / $100 bank transfer); payment via PayPal, wire, ACH, eCheck, or SEPA depending on country.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
