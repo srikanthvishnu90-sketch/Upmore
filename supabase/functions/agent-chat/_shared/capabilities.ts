@@ -107,9 +107,20 @@ const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador"
   "Translation", "Tutoring", "Voiceover/Audio", "AI Training",
   "Lead Sourcing", "Media/Music"]);
 
+// Per-invitation work (surveys, user tests, studies): each payout is real,
+// but volume is gated — you only earn when invited/qualified. The $/hr math
+// must never be read as "do N hours, get $X", so the reply carries a
+// reality check when the target needs many separate payouts.
+const VOLUME_GATED_CATS = new Set([
+  "Survey", "Regional Surveys", "User Testing", "Focus Group",
+  "Research Study", "Mock Jury",
+]);
+
 function deriveCashMath(r: RouteCard): CashMath | null {
-  const pmin = Number(r.payout_min), pmax = Number(r.payout_max);
-  const tmin = Number(r.time_min_minutes), tmax = Number(r.time_max_minutes);
+  const pmin = r.payout_min == null ? NaN : Number(r.payout_min);
+  const pmax = r.payout_max == null ? NaN : Number(r.payout_max);
+  const tmin = r.time_min_minutes == null ? NaN : Number(r.time_min_minutes);
+  const tmax = r.time_max_minutes == null ? NaN : Number(r.time_max_minutes);
   if (!isFinite(pmin) || !isFinite(pmax) || pmin < 0 || pmax < 0) return null;
   const pmid = (pmin + pmax) / 2;
   const tmid = isFinite(tmin) && isFinite(tmax) && tmin >= 0 && tmax >= 0
@@ -230,6 +241,27 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const { r, cm, hours } = pick;
   const speedTag = (pick.r.speed === "today") ? " ⚡ Pays today."
     : (pick.r.speed === "days") ? " Pays within about a week." : "";
+  // Volume-gated work (surveys, user tests): the $/hr math is per-hit, not a
+  // wage. If the target needs many separate invitations, lead with the
+  // per-hit reality instead of "hours to target" — otherwise "$1000 ≈ 2
+  // hours of work" reads as a promise the catalog can't keep.
+  const gated = (() => {
+    if (!VOLUME_GATED_CATS.has(r.category ?? "")) return null;
+    const pmin = (r as any).payout_min == null ? NaN : Number((r as any).payout_min);
+    const pmax = (r as any).payout_max == null ? NaN : Number((r as any).payout_max);
+    if (!isFinite(pmin) || !isFinite(pmax)) return null;
+    const per = (pmin + pmax) / 2;
+    if (!(per > 0)) return null;
+    const n = Math.ceil(target / per);
+    if (n <= 5) return null;
+    return {
+      per: Math.round(per), n,
+      text: `\n\nReality check: that's about ${n} separate payouts at ~$${Math.round(per)} each, and they only arrive when you qualify — expect weeks of waiting for invitations, not a straight shot at $${target}. Treat this as spare cash per hit, not a $${target} plan.`,
+    };
+  })();
+  const mathLine = gated
+    ? `Each hit pays ~$${gated.per} when one lands (${cm.math}). `
+    : `The math: ${cm.math}, so $${target} ≈ ${honest}. `;
   const steps = r.steps.slice(0, 5).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
   const links = APP_LINKS[r.route_id];
   const iosUrl = (r as any).ios_url || links?.ios;
@@ -244,13 +276,18 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   })();
   const others = ranked.filter((x) => x.r.route_id !== r.route_id && x.hours < Infinity).slice(0, 2);
 
+  const headline = gated
+    ? `Fastest honest money right now: **${r.provider}** (${r.route_id}).${speedTag}`
+    : `Fastest honest path to $${target}: **${r.provider}** (${r.route_id}).${speedTag}`;
+
   return (
-    `Fastest honest path to $${target}: **${r.provider}** (${r.route_id}).${speedTag}\n\n` +
-    `The math: ${cm.math}, so $${target} ≈ ${honest}. ` +
+    headline + `\n\n` +
+    mathLine +
     `Cash out: ${cm.min_cashout}.\n\n` +
     `Steps:\n${steps}\n\n` +
     `Start here: ${linkLine}\n\n` +
     `Biggest catch: ${cm.catch}` +
+    (gated ? gated.text : "") +
     (others.length
       ? `\n\nAlso real: ` + others.map((x) => Math.round(x.hours) > 0 ? `${x.r.provider} (~${Math.round(x.hours)}h)` : `${x.r.provider}`).join(", ") + `.`
       : "") +
