@@ -1,0 +1,85 @@
+{
+  "route_id": "R2063",
+  "verdict": "verify",
+  "official_url": "https://www.airtasker.com/tasker-tiers/",
+  "terms_url": "https://support.airtasker.com/hc/en-au/articles/900003895046-What-are-Tasker-tiers",
+  "payout_quote": "There are 4 tiers: Bronze, Silver, Gold and Platinum. The higher tier you're on, the less you pay in fees. Excluding GST, the highest rate is 20% and the lowest rate is as low as 12.5%.",
+  "steps": [
+    "Create a free Airtasker account and set up a Tasker profile with your skills, services, and service area.",
+    "Browse tasks posted publicly by customers and make an offer (bid) with your price and timeframe.",
+    "Get selected by the customer; complete the task as agreed.",
+    "Request payment through Airtasker Pay; the customer's payment is released to your bank account minus the tiered service fee (20% down to 12.5%)."
+  ],
+  "catches": [
+    "Offers are competitive — the customer picks one Tasker, so most bids earn nothing.",
+    "Airtasker deducts a service fee of 20% down to 12.5% depending on your tier; you keep the rest.",
+    "Task budgets are set by the customer; Airtasker publishes no fixed Tasker pay range.",
+    "Tier rates shown are Australia (excl. GST); UK rates follow the same 4-tier structure.",
+    "Ratings matter: poor reviews reduce future selection."
+  ],
+  "biggest_catch": "You only get paid if a customer picks your offer and you complete the task — and Airtasker takes 20% down to 12.5% of every completed task.",
+  "eligibility": "Anyone who can create a free Airtasker account and legally perform local tasks in a supported market (Australia/UK primarily).",
+  "timing": "Tasks post continuously; payment releases via Airtasker Pay after task completion.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Airtasker's own site and support centre document the public task marketplace where 'Taskers' make offers on posted tasks, and the official tier page states: 'There are 4 tiers: Bronze, Silver, Gold and Platinum. The higher tier you're on, the less you pay in fees. Excluding GST, the highest rate is 20% and the lowest rate is as low as 12.5%.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed Tasker pay range — pay is per task with tiered fees; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: free signup, Tasker profile, make offers, complete task, Airtasker Pay release minus service fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Tasker signup and making offers are free; the service fee is deducted only from completed-task payments."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: anyone able to perform local tasks in a supported market."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-task pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover competitive offers, the 20%-to-12.5% fee, customer-set budgets, and AU-only rate caveat."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: Airtasker not in existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous task postings."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Airtasker is a local-services bidding marketplace: customers post tasks, Taskers make offers, and completed tasks pay out through Airtasker Pay with a tiered service fee. Selection, task flow, and income are variable — never guaranteed. Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Task prices are set by the customer per task and each Tasker sets their own offer; Airtasker publishes no fixed pay range — only the service-fee tiers.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: per-task, customer-set budgets, no official range. time: free profile setup + browsing and submitting first offers, est. 30-90 min active."
+}

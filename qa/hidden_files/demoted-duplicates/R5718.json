@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referred friend must be a Kansas resident who opens their first CUA Core Checking Account with a minimum initial deposit of $100 and keeps it for at least 30 days; if any of that fails, you get nothing - and your lifetime cap is 10 referrals / $500.",
+  "catches": [
+    "Referred friend must be age 18 or older, open their FIRST CUA Core Checking Account with a minimum initial deposit of $100 for at least 30 days, present a valid referral code at account opening, and be a Kansas resident.",
+    "Credit Union of America employees and volunteers are not eligible.",
+    "Lifetime cap: $500 per member (ten $50 bonuses); you can refer unlimited people but only get paid ten times.",
+    "Bonus deposited within 60 days of the referred checking account opening.",
+    "Bonuses may be reportable to the recipient and IRS; fees may reduce earnings."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CUA page (cuofamerica.com/Promotions/Refer): 'you'll receive a $50 bonus for each one who joins, up to ten times!' and 'After your friend opens their new Core Account, $50 will be deposited into your account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Credit Union of America page on cuofamerica.com, fetched live 2026-09-23, with full terms and conditions",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Credit Union of America' 2026-09-23 returned no verified referral route; no cuofamerica.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Credit Union of America member with a checking account (or email for a custom referral code). Friend: new, age 18+, Kansas resident, opens first CUA Core Checking with $100 initial deposit for 30+ days.",
+  "notes": "Verified 2026-09-23. Credit Union of America (Kansas) referral program. Referrer earns $50 per qualifying referral, lifetime cap $500 (10 bonuses). Note: older aggregator posts describe a $200 Manhattan-location-only promo; the current official page offers $50 x 10.",
+  "numeric_basis": "payout from official CUA terms ($50 per referral; $500 lifetime cap / 10 bonuses); time: retrieve code and share est. 5-15 min active",
+  "official_url": "https://www.cuofamerica.com/Promotions/Refer",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You'll receive a $50 bonus for each one who joins, up to ten times!",
+  "payout_value_note": "$50 per qualifying referral; lifetime cap $500 (ten $50 bonuses).",
+  "route_id": "R5718",
+  "standard": {
+    "s1": {
+      "note": "Official CUA page live on cuofamerica.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a CUA member with checking; friend is a new Kansas-resident member 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open first CUA Core Checking Account with $100 minimum initial deposit for at least 30 days, present valid referral code",
+      "pass": true
+    },
+    "s4": {
+      "note": "$50 awarded within 60 days of the referred checking account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonuses may be reportable to the recipient and IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Retrieve your unique referral code from digital banking under 'Checking Account Details' (or email CUA for one).",
+    "Copy and share your unique code with your friend.",
+    "Friend opens their first CUA Core Checking Account with the code and a $100 initial deposit, and keeps it open 30+ days.",
+    "$50 is deposited into your account within 60 days of their account opening."
+  ],
+  "terms_url": "https://www.cuofamerica.com/Promotions/Refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 awarded within 60 days of the referred checking account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,85 @@
+{
+  "route_id": "R6482",
+  "verdict": "verify",
+  "official_url": "http://www.myguardiancu.com/direct-deposit-offer",
+  "terms_url": "http://www.myguardiancu.com/direct-deposit-offer",
+  "payout_quote": "For a limited time, you can receive a $300 bonus when you establish or increase qualifying payroll direct deposits into your Guardian checking account. Open a new Guardian checking account and establish recurring payroll direct deposits totaling at least $2,500 per month for two consecutive months.",
+  "payout_min_usd": 300,
+  "payout_max_usd": 300,
+  "payout_value_note": "Flat $300 bonus for establishing or increasing qualifying payroll direct deposits ($2,500+/month for two consecutive months).",
+  "time_min_minutes": 30,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from official myguardiancu.com terms (flat $300); time: account opening + DD setup 30-60 min active. Two-month DD maintenance is passive (not counted as active time).",
+  "steps": [
+    "Open a new Guardian checking account (or use your existing Guardian checking account).",
+    "Establish or increase recurring payroll direct deposits totaling at least $2,500 per month.",
+    "Ensure your first qualifying payroll direct deposit is received by September 30, 2026.",
+    "Maintain $2,500+/month in qualifying payroll DD for two consecutive months.",
+    "Receive the $300 bonus."
+  ],
+  "catches": [
+    "Requires $2,500/month in payroll direct deposits for two consecutive months - significant income routing.",
+    "First qualifying direct deposit must be received by September 30, 2026 (within 7 days).",
+    "Qualifying DD must be electronic payroll deposits from an employer; P2P transfers and other electronic deposits do not qualify.",
+    "Guardian Credit Union serves central Alabama (19 branches across 16 counties); membership eligibility required."
+  ],
+  "biggest_catch": "Requires routing $2,500/month in payroll direct deposits for two consecutive months, and the first DD must land by September 30, 2026 - act fast.",
+  "eligibility": "New Guardian members (open a new checking account) or existing members who establish/increase payroll DD. Central Alabama service area; membership eligibility required.",
+  "timing": "First qualifying payroll direct deposit must be received by September 30, 2026. Maintain $2,500+/month for two consecutive months.",
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:56:47Z",
+  "notes": "Official terms surfaced on myguardiancu.com after R4749 was rejected as aggregator-only. Recovery with fresh ID. Expires September 30, 2026 (within 7 days) - flagged.",
+  "upfront_fee": false,
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Guardian Credit Union domain (myguardiancu.com); Direct Deposits Offer page live with full terms."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Bonus amount ($300), DD requirements ($2,500/mo x 2 months), and deadline (9/30/2026) all stated on the official page."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Bonus framed as cash for establishing qualifying payroll direct deposits; no misleading framing."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Distinct provider and mechanism; dedupe returned zero catalog hits for Guardian Credit Union AL."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "You are eligible for Guardian Credit Union membership (central Alabama service area)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Open a new Guardian checking account or use your existing one."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Establish or increase recurring payroll direct deposits to $2,500+/month."
+    },
+    "s4": {
+      "pass": true,
+      "note": "First qualifying DD received by September 30, 2026; maintain for two consecutive months."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No monthly fee information stated; confirm with Guardian."
+    },
+    "s6": {
+      "pass": false,
+      "note": "FLAGGED: First qualifying direct deposit must be received by September 30, 2026 (within 7 days of 9/23)."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Bonus is taxable income; consult a tax advisor."
+    }
+  },
+  "weasel_words": []
+}

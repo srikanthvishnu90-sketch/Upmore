@@ -1,0 +1,86 @@
+{
+  "route_id": "R2035",
+  "verdict": "verify",
+  "official_url": "https://contra.com/",
+  "terms_url": "https://contra.com/blog/introducing-the-new-contra-the-network-for-creativity",
+  "payout_quote": "With Contra's commission-free payment platform, creatives keep 100% of what they earn",
+  "steps": [
+    "Create a free Contra profile and build your portfolio (AI-assisted portfolio tools available).",
+    "Post your work to the Contra feed to get discovered by clients.",
+    "Browse and apply to project opportunities, or get hired directly by companies discovering your profile.",
+    "Agree on scope and price; use Contra's built-in contracts, invoicing, and messaging.",
+    "Get paid through Contra with 0% platform commission (standard Stripe processing fees still apply)."
+  ],
+  "catches": [
+    "0% commission, but Stripe payment-processing fees still apply to payouts.",
+    "Discovery-based: with 1M+ independents on the platform, getting noticed takes consistent posting and a strong portfolio — no guaranteed clients.",
+    "You do your own pitching and negotiating; Contra does not hand you work.",
+    "Optional paid extras (Contra Pro, custom domains) cost money — not required to earn.",
+    "Income depends entirely on winning clients; nothing is promised."
+  ],
+  "biggest_catch": "There is no guaranteed work: Contra is a discovery network, so earnings depend entirely on your ability to attract and close clients yourself.",
+  "eligibility": "Free account; independent creatives and freelancers (designers, developers, writers, marketers, etc.).",
+  "timing": "Work when you want; payouts via Contra's payment platform after client approval.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Contra's own site (contra.com) states the mechanism: 'No middlemen. No commission fees. Just direct collaboration between the world's most creative people and the companies who want to work with them' and 'creatives keep 100% of what they earn'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed pay amounts — pricing is per project between freelancer and client; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: profile/portfolio, feed posting, discovery or application, contracts, commission-free payouts."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Core platform is free with 0% commission; no upfront fee to earn documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is any independent creative with a free account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as fully variable per-project pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover processing fees, discovery competition, and no guaranteed work."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Contra route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: self-paced; payout after client approval."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Contra is a commission-free freelance network for independents (design, dev, writing, marketing) with discovery feed, contracts, and payments. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Project pricing is set per deal between freelancer and client; Contra publishes no fixed pay range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: per-project, no official range. time: profile + portfolio setup + posting work + applying to first opportunities, est. 60-180 min active."
+}

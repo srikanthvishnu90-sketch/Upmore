@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must complete qualifying activity within 60 days and both accounts must be open and in good standing at payout - otherwise you get nothing.",
+  "catches": [
+    "Referrer: existing OnPoint Community Credit Union member who refers a friend or business associate.",
+    "Referrer earns a $50 bonus per qualifying referral; 'Bonus of $50 will be credited to the accounts of you and the friend who referred you approximately 60 days after new account is opened.'",
+    "Consumer referral: friend opens a new Member Savings account with a personal checking account and receives direct deposit of at least $100 within 60 days of the open date.",
+    "Business referral: friend opens a new Business Savings account with a business checking account and receives $250 in deposits within 60 days of the open date.",
+    "Accounts must be open and in good standing at time of payout; bonus included on a 1099-INT for tax purposes.",
+    "Limit one Member Savings account per person/TIN; cannot be combined with other offers for opening a new membership.",
+    "No stated cap on number of referral bonuses; program subject to change without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official OnPoint Community Credit Union Refer a Friend page (onpointcu.com, fetched live 2026-09-23): 'Bonus of $50 will be credited to the accounts of you and the friend who referred you approximately 60 days after new account is opened.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official onpointcu.com Refer a Friend page, fetched live 2026-09-23; ongoing offer, subject to change",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no OnPoint referral route; R5546 is a branch-specific $200 checking bonus, not this referral program",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing OnPoint member (Oregon/SW Washington field of membership). Friend: new member opening Member Savings + personal checking (or business checking).",
+  "notes": "Verified 2026-09-23. OnPoint Community Credit Union (Oregon). Referrer earns $50 per qualifying referral, both consumer and business; no stated cap.",
+  "numeric_basis": "payout from official OnPoint terms ($50 per referral; no stated cap); time: share referral est. 5-15 min active",
+  "official_url": "https://www.onpointcu.com/rates-rewards/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Bonus of $50 will be credited to the accounts of you and the friend who referred you approximately 60 days after new account is opened.",
+  "payout_value_note": "$50 bonus to the referrer per qualifying referral; no stated cap.",
+  "route_id": "R4823",
+  "standard": {
+    "s1": {
+      "note": "Page live on onpointcu.com, fetched 2026-09-23; ongoing, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing OnPoint member; friend opens new membership + checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking + $100 direct deposit within 60 days (consumer) or $250 in deposits (business)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited approximately 60 days after new account is opened",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus included on a 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; R5546 is a separate branch bonus",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend or business associate to OnPoint Community Credit Union.",
+    "Friend opens a new membership with checking and completes the qualifying deposit activity within 60 days.",
+    "You receive a $50 bonus approximately 60 days after their account opens."
+  ],
+  "terms_url": "https://www.onpointcu.com/rates-rewards/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited approximately 60 days after new account is opened.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

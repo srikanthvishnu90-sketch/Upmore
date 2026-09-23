@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You earn $50 cash per referral only after the friend opens a new GO2bank account through your unique share link by December 31, 2026 and receives a qualifying ACH direct deposit of $200+ (employer, payroll, government, or unemployment) within 45 days of account opening; capped at $1,500 per calendar year.",
+  "catches": [
+    "Friend must be a brand-new GO2bank customer opening a new deposit account through the referrer's unique share link by December 31, 2026",
+    "Friend must receive a qualifying direct deposit of $200+ within 45 days of account opening — ACH from employer/payroll provider/government benefits/unemployment only; bank transfers, trial deposits, tax refunds, mobile check cashing, and cash deposits do NOT qualify",
+    "Referrer needs an activated, personalized debit card to refer friends",
+    "Both accounts must be in good standing to receive the reward",
+    "Reward is paid to both parties within 48 hours after qualifying funds first deposit into the friend's new account",
+    "New and referring accountholders may earn no more than $1,500 in referral rewards across all Refer a Friend campaigns per calendar year",
+    "All referral rewards are reported on Form 1099 to the IRS"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official GO2bank referral terms (share.go2bank.com/zone/terms): 'In order for both the referred individual and the referring GO2bank accountholder to each qualify for and receive the $50 referral reward... New and referring GO2bank accountholders may earn no more than $1,500 in referral rewards across all Refer a friend campaigns per calendar year (January 1 - December 31).'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official GO2bank domain: go2bank.com 'Refer a Friend & Get Paid!' page plus share.go2bank.com referral platform terms, indexed and live",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $50 cash referral reward per qualifying friend",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'GO2bank': catalog hit R0630 is PSECU's $300 referral (mislabeled 'Go') — distinct; no duplicate",
+      "pass": true
+    }
+  },
+  "eligibility": "GO2bank accountholders in good standing with an activated personalized debit card. Referred friends must be new GO2bank customers (never opened a GO2bank deposit account).",
+  "notes": "Official go2bank.com Refer a Friend pages and share.go2bank.com terms confirm $50 per qualifying referral, cap $1,500/calendar year (30 referrals). Offer open through December 31, 2026 for new accounts opened by referred friends. Catalog hit R0630 ('Go') is actually PSECU's $300 referral — not a duplicate.",
+  "numeric_basis": "payout from official GO2bank referral terms ($50 to the referrer per qualifying friend; $1,500/year cap); time: logging in and sharing the referral link est. 5-15 min active",
+  "official_url": "http://www.go2bank.com/features/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "the referring GO2bank accountholder to each qualify for and receive the $50 referral reward",
+  "payout_value_note": "Flat $50 cash per qualifying referral; cap $1,500 per calendar year (30 paid referrals).",
+  "route_id": "R3361",
+  "standard": {
+    "s1": {
+      "note": "Official go2bank.com referral pages live and indexed; friend's account must open by December 31, 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: activated personalized debit card; friend must be a new GO2bank customer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Qualification concrete: open via unique share link + $200+ qualifying ACH direct deposit within 45 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $50 paid to both parties within 48 hours of the qualifying deposit",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax disclosure present: all referral rewards reported on Form 1099 to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct provider (GO2bank/Green Dot) referral mechanism not covered elsewhere",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to your GO2bank account and activate your personalized debit card",
+    "Go to the 'Refer a friend' page to get your unique share link",
+    "Share your referral link with friends and family",
+    "Friend opens a new GO2bank account through your link by December 31, 2026",
+    "Friend receives a qualifying ACH direct deposit of $200+ (employer/payroll/government) within 45 days",
+    "You both receive $50 within 48 hours of the qualifying deposit"
+  ],
+  "terms_url": "https://share.go2bank.com/zone/terms?journey.campaign_id=7363724603864141919",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Sharing the referral link takes ~10 minutes active; the $50 reward arrives within 48 hours of the friend's qualifying direct deposit (up to ~45 days after their account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

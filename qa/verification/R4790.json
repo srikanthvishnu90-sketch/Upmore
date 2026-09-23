@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The base $25 requires only a $25 savings deposit, but the extra $75 needs the friend to open an Enjoy! Rewards Checking account with eStatements and a $250+ recurring direct deposit within 90 days - two very different hurdles.",
+  "catches": [
+    "Referrer: Southland member; get a personalized link from the Southland Digital Banking app and share it.",
+    "$25 bonus: referred new member opens a Primary Savings account with a $25 minimum deposit.",
+    "Extra $75 bonus: friend also opens an Enjoy! Rewards Checking account, enrolls in eStatements, and establishes a recurring direct deposit of at least $250 within the first 90 days.",
+    "Both referrer and friend get rewarded; bonuses automatically deposited into accounts.",
+    "No referral-count cap stated on the page; no expiry stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Southland CU page (southlandcu.org/join/refer-a-friend/): '$25 bonus - When the referred new Member opens a Primary Savings account with a minimum deposit of $25' and 'Extra $75 bonus - When the referred new Member opens an Enjoy! Rewards Checking account, Enrolls in eStatements, Establishes a recurring direct deposit of at least $250 within the first 90 days of being a Member.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official southlandcu.org domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no southlandcu.org route; catalog has no Southland CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Southland member. Friend: new member opening via the referral link.",
+  "notes": "Verified 2026-09-23. Southland Credit Union (CA). Referrer earns $25 per savings-only referral or $100 with the checking tier; no referral cap stated.",
+  "numeric_basis": "payout from official southlandcu.org terms ($25 savings tier / $100 with checking + $250 DD tier; no cap); time: get + share referral link est. 5-15 min active",
+  "official_url": "https://www.southlandcu.org/join/refer-a-friend/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "$25 bonus - When the referred new Member opens a Primary Savings account with a minimum deposit of $25. Extra $75 bonus - When the referred new Member opens an Enjoy! Rewards Checking account, Enrolls in eStatements, Establishes a recurring direct deposit of at least $250 within the first 90 days of being a Member.",
+  "payout_value_note": "$25 per referral for a savings-only join; $100 if the friend also opens Enjoy! Rewards Checking with eStatements and a $250+ recurring direct deposit within 90 days; no cap stated.",
+  "route_id": "R4790",
+  "standard": {
+    "s1": {
+      "note": "Page live on southlandcu.org, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer Southland member; friend new member via referral link",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $25 savings deposit; or Enjoy! Rewards Checking + eStatements + $250 recurring DD within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonuses automatically deposited into accounts; no fixed window stated",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to the Southland Digital Banking app and click 'Refer a Friend' to get your personalized link.",
+    "Share the link with friends.",
+    "Friend applies via the link and opens a Primary Savings account with a $25 minimum deposit.",
+    "You get $25 per referral - $100 if the friend also opens Enjoy! Rewards Checking with eStatements and a $250+ recurring direct deposit within 90 days."
+  ],
+  "terms_url": "https://www.southlandcu.org/join/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonuses automatically deposited once the friend's application is accepted and qualifications are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

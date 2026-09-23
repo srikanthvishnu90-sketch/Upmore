@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Credits take up to 90 days and are strictly contingent on the referred customer staying active for 60 consecutive days and making at least one on-time paid-in-full payment — if they cancel or are disconnected before day 60, NEITHER side gets anything.",
+  "catches": [
+    "Referred customer must remain an active Chariot Energy customer for at least 60 consecutive days from the service start date AND complete at least one on-time, paid-in-full bill payment; otherwise neither side earns.",
+    "Referrer credit ($100) and referral credit ($50) are paid within 90 days of the qualification being met, not at signup.",
+    "Only active Chariot Energy customers qualify; the referral code field must be valid and the referral code/promocode REF1 used at enrollment.",
+    "The refer-a-friend bill credit is NOT valid with any other offers or promotions; referral incentives only apply to new enrollments submitted July 15, 2026 – December 31, 2026.",
+    "Bill credits cannot be exchanged for cash; if service is discontinued, no payout on negative balances from referral credits.",
+    "Program can be changed or terminated at Chariot's sole discretion without notice; Chariot may cap accumulated referral credit.",
+    "Framing: credits reduce future Chariot bills; you must already be (or become) a Chariot customer to earn the referrer side."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url chariotenergy.com/chariot-energy-bill/ and chariotenergy.com/referral/ are the provider's own domain; full 2026 Referral Disclaimer fetched from the official referral page 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "The referral page carries a '2026 Referral Disclaimer' with an explicit eligibility window (July 15, 2026 – December 31, 2026) and the bill page states the current asymmetric amounts; note earlier crawls showed $50 referrer, so the current $100/$50 is time-sensitive — disclosed in catches.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Eligibility (60 consecutive days, one on-time paid-in-full bill, active account in good standing, promocode REF1) is fully stated; no hidden qualifiers.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Amounts ($100 referrer / $50 referred), conditions, and timing (within 90 days) are all stated; nothing requires guessing.",
+      "pass": true
+    }
+  },
+  "eligibility": "Active Chariot Energy customer in good standing who refers a new customer; the new customer enrolls with promocode REF1 via the official referral page between 7/15/2026 and 12/31/2026, stays active 60 consecutive days, and makes at least one on-time paid-in-full bill payment. Texas (Chariot is a Texas solar REP).",
+  "notes": "Verified 2026-09-23 from Chariot's official bill page and referral page. Asymmetric payout: $100 to the referrer, $50 to the referred. Distinct supplier vs prior-wave set; no other Chariot routes in catalog. Amount note: the referrer side was $50 in older crawls, so this is a promotional uplift within the 7/15-12/31/2026 window.",
+  "numeric_basis": "payout from official terms ($100 referrer / $50 referred bill credits); time: referral share 5-15 min active",
+  "official_url": "https://chariotenergy.com/chariot-energy-bill/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "Earn $100 when someone uses your code to enroll with Chariot Energy. Your referral will also be rewarded with a $50 bill credit",
+  "payout_value_note": "Asymmetric: $100 bill credit to the referrer, $50 bill credit to the referred friend (both as bill credits on Chariot bills, not cash).",
+  "route_id": "R2627",
+  "standard": {
+    "s1": {
+      "note": "Exact amounts ($100 / $50) are quoted verbatim from the official bill page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing is natural: bill credits on a required utility bill, explicitly not exchangeable for cash.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps are the concrete process from the official pages (share referral code, friend enrolls with REF1, 60-day qualification, credits within 90 days).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: 90-day wait plus total loss of both credits if the friend doesn't complete 60 active days.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; sharing a referral code and enrolling cost nothing beyond the friend's normal plan signup.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words in the payout statement; the time-sensitive window is disclosed as a catch.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against chariotenergy.com (provider's own domain). Deduped: no Chariot Energy routes in catalog or evidence files; no rejects-g19 entry.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Find your unique Chariot Energy referral code on your bill or customer portal.",
+    "Send your referral code to a friend or family member.",
+    "Friend enrolls in a Chariot Energy plan via chariotenergy.com/referral using your code and promocode REF1 (new enrollments 7/15/2026–12/31/2026).",
+    "Friend stays an active Chariot customer for at least 60 consecutive days and completes at least one on-time paid-in-full bill payment.",
+    "You receive a $100 bill credit and your friend receives a $50 bill credit within 90 days."
+  ],
+  "terms_url": "https://chariotenergy.com/referral/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credits paid within 90 days after the 60-day qualification is met; the promotional window is 7/15/2026–12/31/2026; the program can end at Chariot's discretion without notice.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

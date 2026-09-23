@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only the first to identify a new vulnerability earns — duplicates and already-known bugs pay nothing.",
+  "catches": [
+    "Only the first to identify a new vulnerability earns an award — duplicates earn nothing.",
+    "Requires real security expertise: qualifying vulnerabilities take skill and often many hours to find.",
+    "Coordinated disclosure is mandatory — you must report privately and follow the Rules of Engagement.",
+    "Responsible testing only: never access, modify, or exfiltrate customer data; never disrupt services.",
+    "Awards vary by program and severity — most hunters earn nothing per report."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Microsoft's official MSRC bounty page is live and states 'Earn up to $250,000 USD in bug bounty awards' with guidance to submit via the MSRC, follow Coordinated Vulnerability Disclosure, and work within the Rules of Engagement — a real, public, provider-owned deal channel.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states awards up to $250,000 USD per bounty; no fixed per-hunter amount — framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: review active programs and scope, test within the Rules of Engagement, report privately with reproduction steps and proof of concept, await triage and award.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Submitting to the MSRC carries no upfront fee.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone with security-research skill who follows Microsoft's Rules of Engagement and Coordinated Vulnerability Disclosure.",
+  "notes": "Scenario: security niche (bug bounty). The Microsoft Security Response Center runs bounty programs across Microsoft products and services, paying up to $250,000 USD per award for valid, first-reported vulnerabilities. Highly skill-gated; per-report awards vary by program and severity — most hunters earn nothing per report.",
+  "numeric_basis": "payout: official ceiling $250,000 USD per award; awards vary by program and severity. time: reconnaissance + testing + writing a quality report, est. 90-240 min active.",
+  "official_url": "https://microsoft.com/msrc/bounty",
+  "payout_max_usd": 250000,
+  "payout_min_usd": 0,
+  "payout_quote": "Earn up to $250,000 USD in bug bounty awards",
+  "payout_value_note": "Awards are set per report by program and severity; official page states awards up to $250,000 USD — variable.",
+  "route_id": "R5446",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: security researchers following the Rules of Engagement and CVD.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-report awards; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover first-reporter rule, skill barrier, disclosure rules, testing limits, and variable awards.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Microsoft Bug Bounty absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json (HackerOne/Bugcrowd/Intigriti/YesWeHack/Google VRP R5443 are separate routes).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against the provider-owned page on 2026-09-23 (microsoft.com/msrc/bounty).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: reports triaged continuously; awards paid after validation.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Review the active bounty programs and scope on the official MSRC bounty page.",
+    "Research vulnerabilities while working within the Rules of Engagement — no customer data access, no service disruption.",
+    "Report privately via the MSRC with clear reproduction steps, proof-of-concept code, and impact analysis.",
+    "MSRC triages the report; eligible first-reports earn awards based on program and severity."
+  ],
+  "terms_url": "https://microsoft.com/msrc/bounty",
+  "time_max_minutes": 240,
+  "time_min_minutes": 90,
+  "timing": "Reports are triaged continuously; awards are paid after the report is validated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

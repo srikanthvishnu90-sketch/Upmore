@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The page gives no specific friend-side qualifying conditions beyond opening a checking account with your referral code - confirm current terms with UW Credit Union before referring, and note this offer is advertised as available for a limited time only.",
+  "catches": [
+    "Friend must open a UW Credit Union checking account using your referral code (code obtained in Web Branch).",
+    "Maximum $250 through referrals (5 referrals at $50 each).",
+    "Offer is only available for a limited time.",
+    "Page does not detail any additional friend-side qualifying actions beyond opening the checking account."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official UW Credit Union page (uwcu.org): 'Refer your friends and family to join UW Credit Union - when they join, we'll give you both $50!' and 'When you refer your friends to join UW Credit Union, you'll both get $50!' 'Make up to $250* through referrals.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official UW Credit Union refer-a-friend page on uwcu.org, fetched live 2026-09-23; advertised as limited-time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no uwcu.org route and no UW Credit Union entry; catalog has no UW Credit Union route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: UW Credit Union member who obtains a referral code in Web Branch. Friend: new UW Credit Union member opening a checking account with the code.",
+  "notes": "Verified 2026-09-23. UW Credit Union (Wisconsin). Referrer earns $50 per qualifying referral ($50 to the friend too), cap $250 in referrals (5 at $50). Caveat: friend-side qualifying conditions beyond opening a checking account are not detailed on the page; confirm current terms with UWCU before referring.",
+  "numeric_basis": "payout from official UWCU terms ($50 to the referrer per qualifying referral; cap $250); time: get code in Web Branch and share it est. 5-15 min active",
+  "official_url": "https://www.uwcu.org/checking/offers/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Refer your friends and family to join UW Credit Union - when they join, we'll give you both $50! Make up to $250* through referrals - but don't wait, this offer is only available for a limited time!",
+  "payout_value_note": "$50 to the referrer per qualifying referral (friend also gets $50); cap $250 in referral earnings.",
+  "route_id": "R5675",
+  "standard": {
+    "s1": {
+      "note": "Official UW Credit Union page live on uwcu.org, fetched 2026-09-23; limited-time offer",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a UWCU member with a Web Branch referral code; friend opens checking with the code",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirement stated: open a checking account using the referral code (no further conditions detailed)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: no exact posting date stated; friend uses code at checking account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Get your referral code in Web Branch.",
+    "Share the code with a friend who wants to join UW Credit Union.",
+    "Friend uses the code when they open their checking account.",
+    "You both get a $50 bonus."
+  ],
+  "terms_url": "https://www.uwcu.org/checking/offers/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus for both parties when the friend opens the checking account with the referral code; no exact posting date stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

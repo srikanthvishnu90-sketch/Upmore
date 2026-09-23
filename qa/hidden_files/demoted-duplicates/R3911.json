@@ -1,0 +1,91 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open their account in person at a TD Store - online and phone account openings are not eligible.",
+  "catches": [
+    "Referring client can receive a $100 bonus for each friend who opens an account with the referrer's unique Share the Green code and qualifies.",
+    "Up to ten (10) Share the Green bonuses ($1,000 total value) within a calendar year.",
+    "Referring client must have an existing TD personal checking account and be enrolled in Online Banking.",
+    "Referred client must: provide the friend's unique code at account opening, open a TD personal checking account at a TD Store, and either receive a qualifying direct deposit of at least $250 within 60 days or complete 15 qualifying TD Visa debit card purchases within 60 days.",
+    "Referred client must not have an existing TD personal checking account, one closed in the preceding 12 months, or have received a Share the Green bonus before.",
+    "Bonuses are credited no later than 95 days from the new account opening date.",
+    "If the checking account is closed by either party within 6 months after opening and the bonus was paid, TD may deduct it at closing.",
+    "Referral bonuses may be reported via IRS Form 1099.",
+    "TD employees and non-US residents are not eligible; can't use your own referral code.",
+    "Offer may be withdrawn at any time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TD Bank page (tdbank.com): 'Referring client can receive a $100 bonus for each friend they refer that opens an account using their unique Share the Green code, and who qualifies as outlined within.' and 'Referring client may receive up to ten (10) Share the Green Bonuses ($1,000 total value) within a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official tdbank.com domain (tdbank.com/referafriend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'td bank' evidence-file hits were a student bonus (R5886) and unrelated items - no TD referral-program coverage. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: TD personal checking customer enrolled in Online Banking. Friend: no existing/prior-12-months TD personal checking; opens in-store with the code and qualifies within 60 days.",
+  "notes": "Verified 2026-09-23. TD Bank (Cherry Hill, NJ). $100 Share the Green bonus to the referrer per qualifying referral; up to 10 per year ($1,000). Current offer (historically $50; page now states $100).",
+  "numeric_basis": "payout from official page ($100 per qualifying referral; 10/year, $1,000/year cap); time: sharing the referral code est. 5-15 min active",
+  "official_url": "https://www.tdbank.com/referafriend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Referring client can receive a $100 bonus for each friend they refer that opens an account using their unique Share the Green code, and who qualifies as outlined within ... Referring client may receive up to ten (10) Share the Green Bonuses ($1,000 total value) within a calendar year.",
+  "payout_value_note": "$100 per qualifying referral; up to 10 per calendar year ($1,000).",
+  "route_id": "R3911",
+  "standard": {
+    "s1": {
+      "note": "Program page live on tdbank.com, fetched 2026-09-23; offer may be withdrawn at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer TD checking + online banking; friend no TD checking; employees/non-US excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open in-store, DD of $250+ within 60 days OR 15 debit purchases within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited no later than 95 days from the new account opening date",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonuses may be reported via IRS Form 1099",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Enroll in Online Banking and get your unique Share the Green code.",
+    "Share the code with a friend.",
+    "Friend opens a TD personal checking account at a TD Store using your code.",
+    "Friend receives a $250+ direct deposit or makes 15 debit purchases within 60 days.",
+    "You receive $100 per referral (up to $1,000/year), credited no later than 95 days after account opening."
+  ],
+  "terms_url": "https://www.tdbank.com/referafriend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited no later than 95 days from the new account opening date.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

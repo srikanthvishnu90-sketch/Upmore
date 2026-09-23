@@ -1,0 +1,87 @@
+{
+  "route_id": "R6067",
+  "verdict": "verify",
+  "official_url": "https://www.sharonview.org/refer",
+  "terms_url": "https://www.sharonview.org/refer",
+  "payout_quote": "You earn $50* if the referred member ... open and fund a membership share and checking account ... You earn an additional $50* if the referred new member completes one of the following qualifying checking account activities within 60 days of account opening.",
+  "steps": [
+    "Find your unique referral code (monthly statement, Sharonview email, or call 704-969-6700).",
+    "Give your code to friends/family to enter when they complete a membership application online or at a branch.",
+    "Friend opens and funds a membership share ($5 min) and checking ($25 min) within 7 days; earn $50. If they also complete $500 in direct deposits or 10 debit purchases within 60 days, earn another $50."
+  ],
+  "catches": [
+    "Two-tier payout: $50 requires the friend to open AND fund share + checking within 7 days; the second $50 requires $500 aggregate direct deposits or 10 debit purchases within 60 days.",
+    "Both accounts must remain in good standing for 120 days from the referred member's account opening; rewards paid $50 within 7 days of opening/funding, second $50 within 60 days of activities.",
+    "Bonuses are reportable dividends on IRS Form 1099-INT.",
+    "Offer valid for referrals submitted June 15, 2026 - December 31, 2026; terms subject to change; one referrer per new member (no double-claiming).",
+    "Existing members may not open additional memberships to qualify; former members qualify only if closed 6+ months prior with no losses."
+  ],
+  "biggest_catch": "It's $50 per referral, $100 only if your friend also completes the checking activity ($500 in direct deposits or 10 debit purchases within 60 days) \u2014 and both accounts must stay in good standing 120 days.",
+  "eligibility": "Existing Sharonview FCU member 18+; referred person must be eligible for Sharonview membership (NC/SC footprint).",
+  "timing": "Share your code in minutes; first $50 lands within 7 days of friend's account opening/funding, second $50 within 60 days of their qualifying activities.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "reward",
+    "qualifying activities"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:34:28Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official sharonview.org: 'You earn $50*' plus 'an additional $50*' \u2014 concrete per-referral referrer amounts ($50-$100)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official sharonview.org/refer page fetched 2026-09-23 with full terms and dated offer window (6/15/2026-12/31/2026)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate; $5 share + $25 checking funding are the friend's account minimums, not referral fees."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "dedupe-check for 'Sharonview' returned 0 hits; sharonview.org absent from referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Page live on sharonview.org fetched 2026-09-23; offer window dated 6/15/2026-12/31/2026."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Existing member 18+ referrer; friend must be eligible for membership."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirements concrete: fund share+checking in 7 days; DD/debit activity in 60 days."
+    },
+    "s4": {
+      "pass": true,
+      "note": "First $50 within 7 days of friend's funding; second $50 within 60 days of activities."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Bonuses reported on IRS Form 1099-INT, stated on page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Two-tier referrer payout is a distinct mechanism; new institution."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official Sharonview FCU referral page. Referrer earns $50-$100 per referral depending on whether the friend completes checking activities; no referral-count limit stated.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 100,
+  "payout_value_note": "$50 to referrer when friend opens+funds accounts; +$50 more when friend completes checking activities ($500 DD or 10 debit purchases in 60 days).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50-$100 per referral from official terms (tiered); time: sharing referral code est. 5-15 min active"
+}

@@ -1,0 +1,83 @@
+{
+  "route_id": "R1615",
+  "verdict": "verify",
+  "official_url": "https://www.legis.iowa.gov/docs/code/2023/455C.pdf",
+  "terms_url": "https://www.legis.iowa.gov/docs/code/2023/455C.pdf",
+  "payout_quote": "A refund value of five cents shall be paid by the consumer on each beverage container sold in this state by a dealer for consumption off the premises. / Upon return of the empty beverage container upon which a refund value has been paid to a participating dealer or redemption center and acceptance of the empty beverage container by the participating dealer or redemption center, the participating dealer or redemption center shall return the amount of the refund value to the consumer within a reasonable time not to exceed ten days.",
+  "steps": [
+    "Buy eligible beverages in Iowa (5¢ refund value charged at checkout)",
+    "Keep empties of the kind/size/brand the dealer sells",
+    "Return them to a participating dealer or an approved redemption center (dealers near a redemption center may opt out — check the DNR locator)",
+    "Receive the 5¢-per-container refund"
+  ],
+  "catches": [
+    "This returns YOUR OWN deposit money paid at purchase — it is recovering your own money, not new income.",
+    "Only containers bought in-state with the correct deposit label are redeemable; out-of-state containers are ineligible and redeeming them is fraud.",
+    "Since the 2022 overhaul, dealers within 10–15 miles of an approved redemption center may refuse returns and direct you to the center; refund may take up to 10 days by statute."
+  ],
+  "biggest_catch": "Returns your own 5¢ deposit — you paid it at purchase. This is deposit recovery, not income.",
+  "eligibility": "Anyone who purchased eligible beverage containers in Iowa.",
+  "timing": "Refund at return (by law within 10 days).",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Iowa Code Chapter 455C (Beverage Containers Control), official legis.iowa.gov publication."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Iowa Code §455C.2: refund value of five cents; dealer/redemption center shall return the amount of the refund value to the consumer."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; refund value already paid at purchase."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "5¢ per container; participating dealers cannot refuse same kind/size/brand they sell."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Iowa-purchased eligible beverage containers."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Cash refund per container."
+    },
+    "s3": {
+      "pass": true,
+      "note": "At return, by statute within 10 days."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat 5¢ per container stated in statute."
+    },
+    "s5": {
+      "pass": true,
+      "note": "legis.iowa.gov — official Iowa Legislature code."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete: buy, save, return to dealer/center, get refund."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official state page confirmed 2026-09-23."
+    }
+  },
+  "notes": "2022 modernization lets dealers near redemption centers opt out of in-store returns.",
+  "payout_min_usd": 0.05,
+  "payout_max_usd": 0.05,
+  "payout_value_note": "Flat official 5¢ per beverage container (Iowa Code §455C.2).",
+  "time_min_minutes": 20,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from Iowa Code 455C.2 (5¢/container); time: collecting empties + return trip est. 20–60 min active."
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $50 only lands after a 90-day qualification window - the friend must complete the checking or loan path within 90 days of joining, and payouts are processed no sooner than 90 days after membership opening.",
+  "catches": [
+    "Friend must be new to Premier (no current or prior membership, including as joint owner/co-borrower in the last 12 months); referral must be identified at account opening - no retroactive referrals.",
+    "Friend completes ONE path within 90 days: checking (open qualifying personal checking + Digital Banking/eStatements + two direct deposits of $250+) OR loan (approved and funded qualifying loan of $10,000+ + Digital Banking/eStatements).",
+    "Payouts processed no sooner than 90 days after membership open; if not qualified within 90 days, no payout.",
+    "Both referrer and new member must be 18+ and in good standing at payout; one may still be paid if the other is ineligible.",
+    "Cap: total referral payouts capped at $599.99 per member per calendar year (combined referrer/new-member payouts); may be reported to IRS.",
+    "Employees and board members ineligible; minimum $5 share account required; cannot be combined with other checking/loan offers."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Premier CU page (premiercu.org/member-referral/): 'When they become a member and qualify, you'll receive $50, they'll receive $50, and Premier will donate $50 to a local charity' and 'For each qualifying referral, Premier pays $50 to the new member, $50 to the referrer'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official premiercu.org domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend joins and completes checking or loan path",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no premiercu.org route; catalog has no Premier CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: eligible existing Premier member 18+. Friend: new to Premier (no current/prior membership), 18+, completes checking or loan qualification path.",
+  "notes": "Verified 2026-09-23. Premier Credit Union. Referrer earns $50 per qualifying referral; cap $599.99/member/calendar year on combined payouts. Rewards paid no sooner than 90 days after membership open.",
+  "numeric_basis": "payout from official premiercu.org terms ($50 per qualifying referral; cap $599.99/yr); time: share referral est. 5-15 min active",
+  "official_url": "https://premiercu.org/member-referral/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "When they become a member and qualify, you'll receive $50, they'll receive $50, and Premier will donate $50 to a local charity ... For each qualifying referral, Premier pays $50 to the new member, $50 to the referrer, and makes a $50 charitable donation to an organization selected by Premier. ... Total referral payouts are capped at $599.99 per member per calendar year (combined referrer/new-member payouts).",
+  "payout_value_note": "$50 to the referring member per qualifying referral; cap $599.99 per member per calendar year.",
+  "route_id": "R4780",
+  "standard": {
+    "s1": {
+      "note": "Page live on premiercu.org, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing member 18+; friend new to Premier, 18+, meets membership/product criteria",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking path (2x $250+ direct deposits + eStatements within 90 days) or $10,000+ funded loan path",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: payouts no sooner than 90 days after membership open",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: payouts may be reported to the IRS; members responsible for taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell a friend who is new to Premier why you like it.",
+    "Friend joins Premier (online or in branch) and enters your name during the application process.",
+    "Friend completes one path within 90 days: qualifying checking with two $250+ direct deposits + eStatements, or a funded $10,000+ loan with eStatements.",
+    "You receive $50 per qualifying referral (cap $599.99/year) no sooner than 90 days after their membership opened."
+  ],
+  "terms_url": "https://premiercu.org/member-referral/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payouts processed no sooner than 90 days after membership open, once all requirements are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

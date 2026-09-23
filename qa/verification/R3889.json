@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend just has to open accounts - no deposit or transaction hoops stated on the page - but the page gives no fine print at all, so ask for terms before counting on it.",
+  "catches": [
+    "Referring member and the friend each receive a $50 bonus once the friend's new accounts are open.",
+    "'Earn up to $500 a month!' - an unusually high monthly cap stated on the official page.",
+    "Described as an ongoing benefit ('now an ongoing benefit'), not a limited-time promotion.",
+    "No friend requirements beyond opening accounts are stated on the page; submit the referral form, the friend receives an email invitation and opens membership + accounts.",
+    "No fee to participate; local Maryland credit union (financial centers throughout Maryland).",
+    "Fine-print caveat: the official page shows no detailed terms and conditions - eligibility, timing, and tax treatment are not stated on the page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official SECU page (secumd.org): 'If they join, we'll give you both a $50 bonus.' and 'After their new accounts are open, you will each receive $50.' and 'Earn up to $500 a month!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official secumd.org domain (secumd.org/about-us/membership/referral-program/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard accounts",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'secu maryland' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: SECU member. Friend: joins SECU and opens new accounts after receiving the referral invitation.",
+  "notes": "Verified 2026-09-23. SECU Credit Union (Linthicum, MD). $50 to the referring member per qualifying referral; page states 'Earn up to $500 a month'. Ongoing benefit. Caveat: the page publishes no detailed terms and conditions.",
+  "numeric_basis": "payout from official page ($50 per qualifying referral; up to $500/month); time: submitting the referral form est. 5-15 min active",
+  "official_url": "https://www.secumd.org/about-us/membership/referral-program/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "If they join, we'll give you both a $50 bonus. ... After their new accounts are open, you will each receive $50. ... Earn up to $500 a month!",
+  "payout_value_note": "$50 to each side per qualifying referral; up to $500 a month.",
+  "route_id": "R3889",
+  "standard": {
+    "s1": {
+      "note": "Program page live on secumd.org, fetched 2026-09-23; described as an ongoing benefit",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer SECU member; friend joins and opens accounts (no detailed terms published)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: join SECU and open new accounts (no deposit/transaction minimums stated on the page)",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete and submit the SECU referral form.",
+    "Friend receives an email invitation to set up membership and open an account.",
+    "Friend joins and opens their new accounts.",
+    "You each receive $50 (up to $500/month)."
+  ],
+  "terms_url": "https://www.secumd.org/about-us/membership/referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 to each side after the friend's new accounts are open (no day count stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

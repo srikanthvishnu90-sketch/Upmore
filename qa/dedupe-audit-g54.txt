@@ -1,0 +1,55 @@
+# Dedupe audit — G54 lane (R5781–R5880), run 2026-09-23 ~07:05 UTC
+
+Three-way check per surviving provider: (1) exact + token-overlap grep of
+`qa/existing-providers.txt`, (2) `python3 qa/dedupe-check.py "<provider>"`,
+(3) filename hits in `qa/verification/`, plus exact provider match against the
+served catalog (`src/data/upmore-data.json`, 772 routes / 507 verified) and a
+cross-file evidence-text scan of all `qa/verification/R*.json`.
+
+## Genuine duplicates found — converted to rejects (10)
+
+Same provider + same mechanism as an earlier same-schema evidence file
+(all earlier files carry verdict=verify but are NOT in the served catalog):
+
+| My ID | Provider | Duplicates earlier file | Evidence of sameness |
+|---|---|---|---|
+| R5781 | Merrill Edge | R1062 | Same tiered $100/$150/$250/$600 new-account offer (code 600ME, 45-day funding) |
+| R5846 | RVshare | R3170 | Same official owner FAQ URL, same list-your-RV mechanism |
+| R5848 | Hipcamp | R3171 | Same list-your-land host mechanism |
+| R5849 | Sniffspot | R1713 | Same rent-your-yard-as-dog-park mechanism |
+| R5850 | Swimply | R3164 | Same become-a-host mechanism |
+| R5851 | Peerspace | R3165 | Same list-your-space mechanism |
+| R5852 | Hygglo | R3172 | Same official hygglo.com/uk/fatllama page, same mechanism |
+| R5861 | Stashbee | R3177 | Same list-spare-room/storage mechanism |
+| R5865 | HURR | R3181 | Same official how-to-lend page, same mechanism |
+| R5795 | NinjaTrader | — | Not a duplicate; rejected for incomplete official terms (landing page says only "Terms apply") |
+
+All 10 converted: verification JSONs deleted, reject lines appended to
+`qa/discovery/rejects-g54.txt` with shell timestamp 2026-09-23T07:12:30Z
+(R5795: 2026-09-23T07:13:52Z).
+
+## False positives (dedupe-check.py substring artifacts)
+
+- R5782 SogoTrade ~ "R0630 | Go" — matches "go" inside "sogotrade"; unrelated bank-bonus route.
+- R5823 MotionElements ~ "R0640 | Ent" — matches "ent" inside "motionelements"; unrelated.
+- R5833 Scoopshot ~ "R0797 | Co" — matches "co" inside "scoopshot"; unrelated.
+- R5801 Stake ~ R0009/R0210 — both are verdict=reject files about other products (Betstamp, Panel App); "stake" matched as a common word.
+- Token overlaps in served catalog: Trade Republic ~ E*TRADE / Amazon Textbook Trade-in; Scalable Capital ~ Capital One routes; Interactive Investor ~ Interactive Brokers — all different companies, not duplicates.
+
+## New rejects checked
+
+The 10 new reject providers have zero exact provider matches in the served
+catalog (no live route exists for any of them). Reject-file URLs: niche
+providers with no surfaced official page (Splacer, PaulCamper, HomeCamper,
+Vibecampers, Camptoo) carry an empty URL field rather than a guessed root;
+remaining bare-root URLs are canonical official homepages used as identity
+references, not payout evidence.
+
+## Coordinator action required
+
+The 9 duplicate earlier files (R1062, R1713, R3164, R3165, R3170, R3171, R3172,
+R3177, R3181) are NOT in the served catalog. Since my fresher files for these
+providers were rejected as duplicates, the coordinator must ensure the earlier
+files are the ones applied — otherwise Merrill Edge, RVshare, Hipcamp,
+Sniffspot, Swimply, Peerspace, Hygglo, Stashbee, and HURR drop out of the
+expansion entirely.

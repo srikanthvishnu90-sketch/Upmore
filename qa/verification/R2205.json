@@ -1,0 +1,86 @@
+{
+  "route_id": "R2205",
+  "verdict": "verify",
+  "official_url": "https://brokerage.ibkr.com/en/accounts/referrer.php",
+  "terms_url": "https://www.interactivebrokers.com/Universal/servlet/Registration_v2.formSampleView?formdb=4051",
+  "payout_quote": "As a referrer you will receive $200 for each referral, subject to program conditions. Referrers are limited to 15 referrals per year and 30 referrals total.",
+  "steps": [
+    "Be an eligible IBKR client: individual or joint account with net liquidation value of at least $2,000 and at least one securities trade placed",
+    "Generate your unique referral link in IBKR Client Portal (Settings > Account Configuration > Refer a Friend)",
+    "Share the link; your friend must open an individual or joint account through the link and deposit at least $10,000 within 30 days",
+    "Friend must maintain at least a $10,000 balance for one year; you receive the $200 flat fee payment per eligible referral"
+  ],
+  "catches": [
+    "Friend must deposit at least $10,000 within 30 days of opening AND maintain that balance for a full year — payout only after the year completes",
+    "Referrer must already be an IBKR client with $2,000+ account value and at least one securities trade",
+    "Cap: 15 referrals per calendar year, 30 total per referrer",
+    "Residents of Japan, Denmark, Spain, Portugal, Poland, mainland China and Israel are ineligible; financial advisors, hedge funds, institutional accounts ineligible",
+    "One payment per referred client even if they open multiple accounts; family/household referrals excluded per detailed terms",
+    "Referrer may not act as broker/dealer or assist with the referred client's account beyond the initial referral"
+  ],
+  "biggest_catch": "Your friend must deposit at least $10,000 within 30 days and keep it invested for a full year before you see the $200.",
+  "eligibility": "Existing IBKR clients with individual/joint accounts, $2,000+ net liquidation value, and at least one securities trade; not residents of the excluded countries",
+  "timing": "$200 flat fee paid after the referred client's one-year balance-maintenance period completes",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=ibkr.mobile.android.ibtrader",
+    "ios": "https://apps.apple.com/app/apple-store/id280114792"
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official IBKR domain states '$200 for each referral' flat fee"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Referral page live on brokerage.ibkr.com; crawled within the last day"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate; referrer must already be a client but no payment required"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Referrer-side program distinct from IBKR brokerage signup promo (R0030); different mechanism and terms"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Interactive Brokers LLC; official domain"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Per-referral payout concrete ($200); caps 15/year, 30 lifetime"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Conditions concrete: $10,000 deposit within 30 days, maintained 1 year, via unique link"
+    },
+    "s4": {
+      "pass": true,
+      "note": "No upfront fee; friend deposit is their own money, not a cost"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Timing concrete: paid after 1-year maintenance period"
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility/geo exclusions stated explicitly"
+    },
+    "s7": {
+      "pass": true,
+      "note": "No IBKR referral route in catalog"
+    }
+  },
+  "notes": "IBKR Refer a Friend: referrer earns a flat $200 per eligible referral (max 15/year, 30 total). Referred friend must fund $10,000 within 30 days and hold it a year; friend can earn up to $1,000 in IBKR stock separately.",
+  "payout_min_usd": 200,
+  "payout_max_usd": 200,
+  "payout_value_note": "Flat $200 cash fee per eligible referral (not multiplied by caps).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout from official terms ($200 flat per referral); time: generating/sharing referral link est. 5-15 min active"
+}

@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Three tiers with steep hurdles: the $50 checking tier needs the friend to hold a $1,000+/month direct deposit, and the $100 auto-loan tier needs a $10,000+ loan whose first payment is made - a plain membership join earns nothing extra.",
+  "catches": [
+    "Tiered payout to the referring member: $50 for a new member with active checking, $75 for active credit card, $100 for an auto/recreational vehicle loan.",
+    "Active checking: direct deposit of $1,000+ per month + enrolled in eStatements, eNotices, and eAlerts.",
+    "Active credit card: at least 10 purchases on the NCACU credit card.",
+    "Auto/RV loan: over $10,000 with the first payment made; indirect loans do not qualify.",
+    "Friend must not have been an NCACU member in the past 12 months; referrer must be an existing member; both need a valid US taxpayer ID.",
+    "Bonus paid ~90 days from membership opening if accounts still open, active, and in good standing; no bonus if criteria not met within 90 days.",
+    "One new member offer per product type per SSN; consumer accounts only.",
+    "Limited time offer; program may be modified or cancelled at any time without notice; bonuses reported on IRS Form 1099-INT.",
+    "No referral-count cap stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official NCACU page (ncacu.org/reward-yourself-refer-a-friend/): '$50 New Member with Active Checking - Receive $50 when a friend you refer becomes a member with an active checking account', '$75 New Member with Active NCACU Credit Card - Earn $75 when a member you refer opens a new account and an active credit card', '$100 New Member with Auto/Recreational Vehicle Loan - Get $100 when your referred friend opens a new membership and an auto or recreational vehicle loan' and 'Refer a friend reward applies to both the referring member and the new member.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official ncacu.org domain, posted 2024-08-01, fetched live 2026-09-23; limited time, terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + product",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no ncacu.org route; catalog has no NCACU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing NCACU member with valid US taxpayer ID. Friend: new member (none in past 12 months), Michigan area, meets product activity criteria.",
+  "notes": "Verified 2026-09-23. North Central Area Credit Union (MI). Referrer earns $50/$75/$100 per referral by tier; no referral cap stated.",
+  "numeric_basis": "payout from official ncacu.org terms ($50/$75/$100 tiers per referral; no cap); time: share referral info est. 5-15 min active",
+  "official_url": "https://ncacu.org/reward-yourself-refer-a-friend/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "$50 New Member with Active Checking - Receive $50 when a friend you refer becomes a member with an active checking account. ... $75 New Member with Active NCACU Credit Card - Earn $75 when a member you refer opens a new account and an active credit card. ... $100 New Member with Auto/Recreational Vehicle Loan - Get $100 when your referred friend opens a new membership and an auto or recreational vehicle loan. ... Refer a friend reward applies to both the referring member and the new member.",
+  "payout_value_note": "$50/$75/$100 to the referring member per referral by tier; no referral cap stated.",
+  "route_id": "R4791",
+  "standard": {
+    "s1": {
+      "note": "Page posted 2024-08-01 on ncacu.org, fetched 2026-09-23; limited time, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing member; friend new member in Michigan, not a member in past 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $1,000+/mo DD + eStatements/eNotices/eAlerts, or 10 credit card purchases, or $10k+ auto loan with first payment",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus ~90 days from membership opening if accounts open, active, and in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell friends about NCACU and give them your referral information.",
+    "Friend joins NCACU (not a member in the past 12 months) and presents the program at account opening.",
+    "Friend completes a product tier within 90 days: active checking ($1,000+/mo DD), active credit card (10 purchases), or $10k+ auto/RV loan with first payment.",
+    "You receive $50/$75/$100 per referral ~90 days after their membership opened."
+  ],
+  "terms_url": "https://ncacu.org/reward-yourself-refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referral bonus paid approximately 90 days from new membership opening if accounts remain open, active, and in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Referrer earns a $50 FamilyPlus reward for each friend/family member who joins iTHINK Financial, paid to the referrer's membership account within 60 days; rewards for business, trust, or non-individual memberships do not qualify, and iTHINK employees are ineligible.",
+  "catches": [
+    "Referral must be submitted before the referred member joins; submissions after the person already joined do not qualify",
+    "Reward is paid to the referring member's membership account within 60 days of the referred member joining",
+    "Referring member must be 18+ and have loans in good standing and deposit accounts with positive balances at bonus time",
+    "iTHINK Financial employees, spouses, and household members are not eligible for referral rewards",
+    "Only individual memberships qualify — business, trust, or other non-individual memberships do not",
+    "Referral bonuses may be reported as income to the IRS; taxes are the referrer's responsibility",
+    "Program may be canceled or changed at any time without notice; membership subject to qualification (FL/GA)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official iTHINK Financial FamilyPlus page (ithinkfi.org/about/join-us/familyplus-program): 'Receive $50 for each referred member who joins iTHINK Financial'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "FamilyPlus terms on official ithinkfi.org domain; page indexed and fetchable; terms captured in search index 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $50 reward per referred member who joins",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'iTHINK Financial': evidence hit R2125 covers the 'join-us-earn500' new-member signup promo (not the FamilyPlus referral program) — distinct; no duplicate",
+      "pass": true
+    }
+  },
+  "eligibility": "iTHINK Financial existing members (18+). Referred friends/family must be eligible for individual membership (Florida and Georgia).",
+  "notes": "dedupe-check 'iTHINK Financial' shows only R2125, which covers the join-us-earn500 new-member signup promo — a distinct mechanism from this FamilyPlus referrer-side program. Official FamilyPlus page on ithinkfi.org states $50 per referred member who joins; no annual cap stated.",
+  "numeric_basis": "payout from official iTHINK Financial FamilyPlus page ($50 per referred member who joins); time: submitting a referral est. 5-15 min active",
+  "official_url": "https://www.ithinkfi.org/about/join-us/familyplus-program",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Receive $50 for each referred member who joins iTHINK Financial.",
+  "payout_value_note": "Flat $50 reward per referred member who joins; no annual cap stated on the official page.",
+  "route_id": "R3350",
+  "standard": {
+    "s1": {
+      "note": "Official iTHINK Financial FamilyPlus page indexed live; terms captured 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing member 18+; referred person must join as an individual member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Qualification concrete: referred member must join the credit union (referral submitted beforehand)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: referral reward paid to the referring member's account within 60 days of the referred member joining",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax reporting disclosed: referral bonuses may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct earning mechanism: referrer-side program, separate from the R2125 new-member signup promo",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be an existing iTHINK Financial member (18+)",
+    "Submit referral information about friends/family via the FamilyPlus page (before they join)",
+    "Referred member joins iTHINK Financial as an individual member in the same calendar year",
+    "The $50 referral reward is paid to your membership account within 60 days of the referred member joining"
+  ],
+  "terms_url": "https://www.ithinkfi.org/about/join-us/familyplus-program",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Submitting a referral takes ~10 minutes active; the $50 reward is paid within 60 days of the referred member joining (not instant).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

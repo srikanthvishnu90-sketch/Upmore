@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Very slow to real money: at the official 10 GB = $1 rate, reaching the $20 payout threshold takes most users months, and payouts are PayPal only. Earnings depend entirely on demand for your location and connection - you are selling your residential IP/bandwidth to third-party businesses.",
+  "catches": [
+    "Official rate: one credit per 10 MB, and the official FAQ restates it as 10 GB = $1 (credits convert 1:1 to cents). One indexed official blog sentence appears to contain a typo saying one credit is 'worth $0.1' - the internally consistent official figure is 10 GB = $1, disclosed here.",
+    "$20 minimum payout through PayPal; most users report taking months to reach it.",
+    "You share your connection with business customers; IP/privacy exposure, ISP terms risk, data caps, and electricity costs apply.",
+    "Earnings vary sharply by country/location and device uptime; most earners get very little."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "honeygain.com is the provider's official domain; the official blog article and FAQ state the credit rate (one credit per 10 MB, 10 GB = $1) and the $20 PayPal minimum payout."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Catalog claim: earn credits for sharing bandwidth, $20 PayPal minimum. Official sources match: 1 credit per 10 MB, 10 GB = $1, $20 minimum payout through PayPal."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No signup fee. Costs are the user's own bandwidth/electricity/data caps; disclosed here as catches. No hidden provider fee stated."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Concrete official figures: one credit per 10 MB shared; official FAQ restates 10 GB = $1; $20 minimum payout via PayPal."
+    }
+  },
+  "eligibility": "Users who can install the Honeygain app; availability and rates vary by country and network.",
+  "notes": "Verified against official honeygain.com blog/FAQ content on 2026-09-23. Browser page-fetch unavailable this session; evidence rests on provider-domain content via search snippets. Note the apparent typo in one official blog sentence ('worth $0.1' per credit) - verified against the internally consistent FAQ quote (10 GB = $1) and disclosed as a caveat. Slow, variable passive earning; most users get little.",
+  "official_url": "https://www.honeygain.com/blog/why-honeygain-is-the-ultimate-free-money-deal/",
+  "payout_quote": "one credit for every 10 MB of data shared; FAQ: 10 GB shared = 1 USD; $20 minimum payout through PayPal",
+  "route_id": "R3442",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: anyone able to install the app; rates vary by country/network per official FAQ."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout mechanics stated: credits, $20 minimum, PayPal payout."
+    },
+    "s3": {
+      "pass": false,
+      "note": "Payout processing timing not stated in the indexed official content."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Rate figures are exact (10 MB per credit, 10 GB = $1); the blog typo is disclosed rather than hidden."
+    },
+    "s5": {
+      "pass": false,
+      "note": "honeygain.com pages not loadable via page fetch this session; official-domain content reached via search snippets."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: install, run, accumulate, cash out at $20."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Checked 2026-09-23."
+    }
+  },
+  "steps": [
+    "Create a Honeygain account and install the app on your device.",
+    "Keep the app running; you earn one credit per 10 MB of shared bandwidth (official FAQ: 10 GB = $1).",
+    "Accumulate at least $20 in earnings.",
+    "Request payout through PayPal once the $20 minimum is reached."
+  ],
+  "terms_url": "https://www.honeygain.com/blog/why-honeygain-is-the-ultimate-free-money-deal/",
+  "timing": "Payout available once the $20 minimum is reached; processing timing not stated in official content.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "free money",
+    "passive"
+  ],
+  "payout_min_usd": 1.0,
+  "payout_max_usd": 1.0,
+  "payout_value_note": "official rate equivalent: $1 per 10 GB shared (10 MB per credit); $20 minimum payout",
+  "time_min_minutes": 10.0,
+  "time_max_minutes": 20.0,
+  "numeric_basis": "payout: official 10 GB = $1 equivalent; time: active setup (install + account) estimate 10-20 min, earnings accrue passively thereafter"
+}

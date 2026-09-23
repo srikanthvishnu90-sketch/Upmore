@@ -1,0 +1,89 @@
+{
+  "route_id": "R2422",
+  "verdict": "verify",
+  "official_url": "https://www.capitalone.com/bank/referrals/savings1500/customer/",
+  "terms_url": "https://www.capitalone.com/bank/referrals/savings1500/customer/",
+  "payout_quote": "Earn $100 per friend who opens a new account and completes the required steps. Then receive your bonus within 60 days.",
+  "steps": [
+    "Hold a Capital One 360 Performance Savings account that is eligible for referrals (Copy referral code button on the official referrals page).",
+    "Copy your unique referral code and share it with friends and family.",
+    "Your friend opens a new qualifying 360 Performance Savings account using your referral code.",
+    "Your friend deposits $5,000 or more of external funds within 15 days of account opening.",
+    "Your friend maintains those funds for a 90-day holding period.",
+    "Your $100 bonus is added to your account within 60 days of your friend completing the 90-day holding period."
+  ],
+  "catches": [
+    "High bar on the friend's side: they must deposit $5,000+ of external funds within 15 days and keep it there for 90 days - many friends will not qualify.",
+    "Long payout wait: your bonus arrives within 60 days AFTER your friend's 90-day holding period (up to ~5 months after the referral).",
+    "Cap: 'up to $500 for the year' - effectively 5 paid referrals per year.",
+    "Eligibility varies by account type, activity, or status - not every account holder can refer.",
+    "Referral reward is reported; bonus interest rules/1099 reporting may apply."
+  ],
+  "biggest_catch": "Your friend must park $5,000+ of external money in the account for 90 days, and your bonus does not arrive until up to 60 days after that holding period ends - a high bar and a long wait.",
+  "eligibility": "Capital One 360 Performance Savings account holders whose account shows the referral option (eligibility varies by account type, activity, status).",
+  "timing": "Bonus added to your account within 60 days of your friend completing the required 90-day holding period.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to $500 for the year"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Capital One, N.A. - real operating bank; official domain capitalone.com, page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official referrals page: 'Earn $100 per friend who opens a new account and completes the required steps.' plus verbatim friend deposit/hold requirements and payout timing."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing a code; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official FAQ: bonus 'within 60 days of your friend completing their required 90-day holding period' - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "360 Performance Savings holders with the referral option; eligibility varies by account type/activity/status."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens qualifying savings account with referral code, deposits $5,000+ external funds in 15 days, holds 90 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Within 60 days of friend completing the 90-day holding period."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $100 per friend stated; friend-side welcome bonus is tiered $75-$1,500 by deposit (stated verbatim)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.capitalone.com/bank/referrals/savings1500/customer/ - official Capital One referrals page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: copy code, share, friend opens/deposits $5k in 15 days/holds 90 days, bonus posts within 60 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; full FAQ text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'capital one' shows credit-card welcome offers and checking bonuses but no Capital One refer-a-friend route - distinct. Friend-side bonus is real and tiered ($75-$1,500), stated on the same official page.",
+  "payout_min_usd": 100.0,
+  "payout_max_usd": 100.0,
+  "payout_value_note": "flat $100 per qualified friend in official terms; 'up to $500 for the year' is the annual cap (5 paid referrals)",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($100 per friend flat); time: category default App Referral share-code 5-15 min active"
+}

@@ -1,0 +1,88 @@
+{
+ "route_id": "R6444",
+ "verdict": "verify",
+ "official_url": "https://www.startsaving.la.gov",
+ "terms_url": "https://www.startsaving.la.gov/Common/Docs/Disclosure_Booklet_and_Participation_Agreements.pdf",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "accounts will receive a contribution from the state, called 'Earnings Enhancements,' to match a percentage of their annual deposits, ranging from 14 percent to two percent determined by the account owner's prior year federal adjusted gross income",
+ "steps": [
+  "Open a START account online at startsaving.la.gov (first deposit of at least $10 within 180 days of approval).",
+  "Make deposits during the calendar year.",
+  "The state credits an Earnings Enhancement based on your prior-year federal AGI: 14% (under $30,000), 12% ($30,000-$44,999), 9% ($45,000-$59,999), 6% ($60,000-$74,999), 4% ($75,000-$99,999), 2% ($100,000+).",
+  "Use the account for qualified higher education expenses."
+ ],
+ "catches": [
+  "A percentage of YOUR deposits, not a flat bonus: deposit $0, get $0; the top 14% rate requires prior-year federal AGI under $30,000.",
+  "The account owner or the beneficiary must be a Louisiana resident when the account is opened.",
+  "All Earnings Enhancements and interest thereon are forfeited on rollover to another state's 529 plan; voluntary termination keeps all EEs with START, and accounts open under 12 months earn no interest.",
+  "Deposits are deductible from Louisiana taxable income up to $2,400 per year per account ($4,800 married filing jointly), with carryforward of unused amounts.",
+  "Non-qualified withdrawals: earnings taxed federally and by the state plus a 10% federal penalty on earnings; previously deducted contributions are recaptured into Louisiana income - consult a tax advisor."
+ ],
+ "biggest_catch": "The 'match' is 2%-14% of your own annual deposits based on income - and every dollar of Earnings Enhancement is forfeited if you ever roll the account to another state's 529 plan.",
+ "eligibility": "Account owner or designated beneficiary must be a Louisiana resident at account opening; individuals, legal entities, and custodians may open.",
+ "timing": "Ongoing annual program: deposits during the calendar year earn the enhancement tier set by the prior year's federal AGI.",
+ "weasel_words": [
+  "may be carried forward",
+  "subject to recapture"
+ ],
+ "payout_min_usd": 0,
+ "payout_max_usd": 0,
+ "payout_value_note": "Percentage-based match: 2%-14% of annual deposits by prior-year AGI; no dollar cap stated in official terms.",
+ "time_min_minutes": 15,
+ "time_max_minutes": 30,
+ "numeric_basis": "payout from official terms (2%-14% of deposits, no dollar cap); time: online account opening, est. 15-30 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "startsaving.la.gov is the official Louisiana START site (Louisiana Tuition Trust Authority / LOSFA); rate table confirmed in the official Disclosure Booklet and a LOSFA press release on osfa.la.gov."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official LOSFA release: state 'Earnings Enhancements' match 'a percentage of their annual deposits, ranging from 14 percent to two percent determined by the account owner's prior year federal adjusted gross income'; booklet table: 14%/12%/9%/6%/4%/2%."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to open or to receive enhancements; the enhancement rides on the participant's own 529 deposits."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Rate tiers confirmed in the current official Disclosure Booklet and Louisiana legislative fiscal documents referencing the program as ongoing."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Percentage-based state earnings enhancement; no Louisiana 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: open START account, deposit during the year, enhancement credited by AGI tier, use for qualified expenses."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Annual cycle is explicit: enhancement tier set by prior-year federal AGI on current-year deposits."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include own-deposit requirement, Louisiana residency, EE forfeiture on outbound rollover/termination, and non-qualified-withdrawal tax plus 10% federal penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; enhancements ride on ordinary 529 deposits."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on startsaving.la.gov; no invitation required, Louisiana residency is the gate."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no Louisiana START 529 route in catalog."
+  }
+ },
+ "notes": "Verified against startsaving.la.gov and the official START Disclosure Booklet (rate table) plus a LOSFA press release on osfa.la.gov. Framed as a savings boost on planned college savings, not income."
+}

@@ -1,0 +1,89 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "$400 requires both $750 in direct deposits within 90 days AND using the debit card 5 times a month for three consecutive months — and the bonus itself is not paid until 90 days after the offer period ends.",
+ "catches": [
+  "Open a TDECU Free Checking Account by 12/31/26; make a total of $750 or more in eligible direct deposits within 90 days; and activate and use the new TDECU contactless debit card five times a month for three consecutive months.",
+  "Eligible direct deposits are electronic ACH deposits (payroll, Social Security, pension, government benefits). Deposits made through a teller, ATM, or the TDECU Digital Banking app are ineligible.",
+  "Limit one account-opening bonus per account and one per member.",
+  "Official terms: The value of your gift will be reported on Form 1099-INT and deposited into your account 90 days after the offer has ended and meeting requirements.",
+  "Not available to individuals who were a primary account owner of a TDECU Free Checking account in the last 12 months; not available to current Free Checking customers.",
+  "Account must be in good standing and active at the time of bonus payment. Offer is subject to cancellation without notice.",
+  "Free refers to no monthly maintenance fees; subject to other account and penalty fees — see the fee schedule.",
+  "Membership is required (Texas/Houston-area credit union); the exact field of membership was not in the captured official terms — confirm eligibility on tdecu.org before opening."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "TDECU — real operating Texas credit union (largest in Houston) on its official domain tdecu.org; accounts insured by NCUA.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Full '$400 Checking Offer' disclosure on official tdecu.org page (https://www.tdecu.org/getchecking/), captured via official indexed text (crawled 5 days before verification).",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No upfront fee; Free Checking has no monthly maintenance fees.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official: 'make a total of $750 or more in eligible direct deposits within 90 days and activate and use your new TDECU contactless debit card five times a month for three consecutive months to get $400.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New TDECU Free Checking customers only; not available to current Free Checking customers or anyone who was a primary owner of a TDECU Free Checking account in the last 12 months. Limit one bonus per account and one per member. TDECU membership required.",
+ "notes": "Verified against raw official tdecu.org HTML (2026-09-23 UTC). 1099-INT tax treatment, 90-days-after-offer-ends payout, 12-month prior-owner exclusion, and good-standing-at-payment requirement are official provider text. Debit-card requirement is five tap-to-pay purchases per month (not generic card uses). No membership participation fee found in the captured official terms; confirm field-of-membership eligibility on tdecu.org before opening.",
+ "numeric_basis": "payout: official $400 flat (min=max); time: category default Bank Bonus (30-60min active)",
+ "official_url": "https://www.tdecu.org/getchecking/",
+ "payout_max_usd": 400.0,
+ "payout_min_usd": 400.0,
+ "payout_quote": "You must open a TDECU Free Checking Account by 12/31/26 and make a total of $750 or more in eligible direct deposits within 90 days and activate and use your new TDECU contactless debit card five times a month for three consecutive months to get $400. Eligible direct deposits are electronic automated clearing house (ACH) deposits. Examples of eligible direct deposits include, but are not limited to payroll, Social Security, pension, and government benefits. Deposits made through a teller, ATM, or TDECU Digital Banking app are ineligible direct deposits. Limit one account-opening bonus per account. Limit one account opening bonus per Member. The value of your gift will be reported on Form 1099-INT and deposited into your account 90 days after the offer has ended and meeting requirements. Offer not available to individuals who were a primary account owner of a TDECU Free Checking account in the last 12 months. Account must be in good standing and active at the time of bonus payment. Offer is subject to cancellation without notice.",
+ "payout_value_note": "$400 flat for $750 eligible direct deposits + 5 debit uses/month x 3 months",
+ "route_id": "R3839",
+ "standard": {
+  "s1": {
+   "note": "New Free Checking customers only; not current customers; no Free Checking primary ownership in last 12 months; one per account and per member.",
+   "pass": true
+  },
+  "s2": {
+   "note": "No monthly maintenance fees on Free Checking; other account/penalty fees may apply per fee schedule.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Official terms: paid 90 days after the offer ends (12/31/26); account must be in good standing and active at payment.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Exact figures: $400, 12/31/26, $750, 90 days, five debit uses a month, three consecutive months.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.tdecu.org/getchecking/ — TDECU's own domain.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete from official text: open Free Checking by 12/31/26, post $750 in eligible DDs within 90 days, use the debit card five times a month for three consecutive months.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Mechanics and quotes taken from TDECU's own indexed disclosure text (official domain) captured 2026-09-23; direct render unavailable during this run.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Read the official offer terms at https://www.tdecu.org/getchecking/ and confirm you meet TDECU's membership eligibility before opening (open by 2026-12-31).",
+  "Open a new TDECU Free Checking account (new customers only; not if you were a primary Free Checking owner in the last 12 months).",
+  "Within 90 days of opening, receive a total of $750 or more in eligible direct deposits (ACH: payroll, Social Security, pension, government benefits — teller/ATM/app deposits do not count).",
+  "Activate the new TDECU contactless debit card and use it five times a month for three consecutive months.",
+  "Keep the account open, active, and in good standing — the $400 bonus is deposited 90 days after the offer period ends. Expect it reported on Form 1099-INT."
+ ],
+ "terms_url": "https://www.tdecu.org/getchecking/",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Bonus deposited into the account 90 days after the offer has ended (offer ends 12/31/26), once requirements are met; account must be in good standing and active at payment.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": []
+}

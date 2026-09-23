@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "No limit on referrals at $100 each — but your friend must fund qualifying direct deposits totaling $1,000 and keep the account in good standing for 60 days before either of you is paid.",
+  "catches": [
+    "Friend must open a new NESC Credit Union checking account with qualifying direct deposits totaling at least $1,000",
+    "New members must not have been NESC members or had direct deposits in the past 3 years",
+    "Both accounts must be in good standing for 60 days; rewards processed by the 10th of the following month",
+    "Rewards subject to IRS 1099 reporting",
+    "No limit on the number of referrals — $100 per successful referral, unlimited",
+    "NESC serves the Merrimack Valley and Southern New Hampshire (Methuen, Lawrence, Andover, North Andover, Haverhill, Salem NH and nearby communities)",
+    "NESC cannot tell you whether your referral opened an account — your friend must tell you themselves"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official nescfcu.org refer-a-friend page: 'The NESC Credit Union Refer a Friend Program allows you to earn $100 when you refer a friend, neighbor, or family member who opens a new checking account with qualifying direct deposits.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms published directly on official nescfcu.org discover/refer-a-friend-program page (fetched live 2026-09-23)",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; registration via the 'Start Referring Today' link on the official page",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'NESC' shows no existing provider or evidence file — first NESC Credit Union route in catalog",
+      "pass": true
+    }
+  },
+  "eligibility": "Current NESC Credit Union members. Referred friends must be new members (none in the past 3 years) in NESC's service area (Merrimack Valley / Southern New Hampshire) who open a new checking account with $1,000+ in qualifying direct deposits.",
+  "notes": "dedupe-check clean. Rare unlimited structure: $100 per successful referral with no cap stated. Payout is cash deposited after 60 days in good standing, processed by the 10th of the following month. Direct deposits must be qualifying (paycheck/pension/government-type recurring income).",
+  "numeric_basis": "payout from official NESC referral terms ($100 flat per successful referral); time: registering and sharing the referral link est. 10-15 min active (the friend's funding, 60-day good-standing period, and payout processing are not active time)",
+  "official_url": "https://www.nescfcu.org/discover/refer-a-friend-program",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "The NESC Credit Union Refer a Friend Program allows you to earn $100 when you refer a friend, neighbor, or family member who opens a new checking account with qualifying direct deposits. Both you and your referral receive a $100 bonus.",
+  "payout_value_note": "$100 cash per successful referral; no cap on the number of referrals (unlimited).",
+  "route_id": "R3325",
+  "standard": {
+    "s1": {
+      "note": "Terms live on official nescfcu.org page, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: current member refers; friend must be new (no membership/DD in past 3 years)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking account with qualifying direct deposits totaling at least $1,000",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: paid after 60 days in good standing, processed by the 10th of the following month",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: rewards subject to IRS 1099 reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side mechanism; first NESC Credit Union route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current NESC Credit Union member",
+    "Click 'Start Referring Today' on the official refer-a-friend page and register to get your referral link",
+    "Share the link with friends/family",
+    "Friend opens a new NESC checking account and funds it with qualifying direct deposits totaling at least $1,000",
+    "After the new account is open and in good standing for 60 days, both you and the friend receive $100 (processed by the 10th of the following month)"
+  ],
+  "terms_url": "https://www.nescfcu.org/discover/refer-a-friend-program",
+  "time_max_minutes": 15,
+  "time_min_minutes": 10,
+  "timing": "Registering + sharing the link takes ~10-15 minutes active; the $100 pays after the friend's account is open and in good standing for 60 days (processed by the 10th of the following month).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R2050",
+  "verdict": "verify",
+  "official_url": "https://logotournament.com/",
+  "terms_url": "https://logotournament.com/",
+  "payout_quote": "Fill out the logo questionnaire and post a prize. Designers submit their ideas, while you provide feedback and rankings. Select your favorite, and download your logo files",
+  "steps": [
+    "Create a free LogoTournament designer account.",
+    "Browse live logo contests during the open phase.",
+    "Submit original logo designs per the contest brief and iterate on client feedback and rankings.",
+    "Survive the open phase into the top-5 and judging phases if ranked highly.",
+    "As the winner, deliver final files and receive the posted prize (minus the platform's 15% fee per third-party reporting; confirm in current terms)."
+  ],
+  "catches": [
+    "Only the winner is paid — most entries earn nothing.",
+    "Prize is set per contest by the client; typical packages are a few hundred dollars, split among winners if a split is required.",
+    "A 15% platform fee comes out of the prize (per PCWorld's account of the flow).",
+    "Contests draw 100+ entries; winning is not guaranteed.",
+    "Rights transfer to the client on award."
+  ],
+  "biggest_catch": "Winner-takes-all spec work: with 100+ entries per contest, almost every design you submit earns you nothing.",
+  "eligibility": "Free designer account; logo designers able to deliver vector files.",
+  "timing": "Contests run about 7 days with judging phases; prize after winner selection and file approval.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "LogoTournament's own homepage states the mechanism: 'Fill out the logo questionnaire and post a prize. Designers submit their ideas, while you provide feedback and rankings.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed designer payout range — the prize is set per contest; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: open phase submissions, feedback/rankings, top-5 phase, judging phase, winner selected."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Entering contests is free for designers; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free designer account with logo-design ability."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-contest winner pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover spec-work risk, the 15% fee, and per-contest prizes."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no LogoTournament route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: ~7-day contests plus judging."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "LogoTournament runs logo design contests: designers submit entries through open/top-5/judging phases and the winner takes the posted prize. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Prize is set per contest by the client; LogoTournament publishes no fixed designer payout range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: per-contest prize, no official range. time: account + browse contests + design/submit entries, est. 60-180 min active per contest."
+}

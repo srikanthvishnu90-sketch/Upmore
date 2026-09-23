@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Network coverage is limited to five states (Florida, Nevada, Pennsylvania, Texas, Virginia), and income scales purely with signing volume — per-signing pay ($5 basic / $25 real-estate closing) means nothing is guaranteed and idle time earns nothing.",
+  "catches": [
+    "Only available to notaries in Florida, Nevada, Pennsylvania, Texas, and Virginia.",
+    "Pay is per completed signing: $5 basic notarization, $25 online real-estate closing — income depends entirely on assigned volume.",
+    "Signing volume is not guaranteed; availability of assignments varies.",
+    "The separate bring-your-own-customer model ($10 plus $3/additional seal) is a different product and must not be mixed into this fee-free network route."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Notarize network page for notaries live on 2026-09-23 with fee schedule and state coverage.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states $5 basic notarization / $25 online real-estate closing, paid as quickly as next business day.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to join the notary network; no platform fee to join, no purchase or risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Notarize entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Licensed/commissioned notary public; network currently serving Florida, Nevada, Pennsylvania, Texas, and Virginia.",
+  "notes": "Notarize's fee-free notary network route. Per-signing pay; variable income depending on assignment volume. The $10 + $3/seal bring-your-own-customer product is separate and not part of this route.",
+  "numeric_basis": "Payout from official terms ($5 / $25 per completed signing); time: estimated active minutes per signing; platform publishes no per-signing duration.",
+  "official_url": "https://www.notarize.com/solutions/notaries",
+  "payout_max_usd": 25,
+  "payout_min_usd": 5,
+  "payout_quote": "$5 basic notarization / $25 online real-estate closing, paid as quickly as next business day.",
+  "payout_value_note": "Per completed signing on the Notarize network: $5 basic notarization, $25 online real-estate closing; variable with volume.",
+  "route_id": "R3510",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: apply to network, get approved, accept RON signings, complete sessions, get paid.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document 5-state coverage, volume-dependent pay, and the separate BYO-customer product.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: commissioned notary; FL, NV, PA, TX, VA only.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Program live and current as of 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from notarize.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as variable per-signing pay with no guaranteed volume; never promises fixed income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply to join the Notarize notary network on the official notaries page.",
+    "Complete onboarding and credentialing for remote online notarization (RON).",
+    "Accept signing assignments offered in your state (FL, NV, PA, TX, VA).",
+    "Complete each online notarization session per platform standards.",
+    "Get paid per completed signing ($5 basic / $25 real-estate closing), as quickly as next business day."
+  ],
+  "terms_url": "https://www.notarize.com/solutions/notaries",
+  "time_max_minutes": 45,
+  "time_min_minutes": 15,
+  "timing": "Ongoing; payouts as quickly as next business day.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

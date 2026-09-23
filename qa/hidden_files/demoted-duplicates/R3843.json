@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $25 tier requires your friend to open a CHECKING account, vehicle loan, or credit card (not just the $1 savings account); a personal loan, HSA, or youth savings account only earns the $10 tier - and the friend must submit the referral certificate within 5 business days of account opening or no bonus is paid to either party.",
+  "catches": [
+    "Referrer must be a current CEFCU member in good standing; employees, volunteers, their immediate families, and household members are ineligible.",
+    "Friend must be a non-member who qualifies for CEFCU membership, opens a regular Savings account ($1 min) on or before 12/31/26, AND opens a qualifying account at the same time.",
+    "$25 tier qualifying accounts: Checking, Vehicle Loan, or Credit Card. $10 tier: Personal Loan, Health Savings Account, or (friend age 12 or younger) the Savings account.",
+    "Excluded: Insured Money Market, Club accounts, Hybrid HELOCs, Home Loans, UTMA, Rep Payee accounts, Certificates.",
+    "Official Referral Certificate (web form or paper) must be submitted at account opening or mailed within 5 business days - late = no bonus.",
+    "Cap: 3 Referral Bonuses paid to a Member, or $75, whichever is greater, per calendar year; one bonus per new Friend.",
+    "Bonuses deposited 4-6 weeks after the friend's account opening, via direct deposit to CEFCU Savings.",
+    "Bonus value is a taxable dividend reported on IRS Form 1099-INT.",
+    "Offer is limited-time (savings must open by 12/31/26) and subject to change."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CEFCU Refer-A-Friend rules (cefcu.com): 'any current CEFCU member in good standing (\"Member\") and non-member Friend (\"Friend\") can both receive up to $25 (\"Referral Bonus\")' - $25 tier for Checking/Vehicle Loan/Credit Card; $10 tier for Personal Loan/HSA/youth savings.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Rules page hosted on official cefcu.com domain (cefcu.com/promos/referfriend), fetched live 2026-09-23; certificate PDF also on cefcu.com",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a regular Savings account with $1 minimum deposit plus a qualifying account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'cefcu' shows no CEFCU route in catalog or evidence files; CEFCU (Citizens Equity First CU, Peoria IL) is a new institution. Distinct referrer-side mechanism.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current CEFCU member in good standing (non-employee). Friend: non-member eligible for CEFCU membership; opens Savings ($1+) by 12/31/26 plus a qualifying account.",
+  "notes": "Verified 2026-09-23. CEFCU (Citizens Equity First Credit Union, Peoria, IL). Concrete per-referral payout to the referrer is tiered: $25 when the friend opens checking, a vehicle loan, or a credit card; $10 for personal loan, HSA, or youth (12-and-under) savings. Cap is 3 bonuses or $75/year per member. CEFCU also runs a separate $50 business-referral program (business checking/loan/card) - not claimed here; could be a distinct route for a later wave.",
+  "numeric_basis": "payout from official CEFCU rules ($25 tier / $10 tier per qualifying referral to the referrer; $75/year cap); time: filling out the referral certificate web form est. 5-15 min active",
+  "official_url": "https://www.cefcu.com/promos/referfriend",
+  "payout_max_usd": 25,
+  "payout_min_usd": 10,
+  "payout_quote": "any current CEFCU member in good standing (\"Member\") and non-member Friend (\"Friend\") can both receive up to $25 (\"Referral Bonus\") via direct deposit to their CEFCU Savings account when the Member refers the Friend to CEFCU, where the Friend opens a qualifying new CEFCU account ... Qualifying new accounts to receive a $25 Referral Bonus to the Member and the Friend may be any of the following: Checking, Vehicle Loan, or Credit Card account. Qualifying new accounts to receive a $10 Referral Bonus to the Member and the Friend may be any of the following: Personal Loan, Health Savings Account, or (where the primary member, Friend, is age 12 or younger) the Savings account",
+  "payout_value_note": "$25 referrer payout for friend opening checking/vehicle loan/credit card; $10 for personal loan/HSA/youth savings. Direct deposit to CEFCU Savings.",
+  "route_id": "R3843",
+  "standard": {
+    "s1": {
+      "note": "Rules live on cefcu.com, fetched 2026-09-23; savings-account opening deadline 12/31/26 stated in current rules",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: member in good standing; friend = qualifying non-member; employees/volunteers/families excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $1+ savings by 12/31/26 + qualifying account at same time + certificate within 5 business days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: bonuses deposited 4-6 weeks following the friend's account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonus is a taxable dividend reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate; $1 minimum savings opening deposit",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the Official Referral Certificate web form on cefcu.com (or the paper certificate's 'Referred By' section) with your and your friend's information.",
+    "Give the certificate to your friend; they open a CEFCU regular Savings account ($1+ min) AND a qualifying account (checking, vehicle loan, or credit card for the $25 tier) on or before 12/31/26.",
+    "Friend submits the completed certificate at account opening or mails it to CEFCU Marketing/Referral within 5 business days.",
+    "Both you and your friend receive the bonus ($25 or $10 tier) via direct deposit to CEFCU Savings within 4-6 weeks."
+  ],
+  "terms_url": "https://www.cefcu.com/promos/referfriend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonuses deposited 4-6 weeks following the friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open a checking account AND keep a direct deposit active for a minimum 30-day cycle, and both accounts must stay above zero and in good standing - bonus arrives only after all conditions are verified.",
+  "catches": [
+    "Referrer must be an active Great Erie FCU account holder in good standing; you share your phone number/email with the friend so the CU can identify you.",
+    "Friend must be a new member: no Great Erie account in the past 12 months, 18+, not a business entity, and presents the Member Referral Form at initial account opening.",
+    "Friend opens a checking account with direct deposit and the DD must be established for a minimum 30-day cycle; $5 Owner Voting Share deposit required for membership.",
+    "Bonus paid as a 'bonus dividend' deposited into the referrer's Great Erie savings account; both accounts must have balances above zero and be in good standing.",
+    "Cap: up to 10 members per calendar year ($1,000 max).",
+    "Bonus dividends may be taxable; program can be terminated at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Great Erie FCU rules PDF (greateriefcu.com): 'For each qualified referral, you will receive a $100 referral bonus as a \"bonus dividend\" deposited into your Great Erie savings account once your referred friend/family becomes a member of the credit union.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official rules PDF hosted on greateriefcu.com, fetched live 2026-09-23; no fixed expiry, terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking ($5 membership share)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no greateriefcu.com route; catalog has no Great Erie entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: active Great Erie FCU account holder in good standing. Friend: 18+, new member (no account in past 12 months), presents referral form at opening.",
+  "notes": "Verified 2026-09-23. Great Erie FCU. Referrer earns a flat $100 bonus dividend per qualified referral, cap 10/year ($1,000). Friend must open checking with direct deposit for 30+ days.",
+  "numeric_basis": "payout from official Great Erie FCU rules ($100 bonus dividend per qualified referral; cap 10/year); time: share contact info est. 5-15 min active",
+  "official_url": "https://www.greateriefcu.com/media/3alnvpjv/refer-a-friend-program-official-rules-2025_final.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "For each qualified referral, you will receive a $100 referral bonus as a \"bonus dividend\" deposited into your Great Erie savings account once your referred friend/family becomes a member of the credit union.",
+  "payout_value_note": "$100 bonus dividend deposited to the referrer's savings account per qualified referral; cap 10 referrals ($1,000) per calendar year.",
+  "route_id": "R4764",
+  "standard": {
+    "s1": {
+      "note": "Rules PDF live on greateriefcu.com, fetched 2026-09-23; no fixed expiry, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer active member in good standing; friend 18+ new member (no account 12 months), referral form at opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking with direct deposit for minimum 30-day cycle, $5 Owner Voting Share",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus deposited after criteria met and accounts verified above zero and in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus dividends may be taxable, consult tax advisor",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your phone number and/or email with the friend you are referring so Great Erie can identify you.",
+    "Friend presents the Member Referral Form at initial account opening and opens a checking account with direct deposit.",
+    "Friend keeps the direct deposit for a minimum 30-day cycle; both accounts stay above zero and in good standing.",
+    "You receive a $100 bonus dividend in your Great Erie savings account."
+  ],
+  "terms_url": "https://www.greateriefcu.com/media/3alnvpjv/refer-a-friend-program-official-rules-2025_final.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus dividend deposited to savings after the friend's direct deposit is established for a 30-day cycle and accounts are verified in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

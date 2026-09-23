@@ -1,0 +1,86 @@
+{
+  "route_id": "R2245",
+  "verdict": "verify",
+  "official_url": "https://www.acnb.com/refer",
+  "terms_url": "https://www.acnb.com/refer",
+  "payout_quote": "Invite your friends and family to open a qualifying personal checking account and receive $25 for each referral. Earn up to $100.",
+  "steps": [
+    "Be an ACNB Bank customer",
+    "Refer friends: they open a qualifying personal checking account online using promo code REFER25, or mention your name and phone number when opening in a branch, or take a printed referral card",
+    "Friend must not currently have a checking account with ACNB; their new qualifying account must be opened and in good standing",
+    "$25 is deposited to your account per qualifying referral (or provided as an official check if you have no transaction account)"
+  ],
+  "catches": [
+    "Cap: up to $100 total in referral gifts (4 x $25)",
+    "Friend must be a new-to-ACNB checking customer",
+    "Friend's account must be in good standing for you to receive the $25 credit",
+    "Each $25 gift may be subject to IRS Form 1099 reporting"
+  ],
+  "biggest_catch": "Simple $25 per referral — but the well runs dry at $100 total.",
+  "eligibility": "ACNB Bank customers; referred friends must be new-to-ACNB checking customers",
+  "timing": "Paid once the friend's new qualifying account is opened",
+  "upfront_fee": false,
+  "weasel_words": [
+    "may"
+  ],
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.acnb.mobile",
+    "ios": "https://apps.apple.com/app/apple-store/id1467283944"
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official acnb.com/refer: receive $25 for each referral who opens a qualifying personal checking account, earn up to $100"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page content on acnb.com/refer (last crawled ~147 days before check; confirm current terms before acting)"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Referrer-side program; no ACNB Bank referral route in catalog"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "ACNB Bank; official acnb.com terms"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Concrete per-referral payout ($25); cap $100 total"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Conditions concrete: new customer opens qualifying personal checking via code/branch referral"
+    },
+    "s4": {
+      "pass": true,
+      "note": "No upfront fee"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Timing: paid once account opened"
+    },
+    "s6": {
+      "pass": true,
+      "note": "ACNB customers; new-checking referees"
+    },
+    "s7": {
+      "pass": true,
+      "note": "No ACNB Bank referral route in catalog"
+    }
+  },
+  "notes": "ACNB Bank Refer a Friend: $25 per qualifying referral (friend opens a qualifying personal checking account via promo code REFER25 or in-branch mention), capped at $100 total. Gifts may be reported on IRS Form 1099. Evidence from official acnb.com page content.",
+  "payout_min_usd": 25,
+  "payout_max_usd": 25,
+  "payout_value_note": "$25 cash per referral; cap $100 total.",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout from official acnb.com/refer ($25 per referral); time: sharing a referral code or card est. 5-15 min active"
+}

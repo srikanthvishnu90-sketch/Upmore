@@ -1,0 +1,66 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Flagship Checking requires a $2,500 minimum daily balance (or $20,000 combined balances) to waive the monthly service charge - the bonus can be eroded by fees. Maximum $350 bonus per household; all account holders must be new checking customers (no open personal NSB checking within 12 months).",
+  "catches": [
+    "Open a new Flagship Checking account as a new checking customer (no open personal Newtown Savings Bank checking account within a 12-month period).",
+    "Receive a qualifying direct deposit of $1,500 or more within 60 days after account opening; qualifying DD = salary, pension, Social Security, or other regular monthly income electronically deposited via ACH by your employer or an outside agency.",
+    "Non-qualifying: transfers between your own accounts, person-to-person transfers (Venmo, Zelle), branch/ATM deposits, mobile deposits.",
+    "Bonus is deposited into the checking account by the month-end of the following month (generally within 90 days); if the account balance is negative during the 90-day period, the bonus is not paid.",
+    "Maximum $350 bonus per household and may not be combined with other offers.",
+    "Minimum deposit of $25 to open; Flagship Checking requires $2,500 minimum daily balance (or $20,000 combined daily balance across deposit accounts and CDs) to waive the monthly maintenance service charge."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Newtown Savings Bank (nsbonline.com) is a real community bank in Connecticut; the checking offer terms are published on its official Checking & Savings Offers page (search crawl, confirmed current ~5 hours ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'A qualifying direct deposit of $1,500 or more for Flagship Checking, or $150 or more for Free Checking, must be received into the respective checking account within 60 days after account opening and bonus amount will be deposited into the respective checking account by the month-end of the following month (generally within 90 days).'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Amount ($350 Flagship tier), $1,500 DD threshold, 60-day window, ACH-only DD definition, and $350-per-household cap are all from the official page; the $350 amount is corroborated by the official campaign URL (content: checking_350flagshipcheckingoffer).",
+      "pass": true
+    }
+  },
+  "eligibility": "All account holders must be new checking customers (no open personal Newtown Savings Bank checking account within 12 months); maximum $350 bonus per household; not combinable with other offers.",
+  "notes": "Official nsbonline.com/checking-account-offers (search crawl ~5 hours ago). Free Checking also has a lower tier ($150 DD); the Flagship $350 tier is verified here. A separate Statement Savings offer ($75/$200 tiers, promo code SAVINGS) is covered as R0922. The combined $550 bundle figure is a household-cap-limited sum of both offers ($350 checking + $200 savings) from the official terms - not an independent mechanism.",
+  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.nsbonline.com/checking-account-offers",
+  "payout_max_usd": 350.0,
+  "payout_min_usd": 350.0,
+  "payout_quote": "A qualifying direct deposit of $1,500 or more for Flagship Checking ... must be received into the respective checking account within 60 days after account opening and bonus amount will be deposited into the respective checking account by the month-end of the following month (generally within 90 days). Maximum $350 bonus per household.",
+  "payout_value_note": "flat bonus amount in official terms",
+  "route_id": "R0921",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New checking customers only; no open personal NSB checking within 12 months; max $350/household."
+    },
+    "s2": {
+      "pass": false,
+      "evidence": "$25 minimum to open; Flagship requires $2,500 min daily balance (or $20,000 combined) to waive the monthly service charge."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Bonus paid by month-end of following month (~90 days); negative balance during 90 days voids bonus; taxable income; offer may be withdrawn."
+    }
+  },
+  "steps": [
+    "Open a new Newtown Savings Bank Flagship Checking account as a new checking customer.",
+    "Have a qualifying direct deposit of $1,500 or more posted within 60 days after account opening (salary/pension/SS/other regular monthly income via ACH from employer or outside agency).",
+    "Keep the account balance positive during the 90-day period; the bonus is deposited by the month-end of the following month (generally within 90 days).",
+    "Maintain the $2,500 minimum daily balance (or $20,000 combined) to avoid the monthly service charge."
+  ],
+  "terms_url": "https://www.nsbonline.com/checking-account-offers",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Bonus deposited by the month-end of the following month (generally within 90 days of account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

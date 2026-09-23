@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The official form publishes almost no program detail — no payout timing, no cap, and no definition of what 'joining' requires beyond the standard membership eligibility. The referrer must be a member in good standing and the referred member must be 18+, but how and when you actually get paid is unstated.",
+  "catches": [
+    "No payout timing or cap is stated on the official referral form.",
+    "Referrer must be a member in good standing to participate.",
+    "Referred new member must be 18+; previously joined/previous members are not eligible.",
+    "No cash value; offer not transferrable.",
+    "The official form is served over HTTP (not HTTPS) — the official domain but without transport security.",
+    "Offers subject to change or cancellation; disputes cancel all participants' eligibility.",
+    "Tax treatment not stated; treat as potentially reportable income."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "HFD Federal Credit Union's official Refer & Earn form (PDF) on hfdfcu.org, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Form states: \"Earn $25 plus your referral earns $25 once they join!\" — concrete $25 per-referral payout to the referring member.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Referrer must be a member in good standing; referred member (18+) joins HFD FCU; the form is submitted in branch or given to the referral. Timing beyond 'once they join' is unstated — disclosed as a weakness.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; referral via the free form.",
+      "pass": true
+    }
+  },
+  "eligibility": "HFD FCU members in good standing; referred friends must be new members aged 18+ meeting membership eligibility.",
+  "notes": "VERIFIED with terms-thin caveat: HFD Federal Credit Union's official Refer & Earn form on hfdfcu.org promises $25 to the referrer when a referred new member joins, checked live 2026-09-23. Timing and cap are unstated — flagged as the biggest catch. Deduped: no existing HFD FCU route.",
+  "numeric_basis": "payout from official HFD FCU referral form ($25 per qualifying referral); time: completing the referral form est. 5-15 min active.",
+  "official_url": "http://hfdfcu.org/documents/hfdfcu-referral-form.pdf",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Earn $25 plus your referral earns $25 once they join!",
+  "payout_value_note": "$25 per qualifying referral; no cap stated — numeric fields hold per-referral payout.",
+  "route_id": "R4322",
+  "standard": {
+    "s1": {
+      "note": "HFD Federal Credit Union is a named, verifiable institution; official hfdfcu.org domain (form served over HTTP).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete $25 per referral; no vague ranges.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Only the referral form itself exists; timing and cap unstated — thinness disclosed in catches.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped against existing-providers.txt and dedupe-check.py — no existing HFD FCU route.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Form live on hfdfcu.org as of 2026-09-23; terms note offers may change/be cancelled, recorded as a catch.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No cap stated; numeric fields hold the per-referral $25.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Cash-equivalent reward at face value $25.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the HFD FCU Refer & Earn form with your information and your referral's name.",
+    "Give the form to your referral so both of you get credit when they join, or have them complete the form in branch.",
+    "Your referral joins HFD Federal Credit Union.",
+    "You earn a $25 dividend bonus for the referral."
+  ],
+  "terms_url": "http://hfdfcu.org/documents/hfdfcu-referral-form.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payout timing not stated — only 'once they join.'",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

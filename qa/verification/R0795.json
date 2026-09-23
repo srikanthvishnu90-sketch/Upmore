@@ -3,15 +3,15 @@
     "android": null,
     "ios": null
   },
-  "biggest_catch": "This is demand-response money, not a rebate for buying a thermostat: you earn the rewards by letting Consumers Energy adjust your thermostat on hot summer days (June\u2013September). No smart thermostat on central AC, no enrollment.",
+  "biggest_catch": "This is demand-response money, not a rebate for buying a thermostat: you earn the rewards by letting Consumers Energy adjust your thermostat on hot summer days (June–September). No smart thermostat on central AC, no enrollment.",
   "catches": [
     "Must be a Consumers Energy residential electric or combined electric + natural gas customer.",
     "Requires a qualifying smart thermostat controlling central air conditioning.",
     "Rewards come as gift cards: up to $125 off a new thermostat or a $50 gift card for enrolling an existing one, plus a $25 gift card after each participating summer.",
     "The $25 summer gift card requires staying enrolled through the cooling season.",
-    "Peak events run June\u2013September; you can override adjustments but participation drives the reward."
+    "Peak events run June–September; you can override adjustments but participation drives the reward."
   ],
-  "checked_at": "2026-09-23T06:00:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "evidence": "Consumers Energy is Michigan's regulated electric/gas utility; the program is on its official program store domain.",
@@ -31,9 +31,9 @@
     }
   },
   "eligibility": "Consumers Energy residential electric or combined electric + natural gas customer with a qualifying smart thermostat on central AC. Enroll the thermostat in Smart Thermostat Rewards.",
-  "notes": "Verified from the official Consumers Energy Smart Thermostat Rewards page on 2026-09-23. Gift-card rewards for demand response \u2014 framed as found money for peak-event participation, not income.",
+  "notes": "Verified from the official Consumers Energy Smart Thermostat Rewards page on 2026-09-23. Gift-card rewards for demand response — framed as found money for peak-event participation, not income. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Rebate/Incentive (20-45min active)]",
   "official_url": "https://consumersenergystore.clearesult.com/",
-  "payout_quote": "Get up to $125 off a new smart thermostat, or enroll an existing one for a $50 gift card \u2014 plus a $25 gift card after each summer you participate.",
+  "payout_quote": "Get up to $125 off a new smart thermostat, or enroll an existing one for a $50 gift card — plus a $25 gift card after each summer you participate.",
   "route_id": "R0795",
   "standard": {
     "s1": {
@@ -53,7 +53,7 @@
       "pass": true
     },
     "s5": {
-      "note": "consumersenergystore.clearesult.com \u2014 Consumers Energy's official program store domain.",
+      "note": "consumersenergystore.clearesult.com — Consumers Energy's official program store domain.",
       "pass": true
     },
     "s6": {
@@ -67,17 +67,23 @@
   },
   "steps": [
     "Confirm you're a Consumers Energy residential electric or combined electric + natural gas customer.",
-    "Get a qualifying smart thermostat on your central AC \u2014 or enroll the one you already have.",
+    "Get a qualifying smart thermostat on your central AC — or enroll the one you already have.",
     "Enroll in Smart Thermostat Rewards on the Consumers Energy page: up to $125 off a new thermostat or a $50 gift card for an existing one.",
-    "Allow small automatic adjustments on hot summer peak days (June\u2013September).",
+    "Allow small automatic adjustments on hot summer peak days (June–September).",
     "Receive a $25 gift card after each summer you stay enrolled."
   ],
   "terms_url": "https://consumersenergystore.clearesult.com/",
-  "timing": "Enrollment reward on sign-up; $25 gift card after each participating summer (June\u2013September).",
+  "timing": "Enrollment reward on sign-up; $25 gift card after each participating summer (June–September).",
   "upfront_fee": false,
   "verdict": "verify",
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 25.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "tiered bonus amounts in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: tiered bonus amounts in official terms; time: category default Rebate/Incentive (20-45min active)"
 }

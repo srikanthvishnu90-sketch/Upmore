@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your $50 arrives only after your friend stays a Spectrum customer in good standing for 60 days \u2014 they get theirs within 30 days of activation, but you wait two full months.",
+  "catches": [
+    "Referrer's $50 is delivered only after the friend has been a customer in good standing for 60 days",
+    "Friend's reward arrives within 30 days of activation \u2014 the two sides are paid on different schedules",
+    "Friend must be a new or existing residential customer adding Spectrum Internet; upgrades, transfers, and recent cancellations (within 30 days) don't qualify",
+    "Friend's service must be installed and activated within 30 days of the referral",
+    "Open only to current residential Spectrum customers; advocates can't be in another Spectrum referral program at the time",
+    "Spectrum employees and immediate family ineligible; no self-referrals",
+    "$600 per calendar year referral-reward limit per advocate"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official 'Refer A Friend | Cox is now Spectrum' page on cox.com/residential/refer-a-friend.html, fetched live 2026-09-23: 'Get a $50 prepaid Mastercard for each friend you invite to Spectrum Internet. Earn $50 for each friend that signs up for Spectrum Internet, up to $600 a year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page fetched live and current on 2026-09-23; reflects the completed Cox/Spectrum merger with Spectrum branding.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amounts verbatim: 'You and a friend will both get $50 when they sign up for Spectrum Internet.' / 'Earn $50 for each friend that signs up for Spectrum Internet, up to $600 a year.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "60-day good-standing rule, 30-day activation/install windows, no-upgrade/transfer/cancellation rule, $600/year cap, and employee/self-referral exclusions all stated on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Current residential Spectrum customer (advocate); friend must use the referral link before ordering, be a new or existing residential customer adding Spectrum Internet (no upgrades/transfers/recent cancellations), and install/activate within 30 days.",
+  "notes": "Verified 2026-09-23 by live fetch of cox.com (official domain, now 'Cox is now Spectrum' post-merger). Deduped: no Spectrum routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (an earlier R6371 reject recorded that no official-domain residential Spectrum referral was found at that time; the live post-merger page now provides it). Mechanism is prepaid Mastercard, not bill credit.",
+  "numeric_basis": "payout from official terms ($50 prepaid Mastercard to each side); time: referral share 5-15 min active",
+  "official_url": "https://www.cox.com/residential/refer-a-friend.html?campcode=cta-referafriend-MDU-2443-mdu-thirdpromomdu",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Get a $50 prepaid Mastercard for each friend you invite to Spectrum Internet. Earn $50 for each friend that signs up for Spectrum Internet, up to $600 a year. When they sign up, you both get a prepaid digital Mastercard.",
+  "payout_value_note": "$50 prepaid Mastercard to both referrer and friend \u2014 a rebate on planned Spectrum Internet spending, not income.",
+  "route_id": "R6372",
+  "standard": {
+    "s1": {
+      "note": "Exact amount stated verbatim on the official page ($50 each).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: prepaid card offsets planned Spectrum Internet spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (share link, friend signs up via link, activates within 30 days, both paid on stated schedules).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: referrer waits 60 days of the friend's good standing.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own Spectrum Internet service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against cox.com (provider's official domain, now Spectrum-branded) by live fetch. Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Current residential Spectrum customer shares their unique referral link",
+    "Friend uses the referral link before ordering Spectrum Internet",
+    "Friend's service is installed and activated within 30 days of the referral",
+    "Friend receives their $50 prepaid Mastercard within 30 days of activation",
+    "Referrer receives their $50 prepaid Mastercard once the friend has been a customer in good standing for 60 days"
+  ],
+  "terms_url": "https://www.cox.com/residential/refer-a-friend.html?campcode=cta-referafriend-MDU-2443-mdu-thirdpromomdu",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Friend's reward within 30 days of activation; referrer's reward after the friend has been in good standing for 60 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

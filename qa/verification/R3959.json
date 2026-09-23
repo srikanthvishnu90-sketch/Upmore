@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must be a genuinely new Sound Community Bank customer (no signer or cosigner on any SCB account in the past 90 days) who opens a qualifying checking or money market account in-branch with the referral form, funded with the $500 minimum opening deposit.",
+  "catches": [
+    "Only the referrer side earns the referrer a $25 gift card per qualifying referral; the friend also receives a $25 gift card of their choice.",
+    "Friend must present the referral form in person when opening the new account at an SCB branch.",
+    "Friend must be a new customer: not a signer or cosigner on any SCB account in the past 90 days.",
+    "Qualifying accounts are limited to checking or money market accounts with a minimum opening deposit requirement of $500.",
+    "No limit stated on the number of referrals.",
+    "Gift card mailed within 30 days of the qualifying account opening; new and existing customers are contacted to select the gift card choice.",
+    "Bank employees are not eligible; accounts must remain active for 6 months or be subject to account closure fees; offer available for a limited time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official soundcb.com Online_Referral_Form.pdf: 'For each friend you refer we'll send you a $25 gift card of your choice from either Amazon, Costco, iTunes, Home Depot, or Starbucks' and the friend 'will also receive a $25 gift card of their choice.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Sound Community Bank domain (soundcb.com); PDF document linked from soundcb.com/referral, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer or participate; qualifying account has a $500 minimum opening deposit but no participation fee",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Three checks clean: grep of existing-providers found no 'sound community' match; dedupe-check 'Sound Community Bank' returned 2 catalog false positives (Unity Bank, Co) and 0 evidence-file hits; grep of qa/verification found no soundcb entries. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Sound Community Bank customer (not a bank employee). Friend: new to SCB, not a signer or cosigner on any SCB account in the past 90 days.",
+  "notes": "Verified 2026-09-23. Sound Community Bank. $25 gift card per qualifying referral to the referrer, $25 gift card to the friend; no cap on number of referrals. An earlier March-2023 $200/$250 flyer is superseded by the current official referral form.",
+  "numeric_basis": "payout from official terms ($25 gift card per qualifying referral); time estimate for handing off the form and naming yourself as referrer",
+  "official_url": "https://www.soundcb.com/_/kcms-doc/613/8052/Online_Referral_Form.pdf",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "For each friend you refer we'll send you a $25 gift card of your choice from either Amazon, Costco, iTunes, Home Depot, or Starbucks.",
+  "payout_value_note": "$25 gift card per qualifying referral; friend also receives a $25 gift card; no limit to number of referrals.",
+  "route_id": "R3959",
+  "standard": {
+    "s1": {
+      "note": "Terms live on soundcb.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing SCB customer referrer; new-to-SCB friend, no signer/cosigner role in past 90 days",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: present form at branch, open qualifying checking/money market with $500 minimum opening deposit",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing stated: incentive mailed within 30 days of the qualifying account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment stated: bank may report the value to the IRS; taxes are the recipient's responsibility",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Obtain the Sound Community Bank referral form (soundcb.com/referral, a branch, or 800.458.5558).",
+    "Fill in your name and pass the form to your friend.",
+    "Your friend presents the form at an SCB branch and opens a new qualifying checking or money market account with the $500 minimum opening deposit, naming you as referrer.",
+    "The friend must not have been a signer or cosigner on any SCB account in the past 90 days.",
+    "Within 30 days of the qualifying account opening, SCB contacts you to select your $25 gift card and mails it."
+  ],
+  "terms_url": "https://www.soundcb.com/_/kcms-doc/613/8052/Online_Referral_Form.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Incentive mailed within 30 days of the referred customer's opening of a qualifying account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

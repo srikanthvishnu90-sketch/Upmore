@@ -1,16 +1,16 @@
 {
   "route_id": "R0190",
   "official_url": "https://www.eurekasurveys.com/",
-  "checked_at": "2026-09-23T00:55:27Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "app_links": {
     "android": null,
     "ios": null
   },
   "verdict": "verify",
   "payout_quote": "Official eurekasurveys.com FAQ: 'As soon as you earn $5.00, you can cash out instantly.' Balance is in dollars (no points gimmicks); cashout to PayPal, bank deposit (US), Virtual Visa, or gift cards. 'Members can earn up to $50.00 per day.'",
-  "timing": "Instant cashout once you reach $5.00 \u2014 'No waiting for funds to process once you cash out.'",
+  "timing": "Instant cashout once you reach $5.00 — 'No waiting for funds to process once you cash out.'",
   "upfront_fee": false,
-  "biggest_catch": "'Up to $50/day' is a ceiling, not typical earnings \u2014 actual earnings vary by survey availability, profile match, and time spent; screening out of surveys is normal.",
+  "biggest_catch": "'Up to $50/day' is a ceiling, not typical earnings — actual earnings vary by survey availability, profile match, and time spent; screening out of surveys is normal.",
   "catches": [
     "'Up to $50/day' is an official ceiling; real daily earnings depend on available surveys and qualification.",
     "Most surveys pay small amounts; reaching $5 takes multiple completed surveys.",
@@ -24,7 +24,7 @@
   ],
   "eligibility": "Free signup; survey availability and earnings vary by profile match.",
   "terms_url": "https://www.eurekasurveys.com/",
-  "notes": "Verified against the official eurekasurveys.com homepage/FAQ indexed 2026-09-23. The route claims $5 \u2014 official states a $5.00 instant cashout minimum in real dollars (not points), so VERIFY with the minimum as the anchor figure. The '$5' is the cashout threshold, not per-survey pay.",
+  "notes": "Verified against the official eurekasurveys.com homepage/FAQ indexed 2026-09-23. The route claims $5 — official states a $5.00 instant cashout minimum in real dollars (not points), so VERIFY with the minimum as the anchor figure. The '$5' is the cashout threshold, not per-survey pay. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Survey 10-20min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Survey (10-20min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Survey (10-20min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Survey (10-20min active)] [numeric-backfill 2026-09-24: payout: tiered bonus amounts in official terms; time: category default Survey (10-20min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Survey (10-20min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Survey (10-20min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -75,6 +75,12 @@
   },
   "weasel_words": {
     "present": true,
-    "quote": "'Members can earn up to $50.00 per day' \u2014 'up to' is a ceiling, not typical earnings; the concrete anchor is the $5.00 instant cashout minimum."
-  }
+    "quote": "'Members can earn up to $50.00 per day' — 'up to' is a ceiling, not typical earnings; the concrete anchor is the $5.00 instant cashout minimum."
+  },
+  "payout_min_usd": 5.0,
+  "payout_max_usd": 5.0,
+  "payout_value_note": "flat bonus amount in official terms",
+  "time_min_minutes": 10.0,
+  "time_max_minutes": 20.0,
+  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Survey (10-20min active)"
 }

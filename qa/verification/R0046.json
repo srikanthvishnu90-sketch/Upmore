@@ -1,7 +1,7 @@
 {
   "route_id": "R0046",
   "verdict": "verify",
-  "checked_at": "2026-09-23T01:40:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "official_url": "https://www.capitalone.com/bank/checking250/",
   "terms_url": "https://www.capitalone.com/bank/checking250/",
   "payout_quote": "Open a new 360 Checking account with promo code CHECKING250 and receive at least 2 qualifying direct deposits of $500 or more each within 75 days of account opening; the $250 bonus is deposited into the new account after you complete these steps.",
@@ -22,7 +22,7 @@
   ],
   "biggest_catch": "You need two direct deposits of $500+ each within 75 days, and anyone who has held a Capital One 360/Simply/Total Control Checking account since January 1, 2024 is ineligible.",
   "eligibility": "New 360 Checking customers 18+; not a current/former Capital One checking holder since 1/1/2024.",
-  "notes": "Verified 2026-09-23 via the official capitalone.com/bank/checking250 offer page. Catalog's $250 claim matches the official amount exactly. Timing is 'after you complete these steps' with no fixed day count on the official page — flagged in standard.s3. App links left null.",
+  "notes": "Verified 2026-09-23 via the official capitalone.com/bank/checking250 offer page. Catalog's $250 claim matches the official amount exactly. Timing is 'after you complete these steps' with no fixed day count on the official page — flagged in standard.s3. App links left null. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -79,5 +79,11 @@
     "ios": null,
     "android": null
   },
-  "upfront_fee": false
+  "upfront_fee": false,
+  "payout_min_usd": 250.0,
+  "payout_max_usd": 250.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

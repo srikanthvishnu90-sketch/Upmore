@@ -1,0 +1,78 @@
+{
+  "route_id": "R5693",
+  "verdict": "verify",
+  "official_url": "https://www.affinityfcu.com/refer",
+  "terms_url": "https://www.affinityfcu.com/refer",
+  "payout_quote": "$100 per qualifying referral",
+  "payout_min_usd": 100,
+  "payout_max_usd": 100,
+  "payout_value_note": "$100 per qualifying referral, capped at $1,000 in referral earnings (10 referrals)",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout from official terms ($100-$100 per referral); time: referral share est. 5-15 min active",
+  "steps": [
+    "Share through Online Banking or the Mobile Banking App. When the friend/family member opens an Affinity checking account and establishes a recurring direct deposit of $500 or more per month, both parties receive $100."
+  ],
+  "catches": [
+    "Referrer must be an Affinity Federal Credit Union member in good standing 18 or older; share the offer through Online Banking or the Mobile Banking App. Friend must open a checking account and set up recurring direct deposit of $500 or more per month. Both referrer and friend receive $100 deposited to their accounts. Annual earnings cap of $1,000 (10 referrals). Offer terms, timing, and limitations may be detailed in footnote/terms linked on the official page."
+  ],
+  "biggest_catch": "Referrer must be an Affinity Federal Credit Union member in good standing 18 or older; share the offer through Online Banking or the Mobile Banking App. Friend must open a checking account and set up recurring direct deposit of $500 or more per month. Both referrer and friend receive $100 deposited to their accounts. Annual earnings cap of $1,000 (10 referrals). Offer terms, timing, and limitations may be detailed in footnote/terms linked on the official page.",
+  "eligibility": "Friend: open an Affinity checking account and establish a recurring direct deposit of $500 or more per month",
+  "timing": "Both referrer and friend receive $100 deposited to their accounts after the friend opens a checking account and sets up $500+/month recurring direct deposit; exact payout timing was not stated in the fetched official page text.",
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "notes": "Official Affinity FCU Refer a Friend page (affinityfcu.com/refer, fetched 2026-09-23): 'earn $100 for each referral' with 'Earn up to $1,000!' headline, implying a 10-referral yearly limit. Distinct from Affinity Credit Union of Iowa (R5672). Payout timing and tax-reporting language were not present in the publicly fetched page text; the full footnote terms were not retrievable without login. Treat the $1,000 annual cap as official (stated on the page) and payout timing as not disclosed. [schema normalized 2026-09-23 from alternate referral format]",
+  "upfront_fee": false,
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "$100 per qualifying referral"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Affiliate link confirmed: https://www.affinityfcu.com/refer"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Friend: open an Affinity checking account and establish a recurring direct deposit of $500 or more per month"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Cap: earn up to $1,000 (implying max 10 referrals); official page did not display per-transaction timing, annual windows, or tax reporting in fetched text"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Current and active as of 2026-09-23"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Direct on official page: 'earn $100 for each referral'"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend opens an Affinity checking account and establishes a recurring direct deposit of $500 or more per month"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing stated only as deposit to the account; no number of business days published in fetched text"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Cap: earn up to $1,000 (10 referrals at $100 each)"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No tax-reporting language in fetched text"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Program is open to existing members; not targeted, no invite code required for the referrer flow"
+    }
+  },
+  "weasel_words": []
+}

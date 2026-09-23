@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Savings depend entirely on how much electricity you shift into the Sunday window — the discount applies only 11am–4pm Sundays (9am–5pm on the PeakSave Super Sunday tariff), so households that use little power on Sunday mornings save very little.",
+  "catches": [
+    "The 50% discount applies only during the PeakSave window (11am–4pm Sundays on PeakSave Sundays; 9am–5pm on PeakSave Super Sunday tariff).",
+    "A working smart electricity meter is required.",
+    "Your daily standing charge is never discounted.",
+    "On PeakSave Sundays, the discount is capped at 60 kWh per Sunday session.",
+    "Switching to a PeakSave tariff is one-way — you cannot switch back to PeakSave Sundays.",
+    "Published average household saving up to 31 Aug 2026 ranges from £20 to £32 by region — savings are usage-driven, not guaranteed.",
+    "UK only."
+  ],
+  "checked_at": "2026-09-23T07:08:54Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official supplier-owned domain (britishgas.co.uk); PeakSave page live with mechanics, worked example, and published average savings."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Discount rate, window hours, cap, and average savings stated on the official page."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Incentive framed as savings on planned energy spending (half-price electricity credit), never income."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for British Gas PeakSave."
+    }
+  },
+  "eligibility": "British Gas electricity customers with a working smart meter. UK.",
+  "notes": "Signup incentive (opt in via online account): 50% off electricity used in the Sunday off-peak window, credited to the bill. Average household saving published by British Gas is ~£31 (≈$41). Savings offset planned energy spending, never income.",
+  "numeric_basis": "payout from official terms (50% of unit rate × Sunday-window usage, capped 60 kWh/session; British Gas-published average household saving ~£31, converted at GBP→USD 1.334); time: online signup 15-30 min active",
+  "official_url": "https://www.britishgas.co.uk/energy/peak-save.html",
+  "payout_max_usd": 42.71,
+  "payout_min_usd": 0,
+  "payout_quote": "Average savings per household up to 31st August 2026: East of England £31.36, South East £32.02, London £28.28.",
+  "payout_value_note": "Average household saving max regional average £32.02 (≈$42.71 at GBP→USD 1.334); usage-driven, minimum £0; offsets planned energy spending (savings).",
+  "route_id": "R5536",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "You are a British Gas electricity customer with a working smart meter."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Log into your online account and join PeakSave (or switch to a PeakSave Super Sunday tariff)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Shift electricity use into the Sunday window (11am–4pm PeakSave Sundays; 9am–5pm PeakSave Super Sunday tariff)."
+    },
+    "s4": {
+      "pass": true,
+      "note": "You pay for electricity as normal, then British Gas credits 50% back to your bill or meter."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Credits are bill credits offsetting energy spending; not cash; standing charge not discounted."
+    },
+    "s6": {
+      "pass": true,
+      "note": "United Kingdom."
+    },
+    "s7": {
+      "pass": true,
+      "note": "PeakSave Sundays can stay as an add-on; switching to a PeakSave tariff is one-way."
+    }
+  },
+  "steps": [
+    "As a British Gas electricity customer with a working smart meter, log into your online account.",
+    "Join PeakSave or switch to a PeakSave Super Sunday tariff.",
+    "Shift electricity use into the Sunday off-peak window.",
+    "British Gas credits 50% of the Sunday-window cost back to your bill or meter."
+  ],
+  "terms_url": "https://www.britishgas.co.uk/energy/peak-save.html",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Credits are applied to your bill or meter after each Sunday session; a monthly summary shows your savings.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

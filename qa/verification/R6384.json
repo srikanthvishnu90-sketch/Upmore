@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The credit is 'up to $100' \u2014 it covers your next month's internet bill but can't exceed it \u2014 and only your first four referrals earn credits; the fifth referral flips you to free internet for life instead of another credit.",
+  "catches": [
+    "Credit is 'up to $100' off your next month's internet bill \u2014 capped at the bill amount, not a flat $100 cash",
+    "Only the first four successful referrals earn the per-referral credit; the fifth active referral waives the internet bill instead (free internet for life as long as all five stay subscribed)",
+    "Prior referrals do not qualify",
+    "Excludes additional services (credit applies to the internet bill)",
+    "Terms subject to change",
+    "Reward goes to the referrer only; the friend's benefit is free installation, not a bill credit"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Wisper Internet 'Internet for Life' page on wisperisp.com/internet-for-life/, fetched live 2026-09-23: 'Each time your referral becomes a Wisper customer, you'll receive up to $100 off your next month's internet bill.' / 'Get up to $100 credit for each of your first four successful referrals. After your fifth referral activates service, your internet bill will be waived starting the next month.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page fetched live and current on 2026-09-23 (search crawl 1 day ago).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amounts verbatim: 'you'll receive up to $100 off your next month's internet bill' / 'Get up to $100 credit for each of your first four successful referrals.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "First-four-referrals rule, fifth-referral bill-waiver rule, prior-referrals-excluded rule, and additional-services-excluded rule all stated on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Wisper Internet customer; each referred friend/family member/neighbor must sign up and become a Wisper customer.",
+  "notes": "Verified 2026-09-23 by live fetch of wisperisp.com (official domain). Deduped: no Wisper routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Wisper is a regional wireless ISP (Midwest). The per-referral payout is 'up to $100' (capped at the internet bill); the headline 'free internet for life' tier unlocks after five active referrals. Numeric keys use 100 as the stated ceiling with the cap documented here.",
+  "numeric_basis": "payout from official terms: up to $100 bill credit per referral (capped at the bill), represented as 100; time: referral share 5-15 min active",
+  "official_url": "https://wisperisp.com/internet-for-life/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Each time your referral becomes a Wisper customer, you'll receive up to $100 off your next month's internet bill. Get up to $100 credit for each of your first four successful referrals.",
+  "payout_value_note": "Up to $100 off the referrer's next month's internet bill per referral (capped at the bill amount) \u2014 offsets planned Wisper spending, not cash. The friend gets free installation.",
+  "route_id": "R6384",
+  "standard": {
+    "s1": {
+      "note": "Exact 'up to $100' ceiling stated verbatim on the official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: bill credits offset planned Wisper spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (refer, friend signs up, credit on next bill; five referrals waive the bill).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: 'up to' cap, first-four limit, and the fifth-referral flip.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond the referrer's own Wisper service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against wisperisp.com (provider's own domain) by live fetch. Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Spread the word to friends, family, or neighbors",
+    "Each referral signs up and becomes a Wisper customer",
+    "Receive up to $100 off your next month's internet bill per referral (first four referrals)",
+    "After your fifth referral activates service, your internet bill is waived starting the next month as long as all five stay subscribed"
+  ],
+  "terms_url": "https://wisperisp.com/internet-for-life/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credit applies to the next month's internet bill after each referral becomes a customer; bill waiver starts the month after the fifth referral activates.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The fetched official page states the $50 payout and the $400/year cap but the linked full terms and conditions were not visible in the fetched text - the exact per-account qualification requirements and payout timing are not stated on what was retrieved.",
+  "catches": [
+    "Referrer receives $50 after the friend completes the account requirements; friend must register, become a new member, and open a new consumer loan or deposit account within 60 days of account opening.",
+    "Annual cap: up to $400 per year (8 referrals at $50 each).",
+    "Friend needs a unique referral code to open the qualifying account online or in a Kansas/Missouri branch.",
+    "The linked 'Review Full Terms and Conditions' detail (eligibility exclusions, payout timing, tax reporting) was not visible in the fetched page text."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Mainstreet Credit Union page (mainstreetcu.org): 'Receive a $50 reward bonus when your friend registers, becomes a new member, opens a new Mainstreet Credit Union consumer loan or deposit account, and completes the requirements within 60 days of account opening'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Mainstreet Credit Union Refer-A-Friend page on mainstreetcu.org, fetched live 2026-09-23; links to full terms and conditions",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Mainstreet Credit Union' 2026-09-23 returned no verified referral route; no mainstreetcu.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Mainstreet Credit Union member who registers for the referral program. Friend: new member who registers, opens a new Mainstreet consumer loan or deposit account, and completes requirements within 60 days of account opening.",
+  "notes": "Verified 2026-09-23. Mainstreet Credit Union (Kansas City MO & KS). Referrer earns $50 per qualifying referral, up to $400 per year. Caveat: the page's linked full terms were not visible in the fetched text, so qualification detail, payout timing, and tax treatment are honestly reported as not stated.",
+  "numeric_basis": "payout from official Mainstreet CU terms ($50 reward bonus per qualifying referral; up to $400/year); time: register and share referral info est. 5-15 min active",
+  "official_url": "https://www.mainstreetcu.org/connect/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Receive a $50 reward bonus when your friend registers, becomes a new member, opens a new Mainstreet Credit Union consumer loan or deposit account, and completes the requirements within 60 days of account opening",
+  "payout_value_note": "$50 reward bonus to the referrer per qualifying referral; up to $400 per year (8 referrals).",
+  "route_id": "R5712",
+  "standard": {
+    "s1": {
+      "note": "Official Mainstreet CU page live on mainstreetcu.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registers for the program; friend is a new member opening a new consumer loan or deposit account",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: register, become a new member, open new consumer loan or deposit account, complete requirements within 60 days of account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Payout timing not stated in fetched page text",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated in fetched page text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Mainstreet Refer-A-Friend program.",
+    "Invite friends/family by providing their contact information and a valid email address.",
+    "Friend receives a unique code and opens a qualifying new consumer loan or deposit account within 60 days.",
+    "Receive a $50 bonus after your friend completes the account requirements."
+  ],
+  "terms_url": "https://www.mainstreetcu.org/connect/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Not stated in fetched official page text; referrer receives the $50 bonus after the friend completes the account requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

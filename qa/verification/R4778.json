@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $25 is a simple per-person finder's fee, but the referred member must be 100% new (no re-opened or previous members), and you cannot be a joint owner on their account or live in the same household.",
+  "catches": [
+    "Referral must be qualified: new members must be 100% new - re-opened accounts, current joint members, and previous members are not eligible.",
+    "Referring member cannot be a joint owner on the new account or in the same household as the new member.",
+    "Accounts must be in good standing at the deposit date; new membership accounts qualified through monthly reports and verification.",
+    "New member is separately eligible for a $25 Cha-Ching Reward after opening checking + eStatements + $50+ direct deposit within 30 days.",
+    "Field of membership: Harris County employees/families and listed Houston zip codes.",
+    "No referral-count cap stated on the page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Harris County FCU page (hcfcu.com/eventspromotions/gift/): 'When you send us a qualified member referral, you'll earn $25 for each person you refer.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official hcfcu.com domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend joins the credit union",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no hcfcu.com route; catalog has no Harris County FCU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing HCFCU member. Friend: 100% new member (not a previous/joint member), different household, meets field of membership.",
+  "notes": "Verified 2026-09-23. Harris County Federal Credit Union (Houston, TX). Referrer earns $25 per qualified member referral; no cap stated. The new member's own $25 Cha-Ching Reward is separate.",
+  "numeric_basis": "payout from official hcfcu.com terms ($25 per qualified member referral; no cap stated); time: fill referral form est. 5-15 min active",
+  "official_url": "https://hcfcu.com/eventspromotions/gift/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Turn up the rewards with our Gift of Membership referral program. When you send us a qualified member referral, you'll earn $25 for each person you refer.",
+  "payout_value_note": "$25 finder's fee per qualified member referral to the referring member; no cap stated.",
+  "route_id": "R4778",
+  "standard": {
+    "s1": {
+      "note": "Page live on hcfcu.com, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing member; friend 100% new member in field of membership, not same household, referrer not a joint owner",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: join as a brand-new member meeting membership qualifications",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: accounts must be in good standing at the deposit date; qualified through monthly reports",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As an existing HCFCU member, fill out the member referral form with your friend's information.",
+    "Friend joins Harris County FCU as a 100% new member (different household, not a joint account with you).",
+    "You earn $25 for each qualified person you refer."
+  ],
+  "terms_url": "https://hcfcu.com/eventspromotions/gift/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Finder's fee paid after the new membership is qualified through monthly reports and verification; accounts must be in good standing at deposit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

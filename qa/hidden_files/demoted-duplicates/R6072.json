@@ -1,0 +1,88 @@
+{
+  "route_id": "R6072",
+  "verdict": "verify",
+  "official_url": "https://www.simmonsbank.com/redeem",
+  "terms_url": "https://www.simmonsbank.com/terms-and-conditions/simmons-bank-refer-a-friend-terms-and-conditions-program-terms-and-conditions",
+  "payout_quote": "Referrer Reward: Referrer is eligible to receive a $50 Reward for each Referred Individual who completes all Qualifying Activities during the Promotional Period.",
+  "steps": [
+    "Register for the Simmons Bank Refer-A-Friend Program via simmonsbank.com/refer (name + email) \u2014 referrers must be US citizens or Resident Aliens, 18+, and bank employees/households are excluded.",
+    "Share your personal referral link with friends/family via email, text, or social media (social/text posts must include the Required Disclosure that both parties may earn a reward).",
+    "The friend registers using your referral link and, within 90 days, opens a qualifying Simmons account as primary accountholder (subject to approval).",
+    "For consumer checking (Smart, Signature, Signature Plus): friend must have at least 7 debit card transactions (excluding ATM/cash) post within 30 days of opening AND at least one ACH of $100+ within 60 days. For qualifying business checking: at least 10 transactions AND $2,000+ in cumulative deposits within 60 days of opening.",
+    "After the friend completes all Qualifying Activities, you receive a $50 virtual Visa Reward Card by email within 3 weeks \u2014 paid only if the friend used your referral link to register."
+  ],
+  "catches": [
+    "Cap: $500 per calendar year in Rewards whether acting as referrer, referred, or both; no partial rewards.",
+    "Reward is a virtual Visa Reward Card (not cash), delivered to your registered email within 3 weeks after qualifying activities complete; expires 6 months after issuance.",
+    "Only one referrer is paid per referred individual (first referral registration wins); you won't be told about accounts your referrals open.",
+    "Friend must complete the Qualifying Activities \u2014 see the official terms for the exact activity list."
+  ],
+  "biggest_catch": "Payout is a virtual Visa Reward Card that expires 6 months after issuance, not cash \u2014 and you're capped at $500/year total (referrer + referred combined).",
+  "eligibility": "Referrer and referrals must be US citizens or Resident Aliens and at least 18 years of age; Simmons Bank and subsidiary employees and members of their household are excluded. Referrals must be new customers opening a qualifying Simmons account.",
+  "timing": "Registration + sharing takes ~10 minutes active; qualifying activities can take up to 90 days; $50 virtual card arrives by email within 3 weeks after the referral completes qualifying activities.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "qualifying activities",
+    "promotional period"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:45:25Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official simmonsbank.com terms: 'Referrer is eligible to receive a $50 Reward for each Referred Individual who completes all Qualifying Activities'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official simmonsbank.com Refer-A-Friend terms page fetched 2026-09-23."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to register or refer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Prior evidence file R0065 was a REJECT of a Simmons business-checking offer (different mechanism); simmonsbank.com absent from referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Terms page live on simmonsbank.com, crawled within 24 hours of check."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Simmons Bank customer referrer; referrals must be new customers."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirements are the program's 'Qualifying Activities' per official terms."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Virtual Visa card delivered to registered email within 3 weeks after qualifying activities."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official terms state rewards are subject to IRS tax reporting requirements; participants may be disqualified without a valid US Taxpayer Identification Number."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct referrer-side earning mechanism vs the prior signup-bonus/reject file."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official Simmons Bank Refer-A-Friend Program Terms. Referrer earns a $50 virtual Visa Reward Card per qualifying referral; $500/year combined cap.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 virtual Visa Reward Card to referrer per qualifying referral (cash-equivalent face value, expires 6 months after issuance).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 virtual card per referral from official terms; time: registration + link sharing est. 5-15 min active"
+}

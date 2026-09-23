@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $50 reward is only delivered as a digital Visa rewards card within 2-3 weeks after your friend completes a demanding 60-day qualification (DDs totaling $1,000 + 10 debit transactions).",
+  "catches": [
+    "Referrer earns a $50 Visa Virtual Reward per qualified referral (checking or credit card).",
+    "Up to $500 in Visa Virtual Rewards per calendar year.",
+    "Friend requirements (checking): register via the referral link, open a new personal checking account (Affinity/Affinity Plus/Affinity Premier) within 180 days of registering, and within 60 days of opening make direct deposits totaling $1,000+ and complete 10 posted debit card transactions.",
+    "Friend requirements (credit card): register via the link and open a new Northwest credit card (friend earns $100).",
+    "The friend earns $400 for checking (or $100 for credit card) - more than the referrer.",
+    "Referrer must be an existing Northwest customer in good standing and register for the program.",
+    "Only one referrer per referred person.",
+    "Rewards valid 3 months from issuance; redeemed at internet, mail-order, telephone merchants.",
+    "Subject to IRS 1099-INT (friend) / 1099-MISC (referrer) reporting.",
+    "Employees and affiliates are ineligible; can't be combined with other offers; offer subject to change or cancellation."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Northwest Bank page (northwest.bank): 'The person making the referral (Referrer) will earn a $50 Visa Virtual Reward for each individual referred ... who registers for the offer, opens a new qualified Northwest Bank account and completes the offer requirements' and 'To qualify for the $50 reward, you must make a qualified referral.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official northwest.bank domain (northwest.bank/referafriend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'northwest bank' evidence-file hit was a signup bonus (R0553), a different mechanism. No referral-program coverage. Distinct referrer-side mechanism.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Northwest Bank customer in good standing, registered for the program. Friend: not an existing/recent checking or credit card customer; registers via the link and qualifies.",
+  "notes": "Re-reviewed 2026-09-23. Northwest Bank (northwest.bank Refer-A-Friend): referrer earns a $50 Visa Virtual Reward per qualified referral, up to $500 per calendar year. Current offer: the referred person earns a $400 Visa Virtual Reward for opening a new Affinity/Affinity Plus/Premier checking account and completing $1,000+ in direct deposits (plus posted debit card transactions) within 60 days. No tax treatment stated in the offer terms.",
+  "numeric_basis": "payout from official page ($50 Visa Virtual Reward per qualified referral; $500/year cap); time: registering and sharing the offer est. 5-15 min active",
+  "official_url": "https://www.northwest.bank/referafriend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 Visa Virtual Reward for each individual referred... A Referrer may earn up to $500 in Visa Virtual Rewards within a calendar year. ... To earn a $400 Visa Virtual Reward, the Referred Person must ... open a new Northwest Bank personal checking account (Affinity, Affinity Plus or Affinity Premier), and meet the following requirements within 60 days of account opening: make direct deposits totaling $1,000 or more.",
+  "payout_value_note": "$50 Visa Virtual Reward per qualified referral; up to $500 per calendar year.",
+  "route_id": "R3910",
+  "standard": {
+    "s1": {
+      "note": "Program page live on northwest.bank, fetched 2026-09-23; subject to change or cancellation at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing customer in good standing; friend not an existing/recent customer; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register via link, open new checking or credit card, complete 60-day activity requirements",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 delivered as digital Visa card within 2-3 weeks of the friend completing requirements",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism (R0553 was a signup bonus)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Northwest Bank Refer-A-Friend program and get your referral link.",
+    "Share it with friends and family.",
+    "Friend registers, opens a new checking account or credit card, and completes the 60-day requirements.",
+    "You receive a $50 Visa Virtual Reward within 2-3 weeks (up to $500/year)."
+  ],
+  "terms_url": "https://www.northwest.bank/referafriend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 digital Visa card within 2-3 weeks of the friend completing requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

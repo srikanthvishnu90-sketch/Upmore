@@ -1,0 +1,83 @@
+{
+  "route_id": "R1612",
+  "verdict": "verify",
+  "official_url": "https://www.michigan.gov/consumerprotection/protect-yourself/bottle-deposit-law",
+  "terms_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-571",
+  "payout_quote": "Charge a 10-cent deposit on eligible drink containers. / Refund the full deposit up to $25 per day per person.",
+  "steps": [
+    "Buy eligible beverages in Michigan (10¢ deposit charged at checkout)",
+    "Keep the empty containers (same brand/size/type the store sells, clean)",
+    "Return them to a retailer during normal business hours (machines or hand count)",
+    "Receive the 10¢-per-container refund (up to $25 per day per person per store)"
+  ],
+  "catches": [
+    "This returns YOUR OWN deposit money paid at purchase — it is recovering your own money, not new income.",
+    "Only containers bought in-state with the correct deposit label are redeemable; out-of-state containers are ineligible and redeeming them is fraud.",
+    "Refund capped at $25 per day per person; stores may refuse containers they don't sell or that are very dirty."
+  ],
+  "biggest_catch": "Returns your own 10¢ deposit — you paid it at purchase. This is deposit recovery, not income.",
+  "eligibility": "Anyone who purchased eligible returnable containers in Michigan.",
+  "timing": "Refund paid at return, during store hours.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Michigan.gov official consumer-protection page plus MCL 445.571 (10¢ refund value in statute); state sources."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official michigan.gov page: stores must charge 10-cent deposit and refund the full deposit up to $25/day/person."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to return; deposit already paid at purchase."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "10¢ cash refund per container, max $25/day/person; stores must accept same brand/size/type they sell."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Purchased eligible containers in Michigan; containers clean and of brands the store sells."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Cash refund per container."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid at return, same visit."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat 10¢ per container, $25/day/person cap stated."
+    },
+    "s5": {
+      "pass": true,
+      "note": "michigan.gov — official State of Michigan page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete: buy, save empties, return to retailer, get refund."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official state page confirmed 2026-09-23."
+    }
+  },
+  "notes": "Highest deposit in the US (10¢); strict daily cap limits batch size.",
+  "payout_min_usd": 0.1,
+  "payout_max_usd": 0.1,
+  "payout_value_note": "Flat official 10¢ per eligible container.",
+  "time_min_minutes": 15,
+  "time_max_minutes": 45,
+  "numeric_basis": "payout from official michigan.gov terms (10¢/container); time: sorting empties + store return trip est. 15–45 min active."
+}

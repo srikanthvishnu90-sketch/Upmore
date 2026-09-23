@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $200 credit requires maintaining a $2,500 average monthly balance for each of the first three months after the month you open — parking $2,500 in a new business account for ~4 months — and the whole offer rides on a 'coupon' with no stated expiry date beyond 'limited time offer.'",
+  "catches": [
+    "No stated expiry — 'limited time offer' only; verify it is still live before opening.",
+    "$200 credit: maintain a $2,500 average monthly balance for each of the first three months following the month of account opening; account must be opened within 30 days of receiving the coupon; credited within 45 days of meeting requirements.",
+    "$100 credit: a Business Debit Card must be added when the account is opened, and 6 point-of-sale transactions (signature or PIN) must post over the first three months following the month of account opening.",
+    "New business checking customers only; coupon is non-transferable and must be presented at account opening.",
+    "Maximum combined $300 per account, one per business entity; subject to 1099 tax reporting.",
+    "Business checking available only to businesses operating in Dollar Bank's markets (OH/PA/VA/MD footprint). Free Business Checking has no monthly fee or balance requirement otherwise.",
+    "Merchant processing/card payment services are optional and require separate approval."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Dollar Bank, Federal Savings Bank — real operating bank headquartered in Pittsburgh, PA; official coupon/offer page on dollar.bank.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Dollar Bank page 'Free Business Checking 300 Coupon' with the $200 credit + $100 credit terms and conditions.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; Free Business Checking has no monthly fee or balance requirement.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: '$200 will be added to the new business checking account within 45 days of meeting the offer requirements' and '$100 will be added to the new checking account within 45 days of meeting the offer requirements.'",
+      "pass": true
+    }
+  },
+  "eligibility": "New Dollar Bank business checking customers only; must be a business operating in Dollar Bank's markets. Coupon must be presented at account opening (within 30 days of receiving it for the $200 credit). One $300 combined bonus per business entity.",
+  "notes": "Verified on Dollar Bank's official domain 2026-09-23 (UTC). This is the business product route — distinct from the R2105 personal Everything Checking offer. No explicit promo end date; 'limited time offer' only. App links left null rather than guessed.",
+  "official_url": "https://dollar.bank/free-business-checking-300-coupon",
+  "payout_max_usd": 300.0,
+  "payout_min_usd": 100.0,
+  "payout_quote": "Offer is for new business checking customers only... Maximum combined amount is $300 per account and one per business entity, based on the conditions below... To receive the $200 credit, the account must maintain a $2,500 average monthly balance for each of the first three months following the month of account opening... To qualify for the $100 credit, a Business Debit Card must be added at the time the Free Business Checking Account is opened. 6 Point of Sale transactions (signature or PIN based) must post to the account over the first three months following the month of account opening.",
+  "payout_value_note": "two-part: $200 for 3-month balance tier + $100 for debit card usage",
+  "route_id": "R2106",
+  "standard": {
+    "s1": {
+      "note": "New business checking customers only; business must operate in Dollar Bank's markets; one $300 per business entity; coupon presented at opening.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Present coupon at opening, add business debit card at opening, maintain $2,500 average monthly balance for first 3 months after month of opening, post 6 POS transactions over that period.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Both credits paid within 45 days of meeting offer requirements.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Credit amounts stated precisely; soft language limited to 'limited time offer' and 'conditions apply.'",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://dollar.bank/free-business-checking-300-coupon — official Dollar Bank coupon page, fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: get coupon, open Free Business Checking, hold balance tier, make 6 POS transactions.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Dollar Bank page fetched 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Obtain the Dollar Bank Free Business Checking $300 coupon/offer (coupon must be presented at account opening; the $200 credit requires opening within 30 days of receiving the coupon).",
+    "Open a new Free Business Checking account as a new business customer in a Dollar Bank market and add a Business Debit Card at opening.",
+    "Maintain a $2,500 average monthly balance for each of the first three months following the month of account opening to earn the $200 credit.",
+    "Post 6 point-of-sale transactions (signature or PIN) with the business debit card over the first three months following the month of account opening to earn the $100 credit.",
+    "Keep the account in good standing; each credit is added within 45 days of meeting its requirements."
+  ],
+  "terms_url": "https://dollar.bank/free-business-checking-300-coupon",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Each credit ($200 and $100) is added to the new business checking account within 45 days of meeting the offer requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms ($100.0-$300.0); time: active minutes est. 30.0-60.0. Quote: Offer is for new business checking customers only... Maximum combined amount is $300 per account and one per business en"
+}

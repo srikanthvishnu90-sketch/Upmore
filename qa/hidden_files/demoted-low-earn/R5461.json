@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=co.goshare.driverapp&hl=en_US&gl=US",
+    "ios": null
+  },
+  "biggest_catch": "You need your own qualifying vehicle (2004 or newer, inspected) — earnings depend on demand in your city.",
+  "catches": [
+    "Requires your own vehicle (2004 or newer, passing inspection) plus license, registration, and insurance.",
+    "GoShare takes a percentage of each job's payment — rates vary by customer, location, and vehicle.",
+    "Earnings depend on local demand and competition; idle time earns nothing.",
+    "Available only in select cities across ~35 states + DC."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "GoShare's official driver signup page (goshare.co) lists minimum requirements and states: 'All projects booked through the GoShare platform are covered by our comprehensive cargo insurance policy to minimize your exposure.' The digital load board sends delivery gigs and moving jobs to pros via the Driver app — a live, provider-owned deal channel for moving, hauling, and last-mile delivery.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish per-job rates with the disclaimer that published estimates 'are not guaranteed' and 'actual rates may fluctuate' — variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: sign up, watch orientation, pass vehicle inspection, complete background check, accept jobs in the app.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "The official driver signup page (goshare.co) describes the application flow — info video, background check, vehicle inspection — with no signup fee mentioned. The platform's per-job cut is not published on the public driver page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Adults 18+ with a 2004-or-newer vehicle passing inspection, valid license/registration/insurance, smartphone, checking account, and English fluency — in covered cities.",
+  "notes": "Scenario: moving/delivery gig work. GoShare connects independent delivery pros with moving, hauling, last-mile, and freight jobs via a digital load board; booked projects carry cargo insurance. No signup fee appears on the official driver page. Pay is per job and variable — winning work is never guaranteed.",
+  "numeric_basis": "payout: per-job rates vary by vehicle/customer/location; published averages are explicitly 'not guaranteed.' time: signup + orientation + inspection + background check + accepting first jobs, est. 45-90 min active (excludes the driving work).",
+  "official_url": "https://Goshare.Co/drivers/sign-up-to-become-a-goshare-helper/",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "All projects booked through the GoShare platform are covered by our comprehensive cargo insurance policy to minimize your exposure.",
+  "payout_value_note": "Per-job rates vary by vehicle, customer, and location; the provider's own estimates are explicitly 'not guaranteed' — variable.",
+  "route_id": "R5461",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: 18+ with qualifying vehicle, documents, smartphone, and bank account in covered cities.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-job rates; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover vehicle requirements, per-job commission, demand dependence, and city coverage.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: GoShare absent from qa/existing-providers.txt (only a 'Go' Bank Bonus substring hit), dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official pages captured 2026-09-23 (goshare.co driver signup + Play Store listing).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: gigs post continuously in covered cities; pay arrives in 3-4 business days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up on GoShare's driver page and watch the orientation video.",
+    "Pass the vehicle inspection (2004 or newer, no salvage titles) and background check.",
+    "Get the GoShare Driver app and set your availability.",
+    "Accept local delivery, moving, and hot-shot gigs from the digital load board and get paid in 3-4 business days."
+  ],
+  "terms_url": "https://Goshare.Co/drivers/sign-up-to-become-a-goshare-helper/",
+  "time_max_minutes": 90,
+  "time_min_minutes": 45,
+  "timing": "Gigs post continuously in covered cities; earnings arrive in 3-4 business days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

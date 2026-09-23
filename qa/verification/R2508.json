@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must be 18 or older, register for the offer via your referral link or social post, open a new TruMark Financial checking account, and complete the offer requirements (at least 10 debit card transactions, excluding ATMs) within 60 days.",
+  "catches": [
+    "Referrer earns a $50 Visa Reward card for each individual age 18 or older who registers for the offer, opens a new TruMark Financial checking account, and completes the offer requirements within the specified time.",
+    "The referred person must complete 10 or more debit card transactions (excluding ATM transactions) within 60 days of account opening.",
+    "A Referrer may receive up to ten (10) Visa Reward cards ($500 value) within a calendar year; only one Referrer may receive a card per Referred Person.",
+    "Referrer must be an existing member in good standing and must register for the program and share the offer with friends, family, or coworkers.",
+    "Reward cards may be reported as income to the IRS; taxes are the member's responsibility.",
+    "Tax reporting may apply."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "TruMark Financial Credit Union (PA); official domain trumarkonline.org; official Refer-A-Friend Terms & Conditions PDF, fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'will earn a $50 Visa Reward card for each individual age 18 or older referred' - concrete per-referral amount.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; register for the program and share the offer.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: $50 Visa Reward card to the referrer per qualified referral (friend registers, opens new TruMark checking, completes requirements within specified time); up to ten cards ($500 value) per calendar year.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing TruMark member in good standing. Referred: individual 18+, non-member who registers, opens a new TruMark checking account, and completes requirements.",
+  "notes": "dedupe-check 'trumark' clean: R0624 was a reject for an expired $250 checking bonus (expired June 30, 2026), not the referral program. ReferLive infrastructure used.",
+  "numeric_basis": "payout from official terms ($50 per referral flat); cap from official terms (10 cards/$500 per calendar year); time: category default App Referral share-link 5-15 min active",
+  "official_url": "https://www.trumarkonline.org/",
+  "payout_max_usd": 500.0,
+  "payout_min_usd": 50.0,
+  "payout_quote": "The person making the referral (Referrer) must be an existing member in good standing and will earn a $50 Visa Reward card for each individual age 18 or older referred (Referred Person) to TruMark Financial Credit Union who registers for the offer, opens a new TruMark Financial checking account, and completes the offer requirements within the time specified in the offer. ... A Referrer may receive up to ten (10) Visa Reward cards ($500 value) within a calendar year, but only one Referrer may receive a Visa Reward card for each Referred Person who fulfills the requirements.",
+  "payout_value_note": "$50 per referral in official terms; up to 10 referrals / $500 per calendar year",
+  "route_id": "R2508",
+  "standard": {
+    "s1": {
+      "note": "Referrer: existing member in good standing. Referred: 18+, registers for offer, opens new TruMark checking, completes requirements.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Referrer registers for program and shares offer; referred person registers via link/social, opens new checking, completes 10+ debit card transactions (excl. ATM) within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Referrer earns a $50 Visa Reward card per qualified referral.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$50 per referral, up to ten (10) Visa Reward cards ($500 value) within a calendar year.",
+      "pass": true
+    },
+    "s5": {
+      "note": "http://www.trumarkonline.org/docs/default-source/pdfs/TruMark-Financial-Credit-Union-RAF-TsCs.pdf - official TruMark Financial CU Refer-A-Friend Terms & Conditions.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: register, share offer, friend registers/opens new checking/completes transactions in 60 days, $50 card per referral.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official TruMark Financial CU referral terms PDF fetched directly 2026-09-23; terms text verbatim.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the TruMark Refer-A-Friend program and share your referral link or social post with friends.",
+    "Your friend registers for the offer via your link and opens a new TruMark Financial checking account.",
+    "Within 60 days of account opening, your friend completes 10 or more debit card transactions (excluding ATMs).",
+    "You receive a $50 Visa Reward card for each qualifying referral, up to 10 per calendar year ($500 value)."
+  ],
+  "terms_url": "http://www.trumarkonline.org/docs/default-source/pdfs/TruMark-Financial-Credit-Union-RAF-TsCs.pdf",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Reward card issued once the referred person's account and requirements are verified by TruMark.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

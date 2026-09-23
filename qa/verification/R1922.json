@@ -1,0 +1,89 @@
+{
+  "route_id": "R1922",
+  "verdict": "verify",
+  "official_url": "https://www.verizon.com/financial-services/verizon-visa-card/",
+  "terms_url": "https://www.verizon.com/financial-services/verizon-visa-card/",
+  "payout_quote": "Get $150 as a statement credit after your first purchase. When you open an account and make a purchase in the first 90 days. Limited-time offer.",
+  "steps": [
+    "Be a Verizon wireless Account Owner or Account Manager (up to 12 lines) or an active Fios Account Owner",
+    "Apply and be approved for the Verizon Visa Signature Card (issued by Synchrony, $0 annual fee)",
+    "Make your first purchase within 90 days of account opening",
+    "$150 statement credit posts after the first purchase"
+  ],
+  "catches": [
+    "Must already be a Verizon wireless or Fios customer to apply - not open to the general public",
+    "Limited-time offer; Verizon can alter or discontinue the offer at any time",
+    "Statement credit cannot be used to satisfy the required monthly payment and is not redeemable for cash",
+    "Credit approval required; application triggers a hard inquiry",
+    "Never spend extra just to chase the bonus - any purchase you would not have made anyway costs you",
+    "Annual-fee net math: $0 annual fee, so the $150 is net of fees as long as you pay in full",
+    "Balance-carrying/APR risk: variable APR ~22.99%-33.99% wipes the $150 value quickly if you carry a balance - pay the statement balance in full"
+  ],
+  "biggest_catch": "Only Verizon wireless/Fios customers can apply at all - and the credit is store credit toward Verizon, never cash.",
+  "eligibility": "Verizon wireless Account Owner/Manager (up to 12 lines) or Fios Account Owner with active service; approved for the Verizon Visa Signature Card",
+  "timing": "Credit posts after the first qualifying purchase (older tiered version credited 1-2 billing cycles after purchase); must make first purchase within 90 days of account opening.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "Limited-time offer"
+  ],
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "verizon.com card page crawled 4h before verification; $150-after-first-purchase headline live"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states the exact $150 statement credit and the 90-day window"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Eligibility (Verizon customer) and steps taken verbatim from the official page"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No upfront fee; not pay-to-play; open only to existing Verizon customers"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Value is cash-equivalent statement credit at face value - no conversion"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as a statement credit against the bill, not income"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover eligibility, limited-time status, and credit timing"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Card catches: hard inquiry, never-spend-extra, $0 annual fee net math, balance-carry/APR risk"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Timing: first purchase within 90 days; credit after first purchase"
+    },
+    "s6": {
+      "pass": true,
+      "note": "Deduped: catalog Verizon R0832 is the referral program - distinct mechanism"
+    },
+    "s7": {
+      "pass": true,
+      "note": "'Limited-time offer' flagged; offer can be withdrawn"
+    }
+  },
+  "notes": "Verizon R0832 in catalog is the Verizon referral program - distinct mechanism. Older tiered variant ($50 + $100 on $1,500 spend) seen on secondary pages is superseded by the current flat $150-after-first-purchase offer on verizon.com. Ongoing Verizon Dollars earning is not counted.",
+  "payout_min_usd": 150,
+  "payout_max_usd": 150,
+  "payout_value_note": "$150 statement credit per official verizon.com terms; credit toward Verizon bill, not cash-out",
+  "time_min_minutes": 20,
+  "time_max_minutes": 40,
+  "numeric_basis": "payout from official terms ($150 flat); time: credit-card application est. 20-40 min active"
+}

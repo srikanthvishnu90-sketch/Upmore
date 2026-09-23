@@ -1,0 +1,85 @@
+{
+  "route_id": "R6064",
+  "verdict": "verify",
+  "official_url": "https://www.ohcu.org/News/Refer-A-Friend",
+  "terms_url": "https://www.ohcu.org/News/Refer-A-Friend",
+  "payout_quote": "Referring member and referred member will each receive $50.00 for each referral that results in a new membership being opened during promotional runtime.",
+  "steps": [
+    "Tell a friend about Old Hickory Credit Union and invite them to join.",
+    "Friend provides your name and address when signing up and opens a new membership."
+  ],
+  "catches": [
+    "Friend must be new to OHCU (no accounts in the last 120 days); your name and address must be given at the time of account opening \u2014 retroactive credit not possible.",
+    "Bonuses are subject to IRS reporting requirements; recipients responsible for income tax reporting.",
+    "Promotion may be extended, altered, modified, or canceled at any time; no cap stated on the page.",
+    "See credit union for complete details \u2014 finer payout timing not stated on the page."
+  ],
+  "biggest_catch": "Your friend must name you at signup and be genuinely new (no OHCU account in 120 days); the promo can be canceled at any time and full payout timing details are 'see credit union.'",
+  "eligibility": "Existing OHCU member; referred person must be new to OHCU (no accounts in last 120 days).",
+  "timing": "Referral itself takes minutes; bonus timing not specified on page (ask the credit union).",
+  "upfront_fee": false,
+  "weasel_words": [
+    "promotion",
+    "new membership"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:27:50Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official ohcu.org page: '$50.00 for each referral' to the referring member \u2014 concrete per-referral amount."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official ohcu.org News page, fetched 2026-09-23; IRS-reporting disclosure present."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "dedupe-check for 'Old Hickory Credit Union' returned 0 catalog and 0 evidence-file hits; ohcu.org absent from referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Page live on ohcu.org, fetched 2026-09-23; terms allow cancellation at any time."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Existing member referrer; friend new to OHCU (120-day no-account rule)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirement: new membership opened with referrer name/address at signup."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Payout timing not stated beyond promotion runtime; catches note to confirm with the CU."
+    },
+    "s5": {
+      "pass": true,
+      "note": "IRS reporting disclosed on the official page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct referrer-side earning mechanism; new institution."
+    }
+  },
+  "notes": "Verified 2026-09-23 via live official Old Hickory Credit Union Refer-A-Friend page. Referrer earns $50 per new-membership referral; no cap stated.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 paid to referring member per referral that results in a new OHCU membership.",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 flat per referral from official terms; time: telling a friend + sharing name for signup est. 5-15 min active"
+}

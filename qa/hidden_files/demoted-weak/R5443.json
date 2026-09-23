@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only the first actionable report of a given issue is eligible — duplicates and already-known bugs pay nothing.",
+  "catches": [
+    "Only the first actionable report of a previously-unknown issue is eligible — duplicates earn nothing.",
+    "Requires real security skill: finding a qualifying vulnerability takes expertise and often many hours.",
+    "Publicly disclosed bugs or reports to third parties typically do not qualify — coordinated disclosure required.",
+    "Only ever target your own accounts; testing others' data or disrupting users is prohibited.",
+    "Payouts vary by severity and report quality — most hunters earn nothing per report."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Google's official bughunters repo publishes the VRP rules: bugs are reported through Google's vulnerability form, triaged by security engineers, and rewarded per the official reward table — a real, public, currently-maintained deal channel (rules updated ~11 days ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official rules publish reward examples from ~$240 (downgraded XSS) to $121,212 (exceptional RCE with quality multiplier); no fixed per-hunter range — framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: research in scope, submit via the vulnerability form with PoC and impact, triage, reward decision.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Reporting carries no upfront fee — open to anyone with a Google account.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone with a Google account and security-research skill; Google employees/contractors excluded.",
+  "notes": "Scenario: security niche (bug bounty). Google's Vulnerability Reward Program pays researchers for valid, first-reported security vulnerabilities across Google products via bughunters.google.com. Highly skill-gated; payouts are per-report and variable — most reports earn nothing.",
+  "numeric_basis": "payout: per-report rewards set by severity/quality, no fixed range (official examples ~$240-$121,212). time: reconnaissance + testing + writing a quality report, est. 90-240 min active.",
+  "official_url": "https://github.com/google/bughunters/blob/HEAD/bughunters/articles/about/rules/google-friends/google-and-alphabet-vulnerability-reward-program-vrp-rules.md",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Only the first actionable report of a given issue that we were previously unaware of is eligible.",
+  "payout_value_note": "Rewards set per report by severity and quality (official examples ~$240–$121,212); no fixed per-hunter range — variable.",
+  "route_id": "R5443",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone with a Google account and security skill; employees excluded.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-report rewards; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover first-reporter rule, skill barrier, disclosure rules, testing limits, and variable payouts.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Google VRP absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json (HackerOne/Bugcrowd/Intigriti/YesWeHack are separate catalog routes).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against Google's official bughunters repo on 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: reports triaged continuously; rewards paid after validation.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Review the official VRP rules and in-scope products on Google's bughunters repo.",
+    "Research vulnerabilities in scope, targeting only your own accounts.",
+    "Submit a high-quality report via Google's vulnerability form: technical description, proof of concept, reproduction steps, and impact assessment.",
+    "Google's security team triages the report; if it is the first actionable report of a valid issue, a reward is set by severity and report quality."
+  ],
+  "terms_url": "https://github.com/google/bughunters/blob/HEAD/bughunters/articles/about/rules/google-friends/google-and-alphabet-vulnerability-reward-program-vrp-rules.md",
+  "time_max_minutes": 240,
+  "time_min_minutes": 90,
+  "timing": "Reports are triaged continuously; rewards are paid after the report is validated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

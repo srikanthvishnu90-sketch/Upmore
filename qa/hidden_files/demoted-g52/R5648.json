@@ -1,0 +1,91 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Acorns requires a paid subscription (Bronze plan from $4/month, Silver $8/month, Gold $12/month \u2014 stated on this page). The bonus form is not specified on the page; it appears as a $20 bonus, and withdrawability/vesting was not stated. NOTE for adjudication: the mandatory subscription may violate the no-upfront-spending counting rule \u2014 user pays at least $4 in the first month to earn $20.",
+  "catches": [
+    "Set up an Acorns account (affiliate landing on acorns.com); the page includes an email-entry field before the signup CTA.",
+    "Set up recurring investments and complete the first successful recurring investment of at least $5.",
+    "Acorns requires a paid subscription from $4/month (Bronze), $8/month (Silver), $12/month (Gold) \u2014 stated on this page; the monthly fee reduces the net value of the $20 bonus.",
+    "Bonus paid within 10 days of the following month per the headline steps; elsewhere the page says 'Bonus paid within 40 days' \u2014 treat 40 days as the outer bound.",
+    "The promoter directing you to this page may receive up to $150 in cash compensation if you open an account and make your first deposit \u2014 the page discloses this, so endorsement may be biased.",
+    "Bonus form, tax reporting, and eligibility edge cases (prior users) are not specified on this page \u2014 none are asserted here."
+  ],
+  "checked_at": "2026-09-23T08:01:49Z",
+  "critical": {
+    "c1": {
+      "evidence": "acorns.com/flash-rewards states the $20 bonus with min-$5 first successful recurring investment and within-10-days-of-following-month (also 'Bonus paid within 40 days') terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms are on Acorns' own domain (acorns.com/flash-rewards); aggregator pages used only for discovery.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Distinct from R0021 ($5 referral bonus) and R0812 (utility rebate); no existing recurring-investment bonus route found in dedupe.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No account-opening fee; recurring investment min $5 is the stated requirement; subscription fee (from $4/mo) disclosed in catches.",
+      "pass": true
+    }
+  },
+  "eligibility": "As stated on the flash-rewards page: set up an Acorns account, set up recurring investments, and complete the first successful recurring investment (min $5). The page does not state prior-user exclusions or a Good-Standing requirement.",
+  "notes": "Re-audited 2026-09-23 against the live acorns.com/flash-rewards/ page. Every claim now ties to this page only; prior 'Reward Shares', 'first-time-user exclusion', and 'Good Standing' language was not on this page and has been removed. Distinct from R0021 (Acorns $5 referral bonus) and R0812. The $4+/month subscription is the biggest caveat; adjudicator should weigh it against the no-upfront-spending counting rule. checked_at refreshed to a fresh UTC clock after a live re-fetch of the page during the cleanup pass.",
+  "numeric_basis": "payout from official terms ($20 flat); time: Acorns signup + bank linking + recurring-investment setup est. 30-60 min active",
+  "official_url": "https://www.acorns.com/flash-rewards/",
+  "payout_max_usd": 20,
+  "payout_min_usd": 20,
+  "payout_quote": "Make your first successful recurring investment (min $5) - get your $20 within 10 days of following month",
+  "payout_value_note": "$20 flat bonus; bonus form and withdrawability not specified on the offer page.",
+  "route_id": "R5648",
+  "standard": {
+    "s1": {
+      "note": "Payout stated exactly: $20 after first successful recurring investment (min $5).",
+      "pass": true
+    },
+    "s2": {
+      "note": "No upfront purchase or fee is charged at the point of earning: the bonus requires a $5+ recurring investment (your own money stays yours) and the $20 bonus has no stated fee. Caveat: Acorns's mandatory $4+/month subscription is a recurring cost disclosed on this page, not an upfront fee; the net-first-month math is $20 minus $4.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing stated: within 10 days of the following month; also 'Bonus paid within 40 days'.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Referral-independent: the flash-rewards offer is not described as referral-only on the page.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No stated expiration on the page; offer may be revoked at any time per terms.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No official tax-reporting language captured; general tax caveat included in catches.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No clawback/early-close language captured; terms note the offer may be revoked at any time.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Set up your Acorns account (under 3 minutes per the official page); verify identity and link a funding bank account.",
+    "Open an Acorns Invest Account.",
+    "Set up recurring investments in the app (Invest -> Recurring; min $5 per day, week, or month).",
+    "Make the first successful recurring investment of at least $5.",
+    "Wait for the $20 bonus investment to be paid into the Acorns Invest account (within 10 days of the following month / within 40 days)."
+  ],
+  "terms_url": "https://www.acorns.com/flash-rewards/",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "$20 bonus after the first successful recurring investment (min $5); paid within 10 days of the following month per the headline steps (also stated as 'within 40 days' on the page).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "Bonus paid within 40 days (page also says \"get your $20 within 10 days of following month\")",
+    "Illustration \"does not include Acorns monthly subscription fees (min $4/mo), which would reduce returns over time\"",
+    "Promoter compensation disclosure: opinions in the material may be biased"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "route_id": "R2443",
+  "verdict": "verify",
+  "official_url": "https://aligncu.com/personal/banking/member-referral-program",
+  "terms_url": "https://aligncu.com/personal/banking/member-referral-program",
+  "payout_quote": "Current Member Incentive*: Earn $25 credited to your checking account when your referred friend or family member becomes an Align Credit Union member. ... New Member Incentive**: Referred friends and family who join will enjoy $25 credited to their checking account.",
+  "steps": [
+    "Be an existing Align Credit Union member and submit the online referral form with your friend or family member's information.",
+    "Your friend or family member visits any Align CU branch or applies online to open a new account and becomes an Align Credit Union member.",
+    "You receive $25 credited to your checking account; your friend also receives $25 credited to their checking account."
+  ],
+  "catches": [
+    "Only $25 per referral - one of the smaller credit-union referral payouts.",
+    "No explicit bonus payment window or annual referral cap is stated on the fetched official page; footnote terms were not fully rendered.",
+    "Only a member can refer; the friend must complete the full membership process, not just open a savings account.",
+    "Fine-print terms referenced by asterisks may carry additional restrictions - review the official page footnotes before participating."
+  ],
+  "biggest_catch": "The friend must fully become an Align CU member - a casual account open that stalls out mid-process earns you nothing.",
+  "eligibility": "Existing Align Credit Union members; referred friends/family must be eligible for Align CU membership.",
+  "timing": "Credited to your checking account when your referred friend or family member becomes an Align Credit Union member (no explicit payment window stated on the fetched page).",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Align Credit Union - real operating credit union; official domain aligncu.com, Member Referral Program page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states the current-member incentive: 'Earn $25 credited to your checking account when your referred friend or family member becomes an Align Credit Union member'."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; using the online referral form; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: $25 per successful referral, credited to the referring member's checking account when the friend becomes a member."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Existing Align CU members; friends/family must be membership-eligible."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Submit online referral form; friend becomes an Align CU member via branch or online application."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid when the referred person becomes a member; no explicit window stated."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $25 per referral; no annual cap stated."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://aligncu.com/personal/banking/member-referral-program - official Align CU Member Referral Program page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: submit form, friend becomes member, $25 to your checking."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'align' hit only R0283 Alignerr (AI training, unrelated). Small $25 payout but fully concrete official terms.",
+  "payout_min_usd": 25.0,
+  "payout_max_usd": 25.0,
+  "payout_value_note": "$25 per referral credited to checking in official terms; no annual cap stated",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($25 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

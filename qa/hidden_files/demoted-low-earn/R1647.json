@@ -1,0 +1,74 @@
+{
+  "route_id": "R1647",
+  "verdict": "verify",
+  "official_url": "https://kingcounty.gov/en/court/superior-court/courts-jails-legal-system/jury-duty/why-chosen",
+  "terms_url": "https://kingcounty.gov/en/court/superior-court/courts-jails-legal-system/jury-duty/why-chosen",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "King County jurors receive $10 per day plus transportation reimbursement; payment checks are mailed every two weeks.",
+  "steps": [
+    "Receive a King County Superior Court jury summons",
+    "Report and serve",
+    "Receive $10/day plus transportation reimbursement; checks mailed every two weeks"
+  ],
+  "catches": [
+    "$10/day is far below minimum wage for a full day.",
+    "Checks arrive every two weeks — not immediate.",
+    "Summons-only; cannot volunteer."
+  ],
+  "biggest_catch": "$10/day — a token amount, not meaningful income.",
+  "eligibility": "Persons summoned for jury service in King County Superior Court, Washington.",
+  "timing": "Checks mailed every two weeks.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "King County official jury-duty page (kingcounty.gov)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "King County jurors receive $10 per day plus transportation reimbursement; payment checks are mailed every two weeks."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in King County Superior Court, Washington."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Checks mailed every two weeks."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$10/day plus transportation reimbursement."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "Transportation reimbursement softens costs but the fee itself is minimal.",
+  "payout_min_usd": 10,
+  "payout_max_usd": 10,
+  "payout_value_note": "$10/day plus transportation reimbursement.",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

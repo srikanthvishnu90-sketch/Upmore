@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Extremely skill-gated security work: most research produces no valid paid report, and only accepted vulnerabilities with a working PoC earn — the expected payout for a typical researcher is effectively $0. Never count this as reliable income.",
+  "catches": [
+    "Highly skill-gated: most research yields no valid, payable report; expected payout for a typical researcher is effectively $0.",
+    "Proof of Concept (PoC) is required for valid reports; known bugs are ineligible.",
+    "Testing must be done on local forks, never on mainnet or public testnets.",
+    "KYC is required for payouts; researchers in OFAC/UNSC-restricted countries are excluded.",
+    "Rewards are paid in USDC (crypto custody and tax implications apply) and denominated in USD."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Immunefi bug-bounty program page live on 2026-09-23 (page last updated 2026-09-09) with reward tiers, rules, KYC and testing requirements.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states rewards of $1,000–$50,000 paid in USDC, denominated in USD; smart-contract critical 10% of affected funds ($10,000 min, $50,000 max).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to participate; no entry fee, no purchase, no risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Immunefi entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Security researchers worldwide except OFAC/UNSC-sanctioned countries; KYC required for payouts; known bugs ineligible; PoC required; testing on local forks only.",
+  "notes": "Immunefi's own bug-bounty program with published reward bands. Highly skill-gated; payouts only for accepted reports. payout_min_usd is the program's stated floor ($1,000); most researchers earn nothing — framed accordingly.",
+  "numeric_basis": "Payout from official terms ($1,000–$50,000 program reward band); time: conservative active range for security research per engagement; no official time commitment.",
+  "official_url": "https://immunefi.com/bug-bounty/immunefi/information/",
+  "payout_max_usd": 50000,
+  "payout_min_usd": 1000,
+  "payout_quote": "Rewards of $1,000–$50,000, paid in USDC and denominated in USD. Smart-contract critical: 10% of affected funds, $10,000 minimum, $50,000 maximum. Proof of Concept required; KYC required for payout; testing on local forks only.",
+  "payout_value_note": "Official program reward band in USDC, denominated in USD; only accepted valid reports with PoC are paid.",
+  "route_id": "R3505",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: set up environment, test on local forks, find vulnerability, write PoC, submit report, complete KYC.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document skill-gating, PoC requirement, local-fork-only testing, KYC, sanction exclusions, USDC payment.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: worldwide minus sanctioned countries, KYC, known bugs excluded.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Program ongoing; official page last updated 2026-09-09, observed live 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from immunefi.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as highly skill-gated with effectively $0 expected payout for typical researchers; never promises income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Set up a local test environment (local fork) — never test on mainnet or public testnets.",
+    "Research Immunefi's own smart contracts and platform for vulnerabilities.",
+    "Reproduce the issue and build a working Proof of Concept (PoC).",
+    "Submit the vulnerability report with the PoC through Immunefi's official reporting flow.",
+    "Complete KYC to receive payout; accepted reports are paid in USDC (denominated in USD)."
+  ],
+  "terms_url": "https://immunefi.com/bug-bounty/immunefi/information/",
+  "time_max_minutes": 9600,
+  "time_min_minutes": 120,
+  "timing": "Ongoing bug-bounty program; official program page last updated 2026-09-09 (observed live 2026-09-23).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

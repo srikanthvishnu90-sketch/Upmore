@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The headline $100 only applies if your friend is brand-new to CenturyLink and takes PRISM TV \u2014 for the common case (a new internet customer) you get a $50 one-time bill credit, and your friend's $60 arrives as $10/month over six months of good standing.",
+  "catches": [
+    "Bill credits only \u2014 applied to the CenturyLink bill, not cash",
+    "Referrer's amount depends on the scenario: $100 (new customer + PRISM TV), $50 (new customer + internet/DIRECTV, or existing customer + PRISM TV), $25 (existing customer adds internet/DIRECTV)",
+    "Friend's $60 comes as $10/month for six consecutive months and requires the service to stay in good credit standing the whole time",
+    "Service must be installed within 60 days of the referral date or nobody gets credits",
+    "One invoice credit per month per referred customer; $600/year limit per referrer",
+    "No self-referrals; CenturyLink employees and immediate family ineligible; business accounts ineligible",
+    "Program can change or be discontinued at any time without notice; varies by service area"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CenturyLink 'Pass It On Rewards Program' terms on centurylink.com/static/Pages/Disclaimers/rewardsProgDisclaimer.html, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms page fetched live and current on 2026-09-23.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amounts verbatim: referring customer receives 'a one-time $100 credit' / 'a one-time $50 credit' / 'a one-time $25 credit' depending on scenario; referred customer receives '$10 invoice credit each month ... for six consecutive months' ($60).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "60-day installation window, 6-month good-standing rule, $600/year cap, good-credit-standing requirement, and 30-day credit posting all stated officially.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referring customer must have an active residential CenturyLink account in a CenturyLink local service area; friend subscribes to CenturyLink High-Speed Internet, PRISM TV, or DIRECTV through CenturyLink and installs within 60 days.",
+  "notes": "Verified 2026-09-23 by live fetch of centurylink.com (official domain). Deduped: no CenturyLink routes in catalog, evidence files, or rejects-g60 (the one fuzzy hit was 'Ent' credit union). Note: PRISM TV is legacy in many areas; the live internet tiers are $50 (new customer) / $25 (existing customer adds service). This is distinct from aggregator descriptions of a separate 'Refer and Earn' cash program.",
+  "numeric_basis": "payout from official terms (referrer 25-100 one-time bill credit by scenario; friend 60 as 10x6 monthly credits); time: referral share 5-15 min active",
+  "official_url": "http://www.centurylink.com/static/Pages/Disclaimers/rewardsProgDisclaimer.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "Referring Customers receive a one-time $100 credit when a new CenturyLink Referred Customer subscribes to CenturyLink PRISM TV... a one-time $50 credit when a new CenturyLink Referred Customer subscribes to CenturyLink High-Speed Internet or DIRECTV Service through CenturyLink... a one-time $25 credit when an existing CenturyLink Referred customer adds a CenturyLink High-Speed Internet or DIRECTV Service through CenturyLink. Referred Customer will receive $10 invoice credit each month for one Service for six consecutive months.",
+  "payout_value_note": "Referrer: $25-$100 one-time bill credit depending on scenario ($50 for the common new-internet-customer case). Friend: $60 total as $10/month bill credits for six months. All as bill credits, not cash.",
+  "route_id": "R6370",
+  "standard": {
+    "s1": {
+      "note": "Exact amounts stated verbatim in the official terms ($100/$50/$25 referrer tiers; $10 x 6 months for the friend).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: bill credits offset planned CenturyLink spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official terms (refer, friend subscribes, installs within 60 days, credits post within 30 days of order).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: scenario-dependent amounts, friend's credit dribbles over six months.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own CenturyLink service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against centurylink.com (provider's own domain) by live fetch. Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Existing CenturyLink residential customer refers a friend",
+    "Friend subscribes to CenturyLink High-Speed Internet (or PRISM TV / DIRECTV through CenturyLink)",
+    "Friend's service is installed within 60 days of the referral date",
+    "Referrer's one-time bill credit ($25-$100 by scenario) appears within 30 days of the friend's order date",
+    "Friend receives $10/month bill credits for six consecutive months while the account stays in good credit standing"
+  ],
+  "terms_url": "http://www.centurylink.com/static/Pages/Disclaimers/rewardsProgDisclaimer.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credits appear on both bills within 30 days of the referred customer's order date; the friend's $10/month credits run for six consecutive months.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

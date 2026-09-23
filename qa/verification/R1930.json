@@ -1,0 +1,86 @@
+{
+  "route_id": "R1930",
+  "verdict": "verify",
+  "official_url": "https://www.wayfair.com/wayfaircard",
+  "terms_url": "https://www.wayfair.com/wayfaircard",
+  "payout_quote": "You will receive $40 off your qualifying first order if it is at least $100. Offer Ends 2/1/2027.",
+  "steps": [
+    "Apply and be approved for the Wayfair Credit Card or Wayfair Mastercard (issued by Citi; pre-qualify with no credit-score impact)",
+    "Make your first Wayfair order of at least $100 with the new card",
+    "$40 comes off the qualifying order at checkout"
+  ],
+  "catches": [
+    "Wayfair-only savings, not cash; requires a $100+ first order (planned furniture/home spending, not new money)",
+    "Cannot be combined with other discounts or financing offers; excludes Perigold, outlet stores, gift cards, select manufacturers, Wayfair Professional",
+    "Credit approval required; application triggers a hard inquiry",
+    "Never spend extra just to chase the bonus - never buy furniture just to get the discount",
+    "Annual-fee net math: no annual fee on the card, so the $40 is net of fees - as long as you pay in full",
+    "Balance-carrying/APR risk: high variable purchase APR wipes the $40 savings if a balance is carried - pay the statement balance in full",
+    "Offer ends 2/1/2027"
+  ],
+  "biggest_catch": "A $40 discount on a $100+ furniture order you were already placing - savings, not income; never buy furniture just to get it.",
+  "eligibility": "Approved Wayfair Credit Card / Wayfair Mastercard holder; first order $100+",
+  "timing": "$40 off at checkout on the qualifying first order; offer ends 2/1/2027.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "wayfair.com credit card page crawled; $40-off-$100 terms and 2/1/2027 expiry quoted verbatim"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states the exact $40 value and the $100+ threshold"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps from official page: apply, approved, first $100+ order"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No annual fee on the card; no upfront cost"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Value is a flat $40 discount stated verbatim by the provider"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed explicitly as SAVINGS on planned spending, not income"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover exclusions, combinability, and the expiry"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Card catches: hard inquiry, never-spend-extra, no-annual-fee net math, balance-carry/APR risk"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Timing: first order; hard expiry 2/1/2027"
+    },
+    "s6": {
+      "pass": true,
+      "note": "Deduped: no Wayfair route in catalog"
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the official offer line"
+    }
+  },
+  "notes": "$40-off-$100 variant is the current card-page offer (a $250+ variant appeared in older homepage copy and is not claimed). The separate 7%-back rewards on qualifying items are ongoing earning, not the signup bonus - not counted.",
+  "payout_min_usd": 40,
+  "payout_max_usd": 40,
+  "payout_value_note": "$40 off first qualifying $100+ Wayfair order; Wayfair-only discount, not cash",
+  "time_min_minutes": 20,
+  "time_max_minutes": 40,
+  "numeric_basis": "payout from official terms ($40 flat); time: credit-card application est. 20-40 min active"
+}

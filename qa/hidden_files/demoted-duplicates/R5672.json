@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This pays per funded LOAN or new MEMBERSHIP WITH CHECKING - a casual account opening with savings only does not qualify. New loans need a minimum $5,000 funded amount, and the referral must be submitted within 30 days of account opening.",
+  "catches": [
+    "Qualifying referral = new membership with a checking account, or a new loan funded with a minimum $5,000 funded amount.",
+    "Referral must be submitted within 30 days of account opening.",
+    "Maximum payout is $25 per individual referred.",
+    "Both referrer and friend submit the form with contact details; friend must be eligible for membership."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Affinity CU page (affinitycuia.org): 'Refer an eligible friend, coworker or family member to Affinity and we'll give you $25 for every new membership or loan funded.' and 'New membership must have a checking account. New loans only. Minimum $5,000 funded amount. The maximum payout is $25 per individual referred.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Affinity CU member referral page on affinitycuia.org, fetched live 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no affinitycuia.org route and no Affinity Credit Union (IA) entry; catalog has no Affinity CU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Affinity Credit Union member submitting the referral form. Friend: eligible new member (membership must include a checking account) or new borrower with a $5,000+ funded loan.",
+  "notes": "Verified 2026-09-23. Affinity Credit Union (Iowa). Referrer earns $25 per individual referred for each new membership with checking or each new loan funded (minimum $5,000). Referral must be submitted within 30 days of account opening.",
+  "numeric_basis": "payout from official Affinity CU terms ($25 per individual referred for new membership with checking or $5,000+ funded loan); time: submit referral form est. 5-15 min active",
+  "official_url": "https://www.affinitycuia.org/member-resources/member-referral-program/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer an eligible friend, coworker or family member to Affinity and we'll give you $25 for every new membership or loan funded. New membership must have a checking account. New loans only. Minimum $5,000 funded amount. The maximum payout is $25 per individual referred.",
+  "payout_value_note": "$25 per individual referred, paid to the referrer; max $25 per individual.",
+  "route_id": "R5672",
+  "standard": {
+    "s1": {
+      "note": "Official Affinity CU page live on affinitycuia.org, fetched 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: refer an eligible friend/coworker/family member; membership must include checking; loans new with $5,000+ funded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new membership with checking account, or new loan funded with minimum $5,000",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: no exact posting date stated; referral must be submitted within 30 days of account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit the referral form on the Affinity CU page with your name, phone, email and your referral's details.",
+    "Friend joins Affinity Credit Union with a checking account, or funds a new loan of at least $5,000, within 30 days of the referral submission.",
+    "You receive $25 for the referred individual."
+  ],
+  "terms_url": "https://www.affinitycuia.org/member-resources/member-referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "No exact posting date stated; referral must be submitted within 30 days of the friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

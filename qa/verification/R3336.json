@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Referrer earns a flat $50 only when the referred friend joins Interra Credit Union and opens a new checking account with a debit card; no cap is stated, but the payout takes up to 60 days after account opening.",
+  "catches": [
+    "Friend must be new to Interra (no previous relationship within the last 6 months) and open a new checking account with a debit card",
+    "Friend must meet membership eligibility and account-opening criteria including minimum opening deposit",
+    "Referrer must be an Interra member and be mentioned at the time of the friend's account opening",
+    "Referring member may receive 1099-MISC (taxable income)",
+    "Terms may change or terminate without prior notice"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Interra page (interracu.com/friend): 'we will pay you $50 when a friend you refer to us joins the credit union and opens a checking account with a debit card'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official interracu.com domain; page live and fetchable 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; flat $50 deposited into referring member's account within 60 days of new account opening",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Interra' shows zero catalog or evidence hits — no duplicate",
+      "pass": true
+    }
+  },
+  "eligibility": "Interra Credit Union members. Referred friends must be new members (no relationship in the last 6 months, no previous losses) who meet membership eligibility and open a checking account with a debit card. Goshen, Indiana credit union.",
+  "notes": "dedupe-check 'Interra' shows no existing routes. Older Interra newsletters mention a $25/$40 version, but the current live official page offers $50/$50 — evidence uses the current official page.",
+  "numeric_basis": "payout from official Interra referral page ($50 flat per qualifying referral); time: printing and handing off the referral coupon / sharing the link est. 5-15 min active",
+  "official_url": "http://interracu.com/friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "we will pay you $50 when a friend you refer to us joins the credit union and opens a checking account with a debit card. As a bonus your friend will receive a gift too.",
+  "payout_value_note": "Flat $50 cash deposited into the referring member's account; no stated cap on number of referrals.",
+  "route_id": "R3336",
+  "standard": {
+    "s1": {
+      "note": "Official Interra referral page live and fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: Interra member; friend must be new (6-month clean window) and meet membership/account criteria",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirement concrete: open new checking account with debit card",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $50 deposited into referring member's account within 60 days of the new account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax reporting disclosed: referred member gets 1099-INT, referring member may get 1099-MISC",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct earning mechanism: referrer-side program",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be an Interra Credit Union member",
+    "Print the Refer-a-Friend coupon from interracu.com/friend and pass it to friends/family",
+    "Friend mentions you at the time of account opening",
+    "Friend joins Interra and opens a new checking account with a debit card",
+    "$50 is deposited into your account within 60 days of their account opening"
+  ],
+  "terms_url": "http://interracu.com/friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Printing and handing off the coupon takes ~10 minutes active; the $50 reward is deposited within 60 days after the friend's account opening (not instant).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

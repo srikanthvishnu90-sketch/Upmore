@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend has to register through your referral link, open an eligible account or loan within 180 days, AND complete the offer's activity requirements (e.g., direct deposits for checking). A friend who registers and opens an account but never completes the requirements earns you nothing.",
+  "catches": [
+    "Friend must register for the program via the referrer's referral link, open a new Commerce personal checking account, personal loan, or vehicle loan within 180 days of receiving the offer, and complete the additional requirements of the offer within the time specified.",
+    "Referrer earns a $100 Visa Reward Card per qualified referral; the referred person receives a Visa Reward Card worth at least $200.",
+    "Cap: maximum $1,000 in Visa Reward Cards per person, per calendar year (10 referrals).",
+    "Program is described as a limited-time offer on the official page.",
+    "Full offer qualifications live on ReferLive (the program platform); the commercebank.com page states the referrer payout and cap.",
+    "No 1099/tax disclosure on the fetched official page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Refer a Friend page on commercebank.com, Commerce Bank's official domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page states 'For each qualified personal checking account, vehicle loan or personal loan referral, you can earn a $100 Visa Reward Card' and 'For every referred account that meets the qualifications, the Referrer will receive a $100 Visa Reward Card' — concrete per-referral payout to the referrer.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official commercebank.com page: friend must register via the referral link, open a new eligible checking/vehicle/personal loan account within 180 days, and 'complete the additional requirements of one or more of the offers within the time specified.' The activity-level details live in the ReferLive Terms & Conditions directly linked from the page ('Terms & Conditions apply'), which is the official program flow — same pattern as Bellco R4310.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; referrals are sent free via the referral link.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Commerce Bank customer (referrer) who shares their referral link. Referred friend/family must be eligible to open a Commerce personal checking account, personal loan, or vehicle loan.",
+  "notes": "Verified 2026-09-23 from Commerce Bank's official Refer a Friend page. dedupe-check 'Commerce Bank' surfaced only checking signup-bonus evidence (R0074/R0890/R3229) — different lane, no referral duplicate. ReferLive-powered program; friend-side activity requirements (e.g., $300+ direct deposit within 60 days for checking per ReferLive offer text) were not on the fetched commercebank.com page, so this file sticks to the official-page facts. CommercePremier members have a separate $250/referral tier — this route covers the standard $100 tier.",
+  "numeric_basis": "payout from official terms ($100 Visa Reward Card per qualified referral); time: send referral link to friends est. 5-15 min active",
+  "official_url": "https://www.commercebank.com/personal/bank/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "For each qualified personal checking account, vehicle loan or personal loan referral, you can earn a $100 Visa® Reward Card.",
+  "payout_value_note": "$100 Visa Reward Card to the referrer per qualified referral; cap $1,000 per person per calendar year (10 referrals).",
+  "route_id": "R4305",
+  "standard": {
+    "s1": {
+      "note": "Refer-a-friend is a distinct mechanism from Commerce Bank's checking signup bonuses.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No existing Commerce Bank referral route in catalog or evidence files; R0074/R0890/R3229 are signup bonuses.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Page live on official domain as of 2026-09-23; described as a limited-time offer.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Framed as conditional: payout only when the friend completes the offer requirements.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No 1099 disclosure on the fetched official page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "$1,000/person/calendar-year cap stated on the official page.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Referral link shared online/by phone/branch; no app required.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Send the Commerce Bank referral link to friends and family.",
+    "Your friend registers for the program with your referral link.",
+    "Your friend opens a new Commerce personal checking account, personal loan, or vehicle loan within 180 days of receiving the offer.",
+    "Your friend completes the additional requirements of the offer within the time specified.",
+    "You receive a $100 Visa Reward Card per qualified referral (up to $1,000 per calendar year)."
+  ],
+  "terms_url": "https://www.commercebank.com/personal/bank/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Not stated on the fetched official page (ReferLive platform delivery timing).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,91 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The full $800 requires parking $10,000 from day 30 through day 90 with zero dips below the daily-current-balance line - one bad day drops you to the $400 tier.",
+ "catches": [
+  "Business customers only - requires a business entity.",
+  "Enrollment in the promotion is required; a valid promo code must be applied AT account opening and cannot be added afterward; codes are single-use.",
+  "Official terms: new Truist business checking client only - the business cannot have an existing Truist business checking account or have closed one with Truist within 365 days prior to the promotion start date (on or after 7/14/2025) with the same TIN.",
+  "The day-30 balance sets the tier and the daily current balance must hold from day 30 through day 90 - a single day below $10,000 drops the $800 tier to $400; below $2,500 forfeits the bonus.",
+  "Official terms: minimum opening deposit is $100.",
+  "Official terms: The reward will be deposited into the new checking account within 10 business days after the qualification requirements have been met.",
+  "Official terms: The $800 reward, if applicable, will be deposited in two separate $400 payments.",
+  "Official terms: Reward forfeiture will occur if at the time of attempted payout the account has a $0.00 or negative current balance, or is restricted or closed.",
+  "Official terms: Truist may report the value of any offer reward received to the IRS as required by law; any applicable taxes are the responsibility of the recipient.",
+  "Official terms: Truist Dynamic Business Checking has a $25 monthly maintenance fee (waivable with $5,000 average combined balance over three months).",
+  "A separate Truist \"$200 New to Business Checking 3 Offer\" (7/14/2026-12/10/2026) exists - confirm which promotion code you are enrolling in."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Truist is a real operating national bank; the Small Business Checking Up To $800 Promotion terms are published on truist.com (official-domain search capture, 2026-09-23 UTC).",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official truist.com terms state the $400/$800 tiers, the 7/14/26-3/24/27 window, the day-30/day-30-to-90 balance mechanics, and the promo-code enrollment requirement.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No upfront fee; deposit is the business's own funds.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official terms: open between 07/14/26 and 3/24/2027 (outside the 14-day flag)."
+  }
+ },
+ "eligibility": "New Truist business checking clients; business cannot have had a Truist business checking account within 365 days prior to 7/14/2025; Simple Business Checking or Dynamic Business Checking only.",
+ "notes": "Verified against the official Truist PDF terms (9075530_TC_071426.pdf, text-extracted 2026-09-23 UTC). Payout timing/structure, account-status forfeiture, 365-day prior-account exclusion, $100 minimum opening deposit, $25 monthly fee, and tax statement are official provider text.",
+ "numeric_basis": "payout from official terms ($400-$800 tiers); time: business account opening + funding est. 30-60 min active (excludes 90-day balance maintenance)",
+ "official_url": "https://truist.com/content/dam/caas/truist/us/en/promotions/terms-conditions/pdfs/9075530_TC_071426.pdf",
+ "payout_max_usd": 800,
+ "payout_min_usd": 400,
+ "payout_quote": "Truist Small Business Checking Up To $800 Promotion. Open a new Truist Simple Business Checking or Truist Dynamic Business Checking account online, by phone, or in a branch from 07/14/26 through 3/24/2027 and earn up to $800 after you complete the following qualifying activities (the reward amount earned is based on the balance achieved and maintained): Earn $400: Deposit at least $2,500 to the enrolled account within 30 days of account opening. Your Current Balance must be at least $2,500 on day 30. AND maintain a daily Current Balance of at least $2,500 from day 30 through day 90. OR Earn $800: Deposit at least $10,000 into the enrolled account within 30 days of account opening. Your Current Balance must be at least $10,000 on day 30. AND maintain a daily Current Balance of at least $10,000 from day 30 through day 90. Reward Processing: The reward will be deposited into the new checking account within 10 business days after the qualification requirements have been met. The $800 reward, if applicable, will be deposited in two separate $400 payments. Truist may report the value of any offer reward received to the IRS as required by law. Any applicable taxes are the responsibility of the recipient. Reward forfeiture will occur if at the time of attempted payout, the new checking account: 1) has a $0.00 or negative current balance or 2) is restricted or closed. Minimum opening deposit is $100.",
+ "payout_value_note": "$400 ($2,500 tier) or $800 ($10,000 tier); balance dip below $10,000 keeps $400 tier if above $2,500",
+ "route_id": "R3795",
+ "standard": {
+  "s1": {
+   "note": "New Truist business checking clients; no business checking within 365 days prior to 7/14/2025; Simple/Dynamic accounts only.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open by 3/24/2027 with promo code; fund within 30 days; hold day-30 daily current balance through day 90.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Official terms: paid within 10 business days after qualification; $800 as two separate $400 payments.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words - fixed $400/$800 tiers.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No early-closure fee in bonus terms.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Open by 3/24/2027; outside the 14-day flag.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Distinct route: Truist business checking not in existing-providers.txt or prior evidence files (R0048 covers Truist personal checking).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm the business is a new Truist business checking client (no account within 365 days prior to 7/14/2025).",
+  "Open a new Truist Simple Business Checking or Dynamic Business Checking account by March 24, 2027, enrolling in the promotion with the promo code at opening.",
+  "Deposit the tier amount ($2,500 for $400; $10,000 for $800) within 30 days and have that current balance on day 30.",
+  "Maintain the daily current balance from day 30 through day 90.",
+  "Receive the bonus within 10 business days after Truist verifies completion."
+ ],
+ "terms_url": "https://truist.com/content/dam/caas/truist/us/en/promotions/terms-conditions/pdfs/9075530_TC_071426.pdf",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Reward deposited into the new checking account within 10 business days after the qualification requirements have been met; the $800 reward pays as two separate $400 payments. Payout is forfeited if the account is $0/negative or restricted/closed at payout.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": []
+}

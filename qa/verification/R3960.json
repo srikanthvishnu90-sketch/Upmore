@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must be a genuinely new QCBT consumer checking client (no previously closed QCBT checking account within the past 12 months) who opens any new personal checking account and uses the new QCBT Visa debit card at least once within 6 months; account must stay open at least 30 calendar days with a positive balance at payout time.",
+  "catches": [
+    "$50 goes to both sides: the referrer receives $50 and the referred friend receives $50 when the friend opens a new personal QCBT checking account.",
+    "Friend requirements are strict: new consumer client only, Visa debit card used at least once (point-of-sale only; ATM transactions do not qualify), requirements met within 6 months of opening, account open at least 30 calendar days with a positive balance at payout.",
+    "Only Iowa and Illinois residents eligible; offer cannot be combined with other offers; account opening subject to approval.",
+    "Bonuses are reported to the IRS as applicable; recipients are responsible for applicable taxes."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Quad City Bank & Trust referral flyer (Dec 2025, bank asset store): 'we want to reward you and a friend with $50* each when your friend opens any new personal QCBT checking account.' The dev.qcbt.bank Refer-a-Friend Bonus page mirrors the same program and terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Quad City Bank & Trust official asset store flyer (cdn.mantl.com/assets/quad_city_bank_and_trust, the bank's own website asset library) and the bank's own qcbt.bank Refer-a-Friend page, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer or participate; the new account is a standard consumer checking account with no participation fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Three checks clean immediately before writing: grep of existing-providers found no 'quad city' match; dedupe-check 'Quad City Bank & Trust' returned 0 catalog hits and 0 evidence-file hits; grep of qa/verification (excluding this file) found no 'quad city' or 'qcbt' entries. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Quad City Bank & Trust client (bank employees not eligible). Friend: new QCBT consumer checking client, no previously closed QCBT checking account within the past 12 months; Iowa or Illinois resident.",
+  "notes": "Official Quad City Bank & Trust Refer-a-Friend flyer (dated 12.15.25) reviewed 2026-09-23. Referrer earns a $50 bonus per qualifying referral; the referred friend also receives $50. Unlimited rewards per client stated on the flyer ('Enjoy unlimited rewards!') and in the program terms ('Refer-A-Friend bonuses are unlimited per client'). Friend must open a new personal checking account and use the new QCBT Visa debit card at least once within 6 months of opening; the bonus is paid as an account credit within 30 calendar days of meeting the qualifying activity, provided both accounts remain open and the new account has been open at least 30 calendar days with a positive balance. Iowa/Illinois residents only; subject to approval; cannot be combined with other offers. IRS reporting and tax responsibility stated. Same program terms appear on the bank's qcbt.bank Refer-a-Friend page. Evidence-domain caveat (re-adjudicated 2026-09-23): the amount-bearing flyer is hosted on the bank's account-opening vendor (Mantl) CDN; the bank-owned program page (dev.qcbt.bank/refer-a-friend) confirms the program exists but shows a $XXX amount placeholder. Kept as verify with this caveat flagged for final QA.",
+  "numeric_basis": "payout from official terms ($50 per qualifying referral); time estimate for naming yourself as referrer on the referral card and handing it to the friend",
+  "official_url": "https://dev.qcbt.bank/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "As a special thank you for choosing Quad City Bank & Trust, we want to reward you and a friend with $50* each when your friend opens any new personal QCBT checking account.",
+  "payout_value_note": "$50 per qualifying referral to the referrer; friend also receives $50; unlimited referrals per client stated.",
+  "route_id": "R3960",
+  "standard": {
+    "s1": {
+      "note": "Terms on Quad City Bank & Trust's own referral flyer and Refer-a-Friend page, fetched 2026-09-23.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing QCBT client referrer; new consumer checking client friend, no closed QCBT checking within past 12 months, Iowa/Illinois resident.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open any new personal checking account (subject to approval) and use the QCBT Visa debit card at least once within 6 months; point-of-sale only, ATM excluded.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing stated: bonus paid within 30 calendar days of meeting the qualifying activity, provided both accounts remain open.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment stated: bonuses will be reported to the IRS as applicable; clients are responsible for applicable taxes.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Existing Quad City Bank & Trust client fills in name, phone, and QCBT account view on the Refer-A-Friend card.",
+    "Client gives the card to a friend (new QCBT consumer checking client, Iowa/Illinois resident).",
+    "Friend opens a new personal QCBT checking account and uses the new QCBT Visa debit card at least once within 6 months of opening (point-of-sale; ATM transactions do not qualify).",
+    "Once the qualifying activity is met and the account has been open at least 30 calendar days with a positive balance, both parties receive their $50 bonus as an account credit within 30 calendar days, provided neither account is closed."
+  ],
+  "terms_url": "https://cdn.mantl.com/assets/quad_city_bank_and_trust/1765926862616-Refer_a_Friend_Dec_25.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid as an account credit within 30 calendar days of the qualifying activity being met, provided both the current client and referred account are not closed, the account has been open at least 30 calendar days, and has a positive balance at payout.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

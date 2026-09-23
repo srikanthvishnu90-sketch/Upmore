@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $100 only pays if your friend registers through your link, opens a checking account, AND completes eStatements + ($500 in direct deposits or 12 debit transactions) within 60 days - and the Visa gift card expires 90 days after it's issued.",
+  "catches": [
+    "Referrer earns a $100 Visa Reward Card per qualifying referral; cap of $500 (5 referrals) per calendar year.",
+    "Friend must register via the referral link/email, open a new personal checking account, and within 60 days: enroll in eStatements AND complete direct deposits totaling $500+ OR 12+ debit card transactions (non-ATM).",
+    "Reward for new members only; referrer must register for the program and share the offer.",
+    "Cards delivered 4-6 weeks after all requirements complete; gift cards expire 90 days from issue.",
+    "TruChoice employees are ineligible; offer can change at any time without notice.",
+    "Visa Reward Cards may be reported as income to the IRS."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TruChoice FCU terms (trufcu.com): 'The person making the referral (Referrer) will earn a $100 Visa Reward Card for each individual referred' and 'A Referrer may earn up to $500 in Visa Reward Cards within a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program and terms pages hosted on official trufcu.com domain (trufcu.com/access/anytime-anywhere/refer-a-friend and trufcu.com/referral-terms-and-conditions), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard personal checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'truchoice' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: TruChoice FCU member who registers (employees ineligible). Friend: new member who registers via the referral link.",
+  "notes": "Verified 2026-09-23. TruChoice Federal Credit Union (Portland, ME). $100 Visa Reward Card per qualifying referral to the referrer, $500/year cap. Program runs on the ReferLive platform. Cards expire 90 days from issue - spend promptly.",
+  "numeric_basis": "payout from official terms ($100 Visa Reward Card per referral; $500/year cap); time: registering and sharing the referral link est. 5-15 min active",
+  "official_url": "https://www.trufcu.com/access/anytime-anywhere/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Earn $100 for yourself and $100 for a friend! ... The person making the referral (Referrer) will earn a $100 Visa Reward Card for each individual referred ... A Referrer may earn up to $500 in Visa Reward Cards within a calendar year.",
+  "payout_value_note": "$100 Visa Reward Card to the referrer per qualifying referral; $500 cap per calendar year.",
+  "route_id": "R3861",
+  "standard": {
+    "s1": {
+      "note": "Program + terms pages live on trufcu.com, fetched 2026-09-23; 'can be changed at any time without notice'",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer registers (employees excluded); friend new member registering via referral link",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new personal checking, eStatements, plus $500 direct deposits or 12 debit transactions, within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: Visa Reward Card delivered 4-6 weeks after all requirements complete",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: Visa Reward Cards may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the TruChoice refer-a-friend program and share your personal referral link.",
+    "Friend registers via your link and opens a new personal checking account.",
+    "Within 60 days, friend enrolls in eStatements and completes $500+ in direct deposits or 12+ debit transactions.",
+    "You receive a $100 Visa Reward Card 4-6 weeks later (up to $500/year); spend the card within 90 days of issue."
+  ],
+  "terms_url": "https://www.trufcu.com/referral-terms-and-conditions",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Visa Reward Card delivered 4-6 weeks after all requirements complete (friend has 60 days from account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

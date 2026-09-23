@@ -1,0 +1,86 @@
+{
+  "route_id": "R2442",
+  "verdict": "verify",
+  "official_url": "https://www.empowerfcu.com/refer-a-friend",
+  "terms_url": "https://www.empowerfcu.com/refer-a-friend",
+  "payout_quote": "Our Refer-a-Friend program lets you and your friend both earn $75. ... 3. You both get $75! ... Referral payments will be processed within 32 days from the date of completion of all qualification requirements and will be deposited into the share savings account.",
+  "steps": [
+    "Be an Empower FCU member in good standing (18+) and submit your friend's referral through the online form, a branch, or by calling 800.462.5000 BEFORE the new member's account is opened.",
+    "Your friend (not a current Empower FCU member) opens a share savings account and a checking account with a debit card within 60 days.",
+    "Your friend makes at least 10 debit or credit card purchases of $10+ each in the first 30 days after enrollment, and at least 10 more $10+ purchases in the 30 days that follow (20 total).",
+    "You both receive $75: referral payments are processed within 32 days of completion of all requirements and deposited into the share savings account."
+  ],
+  "catches": [
+    "The $75 is deposited into your share savings account - not cash in hand - and takes up to 32 days after all requirements are completed.",
+    "The friend's purchase bar is high: 20 purchases of at least $10 each across two consecutive 30-day periods.",
+    "The referral must be submitted BEFORE the new member opens the account; retroactive credit is not possible.",
+    "Business accounts, HSA accounts, and rep payee accounts are ineligible; employees, volunteers, and their household family members are excluded.",
+    "Members must be in good standing to collect; promotion subject to change or cancellation without notice.",
+    "Share savings earns 0.55% APY - the deposit sits in savings."
+  ],
+  "biggest_catch": "Your friend must make 20 separate $10+ card purchases across two consecutive months before either of you sees the $75 - and the referral form has to be in before they open the account.",
+  "eligibility": "Empower FCU members 18+ in good standing. Referred friend must not be a current Empower FCU member and must be 18+ and membership-eligible.",
+  "timing": "Referral payments processed within 32 days of completion of all qualification requirements; deposited into share savings.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Empower Federal Credit Union - real operating federal credit union (NCUA insured); official domain empowerfcu.com, Refer a Friend page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states verbatim 'Our Refer-a-Friend program lets you and your friend both earn $75' with concrete qualification steps."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; submitting the online referral form; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: payments processed within 32 days of completion of all requirements; 20-purchase/60-day friend requirements - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Empower FCU members 18+ in good standing; friend must not be a current member, 18+."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Referral submitted before account opening; friend opens share savings + checking with debit card, makes 20x $10+ purchases across two consecutive 30-day periods."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Payments processed within 32 days of completion of all requirements; deposited to share savings."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $75 for both parties; no per-year cap stated."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.empowerfcu.com/refer-a-friend - official Empower FCU Refer a Friend page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: submit form first, friend opens + 20 purchases over 60 days, $75 each within 32 days of completion."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'empower' false positives only (Petal/Empower acquisition note in R0474; a checking tier named Empower in R0988). No existing Empower FCU route.",
+  "payout_min_usd": 75.0,
+  "payout_max_usd": 75.0,
+  "payout_value_note": "$75 per referral deposited to share savings in official terms; no annual cap stated",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($75 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

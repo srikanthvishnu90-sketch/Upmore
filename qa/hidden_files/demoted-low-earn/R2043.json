@@ -1,0 +1,86 @@
+{
+  "route_id": "R2043",
+  "verdict": "verify",
+  "official_url": "https://www.atom.com/",
+  "terms_url": "https://www.atom.com/IPTransferAgreement",
+  "payout_quote": "Upon receipt of payment for the Entry in the form of Atom Credits (pursuant to the terms of the Services Agreement), the Creative hereby assigns to the Customer, all Intellectual Property Rights which the Creative has or may in the future have in the Entry.",
+  "steps": [
+    "Create a free Atom (formerly Squadhelp) creative account.",
+    "Browse live naming contests posted by businesses.",
+    "Submit original business name ideas / branding entries per the contest brief.",
+    "Clients rate entries and may shortlist yours across contest rounds.",
+    "If you win, receive payment in Atom Credits per the Services Agreement and transfer the IP rights in the winning entry."
+  ],
+  "catches": [
+    "Only contest winners are paid — most submitted entries earn nothing.",
+    "Prize amounts are set by the client per contest; no fixed payout range.",
+    "Winning entries transfer all IP rights to the client on payment.",
+    "Contests attract hundreds of entries; winning consistently is hard.",
+    "Credits-based payout per the Services Agreement — confirm current cash-out terms before counting on it."
+  ],
+  "biggest_catch": "Pure spec work: only winners get paid, and winning means giving up all IP rights in the entry.",
+  "eligibility": "Free creative account; anyone able to submit original naming/branding ideas.",
+  "timing": "Contests run continuously; winner payment after contest close.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Atom's own terms (atom.com/IPTransferAgreement) define the creative mechanism: payment 'in the form of Atom Credits' to the Creative for the winning entry, with IP assignment to the Customer."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed creative payout range — prizes are per-contest; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the public contest flow: account, browse contests, submit entries, client rating, winner paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Entering contests is free for creatives; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free creative account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-contest winner pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover spec-work risk, IP transfer, and per-contest prizes."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Atom (Squadhelp) route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous contests."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Atom (formerly Squadhelp) runs crowdsourced naming/branding contests where creatives submit entries and winners are paid in Atom Credits. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Contest prizes are set by the client per contest; Atom publishes no fixed creative payout range.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: per-contest prize, no official range. time: account + browse contests + submit entries, est. 30-90 min active per batch of entries."
+}

@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The cap is tight: five referrals per year maximum, so the most you can earn annually is $125 - the friend also only needs to join (no activity hurdles), making this a pure membership-referral play.",
+  "catches": [
+    "Referrer earns $25 deposited into their share savings account for each friend/family member who joins Lafayette Federal.",
+    "Cap: up to $125 total per year (5 referrals); referrer's friend also earns $25.",
+    "Cash rebate deposited within 14 days of the referral's account opening.",
+    "Must be eligible for membership; $50 minimum balance required to open the share savings account.",
+    "Offer subject to change without notice; cannot be combined with any other new member offers.",
+    "No expiry date stated on the page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Lafayette FCU page (lfcu.org/personal/services/referral-program/): 'Make Five Referrals and Earn Up to $125' and 'We will deposit $25 into your savings account, and your referral's savings account, after they join the credit union. Refer as many people for membership as you like and earn up to $125!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page on lfcu.org, updated ~40 days ago, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend joins the credit union",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no lfcu.org route; catalog has no Lafayette FCU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Lafayette Federal member. Friend: eligible for membership, opens an account.",
+  "notes": "Verified 2026-09-23. Lafayette Federal Credit Union (DC/MD/VA). Referrer earns $25 per referral; cap $125/year (5 referrals). Pure join-based payout with no activity hurdles.",
+  "numeric_basis": "payout from official lfcu.org terms ($25 per referral; cap $125/yr); time: submit referral form est. 5-15 min active",
+  "official_url": "https://www.lfcu.org/personal/services/referral-program/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Make Five Referrals and Earn Up to $125. ... We will deposit $25 into your savings account, and your referral's savings account, after they join the credit union. Refer as many people for membership as you like and earn up to $125!",
+  "payout_value_note": "$25 per referral; cap $125/year (5 referrals).",
+  "route_id": "R4793",
+  "standard": {
+    "s1": {
+      "note": "Page live on lfcu.org, fetched 2026-09-23; no fixed expiry, subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer member; friend eligible for membership",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: join the credit union ($50 minimum savings balance)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $25 deposited within 14 days of account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit up to five referrals at once through the Lafayette FCU referral form.",
+    "Follow up with your referrals and encourage them to join.",
+    "$25 is deposited into your savings account within 14 days of each referral's account opening (up to $125/year)."
+  ],
+  "terms_url": "https://www.lfcu.org/personal/services/referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 cash rebate deposited to the referrer's share savings within 14 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

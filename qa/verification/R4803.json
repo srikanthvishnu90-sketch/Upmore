@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete 10 debit card transactions AND a $250+ direct deposit within 60 days of account opening - a simple join pays nothing.",
+  "catches": [
+    "Referrer must register for the program and share the offer with friends, family, or coworkers.",
+    "Referrer earns a $50 reward bonus per referred individual who registers, opens a new Heritage High-Yield, Loyalty Rewards, or Traditional checking account, and completes the requirements.",
+    "Cap: $500 in reward bonuses per calendar year; only one referrer per referred person.",
+    "Friend must: register via the referral email/social link; open a qualifying checking account; within 60 days complete 10+ debit card transactions (excluding ATMs), 1+ direct deposits totaling $250+, and keep the account in good standing.",
+    "Bonus appears in the Membership Share account up to 60 days after all requirements are met.",
+    "Bonuses are considered interest and reported on IRS Form 1099-MISC.",
+    "Offer can be changed at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Credit Union West page (cuwest.org): 'The person making the referral (Referrer) will earn a $50 reward bonus for each individual referred (Referred Person) to Credit Union West who registers for the offer, opens a new ... checking account, and completes the offer requirements within the time specified in the offer. ... A Referrer may earn up to $500 in reward bonuses within a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms page on cuwest.org domain, fetched live 2026-09-23; changeable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no cuwest.org route; catalog has no Credit Union West entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Credit Union West member. Friend: new member (never had an account or been primary on one), in AZ membership area.",
+  "notes": "Verified 2026-09-23. Credit Union West (Arizona). Referrer earns $50 per qualifying referral; cap $500/calendar year.",
+  "numeric_basis": "payout from official cuwest.org terms ($50 per referral; cap $500/yr); time: register + share referral est. 5-15 min active",
+  "official_url": "https://www.cuwest.org/campaigns/refer-a-friend-referred",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 reward bonus for each individual referred (Referred Person) to Credit Union West who registers for the offer, opens a new Heritage High-Yield, Loyalty Rewards, or Traditional checking account, and completes the offer requirements within the time specified in the offer. ... A Referrer may earn up to $500 in reward bonuses within a calendar year.",
+  "payout_value_note": "$50 reward bonus to the referrer per qualifying referral; cap $500/calendar year.",
+  "route_id": "R4803",
+  "standard": {
+    "s1": {
+      "note": "Terms live on cuwest.org, fetched 2026-09-23; changeable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer member; friend new member in AZ coverage area",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register via link, open qualifying checking, within 60 days 10+ debit transactions + $250+ direct deposit + good standing",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus appears in Membership Share account up to 60 days after requirements met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses considered interest, reported on IRS Form 1099-MISC",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Credit Union West Refer-a-Friend program and share the offer.",
+    "Friend registers via your referral email or link and opens a qualifying checking account.",
+    "Friend completes 10+ debit card transactions and a $250+ direct deposit within 60 days, keeping the account in good standing.",
+    "You receive a $50 bonus in your Membership Share account (up to $500/year)."
+  ],
+  "terms_url": "https://www.cuwest.org/campaigns/refer-a-friend-referred",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus appears in the Membership Share account up to 60 days after requirements are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

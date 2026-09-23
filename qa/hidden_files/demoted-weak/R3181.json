@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "HURR keeps a 15% lender commission on the full rental cost (rent + delivery + cleaning), and damage protection is only opt-in up to £50 of repairable damage - anything worse is the renter's problem to resolve, so lending high-value designer pieces still carries real loss risk, and earnings depend entirely on demand for your specific wardrobe.",
+  "catches": [
+    "As a Lender you pay HURR a commission: default 15% of the total rental cost (Rental Fee + Delivery Fee + Cleaning Fee) on standard rentals; on FLEX rentals the commission is calculated on the Rental Fee alone. Renters pay a separate 15% default commission too.",
+    "Damage protection is opt-in and capped: it covers repairable damage up to £50 only; anything over £50 is the renter's responsibility. Lenders can set their own security deposits as extra protection.",
+    "Earnings are fully demand-driven: you set prices and availability, but income depends on brand desirability, size match, and local renter demand - most wardrobes earn little or nothing.",
+    "Items suffer wear, cleaning costs, late returns, and loss risk; you handle listing quality, packaging, and handover logistics.",
+    "UK platform (prices in GBP); rental income is taxable (UK £1,000 trading allowance may apply). Identity/account verification required.",
+    "No guaranteed bookings: lender testimonials on the site are marketing examples, not typical outcomes."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "hurrcollective.com loaded live (terms page crawled 2 days ago, how-to-lend page crawled 13 days ago): HURR is an operating peer-to-peer fashion rental marketplace where members list wardrobe items for rent.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Terms of Service verbatim: 'as a Lender, you agree to pay HURR a commission payment calculated at the applicable rate of the total rental cost (including the Rental Fee, Delivery Fee and Cleaning Fee)... Unless another rate is specified the default rate shall be 15%.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official: no listing fee or upfront fee to become a lender; commissions are deducted from completed rentals only.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official how-to-lend page: lenders list items, set prices/availability and security deposits; opt-in damage protection covers repairable damage up to £50; payouts follow completed rentals with commission deducted.",
+      "pass": true
+    }
+  },
+  "eligibility": "18+, UK-based; must own the clothing/accessories you list. Lender application subject to HURR acceptance.",
+  "notes": "HURR (HURR Collective) is a UK peer-to-peer wardrobe rental marketplace - the fashion-rental analogue of Turo/Airbnb. Distinct mechanism from R3179 (By Rotation rejected: no lender-side % disclosed) and R3172 Hygglo (general gear, different platform/region). Verified under own-domain Terms of Service disclosing a concrete 15% lender commission. Dedupe: no existing Hurr route. Region: UK (GBP); rental income taxable under UK rules.",
+  "numeric_basis": "payout 0/0 (self-priced; no official range); time: ~20-30 min to photograph and list items + ~20-40 min per rental (requests, handover/delivery, condition check), est. active minutes to first completed paid rental.",
+  "official_url": "https://www.hurrcollective.com/how-to-lend",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "as a Lender, you agree to pay HURR a commission payment calculated at the applicable rate of the total rental cost (including the Rental Fee, Delivery Fee and Cleaning Fee), as specified on the HURR Platform and as found here. Unless another rate is specified the default rate shall be 15%.",
+  "payout_value_note": "No official fixed payout range - lenders set their own rental prices; amounts in GBP on a UK platform; income is demand dependent.",
+  "route_id": "R3181",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: 18+, UK, own the listed items, lender application accepted.",
+      "pass": true
+    },
+    "s2": {
+      "note": "15% lender commission concretely disclosed in official Terms of Service.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Payout per completed rental with 15% commission deducted.",
+      "pass": true
+    },
+    "s4": {
+      "note": "payout_quote is verbatim TOS; 'magical experiences' marketing phrase isolated in weasel_words.",
+      "pass": true
+    },
+    "s5": {
+      "note": "hurrcollective.com terms + how-to-lend pages indexed live (crawled within last 2 weeks).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete and match official lending flow.",
+      "pass": true
+    },
+    "s7": {
+      "pass": true,
+      "note": "Checked 2026-09-23."
+    }
+  },
+  "steps": [
+    "Register as a HURR member and apply to become a lender (subject to HURR acceptance).",
+    "List wardrobe items you own (womenswear, accessories) with photos, rental price, and availability - no listing fee.",
+    "Set an optional security deposit on items for extra protection against damage or loss.",
+    "Accept incoming rental requests, arrange delivery or handover, and confirm item condition.",
+    "Get paid for each completed rental with the 15% lender commission deducted (opt-in damage protection covers repairable damage up to £50)."
+  ],
+  "terms_url": "https://www.hurrcollective.com/terms-of-service",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Listing is free and self-serve; rentals booked on demand. Payout per completed rental with 15% commission deducted. First rental depends on item desirability and local demand.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "magical experiences"
+  ]
+}

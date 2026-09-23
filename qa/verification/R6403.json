@@ -1,0 +1,86 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The $10 requires credit approval for a NEW Belk Rewards+ card AND a purchase made the same day the account is opened: denied applications get nothing. Applying is a hard inquiry, and the 34.99% variable purchase APR means carrying any balance costs far more than the $10 reward.",
+ "catches": [
+  "Savings on planned spending, not income: the $10 Bonus Belk Reward Dollars are reward certificates for Belk purchases — never buy extra just to chase them.",
+  "Requires BOTH credit approval for a new Belk Rewards+ credit card AND a purchase made the day the account is opened; denied applicants get nothing.",
+  "Never spend extra to chase it: make only a small already-planned Belk purchase on day one.",
+  "No annual fee is stated on the official offer page — check the credit card agreement before applying; the variable purchase APR is 34.99% (per the official page), so carry no balance.",
+  "Full card application = hard inquiry on your credit report; late applications (approved later) still qualify but the 20%-off first-day coupon only covers first-day purchases.",
+  "Belk Reward Dollars expire 60 days after issue and exclude gift cards, leased departments, and several premium brands."
+ ],
+ "checked_at": "2026-09-23T05:32:43Z",
+ "critical": {
+  "c1": {
+   "evidence": "Belk is a real national retailer; the offer terms are on the official belk.com Belk Rewards+ credit card page (ocapi.belk.com, Belk's domain), fetched live 2026-09-23.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official belk.com page: '1,000 Bonus Belk Reward Points will be applied to your account (equaling $10 Bonus Belk Reward Dollars) when a purchase is made the day the account is opened. ... Only one $10 Bonus Belk Reward Dollars offer per account.'",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No upfront fee to apply. The $10 requires a day-one purchase (any amount) but the bonus itself is not bought.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Terms live on belk.com as fetched 2026-09-23 (UTC); ongoing standard offer.",
+   "pass": true
+  }
+ },
+ "eligibility": "New Belk Rewards+ credit card accounts (store card or Mastercard); subject to Synchrony Bank credit approval; a purchase must be made the day the account is opened. One $10 bonus per account.",
+ "notes": "Verified on the official belk.com Belk Rewards+ credit card page 2026-09-23 (UTC). The fixed-value component is the $10 Bonus Belk Reward Dollars (the 20% first-day coupon has no dollar cap and is not counted). Purchase APR 34.99% from the official page. Framed as savings on planned Belk spending. Distinct from any existing Belk route (none in catalog).",
+ "numeric_basis": "payout from official terms ($10 Bonus Belk Reward Dollars = 1,000 bonus points, on new-account day-one purchase); time: credit-card application est. 20-40 min active",
+ "official_url": "http://ocapi.belk.com/customer-service/rewards/",
+ "payout_max_usd": 10,
+ "payout_min_usd": 10,
+ "payout_quote": "1,000 Bonus Belk Reward Points will be applied to your account (equaling $10 Bonus Belk Reward Dollars) when a purchase is made the day the account is opened.",
+ "payout_value_note": "$10 Bonus Belk Reward Dollars (reward certificates) issued for a day-one purchase on a newly approved Belk Rewards+ card; savings on Belk spending, not cash",
+ "route_id": "R6403",
+ "standard": {
+  "s1": {
+   "note": "New-cardholder signup bonus mechanism; no Belk route exists in the catalog or verification files.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Concrete steps: apply for the Belk Rewards+ card, receive approval, make any purchase the same day the account is opened, $10 in Reward Dollars issued within 10 days.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Ongoing standard offer; fetched and verified live 2026-09-23.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Catches include the four credit-card catches (never-spend-extra, annual-fee check-agreement, hard inquiry, 34.99% APR balance-carry risk) plus day-one-purchase and expiry restrictions.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No upfront fee to apply.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Public offer on belk.com — no invitation required; credit approval is the only gate.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Dedupe: grep of existing-providers.txt + verification-file search — no Belk route in the catalog.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Apply for a new Belk Rewards+ credit card (store card or Mastercard) and receive credit approval.",
+  "Make any purchase with the new card the day the account is opened.",
+  "The $10 Bonus Belk Reward Dollars (1,000 bonus points) are issued to your Belk Rewards+ account within 10 days; redeem toward a Belk purchase within 60 days.",
+  "Pay the statement balance in full by the due date so the 34.99% APR never applies."
+ ],
+ "terms_url": "http://ocapi.belk.com/customer-service/rewards/",
+ "time_max_minutes": 40,
+ "time_min_minutes": 20,
+ "timing": "One-time new-account bonus; ongoing standard offer while the page is live.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": []
+}

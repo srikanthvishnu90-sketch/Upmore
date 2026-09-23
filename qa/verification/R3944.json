@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Rewards capped at $100 per household and the new account must receive its first direct deposit or paper payroll check within 45 days.",
+  "catches": [
+    "$50 for you and $50 for your friend per qualifying referral.",
+    "Harbor Pointe reserves the right to cap member reward contributions at $100.00 per household.",
+    "Referrer must be a member in good standing for at least 6 months (no delinquent loans or negative balances).",
+    "New member opens a membership account plus checking with direct payroll deposit or first paper payroll check within 45 days of account opening.",
+    "Cash awarded at the time of first direct deposit; may be reversed if the new account is closed within the first 6 months.",
+    "Membership open to anyone living in St. Louis, Carlton, Lake, East Itasca MN or Douglas County WI; 18+.",
+    "Cash award subject to taxes; recipient may receive a 1099; cannot be combined with other promotional offers."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official hpcu.us: 'Earn $50 for you and $50 for your friend!' and '$50.00 will be deposited into the savings account of both the referring (current member) and referred (new member)'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms on official hpcu.us domain (/services/refer-a-friend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'harbor pointe' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: member in good standing for at least 6 months. Friend: new member in St. Louis, Carlton, Lake, East Itasca MN or Douglas County WI, 18+.",
+  "notes": "Re-reviewed 2026-09-23. Harbor Pointe Credit Union (hpcu.us/refer-a-friend): $50 to the referrer and $50 to the friend; cash awarded at the time of first direct deposit (or first paper paycheck deposit within 45 days) in the new checking account. Exact discretionary cap wording on the official page: 'Harbor Pointe Credit Union reserves the right to cap member reward contributions at $100.00 per household.' Cash award subject to applicable taxes; member may receive a 1099.",
+  "numeric_basis": "payout from official page ($50 per referral; $100/household cap); time: completing referral form est. 5-10 min active",
+  "official_url": "https://hpcu.us/services/refer-a-friend/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "Earn $50 for you and $50 for your friend!",
+  "payout_value_note": "$50 per qualifying referral; $100 per household cap.",
+  "route_id": "R3944",
+  "standard": {
+    "s1": {
+      "note": "Terms live on hpcu.us, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: 6-month good-standing referrer; regional membership",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: membership + checking with first payroll deposit within 45 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: cash awarded at the time of first direct deposit",
+      "pass": true
+    },
+    "s5": {
+      "note": "Cash award subject to taxes; recipient may receive a 1099",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit your name and your friend's name and email on the referral form.",
+    "Your friend opens a new membership account plus checking and sets up direct payroll deposit (or deposits first paper payroll check) within 45 days.",
+    "$50 is deposited to each of your savings accounts at the time of first direct deposit."
+  ],
+  "terms_url": "https://hpcu.us/services/refer-a-friend/",
+  "time_max_minutes": 10,
+  "time_min_minutes": 5,
+  "timing": "Cash awarded at the time of first direct deposit in the new checking account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

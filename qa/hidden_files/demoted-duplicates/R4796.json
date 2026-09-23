@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is a loan referral, not a membership referral - you earn nothing unless the friend actually closes on a $5,000+ loan with a 24+ month term (the bonus is per new member/borrower, not per loan).",
+  "catches": [
+    "Friend must: establish a $5 Share Savings and close on an eDCU loan of at least $5,000 with a minimum term of 24 months.",
+    "$50 paid to the referring member within two weeks of loan funding.",
+    "Bonus granted per new member/borrower, not per new loan funded.",
+    "No limit on the number of referrals.",
+    "evergreenDIRECT can cancel the promotion at any time without prior notification.",
+    "Referral bonus to the existing member may be subject to tax reporting for amounts over $600."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official evergreenDIRECT loan referral flyer (evergreendirect.org): 'SHARE US YOU BOTH GET $50 ... when they close on an eDCU loan' and 'Bonus $50 will be paid within two weeks of loan funding.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official flyer on evergreendirect.org domain, fetched live 2026-09-23; no expiry stated, terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens $5 share savings and closes on a loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no evergreendirect.org route; catalog has no evergreenDIRECT entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: evergreenDIRECT member. Friend: new member/borrower closing on a $5,000+, 24+ month eDCU loan.",
+  "notes": "Verified 2026-09-23. evergreenDIRECT Credit Union (WA). Referrer earns $50 per closed-loan referral; no referral cap. Loan referral, distinct from checking/membership mechanisms.",
+  "numeric_basis": "payout from official evergreendirect.org terms ($50 per closed loan; no cap); time: complete coupon + share est. 5-15 min active",
+  "official_url": "https://evergreendirect.org/_/kcms-doc/518/54145/LoanReferralFlyer_website.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "SHARE US YOU BOTH GET $50 ... when they close on an eDCU loan. ... There is no limit to how many referrals you can earn! ... Bonus $50 will be paid within two weeks of loan funding. The referral bonus is granted per new member/borrower not per new loan funded.",
+  "payout_value_note": "$50 to the referring member per closed-loan referral; no referral cap.",
+  "route_id": "R4796",
+  "standard": {
+    "s1": {
+      "note": "Flyer live on evergreendirect.org, fetched 2026-09-23; no fixed expiry, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer member; friend new member/borrower closing a qualifying loan",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $5 share savings + $5,000+ loan funded with 24+ month term",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 paid within two weeks of loan funding",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: referral bonus may be subject to tax reporting for amounts over $600",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct loan-referral mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the eDCU loan referral coupon with your member information.",
+    "Share the coupon with a friend or family member.",
+    "Friend establishes a $5 Share Savings and closes on an eDCU loan of at least $5,000 with a 24+ month term.",
+    "You receive $50 within two weeks of the loan funding - no limit on referrals."
+  ],
+  "terms_url": "https://evergreendirect.org/_/kcms-doc/518/54145/LoanReferralFlyer_website.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 paid within two weeks of the referred loan funding.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

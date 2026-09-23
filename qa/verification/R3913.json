@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $25 bonus offer explicitly ends 10/31/2026, and the friend must be 18+ in a qualifying new account within 60 days.",
+  "catches": [
+    "Referrer and the referred new member each receive $25 deposited into their Primary Savings for a valid referral.",
+    "Bonus offer of $25 deposit ends 10/31/2026; referral program subject to change or discontinuation at any time.",
+    "Referrer must be an existing member of the credit union in good standing; employees and officials cannot participate.",
+    "Friend must mention your name as the Referrer; new account must include one of the listed qualifying options (e.g., savings with $25/month DD, checking with 5+ debit transactions, money market kept open 45 days, $500 savings balance for 45 consecutive days within 60 days).",
+    "Only one bonus per qualifying referred new member; must be 18 or older; new accounts must meet qualifications within 60 days of account opening.",
+    "After 5 eligible referrals, the referrer may choose one additional reward (e.g., $40 deposited into the account, skip one loan payment, or loan rate/fee perks); bonuses non-transferrable, valid 12 months from issue.",
+    "Tax treatment not stated on the page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official State CS Employees FCU page (statecs.org): 'By making a valid referral ... Referrer and the referred new member will both receive $25 deposited into their Primary Savings.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official statecs.org domain (statecs.org/about/refer/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'state cs' found no referral-program coverage in catalog or evidence files. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing State CS member in good standing (employees/officials excluded). Friend: 18+, new member, meets a qualifying option within 60 days of account opening.",
+  "notes": "Verified 2026-09-23. State CS Employees Federal Credit Union (Belle Vernon, PA). $25 to both referrer and referred member; bonus offer ends 2026-10-31. After 5 referrals the referrer may choose one additional reward (e.g., $40 account deposit).",
+  "numeric_basis": "payout from official page ($25 each side per valid referral; 5-referral milestone choice); time: referring and friend mentioning you est. 5-15 min active",
+  "official_url": "https://statecs.org/about/refer/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "By making a valid referral as determined in the sole discretion of the Credit Union, Referrer and the referred new member will both receive $25 deposited into their Primary Savings.",
+  "payout_value_note": "$25 deposited to Primary Savings per valid referral (both sides); bonus offer ends 2026-10-31.",
+  "route_id": "R3913",
+  "standard": {
+    "s1": {
+      "note": "Program page live on statecs.org, fetched 2026-09-23; $25 bonus offer ends 10/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member in good standing; friend 18+, new member; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open account and meet one qualifying option within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to join State CS and make sure they mention your name as the Referrer.",
+    "Friend opens an account meeting one of the qualifying options within 60 days.",
+    "You and the friend each receive $25 deposited into Primary Savings.",
+    "After 5 eligible referrals, choose one additional reward (e.g., $40 account deposit)."
+  ],
+  "terms_url": "https://statecs.org/about/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Qualifications must be met within 60 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R2053",
+  "verdict": "verify",
+  "official_url": "https://www.intigriti.com",
+  "terms_url": "https://www.intigriti.com/product/bug-bounty",
+  "payout_quote": "A global community of 150,000+ verified security researchers helps uncover vulnerabilities before malicious actors can exploit them.",
+  "steps": [
+    "Register a free Intigriti researcher account.",
+    "Browse the 400+ active bug bounty programs.",
+    "Read each program's scope, rewards, and rules of engagement.",
+    "Test in-scope assets ethically and submit vulnerability reports via Intigriti.",
+    "Intigriti's triage validates the report; on client acceptance, payment is automatically processed."
+  ],
+  "catches": [
+    "Only in-scope, unique, well-written reports that pass triage are paid.",
+    "Bounty amounts are set per program; no platform-wide payout range.",
+    "Private/invite-only programs are limited to vetted high-ranking researchers.",
+    "Requires real security skills; beginners earn nothing for a long time.",
+    "Violating rules of engagement can end your access."
+  ],
+  "biggest_catch": "Payment requires validated, in-scope, unique findings — most testing time produces no payout.",
+  "eligibility": "Free researcher account; security testing skills.",
+  "timing": "400+ programs run continuously; payment processed on client acceptance.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Intigriti's own site states the mechanism: 'Inscope, unique and wellwritten reports are submitted to client... Client accepts report, and payment is automatically processed' with '400+' active programs."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms tie payment to accepted valid reports per program — amounts are program-set; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: register, browse programs, read scope/rules, test, submit, triage, paid on acceptance."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Joining and participating are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free researcher account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-program bounties; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover triage-gated payment and skill requirements."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Intigriti route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous programs."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Intigriti is a bug-bounty platform with 400+ active programs where researchers earn bounties for validated in-scope vulnerabilities. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Bounty amounts are set per program; Intigriti publishes no fixed platform-wide range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 240,
+  "numeric_basis": "payout: per-program bounties, no official range. time: account + browse programs + read scope/rules + first testing session, est. 60-240 min active."
+}

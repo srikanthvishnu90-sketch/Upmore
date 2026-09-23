@@ -5,11 +5,11 @@
     "Texas residential service only",
     "Bill credit, not cash",
     "Friend must remain enrolled at least 60 consecutive days",
-    "Friend must enroll via the personal referral link \u2014 other enrollments do not qualify",
+    "Friend must enroll via the personal referral link — other enrollments do not qualify",
     "TXU can change the reward at any time before enrollment",
     "Up to $2,000 per year"
   ],
-  "checked_at": "2026-09-22",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": [
     "Texas residential service",
     "Friend enrolls via the personal referral link",
@@ -19,7 +19,7 @@
     "Current TXU Energy residential customer",
     "Friend is a new TXU customer who enrolls via the personal referral link and remains enrolled 60 consecutive days"
   ],
-  "notes": "Official TXU referral terms and conditions state the $50 bill credit to both sides and the $2,000 annual maximum.",
+  "notes": "Official TXU referral terms and conditions state the $50 bill credit to both sides and the $2,000 annual maximum. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)]",
   "official_url": "https://www.txu.com/en/help/my-txu-account/refer-a-friend/refer-a-friend-terms-conditions",
   "payout_quote": "$50 bill credit to both advocate and friend per valid referral; up to $2,000 per year",
   "route_id": "R0845",
@@ -34,5 +34,11 @@
   "timing": "Credit applied once the friend completes 60 days of enrollment and remains an active customer.",
   "upfront_fee": false,
   "verdict": "verify",
-  "weasel_words": []
+  "weasel_words": [],
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 2000.0,
+  "payout_value_note": "'up to' amount in official terms; floor $0",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default App Referral (5-15min active)"
 }

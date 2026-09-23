@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Applying never guarantees a response — you compete with other applicants on every listing.",
+  "catches": [
+    "No payment handled by the board — offers and pay are negotiated with each employer.",
+    "Some employers require specific regions or timezones despite the remote label.",
+    "Applying does not guarantee any response; competition varies by role.",
+    "Premium features cost extra; the free path covers browsing and applying."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Working Nomads' official FAQ (workingnomads.com/faq) states: 'Working Nomads is a leading remote job board that connects professionals with reliable remote opportunities worldwide. Our platform is updated daily with job listings across various industries, including development, marketing, management, design, healthcare, sales, and more.' Live listings were observed this session (e.g. a 100% remote video creator role).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed pay range — compensation is set per employer; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official FAQ: 'Browse our job listings, choose a role that interests you, and follow the employer's application instructions.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee is stated on official pages for browsing or applying; optional premium features are separate.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone able to work remotely in development, marketing, management, design, healthcare, sales, and related categories.",
+  "notes": "Scenario: remote job board. Working Nomads is a fully-remote job board updated daily, with listings vetted for credibility per its official FAQ. Pay is per employer and negotiated — variable, never guaranteed.",
+  "numeric_basis": "payout: compensation is set per employer; the board publishes no pay ranges. time: browse listings + apply to matching roles, est. 30-90 min active.",
+  "official_url": "https://www.workingnomads.com/faq",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Working Nomads is a leading remote job board that connects professionals with reliable remote opportunities worldwide.",
+  "payout_value_note": "The board publishes no pay ranges — compensation is set per employer and negotiated per offer; variable.",
+  "route_id": "R5449",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to work remotely in the listed categories.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-employer negotiated pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no platform payments, location restrictions, competition, and premium upsell.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Working Nomads absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official FAQ and live listings captured 2026-09-23 (workingnomads.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: the board is updated daily; hiring follows each employer.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Browse the Working Nomads remote job listings, filtered by category and location preference.",
+    "Open roles matching your skills and check any regional/timezone requirements.",
+    "Follow the employer's application instructions (website, ATS, email, or in-platform).",
+    "Complete the employer's process and negotiate the offer directly."
+  ],
+  "terms_url": "https://www.workingnomads.com/faq",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "The board is updated daily; hiring timelines follow each employer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

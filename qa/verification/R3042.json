@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "Payout is explicitly variable with no guaranteed floor: the FAQ says 'this does NOT mean you are getting paid by the hour' - each experiment's exact payout is shown on SONA before you sign up.",
+  "catches": [
+    "No guaranteed hourly rate or floor; payout varies per experiment (average cited is $20/hr)",
+    "Exact payout only disclosed per experiment on SONA before signup",
+    "Check payments must be claimed in person directly after the experiment - lost/expired checks are not reissued",
+    "Show-up fees apply if you arrive but the session is overfull; early arrivals get priority",
+    "Non-UC Berkeley community members only get occasional studies via the 'Paid studies for NON-Cal participants' SONA course"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "xlab.berkeley.edu FAQ page indexed 2 days before verification; Haas participate page indexed 19 days before - both current",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "XLab FAQ states 'average payment is $20 per hour of participation' over 1-1.5 hr experiments; Haas page states 'at least $15 an hour compensation'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps from official pages: create SONA account, join the XLab pool, sign up for a study, attend, get paid",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free to join on SONA; no fee; non-invasive lab experiments (questionnaires, economic games)",
+      "pass": true
+    }
+  },
+  "eligibility": "UC Berkeley students and staff via SONA; community members (non-Cal) eligible for occasional studies via the 'Paid studies for NON-Cal participants' SONA course",
+  "notes": "Two official UC Berkeley sources corroborate: the XLab's own FAQ (average $20/hr, 1-1.5 hr sessions, check or Amazon payout) and the Haas BIBS participate page (at least $15/hr). payout_max assumes a 1.5 hr session at the average rate; floor set to 0 because the FAQ explicitly denies a guaranteed hourly rate.",
+  "numeric_basis": "payout from official terms (average $20/hr over stated 1-1.5 hr experiments; no floor since rate is explicitly not guaranteed); time: stated 60-90 min experiments plus SONA signup and screening estimate",
+  "official_url": "https://xlab.berkeley.edu/participate/FAQs.html",
+  "payout_max_usd": 30,
+  "payout_min_usd": 0,
+  "payout_quote": "Payouts vary, but the average payment is $20 per hour of participation (however, this does NOT mean you are getting paid by the hour. Some participants may receive more, some may receive less). The payout is given out by check directly after the experiment or virtually (Amazon.com), which may take longer.",
+  "payout_value_note": "Average cash-equivalent per-hour figure from the XLab FAQ; per-experiment payouts vary and are shown on SONA before signup.",
+  "route_id": "R3042",
+  "standard": {
+    "s1": {
+      "note": "Provider's own stated average hourly figure; Amazon payout treated at face value",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-experiment pay with no guaranteed floor, per the FAQ's own disclaimer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no floor, check-claim rules, overfull-session show-up fees",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card - n/a",
+      "pass": true
+    },
+    "s5": {
+      "note": "Timing: check directly after experiment; virtual (Amazon) payout may take longer",
+      "pass": true
+    },
+    "s6": {
+      "note": "Deduped: no UC Berkeley / XLab route in catalog or evidence files",
+      "pass": true
+    },
+    "s7": {
+      "note": "FAQ's variability disclaimer quoted; no inflated guarantee",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a SONA account (UC Berkeley affiliates join the XLab pool; non-affiliates join the 'Paid studies for NON-Cal participants' course)",
+    "Check each experiment's study information on SONA for its stated payout",
+    "Sign up for an experiment slot",
+    "Attend the in-lab session at the XLab (non-invasive, questionnaires/economic games)",
+    "Claim your check directly after the experiment or receive virtual payout"
+  ],
+  "terms_url": "https://xlab.berkeley.edu/participate/FAQs.html",
+  "time_max_minutes": 120,
+  "time_min_minutes": 75,
+  "timing": "Check paid directly after the experiment; virtual (Amazon.com) payout may take longer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "average"
+  ]
+}

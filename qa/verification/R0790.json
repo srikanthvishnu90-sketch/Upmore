@@ -3,15 +3,15 @@
     "android": null,
     "ios": null
   },
-  "biggest_catch": "The amount depends on your National Grid rate class: regular residential (R-1) gets $50 at enrollment plus $20 each summer; income-eligible (R-2) gets $100 plus $20. You need a Wi-Fi smart thermostat wired to a central cooling system in Massachusetts \u2014 window units and non-central AC don't qualify.",
+  "biggest_catch": "The amount depends on your National Grid rate class: regular residential (R-1) gets $50 at enrollment plus $20 each summer; income-eligible (R-2) gets $100 plus $20. You need a Wi-Fi smart thermostat wired to a central cooling system in Massachusetts — window units and non-central AC don't qualify.",
   "catches": [
     "Must be a National Grid Massachusetts electric or dual-fuel customer; your account rate (R-1/R-2/G-1/G-2) determines the incentive.",
-    "Your smart thermostat must be connected to a central cooling system \u2014 no central AC, no enrollment.",
-    "Rewards arrive as a virtual prepaid Visa by email \u2014 activate it within two weeks or a physical card is mailed.",
-    "Enrollment reward sent within 4\u20136 weeks of enrollment.",
+    "Your smart thermostat must be connected to a central cooling system — no central AC, no enrollment.",
+    "Rewards arrive as a virtual prepaid Visa by email — activate it within two weeks or a physical card is mailed.",
+    "Enrollment reward sent within 4–6 weeks of enrollment.",
     "You can opt out of individual peak events, but annual rewards assume continued participation."
   ],
-  "checked_at": "2026-09-23T06:00:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "evidence": "National Grid is the regulated electric utility in Massachusetts; program page is on nationalgridus.com.",
@@ -26,14 +26,14 @@
       "pass": true
     },
     "c4": {
-      "evidence": "Official page states the enrollment reward is sent within 4\u20136 weeks after enrollment.",
+      "evidence": "Official page states the enrollment reward is sent within 4–6 weeks after enrollment.",
       "pass": true
     }
   },
   "eligibility": "National Grid Massachusetts electric or dual-fuel customer with a participating Wi-Fi smart thermostat connected to a central cooling system. Incentive level follows your account rate: R-1 ($50 + $20/summer), R-2 income-eligible ($100 + $20/summer), G-1/G-2 business ($50 + $200/summer).",
-  "notes": "Verified from the official National Grid ConnectedSolutions thermostat program page (Massachusetts) on 2026-09-23. Rewards are prepaid Visa cards \u2014 spendable found money for letting the utility nudge your thermostat on peak summer days. Note: catalog R0315 is a generic 'smart thermostat rebates' finder entry; this is the specific National Grid program (no overlap).",
+  "notes": "Verified from the official National Grid ConnectedSolutions thermostat program page (Massachusetts) on 2026-09-23. Rewards are prepaid Visa cards — spendable found money for letting the utility nudge your thermostat on peak summer days. Note: catalog R0315 is a generic 'smart thermostat rebates' finder entry; this is the specific National Grid program (no overlap). [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
   "official_url": "https://www.nationalgridus.com/ma-home/connected-solutions/thermostat-program",
-  "payout_quote": "Earn $50 at enrollment plus $20 after each summer (R-1 residential); $100 at enrollment plus $20 after each summer (R-2 income-eligible). Rewards by email as a virtual prepaid Visa within 4\u20136 weeks of enrollment.",
+  "payout_quote": "Earn $50 at enrollment plus $20 after each summer (R-1 residential); $100 at enrollment plus $20 after each summer (R-2 income-eligible). Rewards by email as a virtual prepaid Visa within 4–6 weeks of enrollment.",
   "route_id": "R0790",
   "standard": {
     "s1": {
@@ -45,7 +45,7 @@
       "pass": true
     },
     "s3": {
-      "note": "Enrollment reward within 4\u20136 weeks; annual reward after each summer season.",
+      "note": "Enrollment reward within 4–6 weeks; annual reward after each summer season.",
       "pass": true
     },
     "s4": {
@@ -53,7 +53,7 @@
       "pass": true
     },
     "s5": {
-      "note": "nationalgridus.com \u2014 National Grid's official site.",
+      "note": "nationalgridus.com — National Grid's official site.",
       "pass": true
     },
     "s6": {
@@ -68,16 +68,22 @@
   "steps": [
     "Confirm you're a National Grid Massachusetts electric or dual-fuel customer with a smart thermostat on a central cooling system.",
     "Enroll your qualifying thermostat in ConnectedSolutions through the National Grid page.",
-    "Allow small automatic thermostat adjustments on hot summer peak days (typically 10\u201315 events, 3\u20134 hours each; you can opt out of any event).",
-    "Receive your enrollment reward ($50 R-1 / $100 R-2) as a virtual prepaid Visa by email within 4\u20136 weeks.",
+    "Allow small automatic thermostat adjustments on hot summer peak days (typically 10–15 events, 3–4 hours each; you can opt out of any event).",
+    "Receive your enrollment reward ($50 R-1 / $100 R-2) as a virtual prepaid Visa by email within 4–6 weeks.",
     "Stay enrolled to earn the $20 annual reward after each summer."
   ],
   "terms_url": "https://www.nationalgridus.com/ma-home/connected-solutions/thermostat-program",
-  "timing": "Enrollment reward within 4\u20136 weeks; annual rewards after each summer season (June 1\u2013September 30).",
+  "timing": "Enrollment reward within 4–6 weeks; annual rewards after each summer season (June 1–September 30).",
   "upfront_fee": false,
   "verdict": "verify",
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "flat bonus amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Rebate/Incentive (20-45min active)"
 }

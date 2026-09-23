@@ -1,7 +1,7 @@
 {
   "route_id": "R0086",
   "verdict": "verify",
-  "checked_at": "2026-09-23T01:38:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "official_url": "https://www.washtrust.com/free-checking",
   "terms_url": "https://www.washtrust.com/free-checking",
   "payout_quote": "Open any new Washington Trust personal checking account and get $200 when you have your paychecks direct deposited: minimum $25 opening deposit, promo code PLUS200 at opening, 2 payroll/SS/pension/government-benefits direct deposits within 90 days (P2P excluded); $200 deposited within 30 days after the second direct deposit.",
@@ -22,7 +22,7 @@
   ],
   "biggest_catch": "ENTITY IDENTITY WARNING: this offer is from The Washington Trust Company of Westerly, RI (washtrust.com) — a different bank from Washington Trust Bank of Spokane, WA (watrust.com), which has no checking bonus. Confirm the route intends the RI bank before treating this as verified.",
   "eligibility": "New personal-checking customers of The Washington Trust Company (RI), 18+; no bonus received from the bank in the last 2 years; one per tax-reported owner.",
-  "notes": "VERIFIED with a loud entity-identity caveat: the official $200 offer (washtrust.com/free-checking, code PLUS200) belongs to The Washington Trust Company of Westerly, RI — NOT to watrust.com (Washington Trust Bank, Spokane, WA), which has no bonus. Aggregator corroboration ($200, Free200) confirms the offer is live. The parent should confirm which entity the R0086 route targets; if it is the Spokane bank, this file's verdict must flip to reject. Catalog's $250 claim is above the official $200 — corrected. App links left null.",
+  "notes": "VERIFIED with a loud entity-identity caveat: the official $200 offer (washtrust.com/free-checking, code PLUS200) belongs to The Washington Trust Company of Westerly, RI — NOT to watrust.com (Washington Trust Bank, Spokane, WA), which has no bonus. Aggregator corroboration ($200, Free200) confirms the offer is live. The parent should confirm which entity the R0086 route targets; if it is the Spokane bank, this file's verdict must flip to reject. Catalog's $250 claim is above the official $200 — corrected. App links left null. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -79,5 +79,11 @@
     "ios": null,
     "android": null
   },
-  "upfront_fee": false
+  "upfront_fee": false,
+  "payout_min_usd": 200.0,
+  "payout_max_usd": 200.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

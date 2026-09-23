@@ -1,0 +1,89 @@
+{
+ "route_id": "R6447",
+ "verdict": "verify",
+ "official_url": "https://www.hesaa.org/Documents/Publications/NJBEST_Match_Flyer.pdf",
+ "terms_url": "https://www.hesaa.org/Documents/529_Matching_Grant_Program_Terms_and_Conditions.pdf",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "The State of New Jersey is offering a one-time matching grant of up to $750 for initial deposits into a new NJBEST 529 College Savings Plan. This dollar-for-dollar grant will match the first contribution made by New Jersey residents who open an NJBEST account for a new student beneficiary.",
+ "steps": [
+  "Open a new NJBEST 529 account (as little as $25) for a new student beneficiary.",
+  "Make the initial deposit (matched dollar-for-dollar up to $750).",
+  "Submit the NJBEST Matching Grant application within one year of funding, attaching prior-year IRS tax return transcripts (or documented proof of income).",
+  "Keep the account open and maintain up to $750 of the initial contribution for at least three years."
+ ],
+ "catches": [
+  "Account owner must be a New Jersey resident with household AGI between $0 and $75,000.",
+  "Dollar-for-dollar on the initial deposit only: deposit $25, get $25; deposit $750 or more, get $750; limited to one grant per beneficiary.",
+  "The grant application must be submitted within one year of funding the account.",
+  "Keep up to $750 of the initial contribution in the account for a minimum of three years or the matching grant is forfeited back to HESAA.",
+  "Program is subject to available funding.",
+  "Non-qualified withdrawals face federal income tax on earnings plus a 10% federal penalty - consult a tax advisor."
+ ],
+ "biggest_catch": "One-time match on the initial deposit only, for NJ residents with household AGI under $75,000 - and you must leave the matched money in the account for three years or the grant is clawed back.",
+ "eligibility": "New Jersey resident NJBEST (or Franklin Templeton) 529 account owner with household AGI $0-$75,000 opening an account for a new student beneficiary.",
+ "timing": "One-time grant: apply within one year of funding the account; maintain the contribution for three years.",
+ "weasel_words": [
+  "up to",
+  "subject to available funding"
+ ],
+ "payout_min_usd": 25,
+ "payout_max_usd": 750,
+ "payout_value_note": "Dollar-for-dollar of initial deposit; $25 minimum to open.",
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "numeric_basis": "payout from official HESAA terms ($25-$750 match); time: account opening + grant application + gathering tax transcripts, est. 30-45 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "hesaa.org is the official NJ Higher Education Student Assistance Authority site; the NJBEST Matching Grant flyer and application instructions are HESAA-published documents."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official HESAA flyer: 'a one-time matching grant of up to $750 for initial deposits into a new NJBEST 529 College Savings Plan. This dollar-for-dollar grant will match the first contribution...'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No application fee; the grant matches the participant's own initial deposit (accounts open with as little as $25)."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "HESAA matching-grant application instructions and terms documents are the current published program materials; income band $0-$75,000 and 3-year hold stated as current terms."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "One-time dollar-for-dollar state matching grant; no New Jersey 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: open NJBEST account, make initial deposit, submit grant application with tax transcripts within one year, hold three years."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Deadlines explicit: apply within one year of funding; maintain the contribution for three years."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include NJ residency, $0-$75k AGI band, one-per-beneficiary, one-year application window, three-year clawback, funding availability, and non-qualified-withdrawal tax plus 10% federal penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; the grant matches ordinary 529 deposits."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on hesaa.org; no invitation required, NJ residency and income are the gates."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no New Jersey/NJBEST route in catalog."
+  }
+ },
+ "notes": "Verified against official HESAA documents (NJBEST_Match_Flyer.pdf and matching grant application instructions). Framed as a one-time savings boost, not income; the three-year hold/clawback is the key commitment."
+}

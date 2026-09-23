@@ -1,0 +1,86 @@
+{
+  "route_id": "R2044",
+  "verdict": "verify",
+  "official_url": "https://www.hatchwise.com/",
+  "terms_url": "https://www.hatchwise.com/tagline-contests",
+  "payout_quote": "Each contest package includes the 'prize amount' that the creative who you select as a winner gets in exchange for transferring the rights and delivering final files (minus any commission charged to the creative by Hatchwise).",
+  "steps": [
+    "Create a free Hatchwise creative account.",
+    "Browse open design and naming contests (logo, web, graphic, slogan, tagline, naming).",
+    "Read the creative brief and submit original entries.",
+    "Clients review entries and select a winner.",
+    "As winner, receive the prize amount (minus Hatchwise's commission to creatives) and deliver final files."
+  ],
+  "catches": [
+    "Only winners are paid — most entries earn nothing.",
+    "Hatchwise charges a commission to the creative on winnings, so you keep less than the posted prize.",
+    "Prize amounts are set per contest by the client; no fixed payout range.",
+    "Crowded contests: many creatives enter each contest, so winning is not guaranteed.",
+    "Rights transfer to the client on award."
+  ],
+  "biggest_catch": "Only winners are paid, and Hatchwise takes a commission from the creative's prize — the posted prize is not what you receive.",
+  "eligibility": "Free creative account; designers and writers able to produce original work.",
+  "timing": "Contests run continuously; winner payment after award and file delivery.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Hatchwise's own site states the creative mechanism: 'Each contest package includes the \"prize amount\" that the creative who you select as a winner gets in exchange for transferring the rights and delivering final files (minus any commission charged to the creative by Hatchwise).'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed creative payout range — prizes are per-contest; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official contest flow: brief, entries, client selection, winner paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Entering contests is free for creatives; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free creative account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-contest winner pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover spec-work risk, the creative-side commission, and per-contest prizes."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Hatchwise route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous contests."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Hatchwise is a crowdsourced creative agency running design and naming contests; winners receive the per-contest prize minus a commission. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Contest prizes are set by the client per contest (packages start at $99 for buyers); Hatchwise publishes no fixed creative payout range, and takes a commission from the creative.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-contest prize minus commission, no official range. time: account + browse contests + create/submit entries, est. 45-120 min active per contest entered."
+}

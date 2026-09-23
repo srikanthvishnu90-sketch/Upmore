@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The full $100 takes six months of continuous service plus two separate mailed claim forms — miss a deadline and that $50 is gone.",
+  "catches": [
+    "Requires an active account in good standing at time of processing.",
+    "Each $50 claim form must be submitted within 90 days of the eligibility date or the card is forfeited.",
+    "Limit one $100 card cycle per account.",
+    "The second $50 requires staying through the sixth month."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Provider's own rebate page (sparkenergy.com/rebate) loaded and states the two-tranche $50/$50 terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete amounts on the provider's own page: first $50 prepaid card after the first monthly bill, second $50 after the sixth.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to enroll for the rebate; joining Spark is normal energy service.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Terms live and current as of the 2026-09-23 check.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Spark Energy residential customers on qualifying electricity plans; active account in good standing at processing.",
+  "notes": "Prepaid cards framed as savings on planned energy spending, not income. Distinct from R1878 Spark refer-a-friend (different mechanism).",
+  "numeric_basis": "payout from official rebate page (two $50 cards); time: enrollment + two mailed claim forms with bill copies est. 20-30 min active",
+  "official_url": "https://www.sparkenergy.com/rebate",
+  "payout_max_usd": 100,
+  "payout_min_usd": 0,
+  "payout_quote": "When you sign up for an Electricity plan get up to $100 in Prepaid Card(s)*: To qualify for the first $50 Prepaid Card attach a copy of your first monthly bill showing Spark Energy as your electric supply company. To qualify for the second $50 Prepaid Card submit a second Prepaid Card request form with a copy of your 6th monthly bill showing Spark Energy as your electric supply company.",
+  "payout_value_note": "Two $50 prepaid cards: one after the first monthly bill, one after the sixth monthly bill; each requires a separate mailed claim form with a bill copy.",
+  "route_id": "R1879",
+  "standard": {
+    "s1": {
+      "note": "New qualifying-plan customers; active and in good standing at processing, per the provider's own page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee; cards mailed to the account holder 4-6 weeks after valid submission.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Processing 4-6 weeks after each valid claim.",
+      "pass": true
+    },
+    "s4": {
+      "note": "'Up to' language used; recorded in weasel_words.",
+      "pass": false
+    },
+    "s5": {
+      "note": "Official rebate page loaded live on 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: enroll, complete two claim forms with bill copies within the 90-day windows.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up for a qualifying Spark Energy electricity plan.",
+    "Print and complete the Prepaid Card request form.",
+    "For the first $50 card: attach a copy of your first monthly bill showing Spark Energy as your electric supplier; submit within 90 days of the end of your first month.",
+    "For the second $50 card: submit a second Prepaid Card request form with a copy of your sixth monthly bill showing Spark Energy as your supplier, within 90 days of the end of your sixth month.",
+    "Allow 4-6 weeks processing; the card is mailed to the account holder."
+  ],
+  "terms_url": "https://www.sparkenergy.com/rebate",
+  "time_max_minutes": 30,
+  "time_min_minutes": 20,
+  "timing": "Enrollment plus two mailed claim forms; cards arrive 4-6 weeks after each valid claim.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "up to"
+  ]
+}

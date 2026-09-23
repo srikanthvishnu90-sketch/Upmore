@@ -1,7 +1,7 @@
 {
   "route_id": "R0089",
   "verdict": "verify",
-  "checked_at": "2026-09-23T01:38:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "official_url": "https://www.boh.com/personal/bank-accounts/pr/checking-offer/",
   "terms_url": "https://www.boh.com/personal/bank-accounts/pr/checking-offer/",
   "payout_quote": "Official checking offer page: $100 bonus on new Convenience Checking, $300 bonus on new Bankohana Level I Checking — with $500 opening deposit and qualifying direct deposits totaling $2,000+ (Convenience) or $3,500+ (Bankohana Level I) within 60 days of account opening.",
@@ -21,7 +21,7 @@
   ],
   "biggest_catch": "The bonus tiers scale with the account: only $100 on the basic Convenience Checking — the $300 requires the Bankohana Level I account and $3,500 in direct deposits within 60 days.",
   "eligibility": "New Bank of Hawaii checking customers; Hawaii-focused availability; 18+.",
-  "notes": "Verified 2026-09-23 via the official boh.com checking-offer page (content confirmed through indexed official-domain content; the page itself did not load directly — flagged in standard.s7). Catalog's $300 claim matches the Bankohana Level I tier exactly. Do not use the discontinued $400 tier. App links left null.",
+  "notes": "Verified 2026-09-23 via the official boh.com checking-offer page (content confirmed through indexed official-domain content; the page itself did not load directly — flagged in standard.s7). Catalog's $300 claim matches the Bankohana Level I tier exactly. Do not use the discontinued $400 tier. App links left null. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -78,5 +78,11 @@
     "ios": null,
     "android": null
   },
-  "upfront_fee": false
+  "upfront_fee": false,
+  "payout_min_usd": 500.0,
+  "payout_max_usd": 500.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

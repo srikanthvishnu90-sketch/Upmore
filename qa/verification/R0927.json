@@ -1,0 +1,65 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Requires 3+ qualifying direct deposits totaling at least $12,000 within the first four months - a high DD threshold. Aggregators report the offer expires 10/30/2026, but the official page excerpt does not show an end date; treat the expiry as unconfirmed.",
+  "catches": [
+    "Open an ONB Preferred Checking or ONB Everyday Checking account as a new checking client.",
+    "Make 3 or more qualifying direct deposits totaling at least $12,000 into the new account within the first four months of account opening.",
+    "Maintain a balance greater than zero at the time of bonus processing.",
+    "For a limited time offer - official page excerpt does not state the end date; aggregators cite 10/30/2026 (unconfirmed).",
+    "A lower $300 tier (3+ direct deposits totaling $3,500) is reported by aggregators only and is not stated in the official excerpt.",
+    "Preferred Checking charges a $15 monthly maintenance fee, waived with $5,000 minimum daily balance or $25,000 combined balances (per aggregator; not in official excerpt)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Old National Bank (oldnational.com) is a real major Midwest regional bank; the up-to-$600 checking offer is published on its official checking-offer page (search crawl, confirmed ~8 hours ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'For a limited time, new checking clients can receive up to a $600 bonus! You simply need to open an eligible Old National checking account and complete the qualifying activities. STEPS TO EARN $600 CHECKING BONUS: 1. Open an ONB Preferred Checking or ONB Everyday Checking account. 2. Make 3 or more qualifying direct deposits totaling at least $12,000 into the new account within the first four months of account opening. 3. Maintain a balance greater than zero at the time of bonus processing. 4. Enjoy your bonus payout!'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Amount, account types, 3+ DDs totaling $12,000, four-month window, and positive-balance requirement are all quoted verbatim from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "New checking clients who open an ONB Preferred Checking or ONB Everyday Checking account. Old National serves the Midwest (aggregators cite IA, IL, IN, KY, MN, MI, ND, TN, WI - official corroboration of the footprint not captured here).",
+  "notes": "Official oldnational.com/personal/checking/checking-offer/ (crawl ~8 hours ago). No sibling duplicate found in R0851-R0926. The 10/30/2026 expiry and the $300 lower tier are aggregator-only until officially corroborated; the verified row covers the official $600 tier.",
+  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.oldnational.com/personal/checking/checking-offer/",
+  "payout_max_usd": 600.0,
+  "payout_min_usd": 600.0,
+  "payout_quote": "For a limited time, new checking clients can receive up to a $600 bonus! ... STEPS TO EARN $600 CHECKING BONUS: 1. Open an ONB Preferred Checking or ONB Everyday Checking account. 2. Make 3 or more qualifying direct deposits totaling at least $12,000 into the new account within the first four months of account opening. 3. Maintain a balance greater than zero at the time of bonus processing.",
+  "payout_value_note": "flat bonus amount in official terms",
+  "route_id": "R0927",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New checking clients; open ONB Preferred or Everyday Checking."
+    },
+    "s2": {
+      "pass": true,
+      "evidence": "3+ qualifying direct deposits totaling $12,000 in the first four months; balance must be above zero at bonus processing."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Maintain balance above zero at bonus processing; for a limited time (end date not stated officially; aggregators cite 10/30/2026, unconfirmed)."
+    }
+  },
+  "steps": [
+    "Open an ONB Preferred Checking or ONB Everyday Checking account as a new checking client.",
+    "Make 3 or more qualifying direct deposits totaling at least $12,000 into the new account within the first four months of account opening.",
+    "Maintain a balance greater than zero at the time of bonus processing; the bonus is paid out. "
+  ],
+  "terms_url": "https://www.oldnational.com/personal/checking/checking-offer/",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "3+ direct deposits totaling $12,000 within the first four months of account opening; for a limited time (aggregators cite expiry 10/30/2026, unconfirmed).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

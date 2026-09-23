@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Reward lapses if the new client doesn't trade ≥€250 or leaves within 6 months; paid to your clearing account after 6 months.",
+  "catches": [
+    "Official referral T&Cs: 'Reward for a successful Scalable Broker recommendation: EUR 25.00' - existing client shares an individual invitation link",
+    "New client must open their first Scalable Broker securities account via the link within 6 months and execute trades (savings plans/purchase orders) totaling at least €250 within 6 months of opening",
+    "New client must remain a client with positive cash balance for 6 months; the reward is then paid to the existing client's clearing account",
+    "Existing client can earn a maximum of 10 rewards (€250 total); participation in a trade/commercial practice is excluded",
+    "Identification via Deutsche Post AG or Fourthline B.V., options dependent on residence (German broker)"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Scalable Capital (scalable.capital) - German broker. Official 'Terms and conditions: Referral programme' (EN PDF) on the provider's Contentful CDN (assets.ctfassets.net, Scalable Capital space kcbf79ije7q7) fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: 'Reward for a successful Scalable Broker recommendation: EUR 25.00.' Converted at EUR/USD ≈1.1446 (Xe, 2026-09-23) ≈ $28.6 per referral; up to 10 rewards ≈ $286.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: share invitation link; friend opens account via link, trades ≥€250, stays 6 months; €25 paid to your clearing account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No upfront fee. Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Scalable Capital Broker clients in supported markets.",
+  "notes": "G54 brokerage lane. Converted from reject: the €25 existing-referrer reward qualifies as a referral-bonus route with official terms.",
+  "numeric_basis": "payout approx. $29 per successful referral (official €25; EUR/USD ≈1.1446, Xe 2026-09-23), up to 10 referrals (~$286); time: sharing the link + friend signup guidance est. 5-15 min active",
+  "official_url": "https://assets.ctfassets.net/kcbf79ije7q7/3a1BbKPYarucMFEpGxwVp9/66ccfa9ecdb7617e2b79bb95d7c9bcd1/Terms_and_Conditions_Referral_Programme_EN.pdf",
+  "payout_max_usd": 286,
+  "payout_min_usd": 29,
+  "payout_quote": "Reward for a successful Scalable Broker recommendation: EUR 25.00",
+  "payout_value_note": "Official €25 per successful referral converted at EUR/USD ≈1.1446 (Xe, 2026-09-23) ≈ $29; max 10 rewards ≈ $286.",
+  "route_id": "R5835",
+  "standard": {
+    "s1": {
+      "note": "Existing Scalable Capital Broker clients.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: share link, friend meets conditions, get paid.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Reward conditional and capped; no inflated claim.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Only official terms quoted.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://de.scalable.capital/.../Terms_and_Conditions_Referral_Program_NL.pdf - official Scalable Capital domain fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: share, friend trades, wait, paid.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Scalable Capital referral T&Cs verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open your individual invitation link in your Scalable Capital account",
+    "Share the link with friends who agree to receive it",
+    "When a referred friend opens a Broker account via your link, executes ≥€250 in trades, and stays 6 months, €25 is paid to your clearing account"
+  ],
+  "terms_url": "https://assets.ctfassets.net/kcbf79ije7q7/3a1BbKPYarucMFEpGxwVp9/66ccfa9ecdb7617e2b79bb95d7c9bcd1/Terms_and_Conditions_Referral_Programme_EN.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Ongoing standing program; reward paid 6 months after the referred account opens.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

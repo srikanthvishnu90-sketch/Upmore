@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must complete a demanding checklist within 60 days (open checking, MK-Friend code, eStatements, mobile app used once, 20 debit-card purchases) and the $100 is not deposited until about one month AFTER the 60-day anniversary - roughly 90 days from account opening.",
+  "catches": [
+    "Referrer must be an existing CCU Florida member; must be 16+ to refer (minor accounts need an adult holder).",
+    "Friend must open a NEW checking account ($25 initial deposit) plus a $5 one-time membership share fee; membership limited to Brevard, Indian River, Orange, Osceola, Polk, and Volusia County (FL) residents.",
+    "Friend must enter Marketing Code MK-Friend (online) or present the Refer-a-Friend form/card (branch).",
+    "Friend must sign up for eStatements, download and use the mobile app at least once, and make 20 debit-card purchases/payments (no minimum amount; ATM excluded) within 60 days of opening.",
+    "Account must be in good standing (no NSF activity) at payout.",
+    "$100 deposited to both accounts within one month of the new account's 60-day anniversary date - ~90 days after opening.",
+    "Excludes business and organizational accounts; cannot be combined with other promotional account-opening offers; offer subject to change."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CCU Florida Refer-A-Friend page (ccuflorida.org): 'Refer a Friend and you both receive $100!' and 'After 60 days and if all requirements are met, we'll deposit $100 to both the new account and the referring member's account!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official ccuflorida.org domain (ccuflorida.org/home/personal/debit-checking/refer-a-friend), fetched live 2026-09-23; corroborated by ccuflorida.org/logout ('you both receive a $100 referral bonus')",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend's costs are the standard $5 membership share fee + $25 checking opening deposit",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'ccuflorida' / 'community credit union of florida' shows no CCU Florida route in catalog or evidence files. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CCU Florida member, 16+. Friend: new member in the 6-county FL field of membership (Brevard, Indian River, Orange, Osceola, Polk, Volusia).",
+  "notes": "Verified 2026-09-23. Community Credit Union of Florida (Brevard County, FL). Current program pays $100 to the referring member per qualifying new member; older flyers on the same domain show $70/$60 tiers but the live program page and site-wide logout page both state $100. Concrete per-referral payout, no stated cap on number of referrals.",
+  "numeric_basis": "payout from official program page ($100 to referring member per qualifying referral; no cap stated); time: completing the refer-a-friend form / sharing MK-Friend code est. 5-15 min active",
+  "official_url": "https://www.ccuflorida.org/home/personal/debit-checking/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Refer a Friend and you both receive $100! ... After 60 days and if all requirements are met, we'll deposit $100 to both the new account and the referring member's account!",
+  "payout_value_note": "$100 cash deposit to the referring member's account per qualifying new member; no cap stated.",
+  "route_id": "R3844",
+  "standard": {
+    "s1": {
+      "note": "Program page live on ccuflorida.org, fetched 2026-09-23; no expiration stated ('Offer subject to change')",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing member referrer 16+; friend = new member in 6-county FL field of membership",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking, MK-Friend code/form, eStatements, mobile app used once, 20 debit purchases in 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $100 deposited within one month of the new account's 60-day anniversary date",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the program page (older flyers do not state it either) - not stated",
+      "pass": false
+    },
+    "s6": {
+      "note": "No fee to refer; friend pays standard $5 membership fee + $25 checking opening deposit",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Give your friend a completed Refer-a-Friend form/card, or have them use Marketing Code MK-Friend when opening online.",
+    "Friend opens a new CCU Florida membership with checking ($25 initial deposit + $5 membership share fee).",
+    "Friend signs up for eStatements, downloads and uses the mobile app at least once, and makes 20 debit-card purchases/payments within 60 days.",
+    "Both accounts receive a $100 deposit within one month of the new account's 60-day anniversary, if all requirements are met and the account is in good standing."
+  ],
+  "terms_url": "https://www.ccuflorida.org/home/personal/debit-checking/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 deposited to both accounts within one month of the new account's 60-day anniversary date (~90 days after opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

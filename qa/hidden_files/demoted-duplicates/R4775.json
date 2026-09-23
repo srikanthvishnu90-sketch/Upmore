@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your $110 only lands after the friend holds two or more recurring direct deposits totaling $500+ for 60 days - and the reward deposits to your primary savings within 14 business days after qualification, so expect a multi-month wait.",
+  "catches": [
+    "Both Advocate (referrer) and Friend must be over 18; Advocate must be a primary LMCU member in good standing with a valid email on file.",
+    "Friend must open a qualified LMCU membership with checking account using the Advocate's referral link.",
+    "Friend must hold two or more recurring direct deposits totaling $500.00 or more for 60 days.",
+    "Reward: $110 deposited to the Advocate's primary savings account and $110 to the Friend's primary savings within 14 business days after qualification.",
+    "Cap: up to $550 a year (5 referrals).",
+    "No expiry date stated on the page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official LMCU page (lmcu.org/refer-a-friend/): 'Get a friend to join LMCU: you'll get $110, and they'll get $110, too!' and 'Once your friend qualifies, we'll deposit $110 into both of your accounts!' and 'You can earn up to $550 a year'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official lmcu.org domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership with checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no lmcu.org route; catalog has no LMCU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: primary LMCU member 18+ in good standing with valid email. Friend: 18+, opens qualified membership + checking via the referral link.",
+  "notes": "Verified 2026-09-23. LMCU (Lake Michigan Credit Union). Referrer earns $110 per qualifying referral, cap $550/year (5 referrals). Friend must hold 2+ recurring direct deposits totaling $500+ for 60 days.",
+  "numeric_basis": "payout from official lmcu.org terms ($110 per qualifying referral; cap $550/yr); time: get/share referral link est. 5-15 min active",
+  "official_url": "https://www.lmcu.org/refer-a-friend/",
+  "payout_max_usd": 110,
+  "payout_min_usd": 110,
+  "payout_quote": "Get a friend to join LMCU: you'll get $110, and they'll get $110, too! ... Once your friend qualifies, we'll deposit $110 into both of your accounts! ... You can earn up to $550 a year, just by helping your friends and family bank better here.",
+  "payout_value_note": "$110 deposited to the referrer's primary savings per qualifying referral; cap $550/year (5 referrals).",
+  "route_id": "R4775",
+  "standard": {
+    "s1": {
+      "note": "Page live on lmcu.org, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: Advocate 18+ primary member in good standing with valid email; Friend 18+ opens membership + checking via link",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: 2+ recurring direct deposits totaling $500+ held for 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $110 deposited to both primary savings accounts within 14 business days after qualification",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Enter the email you use with your LMCU account to get your unique referral link.",
+    "Share the link with friends and family by email, text, or social media.",
+    "Friend opens a qualified LMCU membership with checking using your link and holds 2+ recurring direct deposits totaling $500+ for 60 days.",
+    "LMCU deposits $110 into your primary savings account within 14 business days (up to $550/year)."
+  ],
+  "terms_url": "https://www.lmcu.org/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$110 deposited to the Advocate's primary savings within 14 business days after the friend qualifies (60 days of $500+ direct deposits).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

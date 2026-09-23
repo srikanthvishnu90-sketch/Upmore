@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your $100 only posts if the friend fully qualifies for MIDFLORIDA's own $200 or $400 checking incentive - $2,000-$4,000 in direct deposits plus 20-40 debit transactions within 75 days - and the friend cannot share your household.",
+  "catches": [
+    "Referring member must have a MIDFLORIDA checking account; friend must present the referral code/card at account opening.",
+    "Friend must open a Free Checking account (Freedom Banking excluded) and qualify for the $200 or $400 checking incentive within 75 days: $2,000-$4,000 cumulative direct deposit + online banking/eStatement/debit card + 20-40 debit transactions.",
+    "Friend must not share a household with the referrer; you cannot refer your own or secondary accounts.",
+    "Incentive posted to the referring member's account within 90 days, only if the referring account is open and unrestricted.",
+    "Offer valid as of September 1, 2026 and may be canceled at any time; incentive reported to the IRS.",
+    "No referral-count cap stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official MIDFLORIDA page (midflorida.com/current-offers/refer-a-friend), titled 'Earn $100 for Referrals': 'If the referred person opens a checking account (excluding Freedom Banking accounts) and qualifies for the $200 or $400 checking incentive within 75 days. Incentive will be posted to the referring member's account within 90 days'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official midflorida.com domain, fetched live 2026-09-23; offer valid as of September 1, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens Free Checking ($50 minimum)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification: prior R0571 is a MIDFLORIDA checking signup bonus (distinct mechanism); catalog has no MIDFLORIDA referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: MIDFLORIDA member with a checking account. Friend: new customer, different household, opens Free Checking with referral code.",
+  "notes": "Verified 2026-09-23. MIDFLORIDA Credit Union. Page title states 'Earn $100 for Referrals'; terms pay the incentive to the referring member when the friend qualifies for the $200/$400 checking incentive within 75 days. Distinct from the MIDFLORIDA checking signup bonus (R0571).",
+  "numeric_basis": "payout from official midflorida.com page ($100 referral incentive to the referring member per qualifying friend); time: share referral code est. 5-15 min active",
+  "official_url": "http://www.midflorida.com/current-offers/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Earn $100 for Referrals ... If the referred person opens a checking account (excluding Freedom Banking accounts) and qualifies for the $200 or $400 checking incentive within 75 days. Incentive will be posted to the referring member's account within 90 days, provided the referring member's account is in open and unrestricted status.",
+  "payout_value_note": "$100 posted to the referring member's account per qualifying referral; no cap stated.",
+  "route_id": "R4767",
+  "standard": {
+    "s1": {
+      "note": "Page live on midflorida.com, fetched 2026-09-23; offer valid as of September 1, 2026, cancellable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referring member must have MIDFLORIDA checking; friend a new customer in a different household with referral code",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: qualify for $200/$400 checking incentive within 75 days ($2k-$4k direct deposit + 20-40 debit transactions)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: incentive posted within 90 days; referring account must be open and unrestricted",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: incentive will be reported to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Give friends your MIDFLORIDA referral code or completed referral card.",
+    "Friend opens a Free Checking account presenting your referral code.",
+    "Friend qualifies for the $200 or $400 checking incentive within 75 days (direct deposits + debit transactions).",
+    "$100 incentive is posted to your account within 90 days (your account must be open and unrestricted)."
+  ],
+  "terms_url": "http://www.midflorida.com/current-offers/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 posted to the referring member's account within 90 days after the friend qualifies (within 75 days of their account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

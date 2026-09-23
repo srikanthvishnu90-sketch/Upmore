@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only the referrer is rewarded (the friend gets no stated reward), and the friend must become an automatic-delivery customer - a simple will-call account does not qualify; the page says to contact Roach Energy for full referral details.",
+  "catches": [
+    "The referred friend must become an automatic delivery customer of Roach Energy.",
+    "The reward choice ($50 gas card or $50 heating-account coupon) is made by the referrer.",
+    "The page invites customers to contact Roach Energy for full referral-reward details, so confirm any caps or exclusions before sharing."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official supplier-owned domain (roachenergy.com); Refer A Friend page with explicit $50 terms."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Reward amount, qualifying customer type, and per-friend structure stated verbatim on the official page."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Incentive framed as savings on planned energy spending ($50 gas card or heating-account coupon), never income."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Distinct supplier and mechanism; no existing evidence for Roach Energy (dedupe returned zero hits)."
+    }
+  },
+  "eligibility": "Existing Roach Energy customers; referred friends must become automatic delivery customers.",
+  "notes": "Fuel/heating-credit referral framed as savings on planned energy spending, never income. Propane/heating-fuel supplier (Maine).",
+  "numeric_basis": "payout $50 from official Roach Energy page ('$50 gas card or a $50 coupon'); time: 5-15 minutes for referral sharing",
+  "official_url": "https://www.roachenergy.com/contact-us/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "If your friend becomes an automatic delivery customer, we'll give you a $50 gas card or a $50 coupon to use toward your heating account. And you get that with each friend!",
+  "payout_value_note": "Referrer's choice of a $50 gas card or a $50 coupon toward their heating account, per friend who becomes an automatic delivery customer.",
+  "route_id": "R5503",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "You are an existing Roach Energy customer."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Refer friends to Roach Energy (contact Roach Energy for referral details)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Your friend becomes an automatic delivery customer."
+    },
+    "s4": {
+      "pass": true,
+      "note": "You receive a $50 gas card or a $50 coupon toward your heating account for each qualifying friend."
+    },
+    "s5": {
+      "pass": true,
+      "note": "The reward is fuel/heating-account value, not cash."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Roach Energy service areas (Maine)."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Full terms confirmed via Roach Energy's contact channel; automatic-delivery status required."
+    }
+  },
+  "steps": [
+    "As an existing Roach Energy customer, refer a friend (contact Roach Energy for referral details).",
+    "Your friend becomes an automatic delivery customer of Roach Energy.",
+    "You choose a $50 gas card or a $50 coupon toward your heating account.",
+    "The reward is earned per friend who converts."
+  ],
+  "terms_url": "https://www.roachenergy.com/contact-us/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Sharing the referral takes 5-15 minutes of active effort; the reward is earned when the friend becomes an automatic delivery customer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

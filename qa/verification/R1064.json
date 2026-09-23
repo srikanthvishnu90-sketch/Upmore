@@ -1,0 +1,87 @@
+{
+  "route_id": "R1064",
+  "verdict": "verify",
+  "official_url": "https://www.schwab.com/refer-a-friend",
+  "terms_url": "https://www.schwab.com/refer-a-friend",
+  "payout_quote": "When you're referred and become a new Schwab client, you can get up to $1,000. $1,000 when they net deposit $500,000 or more; $500 when they net deposit $100,000 - $499,999; $300 when they net deposit $50,000 - $99,999; $100 when they net deposit $25,000 - $49,999.",
+  "steps": [
+    "Get a referral link or code from an existing Charles Schwab client (the referral code is applied automatically when you open the account through their link).",
+    "Open a new eligible Schwab account as a new client.",
+    "Make a qualifying net deposit of cash or securities of at least $25,000 within 45 days of account opening.",
+    "The bonus award is deposited into the account about a week after the 45-day period."
+  ],
+  "catches": [
+    "There is no public signup path: you must be referred by an existing Schwab client with a referral link/code.",
+    "Minimum $25,000 net deposit of your own money (parked, not spent) for the lowest $100 tier; $500,000+ for the $1,000 tier.",
+    "Cannot be combined with any other Schwab promotions.",
+    "Only new Schwab clients are eligible (Stock Plan Services customers excepted).",
+    "Direct fetch of the page was blocked by Schwab's bot protection on 2026-09-23; terms captured from official schwab.com indexed page content (client-referral and refer-a-friend pages)."
+  ],
+  "biggest_catch": "You need a referral from an existing Schwab client and must park at least $25,000 of your own money for the minimum $100 tier.",
+  "eligibility": "New Schwab clients (no existing Schwab account) referred by a current client; qualifying net deposit of cash or securities within 45 days.",
+  "timing": "Bonus award deposited into the account about a week after the 45-day funding period.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "See the promotion details."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Charles Schwab & Co., Inc. - real operating broker-dealer; offer terms on the schwab.com domain (refer-a-friend and client-referral pages)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Terms current as of 2026-09-23 per official-domain indexed content; tier table, 45-day funding window, and payout timing all stated."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Payout is concrete and tiered: $100 / $300 / $500 / $1,000 on $25k / $50k / $100k / $500k+ net deposits."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No purchase, trade, or fee required; the deposit is the user's own cash/securities in their account."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "No upfront fee or purchase required to earn the payout; any deposit is the user's own parked money."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout is conditional on exact eligibility and completion steps, never guaranteed unconditionally."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Funding parked at the broker is disclosed with amount and holding period in catches."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing and payment mechanics come from the official terms, not estimates."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Variable/paid-tier elements are labeled as such; verified framing uses the free tier."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Weasel-word reservation-of-rights language is quoted in weasel_words."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider+mechanism confirmed against the existing catalog before writing."
+    }
+  },
+  "notes": "Distinct from R0027 (Schwab Starter Kit: $101 in stock slices for a $50 deposit - different mechanism, thresholds, and terms page). Evidence caveat: direct page fetch was blocked by Schwab bot protection; evidence is official schwab.com indexed page content, not an aggregator.",
+  "payout_min_usd": 100.0,
+  "payout_max_usd": 1000.0,
+  "payout_value_note": "Tiered cash bonus: $100 on $25k-$49,999; $300 on $50k-$99,999; $500 on $100k-$499,999; $1,000 on $500k+.",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "payout: tiered cash bonus per official terms ($100-$1,000); time: brokerage account application + funding est. 30-60 min active."
+}

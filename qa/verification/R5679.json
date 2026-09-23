@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Each referral requires the friend to register via your referral link and complete a qualifying action within 90 days - checking track: 500+ USD in direct deposits plus eStatements and good standing; credit-card track: open an eligible card. A friend can complete both tracks, paying you up to 200 USD. Rewards are Visa Reward Cards (not cash); cap 500 USD per calendar year.",
+  "catches": [
+    "Friend must register for the referral offer using your personal referral link (or register via the email/social invite).",
+    "Personal Checking Account track: friend becomes a Blue FCU member, opens an eligible checking account (NOVA Perks Elite, NOVA Perks Premium, or Basic checking) and within 90 days completes one or more direct deposits of $500 or more each, enrolls in eStatements, and keeps the account in good standing.",
+    "Credit Card track: friend becomes a Blue FCU member and opens a new eligible credit card (Pathways, Everyday Rewards, Cash Back, or Business Rewards) within 90 days of joining.",
+    "Reward is a $100 Visa Reward Card per qualifying referral (not cash); 'up to $200' means $100 for checking + $100 for the credit card if the same friend completes both.",
+    "Cap: up to $500 per calendar year per referrer.",
+    "Allow 4-6 weeks for delivery of the Reward Card after completing all offer requirements."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Blue FCU page (bluefcu.com/refer/): 'Once your friend registers for the referral offer using your personal referral link and completes the offer listed below, you will each receive a 100 or 100 Visa Reward Card.' Two tracks: Personal Checking Account - 'Receive a 100 Visa Reward Card when your friend registers, becomes a Blue FCU member, opens a new eligible personal checking account and completes [500+ DD, e-statements, good standing] within 90 days'; Credit Card - 'Receive a 100 Visa Reward Card when your friend registers, becomes a Blue FCU member, and opens new eligible credit card within 90 days of joining.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Blue FCU ReferLive refer-a-friend page on bluefcu.com, fetched live 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no bluefcu.com route and no Blue FCU/Blue Federal entry; catalog has no Blue FCU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Blue FCU member who registers for the ReferLive referral program. Friend: new Blue FCU member opening an eligible checking account or credit card via the referral link.",
+  "notes": "Verified 2026-09-23. Blue FCU 'Refer a Friend to Blue' (bluefcu.com/refer/). Two referral tracks each pay the referrer a 100 USD Visa Reward Card: (1) friend opens an eligible personal checking account and completes 500+ USD in direct deposits + eStatements + good standing within 90 days; (2) friend opens an eligible credit card within 90 days of joining. One friend completing both tracks earns the referrer 200 USD. Delivery 4-6 weeks after requirements; cap up to 500 USD per calendar year.",
+  "numeric_basis": "payout range from official Blue FCU terms (100 USD Visa card per track; checking and credit-card tracks can each pay for the same friend = up to 200 USD per friend); time: register and share referral link est. 5-15 min active",
+  "official_url": "https://www.bluefcu.com/refer/",
+  "payout_max_usd": 200,
+  "payout_min_usd": 100,
+  "payout_quote": "Once your friend registers for the referral offer using your personal referral link and completes the offer listed below, you will each receive a $100 or $100 Visa Reward Card. The more friends you refer, the more you can earn - up to $500 per calendar year.",
+  "payout_value_note": "100 USD Visa Reward Card per qualifying referral per track: checking track and credit-card track each pay 100 USD, so one friend completing both earns the referrer 200 USD; cap up to 500 USD per calendar year.",
+  "route_id": "R5679",
+  "standard": {
+    "s1": {
+      "note": "Official Blue FCU ReferLive page live on bluefcu.com, fetched 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registers for the program; friend registers via the referral link, becomes a member, opens eligible checking or credit card",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking ($500+ DDs, eStatements, good standing within 90 days) or new eligible credit card within 90 days of joining",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: allow 4-6 weeks for delivery of the Reward Card after completing all offer requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the referral program on bluefcu.com/refer/ and provide your information.",
+    "Invite your friends and family by providing their contact information and a valid email, or share the offer via social media.",
+    "Friend registers via your referral link, becomes a Blue FCU member, and opens an eligible checking account (completing the $500+ direct deposit, eStatement, good-standing requirements within 90 days) or opens a new eligible credit card within 90 days of joining.",
+    "You receive a $100 Visa Reward Card per qualifying referral, delivered 4-6 weeks after requirements are completed."
+  ],
+  "terms_url": "https://www.bluefcu.com/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Allow 4-6 weeks for delivery of the Reward Card after completing all offer requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

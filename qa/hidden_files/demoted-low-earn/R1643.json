@@ -1,0 +1,74 @@
+{
+  "route_id": "R1643",
+  "verdict": "verify",
+  "official_url": "https://www.hcdistrictclerk.com/common/Juror/pdf/JurorDonationForm.pdf",
+  "terms_url": "https://www.hcdistrictclerk.com/common/Juror/pdf/JurorDonationForm.pdf",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "Harris County jurors are paid $30 for the first day and $58 per day for each day after the first (Texas statutory minimums, effective Sept 1, 2023).",
+  "steps": [
+    "Receive a Harris County jury summons",
+    "Report and serve",
+    "Receive $30 for day one and $58/day thereafter (may donate pay to charity via the donation form)"
+  ],
+  "catches": [
+    "You cannot volunteer — service is by summons only.",
+    "These are state minimums; the county sets the actual rate within the statutory range.",
+    "$58/day is well below typical daily wages."
+  ],
+  "biggest_catch": "Summons-only; no way to sign up to earn this on demand.",
+  "eligibility": "Persons summoned for jury service in Harris County, Texas.",
+  "timing": "Paid per day of attendance; donation option via county form.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Harris County District Clerk official juror form + Texas HB 2014 statutory minimums."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Harris County jurors are paid $30 for the first day and $58 per day for each day after the first (Texas statutory minimums, effective Sept 1, 2023)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in Harris County, Texas."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid per day of attendance; donation option via county form."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$30 first day; $58/day after (Texas statutory minimums)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "Reflects the 2023 Texas increase ($6→$20 first day became $20 min statewide; Harris pays $30).",
+  "payout_min_usd": 30,
+  "payout_max_usd": 58,
+  "payout_value_note": "$30 first day; $58/day after (Texas statutory minimums).",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

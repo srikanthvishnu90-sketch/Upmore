@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must join using YOUR unique referral link - if they apply any other way, even by walking into a branch, nobody gets paid.",
+  "catches": [
+    "Any existing member in good standing can participate by sharing their personal referral link.",
+    "For each friend you refer who becomes a member using your referral link, both you and your friend receive a $50 Amazon eGift Card.",
+    "You can earn up to $500 in Amazon eGift Cards per calendar year (10 successful referrals).",
+    "Referred friends must meet the eligibility criteria for opening a new Members 1st account and must not have been a member within the past 12 months.",
+    "Current members and joint owners do not qualify as prospective members; Members 1st associates, volunteers and officials are not eligible.",
+    "The offer cannot be combined with any other offer.",
+    "Bonuses are reported to the IRS for income tax purposes; Members 1st will issue a 1099 or other appropriate tax form."
+  ],
+  "checked_at": "2026-09-23T07:54:55Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Members 1st FCU page (members1st.org/refer): 'For each friend you refer who becomes a member using your referral link, both you and your friend will receive a $50 Amazon eGift Card.' and 'You can earn up to $500 in Amazon eGift Cards per calendar year'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Members 1st Federal Credit Union Refer a Friend page on members1st.org, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 2026-09-23: no members1st.org evidence in qa/verification; not in qa/existing-providers.txt",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Members 1st member in good standing. Friend: new member who has not been a member within the past 12 months.",
+  "notes": "Verified 2026-09-23. Members 1st Federal Credit Union (Mechanicsburg, PA) Digital Referral Program. Referrer earns a $50 Amazon eGift Card per successful referral, capped at $500/year (10 referrals). Taxes are reported (1099).",
+  "numeric_basis": "payout from official Members 1st FCU terms ($50 Amazon eGift Card per referral; earn up to $500 per calendar year = 10 referrals); time: share your referral link est. 5-15 min active",
+  "official_url": "https://www.members1st.org/refer",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "For each friend you refer who becomes a member using your referral link, both you and your friend will receive a $50 Amazon eGift Card.",
+  "payout_value_note": "$50 Amazon eGift Card to the referrer per successful referral; cap $500/year (10 referrals).",
+  "route_id": "R5754",
+  "standard": {
+    "s1": {
+      "note": "Official Members 1st FCU page live on members1st.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is an existing member in good standing; friend is a new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: become a member using the referrer's unique referral link; $5 required to open the account",
+      "pass": true
+    },
+    "s4": {
+      "note": "Gift card redemption email within seven days of the friend successfully opening an account",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonuses reported to the IRS; 1099 issued",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register to get your unique referral link.",
+    "Share the link via social media, email, or text.",
+    "Your friend joins using your link; you both earn a $50 Amazon eGift Card."
+  ],
+  "terms_url": "https://www.members1st.org/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Redemption email within seven days of the friend successfully opening the account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

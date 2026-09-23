@@ -11,7 +11,7 @@
     "$50 fee if the account is closed within 90 days.",
     "Bonus is taxable income."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -31,7 +31,7 @@
     }
   },
   "eligibility": "New Hawthorn checking customers; MO/KS. Existing checking customers excluded.",
-  "notes": "Official Hawthorn Bank page fetched 2026-09-23. Candidate '$300 checking, MO/KS, in branch' verified against these official terms.",
+  "notes": "Official Hawthorn Bank page fetched 2026-09-23. Candidate '$300 checking, MO/KS, in branch' verified against these official terms. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://www.hawthornbank.com/earn-300-when-you-open-an-account",
   "payout_quote": "$300 when you open with $25 by 2026-09-30 using code 2026Cash300 and post two or more direct deposits totaling $500+ within 90 days - paid 2-6 weeks after the full 90-day period.",
   "route_id": "R0631",
@@ -79,5 +79,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 500.0,
+  "payout_max_usd": 500.0,
+  "payout_value_note": "minimum stated amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

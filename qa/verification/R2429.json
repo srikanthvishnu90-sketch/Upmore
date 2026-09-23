@@ -1,0 +1,91 @@
+{
+  "route_id": "R2429",
+  "verdict": "verify",
+  "official_url": "https://www.interactivebrokers.com/en/index.php?f=45764",
+  "terms_url": "https://www.interactivebrokers.com/en/index.php?f=45764",
+  "payout_quote": "Our Refer a Friend program allows eligible clients to earn USD 200 for each friend they refer to IBKR. You will receive USD 200 for each referred friend who: opens an individual or joint account using your unique referral link; deposits at least USD 10,000 (or equivalent) within 30 days; maintains a balance of at least USD 10,000 (or equivalent) for 1 year.",
+  "steps": [
+    "Be an IBKR client with an individual or joint account, an account net liquidation value of at least USD 2,000, and at least one securities trade placed.",
+    "Share your unique IBKR referral link with friends.",
+    "Your friend opens an individual or joint IBKR account using your referral link.",
+    "Your friend deposits at least USD 10,000 within 30 days of opening.",
+    "Your friend maintains a balance of at least USD 10,000 for 1 year.",
+    "You receive USD 200 for each qualifying referred friend (referrers limited to 15 referrals per year and 30 total)."
+  ],
+  "catches": [
+    "Very high bar on the friend's side: $10,000+ deposit within 30 days AND maintained for a full year - most referrals will not qualify.",
+    "Cap: 15 referrals per year and 30 referrals total ($6,000 lifetime max).",
+    "You must already be an IBKR client with $2,000+ account value and at least one securities trade placed.",
+    "No payout when the referrer and the new client are family members or others living at the same exact physical address.",
+    "Tax-deferred accounts are ineligible; certain countries are ineligible; financial advisors/hedge funds/institutional accounts ineligible.",
+    "You must have no involvement with the referred account after the referral (no training them, no trading their account, no collecting applications).",
+    "The $200 arrives only after the friend's 1-year maintenance period."
+  ],
+  "biggest_catch": "Your friend must deposit $10,000+ and keep it there for a full year before you see the $200 - an extremely high bar, plus a 15/year and 30-lifetime cap.",
+  "eligibility": "IBKR clients with individual or joint accounts, account net liquidation value of at least USD 2,000, and at least one securities trade placed; friends must not share your exact physical address.",
+  "timing": "Paid after the referred friend completes the 1-year $10,000 balance maintenance period.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to USD 1000"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Interactive Brokers LLC - real SEC-registered broker-dealer; official domain interactivebrokers.com, referral page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official IBKR Refer a Friend page states verbatim 'earn USD 200 for each friend they refer to IBKR' plus concrete friend deposit/hold requirements and the 15/year, 30-total cap."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing a link; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: $200 per qualifying friend; payout follows the 1-year maintenance period; caps stated explicitly - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "IBKR clients, individual/joint account, $2,000+ net liquidation, at least one securities trade; no same-address referrals."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens individual/joint account via unique link, deposits $10,000+ within 30 days, maintains $10,000 for 1 year."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid after the friend's 1-year $10,000 balance maintenance period completes."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $200 per referral stated; friend-side bonus is tiered up to $1,000 in IBKR stock by deposit (stated verbatim)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.interactivebrokers.com/en/index.php?f=45764 - official IBKR Refer a Friend page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: share link, friend opens/deposits $10k in 30 days/maintains 1 year, $200 paid."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'interactive brokers' shows R0030 Brokerage account bonus - a new-account deposit bonus, not a refer-a-friend route; distinct. Friend-side bonus is $1 in IBKR stock per $300 deposited, max $1,000.",
+  "payout_min_usd": 200.0,
+  "payout_max_usd": 200.0,
+  "payout_value_note": "flat USD 200 per qualifying referral in official terms; 15/year and 30-total caps stated",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($200 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

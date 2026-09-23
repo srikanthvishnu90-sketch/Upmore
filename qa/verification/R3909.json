@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must set up a recurring direct deposit of at least $500 from a payroll or government source within 60 days - no DD, no bonus for either side.",
+  "catches": [
+    "Referrer earns $100 for each referred individual who opens a new qualified Cash Rewards Checking or Interest Rewards Checking account within 60 days of being referred and registers for the offer.",
+    "Maximum 5 referrals or $500 per year.",
+    "Friend earns $100 when they open a qualifying account with a recurring direct deposit of at least $500 (payroll/government source) within 60 days of account opening.",
+    "Friend must also register to receive their reward.",
+    "ACH returned items, WSB-to-WSB transfers, and ATM/mobile check deposits do not qualify as direct deposit.",
+    "Only one referrer is eligible per referred person (first registration wins).",
+    "Allow 2-4 weeks for processing after all requirements are completed.",
+    "Rewards may be reported as income to the IRS.",
+    "Program may be discontinued or changed at any time without notice."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official WSB page (washingtonsavings.com): '$100 For You, $100 For Them (max 5 referrals or $500 per year)' and 'The Referrer will earn $100 for each individual they refer ... that opens a new, qualified Cash Rewards Checking or Interest Rewards Checking account within 60 days of being referred and registers for the offer.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official washingtonsavings.com domain (washingtonsavings.com/refer-a-friend.html), fetched live 2026-09-23; page updated 2026-05-28",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'washington savings' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Washington Savings Bank customer who shares the offer via the referral webpage. Friend: opens a new qualified Cash Rewards Checking or Interest Rewards Checking within 60 days of being referred and registers.",
+  "notes": "Verified 2026-09-23. Washington Savings Bank (Lowell, MA). $100 to the referrer per qualified referral; maximum 5 referrals ($500) per calendar year.",
+  "numeric_basis": "payout from official page ($100 per qualified referral; 5/year, $500/year cap); time: sharing the offer and referring est. 5-15 min active",
+  "official_url": "https://www.washingtonsavings.com/refer-a-friend.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "$100 For You, $100 For Them (max 5 referrals or $500 per year) ... The Referrer will earn $100 for each individual they refer ... that opens a new, qualified Cash Rewards Checking or Interest Rewards Checking account within 60 days of being referred and registers for the offer.",
+  "payout_value_note": "$100 per qualified referral; maximum 5 ($500) per calendar year.",
+  "route_id": "R3909",
+  "standard": {
+    "s1": {
+      "note": "Program page live on washingtonsavings.com, updated 2026-05-28; may be discontinued or changed at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer customer; friend opens a new qualified checking account within 60 days of referral",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new Cash Rewards or Interest Rewards Checking + recurring DD of $500+ within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: allow 2-4 weeks for processing after all requirements are completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: rewards may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share the WSB Refer-a-Friend offer with a friend via the referral webpage.",
+    "Friend opens a new Cash Rewards Checking or Interest Rewards Checking within 60 days and registers for the offer.",
+    "Friend sets up a recurring direct deposit of $500+ within 60 days of account opening.",
+    "You earn $100 per referral (up to 5/year, $500/year); allow 2-4 weeks for processing."
+  ],
+  "terms_url": "https://www.washingtonsavings.com/refer-a-friend.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Allow 2-4 weeks for processing after all requirements are completed.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referral only counts if it is made by phone or in-branch at the time of account opening - online referrals don't qualify.",
+  "catches": [
+    "Referring member earns $25 when the new member opens an eligible account; the new member earns $50.",
+    "New member must open a new checking account and add direct deposit, a loan, or a credit card.",
+    "Referral must be made by phone or in-branch at account opening; both the referring member and the new member must visit a PDCU branch or call.",
+    "Offer not valid for existing members opening additional accounts.",
+    "Offer may be changed or ended at any time; membership requirements apply (Michigan residency or relative of a member).",
+    "Rewards are considered interest income and reported on IRS Form 1099-INT.",
+    "No referral cap stated on the official page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official PDCU page (peopledrivencu.org): 'you earn $25 and they earn $50' and '$25 for referring member and $50 for new member will be deposited after qualification is verified.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official peopledrivencu.org domain (peopledrivencu.org/member-services/friends-family-referral-program/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'people driven' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: People Driven CU member (via phone or in-branch referral). Friend: opens a new checking account with direct deposit, a loan, or a credit card, made by phone or in-branch.",
+  "notes": "Verified 2026-09-23. People Driven Credit Union (Southfield, MI). $25 to the referring member per qualifying referral; no cap stated. Referral must be made by phone or in-branch.",
+  "numeric_basis": "payout from official page ($25 to the referrer per qualifying referral; no cap stated); time: making the referral by phone or in-branch est. 10-20 min active",
+  "official_url": "https://www.peopledrivencu.org/member-services/friends-family-referral-program/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "you earn $25 and they earn $50 ... $25 for referring member and $50 for new member will be deposited after qualification is verified.",
+  "payout_value_note": "$25 to the referring member per qualifying referral. No cap stated.",
+  "route_id": "R3893",
+  "standard": {
+    "s1": {
+      "note": "Program page live on peopledrivencu.org, fetched 2026-09-23; offer may change or end at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member; friend new member, PDCU membership requirements apply",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new checking account with direct deposit, a loan, or a credit card",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "note": "Tax stated: rewards are considered interest income, reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Make the referral by phone (844-700-PDCU) or in a PDCU branch.",
+    "Friend opens a new checking account with direct deposit, a loan, or a credit card.",
+    "Qualification is verified.",
+    "You receive $25 per qualifying referral."
+  ],
+  "terms_url": "https://www.peopledrivencu.org/member-services/friends-family-referral-program/",
+  "time_max_minutes": 20,
+  "time_min_minutes": 10,
+  "timing": "$25 deposited after qualification is verified (no day count stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Winner-take-most skill competition: 2,153 teams are competing for the same $700,000 pool, so the expected payout for a typical entrant is effectively $0 — treat time as speculative research, not income.",
+  "catches": [
+    "Highly skill-gated: 2,153 teams and 19,967 submissions observed 2026-09-23; only top leaderboard placements earn anything.",
+    "Per-place prize breakdown was not visible on the overview page at check time — confirm the split in the Rules tab before investing serious effort.",
+    "Code competitions enforce strict runtime/hardware limits and daily submission caps.",
+    "All entries are speculative research time; expected payout for a typical entrant is effectively $0."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Kaggle competition page live on 2026-09-23 with title, prizes, participation stats; Rules tab URL is part of the official page.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states 'Prizes & Awards: $700,000'.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to enter; no fee to join, no purchase or risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Kaggle/ARC entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Kaggle account; open to entrants worldwide subject to Kaggle's competition rules and U.S./OFAC sanctioned-country restrictions; teams allowed per rules.",
+  "notes": "ARC Prize 2026 is a current, official $700k ML competition. Prize is winner-only; per-place split should be confirmed in the Rules tab before heavy effort. payout_max_usd is the total pool because per-place amounts were not published on the overview at check time.",
+  "numeric_basis": "Payout from official terms ($700,000 pool); time: conservative active range for a serious ARC-AGI-2 code entry; competition publishes no time commitment.",
+  "official_url": "http://kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+  "payout_max_usd": 700000,
+  "payout_min_usd": 0,
+  "payout_quote": "Prizes & Awards: $700,000 (Featured Code Competition)",
+  "payout_value_note": "Total $700,000 pool; per-place amounts not published on overview at check time; winner-only, expected payout for typical entrant ~$0.",
+  "route_id": "R3501",
+  "standard": {
+    "s1": {
+      "note": "Steps are concrete: join, read rules, download data, build model, submit code, leaderboard tracking.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document skill-gating, 2,153-team field, missing per-place breakdown, and zero expected payout for typical entrants.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: Kaggle account, rules, sanctioned-country restrictions, teams allowed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Competition live with ~1 month to go as of 2026-09-23; not expired.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from kaggle.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as skill-gated with effectively $0 expected payout for typical entrants; never promises income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a free Kaggle account and open the ARC Prize 2026 - ARC-AGI-2 competition page.",
+    "Read the Overview and Rules tabs (eligibility, submission caps, runtime limits, prize rules).",
+    "Download the ARC-AGI-2 data from the Data tab and build a model capable of novel reasoning.",
+    "Submit solution code through the Code tab within the stated submission limits.",
+    "Track the public leaderboard; top placements on the final leaderboard earn a share of the $700,000 prize pool."
+  ],
+  "terms_url": "http://kaggle.com/competitions/arc-prize-2026-arc-agi-2/rules",
+  "time_max_minutes": 4800,
+  "time_min_minutes": 480,
+  "timing": "Featured code competition; opened ~6 months before 2026-09-23 with ~1 month to go (closes circa Oct 2026). Enter before the close date.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "awards points & medals"
+  ]
+}

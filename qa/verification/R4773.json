@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $50 is simple - the friend just opens a $5 share savings account - but the bonus must stay in the account for 90 days, and the referral email must be included with the new membership application or neither of you gets paid.",
+  "catches": [
+    "Friend must be a new adult member-owner (18+) opening a personal or business share savings account; the referral email must be included with the new membership application.",
+    "$5 minimum to open and maintain the share savings account.",
+    "The $50 bonus is deposited into the savings account within five business days of account opening and must remain in the account for 90 days.",
+    "Referrer must be in good standing to obtain the bonus; officers/directors/volunteers/employees and their immediate families and household members are ineligible.",
+    "Only one bonus payment per new member-owner during the promotional period; cannot combine with other share savings offers.",
+    "Limited-time offer subject to change at the credit union's discretion; value may be reported to the IRS."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official APG FCU page (apgfcu.com/refer-a-friend.html): 'For a limited time, refer a new adult member-owner and when they open a new personal or business share savings account, you'll both be eligible for a $50 bonus.' and 'A $50 bonus will be deposited into the savings account within five business days of account opening'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official apgfcu.com domain, fetched live 2026-09-23; limited-time offer, subject to change",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens share savings with $5 minimum",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification: prior R3201 is an APGFCU checking signup bonus (distinct mechanism); catalog has no APGFCU referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: APGFCU member in good standing. Friend: new adult member-owner (18+), referral email on the application.",
+  "notes": "Verified 2026-09-23. APG Federal Credit Union (Aberdeen Proving Ground FCU, MD). Referrer earns $50 per qualifying new member-owner; bonus deposited within 5 business days, must remain 90 days. Distinct from the APGFCU checking signup bonus (R3201).",
+  "numeric_basis": "payout from official apgfcu.com terms ($50 per qualifying referral); time: submit referral form est. 5-15 min active",
+  "official_url": "http://www.apgfcu.com/refer-a-friend.html",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "For a limited time, refer a new adult member-owner and when they open a new personal or business share savings account, you'll both be eligible for a $50 bonus. ... A $50 bonus will be deposited into the savings account within five business days of account opening and must remain in the account for 90 days.",
+  "payout_value_note": "$50 bonus per qualifying referral deposited to the referrer's savings account within 5 business days; must remain 90 days; no cap stated.",
+  "route_id": "R4773",
+  "standard": {
+    "s1": {
+      "note": "Page live on apgfcu.com, fetched 2026-09-23; limited-time offer, subject to change at the CU's discretion",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer in good standing; friend new adult member-owner 18+, referral email on application",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open personal or business share savings account ($5 minimum) via online, mail, or branch",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 deposited within 5 business days of account opening; must remain 90 days",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: value may be reported to the IRS; taxes the recipient's responsibility",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit the APGFCU referral form with your friend's information.",
+    "Friend opens a new personal or business share savings account ($5 minimum) with your referral email on the application.",
+    "A $50 bonus is deposited into your savings account within five business days (it must remain 90 days)."
+  ],
+  "terms_url": "http://www.apgfcu.com/refer-a-friend.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited to the referrer's savings account within five business days of the friend's account opening; must remain 90 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

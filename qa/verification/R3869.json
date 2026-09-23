@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must set up a real direct deposit or ACH autopayment AND enroll in digital banking AND keep the account open with a positive balance for 90 days - a plain account opening earns you nothing.",
+  "catches": [
+    "Referrer earns a $100 bonus per successful referral; limit 5 ($500) for the promotional period.",
+    "Friend must be a new checking customer, register using the referral code, open a new checking account, and within 90 days: have a direct deposit or ACH automatic payment, enroll in digital banking, and keep the account open with a positive balance.",
+    "Direct deposits exclude ATM/mobile deposits and transfers; ACH autopayments exclude internal transfers and ATM withdrawals.",
+    "Referrer must be a current customer of First National Bank of Fort Smith, NWA, CNB, or NBS.",
+    "Bonuses may be reported as income to the IRS; program may be discontinued or changed at any time without notice."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official banknbs.com terms: 'To earn a $100 bonus (with a total bonus of up to $500) for each successful referral, the Referrer (person making the referral) must be a current customer of First National Bank of Fort Smith, NWA, CNB or NBS.' and 'limit (5) @ $100 =$500 for this promotional period.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms PDF hosted on official banknbs.com domain (banknbs.com/Docs_Uploaed/Terms & Conditions- Refer a Friend 6.2.26.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check shows no catalog or evidence-file hits for this institution. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current customer of First National Bank of Fort Smith, NWA, CNB, or NBS. Friend: new checking customer who registers with the referral code.",
+  "notes": "Verified 2026-09-23. First National Bank of Fort Smith (Fort Smith, AR; banknbs.com) and sister brands NWA, CNB, NBS. $100 per qualifying referral to the referrer, 5-referral ($500) limit for the promotional period.",
+  "numeric_basis": "payout from official terms ($100 per successful referral; 5-referral/$500 promotional-period limit); time: completing the referral registration est. 5-15 min active",
+  "official_url": "https://banknbs.com/Docs_Uploaed/Terms%20&%20Conditions-%20Refer%20a%20Friend%206.2.26.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "To earn a $100 bonus (with a total bonus of up to $500) for each successful referral ... limit (5) @ $100 =$500 for this promotional period.",
+  "payout_value_note": "$100 bonus to the referrer per successful referral; 5-referral ($500) limit for the promotional period.",
+  "route_id": "R3869",
+  "standard": {
+    "s1": {
+      "note": "Terms live on banknbs.com, fetched 2026-09-23; promotional period may be discontinued/changed at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer current customer of the four named banks; friend new checking customer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking with code, direct deposit or ACH autopayment, digital banking enrollment, positive balance 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: friend has 90 days from account opening to complete requirements; payout timing not day-counted",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonuses may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the referral registration on the bank's website for each person you refer.",
+    "Friend registers using the referral code and opens a new checking account.",
+    "Within 90 days, friend sets up a direct deposit or ACH autopayment, enrolls in digital banking, and keeps the account positive.",
+    "You earn a $100 bonus per successful referral (up to 5 / $500 for the promotional period)."
+  ],
+  "terms_url": "https://banknbs.com/Docs_Uploaed/Terms%20&%20Conditions-%20Refer%20a%20Friend%206.2.26.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Friend has 90 days from account opening to complete requirements; payout timing not stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

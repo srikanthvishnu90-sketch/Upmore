@@ -1,81 +1,87 @@
 {
- "route_id": "R0299",
- "verdict": "verify",
- "official_url": "https://closedbanks.fdic.gov/funds/",
- "terms_url": "https://closedbanks.fdic.gov/funds/",
- "payout_quote": "FDIC Consumer News: 'For information from the FDIC about failed banks and unclaimed property, start at https://closedbanks.fdic.gov/funds/.' This finds YOUR OWN insured deposits from failed banks if they exist and were never claimed — it never promises anyone has any.",
- "timing": "Search is instant. Claims are filed with the FDIC's claim form and verified per-case; federal law requires unclaimed deposit accounts to be transferred to the state after 18 months, after which the state (not the FDIC) holds them.",
- "biggest_catch": "Only applies if you had an account at a bank that actually failed — a tiny fraction of people. After about 18 months, unclaimed FDIC funds are escheated to the state of your last known address, so older cases must be claimed through the state unclaimed-property program (R0296), not the FDIC.",
- "eligibility": "Depositors (or heirs/executors) with unclaimed insured deposits from FDIC-insured banks that failed since 1999. Searchable by first name, last name, or business name, optionally narrowed by bank, city, or state.",
- "steps": [
-  "Go to https://closedbanks.fdic.gov/funds/ and search by your first and/or last name (or business name); narrow by failed bank name, city, or state if you know them.",
-  "If you find a match, use the claim form on the page and follow the FDIC's instructions to file.",
-  "If the bank failed long ago (roughly 18+ months), check the state unclaimed-property program of your last known address instead — federal law moves those funds to the state.",
-  "Provide the identity/ownership proof the FDIC or state requests to complete the claim."
- ],
- "catches": [
-  "Applies only to failed-bank depositors — almost nobody will have a match.",
-  "Funds escheat to the state after ~18 months; the FDIC tool only covers the window before transfer.",
-  "Claimants must prove identity and ownership; heirs/executors need estate documentation.",
-  "Beware of anyone demanding money up front to 'help' — the FDIC says you do not need paid help to search or claim."
- ],
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "upfront_fee": false,
- "checked_at": "2026-09-23T01:45:00Z",
- "notes": "Verified 2026-09-22/23: FDIC's Bank Failures hub (updated June 30, 2026) lists 'Unclaimed Funds — Search for unclaimed insured deposits from failed banks' linking to closedbanks.fdic.gov/funds/; the tool page itself is live (crawled within weeks). In-app, pair this with R0296 guidance: recent failures → FDIC tool; older ones → state program. No app — website only.",
- "critical": {
-  "c1": {
-   "evidence": "FDIC — the Federal Deposit Insurance Corporation, created by Congress in 1933 — operates the unclaimed-funds search for failed banks.",
-   "pass": true
+  "route_id": "R0299",
+  "verdict": "verify",
+  "official_url": "https://closedbanks.fdic.gov/funds/",
+  "terms_url": "https://closedbanks.fdic.gov/funds/",
+  "payout_quote": "FDIC Consumer News: 'For information from the FDIC about failed banks and unclaimed property, start at https://closedbanks.fdic.gov/funds/.' This finds YOUR OWN insured deposits from failed banks if they exist and were never claimed — it never promises anyone has any.",
+  "timing": "Search is instant. Claims are filed with the FDIC's claim form and verified per-case; federal law requires unclaimed deposit accounts to be transferred to the state after 18 months, after which the state (not the FDIC) holds them.",
+  "biggest_catch": "Only applies if you had an account at a bank that actually failed — a tiny fraction of people. After about 18 months, unclaimed FDIC funds are escheated to the state of your last known address, so older cases must be claimed through the state unclaimed-property program (R0296), not the FDIC.",
+  "eligibility": "Depositors (or heirs/executors) with unclaimed insured deposits from FDIC-insured banks that failed since 1999. Searchable by first name, last name, or business name, optionally narrowed by bank, city, or state.",
+  "steps": [
+    "Go to https://closedbanks.fdic.gov/funds/ and search by your first and/or last name (or business name); narrow by failed bank name, city, or state if you know them.",
+    "If you find a match, use the claim form on the page and follow the FDIC's instructions to file.",
+    "If the bank failed long ago (roughly 18+ months), check the state unclaimed-property program of your last known address instead — federal law moves those funds to the state.",
+    "Provide the identity/ownership proof the FDIC or state requests to complete the claim."
+  ],
+  "catches": [
+    "Applies only to failed-bank depositors — almost nobody will have a match.",
+    "Funds escheat to the state after ~18 months; the FDIC tool only covers the window before transfer.",
+    "Claimants must prove identity and ownership; heirs/executors need estate documentation.",
+    "Beware of anyone demanding money up front to 'help' — the FDIC says you do not need paid help to search or claim."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "Official FDIC pages describe the searchable database (name/business, bank, city/state) and the claim form for depositors who find funds.",
-   "pass": true
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "c3": {
-   "evidence": "Search and claim are free; FDIC Consumer News warns against anyone demanding money up front for a service you can do yourself.",
-   "pass": true
+  "upfront_fee": false,
+  "checked_at": "2026-09-23T07:21:24Z",
+  "notes": "Verified 2026-09-22/23: FDIC's Bank Failures hub (updated June 30, 2026) lists 'Unclaimed Funds — Search for unclaimed insured deposits from failed banks' linking to closedbanks.fdic.gov/funds/; the tool page itself is live (crawled within weeks). In-app, pair this with R0296 guidance: recent failures → FDIC tool; older ones → state program. No app — website only. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery 15-30min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)]",
+  "critical": {
+    "c1": {
+      "evidence": "FDIC — the Federal Deposit Insurance Corporation, created by Congress in 1933 — operates the unclaimed-funds search for failed banks.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official FDIC pages describe the searchable database (name/business, bank, city/state) and the claim form for depositors who find funds.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Search and claim are free; FDIC Consumer News warns against anyone demanding money up front for a service you can do yourself.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official FDIC materials confirm the mechanism: search the database, file the claim form, prove identity/ownership; unclaimed funds escheat to the state after ~18 months.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official FDIC materials confirm the mechanism: search the database, file the claim form, prove identity/ownership; unclaimed funds escheat to the state after ~18 months.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Depositors/heirs of failed FDIC-insured banks since 1999; must prove identity and ownership.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Depositors/heirs of failed FDIC-insured banks since 1999; must prove identity and ownership.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Free; FDIC warns against paying anyone up front for search/claim help.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Instant search; per-case claim verification.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words on the core mechanism.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://closedbanks.fdic.gov/funds/ — the official FDIC unclaimed-funds tool, live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: search name, file claim form, or go to the state program for older failures.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official FDIC pages loaded live 2026-09-22/23.",
+      "pass": true
+    }
   },
-  "s2": {
-   "note": "Free; FDIC warns against paying anyone up front for search/claim help.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Instant search; per-case claim verification.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No weasel words on the core mechanism.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://closedbanks.fdic.gov/funds/ — the official FDIC unclaimed-funds tool, live.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: search name, file claim form, or go to the state program for older failures.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Official FDIC pages loaded live 2026-09-22/23.",
-   "pass": true
-  }
- }
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 15.0,
+  "time_max_minutes": 30.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)"
 }

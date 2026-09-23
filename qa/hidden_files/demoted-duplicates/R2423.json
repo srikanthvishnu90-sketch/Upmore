@@ -1,0 +1,89 @@
+{
+  "route_id": "R2423",
+  "verdict": "verify",
+  "official_url": "https://www.ally.com/content/dam/pdf/bank/customer-referral-terms-and-conditions-referring-customers.pdf?CP=EML400003844",
+  "terms_url": "https://www.ally.com/content/dam/pdf/bank/customer-referral-terms-and-conditions-referring-customers.pdf?CP=EML400003844",
+  "payout_quote": "For each New Friend that opens and funds an Eligible Account, up to five (5) New Friends per calendar year, the Referrer will receive, under these standard Terms and Conditions, a $50 Referral Reward deposited into their Referrer Account within thirty (30) days after completion of the New Friend enrolling, opening and funding the Eligible Account.",
+  "steps": [
+    "Be a current Ally Bank customer selected to participate as a Referrer (notified via email or online banking) with a Referrer Account open and in good standing.",
+    "Copy your unique Personal Link and share it with friends via text, social media, email, or group chat.",
+    "Your friend uses your Personal Link to enroll, opens an Eligible Account (Ally Bank Savings or Spending Account) within 30 days of enrollment, and funds it with any amount within 30 days of opening (trial deposits do not count; same email for enrollment and account opening).",
+    "Your $50 Referral Reward is deposited into your Referrer Account within 30 days after your friend's enrollment, opening, and funding are complete."
+  ],
+  "catches": [
+    "Cap: 5 successful referrals / $250 per calendar year under the standard terms.",
+    "Friend must be brand new to Ally Bank - anyone who has had any Ally deposit account since January 1, 2024 is an Excluded Friend and earns you nothing.",
+    "Only Savings and Spending Accounts count - Money Market, CDs, IRAs, trust/UGMA/UTMA/fiduciary accounts are excluded.",
+    "Only current Ally customers selected/notified by Ally can be referrers - not everyone can refer.",
+    "Program runs through December 31, 2026 and Ally can change or cancel it at any time without notice.",
+    "Ally treats the Referral Reward as interest for tax-reporting purposes (1099-INT reporting applies).",
+    "You get no visibility into whether a friend enrolled, opened, or funded - the process is confidential to you."
+  ],
+  "biggest_catch": "Only 5 paid referrals per calendar year ($250 cap), the friend must be completely new to Ally Bank, and Ally can change or kill the program at any time.",
+  "eligibility": "Current Ally Bank customers selected and notified by Ally to participate as Referrers; Referrer Account open and in good standing.",
+  "timing": "Each $50 Referral Reward paid within 30 days of the friend's enrollment, account opening, and initial funding completing.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to $250 per calendar year"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Ally Bank - real operating bank; official terms PDF on ally.com, last modified April 7, 2026, fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official referring-customer T&Cs state verbatim the $50 Referral Reward per New Friend who enrolls, opens, and funds an Eligible Account, max 5 per calendar year."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing a Personal Link; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official T&Cs: each reward 'deposited into their Referrer Account within thirty (30) days' after the friend's enrollment/opening/funding completes - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Ally Bank customers selected/notified by Ally; Referrer Account open and in good standing."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend enrolls via Personal Link, opens Savings/Spending account within 30 days of enrollment, funds with any amount within 30 days of opening."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Within 30 days of the friend's enrollment/opening/funding completing."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $50 per referral stated; $250/year cap is the stated 5-referral limit; friend-side welcome bonus is a separate stated offer."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.ally.com/content/dam/pdf/bank/customer-referral-terms-and-conditions-referring-customers.pdf - official Ally referral T&Cs."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: share Personal Link, friend enrolls/opens/funds with any amount, $50 posts within 30 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official T&Cs PDF (last modified 2026-04-07) fetched directly 2026-09-23; program runs through 12/31/2026."
+    }
+  },
+  "notes": "dedupe-check 'ally' shows no Ally refer-a-friend route (R0034 reject and R0431 are unrelated). Tax treatment stated in official terms: rewards treated as interest for tax reporting.",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "flat $50 per successful referral in official terms; $250/year cap is a 5-referral limit, not the payout",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($50 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

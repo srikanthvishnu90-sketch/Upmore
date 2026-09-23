@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The credit size depends on the referred friend's annual propane volume, so you cannot know in advance whether you will earn $50 or $300 CAD — and the friend must actually get their propane tank filled, not just sign up.",
+  "catches": [
+    "Reward tiers depend on the referred customer's annual propane volume: 1,000 L or less = $50, 1,001–2,500 L = $100, 2,501–3,500 L = $200, 3,500+ L = $300.",
+    "Both sides earn account credits only when the referred friend gets their propane tank filled.",
+    "Amounts are in Canadian dollars (Avenir Energy is a Canadian propane supplier); no USD equivalent stated.",
+    "The page does not state an exact payout timeline after the tank fill.",
+    "Savings framing: account credits reduce planned propane spending; not cash income. Referrer side requires already being an Avenir customer."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url host avenirenergy.ca is the provider's own domain; page title 'Join Our Customer Referral Program – Avenir Energy'.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page fetched live 2026-09-23; tier table ($50/$100/$200/$300) and 'you each get rewarded' wording are current live copy.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Conditions explicit: both sides earn account credits when the friend gets their propane tank filled; tier depends on annual volume. No hidden qualifiers.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Tier amounts, who gets them (both sides), and condition (tank fill) are verbatim; payout_min_usd uses the lowest tier ($50).",
+      "pass": true
+    }
+  },
+  "eligibility": "Avenir Energy propane customer (rewards are paid as Avenir account credits, so the referrer needs an Avenir account to receive them) referring someone who becomes an Avenir propane customer and gets their tank filled.",
+  "notes": "Verified 2026-09-23 from Avenir Energy's official referral page. $50-$300 CAD account credits to both sides based on the referred customer's annual propane volume. Framed as savings on planned propane spending, not income. Distinct supplier vs prior-wave set; no Avenir routes in catalog, discovery cards, or prior verification evidence files.",
+  "numeric_basis": "payout from official page (tier table: $50/$100/$200/$300 per side); time: referral share 5-15 min active",
+  "official_url": "https://avenirenergy.ca/referral-program/",
+  "payout_max_usd": 300,
+  "payout_min_usd": 50,
+  "payout_quote": "Refer a friend and you each get rewarded with account credits when they get their propane tank filled! ... 1000 L or less = $50 account credit; 1001 L to 2500 L = $100 account credit; 2501 L to 3500 L = $200 account credit; 3500 L or more = $300 account credit.",
+  "payout_value_note": "$50-$300 CAD account credit per side, tiered by referred customer's annual propane volume (savings on planned propane spending, not cash income).",
+  "route_id": "R2662",
+  "standard": {
+    "s1": {
+      "note": "Tier amounts ($50/$100/$200/$300), both-side eligibility, and tank-fill condition are quoted verbatim from the official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing is natural: account credits against planned propane purchases; not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps follow the official page: refer a friend, friend becomes an Avenir propane customer, tank fill triggers credits to both accounts.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: credit tier depends on the friend's volume, and the friend must get their tank filled.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; the referral program itself is free.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; tier table is explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against avenirenergy.ca (provider's own domain). Deduped: no Avenir routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As an Avenir Energy propane customer, refer a friend who could benefit from Avenir as their propane supplier (your credit lands on your Avenir account).",
+    "Your friend becomes an Avenir Energy customer and gets their propane tank filled.",
+    "Both you and your friend earn account credits: $50 (1,000 L or less annual volume), $100 (1,001-2,500 L), $200 (2,501-3,500 L), or $300 (3,500+ L).",
+    "Credits are applied to your Avenir accounts, reducing future propane bills."
+  ],
+  "terms_url": "https://avenirenergy.ca/referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credits issued when the referred friend gets their propane tank filled; no exact timeline stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

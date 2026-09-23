@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The 'up to $100' is a discount on a qualifying Home Depot purchase — savings on planned spending, not cash. The card's standard purchase APR runs roughly 18–27%+, so carrying a balance beyond any promo financing period costs far more than the discount, and the full application is a hard credit inquiry.",
+  "catches": [
+    "Savings, not income: discount applies only to a qualifying Home Depot purchase — never spend extra just to chase the $100.",
+    "$0 annual fee (reported consistently by third parties; card is a no-fee store card), but the standard variable purchase APR (~17.99%–26.99% per third-party reviews of Citi terms) applies to any carried balance; promotional 6-month no-interest financing on $299+ purchases is deferred interest — if the balance isn't paid in full by the end of the period, interest is charged retroactively from the purchase date.",
+    "Full card application = hard inquiry. The page offers a prequalification check with 'no impact to credit score,' but prequalification is not approval.",
+    "Subject to credit approval; store-only card (Home Depot stores and homedepot.com only), no ongoing rewards.",
+    "Offer valid on new accounts opened by 1/27/2027; Home Depot reserves the right to change or discontinue offers.",
+    "Terms footnote '*' details were not fully fetchable — qualifying-purchase definition and exclusions may further limit the discount."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "The Home Depot is a real national retailer; the new-card offer is on the official homedepot.com credit-center page, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official homedepot.com page: 'Save up to $100* today on a qualifying purchase when you open a new card'; 'SAVE UP TO $100* On a qualifying purchase. Valid on new accounts opened by 1/27/27.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; $0 annual fee per third-party reporting of Citi's card terms. Deferred-interest financing terms are post-account, not upfront.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Offer live on homedepot.com/c/credit-center as fetched 2026-09-23 (UTC), valid through 1/27/2027 — not expired.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Home Depot Consumer Credit Card accounts opened by 1/27/2027; subject to credit approval. Prequalification check available with no credit-score impact.",
+  "notes": "Verified on official homedepot.com credit-center page 2026-09-23 (UTC). APR/fee figures from third-party reviews of Citi-issued card terms (smartasset, wallethub, groupon blog) — used only for the risk disclosure, not the payout. The '*' footnote tier details (e.g. $25/$50/$100 tiers by purchase size) are reported by aggregators but were not confirmed in the fetched official page; payout uses the official 'up to $100' language only.",
+  "official_url": "http://homedepot.com/c/credit-center",
+  "payout_max_usd": 100,
+  "payout_min_usd": 0,
+  "payout_quote": "Save up to $100* today on a qualifying purchase when you open a new card. SAVE UP TO $100* On a qualifying purchase. Valid on new accounts opened by 1/27/27.",
+  "payout_value_note": "'up to' offer with no floor: up to $100 off a qualifying purchase when opening a new card (official terms)",
+  "route_id": "R3562",
+  "standard": {
+    "s1": {
+      "note": "New-account signup discount mechanism; no Home Depot card route exists in the catalog or verification files.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete steps: prequalify (no score impact) or apply, open the card by 1/27/2027, make a qualifying purchase to trigger the discount.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Expiry 1/27/2027 captured (about 4 months out); discount applies at the time of the qualifying purchase.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Catches include never-spend-extra-to-chase, $0 fee math, ~18-27% APR / deferred-interest retroactive-interest risk, hard inquiry, approval requirement, store-only limitation.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; $0 annual fee on the card.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Public offer on homedepot.com — no invitation or targeted mailer required.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe: grep/dedupe-check/verification-file search — no Home Depot route in catalog.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Optionally prequalify on the Home Depot credit-center page (stated as no impact to credit score) to gauge approval odds.",
+    "Apply for the Home Depot Consumer Credit Card and open the new account by 1/27/2027.",
+    "Make a qualifying purchase on the new card to receive the discount (up to $100 off).",
+    "Pay the balance in full (and well before any deferred-interest promo period ends) so interest never applies."
+  ],
+  "terms_url": "http://homedepot.com/c/credit-center",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "One-time discount on a qualifying purchase when opening the new card; valid on accounts opened by 1/27/2027.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms (up to $100 off qualifying purchase); time: credit-card application est. 20-40 min active"
+}

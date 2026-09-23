@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The reward is locked for 6 months - you cannot withdraw it until 6 months after it is credited, and you must enter a selected promo code during onboarding.",
+  "catches": [
+    "Only valid for new users who signed up within the last 15 days and have never redeemed a promo code; applies to selected promo codes only",
+    "Must complete onboarding AND deposit at least EUR 100 within 15 days to get EUR 10-100 in a fractional share or ETF",
+    "Reward is a randomly-sized fractional share/ETF (EUR 10-100), credited to the general account; you can pick your share subject to availability",
+    "Reward can be withdrawn only 6 months after it is credited",
+    "Terms & Conditions apply; Capital at risk - investments can fall as well as rise"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Lightyear (lightyear.com) - European investment platform (Lightyear Europe AS). Official 'Reward promotion' page fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'Claim up to 100 EUR in a fractional share... Complete onboarding and deposit at least 100 EUR within 15 days to receive between 10 EUR and 100 EUR in a fractional share or ETF, credited to your general account.' Disclaimer: 'Terms & Conditions apply... The reward can be withdrawn 6 months after it's credited.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: open account, enter promo code, complete onboarding, deposit EUR 100+ within 15 days.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "The bonus costs nothing beyond the user's own deposit (which remains theirs). Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Lightyear users in supported countries who sign up within the last 15 days, enter a selected promo code, complete onboarding, and deposit EUR 100+ within 15 days.",
+  "notes": "G54 brokerage wave 2. Official provider-owned terms on lightyear.com.",
+  "numeric_basis": "payout from official page (EUR 10-100, represented approx. US$12-$116); time: signup + onboarding + deposit est. 30-45 min active",
+  "official_url": "https://lightyear.com/en-ee/reward",
+  "payout_max_usd": 116,
+  "payout_min_usd": 12,
+  "payout_quote": "Complete onboarding and deposit at least 100 EUR within 15 days to receive between 10 EUR and 100 EUR in a fractional share or ETF, credited to your general account.",
+  "payout_value_note": "Fractional share or ETF worth EUR 10-100; represented approx. US$12-$116.",
+  "route_id": "R5797",
+  "standard": {
+    "s1": {
+      "note": "New users only, signed up within last 15 days, no prior promo code redeemed; selected promo codes.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: enter promo code, complete onboarding, deposit EUR 100+ within 15 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "EUR 10-100 range stated officially; 6-month withdrawal lock disclosed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Official range used; approx. USD conversion noted, not inflated.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://lightyear.com/en-ee/reward - official Lightyear page fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: sign up, enter code, onboard, deposit, pick share.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Lightyear promo page verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up for a Lightyear account and enter a selected promo code during onboarding",
+    "Complete onboarding and deposit at least EUR 100 within 15 days",
+    "Receive EUR 10-100 in a fractional share or ETF in your general account (withdrawable 6 months after credit)"
+  ],
+  "terms_url": "https://lightyear.com/en-ee/reward",
+  "time_max_minutes": 45,
+  "time_min_minutes": 30,
+  "timing": "Reward promotion valid for users who signed up within the last 15 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

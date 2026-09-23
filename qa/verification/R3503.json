@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Winner-only, skill-gated ASR challenge: only the top leaderboard finishers earn from the $2,000 USD pool, so the expected payout for a typical entrant is effectively $0; per-place split is not published, and the close date was not visible on the rules page — confirm status/deadline on the competition page before starting.",
+  "catches": [
+    "Per-place prize split (1st/2nd/3rd) is not published; title states only 'Win $2 000 USD' total.",
+    "Close date was not visible on the rules page at check time — confirm the challenge is still open and its deadline before investing time.",
+    "Top 20 must respond to a code-request email within 48 hours and submit reproducible code; winners assign worldwide copyright of the winning solution to Zindi.",
+    "Prizes paid by bank transfer/PayPal/international transfer; international transfer fees are deducted from prizes of $500+; winners pay all taxes and their own bank's fees.",
+    "Winners must provide proof of identification, proof of residence, and a bank letter confirming banking details."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Zindi competition page live on 2026-09-23 with title, open-to-all statement, team rules, and full prize-payment terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page title states 'Win $2 000 USD'; rules state prizes transfer to individual players or the team leader, paid in USD.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to enter; no fee, no purchase, no risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Zindi entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "This challenge is open to all. Participate as an individual or in a team of up to four people. Multiple accounts per user are not permitted, and neither is collaboration or membership across multiple teams. Prizes are transferred only to the individual players or to the team leader. Top 3/team leaders must present proof of identification, proof of residence, and a letter from your bank confirming banking details.",
+  "notes": "Current official ASR competition on Zindi. Per-place split and close date not published on the rules page — framed as total-pool max with instruction to confirm status before starting. Maximum 10 submissions/day, 300 total; 2 submissions chosen for private-leaderboard judging.",
+  "numeric_basis": "Payout from official terms ($2,000 USD pool, winner-only); time: conservative active range for a serious ASR challenge entry (data prep, training, up to 300 submissions); no official time commitment.",
+  "official_url": "https://zindi.africa/competitions/ai4d-baamtu-datamation-automatic-speech-recognition-in-wolof",
+  "payout_max_usd": 2000,
+  "payout_min_usd": 0,
+  "payout_quote": "Win $2 000 USD. 'Prizes are transferred only to the individual players or to the team leader.' 'The winners will be paid via bank transfer, PayPal, or other international money transfer platform.'",
+  "payout_value_note": "Total $2,000 USD pool stated in title; per-place split not published; winner-only, expected payout for typical entrant ~$0.",
+  "route_id": "R3503",
+  "standard": {
+    "s1": {
+      "note": "Steps are concrete: register, download data, train ASR model, submit, select final submissions.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document missing per-place split/deadline, 48-hour code-verification rule, transfer-fee deduction, taxes, and KYC requirements.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility quoted verbatim: open to all, individuals or teams of up to four, no multi-accounts.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Page live with 'This challenge is open to all' as of 2026-09-23; close date not shown — note instructs confirming status before starting.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from zindi.africa (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as winner-only skill competition with effectively $0 expected payout for typical entrants; never promises income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a free Zindi account and open the AI4D Baamtu Datamation Wolof ASR competition page.",
+    "Read the competition rules (teams of up to four; open-source packages only; no automl; no metadata use).",
+    "Download the provided audio data and build an automatic speech recognition model for Wolof.",
+    "Submit prediction files (maximum 10 submissions per day, 300 total) and track the public leaderboard.",
+    "Before close, select 2 submissions to be judged on the private leaderboard; if in the top 20, respond to the code-request email within 48 hours."
+  ],
+  "terms_url": "https://zindi.africa/competitions/ai4d-baamtu-datamation-automatic-speech-recognition-in-wolof",
+  "time_max_minutes": 3600,
+  "time_min_minutes": 600,
+  "timing": "No close date shown on the rules page at check time (2026-09-23). Page states 'This challenge is open to all.' Confirm the challenge is still open and its deadline on the competition page before starting.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

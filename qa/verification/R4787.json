@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must fund at least $250 into a share account within 60 days (or fund a loan within 90 days) - a join-only referral with no funding earns you nothing, and the promo window is fixed.",
+  "catches": [
+    "Referrer: current SF Fire member 18+; register at sffirecu.org/refer and share your unique link.",
+    "Friend must: register via your link; join SF Fire CU by opening a share account (checking/savings/money market/certificate) or a loan product; fund $250+ into the share account within 60 days of membership or have the loan funded within 90 days.",
+    "Indirect loans and trust/estate accounts ineligible; referred member cannot have previously been an SF Fire member.",
+    "Reward: $50 Mastercard Virtual Reward per qualifying referral, up to $500 per calendar year.",
+    "Both accounts must be open and in good standing at reward issuance; reward not transferable; 2-3 weeks for virtual delivery (4-6 weeks for physical card if not subscribed to marketing emails).",
+    "Promo window: September 1, 2026 through December 31, 2026; can change without notice.",
+    "$600+ in prizes in a calendar year triggers an IRS Form 1099."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official SF Fire CU page (sffirecu.org/refer): 'You'll earn $50 for every friend you refer who becomes a member - up to $500 per calendar year!' and terms: 'Existing member: $50 Mastercard Virtual Reward for each qualifying referral (up to $500 total per calendar year).'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official sffirecu.org domain, fetched live 2026-09-23; promo window 2026-09-01 through 2026-12-31",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens share account or loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no sffirecu.org route; catalog has no SF Fire CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current SF Fire member 18+. Friend: 18+, never an SF Fire member, opens qualifying share account or loan.",
+  "notes": "Verified 2026-09-23. SF Fire Credit Union (San Francisco, CA). Referrer earns $50 Mastercard Virtual Reward per qualifying referral; cap $500/year. Promo runs 2026-09-01 through 2026-12-31.",
+  "numeric_basis": "payout from official sffirecu.org terms ($50 Mastercard Virtual Reward per qualifying referral; cap $500/yr); time: register + share link est. 5-15 min active",
+  "official_url": "https://sffirecu.org/refer",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You'll earn $50 for every friend you refer who becomes a member - up to $500 per calendar year! ... Existing member: $50 Mastercard Virtual Reward for each qualifying referral (up to $500 total per calendar year).",
+  "payout_value_note": "$50 Mastercard Virtual Reward to the referrer per qualifying referral; cap $500/year.",
+  "route_id": "R4787",
+  "standard": {
+    "s1": {
+      "note": "Terms live on sffirecu.org, fetched 2026-09-23; promo 2026-09-01 through 2026-12-31",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer current member 18+; friend 18+, never an SF Fire member, opens qualifying account or loan",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register via link, open share account ($250 funded within 60 days) or funded loan within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: virtual reward delivered 2-3 weeks after all requirements (4-6 weeks for physical card)",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: $600+ in prizes in a calendar year triggers IRS Form 1099",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register at sffirecu.org/refer to access your referral portal.",
+    "Invite friends with your unique referral link via email or social media.",
+    "Friend registers via your link, joins SF Fire CU, and funds $250+ into a share account within 60 days (or funds a loan within 90 days).",
+    "You receive a $50 Mastercard Virtual Reward per qualifying referral, up to $500/year."
+  ],
+  "terms_url": "https://sffirecu.org/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Mastercard Virtual Reward delivered 2-3 weeks after all requirements completed.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

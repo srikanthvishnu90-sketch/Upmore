@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referred checking account must stay open 90 days with a balance over $0 on day 90, so the bonus pays roughly 120 days after the account opens.",
+  "catches": [
+    "Existing CSB consumer client earns a $100 Refer-A-Friend bonus per referred new client who opens a consumer checking account.",
+    "Existing clients can earn unlimited Refer-A-Friend bonuses.",
+    "Referred account must be open a minimum of 90 calendar days, with no previously closed CSB consumer checking account within the past 12 months.",
+    "Referred account must have a balance greater than zero at end of business on the 90th calendar day.",
+    "Bonus applied as a credit within 30 calendar days after the 90-day qualifying period; both accounts must be open at payout.",
+    "Must be an Iowa resident to open an account; minimum opening deposit $100 ($25 for BankOn Checking).",
+    "All bonuses reported to the IRS; client responsible for taxes; cannot be combined with other offers."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official bankcsb.com/refer: 'To receive the $100 Refer-A-Friend bonus, 1) an existing CSB consumer client refers a new client to open a consumer checking account'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms on official bankcsb.com domain (/refer), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check returned only a false-positive utility-rebate catalog hit; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CSB consumer client. Friend: new client, Iowa resident.",
+  "notes": "Verified 2026-09-23. Community State Bank (Ankeny, Iowa). $100 per qualifying referral; official page explicitly states existing clients can earn unlimited Refer-A-Friend bonuses.",
+  "numeric_basis": "payout from official page ($100 per referral; unlimited stated); time: sharing referral est. 5-15 min active",
+  "official_url": "https://www.bankcsb.com/refer",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "To receive the $100 Refer-A-Friend bonus, an existing CSB consumer client refers a new client to open a consumer checking account",
+  "payout_value_note": "$100 per qualifying referral; official page explicitly states existing clients can earn unlimited Refer-A-Friend bonuses.",
+  "route_id": "R3940",
+  "standard": {
+    "s1": {
+      "note": "Terms live on bankcsb.com, fetched 2026-09-23; ongoing offer subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing CSB consumer client; Iowa resident",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking open 90 days, balance > $0 on day 90",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: credit within 30 calendar days after 90-day qualifying period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonuses reported to the IRS; client responsible for taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a new client to open a consumer checking account.",
+    "They open the account (subject to approval) and keep it open with a balance over $0 on the 90th day.",
+    "You receive a $100 credit within 30 days after the qualifying period."
+  ],
+  "terms_url": "https://www.bankcsb.com/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus applied within 30 calendar days after the 90-day qualifying period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

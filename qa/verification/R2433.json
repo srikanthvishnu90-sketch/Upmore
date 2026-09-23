@@ -1,0 +1,88 @@
+{
+  "route_id": "R2433",
+  "verdict": "verify",
+  "official_url": "https://providentcu.org/become-a-member/referral-program",
+  "terms_url": "https://providentcu.org/become-a-member/referral-program",
+  "payout_quote": "The person making the referral (Referrer) will earn a $150 Visa Reward Card for each individual or a $50 Visa Reward Card for each business referred (Referred Person) to Provident Credit Union that registers for the offer, opens a new personal or business checking account and completes the other requirements.",
+  "steps": [
+    "Register for the Provident Credit Union referral program on their website and get your referral link.",
+    "Share the offer with friends, family, or coworkers by email or social media.",
+    "Your friend registers via your link and opens a new Provident personal checking account (for your $150 reward) or business checking account (for your $50 reward).",
+    "Within 60 days of account opening, your friend completes: $400+ in debit/credit card purchases AND $500+ in direct deposits/automatic credits, and keeps the account open and in good standing for 60 days.",
+    "Your Visa Reward Card is mailed to the physical address on your program registration 4-6 weeks after all requirements are completed."
+  ],
+  "catches": [
+    "The payout is a Visa Reward Card (not cash) - and note the split: you get $150 per friend who opens personal checking, only $50 per business checking referral.",
+    "Cap: $500 in Visa Reward Cards per calendar year (about 3 personal-checking referrals).",
+    "Friend requirements are demanding: $400 in card purchases PLUS $500 in direct deposits within 60 days, and the account must stay open 60 days.",
+    "The increased reward offer is subject to change at any time without notice.",
+    "Youth Checking accounts are ineligible; members must be 18+; Provident CU employees ineligible.",
+    "Reward Card may be reported as income to the IRS.",
+    "Only one Referrer may receive the Reward Card for each Referred Person."
+  ],
+  "biggest_catch": "Your $150 depends on your friend completing $400 in purchases AND $500 in direct deposits within 60 days - and you're capped at $500 per calendar year.",
+  "eligibility": "Provident Credit Union referral program registrants (18+); referred person must be a new personal/business checking account holder. Employees ineligible.",
+  "timing": "Visa Reward Card mailed 4-6 weeks after all requirements are completed.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Provident Credit Union - real operating credit union; official domain providentcu.org, Member Referral Program page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official T&Cs state verbatim the Referrer earns 'a $150 Visa Reward Card for each individual' (personal checking) or '$50 Visa Reward Card for each business' (business checking) referred who registers, opens an account, and completes requirements."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; registering and sharing the offer; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official terms: cards delivered '4-6 weeks after completion of all requirements'; $500/year cap; friend $400-purchases/$500-direct-deposits/60-day requirements - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Program registrants 18+; friend must be a new personal/business checking holder."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend registers via link, opens new checking, completes $400+ purchases + $500+ direct deposits in 60 days, account open 60 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Card mailed 4-6 weeks after all requirements completed."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$150 per personal-checking referral and $50 per business-checking referral, stated flatly; friend-side $50 (personal) / $150 (business)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://providentcu.org/become-a-member/referral-program - official Provident CU Member Referral Program."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: register, share link, friend opens + $400 purchases/$500 deposits in 60 days, $150 Visa card mailed in 4-6 weeks."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'provident' shows no existing provider. Unusual structure: the referrer earns MORE ($150) than the friend ($50) for personal checking - verified in official text.",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 150.0,
+  "payout_value_note": "$150 Visa Reward Card per personal-checking referral, $50 per business-checking referral in official terms",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($150 personal / $50 business per referral flat); time: category default App Referral share-link 5-15 min active"
+}

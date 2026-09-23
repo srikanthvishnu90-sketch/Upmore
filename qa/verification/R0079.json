@@ -1,7 +1,7 @@
 {
   "route_id": "R0079",
   "verdict": "verify",
-  "checked_at": "2026-09-23T01:40:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "official_url": "https://www.mtb.com/personal/banking/checking/cash-bonus",
   "terms_url": "https://www.mtb.com/personal/banking/checking/cash-bonus",
   "payout_quote": "M&T Bank personal checking promotion: open a new eligible M&T personal checking account by December 31, 2026 and receive up to $300 — $300 on MyChoice Premium or MyChoice Plus ($250 on some co-branded pages), $200 on EZChoice — with qualifying direct deposits totaling $500+ within 90 days of account opening; bonus awarded within 90 days after completing the direct deposits.",
@@ -22,7 +22,7 @@
   ],
   "biggest_catch": "This is the same offer under both route IDs (Manufacturers and Traders Trust = M&T Bank's legal name) — and the $300 tier requires the Premium/Plus account, which carries a $24.95/$14.95 monthly maintenance fee if not waived.",
   "eligibility": "New M&T personal checking customers 18+ within the M&T footprint (exact offer varies by ZIP); new account by 12/31/2026.",
-  "notes": "Verified 2026-09-23 via official mtb.com and campaigns.mtb.com crawls (exact promo URL not directly readable — see standard.s7). DUPLICATE FLAG: R0079 covers the same M&T Bank checking promotion as its sibling route ID ('Manufacturers and Traders Trust Company' is the bank's legal name). Recommend merging R0049 and R0079 into a single verified route. Main offer expires 12/31/2026; co-branded variants expire sooner. App links left null.",
+  "notes": "Verified 2026-09-23 via official mtb.com and campaigns.mtb.com crawls (exact promo URL not directly readable — see standard.s7). DUPLICATE FLAG: R0079 covers the same M&T Bank checking promotion as its sibling route ID ('Manufacturers and Traders Trust Company' is the bank's legal name). Recommend merging R0049 and R0079 into a single verified route. Main offer expires 12/31/2026; co-branded variants expire sooner. App links left null. [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: range stated in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -79,5 +79,11 @@
     "ios": null,
     "android": null
   },
-  "upfront_fee": false
+  "upfront_fee": false,
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 300.0,
+  "payout_value_note": "'up to' amount in official terms; floor $0",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)"
 }

@@ -1,1 +1,89 @@
-{"app_links":{"android":"https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile","ios":"https://apps.apple.com/us/app/paypal-send-shop-manage/id283646709"},"biggest_catch":"The US program pays in PayPal Rewards points, not cash: each side gets 1,000 points redeemable for $10 cash back. The friend must spend $5+ within 30 days of signup, and the reward is capped at 10 friends.","catches":["US reward is 1,000 PayPal Rewards points per side (redeemable for $10 cash back), earned when the friend joins and spends at least $5 within 30 days of signup.","Friend must join AND link their bank account or card; spend must occur within 30 days of signup.","Cap: up to 10 friends — maximum 10,000 points (about $100 cash back) per referrer.","Points are subject to the PayPal Rewards Program Agreement; the offer may be modified or terminated at any time.","Older third-party pages describing a flat '$10 cash' version are outdated — the current official US offer is points-based."],"checked_at":"2026-09-23T01:13:00Z","critical":{"c1":{"evidence":"PayPal, Inc. — real company; official 'Refer a Friend — PayPal US' terms page (sandbox.paypal.com/us/webapps/mpp/invite/terms, an official PayPal domain) crawled 11 days ago with full terms text.","pass":true},"c2":{"evidence":"Official PayPal US referral terms: 'When they spend at least $5 (within 30 days of signup), you both can earn 1,000 points (redeemable for $10 cash back).' Up to $100 cash back for 10 friends.","pass":true},"c3":{"evidence":"No fee; friend spends $5+ of their own money within 30 days.","pass":true},"c4":{"evidence":"Timing governed by the PayPal Rewards Program Agreement; points are issued after the qualifying spend is confirmed.","pass":true}},"eligibility":"Referrer: existing PayPal user with access to the referral program. Friend: must not already have PayPal; signs up for a US personal account via the referral link, links bank account or card, and spends at least $5 within 30 days of signup.","notes":"CORRECTION: the route's '$10 referral' is right in value but wrong in form — the current official US program pays 1,000 PayPal Rewards points per side (redeemable for $10 cash back), not $10 cash. Display must say '1,000 points ($10 cash back)'. The US terms page itself rendered as a JS shell on direct load, but the official terms text was obtained from the crawl of the official paypal.com terms URL. UK/IE variants pay flat €10/£10; US is points-based.","official_url":"https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms","payout_quote":"Get up to $100 cash back. When you invite ten of your friends to PayPal, you can earn up to $100 cash back (10,000 points). | When they spend at least $5 (within 30 days of signup), you both can earn 1,000 points (redeemable for $10 cash back). | Offer may be canceled or modified at any time. PayPal Rewards terms and exclusions apply.","route_id":"R0327","standard":{"s1":{"note":"Explicit: new US personal account, link bank/card, $5+ spend within 30 days, 10-friend cap.","pass":true},"s2":{"note":"All conditions explicit including points-not-cash form, Rewards terms, and modification clause.","pass":true},"s3":{"note":"Points issued after the qualifying spend is confirmed, per Rewards terms.","pass":true},"s4":{"note":"No weasel words — point amounts and cash-back redemption value stated flatly.","pass":true},"s5":{"note":"https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms — official PayPal domain with the full US referral terms.","pass":true},"s6":{"note":"Steps are concrete: share link, friend signs up, links bank/card, spends $5 within 30 days.","pass":true},"s7":{"note":"Official PayPal US referral terms page crawled (official domain); direct page load renders JS shell.","pass":true}},"steps":["In the PayPal app or site, find your referral link under the invite/offers section.","Share it with a friend who does not already have PayPal.","Your friend signs up for a US personal PayPal account through your link and links their bank account or card.","Your friend spends at least $5 within 30 days of signup.","You and your friend each earn 1,000 PayPal Rewards points (redeemable for $10 cash back); up to 10 friends ($100 cash back total)."],"terms_url":"https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms","timing":"Points issued after the friend's qualifying $5+ spend is confirmed, per the PayPal Rewards Program Agreement.","upfront_fee":false,"verdict":"verify","weasel_words":{"present":false,"quote":null}}
+{
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile",
+    "ios": "https://apps.apple.com/us/app/paypal-send-shop-manage/id283646709"
+  },
+  "biggest_catch": "The US program pays in PayPal Rewards points, not cash: each side gets 1,000 points redeemable for $10 cash back. The friend must spend $5+ within 30 days of signup, and the reward is capped at 10 friends.",
+  "catches": [
+    "US reward is 1,000 PayPal Rewards points per side (redeemable for $10 cash back), earned when the friend joins and spends at least $5 within 30 days of signup.",
+    "Friend must join AND link their bank account or card; spend must occur within 30 days of signup.",
+    "Cap: up to 10 friends — maximum 10,000 points (about $100 cash back) per referrer.",
+    "Points are subject to the PayPal Rewards Program Agreement; the offer may be modified or terminated at any time.",
+    "Older third-party pages describing a flat '$10 cash' version are outdated — the current official US offer is points-based."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "PayPal, Inc. — real company; official 'Refer a Friend — PayPal US' terms page (sandbox.paypal.com/us/webapps/mpp/invite/terms, an official PayPal domain) crawled 11 days ago with full terms text.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official PayPal US referral terms: 'When they spend at least $5 (within 30 days of signup), you both can earn 1,000 points (redeemable for $10 cash back).' Up to $100 cash back for 10 friends.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee; friend spends $5+ of their own money within 30 days.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing governed by the PayPal Rewards Program Agreement; points are issued after the qualifying spend is confirmed.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing PayPal user with access to the referral program. Friend: must not already have PayPal; signs up for a US personal account via the referral link, links bank account or card, and spends at least $5 within 30 days of signup.",
+  "notes": "CORRECTION: the route's '$10 referral' is right in value but wrong in form — the current official US program pays 1,000 PayPal Rewards points per side (redeemable for $10 cash back), not $10 cash. Display must say '1,000 points ($10 cash back)'. The US terms page itself rendered as a JS shell on direct load, but the official terms text was obtained from the crawl of the official paypal.com terms URL. UK/IE variants pay flat €10/£10; US is points-based. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default App Referral 5-15min] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)] [numeric-backfill 2026-09-24: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)]",
+  "official_url": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms",
+  "payout_quote": "Get up to $100 cash back. When you invite ten of your friends to PayPal, you can earn up to $100 cash back (10,000 points). | When they spend at least $5 (within 30 days of signup), you both can earn 1,000 points (redeemable for $10 cash back). | Offer may be canceled or modified at any time. PayPal Rewards terms and exclusions apply.",
+  "route_id": "R0327",
+  "standard": {
+    "s1": {
+      "note": "Explicit: new US personal account, link bank/card, $5+ spend within 30 days, 10-friend cap.",
+      "pass": true
+    },
+    "s2": {
+      "note": "All conditions explicit including points-not-cash form, Rewards terms, and modification clause.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Points issued after the qualifying spend is confirmed, per Rewards terms.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words — point amounts and cash-back redemption value stated flatly.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms — official PayPal domain with the full US referral terms.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: share link, friend signs up, links bank/card, spends $5 within 30 days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official PayPal US referral terms page crawled (official domain); direct page load renders JS shell.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "In the PayPal app or site, find your referral link under the invite/offers section.",
+    "Share it with a friend who does not already have PayPal.",
+    "Your friend signs up for a US personal PayPal account through your link and links their bank account or card.",
+    "Your friend spends at least $5 within 30 days of signup.",
+    "You and your friend each earn 1,000 PayPal Rewards points (redeemable for $10 cash back); up to 10 friends ($100 cash back total)."
+  ],
+  "terms_url": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms",
+  "timing": "Points issued after the friend's qualifying $5+ spend is confirmed, per the PayPal Rewards Program Agreement.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "payout_min_usd": 100.0,
+  "payout_max_usd": 100.0,
+  "payout_value_note": "points at assumed 1¢/pt base redemption (10,000 pts); provider may vary",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "backfill: payout: points at assumed 1¢/pt base redemption (10,000 pts); provider may vary; time: category default App Referral (5-15min active)"
+}

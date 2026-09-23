@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referral form must be presented at the time the account is opened - a late form forfeits the bonus.",
+  "catches": [
+    "Referrer earns $25 for each new personal checking account opened by a referral.",
+    "Friend earns $25 when they open a checking account with direct deposit (DD must be made within 60 days; friend's $25 arrives within 6 weeks of first DD).",
+    "The referral form must be presented at the time the account is opened.",
+    "The $25 is deposited into the referrer's account at the time of the friend's checking account opening.",
+    "Cannot be combined with any other PeoplesBank offer.",
+    "No cap stated on the official page.",
+    "No tax language on the page (standard bonus treatment; not stated).",
+    "VINTAGE CAVEAT: the page's disclosure says 'Available as of 1/10/19'. The page remains live on the official bankatpeoples.com domain, but confirm the program is still running before acting."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official PeoplesBank page (bankatpeoples.com): 'we'll reward you with $25 for each checking account opened and them with $25 when they open a PeoplesBank checking account with direct deposit' and 'The $25 will be deposited into the referrer's account at the time of the referral's checking account opening.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official bankatpeoples.com domain (bankatpeoples.com/home/personal/resources/refer-a-friend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'peoplesbank' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism and distinct bank from Peoples Bank WA (peoplesbank-wa.com).",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: PeoplesBank customer. Friend: opens a new personal checking account; the referral form must be presented at account opening.",
+  "notes": "Re-reviewed 2026-09-23. PeoplesBank (bankatpeoples.com refer-a-friend): $25 to the referrer per checking account opened; $25 to the friend when they open with direct deposit (DD must occur within 60 days of opening). Referrer paid at the time of the referral's account opening; friend paid within 6 weeks of first direct deposit. No cap stated; no tax treatment stated.",
+  "numeric_basis": "payout from official page ($25 per checking account opened; no cap stated); time: telling friends / filling the referral form est. 5-15 min active",
+  "official_url": "https://www.bankatpeoples.com/home/personal/resources/refer-a-friend",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "we'll reward you with $25 for each checking account opened and them with $25 when they open a PeoplesBank checking account with direct deposit ... The $25 will be deposited into the referrer's account at the time of the referral's checking account opening.",
+  "payout_value_note": "$25 per checking account opened by a referral. No cap stated.",
+  "route_id": "R3903",
+  "standard": {
+    "s1": {
+      "note": "Program page live on bankatpeoples.com, fetched 2026-09-23; offer subject to change without notice. VINTAGE CAVEAT: disclosed 'Available as of 1/10/19'.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: new and existing customers; referral must result in a new personal checking account",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new personal checking account with the referral form presented at opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $25 deposited to the referrer at the time of the friend's checking account opening",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell family and friends about PeoplesBank checking.",
+    "Friend opens a new personal checking account with the referral form presented at opening.",
+    "$25 is deposited into your account at the time of their account opening."
+  ],
+  "terms_url": "https://www.bankatpeoples.com/home/personal/resources/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referrer paid at the time of the referral's account opening; friend paid within 6 weeks of first direct deposit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

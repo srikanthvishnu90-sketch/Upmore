@@ -1,0 +1,64 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $1,000 tier requires a $30,000 average ledger balance in EACH of the first three statement cycles. Business accounts only; offers valid through September 30, 2026 (8 days from verification).",
+  "catches": [
+    "Earn $400: open a new PNC Business Checking or Business Checking Plus account by 9/30/26; for each of the first three statement cycles, maintain a minimum average ledger balance of $2,000 AND make at least 10 total qualifying transactions.",
+    "Earn $1,000: open a new PNC Treasury Enterprise Plan or Analysis Business Checking account by 9/30/26; for each of the first three statement cycles, maintain a minimum average ledger balance of $30,000.",
+    "Offers valid through September 30, 2026.",
+    "Aggregator (creditdonkey) adds: only available to businesses with annual revenue under $5 million; existing business checking customers, those who closed an account in the past 90 days, or those paid a promotional premium in the past 12 months are not eligible; $1,000 bonus credited within 90 days after all conditions are met (unconfirmed in the official excerpt).",
+    "Treasury Enterprise Plan has a $50 monthly account maintenance fee (waived with $30,000 average combined monthly collected balance)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "PNC Bank (pnc.com) is a real major bank; the business checking bonus offers are published on its official business-checking-offer page (search crawl, confirmed ~4 hours ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'How to Earn $400 or $1,000. Earn $400: Open a new Business Checking or Business Checking Plus account by 9/30/26. For each of the first three statement cycles: maintain a minimum average ledger balance of $2,000 & make at least 10 total qualifying transactions. Earn $1,000: Open a new Treasury Enterprise Plan or Analysis Business Checking account by 9/30/26. For each of the first three statement cycles: maintain a minimum average ledger balance of $30,000. Offers valid through September 30, 2026.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Both tiers, the per-cycle balance requirements, transaction count, eligible account types, and the 9/30/2026 end date are all quoted verbatim from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "New PNC business checking customers; business accounts only (aggregator adds: annual revenue under $5 million; existing/closed-in-90-days/recently-paid customers excluded - official corroboration not captured here).",
+  "notes": "Official pnc.com business-checking-offer page (crawl ~4 hours). Verified as one row covering both business tiers (min $400, max $1,000). No sibling duplicate found in R0851-R0934. Expires 2026-09-30 (8 days from verification).",
+  "numeric_basis": "payout: flat bonus amounts in official terms (tiered); time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.pnc.com/en/small-business/banking/business-checking-overview/business-checking-offer.html?WT=NavOffer",
+  "payout_max_usd": 1000.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "How to Earn $400 or $1,000. Earn $400: Open a new Business Checking or Business Checking Plus account by 9/30/26. For each of the first three statement cycles: maintain a minimum average ledger balance of $2,000 & make at least 10 total qualifying transactions. Earn $1,000: Open a new Treasury Enterprise Plan or Analysis Business Checking account by 9/30/26. For each of the first three statement cycles: maintain a minimum average ledger balance of $30,000. Offers valid through September 30, 2026.",
+  "payout_value_note": "flat bonus amounts in official terms (tiered)",
+  "route_id": "R0935",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New business checking customers; business accounts only."
+    },
+    "s2": {
+      "pass": true,
+      "evidence": "$2,000 avg ledger balance + 10 qualifying transactions per cycle ($400 tier) or $30,000 avg ledger balance per cycle ($1,000 tier), for each of first three statement cycles."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Offers valid through 2026-09-30; $50 monthly fee on Treasury Enterprise Plan (waived with $30,000 balances)."
+    }
+  },
+  "steps": [
+    "Open a new PNC Business Checking/Business Checking Plus (for $400) or Treasury Enterprise Plan/Analysis Business Checking (for $1,000) by September 30, 2026.",
+    "For each of the first three statement cycles, maintain the minimum average ledger balance ($2,000 for the $400 tier; $30,000 for the $1,000 tier) and, for the $400 tier, make at least 10 total qualifying transactions per cycle.",
+    "The bonus is earned after the three-cycle qualification requirements are met."
+  ],
+  "terms_url": "https://www.pnc.com/en/small-business/banking/business-checking-overview/business-checking-offer.html?WT=NavOffer",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Open by 2026-09-30; qualification over the first three statement cycles.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must do real banking activity - 10 debit card transactions of $10+ AND two direct deposits of $500+ within 90 days - and if you share your link by text/social you must include the required disclosure sentence or both of you get disqualified.",
+  "catches": [
+    "Referrer earns a $100 Reward per qualifying referral for checking accounts opened on/after 3/1/2026 ($50 for accounts opened before 3/1/2026); cap of $500 per calendar year.",
+    "Friend must register via the referral link, open a qualifying checking account within 90 days of registering, and not have been a primary checking owner at First Financial in the past 12 months.",
+    "Consumer checking: 10 debit transactions of $10+ (non-ATM) AND two direct deposits of $500+ within 90 days. Business checking: 10 payment transactions of $25+ AND $2,000 in total deposits within 90 days.",
+    "Rewards paid as virtual Visa Reward Cards ~3 weeks after completion; cards expire 6 months after issuance.",
+    "IRS tax reporting applies; employees of First Financial Bank and household members are ineligible.",
+    "First referral registration wins if multiple people refer the same individual; no partial rewards (e.g. $450 + one more referral pays nothing extra)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Financial Bank terms (bankatfirst.com): 'Referrer is eligible to receive a $100 Reward for each Referred Individual who completes all Qualifying Activities for Qualifying Consumer or Business Checking Accounts opened on or after 3/1/2026' and 'can receive up to $500 per calendar year in Rewards.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms hosted on official bankatfirst.com domain (bankatfirst.com/refer/refer-terms-conditions.html), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'first financial bank' hits only R0068 - a REJECT of the separate WorkLife employer program with no concrete payout (different program, not a referral offer). This refer-a-friend program with $100 payouts is not covered. Distinct referrer-side mechanism.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: active customer in good standing with an eligible checking account, 18+ (employees excluded). Friend: 18+, not a primary checking owner at First Financial in the past 12 months.",
+  "notes": "Verified 2026-09-23. First Financial Bank (Cincinnati, OH; bankatfirst.com - distinct from First Financial Bank Texas, ffin.com). Referrer earns $100 per qualifying referral (accounts opened on/after 3/1/2026), $500/year cap, paid as virtual Visa Reward Cards. R0068's rejection covered only the separate WorkLife employer program with no stated payout.",
+  "numeric_basis": "payout from official terms ($100 per referral for accounts opened on/after 3/1/2026; $500/year cap); time: registering and sharing the referral link est. 5-15 min active",
+  "official_url": "https://www.bankatfirst.com/refer/refer-terms-conditions.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Referrer is eligible to receive a $100 Reward for each Referred Individual who completes all Qualifying Activities for Qualifying Consumer or Business Checking Accounts opened on or after 3/1/2026 ... can receive up to $500 per calendar year in Rewards.",
+  "payout_value_note": "$100 virtual Visa Reward Card per qualifying referral (accounts opened on/after 3/1/2026); $500 cap per calendar year.",
+  "route_id": "R3863",
+  "standard": {
+    "s1": {
+      "note": "Terms live on bankatfirst.com, fetched 2026-09-23; program continues until cancelled",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer active customer with eligible checking 18+; friend 18+, not a checking owner in past 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open checking within 90 days; 10 debits of $10+ + two $500 DDs (consumer) or 10 payments of $25+ + $2,000 deposits (business), within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: virtual Visa Reward Card ~3 weeks after all qualifying activities complete; expires 6 months after issuance",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: rewards subject to IRS tax reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, distinct program from rejected R0068",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the First Financial Bank refer-a-friend program and share your unique link (include the required disclosure if sharing by text/social).",
+    "Friend registers via your link and opens a qualifying checking account within 90 days.",
+    "Friend completes the qualifying activities within 90 days (consumer: 10 debits of $10+ and two $500 direct deposits; business: 10 payments of $25+ and $2,000 in deposits).",
+    "You receive a $100 virtual Visa Reward Card ~3 weeks later (up to $500/year)."
+  ],
+  "terms_url": "https://www.bankatfirst.com/refer/refer-terms-conditions.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Virtual Visa Reward Card delivered ~3 weeks after all qualifying activities complete (friend has 90 days from account opening); card expires 6 months after issuance.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both accounts must stay open and in good standing for 60 days, and a referral form must be completed - otherwise no reward.",
+  "catches": [
+    "Referrer: Advanz Credit Union member 18+; employees and volunteers are not eligible.",
+    "Referrer chooses one perk per qualifying referral; the cash option is a $25 deposit: 'Get $25 deposited into your account after 60 days. No limit on how many deposits you can earn.'",
+    "Alternative referrer perks: +0.25% APY on a special 13-month CD or -0.25% loan discount (limited to one use per referral; only the $25 deposit may be selected for multiple referrals with no limit).",
+    "Friend must: meet membership requirements, open a new account, complete a referral form; both accounts must remain open and in good standing for the first 60 days.",
+    "The $25 deposit is credited after 60 days; perks may be redeemed up to 60 days after the new account opens.",
+    "Referrers may not be listed as a joint owner on the new member's accounts; the friend may not be a current member or have been a member within the past 12 months.",
+    "Deposits may be taxable as interest income reported on IRS Form 1099-INT; program subject to change or termination at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Advanz Credit Union Member Referral page (advanzcu.org, fetched live 2026-09-23): '$25 Cash Deposit - Get $25 deposited into your account after 60 days. No limit on how many deposits you can earn.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official advanzcu.org Member Referral page, fetched live 2026-09-23; ongoing offer, subject to change",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a new account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no Advanz route in the catalog (0 hits)",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Advanz Credit Union member 18+ (not an employee/volunteer). Friend: new member meeting membership requirements who opens a new account via the referral form.",
+  "notes": "Verified 2026-09-23. Advanz Credit Union (Hillsborough, NJ; formerly Affinity?). Referrer chooses $25 cash deposit per qualifying referral with no limit on the number of deposits. Alternative perks (CD boost, loan discount) are rate-based and not used as the earning basis here.",
+  "numeric_basis": "payout from official Advanz terms ($25 cash deposit per referral; no limit); time: complete referral form est. 5-15 min active",
+  "official_url": "https://www.advanzcu.org/About-Us/Member-Referral",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "$25 Cash Deposit - Get $25 deposited into your account after 60 days. No limit on how many deposits you can earn.",
+  "payout_value_note": "$25 cash deposit to the referrer per qualifying referral; no limit on number of deposits.",
+  "route_id": "R4834",
+  "standard": {
+    "s1": {
+      "note": "Official advanzcu.org page fetched live 2026-09-23; ongoing, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer member 18+; friend meets membership requirements",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new account via referral form; both accounts open and in good standing 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $25 credited after 60 days",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: deposits may be taxable as interest income, reported on 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; no Advanz route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the Advanz referral form and invite a friend to join.",
+    "Friend opens a new account and meets membership requirements.",
+    "Both accounts stay open and in good standing for 60 days.",
+    "You receive a $25 cash deposit per qualifying referral - no limit."
+  ],
+  "terms_url": "https://www.advanzcu.org/About-Us/Member-Referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 deposit credited after 60 days of both accounts being open and in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

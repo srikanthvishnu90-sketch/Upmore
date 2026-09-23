@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend has to register BEFORE opening their account using your referral email - and a business referral pays the friend $150 while you still only get $50.",
+  "catches": [
+    "The referred person must register for the program PRIOR to opening the checking account (using the referral email or in a branch) - referrals can't be applied retroactively.",
+    "Personal checking: friend must open the account within 90 days of the referral, then within 60 days complete 10+ Visa debit purchases, one $300+ ACH direct deposit, and enroll in Online Statements.",
+    "Business checking: friend must open within 90 days with $500+ deposited on day one, then make at least one Visa Business Debit Card purchase and enroll in Online Statements within 60 days.",
+    "Max $500 in referral rewards per calendar year; only the first referrer (per Regions' records) gets the reward if the same person is referred twice.",
+    "Referrer must be a Regions checking customer with a positive balance; employees and anyone without a valid US TIN are excluded; referred person must not have had a Regions deposit account in the last 12 months."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Regions Bank - real regional bank; official domain regions.com; Refer a Friend program rules page fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official rules: 'If the Referred Person or Referred Business earns a reward, the Referrer will receive at least a $50 reward' - concrete per-referral amount.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; send referral email from Offer Tracker; no purchase required of the referrer.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official rules: $50 per qualified referral; 'You can receive up to $500 per calendar year in referral rewards.'; friend requirements concrete (10 debit purchases, $300+ ACH DD, Online Statements within 60 days).",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Regions checking customer (consumer or small business) 18+ with a positive balance. Referred: no Regions deposit account in the prior 12 months; must register before opening.",
+  "notes": "dedupe-check 'regions' shows no existing route. The $150 figure is the business FRIEND's reward; the referrer's payout is $50 in both cases ('at least a $50 reward'). Stored per-referral $50 with $500/year cap.",
+  "numeric_basis": "payout from official terms ($50 per referral flat); time: category default App Referral share-link 5-15 min active",
+  "official_url": "https://www.regions.com/personal-banking/rewards/refer-a-friend",
+  "payout_max_usd": 50.0,
+  "payout_min_usd": 50.0,
+  "payout_quote": "If the Referred Person or Referred Business earns a reward, the Referrer will receive at least a $50 reward. ... You can receive up to $500 per calendar year in referral rewards.",
+  "payout_value_note": "$50 per referral in official terms; max $500 per calendar year",
+  "route_id": "R2473",
+  "standard": {
+    "s1": {
+      "note": "Referrer: Regions checking customer 18+ with positive balance. Referred: new customer, no Regions deposit account in prior 12 months; must register before opening.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Friend registers via referral email first, opens checking within 90 days, completes 10 debit purchases + $300+ ACH DD + Online Statements within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Reward deposited to referrer's Regions checking account within 60 days of all requirements completed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat $50 per referral; $500 per calendar year (10 referrals).",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.regions.com/personal-banking/rewards/refer-a-friend/terms - official Regions Refer a Friend Program Rules.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: send referral via Offer Tracker, friend registers before opening, meets activity bars, you get $50 deposited within 60 days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official program rules page fetched directly 2026-09-23; terms text verbatim.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a Regions Bank checking customer (18+) with a positive balance and log in to Offer Tracker with your online banking credentials.",
+    "Click 'Send a Referral' and provide the friend's contact info and valid email address; Regions sends them the referral email on your behalf.",
+    "Your friend registers for the program PRIOR to opening a checking account (using the referral email or in a branch) and opens a new Regions personal or business checking account within 90 days.",
+    "The friend completes within 60 days of opening: 10+ Visa debit purchases (personal) or 1+ business debit purchase, a $300+ ACH direct deposit (personal), and Online Statements enrollment; business accounts need a $500+ deposit on day one.",
+    "You receive $50 deposited to your Regions checking account within 60 days of all requirements being completed (up to $500 per calendar year)."
+  ],
+  "terms_url": "https://www.regions.com/personal-banking/rewards/refer-a-friend/terms",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Reward deposited to referrer's Regions checking within 60 days of all requirements being completed.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

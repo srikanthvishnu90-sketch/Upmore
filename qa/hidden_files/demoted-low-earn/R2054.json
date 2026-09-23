@@ -1,0 +1,86 @@
+{
+  "route_id": "R2054",
+  "verdict": "verify",
+  "official_url": "https://www.yeswehack.com/product/bug-bounty-program",
+  "terms_url": "https://www.yeswehack.com/product/bug-bounty-program",
+  "payout_quote": "Public Bug Bounty programs are open to our entire community of ethical hackers and their basic details are publicly disclosed.",
+  "steps": [
+    "Create a free YesWeHack hunter account.",
+    "Browse public bug bounty programs (basic details publicly disclosed).",
+    "Read each program's rules of engagement and scope.",
+    "Test in-scope assets and submit validated findings.",
+    "YesWeHack's triage validates each bug; hunters earn monetary rewards tiered by severity for validated findings."
+  ],
+  "catches": [
+    "Only validated, in-scope findings are rewarded — duplicates earn nothing.",
+    "Bounty amounts are set per program and tiered by severity; no platform-wide range.",
+    "Private programs are restricted to handpicked, vetted, high-ranking hunters.",
+    "Requires real security skills; beginners earn nothing for a long time.",
+    "Strict rules of engagement apply."
+  ],
+  "biggest_catch": "Payment requires validated in-scope findings — most testing time produces no payout, and private programs are invite-only.",
+  "eligibility": "Free hunter account; public programs open to the whole community.",
+  "timing": "Programs run continuously; rewards per program terms after validation.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "YesWeHack's own page states: 'Public Bug Bounty programs are open to our entire community of ethical hackers and their basic details are publicly disclosed' and hunters 'earn monetary rewards for their validated findings, with bounties tiered according to severity.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms tie rewards to validated findings per program — amounts are program-set by severity; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: join community, pick public programs, follow rules of engagement, submit findings, triage, reward."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Joining and participating are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free hunter account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable severity-tiered bounties; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover validation-gated payment and invite-only private programs."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no YesWeHack route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous programs."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "YesWeHack runs public bug-bounty programs open to its whole ethical-hacker community, with severity-tiered monetary rewards for validated findings. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Bounty amounts are set per program and tiered by severity; YesWeHack publishes no fixed platform-wide range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 240,
+  "numeric_basis": "payout: per-program severity-tiered bounties, no official range. time: account + browse programs + read rules + first testing session, est. 60-240 min active."
+}

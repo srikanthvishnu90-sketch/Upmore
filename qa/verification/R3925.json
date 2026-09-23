@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must complete eStatements + $1,000 aggregate direct deposits OR 25 debit transactions of $10+ within 90 days of opening.",
+  "catches": [
+    "Referrer earns $50 per qualifying referral; the Customer can receive up to 5 referral bonus deposits ($250 total) per calendar year.",
+    "Friend must be a new TruNorth Bank checking customer; brings the referral slip to any TruNorth Bank office.",
+    "Within 90 days of account opening: enroll in eStatements AND have $1,000+ in aggregate direct deposits posted, OR enroll in eStatements and conduct 25+ POS debit transactions of $10 or more.",
+    "Referrer must be the tax owner on an active checking account in good standing, at least 16 years old at the time of referral.",
+    "Bonus credited to the Customer's account by the last day of the statement cycle following the 90th day the Friend's account was opened, if both accounts are open and in good standing.",
+    "Limited-time offer, subject to change without notice; employees not eligible; bonus payouts may be 1099 reportable."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TruNorth Bank referral slip: 'As a TruNorth Bank customer, you can earn $50* just for referring your friends and family... The Customer can receive up to 5 referral bonus deposits (totaling $250) per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral slip hosted on official trunorthbank.com domain (rev 02/09/2026), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'trunorth' found only R0588 (reject of defunct Abington Bank), no TruNorth referral-program coverage. New route.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: TruNorth Bank customer, tax owner on active checking in good standing, 16+. Friend: new checking customer.",
+  "notes": "Verified 2026-09-23. TruNorth Bank (formerly Abington Bank merged with North Shore Bank). $50 per referral; up to 5 / $250 per calendar year. Rev 02/09/2026.",
+  "numeric_basis": "payout from official slip ($50 per referral; 5 / $250 per year); time: writing name on the referral slip est. 5-10 min active",
+  "official_url": "https://trunorthbank.com/wp-content/uploads/2026/01/TruNorth-Bank-BUCK-SLIP-Refer-A-Friend.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Receive $50 when your friends and family bring this referral slip to any TruNorth Bank office, open a new checking account, and take the steps below within 90 days of account opening.",
+  "payout_value_note": "$50 per qualifying referral; up to 5 referrals / $250 per calendar year.",
+  "route_id": "R3925",
+  "standard": {
+    "s1": {
+      "note": "Terms live on trunorthbank.com (rev 02/09/2026), fetched 2026-09-23; limited-time offer",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: new checking customer friend; active checking referrer 16+; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: eStatements + ($1,000 aggregate DD or 25 POS debits $10+) within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: credited by last day of statement cycle following the 90th day",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonus payouts may be 1099 reportable",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Write your name on the referral slip.",
+    "Give the slip to friends and family.",
+    "Friend brings the slip to any TruNorth Bank office and opens a new checking account.",
+    "Friend completes eStatements + $1,000 aggregate direct deposits (or 25 POS debits of $10+) within 90 days; you earn $50."
+  ],
+  "terms_url": "https://trunorthbank.com/wp-content/uploads/2026/01/TruNorth-Bank-BUCK-SLIP-Refer-A-Friend.pdf",
+  "time_max_minutes": 10,
+  "time_min_minutes": 5,
+  "timing": "Credited by the last day of the statement cycle following the 90th day of the Friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -11,7 +11,7 @@
     "Fraud adjustment/removal language in the terms; bonus is taxable income.",
     "Must be a U.S. citizen/permanent resident, U.S. resident, 18+."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -31,7 +31,7 @@
     }
   },
   "eligibility": "New PSECU members only, 18+, U.S. citizen/permanent resident and U.S. resident. Excludes current members, accounts closed within 12 months, and anyone ever paid a prior PSECU new-member incentive.",
-  "notes": "Official PSECU referral page fetched 2026-09-23: $300 with promo 2026REFER, applications 2026-01-01 through 2026-12-31. Candidate '$300 checking, PA' verified against these official terms.",
+  "notes": "Official PSECU referral page fetched 2026-09-23: $300 with promo 2026REFER, applications 2026-01-01 through 2026-12-31. Candidate '$300 checking, PA' verified against these official terms. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://go.psecu.com/refer",
   "payout_quote": "$300 new-member referral bonus (promo 2026REFER) for applications 2026-01-01 through 2026-12-31, paid after the 100-day assessment period plus up to 45 days processing.",
   "route_id": "R0630",
@@ -79,5 +79,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 300.0,
+  "payout_max_usd": 300.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

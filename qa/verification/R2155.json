@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Long wait: the bonus is not paid until the 90-day qualification period ends, plus up to 30 calendar days — roughly 4 months after opening. No published expiry, but the offer can be discontinued at any time without notice.",
+  "catches": [
+    "Recurring direct deposit required at least once per month (no minimum dollar amount published for the bonus itself).",
+    "Enrollment in e-Statements is required within 60 days of account opening.",
+    "Account must remain open and in good standing for at least 90 days; bonus is deposited within 30 calendar days after the 90-day qualification period ends (account must still be open when the bonus is attempted).",
+    "The promotion has no stated end date: 'The bonus is available for this promotion unless and until Metro CU has discontinued the promotion.'",
+    "Metro Credit Union is a Massachusetts-based credit union (Chelsea, MA); membership eligibility and geography apply — not nationwide.",
+    "No monthly service charge or minimum balance on Metro Checking.",
+    "Tax treatment is not disclosed on the offer page; bank bonuses are generally reported as interest and may be taxable."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Metro Credit Union — real Massachusetts credit union (200 Revere Beach Parkway, Chelsea, MA 02150); official offer page metrocu.org/checking-offer-3, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page headlines 'Get a $400' for Metro Checking with published qualifying terms in footnote 1.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Metro Checking: 'No minimum balance requirement or monthly fee.' No upfront fee to open or earn the bonus.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official footnote: 'After the 90-day qualification period, if you have met all requirements, we will deposit the bonus into your account within 30 calendar days.'",
+      "pass": true
+    }
+  },
+  "eligibility": "New Metro Checking accounts; Metro Credit Union membership eligibility required (Massachusetts-based institution — geography applies, not nationwide).",
+  "notes": "Official Metro CU offer page fetched live 2026-09-23 (UTC). R0556 (2026-09-23) rejected only the expired $500 tier (expired 12/31/2025); the current $400 tier verified here as its own route. Offer has no published end date but can be discontinued without notice — flag for daily re-verification.",
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://metrocu.org/checking-offer-3",
+  "payout_max_usd": 400.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "After the 90-day qualification period, if you have met all requirements, we will deposit the bonus into your account within 30 calendar days. Your account must remain open through the time we attempt to deposit the bonus.",
+  "payout_value_note": "Flat $400 bonus per official terms.",
+  "route_id": "R2155",
+  "standard": {
+    "s1": {
+      "note": "New Metro Checking accounts; Metro CU membership eligibility applies.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Recurring direct deposit at least once per month + e-Statements enrollment within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus paid within 30 calendar days after the 90-day qualification period ends; account must remain open through payout.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No minimum balance or monthly service charge on Metro Checking.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not disclosed on offer page; bank bonuses are generally reported as interest.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No published expiry date; offer can be discontinued at any time — daily re-verification recommended.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Massachusetts-based credit union — geography caveat for the GUIDE.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Join Metro Credit Union and open a new Metro Checking account (no minimum balance, no monthly fee).",
+    "Set up a recurring direct deposit to post at least once per month.",
+    "Enroll in e-Statements within 60 days of account opening.",
+    "Keep the account open and in good standing for the 90-day qualification period.",
+    "Bonus is deposited within 30 calendar days after the 90-day qualification period ends."
+  ],
+  "terms_url": "https://metrocu.org/checking-offer-3",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Bonus deposited within 30 calendar days after the 90-day qualification period ends.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "unless and until Metro CU has discontinued the promotion"
+  ]
+}

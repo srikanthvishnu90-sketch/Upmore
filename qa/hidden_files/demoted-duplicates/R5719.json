@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The new member must list your name on the online membership application or provide it in branch at account opening - if they open the account without naming you, no bonus is paid - and the offer is not valid for existing Heartland memberships.",
+  "catches": [
+    "New member must open a membership and list the referring member's name on the Online Membership Application or provide it in branch at account opening.",
+    "Referring member must be in good standing; Heartland employees are not eligible for the referral bonus.",
+    "Offer not valid for existing Heartland memberships - new members only; minimum $5 to open membership.",
+    "Referral bonus deposited into each Savings account within 30 days of account opening.",
+    "Referral and account opening bonus may be reported to the IRS; program details subject to change and cannot be combined with any other offer.",
+    "Offer valid 6/1/2026."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Heartland CU page (heartlandcu.com): 'Both the referring and referred member will earn $20.' Disclosure: 'New member must open a membership for referring and new member to receive $20.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Heartland CU page on heartlandcu.com, fetched live 2026-09-23, with membership referral disclosures",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Heartland Credit Union' 2026-09-23 returned no verified referral route; no heartlandcu.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Heartland Credit Union member in good standing (employees excluded). Friend: new member opening a membership, naming the referrer on the application.",
+  "notes": "Verified 2026-09-23. Heartland Credit Union (Twin Cities, MN). Referrer earns $20 per new member who opens a membership and names them on the application, deposited into the referrer's Savings account within 30 days. Offer valid 6/1/2026.",
+  "numeric_basis": "payout from official Heartland CU terms ($20 per new member referred); time: share referral and have friend name you on the application est. 5-15 min active",
+  "official_url": "https://heartlandcu.com/about/membership-referral-process/",
+  "payout_max_usd": 20,
+  "payout_min_usd": 20,
+  "payout_quote": "Both the referring and referred member will earn $20.",
+  "payout_value_note": "$20 per new member referred; no cap stated.",
+  "route_id": "R5719",
+  "standard": {
+    "s1": {
+      "note": "Official Heartland CU page live on heartlandcu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a member in good standing; friend is a new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open a membership and list the referring member's name on the online application or in branch",
+      "pass": true
+    },
+    "s4": {
+      "note": "Bonus deposited into each Savings account within 30 days of account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonus may be reported to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell your friend to name you as the referring member on the Heartland Online Membership Application (or in branch).",
+    "Friend opens a new membership with at least $5.",
+    "Receive the $20 referral bonus deposited into your Savings account within 30 days of account opening."
+  ],
+  "terms_url": "https://heartlandcu.com/about/membership-referral-process/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referral bonus deposited into each Savings account within 30 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

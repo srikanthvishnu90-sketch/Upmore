@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Two tiers with very different effort: the $50 checking tier needs the friend to hold $500+ in recurring direct deposits for 90 days; the $100 mortgage tier requires the friend to close a first mortgage within 90 days of joining.",
+  "catches": [
+    "Friend must not have been a Climb member in the previous year; referral form must be submitted at initial account opening (no retroactive referrals).",
+    "Checking tier ($50 to you, $100 to friend): friend joins, opens a checking account, and establishes recurring direct deposit(s) totaling at least $500 posting within 90 days of account opening.",
+    "Mortgage tier ($100 each): friend joins and closes a first mortgage within 90 days of account opening.",
+    "Cash bonus paid to both members' share accounts once qualifications are met, up to 120 days from account opening.",
+    "Both members must be 18+, own at least one share, be current on all credit obligations, and not have caused the CU a loss.",
+    "Bonus considered interest and subject to IRS tax reporting; employees ineligible; offer subject to change without notice.",
+    "No referral-count cap stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Climb CU page (climbcu.org/referral): 'Earn up to $150 every time you refer!' with 'Get $50 & Give $100 when your friend opens a checking account' and 'Get $100 & Give $100 when your friend closes on a mortgage.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official climbcu.org domain, fetched live 2026-09-23; no expiry stated, subject to change without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend joins and opens checking or mortgage",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no climbcu.org route; catalog has no Climb CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Climb member 18+. Friend: new member (not a member in the previous year), referral form submitted at initial account opening.",
+  "notes": "Verified 2026-09-23. Climb Credit Union. Referrer earns $50 per checking referral or $100 per mortgage referral ('up to $150 every time you refer' reflects the tiers); no referral cap stated.",
+  "numeric_basis": "payout from official climbcu.org terms ($50 checking / $100 mortgage per referral); time: register + share code est. 5-15 min active",
+  "official_url": "https://www.climbcu.org/referral",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "Earn up to $150 every time you refer! Get $50 & Give $100 when your friend opens a checking account. Get $100 & Give $100 when your friend closes on a mortgage.",
+  "payout_value_note": "$50 cash to the referrer per checking referral; $100 per mortgage referral; no cap stated.",
+  "route_id": "R4779",
+  "standard": {
+    "s1": {
+      "note": "Page live on climbcu.org, fetched 2026-09-23; no fixed expiry, subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer 18+ Climb member; friend new member (not a member in prior year), form at initial opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking + $500 recurring direct deposits within 90 days, or close a first mortgage within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: cash deposited to both share accounts once qualified, up to 120 days from account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: cash bonus considered interest, subject to IRS reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the Climb referral form to register and get your unique referral code.",
+    "Invite friends via social media or email.",
+    "Friend registers, joins Climb, and opens a checking account with $500+ in recurring direct deposits within 90 days (or closes a first mortgage within 90 days).",
+    "You receive $50 cash ($100 for the mortgage tier) in your share account."
+  ],
+  "terms_url": "https://www.climbcu.org/referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Cash deposited to share accounts once qualifications are met, up to 120 days from account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

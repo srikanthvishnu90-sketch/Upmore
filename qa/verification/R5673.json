@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is a LOAN referral, not an account referral: your friend must sign for a qualifying loan or credit card balance of at least $5,000 (real estate loans, personal lines, and overdraft lines excluded; existing Advantage One loans can't be refinanced). Payment can take up to 90 days to post.",
+  "catches": [
+    "Friend must open a qualifying loan or credit card with a minimum loan/balance amount of $5,000; both parties fill out the referral form.",
+    "Excludes real estate loans, personal lines, and overdraft lines of credit; existing Advantage One loans are ineligible for refinance.",
+    "Eligibility subject to approval (credit underwriting).",
+    "Cannot be combined with any other offers, specials, or promotions.",
+    "Payment could take up to 90 days to post.",
+    "Advantage One can cancel the loan referral program at any time and disqualify referrals not made in good faith."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Advantage One CU page (myaocu.com): 'Refer us to your friends, family members and colleagues and both could earn $50!' 'Refer your friend to open a qualifying loan* with us.' 'When your friend signs, you'll both earn $50!' '*Eligibility subject to approval. Minimum loan or credit card balance amount of $5,000 required.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Advantage One CU member referral page on myaocu.com, fetched live 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no myaocu.com route and no Advantage One Credit Union entry; catalog has no Advantage One route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Advantage One Credit Union member/fan completing the referral form. Friend: approved for a qualifying loan or credit card with a minimum $5,000 balance (no real estate, personal lines, or overdraft lines; no refinance of existing AOCU loans).",
+  "notes": "Verified 2026-09-23. Advantage One Credit Union (Michigan). Referrer earns $50 per qualifying loan referral ($50 to the friend too) when the friend signs for a qualifying loan or credit card with a $5,000+ balance. Payment can take up to 90 days to post.",
+  "numeric_basis": "payout from official Advantage One CU terms ($50 to the referrer per qualifying loan referral; friend also gets $50); time: complete referral form est. 5-15 min active",
+  "official_url": "https://www.myaocu.com/member-referral",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Refer your friend to open a qualifying loan* with us. When your friend signs, you'll both earn $50! *Eligibility subject to approval. Minimum loan or credit card balance amount of $5,000 required.",
+  "payout_value_note": "$50 to the referrer (and $50 to the friend) per qualifying loan referral; loan/credit card balance must be at least $5,000.",
+  "route_id": "R5673",
+  "standard": {
+    "s1": {
+      "note": "Official Advantage One CU page live on myaocu.com, fetched 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: friend must be approved for a qualifying loan/credit card with $5,000+ balance; exclusions listed",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: sign for a qualifying loan or credit card with minimum $5,000 balance, subject to approval",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: payment could take up to 90 days to post",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution (loan referral, not deposit referral)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the member referral form on myaocu.com and share it with your friend so both of you complete it.",
+    "Friend applies for and signs a qualifying loan or credit card with Advantage One with a minimum $5,000 loan/balance amount (subject to approval).",
+    "You and your friend each receive $50, with payment posting up to 90 days later."
+  ],
+  "terms_url": "https://www.myaocu.com/member-referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payment could take up to 90 days to post after the friend signs for the qualifying loan.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

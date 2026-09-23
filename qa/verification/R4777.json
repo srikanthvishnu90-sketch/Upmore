@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both sides only get the $100 after the friend opens a Rewards Checking account with a $50 minimum deposit - and the friend's account carries a $100 early-closure fee if closed within 6 months.",
+  "catches": [
+    "Friend must become a CommonWealth member and open a Rewards Checking Account; online joiners use promo code SHARE100 and must mention the referrer.",
+    "A minimum $50 deposit is required in the checking account to receive the gift.",
+    "$100 fee for closing the account within 6 months.",
+    "New members and new checking only; members with an existing CommonWealth checking account are ineligible; one new checking account per new member.",
+    "Cap: maximum 5 referrals per household.",
+    "IRS reporting: referred member gifts over $10 on 1099-INT; referrer gifts over $2,000 on 1099-MISC.",
+    "Offer subject to cancellation without notice; cannot be combined with other offers; ChexSystems verification on new accounts."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CommonWealth Central CU page (wealthcu.org/referral-program): 'when they open a Rewards Checking Account, you BOTH earn $100!' and FAQ: 'First, your friend must become a member of our credit union and then must open a Rewards Checking Account in order for you to receive the $100 referral gift.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official wealthcu.org domain, fetched live 2026-09-23; no expiry stated, cancellable without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + Rewards Checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no wealthcu.org route; catalog has no CommonWealth Central entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: CommonWealth member. Friend: new member (Santa Clara County area eligibility) opening a Rewards Checking Account, mentioning the referrer / using promo code SHARE100.",
+  "notes": "Verified 2026-09-23. CommonWealth Central Credit Union (San Jose, CA). Referrer earns $100 per qualifying referral; cap 5 referrals per household. Friend must fund checking with $50 minimum.",
+  "numeric_basis": "payout from official wealthcu.org terms ($100 referral gift per qualifying referral; max 5/household); time: share referral est. 5-15 min active",
+  "official_url": "https://www.wealthcu.org/referral-program",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Plus, when they open a Rewards Checking Account, you BOTH earn $100! ... First, your friend must become a member of our credit union and then must open a Rewards Checking Account in order for you to receive the $100 referral gift. ... Maximum 5 referrals per household.",
+  "payout_value_note": "$100 to the referrer per qualifying referral; cap 5 referrals per household ($500).",
+  "route_id": "R4777",
+  "standard": {
+    "s1": {
+      "note": "Page live on wealthcu.org, fetched 2026-09-23; no fixed expiry, subject to cancellation without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: CommonWealth membership required; friend new member in field of membership, new checking only",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open Rewards Checking (promo code SHARE100 online), $50 minimum deposit, mention referrer",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $100 gift after the friend opens the Rewards Checking Account; no exact payout window stated",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: referrer gifts over $2,000 reported on 1099-MISC; referred member gifts over $10 on 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell friends about CommonWealth membership and the $100 referral offer.",
+    "Friend joins CommonWealth and opens a Rewards Checking Account (online with promo code SHARE100, in branch, or by video chat), mentioning you as the referrer and depositing at least $50.",
+    "You receive the $100 referral gift (up to 5 referrals per household)."
+  ],
+  "terms_url": "https://www.wealthcu.org/referral-program",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 referral gift paid after the friend opens the Rewards Checking Account with the $50 minimum deposit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

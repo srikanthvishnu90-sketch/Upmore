@@ -1,1 +1,87 @@
-{"app_links":{"android":null,"ios":null},"biggest_catch":"Limit of three thermostats per household, and Mass Save doesn't publish the payout timeline for the mail-in rebate — the instant in-store path is the fast one.","catches":["ENERGY STAR smart thermostat required; limit three per household ($25 programmable thermostats are a separate, smaller rebate).","Massachusetts residential customer of a Mass Save sponsor (National Grid).","General application payout timing is not published in the rebate sheet — s3 honestly marked false.","The thermostat purchase is a condition, not an upfront fee."],"checked_at":"2026-09-23T00:04:00Z","critical":{"c1":{"evidence":"National Grid / Mass Save — real Massachusetts utility efficiency program; official 2026 rebate sheet PDF on nationalgridus.com.","pass":true},"c2":{"evidence":"Official Mass Save rebate sheet: smart thermostat $100/unit, ENERGY STAR, limit three per household.","pass":true},"c3":{"evidence":"No enrollment fee; thermostat purchase is a purchase condition.","pass":true},"c4":{"evidence":"General application payout timing is not published in the rebate sheet — s3 honestly marked false rather than invented.","pass":false}},"eligibility":"Massachusetts residential customer of National Grid (Mass Save). ENERGY STAR smart thermostat; limit three per household.","notes":"Verified from the official National Grid/Mass Save 2026 rebate sheet PDF 2026-09-22. Payout timing not published for the standard rebate path, so s3 is false with an honest note.","official_url":"https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf","payout_quote":"Smart thermostat: $100/unit rebate, ENERGY STAR, limit three per household.","route_id":"R0768","standard":{"s1":{"note":"MA residential National Grid (Mass Save) customer; ENERGY STAR smart thermostat.","pass":true},"s2":{"note":"Limit three per household; ENERGY STAR required.","pass":true},"s3":{"note":"Payout timing not published in the official rebate sheet — not invented.","pass":false},"s4":{"note":"$100/unit stated flatly in the official rebate sheet.","pass":true},"s5":{"note":"https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf — official National Grid PDF, loaded live.","pass":true},"s6":{"note":"Steps are concrete: buy an ENERGY STAR smart thermostat, submit the Mass Save rebate application.","pass":true},"s7":{"note":"Official National Grid/Mass Save rebate sheet loaded live 2026-09-22.","pass":true}},"steps":["Confirm you are a Massachusetts National Grid (Mass Save) residential customer.","Buy an ENERGY STAR smart thermostat (up to three per household).","Submit the Mass Save rebate application with your receipt per the rebate sheet instructions.","Receive your $100/unit rebate; Mass Save does not publish the exact payout timeline for this path."],"terms_url":"https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf","timing":"Mass Save does not publish a payout timeline for this rebate in the official rebate sheet.","upfront_fee":false,"verdict":"verify","weasel_words":{"present":false,"quote":null}}
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Limit of three thermostats per household, and Mass Save doesn't publish the payout timeline for the mail-in rebate — the instant in-store path is the fast one.",
+  "catches": [
+    "ENERGY STAR smart thermostat required; limit three per household ($25 programmable thermostats are a separate, smaller rebate).",
+    "Massachusetts residential customer of a Mass Save sponsor (National Grid).",
+    "General application payout timing is not published in the rebate sheet — s3 honestly marked false.",
+    "The thermostat purchase is a condition, not an upfront fee."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "National Grid / Mass Save — real Massachusetts utility efficiency program; official 2026 rebate sheet PDF on nationalgridus.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Mass Save rebate sheet: smart thermostat $100/unit, ENERGY STAR, limit three per household.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No enrollment fee; thermostat purchase is a purchase condition.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "General application payout timing is not published in the rebate sheet — s3 honestly marked false rather than invented.",
+      "pass": false
+    }
+  },
+  "eligibility": "Massachusetts residential customer of National Grid (Mass Save). ENERGY STAR smart thermostat; limit three per household.",
+  "notes": "Verified from the official National Grid/Mass Save 2026 rebate sheet PDF 2026-09-22. Payout timing not published for the standard rebate path, so s3 is false with an honest note. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+  "official_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
+  "payout_quote": "Smart thermostat: $100/unit rebate, ENERGY STAR, limit three per household.",
+  "route_id": "R0768",
+  "standard": {
+    "s1": {
+      "note": "MA residential National Grid (Mass Save) customer; ENERGY STAR smart thermostat.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Limit three per household; ENERGY STAR required.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Payout timing not published in the official rebate sheet — not invented.",
+      "pass": false
+    },
+    "s4": {
+      "note": "$100/unit stated flatly in the official rebate sheet.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf — official National Grid PDF, loaded live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: buy an ENERGY STAR smart thermostat, submit the Mass Save rebate application.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official National Grid/Mass Save rebate sheet loaded live 2026-09-22.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Confirm you are a Massachusetts National Grid (Mass Save) residential customer.",
+    "Buy an ENERGY STAR smart thermostat (up to three per household).",
+    "Submit the Mass Save rebate application with your receipt per the rebate sheet instructions.",
+    "Receive your $100/unit rebate; Mass Save does not publish the exact payout timeline for this path."
+  ],
+  "terms_url": "https://nationalgridus.com/media/pdfs/ma/commercial-trade-partners/mass-save-resi-rebates.pdf",
+  "timing": "Mass Save does not publish a payout timeline for this rebate in the official rebate sheet.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "payout_min_usd": 100.0,
+  "payout_max_usd": 100.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
+}

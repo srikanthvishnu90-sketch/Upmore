@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You receive nothing until the friend opens a checking account, deposits $250+, and makes 10 transactions within 60 days; the digital gift card arrives only after a verification period - and the friend must register their email via your referral link using the same email when opening.",
+  "catches": [
+    "Referrer must be a U.S. resident, 18+, and a Salal member in good standing.",
+    "Friend must be a U.S. resident, 18+, eligible for Salal membership, and must use your unique referral link and register their email, using the same email address when opening a new Salal checking account.",
+    "Friend must deposit $250+ and make 10 transactions within 60 days of account opening.",
+    "Digital Visa gift card sent to the email on file within 5 business days after the 60-day verification period.",
+    "Cap: earn up to $500 in referral rewards each year (5 referrals at $100 each).",
+    "Salal employees and subsidiaries/affiliates are not eligible to receive the reward."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Salal CU page (salalcu.org/share/): 'You'll each get a $100 digital Visa gift card when they open a checking account, deposit $250+, and make 10 transactions within 60 days.' Also: 'You can earn up to $500 in referral rewards each year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Salal CU referral page on salalcu.org, fetched live 2026-09-23, with full program FAQs",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Salal Credit Union' 2026-09-23 returned no verified referral route; no salalcu.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Salal Credit Union member, U.S. resident 18+ in good standing (employees excluded). Friend: new member, U.S. resident 18+, eligible for Salal membership (WA or eligible OR counties, or Salal Foundation membership).",
+  "notes": "Verified 2026-09-23. Salal Credit Union (Washington/Oregon). Referrer earns a $100 digital Visa gift card per qualifying referral, capped at $500 per year.",
+  "numeric_basis": "payout from official Salal CU terms ($100 digital Visa gift card per referral; up to $500 per year); time: enter email, get link, and share est. 5-15 min active",
+  "official_url": "https://www.salalcu.org/share/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "You'll each get a $100 digital Visa gift card when they open a checking account, deposit $250+, and make 10 transactions within 60 days.",
+  "payout_value_note": "$100 digital Visa gift card to the referrer per qualifying referral; cap $500 per year (5 referrals).",
+  "route_id": "R5721",
+  "standard": {
+    "s1": {
+      "note": "Official Salal CU page live on salalcu.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a member in good standing; friend is a new member eligible for Salal membership",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: use referral link, register email, open new checking with same email, deposit $250+, make 10 transactions within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Digital gift card sent within 5 business days after the 60-day verification period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated on fetched page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Enter the email associated with your Salal account to get your personal referral link.",
+    "Share your referral link with friends, family, or colleagues.",
+    "Friend follows your link, registers their email, and opens a new Salal checking account with the same email address.",
+    "Friend deposits $250+ and makes 10 transactions within 60 days.",
+    "Receive your $100 digital Visa gift card by email within 5 business days after verification."
+  ],
+  "terms_url": "https://www.salalcu.org/share/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Digital gift card sent to the email on file within 5 business days after the friend meets requirements and the 60-day verification period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

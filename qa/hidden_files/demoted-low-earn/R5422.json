@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Most proposals lose and only 20 bids per month are free — earnings depend entirely on winning client work, minus an 8–10% fee.",
+  "catches": [
+    "8–10% service fee on all billed work, depending on membership plan.",
+    "Only 20 free proposals per month; extra proposal credits are paid.",
+    "Withdrawal/processing fees apply depending on payout method.",
+    "Competitive bidding; most proposals earn nothing.",
+    "Optional paid 'Feature Fee' add-ons are non-refundable."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Truelancer's own site describes the project/proposal marketplace ('Post a Project... Browse proposals... Award Project... using Safe Deposit'), and its official fee page confirms 20 free proposals per month for non-premium sellers.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms publish no fixed freelancer pay range — pay is per project; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: free signup, profile, bid with free monthly proposals, Safe Deposit escrow, paid on approval.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Signup and 20 monthly proposals are free; paid credits and memberships are optional upgrades, not required to start.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone who can register and legally freelance; skills must match posted projects.",
+  "notes": "Scenario: freelance bidding. Truelancer is a project-bidding marketplace: clients post projects, freelancers bid with monthly free proposals, and awarded work pays through Safe Deposit escrow. Pay is per-project and variable — never guaranteed.",
+  "numeric_basis": "payout: per-project, client-set budgets, no official range. time: profile setup + reading and submitting first bids within the free monthly allocation, est. 45-120 min active.",
+  "official_url": "https://www.truelancer.com",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Truelancer.com charges Sellers/Freelancers a Service Fee of 8% to 10% on all billed works as per their membership plan.",
+  "payout_value_note": "Project budgets are client-set and bids freelancer-set; Truelancer publishes no fixed pay range — variable per-project income.",
+  "route_id": "R5422",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to register and legally freelance.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-project pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover the 8–10% fee, limited free proposals, withdrawal fees, and competitive awards.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Truelancer absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against provider-owned pages fetched live on 2026-09-23 (truelancer.com, truelancer.com/legal/fee-charges).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: continuous project postings; escrow release on client approval.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up free as a Seller/Freelancer and build your profile.",
+    "Browse client-posted projects and submit proposals — 20 free per month on non-premium accounts.",
+    "Win the award; the client funds Truelancer's Safe Deposit (escrow).",
+    "Deliver the work and get paid on client approval; the 8–10% service fee applies."
+  ],
+  "terms_url": "https://www.truelancer.com/legal/fee-charges",
+  "time_max_minutes": 120,
+  "time_min_minutes": 45,
+  "timing": "Projects post continuously; Safe Deposit releases on client approval.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

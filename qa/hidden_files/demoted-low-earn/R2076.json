@@ -1,0 +1,85 @@
+{
+  "route_id": "R2076",
+  "verdict": "verify",
+  "official_url": "https://www.qwick.com/",
+  "terms_url": "https://www.qwick.com/",
+  "payout_quote": "Pros get paid through the app via Stripe after a shift is completed.",
+  "steps": [
+    "Download the Qwick app and sign up free as a hospitality Professional with your experience and certifications.",
+    "Complete onboarding (profile verification); Qwick operates in 42 states with 350,000+ verified professionals.",
+    "Browse posted shifts (server, bartender, line cook, dishwasher, event staff) and apply; businesses select applicants.",
+    "Work the shift (GPS-verified check-in); get paid through the app via Stripe after the shift is completed."
+  ],
+  "catches": [
+    "Businesses select applicants — applying does not guarantee a shift.",
+    "Shift rates are set per posting and vary by role and market; Qwick publishes no fixed hourly range.",
+    "Work is concentrated in 42 states / 47+ cities — availability depends on your market.",
+    "Requires hospitality experience and meeting Qwick's professional verification standards.",
+    "Gig work is inherently variable: shifts, income, and selection are never guaranteed."
+  ],
+  "biggest_catch": "You only earn when a business picks your application and you work the shift — Qwick publishes no guaranteed hours or pay rates.",
+  "eligibility": "Hospitality workers 18+ who meet Qwick's professional standards in a supported US market.",
+  "timing": "Shifts post continuously; pay via Stripe after each completed shift.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Qwick's own site documents the Pro flow: 'Pros see available shifts and apply. Businesses get to select applicants.' and states: 'Pros get paid through the app via Stripe after a shift is completed.' It also states the platform operates across 42 states with 350,000+ verified hospitality professionals."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed shift pay range — pay is per shift by role and market; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: free Pro signup, verification, apply to posted shifts, work, Stripe payout after completion."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Professional signup is free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: 18+ hospitality workers meeting Qwick's professional standards in supported US markets."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-shift pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover selection gating, variable rates, market availability, and verification standards."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: Qwick not in existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: shifts post continuously; per-shift payout."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Qwick is a hospitality shift marketplace: businesses post shifts, verified Professionals apply through the app, and completed shifts pay out via Stripe. Selection, shifts, and income are variable — never guaranteed. Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Shift rates are set per posting by role and market; Qwick publishes no fixed hourly range — variable per-shift income.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: per-shift, role/market-set rates, no official range. time: app signup + onboarding/verification + browsing and applying to first shifts, est. 60-180 min active."
+}

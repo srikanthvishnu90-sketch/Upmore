@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $50-per-product payout only lands after the friend meets steep requirements - a $500/month direct deposit with eStatements within 90 days for checking, or a $10,000+ auto loan - and both bonuses post about 90 days after qualifications are met.",
+  "catches": [
+    "Friend must be a new member: no First Northern account for at least one year, 18+, and must use promo code REFER at account opening.",
+    "Checking tier: friend must establish $500/month direct deposit and enroll in eStatements within 90 days of account opening; minimum $5 share savings balance.",
+    "Auto-loan tier: new/used/refinanced auto loan of at least $10,000 (excludes indirect, Rate Genius, and Driving Sense loans); subject to credit approval.",
+    "Earnings deposited to each member's share savings account approximately 90 days after qualifications are met; member must be in good standing; employees/officers ineligible.",
+    "No limit on number of referrals; program subject to change without notice; cannot combine with other offers."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Northern CU page (fncu.org/Resources/Benefits/Refer-A-Friend): 'we'll give EACH of you up to $100* when they join and open a checking account1 and/or auto loan2' with 'Both members get $50 when referred member opens a checking account1' and 'Both members get ANOTHER $50 when referred member opens an auto loan2'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page on official fncu.org domain, fetched live 2026-09-23; no expiry stated, subject to change without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership ($5 share minimum)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no fncu.org route; catalog has no First Northern entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing First Northern member. Friend: new member 18+, no account for at least one year, uses promo code REFER at joining.",
+  "notes": "Verified 2026-09-23. First Northern Credit Union. Referrer earns $50 per qualifying checking referral plus another $50 if the friend also opens a $10k+ auto loan - up to $100 per referral, no referral-count cap.",
+  "numeric_basis": "payout from official fncu.org page ($50 per checking referral + $50 per auto-loan referral; no cap); time: send referral email/form est. 5-15 min active",
+  "official_url": "https://www.fncu.org/Resources/Benefits/Refer-A-Friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "Existing members are eligible to refer a new member to First Northern Credit Union and we'll give EACH of you up to $100* when they join and open a checking account1 and/or auto loan2. And, there's no limit to the number of new members you can refer - we'll reward you for each one! - Both members get $50 when referred member opens a checking account1 - Both members get ANOTHER $50 when referred member opens an auto loan2",
+  "payout_value_note": "$50 to the referrer per qualifying checking referral, +$50 more if the friend also opens a $10k+ auto loan; no referral cap.",
+  "route_id": "R4769",
+  "standard": {
+    "s1": {
+      "note": "Page live on fncu.org, fetched 2026-09-23; no fixed expiry, subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: existing member referrer; friend new member 18+, no account for one year, promo code REFER at joining",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $500/month direct deposit + eStatements within 90 days; $10k+ auto loan (exclusions listed)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: earnings deposited ~90 days after qualifications are met",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Use the First Northern referral form to send a friend the program details.",
+    "Friend joins First Northern using promo code REFER and opens a checking account.",
+    "Friend sets up $500/month direct deposit and eStatements within 90 days (and optionally a $10,000+ auto loan).",
+    "You receive $50 ($100 if the friend also opens the auto loan) about 90 days after qualifications are met."
+  ],
+  "terms_url": "https://www.fncu.org/Resources/Benefits/Refer-A-Friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonuses deposited to share savings approximately 90 days after the friend's qualifications are met; member must be in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

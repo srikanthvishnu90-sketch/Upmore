@@ -11,7 +11,7 @@
     "ATM transactions and most ordinary online-card purchases are excluded from the qualifying debit count.",
     "Page uses 'limited-time' / 'last chance' language with no fixed expiration date."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -31,7 +31,7 @@
     }
   },
   "eligibility": "New money into Interest Checking (funds not at the bank during the prior 30 days); MA Pittsfield area.",
-  "notes": "Official Pittsfield Cooperative Bank refer-a-friend page fetched 2026-09-23. Corrects the earlier tentative reading: the offer is current (limited-time, no fixed expiry) with up to $750 documented. Candidate '$500/$750 checking, MA Pittsfield area' verified.",
+  "notes": "Official Pittsfield Cooperative Bank refer-a-friend page fetched 2026-09-23. Corrects the earlier tentative reading: the offer is current (limited-time, no fixed expiry) with up to $750 documented. Candidate '$500/$750 checking, MA Pittsfield area' verified. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://pittsfieldcoop.com/BANK/ReferAFriend",
   "payout_quote": "Up to $750: $500 for 15 qualifying debit purchases, $750 for 25 - paid on or before 180 days after account opening and all requirements are met.",
   "route_id": "R0632",
@@ -79,5 +79,11 @@
   "weasel_words": {
     "present": true,
     "quote": "Limited-time / last chance - no fixed expiration date stated on the official page."
-  }
+  },
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 750.0,
+  "payout_value_note": "'up to' amount in official terms; floor $0",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)"
 }

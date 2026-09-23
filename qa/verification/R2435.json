@@ -1,0 +1,88 @@
+{
+  "route_id": "R2435",
+  "verdict": "verify",
+  "official_url": "https://www.andrewsfcu.org/resources/referral-program",
+  "terms_url": "https://www.andrewsfcu.org/resources/referral-program",
+  "payout_quote": "You'll earn a $50 reward for each person who opens a new checking account and they'll receive a $50 bonus as well! ... Earn $50 for each referral when qualifications are met. ... Keep sharing and earning - there's no limit.",
+  "steps": [
+    "Be an existing Andrews Federal Credit Union member with an account in good standing.",
+    "Share the Refer-A-Friend offer with friends and family; they must include your name on the referral form.",
+    "Your friend joins Andrews Federal (Base Share Savings with $5 opening deposit) and opens any new checking account, gets a VISA Debit Card, and enrolls in online/mobile banking.",
+    "Your friend makes three (3) or more purchases with the VISA Debit Card and keeps the new account open for at least 90 days.",
+    "You see the $50 referral reward in your account 90 days after your friend completes the required steps; both you and your friend receive $50."
+  ],
+  "catches": [
+    "The $50 is credited only 90 days after your friend completes all steps - one of the slowest payouts in this batch.",
+    "The friend must be a genuine newcomer: no existing account with Andrews Federal as of 02/02/2022.",
+    "If either account is closed or not in good standing before the credit is paid, the referral credit is forfeited.",
+    "There is a $25 fee if the friend's account is closed within 60 days of opening.",
+    "New accounts must be opened at an Andrews branch (or online with all supporting documents submitted).",
+    "Employees, directors, contractors of the CU and their direct family members are ineligible.",
+    "The Credit Union reserves the right to change or end the offer at any time."
+  ],
+  "biggest_catch": "You wait a full 90 days after your friend finishes all requirements before the $50 appears - and the friend must be a true newcomer with no account at Andrews since 2022.",
+  "eligibility": "Existing Andrews Federal Credit Union members in good standing. Referred person must have no existing account with the CU as of 02/02/2022 and be eligible for membership.",
+  "timing": "Referral reward credited 90 days after the referred friend completes all required steps.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Andrews Federal Credit Union - real operating federal credit union; official domain andrewsfcu.org, Referral Program page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states verbatim: 'You'll earn a $50 reward for each person who opens a new checking account' with explicit 'there's no limit' on referrals."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing the offer; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: $50 reward 90 days after friend completes steps; no limit; friend new-checking + Visa debit + digital banking + 3 purchases - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Existing Andrews FCU members in good standing; friend must have no account with the CU as of 02/02/2022."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens new checking with Visa debit, enrolls in digital banking, makes 3+ debit purchases, account open 90 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Reward credited 90 days after friend completes required steps."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $50 per referral for both referrer and friend; no stated limit."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.andrewsfcu.org/resources/referral-program - official Andrews FCU Referral Program page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: share offer with name on form, friend opens + 3 debit purchases + 90 days, $50 credited."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'andrews' shows no existing provider. Offer stated as available as of September 22, 2026 in the search snippet; the official page's dated footnote renders with an empty date in the fetch, so no explicit start date is claimed in the evidence file beyond what the provider displays.",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "$50 reward per referral credited to member account in official terms; no cap stated",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($50 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

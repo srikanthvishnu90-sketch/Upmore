@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Each payout tier requires the friend to hit a specific product - $50 for a Spending account with payroll direct deposit, another $50 for a $10,000+ personal loan, up to $100 for $100k+ in new deposits - so a friend who just opens a basic account earns you nothing.",
+  "catches": [
+    "Referrer earns: $50 per new member who opens a primary personal Spending account with payroll direct deposit; $50 per friend who secures a funded personal loan of $10,000+ within 60 days of opening; $50 for $50,000-$99,999 in new deposits or $100 for $100,000+ in new deposits within 60 days.",
+    "Friend must be a new member: no HCU account for at least 12 months; 18+; referral form must be provided at account opening.",
+    "Bonus deposited to the member's Share account within 60 days of opening; all accounts must be in good standing.",
+    "Employees and volunteers of HCU are ineligible; not valid with any other offer; bonus reported on 1099-INT.",
+    "No referral-count cap stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Heartland CU page (hcu.coop/refer-a-friend): 'You earn: $50 when a new member opens a primary personal Spending account with payroll direct deposit. $50 when your friend secures a personal loan of at least $10,000.' and 'Current members earn $50 when a new member brings $50,000 - $99,999 in deposits, or $100 when the new member brings $100,000 or more in deposits within 60 days of account opening.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official hcu.coop domain, fetched live 2026-09-23; no expiry stated, cancellable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no hcu.coop route; catalog has no Heartland Credit Union entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: HCU member (membership required). Friend: new member 18+, no HCU account in 12 months, referral form at account opening.",
+  "notes": "Verified 2026-09-23. Heartland Credit Union (hcu.coop). Per-referral referrer payout is tiered: $50 (Spending account + payroll DD), $50 ($10k+ personal loan), $50/$100 (large deposits) - minimum achievable per referral $50, maximum $100.",
+  "numeric_basis": "payout from official hcu.coop terms ($50/$50/$100 tiered per referral); time: complete/send referral form est. 5-15 min active",
+  "official_url": "http://www.hcu.coop/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "You'll earn cash rewards when your friend opens an account and meets qualifying requirements-and they'll earn a bonus too. ... You earn: $50 when a new member opens a primary personal Spending account with payroll direct deposit. $50 when your friend secures a personal loan of at least $10,000. ... Current members earn $50 when a new member brings $50,000 - $99,999 in deposits, or $100 when the new member brings $100,000 or more in deposits within 60 days of account opening.",
+  "payout_value_note": "Tiered per referral: $50 (Spending + payroll DD), $50 ($10k+ personal loan), $50-$100 (large deposits); min achievable $50.",
+  "route_id": "R4768",
+  "standard": {
+    "s1": {
+      "note": "Page live on hcu.coop, fetched 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: HCU membership required; friend new member 18+, no account in 12 months, form at opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: Spending account with payroll direct deposit; $10k+ personal loan within 60 days; deposit tiers within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus deposited to Share account within 60 days of opening; accounts must be in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: members receive 1099-INT for bonus",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the Heartland referral form (online or printable) and give it to your friend.",
+    "Friend brings the finished form into a branch at account opening and opens a primary personal Spending account with payroll direct deposit.",
+    "If the friend also secures a $10,000+ personal loan within 60 days or brings large deposits, you earn additional tiers.",
+    "Bonuses are deposited to your Share account within 60 days of the friend's account opening."
+  ],
+  "terms_url": "http://www.hcu.coop/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus deposited to the referrer's Share account within 60 days of the friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

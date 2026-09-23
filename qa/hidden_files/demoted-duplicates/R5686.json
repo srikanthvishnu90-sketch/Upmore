@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must establish recurring direct deposit(s) totaling at least $500 within 90 days of account opening for the checking track, and rewards can take up to 120 days from account opening to arrive - the referrer earns nothing until the friend completes the full qualification cycle.",
+  "catches": [
+    "Friend must be a new Climb member (not a member within the previous year) who joins and opens a checking account.",
+    "Checking track: friend must establish recurring direct deposit(s) totaling at least $500 posting within 90 days of account opening.",
+    "Mortgage track: friend must join and close a first mortgage within 90 days of account opening.",
+    "The online referral form must be submitted at initial account opening - referrals submitted after account opening do not qualify.",
+    "Reward funds are deposited up to 120 days from account opening, once qualifications are met.",
+    "Both members must own at least one share, be current on all credit obligations, and not have caused the credit union an outstanding loss.",
+    "The cash bonus is considered interest and is subject to IRS and other tax reporting.",
+    "Must be at least 18 years of age; Climb Credit Union employees are not eligible."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Climb Credit Union page (climbcu.org/referral): 'Get $50 & Give $100 when your friend opens a checking account.' 'Get $100 & Give $100 when your friend closes on a mortgage.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Climb Credit Union member referral page on climbcu.org, fetched live 2026-09-23; no end date stated (subject to change without notice)",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Climb Credit Union': 0 catalog hits, 0 evidence-file hits; no climbcu.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Climb Credit Union member who registers and shares a unique referral code. Friend: new Climb member (not a member within the previous year) who registers via the form at initial account opening and opens a checking account with recurring direct deposit(s) totaling at least $500 within 90 days (checking track), or closes a first mortgage within 90 days (mortgage track).",
+  "notes": "Verified 2026-09-23. Climb Credit Union. Referrer earns $50 per qualifying checking referral or $100 per qualifying mortgage referral (friend gets $100 in both tracks). No annual cap stated. Rewards deposited into both members' share accounts once qualifications are met, up to 120 days from account opening.",
+  "numeric_basis": "payout range from official Climb CU terms ($50 checking track / $100 mortgage track to the referrer per qualifying referral); time: register and share referral code est. 5-15 min active",
+  "official_url": "https://www.climbcu.org/referral",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "Get $50 & Give $100 when your friend opens a checking account. Get $100 & Give $100 when your friend closes on a mortgage.",
+  "payout_value_note": "$50 (checking track) to $100 (mortgage track) cash to the referrer per qualifying referral (friend gets $100 in both); no annual cap stated.",
+  "route_id": "R5686",
+  "standard": {
+    "s1": {
+      "note": "Official Climb Credit Union page live on climbcu.org, fetched 2026-09-23; subject to change without notice, no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a Climb member with a unique referral code; friend must be a new member referred at initial account opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking track needs recurring DD totaling at least $500 within 90 days; mortgage track needs a closed first mortgage within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards deposited into share accounts once qualifications are met and up to 120 days from account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: page states the cash bonus is considered interest and subject to IRS and other tax reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the Climb member referral form to register and receive your unique referral code.",
+    "Invite friends via social media or email with your referral link.",
+    "Friend registers and joins Climb via your link, submitting the referral form at initial account opening.",
+    "Friend opens a checking account and establishes recurring direct deposit(s) totaling at least $500 posting within 90 days (or closes a first mortgage within 90 days for the mortgage track)."
+  ],
+  "terms_url": "https://www.climbcu.org/referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Cash reward deposited into both members' share accounts once qualifications are met, up to 120 days from account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R1067",
+  "verdict": "verify",
+  "official_url": "https://public.com/disclosures/matchprogram",
+  "terms_url": "https://public.com/disclosures/matchprogram",
+  "payout_quote": "For each Eligible Contribution made by a Customer to their Public IRA Account, Public Investing will fund a Match Amount of 1% of the value of such contribution (excluding any portion above the Annual Contribution Limit for the taxable year) into this Public IRA Account; (b) for each Eligible Transfer made by a Customer to their Public IRA Account, Public Investing will fund a Match Amount of 1% of the value of such transfer into this Public IRA Account; and (c) for each Eligible Transfer made by a Customer to their Public Brokerage Account, Public Investing will fund a Match Amount of 1% of the value of such transfer into this Public Brokerage Account.",
+  "steps": [
+    "Open a Public IRA account and/or Public taxable brokerage account (must be in good standing).",
+    "Make an eligible IRA contribution (minimum $1) during the offer period, or initiate an eligible ACATS transfer (taxable brokerage) or IRA transfer/rollover from an external account.",
+    "The 1% match is paid in monthly installments: over 12 months for contributions, over 60 months for transfers, starting about one month after settlement."
+  ],
+  "catches": [
+    "The match is NOT paid as a lump sum: it is drip-paid monthly over 12 months (contributions) or 60 months (transfers).",
+    "Any withdrawal or funds removal reduces future monthly match payments; closing the account zeroes out all remaining payments.",
+    "Match amounts are rounded down to the nearest cent per payment.",
+    "Public may end the offer period at any time in its sole discretion without notice (contribution offer running since March 24, 2025; transfer offers since September 14, 2026).",
+    "At 1% of contributions the max is about $75 (under 50) or $86 (50+) per year at 2026 limits - small in absolute dollars; transfers are uncapped 1% but take 5 years to fully pay out."
+  ],
+  "biggest_catch": "The 1% match is drip-paid monthly over 1 year for contributions and 5 years for transfers - any withdrawal shrinks future payments, and closing the account forfeits the rest.",
+  "eligibility": "Customers with a Public account in good standing who initiate an eligible deposit (IRA contribution of at least $1, or eligible ACATS/IRA transfer) during the offer period.",
+  "timing": "First monthly match payment credited on or about one month after settlement, then monthly: 12 payments for contributions, 60 for transfers.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "until such time as Public Investing shall end this Offer Period in its sole discretion without notice."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Open to the Public Investing, Inc. - real registered broker-dealer, member FINRA/SIPC; full program terms on the public.com domain."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Disclosure page fetched live 2026-09-23 with current offer periods (contributions since 3/24/2025; transfers since 9/14/2026)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Payout is concrete: 1% match on IRA contributions (up to annual limit), IRA transfers, and taxable ACATS transfers."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No purchase or fee required; contributions/transfers are the user's own money."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "No upfront fee or purchase required to earn the payout; any deposit is the user's own parked money."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout is conditional on exact eligibility and completion steps, never guaranteed unconditionally."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Funding parked at the broker is disclosed with amount and holding period in catches."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing and payment mechanics come from the official terms, not estimates."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Variable/paid-tier elements are labeled as such; verified framing uses the free tier."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Weasel-word reservation-of-rights language is quoted in weasel_words."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider+mechanism confirmed against the existing catalog before writing."
+    }
+  },
+  "notes": "Distinct from R0019 (Public referral stock reward - different mechanism and terms page). The single Match Program disclosure covers contributions and transfers as one program; counted once.",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 86.0,
+  "payout_value_note": "1% of IRA contributions up to IRS limit ($75 max under 50, $86 max 50+ at 2026 limits); IRA and taxable ACATS transfers matched at 1% uncapped.",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "payout: 1% match per official terms ($0 floor, $86 contribution max at 2026 limits); time: account application + contribution/transfer setup est. 30-60 min active."
+}

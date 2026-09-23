@@ -1,0 +1,92 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The offer code is automatically applied online when you open the account from the official Chase Secure Banking offer page \u2014 no separate email request or manual code entry is needed online.",
+  "catches": [
+    "$175 bonus for a new Chase checking customer who opens a Chase Secure Banking account and completes 10 qualifying transactions within 60 days of offer enrollment; bonus appears in the account within 15 days of completing the transactions.",
+    "Qualifying transactions (per the official page): debit card purchases, Zelle, ACH credits, Chase QuickDeposit, and online bill payments. A separate official FAQ definition also counts money orders/cashier's checks and direct deposits \u2014 direct deposits count under the FAQ list but the headline list omits them, so do not rely on a single direct deposit.",
+    "$4.95 monthly service fee, $0 with $250+ in qualifying electronic deposits per statement period OR an account owner aged 17-24.",
+    "No minimum deposit to open; account subject to approval. International students and 17-year-olds must open in a branch.",
+    "The offer code is automatically applied online; do not open from a generic Chase page without confirming the offer is attached.",
+    "Eligibility detail beyond 'new Chase checking customer' (prior-account/bonus exclusions) sits in the coupon fine print not visible on the fetched public page; do not assume eligibility if you recently held or closed a Chase checking account.",
+    "Expiration and early-close/termination terms were not displayed on the fetched official page; confirm them before opening.",
+    "Taxation of the bonus is not stated on the fetched official page; bank bonuses are generally taxable, but no Chase reporting wording was captured.",
+    "Secure Banking is Chase's basic, limited checking product."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official account.chase.com/consumer/banking/secure page fetched live 2026-09-23; title 'New Chase Checking Customer | $175 Chase Secure Banking Offer'; headline $175 terms captured verbatim from the official page.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Exact mechanics verbatim: 'Enjoy a checking account bonus of $175 as a new Chase checking customer, when you open a Chase Secure BankingSM account with qualifying transactions' + 'Complete 10 qualifying transactions within 60 days of offer enrollment' + 'within 15 days after completing the qualifying transactions' + qualifying-transaction list and $4.95/waiver terms verbatim.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront spending: no minimum deposit to open; the 10 qualifying transactions are ordinary purchases/payments/transfers, not fees; no purchase required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Current live public offer page showing the $175 figure on the fetched official page; offer end date not displayed there and is not asserted.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Chase checking customers only (per the official page). Full prior-account/closure/bonus exclusions sit in the coupon fine print not captured on the fetched public page; if you recently held, closed, or earned a bonus on a Chase checking account, confirm eligibility before applying.",
+  "notes": "Verified live against official account.chase.com Secure Banking offer pages 2026-09-23. Distinct product from Chase Total Checking (R5589 rejected) and Chase Private Client Checking (R5595 verified) \u2014 Secure Banking is Chase's basic limited checking product. Expiration and early-close terms were not displayed on the fetched official page, so confirm before opening.",
+  "numeric_basis": "payout from official terms ($175 flat); time: online account opening 20\u201340 min + 10 qualifying transactions (debit/Zelle/bill-pay) est. 30\u201360 min active total.",
+  "official_url": "https://account.chase.com/consumer/banking/secure",
+  "payout_max_usd": 175,
+  "payout_min_usd": 175,
+  "payout_quote": "Enjoy a checking account bonus of $175 as a new Chase checking customer, when you open a Chase Secure BankingSM account with qualifying transactions. | Complete 10 qualifying transactions within 60 days of offer enrollment. Qualifying transactions include: Debit card purchases Zelle ACH credits | Chase QuickDepositSM Online bill payments | [bonus] within 15 days after completing the qualifying transactions. | No Monthly Service Fee when you have any ONE of the following during each monthly statement period: $250+ in qualifying electronic deposits OR an account owner who is age 17-24 | No minimum deposit to open | Open your Chase Secure Banking account with or without a deposit.",
+  "payout_value_note": "Flat $175 cash bonus. No conversion needed.",
+  "route_id": "R5596",
+  "standard": {
+    "s1": {
+      "note": "Steps are concrete: open a new Chase Secure Banking account online from the official offer page (the offer code is applied automatically), then complete 10 qualifying transactions within 60 days of enrollment.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No entry fee: no minimum opening deposit; $4.95 monthly fee waivable via $250+ electronic deposits or age 17-24.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility is 'new Chase checking customer' per the official page; deeper exclusions live in the unseen coupon fine print and are flagged as unverified.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit on the official page: 60 days from enrollment for the 10 transactions; bonus within 15 days after completion. End date not stated on the fetched page \u2014 flagged.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Honest framing: bonus conditional on coupon enrollment + exact transaction completion; limited basic product (no checks, no wires).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Fixed cash payout; no variable framing needed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Cash bonus; no points/miles conversion. Taxation not stated on the fetched page and not asserted.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new Chase Secure Banking account online from the official Chase Secure Banking offer page (the offer code is applied automatically online).",
+    "Complete 10 qualifying transactions within 60 days of offer enrollment."
+  ],
+  "terms_url": "https://account.chase.com/consumer/banking/secure",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "10 qualifying transactions within 60 days of offer enrollment; bonus paid within 15 days of completion. Offer end date not shown on the fetched official page (aggregators report 10/14/2026, unverified).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "as a new Chase checking customer",
+    "with qualifying transactions",
+    "Account subject to approval",
+    "Email address won't be used for other promotions or shared with third parties"
+  ]
+}

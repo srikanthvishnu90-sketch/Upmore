@@ -1,0 +1,86 @@
+{
+  "route_id": "R2058",
+  "verdict": "verify",
+  "official_url": "https://gohyer.com/hire-help/",
+  "terms_url": "https://gohyer.com/hire-help/",
+  "payout_quote": "With more than 425,000 Taskers across 27 states, find workers near you.",
+  "steps": [
+    "Download the Hyer app and create a Tasker profile.",
+    "Complete the mandatory Checkr background check (criminal records, sex offender registry, watch lists).",
+    "Browse posted tasks (warehouse, retail, grocery, hospitality) in your area.",
+    "Get selected by businesses posting tasks and accept the work.",
+    "Complete the task and get paid; businesses set their own hourly/task rates."
+  ],
+  "catches": [
+    "Businesses choose which Taskers to select — you compete for every task and nothing is guaranteed.",
+    "Task rates are set by the posting business; Hyer applies its markup on top.",
+    "Mandatory background check before you can work.",
+    "Coverage is limited to 27 states — outside them there is no work.",
+    "Official worker-side documentation is thin; the flow is mostly documented from the business side."
+  ],
+  "biggest_catch": "Businesses pick the Taskers: you can be fully onboarded and still get zero tasks if nobody selects you.",
+  "eligibility": "Taskers must pass a Checkr background check; available in 27 served states.",
+  "timing": "Tasks post continuously in served markets; paid per completed task.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Hyer's own site documents the two-sided mechanism: businesses 'post tasks and get Taskers when you need them' and select Taskers by profile; 'customers have the flexibility and control to set their own hourly/task rates.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed Tasker payout range — rates are business-set; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the documented flow: Tasker profile, background check, business selection, task completion, paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No sign-up fees documented ('No sign-up fees, contracts, minimums')."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is passing the background check in a served state."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable business-set task rates; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover selection competition, background check, and limited state coverage."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Hyer route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous task postings in served markets."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Hyer is an on-demand labor app where businesses post warehouse/retail/grocery tasks and select Taskers; workers get paid per completed task. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Task rates are set by the posting business; Hyer publishes no fixed Tasker payout range.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-task business-set rates, no official range. time: app signup + profile + background check + browsing tasks, est. 45-120 min active (excludes the task work itself)."
+}

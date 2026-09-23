@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You get nothing until your friend opens an Affinity checking account AND establishes a recurring direct deposit of $500 or more per month - a referral that only opens an account does not pay, and the footnote-1 fine print was not visible in fetched text.",
+  "catches": [
+    "Share the offer through Online Banking (homepage Refer a Friend) or the Mobile Banking App (Self Service > Refer a Friend).",
+    "Your friend or family member must open an Affinity checking account and establish a recurring direct deposit of $500 or more per month.",
+    "You and your friend both receive $100 deposited to your account.",
+    "Earn $100 for each referral, up to $1,000 total (10 referrals); detailed footnote terms not visible in fetched page text."
+  ],
+  "checked_at": "2026-09-23T07:54:55Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Affinity FCU page (affinityfcu.com/refer): 'earn $100 for each referral' and 'Earn up to $1,000!' and 'You and your friend both receive $100 deposited to your account!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Affinity Federal Credit Union Refer a Friend page on affinityfcu.com, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 2026-09-23: R5542 is the Affinity /welcome new-account bonus (different offer), no affinityfcu.com/refer route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Affinity FCU member with online/mobile banking. Friend: new member who opens a checking account with a $500+/month recurring direct deposit.",
+  "notes": "Verified 2026-09-23. Affinity Federal Credit Union (Basking Ridge, NJ) Refer a Friend - distinct from the /welcome new-account bonus (R5542). Referrer earns $100 per referral, capped at $1,000 (10 referrals). Caveat: footnote-1 fine print not visible in fetched text.",
+  "numeric_basis": "payout from official Affinity FCU terms ($100 per referral; earn up to $1,000 = 10 referrals); time: share the offer via online/mobile banking est. 5-15 min active",
+  "official_url": "https://www.affinityfcu.com/refer",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "earn $100 for each referral.",
+  "payout_value_note": "$100 to the referrer per referral; cap $1,000 total (10 referrals).",
+  "route_id": "R5750",
+  "standard": {
+    "s1": {
+      "note": "Official Affinity FCU page live on affinityfcu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a member; friend is a new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open an Affinity checking account and establish a recurring direct deposit of $500+ per month",
+      "pass": true
+    },
+    "s4": {
+      "note": "Both receive $100 deposited to their account; payout timing details not visible in fetched text",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated in fetched page text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share the Refer a Friend offer through Online Banking or the Mobile Banking App.",
+    "Friend opens an Affinity checking account and establishes a recurring direct deposit of $500+ per month.",
+    "You and your friend both receive $100 deposited to your accounts."
+  ],
+  "terms_url": "https://www.affinityfcu.com/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Deposited to the referrer's account after qualification; detailed timing in footnote terms not visible in fetched text.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

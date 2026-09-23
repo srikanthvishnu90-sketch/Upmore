@@ -1,0 +1,88 @@
+{
+  "route_id": "R2421",
+  "verdict": "verify",
+  "official_url": "https://accounts.chase.com/raf/landing?jp_aid_a=T_66356&jp_aid_p=chasehome_3%2Fhero",
+  "terms_url": "https://accounts.chase.com/raf/landing?jp_aid_a=T_66356&jp_aid_p=chasehome_3%2Fhero",
+  "payout_quote": "You are eligible to receive a $50 bonus for each referral who opens a qualifying checking account (up to 10 referrals - total of $500) in a calendar year.",
+  "steps": [
+    "Hold an eligible Chase personal checking account (Total Checking, Premier Plus Checking, Sapphire Checking, or Private Client Checking) - the referral offer appears about 30 days after account opening.",
+    "Get your personalized referral link (Copy link button on the official referral page/account).",
+    "Share the link with friends - they MUST open their qualifying Chase checking account through your link for you to get credit.",
+    "The $50 bonus is deposited into your primary checking account within 30 days after your friend opens the account, as long as neither account is closed or restricted at payout."
+  ],
+  "catches": [
+    "Friend must open a qualifying checking account through YOUR personalized link - any other application path earns you nothing.",
+    "Cap: 10 referrals / $500 total per calendar year.",
+    "Only specific personal checking accounts are eligible (Total, Premier Plus, Sapphire, Private Client); the offer appears roughly 30 days after you open your account.",
+    "No bonus if either account is closed or restricted at the time of payout.",
+    "JPMorgan Chase employees are not eligible for the program.",
+    "Chase does not tell you when a friend opens an account, so tracking your own referrals is on you."
+  ],
+  "biggest_catch": "Your friend MUST apply through your exact personalized link - a referral who opens any other way earns you nothing, and the cap is $500 per calendar year.",
+  "eligibility": "Eligible Chase personal checking account holders (Total, Premier Plus, Sapphire, Private Client), available about 30 days after account opening.",
+  "timing": "Bonus deposited within 30 days after the referred friend opens the qualifying account, provided both accounts are open and unrestricted at payout.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to $500"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "JPMorgan Chase Bank, N.A. - real operating bank; official domain accounts.chase.com, page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official FAQ states verbatim '$50 bonus for each referral who opens a qualifying checking account (up to 10 referrals - total of $500) in a calendar year'."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer - sharing a link; no purchase, no spending, no deposit required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official FAQ: bonus deposited 'within 30 days' of friend opening, listed as '$50 Refer a Friend bonus' in the checking account - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligible personal checking holders, offer available ~30 days after opening; specific account types named."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens qualifying checking account via referrer's personalized link."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Within 30 days after friend opens the account."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $50 per referral stated; 'up to $500' is the stated 10-referral annual cap."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://accounts.chase.com/raf/landing - official Chase referral landing page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: get link, share, friend opens via link, bonus posts within 30 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; FAQ text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'chase' shows checking bonuses and credit-card welcome offers but no Chase refer-a-friend route - distinct mechanism.",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "flat $50 per referral in official terms; 10-referral/$500 annual cap is a cap, not the payout",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($50 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

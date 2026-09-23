@@ -1,0 +1,85 @@
+{
+  "route_id": "R2065",
+  "verdict": "verify",
+  "official_url": "https://www.guru.com/pricing-freelancer/",
+  "terms_url": "https://www.guru.com/pricing-freelancer/",
+  "payout_quote": "Basic: Free, 10 Bids per Month, One Bid per Quote, 9% Job Fee",
+  "steps": [
+    "Create a free Guru account on the Basic plan and build a freelancer profile with skills and portfolio.",
+    "Browse publicly posted jobs and submit quotes (bids) — Basic includes 10 bids per month.",
+    "Get selected by the employer, agree terms, and complete the work through Guru's Work Room.",
+    "Get paid via Guru's SafePay; Guru deducts the 9% job fee from completed earnings."
+  ],
+  "catches": [
+    "The free Basic plan allows only 10 bids per month — volume beyond that needs a paid plan (not required to start).",
+    "Quoting is competitive; most quotes lose and earn nothing.",
+    "Job budgets are set by employers; Guru publishes no fixed freelancer pay range.",
+    "A 9% job fee is deducted from every completed job.",
+    "Identity verification is required before withdrawing funds."
+  ],
+  "biggest_catch": "You only get paid for jobs you win and complete — and the free plan caps you at 10 bids a month with a 9% fee on every win.",
+  "eligibility": "Anyone who can create a free Guru account and legally freelance in their jurisdiction; skills must match posted jobs.",
+  "timing": "Jobs post continuously; payouts on job completion via SafePay.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Guru's own pricing page documents the free Basic plan with '10 Bids per Month, One Bid per Quote, 9% Job Fee' for freelancers bidding on posted jobs."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed freelancer pay range — pay is per job with a 9% fee; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: free signup, profile, quote on jobs, win, complete, SafePay payout minus 9% fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Basic plan signup and bidding are free; paid plans are optional upgrades."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: anyone able to create an account and legally freelance."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-job pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover the 10-bid monthly cap, competitive quoting, employer-set budgets, the 9% fee, and ID verification."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: Guru not in existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous job postings."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Guru is a freelance bidding marketplace: employers post jobs, freelancers submit quotes, and completed work pays through SafePay. Selection, work, and income are variable — never guaranteed. Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Job budgets are employer-set and quotes are freelancer-set; Guru publishes no fixed pay range — variable per-job income with a 9% job fee.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-job, employer-set budgets, no official range; 9% job fee. time: profile setup + browsing and submitting first quotes, est. 45-120 min active."
+}

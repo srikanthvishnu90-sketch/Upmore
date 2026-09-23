@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must complete a long qualification list within 90 days (online banking, eStatements, debit card, 10 debit transactions, $250+ recurring direct deposit) - otherwise you get nothing.",
+  "catches": [
+    "Referrer: existing Gesa Credit Union member over 18 in good standing; employees, board members, and business-only members are not eligible.",
+    "Referrer earns $50 for each eligible Referee submitted (up to a maximum of 10), i.e. up to $500; 'Referrers will receive $50, up to a maximum of $500, for each Referee.'",
+    "Referee must: use the referrer's referral code at account opening; become a member (savings, $5 minimum, $25 online) and open a SmartPlus checking account; within 90 days: sign up for online banking, enroll in eStatements, open a debit card, complete 10 qualifying debit card transactions (ATM excluded), and set up a recurring direct deposit of $250 or more.",
+    "Former Gesa members qualify as new only if previous membership was closed more than 90 days prior.",
+    "Incentives deposited into savings accounts within 90 days of meeting all qualifications; subject to IRS reporting.",
+    "Cannot be combined with other offers; early-closure fee may apply if account closed within first six months.",
+    "Program void where prohibited; Gesa may modify or cancel at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Gesa Credit Union Refer a Friend Program Terms and Conditions PDF (gesa.com, fetched live 2026-09-23): 'Referrers will receive $50, up to a maximum of $500, for each Referee who provides the Referrer's referral code and becomes a member and opens a savings and a SmartPlus checking account...'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official gesa.com PDF, fetched live 2026-09-23; ongoing offer, subject to modification or cancellation",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; referee opens membership + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no Gesa route in the catalog; no false-positive hits are actual Gesa entries",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current Gesa Credit Union member over 18 in good standing (Washington-based CU; membership open to those who live, work, worship or attend school in WA). Friend: new member not a Gesa member in the prior 90 days.",
+  "notes": "Verified 2026-09-23. Gesa Credit Union (Washington). Referrer earns $50 per qualifying referral, up to 10 ($500).",
+  "numeric_basis": "payout from official Gesa terms ($50 per referral; max 10 = $500); time: share referral code est. 5-15 min active",
+  "official_url": "http://www.gesa.com/wp-content/docs/rules---refer-friend-terms-and-conditions.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Referrers will receive $50, up to a maximum of $500, for each Referee who provides the Referrer's referral code and becomes a member and opens a savings and a SmartPlus checking account, and, within the first 90 days of account opening, signs up for online banking, enrolls in eStatements, opens a debit card, completes 10 qualifying debit card transactions (ATM transactions excluded), and sets up a recurring direct deposit of $250 or more.",
+  "payout_value_note": "$50 to the referrer per qualifying referral; up to 10 referrals ($500).",
+  "route_id": "R4827",
+  "standard": {
+    "s1": {
+      "note": "Official gesa.com PDF fetched live 2026-09-23; ongoing, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing Gesa member 18+ in good standing; friend new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: savings + SmartPlus checking; 90 days to do online banking, eStatements, debit card, 10 debit transactions, $250 recurring DD",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: incentives deposited within 90 days of meeting all qualifications",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: incentives subject to IRS reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; no Gesa route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Pass your Gesa referral code (and your name as on your account) to friends and family.",
+    "Friend opens a Gesa savings and SmartPlus checking account using your referral code.",
+    "Friend completes all qualifications within 90 days (online banking, eStatements, debit card, 10 debit transactions, $250 recurring direct deposit).",
+    "You receive $50 per qualifying referral, up to 10 ($500)."
+  ],
+  "terms_url": "http://www.gesa.com/wp-content/docs/rules---refer-friend-terms-and-conditions.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Incentives deposited into savings accounts within 90 days of meeting all qualifications.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

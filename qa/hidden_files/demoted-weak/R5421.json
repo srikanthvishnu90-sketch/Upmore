@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Earnings are fully variable — most proposals win nothing — and Workana takes 20% of your first $300 with every new client.",
+  "catches": [
+    "Commission is 20% on the first $300 earned with each new client, then 10% up to $3,000, then 5% — one-off gigs keep paying the top tier.",
+    "Optional paid benefit plans exist but are explicitly not mandatory to bid or work.",
+    "Most proposals lose; earnings depend entirely on winning client work.",
+    "Client-set budgets; Workana publishes no fixed freelancer pay range.",
+    "Disputes go through Workana arbitration; repeated breaches can suspend your account."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Workana's own help center states: 'For creating a profile, creating a project and or sending proposals to the projects are free of charge.' and 'the client can publish his projects and find the freelancer who can best carry out his project' — a public project/proposal marketplace.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms publish no fixed freelancer pay range — pay is per project with a published tiered commission; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: free approved profile, search jobs, send proposals, escrow-funded execution, client-released payment.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Profile creation and proposal-sending are free; benefit plans are explicitly 'not mandatory' per the official article.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone who can create an account, pass Workana profile approval, and legally freelance; skills must match posted projects.",
+  "notes": "Scenario: freelance bidding. Workana is a freelance bidding marketplace (LATAM-strong, global): clients publish projects, freelancers send proposals for free, and awarded work pays through escrow. Pay is per-project and variable — never guaranteed.",
+  "numeric_basis": "payout: per-project, client-set budgets, no official range. time: free profile setup + approval + reading and submitting first proposals, est. 45-120 min active.",
+  "official_url": "https://go.workana.com/freelancer-en/",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "For creating a profile, creating a project and or sending proposals to the projects are free of charge.",
+  "payout_value_note": "Project budgets are client-set and proposal prices freelancer-set; Workana publishes no fixed pay range — variable per-project income.",
+  "route_id": "R5421",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to create an account, pass profile approval, and legally freelance.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-project pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover tiered commission, optional plans, competitive awards, client-set budgets, and arbitration risk.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Workana absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against provider-owned pages fetched live on 2026-09-23 (help.workana.com, go.workana.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: continuous project postings; escrow release on client approval.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a free Workana freelancer profile and get it approved.",
+    "Search client-posted projects in your area of expertise and send proposals (free; proposals use connections).",
+    "If hired, the client funds an escrow deposit before work starts.",
+    "Execute the work through the platform's chat and file sharing.",
+    "The client releases payment on approval; Workana applies its tiered commission (20%/10%/5% by client lifetime volume)."
+  ],
+  "terms_url": "https://help.workana.com/hc/en-us/articles/360040846094-How-much-does-it-cost-to-use-Workana",
+  "time_max_minutes": 120,
+  "time_min_minutes": 45,
+  "timing": "Projects post continuously; escrow releases when the client approves the work.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

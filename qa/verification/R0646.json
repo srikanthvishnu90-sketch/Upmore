@@ -12,7 +12,7 @@
     "Excludes current checking holders, recent closures, negative-balance closures within 3 years, and anyone paid a Tower bonus within 48 months; one per household.",
     "Possible bonus recoupment if the account closes or recurring deposits stop within six months."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "Maryland residents, DoD personnel/families, or existing Tower members as of 2026-06-15. Excludes current checking holders, recent closures, negative-balance closures within 3 years, and prior Tower bonus recipients within 48 months. One per household. MD.",
-  "notes": "Official Tower checking300 page fetched 2026-09-23. Candidate '$100 checking, MD' verified with the corrected $300 amount and the 9/30/2026 deadline flagged.",
+  "notes": "Official Tower checking300 page fetched 2026-09-23. Candidate '$100 checking, MD' verified with the corrected $300 amount and the 9/30/2026 deadline flagged. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://towerfcu.org/checking300",
   "payout_quote": "$300 (corrects stale $100): open 2026-06-15 through 2026-09-30 with ORIOLES or BALTIMORE and receive qualifying recurring direct deposits of at least $1,000 each within 90 days - paid within 60 days after requirements are met.",
   "route_id": "R0646",
@@ -80,5 +80,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 300.0,
+  "payout_max_usd": 300.0,
+  "payout_value_note": "flat amount in official terms [numeric corrected 2026-09-23 to match official quote]",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

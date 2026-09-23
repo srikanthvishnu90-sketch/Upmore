@@ -12,7 +12,7 @@
     "$15 closing fee if the account is closed within 90 days.",
     "'Limited time' with no fixed expiry."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "No current 1st Advantage checking. VA/NC.",
-  "notes": "Official 1st Advantage checking-offer page fetched 2026-09-23. Candidate '$200 checking, VA/NC' verified.",
+  "notes": "Official 1st Advantage checking-offer page fetched 2026-09-23. Candidate '$200 checking, VA/NC' verified. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://www.1stadvantage.org/checkingoffer/",
   "payout_quote": "$200 with CHECKING200: eStatements, recurring direct deposit, and $200+ in debit spending within 60 days - reviewed once during days 60-90 and paid 60-90 days after account opening.",
   "route_id": "R0642",
@@ -80,5 +80,11 @@
   "weasel_words": {
     "present": true,
     "quote": "Limited time - no fixed expiration date stated on the official page."
-  }
+  },
+  "payout_min_usd": 200.0,
+  "payout_max_usd": 200.0,
+  "payout_value_note": "minimum stated amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

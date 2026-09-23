@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "verdict": "verify",
+  "route_id": "R5887",
+  "checked_at": "2026-09-23T05:33:45Z",
+  "weasel_words": [],
+  "official_url": "https://www.bmo.com/en-us/pdf/digital-offer-ucb.pdf",
+  "terms_url": "https://www.bmo.com/en-us/pdf/digital-offer-ucb.pdf",
+  "payout_min_usd": 200,
+  "payout_max_usd": 260,
+  "payout_quote": "Open a new BMO Smart Money Checking account using the promo code and receive a $200 cash bonus when you have at least 5 qualifying electronic transactions",
+  "payout_value_note": "flat $200 checking bonus; optional Savings Builder rewards add up to $60 (12 x $5 monthly)",
+  "biggest_catch": "UC Berkeley students only \u2014 must present a Cal 1 Card, transcript, class schedule, or acceptance letter at account opening with promo code BSFP-11115H-STUSS26 and BAW code Z07.",
+  "catches": [
+    "UC Berkeley students only; must present Cal 1 Card, transcript, class schedule, or acceptance letter at account opening.",
+    "Must provide promo code BSFP-11115H-STUSS26 and UC Berkeley Student BAW code Z07 at account opening.",
+    "Offer only valid for accounts opened May 5, 2026 through December 31, 2026.",
+    "Cannot be combined with any other offer; limited to one per client and account.",
+    "Not available to existing BMO personal checking clients or those who closed a BMO personal checking account within the past 12 months.",
+    "Bonus may be reported to the IRS; recipient responsible for applicable taxes.",
+    "Account must be open, in good standing, with a balance greater than zero when the bonus is paid (~100 days after opening).",
+    "Qualifying electronic transactions exclude internal BMO-to-BMO transfers, ATM transactions, and debit card returns.",
+    "Optional Savings Builder: $25 minimum to open; $5 monthly reward only in months the balance grows by at least $200, up to 12 months ($60 total)."
+  ],
+  "eligibility": "Current UC Berkeley students (or incoming students with an acceptance letter) who are not existing BMO personal checking clients and have not closed a BMO personal checking account in the past 12 months.",
+  "numeric_basis": "payout from official BMO offer terms ($200 flat + optional $60); time: account opening plus 5 qualifying electronic transactions, est. 45-90 min active",
+  "time_min_minutes": 45,
+  "time_max_minutes": 90,
+  "timing": "Open by December 31, 2026; 5 qualifying electronic transactions must post within 90 days of opening; $200 bonus deposited ~100 days after opening; savings rewards within 5 calendar days after each qualifying month-end.",
+  "upfront_fee": false,
+  "steps": [
+    "Open a new BMO Smart Money Checking account at the on-campus BMO financial center (MLK Building, 2495 Bancroft Way, Berkeley CA) or by calling 1-800-546-6101, providing promo code BSFP-11115H-STUSS26 and UC Berkeley Student BAW code Z07.",
+    "Present UC Berkeley enrollment proof: Cal 1 Card, transcript, class schedule, or acceptance letter.",
+    "Have 5 qualifying electronic transactions post within 90 days of opening (ACH, realtime payments, online bill pay, mobile deposits, wire transfers, or debit card purchases).",
+    "$200 cash bonus is deposited into the checking account ~100 days after opening; keep it open, in good standing, with a positive balance.",
+    "Optional: open a Savings Builder account and grow the balance by $200+ each month to earn $5 monthly rewards for up to 12 months ($60 total)."
+  ],
+  "critical": {
+    "c1": {
+      "evidence": "BMO Bank N.A. \u2014 real operating bank; official UC Berkeley offer PDF on the bmo.com domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official BMO PDF: '$200 cash bonus' for opening a new BMO Smart Money Checking account with the promo code and at least 5 qualifying electronic transactions; optional Savings Builder pays '$5' monthly rewards.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No minimum deposit stated for the checking offer; Savings Builder requires $25 minimum. No upfront fee to earn the $200.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "'Open a new BMO Smart Money Checking account using the promo code and receive a $200 cash bonus when you have at least 5 qualifying electronic transactions' \u2014 conditional payout stated in official terms.",
+      "pass": true
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Eligibility concrete: UC Berkeley students only, enrollment proof required, promo + BAW codes required at opening.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Requirements concrete: 5 qualifying electronic transactions posting within 90 days; optional Savings Builder $200/month growth for $5 rewards.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing concrete: offer window May 5-Dec 31, 2026; bonus paid ~100 days after opening; savings rewards within 5 days of each qualifying month-end.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$200 stated flatly with stated conditions; Savings Builder $5/month stated flatly; not weasel language.",
+      "pass": true
+    },
+    "s5": {
+      "note": "bmo.com is BMO Bank's official domain; offer PDF is the bank's own UC Berkeley campaign document.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No earnings promise beyond the conditional bonus; tax reporting disclosed; qualifying-transaction exclusions disclosed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numbers consistent: 200/260 USD; 45-90 active minutes for opening + 5 transactions.",
+      "pass": true
+    }
+  },
+  "notes": "Distinct from R0052 (general BMO Harris Checking national offer) and R0928/R3223 \u2014 this is the Berkeley-only campaign with unique promo code BSFP-11115H-STUSS26 and student-enrollment proof requirement. Re-verified live 2026-09-23: official bmo.com PDF still shows the offer, effective May 5, 2026 through December 31, 2026."
+}

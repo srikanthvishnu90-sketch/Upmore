@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete 15+ debit card transactions of at least $10 each AND direct deposits totaling $250+ within 60 days of account opening - if they fall short, you get nothing - and the card takes 4-6 weeks to arrive after everything is done.",
+  "catches": [
+    "Referrer must be a current OnPath CU member in good standing who registers for the ReferLive Checking Account Program.",
+    "Friend must register via the referral email/social link, open a new OnPath CU personal checking account, and complete: 15+ debit card transactions (excluding ATM) of at least $10 each AND direct deposits totaling $250+, all within 60 days of account opening.",
+    "Only one account per referred person qualifies; referrer may receive up to five (5) $150 Visa Reward Cards = $750 value per calendar year.",
+    "Visa Reward Card delivery 4-6 weeks after all requirements are completed; cards may be reported as income to the IRS.",
+    "Offer starting July 14th, 2025; OnPath CU reserves the right to refuse reward cards; offer subject to change without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official OnPath FCU page (beonpath.org/refer-a-friend): 'The person making the referral (Referrer) will earn a $150 Visa Reward Card for each individual referred' and 'A Referrer may receive up to five (5), $150 Visa Reward Cards ($750 value) within a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official OnPath FCU ReferLive page on beonpath.org, fetched live 2026-09-23, with full terms and conditions",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'OnPath Federal Credit Union' 2026-09-23 returned no verified referral route; no beonpath.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current OnPath Credit Union member in good standing who registers for the ReferLive program. Friend: new member who registers via the referral link, opens a new OnPath personal checking account, and completes the transaction/deposit requirements within 60 days.",
+  "notes": "Verified 2026-09-23. OnPath Federal Credit Union (Louisiana) ReferLive Checking Account Offer. Referrer earns a $150 Visa Reward Card per qualifying referral, capped at 5 cards / $750 per calendar year.",
+  "numeric_basis": "payout from official OnPath FCU terms ($150 Visa Reward Card per referral; max 5/$750 per calendar year); time: register and share referral info est. 5-15 min active",
+  "official_url": "https://www.beonpath.org/refer-a-friend",
+  "payout_max_usd": 150,
+  "payout_min_usd": 150,
+  "payout_quote": "The person making the referral (Referrer) will earn a $150 Visa Reward Card for each individual referred (Referred Person) to OnPath CU.",
+  "payout_value_note": "$150 Visa Reward Card to the referrer per qualifying referral; cap 5 referrals / $750 per calendar year.",
+  "route_id": "R5720",
+  "standard": {
+    "s1": {
+      "note": "Official OnPath FCU page live on beonpath.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a current member in good standing; friend is a new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: register via referral link, open new personal checking account, complete 15+ debit transactions of $10+ each and $250+ direct deposits within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Visa Reward Card delivered 4-6 weeks after all requirements are completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Visa Reward Cards may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the OnPath ReferLive Checking Account Program.",
+    "Share your friend's or family member's name and email address.",
+    "Your friend registers via the referral email, becomes a member, and opens a new OnPath personal checking account.",
+    "Friend completes 15+ debit card transactions of $10+ each and $250+ in direct deposits within 60 days of account opening.",
+    "Receive a $150 Visa Reward Card 4-6 weeks after all requirements are completed."
+  ],
+  "terms_url": "https://www.beonpath.org/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Visa Reward Card delivered 4-6 weeks after all requirements are completed; friend has 60 days from account opening to qualify.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

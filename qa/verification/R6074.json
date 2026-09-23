@@ -1,0 +1,89 @@
+{
+  "route_id": "R6074",
+  "verdict": "verify",
+  "official_url": "https://bell.bank/refer",
+  "terms_url": "https://bell.bank/refer",
+  "payout_quote": "We will deposit $50 into the new, first-time personal checking account, and the referrer will receive $50 in their current Bell checking account after the new, first-time personal checking account has been active 60 days with either a recurring direct deposit (excludes transfers from another bank) or 10 debit card transactions (point of sale) or a recurring automatic payment. After the qualifications are met, $50 will be deposited into the accounts within 5 business days.",
+  "steps": [
+    "Tell friends or family to switch to Bell Bank and let the bank know you sent them.",
+    "Your friend opens a new first-time personal checking account in person or online with a $50 minimum deposit.",
+    "The new account stays active for 60 days with a recurring direct deposit (excluding transfers from another bank), 10 point-of-sale debit card transactions, or a recurring automatic payment.",
+    "After the qualifications are met, $50 is deposited into the new account and $50 into your current Bell checking account within 5 business days."
+  ],
+  "catches": [
+    "Referred friend must be a first-time Bell Bank personal checking account holder.",
+    "New account must be active 60 days with recurring direct deposit (bank-to-bank transfers excluded), 10 POS debit transactions, or a recurring automatic payment.",
+    "Referrer must hold a current Bell checking account to receive the bonus.",
+    "$50 minimum deposit to open the new checking account.",
+    "Both parties may receive a 1099-MISC for the bonus per IRS regulations.",
+    "Cannot be combined with any other Bell Bank offers."
+  ],
+  "biggest_catch": "The friend must be a first-time Bell Bank personal checking customer and the new account must stay active 60 days with qualifying activity (recurring direct deposit excluding bank-to-bank transfers, 10 POS debit transactions, or recurring automatic payment); the offer cannot be combined with any other Bell Bank offer.",
+  "eligibility": "Referrer must be a current Bell Bank checking customer; referred friend must be a first-time Bell personal checking account holder.",
+  "timing": "Sharing takes ~5-15 minutes active; both accounts are credited within 5 business days after the 60-day qualification is met.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "first-time personal checking account",
+    "cannot be combined with any other offers"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:54:47Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official bell.bank/refer: referrer must have a current Bell checking account; friend must open a new, first-time personal checking account."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official bell.bank/refer page fetched via search index; terms describe the 60-day activity qualification."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No participation fee. $50 minimum deposit to open the new checking account."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Prior-catalog dedupe: no earlier verified route covers Bell Bank refer-a-friend; R0565 was a rejected aggregator-only signup-bonus candidate (different mechanism)."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Referrer payout: $50 deposited into current Bell checking account per qualified referral."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Referee payout: $50 deposited into the new first-time personal checking account."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Qualification: new account active 60 days plus recurring direct deposit (excludes bank-to-bank transfers), 10 POS debit transactions, or recurring automatic payment."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Payout timing: $50 deposited into both accounts within 5 business days after qualifications are met."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Tax treatment: official terms state both customers may receive a 1099-MISC for funds received, in accordance with applicable IRS regulations."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Referral count cap: no limit stated on the official page."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Referrer reward is cash deposited to an existing Bell checking account."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official Bell Bank referral page (bell.bank/refer). Both parties get $50 cash deposited within 5 business days after the 60-day qualification. Prior R0565 catalog entry was a rejected signup-bonus candidate with no official evidence — this referral program is a distinct mechanism. No referral count cap stated on the official page.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 cash deposited to the referrer's checking per qualified referral (friend also gets $50); no count cap stated.",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 flat per referral from official terms; time: referral share est. 5-15 min active"
+}

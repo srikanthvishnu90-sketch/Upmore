@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open a full membership AND a qualifying second product - a 3Point Checking account with direct deposit, or a new loan/Mastercard of at least $3,000 - a plain savings-only join earns you nothing.",
+  "catches": [
+    "Existing member refers via web entry (myGECreditUnion.com) or paper referral form; no limit on people you can refer, but max 10 qualified referrals per member ($250/household).",
+    "Friend must: (a) become a NEW member by opening a new membership account AND (b) open either a 3Point Checking Account with Direct Deposit or a new Loan/Mastercard Credit Card Account of at least $3,000.",
+    "Cap: maximum 10 qualified referrals and $250 in Referral Bonus Deposits per existing member household (defined by SSN/TIN + household).",
+    "Bonus credited to the existing member's membership account within 60 days of the referral completing requirements.",
+    "Employees and their families are not eligible; consult a tax advisor on taxability.",
+    "No fixed expiry stated on the form."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official GE Credit Union referral form (myGECreditUnion.com): 'Existing members will earn $25 for each person that is (a) referred using either the web entry or the form entry ... and that (b) becomes a NEW member of GE Credit Union by opening a NEW membership account AND either a 3Point Checking Account with Direct Deposit OR opens a NEW Loan or Mastercard Credit Card Account for an amount no less than $3,000.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official form on myGECreditUnion.com domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + checking/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no mygecreditunion.com route; catalog has no GE Credit Union entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing GE Credit Union member in good standing (employees/families excluded). Friend: new member opening membership + qualifying product.",
+  "notes": "Verified 2026-09-23. GE Credit Union (myGECreditUnion.com). Referrer earns $25 per qualified referral; cap 10 referrals / $250 per household.",
+  "numeric_basis": "payout from official mygecreditunion.com referral form ($25 per qualified referral; max 10/$250 per household); time: web entry or form est. 5-15 min active",
+  "official_url": "https://www.myGECreditUnion.com/en-US/Documents/Forms-Applications/Refer-a-Friend",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Existing members will earn $25 for each person that is (a) referred using either the web entry or the form entry as referenced above and that (b) becomes a NEW member of GE Credit Union by opening a NEW membership account AND either a 3Point Checking Account with Direct Deposit OR opens a NEW Loan or Mastercard Credit Card Account for an amount no less than $3,000. There is no limit to the number of people an existing member can refer. There is a maximum limit of 10 'qualified' referrals which result in a Referral Bonus Deposit ('RBD') and there is a maximum Referral Bonus Deposit amount of $250 per existing member household.",
+  "payout_value_note": "$25 Referral Bonus Deposit per qualified referral; max 10 referrals / $250 per household.",
+  "route_id": "R4785",
+  "standard": {
+    "s1": {
+      "note": "Official form on myGECreditUnion.com, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing member in good standing; friend new member meeting membership + product criteria",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new membership + 3Point Checking with direct deposit, or new $3,000+ loan/Mastercard",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited within 60 days of the referral completing requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: consult a tax advisor on taxability and reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend via the GE Credit Union website or the paper referral form.",
+    "Friend becomes a new GE Credit Union member, opening a membership account plus either a 3Point Checking account with direct deposit or a new $3,000+ loan/Mastercard.",
+    "Your $25 Referral Bonus Deposit is credited to your membership account within 60 days (up to 10 referrals / $250 per household)."
+  ],
+  "terms_url": "https://www.myGECreditUnion.com/en-US/Documents/Forms-Applications/Refer-a-Friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referral Bonus Deposit credited within 60 days of the referral completing all requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

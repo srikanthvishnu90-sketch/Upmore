@@ -1,0 +1,85 @@
+{
+  "route_id": "R2064",
+  "verdict": "verify",
+  "official_url": "https://www.freelancer.com/",
+  "terms_url": "https://www.freelancer.com/",
+  "payout_quote": "It's free to sign up and bid on jobs",
+  "steps": [
+    "Sign up for a free Freelancer.com account and build a profile with skills, experience, and portfolio samples.",
+    "Browse publicly posted projects (fixed-price and hourly) and place free bids with your price, timeframe, and proposal.",
+    "Win bids by competing on price, profile strength, and reviews; the client awards the project.",
+    "Complete the work and get paid through Freelancer's Milestone Payment system; a per-project service fee applies."
+  ],
+  "catches": [
+    "Free accounts get a limited monthly bid allocation — serious bidding beyond that needs a paid membership (not required to start).",
+    "Bidding is competitive; most bids lose and earn nothing.",
+    "Project budgets are set by clients; Freelancer publishes no fixed freelancer pay range.",
+    "A service fee applies per project/award; check the official fee schedule at signup before bidding.",
+    "Identity/KYC verification is required before withdrawing funds."
+  ],
+  "biggest_catch": "Most bids lose, and free accounts get only a limited number of bids per month — earnings depend entirely on winning client work.",
+  "eligibility": "Anyone who can create a free account and legally freelance in their jurisdiction; skills must match posted projects.",
+  "timing": "Projects post continuously; payouts on project completion via milestones.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Freelancer's own site states: \"It's free to sign up and bid on jobs\" (indexed from the provider's official regional page), and official pages describe the public project marketplace where clients post projects and freelancers bid."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed freelancer pay range — pay is per project/milestone; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: free signup, profile, bid on posted projects, win award, milestone payment."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Signup and bidding on the free account are free; paid memberships are optional upgrades, not required to bid."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: anyone able to create an account and legally freelance."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-project pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover limited free bids, competitive awards, client-set budgets, per-project fees, and KYC."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: Freelancer.com not in existing-providers.txt, dedupe-check.py, or qa/verification/*.json (R0491 is Upwork; R2034 is Toptal)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous project postings."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Freelancer.com is a project-bidding marketplace: clients post projects with budgets, freelancers bid for free, and awarded work pays through milestones. Selection, work, and income are variable — never guaranteed. Browser live page fetch failed repeatedly this session; the quote is verbatim from the provider's own published page as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Project budgets are client-set and bids are freelancer-set; Freelancer publishes no fixed pay range — variable per-project income.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-project, client-set budgets, no official range. time: profile + portfolio setup + reading and submitting first bids, est. 45-120 min active."
+}

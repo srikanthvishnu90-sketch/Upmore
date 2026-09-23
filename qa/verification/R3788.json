@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $200 pays out as a slow $50/month drip over four months and each month requires a $3,000 average daily balance - a poor return on parked cash.",
+  "catches": [
+    "Business customers only - requires a business entity.",
+    "Promo code START200 required on the application.",
+    "Payout is a slow drip: $50 per calendar month, so the full $200 takes 4 qualifying months.",
+    "You must maintain an AVERAGE DAILY BALANCE of $3,000 each month to earn that month's $50 - one low day drags the average down.",
+    "No monthly fees and no minimum opening deposit keep the cost at zero, but the reward is small relative to the $3,000 parked.",
+    "Normal tax treatment applies to bank bonuses (reported as income).",
+    "The $50/month figure is a monthly cap, not a guaranteed payout - actual cashback depends on account activity; official terms only promise \"up to $200\" total."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Axos Bank is a real operating online bank; business checking promo terms are published on axosbank.com (official-domain search capture, 2026-09-23 UTC).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states the START200 promo: $50/month up to $200 with $3,000 average daily balance, open by 1/31/2027.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No monthly maintenance fees and no initial deposit or minimum balance fees per official page.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: open by January 31, 2027 (outside the 14-day flag).",
+      "pass": true
+    }
+  },
+  "eligibility": "New Axos business customers opening a Basic Business Checking account; promo code START200 required; open by January 31, 2027.",
+  "notes": "Verified against official axosbank.com business pages (official-domain search capture, 2026-09-23 UTC; page fetch tooling unavailable this turn). Note the 'up to $200' is earned as a monthly drip, not a lump sum.",
+  "numeric_basis": "payout from official terms ($50-$200 drip); time: online business account opening est. 30-60 min active (excludes the multi-month qualification)",
+  "official_url": "https://www.axosbank.com/business/solutions/new-business",
+  "payout_max_usd": 200,
+  "payout_min_usd": 0,
+  "payout_quote": "Every dollar counts when you're starting out. That's why new businesses can earn up to $200 opening a new Basic Business Checking account today. Open a Basic Business Checking account using promo code START200 by January 31, 2027. Maintain an average daily balance of $3,000 over your account's first few months. You'll earn up to $50 cashback per calendar month, up to $200 total. No strings. Just rewards. Basic Business Checking: No monthly maintenance fees. No initial deposit or minimum balance fees. Free domestic and international incoming wires. Unlimited domestic ATM fee reimbursements.",
+  "payout_value_note": "Up to $200 total; up to $50 cashback per calendar month is a monthly cap, not a guaranteed monthly amount. Floor set to 0 because official evidence only supports \"up to $200\".",
+  "route_id": "R3788",
+  "standard": {
+    "s1": {
+      "note": "New business customers; promo code START200; Basic Business Checking.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Up to $200; no guaranteed floor (floor 0).",
+      "pass": true
+    },
+    "s3": {
+      "note": "$50 cashback per qualifying calendar month, up to $200 total.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words - fixed $50/month up to $200 structure.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No monthly fees or minimum opening deposit on Basic Business Checking per official page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Open by 1/31/2027; outside the 14-day flag.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct route: Axos business checking not in existing-providers.txt or prior evidence files (Axos personal Rewards Checking is a separate route).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Confirm you are opening a new business account as a new Axos business customer.",
+    "Open a Basic Business Checking account online with promo code START200 by January 31, 2027.",
+    "Maintain an average daily balance of $3,000 each calendar month.",
+    "Earn $50 cashback per qualifying month, up to $200 total."
+  ],
+  "terms_url": "https://axosbank.com/business/business-checking-accounts/basic-business-checking",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Up to $50 cashback per calendar month when the $3,000 average daily balance is maintained, up to $200 total.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

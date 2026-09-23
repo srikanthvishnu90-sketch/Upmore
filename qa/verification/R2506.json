@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend's referred loan must be new (not already financed with CoastLife), over $10,000, approved, and funded - and the amount doesn't pay out unless the loan closes.",
+  "catches": [
+    "Refer a Loan: receive $100 for yourself and $100 for the referred friend or family member when the new loan is approved and funded.",
+    "The loan must be a new loan (not currently financed with CoastLife CU) of over $10,000, approved and funded.",
+    "This offer cannot be combined with any other offer; other restrictions may apply.",
+    "Rewards are paid once the loan is funded; the form is submitted to CoastLife CU who handles the rest.",
+    "Tax reporting may apply."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "CoastLife Credit Union (TX); official domain coastlifecu.com; official Refer a Loan page, fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'Receive $100 for yourself and $100 for them!' - concrete per-referral amount.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; complete and submit the referral form.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: $100 reward to the referrer (and $100 to the friend) when the referred person takes a new CoastLife loan over $10,000 that is approved and funded.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: CoastLife CU member. Referred: new borrower taking a new loan over $10,000.",
+  "notes": "dedupe-check 'coastlife' clean. Loan-referral program, distinct from deposit-account referrals.",
+  "numeric_basis": "payout from official terms ($100 per funded loan referral flat); time: category default App Referral share-link 5-15 min active",
+  "official_url": "https://www.coastlifecu.com/home/products-services/discount",
+  "payout_max_usd": 100.0,
+  "payout_min_usd": 100.0,
+  "payout_quote": "When you refer a friend, family member or co-worker to CoastLife CU for a new loan, you can earn rewards! Receive $100 for yourself and $100 for them! Simply complete the form and submit it and we'll do the rest. A new loan refers to loans not currently financed with CoastLife CU. To qualify, the loan must be over $10,000, approved and funded.",
+  "payout_value_note": "$100 per referral in official terms; no cap stated in official text",
+  "route_id": "R2506",
+  "standard": {
+    "s1": {
+      "note": "Referrer: CoastLife CU member. Referred: new borrower with a loan not currently financed with CoastLife CU.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Complete and submit the Refer a Loan form; the referred person applies, and the loan over $10,000 is approved and funded.",
+      "pass": true
+    },
+    "s3": {
+      "note": "$100 reward to the referrer (and $100 to the friend) on the funded loan.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat $100 per referral; no cap stated in official terms.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.coastlifecu.com/home/products-services/discount - official CoastLife CU Refer a Loan page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: submit form, friend applies for a new $10,000+ loan, loan approved and funded, $100 to both.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official CoastLife CU page text fetched directly 2026-09-23; terms text verbatim.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Get the Refer a Loan form from CoastLife Credit Union's official page.",
+    "Submit the form with your friend's or family member's details.",
+    "Your referred person applies for a new CoastLife loan of over $10,000.",
+    "Once the loan is approved and funded, you receive $100 (and so does the friend)."
+  ],
+  "terms_url": "https://www.coastlifecu.com/home/products-services/discount",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Reward is paid once the new loan over $10,000 is approved and funded.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

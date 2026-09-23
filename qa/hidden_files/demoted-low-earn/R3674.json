@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Election Day runs 5:30am-7:30pm plus unstated closing time, for a flat $105.25-$125.25; training ($8.55/hr) is separate with unstated duration.",
+  "catches": [
+    "Election-period work only (Perry County, OH).",
+    "Must be a registered voter in Perry County, have reliable transportation, and have no felony conviction.",
+    "Must attend a training session (paid $8.55/hr; duration not stated, so training is excluded from the numeric figures).",
+    "Voting Location Manager role requires registered Democrat or Republican.",
+    "Closing duties run past 7:30pm poll close (verify units and reports are packed).",
+    "You must close the voting machines after polls close at 7:30pm; closing duration is unstated, so 840 minutes is a minimum, not a maximum."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Perry County Board of Elections official page (boe.ohio.gov/perry).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Precinct Election Official $105.25 Election Day; Voting Location Manager $125.25 Election Day; training $8.55/hr.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply or serve.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "County Board of Elections pay.",
+      "pass": true
+    }
+  },
+  "eligibility": "Registered voter in Perry County, OH; willing to attend training; reliable transportation; no felony conviction.",
+  "notes": "Numeric framing is Election Day pay only (840 min minimum: 5:30am-7:30pm); closing voting machines after polls close is required but its duration is unstated, so 840 is a minimum. Training pay $8.55/hr is confirmed but duration unstated, so training is excluded from both payout and time.",
+  "numeric_basis": "payout from official terms ($105.25-$125.25 flat Election Day); time: report 5:30am, polls close 7:30pm = 840 min minimum; closing voting machines after 7:30pm is required with unstated duration (unbounded above)",
+  "official_url": "https://www.boe.ohio.gov/perry/election-info/election-workers/",
+  "payout_max_usd": 125.25,
+  "payout_min_usd": 105.25,
+  "payout_quote": "HOW MUCH WILL I BE PAID? Voting Location Manager (registered Democrats or Republicans only) - Election Day: $125.25 - Training: $8.55/hr. Precinct Election Official - Election Day: $105.25 - Training: $8.55/hr. WHAT DO I HAVE TO DO? Report to work at 5:30 a.m. on Election Day. Close voting machines. (Polls close at 7:30 p.m.)",
+  "payout_value_note": "Flat Election Day: $105.25 Precinct Election Official, $125.25 Voting Location Manager; training $8.55/hr (duration unstated).",
+  "route_id": "R3674",
+  "standard": {
+    "s1": {
+      "note": "Registered county voter; no felony; transportation.",
+      "pass": true
+    },
+    "s2": {
+      "note": "County BOE poll-worker pay.",
+      "pass": true
+    },
+    "s3": {
+      "note": "County Board of Elections pay.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete: $105.25-$125.25 Election Day, 5:30am-7:30pm.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official boe.ohio.gov/perry page, live 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: contact BOE, training, serve.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Page crawled 4 days ago and currently live; no superseding schedule found.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a registered voter in Perry County, OH with reliable transportation and no felony conviction.",
+    "Contact the Perry County Board of Elections ((740) 342-2134) or complete the poll worker application.",
+    "Attend the required training session (paid $8.55/hr).",
+    "Report at 5:30am on Election Day; work until polls close at 7:30pm and closing duties complete."
+  ],
+  "terms_url": "https://www.boe.ohio.gov/perry/election-info/election-workers/",
+  "time_max_minutes": 840,
+  "time_min_minutes": 840,
+  "timing": "Election Day; training session before serving.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

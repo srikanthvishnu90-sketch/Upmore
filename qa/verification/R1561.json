@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The payout depends entirely on your device's model and condition - you must own the item, and the final offer is confirmed only after inspection.",
+  "catches": [
+    "Payout depends on the exact item, model, and condition - you must own the item you send; a broken or misdescribed device gets a revised (lower) offer.",
+    "Quote is per-device; the final paid amount is set after inspection, not at the instant quote.",
+    "Payout depends on the exact item, model, and condition - you must own the item you send; the $540 figure is the official homepage example for one model/condition, not guaranteed for your device."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Real buyback program on provider's own domain: https://www.itsworthmore.com/ observed 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official payout flow: instant quote, free prepaid shipping, paid via check/PayPal/Zelle after inspection; official example iPhone 13 Good = $540.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official: free shipping label, no fee to sell stated.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Distinct provider x mechanism; dedupe-check shows no catalog or evidence-file hits for ItsWorthMore.",
+      "pass": true
+    }
+  },
+  "eligibility": "US; you must own the device you send in.",
+  "notes": "ItsWorthMore phone buyback; official homepage example iPhone 13 Good = $540.00 (quote locked 21 days; free trackable shipping; paid by check/PayPal/Zelle after inspection). Lane B framing: payout varies by item/model/condition; seller must own the item.",
+  "numeric_basis": "payout: official itsworthmore.com homepage example, $540.00 for iPhone 13 Good condition (varies by item/model/condition); time: 15-30 min active per quote/ship/drop-off per Lane B standard.",
+  "official_url": "https://www.itsworthmore.com/",
+  "payout_max_usd": 540,
+  "payout_min_usd": 0,
+  "payout_quote": "Sell your phone... It's really that easy: 1. Instant Quote - Tell us about your device and get an instant cash offer. 2. Ship FREE - We provide a FREE prepaid shipping label so you can send your device safely and at no cost. 3. Get Paid - Once we receive your device, we inspect it and pay you the agreed amount via check, PayPal, or Zelle. Official example: iPhone 13, Good condition, Offer $540.",
+  "payout_value_note": "$540.00 is ItsWorthMore's official homepage example offer for an iPhone 13 in Good condition (quote locked 21 days); payout depends on item/model/condition and you must own the device.",
+  "route_id": "R1561",
+  "standard": {
+    "s1": {
+      "note": "Concrete quote-to-payout flow per official site.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No seller fee stated officially; shipping is free.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Payout path (check/PayPal/Zelle) documented on official page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Official homepage example plainly condition-dependent; max set to the confirmed homepage example ($540), not an unverifiable catalog top figure; no inflated promise.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official provider pages observed 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete and actionable.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numeric fields grounded in official homepage example figure; max equals the confirmed example.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Describe your device on itsworthmore.com (model, carrier, storage, condition) and get an instant cash offer.",
+    "Accept the quote and receive a free prepaid shipping label.",
+    "Ship the device to ItsWorthMore (free, trackable).",
+    "ItsWorthMore inspects the device; payment follows via check, PayPal, or Zelle."
+  ],
+  "terms_url": "https://www.itsworthmore.com/",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Payment after device inspection; ~15-30 min active time per quote/ship/drop-off.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

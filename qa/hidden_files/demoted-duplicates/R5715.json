@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referral coupon must be picked up at the MCU office and presented at the time the friend opens their Primary Savings Account - it cannot be applied later - and the new member must live, work, study, or worship in Fairfield County, CT.",
+  "catches": [
+    "Existing member earns $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.",
+    "Coupon must be picked up at the MCU office, filled out, and presented by the new member at account opening; cannot be applied later.",
+    "New member must live, work, study, or worship in Fairfield County, CT and must be opening their first Primary Savings Account.",
+    "Bonuses credited to both parties upon account opening if accounts are in good standing (no negative balances or loan delinquencies); employees, volunteers, and their immediate family members are not eligible.",
+    "Promotion valid through December 31, 2026, but may be modified or withdrawn at any time; no referral cap stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Members Credit Union page (memberscu.coop): 'Existing members can earn $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.' Also: 'you'll each receive $25 as a thank-you once they open a Primary Savings Account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Members Credit Union page on memberscu.coop, fetched live 2026-09-23, with full terms and conditions",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Members Credit Union' 2026-09-23 returned no verified referral route; no memberscu.coop route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Members Credit Union member (employees, volunteers, and their immediate families excluded). Friend: new member opening their first Primary Savings Account, must live, work, study, or worship in Fairfield County, CT.",
+  "notes": "Verified 2026-09-23. Members Credit Union (Greenwich, CT). Referrer earns $25 per new member who opens a Primary Savings Account with the referral coupon, credited at account opening if both accounts are in good standing. Promotion valid through 12/31/2026. Note: the referral is office-coupon based - the referrer picks up the coupon at the office, so the referral is not a digital link.",
+  "numeric_basis": "payout from official Members CU terms ($25 per new member referred); time: pick up referral coupon at the office, fill out, and share est. 5-15 min active",
+  "official_url": "https://memberscu.coop/membership-eligibility",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Existing members can earn $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.",
+  "payout_value_note": "$25 bonus to the referrer per qualifying new member; no annual cap stated.",
+  "route_id": "R5715",
+  "standard": {
+    "s1": {
+      "note": "Official Members CU page live on memberscu.coop, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: existing member; friend is a new member opening their first Primary Savings Account in Fairfield County, CT",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: present the referral coupon when opening a Primary Savings Account; coupon only valid at account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Bonuses credited upon account opening if both accounts are in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated on fetched page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Pick up a referral coupon at the Members Credit Union office and fill it out.",
+    "Share the referral coupon with your friend.",
+    "Your friend opens a Primary Savings Account presenting the coupon at the time of account opening.",
+    "Both receive $25 credited upon account opening if accounts are in good standing."
+  ],
+  "terms_url": "https://memberscu.coop/membership-eligibility",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonuses credited upon account opening if both accounts are in good standing; promotion valid through 12/31/2026.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

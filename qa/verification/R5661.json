@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must be brand-new to iQ (18+, U.S. lawful permanent resident, natural person), open savings + checking + Easy Savings accounts with an activated debit card, e-Statements, and a $5 minimum savings balance, all within 60 days; your $100 posts on the 61st day after account opening and both accounts must be open and in good standing then.",
+  "catches": [
+    "Friend must be 18+, a natural person, lawful permanent resident of the U.S., and new to iQ; business, trust, estate, club, custodial, youth, and similar accounts are not eligible.",
+    "Friend must open a savings account, checking account, and Easy Savings account, obtain and maintain an activated debit card, and enroll in e-Statements; $5 minimum balance in savings.",
+    "All requirements must be met within 60 days of membership opening; accounts must be open and in good standing (not overdrawn 30+ days, no legal orders, no iQ loan 30+ days past due).",
+    "Reward deposited 61 days after account opening; iQ cannot tell you whether your friend named you or opened an account.",
+    "New member can earn only one $100 referral reward; existing members have no limit on the number of referral rewards.",
+    "Employees, board members, and their immediate family are ineligible; joint owners of existing accounts opening their own new account are ineligible.",
+    "Cannot be combined with any other offer; reward value may be reported to the IRS and is the recipient's tax responsibility; terms can change and the promotion can end without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official iQ Credit Union refer-a-friend page (iqcu.com): 'Each new account is eligible for only one $100 referral reward for the new member. There is no limit on the number of rewards for existing members for referring new qualified accounts.' and 'please note that crediting of the $100 to the referring parties account will imply that an account has been opened for the new member.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official iQ CU page on iqcu.com, fetched live 2026-09-23; no fixed expiry, promotion may be discontinued at any time without prior notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend needs $5 minimum savings balance only",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no iqcu.com route and no iQ Credit Union entry; catalog has no iQ Credit Union route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing iQ Credit Union member (employees/board/immediate family excluded). Friend: 18+, natural person, lawful permanent resident of the U.S., new to iQ (not a joint owner of an existing iQ account opening a new one).",
+  "notes": "Verified 2026-09-23. iQ Credit Union (Vancouver, WA). Existing member earns $100 per qualifying referral with NO cap on the number of referral rewards for existing members. Friend must open savings + checking + Easy Savings, activate debit card, and enroll in e-Statements within 60 days; reward posts on day 61 with accounts in good standing.",
+  "numeric_basis": "payout from official iQ CU terms ($100 per qualified referral for existing members, no limit); time: share referral info via form/link est. 5-15 min active",
+  "official_url": "https://www.iqcu.com/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Each new account is eligible for only one $100 referral reward for the new member. There is no limit on the number of rewards for existing members for referring new qualified accounts.",
+  "payout_value_note": "$100 cash bonus credited to the referrer's iQ account per qualifying referral; no cap on referral rewards for existing members.",
+  "route_id": "R5661",
+  "standard": {
+    "s1": {
+      "note": "Official iQ CU disclosure page live on iqcu.com, fetched 2026-09-23; no fixed expiry, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member (not employee/board/family); friend 18+, natural person, U.S. lawful permanent resident, new to iQ",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: savings + checking + Easy Savings, activated debit card, e-Statements, $5 savings minimum, all within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward deposited 61 days after account opening, accounts open and in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: reward value may be reported to the IRS, recipient responsible for taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate; friend's $5 savings balance is their own money",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell your friend to mention your name (or use your referral link/form) when opening a new iQ Credit Union membership.",
+    "Friend opens savings, checking, and Easy Savings accounts, activates their debit card, enrolls in e-Statements, and keeps at least $5 in savings, all within 60 days.",
+    "Accounts remain open and in good standing through day 61 after account opening.",
+    "$100 is credited to your iQ account for the qualifying referral."
+  ],
+  "terms_url": "https://www.iqcu.com/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward credited to the referrer's iQ account 61 days after the friend's account opening, once all requirements are met and both accounts are open and in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

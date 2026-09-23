@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only earn the $50 if your friend actually opens a new consumer checking account at a branch with the coupon - and the offer window is fixed: January 1 to December 31, 2026.",
+  "catches": [
+    "Member earns $50 per new member referred (must have been a member for at least 90 days to qualify).",
+    "Friend must open a new consumer checking account via the coupon at a branch; membership eligibility and account approval required.",
+    "No referral-count cap stated on the flyer.",
+    "Cash incentives subject to 1099 reporting; member must be in good standing.",
+    "Incentive offer valid January 1, 2026 - December 31, 2026; may be cancelled, modified, or terminated at any time.",
+    "Friend can also earn $50 for opening, plus $150 more for 5 debit transactions + $500 direct deposit + eStatements within 60 days."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Together CU flyer (togethercu.org): 'REFER A NEW MEMBER & EARN $50!' and 'You will receive your incentive once your friend or family member opens their account.' and 'Must be a member for at least 90 days to qualify for $50 referral bonus.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral flyer PDF hosted on official togethercu.org domain (togethercu.org/docs/default-source/forms/memberreferralform.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard consumer checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'together credit union' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Together CU member for at least 90 days, in good standing. Friend: opens a new consumer checking account via the coupon.",
+  "notes": "Verified 2026-09-23. Together Credit Union (St. Louis, MO). $50 to the referring member per new member who opens a consumer checking account; no cap stated. Offer valid 1/1/2026-12/31/2026.",
+  "numeric_basis": "payout from official flyer ($50 per new-member referral; no cap stated); time: filling out the coupon and handing it off est. 5-15 min active",
+  "official_url": "https://www.togethercu.org/docs/default-source/forms/memberreferralform.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "REFER A NEW MEMBER & EARN $50! ... You will receive your incentive once your friend or family member opens their account. ... Incentive Offer valid January 1, 2026 - December 31, 2026.",
+  "payout_value_note": "$50 to the referring member per new member who opens a consumer checking account. No cap stated.",
+  "route_id": "R3864",
+  "standard": {
+    "s1": {
+      "note": "Referral flyer live on togethercu.org, fetched 2026-09-23; offer valid 1/1/2026 - 12/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member 90+ days in good standing; friend opens new consumer checking via coupon",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open new consumer checking account at a branch with the coupon (membership eligibility applies)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: incentive paid once the friend/family member opens their account (no day count stated)",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: cash incentives subject to 1099 reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the MEMBER section of the coupon and give it to a friend or family member.",
+    "Friend takes the coupon to the nearest branch and opens a new consumer checking account.",
+    "You receive your $50 incentive once their account opens.",
+    "Repeat - no referral-count cap stated (offer ends 12/31/2026)."
+  ],
+  "terms_url": "https://www.togethercu.org/docs/default-source/forms/memberreferralform.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Incentive paid once the referred member opens their account (no fixed day count).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

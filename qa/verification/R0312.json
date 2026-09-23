@@ -1,82 +1,88 @@
 {
- "route_id": "R0312",
- "checked_at": "2026-09-23T01:00:00Z",
- "app_links": {
-  "ios": null,
-  "android": null
- },
- "upfront_fee": false,
- "verdict": "verify",
- "official_url": "https://dsireusa.org",
- "terms_url": "https://dsireusa.org",
- "critical": {
-  "c1": {
-   "evidence": "DSIRE is the national database of live state/utility incentive programs; the route's '$25-$1,000+ per upgrade' range matches the concrete rebate amounts listed across thousands of utility programs in the database.",
-   "pass": true
+  "route_id": "R0312",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "app_links": {
+    "ios": null,
+    "android": null
   },
-  "c2": {
-   "evidence": "DSIRE (dsireusa.org) loaded live 2026-09-22 \u2014 the DOE-supported national Database of State Incentives for Renewables & Efficiency with zip-code lookup.",
-   "pass": true
+  "upfront_fee": false,
+  "verdict": "verify",
+  "official_url": "https://dsireusa.org",
+  "terms_url": "https://dsireusa.org",
+  "critical": {
+    "c1": {
+      "evidence": "DSIRE is the national database of live state/utility incentive programs; the route's '$25-$1,000+ per upgrade' range matches the concrete rebate amounts listed across thousands of utility programs in the database.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "DSIRE (dsireusa.org) loaded live 2026-09-22 — the DOE-supported national Database of State Incentives for Renewables & Efficiency with zip-code lookup.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to use the database or to apply for utility rebates. Note: rebates require purchasing qualifying equipment — discounts on spending, not income.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Varies by program: instant point-of-sale discounts or mail-in/online rebates typically paid 4-8 weeks after purchase/installation.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to use the database or to apply for utility rebates. Note: rebates require purchasing qualifying equipment \u2014 discounts on spending, not income.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Varies by utility and state — enter your zip code; nearly all rebates require being a customer of the participating utility and buying qualifying efficient equipment.",
+      "pass": true
+    },
+    "s2": {
+      "note": "This is a directory, not a single $1,000 offer — your actual rebate depends entirely on your utility; every rebate requires spending money on equipment first.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Instant or 4-8 weeks post-purchase depending on the utility's process.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Directory itself makes no payout claim; individual utility programs state concrete dollar amounts.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://dsireusa.org — live national incentive database.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: enter zip on DSIRE, filter residential rebates, buy qualifying equipment, submit the utility's rebate form.",
+      "pass": true
+    },
+    "s7": {
+      "note": "DSIRE homepage loaded live 2026-09-22.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Varies by program: instant point-of-sale discounts or mail-in/online rebates typically paid 4-8 weeks after purchase/installation.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Varies by utility and state \u2014 enter your zip code; nearly all rebates require being a customer of the participating utility and buying qualifying efficient equipment.",
-   "pass": true
+  "payout_quote": "Database of State Incentives for Renewables & Efficiency — Find Policies & Incentives Near You.",
+  "timing": "Varies by utility program: instant point-of-sale discounts, or mail-in/online rebates typically paid 4-8 weeks after purchase and installation.",
+  "eligibility": "Set by each utility/state program. Typical: must be a residential customer of the participating utility; equipment must meet the program's efficiency specs and be purchased within the program window; some rebates require pre-approval before purchase.",
+  "catches": [
+    "This is a directory of thousands of separate programs, not one $1,000 offer — what you can get depends entirely on your utility and state.",
+    "Every rebate requires spending money on equipment or upgrades first; it is a discount, not cash earned.",
+    "Rebate amounts and qualifying product lists change yearly; always confirm the current program terms before buying.",
+    "Some utility rebates require pre-approval BEFORE purchase — buying first can disqualify you."
+  ],
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "This is a directory, not a single $1,000 offer \u2014 your actual rebate depends entirely on your utility; every rebate requires spending money on equipment first.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Instant or 4-8 weeks post-purchase depending on the utility's process.",
-   "pass": true
-  },
-  "s4": {
-   "note": "Directory itself makes no payout claim; individual utility programs state concrete dollar amounts.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://dsireusa.org \u2014 live national incentive database.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: enter zip on DSIRE, filter residential rebates, buy qualifying equipment, submit the utility's rebate form.",
-   "pass": true
-  },
-  "s7": {
-   "note": "DSIRE homepage loaded live 2026-09-22.",
-   "pass": true
-  }
- },
- "payout_quote": "Database of State Incentives for Renewables & Efficiency \u2014 Find Policies & Incentives Near You.",
- "timing": "Varies by utility program: instant point-of-sale discounts, or mail-in/online rebates typically paid 4-8 weeks after purchase and installation.",
- "eligibility": "Set by each utility/state program. Typical: must be a residential customer of the participating utility; equipment must meet the program's efficiency specs and be purchased within the program window; some rebates require pre-approval before purchase.",
- "catches": [
-  "This is a directory of thousands of separate programs, not one $1,000 offer \u2014 what you can get depends entirely on your utility and state.",
-  "Every rebate requires spending money on equipment or upgrades first; it is a discount, not cash earned.",
-  "Rebate amounts and qualifying product lists change yearly; always confirm the current program terms before buying.",
-  "Some utility rebates require pre-approval BEFORE purchase \u2014 buying first can disqualify you."
- ],
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "steps": [
-  "Go to https://dsireusa.org and enter your 5-digit zip code to list incentive programs in your area.",
-  "Filter for residential rebate programs from your electric/gas utility and open the utility's program page for current amounts and terms.",
-  "Check whether the rebate needs pre-approval before purchase \u2014 if so, apply first.",
-  "Buy and install the qualifying efficient equipment within the program window and keep receipts.",
-  "Submit the utility's rebate application (online or mail-in) with proof of purchase; rebate arrives as a bill credit or check, typically in 4-8 weeks."
- ],
- "biggest_catch": "This is a directory, not a single $1,000 offer \u2014 your actual rebate depends entirely on your utility, and every rebate requires spending money on equipment first; it is a discount, not cash earned.",
- "notes": "Verified the live DSIRE database 2026-09-22. DSIRE is the long-running DOE-supported national incentive database (operated by the N.C. Clean Energy Technology Center). PRODUCT NOTE: utility rebates are purchase discounts, not income \u2014 the honest app framing is 'save on upgrades you're already buying,' never earnings."
+  "steps": [
+    "Go to https://dsireusa.org and enter your 5-digit zip code to list incentive programs in your area.",
+    "Filter for residential rebate programs from your electric/gas utility and open the utility's program page for current amounts and terms.",
+    "Check whether the rebate needs pre-approval before purchase — if so, apply first.",
+    "Buy and install the qualifying efficient equipment within the program window and keep receipts.",
+    "Submit the utility's rebate application (online or mail-in) with proof of purchase; rebate arrives as a bill credit or check, typically in 4-8 weeks."
+  ],
+  "biggest_catch": "This is a directory, not a single $1,000 offer — your actual rebate depends entirely on your utility, and every rebate requires spending money on equipment first; it is a discount, not cash earned.",
+  "notes": "Verified the live DSIRE database 2026-09-22. DSIRE is the long-running DOE-supported national incentive database (operated by the N.C. Clean Energy Technology Center). PRODUCT NOTE: utility rebates are purchase discounts, not income — the honest app framing is 'save on upgrades you're already buying,' never earnings. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)"
 }

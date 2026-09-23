@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The first 125-point reward is not instant: it is applied on the next quarterly date (10th of January, April, July or October) after you join, so the £1.25 credit can take up to ~3 months to arrive.",
+  "catches": [
+    "First 125-point quarterly reward arrives on the next quarterly date (10th of Jan/Apr/Jul/Oct) after joining — not instantly at signup.",
+    "Points can only be redeemed through the ScottishPower app (website signup alone is not enough to redeem).",
+    "Must be a ScottishPower domestic energy customer with a live supply and an online account; traditional prepayment meters are excluded.",
+    "If you stop being a ScottishPower energy customer, points are permanently removed; if you leave the rewards club but stay a customer you have 28 days to use them.",
+    "The annual bonus requires 3+ years as a ScottishPower customer, so a new joiner only gets the quarterly 125 points."
+  ],
+  "checked_at": "2026-09-23T09:36:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "scottishpower.co.uk — ScottishPower's own official domain hosting the My ScottishPower rewards page",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page marked 'Last updated: 1 December 2025'; search index crawled it 2 days ago; quarterly rewards (Jan/Apr/Jul/Oct) still listed as live",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No existing evidence file covers My ScottishPower loyalty points; R5528 covers the ScottishPower refer-a-friend scheme, a different mechanism; dedupe-check.py shows only R5528 as evidence hit",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Zero hits: grep qa/existing-providers.txt, python3 qa/dedupe-check.py 'ScottishPower', and glob qa/verification/R*.json — no My ScottishPower loyalty route exists",
+      "pass": true
+    }
+  },
+  "eligibility": "ScottishPower domestic energy customer with a live gas and/or electricity supply and an online account. Smart prepayment customers may be eligible; traditional (non-smart) prepayment meters are excluded.",
+  "notes": "Verified 2026-09-23. My ScottishPower is ScottishPower's free loyalty club: members get 125 points every quarter (January, April, July, October) plus an annual bonus after 3+ years. 100 points = £1 energy credit, so one quarterly reward = £1.25 ≈ $1.67 (GBP→USD 1.334). Redeemable only via the ScottishPower app as energy credit. Distinct mechanism from the ScottishPower refer-a-friend route (R5528).",
+  "numeric_basis": "payout from official terms (125 points/quarter; 100 points = £1 energy credit → £1.25 ≈ $1.67 at GBP→USD 1.334); time: free loyalty-club signup est. 5–15 min active",
+  "official_url": "https://www.scottishpower.co.uk/support-centre/loyalty",
+  "payout_max_usd": 1.67,
+  "payout_min_usd": 1.67,
+  "payout_quote": "Once you have joined My ScottishPower, you'll receive a quarterly reward of 125 points in January, April, July and October, and an annual bonus if you've been with us for over 3 years. Reward points can only be redeemed in the app. Points can be redeemed as an energy credit on your account, 100 points equal to £1 energy credit, saving you money on your energy bill.",
+  "payout_value_note": "125 quarterly points = £1.25 energy credit (100 points = £1); converted at GBP→USD 1.334 → $1.67. Only the first quarterly reward is counted as the signup-attributable payout.",
+  "route_id": "R5539",
+  "standard": {
+    "s1": {
+      "note": "Official terms page on scottishpower.co.uk (supplier-owned domain)",
+      "pass": true
+    },
+    "s2": {
+      "note": "Page current: last updated 1 December 2025, crawled by search index 2 days ago, quarterly cycle ongoing",
+      "pass": true
+    },
+    "s3": {
+      "note": "Distinct mechanism (loyalty points signup) from all previously covered suppliers and from R5528 (ScottishPower referral)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Framed as savings on planned energy spending (energy credit on bill), not income",
+      "pass": true
+    },
+    "s5": {
+      "note": "Quarterly timing, app-only redemption, eligibility exclusions, and point expiry all stated",
+      "pass": true
+    },
+    "s6": {
+      "note": "No upfront payment; joining is free for existing customers",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official page text copied verbatim from scottishpower.co.uk/support-centre/loyalty on 2026-09-23",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to your ScottishPower online account (register for one if you don't have it).",
+    "Sign up for My ScottishPower via the website or the ScottishPower app (accept the Terms and Conditions, click 'Join My ScottishPower').",
+    "Download the ScottishPower app if you haven't — points can only be redeemed in the app.",
+    "Receive 125 points on the next quarterly date (10th of January, April, July or October).",
+    "Redeem points in the app as energy credit; credit shows as 'My ScottishPower Credit' on your bill within 14 days."
+  ],
+  "terms_url": "https://www.scottishpower.co.uk/support-centre/loyalty",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "125 points applied on the 10th of January, April, July and October following signup; energy credit applied to the bill within 14 days of redeeming points in the app.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

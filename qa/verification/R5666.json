@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must open a new OneAZ personal checking account with your promo code, make 10 qualifying debit card purchases AND complete one income/payroll direct deposit within the first 60 days; only then does your $75 deposit into your Share Savings within 15 days. If the friend's checking account is closed within 6 months, the bonus is deducted.",
+  "catches": [
+    "Referrer must be an existing OneAZ member 18+ in good standing; employees, board members, and supervisory committee members are ineligible as referrers or receivers.",
+    "Friend must be a new consumer with no OneAZ account in the past 12 months; must use your promo code at account opening.",
+    "Friend must: establish membership + open a new OneAZ personal checking account, complete 10 qualifying debit card purchases (online or in-person, OneAZ debit card) within 60 days, AND complete one income/payroll ACH direct deposit within 60 days.",
+    "Your $75 is deposited into your Share Savings Account within 15 days after the friend completes all steps.",
+    "If the friend's checking account is closed within 6 months of opening, the bonus amount is deducted from the account at closing.",
+    "Bonuses are considered dividends, reported on IRS Form 1099-INT (or 1042-S); recipient responsible for taxes.",
+    "Cap: up to 10 friends ($750) per calendar year. Referred member may receive only one account opening bonus per year.",
+    "Cannot be combined with any other promotions; offer can change or be discontinued at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official OneAZ CU page (oneazcu.com): 'Refer a friend to OneAZ and you'll each earn $75* when they qualify.' 'Each referral can earn you $75 - refer 4 friends and earn $300. You can refer up to 10 friends to earn $750!' 'A $75 bonus will be deposited into your Share Savings Account within 15 days of the new member applicant following the steps below.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official OneAZ CU page on oneazcu.com, fetched live 2026-09-23; rates as of September 1, 2026; no fixed expiry, changeable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no oneazcu.com route and no OneAZ entry; catalog has no OneAZ route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing OneAZ Credit Union member 18+ in good standing (not an employee, board member, or supervisory committee member). Friend: new consumer, no OneAZ account in the past 12 months.",
+  "notes": "Verified 2026-09-23. OneAZ Credit Union (Arizona). Referrer earns $75 per qualifying referral deposited to Share Savings, cap 10 referrals ($750) per calendar year. Friend must open checking with the promo code, make 10 debit purchases, and complete a payroll/income direct deposit within 60 days.",
+  "numeric_basis": "payout from official OneAZ terms ($75 per qualifying referral; cap 10/year = $750); time: get code + share it est. 5-15 min active",
+  "official_url": "https://www.oneazcu.com/referafriend/",
+  "payout_max_usd": 75,
+  "payout_min_usd": 75,
+  "payout_quote": "Refer a friend to OneAZ and you'll each earn $75* when they qualify. Each referral can earn you $75 - refer 4 friends and earn $300. You can refer up to 10 friends to earn $750!",
+  "payout_value_note": "$75 deposited to the referrer's Share Savings Account per qualifying referral; cap 10 referrals ($750) per calendar year.",
+  "route_id": "R5666",
+  "standard": {
+    "s1": {
+      "note": "Official OneAZ CU page live on oneazcu.com, fetched 2026-09-23; rates as of Sept 1, 2026; no fixed expiry, changeable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member 18+ in good standing (no employees/board); friend new consumer, no OneAZ account in past 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: membership + new checking with promo code, 10 debit purchases within 60 days, one payroll/income direct deposit within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $75 deposited to referrer's Share Savings within 15 days after friend completes steps",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses considered dividends, reported on IRS Form 1099-INT (or 1042-S)",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Get your unique referral code from OneAZ (request form on the page, call 844.663.2928, or visit a branch).",
+    "Share your code with friends and family; they enter it in the promotional-code field when opening a new OneAZ checking account online (or give it to a banker).",
+    "Friend opens membership + new personal checking account and within 60 days makes 10 debit card purchases and completes one income/payroll direct deposit.",
+    "Your $75 bonus is deposited into your Share Savings Account within 15 days."
+  ],
+  "terms_url": "https://www.oneazcu.com/referafriend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$75 deposited to the referrer's Share Savings Account within 15 days after the friend completes all qualifying steps.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only productive customer-interaction minutes are paid — idle time, breaks, and any waiting between contacts earn $0, and as an independent contractor you also cover self-employment tax with no benefits, so the $15–$18.60/hr equivalent requires being continuously productive.",
+  "catches": [
+    "Only productive customer-interaction minutes pay ($0.25–$0.31); idle time and breaks are unpaid — real hourly earnings can fall well below the headline equivalent.",
+    "Independent contractor (1099): self-employment tax, no benefits, no paid time off.",
+    "Rate depends on the assigned program ($0.25–$0.31 range); program and location availability varies.",
+    "Generally a 30-minute minimum per engagement; incentives vary and are not guaranteed."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Working Solutions jobs site and FAQ live on 2026-09-23 with per-minute pay terms and contractor model.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official FAQ states $0.25–$0.31 per productive customer-interaction minute, generally with a 30-minute minimum.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join; no purchase or risk capital required (LiveOps/Arise-style fees rejected for this lane instead).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Working Solutions entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Independent contractor; U.S. program availability varies by program and location; application and onboarding required.",
+  "notes": "Working Solutions customer-support contractor work. Quoted as hourly equivalent of the official per-productive-minute rate, with unpaid idle time disclosed as the biggest catch.",
+  "numeric_basis": "Payout from official terms ($0.25–$0.31 per productive customer-interaction minute, expressed as $15–$18.60 hourly equivalent); time: per productive hour.",
+  "official_url": "https://jobs.workingsolutions.com/",
+  "payout_max_usd": 18.6,
+  "payout_min_usd": 15,
+  "payout_quote": "$0.25–$0.31 per productive customer-interaction minute, generally with a 30-minute minimum; idle time and breaks unpaid; incentives vary.",
+  "payout_value_note": "Hourly equivalent of $0.25–$0.31 per productive customer-interaction minute; idle time and breaks unpaid; 1099 contractor.",
+  "route_id": "R3517",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: apply, onboarding, get assigned program, take customer contacts, paid per productive minute.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document unpaid idle time, contractor tax/benefits reality, program-dependent rates, 30-min minimum.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: independent contractor; program/location availability varies.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Jobs site and FAQ live and current as of 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from workingsolutions.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as variable per-minute pay with unpaid idle time; never promises fixed hourly income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply on the official Working Solutions jobs site and complete onboarding as an independent contractor.",
+    "Get assigned to a client program (rate $0.25–$0.31 per productive customer-interaction minute depending on program).",
+    "Take customer contacts on the program's schedule (generally with a 30-minute minimum).",
+    "Only productive interaction minutes are paid; idle time and breaks are unpaid.",
+    "Get paid per program payroll terms, plus any program incentives.",
+    "Complete and file your own self-employment taxes as a 1099 contractor."
+  ],
+  "terms_url": "https://jobs.workingsolutions.com/faqs/",
+  "time_max_minutes": 60,
+  "time_min_minutes": 60,
+  "timing": "Ongoing applications; per-program scheduling; idle time unpaid.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "incentives vary"
+  ]
+}

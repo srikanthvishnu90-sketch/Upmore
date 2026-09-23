@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You must park $1,000 of new money and keep at least $1,000 in the account through January 31, 2027 \u2014 this is a multi-month balance lockup for a $100 bonus, and fees can erode the eligible balance.",
+  "catches": [
+    "Only available if you qualify for the checking offer (R5884) \u2014 the savings bonus requires qualifying for the checking offer first.",
+    "Requires $1,000+ in new-money deposits by October 29, 2026, and maintaining a $1,000+ minimum balance through January 31, 2027; fees reduce the eligible balance.",
+    "New U.S. Bank consumer savings/money market customers only; none closed in past 12 months; no savings bonus in past 12 months.",
+    "Must open through the campus promotional page or eligible campus branch (banker activation).",
+    "Bonus credited within 30 days after all requirements are completed; account must be open with a positive balance; reported on IRS Form 1099-INT.",
+    "Cannot be combined with any other savings account bonus offers; limit one checking and savings bonus per tax ID.",
+    "$5 monthly maintenance fee (waived when paired with Bank Smartly Checking)."
+  ],
+  "checked_at": "2026-09-23T04:38:41Z",
+  "critical": {
+    "c1": {
+      "evidence": "U.S. Bank National Association \u2014 real operating bank; official 'Welcome, students' campus-banking page on usbank.com with full savings-bonus disclosure.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official U.S. Bank campus page: '$100 Bank Smartly Savings bonus' with dated window and full disclosure, including the balance-hold requirement through January 31, 2027.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "$25 minimum deposit to open (deposit, not fee); $5 monthly fee waived when paired with Smartly Checking. No upfront fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "'Earn $100 when you open a new Bank Smartly Savings account by October 29, 2026. You must qualify for the checking offer to be eligible for the savings offer.' Disclosure: 'Your $100 savings bonus (\"adjusted interest\") will be credited to your new savings account within 30 days after you have completed all the offer requirements.'",
+      "pass": true
+    }
+  },
+  "eligibility": "Students who qualify for the U.S. Bank campus checking offer and are new U.S. Bank consumer savings customers (no existing savings/money market account, none closed in past 12 months, no savings bonus in past 12 months).",
+  "notes": "Distinct from R0047 and from R5884 (checking companion) \u2014 different product (Smartly Savings), different requirement (balance lockup through 1/31/2027), same campus page. Expiry captured: October 29, 2026 (deposits by then; balance maintained through January 31, 2027).",
+  "numeric_basis": "payout from official terms ($100 flat); time: application + funding $1,000, est. 20-40 min active (waiting months excluded)",
+  "official_url": "https://www.usbank.com/splash/checking/studentbanking.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Earn $100 when you open a new Bank Smartly Savings account by October 29, 2026. You must qualify for the checking offer to be eligible for the savings offer.",
+  "payout_value_note": "flat cash bonus per official terms",
+  "route_id": "R5885",
+  "standard": {
+    "s1": {
+      "note": "Must qualify for the checking offer first; new savings customers only; 12-month exclusions.",
+      "pass": true
+    },
+    "s2": {
+      "note": "$25 funded within 60 days; $1,000+ new-money deposits by 10/29/2026; maintain $1,000+ balance through 1/31/2027.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus credited within 30 days after all requirements completed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$100 stated flatly with explicit window and conditions.",
+      "pass": true
+    },
+    "s5": {
+      "note": "usbank.com is U.S. Bank's official domain; full disclosure on the live page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No earnings promise beyond the conditional $100; bonus reported as interest (1099-INT); balance lockup honestly stated.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numbers consistent: 100/100 USD flat; 20-40 active minutes (months of waiting excluded per rules).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Qualify for the U.S. Bank campus Smartly Checking offer (R5884).",
+    "Open a new U.S. Bank Smartly Savings account through the campus promotional page between May 5, 2026 and October 29, 2026, funding at least $25 within 60 days.",
+    "Make $1,000 or more in new-money deposits by October 29, 2026, then maintain a minimum $1,000 balance through January 31, 2027.",
+    "The $100 savings bonus is credited within 30 days after all requirements are completed; keep the account open with a positive balance until payout."
+  ],
+  "terms_url": "https://www.usbank.com/splash/checking/studentbanking.html",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "Open by October 29, 2026; $1,000+ deposits by October 29, 2026; maintain $1,000+ through January 31, 2027; bonus within 30 days after requirements complete.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

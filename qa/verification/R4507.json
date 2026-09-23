@@ -1,0 +1,91 @@
+{
+  "route_id": "R4507",
+  "verdict": "verify",
+  "official_url": "https://tempt.uark.edu/distress/",
+  "terms_url": "https://tempt.uark.edu/distress/",
+  "payout_quote": "Opportunity to earn up to $300 for participating in study about distress in daily life! ... Compensation is up to $300 for completing the entire study. You will get $20 for each lab visit, $20 for completing measures at home, and up to $240 for responding to the app prompts on your phone for three weeks, where you must complete 85% of the notifications to receive full payment.",
+  "steps": [
+    "Open the TEMPT Lab 'Study Distress in Daily Life' page on tempt.uark.edu",
+    "Confirm adult eligibility and ability to visit the U of A lab twice + reliable internet/smartphone",
+    "Fill out the linked screening measure",
+    "If eligible, complete the first lab visit (questionnaires, install the app)",
+    "Respond to phone app prompts several times per day for three weeks (85% completion required for full payment)",
+    "Complete the second lab visit (emotion skills training) and online home measures to earn up to $300"
+  ],
+  "catches": [
+    "Pay is 'up to' $300 with no stated floor; partial completion earns less",
+    "Must complete 85% of phone notifications to receive full payment",
+    "Requires two in-person visits at the University of Arkansas (Fayetteville)",
+    "Requires reliable internet and a smartphone for three weeks of daily prompts",
+    "Full payment spread over ~six weeks of participation",
+    "Payment method (cash/check/gift card) not stated on the page"
+  ],
+  "biggest_catch": "'Up to $300' is heavily conditional — $240 of it requires 85% completion of daily phone prompts over three weeks, with no stated floor for partial completion.",
+  "eligibility": "Adults (18+); able to visit the TEMPT Lab at the University of Arkansas (Fayetteville) twice; reliable internet service and smartphone for the app prompts.",
+  "timing": "~6 weeks of involvement; ~10 hours active (2 hours in lab + ~1 hour home measures + <7 hours of brief phone prompts). Payment timing not stated.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to",
+    "Opportunity to earn"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official University of Arkansas (tempt.uark.edu) TEMPT Lab page states 'Compensation is up to $300' with per-component breakdown ($20 x2 lab visits, $20 home measures, up to $240 phone prompts)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Amount ($300) and session lengths (2 hr lab, ~1 hr home, <7 hrs phone over three weeks) stated exactly. 'Up to' noted."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Page fetched live 2026-09-23 and actively solicits signups ('fill out the screening measure... we will contact you if you are eligible!')."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No fees; free screening and participation."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official University of Arkansas domain (tempt.uark.edu), TEMPT psychology lab page."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Page fetched live 2026-09-23 with current recruiting language."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Dedupe-checked: 0 catalog and 0 evidence-file hits for University of Arkansas / TEMPT."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Conditional 'up to' pay, 85% completion requirement, and in-person requirement all disclosed."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Payment method/timing not stated on the page — disclosed as a caveat."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Behavioral/psychological study, non-invasive (questionnaires + app prompts); university IRB-run research."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No inflated framing; 'up to $300' quoted exactly with full condition detail."
+    }
+  },
+  "notes": "University of Arkansas TEMPT Lab (psychology) current paid-study recruitment page. Honest framing: up to $300 over ~10 hours of active time across ~6 weeks.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 300,
+  "payout_value_note": "'Up to $300' with no stated floor (min 0 per schema); $20 per lab visit x2 + $20 home measures + up to $240 phone prompts (85% completion required for full payment).",
+  "time_min_minutes": 480,
+  "time_max_minutes": 600,
+  "numeric_basis": "payout from official TEMPT Lab page ('up to $300', no floor stated -> min 0 per schema); time: 2 hr lab + ~1 hr home measures + <7 hrs of phone prompts over three weeks = ~8-10 hrs active."
+}

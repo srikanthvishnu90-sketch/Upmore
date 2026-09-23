@@ -1,0 +1,86 @@
+{
+  "route_id": "R2056",
+  "verdict": "verify",
+  "official_url": "https://www.bluecrewjobs.com/jobs/la-307952-warehouse-associate",
+  "terms_url": "https://www.bluecrewjobs.com/jobs/la-307952-warehouse-associate",
+  "payout_quote": "Hiring Immediately! No resume required, apply in 15 minutes. Onboard once and get access to all job assignments on Bluecrew.",
+  "steps": [
+    "Apply on bluecrewjobs.com (about 15 minutes, no resume required).",
+    "Complete onboarding once as a W-2 Crew Member.",
+    "Browse job assignments in the Bluecrew app filtered by industry, location, pay rate, and shift.",
+    "Accept assignments that fit your schedule.",
+    "Clock in/out in the app; earn overtime eligibility, sick time, and weekly pay via direct deposit."
+  ],
+  "catches": [
+    "Availability varies by market — some areas have far fewer assignments.",
+    "Wages are set per assignment; you cannot negotiate them.",
+    "You are a W-2 employee: taxes are withheld, but you trade gig flexibility for employment terms.",
+    "Physical shift work with injury/fatigue risk.",
+    "Onboarding and background steps take time before first paid assignment."
+  ],
+  "biggest_catch": "You are trading flexibility for W-2 employment terms, and assignment availability depends entirely on your market.",
+  "eligibility": "Eligible to work in the US; complete Bluecrew onboarding.",
+  "timing": "Assignments post continuously; weekly pay with On-Demand Pay early-access option.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Bluecrew's own job page states the mechanism: 'Onboard once and get access to all job assignments on Bluecrew... Manage your work through the Bluecrew app: find and accept jobs, clock-in/out, and more!' with 'weekly pay, direct deposit'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms show wages per assignment but publish no fixed platform-wide range — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: 15-minute application, onboarding, browse/accept in app, clock in/out, weekly pay."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Applying and onboarding are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is US work authorization plus onboarding."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-assignment wages; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover market-dependent availability, non-negotiable wages, and W-2 terms."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Bluecrew route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous assignments; weekly pay."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Bluecrew is a W-2 flexible staffing app: one onboarding unlocks warehouse, logistics, and hospitality assignments you accept in the app. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Wages are set per assignment; Bluecrew publishes no fixed platform-wide pay range.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: per-assignment wages, no official range. time: 15-minute application + onboarding + browsing/accepting first assignments, est. 30-90 min active (excludes the work itself)."
+}

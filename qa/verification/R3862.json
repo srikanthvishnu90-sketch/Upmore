@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $25 only pays if the friend establishes direct deposit into the new checking account within 6 months - and the bonus lands up to 30 days after that, with gig-economy and digital-wallet deposits excluded.",
+  "catches": [
+    "$25 to you and $25 to your friend when the friend opens a new checking account with direct deposit.",
+    "Direct deposit must be established within 6 months of account opening; excludes digital-wallet deposits and gig-economy/self-employment income.",
+    "Bonus deposited to each account within 30 days of the direct deposit landing.",
+    "New-member checking accounts only; existing CCCU checking accounts do not qualify.",
+    "Referral form or promo code RAF must be referenced at application (use RAF for online applications); referring member must be in good standing.",
+    "Minimum $5 to open membership; bonus may be reported to the IRS."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CCCU page (cccu.com): 'And you'll both receive $25!' and 'You and your friend will both receive $25 when your friend opens a new checking account with direct deposit'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official cccu.com domain (cccu.com/RAF), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'city & county credit union' catalog hit is a false positive (R0797 utility rebate); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: City & County CU member in good standing. Friend: new member opening a checking account with direct deposit, referencing the form/code RAF.",
+  "notes": "Verified 2026-09-23. City & County Credit Union (Saint Paul, MN). $25 to the referrer per qualifying referral; no referral cap stated on the page.",
+  "numeric_basis": "payout from official page ($25 to each side per new checking + direct deposit; no cap stated); time: completing the refer-a-friend form and handing it off est. 5-15 min active",
+  "official_url": "https://cccu.com/RAF",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "And you'll both receive $25! ... You and your friend will both receive $25 when your friend opens a new checking account with direct deposit",
+  "payout_value_note": "$25 to the referring member per qualifying referral. No cap stated.",
+  "route_id": "R3862",
+  "standard": {
+    "s1": {
+      "note": "Program page live on cccu.com, fetched 2026-09-23; 'program details subject to change' - no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referring member in good standing; friend opens new membership + checking with direct deposit",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking with direct deposit established within 6 months (gig/digital-wallet deposits excluded)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: bonus deposited within 30 days of the direct deposit into the new checking account",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: referral bonus may be reported to the IRS (stated)",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the refer-a-friend form and give it to your friend (or share promo code RAF for online applications).",
+    "Friend opens a new membership and checking account with direct deposit, referencing the form/code.",
+    "Direct deposit must be established within 6 months of account opening.",
+    "You and your friend each receive $25 within 30 days of the direct deposit."
+  ],
+  "terms_url": "https://cccu.com/RAF",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 bonus deposited within 30 days of the direct deposit landing in the new checking account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,447 @@
+[
+ {
+  "name": "C01 splash auto-advance 1800ms -> welcome",
+  "ok": true,
+  "detail": "current=welcome"
+ },
+ {
+  "name": "C01 happy: valid name/dob/state enables aboutGo",
+  "ok": true,
+  "detail": "disabled=false"
+ },
+ {
+  "name": "C01 stress: Feb 30 rejected w/ hint",
+  "ok": true,
+  "detail": "hint=Check that date."
+ },
+ {
+  "name": "C01 stress: empty name blocks",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C01 stress: missing state blocks",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C01 stress: future DOB rejected",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C01 minor flagged",
+  "ok": true,
+  "detail": "minor=true"
+ },
+ {
+  "name": "C01 blocked path: minor -> blocked screen",
+  "ok": true,
+  "detail": "current=blocked"
+ },
+ {
+  "name": "C01 adult correction clears minor",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C01 adult -> situation",
+  "ok": true,
+  "detail": "current=situation"
+ },
+ {
+  "name": "C01 boundary: exactly 18 today = adult",
+  "ok": true,
+  "detail": "dob=09 / 23 / 2008"
+ },
+ {
+  "name": "C02 plan title personalized",
+  "ok": true,
+  "detail": "Ava, here are your first 3 moves"
+ },
+ {
+  "name": "C02 based-on line",
+  "ok": true,
+  "detail": "Picked for Texas · 15 minutes a week · <button type=\"button\" id=\"editBtn\">Edit answers</button>"
+ },
+ {
+  "name": "C02 moves = top-3 standard by earn ratio",
+  "ok": true,
+  "detail": "Microsoft — Lead Sourcing | Robinhood Referral — Invite friends to open Robinhood account via your link | SoFi Invest — Brokerage account bonus"
+ },
+ {
+  "name": "C02 _moves never persists (fresh planData each call)",
+  "ok": true,
+  "detail": "dead personalization hook"
+ },
+ {
+  "name": "C02 dbProfile merge",
+  "ok": true,
+  "detail": "{\"name\":\"Zed\",\"state\":\"CA\",\"time\":\"30\"}"
+ },
+ {
+  "name": "C02 stress: nonstandard time renders \"undefined a week\"",
+  "ok": true,
+  "detail": "Picked for California · undefined a week · <button type=\"button\" id=\"editBtn\">Edit answers</button>"
+ },
+ {
+  "name": "C03 hero = move 1 top route",
+  "ok": true,
+  "detail": "Microsoft — Lead Sourcing"
+ },
+ {
+  "name": "C03 progress 0%",
+  "ok": true,
+  "detail": "0% / 0 of 4 steps"
+ },
+ {
+  "name": "C03 progress 2 steps",
+  "ok": true,
+  "detail": "50%"
+ },
+ {
+  "name": "C03 all-done CTA text",
+  "ok": true,
+  "detail": "Ask Guide what's next"
+ },
+ {
+  "name": "C03 all-done CTA -> guide next-move answer",
+  "ok": true,
+  "detail": "\n<div class=\"who\"><span class=\"orb\"></span>Guide</div><div class=\"typing\"><i></i><i></i><i></i></div><p>After this one: "
+ },
+ {
+  "name": "C04 walkthrough starts w/ step card",
+  "ok": true,
+  "detail": "cards=1"
+ },
+ {
+  "name": "C04 per-step links w/ host labels",
+  "ok": true,
+  "detail": "\n      <p class=\"wstep\">Step 1 of 7</p>\n      <h3>Download the official Fetch Rewards app from the Apple App Store or Google Play Store (free).</h3>\n      \n      \n      <div class=\"walklinks\"><a class"
+ },
+ {
+  "name": "C05/C04 first step surfaces route url first",
+  "ok": true,
+  "detail": "https://play.google.com/store/apps/details?id=surveytime.io.surveytime_app&hl=ln"
+ },
+ {
+  "name": "C04 stepLinks dedupes url already in text",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C04 hostOf strips www",
+  "ok": true,
+  "detail": "example.com"
+ },
+ {
+  "name": "C04 Done marks step + advances",
+  "ok": true,
+  "detail": "i=1"
+ },
+ {
+  "name": "C04 finish -> walk null + payout msg",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C04 done_when rendered when present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C04 warns rendered when present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C06 injection query: no throw, no match",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C06 regex chars: no throw",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C06 happy: finds Fetch",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C06 matches reward text",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C06 esc neutralizes HTML",
+  "ok": true,
+  "detail": "&lt;img src=x onerror=alert(1)&gt;"
+ },
+ {
+  "name": "C06 empty result copy + more hidden",
+  "ok": true,
+  "detail": "0 ways to earn, highest earn rate first. Tap one for the honest catch."
+ },
+ {
+  "name": "C07 tier chip filters",
+  "ok": true,
+  "detail": "496"
+ },
+ {
+  "name": "C07 category chip filters",
+  "ok": true,
+  "detail": "327"
+ },
+ {
+  "name": "C07 combined tier+cat",
+  "ok": true,
+  "detail": "267"
+ },
+ {
+  "name": "C08 default hides restricted",
+  "ok": true,
+  "detail": "1744"
+ },
+ {
+  "name": "C08 default count = 1744 standard",
+  "ok": true,
+  "detail": "1744"
+ },
+ {
+  "name": "C08 lane label shows (23)",
+  "ok": true,
+  "detail": "(23)"
+ },
+ {
+  "name": "C08 toggle reveals 23 restricted",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C09 more visible w/ remaining count",
+  "ok": true,
+  "detail": "Show more (1704 left)"
+ },
+ {
+  "name": "C09 click loads +60",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C09 hidden when list exhausted",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C10 varies + single time",
+  "ok": true,
+  "detail": "Varies · ≈30 min"
+ },
+ {
+  "name": "C10 range + 2dp rate",
+  "ok": true,
+  "detail": "≈$100–$400 · ≈30–60 min · ≈5.00/min"
+ },
+ {
+  "name": "C10 big ratio rounds",
+  "ok": true,
+  "detail": "≈$0–$250000 · ≈90–240 min · ≈758/min"
+ },
+ {
+  "name": "C10 mid ratio 1dp",
+  "ok": true,
+  "detail": "≈$50 · ≈5–15 min · ≈55.5/min"
+ },
+ {
+  "name": "C10 explore first card = top earn ratio",
+  "ok": true,
+  "detail": "R5446"
+ },
+ {
+  "name": "C11 provider lookup",
+  "ok": true,
+  "detail": "Fetch — Cashback and shopping rewards"
+ },
+ {
+  "name": "C11 provider answer carries stale unverified line",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 category top-3",
+  "ok": true,
+  "detail": "The 3 easiest bank bonus routes in the catalog:"
+ },
+ {
+  "name": "C11 verification answer (STALE)",
+  "ok": true,
+  "detail": "Straight answer: every route in the catalog is researched, but we have not verif"
+ },
+ {
+  "name": "C11 catch answer: 23 higher-risk",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 payout answer",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 tax answer",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 no-deposit answer",
+  "ok": true,
+  "detail": "Start where it costs $0. The unclaimed-money search is free "
+ },
+ {
+  "name": "C11 GAP: \"free to start\" shadowed by easiest-branch",
+  "ok": true,
+  "detail": "The 3 easiest routes in the whole catalog:"
+ },
+ {
+  "name": "C11 easiest top-3",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 starter hits easiest branch",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C11 fallback mentions catalog count",
+  "ok": true,
+  "detail": "I can look up any of the 535 routes in the catalog — try a c"
+ },
+ {
+  "name": "C12 homework: hard refusal",
+  "ok": true,
+  "detail": "Academic integrity violation — could get students expelled and creates"
+ },
+ {
+  "name": "C12 onlyfans: hard rule beats legit-branch",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C12 case-insensitive",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C12 dropship: soft rule",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C12 tutor: soft rule",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C12 EXRULES indexes valid (0-20 of 21)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C13 4 starter prompts",
+  "ok": true,
+  "detail": "What should I do first? | Show me bank bonuses | What's the catch with these offers? | How does Upmore make money?"
+ },
+ {
+  "name": "C13 empty state renders starters + plan ctx",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C14 agentAsk null when unsigned in",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C14 agentAsk null on 500",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C14 agentAsk returns reply on 200",
+  "ok": true,
+  "detail": "{\"reply\":\"agent says hi\",\"thread_id\":\"t-1\"}"
+ },
+ {
+  "name": "C14 guideAsk falls back to local on null",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C14 guideAsk falls back on fetch throw",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C15 onboarding saved to localStorage pre-OAuth",
+  "ok": true,
+  "detail": "{\"minor\":false,\"state\":\"CA\",\"name\":\"Zed\",\"time\":\"60\",\"paycheck\":\"yes\",\"cash\":\"100\"}"
+ },
+ {
+  "name": "C15 corrupt JSON does not throw",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C16 syncProgress upserts in_progress",
+  "ok": true,
+  "detail": "{\"user_id\":\"u9\",\"route_id\":\"R0119\",\"current_step\":2,\"status\":\"in_progress\",\"updated_at\":\"2026-09-23T08:46:56.453Z\"}"
+ },
+ {
+  "name": "C16 all steps -> done",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C16 no-op when signed out",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C16 loadProgress maps to step ns",
+  "ok": true,
+  "detail": "[1,2,3]"
+ },
+ {
+  "name": "C16 loadProgress ignores unknown route",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C17 profile renders plan rows",
+  "ok": true,
+  "detail": "No direct deposit · $0 to park"
+ },
+ {
+  "name": "C18 disclosure copy present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C18 no per-offer affiliate disclosure mechanism",
+  "ok": true,
+  "detail": "no affiliate field on any route"
+ },
+ {
+  "name": "C19 sign out clears session + reloads",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C10 retired routes visible in Explore (gap)",
+  "ok": true,
+  "detail": "R0067,R0549"
+ }
+]

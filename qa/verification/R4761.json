@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both you and your friend only get paid after the friend opens a new membership, deposits $100+ within 30 days (or funds a $10,000+ vehicle loan), and the reward is a gift card - not cash - with a $500/year cap per referrer.",
+  "catches": [
+    "Referrer must be 18+, a US legal resident, and an existing Vantage member; employees may not be the referrer on an account they open.",
+    "Friend must be eligible for membership, not an existing member, and not have been a member at any time in the preceding 12 months.",
+    "Friend must open a new membership account with the $5 minimum deposit using the email address submitted to the program, then within 30 days either deposit $100+ (cash/check/ACH/wire/payroll) or fund a vehicle loan of at least $10,000.",
+    "Referrer must be the first person to have referred the friend; rewards capped at $500 per calendar year.",
+    "Reward is a gift card ($50 for the account route, $100 for the auto-loan route) - terms state gift cards cannot be redeemed for cash unless otherwise stated.",
+    "Referrer is solely responsible for federal/state/local taxes on rewards."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Vantage CU refer-a-friend terms (vcu.com): 'If your referral meets all of the conditions in Sections 3 and 4 and your Friend opens a new membership and funds an account as described in Section 3(d.1), you will receive a $50 gift card and your Friend will receive a $50 gift card. If your referral meets all of the conditions in Sections 3 and 4 and your Friend opens a new membership and funds a loan as described in Section 3(d.2), you will receive a $100 gift card and your Friend will receive a $100 gift card.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms published on official vcu.com domain (vcu.com/why-vantage/refer-a-friend), fetched live 2026-09-23; no expiry date stated, program cancellable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard membership ($5 minimum deposit) and funds account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no vcu.com referral route - prior R0626 is a Vantage checking signup bonus (distinct mechanism); catalog has no Vantage referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 18+, US legal resident, existing Vantage Credit Union member. Friend: 18+, US legal resident, eligible for membership, not a member in the past 12 months.",
+  "notes": "Verified 2026-09-23. Vantage Credit Union (St. Charles, MO). Referrer payout is per referral: $50 gift card for a funded membership account, $100 gift card for a funded $10,000+ vehicle loan; cap $500/year. This is a referrer-side mechanism distinct from the Vantage checking signup bonus (R0626).",
+  "numeric_basis": "payout from official vcu.com terms ($50 gift card per funded-account referral; $100 per auto-loan referral; $500/yr cap); time: share unique referral link est. 5-15 min active",
+  "official_url": "https://www.vcu.com/why-vantage/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "If your referral meets all of the conditions in Sections 3 and 4 and your Friend opens a new membership and funds an account as described in Section 3(d.1), you will receive a $50 gift card and your Friend will receive a $50 gift card. If your referral meets all of the conditions in Sections 3 and 4 and your Friend opens a new membership and funds a loan as described in Section 3(d.2), you will receive a $100 gift card and your Friend will receive a $100 gift card.",
+  "payout_value_note": "$50 gift card per funded-account referral to the referrer ($100 per funded $10,000+ vehicle-loan referral); cap $500/year; gift cards not redeemable for cash.",
+  "route_id": "R4761",
+  "standard": {
+    "s1": {
+      "note": "Terms live on vcu.com, fetched 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer 18+ US resident existing member; friend 18+ US resident, not a member in prior 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new membership with $5 deposit via submitted email, $100+ deposit within 30 days OR $10,000+ vehicle loan funded within 30 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: eligibility verified prior to reward distribution; no exact payout window stated beyond verification",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: referrer solely responsible for federal/state/local taxes on rewards",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit the Vantage refer-a-friend page and enter your email to get your personalized share link.",
+    "Share the link with friends, family, or colleagues by email or social media.",
+    "Friend opens a new Vantage membership using the submitted email address and deposits $100+ within 30 days (or funds a $10,000+ vehicle loan within 30 days).",
+    "You receive a $50 gift card ($100 for the auto-loan route) after eligibility verification."
+  ],
+  "terms_url": "https://www.vcu.com/why-vantage/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward issued after the referred friend meets all conditions and eligibility is verified; no exact payout window stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

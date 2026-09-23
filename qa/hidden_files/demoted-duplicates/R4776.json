@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is a loan referral program, not a checking referral - you only earn when the friend actually books and activates a HELOC ($100), auto loan ($50), or Visa card ($25), and you get no visibility into the loan's status.",
+  "catches": [
+    "Referring member must be a Har-co member; referral form signed and verified against signatures on record.",
+    "Friend must book and activate a qualifying loan: HELOC ($100 gift card), vehicle loan ($50), Visa loan ($25).",
+    "HAR-CO will not give the referring member any information about the loan's status.",
+    "No limit on the number of referrals; gift cards may be subject to IRS tax reporting.",
+    "Limited-time offer (no fixed end date stated on the page)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Har-co CU page (harcocu.org/other-services): 'For every friend that books a loan with us, you earn a gift card. - HELOC: $100 gift card - Auto Loan: $50 gift card - Visa: $25 gift card' and the official rules PDF: '$100 gift card will be awarded once the HELOC is active' / '$50 gift card will be awarded once the vehicle loan is active' / '$25 gift card will be awarded once the VISA loan is active'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms on official harcocu.org domain, fetched live 2026-09-23; described as limited-time, no fixed end date",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend books a loan product",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no harcocu.org route; catalog has no Har-co entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Har-co Credit Union member. Friend: books and activates a qualifying HELOC, auto loan, or Visa loan.",
+  "notes": "Verified 2026-09-23. Har-co Credit Union (Bel Air, MD). Loan-referral program: $100 gift card per booked HELOC, $50 per vehicle loan, $25 per Visa loan; no referral cap. This is a referrer-side loan mechanism, distinct from checking/membership referrals.",
+  "numeric_basis": "payout from official harcocu.org terms ($25/$50/$100 gift cards per booked loan by type; no cap); time: print/fill referral form est. 5-15 min active",
+  "official_url": "https://www.harcocu.org/other-services",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "With our Referral program we are giving you a chance to earn money for telling everyone about our auto loans, credit cards, and Home Equity Lines of Credit. For every friend that books a loan with us, you earn a gift card. - HELOC: $100 gift card - Auto Loan: $50 gift card - Visa: $25 gift card",
+  "payout_value_note": "Gift cards per booked loan: $100 HELOC, $50 auto loan, $25 Visa; no referral cap.",
+  "route_id": "R4776",
+  "standard": {
+    "s1": {
+      "note": "Page live on harcocu.org, fetched 2026-09-23; limited-time offer, no fixed end date",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referring member must be a Har-co member; member eligibility required for the friend",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: book and activate a HELOC, vehicle loan, or Visa loan",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: gift card awarded once the loan is active",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: gift card may be subject to IRS tax reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct loan-referral mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Print and fill out the Har-co referral form.",
+    "Give the form to friends interested in a Har-co loan.",
+    "Friend books and activates a HELOC, auto loan, or Visa loan.",
+    "You receive a $100 (HELOC), $50 (auto loan), or $25 (Visa) gift card - no limit on referrals."
+  ],
+  "terms_url": "https://www.harcocu.org/other-services",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Gift card awarded once the referred loan is active; no payout window beyond that stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

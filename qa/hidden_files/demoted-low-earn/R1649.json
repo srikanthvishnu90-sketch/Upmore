@@ -1,0 +1,74 @@
+{
+  "route_id": "R1649",
+  "verdict": "verify",
+  "official_url": "https://www.txcourts.gov/about-texas-courts/juror-information/jury-service-in-texas/",
+  "terms_url": "https://www.txcourts.gov/about-texas-courts/juror-information/jury-service-in-texas/",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "Texas: jurors are paid by the county not less than $20 for the first day and not less than $58 for each day after the first (state statutory minimums).",
+  "steps": [
+    "Receive a Texas state court jury summons",
+    "Report and serve",
+    "Receive at least $20 for day one and $58/day thereafter (county may pay more)"
+  ],
+  "catches": [
+    "These are minimums — actual pay is set by each county's commissioners court.",
+    "Summons-only; cannot volunteer.",
+    "$58/day is well below typical wages."
+  ],
+  "biggest_catch": "County-set actuals; the state only guarantees the $20/$58 minimums.",
+  "eligibility": "Persons summoned for jury service in Texas courts.",
+  "timing": "Per day of attendance, paid by the county.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Texas Judicial Branch official juror-information page (txcourts.gov)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Texas: jurors are paid by the county not less than $20 for the first day and not less than $58 for each day after the first (state statutory minimums)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in Texas courts."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Per day of attendance, paid by the county."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Not less than $20 first day; not less than $58/day after (state minimums)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "Harris County's $30/$58 verified separately as R1643; this is the statewide floor.",
+  "payout_min_usd": 20,
+  "payout_max_usd": 58,
+  "payout_value_note": "Not less than $20 first day; not less than $58/day after (state minimums).",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

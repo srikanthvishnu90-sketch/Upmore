@@ -1,0 +1,86 @@
+{
+  "route_id": "R3740",
+  "verdict": "verify",
+  "official_url": "https://www.mypcfcu.org/checking/",
+  "terms_url": "https://www.mypcfcu.org/checking/",
+  "payout_quote": "Official page banner: <img src=\"https://www.sagecu.org/files/250-Checking-540x339.jpg\" alt=\"Earn $250\">. New Checking Account Bonus: Offer begins 9/1/26. To earn the bonus, you must (1) open a new Sage Federal Credit Union (Sage CU) Simple Checking, Rewards Checking, Compass Checking, or Pathfinder Checking account by 11/30/2026 (2) receive a Direct Deposit of at least $500 within the first 90 days of account opening. Offer limited to those who are not primary owners of a Sage CU Simple Checking, Rewards Checking, Compass Checking or Pathfinder Checking on 08/31/26. The bonus funds will be deposited to your new checking account at the month end after the new checking account has been open for 90 days if all requirements are met as described above and your account is open and in good standing as defined by the Membership Agreement at the time of the bonus deposit. Limit one New Checking Account Bonus per member. Bonuses are considered dividends and will be reported on IRS form 1099-INT. Recipients are responsible for any federal, state, or local taxes.",
+  "steps": [
+    "Confirm membership eligibility (live, work, or worship in Sage CU's chartered counties in OR, CA, or NV).",
+    "Open a new Sage CU Simple, Rewards, Compass, or Pathfinder Checking account by 11/30/2026.",
+    "Receive at least $500 in qualifying direct deposit(s) within the first 90 days of account opening.",
+    "Keep the account open and in good standing; the $250 bonus is deposited at the month end after the account has been open 90 days."
+  ],
+  "catches": [
+    "Not eligible if you were the primary owner of a qualifying Sage CU checking account on 08/31/26.",
+    "Limit one New Checking Account Bonus per member.",
+    "Bonus is deposited only at the month end after the account has been open 90 days - slow payout (up to ~4 months from opening).",
+    "Membership eligibility is geographically narrow: specific counties in OR (Klamath, Lake, Harney, Malheur), CA (Modoc, Siskiyou), and NV (Humboldt, Pershing, Lander, Eureka).",
+    "Bonus reported on IRS Form 1099-INT (taxable as dividends).",
+    "Offer can be cancelled or amended at any time without notice."
+  ],
+  "biggest_catch": "Geographically restricted to a handful of rural counties in OR/CA/NV, and the $250 pays out slowly - only at month-end after the account has been open 90 days.",
+  "eligibility": "New Sage CU members who live, work, or worship in eligible OR/CA/NV counties; not a primary owner of a qualifying Sage CU checking account on 08/31/26; one bonus per member.",
+  "timing": "Bonus deposited to the new checking account at the month end after the account has been open 90 days, if all requirements are met.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Sage Federal Credit Union is a real operating credit union; bonus terms are published on its official domain mypcfcu.org."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official mypcfcu.org checking page: the provider banner image (250-Checking-540x339.jpg, alt Earn $250) establishes the $250 amount; page text states full qualification terms ($500 DD in 90 days, 11/30/26 deadline, payout at month-end after 90 days, 1099-INT treatment)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee; no minimum deposit stated for the bonus."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Offer begins 9/1/26 and runs through 11/30/2026 per official terms; currently active."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New members in OR/CA/NV chartered counties; not a checking owner on 08/31/26; one per member."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Open Simple/Rewards/Compass/Pathfinder checking by 11/30/26; $500+ DD within first 90 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid at month-end after account has been open 90 days, in good standing."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Core payout explicit: provider banner image alt text Earn $250 plus full written terms."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No monthly fee stated on the bonus terms; no fee traps in the offer."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Expires 11/30/2026 - well outside the 14-day window."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider: Sage Federal Credit Union not in existing-providers.txt or prior evidence files (R0058 catalog entry is unverified)."
+    }
+  },
+  "notes": "Verified against official mypcfcu.org checking page (raw official HTML captured 2026-09-23 UTC; provider banner image alt Earn $250 confirms the amount in provider-official material). Flat $250 new-checking bonus; slow payout but clean terms.",
+  "payout_min_usd": 250,
+  "payout_max_usd": 250,
+  "payout_value_note": "flat $250 bonus stated in official terms",
+  "time_min_minutes": 30,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from official terms ($250 flat); time: checking application + DD setup est. 30-60 min active"
+}

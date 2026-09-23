@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The live terms page (linked from Avadian's current 'Get $100 Every Time You Refer a Friend' call-to-action) states the payout but does not fully spell out what the referred friend must DO beyond opening an approved new account - the exact qualifying requirements are vague on the page itself.",
+  "catches": [
+    "Referrer must be a current Avadian member with an account in good standing who has not previously caused a loss to the credit union.",
+    "Limit one per household; referring members may receive a maximum of $500 in referrals per calendar year.",
+    "New accounts are subject to approval and membership eligibility; minimum opening deposit required for checking products.",
+    "Not valid if the 'new account' is opened by an existing Avadian member; not available to employees, board members, or related persons.",
+    "'Refer a Friend' bonus is considered interest and will be reported on IRS 1099-INT.",
+    "$100 added to both members' share (savings) accounts within 60 days of the new member opening their account, once all requirements are met.",
+    "Offer subject to change without notice.",
+    "Note: the page does not enumerate the friend's specific qualifying actions beyond new account opening, so confirm current requirements before referring."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Avadian pages: current avadiancu.com membership page says 'Get $100 Every Time You Refer a Friend' with a 'Refer Now' button linking to promo.avadiancu.com; the promo page (promo.avadiancu.com/refer-a-friend-2023) states: 'Once all requirements are met, $100 will be added to both members' share (savings) accounts within 60 days of the new member opening their account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Avadian's current site (crawled 2026-09) advertises 'Get $100 Every Time You Refer a Friend' linking to the live promo page on promo.avadiancu.com; offer subject to change without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no avadiancu.com route and no Avadian entry; catalog has no Avadian Credit Union route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current Avadian member in good standing (not an employee/board member/related person), limit one per household. Friend: new member (not an existing Avadian member), account approved per membership eligibility.",
+  "notes": "Verified 2026-09-23. Avadian Credit Union (Alabama). Referrer earns $100 per qualifying referral ($100 to the friend too), cap $500 per calendar year for referring members. Caveat: the live terms page does not fully enumerate the friend's qualifying actions beyond new account opening, so confirm current requirements before referring.",
+  "numeric_basis": "payout from official Avadian promo terms ($100 to both members' share accounts per qualifying referral; cap $500/year for referrers); time: refer via promo form est. 5-15 min active",
+  "official_url": "https://www.avadiancu.com/About-Avadian/Membership/Why-Join-Avadian/What-Do-I-Need-to-Join",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Once all requirements are met, $100 will be added to both members' share (savings) accounts within 60 days of the new member opening their account. Referring members may receive a maximum of $500 in referrals in a calendar year.",
+  "payout_value_note": "$100 to the referrer's share (savings) account per qualifying referral (friend also gets $100); cap $500 per calendar year for referring members.",
+  "route_id": "R5674",
+  "standard": {
+    "s1": {
+      "note": "Live Avadian promo page linked from the current avadiancu.com membership page; offer subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer current member in good standing (not employee/board); friend new member, approved, one per household",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements are vaguely stated: new account opening subject to approval and membership eligibility; exact qualifying actions not enumerated on the page",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $100 added to both share accounts within 60 days of the new member opening the account",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus considered interest, reported on IRS 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Click 'Refer Now' on Avadian's membership page to reach the official referral form on promo.avadiancu.com.",
+    "Submit your referral so your friend is tracked as referred by you.",
+    "Friend opens a new approved Avadian account per membership eligibility requirements.",
+    "$100 is added to your share (savings) account within 60 days of the new member opening their account."
+  ],
+  "terms_url": "https://promo.avadiancu.com/refer-a-friend-2023",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 added to both members' share (savings) accounts within 60 days of the new member opening their account, once all requirements are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

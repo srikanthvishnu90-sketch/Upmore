@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details/LawnStarter_for_Providers?id=com.lawnstarter.pros",
+    "ios": null
+  },
+  "biggest_catch": "You must already own mowing equipment plus a truck/SUV — this is not a zero-equipment side gig.",
+  "catches": [
+    "Requires your own mower, trimmer, blower, and a truck or SUV — real equipment costs.",
+    "Must be authorized to work in the US and pass a background check.",
+    "LawnStarter takes a small portion of each mowing price (platform cut).",
+    "No bidding, but also no pricing power — LawnStarter's software prices each lawn.",
+    "Income is per-job and seasonal; the '$1,000+/week' figure is a top-pro marketing claim, not a promise."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "LawnStarter's own provider page describes the marketplace: providers are independent contractors who 'use the LawnStarter Pro app to find and service customers', claim pre-priced jobs in the app, and get paid weekly — 'No Lead Fees, No Risk' — a real, public deal channel with $400M+ paid to 19,700+ providers per the official blog.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed per-job pay range — providers 'see the pay before claiming a job'; the $1,000+/week top-pro figure is marketing, not a guaranteed rate — framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: sign up free, pass background check, claim jobs in the app, complete work, weekly direct deposit.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official FAQ: 'Nothing! LawnStarter takes a small portion of the mowing price but never charges our providers to use the service' — no signup, subscription, or lead fees.",
+      "pass": true
+    }
+  },
+  "eligibility": "US-based adults authorized to work who own mowing equipment and a truck/SUV and can pass a background check.",
+  "notes": "Scenario: local services (lawn care). LawnStarter is a lawn-care marketplace: customers book through the platform, providers claim pre-priced jobs in the Pro app, and get paid weekly by direct deposit. Income is per-job and variable — never guaranteed.",
+  "numeric_basis": "payout: per-job pay shown before claiming, no official fixed range. time: free signup (minutes) + background check wait + claiming first job; active setup est. 30-60 min.",
+  "official_url": "http://www.lawnstarter.com/why-join",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "You get paid exactly what you see when a job is offered to you.",
+  "payout_value_note": "Per-job pay is shown before claiming; LawnStarter publishes no fixed pay range — variable per-job income.",
+  "route_id": "R5435",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: US-authorized adults with equipment, vehicle, and a clean background check.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-job pay; the $1,000+/week top-pro claim is presented as marketing, not a promise.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover equipment costs, US-only + background check, platform cut, fixed pricing, and seasonal variability.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: LawnStarter absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against provider-owned pages on 2026-09-23 (lawnstarter.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: jobs claimed in-app continuously; weekly direct deposit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up free as a LawnStarter Pro (takes a few minutes).",
+    "Pass the background check and provide bank info for weekly direct deposit.",
+    "Open the Pro app and claim pre-priced jobs near you — you see the exact pay before claiming.",
+    "Complete the mowing/service and mark it done in the app.",
+    "Get paid weekly via direct deposit (keep 100% of tips)."
+  ],
+  "terms_url": "http://www.lawnstarter.com/why-join",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Jobs are claimed continuously in the app; payouts land weekly via direct deposit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

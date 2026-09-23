@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend has to deposit and hold at least $10,000 for a full year - and you earn nothing if they withdraw below $10,000 or live at your address.",
+  "catches": [
+    "The friend must make a net deposit of at least $10,000 within 30 days and maintain a remaining net deposit of $10,000+ through the vesting date (one year); withdrawals below $10,000 wipe out both bonuses.",
+    "Referrers are paid $200 per eligible referral, capped at 15 per calendar year and 30 total ($3,000/year max).",
+    "No bonuses/payments when referrer and referee are family members or live at the same address.",
+    "Tax-advantaged (IRA) accounts, entity accounts, financial advisors, Firstrade employees, and residents of China, HK, Macau, Spain, Portugal, Japan, Denmark, Israel, Poland are excluded.",
+    "Firstrade may change or close the program at any time at its sole discretion (terms dated FT08.2026 - August 2026).",
+    "Referrers may not help set up the friend's account, train them, or act as their financial contact/advisor - referral ends at the invitation."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Firstrade Securities, Inc. - real brokerage; official domain firstrade.com and cdn.firstrade.com terms PDF; terms dated FT08.2026, fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'Firstrade will pay Referrer a flat fee Payment of USD 200 per eligible referral' - concrete per-referral amount.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; share a personal referral link; no purchase required of the referrer.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official T&C: $200 flat per eligible referral; max 15 per calendar year and 30 total; friend must net-deposit $10,000+ within 30 days and hold it through vesting.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Firstrade account holder in good standing, not in excluded countries. Referee: new Firstrade customer, not prior account holder; not family/same address as referrer; non-IRA account.",
+  "notes": "dedupe-check 'firstrade' shows no existing route. Terms FT08.2026 = August 2026, current. Marketing page said friend needs 'at least $10,000' - terms require maintaining $10,000+ remaining net deposit through vesting.",
+  "numeric_basis": "payout from official terms ($200 per referral flat); time: category default App Referral share-link 5-15 min active",
+  "official_url": "https://www.firstrade.com/accounts/referral",
+  "payout_max_usd": 200.0,
+  "payout_min_usd": 200.0,
+  "payout_quote": "Refer a friend to Firstrade and you're both rewarded. ... you earn $200 for every qualifying referral. / T&C: 'Firstrade will pay Referrer a flat fee Payment of USD 200 per eligible referral for up to fifteen (15) friends or family in a calendar year and thirty (30) total.'",
+  "payout_value_note": "$200 per referral in official terms; max 15 per calendar year and 30 total",
+  "route_id": "R2467",
+  "standard": {
+    "s1": {
+      "note": "Referrer: existing Firstrade account holder, not in excluded countries. Referee: new customer, no prior Firstrade account, non-IRA, not same household/family.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Friend opens account via your link, net-deposits $10,000+ in cash or assets within 30 days, maintains $10,000+ through the 1-year vesting date.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Referrer payment issued on the first business day following the vesting date (1 year after funding-period calculation date), provided the friend earned their bonus and both accounts stay open and in good standing.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat $200 per referral; 15 per calendar year ($3,000/year), 30 lifetime.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.firstrade.com/accounts/referral (official) and https://cdn.firstrade.com/forms/en-us/refer-a-friend_tc.pdf?external=1 (official T&C, FT08.2026).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: share personal referral link, friend opens/funds $10,000 in 30 days, you get $200 after the 1-year vesting if the deposit stays.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official referral page + official T&C PDF fetched directly 2026-09-23; terms text verbatim.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be an existing Firstrade account holder (in good standing, not in an excluded country) and get your personal referral link from your Firstrade account.",
+    "Share your referral link with a friend who is new to Firstrade (not a prior account holder; not family or living at your address; non-IRA account).",
+    "Your friend opens a new Firstrade brokerage account via your link and makes a net deposit of at least $10,000 in cash or transferred assets within 30 days of account approval.",
+    "You receive a $200 flat-fee payment on the first business day after the vesting date (about 1 year later), provided the friend maintained $10,000+ in the account and both accounts are open and in good standing (max 15 per calendar year, 30 total)."
+  ],
+  "terms_url": "https://cdn.firstrade.com/forms/en-us/refer-a-friend_tc.pdf?external=1",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Payment issued on the first business day after the vesting date (about 1 year after the funding period), once the friend's bonus is earned.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

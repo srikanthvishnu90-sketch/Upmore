@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend has just 30 days to deposit $100 into the new checking account AND activate the debit card - miss that window and neither of you gets the $50.",
+  "catches": [
+    "Referrer must have an active Wings account in good standing; both referrer and friend must be 18+.",
+    "Friend must: qualify for membership (CO counties served, CO National Guard/Buckley AFB personnel, or family of members), open a $5 share savings account, and open a new No Strings Checking or Broncos Checking account.",
+    "Within 30 days: friend deposits $100 into the new checking account and activates the debit card.",
+    "Reward: $50 electronic gift card (Visa or Amazon digital) to both referrer and friend; redemption emails sent within 5 business days of compliance verification.",
+    "No referral limits - refer as many 18+ non-members as you like.",
+    "Friends eligible for only one reward redemption; employees, officials, and affiliates ineligible.",
+    "Gift cards subject to applicable taxes.",
+    "Program terms at ent.com/legal/refer; no fixed expiry stated."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Wings CU page (ent.com/refer-a-friend/): 'when they open a qualifying checking account, you'll both enjoy a $50 thank-you from us' and 'Reward emails will be sent to the Referrer and Friend to redeem their $50 electronic gift card'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official ent.com domain, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no ent.com referral route; catalog has no Wings CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: active Wings member 18+ in good standing. Friend: 18+ non-member in field of membership who opens qualifying checking.",
+  "notes": "Verified 2026-09-23. Wings Credit Union (formerly Ent Credit Union, Colorado). Referrer earns a $50 digital gift card (Visa or Amazon) per qualifying referral; no referral cap. Friend must deposit $100 and activate debit card within 30 days.",
+  "numeric_basis": "payout from official ent.com terms ($50 electronic gift card per qualifying referral; no cap); time: share referral link est. 5-15 min active",
+  "official_url": "https://www.ent.com/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Share Wings with a friend, and when they open a qualifying checking account, you'll both enjoy a $50 thank-you from us. ... Reward emails will be sent to the Referrer and Friend to redeem their $50 electronic gift card.",
+  "payout_value_note": "$50 electronic gift card (Visa or Amazon digital) to the referrer per qualifying referral; no referral limit.",
+  "route_id": "R4783",
+  "standard": {
+    "s1": {
+      "note": "Page live on ent.com, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer active member 18+ in good standing; friend 18+ non-member in field of membership",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $5 share savings + No Strings/Broncos checking + $100 deposit + debit card activation within 30 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: redemption emails within 5 business days of verification",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: gift cards subject to applicable taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your Wings referral with a friend who is 18+ and not already a Wings member.",
+    "Friend joins (CO field of membership), opens a $5 share savings and a No Strings or Broncos Checking account.",
+    "Friend deposits $100 into the checking account and activates the debit card within 30 days.",
+    "You both receive emails within 5 business days to redeem your $50 digital gift card (Visa or Amazon)."
+  ],
+  "terms_url": "https://www.ent.com/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward redemption emails sent within 5 business days after verification of compliance.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

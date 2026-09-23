@@ -1,0 +1,74 @@
+{
+  "route_id": "R1642",
+  "verdict": "verify",
+  "official_url": "https://lacourt.ca.gov/courthouse/jury/PDF/WEB01CCB11.pdf",
+  "terms_url": "https://lacourt.ca.gov/courthouse/jury/PDF/WEB01CCB11.pdf",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "Los Angeles County jurors receive no compensation for the first day; from the second day, $15 per day plus one-way mileage reimbursement.",
+  "steps": [
+    "Receive an LA County Superior Court jury summons",
+    "Report for service",
+    "Receive $15/day plus one-way mileage starting on day two (nothing for day one)"
+  ],
+  "catches": [
+    "No pay at all for the first day — and most jurors serve only one day, earning $0.",
+    "California government employees are excluded from the fee (they get regular pay).",
+    "$15/day is far below a day's wages; this offsets costs, not income."
+  ],
+  "biggest_catch": "Most jurors serve a single day and are paid nothing — the $15/day starts only on day two.",
+  "eligibility": "Persons summoned for jury service in LA County Superior Court.",
+  "timing": "Computed at completion of service; mailed.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "LA Superior Court official jury document (lacourt.ca.gov)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Los Angeles County jurors receive no compensation for the first day; from the second day, $15 per day plus one-way mileage reimbursement."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in LA County Superior Court."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Computed at completion of service; mailed."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$0 day one; $15/day plus one-way mileage from day two."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "One-day/one-trial system means most people never reach paid days.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 15,
+  "payout_value_note": "$0 day one; $15/day plus one-way mileage from day two.",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

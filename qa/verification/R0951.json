@@ -1,0 +1,67 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only available to existing Ameriprise Financial investment clients (and employees) - new customers without an Ameriprise investment relationship are not eligible. Offer window 07/01/2026-12/29/2026.",
+  "catches": [
+    "Only available to existing Ameriprise Financial investment clients and employees of Ameriprise Financial, Inc. and its affiliates.",
+    "Open a new Ameriprise Bank Checking Account between July 1, 2026 and December 29, 2026.",
+    "Set up qualifying direct deposit(s) of at least $1,500 into the checking account within 90 calendar days of account opening.",
+    "Account must be open and in good standing when the bonus is credited.",
+    "Limit one checking bonus per the household/Group ID rules shown on the secure site (savings bonus is one per Group ID).",
+    "Clients who previously received an Ameriprise Bank checking bonus are not eligible.",
+    "Bonus credited within 14 business days after requirements are met; reported as interest on IRS Form 1099-INT.",
+    "Companion savings bonus tiers exist ($350/$650/$1,000 by deposit tier; taken as R0952). Combined headline: up to $1,400."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Ameriprise Bank (ameriprise.com) is a real bank; the checking bonus terms are published on its official Ameriprise Bank Checking Account page (official search crawls, confirmed ~5 days ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'To receive the checking bonus offer: 1) Open a Checking Account from July 1, 2026, to December 29, 2026, and 2) Set up qualifying direct deposit(s) into your Checking Account of at least $1,500 within 90 calendar days of account opening. ... $400 checking bonus: 1. Open a new Ameriprise Bank Checking Account. 2. Set up qualifying direct deposits of $1,500 or more within 90 days of account opening.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Amount, open window, DD threshold and window, existing-client eligibility restriction, and 14-business-day payout are quoted verbatim from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Ameriprise Financial investment clients (and employees of Ameriprise Financial, Inc. and affiliates) only; no prior Ameriprise Bank checking bonus.",
+  "notes": "Official ameriprise.com checking and deposit-bonus pages (crawls ~5-20 days). Distinct from R0952 (savings tiers). No sibling duplicate found in verification corpus. Window ends 2026-12-29.",
+  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.ameriprise.com/products/ameriprise-bank/checking",
+  "payout_max_usd": 400.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "To receive the checking bonus offer: 1) Open a Checking Account from July 1, 2026, to December 29, 2026, and 2) Set up qualifying direct deposit(s) into your Checking Account of at least $1,500 within 90 calendar days of account opening.",
+  "payout_value_note": "flat bonus amount in official terms",
+  "route_id": "R0951",
+  "standard": {
+    "s1": {
+      "evidence": "Existing Ameriprise investment clients/employees only.",
+      "pass": true
+    },
+    "s2": {
+      "evidence": "New checking opened 7/1/26-12/29/26; $1,500 qualifying DD within 90 days.",
+      "pass": true
+    },
+    "s3": {
+      "evidence": "Bonus within 14 business days of requirements; account open and in good standing; 1099-INT reporting.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new Ameriprise Bank Checking Account between July 1, 2026 and December 29, 2026 (must already be an Ameriprise Financial investment client).",
+    "Set up qualifying direct deposit(s) of at least $1,500 into the checking account within 90 calendar days of account opening.",
+    "Keep the account open and in good standing; the $400 bonus is credited within 14 business days after the requirements are met."
+  ],
+  "terms_url": "https://www.ameriprise.com/products/ameriprise-bank/deposit-bonus",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Open by 2026-12-29; $1,500 DD within 90 days; bonus within 14 business days of requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

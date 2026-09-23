@@ -1,0 +1,88 @@
+{
+ "route_id": "R3724",
+ "verdict": "verify",
+ "official_url": "https://www.gtfcu.org/aggieland-cu/get-250-with-free-checking",
+ "terms_url": "https://www.gtfcu.org/aggieland-cu/get-250-with-free-checking",
+ "payout_quote": "Open a new free checking account today and receive a $250 bonus. Use Code CHECKING250 to claim your reward. Receive a $250 reward when you open a new primary free checking account and perform the following actions within the first 90 days after account opening: sign up for eStatements, make monthly deposits totaling $500 or more per month for three consecutive months, and conduct 10 or more qualifying debit card transactions per month for three consecutive months.",
+ "steps": [
+  "Open a new primary free checking account online or in person, presenting promo code CHECKING250 at account opening.",
+  "Sign up for eStatements.",
+  "Make monthly deposits totaling $500 or more per month for three consecutive months.",
+  "Conduct 10 or more qualifying debit card purchases per month for three consecutive months."
+ ],
+ "catches": [
+  "Offer EXPIRES September 30, 2026 (8 days from check date) - account must be opened by then.",
+  "New primary checking accounts only; one $250 offer per individual; must be 18+.",
+  "Requires BOTH $500+/month deposits AND 10+ debit card purchases per month for three consecutive months - sustained activity, not a one-time setup.",
+  "ATM withdrawals/deposits and payment-service transfers (Venmo, CashApp, Zelle) do not count as qualifying debit transactions.",
+  "$250 reward deposited within 60 days of meeting qualification criteria - payout takes months.",
+  "The $250 bonus is generally treated as taxable interest income (typically reported on Form 1099-INT); consult a tax advisor - this is general bank-bonus tax treatment, not a statement from the credit union's terms.",
+  "Texas-based credit union (1600+ ATMs in Texas); membership eligibility applies.",
+  "Terms subject to change without notice."
+ ],
+ "biggest_catch": "Offer expires September 30, 2026 (8 days), and the bonus requires three consecutive months of $500+ deposits plus 10+ debit purchases each month - payout arrives months later.",
+ "eligibility": "New primary free checking accounts only, age 18+; one offer per individual; Texas-based Aggieland Credit Union membership required.",
+ "timing": "$250 deposited into checking within 60 days of meeting all qualification criteria.",
+ "upfront_fee": false,
+ "weasel_words": [],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Aggieland Credit Union is a real operating Texas credit union; offer on gtfcu.org, its official domain."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official page states $250 bonus with promo code CHECKING250, eStatements + $500/month deposits + 10 debit transactions for 3 consecutive months."
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No upfront fee; free checking with $0 monthly fee."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Offer page live; offer valid through September 30, 2026, which includes the check date."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "New primary checking accounts only; 18+; one offer per individual."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Requires promo code CHECKING250, eStatements, $500+/month deposits and 10+ debit purchases per month for 3 consecutive months within 90 days of opening."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Bonus deposited within 60 days of meeting qualification criteria."
+  },
+  "s4": {
+   "pass": true,
+   "note": "No weasel words on the core payout - flat $250 with explicit conditions."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Free checking has $0 monthly fee."
+  },
+  "s6": {
+   "pass": false,
+   "note": "EXPIRES September 30, 2026 - within 14 days of verification (7 days). FLAGGED as soon-expiring."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Distinct provider: Aggieland Credit Union not in existing-providers.txt or prior evidence files."
+  }
+ },
+ "notes": "Verified on official gtfcu.org promo page. $250 flat bonus, code CHECKING250. EXPIRING: valid through 2026-09-30 (8 days). Requires 3 consecutive months of qualifying activity.",
+ "payout_min_usd": 250,
+ "payout_max_usd": 250,
+ "payout_value_note": "flat bonus amount in official terms",
+ "time_min_minutes": 30,
+ "time_max_minutes": 60,
+ "numeric_basis": "payout from official terms ($250 flat); time: online application + eStatements setup est. 30-60 min active"
+}

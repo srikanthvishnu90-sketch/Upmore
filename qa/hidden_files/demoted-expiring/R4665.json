@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Businesses in only four Minnesota counties (Crow Wing, Cass, Morrison, Aitkin) qualify, and the $500 bonus requires holding a $5,000 minimum daily balance for a full 90 days; the offer ends 9/30/2026.",
+  "catches": [
+    "businesses only; new first-time Bell Bank business checking accounts",
+    "offer valid only to businesses in Crow Wing, Cass, Morrison, or Aitkin County, Minnesota",
+    "promo code BAXBUS500 required; opened between 3/1/2026 and 9/30/2026",
+    "10 point-of-sale debit card transactions",
+    "$5,000 minimum daily balance maintained for 90 days",
+    "$50 minimum deposit to open",
+    "limit 1 bonus per business and per account; cannot combine with other offers",
+    "may be reported on Form 1099-MISC (taxable)",
+    "offer ends 9/30/2026"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Bell Bank (regional bank), official domain bell.bank.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Bell Bank business page https://bell.bank/business/services/small-business-checking-baxter (search-crawled 2026-09-21): 'For new, first-time Bell Bank business checking accounts opened between March 1, 2026 and September 30, 2026, we will deposit $500 after the new account has been active 90 days... Promo code: BAXBUS500.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; $50 minimum deposit to open (disclosed, not a fee).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: 'Bonus will be deposited within 5 business days after qualifications are met.'",
+      "pass": true
+    }
+  },
+  "eligibility": "New, first-time Bell Bank business checking accounts opened 3/1/2026-9/30/2026 with promo code BAXBUS500; businesses must be in Crow Wing, Cass, Morrison, or Aitkin County, Minnesota; limit 1 bonus per business and per account.",
+  "notes": "Business-checking offers are in scope for this wave; prior R0565 rejected the business variant only because an earlier wave's scope was consumer-only - that rationale does not apply here. The $100 partner offers (R4672, R4673) are separate personal-checking offers.",
+  "numeric_basis": "500: flat $500 bonus stated in official terms.",
+  "official_url": "https://bell.bank/business/services/small-business-checking-baxter",
+  "payout_max_usd": 500.0,
+  "payout_min_usd": 500.0,
+  "payout_quote": "For new, first-time Bell Bank business checking accounts opened between March 1, 2026 and September 30, 2026, we will deposit $500 after the new account has been active 90 days with (1) 10 point-of-sale debit card transactions and (2) a minimum daily balance of $5,000 has been maintained for 90 days. Bonus will be deposited within 5 business days after qualifications are met. Offer valid only to businesses in Crow Wing County, Cass County, Morrison County, or Atkin County, Minn. Limit of 1 bonus per business and per account. Customer may receive Form 1099-MISC for any income received from us. Cannot be combined with any other offer. $50 minimum deposit to open. Promo code: BAXBUS500.",
+  "payout_value_note": "$500 stated flatly; ends 9/30/2026 - expiring within 14 days of this check; taxable (1099-MISC).",
+  "route_id": "R4665",
+  "standard": {
+    "s1": {
+      "note": "New first-time business checking with public promo code BAXBUS500; restricted to businesses in four named MN counties; one per business.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Open business checking 3/1/26-9/30/26 with code BAXBUS500 ($50 min deposit); maintain $5,000 minimum daily balance for 90 days; complete 10 POS debit card transactions.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus deposited within 5 business days after 90 days active and requirements met; offer ends 9/30/2026 - within 14 days of the 9/23/2026 check.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$500 stated flatly in official terms.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: official terms state 'Customer may receive Form 1099-MISC for any income received from us.'",
+      "pass": true
+    },
+    "s6": {
+      "note": "No early-closure fee stated in the official terms for this business bonus.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No pay-to-play: $50 minimum opening deposit; $5,000 balance and transaction requirements are normal business activity.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new first-time Bell Bank business checking account between 3/1/2026 and 9/30/2026 using promo code BAXBUS500 (business must be in Crow Wing, Cass, Morrison, or Aitkin County, MN; $50 minimum deposit to open).",
+    "Keep a $5,000 minimum daily balance for 90 days and complete 10 point-of-sale debit card transactions.",
+    "Receive the $500 bonus within 5 business days after the account has been active 90 days and all qualifications are met."
+  ],
+  "terms_url": "https://bell.bank/business/services/small-business-checking-baxter",
+  "time_max_minutes": 90.0,
+  "time_min_minutes": 45.0,
+  "timing": "Bonus paid after account active 90 days and requirements met, credited within 5 business days; offer ends 9/30/2026 - expiring within 14 days of this check.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

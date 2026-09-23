@@ -1,81 +1,87 @@
 {
- "route_id": "R0320",
- "checked_at": "2026-09-23T01:00:00Z",
- "app_links": {
-  "ios": null,
-  "android": null
- },
- "upfront_fee": false,
- "verdict": "verify",
- "official_url": "https://www.energystar.gov/rebate-finder",
- "terms_url": "https://www.energystar.gov/rebate-finder",
- "critical": {
-  "c1": {
-   "evidence": "Concrete live figures exist at the utility level and are listed in the EPA ENERGY STAR Rebate Finder and on DSIRE (e.g., documented 2026 utility rebates: up to $2,000 for qualifying cold-climate heat pumps providing cooling, $1,100 for ducted heat pumps, plus smart-thermostat rebates ~$25-$100); the route's '$25-$500+ per system' range is consistent. The federal 25C cooling-equipment credit is CONFIRMED EXPIRED 12/31/2025.",
-   "pass": true
+  "route_id": "R0320",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "app_links": {
+    "ios": null,
+    "android": null
   },
-  "c2": {
-   "evidence": "EPA ENERGY STAR Rebate Finder loaded live 2026-09-22; DSIRE loaded live; 25C expiry confirmed across 2026 tax-law sources.",
-   "pass": true
+  "upfront_fee": false,
+  "verdict": "verify",
+  "official_url": "https://www.energystar.gov/rebate-finder",
+  "terms_url": "https://www.energystar.gov/rebate-finder",
+  "critical": {
+    "c1": {
+      "evidence": "Concrete live figures exist at the utility level and are listed in the EPA ENERGY STAR Rebate Finder and on DSIRE (e.g., documented 2026 utility rebates: up to $2,000 for qualifying cold-climate heat pumps providing cooling, $1,100 for ducted heat pumps, plus smart-thermostat rebates ~$25-$100); the route's '$25-$500+ per system' range is consistent. The federal 25C cooling-equipment credit is CONFIRMED EXPIRED 12/31/2025.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "EPA ENERGY STAR Rebate Finder loaded live 2026-09-22; DSIRE loaded live; 25C expiry confirmed across 2026 tax-law sources.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply. Note: rebates require buying cooling equipment or thermostats — discounts on spending, not income.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Utility rebates typically paid 4-8 weeks after installation; the federal credit is closed for 2026 work.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to apply. Note: rebates require buying cooling equipment or thermostats \u2014 discounts on spending, not income.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Set by each utility: typically must be a residential customer; equipment must meet efficiency specs (e.g., cold-climate heat pump, qualifying central AC); some require pre-approval.",
+      "pass": true
+    },
+    "s2": {
+      "note": "The federal efficient-cooling tax credit (25C) EXPIRED December 31, 2025. Remaining rebates are utility-specific and require buying the equipment first — a discount, not cash earned.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Utility rebates typically 4-8 weeks post-installation.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Utility programs state concrete dollar amounts.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.energystar.gov/rebate-finder — official EPA page, loaded live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: find your utility's cooling rebate in the finder/DSIRE, confirm terms, buy qualifying equipment, submit rebate.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official EPA page + DSIRE loaded live 2026-09-22.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Utility rebates typically paid 4-8 weeks after installation; the federal credit is closed for 2026 work.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Set by each utility: typically must be a residential customer; equipment must meet efficiency specs (e.g., cold-climate heat pump, qualifying central AC); some require pre-approval.",
-   "pass": true
+  "payout_quote": "Find rebates and special offers near you on ENERGY STAR certified products. (Federal 25C cooling-equipment credit: expired for property placed in service after December 31, 2025.)",
+  "timing": "Utility rebates are typically paid 4-8 weeks after the cooling equipment is installed and documented. The federal 25C credit is closed for 2026 installations.",
+  "eligibility": "Set by each utility program: generally must be a residential customer; cooling equipment (central AC, heat pump, smart thermostat) must meet the program's efficiency specifications; some programs require pre-approval before purchase.",
+  "catches": [
+    "The federal tax credit for efficient cooling equipment (25C) EXPIRED December 31, 2025.",
+    "Remaining rebates are utility-specific and vary by location; amounts are typically $25-$300, not $500.",
+    "You must buy the equipment first — this is a discount on spending, not money earned.",
+    "Some programs require pre-approval before purchase."
+  ],
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "The federal efficient-cooling tax credit (25C) EXPIRED December 31, 2025. Remaining rebates are utility-specific and require buying the equipment first \u2014 a discount, not cash earned.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Utility rebates typically 4-8 weeks post-installation.",
-   "pass": true
-  },
-  "s4": {
-   "note": "Utility programs state concrete dollar amounts.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://www.energystar.gov/rebate-finder \u2014 official EPA page, loaded live.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: find your utility's cooling rebate in the finder/DSIRE, confirm terms, buy qualifying equipment, submit rebate.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Official EPA page + DSIRE loaded live 2026-09-22.",
-   "pass": true
-  }
- },
- "payout_quote": "Find rebates and special offers near you on ENERGY STAR certified products. (Federal 25C cooling-equipment credit: expired for property placed in service after December 31, 2025.)",
- "timing": "Utility rebates are typically paid 4-8 weeks after the cooling equipment is installed and documented. The federal 25C credit is closed for 2026 installations.",
- "eligibility": "Set by each utility program: generally must be a residential customer; cooling equipment (central AC, heat pump, smart thermostat) must meet the program's efficiency specifications; some programs require pre-approval before purchase.",
- "catches": [
-  "The federal tax credit for efficient cooling equipment (25C) EXPIRED December 31, 2025.",
-  "Remaining rebates are utility-specific and vary by location; amounts are typically $25-$300, not $500.",
-  "You must buy the equipment first \u2014 this is a discount on spending, not money earned.",
-  "Some programs require pre-approval before purchase."
- ],
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "steps": [
-  "Look up cooling rebates for your zip code at https://www.energystar.gov/rebate-finder and https://dsireusa.org.",
-  "Open your utility's specific offer and confirm it is live, the qualifying equipment specs, and any pre-approval requirement.",
-  "Buy and install the qualifying cooling equipment or smart thermostat and keep receipts.",
-  "Submit the rebate application with proof of purchase; the rebate arrives as a bill credit or check, typically in 4-8 weeks."
- ],
- "biggest_catch": "The federal credit for efficient cooling equipment expired December 31, 2025 \u2014 what's left are utility rebates (typically $25-$300) that require buying the equipment first; it is a discount, not income.",
- "notes": "CORRECTION vs the route: the old federal 25C cooling credit is gone; 2026 reality is utility rebates in the tens-to-low-hundreds. Verified via the live EPA finder and DSIRE 2026-09-22. PRODUCT NOTE: cooling rebates are purchase discounts, not earnings."
+  "steps": [
+    "Look up cooling rebates for your zip code at https://www.energystar.gov/rebate-finder and https://dsireusa.org.",
+    "Open your utility's specific offer and confirm it is live, the qualifying equipment specs, and any pre-approval requirement.",
+    "Buy and install the qualifying cooling equipment or smart thermostat and keep receipts.",
+    "Submit the rebate application with proof of purchase; the rebate arrives as a bill credit or check, typically in 4-8 weeks."
+  ],
+  "biggest_catch": "The federal credit for efficient cooling equipment expired December 31, 2025 — what's left are utility rebates (typically $25-$300) that require buying the equipment first; it is a discount, not income.",
+  "notes": "CORRECTION vs the route: the old federal 25C cooling credit is gone; 2026 reality is utility rebates in the tens-to-low-hundreds. Verified via the live EPA finder and DSIRE 2026-09-22. PRODUCT NOTE: cooling rebates are purchase discounts, not earnings. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)"
 }

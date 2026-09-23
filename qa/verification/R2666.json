@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both $50 e-gift cards are only issued after the referred friend completes 60 days as an NRG customer — and Texas is served by sister company Reliant instead of NRG Home.",
+  "catches": [
+    "The referred friend must remain an NRG customer for their first 60 days; the $50 e-gift cards are issued only after that period.",
+    "Texas customers are served by NRG sister company Reliant (separate program, covered by R0847), not the NRG Home referral program on picknrg.com.",
+    "E-gift cards, not bill credits; usable at retail merchants, not necessarily against the energy bill.",
+    "The page offers no further terms beyond the 60-day requirement and the no-limit statement.",
+    "Savings framing: the $50 e-gift card is a one-time reward tied to switching to an NRG energy plan; not cash income."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url host picknrg.com is NRG's official consumer brand domain (page identifies itself as NRG Home / NRG Energy, Inc.); 'Give $50, get $50' copy is inline on the live homepage.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page fetched live 2026-09-23; referral offer is current on the homepage with a 5-hour-old crawl in the discovery search.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Conditions explicit: both sides get $50 e-gift card after the friend's first 60 days as a customer; no limit. Texas served by Reliant is stated on the same page.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Exact amount ($50 each side), condition (60 days as customer), and no-limit cap are verbatim; nothing requires guessing.",
+      "pass": true
+    }
+  },
+  "eligibility": "NRG Home customer referring friends who sign up for an NRG electricity or natural gas plan and remain customers for 60 days. NRG Home service areas (non-Texas markets; Texas is served by sister company Reliant).",
+  "notes": "Verified 2026-09-23 from NRG's official consumer homepage (picknrg.com). $50 e-gift card to both sides after the referred friend's first 60 days; no limit on referrals. Distinct brand/mechanism vs prior-wave Reliant (R0847) and Direct Energy (R4066) sister-brand routes — this is NRG Home's own consumer-brand program on picknrg.com. Framed as savings tied to planned energy spending, not income.",
+  "numeric_basis": "payout from official homepage ($50 flat e-gift card each side); time: referral link share 5-15 min active",
+  "official_url": "https://picknrg.com/en/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Give $50, get $50 when you refer your friends. Refer a friend to NRG and you both get a $50 e-gift card after their first 60 days of being a customer. There's no limit!",
+  "payout_value_note": "Flat $50 e-gift card per side (savings tied to planned energy spending via NRG plan enrollment, not cash income).",
+  "route_id": "R2666",
+  "standard": {
+    "s1": {
+      "note": "Exact amount ($50 each side), condition (friend's first 60 days as customer), and no-limit statement are quoted verbatim from the official homepage.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing is natural: e-gift card earned through an energy-plan referral; not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps follow the official page: refer a friend to NRG, friend enrolls and stays 60 days, both receive $50 e-gift cards.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: 60-day customer tenure required before payout; Texas is excluded (served by Reliant).",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; NRG charges no enrollment, monthly service, switching, or cancellation fees.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; amounts and conditions are explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against picknrg.com (NRG's own consumer-brand domain). Deduped: no NRG Home/picknrg routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; Reliant (R0847) and Direct Energy (R4066) are distinct sister brands on different domains/programs.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As an NRG Home customer, refer a friend to NRG through the referral flow.",
+    "Your friend enrolls in an NRG electricity or natural gas plan (non-Texas markets).",
+    "Your friend remains an NRG customer for their first 60 days.",
+    "After the 60-day period, you and your friend each receive a $50 e-gift card.",
+    "Repeat with no limit on the number of referrals."
+  ],
+  "terms_url": "https://picknrg.com/en/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 e-gift cards to both sides after the referred friend's first 60 days of being a customer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

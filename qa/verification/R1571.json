@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Samsung trade-in pays as credit toward a Samsung purchase, not cash - and your payout depends on your device's model and condition; you must own the item.",
+  "catches": [
+    "Samsung trade-in pays as credit applied toward a Samsung purchase - not cash.",
+    "Payout depends on the exact device, model, and condition - you must own the device (leased devices are not eligible); the device must power on, have no cracks/liquid damage, and be factory reset.",
+    "If you do not send in the device within 15 days (or it fails eligibility), the applied credit is charged back to your card.",
+    "Eligible models and credit amounts may change at Samsung's sole discretion."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Real trade-in program on provider's own domain: samsung.com/us observed 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Samsung-domain published figure (news.samsung.com, 2026-09-15): 'Trade-in your old phone and get up to $720 in credit for a Samsung Certified Re-Newed phone.' Trade-in value applied as a credit at time of purchase; actual value depends on the device and its condition.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official: free to use; no fee to trade in stated.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Distinct provider x mechanism (manufacturer trade-in); dedupe-check shows no catalog or evidence-file hits for Samsung Trade-In.",
+      "pass": true
+    }
+  },
+  "eligibility": "US; you must own the device (leased devices excluded); device must power on, have functioning display, no cracks/liquid damage, factory reset, locks disabled.",
+  "notes": "Samsung Trade-In: Samsung's own newsroom (news.samsung.com, 2026-09-15) states up to $720 in credit for a Certified Re-Newed phone. Lane B framing: payout varies by item/model/condition; user must own the item; credit toward purchase, not cash.",
+  "numeric_basis": "payout: official samsung.com figure of up to $720 in trade-in credit (Certified Re-Newed offer); credit toward purchase, not cash; time: 15-30 min active per quote/ship/drop-off per Lane B standard.",
+  "official_url": "https://news.samsung.com/us/samsung-galaxy-s26-series-added-certified-re-newed-lineup",
+  "payout_max_usd": 720,
+  "payout_min_usd": 0,
+  "payout_quote": "Customers can receive up to $720 in credit when trading in an eligible phone toward a Certified Re-Newed Galaxy S26 device, although the actual value depends on the device being traded in and its condition. Anticipated trade-in value will be applied as a credit at time of purchase. To be eligible for trade-in, your qualifying device must meet all Trade-In Program eligibility requirements and is owned by you (leased devices are not eligible).",
+  "payout_value_note": "$720 is Samsung's official up-to trade-in credit figure; payout is credit toward a Samsung purchase (not cash), depends on your item/model/condition, and you must own the device.",
+  "route_id": "R1571",
+  "standard": {
+    "s1": {
+      "note": "Concrete trade-in quote-to-credit flow per official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee stated officially.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Payout path (credit applied at time of purchase) documented on official page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Official up-to figure plainly condition-dependent; non-cash form disclosed.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official provider pages observed 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete and actionable.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numeric fields grounded in official published figure; non-cash form explicit.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Select a qualifying Samsung device on samsung.com and choose the trade-in option.",
+    "Answer the condition questions to get an estimated trade-in credit.",
+    "Send in your device within 15 days of receiving the new device.",
+    "Keep the credit applied at purchase once Samsung confirms the device meets eligibility."
+  ],
+  "terms_url": "https://news.samsung.com/us/samsung-galaxy-s26-series-added-certified-re-newed-lineup",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Credit applied at purchase; device must be sent within 15 days; ~15-30 min active time per quote/ship/drop-off.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

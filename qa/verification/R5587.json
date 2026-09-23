@@ -1,0 +1,94 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Balance-tiered: the minimum tier requires parking $30,000 of new-to-Citibank money for 90 days ($1,500 needs $200,000); the 45th-day balance locks in your maximum bonus tier.",
+  "catches": [
+    "Open a new Regular Checking account 4/14/26-10/26/26 and enroll in the bonus offer the same day (apply directly from the offer page).",
+    "Deposit New-to-Citibank Funds within 45 calendar days; the balance on the 45th day determines your maximum bonus: $30,000 minimum for $500, $200,000 for $1,500.",
+    "Maintain the required minimum balance for an additional 45 days from the 46th day (through roughly day 90).",
+    "Withdrawals during the maintenance period are allowed, but at least $30,000 must remain to keep the minimum $500 bonus eligible.",
+    "Bonus is paid to the open Regular Checking account between the 90th and 120th calendar day after account opening, provided the account is kept open and in good standing.",
+    "Balance may be split between the new Checking and a new Citi Savings Account to count toward the minimum.",
+    "New checking customers only.",
+    "No direct deposit required - this is a pure new-money balance bonus.",
+    "Bonus is taxable income (standard bank-bonus tax treatment).",
+    "Fees may reduce earnings; monthly service fees avoidable with $250+ in Enhanced Direct Deposits."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official banking.citi.com tiered Regular Checking offer page fetched live 2026-09-23; verbatim $500/$1,500 tier terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "No minimum opening deposit stated beyond the bonus-qualifying $30,000; upfront_fee=false.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Only new checking customers qualify; one bonus per new account enrollment.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No early-close fee stated; bonus requires the account to remain open and in good standing through payment (days 90-120).",
+      "pass": true
+    }
+  },
+  "eligibility": "New checking customers of Citibank opening a Regular Checking account 4/14/26-10/26/26 and enrolling same day; account subject to approval.",
+  "notes": "VERIFIED 2026-09-23 via the official banking.citi.com tiered checking offer page. No existing Citibank bank-bonus route (R0689/R0690/R0692 are credit-card welcome offers) - distinct lane. Offer ends 10/26/2026 (33 days out; not within 14 days).",
+  "numeric_basis": "payout from official terms ($500/$1,500 tiered); time: online application + funding + balance setup est. 30-60 min active",
+  "official_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm?flowID=MGM&venue=mgm&mgmrefid=1082212619&BT_TX=1&ProspectID=null",
+  "payout_max_usd": 1500,
+  "payout_min_usd": 500,
+  "payout_quote": "New checking customers may earn a cash bonus of $500 or $1,500 after opening a Regular Checking account by 10/26/26 and completing required activities. EARN $500 Minimum Balance: $30,000 OR EARN $1,500 Minimum Balance: $200,000. New customers may earn a cash bonus of $500 or $1,500 after opening a Regular Checking account from 4/14/26 to 10/26/26 and completing required activities. Step 1: Open new account - apply directly from this page... enroll in the bonus offer the same day. Offer valid from 4/14/26 to 10/26/26. Only new checking customers qualify. Step 2: Fund your account - Deposit New-to-Citibank Funds into your checking account within 45 calendar days from account opening. The balance on your 45th day will determine your maximum eligible cash bonus. Step 3: Maintain your balance - Maintain the required minimum balance in your Regular Checking account for an additional 45 days from the 46th day. Your bonus will be paid to your open Regular Checking account between the 90th and 120th calendar day after account opening and completing required activities, provided you keep your account open and in good standing.",
+  "payout_value_note": "Flat cash bonus per tier ($500/$1,500); no conversion.",
+  "route_id": "R5587",
+  "standard": {
+    "s1": {
+      "note": "Steps are concrete and ordered: open Regular Checking via the offer page and enroll same day, fund $30K/$200K new-to-Citi money within 45 days, maintain through day 90.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Payout path explicit: bonus paid to the open Regular Checking account between the 90th and 120th calendar day after opening.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Offer valid through 10/26/2026; 33 days out, not within 14 days of 2026-09-23.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Standard bank-bonus taxation treatment disclosed in catches.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No medical, gambling, crypto, or risk-capital elements; standard bank account bonus.",
+      "pass": true
+    },
+    "s6": {
+      "note": "payout_min=500, max=1500 tiered; time 30-60 min active per bank-signup guide (application, funding, balance setup).",
+      "pass": true
+    },
+    "s7": {
+      "note": "Copy is conditional-only ('may earn', 'Only new checking customers qualify'); no guaranteed-income language.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new Citibank Regular Checking account from the official offer page 4/14/26-10/26/26 and enroll in the bonus offer the same day.",
+    "Within 45 calendar days of opening, deposit New-to-Citibank Funds: at least $30,000 for $500, or at least $200,000 for $1,500 (balance may be split with a new Citi Savings Account).",
+    "Maintain the required minimum balance for an additional 45 days from the 46th day (through roughly day 90).",
+    "Receive the bonus in the open Regular Checking account between the 90th and 120th calendar day after opening."
+  ],
+  "terms_url": "https://banking.citi.com/cbol/OM/checking/tiered/featured-offers/default.htm?flowID=MGM&venue=mgm&mgmrefid=1082212619&BT_TX=1&ProspectID=null",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Online application + funding (30-60 min active); new money deposited within 45 days; balance maintained through day 90; bonus paid days 90-120 (offer ends 10/26/2026).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "may earn a cash bonus",
+    "Opening an account does not guarantee that you meet eligibility requirements",
+    "Fees may reduce earnings"
+  ]
+}

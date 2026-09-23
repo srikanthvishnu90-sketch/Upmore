@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must sustain two of three engagement behaviors (min $500 monthly direct deposit, eStatements, 10 transactions/month) for a full 90-day engagement period - and neither side is paid until that period completes, so the earliest payout is ~4 months out.",
+  "catches": [
+    "Referrer must be in good standing at the time of referral; both parties 18+.",
+    "Friend must: be a new member (not a Seattle CU member in the last 12 months); open a checking account with promo code REFER; engage in at least 2 of 3 within the 90-day engagement period: (1) min $500 monthly direct deposit, (2) eStatements, (3) 10 transactions/month.",
+    "$100 Referral Bonus to the referrer and $100 Welcome Bonus to the friend once the 90-day engagement period completes.",
+    "Bonuses posted within 30 business days of completing the 90-day engagement period; adding joint owners does not qualify.",
+    "$600+ in bonuses in a calendar year reported on Form 1099-MISC.",
+    "No referral-count cap stated; limited time offer; Seattle CU can cancel/amend at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Seattle CU page (seattlecu.com/refer): 'Enjoy $100-both of you!' and disclosure: 'For each qualifying Member Referral, the Referring Member will receive a $100 \"Referral Bonus\", and the new Referred Member will receive a $100 \"Welcome Bonus.\"'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official seattlecu.com domain, fetched live 2026-09-23; limited time offer, terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no seattlecu.com route; catalog has no Seattle CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Seattle CU member in good standing 18+. Friend: 18+, new member (none in last 12 months), full member/main signer.",
+  "notes": "Verified 2026-09-23. Seattle Credit Union. Referrer earns $100 per qualifying referral; no referral cap stated. Friend must meet 2 of 3 engagement qualifiers across a 90-day engagement period.",
+  "numeric_basis": "payout from official seattlecu.com terms ($100 Referral Bonus per qualifying referral; no cap); time: share referral + promo code est. 5-15 min active",
+  "official_url": "https://seattlecu.com/refer",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Enjoy $100-both of you! ... For each qualifying Member Referral, the Referring Member will receive a $100 \"Referral Bonus\", and the new Referred Member will receive a $100 \"Welcome Bonus.\"",
+  "payout_value_note": "$100 Referral Bonus to the referring member per qualifying referral; no referral cap stated.",
+  "route_id": "R4795",
+  "standard": {
+    "s1": {
+      "note": "Terms live on seattlecu.com, fetched 2026-09-23; limited time, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer in good standing 18+; friend 18+, new member (none in last 12 months), full member/main signer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking with promo code REFER + 2 of 3 (min $500 monthly DD, eStatements, 10 transactions/month) within 90-day engagement period",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: Referral Bonus posted within 30 business days of completing the 90-day engagement period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses totaling $600+ in a calendar year reported on Form 1099-MISC",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your Seattle CU referral with a friend and give them the promo code REFER.",
+    "Friend joins as a new member and opens a checking account using promo code REFER.",
+    "Friend meets at least 2 of 3 engagement qualifiers (min $500 monthly direct deposit, eStatements, 10 transactions/month) across the 90-day engagement period.",
+    "You receive a $100 Referral Bonus in your savings within 30 business days of the period completing."
+  ],
+  "terms_url": "https://seattlecu.com/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 Referral Bonus posted to the referring member's savings within 30 business days of completing the 90-day engagement period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

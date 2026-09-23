@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open their first eligible AUB checking account within 90 days of the referral email/text AND land $500+ in qualifying direct deposits within 60 days of opening - wire transfers, P2P, and transfers between your own accounts don't count.",
+  "catches": [
+    "Referrer: 18+ with an active AUB personal checking account; register at the AUB Referral Center and submit valid email + phone for yourself and each referral.",
+    "Referrer earns a $100 cash bonus for each Individual or Business referred who fulfills the requirements.",
+    "Cap: $500 per calendar year per referrer; only the first referrer of each person/business is eligible.",
+    "Friend (individual): open first new eligible personal checking within 90 days of the referral email/text; receive qualifying direct deposits totaling $500+ within 60 days of account opening; must not have owned/co-owned an AUB personal checking in the last 12 months.",
+    "Friend (business): open first new eligible business checking and maintain $1,000+ average balance over the first two statement periods.",
+    "Bonus deposited into the AUB checking account 4-6 weeks after all conditions are met; account must be open and in good standing at payout; valid US Taxpayer ID required.",
+    "Bonus reported to the IRS as interest on Form 1099-INT.",
+    "Plus a $5 Starbucks Card for every 10 referrals (limit 5/year) - a separate kicker.",
+    "AUB can revoke, restrict, or change the offer at any time; disclosure effective 8/03/2026."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official AUB Refer-A-Friend Bonus disclosure (content.atlanticunionbank.com, effective 8/03/2026): '$100 Referrer Bonus Offer. The person making the referral (the Referrer) will earn a $100 cash bonus for each Individual or Business referred to Atlantic Union Bank (AUB) that fulfills the requirements defined below.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official disclosure PDF on Atlantic Union Bank's content domain, effective 8/03/2026, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens an eligible checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no atlanticunionbank.com route; catalog has no Atlantic Union Bank entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 18+ with an active AUB personal checking account. Friend: no AUB personal/business checking ownership in the last 12 months.",
+  "notes": "Verified 2026-09-23. Atlantic Union Bank. Referrer earns $100 cash per qualifying referral; cap $500/calendar year. Friend must open first eligible checking within 90 days and receive $500+ qualifying direct deposits within 60 days.",
+  "numeric_basis": "payout from official AUB disclosure ($100 cash per referral; cap $500/yr); time: register + submit referrals est. 5-15 min active",
+  "official_url": "https://content.atlanticunionbank.com/getmedia/03475bdf-dcd5-4a87-be54-b6b1fff6b25c/Refer-a-Friend-Disclosure.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "$100 Referrer Bonus Offer. The person making the referral (the Referrer) will earn a $100 cash bonus for each Individual or Business referred to Atlantic Union Bank (AUB) that fulfills the requirements defined below. ... A Referrer may only earn up to $500 per calendar year.",
+  "payout_value_note": "$100 cash bonus to the referrer per qualifying referral; cap $500/calendar year. (Separate $5 Starbucks card kicker per 10 referrals, max 5/year.)",
+  "route_id": "R4798",
+  "standard": {
+    "s1": {
+      "note": "Disclosure effective 8/03/2026 on Atlantic Union Bank's domain, fetched 2026-09-23; revocable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer 18+ with active AUB personal checking; friend no AUB checking in last 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: first eligible checking within 90 days + $500+ qualifying direct deposits within 60 days (or $1,000 avg balance for business)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus deposited 4-6 weeks after all conditions met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus reported to IRS as interest on Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register at the AUB Referral Center (AtlanticUnionBank.RoyalReferralCenter.com) and accept the terms.",
+    "Submit your referral's email and phone number; they receive the referral email/text.",
+    "Friend opens their first eligible AUB checking account within 90 days and receives $500+ in qualifying direct deposits within 60 days of opening.",
+    "Your $100 cash bonus is deposited into your AUB checking account 4-6 weeks later (up to $500/year)."
+  ],
+  "terms_url": "https://content.atlanticunionbank.com/getmedia/03475bdf-dcd5-4a87-be54-b6b1fff6b25c/Refer-a-Friend-Disclosure.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus deposited 4-6 weeks after all conditions are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

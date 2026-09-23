@@ -1,0 +1,91 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both sides get plan-dependent credits, not cash \u2014 the friend saves at checkout, but your credit only arrives after their plan renews once, and you must click the claim link in the notification email or the credit never issues.",
+  "catches": [
+    "Discount/credit only \u2014 friend saves on their first order, referrer gets account credit; neither is cash",
+    "Referrer must click the claim link in the notification email or no credit is issued; allow up to 6 weeks for the credit to apply",
+    "You need a valid monthly plan for at least 30 days with auto-pay enabled to generate a code",
+    "Friend must activate a NEW line and port in a number from another carrier; friend's plan must renew at least once",
+    "Reward value depends on the friend's plan ($5/$10/$15 tiers for monthly plans; up to $25 for annual plans/devices)",
+    "Code redeemable at most 5 times per 30-day period; $500/year cap per referrer",
+    "Code cannot be combined with other promotional offers; EBB/ACP plan accounts cannot earn referral credit"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Red Pocket referral page on redpocket.com/refer (crawled 21 hours ago) with tiered reward table; full terms in VII. Refer-a-Friend Program at my.redpocket.com/terms_and_conditions; how-to article on help.redpocket.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral page crawled 21 hours ago; help article crawled 19 hours ago \u2014 live and current.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact tiered amounts verbatim: Essentials $10/mo plan \u2192 $5.00; Plus $20/mo \u2192 $10.00; Unlimited Premium $30/mo \u2192 $15.00; friend discount and referrer credit 'up to $25 depending on the plan or device purchased'.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "30-day plan + auto-pay requirement to generate a code, port-in rule, 30-day renewal rule, claim-by-email rule, 5 redemptions/30 days, $500/year cap all stated officially.",
+      "pass": true
+    }
+  },
+  "eligibility": "Active Red Pocket Mobile subscriber on a valid monthly plan for at least 30 days with auto-pay enabled; friend must be a new line porting in a number from another carrier.",
+  "notes": "Verified 2026-09-23 against redpocket.com/refer, help.redpocket.com, and my.redpocket.com (official domains). Deduped: no Red Pocket routes in catalog, evidence files, or rejects-g60. Reward tiers are per-side (friend gets the discount at checkout; referrer gets the credit after the friend's renewal).",
+  "numeric_basis": "payout from official tiered terms ($5/$10/$15 by monthly plan, up to $25 for annual plans/devices, per side); time: referral share 5-15 min active",
+  "official_url": "https://www.redpocket.com/refer",
+  "payout_max_usd": 25,
+  "payout_min_usd": 5,
+  "payout_quote": "They choose a plan. You both earn a reward. Reward value is based on the plan selected by the referred party. Essentials, 3GB Data, $10/month \u2192 $5.00 Reward; Plus, 20GB Data, $20/month \u2192 $10.00 Reward; Unlimited Premium, $30/month \u2192 $15.00 Reward. The code will automatically provide them with a discount of up to $25 depending on the plan or device purchased. After your recipient activates service, and has a successful 30-day renewal, you will receive a credit of up to $25.",
+  "payout_value_note": "Plan-dependent reward to both sides: $5/$10/$15 for monthly plans ($10/$20/$30), up to $25 for annual plans or device purchases \u2014 friend's as checkout discount, referrer's as account credit; offsets Red Pocket service, not cash.",
+  "route_id": "R6356",
+  "standard": {
+    "s1": {
+      "note": "Exact tiered amounts stated verbatim on the official page ($5/$10/$15; up to $25 for annual/device).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: discounts/credits offset planned Red Pocket spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (generate code after 30 days + auto-pay, share, friend checks out with code and ports number, renewal, claim via email).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: credits not cash, renewal + email-claim required.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own Red Pocket plan.",
+      "pass": true
+    },
+    "s6": {
+      "note": "'Up to' qualifies the annual-plan/device reward; monthly-plan tiers are exact. Flagged in catches.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against redpocket.com, help.redpocket.com, and my.redpocket.com (provider's own domains). Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Keep a valid Red Pocket monthly plan for at least 30 days with auto-pay enabled",
+    "Log in and generate your referral code at redpocket.com/user/referrer",
+    "Share the code with friends and family",
+    "Friend places an order at redpocket.com/plans with your code at checkout (gets up to $25 discount depending on plan)",
+    "Friend activates the new line and ports in their number from another carrier",
+    "After the friend's plan renews once, click the claim link in the notification email to have the credit applied (up to 6 weeks)"
+  ],
+  "terms_url": "https://my.redpocket.com/terms_and_conditions",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Friend's plan must renew at least once (30 days); referrer then claims via email and the credit is applied within about 6 weeks.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "up to"
+  ]
+}

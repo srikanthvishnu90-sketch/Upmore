@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The extra $100 only lands if your friend keeps an ACTIVE Simply Checking account for 6 months: S1 savings with $5+, recurring monthly direct deposit of $500+, eStatements, monthly eBanking/mBanking use, and 15+ debit card purchases per month. Otherwise you earn just the initial $25.",
+  "catches": [
+    "You must be a St. Paul Federal Credit Union member to refer; the friend must name you as their referrer at account opening.",
+    "Friend must open at least an S1 Savings account ($5 minimum) and an S10 Simply Checking account ($50 minimum) within 60 days of the referral.",
+    "Initial $25 cash reward credited to both S1 Savings accounts within 30 days of account opening (accounts must be open).",
+    "Additional $100 each only if the friend's account is 'Active' after 6 months: S1 savings with $5+ balance, recurring monthly direct deposit of at least $500, eStatements enrolled, eBanking/mBanking used at least once per month, debit card used 15+ times per month.",
+    "Referred friend must be at least 18; all regular account opening procedures and membership eligibility apply.",
+    "Referral bonus funds reported as dividends on IRS Form 1099-INT; you are responsible for taxes.",
+    "No limit on the number of referrals per calendar year; offer may be cancelled at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official St. Paul FCU page (stpaulfcu.org): 'As the referring member you'll receive a cash reward of $25 each time a referred friend opens a new account' and 'After 6 months both you and your friend can earn an additional cash reward of $100 if your referred friend meets these minimum qualifications for our Simply Checking program.' No limit on number of referrals.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official St. Paul FCU production page on stpaulfcu.org, fetched live 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no stpaulfcu.org route and no St. Paul Federal Credit Union entry; catalog has no St. Paul FCU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: St. Paul Federal Credit Union member. Friend: 18+, names the referrer at account opening, meets CU membership/account opening qualifications.",
+  "notes": "Verified 2026-09-23. St. Paul Federal Credit Union (Minnesota). Referrer earns $25 cash per referral when the friend opens S1 savings + S10 Simply Checking within 60 days, plus an additional $100 if the friend keeps the account active (DD $500+/mo, eStatements, monthly eBanking, 15+ debit purchases/mo) for 6 months. No referral cap.",
+  "numeric_basis": "payout from official St. Paul FCU terms ($25 guaranteed per referral + $100 conditional on 6-month active account = $25-$125 range); time: fill in referral form est. 5-15 min active",
+  "official_url": "https://stpaulfcu.org/refer-a-friend-and-earn-cash/",
+  "payout_max_usd": 125,
+  "payout_min_usd": 25,
+  "payout_quote": "As the referring member you'll receive a cash reward of $25 each time a referred friend opens a new account. After 6 months both you and your friend can earn an additional cash reward of $100 if your referred friend meets these minimum qualifications for our Simply Checking program.",
+  "payout_value_note": "$25 cash per referral guaranteed when friend opens accounts within 60 days; up to $125 total ($25 + $100) if the friend's account stays active for 6 months per the stated criteria.",
+  "route_id": "R5665",
+  "standard": {
+    "s1": {
+      "note": "Official St. Paul FCU page live on stpaulfcu.org, fetched 2026-09-23; no fixed expiry, cancellable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer must be a member; friend 18+, names referrer at opening, meets membership qualifications",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: S1 savings ($5 min) + S10 Simply Checking ($50 min) within 60 days; active-account criteria for the extra $100 spelled out",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $25 within 30 days of account opening; extra $100 after 6 months if active; both bonuses require open accounts",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: referral bonuses reported as dividends on IRS Form 1099-INT, recipient responsible",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill in the referral form on stpaulfcu.org with your friend's information and submit.",
+    "Friend opens an S1 Savings account and an S10 Simply Checking account within 60 days, naming you as their referrer.",
+    "You receive a $25 cash reward credited to your S1 Savings within 30 days of the account opening.",
+    "If the friend's account meets the active-account criteria after 6 months, you receive an additional $100 cash reward."
+  ],
+  "terms_url": "https://stpaulfcu.org/refer-a-friend-and-earn-cash/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Initial $25 within 30 days of account opening; additional $100 after 6 months if the friend's account is active; both require open accounts.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

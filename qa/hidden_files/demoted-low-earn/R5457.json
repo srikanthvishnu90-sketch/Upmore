@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only get paid when you win bids — and GreenPal takes 5% plus Stripe processing from every completed job.",
+  "catches": [
+    "GreenPal takes a 5% platform fee on every completed job; Stripe processing fees apply too.",
+    "You bid against other local pros — winning work is competitive, not guaranteed.",
+    "Vendor requirements: 18+, valid driver's license, SSN, and bank account; appropriate skills/licenses.",
+    "Pay is per job and set by your bid — seasonal demand swings affect volume."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "GreenPal's official guide states: 'sign up as a vendor for GreenPal, and we will get you free lawn care leads.' The official How It Works page explains the flow: homeowners list jobs, local pros bid, the customer picks, the vendor completes the job and uploads a photo to trigger billing — a live, provider-owned deal channel across 48 states.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed pay — vendors set their own bid prices; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: sign up as a vendor, bid on local jobs, get chosen, complete the job, upload completion photo, get paid via direct deposit.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official pages: 'we will get you free lawn care leads' — vendor signup carries no upfront fee; costs are the 5% per-job platform fee plus Stripe processing.",
+      "pass": true
+    }
+  },
+  "eligibility": "Adults 18+ with lawn-care skills and equipment, valid driver's license, SSN, and bank account.",
+  "notes": "Scenario: local services (lawn care). GreenPal connects lawn-care vendors with homeowners: free leads, you set your bid prices, the customer picks, and you get paid via direct deposit after uploading a completion photo. GreenPal takes a 5% platform fee per completed job plus Stripe processing. Winning bids is competitive — income is variable, never guaranteed.",
+  "numeric_basis": "payout: vendors set their own bid prices; GreenPal takes 5% per completed job. time: vendor signup + bidding on first local jobs, est. 30-60 min active (excludes the yard work itself).",
+  "official_url": "https://www.yourgreenpal.com/how-it-works",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "sign up as a vendor for GreenPal, and we will get you free lawn care leads.",
+  "payout_value_note": "Vendors set their own bid prices — no fixed pay; GreenPal takes a 5% platform fee on completed jobs. Variable.",
+  "route_id": "R5457",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: 18+ with lawn-care skills/equipment, driver's license, SSN, bank account.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as self-set bid prices; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover the 5% fee, bid competition, vendor requirements, and seasonality.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: GreenPal absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json (LawnStarter R5435 is a separate platform).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official pages captured 2026-09-23 (yourgreenpal.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: homeowners list jobs continuously; bidding and completion per job.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up as a vendor on GreenPal (free lawn-care leads).",
+    "Complete the vendor profile with your business details and service photos.",
+    "Bid on local jobs posted by homeowners in your area.",
+    "Get chosen, complete the job, upload a completion photo, and receive payment via direct deposit (minus the 5% platform fee and Stripe processing)."
+  ],
+  "terms_url": "https://www.yourgreenpal.com/how-it-works",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Homeowners post jobs continuously; vendors bid and complete work per job.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

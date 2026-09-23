@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must deposit $750 within 30 days and keep the checking account open at least 6 months (early closure lets Vantage West debit the bonus back), so the $50 only sticks if the friend funds and holds the account - the referrer has no control over either.",
+  "catches": [
+    "Friend must be a new member who has not been a primary member in the last 6 months.",
+    "Friend must open a new Essential Checking account, deposit $750 within 30 days of opening, and make one debit-card transaction within 60 days.",
+    "The Refer a Friend form must be submitted at account opening or within the first 60 days.",
+    "The friend's checking account must remain open at least 6 months; if closed earlier the bonus may be debited back.",
+    "Limit one offer per new primary member and account; cannot be combined with any other bonus offer associated with opening a checking account.",
+    "Employees and volunteers are not eligible.",
+    "The $50 bonus is subject to IRS reporting."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Vantage West page (vantagewest.org/refer-a-friend/): 'Gift your friend $50, and get $50 for yourself.' 'you can refer as many friends as you want, and earn $50 every time.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Vantage West Credit Union refer-a-friend page on vantagewest.org, fetched live 2026-09-23; page crawl dated ~17 days ago, no end date stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Vantage West': 0 catalog hits, 0 evidence-file hits; no vantagewest.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Vantage West Credit Union member who submits the Refer a Friend form in Online Banking/Mobile App Form Center. Friend: new primary member (not a primary member in the last 6 months), opens a new Essential Checking account, deposits $750 within 30 days of opening, and makes one debit-card transaction within 60 days.",
+  "notes": "Verified 2026-09-23. Vantage West Credit Union (Arizona). Referrer earns $50 per qualifying referral (friend also gets $50). No annual cap stated - refer as many as you want. Bonus deposited to the referrer's share account within 7 business days after the friend meets all requirements.",
+  "numeric_basis": "payout from official Vantage West terms ($50 to the referrer per qualifying referral); time: share referral form/link est. 5-15 min active",
+  "official_url": "https://vantagewest.org/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Gift your friend $50, and get $50 for yourself. ... You'll each get $50 once your friend or family member opens any qualifying checking account with us and complete both of the following: Deposit $750 or more within 30 days of opening a checking account; Make one debit transaction within 60 days of account opening.",
+  "payout_value_note": "$50 cash to the referrer per qualifying referral (friend also gets $50); no annual cap stated.",
+  "route_id": "R5685",
+  "standard": {
+    "s1": {
+      "note": "Official Vantage West Credit Union page live on vantagewest.org, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a Vantage West member submitting the Refer a Friend form; friend must be a new primary member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open Essential Checking, deposit $750 within 30 days, one debit-card transaction within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 deposited to referrer's share account within 7 business days of the friend meeting all requirements; account must stay open 6 months",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: page states the $50 bonus is subject to IRS reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to Vantage West Online Banking or the Mobile App and submit the Refer a Friend form in the Form Center.",
+    "Friend opens a new Essential Checking account online or in branch (must be a new member, not a primary member in the last 6 months).",
+    "Friend deposits $750 or more within 30 days of account opening.",
+    "Friend makes one debit-card transaction within 60 days of account opening."
+  ],
+  "terms_url": "https://vantagewest.org/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited to the referrer's share account within 7 business days after the friend meets all requirements (deposit $750 within 30 days, one debit transaction within 60 days); friend's account must stay open at least 6 months.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

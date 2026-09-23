@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The official page gives only the headline — $25 gift card for both parties when your friend opens a checking account. It states no referral cap, no payout timing, no tax treatment, and the actual referral code lives on a third-party site, so you won't know the full rules until you start the process.",
+  "catches": [
+    "Friend must open a checking account for the referrer to earn the $25 gift card.",
+    "Referral codes are generated and shared through a third-party site (socureferralrewards.org); the CU's official page only carries the program headline.",
+    "No stated limit on number of referrals, no stated payout timing, no stated tax treatment on the fetched official page.",
+    "No 1099/tax disclosure on the fetched official page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Refer-A-Friend promotion page on socu.org, the official domain of Streator Onized Credit Union (SOCU).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page states 'Refer a friend, and when they open a checking account, we'll thank both of you with a $25 gift card!' and 'Earn a $25 Gift Card When They Open a Checking Account' — concrete per-referral payout to the referrer.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Friend requirement stated: open a checking account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; the personal referral code is generated free.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Streator Onized Credit Union (SOCU) member who can generate a personal referral code. Referred friend must be eligible to open a SOCU checking account.",
+  "notes": "Verified 2026-09-23 from SOCU's official Refer-A-Friend promotion page. dedupe-check 'Streator Onized' clean. The official page is a headline-level promo (no full terms PDF found on-domain); the referral mechanics run on the third-party site linked from the page. Caveats (no cap, no timing, no tax disclosure stated) are captured in catches/biggest_catch per the schema's honesty rules.",
+  "numeric_basis": "payout from official terms ($25 gift card per friend who opens a checking account); time: get code and share with friend est. 5-15 min active",
+  "official_url": "https://socu.org/promo/invitation-checking",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer a friend, and when they open a checking account, we'll thank both of you with a $25 gift card!",
+  "payout_value_note": "$25 gift card to the referrer per friend who opens a checking account; no stated referral cap.",
+  "route_id": "R4298",
+  "standard": {
+    "s1": {
+      "note": "Refer-a-friend is a distinct mechanism from SOCU's other promotions.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No existing SOCU/Streator Onized route in catalog or evidence files.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Page live on official domain as of 2026-09-23; no stated expiration.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Framed as conditional: payout only when the friend opens a checking account.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No 1099 disclosure on the fetched official page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No cap stated on the official page.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Personal code shared with a friend; no app required.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Get your personal referral code via the link on SOCU's Refer-A-Friend page.",
+    "Share your code with a friend.",
+    "Your friend opens a SOCU checking account using your referral code.",
+    "You earn a $25 gift card (your friend also receives a $25 gift card)."
+  ],
+  "terms_url": "https://socu.org/promo/invitation-checking",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Not stated on the fetched official page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

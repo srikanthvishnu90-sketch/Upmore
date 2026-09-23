@@ -1,0 +1,83 @@
+{
+  "route_id": "R1620",
+  "verdict": "verify",
+  "official_url": "https://www.mass.gov/deposit-bottle-can-recycling",
+  "terms_url": "https://www.mass.gov/doc/guide-to-the-1983-bottle-bill-for-consumers/download",
+  "payout_quote": "There is a five cent deposit on carbonated soft drink, beer, malt beverage, and sparkling water containers sold in Massachusetts. / Under the \"Bottle Bill,\" retailers are required to redeem containers at full deposit value, while redemption centers may deduct processing fees from refunds.",
+  "steps": [
+    "Buy eligible beverages in Massachusetts (5¢ deposit at checkout)",
+    "Keep clean, empty deposit bottles/cans with deposit labels",
+    "Return to a retailer that sells them (redeems at full value) or a redemption center (may deduct processing fees)",
+    "Receive the 5¢-per-container refund"
+  ],
+  "catches": [
+    "This returns YOUR OWN deposit money paid at purchase — it is recovering your own money, not new income.",
+    "Only containers bought in-state with the correct deposit label are redeemable; out-of-state containers are ineligible and redeeming them is fraud.",
+    "Redemption centers (not retailers) may legally deduct processing fees from your refund; only carbonated beverages are covered — water, juice, wine are excluded."
+  ],
+  "biggest_catch": "Returns your own 5¢ deposit — you paid it at purchase. This is deposit recovery, not income.",
+  "eligibility": "Anyone who purchased deposit containers in Massachusetts.",
+  "timing": "Refund paid at return.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Massachusetts Department of Environmental Protection; mass.gov official page."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "MassDEP: five cent deposit; retailers required to redeem at full deposit value; redemption centers may deduct processing fees."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to redeem; deposit already paid at purchase."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "5¢ per container; retailers pay full value, centers may deduct fees."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Massachusetts-purchased carbonated beverage containers with deposit labels."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Cash refund per container."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid at return."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat 5¢ per container stated."
+    },
+    "s5": {
+      "pass": true,
+      "note": "mass.gov — official Commonwealth of Massachusetts page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete: buy, save, return to retailer/center, get refund."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official state page confirmed 2026-09-23."
+    }
+  },
+  "notes": "MA covers only carbonated beverages — narrower than most bottle-bill states; fraud crackdowns target out-of-state redemptions.",
+  "payout_min_usd": 0.05,
+  "payout_max_usd": 0.05,
+  "payout_value_note": "Flat official 5¢ per container (301 CMR 4.04: refund value not less than 5¢).",
+  "time_min_minutes": 20,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from official MassDEP terms (5¢/container); time: collecting empties + return trip est. 20–60 min active."
+}

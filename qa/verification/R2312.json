@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Account must stay in good standing for 90 calendar days and the bonus does not post until ~100 days after opening (within 10 days after the 90-day mark). The $400 also requires an ongoing recurring electronic deposit (payroll/government benefits) plus online banking and e-statement enrollment.",
+  "catches": [
+    "Bonus offer expires 11/30/26; account must be opened by that date.",
+    "To qualify: open a new FirstLink Gold Checking account, set up a recurring electronic deposit (such as payroll or government benefits), and enroll in online banking and electronic statements.",
+    "Account must be in good standing for 90 calendar days; if requirements are met, the $400 bonus is deposited to the new account within 10 days after the 90 days.",
+    "One bonus per household. Limited to new money not currently held at First US Bank.",
+    "Employees of First US Bank are ineligible.",
+    "Minimum deposit required to open an account is $100.",
+    "$7.50 monthly maintenance fee: $4.50 waived if the balance does not fall below $500 any day of the statement cycle; $3.00 waived with electronic statements (so $0 fee with both e-statements and a $500+ balance). Fees could reduce earnings.",
+    "Official page does not state a 1099/tax-reporting disclosure; the bonus is taxable income under standard IRS treatment of bank bonuses.",
+    "FirstLink Gold's 2.27% APY tier requires meeting monthly qualifications (e-statements + 9 debit transactions + one direct deposit/ACH debit, or $50k+ in CDs, or $20k+ in loans); otherwise the balance earns 0.05% APY."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "First US Bank (fusb.com) — Member FDIC community bank; official bonus page https://www.fusb.com/checking-bonus fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: '$400 Bonus** when you open a new FirstLink Gold Checking account with as little as $100' plus footnotes: recurring electronic deposit + online banking/e-statement enrollment, 90 days good standing, bonus within 10 days after, one per household, new money only, employees ineligible.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee to apply; $100 minimum opening deposit required. $7.50 monthly fee is waivable to $0 with e-statements + $500 minimum balance — fees, not an upfront application fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: 'after 90 days of good standing, if requirements are met, bonus will be deposited to new account within 10 days.' Offer expires 11/30/26.",
+      "pass": true
+    }
+  },
+  "eligibility": "New FirstLink Gold Checking customers; one bonus per household; new money not currently held at First US Bank; employees ineligible.",
+  "notes": "Verified against the official First US Bank checking bonus page (fusb.com/checking-bonus) on 2026-09-23 (UTC). Dedupe checked against qa/existing-providers.txt, dedupe-check.py, and qa/verification glob — no prior First US Bank route exists. No stated geographic eligibility on the official page; First US Bank is an Alabama community bank (branches in the Birmingham area). App links left null rather than guessed.",
+  "official_url": "https://www.fusb.com/checking-bonus",
+  "payout_max_usd": 400.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "Bonus offer expires 11/30/26. To qualify for the $400 bonus, you must open a new FirstLink Gold account, set up a recurring electronic deposit (such as payroll or government benefits) into the account, and enroll in online banking and electronic statements. Account must be in good standing for 90 calendar days; after 90 days of good standing, if requirements are met, bonus will be deposited to new account within 10 days. One bonus per household. Limited to new money not currently held at First US Bank. Employees of First US Bank are ineligible.",
+  "payout_value_note": "$400 flat bonus deposited to the new checking account",
+  "route_id": "R2312",
+  "standard": {
+    "s1": {
+      "note": "New FirstLink Gold Checking customer; one bonus per household; new money only; employees ineligible. No geographic restriction stated on the official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Open FirstLink Gold with $100+; set up recurring electronic deposit; enroll in online banking and e-statements.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Account in good standing 90 calendar days; bonus deposited within 10 days after the 90 days (~100 days after opening).",
+      "pass": true
+    },
+    "s4": {
+      "note": "$400 flat; expiry 11/30/26 stated; payout timing stated as within 10 days after 90 days of good standing.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.fusb.com/checking-bonus — official First US Bank bonus page, fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: open account, set up recurring electronic deposit, enroll in online banking + e-statements, keep in good standing 90 days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official First US Bank page fetched 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new FirstLink Gold Checking account (minimum $100 opening deposit) before the bonus offer expires on 11/30/26.",
+    "Set up a recurring electronic deposit (such as payroll or government benefits) into the new account.",
+    "Enroll in online banking and electronic statements.",
+    "Keep the account in good standing for 90 calendar days. If all requirements are met, the $400 bonus is deposited to the new account within 10 days after the 90-day period (~100 days after opening)."
+  ],
+  "terms_url": "https://www.fusb.com/checking-bonus",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Bonus deposited within 10 days after 90 calendar days of good standing (~100 days after account opening); offer expires 11/30/26.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms ($400 flat bonus); time: online application + recurring direct-deposit setup + online banking/e-statement enrollment est. 30–60 min active"
+}

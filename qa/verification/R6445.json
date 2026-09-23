@@ -1,0 +1,87 @@
+{
+ "route_id": "R6445",
+ "verdict": "verify",
+ "official_url": "https://treasury.tn.gov/Explore-Treasury/Communications/Press-Room/big-boost-for-college-savings-eligible-tennessee-families-can-get-an-extra-1500-through-tips-4-to-1-match",
+ "terms_url": "http://treasury.tn.gov/Portals/0/Documents/TIPS/TIPSProgramDescription.pdf?ver=aFJ2ngjwyhzpQeZZZlY8vg%3D%3D",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "For every dollar you deposit to the TNStars account by June 30 of the qualifying period, the State will match it with $4 - up to $500 per child, per year, with a lifetime maximum match of $1,500.",
+ "steps": [
+  "Check eligibility at Treasury.TN.gov/TIPS (Tennessee resident, child 14 or younger, household income limits).",
+  "Complete the TIPS Program Application during the qualifying period (applications accepted through June 30, 2026).",
+  "Once approved, open a TNStars account for each child (as little as $25 to start).",
+  "Deposit to the TNStars account by June 30 of the qualifying period; the state matches $4 for every $1 deposited."
+ ],
+ "catches": [
+  "Tennessee residents only; the child must be 14 or younger; household income limits apply (reference-guide example: a family of 4 earning under $80,375 can qualify).",
+  "4-to-1 on YOUR deposits: deposit $25, get $100; deposit $125, get the $500 yearly max; deposit $0, get $0.",
+  "Applications and qualifying deposits for the current period close June 30, 2026.",
+  "$500 per child per year and a $1,500 lifetime maximum match per child.",
+  "Standard 529 risk: non-qualified withdrawals face federal income tax on earnings plus a 10% federal penalty - consult a tax advisor."
+ ],
+ "biggest_catch": "Income-capped and age-capped (child 14 or younger): the 4-to-1 match applies only to your own deposits - up to $125 per child per year for the $500 match - with a $1,500 lifetime cap per child.",
+ "eligibility": "Tennessee resident applicant with a child age 14 or younger meeting TIPS household income requirements.",
+ "timing": "Current qualifying period: applications and qualifying deposits through June 30, 2026; match on deposits made August 1-June 30 of the qualifying period.",
+ "weasel_words": [
+  "may be eligible"
+ ],
+ "payout_min_usd": 100,
+ "payout_max_usd": 500,
+ "payout_value_note": "4-to-1 on own deposits; $25 min deposit earns $100; $500/yr and $1,500 lifetime max per child.",
+ "time_min_minutes": 20,
+ "time_max_minutes": 30,
+ "numeric_basis": "payout from official TN Treasury terms (4-to-1, up to $500/yr); time: eligibility check + TIPS application + TNStars account opening, est. 20-30 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "treasury.tn.gov is the official Tennessee Department of Treasury site; TIPS terms fetched live from the Treasury press release 2026-09-23 (UTC)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official Treasury release: 'For every dollar you deposit to the TNStars account by June 30 of the qualifying period, the State will match it with $4 - up to $500 per child, per year, with a lifetime maximum match of $1,500.'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No application fee; the match rides on the participant's own TNStars deposits (account opens with as little as $25)."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Treasury release dated October 2025 states TIPS 'is accepting applications for the current qualifying period through June 30, 2026' - current cycle."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "4-to-1 state matching grant; no Tennessee 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: check eligibility, submit TIPS application, open TNStars account, deposit by June 30 of the qualifying period."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Deadlines explicit: applications and qualifying deposits through June 30, 2026."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include residency, age-14 cap, income limits, own-deposit requirement, yearly/lifetime caps, and non-qualified-withdrawal tax plus 10% federal penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; the match rides on ordinary 529 deposits."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on treasury.tn.gov; no invitation required, Tennessee residency and income are the gates."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no Tennessee/TNStars/TIPS route in catalog."
+  }
+ },
+ "notes": "Verified against the official Tennessee Treasury press release 2026-09-23 (UTC). Framed as a savings boost on planned college savings, not income."
+}

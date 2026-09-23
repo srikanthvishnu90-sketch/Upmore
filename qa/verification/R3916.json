@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete a $400/month direct deposit within 60 days, and the reward is deposited only to the referrer's savings account.",
+  "catches": [
+    "Referral reward of $100 paid to the member's Prestige Community Credit Union savings account when the friend opens a new Rewards or Payback Checking account with a minimum $400/month direct deposit within 60 days.",
+    "Additional $100 loan reward if the friend opens a new Prestige loan within 60 days of beginning membership; minimum loan $10,000.",
+    "All parties must be at least 18; member must be in good standing; employees, officials, and their immediate families are not eligible.",
+    "Referred person must meet credit union membership and loan eligibility requirements.",
+    "Conversion accounts do not qualify; not valid with any other offer.",
+    "Referral reward may be subject to income tax reporting.",
+    "Offer expires at the discretion of the Board of Directors.",
+    "Tax treatment not stated on the page (income tax reporting mentioned)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Prestige Community CU rules (prestigecu.org): 'the referred person must open either a new Rewards or Payback Checking account with direct deposit within 60 days, $100.00 will be paid when a minimum direct deposit of $400.00 per month is completed. For $100.00 loan reward a new Prestige loan must be opened within 60 days of beginning membership.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program rules hosted on official prestigecu.org domain (prestigecu.org/new-accounts-content), fetched via search index 2026-09-23 (crawl ~87 days old)",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'prestige' found only an unrelated Regions prestige-card evidence hit (R5372). No referral-program coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Prestige Community CU member in good standing, 18+. Friend: 18+, meets membership and loan eligibility requirements (membership: live/work/attend school within 10 miles of Dallas main center).",
+  "notes": "Verified 2026-09-23. Prestige Community Credit Union (Dallas, TX). Referrer earns $100 per friend who opens Rewards or Payback Checking with $400/month DD within 60 days; additional $100 if the friend opens a $10,000+ loan within 60 days. Page states the offer expires at the discretion of the Board of Directors; no referral cap stated.",
+  "numeric_basis": "payout from official page ($100 checking referral; +$100 loan reward; no cap stated); time: referring est. 5-15 min active",
+  "official_url": "https://prestigecu.org/new-accounts-content",
+  "payout_max_usd": 200,
+  "payout_min_usd": 100,
+  "payout_quote": "the referred person must open either a new Rewards or Payback Checking account with direct deposit within 60 days, $100.00 will be paid when a minimum direct deposit of $400.00 per month is completed. For $100.00 loan reward a new Prestige loan must be opened within 60 days of beginning membership. Minimum loan amount to qualify for reward is $10,000.00.",
+  "payout_value_note": "$100 per checking referral (+$100 if the friend opens a $10,000+ loan within 60 days). No cap stated.",
+  "route_id": "R3916",
+  "standard": {
+    "s1": {
+      "note": "Official Prestige Community CU program rules page, crawl ~87 days old; offer expires at the Board's discretion",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: all parties 18+, member in good standing, employees/families excluded, friend meets membership/loan eligibility",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open Rewards/Payback Checking with $400/month DD within 60 days; loan reward: $10,000+ loan within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward deposited to the member's savings account after requirements met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: referral reward may be subject to income tax reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to Prestige Community Credit Union.",
+    "Friend opens a new Rewards or Payback Checking account and completes a $400/month direct deposit within 60 days.",
+    "You receive $100 deposited to your savings account.",
+    "If the friend also opens a $10,000+ loan within 60 days of joining, you receive another $100."
+  ],
+  "terms_url": "https://prestigecu.org/new-accounts-content",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward deposited to the member's savings account after all requirements are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,89 @@
+{
+  "route_id": "R2432",
+  "verdict": "verify",
+  "official_url": "https://www.truitycu.org/en/services/accountservices/refer",
+  "terms_url": "https://www.truitycu.org/en/services/accountservices/refer",
+  "payout_quote": "The Truity Member will earn a Visa Virtual Reward for each friend or family member they refer to Truity Credit Union who registers, opens a new eligible account, and completes the offer requirements within the specified time.",
+  "steps": [
+    "Be a Truity Credit Union member and register for the referral program on the Truity website.",
+    "Invite friends/family by email or social media with your referral link; they must register for the program and open a new eligible account.",
+    "Checking referrals: your friend opens a new Truity personal checking account and sets up direct deposit within 60 days of account opening - you earn a $50 Visa Virtual Reward.",
+    "Auto loan referrals: your friend closes a new direct auto loan and signs up for automatic transfers within 60 days - you earn $50.",
+    "Personal loan referrals: your friend closes a new personal loan of $5,000+ and signs up for automatic transfers within 60 days - you earn $50.",
+    "Credit card referrals: your friend opens a new Truity credit card and spends $3,000+ in purchases within 90 days - you earn $50.",
+    "Your Visa Virtual Reward Card is emailed to you within 2-3 weeks after all requirements are verified (checking referrals may take longer while direct deposits are confirmed)."
+  ],
+  "catches": [
+    "The $50 is a Visa Virtual Reward Card (email-delivered virtual card), not cash - and it is valid for only 3 months from issuance, usable anywhere Visa debit is accepted.",
+    "Both the member and the friend must be registered for the program at the time of account opening.",
+    "Friend-side requirements are strict: checking needs direct deposit within 60 days; credit card needs $3,000 in purchases within 90 days.",
+    "Combined virtual gift cards of $600 or more in a calendar year may be reported on IRS form 1099-INT.",
+    "Only one Truity Member earns the reward per referred friend.",
+    "Program and incentives may be subject to change; cannot be combined with other offers."
+  ],
+  "biggest_catch": "The $50 arrives as a virtual Visa card that expires in 3 months - and your friend has to complete real requirements like direct deposit or $3,000 in card spending before either of you earns anything.",
+  "eligibility": "Must be a Truity Credit Union member to start referring. Referred friends must be new eligible-account holders; both participants registered at account opening.",
+  "timing": "Reward delivered via email 2-3 weeks after all requirements are completed and verified.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Truity Credit Union - real federally-insured credit union (NCUA); official domain truitycu.org, Refer a Friend terms fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms state the Truity Member earns 'a Visa Virtual Reward for each friend or family member they refer' - $50 per referral for checking, auto loan, personal loan, and credit card referrals; friend-side also gets paid."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; registering and sharing a link/email; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official terms: reward emailed within 2-3 weeks after verification; no cap stated ('the more friends you refer, the more you can earn'); concrete friend qualification requirements per product."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Must be a Truity CU member; friend must be a new eligible-account holder."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend registers via link, opens eligible product, completes requirement (checking: direct deposit 60 days; auto/personal loan: auto transfers 60 days; card: $3,000/90 days)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Visa Virtual Reward emailed within 2-3 weeks after completion and verification."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $50 per referral for all four product types; friend-side $250 (checking) or $50 (others)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.truitycu.org/en/services/accountservices/refer - official Truity Refer a Friend terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: register, invite via email/social, friend opens + completes requirement, $50 virtual Visa emailed in 2-3 weeks."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official terms page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "dedupe-check 'truity' shows no existing provider. Friend-side credit card requires $3,000 spend in 90 days - a high bar, disclosed as the friend's burden, not the referrer's.",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "$50 Visa Virtual Reward Card (email, valid 3 months, usable anywhere Visa debit accepted) per referral in official terms",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($50 per referral flat across checking, auto loan, personal loan, credit card); time: category default App Referral share-link 5-15 min active"
+}

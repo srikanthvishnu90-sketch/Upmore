@@ -1,0 +1,88 @@
+{
+  "route_id": "R2990",
+  "verdict": "verify",
+  "official_url": "https://www.associatedbank.com/business-checking-promotions-offers",
+  "terms_url": "https://www.associatedbank.com/business-account-disclosures-and-agreement",
+  "payout_quote": "This offer is limited to a new Associated Bank business checking account opened and funded through October 31, 2026. Open a Business Access Checking account and receive a $100 bonus ... OR ... a Business Balanced Checking account and receive a $400 bonus ... OR ... a Business Choice Checking account and receive a $750 bonus ... with a minimum deposit of $2,000 / $5,000 / $20,000 in new money within 30 days of account opening ... must maintain a minimum daily balance ... between days 31 to 90 after opening your account.",
+  "steps": [
+    "Open a new Associated Bank business checking account (Business Access, Balanced, or Choice) with a $100 minimum opening deposit, opened and funded through October 31, 2026.",
+    "Deposit $2,000 (Access, $100 bonus), $5,000 (Balanced, $400 bonus), or $20,000 (Choice, $750 bonus) in new money from outside Associated Bank within 30 days of account opening.",
+    "Maintain at least that minimum daily balance between days 31 and 90 after opening.",
+    "Bonus is deposited into the new business checking account within 120 days of account opening; account must be open at payout and remain open for a minimum of 12 months."
+  ],
+  "catches": [
+    "New money only: funds from outside Associated Bank; deposits or transfers from existing Associated accounts do not qualify.",
+    "12-month account-open commitment: 'If the account is closed within 12 months, Associated Bank reserves the right to deduct the monetary bonus from the account prior to closing' — an early-closure clawback.",
+    "Bonus paid up to 120 days after account opening (slow payout).",
+    "Balanced and Choice accounts carry $20 and $35 monthly maintenance fees respectively unless waived (Balanced: $5,000 average monthly balance; Choice: $15,000 combined balance); fee drag reduces net bonus if not waived.",
+    "Offer limited to new business checking accounts opened and funded through 10/31/2026; subject to cancellation without notice.",
+    "Bonus is taxable income (standard bank-bonus 1099 treatment)."
+  ],
+  "biggest_catch": "A 12-month early-closure clawback: close the account within a year and Associated Bank can deduct the bonus back. The $750 tier requires parking $20,000 for 90 days and the bonus may take up to 120 days to arrive. Offer expires 10/31/2026.",
+  "eligibility": "New Associated Bank business checking customers only; new money from outside the bank required.",
+  "timing": "Open and fund by 10/31/2026; deposit new money within 30 days; maintain daily balance days 31-90; bonus deposited within 120 days of account opening; keep account open 12 months.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Associated Bank is a real regional bank; bonus terms are published on its official associatedbank.com promo and business-account disclosure pages (official-domain crawls 2026-09-23, latest 3 hours old)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms: $100 bonus (Business Access, $2,000 new money), $400 bonus (Business Balanced, $5,000), $750 bonus (Business Choice, $20,000)."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official terms: open and fund through 10/31/2026; new money within 30 days; maintain minimum daily balance days 31-90; bonus within 120 days; 12-month open-account requirement with clawback right."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Offer window through 10/31/2026 is current as of 2026-09-23 (UTC); confirmed on both the promo page and the official disclosure document; live, not expired."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Business checking bonus only; distinct from catalogued Associated personal bonus (R0070)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Concrete steps: open, fund new money in 30 days, hold balance days 31-90."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Expiry 10/31/2026, 120-day payout window, and 12-month clawback period captured."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Catches include 12-month clawback, slow 120-day payout, $20/$35 monthly fees unless waived, new-money rule, tax treatment."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No upfront fee; $100 minimum opening deposit is refundable principal."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Public regional offer on associatedbank.com; not targeted/mailer-only."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Dedupe: no Associated business bonus in catalog; distinct provider route."
+    }
+  },
+  "notes": "Verified against official associatedbank.com promo page and business-account disclosure document (official-domain crawls 2026-09-23, consistent across 3+ fetches). One route covering the three account tiers ($100/$400/$750). Dedupe: R0070 is Associated personal, different product. Note: direct page fetch failed this turn (tool error); terms taken from official-domain crawl text consistent across multiple recent crawls.",
+  "payout_min_usd": 100,
+  "payout_max_usd": 750,
+  "payout_value_note": "tiered flat bonus: $100 / $400 / $750 by account tier in official terms",
+  "time_min_minutes": 45,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: tiered flat amounts in official terms; time: business account application + funding est. 45-90 min active"
+}

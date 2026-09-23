@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The promotion ends September 30, 2026 (8 days from verification), and your $250 only arrives after the friend fully completes the heavy $425-checking-bonus gauntlet - 15 debit transactions, $500 in direct deposits, account open 90 days - then up to 30 more days for payout.",
+  "catches": [
+    "Promotion ends September 30, 2026 and may be changed/withdrawn without notice.",
+    "Only Iowa residents eligible for the underlying checking offer.",
+    "Friend must meet ALL $425 checking bonus requirements within 90 days: 15 qualifying Visa debit transactions AND $500 in qualifying direct deposits, account open 90 days minimum.",
+    "Referrer's $250 credit arrives within 30 calendar days after the end of the 90-day qualifying period - both accounts must remain open at payout.",
+    "New clients cannot combine with any other promotion; clients who previously received a new account bonus are ineligible.",
+    "Unlimited referral bonuses per existing client."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CRBT page (crbt.bank/bonus): 'Once the new client has met all requirements of the new checking account bonus offer and its qualifying terms, the current client will receive a $250 credit into their CRBT checking account within 30 calendar days after the end of the 90-day bonus offer qualifying period'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Offer page on official crbt.bank domain, fetched live 2026-09-23; promotion window July 1, 2026 - September 30, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking with $25 minimum deposit",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification: prior R0059 is a reject of the crbt.bank signup bonus page (distinct mechanism); catalog has no CRBT referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CRBT checking client. Friend: new client, Iowa resident, not a prior new-account-bonus recipient.",
+  "notes": "Verified 2026-09-23. CRBT (Cedar Rapids Bank & Trust, Iowa). Referrer earns $250 per referral, unlimited, but the promo ends 2026-09-30. Friend must fully qualify for the $425 checking bonus (15 debit transactions + $500 direct deposits within 90 days) before the referrer is paid.",
+  "numeric_basis": "payout from official crbt.bank terms ($250 credit per qualifying referral, unlimited); time: share referral est. 5-15 min active",
+  "official_url": "http://crbt.bank/bonus",
+  "payout_max_usd": 250,
+  "payout_min_usd": 250,
+  "payout_quote": "Refer a new client to open a checking account, subject to approval. Once the new client has met all requirements of the new checking account bonus offer and its qualifying terms, the current client will receive a $250 credit into their CRBT checking account within 30 calendar days after the end of the 90-day bonus offer qualifying period, provided both the current client and referred accounts remain open at the time of payout. ... Existing clients can earn unlimited Refer-A-Friend bonuses. Promotion ends September 30, 2026 and is subject to change without notice.",
+  "payout_value_note": "$250 credit per qualifying referral deposited to the referrer's CRBT checking account; unlimited referrals; promo ends 2026-09-30.",
+  "route_id": "R4765",
+  "standard": {
+    "s1": {
+      "note": "Page live on crbt.bank, fetched 2026-09-23; promo window July 1 - September 30, 2026 (current but expiring soon)",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing client; friend new client, Iowa resident, no prior new-account bonus",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: 15 debit transactions + $500 direct deposits within 90 days, account open 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $250 credited within 30 days after the end of the 90-day qualifying period; both accounts must remain open",
+      "pass": true
+    },
+    "s5": {
+      "note": "No explicit tax statement on this page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As an existing CRBT client, refer friends/family to open a CRBT checking account before the promotion ends September 30, 2026.",
+    "Friend opens checking and completes the bonus requirements within 90 days: 15 debit transactions and $500 in direct deposits.",
+    "After the 90-day qualifying period ends, you receive a $250 credit in your CRBT checking account within 30 days (both accounts must still be open)."
+  ],
+  "terms_url": "http://crbt.bank/bonus",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$250 credit within 30 days after the end of the friend's 90-day qualifying period; both accounts must remain open at payout.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

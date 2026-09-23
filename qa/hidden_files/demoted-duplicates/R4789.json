@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete a two-stage gauntlet within 90 days: 10 debit card transactions plus opting out of paper statements, THEN 2 direct deposits of at least $100 - the referrer gets nothing if the friend stalls at stage one.",
+  "catches": [
+    "Referrer: current NGFCU member 18+ in good standing; completes the referral form.",
+    "Friend must: open NGFCU savings AND checking accounts; complete 10 debit card transactions and opt out of paper statements within 90 days of opening; then complete 2 direct deposits of at least $100 each into savings or checking within the first 90 days.",
+    "Referrer earns $75 per qualified referral; referred applicant compensated up to $75 ($25 + $50).",
+    "Cap: $750 per calendar year to a single referrer (10 referrals).",
+    "Awards deposited into regular share savings accounts and subject to taxation.",
+    "Program can be changed or cancelled at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official NGFCU page (ngfcu.us/services/refer-a-friend): 'Refer & Earn $75! Refer your friends, family members, and co-workers and you could earn $75 for each qualified referral that joins NGFCU.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official ngfcu.us domain, fetched live 2026-09-23; no expiry stated, terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens savings + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no ngfcu.us route; catalog has no NGFCU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current NGFCU member 18+ in good standing. Friend: opens NGFCU savings + checking.",
+  "notes": "Verified 2026-09-23. Northrop Grumman Federal Credit Union. Referrer earns $75 per qualified referral; cap $750/year (10 referrals).",
+  "numeric_basis": "payout from official ngfcu.us terms ($75 per qualified referral; cap $750/yr); time: complete referral form est. 5-15 min active",
+  "official_url": "http://www.ngfcu.us/services/refer-a-friend",
+  "payout_max_usd": 75,
+  "payout_min_usd": 75,
+  "payout_quote": "Refer & Earn $75! Refer your friends, family members, and co-workers and you could earn $75 for each qualified referral that joins NGFCU. ... Award maximum is $750 per calendar year to a single Referrer.",
+  "payout_value_note": "$75 to the referrer per qualified referral; cap $750/calendar year.",
+  "route_id": "R4789",
+  "standard": {
+    "s1": {
+      "note": "Page live on ngfcu.us, fetched 2026-09-23; no fixed expiry, terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer current member 18+ in good standing; friend opens savings + checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: 10 debit transactions + paperless opt-out within 90 days; 2x $100+ direct deposits within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: awards distributed as deposits to regular share savings; no fixed payout window stated",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: awards subject to taxation",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the NGFCU referral form at ngfcu.us/services/refer-a-friend.",
+    "Friend opens NGFCU savings and checking accounts via your referral.",
+    "Friend completes 10 debit card transactions and opts out of paper statements within 90 days, then completes 2 direct deposits of $100+ within 90 days.",
+    "You earn $75 per qualified referral (cap $750/year)."
+  ],
+  "terms_url": "http://www.ngfcu.us/services/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Awards deposited into the referrer's regular share savings account; no fixed payout window stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

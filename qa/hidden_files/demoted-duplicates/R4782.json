@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referrer's $50 is split: $25 at account opening and the remaining $25 only if the friend hits all three benchmarks (e-statements, 10 point-of-sale transactions, $500 direct deposit) within 60 days.",
+  "catches": [
+    "Referred member must present the referral card from the current member at account opening; referral must be disclosed at that time.",
+    "Referring member earns: $25 when the referred member opens an account + $25 if the referred member meets all three benchmarks (e-statements; 10 point-of-sale transactions within 60 days; $500+ direct deposit).",
+    "New member must open a new SRU FCU share draft checking account; duplicate accounts or re-opened accounts don't qualify; joint owners ineligible unless they open their own account.",
+    "Benchmarks must be met within 60 calendar days of account opening; account credits applied within 60 calendar days of completion.",
+    "Cap: referring members limited to $500 in account credit per calendar year across all referral programs.",
+    "Offer subject to change or end at any time without notice; applications through third-party channels ineligible.",
+    "Referred member must be approved for membership and be 18+ at application.",
+    "Qualified direct deposit = recurring payroll, Social Security, and/or pension; P2P and bank transfers excluded."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official SRU FCU page (srufcu.org/news/2026/06/01/Refer-a-Friend-and-Earn): 'You'll earn $50 for each friend who joins and meets the program requirements' and 'Referring Member: Up to $50 in account credit, not to exceed $500 per calendar year - $25 when referred member opens account - $25 if referred member meets all three benchmarks'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official SRU FCU page dated 2026-06-01, fetched live 2026-09-23; subject to change/end without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no srufcu.org route; catalog has no SRU FCU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current SRU FCU member 18+ in good standing. Friend: approved new member 18+, opens a new share draft checking account, presents referral card at opening.",
+  "notes": "Verified 2026-09-23. SRU Federal Credit Union (Slippery Rock, PA). Referrer earns $50 per qualifying referral ($25 at opening + $25 when friend meets all three benchmarks); cap $500/calendar year.",
+  "numeric_basis": "payout from official srufcu.org terms ($25 + $25 benchmarks per referral; cap $500/yr); time: pick up/give referral card est. 5-15 min active",
+  "official_url": "https://srufcu.org/news/2026/06/01/Refer-a-Friend-and-Earn",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You'll earn $50 for each friend who joins and meets the program requirements and your friend can earn too. ... Referring Member: Up to $50 in account credit, not to exceed $500 per calendar year - $25 when referred member opens account - $25 if referred member meets all three benchmarks",
+  "payout_value_note": "$50 account credit to the referring member per qualifying referral; cap $500/calendar year.",
+  "route_id": "R4782",
+  "standard": {
+    "s1": {
+      "note": "Page dated 2026-06-01 on srufcu.org, fetched 2026-09-23; subject to change/end without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer current member 18+ in good standing; friend approved new member 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new share draft checking, e-statements, 10 POS transactions in 60 days, $500+ direct deposit",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: account credits applied within 60 calendar days of benchmark completion",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Pick up SRU FCU referral cards and give one to your friend.",
+    "Friend presents the referral card when opening a new share draft checking account at SRU FCU.",
+    "You earn $25 in account credit when the account opens.",
+    "Friend meets all three benchmarks within 60 days (e-statements, 10 POS transactions, $500+ direct deposit) and you earn the remaining $25 - up to $500/year."
+  ],
+  "terms_url": "https://srufcu.org/news/2026/06/01/Refer-a-Friend-and-Earn",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Account credits applied within 60 calendar days of benchmark completion; benchmarks must be met within 60 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

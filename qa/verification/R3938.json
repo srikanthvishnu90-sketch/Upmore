@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Offer is time-limited (July 1, 2026 through September 30, 2026; the page literally reads 'September 31,' a source typo - effectively end of September 2026); both parties must be active and in good standing.",
+  "catches": [
+    "$100 for the referrer and $100 for the new member per successful referral.",
+    "Official page: 'And there's no limit to how many friends you can refer.'",
+    "Friend must be an eligible new adult member who opens a new account.",
+    "Both referring and new members must be active and in good standing to qualify.",
+    "Referral rewards cannot be combined with any other offers or promotions.",
+    "Offer valid July 1, 2026 through September 30, 2026 (page literally reads 'September 31,' a source typo); membership eligibility required."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official smwfcu.com: 'Each successful referral earns $100 for the referrer and the referred new member' and 'Get $100 for each eligible, new adult member you refer who opens a new account'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms on official smwfcu.com domain (/checking-savings/member-referral-program.html), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'smw financial' returned only a false-positive utility-rebate catalog hit; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: SMW Financial CU member, active and in good standing. Friend: eligible new adult member.",
+  "notes": "Verified 2026-09-23. SMW Financial Credit Union (Lino Lakes/Maplewood, MN). $100 each side; explicitly no referral limit. Offer runs 2026-07-01 through end of September 2026. A separate test-path page mentioned $50, but the live canonical page says $100.",
+  "numeric_basis": "payout from official page ($100 per referral; no limit stated); time: downloading/completing referral form est. 5-15 min active",
+  "official_url": "https://www.smwfcu.com/checking-savings/member-referral-program.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Each successful referral earns $100 for the referrer and the referred new member",
+  "payout_value_note": "$100 per successful referral; official page explicitly states no referral limit.",
+  "route_id": "R3938",
+  "standard": {
+    "s1": {
+      "note": "Terms live on smwfcu.com, fetched 2026-09-23; offer valid 2026-07-01 through end of September 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: active good-standing referrer; eligible new adult member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: opens a new account",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Download, print, and fill out the referral form.",
+    "Give it to the friend you are referring.",
+    "Your friend brings it to a branch and opens a new account.",
+    "You earn $100 per successful referral."
+  ],
+  "terms_url": "https://www.smwfcu.com/checking-savings/member-referral-program.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward paid after the friend qualifies; exact timing not stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

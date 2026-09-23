@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You need a suitable vehicle and insurance — and winning bids is competitive, never guaranteed.",
+  "catches": [
+    "Requires a suitable vehicle/trailer and proper insurance; larger loads may need a CDL.",
+    "Competitive bidding — most quotes lose; ratings and reviews drive wins.",
+    "uShip takes a service fee on completed shipments — confirm the current fee schedule at signup.",
+    "Fuel, maintenance, and deadhead miles are your costs; underbidding can mean hauling at a loss."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "uShip's official homepage has a dedicated carrier channel: 'BECOME A CARRIER — Turn every mile into profit with uShip, where new shipments are listed every 30 seconds' — a real, public bidding marketplace connecting carriers with 35,000+ active carriers and secure uShip Payments.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed carrier pay range — carriers set their own quotes per shipment; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: register as a carrier, browse listed shipments, submit quotes, win, haul, get paid through uShip Payments.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Carrier registration carries no upfront fee per official materials; uShip monetizes via service fees on completed shipments.",
+      "pass": true
+    }
+  },
+  "eligibility": "Adults with a suitable vehicle/trailer and insurance who can legally haul; CDL for larger commercial loads.",
+  "notes": "Scenario: transport/freight. uShip is a shipping marketplace: customers list shipments, carriers submit competing quotes, and winners haul and get paid through uShip Payments. Income is per-shipment and variable — never guaranteed.",
+  "numeric_basis": "payout: per-shipment carrier-set quotes, no official fixed range. time: carrier registration + profile/vehicle setup + bidding on first shipments, est. 45-90 min active.",
+  "official_url": "https://www.uship.com/",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "BECOME A CARRIER — Turn every mile into profit with uShip, where new shipments are listed every 30 seconds",
+  "payout_value_note": "Carriers set their own per-shipment quotes; uShip publishes no fixed pay range — variable per-shipment income.",
+  "route_id": "R5441",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: adults with vehicle, insurance, and legal hauling ability.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as variable per-shipment pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover vehicle/insurance costs, bidding competition, service fees, and underbidding risk.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: uShip absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against the provider-owned page fetched live on 2026-09-23 (uship.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: new shipments list every ~30 seconds; payment releases on delivery confirmation.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register free as a carrier on uShip with your vehicle, insurance, and credentials.",
+    "Browse listed shipments (vehicles, furniture, freight, boats, equipment) matching your route.",
+    "Submit competitive quotes on shipments you can haul.",
+    "Win the bid, complete pickup and delivery, and get paid through uShip Payments (service fee applies)."
+  ],
+  "terms_url": "https://www.uship.com/",
+  "time_max_minutes": 90,
+  "time_min_minutes": 45,
+  "timing": "New shipments list continuously (~every 30 seconds); payment releases on delivery confirmation.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

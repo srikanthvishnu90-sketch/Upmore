@@ -1,0 +1,74 @@
+{
+  "route_id": "R1644",
+  "verdict": "verify",
+  "official_url": "http://superiorcourt.maricopa.gov/jury/juror-compensation",
+  "terms_url": "http://superiorcourt.maricopa.gov/jury/juror-compensation",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "Maricopa County: selected trial jurors receive $12 per day plus mileage; jurors released on the first day without being selected receive mileage reimbursement only.",
+  "steps": [
+    "Receive a Maricopa County Superior Court jury summons",
+    "Report for service",
+    "If selected, receive $12/day plus mileage; if released day one, mileage only"
+  ],
+  "catches": [
+    "$12/day is among the lowest juror rates in the country.",
+    "Jurors not selected on day one get mileage only — no daily fee.",
+    "Summons-only; cannot volunteer."
+  ],
+  "biggest_catch": "Only $12/day, and only if you're actually selected for a trial.",
+  "eligibility": "Persons summoned for jury service in Maricopa County Superior Court, Arizona.",
+  "timing": "Per day of selected service.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Maricopa County Superior Court official juror-compensation page."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Maricopa County: selected trial jurors receive $12 per day plus mileage; jurors released on the first day without being selected receive mileage reimbursement only."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in Maricopa County Superior Court, Arizona."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Per day of selected service."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$12/day plus mileage for selected jurors; mileage only if released day one."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "Arizona's separate Jury Fund lost-wage program is a different, conditional program — not included here.",
+  "payout_min_usd": 12,
+  "payout_max_usd": 12,
+  "payout_value_note": "$12/day plus mileage for selected jurors; mileage only if released day one.",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

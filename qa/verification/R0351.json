@@ -1,1 +1,90 @@
-{"app_links":{"android":null,"ios":null},"biggest_catch":"The catalog's '$2-$10 per quiz' range and 'US resident' eligibility are both wrong: the current official dashboard pays campaign-specific rewards (e.g. 'Earn 25 USDT as a reward. First come, first served.'; 'Claim 18 USDT in Coupons'), many rewards are coupons/trial funds rather than withdrawable cash — and KuCoin.com does not serve US users.","catches":["KuCoin.com is not available to US residents — the catalog's 'US availability varies' is wrong for the US audience.","Rewards vary per campaign and are often paid as coupons, trial funds, or project tokens (e.g. '18 USDT in Coupons', '100 USDT Copy Trading Trial Fund') — not guaranteed cash.","Campaigns are first-come-first-served with stated participant caps (e.g. 1,000 users) and fixed date windows — once the window or cap closes, the campaign is gone.","Token-denominated rewards (MCAT, TINA, GNOT, SWARM, etc.) are volatile; their dollar value moves with the market.","Account + identity verification are required to claim rewards."],"checked_at":"2026-09-23T01:39:00Z","critical":{"c1":{"evidence":"KuCoin is a real operating exchange (kucoin.com).","pass":true},"c2":{"evidence":"Official kucoin.com/learn-and-earn dashboard lists 'In Progress' campaigns with concrete reward terms (e.g. 'Complete the Lesson and Quiz to Claim 18 USDT in Coupons', 'Earn 25 USDT as a reward. First come, first served.') plus dated 'Past Courses'.","pass":true},"c3":{"evidence":"No upfront fee — lessons and quizzes are free; account verification required.","pass":true},"c4":{"evidence":"Official dashboard: 'Earn 25 USDT as a reward. First come, first served.' (Rewards 25 USDT) — a concrete current-campaign payout.","pass":true}},"eligibility":"KuCoin account with identity verification, in a supported region (KuCoin.com does not serve US residents). Each campaign has its own date window and participant cap; rewards are first-come-first-served.","notes":"The learn-and-earn mechanism is real and currently live with multiple in-progress campaigns on the official dashboard (crawled 2026-09-23): 18 USDT in coupons, 25 USDT first-come-first-served, token campaigns (TINA, MCAT, GNOT, SWARM, DIAM, CP, TMX, ALIGN), 100 USDT copy-trading trial fund, 2-4 USDT quiz+trade tasks. The catalog's '$2-$10 per quiz' is replaced with the actual mechanism: campaign-specific rewards, often coupons/trial funds, capped and time-windowed. KuCoin's official 'How to Learn and Earn with KuCoin' blog confirms the quiz-then-reward model. No commits, no DB writes.","official_url":"https://www.kucoin.com/learn-and-earn","payout_quote":"Earn 25 USDT as a reward. First come, first served. (Current campaign on the official Learn & Earn dashboard; other live campaigns: 'Complete the Lesson and Quiz to Claim 18 USDT in Coupons', 2-4 USDT quiz rewards, token-denominated rewards.)","route_id":"R0351","standard":{"s1":{"note":"KuCoin account + identity verification; supported region only (US excluded); per-campaign date windows and participant caps.","pass":true},"s2":{"note":"First-come-first-served; rewards often coupons/trial funds/token tickets rather than cash; tokens are volatile.","pass":true},"s3":{"note":"Rewards distributed per campaign terms after quiz completion within the campaign window.","pass":true},"s4":{"note":"Dashboard states concrete reward amounts per campaign; must show per-campaign amounts and caps, not a flat '$2-$10'.","pass":true},"s5":{"note":"https://www.kucoin.com/learn-and-earn — official KuCoin Learn & Earn dashboard, live 2026-09-23.","pass":true},"s6":{"note":"Steps concrete: register → verify → open Learn & Earn dashboard → pick an in-progress campaign → complete lesson + quiz before the window closes → claim.","pass":true},"s7":{"note":"Official KuCoin Learn & Earn dashboard and KuCoin blog article read 2026-09-23.","pass":true}},"steps":["Create a KuCoin account and complete identity verification (KuCoin.com does not serve US residents).","Open https://www.kucoin.com/learn-and-earn and check the 'In Progress' section for currently open campaigns.","Pick a campaign whose window is still open (note its reward, cap, and end date).","Complete the lesson material and pass the quiz — one campaign example: answer the quiz, claim 18 USDT in coupons.","Claim the reward within the campaign window; note whether the reward is cash, coupons, trial funds, or tokens.","Check the dashboard regularly — campaigns are first-come-first-served and new ones rotate in."],"terms_url":"https://www.kucoin.com/learn-and-earn","timing":"Rewards distributed after quiz completion within each campaign's stated window (e.g. 2026/09/04-09/18 UTC+8); campaigns rotate continuously with new ones listed as 'In Progress'.","upfront_fee":false,"verdict":"verify","weasel_words":{"present":false,"quote":null}}
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The catalog's '$2-$10 per quiz' range and 'US resident' eligibility are both wrong: the current official dashboard pays campaign-specific rewards (e.g. 'Earn 25 USDT as a reward. First come, first served.'; 'Claim 18 USDT in Coupons'), many rewards are coupons/trial funds rather than withdrawable cash — and KuCoin.com does not serve US users.",
+  "catches": [
+    "KuCoin.com is not available to US residents — the catalog's 'US availability varies' is wrong for the US audience.",
+    "Rewards vary per campaign and are often paid as coupons, trial funds, or project tokens (e.g. '18 USDT in Coupons', '100 USDT Copy Trading Trial Fund') — not guaranteed cash.",
+    "Campaigns are first-come-first-served with stated participant caps (e.g. 1,000 users) and fixed date windows — once the window or cap closes, the campaign is gone.",
+    "Token-denominated rewards (MCAT, TINA, GNOT, SWARM, etc.) are volatile; their dollar value moves with the market.",
+    "Account + identity verification are required to claim rewards."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "KuCoin is a real operating exchange (kucoin.com).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official kucoin.com/learn-and-earn dashboard lists 'In Progress' campaigns with concrete reward terms (e.g. 'Complete the Lesson and Quiz to Claim 18 USDT in Coupons', 'Earn 25 USDT as a reward. First come, first served.') plus dated 'Past Courses'.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee — lessons and quizzes are free; account verification required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official dashboard: 'Earn 25 USDT as a reward. First come, first served.' (Rewards 25 USDT) — a concrete current-campaign payout.",
+      "pass": true
+    }
+  },
+  "eligibility": "KuCoin account with identity verification, in a supported region (KuCoin.com does not serve US residents). Each campaign has its own date window and participant cap; rewards are first-come-first-served.",
+  "notes": "The learn-and-earn mechanism is real and currently live with multiple in-progress campaigns on the official dashboard (crawled 2026-09-23): 18 USDT in coupons, 25 USDT first-come-first-served, token campaigns (TINA, MCAT, GNOT, SWARM, DIAM, CP, TMX, ALIGN), 100 USDT copy-trading trial fund, 2-4 USDT quiz+trade tasks. The catalog's '$2-$10 per quiz' is replaced with the actual mechanism: campaign-specific rewards, often coupons/trial funds, capped and time-windowed. KuCoin's official 'How to Learn and Earn with KuCoin' blog confirms the quiz-then-reward model. No commits, no DB writes. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward 15-30min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)]",
+  "official_url": "https://www.kucoin.com/learn-and-earn",
+  "payout_quote": "Earn 25 USDT as a reward. First come, first served. (Current campaign on the official Learn & Earn dashboard; other live campaigns: 'Complete the Lesson and Quiz to Claim 18 USDT in Coupons', 2-4 USDT quiz rewards, token-denominated rewards.)",
+  "route_id": "R0351",
+  "standard": {
+    "s1": {
+      "note": "KuCoin account + identity verification; supported region only (US excluded); per-campaign date windows and participant caps.",
+      "pass": true
+    },
+    "s2": {
+      "note": "First-come-first-served; rewards often coupons/trial funds/token tickets rather than cash; tokens are volatile.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Rewards distributed per campaign terms after quiz completion within the campaign window.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Dashboard states concrete reward amounts per campaign; must show per-campaign amounts and caps, not a flat '$2-$10'.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.kucoin.com/learn-and-earn — official KuCoin Learn & Earn dashboard, live 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: register → verify → open Learn & Earn dashboard → pick an in-progress campaign → complete lesson + quiz before the window closes → claim.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official KuCoin Learn & Earn dashboard and KuCoin blog article read 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a KuCoin account and complete identity verification (KuCoin.com does not serve US residents).",
+    "Open https://www.kucoin.com/learn-and-earn and check the 'In Progress' section for currently open campaigns.",
+    "Pick a campaign whose window is still open (note its reward, cap, and end date).",
+    "Complete the lesson material and pass the quiz — one campaign example: answer the quiz, claim 18 USDT in coupons.",
+    "Claim the reward within the campaign window; note whether the reward is cash, coupons, trial funds, or tokens.",
+    "Check the dashboard regularly — campaigns are first-come-first-served and new ones rotate in."
+  ],
+  "terms_url": "https://www.kucoin.com/learn-and-earn",
+  "timing": "Rewards distributed after quiz completion within each campaign's stated window (e.g. 2026/09/04-09/18 UTC+8); campaigns rotate continuously with new ones listed as 'In Progress'.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  },
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 15.0,
+  "time_max_minutes": 30.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Crypto Reward (15-30min active)"
+}

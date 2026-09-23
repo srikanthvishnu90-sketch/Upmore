@@ -1,0 +1,91 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "Pay is predominantly in Amazon e-vouchers, not cash - modest per-study amounts at fixed rates.",
+  "catches": [
+    "Payment is predominantly in Amazon e-vouchers, not cash",
+    "Rates are fixed: £6.50 for up to 30 min, £13 for up to an hour - no high-paying outliers",
+    "Studies take place at LSE in London - in-person availability matters",
+    "Payment typically arrives within a week of participation via email, not immediately",
+    "Repeated lateness or no-shows get you removed from the Sona database",
+    "Unexcused no-show blocks you from all further studies"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "lse.ac.uk Behavioural Lab 'Get Involved' page (official London School of Economics domain, search index crawled 5 days before verification); pay rates quoted verbatim",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states: 'You will usually be paid £6.50 for any studies that last up to 30 minutes, and £13 for studies that last up to an hour'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps from official page: complete your profile, browse posted studies on Sona, sign up and participate",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free to join; no fee; behavioural experiments",
+      "pass": true
+    }
+  },
+  "eligibility": "Students or members of the general public; must register on the Sona participant sign-up system",
+  "notes": "Standing participant pool of the London School of Economics Behavioural Lab. Used the fresher 'Get Involved' page (crawled 5 days before verification) rather than the older FAQ (£5/£10 rates), since the newer page is the current official participant guidance. GBP converted to USD at 1.334 (Sept 22-23, 2026 mid-market rate) and documented in payout_value_note.",
+  "numeric_basis": "payout from official terms (£6.50 up to 30 min, £13 up to 1 hr; converted at 1 GBP = 1.334 USD, Sept 22-23 2026); time: official stated study lengths (up to 30 min / up to 1 hr)",
+  "official_url": "https://www.lse.ac.uk/behavioural-lab/our-facilities/get-involved",
+  "payout_max_usd": 17.34,
+  "payout_min_usd": 8.67,
+  "payout_quote": "You will usually be paid £6.50 for any studies that last up to 30 minutes, and £13 for studies that last up to an hour. On occasion, a study may involve an additional financial reward or prize draw, which you will be notified of when the study is advertised. Please note our studies pay predominantly in Amazon e-vouchers, and the form of compensation will be specified on the study posting. Payment is typically received within one week of the date of participation via email.",
+  "payout_value_note": "£6.50 and £13 converted at 1 GBP = 1.334 USD (mid-market, Sept 22-23 2026) = $8.67-$17.34; paid predominantly in Amazon e-vouchers, not cash.",
+  "route_id": "R3068",
+  "standard": {
+    "s1": {
+      "note": "GBP converted to USD at documented rate; voucher nature disclosed",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as modest fixed-rate per-study e-voucher pay, not income",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover voucher-only pay, fixed rates, London location, payment timing",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card - n/a",
+      "pass": true
+    },
+    "s5": {
+      "note": "Timing: typically within one week of participation via email; predominantly Amazon e-vouchers",
+      "pass": true
+    },
+    "s6": {
+      "note": "Deduped: no LSE/London Behavioural Lab route in catalog (hits are unrelated Nielsen fuzzy matches)",
+      "pass": true
+    },
+    "s7": {
+      "note": "'usually', 'typically', 'predominantly' flagged as weasel words",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register on the LSE Behavioural Lab Sona participant sign-up system",
+    "Complete your profile",
+    "Browse posted studies and sign up for one that fits",
+    "Participate in the study (up to 30 min or up to 1 hour)",
+    "Receive the stated payment (predominantly Amazon e-voucher) within about a week via email"
+  ],
+  "terms_url": "https://www.lse.ac.uk/behavioural-lab/our-facilities/get-involved",
+  "time_max_minutes": 60,
+  "time_min_minutes": 10,
+  "timing": "Payment typically received within one week of participation via email; predominantly Amazon e-vouchers.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "usually",
+    "typically",
+    "predominantly"
+  ]
+}

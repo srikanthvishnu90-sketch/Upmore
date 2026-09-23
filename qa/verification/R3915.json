@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must present the program at account opening, and rewards stack across product types up to $200 per membership.",
+  "catches": [
+    "Referral reward applies to both the referring member and the new member: $25 new youth account; $50 active checking; $75 active credit card; $100 auto/rec vehicle loan.",
+    "A bonus of up to $200 could be deposited to each membership's account when all requirements are met (stacking across product types).",
+    "One new member offer per product type per social security number.",
+    "Qualifications within 90 days of account opening: youth account needs AFT from parent/guardian; checking needs $1,000+/month DD and eStatements/eNotices/eAlerts; credit card needs 10 purchases; auto/rec loan over $10,000 with first payment made (indirect loans excluded).",
+    "Referrer must be an existing NCACU member; referred must not be a current member or have been one in the past 12 months.",
+    "Both must have a valid US taxpayer identification number; bonus reported as dividends on IRS form 1099-INT.",
+    "Referral bonus paid approximately 90 days from new membership opening.",
+    "Offer applies to consumer accounts only; may be modified or canceled at any time; available for a limited time only.",
+    "Tax treatment stated: reported as dividends on 1099-INT; taxes are the recipient's responsibility."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official NCACU page (ncacu.org/referrals/): '$25 New Youth Account for your child ... $50 New Membership with active checking ... $75 New Membership with open and active Credit Card ... $100 New Membership with open Auto/Rec Vehicle Loan' and 'Refer a friend reward applies to both the referring member and the new member.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official ncacu.org domain (ncacu.org/referrals/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard accounts",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'north central area' found no referral-program coverage (only unrelated R0640 Ent catalog hit). New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing NCACU member. Friend: Michigan resident (or family), new member (no NCACU account in past 12 months), valid US TIN.",
+  "notes": "Verified 2026-09-23. North Central Area Credit Union (Houghton Lake, MI; open to Michigan residents and families). Referrer earns per product type: $25 youth / $50 active checking / $75 active credit card / $100 auto-rec loan - up to $200 per membership. Official page says 'available for a limited time only.'",
+  "numeric_basis": "payout from official page ($25-$100 per product-type referral; up to $200 per membership); time: sharing referral info est. 5-15 min active",
+  "official_url": "https://ncacu.org/referrals/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "$25 New Youth Account for your child ... $50 New Membership with active checking ... $75 New Membership with open and active Credit Card ... $100 New Membership with open Auto/Rec Vehicle Loan ... Refer a friend reward applies to both the referring member and the new member ... A bonus of up to $200 could be deposited to each membership's account when all membership, product and/or account opening requirements are met.",
+  "payout_value_note": "$25-$100 per product-type referral (both sides); up to $200 per membership when all requirements are met.",
+  "route_id": "R3915",
+  "standard": {
+    "s1": {
+      "note": "Program page live on ncacu.org, fetched 2026-09-23; available for a limited time only, may change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member; friend new (no account in 12 months), Michigan field of membership; valid US TIN required",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete per product type, all within 90 days of account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus paid approximately 90 days from new membership opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonus reported as dividends on IRS form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share NCACU's refer-a-friend program with a friend (they must present the program at account opening).",
+    "Friend joins NCACU and opens an account within 90-day qualification window.",
+    "Friend meets product qualifications (youth AFT, $1,000/month DD checking, 10-purchase credit card, or $10,000+ auto/rec loan with first payment).",
+    "You and your friend each receive $25-$100 per product type (up to $200 per membership), paid approximately 90 days after membership opening."
+  ],
+  "terms_url": "https://ncacu.org/referrals/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid approximately 90 days from new membership opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

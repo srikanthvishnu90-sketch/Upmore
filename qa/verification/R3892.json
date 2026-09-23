@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open their account at a branch with your coupon (or name you online) - if they open without crediting you, you get nothing.",
+  "catches": [
+    "Referring member receives $50 deposited directly into their share account within 7-10 business days of the new account opening.",
+    "Limit 10 referrals per calendar year, not exceeding $500.",
+    "Friend must open their first account with Ocean Financial; complete the Refer a Friend coupon and have the friend bring it to a branch, or have them provide your name when opening online.",
+    "Membership eligibility required; limit one incentive offer per member/account; cannot be combined with other offers.",
+    "Offers not valid for new youth accounts; referrer must be a current Ocean Financial member 18+.",
+    "Rewards are considered interest and may be reported on IRS Form 1099-INT (or 1042-S)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Ocean Financial page (oceanfinancial.org): 'we'll reward you with $50 when they open their first account with us' and '$50 will be deposited directly into the referring member's share account within 7-10 business days of new account opening.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official oceanfinancial.org domain (oceanfinancial.org/refer-a-friend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard share account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'ocean financial' catalog hit is a false positive (R0786 utility rebate); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current Ocean Financial member 18+. Friend: opens their first account (share account), crediting the referrer via the coupon or name at opening.",
+  "notes": "Verified 2026-09-23. Ocean Financial Federal Credit Union (Oceanside, NY). $50 per qualifying referral; 10 referrals/$500 per calendar year cap.",
+  "numeric_basis": "payout from official page ($50 per qualifying referral; 10/$500 per year cap); time: completing and sharing the coupon est. 5-15 min active",
+  "official_url": "https://www.oceanfinancial.org/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "we'll reward you with $50 when they open their first account with us ... $50 will be deposited directly into the referring member's share account within 7-10 business days of new account opening.",
+  "payout_value_note": "$50 per qualifying referral; limit 10 referrals ($500) per calendar year.",
+  "route_id": "R3892",
+  "standard": {
+    "s1": {
+      "note": "Program page live on oceanfinancial.org, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer current member 18+; friend opens their first account (membership eligibility required)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a first member share account, bring the completed coupon to a branch or name the referrer online",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $50 deposited within 7-10 business days of new account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: rewards are considered interest, may be reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete your portion of the Ocean Financial Refer a Friend coupon.",
+    "Give the coupon to your friend.",
+    "Friend brings the coupon to an Ocean Financial branch (or provides your name when opening online) and opens a new member share account.",
+    "You receive $50 in your share account within 7-10 business days (up to 10/$500 per year)."
+  ],
+  "terms_url": "https://www.oceanfinancial.org/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited within 7-10 business days of the new account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

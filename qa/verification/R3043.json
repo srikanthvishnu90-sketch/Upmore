@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "The volunteering page still carries COVID-era screening text, suggesting it is not frequently updated; confirm the study is currently recruiting and the rate still applies when you contact the lab.",
+  "catches": [
+    "Page carries older COVID-era screening text - confirm the lab is actively recruiting before planning around it",
+    "Must complete a Coronavirus pre-visit screening form by phone 24 hours before the session",
+    "Experiments involve repeated arm movements while seated for 1-3 hours (mild physical repetition)",
+    "Scheduling is manual: email or phone the lab, no online self-booking shown",
+    "Lab located at 33 Oxford St, Cambridge MA - travel required"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "seas.harvard.edu motorlab volunteering page indexed 86 days before verification; volunteering and pay terms live on the current page",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states concrete rate: 'Volunteers are paid $20 per hour' for 1-3 hour experiments",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps from official page: fill out participant form, or email/call to schedule an appointment",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee; non-invasive experiments; volunteers paid, not charged",
+      "pass": true
+    }
+  },
+  "eligibility": "Adults able to sit and perform repeated arm movements; must be symptom-free per the lab's screening process",
+  "notes": "Standing volunteer program of a Harvard SEAS research lab (not a single study). Simple concrete terms: $20/hr, 1-3 hr non-invasive motor-control experiments. Caveat: page retains pandemic-era protocol text, so freshness of recruitment should be confirmed by email.",
+  "numeric_basis": "payout from official terms ($20/hr x stated 1-3 hr experiments); time: stated 1-3 hr experiment length plus scheduling estimate",
+  "official_url": "https://www.seas.harvard.edu/motorlab/volunteering.html",
+  "payout_max_usd": 60,
+  "payout_min_usd": 20,
+  "payout_quote": "Volunteers are paid $20 per hour. Experiments are non-invasive and generally last 1-3 hours.",
+  "payout_value_note": "Cash hourly rate from the official lab volunteering page; payout scales with stated 1-3 hour experiment length.",
+  "route_id": "R3043",
+  "standard": {
+    "s1": {
+      "note": "Provider's own stated hourly dollar rate; no conversion needed",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-experiment pay, variable by session length (1-3 hrs)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover stale-page risk, physical repetition, manual scheduling",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card - n/a",
+      "pass": true
+    },
+    "s5": {
+      "note": "Timing: paid per experiment session; exact disbursement timing not stated - ask when scheduling",
+      "pass": true
+    },
+    "s6": {
+      "note": "Deduped: no Harvard motor/neuromotor lab route in catalog or evidence files",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the pay lines; 'generally' flagged implicitly in notes",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the lab's participant form (or email motorlab.experiments@gmail.com / call 617-384-7902)",
+    "Schedule an appointment at the lab (33 Oxford St, Cambridge, MA)",
+    "Complete the phone pre-visit screening 24 hours before the session",
+    "Attend the 1-3 hour non-invasive arm-movement experiment",
+    "Receive $20/hour payment"
+  ],
+  "terms_url": "https://www.seas.harvard.edu/motorlab/volunteering.html",
+  "time_max_minutes": 200,
+  "time_min_minutes": 70,
+  "timing": "Paid per experiment session; exact disbursement timing not stated on the page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "generally"
+  ]
+}

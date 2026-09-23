@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Applying never guarantees a response — founders pick who to engage with, and startup roles are competitive.",
+  "catches": [
+    "No payment handled by the board — offers and pay are negotiated with each startup.",
+    "Most listings show salary and equity upfront, but not all; pay is per offer.",
+    "YC-style startup roles are competitive; a profile does not guarantee founder contact.",
+    "Many roles are salaried employment with interviews, not instant gigs."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Wellfound's official job-seeker page states: 'Wellfound is a job marketplace built specifically for startup and tech jobs. As of 2026, 27,000+ startups hire on Wellfound, over 10 million candidates use it, and it has powered 100,000+ hires. Job seekers use it free: one profile, one-click applications, salary and equity shown on listings, and direct contact with founders.' — a live, provider-owned deal channel.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official FAQ: 'Most job listings on Wellfound include the salary range and equity details upfront' — pay varies per offer; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official FAQ: 'Create one profile and apply with a single click. No cover letters: your profile is your application, and responses come directly from founders and hiring managers.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official FAQ: 'Is Wellfound free for job seekers? Yes. Creating a profile and applying to jobs on Wellfound is always free for candidates.'",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone who can build a candidate profile and meet listed startup role requirements.",
+  "notes": "Scenario: startup job marketplace. Wellfound (formerly AngelList Talent) connects candidates with 27,000+ startups: one profile, one-click applications, salary and equity shown upfront on most listings, direct contact with founders. Applying is always free for candidates. Pay is per offer and negotiated — variable, never guaranteed.",
+  "numeric_basis": "payout: most listings show salary/equity ranges upfront; compensation is per offer and negotiated. time: build profile + browse + one-click apply to matching roles, est. 30-90 min active.",
+  "official_url": "https://Wellfound.com/candidates/overview",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Job seekers use it free: one profile, one-click applications, salary and equity shown on listings, and direct contact with founders.",
+  "payout_value_note": "Most listings show salary and equity ranges upfront; compensation is set per startup and negotiated per offer — variable.",
+  "route_id": "R5450",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to build a profile and meet listed role requirements.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-offer negotiated compensation; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no platform payments, competition, upfront salary disclosure, and employment-not-gig nature.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Wellfound absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json (YC Jobs board R5448 is a separate platform).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official pages captured 2026-09-23 (wellfound.com/candidates/overview).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: listings post continuously; hiring follows each startup's process.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create one candidate profile on Wellfound (always free for job seekers).",
+    "Browse startup roles by category, location, and remote status; most listings show salary and equity upfront.",
+    "Apply with one click — your profile is your application, no cover letters.",
+    "Respond directly to founders and hiring managers who engage with your application."
+  ],
+  "terms_url": "https://Wellfound.com/candidates/overview",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Listings post continuously; hiring timelines follow each startup.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

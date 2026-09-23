@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend's new checking account must be 'active' - defined as a minimum of 15 transactions per month - and it must meet the qualifications within 90 days, or no bonus is paid. You also cannot track the referral's status: GreenState will not respond to referring-member inquiries about it.",
+  "catches": [
+    "Friend must open a new active GrowGreen Checking, Free Checking, or Access Checking account and mention they were referred at account opening; offer valid for new memberships only.",
+    "'Active' is defined as a minimum of 15 transactions per month; the account must meet the qualifications within 90 days or the bonus is not paid.",
+    "Void if the referred individual is an existing GreenState member, was a member in the previous 6 months, is a joint owner on any GreenState deposit accounts, or lives in the same household as the referring member.",
+    "Bonus cannot be combined with other GreenState promotional offers.",
+    "The referring member's account must be positive to receive the bonus.",
+    "Limited time offer.",
+    "GreenState does not share information about the status of new memberships and cannot respond to inquiries from referring members about their referrals."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official GreenState page (greenstate.org/refer-a-friend): 'Once the new checking account meets the qualifications (listed below), $100 will be directly deposited to both the referring and referred members.' 'Open a new active GrowGreen Checking, Free Checking, or Access Checking account and mention you were referred.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official GreenState Credit Union refer-a-friend page on greenstate.org, fetched live 2026-09-23; limited time offer, no fixed expiry",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'GreenState Credit Union': 0 catalog hits, 0 evidence-file hits; no greenstate.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: GreenState Credit Union member whose account is positive. Friend: new member 18+ opening an active new checking account (not existing/previous-6-month member, not joint owner, not same household).",
+  "notes": "Verified 2026-09-23. GreenState Credit Union (Iowa). Referrer earns $100 per qualifying referral ($100 to the friend too), no annual cap stated. Friend's new checking account must be active (minimum 15 transactions/month) within 90 days; bonus deposited within 60 days after account opening once active and in good standing.",
+  "numeric_basis": "payout from official GreenState terms ($100 directly deposited to both referring and referred members per qualifying referral); time: share referral and confirm friend mentions you est. 5-15 min active",
+  "official_url": "https://www.greenstate.org/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Once the new checking account meets the qualifications (listed below), $100 will be directly deposited to both the referring and referred members. Open a new active GrowGreen Checking, Free Checking, or Access Checking account and mention you were referred.",
+  "payout_value_note": "$100 to the referrer per qualifying referral (friend also gets $100); no annual cap stated.",
+  "route_id": "R5682",
+  "standard": {
+    "s1": {
+      "note": "Official GreenState page live on greenstate.org, fetched 2026-09-23; limited time offer, no fixed expiry",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer account positive; friend 18+, new membership only, not same household, not existing/previous-6-month/joint owner",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new active checking account (min 15 transactions/month) and mention referred; qualify within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $100 directly deposited to both parties' accounts within 60 days after the new checking account is opened and determined active and in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell your friends who aren't already GreenState members how they can earn you both $100 by opening a new active checking account.",
+    "Friend opens a new GrowGreen Checking, Free Checking, or Access Checking account and mentions they were referred at account opening.",
+    "Once the friend's account is active (minimum 15 transactions/month) and in good standing within 90 days, $100 is directly deposited into your account and your friend's account."
+  ],
+  "terms_url": "https://www.greenstate.org/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 directly deposited to both parties' accounts within 60 days after the new checking account is opened and determined active and in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only get paid after the friend completes a two-part gauntlet - a direct deposit/autopay/recurring debit transaction AND eight debit card purchases within 60 days - and the reward is a Visa Reward Card (not cash) that takes 4-6 weeks to arrive.",
+  "catches": [
+    "Referrer must register for the ReferLive program; Arvest associates are ineligible.",
+    "Friend must register via the referrer's link, open a new qualified Arvest checking account within 180 days of referral registration, and within 60 days of account opening: (a) have a direct deposit OR automatic payment OR recurring debit card transaction, AND (b) make eight debit card purchases.",
+    "Strict transaction definitions: Arvest-to-Arvest transfers, ATM deposits/withdrawals, and returned items do not qualify; merchants may process recurring debit transactions as one-time and break qualification.",
+    "Cap: five (5) Reward Cards ($250 value) per calendar year; only the first referrer of a person is paid.",
+    "Reward is a $50 Visa Reward Card, delivered 4-6 weeks after requirements are met; rewards may be reported as income to the IRS.",
+    "Program may be discontinued or changed at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Arvest Bank page (arvest.com/referlive): 'The Referrer will earn a $50 Visa Reward Card for each individual they refer (Referred Person) to Arvest Bank that registers for the offer using the referral link or media shared by the Referrer, opens a new, qualified Arvest Bank checking account within 180 days of completing the referral registration and completes all program qualifications required of the Referred Person. A Referrer may receive up to five (5) Reward Cards ($250 value) within a calendar year'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official arvest.com domain, fetched live 2026-09-23; program cancellable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification: only prior arvest.com hit is R0072, a reject of the signup bonus page (distinct mechanism); catalog has no Arvest referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: registered ReferLive participant (no Arvest associates). Friend: opens a new qualified Arvest checking account via the referrer's link within 180 days of referral registration.",
+  "notes": "Verified 2026-09-23. Arvest Bank (AR/OK/MO/KS). Referrer earns a $50 Visa Reward Card per qualifying referral, cap 5 cards ($250) per calendar year. Distinct referrer-side mechanism from the rejected Arvest signup-bonus page (R0072).",
+  "numeric_basis": "payout from official arvest.com terms ($50 Visa Reward Card per qualifying referral; cap 5/year); time: register + share link est. 5-15 min active",
+  "official_url": "http://www.arvest.com/referlive",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The Referrer will earn a $50 Visa Reward Card for each individual they refer (Referred Person) to Arvest Bank that registers for the offer using the referral link or media shared by the Referrer, opens a new, qualified Arvest Bank checking account within 180 days of completing the referral registration and completes all program qualifications required of the Referred Person. A Referrer may receive up to five (5) Reward Cards ($250 value) within a calendar year for their qualified referrals.",
+  "payout_value_note": "$50 Visa Reward Card per qualifying referral to the referrer; cap 5 cards ($250) per calendar year.",
+  "route_id": "R4774",
+  "standard": {
+    "s1": {
+      "note": "Terms live on arvest.com, fetched 2026-09-23; program may be discontinued or changed at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registered for ReferLive (no associates); friend opens new qualified checking via referrer's link within 180 days of registration",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: within 60 days of opening - direct deposit OR autopay OR recurring debit transaction, AND eight debit purchases",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: Reward Card delivered 4-6 weeks after all requirements are completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: rewards may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Arvest ReferLive program.",
+    "Share your referral link with friends and family by email or social media.",
+    "Friend registers via your link and opens a new qualified Arvest checking account within 180 days.",
+    "Within 60 days of opening, friend sets up a direct deposit/autopay/recurring debit transaction AND makes eight debit card purchases.",
+    "You receive a $50 Visa Reward Card 4-6 weeks later (up to 5 per year)."
+  ],
+  "terms_url": "http://www.arvest.com/referlive",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 Visa Reward Card delivered 4-6 weeks after the friend completes all requirements (within 60 days of account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

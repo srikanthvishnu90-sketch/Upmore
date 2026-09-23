@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must provide your name and phone number when they join (or show the social post in-branch) - if they don't credit you at account opening, you get nothing.",
+  "catches": [
+    "Current member earns $25 per referred friend who opens a new account; the friend also earns $25.",
+    "Current member referral bonus paid within 14 days of the friend's account opening.",
+    "Friend must provide the referring member's name and phone number when joining (or show the social-media offer in a branch).",
+    "If a social media channel is named as the referral, only the new member earns $25 (referrer earns nothing in that case).",
+    "Some restrictions apply (stated, not enumerated).",
+    "No cap stated on the official page.",
+    "No tax language on the page (standard bonus treatment; not stated)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Basin page (firstbasin.com): 'If you are currently a member and you refer a friend to open a new account at First Basin you both earn $25!' and 'Current member referral bonus will be paid within 14 days of account opening.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official firstbasin.com domain (firstbasin.com/showthelove), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'first basin' catalog hit is a false positive (R0786 utility rebate); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: First Basin CU member. Friend: opens a new account and credits the referrer (name + phone) at account opening.",
+  "notes": "Verified 2026-09-23. First Basin Credit Union (Odessa, TX). $25 to the referring member per new account opened; paid within 14 days of account opening; no cap stated.",
+  "numeric_basis": "payout from official page ($25 to each side per new account; no cap stated); time: referring a friend est. 5-15 min active",
+  "official_url": "http://www.firstbasin.com/showthelove",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "If you are currently a member and you refer a friend to open a new account at First Basin you both earn $25! ... Current member referral bonus will be paid within 14 days of account opening.",
+  "payout_value_note": "$25 to the referring member per new account opened, paid within 14 days. No cap stated.",
+  "route_id": "R3882",
+  "standard": {
+    "s1": {
+      "note": "Program page live on firstbasin.com, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer current member; friend opens a new account crediting the referrer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new account, provide the referrer's name and phone (or show social post in branch)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: current member bonus paid within 14 days of account opening",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to First Basin Credit Union.",
+    "Friend provides your name and phone number when opening their new account.",
+    "Friend opens the new account.",
+    "You receive $25 within 14 days of their account opening."
+  ],
+  "terms_url": "http://www.firstbasin.com/showthelove",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Current member bonus paid within 14 days of the friend's account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

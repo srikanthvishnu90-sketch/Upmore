@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only $70 per referral and capped at $350 per member account during the promo period (5 referrals max) — plus your friend must set up a recurring $300+ direct deposit within 60 days and keep the account open 90 days.",
+  "catches": [
+    "Referrer incentive is $70 per qualifying referral, capped at $350 per member account during the promotional period (5 referrals max)",
+    "Friend (referee) must be 18+, a NEW IU Credit Union member (no membership in the preceding 12 months), and open a new household membership (same primary address = one household, limit one bonus per new household)",
+    "Friend must open a Membership Savings account ($5 ownership share) plus any eligible checking account",
+    "Friend must establish a qualifying recurring direct deposit of $300+ (payroll/government/benefit ACH) within 60 days of account opening — P2P, mobile deposits, and internal transfers do not qualify",
+    "Friend's account must stay open at least 90 days or the bonus may be forfeited/reversed; referrer must have an open account when paid",
+    "Referrer must be an IU CU member 18+ and not an employee; the refer-a-friend form must identify the referrer at account opening",
+    "Promotional period: February 16, 2026 – December 31, 2026; IU CU can modify/terminate at any time (bonuses for completed qualifications honored)",
+    "Bonuses/incentives are dividends reported on IRS Form 1099-INT",
+    "IU Credit Union field of membership applies (Indiana University community and affiliates)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official iucu.org Refer-A-Friend terms PDF: 'The referring member (\"Referrer\") will receive a $70 referral incentive, and the new member (\"Referee\") will receive a $70 bonus when all promotion requirements are satisfied.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms PDF hosted on official iucu.org domain (fetched live 2026-09-23); promotional period Feb 16, 2026 - Dec 31, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; referrer identified via the printed refer-a-friend form at account opening",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'IU Credit Union' shows no catalog or evidence-file hits — first IU Credit Union route in catalog",
+      "pass": true
+    }
+  },
+  "eligibility": "Current IU Credit Union members 18+ (non-employees). Referred friends must be 18+, new to IU CU (no membership in the preceding 12 months), eligible for membership, and open a new household membership.",
+  "notes": "dedupe-check clean. Official PDF terms on iucu.org. Payout is a $70 dividend deposit to the referrer's IU CU account per qualifying referral, capped at $350 per member account for the promo period.",
+  "numeric_basis": "payout from official IU CU refer-a-friend terms ($70 referral incentive per qualifying referral); time: giving a friend the printed referral form and having them name you est. 5-10 min active (the friend's DD setup, 60-day completion window, and 90-day account-open requirement are not active time)",
+  "official_url": "https://www.iucu.org/offers/pdf/IUCU_Refer_A_Friend_Forms.pdf",
+  "payout_max_usd": 70,
+  "payout_min_usd": 70,
+  "payout_quote": "The referring member (\"Referrer\") will receive a $70 referral incentive, and the new member (\"Referee\") will receive a $70 bonus when all promotion requirements are satisfied.",
+  "payout_value_note": "$70 dividend deposit per qualifying referral; cap is $350 per member account during the promotional period (5 referrals).",
+  "route_id": "R3330",
+  "standard": {
+    "s1": {
+      "note": "Terms live on official iucu.org with explicit promotional period Feb 16, 2026 - Dec 31, 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer = member 18+ (non-employee); friend = new member, no IU CU membership in prior 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open membership savings + checking, recurring $300+ qualifying DD within 60 days, account open 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus paid after all qualifications met; referee has up to 60 days to complete requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonuses/incentives are dividends reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side mechanism; first IU Credit Union route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current IU Credit Union member 18+ (non-employee)",
+    "Give your friend the printed Refer-A-Friend form from iucu.org with your name on it",
+    "Friend opens a new IU CU household membership (Membership Savings + eligible checking) and identifies you as the referrer at account opening",
+    "Friend sets up a recurring qualifying direct deposit of $300+ within 60 days and keeps the account open 90 days",
+    "$70 is deposited into your IU CU account after all qualifications are met (cap $350 per member account during the promo period)"
+  ],
+  "terms_url": "https://www.iucu.org/offers/pdf/IUCU_Refer_A_Friend_Forms.pdf",
+  "time_max_minutes": 10,
+  "time_min_minutes": 5,
+  "timing": "Handing over the form + having them name you takes ~5-10 minutes active; your $70 pays after the friend completes the DD and 90-day account-open requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

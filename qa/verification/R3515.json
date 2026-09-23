@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Task availability is not guaranteed and the platform publishes no per-task time — good tasks get claimed quickly, and your effective hourly pay depends entirely on task speed, so $3–$7 per task can translate to very low hourly earnings.",
+  "catches": [
+    "Task availability not guaranteed; good tasks get taken quickly — idle/claimless time earns nothing.",
+    "Platform does not publish per-task duration; task-length estimates (~15–20 min) come from assistant reports, not official terms.",
+    "Effective hourly rate depends on task speed; complex tasks may take longer than the $3–$7 pays for.",
+    "Application review can take time and may require multiple attempts to pass."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Fancy Hands jobs page live on 2026-09-23 with pay terms, work description, and application flow.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states 'To start, tasks are worth anywhere from $3.00 to $7 per task and go up from there. Payments go out every other week (on Tuesday).'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Free to apply; no fee to join, no purchase or risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Fancy Hands entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Computer and reliable internet connection; very strong written communication skills; self-starter; apply via the official jobs page and pass the application review.",
+  "notes": "Fancy Hands on-demand VA tasks. Per-task pay with biweekly payouts; task duration is estimated from assistant reports (official page silent).",
+  "numeric_basis": "Payout from official terms ($3.00–$7 per task); time: task-length estimate from assistant reports (~15–20 min); official page does not publish duration.",
+  "official_url": "https://www.fancyhands.com/job/apply/",
+  "payout_max_usd": 7,
+  "payout_min_usd": 3,
+  "payout_quote": "To start, tasks are worth anywhere from $3.00 to $7 per task and go up from there. Payments go out every other week (on Tuesday).",
+  "payout_value_note": "Per task, paid biweekly on Tuesdays; platform states pay 'goes up from there' with experience.",
+  "route_id": "R3515",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: apply, pass review, claim tasks, complete them, paid biweekly.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document unguaranteed task availability, unstated task duration, speed-dependent effective rate, application hurdles.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: computer + internet, strong written communication, self-starter.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Jobs page live with 'currently hiring' as of 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from fancyhands.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as variable per-task pay with availability and speed caveats; never promises income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply on the official Fancy Hands jobs page.",
+    "Pass the application review to become an assistant.",
+    "Claim tasks from the task board (phone calls, scheduling, research, data entry).",
+    "Complete tasks to standard; pay starts at $3.00–$7 per task.",
+    "Get paid every other week on Tuesday."
+  ],
+  "terms_url": "https://www.fancyhands.com/job/apply/",
+  "time_max_minutes": 20,
+  "time_min_minutes": 15,
+  "timing": "Ongoing; tasks claimed on demand; payments go out every other week on Tuesday.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "huge room for growth"
+  ]
+}

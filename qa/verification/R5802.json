@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You need a referral link from an existing Freetrade customer (new customers cannot self-generate one) - and you must fund at least £50 net within 30 days.",
+  "catches": [
+    "Requires signing up via an existing customer's unique referral link; links may not be promoted publicly (only shared with family/friends)",
+    "New customer (Recipient) must pass onboarding checks, complete a W-8BEN form, and fund with at least £50 net (top-ups minus withdrawals) in the first 30 days",
+    "Free share is randomly selected from US/UK companies, ETFs, and trusts, worth £10-£100; probability is weighted so more expensive shares are rarer",
+    "Free share revealed and dropped into the General Investment Account within 7-10 days of qualifying",
+    "Freetrade may claw back, sell, or cancel free shares for material breach of the referral terms; 10 free shares per calendar month cap for referrers"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Freetrade (freetrade.io) - UK FCA-regulated broker. Official 'Get a free share, refer a friend' page plus official 'Free Share Terms & Conditions' on se.freetrade.io, fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: 'Refer a friend to Freetrade from your app and you'll both get a free share worth between £10 and £100.' Recipient terms: award a Free Share when the Recipient uses a Referral Link, passes onboarding, completes W-8BEN, and funds with at least £50 net.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: referral link, onboarding, W-8BEN, £50+ net funding within 30 days.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free share has no entry cost beyond the user's own £50 deposit (which remains theirs). Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Freetrade customers who sign up via an existing customer's referral link, pass onboarding, complete W-8BEN, and fund £50+ net within 30 days.",
+  "notes": "G54 brokerage wave 2. Official provider-owned terms on freetrade.io. Note the referral-link requirement is a real friction: the user needs a link from a real Freetrade customer.",
+  "numeric_basis": "payout from official page (£10-£100, represented approx. US$13-$130); time: signup + onboarding + funding est. 30-45 min active",
+  "official_url": "https://freetrade.io/free-share",
+  "payout_max_usd": 130,
+  "payout_min_usd": 13,
+  "payout_quote": "Refer a friend to Freetrade from your app and you'll both get a free share worth between £10 and £100.",
+  "payout_value_note": "Free share worth £10-£100 (weighted probability); represented approx. US$13-$130.",
+  "route_id": "R5802",
+  "standard": {
+    "s1": {
+      "note": "New Freetrade customers via referral link only; onboarding, W-8BEN, £50+ net funding.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: use referral link, onboard, W-8BEN, fund £50+ within 30 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "£10-£100 range stated officially; weighted probability disclosed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Official range used; approx. USD conversion noted, not inflated.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://freetrade.io/free-share and https://se.freetrade.io/legal/free-share-terms-conditions-v4 - official Freetrade pages fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: referral link, onboard, W-8BEN, fund, receive share.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Freetrade terms verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up for Freetrade using an existing customer's unique referral link",
+    "Pass onboarding checks and complete the W-8BEN form",
+    "Fund the account with at least £50 net within 30 days",
+    "Receive a free share worth £10-£100 in your General Investment Account within 7-10 days"
+  ],
+  "terms_url": "https://se.freetrade.io/legal/free-share-terms-conditions-v4",
+  "time_max_minutes": 45,
+  "time_min_minutes": 30,
+  "timing": "Ongoing referral program; free share dropped 7-10 days after qualifying.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

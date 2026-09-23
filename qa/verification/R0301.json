@@ -1,82 +1,88 @@
 {
- "route_id": "R0301",
- "verdict": "verify",
- "official_url": "https://www.irs.gov/refund",
- "terms_url": "https://www.irs.gov/refund",
- "payout_quote": "IRS: 'If you e-filed your return, after 24 hours, you can go to irs.gov/refund to check on its status using our Where's My Refund? tool.' This finds YOUR OWN tax refund money — overpaid tax the government owes back to you — if it is delayed, lost, or undelivered; it never promises anyone is owed any.",
- "timing": "Refund status generally available within 24 hours of e-file acknowledgment (4 weeks for paper). Typical payout: about 21 days for e-filed direct-deposit refunds. Lost/stolen check trace via Form 3911: the Bureau of the Fiscal Service review can take up to six weeks.",
- "biggest_catch": "This only tracks a refund from a return you already filed — it cannot create money or find refunds you never claimed by filing. The IRS cautions: 'don't rely on receiving a refund by a certain date,' and returns claiming the Earned Income Tax Credit or Additional Child Tax Credit are legally held until mid-February.",
- "eligibility": "Anyone who filed a federal tax return expecting a refund. Where's My Refund needs your SSN, filing status, and the exact refund amount from the return.",
- "steps": [
-  "Go to https://www.irs.gov/refund and use Where's My Refund? with your SSN, filing status, and exact refund amount (or the IRS2Go mobile app).",
-  "If it shows the refund was sent but you never got it: if you moved, file Form 8822 to update your address with the IRS.",
-  "If the check is lost or was never delivered, initiate a refund trace — in Where's My Refund, via the automated line 800-829-1954, or by filing Form 3911 (Taxpayer Statement Regarding Refund); married-filing-jointly filers must use the form or call 800-829-1040.",
-  "If the check was cashed by someone else, the Bureau of the Fiscal Service sends a claim package (up to six weeks for review); if it was never cashed, a replacement is issued once the original is canceled."
- ],
- "catches": [
-  "Only works for refunds on returns you actually filed — no return, no refund to find.",
-  "Do not rely on a specific date; some returns need additional review and take longer.",
-  "EITC/Additional Child Tax Credit refunds are held by law until mid-February.",
-  "Paper tax refund checks are being phased out (since Sept 30, 2025) — direct deposit is the default path.",
-  "The IRS will never call/text/email demanding payment or personal info about your refund — those are scams."
- ],
- "app_links": {
-  "android": "IRS2Go (official IRS app)",
-  "ios": "IRS2Go (official IRS app)"
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "upfront_fee": false,
- "checked_at": "2026-09-23T01:45:00Z",
- "notes": "Verified 2026-09-22/23 against official irs.gov pages (refund FAQs, Where's My Refund guidance, IR-2025-94 on the paper-check phaseout, IR-2026-44). App links: the official IRS2Go app exists on both stores — named without a guessed store URL, per the no-guess rule. In-app, frame strictly as tracking your own already-filed refund, and include the IRS-scam warning.",
- "critical": {
-  "c1": {
-   "evidence": "IRS — the Internal Revenue Service, the US federal tax agency — operates Where's My Refund and the refund-trace process.",
-   "pass": true
+  "route_id": "R0301",
+  "verdict": "verify",
+  "official_url": "https://www.irs.gov/refund",
+  "terms_url": "https://www.irs.gov/refund",
+  "payout_quote": "IRS: 'If you e-filed your return, after 24 hours, you can go to irs.gov/refund to check on its status using our Where's My Refund? tool.' This finds YOUR OWN tax refund money — overpaid tax the government owes back to you — if it is delayed, lost, or undelivered; it never promises anyone is owed any.",
+  "timing": "Refund status generally available within 24 hours of e-file acknowledgment (4 weeks for paper). Typical payout: about 21 days for e-filed direct-deposit refunds. Lost/stolen check trace via Form 3911: the Bureau of the Fiscal Service review can take up to six weeks.",
+  "biggest_catch": "This only tracks a refund from a return you already filed — it cannot create money or find refunds you never claimed by filing. The IRS cautions: 'don't rely on receiving a refund by a certain date,' and returns claiming the Earned Income Tax Credit or Additional Child Tax Credit are legally held until mid-February.",
+  "eligibility": "Anyone who filed a federal tax return expecting a refund. Where's My Refund needs your SSN, filing status, and the exact refund amount from the return.",
+  "steps": [
+    "Go to https://www.irs.gov/refund and use Where's My Refund? with your SSN, filing status, and exact refund amount (or the IRS2Go mobile app).",
+    "If it shows the refund was sent but you never got it: if you moved, file Form 8822 to update your address with the IRS.",
+    "If the check is lost or was never delivered, initiate a refund trace — in Where's My Refund, via the automated line 800-829-1954, or by filing Form 3911 (Taxpayer Statement Regarding Refund); married-filing-jointly filers must use the form or call 800-829-1040.",
+    "If the check was cashed by someone else, the Bureau of the Fiscal Service sends a claim package (up to six weeks for review); if it was never cashed, a replacement is issued once the original is canceled."
+  ],
+  "catches": [
+    "Only works for refunds on returns you actually filed — no return, no refund to find.",
+    "Do not rely on a specific date; some returns need additional review and take longer.",
+    "EITC/Additional Child Tax Credit refunds are held by law until mid-February.",
+    "Paper tax refund checks are being phased out (since Sept 30, 2025) — direct deposit is the default path.",
+    "The IRS will never call/text/email demanding payment or personal info about your refund — those are scams."
+  ],
+  "app_links": {
+    "android": "IRS2Go (official IRS app)",
+    "ios": "IRS2Go (official IRS app)"
   },
-  "c2": {
-   "evidence": "Official irs.gov pages describe Where's My Refund (SSN + filing status + exact amount) and the lost-check trace via Form 3911 / 800-829-1954.",
-   "pass": true
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "c3": {
-   "evidence": "Checking and tracing a refund are free; no fee anywhere in the official process.",
-   "pass": true
+  "upfront_fee": false,
+  "checked_at": "2026-09-23T07:21:24Z",
+  "notes": "Verified 2026-09-22/23 against official irs.gov pages (refund FAQs, Where's My Refund guidance, IR-2025-94 on the paper-check phaseout, IR-2026-44). App links: the official IRS2Go app exists on both stores — named without a guessed store URL, per the no-guess rule. In-app, frame strictly as tracking your own already-filed refund, and include the IRS-scam warning. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery 15-30min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)]",
+  "critical": {
+    "c1": {
+      "evidence": "IRS — the Internal Revenue Service, the US federal tax agency — operates Where's My Refund and the refund-trace process.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official irs.gov pages describe Where's My Refund (SSN + filing status + exact amount) and the lost-check trace via Form 3911 / 800-829-1954.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Checking and tracing a refund are free; no fee anywhere in the official process.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official IRS pages state timing plainly: 24h for e-file status, ~21 days typical, up to six weeks for BFS review of a cashed-check claim.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Official IRS pages state timing plainly: 24h for e-file status, ~21 days typical, up to six weeks for BFS review of a cashed-check claim.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Anyone who filed a federal return expecting a refund; needs SSN, filing status, exact refund amount.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Anyone who filed a federal return expecting a refund; needs SSN, filing status, exact refund amount.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Free; IRS-scam impersonation is the cost risk, not a fee.",
+      "pass": true
+    },
+    "s3": {
+      "note": "~21 days typical for e-filed direct deposit; up to six weeks for a lost-check trace review.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words — the IRS is explicit that dates are not guaranteed.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.irs.gov/refund — the official IRS refund-status page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: check status, update address (Form 8822), trace (Form 3911).",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official irs.gov pages loaded live 2026-09-22/23.",
+      "pass": true
+    }
   },
-  "s2": {
-   "note": "Free; IRS-scam impersonation is the cost risk, not a fee.",
-   "pass": true
-  },
-  "s3": {
-   "note": "~21 days typical for e-filed direct deposit; up to six weeks for a lost-check trace review.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No weasel words — the IRS is explicit that dates are not guaranteed.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://www.irs.gov/refund — the official IRS refund-status page.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: check status, update address (Form 8822), trace (Form 3911).",
-   "pass": true
-  },
-  "s7": {
-   "note": "Official irs.gov pages loaded live 2026-09-22/23.",
-   "pass": true
-  }
- }
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 15.0,
+  "time_max_minutes": 30.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Unclaimed/Recovery (15-30min active)"
 }

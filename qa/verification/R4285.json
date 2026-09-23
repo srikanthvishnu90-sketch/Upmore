@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is a LOAN referral, not a checking-account referral: you only get the $50 check if your friend or family member actually gets a loan from Citizens Savings & Loan ('we are able to help with a loan'). Referring someone who only inquires or is declined earns you nothing.",
+  "catches": [
+    "Payout is triggered only when Citizens Savings & Loan is 'able to help' the referred person with a loan — i.e., the friend must apply for and receive a loan, subject to the bank's lending criteria and approval.",
+    "Referrer must put their name on the referral form/card so the bank knows where to send the $50 check.",
+    "The bank's page does not state a referral cap, payout timing, or tax treatment — all unstated, so treat per-referral payout timing as unknown.",
+    "The friend must be someone genuinely seeking a loan; the program is presented as a friends-and-family loan referral (personal loans and other loan types the bank offers)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Program page on citizensloan.com, Citizens Savings & Loan's official domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page states 'we will send you a $50 check for each friend or family member we are able to help with a loan' — concrete per-referral payout to the referrer.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Friend requirement stated: the referred person must be helped with a loan (i.e., obtain a loan from the bank, subject to its lending criteria).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; referral cards are picked up free at branches or printed from the site.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone who can hand a referral card/form to a friend or family member; no account or membership requirement is stated on the program page. The referred person must qualify for and receive a loan from Citizens Savings & Loan.",
+  "notes": "Verified 2026-09-23 from the bank's official Friends and Family Referral Program page. dedupe-check 'citizens savings' / 'citizensloan' clean (existing 'citizens' entries cover Citizens Bank checking R0040 and Citizens and Farmers Bank referral R3841 — both different institutions). Unusual mechanism for this lane (loan referral rather than deposit-account referral), but it meets the lane's core rule: concrete per-referral payout to the referrer stated in official terms. Caveat: no stated cap, payout timing, or tax disclosure on the page.",
+  "numeric_basis": "payout from official terms ($50 check per friend helped with a loan); time: pick up/print referral card + hand to friend est. 5-15 min active",
+  "official_url": "https://www.citizensloan.com/friends-and-family-referral-program/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Tell your friends and family about Citizens Savings & Loan and we will send you a $50 check for each friend or family member we are able to help with a loan.",
+  "payout_value_note": "$50 check mailed to the referrer per referred friend/family member who obtains a loan; no stated cap.",
+  "route_id": "R4285",
+  "standard": {
+    "s1": {
+      "note": "Loan-referral is a distinct mechanism from the bank's other promotions.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No existing Citizens Savings & Loan route in catalog or evidence files.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Program page live as of 2026-09-23; page carries no expiry date.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Framed as conditional: payout only when the referred person actually receives a loan.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not disclosed on the page; noted as a caveat.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No cap stated on the page; noted as a caveat.",
+      "pass": true
+    },
+    "s7": {
+      "note": "In-person/print form; no app required.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Pick up referral cards at a Citizens Savings & Loan branch or print the referral form from the program page.",
+    "Write your name on the referral form/card so the bank knows where to send the $50.",
+    "Give the form/card to a friend or family member who is interested in a loan.",
+    "Your friend applies for and receives a loan from Citizens Savings & Loan.",
+    "The bank sends you a $50 check."
+  ],
+  "terms_url": "https://www.citizensloan.com/friends-and-family-referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payout timing not stated on the program page; the bank mails a $50 check once the referred person has been helped with a loan.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

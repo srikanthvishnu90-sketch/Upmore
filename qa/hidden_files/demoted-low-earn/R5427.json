@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Most proposals lose and only 15 bids per month are free — earnings depend entirely on winning client work, minus a tiered commission.",
+  "catches": [
+    "Only 15 free proposal credits per month; extra credits are paid.",
+    "A tiered freelancer commission applies per client — check the current official fee schedule at signup.",
+    "Competitive bidding; most proposals earn nothing.",
+    "Payment goes through escrow with a clearing period before withdrawal; confirm current terms at signup.",
+    "New-seller application can take days unless expedited."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "PeoplePerHour's own 'How It Works - Freelancer' page describes the marketplace: freelancers 'Send Proposals in seconds', 'Quote a price', and use escrow-protected WorkStream; official support confirms 'all users are given 15 Proposal credits completely free' each month.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed freelancer pay range — freelancers quote their own prices per proposal; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: profile, browse projects, send proposals or publish Offers, escrow deposit, invoice, paid on release.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Signup, project search, and 15 monthly proposals are free per official support; extra credits and memberships are optional.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone who can register and legally freelance; skills must match posted projects.",
+  "notes": "Scenario: freelance bidding. PeoplePerHour is a project-bidding marketplace (UK/Europe-strong): clients post projects, freelancers send proposals or sell fixed-price Offers, and paid work runs through escrow. Pay is per-project and variable — never guaranteed.",
+  "numeric_basis": "payout: per-project, freelancer-quoted prices, no official fixed range. time: profile + portfolio setup + reading and submitting first proposals, est. 45-120 min active.",
+  "official_url": "https://www.peopleperhour.com/static/how-it-works-seller",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Stay protected: set a deposit to go in Escrow! This will be released to you on invoicing",
+  "payout_value_note": "Freelancers quote their own prices per proposal/Offer; PeoplePerHour publishes no fixed pay range — variable per-project income.",
+  "route_id": "R5427",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to register and legally freelance.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as freelancer-quoted variable pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover limited free proposals, tiered commission, escrow clearing, and competitive awards.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: PeoplePerHour absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Verified against provider-owned pages fetched live on 2026-09-23 (peopleperhour.com, support.peopleperhour.com).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: continuous project postings; escrow release on invoicing/approval.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a free PeoplePerHour freelancer profile with skills, portfolio, and rates.",
+    "Browse client-posted projects and send proposals — 15 proposal credits free each month per official support.",
+    "Alternatively, publish fixed-price 'Offers' that buyers can purchase directly.",
+    "Agree terms; the buyer deposits funds in escrow via WorkStream.",
+    "Deliver the work, raise an invoice, and get paid on release (tiered freelancer commission applies)."
+  ],
+  "terms_url": "https://support.peopleperhour.com/hc/en-us/articles/205217547-How-many-proposals-can-I-send-in-a-month",
+  "time_max_minutes": 120,
+  "time_min_minutes": 45,
+  "timing": "Projects post continuously; escrow releases to the freelancer on invoicing/approval.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R2029",
+  "verdict": "verify",
+  "official_url": "https://99designs.com/",
+  "terms_url": "https://support.99designs.com/hc/en-us/articles/204761045-What-is-a-design-contest",
+  "payout_quote": "The winning designer receives the prize money, and the client gets the design files, and full copyright to the winning design.",
+  "steps": [
+    "Create a free 99designs designer account and build your portfolio profile.",
+    "Browse open contest listings in the 99designs marketplace.",
+    "Read a contest brief and submit original designs before the deadline (contests run about seven days; fast-track 1/2/3-day options exist).",
+    "Incorporate client feedback through the competition rounds.",
+    "If the client selects your design as the winner, you receive the prize money."
+  ],
+  "catches": [
+    "Spec work: only the winning designer is paid — contests average around 110 entries, so most entrants earn nothing for their time.",
+    "The prize amount is set by the client per contest; there is no fixed payout.",
+    "Non-guaranteed contests may award no prize at all; prefer contests marked guaranteed.",
+    "Time spent on losing entries is unpaid — that is the core cost of this channel.",
+    "You need a competitive portfolio to win against experienced designers."
+  ],
+  "biggest_catch": "Only the winner gets paid: with ~110 entries per contest on average, the expected payout for any single entry is near zero, and losing work is entirely unpaid.",
+  "eligibility": "Free 99designs designer account; must be able to deliver original design work and receive payouts via supported methods.",
+  "timing": "Contests run about 7 days (fast-track 1-3 days); prize paid after winner selection and file handover.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "99designs' own help center (support.99designs.com) defines the mechanism: 'A design contest is a competition between designers to create the winning design for a client's design brief' and 'The winning designer receives the prize money'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms state the prize is set per contest by the client; no fixed designer payout range is published — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official contest flow: brief, package, contest stages over seven days, winner picked, prize paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Entering contests is free for designers; no entry fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free designer account; effectively gated by design skill/portfolio."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable, winner-takes-most spec work; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover unpaid losing entries, non-guaranteed contests, and client-set prizes."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no 99designs route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: ~7-day contests; payout after winner selection."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "99designs is a long-running design-contest marketplace where clients post briefs and designers compete for per-contest prize money. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Prize money is set per contest by the client; 99designs publishes no fixed designer payout range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: client-set per contest, no official range. time: browse contests + read brief + create and submit entry designs, est. 60-180 min active per contest entered (excludes revision rounds)."
+}

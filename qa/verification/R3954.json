@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must open a new checking account and, within 60 days, set up payroll deduction or $250+ direct deposit AND complete 10 debit transactions.",
+  "catches": [
+    "You and your referral each earn $25.",
+    "There is no limit on the number of people you refer.",
+    "Friend opens a new Family First checking account via the referral coupon.",
+    "Within 60 days: sets up payroll deduction or direct deposit of at least $250, and completes 10 debit card transactions (no ATM).",
+    "Deposits made on the 61st day assuming all requirements met; both members must be in good standing."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official ffcuga.org flyer: 'Refer A Member to our Family and earn $25 each!' and 'There is no limit on the number of people you refer'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral flyer on official ffcuga.org domain (/pdf/Refer-A-Member-FFCU.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'family first' found only a false-positive catalog hit; grep of existing-providers found no match; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Family First CU member. Friend: new member opening checking.",
+  "notes": "Verified 2026-09-23. Family First Credit Union. $25 per qualifying referral; official source explicitly states no referral limit.",
+  "numeric_basis": "payout from official flyer ($25 per referral; no limit); time: completing coupon est. 5-15 min active",
+  "official_url": "https://ffcuga.org/pdf/Refer-A-Member-FFCU.pdf",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer A Member to our Family and earn $25 each! ... There is no limit on the number of people you refer",
+  "payout_value_note": "$25 per qualifying referral; official source explicitly states no limit.",
+  "route_id": "R3954",
+  "standard": {
+    "s1": {
+      "note": "Terms live on ffcuga.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: Family First members; friend opens new checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $250+ payroll deduction/DD + 10 debit transactions in 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: deposits made on the 61st day",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the member referral coupon and give it to your friend.",
+    "They open a new Family First checking account.",
+    "Within 60 days: payroll deduction/DD of $250+ and 10 debit transactions; you each get $25 on day 61."
+  ],
+  "terms_url": "https://ffcuga.org/pdf/Refer-A-Member-FFCU.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Deposits made on the 61st day, assuming all requirements met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

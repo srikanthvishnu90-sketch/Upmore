@@ -1,0 +1,87 @@
+{
+  "route_id": "R1065",
+  "verdict": "verify",
+  "official_url": "https://robinhood.com/us/en/support/articles/ira-overview/",
+  "terms_url": "https://robinhood.com/us/en/support/articles/ira-overview/",
+  "payout_quote": "The IRA match is a 3% match on annual contributions with a Robinhood Gold subscription ($5 per month), or 1% without, that Robinhood adds to your IRA for making eligible contributions. That means you'll automatically get an extra 1% or 3% on every eligible dollar you contribute every year, up to the annual IRA contribution limits set by the IRS. ... Non-Gold customers receive a 1% match, no subscription required. ... You also get a 1% match on any amount from IRA transfers or old 401(k)s.",
+  "steps": [
+    "Open a self-directed Robinhood IRA (Traditional or Roth) - managed IRAs are not eligible.",
+    "Make eligible annual contributions to the IRA (2026 limits: $7,500 under age 50, $8,600 age 50+).",
+    "Robinhood automatically adds a 1% match on every eligible contributed dollar (no subscription required).",
+    "Keep the matched funds in the IRA for at least 5 years to avoid a possible early IRA match removal fee."
+  ],
+  "catches": [
+    "The advertised 3% rate requires Robinhood Gold at $5/month, and you must stay subscribed for 1 year after your first Gold match to keep the full Gold match - the verified framing here is the free 1% tier only.",
+    "The match must be held in the IRA for at least 5 years to avoid a possible early IRA match removal fee.",
+    "Managed IRAs (Robinhood Strategies) are not eligible for the match on contributions.",
+    "Match rate is subject to change.",
+    "At the free 1% rate the maximum is about $75/year (under 50) or $86/year (50+) at 2026 contribution limits - small in absolute dollars."
+  ],
+  "biggest_catch": "The match must stay in the IRA for 5 years to avoid a removal fee, and the headline 3% rate requires a $5/month Gold subscription held for a year - the free tier pays 1% (about $75-$86/year max).",
+  "eligibility": "U.S. Robinhood customers with a brokerage account in good standing; self-directed Traditional or Roth IRAs only (managed IRAs excluded).",
+  "timing": "Match is typically available to invest immediately when contributions settle; must remain 5 years to avoid the early removal fee.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "Match rate is subject to change."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Robinhood Financial LLC - real operating broker-dealer; IRA match terms on the robinhood.com domain (IRA overview support article)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Terms current as of 2026-09-23 with 2026 contribution limits and match rates stated."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Payout is concrete: 1% of eligible contributions up to the IRS annual limit (free tier), plus 1% on IRA transfers/old 401(k)s."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No purchase or fee required for the 1% tier; contributions are the user's own retirement savings."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "No upfront fee or purchase required to earn the payout; any deposit is the user's own parked money."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout is conditional on exact eligibility and completion steps, never guaranteed unconditionally."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Funding parked at the broker is disclosed with amount and holding period in catches."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing and payment mechanics come from the official terms, not estimates."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Variable/paid-tier elements are labeled as such; verified framing uses the free tier."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Weasel-word reservation-of-rights language is quoted in weasel_words."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider+mechanism confirmed against the existing catalog before writing."
+    }
+  },
+  "notes": "Distinct from R0016 (Robinhood taxable tiered deposit bonus) and R0328 (Robinhood referral free stock). Verified framing uses the free 1% tier; the 3% Gold tier is disclosed as a paid-subscription option, not free money.",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 86.0,
+  "payout_value_note": "1% of annual IRA contributions up to IRS limit: up to $75 under age 50, $86 age 50+ at 2026 limits; 1% also on IRA transfers/old 401(k) rollovers (uncapped).",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "payout: 1% of contributions per official terms ($0 floor, $86 max at 2026 limits); time: IRA application + contribution setup est. 30-60 min active."
+}

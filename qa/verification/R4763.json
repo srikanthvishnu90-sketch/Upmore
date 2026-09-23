@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only earn for the specific products the friend actually completes - $25 for checking with $500+ direct deposit, another $25 for 20+ debit purchases, another $50 for a $10,000+ loan - so a bare account opening earns you nothing.",
+  "catches": [
+    "Referrer earns only for products the referred member completes within 60 days of membership: $25 for checking + $500+ qualifying direct deposits, +$25 for 20+ debit card purchases, +$50 for a new loan of $10,000+.",
+    "The new member must notify the PAFCU employee of the referrer's name at account opening - without it, no bonus.",
+    "New member receives the same benefits for completed products (symmetric payout).",
+    "Referral rewards paid on the second day of the month following the member's 60th day (e.g., ~2 months after joining).",
+    "No referral-count cap stated on the page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Peoples Advantage FCU page (homecu.net/fi/pafcu/refer-a-friend.html): 'If they open a checking account and have qualifying direct deposits of $500 or more you will receive $25. If they have 20 or more debit card purchases, you will receive an additional $25 and if they open a new loan for $10,000.00 or more you will receive an additional $50.00.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official homecu.net PAFCU page, fetched live 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership products",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no homecu.net/pafcu referral route; catalog has no Peoples Advantage entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: PAFCU member. Friend: new member who names the referrer at account opening.",
+  "notes": "Verified 2026-09-23. Peoples Advantage Federal Credit Union. Tiered referrer payout: $25 (checking + $500 DD) + $25 (20+ debit purchases) + $50 ($10k+ loan), up to $100 per referral; minimum achievable $25.",
+  "numeric_basis": "payout from official PAFCU terms ($25/$25/$50 tiered per referral, max $100); time: give referral name est. 5-15 min active",
+  "official_url": "https://www5.homecu.net/fi/pafcu/refer-a-friend.html",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer a friend to Peoples Advantage Federal Credit Union! Send a new member to PAFCU and receive up to $100.00 for you and the person you send to see us.* ... If they open a checking account and have qualifying direct deposits of $500 or more you will receive $25. If they have 20 or more debit card purchases, you will receive an additional $25 and if they open a new loan for $10,000.00 or more you will receive an additional $50.00.",
+  "payout_value_note": "Tiered: $25 for checking + $500 DD, +$25 for 20+ debit purchases, +$50 for $10k+ loan = up to $100 per referral to the referrer; new member gets the same.",
+  "route_id": "R4763",
+  "standard": {
+    "s1": {
+      "note": "Page live, fetched 2026-09-23; no fixed expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: new member names the referrer at account opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: 60 days to complete each tier - $500+ DD, 20+ debit purchases, $10k+ loan",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards paid the second day of the month following the member's 60th day",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell friends to name you as referrer when they open a PAFCU membership.",
+    "Friend establishes membership and, within 60 days, completes any of: checking with $500+ direct deposits ($25 to you), 20+ debit purchases (+$25), $10,000+ new loan (+$50).",
+    "Referral rewards are paid on the second day of the month after the friend's 60th day as a member."
+  ],
+  "terms_url": "https://www5.homecu.net/fi/pafcu/refer-a-friend.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Rewards paid on the second day of the month following the referred member's 60th day.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

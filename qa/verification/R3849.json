@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both sides only earn per product the friend actually sets up - if the friend just opens checking without direct deposit or a loan, you only get $10 for that referral, not $50.",
+  "catches": [
+    "Referrer earns tiered: $10 when friend opens Free Checking + $10 when direct deposit is confirmed + $30 when friend applies for a car/personal loan (up to $50 per referral); friend earns the same tiers.",
+    "No limit on the number of members an existing member can refer; limit one offer per new member.",
+    "Friend must present the referral card at account opening; all services must be added at initial account opening except direct deposit, which must be confirmed within 45 days.",
+    "Minimum $50 deposit in checking to qualify for the checking bonus; friend must notify the credit union when direct deposit is added.",
+    "Funds earned are considered interest income, reported on IRS Form 1099-INT.",
+    "Membership: live, work, worship, or attend school in Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, or Westchester Counties, NY ($5 initial deposit).",
+    "TEG reserves the right to discontinue the program at any time without advance notice."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TEG FCU referral card (tegfcu.com): table shows referrer earns $10 checking / $10 direct deposit / $30 car-personal loan ('You could earn: $50!' for the member and $50 for the friend); 'No limit to number of members existing member can refer.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral card PDF hosted on official tegfcu.com domain (tegfcu.com/wp-content/uploads/2024/07/tegfcu-refer-a-friend-referral-card-no-cc.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking with $50 min deposit",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'teg fcu' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing TEG FCU member. Friend: new member in the NY field of membership who presents the referral card at account opening.",
+  "notes": "Re-reviewed 2026-09-23. TEG Federal Credit Union (tegfcu.com/refer-a-friend). Both sides earn up to $50 each via stacked tiers: $10 for opening free checking + $10 for adding direct deposit + $10 for a TEG Rewards credit card + $20 for a car/personal loan. No payout clock stated in the current terms; no tax treatment stated.",
+  "numeric_basis": "payout from official card ($10/$10/$30 tiers for the referring member; no referral limit); time: filling out and handing off the card est. 5-15 min active",
+  "official_url": "https://www.tegfcu.com/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 10,
+  "payout_quote": "Opens a Free Checking Account $10 | Adds Direct Deposit $10 | Applies for Car/Personal Loan $30 ... You could earn: $50! ... No limit to number of members existing member can refer.",
+  "payout_value_note": "$10-$50 per referral to the referring member, depending on which products the friend sets up (checking, direct deposit, loan). No referral-count cap.",
+  "route_id": "R3849",
+  "standard": {
+    "s1": {
+      "note": "Referral card live on official tegfcu.com, fetched 2026-09-23; 'reserves the right to discontinue at any time' - no fixed expiry",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member; friend new member in Dutchess/Orange/Putnam/Rockland/Sullivan/Ulster/Westchester NY, presents card at opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: Free Checking with $50 min deposit at opening, direct deposit confirmed within 45 days, loan applied for at opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: card has STAFF 'DATE FUNDS DEPOSITED' fields; direct-deposit bonus after DD confirmed (within 45 days of opening)",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out your information on the TEG refer-a-friend card and have your friend complete their section.",
+    "Friend presents the card when opening a new account.",
+    "Friend opens Free Checking (min $50 deposit) and optionally adds direct deposit and a car/personal loan at opening.",
+    "You earn $10 (checking) + $10 (confirmed direct deposit) + $30 (loan) = up to $50 per referral; no limit on referrals."
+  ],
+  "terms_url": "https://www.tegfcu.com/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "No payout clock stated on the current official page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

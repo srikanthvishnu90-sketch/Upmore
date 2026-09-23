@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Tiny earnings for most users: $0.10/GB means you must share 100 GB to reach the $5 cashout, and buyer demand for your connection determines whether traffic flows at all. Third-party customers' traffic exits under your home IP address, and sharing may violate your ISP terms or consume data caps.",
+  "catches": [
+    "Earnings are usage-based: $0.10 per GB of customer traffic routed through your connection (official: 'earn $0.10 for every GB'). No traffic demand, no earnings.",
+    "Minimum cashout is $5, processed within one week; a 3% PacketStream processing fee applies and PayPal may charge additional fees.",
+    "You grant customers' traffic access to your internet connection - residential IP exposure, privacy risk, ISP terms-of-service risk, and data-cap/electricity costs.",
+    "Most users earn only small amounts; reaching even the $5 minimum can take a long time on a typical connection."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "packetstream.io is the provider's official domain; the 'Share your bandwidth' page (https://packetstream.io/share-bandwidth/) states the rate, currency, minimum payout, timing, and fee in the provider's own words."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Catalog claim: earn money sharing unused bandwidth at $0.10/GB with $5 minimum cashout via PayPal. Official page matches on every point: $0.10/GB, USD through PayPal, $5 minimum, processed within one week, 3% processing fee."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No signup fee. Costs disclosed on the official page: 3% PacketStream processing fee on payouts, plus possible PayPal fees. Bandwidth/electricity/ISP-data-cap costs are real but disclosed here as catches."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page states: 'earn $0.10 for every GB' and 'all payouts are made in USD through PayPal' with a '$5 minimum cashout' 'processed within one week'. Concrete per-unit rate, threshold, method, and timing."
+    }
+  },
+  "eligibility": "Users with a Windows, macOS, or Linux device and an internet connection; customer traffic routes through the user's connection.",
+  "notes": "Verified against official packetstream.io share-bandwidth page on 2026-09-23. Browser page-fetch was unavailable this session; evidence rests on the provider's own domain content via search snippets. No upstream demand means no earnings - most earners get very little. Framed as selling residential bandwidth with IP/ISP/privacy tradeoffs, not passive income.",
+  "official_url": "https://packetstream.io/share-bandwidth/",
+  "payout_quote": "earn $0.10 for every GB; all payouts are made in USD through PayPal; $5 minimum cashout processed within one week; 3% PacketStream processing fee",
+  "route_id": "R3441",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility: Windows/macOS/Linux users with an internet connection; customer traffic routes through the user's connection. Clear from official page."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout mechanics stated: USD through PayPal, $5 minimum, 3% processing fee (PayPal may charge more)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Payout timing stated: processed within one week of request."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Core money claims are exact figures ($0.10/GB, $5 minimum) - no vague promotional multiplier on the payout amount."
+    },
+    "s5": {
+      "pass": false,
+      "note": "packetstream.io pages not loadable via page fetch this session; official-domain content reached via search snippets."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete and grounded in official instructions: install, run, cash out at $5."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Checked 2026-09-23."
+    }
+  },
+  "steps": [
+    "Sign up for a PacketStream account and install the app on Windows, macOS, or Linux.",
+    "Keep the app running; customer traffic is routed through your internet connection and you earn $0.10 per GB shared.",
+    "Accumulate at least $5 in earnings.",
+    "Request a PayPal payout in USD; it is processed within one week (minus the 3% PacketStream processing fee and any PayPal fees)."
+  ],
+  "terms_url": "https://packetstream.io/share-bandwidth/",
+  "timing": "Payouts requested at the $5 minimum are processed within one week via PayPal.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "passive"
+  ],
+  "payout_min_usd": 0.1,
+  "payout_max_usd": 0.1,
+  "payout_value_note": "official per-unit rate $0.10 per GB shared; $5 minimum cashout",
+  "time_min_minutes": 10.0,
+  "time_max_minutes": 20.0,
+  "numeric_basis": "payout: official $0.10/GB rate; time: active setup (install + account) estimate 10-20 min, earnings accrue passively thereafter"
+}

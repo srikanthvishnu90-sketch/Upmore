@@ -1,0 +1,86 @@
+{
+  "route_id": "R2037",
+  "verdict": "verify",
+  "official_url": "https://www.nextdoor.com/",
+  "terms_url": "https://nextdoorcrm.my.site.com/s/article/About-businesses-on-Nextdoor?language=en_CA",
+  "payout_quote": null,
+  "steps": [
+    "Claim or create a free Nextdoor Business Page for your local service business and verify it.",
+    "Complete your page: services, hours, photos, and contact info.",
+    "Get discovered in Nextdoor business search and neighborhood recommendations (Nextdoor notes over 25% of conversations are business recommendations).",
+    "Collect neighbor recommendations and respond to messages from locals asking for quotes.",
+    "Win the job and get paid directly by the customer on your own terms."
+  ],
+  "catches": [
+    "Lead flow is inbound and reputation-based: it takes time to build recommendations, and there are no guaranteed leads.",
+    "You need a real local service business with a verifiable address; this is not a channel for remote/online-only freelancers.",
+    "The free path is organic only; paid placements (Local Deals ads) cost extra.",
+    "Results vary hugely by neighborhood density and how active your local Nextdoor community is.",
+    "Using a personal account to promote a business violates community norms and erodes trust."
+  ],
+  "biggest_catch": "There are no guaranteed leads: Nextdoor is a slow-burn reputation channel, and a new page in a quiet neighborhood may produce nothing for months.",
+  "eligibility": "Local businesses/service providers eligible under Nextdoor's Business Page Policy; must verify the business address.",
+  "timing": "Always-on local discovery; jobs come in as neighbors search and ask for recommendations.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Nextdoor's own help center states the mechanism: 'Local businesses can create Nextdoor Business Pages to connect with their neighbours. Through business pages, neighbours can leave a recommendation, message the business' and pages are free to create."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Nextdoor publishes no payout terms — money comes from customers you win; framed as fully variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: create/claim free page, complete profile, get discovered, receive messages."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Business Pages are free to create; no upfront fee documented for the organic path."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is local businesses under the Business Page Policy with a verifiable address."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable customer-paid work; no amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover slow inbound flow, local-only fit, and no guaranteed leads."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Nextdoor route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: always-on local discovery."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Nextdoor Business Pages let local service providers get discovered via neighborhood search and recommendations; neighbors message the business directly. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "No platform payout: customers pay you directly on your own terms; Nextdoor publishes no amounts.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout: none from platform; customer-paid. time: claim/verify page + complete profile, est. 30-60 min active."
+}

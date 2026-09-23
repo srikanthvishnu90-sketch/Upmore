@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $25 bonus must stay in your Wealthsimple account for 180 days - withdraw early and it is clawed back.",
+  "catches": [
+    "Bonus paid in CAD; USD figure converted at ~0.71 (1 USD = 1.40665 CAD observed from Xe on 2026-09-23)",
+    "New Wealthsimple clients only (residents of Canada, age of majority); one bonus per client",
+    "Must open through the promotional/affiliate page and fund at least C$1 within 30 days of account opening",
+    "Bonus must remain in the Wealthsimple account for 180 days from initial funding; early withdrawal triggers clawback",
+    "Bonus is cash to the Wealthsimple account, not a return on investment"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Wealthsimple (wealthsimple.com) - Canadian registered investment dealer (CIRO member). Official landing page 'Earn up to 2.25% interest with Wealthsimple chequing, plus get a $25 bonus' fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'New to Wealthsimple? We'll give you a $25 cash bonus when you open your first Wealthsimple account through this page and fund at least $1 within 30 days.' 'Customers who receive a bonus payment must keep the $25 bonus in their Wealthsimple account for 180 days from the initial funding date.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: first account, C$1+ funded within 30 days, keep bonus 180 days. No trading or direct deposit required for the bonus itself.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "C$1 funding is the user's own money, fully withdrawable (bonus excluded) - no cost to claim. Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Wealthsimple clients, residents of Canada, age of majority; one C$25 bonus per client; account must be opened via the promo/affiliate page.",
+  "notes": "G54 brokerage wave 2. Wealthsimple chequing + invest accounts (not in catalog). Payout converted from CAD at ~0.73. The 2.25% interest is a yield feature, not part of the bonus claim.",
+  "numeric_basis": "payout from official terms (flat C$25 cash -> ~US$18 at ~0.71 CAD/USD; 1 USD = 1.40665 CAD observed from Xe on 2026-09-23); time: online signup + C$1 funding est. 15-30 min active",
+  "official_url": "https://www.wealthsimple.com/en-ca/aff-cash-lp",
+  "payout_max_usd": 18,
+  "payout_min_usd": 18,
+  "payout_quote": "New to Wealthsimple? We'll give you a $25 cash bonus when you open your first Wealthsimple account through this page and fund at least $1 within 30 days.",
+  "payout_value_note": "C$25 cash bonus converted to USD at ~0.71 (1 USD = 1.40665 CAD observed from Xe on 2026-09-23) -> ~$18.",
+  "route_id": "R5786",
+  "standard": {
+    "s1": {
+      "note": "New Wealthsimple clients only; Canada residents of age of majority; one bonus per client.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: open first account via promo page, fund C$1+ within 30 days, keep bonus 180 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Cash bonus to the Wealthsimple account; subject to 180-day retention clawback.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat C$25 stated officially; no inflated claim.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.wealthsimple.com/en-ca/aff-cash-lp - official Wealthsimple page fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: sign up, fund, keep bonus 180 days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Wealthsimple offer page verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open your first Wealthsimple account through the promotional page and complete identity verification",
+    "Fund at least C$1 into the account within 30 days of account opening",
+    "Receive the C$25 cash bonus in your Wealthsimple account",
+    "Keep the bonus in the account for 180 days from the initial funding date to avoid clawback"
+  ],
+  "terms_url": "https://www.wealthsimple.com/en-ca/aff-cash-lp",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Fund within 30 days of opening; bonus must be retained 180 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

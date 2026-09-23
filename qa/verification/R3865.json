@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The program is limited to the FIRST 100 qualifying referrals - once they're hit, it's over - and the friend must keep the account open 90 days with 15 debit transactions and recurring direct deposit before anyone gets paid.",
+  "catches": [
+    "$100 to both the referring customer and the new customer per qualifying referral; program limited to the first 100 qualifying referrals.",
+    "Friend must: open a Neighborhood checking account via the referral link (referral submitted before account opening), keep it open and in good standing 90 days, complete 15 posted POS debit transactions (non-ATM), and establish/maintain recurring payroll/pension/government direct deposit within 90 days.",
+    "Friend must not have had a Neighborhood checking account in the previous 12 months.",
+    "Rewards paid after verification of the 90-day qualification period, as a deposit into a Neighborhood account.",
+    "Referring customer must have an active NNB account in good standing at referral and payout.",
+    "NNB employees and Board customers ineligible; NNB can modify/suspend/terminate at any time.",
+    "Rewards may be reported to the IRS; taxes the customer's responsibility."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official NNB terms (neighborhood.bank): 'When the referred new customer meets all eligibility and qualification requirements outlined below, both the referring customer and the new customer will receive a $100 reward.' and 'The promotion begins July 13, 2026, and is limited to the first 100 qualifying referrals.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms hosted on official neighborhood.bank domain (neighborhood.bank/assets/files/SVQrH8j2), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard Neighborhood checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'neighborhood bank' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current NNB customer with an active account in good standing (employees/Board customers excluded). Friend: new customer, no Neighborhood checking in past 12 months.",
+  "notes": "Verified 2026-09-23. Neighborhood National Bank (Mora, MN; neighborhood.bank). $100 to the referrer per qualifying referral. Program effective 7/13/2026 and capped at the first 100 qualifying referrals - availability is time-sensitive.",
+  "numeric_basis": "payout from official terms ($100 per qualifying referral; first-100-referral program cap); time: submitting the online referral form est. 5-15 min active",
+  "official_url": "https://www.neighborhood.bank/assets/files/SVQrH8j2",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "When the referred new customer meets all eligibility and qualification requirements outlined below, both the referring customer and the new customer will receive a $100 reward. ... The promotion begins July 13, 2026, and is limited to the first 100 qualifying referrals.",
+  "payout_value_note": "$100 deposited to the referrer's Neighborhood account per qualifying referral; program capped at first 100 qualifying referrals.",
+  "route_id": "R3865",
+  "standard": {
+    "s1": {
+      "note": "Terms live on neighborhood.bank, fetched 2026-09-23; effective 7/13/2026; ends after first 100 qualifying referrals",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer active account in good standing; friend new customer, no checking in past 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open checking via referral link, 15 POS debits (non-ATM), recurring DD, account open 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: rewards paid after verification of the 90-day qualification period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: rewards may be reported to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit the referral through NNB's official online referral form and share the unique link with your friend.",
+    "Friend applies using the referral link and opens a Neighborhood checking account.",
+    "Within 90 days, friend completes 15 posted POS debit transactions and establishes recurring direct deposit; keeps account open 90 days.",
+    "After verification of the 90-day period, you and your friend each receive $100 (program capped at first 100 referrals)."
+  ],
+  "terms_url": "https://www.neighborhood.bank/assets/files/SVQrH8j2",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Rewards paid after verification of the 90-day qualification period (deposit into a Neighborhood account).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

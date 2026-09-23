@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You must have been a WFCU member for at least 3 months to qualify - and the friend must mention your referral at the time of application, not later.",
+  "catches": [
+    "Referring member earns $25 if the friend is approved for a personal loan, $50 for an auto loan, $100 for a home equity loan.",
+    "Referrer must be a member in good standing for at least 3 months.",
+    "The referred person cannot be a current WFCU member.",
+    "The referral must be mentioned at the time of application - retroactive credit is not available.",
+    "Approval of the loan is required (application alone earns nothing).",
+    "No cap stated on the official page.",
+    "No tax language on the page (standard bonus treatment; not stated)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official WFCU page (westport.org): 'Refer a friend or family member to Westport Federal Credit Union and earn $25 if they get approved for a personal loan, $50 for approval of an auto loan, and $100 for a home equity loan.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official westport.org domain (westport.org/earn-money-with-westport-federal-credit-union-member-referral-program/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend takes a standard loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'westport federal' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: WFCU member in good standing for 3+ months. Friend: not a current member; mentions the referral at application and is approved for a personal, auto, or home equity loan.",
+  "notes": "Verified 2026-09-23. Westport Federal Credit Union (Westport, MA). $25/$50/$100 tiered by loan type (personal/auto/home equity); no cap stated.",
+  "numeric_basis": "payout from official page ($25-$100 per approved loan referral, tiered by loan type; no cap stated); time: making the referral est. 5-15 min active",
+  "official_url": "https://westport.org/earn-money-with-westport-federal-credit-union-member-referral-program/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer a friend or family member to Westport Federal Credit Union and earn $25 if they get approved for a personal loan, $50 for approval of an auto loan, and $100 for a home equity loan.",
+  "payout_value_note": "$25 (personal loan) / $50 (auto loan) / $100 (home equity loan) per approved referral. No cap stated.",
+  "route_id": "R3895",
+  "standard": {
+    "s1": {
+      "note": "Program page live on westport.org, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member 3+ months in good standing; friend not a current member, mentions referral at application",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: be approved for a personal, auto, or home equity loan",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend/family member to Westport Federal CU.",
+    "Friend mentions your referral at the time of their loan application.",
+    "Friend is approved for a personal, auto, or home equity loan.",
+    "You earn $25 (personal) / $50 (auto) / $100 (home equity)."
+  ],
+  "terms_url": "https://westport.org/earn-money-with-westport-federal-credit-union-member-referral-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Paid upon approval of the referred friend's loan (timing not stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

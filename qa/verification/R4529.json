@@ -1,0 +1,85 @@
+{
+  "route_id": "R4529",
+  "verdict": "verify",
+  "official_url": "http://www.psy.vanderbilt.edu/tonglab/web/papers/fMRI_info.pdf",
+  "terms_url": "http://www.psy.vanderbilt.edu/tonglab/web/papers/fMRI_info.pdf",
+  "payout_quote": "Payment of $30/hour, $70 for a full fMRI session. Payment of $15/hour for behavioral session.",
+  "steps": [
+    "Open the Vanderbilt Tong Lab fMRI information sheet (official lab site)",
+    "Confirm eligibility: 18+, no glasses requirement (contacts OK), no severe astigmatism, not pregnant/breastfeeding, no history of neurological disorders, no nervous-system medication, no metal in body, no claustrophobia",
+    "Sign up via the lab's SONA link (linked in the info sheet)",
+    "Complete the behavioral session first (paid $15/hour); based on performance, qualify for the fMRI session",
+    "Complete the fMRI session (up to 2.5 hours including ~30 min setup): visual tasks in the 7-Tesla scanner",
+    "Receive $30/hour ($70 for a full fMRI session) per session"
+  ],
+  "catches": [
+    "You must first complete the behavioral session and qualify on performance to reach the fMRI session",
+    "Payment differs: $15/hour behavioral vs $30/hour fMRI ($70 full session)",
+    "Strict MRI safety screening (metal, pregnancy, claustrophobia, medications, neurological history)"
+  ],
+  "biggest_catch": "The fMRI session (higher pay) requires passing the behavioral session first; MRI safety screening excludes metal/pregnancy/claustrophobia.",
+  "eligibility": "18+; contacts OK (no glasses to read); no severe astigmatism; not pregnant or breastfeeding; no history of neurological disorders; no nervous-system medication; no metal in body; no claustrophobia.",
+  "timing": "Each fMRI session up to 2.5 hours including ~30 min setup; payment per session completed.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Vanderbilt lab info sheet states 'Payment of $30/hour, $70 for a full fMRI session' and '$15/hour for behavioral session.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Pay rates and fMRI session duration (up to 2.5 hours) both stated."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Info sheet fetched live 2026-09-23 from the lab's official Vanderbilt site with active SONA signup link."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No fees; voluntary research participation; may withdraw anytime."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official Vanderbilt domain (psy.vanderbilt.edu), Tong Lab (Vision, Neuroimaging and Computational Neuroscience), NIH-supported."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Page fetched live 2026-09-23 with active signup link; no expiry date on the sheet."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Dedupe-checked: 0 catalog hits, 0 evidence-file hits for Vanderbilt."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Two-tier pay and qualification requirement disclosed; strict MRI screening disclosed."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Exact payment timing/method not stated — disclosed as a caveat."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Non-invasive fMRI; safety and MRI screening covered on the sheet."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No inflated framing; $30/hour and $70/full session quoted exactly."
+    }
+  },
+  "notes": "Vanderbilt Tong Lab (vision/neuroimaging): $30/hr ($70 full session) for fMRI sessions, $15/hr for behavioral sessions; must qualify on the behavioral session first.",
+  "payout_min_usd": 15,
+  "payout_max_usd": 70,
+  "payout_value_note": "$15/hr behavioral session; $30/hr fMRI, $70 for a full fMRI session.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 150,
+  "numeric_basis": "fMRI session 'up to 2.5 hours' (150 min) from the sheet; behavioral session duration not stated — conservatively 60 min minimum."
+}

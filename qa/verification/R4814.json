@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must make a NEW direct deposit of $500+ (payroll or Social Security) within 60 days of account opening - a direct deposit switched from an existing Bank of Princeton account doesn't count.",
+  "catches": [
+    "Referrer: existing customer with an active account at The Bank of Princeton.",
+    "Referrer earns $50, credited to an existing personal checking or savings account; max $500 in one year (10 referrals).",
+    "Friend (referee): must open a NEW Wise Checking account (new money only), deposit at least $50 at opening, and have a new $500+ payroll/Social Security direct deposit within 60 days of opening.",
+    "Referral form must be presented at account opening.",
+    "Friend's $125 bonus deposited within 30 business days after the initial $500+ direct deposit posts.",
+    "If the Wise Checking account is closed within 6 months, the bank may reclaim the bonus.",
+    "Limit 1 Wise Checking account per Tax ID; new consumer accounts only; offer on new money only."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official The Bank of Princeton Refer-A-Friend flyer (thebankofprinceton.com): 'Referrer earns a bonus of $50.00; credited to an existing personal checking or savings account; Referee earns a bonus of $125.00; both are paid after all requirements of the Refer-A-Friend Promotion are met. A maximum bonus earned by the Referrer not to exceed $500.00 in one year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official flyer on thebankofprinceton.com domain, fetched live 2026-09-23; terminable",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a Wise Checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no thebankofprinceton.com route; catalog has no Bank of Princeton entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing customer with an active account. Friend: new consumer, new money only.",
+  "notes": "Verified 2026-09-23. The Bank of Princeton (NJ). Referrer earns $50 per referral; cap $500/year. Friend must open Wise Checking with $50+ and a new $500+ payroll/SS direct deposit within 60 days.",
+  "numeric_basis": "payout from official thebankofprinceton.com terms ($50 per referral; cap $500/yr); time: complete + present referral slip est. 5-15 min active",
+  "official_url": "https://thebankofprinceton.com/assets/files/O9XWgycu",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Referrer earns a bonus of $50.00; credited to an existing personal checking or savings account; Referee earns a bonus of $125.00; both are paid after all requirements of the Refer-A-Friend Promotion are met. A maximum bonus earned by the Referrer not to exceed $500.00 in one year.",
+  "payout_value_note": "$50 to the referrer per qualifying referral; cap $500/year.",
+  "route_id": "R4814",
+  "standard": {
+    "s1": {
+      "note": "Flyer live on thebankofprinceton.com, fetched 2026-09-23; terminable",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing customer with active account; friend new consumer with new money",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new Wise Checking, $50+ opening deposit, new $500+ payroll/SS direct deposit within 60 days; referral form at opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: friend's bonus within 30 business days after initial qualifying direct deposit posts",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonus is reported to the IRS as interest",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the Bank of Princeton Refer-A-Friend referral form with your information.",
+    "Friend presents the slip when opening a new Wise Checking account with at least $50.",
+    "Friend sets up a new $500+ payroll or Social Security direct deposit within 60 days.",
+    "You receive $50 per referral (up to $500/year)."
+  ],
+  "terms_url": "https://thebankofprinceton.com/assets/files/O9XWgycu",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Paid after all promotion requirements are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

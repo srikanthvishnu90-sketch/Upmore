@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Account referrals demand a lot of the friend - $2,500 minimum deposit, $2,500 average balance for 90 days, and recurring direct deposit - and you won't even be told whether your referral was approved.",
+  "catches": [
+    "Account referral: $100 sign-on bonus to the new customer; referrer gets $100. Friend must open with $2,500 min deposit, maintain $2,500 average minimum balance over 90 days, and have recurring direct deposit; paid after 90 days.",
+    "Loan referral: $100 paid upon closing of any NEW consumer loan, HELOC, or mortgage of $10K+; referred borrower can be new or existing customer.",
+    "Limit of 5 referrals per customer per year (applies to both tracks).",
+    "Referrer must be an existing customer; account referrals require a NEW customer.",
+    "1099-MISC reporting may apply; program can change or be cancelled at any time.",
+    "You will not be notified whether your referral is approved or declined (bank confidentiality)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Northwoods Bank page (northwoodsbank.com): '$100 sign-on bonus will be deposited after 90 days if conditions are met' for new accounts and '$100 sign-on bonus will be paid upon closing of loan' for new loans; 'Limit of 5 referrals per customer per year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official northwoodsbank.com domain (northwoodsbank.com/personal-banking/refer-a-friend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'northwoods bank' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Northwoods Bank customer. Friend: new customer for account referrals (any loan customer, new or existing, for loan referrals).",
+  "notes": "Verified 2026-09-23. Northwoods Bank (Park Rapids, MN). $100 per qualifying account referral (new customers, strict $2,500 balance + direct-deposit conditions) or per new loan ($10K+) at closing; 5 referrals/year cap.",
+  "numeric_basis": "payout from official page ($100 per qualifying account or loan referral; 5/year cap); time: submitting the referral est. 5-15 min active",
+  "official_url": "https://www.northwoodsbank.com/personal-banking/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "$100 sign-on bonus will be deposited after 90 days if conditions are met. ... Limit of 5 referrals per customer per year. ... $100 sign-on bonus will be paid upon closing of loan if conditions are met.",
+  "payout_value_note": "$100 to the referrer per qualifying account referral or per new loan (min $10K); 5 referrals per customer per year.",
+  "route_id": "R3866",
+  "standard": {
+    "s1": {
+      "note": "Program page live on northwoodsbank.com, fetched 2026-09-23; 'subject to change and may be cancelled at any time'",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing customer; account referrals require new customer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $2,500 min deposit, $2,500 avg balance 90 days, recurring DD (account); new $10K+ loan at closing (loan)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: account bonus deposited after 90 days; loan bonus paid at closing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: may receive Form 1099-MISC; you are responsible for any tax liability",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to open a new account or take a new loan at Northwoods Bank.",
+    "Friend completes the requirements (account: $2,500 deposit, $2,500 avg balance, recurring DD; loan: new $10K+ loan closes).",
+    "Account referral: $100 bonus deposited after 90 days. Loan referral: $100 paid at closing.",
+    "Up to 5 referrals per customer per year."
+  ],
+  "terms_url": "https://www.northwoodsbank.com/personal-banking/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Account bonus deposited after 90 days; loan bonus paid upon closing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

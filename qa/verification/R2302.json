@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $250 adult bonus is deposited into a LOCKED 7-month CD — no early withdrawal permitted, and closing your account early forfeits the reward and earnings. Also the offer excludes anyone who was a member within the last 12 months, and all four actions (checking/debit card, eStatements, Savvy Money) must be completed within 2 weeks of opening.",
+  "catches": [
+    "Adult 18+: $250 reward deposited into a locked 7-month CD — no early withdrawal permitted; closing the account early forfeits the $250 reward and earnings.",
+    "All qualification actions (checking + debit card, eStatements, Savvy Money enrollment) must be completed within 2 weeks of opening the account.",
+    "Youth (13-17) $100 reward available after 30 days; youth account requires adult joint owner 18+.",
+    "Not available to current or previous members who were members within the last 12 months.",
+    "Consumer accounts only; one tier only (adult or youth) — not both.",
+    "Youth CD option has an early withdrawal penalty; if the youth bonus is not taken as a CD, the $100 goes to the primary share with no strings attached.",
+    "Rewards are dividends and will be reported to the IRS on Form 1099-INT.",
+    "Terms valid as of 4/1/2026; no fixed expiration date shown on the official page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Alpena Alcona Area Credit Union (aaacu.com), NCUA-insured federal credit union; official membership page https://www.aaacu.com/become-a-member fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: new members ages 18+ completing all four items within 2 weeks earn a $250 reward; ages 13-17 earn $100. Requires new membership, checking with debit card, eStatements, Savvy Money enrollment. Adult reward locked in a 7-month CD; early closure forfeits reward. Excludes members from the prior 12 months.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee required to earn the bonus; membership/share savings deposit is a deposit, not a fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Adult: $250 deposited into a 7-month CD (available for withdrawal at 7-month maturity). Youth: $100 available after 30 days. 'Available' dates stated on official page; no expiry on the offer itself.",
+      "pass": true
+    }
+  },
+  "eligibility": "New AAACU members only (no membership within the prior 12 months); adults 18+ ($250) or youth 13-17 with adult joint owner ($100); consumer accounts only; one tier per person.",
+  "notes": "Verified against the official AAACU membership page (aaacu.com/become-a-member) on 2026-09-23 (UTC). One route covering the two tiers (adult $250, youth $100); payout_min_usd 100, payout_max_usd 250. Adult terms valid as of 04/01/2026 with no fixed expiration. Taxed/reported as dividends on Form 1099-INT per official terms. App links left null rather than guessed.",
+  "numeric_basis": "payout: official $100 youth / $250 adult; time: online membership + checking setup + Savvy Money enrollment est. 30–60 min active",
+  "official_url": "https://www.aaacu.com/become-a-member",
+  "payout_max_usd": 250.0,
+  "payout_min_usd": 100.0,
+  "payout_quote": "New members ages 18 and older who complete all four items within 2 weeks of account opening will earn a $250 reward. New members ages 13-17 who complete all four items within 2 weeks of account opening will earn a $100 reward. The $250 reward will be deposited into a 7-month CD. The $100 reward will be available 30 days after account opening.",
+  "payout_value_note": "$250 adult (locked 7-month CD) or $100 youth (available after 30 days); one tier per person",
+  "route_id": "R2302",
+  "standard": {
+    "s1": {
+      "note": "New members only (not a member within prior 12 months); 18+ or 13-17 with adult joint owner; consumer accounts only; one tier per person.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Open new membership; open checking with debit card; enroll in eStatements; enroll in Savvy Money — all within 2 weeks of opening.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Adult $250 deposited to 7-month CD (locked, forfeited if account closed early); youth $100 available 30 days after opening.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$100 youth / $250 adult; official page states availability windows; terms valid as of 04/01/2026, no fixed expiry.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.aaacu.com/become-a-member — official AAACU membership page, fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: open membership, checking + debit card, eStatements, Savvy Money within 2 weeks; reward timing defined.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official page fetched 2026-09-23 (UTC); dividends reported on Form 1099-INT per official terms.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new AAACU membership online or at a branch (must not have been a member within the prior 12 months).",
+    "Open a checking account with a debit card.",
+    "Enroll in eStatements.",
+    "Enroll in Savvy Money. Complete all four items within 2 weeks of account opening.",
+    "Adults 18+ receive the $250 reward deposited into a locked 7-month CD (no early withdrawal; early closure forfeits the reward and earnings); youth 13-17 with an adult joint owner receive the $100 reward available 30 days after opening. Rewards are reported as dividends on Form 1099-INT."
+  ],
+  "terms_url": "https://www.aaacu.com/become-a-member",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Adult: $250 locked in a 7-month CD (available at maturity; early closure forfeits). Youth: $100 available 30 days after account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

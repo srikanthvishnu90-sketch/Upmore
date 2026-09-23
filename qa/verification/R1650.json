@@ -1,0 +1,75 @@
+{
+  "route_id": "R1650",
+  "verdict": "verify",
+  "official_url": "https://www.VOTE.nyc/sites/default/files/pdf/job_applications/PollworkerApplication_250.pdf",
+  "terms_url": "https://www.VOTE.nyc/sites/default/files/pdf/job_applications/PollworkerApplication_250.pdf",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "NYC Board of Elections: Election Day pay $250 for inspectors, poll clerks, and information clerks (plus $100 training pay after passing the exam); interpreters and accessibility clerks $250 plus $25 training pay. Election Day begins at 5:00 a.m. and ends after polls close and dismissal.",
+  "steps": [
+    "Apply at pollworker.vote.nyc",
+    "Complete required training and pass the exam",
+    "Work Election Day from 5:00 a.m. until after polls close and you are dismissed",
+    "Receive $250 for Election Day plus training pay ($100 inspectors/clerks, $25 interpreters)"
+  ],
+  "catches": [
+    "Very long day: 5:00 a.m. start until after 9 p.m. close plus teardown — ~16+ hours.",
+    "Training pay only after passing the exam; fail it and you lose the training pay.",
+    "Work is per-election, not steady — a few days per year."
+  ],
+  "biggest_catch": "A ~16-hour day starting at 5 a.m.; the $250 works out to roughly $15/hour before training pay.",
+  "eligibility": "US citizens 18+ registered to vote in NYC (17-year-old students may serve with restrictions per BOE).",
+  "timing": "Paid after Election Day service and qualifying training.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "NYC Board of Elections official poll-worker application (VOTE.nyc)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "NYC Board of Elections: Election Day pay $250 for inspectors, poll clerks, and information clerks (plus $100 training pay after passing the exam); interpreters and accessibility clerks $250 plus $25 training pay. Electio"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to apply or serve."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; paid for time worked."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "US citizens 18+ registered to vote in NYC (17-year-old students may serve with restrictions per BOE)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment for election work."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid after Election Day service and qualifying training."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$250 Election Day + $100 training (inspectors/clerks) or +$25 (interpreters)."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official election-office source."
+    }
+  },
+  "notes": "Among the highest Election Day flat rates; interpreter roles pay less training pay.",
+  "payout_min_usd": 250,
+  "payout_max_usd": 350,
+  "payout_value_note": "$250 Election Day + $100 training (inspectors/clerks) or +$25 (interpreters).",
+  "time_min_minutes": 960,
+  "time_max_minutes": 1020,
+  "numeric_basis": "payout from official NYC BOE poll-worker application; time: 5:00 a.m. start per BOE, polls close 9 p.m. plus closing duties — 960–1020 min active."
+}

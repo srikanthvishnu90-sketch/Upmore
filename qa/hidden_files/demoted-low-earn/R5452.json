@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Applying never guarantees a response — employers pick who to engage with.",
+  "catches": [
+    "No payment handled by the board — offers and pay are negotiated with each employer.",
+    "Smaller listing pool than the biggest boards; refresh regularly for fresh roles.",
+    "No dedicated mobile app — the site is desktop/web-first.",
+    "Applying does not guarantee any employer response."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "NoDesk's official remote-jobs page (nodesk.co) states: 'Browse and apply to the best new remote jobs at leading remote companies and startups for free. No account or sign-up required. Updated daily.' — a live, provider-owned deal channel.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed pay range — compensation is set per employer; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: search and browse remote jobs by role/type/location, click through to the employer's application page.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page: 'Browse and apply ... for free. No account or sign-up required.' No fee for the job-seeker path.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone able to work remotely in engineering, design, marketing, sales, customer support, and related categories.",
+  "notes": "Scenario: remote job board. NoDesk is a remote-only job board updated daily — browse and apply for free with no account or sign-up required, linking directly to employers' application pages. Pay is per employer and negotiated — variable, never guaranteed.",
+  "numeric_basis": "payout: compensation is set per employer; the board publishes no pay ranges. time: browse listings + apply to matching roles, est. 30-90 min active.",
+  "official_url": "https://nodesk.co/remote-jobs/?query=writer",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Browse and apply to the best new remote jobs at leading remote companies and startups for free.",
+  "payout_value_note": "The board publishes no pay ranges — compensation is set per employer and negotiated per offer; variable.",
+  "route_id": "R5452",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to work remotely in the listed categories.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-employer negotiated pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no platform payments, smaller pool, web-first experience, and competition.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: NoDesk absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official page captured 2026-09-23 (nodesk.co/remote-jobs).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: listings updated daily; hiring follows each employer.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Browse the NoDesk remote jobs listings by role, job type, and location — no account needed.",
+    "Open roles matching your skills and review requirements.",
+    "Follow the listing's link to the employer's application page.",
+    "Complete the employer's process and negotiate the offer directly."
+  ],
+  "terms_url": "https://nodesk.co/remote-jobs/?query=writer",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Listings are updated daily; hiring timelines follow each employer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

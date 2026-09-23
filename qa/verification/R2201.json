@@ -1,0 +1,88 @@
+{
+  "route_id": "R2201",
+  "verdict": "verify",
+  "official_url": "https://accounts.chase.com/raf/landing?jp_cmp=rb/referafriend/int/raffooter/na",
+  "terms_url": "https://accounts.chase.com/raf/landing?jp_cmp=rb/referafriend/int/raffooter/na",
+  "payout_quote": "You are eligible to receive a $50 bonus for each referral who opens a qualifying checking account (up to 10 referrals – total of $500) in a calendar year.",
+  "steps": [
+    "Hold an eligible Chase personal checking account (Total Checking, Premier Plus, Sapphire Checking, or Private Client Checking) for at least ~30 days after account opening to become eligible",
+    "Generate your personalized referral link in Chase online banking/app ('Copy link')",
+    "Share your unique link with friends; the friend must apply and open a qualifying checking account through your exact link",
+    "After the friend opens the account, Chase deposits the $50 bonus into your primary checking account within 30 days"
+  ],
+  "catches": [
+    "Referral only counts if the friend applies via your exact personalized link — opened any other way earns nothing",
+    "Friend must open a qualifying personal checking account; the referrer must have an eligible checking account open ~30 days first",
+    "Cap: $50 per referral, up to 10 referrals per calendar year ($500 max)",
+    "Both accounts must not be closed or restricted at payout time",
+    "Bonus is taxable interest-like income (IRS 1099-INT style reporting may apply)",
+    "Employees of JPMorgan Chase Bank, N.A. and affiliates are not eligible"
+  ],
+  "biggest_catch": "You only get paid if the friend applies through your exact personalized link and opens a qualifying checking account — and you must already be a Chase checking customer of ~30 days.",
+  "eligibility": "Existing Chase personal checking account holders (Total Checking, Premier Plus Checking, Sapphire Checking, Private Client Checking) enrolled ~30 days after account opening; not Chase employees",
+  "timing": "$50 bonus deposited to your primary checking account within 30 days after each referred friend opens a qualifying account",
+  "upfront_fee": false,
+  "weasel_words": [
+    "may"
+  ],
+  "app_links": {
+    "android": "https://play.google.com/store/apps/details?id=com.chase.sig.android",
+    "ios": "https://apps.apple.com/app/apple-store/id298867247"
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official Chase domain states '$50 bonus for each referral who opens a qualifying checking account'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Program page live on accounts.chase.com with no expiration stated; crawled 1 day ago"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing a link only"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Referrer-side payout distinct from Chase checking signup bonuses already in catalog (R0036/R0037); different mechanism and terms"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Provider is JPMorgan Chase Bank, N.A.; official domain"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Per-referral payout stated concretely ($50); cap 10/year ($500)"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Requirements concrete: friend opens qualifying checking via exact link; accounts not closed/restricted at payout"
+    },
+    "s4": {
+      "pass": true,
+      "note": "No purchase or fee required of referrer"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Timing concrete: within 30 days of friend's account opening"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No geographic limit stated on the referral page itself; Chase checking availability applies"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Not duplicating an existing referral route; no Chase referral route in catalog"
+    }
+  },
+  "notes": "Chase checking refer-a-friend: $50 per qualifying referral, up to 10 per calendar year ($500 total). Distinct from the Chase Total Checking and Business checking signup bonuses (R0036, R0037).",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "Flat $50 cash bonus per qualifying referral (not multiplied by the annual cap).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout from official terms ($50 flat per referral); time: copying/sharing a referral link est. 5-15 min active"
+}

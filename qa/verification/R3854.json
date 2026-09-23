@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You don't get paid until the friend's checking account has stayed open, active, and in good standing for a full 90 days - the bonus lands by the month-end of that 90-day period.",
+  "catches": [
+    "$25 to the referrer and $25 to the friend for each new member who opens a checking account.",
+    "Friend must present the referral form at the time of account opening (with the referrer's name and phone number).",
+    "Friend's checking account must remain open, active, and in good standing for at least 90 days; bonus rewarded by the month end of the 90 days.",
+    "No referral cap stated on the flyer.",
+    "Employees of FirstCal FCU are not eligible; other restrictions may apply; promotion can be cancelled at any time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official FirstCal FCU flyer (firstcalfcu.org): '$25 FOR YOU AND $25 FOR A FRIEND!' and 'For each new member you refer to us, we will give you and your friend each $25 when they open a checking account with us!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral flyer PDF hosted on official firstcalfcu.org domain (firstcalfcu.org/files/firstcalfcu/1/file/MembershipReferralProgram.pdf.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard Free Checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'firstcal' catalog hit is a false positive (R0786 Google Fi); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: FirstCal FCU member (non-employee). Friend: new member who opens a checking account with the referral form presented at opening.",
+  "notes": "Verified 2026-09-23. FirstCal Federal Credit Union (Fresno, CA). $25 to the referrer per new member who opens a checking account; no cap stated. Bonus paid after the friend's account stays open/active/good standing 90 days.",
+  "numeric_basis": "payout from official flyer ($25 each side per new member; no cap stated); time: writing name/phone on the flyer and handing it off est. 5-15 min active",
+  "official_url": "https://www.firstcalfcu.org/files/firstcalfcu/1/file/MembershipReferralProgram.pdf.pdf",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "$25 FOR YOU AND $25 FOR A FRIEND! ... For each new member you refer to us, we will give you and your friend each $25 when they open a checking account with us!",
+  "payout_value_note": "$25 to the referrer per referred new member who opens a checking account. No cap stated.",
+  "route_id": "R3854",
+  "standard": {
+    "s1": {
+      "note": "Referral flyer live on firstcalfcu.org, fetched 2026-09-23; 'reserve the right to cancel at any time' - no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member (non-employee); friend opens checking with referral form at opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open Free Checking with form at opening; account open, active, good standing 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: bonus rewarded by the month end of the 90-day period",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Write your name and phone number on the referral flyer.",
+    "Give the flyer to your friend; they present it when opening a checking account.",
+    "Friend's checking account must remain open, active, and in good standing for 90 days.",
+    "You and your friend each receive $25 by the month end of the 90-day period."
+  ],
+  "terms_url": "https://www.firstcalfcu.org/files/firstcalfcu/1/file/MembershipReferralProgram.pdf.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Rewarded by the month end of the friend's 90-day open/active/good-standing period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,87 @@
+{
+  "route_id": "R6061",
+  "verdict": "verify",
+  "official_url": "https://www.mainstreetcu.org/connect/refer-a-friend",
+  "terms_url": "https://www.mainstreetcu.org/assets/files/Kal77b25",
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 reward bonus for each individual referred (Referred Person) to Mainstreet Credit Union who registers for the offer, becomes a new member, opens a new Mainstreet Credit Union account, and completes the offer requirements within the time specified in the offer.",
+  "steps": [
+    "Register for the Refer-A-Friend program via ReferLive on mainstreetcu.org.",
+    "Share your referral link/code with friends, family, or coworkers.",
+    "Friend registers, becomes a new Mainstreet CU member, opens a qualifying account, and completes the offer requirements within 60 days."
+  ],
+  "catches": [
+    "Referred friend must be a new member and complete offer requirements (e.g., checking: enroll in eStatements + 25 debit purchases in 60 days) \u2014 no payout if they don't qualify.",
+    "Cap: $400 in total referral bonuses per calendar year, combined as referrer and/or referred person.",
+    "Bonus paid into primary savings within 30 days after qualifications met; referrer must be a member in good standing at referral and payout time.",
+    "Bonuses may be reported to the IRS as income; recipient responsible for tax liability.",
+    "Offer may be changed or discontinued at any time without notice; Kansas/Missouri branch membership eligibility applies."
+  ],
+  "biggest_catch": "You only earn if the referred friend actually qualifies \u2014 new member + completes the offer requirements (e.g., 25 debit purchases in 60 days for checking).",
+  "eligibility": "Current Mainstreet Credit Union member in good standing; referred person must be a new member. Employees, immediate family, board, and volunteers excluded.",
+  "timing": "Register and share in ~10 minutes; bonus deposited into primary savings within 30 days after the referred friend meets all qualifications.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "reward bonus",
+    "new member"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:23:16Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official T&C on mainstreetcu.org: 'Referrer will earn a $50 reward bonus for each individual referred' \u2014 concrete per-referral amount."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Terms PDF at official mainstreetcu.org/assets/files/Kal77b25 states exact steps: register via ReferLive, share, referred completes offer requirements."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to register or refer; $5 membership share to join the CU is the friend's standard membership requirement, not a referral fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "grep/dedupe-check for 'Mainstreet Credit Union' returned 0 catalog hits and 0 evidence-file hits; mainstreetcu.org not in referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Offer may be changed/discontinued at any time without notice \u2014 terms state current program; checked 2026-09-23."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Per-referral $50 stated verbatim; cap is separate $400/year disclosed in catches."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Referrer payout explicitly $50 per qualified referral; not dependent on variable work."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Referred must complete real requirements (debit transactions, balances) \u2014 catches spell this out; no false guarantee."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Catches include IRS reporting/tax liability disclosure from the terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Eligibility restrictions (new members only, no employees) captured in eligibility and catches."
+    },
+    "s7": {
+      "pass": true,
+      "note": "ReferLive registration + share = 5-15 min active; friend's requirements don't count as referrer time."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official Mainstreet Credit Union Refer-A-Friend T&C PDF. Referrer earns $50 per qualified referral; $400/year combined cap stated in catches (not in payout_min/max).",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 reward bonus paid to referrer per qualified referred friend (cash deposited to primary savings).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 flat per qualified referral from official terms; time: ReferLive registration + sharing a link est. 5-15 min active"
+}

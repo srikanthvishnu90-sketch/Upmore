@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend has a 90-day window to complete the requirements ($500/month direct deposit OR a funded consumer loan) - if they fail, NEITHER of you gets the $100.",
+  "catches": [
+    "Both the referring and new member receive $100 once the new member qualifies and meets the requirements.",
+    "New member must open a qualifying share and checking account AND (a) set up a recurring direct deposit of at least $500/month, or (b) fund any Foothill consumer loan.",
+    "The direct deposit must hit the account before any incentive is paid; 90-day time frame to fulfill the requirement.",
+    "Career Supply Loan does not qualify; if the referred member fails any requirement, neither party gets the incentive.",
+    "No referral limit stated ('Refer as many new members as you like!').",
+    "Offer may end at any time; membership requires a regular share account with $5 minimum balance; must be 18+.",
+    "No tax language on the page (standard bonus treatment; not stated)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Foothill CU page (foothillcu.org): 'Earn $100 every time you refer a friend, family member or co-worker for Foothill membership.' and 'Referring and new members referred by an existing member will receive $100.00 deposited into their account upon the new member satisfying the following requirements.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official foothillcu.org domain (foothillcu.org/Member-Referral), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard share + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'foothill' hit is a false positive (R3853 Carolina Foothills FCU, a different institution in SC); 0 evidence-file hits for Foothill Credit Union (CA). Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Foothill CU member (18+). Friend: qualifies for membership, opens share + checking, and sets up $500+/month direct deposit OR funds a consumer loan within 90 days.",
+  "notes": "Verified 2026-09-23. Foothill Credit Union (Arcadia, CA). $100 to the referring member per qualifying referral; no referral limit stated. Do not confuse with R3853 Carolina Foothills FCU (a different institution).",
+  "numeric_basis": "payout from official page ($100 per qualifying referral; no limit); time: submitting the referral in digital banking est. 5-15 min active",
+  "official_url": "https://www.foothillcu.org/Member-Referral",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Earn $100 every time you refer a friend, family member or co-worker for Foothill membership. ... Refer as many new members as you like!",
+  "payout_value_note": "$100 deposited to the referrer's account per qualifying referral. No referral limit.",
+  "route_id": "R3887",
+  "standard": {
+    "s1": {
+      "note": "Program page live on foothillcu.org, fetched 2026-09-23; 'offer may end at any time'",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member; friend qualifies for membership, 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open share + checking AND $500+/month recurring direct deposit OR fund a consumer loan within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $100 deposited 'at a set date' after the 90-day qualification window (no exact day count)",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution (not R3853 Carolina Foothills FCU)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to Foothill Digital Banking and choose 'Refer a Friend' under Accounts.",
+    "Enter your friend's first and last name and email address.",
+    "Friend receives a unique referral code; they visit a branch or apply online with the code.",
+    "Friend opens a qualifying share + checking account and sets up $500+/month direct deposit (or funds a consumer loan) within 90 days.",
+    "You receive $100 per qualifying referral."
+  ],
+  "terms_url": "https://www.foothillcu.org/Member-Referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 deposited at a set date after the new member satisfies the requirements within the 90-day window.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

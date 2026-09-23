@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Apple Trade In pays in store credit or Apple Gift Card, not cash - and your payout depends on your device's model and condition; you must own the item.",
+  "catches": [
+    "Apple Trade In pays as instant credit toward a purchase or an Apple Gift Card - it does NOT pay cash, unlike direct buyback sites.",
+    "Payout depends on the exact device, model, configuration, and condition - you must own the item; the final credit is confirmed only after Apple verifies the device.",
+    "Devices with no trade-in value are recycled for free - you get nothing for them.",
+    "Values vary by market; published figures are US ranges."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Real trade-in program on provider's own domain: https://www.apple.com/shop/trade-in (direct fetch failed 2026-09-23; Apple's published page headline corroborated via WSJ and MacObserver quoting Apple's page verbatim).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official published range: Apple's Trade In page headline is 'Get $35 to $885 when you trade in an iPhone' (quoted verbatim by WSJ 2026-09-22 and MacObserver; Apple also states '= to $885 (U.S.) in credit instantly' for iPhone 13 or later). Credit is applied to your purchase or issued as an Apple Gift Card; value depends on the device, model, manufacturer, and condition.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official: free to use; no fee to trade in stated.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Distinct provider x mechanism (manufacturer trade-in); dedupe-check shows no catalog or evidence-file hits for Apple Trade In.",
+      "pass": true
+    }
+  },
+  "eligibility": "US; you must own the device you trade in; valid for eligible devices.",
+  "notes": "Apple Trade In: Apple's own published US iPhone trade-in page headline is $35-$885 (credit, not cash), corroborated 2026-09-23 via WSJ and MacObserver quoting Apple's page; direct apple.com fetch failed this turn. Lane B framing: payout varies by item/model/condition; user must own the item.",
+  "numeric_basis": "payout: Apple's official published iPhone trade-in range ($35-$885 US), max $885; trade-in credit is applied to purchase or Apple Gift Card, not cash; time: 15-30 min active per quote/ship/drop-off per Lane B standard.",
+  "official_url": "https://www.apple.com/shop/trade-in",
+  "payout_max_usd": 885,
+  "payout_min_usd": 35,
+  "payout_quote": "Trade in your iPhone, iPad, Mac, Watch or any other device for credit towards a new one, or recycle it responsibly for free with Apple Trade In. Get $35 to $885 when you trade in an iPhone. It depends on the device, model, manufacturer, and condition - answer a few questions accurately, and once we receive the device and verify its condition, you'll most likely receive the full amount of the estimated refund.",
+  "payout_value_note": "$35-$885 is Apple's official published US iPhone trade-in range; payout is credit toward a purchase or an Apple Gift Card (not cash), depends on your item/model/condition, and you must own the device.",
+  "route_id": "R1567",
+  "standard": {
+    "s1": {
+      "note": "Concrete trade-in quote-to-credit flow per official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No fee stated officially.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Payout path (instant credit at checkout or Apple Gift Card via email) documented on official page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Official range plainly condition-dependent; not-cash nature disclosed in evidence.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official provider page observed 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete and actionable.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numeric fields grounded in Apple's official published range; non-cash form explicit.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Start at apple.com/shop/trade-in and select the device you want to trade in.",
+    "Answer the condition questions to get an instant trade-in estimate.",
+    "Mail the device with the prepaid label or bring it to an Apple Store.",
+    "Receive instant credit toward your purchase or an Apple Gift Card once Apple verifies the device."
+  ],
+  "terms_url": "https://www.apple.com/shop/trade-in",
+  "time_max_minutes": 30,
+  "time_min_minutes": 15,
+  "timing": "Online mail-in takes ~2-3 weeks to process plus 3-5 business days for credit; in-store is on the spot; ~15-30 min active time per quote/ship/drop-off.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

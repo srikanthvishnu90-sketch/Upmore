@@ -1,0 +1,86 @@
+{
+  "route_id": "R2055",
+  "verdict": "verify",
+  "official_url": "https://indeedflex.com/find-jobs/lp/orlando-fl/",
+  "terms_url": "https://indeedflex.com/find-jobs/lp/orlando-fl/",
+  "payout_quote": "As soon as jobs are available, you can browse and book shifts directly through the app— at your convenience.",
+  "steps": [
+    "Download the free Indeed Flex app and create your profile.",
+    "Get verified for the roles you want to work.",
+    "Browse shifts near you — pay rates are shown before you book.",
+    "Book shifts instantly that fit your schedule.",
+    "Complete the shift and choose Same Day Pay to access earnings as soon as you finish."
+  ],
+  "catches": [
+    "Shift availability varies by city and season — new markets may have little work.",
+    "Pay rates are set per shift; you cannot negotiate them.",
+    "Verification for roles takes time before you can book.",
+    "Physical shift work (warehouse, hospitality, cleaning) with real injury/fatigue risk.",
+    "You are responsible for transport and taxes; benefits depend on the market."
+  ],
+  "biggest_catch": "Work is not guaranteed: you can only book shifts that exist in your area, and rates are take-it-or-leave-it per listing.",
+  "eligibility": "18+ (typical) with a smartphone; must pass role verification.",
+  "timing": "Shifts post daily; Same Day Pay available after shifts.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Indeed Flex's own site states the mechanism: 'you can browse and book shifts directly through the app... Choose Same Day Pay to get paid as soon as you finish your shifts' with 'competitive pay, same-day earnings'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms show pay per shift before booking but publish no fixed hourly range — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: download app, create profile, get verified, book shifts, work, Same Day Pay."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "The app and signup are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a smartphone user who passes role verification."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-shift pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover area-dependent availability, non-negotiable rates, and physical work."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Indeed Flex route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: daily shift postings; same-day pay option."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Indeed Flex is a shift-booking app for flexible hourly work (warehouse, hospitality, cleaning) with pay shown before booking and Same Day Pay. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Pay rates are shown per shift before booking; Indeed Flex publishes no fixed hourly range.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-shift, no official range. time: app signup + profile + role verification + booking first shifts, est. 45-120 min active (excludes the shift work itself)."
+}

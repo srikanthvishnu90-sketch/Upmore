@@ -1,0 +1,93 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $250 is forfeited entirely if the account is closed before it has been open for 6 months, and all three requirements (Digital Banking, eStatements, $400+/mo recurring direct deposit) must be completed within 120 days with three full months of deposits credited.",
+  "catches": [
+    "NEW members only; existing members and existing eChecking holders are excluded.",
+    "Recurring direct deposit must be at least $400 per month and be payroll/direct deposit (not just any transfer); three full months must credit before the bonus qualifies.",
+    "Digital Banking enrollment, eStatement enrollment, and direct deposit establishment must ALL happen within 120 days of account opening.",
+    "Account defaults to Personal Checking without notice if eStatement enrollment is not completed.",
+    "Bonus is forfeited if the account is closed before it has been open 6 months.",
+    "Bonus is reported as income (taxable).",
+    "eChecking does not accrue dividends; a $2 monthly paper statement fee applies if eStatements are not used.",
+    "One bonus per member; programs and offers are subject to change without notice (no fixed end date)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official ccu.com/echecking-offer/ page fetched live 2026-09-23; title 'eChecking $250 Promotion - California Credit Union and North Island Credit Union'; verbatim $250 terms with DD/eStatement/Digital Banking requirements.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "'Minimum $25 required to open account' (page step 2 instructs depositing at least $251 after approval); share account $0.01 par value; no application fee stated; upfront_fee=false.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "'$250 offer applies to NEW eChecking accounts for NEW members only'; one bonus per member; CA/North Island CU membership required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "'The bonus will be forfeited by the member if the account does not remain open for a minimum of 6 months' - explicit early-close forfeiture; $2/month paper statement fee avoided via eStatements.",
+      "pass": true
+    }
+  },
+  "eligibility": "New members of California Credit Union or North Island Credit Union (Southern California footprint, 25 branches); one bonus per member; account and membership subject to approval.",
+  "notes": "VERIFIED 2026-09-23 via the official ccu.com eChecking $250 promotion page (shared California Credit Union / North Island Credit Union offer). No fixed end date - treated as current while the page is live; subject to change without notice. The 6-month open requirement is a material lock-in.",
+  "numeric_basis": "payout from official terms ($250 flat); time: online application + funding + Digital Banking/eStatement/DD setup est. 30-60 min active",
+  "official_url": "https://www.ccu.com/echecking-offer/",
+  "payout_max_usd": 250,
+  "payout_min_usd": 250,
+  "payout_quote": "$250 offer applies to NEW eChecking accounts for NEW members only. Minimum $25 required to open account. Requires enrollment in Digital Banking within 120 days of account opening. Must establish a recurring Direct Deposit with a minimum of $400 per month... Three (3) months of recurring Direct Deposits must be credited to the account before qualifying for the bonus. Requires enrollment in eStatements within 120 days of account opening... The bonus will be added to the checking account the first week of the following month from the qualifying date and will be reported as income. The bonus will be forfeited by the member if the account does not remain open for a minimum of 6 months.",
+  "payout_value_note": "Flat $250 cash added to the new eChecking account; no conversion.",
+  "route_id": "R5567",
+  "standard": {
+    "s1": {
+      "note": "Steps are concrete and ordered: new-member application, $25+ funding, Digital Banking + eStatements within 120 days, $400+/mo recurring DD within 120 days, three months credited, keep open 6 months.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Payout path explicit: 'The bonus will be added to the checking account the first week of the following month from the qualifying date.'",
+      "pass": true
+    },
+    "s3": {
+      "note": "No fixed expiry; flagged: 'Programs and offers are subject to change without notice' - current while page is live.",
+      "pass": true
+    },
+    "s4": {
+      "note": "'The bonus will be added to the checking account... and will be reported as income.' Taxation disclosed in catches.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No medical, gambling, crypto, or risk-capital elements; standard bank account bonus.",
+      "pass": true
+    },
+    "s6": {
+      "note": "payout_min/max=250 flat; time 30-60 min active per bank-signup guide (application, funding, DD/eStatement enrollment); waiting months are passive.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Copy is conditional-only ('Restrictions apply', 'NEW eChecking accounts for NEW members only'); no guaranteed-income language.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As a new member (membership requires a Share Account with $0.01 par value; account and membership subject to approval), apply for a new eChecking account at ccu.com/echecking-offer/ (online, branch, or phone (800) 334-8788) and fund a minimum opening deposit of $25 (page instructs depositing at least $251 after approval).",
+    "Within 120 days of account opening, enroll in Digital Banking and enroll in eStatements.",
+    "Within 120 days of account opening, establish a recurring Direct Deposit (payroll/direct deposit) of at least $400 per month into the eChecking account.",
+    "Receive three (3) full months of recurring direct deposits credited to the account.",
+    "Keep the account open for a minimum of 6 months; the $250 bonus is added the first week of the month following the qualifying date."
+  ],
+  "terms_url": "https://www.ccu.com/echecking-offer/",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Apply + fund account (30-60 min active); enroll in Digital Banking/eStatements and set up direct deposit within 120 days; three months of $400+/mo recurring deposits must credit; $250 bonus added the first week of the month following the qualifying date; account must remain open at least 6 months.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "Programs and offers (including but not limited to fees, rates, and features) are subject to change without notice.",
+    "Qualifying date",
+    "Account and membership are subject to approval"
+  ]
+}

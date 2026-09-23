@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The credit is only $25 each \u2014 modest \u2014 and both the referrer and the new customer must meet the program terms on the official page before credits land.",
+  "catches": [
+    "$25 bill credit each side \u2014 a modest amount",
+    "Both sides' credits are governed by the official terms and conditions",
+    "Referral must go through the official referral form"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official GVEC Internet 'Refer-a-Friend Program' page on gvec.net/refer-a-friend-program/ (per current search index, crawled 8 hours ago): 'Refer a Friend and get a $25 Bill Credit!' 'When you refer friends, family, neighbors or acquaintances to GVEC and they subscribe, you and the new customer will each receive a $25 bill credit! Just read the terms and conditions and fill out a form.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page currently listed on gvec.net (index crawl 8 hours ago).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amount verbatim: 'you and the new customer will each receive a $25 bill credit.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Terms-and-conditions requirement is stated on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing GVEC Internet customer; the friend must subscribe to GVEC.",
+  "notes": "Verified 2026-09-23 from the official gvec.net referral page. Deduped: no GVEC routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 8 hours ago).",
+  "numeric_basis": "payout from official terms ($25 bill credit each side); time: referral share 5-15 min active",
+  "official_url": "https://www.gvec.net/refer-a-friend-program/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Refer a Friend and get a $25 Bill Credit! When you refer friends, family, neighbors or acquaintances to GVEC and they subscribe, you and the new customer will each receive a $25 bill credit!",
+  "payout_value_note": "$25 bill credit each side \u2014 offsets planned GVEC spending, not income.",
+  "route_id": "R6397",
+  "standard": {
+    "s1": {
+      "note": "Exact amount stated verbatim on the official page ($25 each).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: bill credit offsets planned GVEC spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (read terms, fill out the referral form).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: modest $25 each, terms must be met.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own GVEC service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against gvec.net (provider's own domain) via current official-page content. Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Read the official referral terms and conditions",
+    "Fill out the GVEC referral form with you and your friend's information",
+    "Your friend subscribes to GVEC",
+    "You and the new customer each receive a $25 bill credit"
+  ],
+  "terms_url": "https://www.gvec.net/refer-a-friend-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bill credit after the referred friend subscribes.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

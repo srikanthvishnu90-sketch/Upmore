@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "In-branch only: accounts opened online do not qualify, and you must visit a Bank of Colorado location to open the Diamond Secure Checking account and mention \"150th\" at opening. Bonus is paid 90 days after opening only if $5,000 in cumulative direct deposits lands within 90 days; the Diamond Secure account also carries a $5 service charge per statement cycle.",
+  "catches": [
+    "Must open the Diamond Secure Checking account IN A BRANCH - accounts opened online do not qualify.",
+    "Must mention \"150th\" when opening the account to get the bonus.",
+    "$5,000 in cumulative direct deposits must post within 90 days of account opening.",
+    "Bonus is not paid until 90 days after account opening.",
+    "New bank customers only; one offer per household.",
+    "Diamond Secure Checking has a $5 service charge per statement cycle; paper statements cost extra (eStatements are free).",
+    "Offer valid for accounts opened 6/1/2026 through 11/30/2026 only."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Bank of Colorado domain (bankofcolorado.com/personal-500), fetched directly 2026-09-23, with full terms quoted verbatim from the page.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: new customers, open Diamond Secure Checking in a Bank of Colorado branch 6/1/2026-11/30/2026, mention \"150th\", receive $5,000 cumulative direct deposits within 90 days, bonus deposited 90 days after opening, one offer per household, $100 minimum opening deposit.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; $100 minimum opening deposit (refundable deposit, not a fee). Note: the account carries a $5 service charge per statement cycle, disclosed as a catch.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official page quote: \"Celebrate 150 Years of Colorado with a $500 Account Bonus ... Offer is for new customers who open a Diamond Secure Checking Account ... Receive $5,000 in cumulative direct deposits within 90 days ... Account bonus will be deposited into account 90 days after account opening if requirements are met. Offer valid at all Bank of Colorado locations from 6/1/2026 - 11/30/2026.\"",
+      "pass": true
+    }
+  },
+  "eligibility": "New Bank of Colorado customers only; account must be opened in a Bank of Colorado branch location (online openings do not qualify); mention \"150th\" at opening; open between 6/1/2026 and 11/30/2026; one offer per household.",
+  "notes": "Verified against the live official page https://bankofcolorado.com/personal-500, fetched directly 2026-09-23 (UTC) with full terms reproduced verbatim. Distinct from R0582, which covers Bank of Colorado's $750 BUSINESS checking route; this route is the consumer personal Diamond Secure $500 offer. The older $300 personal variant (ended 1/31/2026) is superseded by this $500 offer. Deposit/balance requirements: $100 minimum opening deposit for checking. Clawback-like constraints: bonus paid 90 days after opening; online openings excluded; no bonus without the $5,000-in-90-days direct deposits. Taxes: no specific tax form stated on the official page; bank bonuses are generally reported as income, so expect a tax form from the bank. Bonus is a one-time lump sum (not monthly installments).",
+  "numeric_basis": "payout_min=payout_max=$500 per official headline; time_min=30, time_max=60 per lane default (one in-branch account opening visit plus arranging direct deposit); no deposit-match fraction involved.",
+  "official_url": "https://bankofcolorado.com/personal-500",
+  "payout_max_usd": 500,
+  "payout_min_usd": 500,
+  "payout_quote": "Celebrate 150 Years of Colorado with a $500 Account Bonus",
+  "payout_value_note": "$500 one-time cash bonus deposited into the account 90 days after account opening once all requirements are met; not a rate, rebate, or points-equivalent.",
+  "route_id": "R2341",
+  "standard": {
+    "s1": {
+      "note": "New customers only; Diamond Secure Checking opened in a branch 6/1/2026-11/30/2026 with \"150th\" mentioned; $5,000 cumulative direct deposits within 90 days.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: visit branch, open account with code word, set up payroll direct deposit totaling $5,000 within 90 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus deposited 90 days after account opening if requirements are met; offer window 6/1/2026-11/30/2026.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$500 stated on official page.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://bankofcolorado.com/personal-500 - official page fetched directly 2026-09-23 (UTC); full terms quoted in critical.c4.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete and self-serve aside from the required in-branch visit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Bank of Colorado page verified live 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit a Bank of Colorado branch and open a new Diamond Secure Checking account (mention \"150th\" at opening) between 6/1/2026 and 11/30/2026.",
+    "Fund the account with at least the $100 minimum opening deposit.",
+    "Set up direct deposits and receive a cumulative total of $5,000 within 90 days of account opening.",
+    "Keep the account open and in good standing; the $500 bonus is deposited into the account 90 days after account opening."
+  ],
+  "terms_url": "https://bankofcolorado.com/personal-500",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Offer valid for accounts opened 6/1/2026 through 11/30/2026; $5,000 in cumulative direct deposits must be received within 90 days of opening; bonus deposited 90 days after account opening.",
+  "upfront_fee": 0,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R3415",
+  "verdict": "verify",
+  "official_url": "https://www.independentbank.com/personal/accounts/services/refer-a-friend/",
+  "terms_url": "https://www.independentbank.com/personal/accounts/services/refer-a-friend/",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "$50 Mastercard Virtual Reward Card to the referrer and $50 to the friend. Referrer capped at $500 per year.",
+  "payout_quote": "Earn $50 Every Time You Refer Someone* ... You both get a $50 Mastercard Virtual Reward Card when they open a new Independent Bank checking account and meet the requirements. ... You can earn up to $500 per year.",
+  "steps": [
+    "Register on the Independent Bank refer-a-friend page to get a personal referral link.",
+    "Send the link via email, text, or social media.",
+    "Friend registers, opens a new Independent Bank personal or business checking account ($10 minimum deposit).",
+    "Friend completes 10 debit card transactions (ATM excluded) OR at least $100 in direct deposit within 60 calendar days of account opening.",
+    "Rewards mailed to the address on file after the friend completes the required tasks."
+  ],
+  "catches": [
+    "Referrer cap: $500 per year.",
+    "Rewards are Mastercard Virtual Reward Cards, not cash.",
+    "Friend must complete 10 debit transactions or $100 in direct deposit within 60 days.",
+    "Rewards subject to 1099-INT (referred) / 1099-MISC (referrer) for aggregate awards totaling $600 annually.",
+    "Run through the ReferLive program; each party may become aware the other is a customer."
+  ],
+  "biggest_catch": "Capped at $500/year, and rewards are virtual prepaid cards rather than cash — plus 1099 reporting once awards total $600.",
+  "eligibility": "Independent Bank customers; friend must open a new eligible checking account.",
+  "timing": "Link sharing ~5 min active; rewards mailed after the friend completes the 60-day requirements.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T08:05:39Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Earn $50 Every Time You Refer Someone* ... You both get a $50 Mastercard Virtual Reward Card when they open a new Independent Bank checking account and meet the requireme"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official institution-domain terms: https://www.independentbank.com/personal/accounts/services/refer-a-friend/"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; flat per-referral payout per official terms"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Dedupe-check: no other evidence file verifies this institution's referral program"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official terms page live with program terms stated"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Eligibility per official terms"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Qualification actions per official terms"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Payout timing per official terms"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Tax disclosure as stated or absent per official terms"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to refer or participate"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider/mechanism: no duplicate referral evidence file"
+    }
+  },
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official independentbank.com refer-a-friend page ('You both get a $50 Mastercard Virtual Reward Card'); time: registration + link sharing est. 5-15 min active",
+  "notes": "Verified 2026-09-23 from the official Independent Bank refer-a-friend page; claims confirmed by re-fetch. R0640 in catalog is a bank signup bonus (different mechanism)."
+}

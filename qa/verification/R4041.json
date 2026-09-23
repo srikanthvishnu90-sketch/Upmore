@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "Both accounts must stay active and pay in full for three billing cycles before either credit posts; if either terminates or misses payment, both forfeit the credit in full.",
+  "catches": [
+    "Both referrer and referred customer must pay three billing cycles in full before either $25 credit posts.",
+    "If either party terminates service or fails to pay on time, both forfeit the credit.",
+    "Credits expire six billing cycles after the referred customer signs up.",
+    "Referred customer must enroll on a fixed-term plan of one year or longer and note the referrer's YEP Energy account number at order time.",
+    "Bill credits have no cash value and cannot be applied to deposits or prior balances; no refund of credit balance on termination.",
+    "Texas-only retail electricity supplier (PUCT-certified REP); eligibility tied to plans YEP Energy offers in deregulated service territory.",
+    "Offer can change or be cancelled without notice.",
+    "Frame as savings on planned electricity spending, never income."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Provider is YEP Energy, retail electricity supplier (yepenergy.com); terms describe their own Refer A Friend program for fixed-rate plans.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms opened live 2026-09-23 at yepenergy.com/yepenergy-refer-a-friend.aspx and yepenergy.com/docs/yepenergy-refer-a-friendprogramterms.pdf; page states the $25 program with no expiry banner.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Terms: 'you and the referred customer will each receive a onetime $25.00 bill credit after three billing cycles have been paid in full by both you and the referred customer.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Both referrer and friend get the $25 bill credit under the same official terms; no customer-only restriction.",
+      "pass": true
+    }
+  },
+  "eligibility": "YEP Energy customer on a fixed-term (1+ year) plan; referred friend must be a new YEP Energy customer enrolling on a fixed-term (1+ year) plan in YEP Energy's Texas service territory, noting the referrer's YEP Energy account number at sign-up.",
+  "notes": "Verified 2026-09-23 from YEP Energy's official Refer A Friend page and terms PDF. The referral share is a bill credit (savings on planned electricity spending), not income.",
+  "numeric_basis": "payout from official terms ($25 one-time bill credit per qualified referral, both sides); time: share referral invite + friend enrollment details est. 5-15 min active",
+  "official_url": "https://yepenergy.com/yepenergy-refer-a-friend.aspx",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "For each friend you refer that switches their electricity account to YEP Energy, you will receive a $25 credit on your bill! ... your friend also gets a $25 credit applied to their bill.",
+  "payout_value_note": "$25 one-time bill credit per qualified referral, paid to both referrer and referred customer; bill credits only, no cash value.",
+  "route_id": "R4041",
+  "standard": {
+    "s1": {
+      "note": "Concrete payout $25 per side and concrete steps in official terms; not vague.",
+      "pass": true
+    },
+    "s2": {
+      "note": "All conditions stated: 1+ year fixed plan, account number noted at order, three paid billing cycles, no termination/missed payment.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bill credit framed as savings on planned electricity spending; credit posts after ~3 billing cycles.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Steps concrete: submit invite form with friend emails, friend enrolls with referrer account number on 1+ year fixed plan, both pay three bills.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; enrollment is normal electricity service signup.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No points conversion; USD bill credit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words; 'Guaranteed' in marketing refers to customer-satisfaction promise, not the payout.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign up as a YEP Energy customer on a fixed-rate plan of one year or longer.",
+    "Use the Refer A Friend form at yepenergy.com to invite friends by email, or share your YEP Energy account number.",
+    "Friend enrolls as a new YEP Energy customer on a fixed-term plan of one year or longer and enters your YEP Energy account number at order time.",
+    "Both you and the friend pay three full billing cycles on time.",
+    "After three paid cycles, $25 bill credit posts to each account."
+  ],
+  "terms_url": "https://yepenergy.com/docs/yepenergy-refer-a-friendprogramterms.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bill credit posts after three full billing cycles are paid by both accounts (~3-4 months wait); credits expire six billing cycles after the referred customer signs up.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

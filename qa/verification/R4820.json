@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend's account must stay open at least 90 calendar days with a positive balance on the 90th day - anything shorter and you get nothing.",
+  "catches": [
+    "Referrer: existing CSB consumer client referring a new client to open a consumer checking account (subject to approval).",
+    "Referrer earns a $50 Refer-A-Friend bonus per referral; 'Existing clients can earn unlimited Refer-A-Friend bonuses.'",
+    "Friend must: open a consumer checking account; keep it open a minimum of 90 calendar days; have no previously closed CSB consumer checking within the past 12 months; have a balance greater than zero at end of business on the 90th calendar day.",
+    "Bonus credited to the account within 30 calendar days after the 90-day qualifying period, provided both accounts are open at payment.",
+    "Cannot be combined with other offers; must be an Iowa resident to open an account.",
+    "Ongoing referral offer, subject to change without notice; bonuses reported to the IRS.",
+    "Minimum $100 opening deposit for qualifying consumer checking accounts (BankOn $25); $30 early-closing fee if closed within 90 days."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Community State Bank Refer-A-Friend flyer (Q2 2026, hosted on CSB's Mantl onboarding CDN): 'To receive the $50 Refer-A-Friend bonus, 1) an existing CSB consumer client refers a new client to open a consumer checking account (subject to approval), 2) the new referred consumer checking account must be open a minimum of 90 calendar days and cannot have a previously closed CSB consumer checking account within the past 12 months, and 3) the new client's account must have a balance greater than zero at the end of business on the 90th calendar day. ... Existing clients can earn unlimited Refer-A-Friend bonuses.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official CSB flyer on the bank's onboarding CDN, fetched live 2026-09-23; ongoing offer, subject to change",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no CSB referral route; R0867 is a $400 checking bonus, not this referral program; catalog has no CSB referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CSB consumer client. Friend: new consumer checking client in Iowa (no closed CSB checking in 12 months).",
+  "notes": "Verified 2026-09-23. Community State Bank (Iowa). Referrer earns $50 per referral; unlimited. Friend must keep the account open 90+ days with a positive balance on day 90.",
+  "numeric_basis": "payout from official CSB terms ($50 per referral; unlimited); time: share referral est. 5-15 min active",
+  "official_url": "https://cdn.mantl.com/assets/community_state_bank/1775060981764-Q2_2026_Refer-A-Friend_-_Flyer.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "To receive the $50 Refer-A-Friend bonus, 1) an existing CSB consumer client refers a new client to open a consumer checking account (subject to approval), 2) the new referred consumer checking account must be open a minimum of 90 calendar days and cannot have a previously closed CSB consumer checking account within the past 12 months, and 3) the new client's account must have a balance greater than zero at the end of business on the 90th calendar day. ... Existing clients can earn unlimited Refer-A-Friend bonuses.",
+  "payout_value_note": "$50 Refer-A-Friend bonus to the referrer per qualifying referral; unlimited.",
+  "route_id": "R4820",
+  "standard": {
+    "s1": {
+      "note": "Flyer live on CSB's onboarding CDN, fetched 2026-09-23; ongoing, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing CSB consumer client; friend new consumer checking client in Iowa",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open checking, 90+ days open, no closed CSB checking in 12 months, positive balance on day 90",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited within 30 calendar days after the 90-day qualifying period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses reported to the IRS; clients responsible for taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; R0867 is a separate checking bonus",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to Community State Bank to open a consumer checking account.",
+    "Friend opens the checking account and keeps it open at least 90 calendar days with a positive balance on day 90.",
+    "You receive a $50 bonus within 30 calendar days after the qualifying period - unlimited referrals."
+  ],
+  "terms_url": "https://cdn.mantl.com/assets/community_state_bank/1775060981764-Q2_2026_Refer-A-Friend_-_Flyer.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited within 30 calendar days after the 90-day qualifying period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

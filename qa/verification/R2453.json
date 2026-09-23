@@ -1,0 +1,84 @@
+{
+  "route_id": "R2453",
+  "verdict": "verify",
+  "official_url": "https://www.myfpcu.com/refer",
+  "terms_url": "https://www.myfpcu.com/refer",
+  "payout_quote": "Refer a friend or family member to open a Financial Plus checking account with direct deposit or new loan, and you both receive $50!* ... Once they open their account, setup their direct deposit, and accept their referral, you will both get $50 in your account within 30 business days. Remember, there is no limit on how many people you refer.",
+  "steps": [
+    "Be a Financial Plus Credit Union member in good standing; click Refer-A-Friend on myfpcu.com and fill out the form.",
+    "Financial Plus sends an email to the person you referred; they open a new checking account with direct deposit (or a new loan over $10,000) and accept their referral.",
+    "The new member enrolls in direct deposit and E-Documents; both incentives are deposited within 30 business days after account opening, E-Document enrollment, and first direct deposit.",
+    "You receive $50 (your friend also gets $50); there is no limit on how many people you refer."
+  ],
+  "catches": [
+    "Only new checking accounts or new loans over $10,000 qualify - no savings-only or small-loan referrals.",
+    "The new member must enroll in BOTH direct deposit and E-Documents, or neither party gets the $50.",
+    "Incentive for the referring member is reported on 1099-MISC; new member's on 1099-INT.",
+    "Cannot be combined with any other offer on the same product; Financial Plus can reject incentive redemptions and reserves the right to apply restrictions."
+  ],
+  "biggest_catch": "The friend must open a new checking account with direct deposit (or a $10,000+ loan) AND enroll in E-Documents - miss either and nobody gets the $50.",
+  "eligibility": "Financial Plus CU members in good standing; referred persons must open a new checking account with direct deposit or a new loan over $10,000.",
+  "timing": "Both $50 incentives deposited within 30 business days after account opening, E-Document enrollment, and first direct deposit.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Financial Plus Credit Union - real operating credit union (Flint, MI); official domain myfpcu.com, Refer-A-Friend page fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page states 'you both receive $50!' when a friend opens a checking account with direct deposit or a new loan, with no limit on referrals."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; submitting the online form is free; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: $50 per referral, paid within 30 business days; concrete requirements (new checking + DD + E-Documents, or $10k+ new loan)."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "FPCU members in good standing; referred persons open new checking with DD or $10k+ new loan."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens account/loan via your referral, enrolls in DD and E-Documents, accepts referral."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Both $50 incentives within 30 business days after opening, E-Documents, and first direct deposit."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $50 per referral; no limit on referrals."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://www.myfpcu.com/refer - official Financial Plus Refer-A-Friend page."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: submit form, friend opens account + DD + E-Docs and accepts, $50 to each within 30 business days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official page fetched directly 2026-09-23; terms text verbatim."
+    }
+  },
+  "notes": "R1027 and R2746 are Financial Plus new-member SIGNUP specials - distinct from this referral route. Note domain myfpcu.com is Financial Plus Credit Union (Flint, MI), not Financial Partners (fpcu.org, R2451).",
+  "payout_min_usd": 50.0,
+  "payout_max_usd": 50.0,
+  "payout_value_note": "$50 per referral in official terms; no referral limit (friend also gets $50)",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($50 per referral flat); time: category default App Referral share-link 5-15 min active"
+}

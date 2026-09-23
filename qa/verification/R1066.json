@@ -1,0 +1,86 @@
+{
+  "route_id": "R1066",
+  "verdict": "verify",
+  "official_url": "https://www.sofi.com/iramatchterms/",
+  "terms_url": "https://www.sofi.com/iramatchterms/",
+  "payout_quote": "SoFi will match 1% of a customer's deposits, up to their Internal Revenue Service (IRS) contribution limit, made into their existing or newly opened SoFi Individual Retirement Account (SoFi IRA) held through a Self-directed SoFi Invest account (offered by SoFi Securities LLC) or a Robo SoFi Invest account (offered by SoFi Wealth LLC) during the Offer Period. Deposits must be maintained in the IRA account for five (5) years from the settlement date. Matches will be paid in cash within 5 business days from the date which the funds settle in your SoFi IRA account.",
+  "steps": [
+    "Open or hold a SoFi IRA (self-directed via SoFi Securities or robo via SoFi Wealth) - SEP IRAs are not eligible.",
+    "Deposit cash into the SoFi IRA via ACH transfer or instant cash transfer from a SoFi Bank account (indirect rollovers do not qualify).",
+    "SoFi matches 1% of deposits up to the IRS annual contribution limit (2026: $7,500 under 50, $8,600 age 50+).",
+    "Match is paid in cash into the IRA within 5 business days of the deposit settling; keep deposits in the IRA for 5 years to keep the full match."
+  ],
+  "catches": [
+    "Qualifying deposits must remain in the IRA for five (5) years or SoFi removes a proportional amount of the match as an early withdrawal fee - even required minimum distributions can trigger the fee, and investment losses that drop the balance can too.",
+    "SEP IRAs are not eligible; indirect rollovers do not qualify; only ACH or SoFi Bank instant transfers count.",
+    "SoFi may modify, suspend, or terminate the offer at any time without advance notice.",
+    "At 1%, the maximum is about $75 (under 50) or $86 (50+) per year at 2026 limits - small in absolute dollars."
+  ],
+  "biggest_catch": "Deposits must stay put for 5 years or SoFi claws back a proportional part of the match - even required minimum distributions or market losses that shrink the balance can trigger the fee.",
+  "eligibility": "Customers with an existing or newly opened SoFi IRA (self-directed or robo), U.S. residents, personal non-commercial use; SEP IRAs excluded.",
+  "timing": "Match paid in cash into the IRA within 5 business days of the deposit settling; offer period runs from August 26, 2026 onwards (subject to change).",
+  "upfront_fee": false,
+  "weasel_words": [
+    "SoFi reserves the right to change or terminate the Offer at any time without notice."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "SoFi Securities LLC / SoFi Wealth LLC - real operating broker-dealers; 1% IRA Deposit Match terms on the sofi.com domain."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Terms page fetched live 2026-09-23; offer period from August 26, 2026 onwards with 2025/2026 contribution limits stated."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Payout is concrete: 1% of IRA deposits up to the IRS contribution limit, paid in cash within 5 business days."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No purchase or fee required; deposits are the user's own retirement savings."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "No upfront fee or purchase required to earn the payout; any deposit is the user's own parked money."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Payout is conditional on exact eligibility and completion steps, never guaranteed unconditionally."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Funding parked at the broker is disclosed with amount and holding period in catches."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing and payment mechanics come from the official terms, not estimates."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Variable/paid-tier elements are labeled as such; verified framing uses the free tier."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Weasel-word reservation-of-rights language is quoted in weasel_words."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider+mechanism confirmed against the existing catalog before writing."
+    }
+  },
+  "notes": "Distinct from R0018 (SoFi 1% ACAT transfer match - transfers vs contributions, different terms page). The separate 1% Rollover Match (401k/403b/457 via Capitalize) on the same page was not counted to avoid over-splitting the SoFi transfer-match family.",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 86.0,
+  "payout_value_note": "1% of IRA deposits up to IRS annual limit: up to $75 under age 50, $86 age 50+ at 2026 limits.",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "payout: 1% of deposits per official terms ($0 floor, $86 max at 2026 limits); time: IRA application + ACH deposit setup est. 30-60 min active."
+}

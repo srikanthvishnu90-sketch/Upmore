@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The page requires the friend to either maintain a $400/month direct deposit for 60 days OR fund a $5,000+ new loan within 60 days - this is more demanding than a simple account opening, and BFG can cancel or change the offer at any time without notice.",
+  "catches": [
+    "Friend must open a new checking account with a monthly direct deposit of $400 or more that remains open for a minimum of 60 days, OR obtain a new loan with a minimum balance of $5,000 - all within the first 60 days after the account is opened.",
+    "New member must submit a Referral Rewards Coupon to Membership Services (or enter promo code RR2021 + existing member's name/email when applying online).",
+    "Valid only for the first new checking account or new loan opened with BFG; current checking account holders can't earn $50 by opening another checking account.",
+    "Excludes existing loans financed through BFG; business and custodial/minor accounts don't qualify; must be 18+.",
+    "Reward deposited to the referring member's savings account within 10 business days after the referred membership meets all requirements.",
+    "Cash reward may be considered income and reported on a 1099-INT.",
+    "Offer can be cancelled, withdrawn or changed at any time and without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official BFG FCU page (bfgfcu.org): 'Existing member: Cash reward of $ 50 will be deposited to referring member's savings account within 10 business days after the referred membership has met all checking account requirements or after the referred loan has funded.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official BFG FCU referral rewards page on bfgfcu.org, fetched live 2026-09-23; offer can be cancelled/withdrawn/changed at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no bfgfcu.org route and no BFG FCU entry; catalog has no BFG FCU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing BFG FCU member. Friend: new member 18+ eligible for membership in Summit County, Ohio field of membership; must open new checking with $400+/month direct deposit (60 days) or a new loan of $5,000+ within 60 days.",
+  "notes": "Verified 2026-09-23. BFG Federal Credit Union (Ohio). Referrer earns $50 per qualifying referral ($50 to the friend too), no annual cap stated. Reward posts within 10 business days after the referred membership meets the requirements. Friend requirements are demanding (60-day $400/mo direct deposit or $5,000+ loan), stated as the biggest catch.",
+  "numeric_basis": "payout from official BFG FCU terms ($50 cash reward to the referring member's savings account per qualifying referral); time: submit referral coupon est. 5-15 min active",
+  "official_url": "https://www.bfgfcu.org/referral-rewards",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Existing member: Cash reward of $ 50 will be deposited to referring member's savings account within 10 business days after the referred membership has met all checking account requirements or after the referred loan has funded.",
+  "payout_value_note": "$50 cash deposited to the referrer's savings account per qualifying referral (friend also gets $50); no annual cap stated.",
+  "route_id": "R5676",
+  "standard": {
+    "s1": {
+      "note": "Official BFG FCU page live on bfgfcu.org, fetched 2026-09-23; offer can be cancelled/changed at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is an existing BFG FCU member; friend 18+, Summit County field of membership, new checking or new loan",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking with $400+/month DD for 60 days, or new loan $5,000+ within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 deposited to referrer's savings within 10 business days after the referred membership meets all requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: cash reward may be considered income and reported on a 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit the Referral Rewards Coupon to BFG Membership Services, or give your friend promo code RR2021 with your name and email to enter when applying online.",
+    "Friend opens a new checking account with a $400+/month direct deposit (open 60 days) or a new $5,000+ loan within 60 days of account opening.",
+    "Your $50 cash reward is deposited to your savings account within 10 business days after the referred membership meets all requirements."
+  ],
+  "terms_url": "https://www.bfgfcu.org/referral-rewards",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited to the referring member's savings account within 10 business days after the referred membership meets all requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

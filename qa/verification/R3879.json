@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must be a first-time CCNB account holder who presents your completed form in person at account opening - online applications don't count.",
+  "catches": [
+    "Referring customer receives $25 in their existing CCNB account when the friend presents the completed Refer A Friend form while opening a new account.",
+    "Friend receives $25 approximately 30 days after opening, if the account is active, funded, and in good standing.",
+    "Referred customer must be a first-time CCNB account holder; applies to personal checking and personal savings accounts.",
+    "Referrer must not be an owner/co-owner of the new account; the new account owner must live in CCNB's service area.",
+    "Cash incentive subject to 1099 tax reporting; offer subject to change or stop without notice.",
+    "If referred by more than one client, the earliest date on the form determines who gets the incentive.",
+    "No cap stated on the official page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CCNB page (myccnb.com): 'Ask your friend to present this completed form when they open their new account,** and you will receive $25* in your existing CCNB account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official myccnb.com domain (myccnb.com/refer-a-friend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard personal account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'coastal carolina' catalog hit is a false positive (R0797 utility rebate); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CCNB customer. Friend: first-time CCNB account holder who presents the completed referral form at account opening.",
+  "notes": "Re-reviewed 2026-09-23. Coastal Carolina National Bank (myccnb.com/refer-a-friend): $25 to the referrer and $25 to the friend; friend must be a first-time CCNB account holder in the service area with the new account active, funded, and in good standing; friend reward deposited ~30 days after account opening/verification; cash incentive subject to 1099 tax reporting.",
+  "numeric_basis": "payout from official page ($25 to referrer per qualifying referral; no cap stated); time: completing and handing over the form est. 5-15 min active",
+  "official_url": "https://www.myccnb.com/refer-a-friend/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Ask your friend to present this completed form when they open their new account,** and you will receive $25* in your existing CCNB account.",
+  "payout_value_note": "$25 deposited to the referrer's existing CCNB account per qualifying new-account referral. No cap stated.",
+  "route_id": "R3879",
+  "standard": {
+    "s1": {
+      "note": "Program page live on myccnb.com, fetched 2026-09-23; 'offer subject to change or stop without notice'",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing customer; friend first-time account holder in service area, not co-owned",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new personal checking/savings account presenting the completed referral form",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: referrer paid when the form is presented at account opening; friend's $25 ~30 days later",
+      "pass": true
+    },
+    "s5": {
+      "pass": true,
+      "note": "Tax stated on official page: cash incentive subject to 1099 tax reporting (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Download and complete a CCNB Refer A Friend form.",
+    "Give the form to your friend.",
+    "Friend presents the completed form when opening a new personal checking or savings account.",
+    "You receive $25 in your existing CCNB account."
+  ],
+  "terms_url": "https://www.myccnb.com/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referrer's $25 paid when the friend presents the form at account opening; friend's $25 ~30 days after opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

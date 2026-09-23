@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The $50 credit only lands within 60 days of the referred friend's plan start date, and either side cancelling their plan or falling into arrears before then forfeits the bonus entirely.",
+  "catches": [
+    "Both $50 bonuses are bill credits applied within 60 days of the referred customer's plan start date — not instant at signup.",
+    "If you or your referred friend cancels the Energy Plan, or either account goes into arrears before the bonus is applied, neither side receives the bonus.",
+    "Referred friend must sign up using your unique ENMAX referral link and must not have been an Easymax customer in the last 12 months.",
+    "Referred customer is eligible for a maximum of one referral bonus; referrer capped at 15 bonuses per calendar year (up to $750 in credits).",
+    "Bonuses cannot be transferred, exchanged for cash, or combined with other programs; ENMAX may suspend or terminate the program at any time.",
+    "Savings framing: the bonus reduces a future energy bill in Alberta (CAD amounts), not cash income; you must already be an Easymax customer to earn the referrer-side credit."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url host enmax.com is the provider's own domain; page is titled 'ENMAX Energy Referral Program Terms and Conditions between the Participant and ENMAX Energy Corporation'.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page is current (search crawl 22 hours old); terms state 'We may update these terms and conditions at any time' and the $50/$50 bonus is stated in the current published text with no expired dates.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Conditions are explicit: referral link use, 12-month non-customer rule, both accounts in good standing, bonus within 60 days of plan start, 15-bonus annual cap. No hidden qualifiers beyond the stated terms.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Amount ($50 bill credit), who gets it (both referrer and referee), conditions, timing (within 60 days of plan start), and annual cap (15 bonuses) are all stated verbatim; nothing requires guessing.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing ENMAX residential customer with an Easymax Energy Plan, an online account, and the account in good standing; referred person must be a new Easymax customer (not one in the last 12 months) who signs up via the referral link. Alberta, Canada.",
+  "notes": "Verified 2026-09-23 from ENMAX's official referral terms page (enmax.com). $50 bill credits to both sides (amounts in CAD). Bill credits are savings on planned energy spending, not cash income; the referrer side requires already being an ENMAX Easymax customer. Distinct supplier vs prior-wave set and vs all catalog providers; no ENMAX/ENMAX Easymax routes in catalog, discovery cards, or prior verification evidence files.",
+  "numeric_basis": "payout from official terms ($50 flat bill credit each side); time: referral link share 5-15 min active",
+  "official_url": "https://www.enmax.com/referrer-terms-and-conditions",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "When you refer a person who is not, and has not been in the last 12 months, an Easymax customer to Easymax, and that person signs up for an Easymax Energy Plan, you and the Referee will each receive a reward bonus of a $50 bill credit.",
+  "payout_value_note": "Flat $50 bill credit per side (CAD), applied to the energy bill (savings on planned spending, not cash).",
+  "route_id": "R2654",
+  "standard": {
+    "s1": {
+      "note": "Exact amount ($50), who gets it (referrer and referee), and timing (within 60 days of plan start) are quoted verbatim from the official terms.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing is natural: a bill credit on a required utility bill in Alberta, not spendable cash or income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps are the concrete process stated in the terms: create online account, share referral link, friend signs up, bonus applies within 60 days.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: either side cancelling or going into arrears before the bonus is applied forfeits it.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; sharing a referral link costs nothing beyond normal plan enrollment by the referred friend.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words in the payout statement; conditions are listed as explicit numbered program rules.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against enmax.com (provider's own domain). Deduped: no ENMAX routes in catalog existing-providers.txt, discovery-cards.json, or qa/verification evidence files; no rejects-g19 entry.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to your ENMAX online account for your existing Easymax Energy Plan.",
+    "Find your unique referral link in your account.",
+    "Send the referral link to a friend or family member (complying with anti-spam rules; no paid advertising of the link).",
+    "Friend signs up for an Easymax Energy Plan using your referral link and meets plan eligibility criteria.",
+    "$50 bill credits are applied to both your account and your friend's account within 60 days of the friend's plan start date."
+  ],
+  "terms_url": "https://www.enmax.com/referrer-terms-and-conditions",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus applied within 60 days of the referred customer's Energy Plan start date; program may be changed or terminated at any time.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

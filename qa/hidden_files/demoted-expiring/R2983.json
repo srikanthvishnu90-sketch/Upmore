@@ -1,0 +1,87 @@
+{
+  "route_id": "R2983",
+  "verdict": "verify",
+  "official_url": "https://pnc.com/en/small-business/campaigns/bus400offer.html",
+  "terms_url": "https://www.pnc.com/en/small-business/campaigns/bus1000offer.html",
+  "payout_quote": "You may earn a $400 reward if you open a new PNC Business Checking or PNC Business Checking Plus account. / You may earn a $1,000 reward if you open a new PNC Treasury Enterprise Plan (including Analysis Business Checking) account.",
+  "steps": [
+    "Open a new PNC Business Checking or Business Checking Plus account (for $400) or a Treasury Enterprise Plan / Analysis Business Checking account (for $1,000) between July 1, 2026 and September 30, 2026.",
+    "For the $400 reward: maintain an average ledger balance of $2,000 in the new account for each of the first three statement cycles AND complete at least 10 total qualifying transactions (debit purchases, ACH, wire, Zelle, online banking/bill pay, remote/mobile deposits, checks) within the first three statement cycles.",
+    "For the $1,000 reward: maintain an average ledger balance of $30,000 or more for each of the first three statement cycles (master accounts only; linked beneficiary accounts do not count).",
+    "Keep the account open; the reward is credited as 'Credits NEW BUS BONUS' within 90 days after all conditions are met."
+  ],
+  "catches": [
+    "Offer only for businesses with annual revenue less than $10 million.",
+    "New accounts only: any signer with signing authority on an existing PNC business checking account, who closed one within the past 90 days, or who was paid a promotional premium in the past 12 months is ineligible; one account eligible per signer group.",
+    "Only monthly-statement business checking accounts qualify (daily, weekly, or quarterly statement accounts are ineligible); established, converted, or repurposed accounts are ineligible.",
+    "Changing the checking product after opening can change or void eligibility and reward amount; you must remain in the opened product.",
+    "Reward credited up to 90 days after all conditions met; account must stay open to receive it.",
+    "Offers may be extended, modified or discontinued at any time; the reward may be reported on IRS Form 1099 as taxable income.",
+    "Business Checking Plus monthly service charges apply unless waived per the account disclosure (fee drag reduces net bonus if not waived)."
+  ],
+  "biggest_catch": "The $400 tier requires holding a $2,000 average ledger balance across the first three statement cycles PLUS 10 qualifying transactions in that window; the $1,000 tier needs a $30,000 average balance. Any signer with an existing PNC business checking account or a PNC bonus in the past 12 months is excluded; offer expires 9/30/2026.",
+  "eligibility": "New PNC business checking customers only; business annual revenue under $10 million; no signer with authority on an existing PNC business checking account, none closed within 90 days, no promotional premium paid in past 12 months.",
+  "timing": "Open between 7/1/2026 and 9/30/2026; requirements measured over the first three statement cycles; reward credited within 90 days after all conditions are met.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "PNC Bank is a real major bank; bonus terms are on official pnc.com small-business campaign pages, fetched live 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page: 'You may earn a $400 reward if you open a new PNC Business Checking or PNC Business Checking Plus account' and 'You may earn a $1,000 reward if you open a new PNC Treasury Enterprise Plan (including Analysis Business Checking) account.'"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Official terms: open 7/1/2026-9/30/2026; $2,000 average ledger balance for each of first three statement cycles + 10 qualifying transactions ($400 tier); $30,000 average balance ($1,000 tier); < $10M revenue; signer-exclusion rules quoted verbatim."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Offer window 7/1/2026-9/30/2026 is current as of 2026-09-23 (UTC); offer is live, not expired."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Business checking bonus only; distinct from catalogued PNC personal bonuses (R0043 Virtual Wallet, R0581 personal bonus)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Concrete steps: open account in window, hold average balance 3 cycles, complete 10 qualifying transactions."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Expiry 9/30/2026 and 90-day post-completion payout timing captured."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Catches include balance maintenance, transaction quota, signer exclusion, monthly service charge risk, 1099 taxation."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No upfront fee; $100 minimum to open is refundable principal."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Public nationwide offer on pnc.com; not targeted/mailer-only."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Dedupe: no PNC business bonus in catalog; distinct provider route."
+    }
+  },
+  "notes": "Verified live against official pnc.com campaign pages 2026-09-23: bus400offer.html covers the $400 Business Checking/Plus tier; bus1000offer.html covers the $1,000 Treasury Enterprise Plan/Analysis Checking tier (re-verified live 2026-09-23, open by 9/30/26, $30k avg ledger balance x 3 cycles). One route covering both tiers of the same program ($400 Business Checking/Plus, $1,000 Treasury Enterprise Plan). Dedupe: R0043/R0581 are PNC personal offers, different product.",
+  "payout_min_usd": 400,
+  "payout_max_usd": 1000,
+  "payout_value_note": "tiered flat reward: $400 (Business Checking/Plus, $2,000 avg balance + 10 txns) or $1,000 (Treasury Enterprise Plan, $30,000 avg balance) in official terms",
+  "time_min_minutes": 45,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: tiered flat amounts in official terms; time: business account application (formation docs) + funding + 10 qualifying transactions est. 45-90 min active"
+}

@@ -1,0 +1,67 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Requires 15 qualifying debit-card purchases per month in each of the first 2 full calendar months plus eStatements enrollment; ATM transactions, cash advances, and person-to-person transfers do not count as purchases. New CSB checking customers only (no CSB personal checking held within the last 12 months).",
+  "catches": [
+    "Open a new Simple Checking for Students account with a $10 minimum deposit.",
+    "Make at least 15 qualifying purchases per month using the CSB Debit Mastercard within the first 2 full calendar months after the account is opened and funded; purchases must post within the qualification period.",
+    "ATM transactions, cash advances, and person-to-person transfers do not qualify as purchases.",
+    "Enroll in eStatements through CSB Online or Mobile Banking within 2 months of account opening.",
+    "Available to new Cambridge Savings Bank checking customers only; not available to customers who currently hold or have held a CSB personal checking account within the last 12 months.",
+    "Provide verification of identification and present a Student ID or other proof of current student status.",
+    "Age rules: 18+ can open online or at any branch; ages 16-17 must visit a branch; ages 14-15 must visit a branch with a parent or legal guardian."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Cambridge Savings Bank (cambridgesavings.com) is a real Massachusetts bank; the Simple Checking for Students bonus is published on its official student-checking-bonus-offer page (search crawl, confirmed ~9 hours ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'Earn $150 with a new Simple Checking for Students account in just two steps! ... Make at least 15 qualifying purchases per month using your CSB Debit Mastercard within the first 2 full calendar months after your account is opened and funded ... Enroll in eStatements through CSB Online or Mobile Banking within 2 months of account opening.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Amount ($150), $10 minimum deposit, 15 purchases/month, 2-full-month window, eStatements requirement, and the 12-month no-prior-checking rule are all quoted verbatim from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Cambridge Savings Bank checking customers only (no CSB personal checking account held within the last 12 months); must provide ID and proof of current student status; age rules per above.",
+  "notes": "Official cambridgesavings.com/student-checking-bonus-offer (crawl ~9 hours ago). Distinct mechanism from the up-to-$1,200 general campaign (rejected as R0929/R0543); this is the student debit-purchase offer. No sibling duplicate found in R0851-R0928.",
+  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.cambridgesavings.com/student-checking-bonus-offer",
+  "payout_max_usd": 150.0,
+  "payout_min_usd": 150.0,
+  "payout_quote": "Earn $150 with a new Simple Checking for Students account in just two steps! ... Make at least 15 qualifying purchases per month using your CSB Debit Mastercard within the first 2 full calendar months after your account is opened and funded. Enroll in eStatements through CSB Online or Mobile Banking within 2 months of account opening. Available to new Cambridge Savings Bank checking customers only. Not available to customers who currently hold or have held a CSB personal checking account within the last 12 months.",
+  "payout_value_note": "flat bonus amount in official terms",
+  "route_id": "R0930",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New CSB checking customers only; no CSB personal checking within 12 months; proof of student status."
+    },
+    "s2": {
+      "pass": true,
+      "evidence": "$10 minimum deposit; 15 qualifying debit purchases/month in first 2 full calendar months; ATM/cash-advance/P2P excluded; eStatements within 2 months."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Bonus via the stated two steps; tax treatment per standard practice."
+    }
+  },
+  "steps": [
+    "Open a new Simple Checking for Students account with a $10 minimum deposit (online if 18+, or in branch with a parent/guardian for ages 14-17), presenting ID and proof of student status.",
+    "Make at least 15 qualifying purchases per month with the CSB Debit Mastercard within the first 2 full calendar months after the account is opened and funded (ATM, cash advance, and P2P transactions do not qualify).",
+    "Enroll in eStatements through CSB Online or Mobile Banking within 2 months of account opening.",
+    "The $150 bonus is earned after both steps are completed."
+  ],
+  "terms_url": "https://www.cambridgesavings.com/student-checking-bonus-offer",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "15 qualifying purchases per month in the first 2 full calendar months; eStatements within 2 months of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

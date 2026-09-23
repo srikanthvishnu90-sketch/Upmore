@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must be a new Rockland Trust customer, open a qualifying checking account, and complete all qualifying activities; referral payout applies to the July 1-Sept 30, 2026 window.",
+  "catches": [
+    "Only the referrer earns $50 per qualifying referral; no friend bonus is stated on the official page.",
+    "Referrer must have an active Rockland Trust checking account with a positive balance at payout.",
+    "Referred individual must be a new customer, 18+, and complete all required qualifying activities.",
+    "Maximum combined Refer a Friend bonus payout is $500 per customer per calendar year.",
+    "For accounts opened July 1-Sept 30, 2026, the bonus is credited by Dec 31, 2026.",
+    "Bonus is reported to the IRS for the tax year in which it is paid.",
+    "Rockland Trust employees are not eligible; offer may end at any time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official rocklandtrust.com/refer-a-friend: 'Once your friend opens a qualifying account and completes the offer requirements listed below, we will deposit $50 into the account you provided during registration.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Rockland Trust domain (rocklandtrust.com), page fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer or participate",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Three checks clean: grep of existing-providers found no match; dedupe-check 'Rockland Trust' 0 catalog + 0 evidence hits; grep of qa/verification found no Rockland Trust entries. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: active Rockland Trust checking account holder in good standing. Friend: new customer, 18+, opens a qualifying checking account via personalized link.",
+  "notes": "Verified 2026-09-23. Rockland Trust. $50 per qualifying referral to the referrer; $500 combined cap per customer per calendar year (10 referrals). Current bonus window runs July 1-Sept 30, 2026.",
+  "numeric_basis": "payout from official terms ($50 per qualifying referral; $500 annual combined cap); time: sharing referral link est. 5-15 min active",
+  "official_url": "https://rocklandtrust.com/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The more friends you refer, the more you can earn – up to $500 per calendar year.",
+  "payout_value_note": "$50 per qualifying referral; maximum combined $500 per customer per calendar year (10 referrals).",
+  "route_id": "R3957",
+  "standard": {
+    "s1": {
+      "note": "Terms live on rocklandtrust.com, fetched 2026-09-23; current window July 1-Sept 30, 2026 still open",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: active checking account holder; new-customer friend 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register, open qualifying checking via personalized link, complete qualifying activities",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited by Dec 31, 2026 for July 1-Sept 30, 2026 window",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment stated: bonus reported to the IRS for the tax year paid",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Rockland Trust Refer a Friend program.",
+    "Share your personalized referral link with friends and family.",
+    "Your friend registers and opens a qualifying checking account via the link.",
+    "After your friend completes all qualifying activities, $50 is deposited to your account."
+  ],
+  "terms_url": "https://rocklandtrust.com/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "For accounts opened and qualifying activities completed July 1-Sept 30, 2026, the bonus is credited by Dec 31, 2026.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

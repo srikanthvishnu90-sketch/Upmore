@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Referrer earns $100 only when the referred business opens both a Business Membership Savings and a Business Checking with a debit card — capped at 5 business referrals per calendar year ($500).",
+  "catches": [
+    "Referred business must open Business Membership Savings AND Business Checking with a debit card (not valid for existing business members)",
+    "Referrer limited to 5 business referrals per calendar year ($500 max)",
+    "$100 is deducted if the business account is closed less than 180 days after opening",
+    "Business must be owned by US citizens, have a US Tax ID (EIN/SSN), and be registered in Texas; some business types restricted",
+    "Member responsible for any taxes; cannot be combined with other offers; employees, volunteers, and families excluded"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official A+FCU page (aplusfcu.org/about-us/member-benefits/refer-and-earn): '$100 will be deposited to your Business Membership Savings Account when the referred business opens their Business Membership Savings and Business Checking with a debit card'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official aplusfcu.org domain; page live and fetchable 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $100 deposited to referrer's Business Membership Savings Account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'A+ FCU' shows no catalog/evidence hits — no duplicate; distinct product (business accounts) from the personal-referral program (R3342)",
+      "pass": true
+    }
+  },
+  "eligibility": "A+ Federal Credit Union existing business members. Referred businesses must be new business members owned by US citizens with a US Tax ID (EIN/SSN) and registered in Texas.",
+  "notes": "dedupe-check 'A+ FCU' shows no existing routes. Official A+FCU Refer & Earn page also defines a distinct business-referral program: $100 per referred business, capped at 5/year ($500). Distinct mechanism/product from the personal $25 referral route (R3342).",
+  "numeric_basis": "payout from official A+FCU Refer & Earn page ($100 flat per qualifying business referral); time: sharing the ReferCode with a business owner est. 5-15 min active",
+  "official_url": "https://aplusfcu.org/about-us/member-benefits/refer-and-earn",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Existing Business Member: Limit five referrals per calendar year. $100 will be deposited to your Business Membership Savings Account when the referred business opens their Business Membership Savings and Business Checking with a debit card.",
+  "payout_value_note": "Flat $100 cash per qualifying business referral; cap of 5 business referrals per calendar year ($500 total).",
+  "route_id": "R3343",
+  "standard": {
+    "s1": {
+      "note": "Official A+FCU Refer & Earn page live and fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing A+FCU business member; business owned by US citizens, US Tax ID, registered in Texas",
+      "pass": true
+    },
+    "s3": {
+      "note": "Business requirement concrete: open Business Membership Savings + Business Checking with debit card",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $100 deposited to referrer's Business Membership Savings when the business opens its accounts",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax responsibility stated: member is responsible for any taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct earning mechanism: business-account referrer program (vs R3342 personal lane)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be an A+FCU existing business member",
+    "Share your ReferCode with a business owner so they include it in the 'Promo Code/Refer A Friend' section",
+    "The business opens a new Business Membership Savings and Business Checking with a debit card",
+    "$100 is deposited into your Business Membership Savings Account when the business opens its accounts"
+  ],
+  "terms_url": "https://aplusfcu.org/about-us/member-benefits/refer-and-earn",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Sharing the ReferCode takes ~10 minutes active; the $100 reward is deposited when the business opens its accounts (no fixed delay stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

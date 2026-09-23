@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "Only currently enrolled NYU students can get paid - non-students can register but explicitly 'will not be able to get paid for participation'.",
+  "catches": [
+    "Must be a currently enrolled NYU student aged 18+ to be paid; non-students cannot be paid",
+    "Minimum is $10 per 90-minute experiment - a low effective hourly rate (~$6.67/hr)",
+    "Pay above the minimum depends on the experiment, your decisions, other subjects, and chance - variable",
+    "Only the minimum is stated; there is no stated ceiling",
+    "Lab at 19 W 4th Street, NYC - travel required for in-person experiments"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "wp.nyu.edu CESS experiments page from search index (crawled 226 days before verification); minimum-pay terms quoted verbatim",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states concrete floor: 'The minimum payment for an experiment (if completed) is $10 per 90 minutes'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps from official page: register at CESS recruitment website, get notified of experiments, participate",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free to register; no fee; decision-making experiments",
+      "pass": true
+    }
+  },
+  "eligibility": "Currently enrolled NYU students, 18+ (non-students cannot be paid)",
+  "notes": "NYU's Center for Experimental Social Science participant pool - distinct from NYU Stern's Center for Behavioral Research (R3047): different center, different eligibility, different pay structure. payout_max set to 10 because only the minimum is officially stated; actual pay can be higher depending on decisions.",
+  "numeric_basis": "payout from official terms (minimum $10 per completed 90-min experiment; higher possible but no stated ceiling); time: stated 90-min experiments plus registration estimate",
+  "official_url": "https://wp.nyu.edu/cess/experiments-2/",
+  "payout_max_usd": 10,
+  "payout_min_usd": 10,
+  "payout_quote": "The minimum payment for an experiment (if completed) is $10 per 90 minutes.",
+  "payout_value_note": "Official stated minimum per completed 90-minute experiment; actual pay varies by experiment and decisions with no stated ceiling.",
+  "route_id": "R3048",
+  "standard": {
+    "s1": {
+      "note": "Provider's own stated minimum payment; no conversion",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as a minimum with variable upside, never a guaranteed total",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover NYU-student-only pay, low effective hourly floor, variable upside",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card - n/a",
+      "pass": true
+    },
+    "s5": {
+      "note": "Timing: paid per completed experiment; disbursement timing not stated",
+      "pass": true
+    },
+    "s6": {
+      "note": "Deduped: no NYU CESS route in catalog or evidence files; distinct from NYU Stern CBR (R3047)",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the minimum-pay line",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register at the CESS recruitment website as a currently enrolled NYU student",
+    "Get added to the notification list for upcoming experiments",
+    "Sign up for an experiment when invited",
+    "Complete the 90-minute decision-making experiment",
+    "Receive at least $10 for the completed experiment (more possible based on decisions)"
+  ],
+  "terms_url": "https://wp.nyu.edu/cess/experiments-2/",
+  "time_max_minutes": 105,
+  "time_min_minutes": 95,
+  "timing": "Paid per completed experiment; exact disbursement timing not stated on the page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

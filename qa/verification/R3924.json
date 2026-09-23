@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must open the checking account at the Guthrie Center or Panora branch with a $500 minimum opening balance and keep it open 90 days.",
+  "catches": [
+    "$50 to the referrer and $50 to the new customer per qualifying referral.",
+    "Refer up to 10 friends a year; referrer can earn up to $500 in referral bonuses per calendar year.",
+    "Referred must be a new customer opening a checking account at the Guthrie Center or Panora branch with a minimum $500 opening balance.",
+    "New account must establish a recurring or direct deposit, include checks and/or a debit card, and remain open a minimum of 90 days.",
+    "Bonus credited to both accounts approximately 90 days after the new account's opening.",
+    "Referring customer must have an active GCSB account.",
+    "Program subject to modification or discontinuation at any time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official GCSB page: '$50 for you, $50 for a friend... You could earn $500 a year... Refer up to 10 friends a year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms hosted on official gcsbank.com domain (gcsbank.com/referral/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $500 minimum opening balance for the new account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'guthrie county' and 'gcsbank' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: GCSB customer with an active account. Friend: new customer opening checking at the Guthrie Center or Panora branch.",
+  "notes": "Verified 2026-09-23. Guthrie County State Bank. $50 each side; referrer capped at 10 referrals / $500 per calendar year. Bonus paid ~90 days after account opening.",
+  "numeric_basis": "payout from official page ($50 each side; 10 / $500 per year); time: telling the friend + branch mention est. 5-15 min active",
+  "official_url": "https://www.gcsbank.com/referral/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "$50 for you, $50 for a friend... You could earn $500 a year... Refer up to 10 friends a year.",
+  "payout_value_note": "$50 per qualifying referral; referrer capped at 10 referrals / $500 per calendar year.",
+  "route_id": "R3924",
+  "standard": {
+    "s1": {
+      "note": "Terms live on gcsbank.com, fetched 2026-09-23; program subject to modification",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: active GCSB referrer; new customer friend",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: Guthrie Center/Panora branch checking, $500 opening balance, recurring/DD, checks/debit card, 90 days open",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus credited ~90 days after new account opening",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Tell your friend about Guthrie County State Bank.",
+    "Friend opens a new checking account at the Guthrie Center or Panora branch, mentioning your name, with a $500 minimum opening balance.",
+    "Friend establishes a recurring or direct deposit and gets checks/debit card; account stays open 90 days.",
+    "You both receive $50 ~90 days after account opening."
+  ],
+  "terms_url": "https://www.gcsbank.com/referral/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited to both accounts ~90 days after the new account's opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

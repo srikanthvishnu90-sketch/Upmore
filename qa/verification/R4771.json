@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The bonus is paid at the time the new account opens, which is fast - but the friend must open as the primary owner, fund $100, and your own checking/savings/money-market account must be open with a positive balance or you get nothing.",
+  "catches": [
+    "Referrer must be an existing CIBM Bank customer with a checking, savings, or money market account open and with a positive balance at payout.",
+    "Friend must open a NEW CIBM Bank checking account as the primary owner; existing customers and anyone who closed an account in the past 6 months are ineligible.",
+    "Referral form must be presented in branch or referral source entered online at account opening; minimum $100 opening deposit required.",
+    "Bonus paid at the time of new account opening to both parties' accounts.",
+    "If the friend closes the account within 6 months, a $25 early closing fee applies.",
+    "Bonus reportable as interest/income on IRS Form 1099-INT/MISC; employees ineligible.",
+    "Offer expires 12/31/2026; subject to amendment/cancellation at any time.",
+    "Unlimited referral bonuses for referring customers."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official CIBM Bank page (cibmbank.com/refer-a-friend.html): 'It's $50 for you, and $50 for them.' and 'A $50.00 bonus will be paid to the existing and referred customers' accounts at the time of new account opening.' and 'Referral bonuses are unlimited for referring customers.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official cibmbank.com domain, fetched live 2026-09-23; offer expires 12/31/2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking with $100 minimum deposit",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no cibmbank.com route; catalog has no CIBM entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing CIBM Bank customer with an open, positive-balance checking/savings/money-market account. Friend: new customer opening checking as primary owner.",
+  "notes": "Verified 2026-09-23. CIBM Bank (Champaign, IL). Referrer earns $50 per referral, unlimited, paid at account opening; expires 12/31/2026. Friend cannot have been a customer or closed an account within 6 months.",
+  "numeric_basis": "payout from official cibmbank.com terms ($50 per referral, unlimited); time: complete referral form est. 5-15 min active",
+  "official_url": "https://CIBMBANK.COM/refer-a-friend.html",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "It's $50 for you, and $50 for them. ... A $50.00 bonus will be paid to the existing and referred customers' accounts at the time of new account opening. ... Referral bonuses are unlimited for referring customers. ... Offer expires 12/31/2026.",
+  "payout_value_note": "$50 bonus per referral to the existing customer, unlimited referrals; paid at account opening; expires 12/31/2026.",
+  "route_id": "R4771",
+  "standard": {
+    "s1": {
+      "note": "Page live on cibmbank.com, fetched 2026-09-23; offer expires 12/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing customer with open positive-balance account; friend new customer, primary owner, no account closed in 6 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking account as primary owner, $100 minimum deposit, referral form at opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 paid to both accounts at the time of new account opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus reportable as interest/income on IRS Form 1099-INT/MISC",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the CIBM Bank Refer-A-Friend form and give it to your friend.",
+    "Friend opens a new CIBM Bank checking account as the primary owner with a $100 minimum deposit, presenting the form (or entering the referral source online).",
+    "A $50 bonus is paid to your account at the time of the new account opening - repeat unlimited times."
+  ],
+  "terms_url": "https://CIBMBANK.COM/refer-a-friend.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 paid to both parties' accounts at the time of new account opening; your account must be open with a positive balance.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must present the referral coupon at account opening and live, work, study, or worship in Fairfield County, CT - otherwise no bonus.",
+  "catches": [
+    "Referrer: existing Members Credit Union member; employees, volunteers, and their immediate family members are not eligible.",
+    "Referrer earns $25 for each new member referred; 'Existing members can earn $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.'",
+    "Friend must: be a new member opening their first Primary Savings Account, present the referral coupon at account opening, and meet Fairfield County, CT membership eligibility.",
+    "No stated cap on number of referrals; one Primary Savings Account per referral; coupon valid only at account opening.",
+    "Bonuses credited to both parties upon account opening if accounts are in good standing (no negative balances or loan delinquencies).",
+    "Promotion valid through December 31, 2026, but may be modified or withdrawn at any time.",
+    "Federally insured by NCUA; $5 minimum balance to keep the Primary Savings Account open."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Members Credit Union page (memberscu.coop/membership-eligibility, fetched live 2026-09-23): 'Existing members can earn $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.' and 'Bonuses are credited if accounts are in good standing: $25 for the referrer and $25 for the new member at account opening.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official memberscu.coop page, fetched live 2026-09-23; promotion valid through December 31, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens Primary Savings ($5 minimum balance)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no Members Credit Union (CT) route; R5550 is Indiana Members Credit Union (imcu.com) - a different institution",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Members Credit Union member. Friend: new member eligible for Fairfield County, CT membership who opens their first Primary Savings Account with the referral coupon.",
+  "notes": "Verified 2026-09-23. Members Credit Union (Greenwich, CT; memberscu.coop). Referrer earns $25 per qualifying referral; no stated cap. Distinct from R5550 (IMCU, Indiana).",
+  "numeric_basis": "payout from official Members CU terms ($25 per referral; no stated cap); time: share coupon est. 5-15 min active",
+  "official_url": "https://memberscu.coop/membership-eligibility",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Existing members can earn $25 for each new member they refer who opens a Primary Savings Account with a referral coupon.",
+  "payout_value_note": "$25 to the referrer per qualifying referral; no stated cap.",
+  "route_id": "R4833",
+  "standard": {
+    "s1": {
+      "note": "Official memberscu.coop page fetched live 2026-09-23; valid through 12/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing member; friend new member with Fairfield County CT eligibility",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: first Primary Savings Account opened with referral coupon at account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonuses credited to both parties upon account opening if accounts are in good standing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: standard reportable bonus",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; no CT Members CU route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Pick up a referral coupon at the Members Credit Union office, fill it out, and share it with a friend.",
+    "Friend opens their first Primary Savings Account presenting the referral coupon at account opening.",
+    "You receive $25 - credited at account opening if both accounts are in good standing."
+  ],
+  "terms_url": "https://memberscu.coop/membership-eligibility",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited upon account opening if accounts are in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

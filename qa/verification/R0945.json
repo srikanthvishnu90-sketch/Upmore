@@ -1,0 +1,70 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Business accounts only and the business checking account must be opened IN A BRANCH (promo code 2026EM). The $500 tier requires parking $10,000 for 90 days. Offer expires 2026-10-31; OR/WA/CA/ID residents only.",
+  "catches": [
+    "Open a new Banner Bank business checking account at a Banner Bank branch and use promotional code 2026EM at account opening.",
+    "Must not already have a Banner Bank business checking account; offer not available to local/state/federal government entities, nonprofits, political action committees, or campaign accounts.",
+    "Not available to businesses whose Banner accounts were closed within the last 2 years, or closed within 90 days / closed with a negative balance in the last 3 years.",
+    "One new-account-opening bonus every 2 years per business entity with a unique tax ID on business checking.",
+    "Offer available to residents of OR, WA, CA, and ID only.",
+    "$250 tier: deposit a minimum of $5,000 into the new business checking account within 60 days AND maintain a minimum balance of $5,000 for 90 days.",
+    "$500 tier: deposit a minimum of $10,000 into the new business checking account within 60 days AND maintain a minimum balance of $10,000 for 90 days.",
+    "Bonus deposited into the new account within 30 days after requirements are met; account must be open and in good standing at payout.",
+    "Offer expires 10/31/2026; subject to change without notice; may not be combined with any other offer.",
+    "Bonus is considered interest and reported on IRS Form 1099-INT."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Banner Bank (bannerbank.com) is a real regional bank; its 'Explore Business Account Bonus Offers' page publishes the 2026EM business bonus terms (official search crawls, confirmed ~3-6 days ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'To receive the business checking or savings offers, you must open your account(s) at a Banner Bank branch and use the promotional code 2026EM at account opening... To receive the $250 checking bonus: Open any new Banner Bank business checking account AND deposit a minimum of $5,000 into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days. To receive the $500 checking bonus: Open any new Banner Bank business checking account AND deposit a minimum of $10,000 into that account within 60 days AND maintain a minimum balance of $10,000 for 90 days.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Both tiers, deposit thresholds, 60-day funding window, 90-day maintenance, branch requirement, code 2026EM, geography, and 10/31/2026 expiry are quoted verbatim from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Banner Bank business checking customers (no existing business checking); not government/nonprofit/PAC/campaign accounts; no Banner accounts closed within 2 years (90 days or negative-balance closure in last 3 years also excluded); OR/WA/CA/ID residents only; one bonus per 2 years per tax ID.",
+  "notes": "Official bannerbank.com new-account-offers pages (crawls ~3 days). Recorded as one row covering both business-checking tiers (min $250, max $500). Distinct from R0917 (personal $250 checking) and from the Banner business savings tiers (R0946, R0947). No sibling duplicate in R0851-R0944. Expires 2026-10-31.",
+  "numeric_basis": "payout: flat bonus amounts in official terms (tiered); time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.bannerbank.com/new-account-offers/business-account-offers",
+  "payout_max_usd": 500.0,
+  "payout_min_usd": 250.0,
+  "payout_quote": "To receive the $250 checking bonus: Open any new Banner Bank business checking account AND deposit a minimum of $5,000 into that account within 60 days AND maintain a minimum balance of $5,000 for 90 days. To receive the $500 checking bonus: Open any new Banner Bank business checking account AND deposit a minimum of $10,000 into that account within 60 days AND maintain a minimum balance of $10,000 for 90 days.",
+  "payout_value_note": "flat bonus amounts in official terms (tiered)",
+  "route_id": "R0945",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New business checking customers; OR/WA/CA/ID; one bonus per 2 years per tax ID."
+    },
+    "s2": {
+      "pass": true,
+      "evidence": "$5,000 or $10,000 deposited within 60 days and maintained as a minimum balance for 90 days."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Bonus within 30 days after requirements; expires 10/31/2026; 1099-INT reporting."
+    }
+  },
+  "steps": [
+    "Open a new Banner Bank business checking account at a branch with promotional code 2026EM.",
+    "Deposit a minimum of $5,000 ($250 tier) or $10,000 ($500 tier) into the account within 60 days.",
+    "Maintain the minimum balance for 90 days.",
+    "The bonus is deposited into the new account within 30 days after the requirements are met."
+  ],
+  "terms_url": "https://www.bannerbank.com/new-account-offers/business-account-offers/business-checking-bonus",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Fund within 60 days; maintain minimum balance 90 days; bonus within 30 days after requirements; offer expires 2026-10-31.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

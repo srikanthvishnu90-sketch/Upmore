@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete qualifying activity (recurring direct deposit of $250+ into a new checking account, or a new loan) within 90 days of joining, and cards arrive 4-6 weeks after that - payouts can take months.",
+  "catches": [
+    "Referrer earns a $50 Visa Reward Card per qualifying referral; cap of 10 referrals ($500) per calendar year.",
+    "Friend must register via the referral link, become a member, and within 90 days either set up recurring direct deposit of $250+ per deposit into a new checking account or establish a new loan.",
+    "One referrer per referred person; referrer must be a member in good standing and register for the program first.",
+    "Membership requires a $5 minimum savings/share account; excludes loans already financed at First Florida.",
+    "Visa Reward Cards delivered 4-6 weeks after all requirements complete; all taxes on rewards are the member's responsibility.",
+    "Program run on the ReferLive platform (CustomerStream); referred person must register via the link in the referral email/social post."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Florida CU page (firstflorida.org): 'you have an opportunity to earn an easy $50 Visa Reward Card, and so do they' and 'The Referrer will earn a $50 Visa Reward Card for each individual referred ... A Referrer may receive up to ten (10) Visa Reward Cards ($500 value) within a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official firstflorida.org domain (firstflorida.org/referred-by-a-friend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'first florida credit union' catalog hits are false positives (R0786 Google Fi, R0599 Florida Credit Union - a different institution); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: First Florida Credit Union member in good standing who registers for the program. Friend: new member who registers via referral link and completes qualifying activity within 90 days.",
+  "notes": "Verified 2026-09-23. First Florida Credit Union (Jacksonville, FL) - different institution from Florida Credit Union (Gainesville, R0599). $50 Visa Reward Card per qualifying referral to the referrer, up to 10 per year ($500). Paid as Visa Reward Cards, not cash.",
+  "numeric_basis": "payout from official page ($50 Visa Reward Card per referral; 10-referral/$500 yearly cap); time: registering and sharing the referral link est. 5-15 min active",
+  "official_url": "https://www.firstflorida.org/referred-by-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "you have an opportunity to earn an easy $50 Visa Reward Card, and so do they. ... The Referrer will earn a $50 Visa Reward Card for each individual referred ... up to ten (10) Visa Reward Cards ($500 value) within a calendar year.",
+  "payout_value_note": "$50 Visa Reward Card per qualifying referral to the referrer; 10-referral ($500) cap per calendar year.",
+  "route_id": "R3851",
+  "standard": {
+    "s1": {
+      "note": "Program page live on firstflorida.org, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member in good standing who registers; friend registers via referral link and joins",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: recurring direct deposit of $250+ into new checking, or a new loan, within 90 days of joining",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: Visa Reward Card delivered 4-6 weeks after all requirements completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: all taxes on rewards are the member's responsibility (stated on page)",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the First Florida member referral program and share your referral link with friends/family.",
+    "Friend registers via your link and becomes a First Florida Credit Union member.",
+    "Within 90 days of joining, friend sets up recurring direct deposit of $250+ into a new checking account or establishes a new loan.",
+    "You and your friend each receive a $50 Visa Reward Card 4-6 weeks after qualification (up to 10 referrals/$500 per year)."
+  ],
+  "terms_url": "https://www.firstflorida.org/referred-by-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Visa Reward Card delivered 4-6 weeks after all requirements completed (friend has 90 days from joining to qualify).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

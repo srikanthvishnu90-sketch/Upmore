@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Allow 4-6 weeks after the friend completes all requirements before your gift card arrives.",
+  "catches": [
+    "Referrer earns a $50 Mastercard Gift Card for each individual referred who registers, opens a new account, and completes the requirements.",
+    "Referrer must complete the Official Referral Card and share it; it must be submitted at the time of account opening or mailed within two weeks.",
+    "Qualifying accounts: new checking account (personal or business) with direct deposit and e-statement enrollment within 60 days, OR a qualifying loan (home purchase/build, refinance, or HELOC).",
+    "The referred person must not already have an active relationship with Better Banks.",
+    "Employees of Better Banks and their immediate families are ineligible.",
+    "Gift card value may be reported to the IRS.",
+    "Program may be discontinued or changed at any time without notice.",
+    "No referral cap stated on the official page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Better Banks rules (betterbanks.com): 'The person making the referral (Referrer) will earn a $50 Mastercard Gift Card for each individual referred ... who registers for the offer, opens a new account, and completes the other requirements within the time specified in the offer.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Rules hosted on official betterbanks.com domain (betterbanks.com/personal/resources/refer-a-friend/refer-a-friend-rules), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account or takes standard loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'better banks' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Better Banks customer (not an employee/official). Friend: new to Better Banks; opens a qualifying checking account or loan and completes requirements within the stated timeframes.",
+  "notes": "Verified 2026-09-23. Better Banks (Central Illinois Community Bank). $50 Mastercard Gift Card to the referrer per qualifying referral; no cap stated. Card arrives 4-6 weeks after all requirements are completed.",
+  "numeric_basis": "payout from official page ($50 Mastercard Gift Card per qualifying referral; no cap stated); time: completing the referral card est. 10-20 min active",
+  "official_url": "https://www.betterbanks.com/personal/resources/refer-a-friend/refer-a-friend-rules",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 Mastercard Gift Card for each individual referred (Referred Person) to Better Banks who registers for the offer, opens a new account, and completes the other requirements within the time specified in the offer.",
+  "payout_value_note": "$50 Mastercard Gift Card per qualifying referral. No cap stated.",
+  "route_id": "R3897",
+  "standard": {
+    "s1": {
+      "note": "Rules live on betterbanks.com, fetched 2026-09-23; program may be discontinued or changed at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer customer; friend no active relationship; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking with DD + e-statements within 60 days, or a qualifying home/HELOC loan",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: card issued after all conditions met; allow 4-6 weeks for delivery",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: card value may be reported to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the Official Referral Card and share it with a friend, family member, or coworker.",
+    "Friend registers for the offer and opens a qualifying account.",
+    "Friend completes the account requirements (e.g., checking with direct deposit and e-statements within 60 days).",
+    "You receive a $50 Mastercard Gift Card (allow 4-6 weeks for delivery)."
+  ],
+  "terms_url": "https://www.betterbanks.com/personal/resources/refer-a-friend/refer-a-friend-rules",
+  "time_max_minutes": 20,
+  "time_min_minutes": 10,
+  "timing": "Card issued after all conditions are met; allow 4-6 weeks for delivery.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

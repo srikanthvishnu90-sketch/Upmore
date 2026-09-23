@@ -1,0 +1,88 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The September 30, 2026 account-opening window closes 7 days after this verification - this offer is nearly over.",
+ "catches": [
+  "Business customers only - requires a business entity.",
+  "Account must be opened by September 30, 2026 - only days remain.",
+  "The bonus tier is set by the AVERAGE LEDGER BALANCE in the THIRD FULL MONTH after opening - an average, so a slow ramp or mid-month dip can drop you a tier.",
+  "Minimum qualifying balance is $5,000 in that third month; below that earns nothing.",
+  "Bonus is credited only by the END OF THE FOURTH MONTH - a slow ~4-month payout.",
+  "The up-to-$2,000 headline on the merchant-services page requires adding M&T Merchant Services - this route covers the business-checking promo only (up to $1,500).",
+  "Online account opening available for sole proprietors only (one owner, no partners); other businesses must visit a branch.",
+  "Normal tax treatment applies to bank bonuses (reported as income).",
+  "Promo-code variants: use promo code BO when opening online (code applies automatically); promo code BD is the branch variant of the SAME checking offer - both pay the same up-to-$1,500 checking bonus tiers. This route excludes the separate Merchant Services add-on (up to $2,000 headline)."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "M&T Bank is a real operating regional bank; the business checking bonus terms are published on campaigns.mtb.com (official-domain search capture, 2026-09-23 UTC).",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official mtb.com campaign pages state the $300/$500/$750/$1,500 tiers by third-month average ledger balance, the promo code BO, and the 9/30/2026 deadline.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No upfront fee; promo code automatically applies when opening online.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official pages: 'Offer good through September 30, 2026.' This is within 14 days of 2026-09-23 - flagged as soon-expiring."
+  }
+ },
+ "eligibility": "New M&T business checking customers; online opening available to sole proprietors only - other business structures must open in branch.",
+ "notes": "Verified against official campaigns.mtb.com small-business deposits pages (official-domain search capture, 2026-09-23 UTC; page fetch tooling unavailable this turn). IMPORTANT: expires 2026-09-30, only 7 days after verification - flagged as soon-expiring. The $2,000-with-merchant-services headline requires a second product and is excluded from this route. Promo code BD appears on a variant page; both share the 9/30/26 window and tier structure.",
+ "numeric_basis": "payout from official terms ($300-$1,500 tiers); time: business account opening est. 30-60 min active (excludes 3-month balance period and 4th-month payout)",
+ "official_url": "https://campaigns.mtb.com/small-business-deposits",
+ "payout_max_usd": 1500,
+ "payout_min_usd": 300,
+ "payout_quote": "Why choose one bonus when you can have two? Earn up to $2,000 with qualifying activities. Earn up to $1,500 with M&T Business Checking - or up to $2,000 when paired with Merchant Services, with required activities. Offer good through September 30, 2026. Promo code automatically applies when you open your account online. Open a new M&T Business Checking account. Open online today or visit a local M&T Bank branch to open a Business Checking account by September 30, 2026. Use promo code BO (promo code applies automatically when opening online; promo code BD is the branch variant of the same offer). Maintain the average ledger balance requirement: Maintain an average ledger balance of at least $5,000 in the third full month after you open your account. Get your cash bonus: Your account will be credited by the end of the fourth month. Earn $300: Average Ledger Balance of $5,000 to $14,999.99. Earn $500: Average Ledger Balance of $15,000 to $29,999.99. Earn $750: Average Ledger Balance of $30,000 to $99,999.99. Earn $1500: Average Ledger Balance of $100,000 or more. Business Plus Checking: $15 monthly account maintenance fee, waived with qualifying activity. Online account opening available for sole proprietors only (one owner, no partners).",
+ "payout_value_note": "$300/$500/$750/$1,500 by average ledger balance in the third full month",
+ "route_id": "R3791",
+ "standard": {
+  "s1": {
+   "note": "New business checking customers; sole proprietors can open online, others in branch.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open by 9/30/26 with promo code BO; maintain tier average ledger balance in third full month after opening.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus credited by the end of the fourth month.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words - fixed tier table.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No early-closure fee in bonus terms; business accounts carry their own monthly fee schedules.",
+   "pass": true
+  },
+  "s6": {
+   "note": "FAIL: open by 9/30/2026 - within 14 days of verification. Flagged as soon-expiring.",
+   "pass": false
+  },
+  "s7": {
+   "note": "Distinct route: M&T business checking not in existing-providers.txt or prior evidence files (M&T Bills variant duplicate was personal checking; separate referral-gated $150 Visa offer is a different mechanism).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm you are a new M&T business checking customer.",
+  "Open a new M&T Business Checking account by September 30, 2026 (promo code BO; auto-applies online; branch coupon available).",
+  "Maintain the tier's average ledger balance ($5,000/$15,000/$30,000/$100,000) in the third full month after opening.",
+  "Receive the bonus by the end of the fourth month."
+ ],
+ "terms_url": "https://campaigns.mtb.com/bizbonusoffer",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Bonus credited to the account by the end of the fourth month.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": []
+}

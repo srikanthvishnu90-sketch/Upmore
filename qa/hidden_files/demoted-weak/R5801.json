@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Hard 24-hour deadline - you must fund your account within 24 hours of first viewing the dashboard, or the free-stock reward expires permanently.",
+  "catches": [
+    "Must fund the account within 24 hours of first viewing the Portfolio/Dashboard page after approval; unclaimed reward expires and cannot be recovered",
+    "Reward is either A$10 of buying power or a free US stock (randomly Nike, Dropbox, GoPro, or a mystery stock) - the free stock's value varies and is not stated in advance",
+    "One claim per person; not eligible for multiple accounts; non-individual accounts (SMSF, company, minor) excluded from Wall St funding rewards",
+    "Available in Stake's AU/NZ/UK operating regions; AU rewards page referenced",
+    "Capital at risk - investing can lose money; free stock has capital-gains-tax implications noted in terms"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Stake (hellostake.com) - Australian broker (Stakeshop Pty Ltd). Official pages: 'Get Free Stock' ('Your first stock on us'), 'Stake Rewards' ('Sign up to Stake and add funds to your new account in 24 hours to get a reward. You'll either get A$10 of buying power, or free U.S. stock, or both. T&Cs apply.'), and official 'Stake Wall St Rewards Terms & Conditions' - all on hellostake.com, fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: 'Get a free stock in one of Nike, Dropbox, GoPro or a mystery stock when you sign up and fund your account within 24 hours.' Rewards T&Cs: first Wall St Funding Reward requires a Qualified Funding within 24 hours of first viewing the Portfolio/Dashboard page.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: sign up, fund within 24 hours, claim the reward.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Reward has no entry cost beyond the user's own deposit (which remains theirs). Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New individual Stake account holders in supported regions who fund within 24 hours of first viewing the dashboard.",
+  "notes": "G54 brokerage wave 2. Official provider-owned terms on hellostake.com.",
+  "numeric_basis": "payout 0/0 - referrer receives a free US stock (GoPro, Nike or Dropbox, randomly chosen); Stake states most people receive a stock worth less than US$10; new customers get A$10 buying power or free stock when funding within 24h; time: signup + funding est. 20-40 min active",
+  "official_url": "https://hellostake.com/nz/free-stock",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Wall St Referral Rewards are a free stock of (or fraction of) specific US equities... Most people receive a stock that has a value of less than $10 USD.",
+  "payout_value_note": "Variable: referrer receives a free US stock (GoPro, Nike or Dropbox, randomly chosen); Stake states most people receive a stock worth less than US$10, so no guaranteed dollar value. New customers funding within 24h may instead get A$10 buying power (approx. US$7). Payout recorded 0/0.",
+  "route_id": "R5801",
+  "standard": {
+    "s1": {
+      "note": "New individual Stake accounts only; must be a first funding within 24 hours.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: sign up, fund within 24 hours, claim reward.",
+      "pass": true
+    },
+    "s3": {
+      "note": "A$10 buying power is concrete; free-stock value varies by draw - disclosed.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Minimum from official A$10 figure; maximum estimated from named stocks - disclosed as approximate.",
+      "pass": true
+    },
+    "s5": {
+      "note": "http://hellostake.com/nz/free-stock, https://hellostake.com/au/rewards?app=true, https://hellostake.com/au/legal/stake-wall-st-rewards-terms-conditions - official Stake pages fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: sign up, fund within 24h, claim.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Stake terms verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Create a new individual Stake account and get it approved for funding",
+    "Fund the account with a qualified funding method within 24 hours of first viewing the dashboard",
+    "Claim the reward: A$10 of buying power, a free US stock (Nike, Dropbox, GoPro, or mystery stock), or both"
+  ],
+  "terms_url": "https://hellostake.com/au/legal/stake-wall-st-rewards-terms-conditions",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "Ongoing new-customer program; 24-hour funding window after first dashboard view.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,67 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The top $825 tier requires $25,000 in deposits by day 30 and maintaining that balance through day 60. Business accounts only; new business checking customers only (one bonus per business, one per business owner in a 24-month period).",
+  "catches": [
+    "Use the bonus offer code by November 10, 2026 when opening a new eligible Wells Fargo business checking account (Initiate, Navigate, or Optimize Business Checking).",
+    "Deposit $2,500 or more by day 30 from account opening; the balance on day 30 determines the maximum bonus ($2,500-$9,999 = $400; $10,000-$24,999 = $550; $25,000+ = $825). Additional funds after day 30 cannot raise the tier.",
+    "Maintain the account balance through day 60 (the qualification period); if it drops to a lower tier, the bonus is reduced or eliminated.",
+    "Complete 5 or more qualifying posted transactions within the 60-day qualification period.",
+    "Bonus deposited into the new business checking account within 30 days of meeting all requirements.",
+    "Offer for new business checking customers only: limit one business checking bonus per business and one per business owner within a 24-month period; not eligible if you currently own a Wells Fargo business checking account, closed one within the past 90 days, or are a Wells Fargo employee; non-resident aliens/foreign entities on Form W-8 excluded.",
+    "If Wells Fargo suspects misuse or abuse, it may close the account and rescind the bonus."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Wells Fargo (accountoffers.wellsfargo.com) is a real major bank; the business checking bonus offer is on its official account-offers page (search crawl, confirmed ~12 days ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'To receive the cash bonus: You must use your bonus offer code by November 10, 2026 when opening a new eligible Wells Fargo business checking account ... Deposit: Bring $2,500 or more in deposits to your new eligible business checking account by day 30 from account opening. The account balance as of day 30 will determine the maximum cash bonus you may earn based on the below table. ($2,500 - $9,999: $400; $10,000 - $24,999: $550; $25,000 or more: $825).' Also required: 5 or more qualifying posted transactions within the 60-day qualification period; bonus deposited within 30 days of meeting requirements.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "All three tiers, the day-30 deposit rule, the 60-day balance-maintenance requirement, the 5-transaction requirement, payout timing, and the 11/10/2026 deadline are quoted from the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "New business checking customers only; limit one business checking bonus per business and one per business owner within 24 months; current Wells Fargo business checking owners and those who closed one within 90 days are excluded; eligible accounts: Wells Fargo Initiate, Navigate, or Optimize Business Checking.",
+  "notes": "Official accountoffers.wellsfargo.com business checking offer (crawl ~12 days). Dedupe: R0045 covers the $400 personal Everyday Checking offer (different product); R0699-R0738 are credit-card routes. This business-only tiered offer is not covered - retained per the 'reject only if business-only already covered' rule. Verified as one row covering the three deposit tiers (min $400, max $825).",
+  "numeric_basis": "payout: flat bonus amounts in official terms (tiered by deposit); time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://accountoffers.wellsfargo.com/businesscheckinga/?sub_channel=DM&vendor_code=WF&dm=bc_ba&collateral_code=VAN",
+  "payout_max_usd": 825.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "To receive the cash bonus: You must use your bonus offer code by November 10, 2026 when opening a new eligible Wells Fargo business checking account ... Deposit: Bring $2,500 or more in deposits to your new eligible business checking account by day 30 from account opening. The account balance as of day 30 will determine the maximum cash bonus you may earn based on the below table. ($2,500 - $9,999: $400; $10,000 - $24,999: $550; $25,000 or more: $825) ... Complete 5 or more qualifying posted transactions within the 60-day qualification period.",
+  "payout_value_note": "flat bonus amounts in official terms (tiered by deposit)",
+  "route_id": "R0932",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "New business checking customers; one per business and one per business owner in 24 months; eligible accounts Initiate/Navigate/Optimize Business Checking."
+    },
+    "s2": {
+      "pass": true,
+      "evidence": "$2,500+ deposit by day 30, maintained through day 60; 5+ qualifying posted transactions within 60 days."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Bonus deposited within 30 days of meeting requirements; offer code must be used by 2026-11-10."
+    }
+  },
+  "steps": [
+    "Use the bonus offer code by November 10, 2026 to open a new Wells Fargo Initiate, Navigate, or Optimize Business Checking account online or in branch.",
+    "Deposit $2,500 or more by day 30 from account opening (day-30 balance sets the tier: $400 / $550 / $825).",
+    "Maintain the balance through day 60 and complete 5 or more qualifying posted transactions within the 60-day qualification period.",
+    "The bonus is deposited into the new business checking account within 30 days of meeting all requirements."
+  ],
+  "terms_url": "https://accountoffers.wellsfargo.com/businesscheckinga/?sub_channel=DM&vendor_code=WF&dm=bc_ba&collateral_code=VAN",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Use offer code by 2026-11-10; deposit by day 30; maintain through day 60; 5 transactions within 60 days; bonus paid within 30 days of meeting requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

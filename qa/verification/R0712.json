@@ -12,7 +12,7 @@
     "No annual fee, so the full $250 is net gain if you meet the $3,000 threshold with planned spending.",
     "You must be a legitimate business to apply — a sole proprietor applying with an SSN qualifies; the account will only be used for business purposes per the issuer's terms."
   ],
-  "checked_at": "2026-09-23T01:52:29Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "evidence": "American Express National Bank — real card issuer; verbatim OFFER TERMS from the official americanexpress.com terms page.",
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "You may not be eligible to receive the welcome offer and intro APR offer if you have or have had this Card or previous versions of this Card, or based on factors such as your history with credit card balance transfers, your history as an American Express Card Member, and the number of credit cards you have opened and closed. If not eligible, Amex will notify you before processing the application so you can withdraw it.",
-  "notes": "Direct live open of the Amex terms URL was blocked once; verification uses the indexed official Amex terms page (crawled ~2 hours before verification, clearly issuer-sourced: POID KC28:9999, ©2026 American Express National Bank). $0 annual fee per the official Amex card page for this product. The $250 posts as a statement credit, not cash to your bank.",
+  "notes": "Direct live open of the Amex terms URL was blocked once; verification uses the indexed official Amex terms page (crawled ~2 hours before verification, clearly issuer-sourced: POID KC28:9999, ©2026 American Express National Bank). $0 annual fee per the official Amex card page for this product. The $250 posts as a statement credit, not cash to your bank. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus 20-40min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)]",
   "official_url": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/bluebusinesscash-credit-card/42732-9-0?key=tncBody&rwdFlag=rwd",
   "payout_quote": "You can earn a $250 statement credit after you spend $3,000 (the \"Threshold Amount\") or more in eligible purchases on your Card within your first 3 months of Card Membership starting from the date your account is opened.",
   "route_id": "R0712",
@@ -81,5 +81,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 250.0,
+  "payout_max_usd": 250.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 40.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)"
 }

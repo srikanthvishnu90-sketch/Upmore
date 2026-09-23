@@ -1,0 +1,88 @@
+{
+ "route_id": "R6441",
+ "verdict": "verify",
+ "official_url": "https://www.myindiana529.com",
+ "terms_url": "https://www.myindiana529.com",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "Indiana taxpayers are eligible for a state income tax credit of 20% of contributions to an Indiana529 Direct Savings Plan account, up to $1,500 credit per year ($750 for married couples filing separately).",
+ "steps": [
+  "Open an Indiana529 account online (minimum $10 to start).",
+  "Contribute to the account during the calendar tax year.",
+  "Claim the 20% credit on your Indiana state income tax return (up to $1,500 per year; $750 if married filing separately).",
+  "Keep the funds for qualified education expenses to avoid credit recapture."
+ ],
+ "catches": [
+  "A nonrefundable state tax credit, not cash: it only saves money if you owe Indiana income tax; contribute $0 or owe $0 in Indiana tax and you get $0.",
+  "Must be an Indiana taxpayer (resident or non-resident) contributing to an Indiana529 account.",
+  "The credit may be recaptured from the account owner for rollovers to another state's 529 plan, federal non-qualified withdrawals, out-of-Indiana K-12 tuition withdrawals, education loan repayments, or Roth IRA rollovers.",
+  "Non-qualified withdrawals: earnings face federal income tax plus a 10% federal penalty tax, plus state and local income taxes - consult a tax professional.",
+  "The official footnote ties the stated credit terms to the Indiana529 Direct Savings Plan; confirm advisor-sold or CD plan treatment in the Disclosure Booklet."
+ ],
+ "biggest_catch": "It is a nonrefundable Indiana tax credit, not cash in hand: it only reduces Indiana income tax you actually owe, and the state can recapture the credit if you roll the account to another state's plan or take a non-qualified withdrawal.",
+ "eligibility": "Indiana taxpayer (resident or non-resident, individual or married) who contributes to an Indiana529 account.",
+ "timing": "Annual cycle: contribute during the calendar tax year, then claim the credit when filing that year's Indiana income tax return.",
+ "weasel_words": [
+  "may be eligible",
+  "may be subject to recapture"
+ ],
+ "payout_min_usd": 0,
+ "payout_max_usd": 1500,
+ "payout_value_note": "20% of contributions (up to $7,500/yr) = max $1,500/yr credit; nonrefundable Indiana tax credit, not cash.",
+ "time_min_minutes": 20,
+ "time_max_minutes": 40,
+ "numeric_basis": "payout from official terms (20% credit up to $1,500/yr); time: online account opening + claiming the credit on the state tax return, est. 20-40 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "myindiana529.com is the official Indiana529 site run by the Indiana Education Savings Authority; credit terms fetched live from the homepage 2026-09-23 (UTC)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official site: 'state income tax credit of 20% of contributions to an Indiana529 Direct Savings Plan account, up to $1,500 credit per year ($750 for married couples filing separately).'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No fee to open or claim; the credit is a tax filing line item on the participant's own 529 savings. No application fee disclosed."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Terms live on myindiana529.com as fetched 2026-09-23 (UTC); consistent with Indiana Treasurer press releases of Jan 2026 and Sep 2026 restating the 20%/$1,500 credit."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "State tax-credit incentive mechanism; no Indiana 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: open Indiana529 account, contribute during the tax year, claim the credit on the Indiana return, keep funds qualified."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Annual cycle is explicit: contributions in the calendar tax year, credit claimed on that year's Indiana return."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include nonrefundable-credit framing, Indiana-taxpayer requirement, recapture triggers, and non-qualified-withdrawal federal/state tax plus 10% federal penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; the credit rides on ordinary 529 contributions."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on myindiana529.com; no invitation required, Indiana taxpayer status is the gate."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no Indiana/CollegeChoice 529 route in catalog (R0797 utility-rebate hit is a false fuzzy match)."
+  }
+ },
+ "notes": "Verified against myindiana529.com 2026-09-23 (UTC). Framed as tax savings on planned college savings, not income: the credit is nonrefundable and only valuable to Indiana taxpayers who owe state tax."
+}

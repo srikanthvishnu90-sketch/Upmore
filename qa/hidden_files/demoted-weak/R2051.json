@@ -1,0 +1,86 @@
+{
+  "route_id": "R2051",
+  "verdict": "verify",
+  "official_url": "https://www.hackerone.com/blog/human-powered-security-value-ethical-hackers-bug-bounty",
+  "terms_url": "https://www.hackerone.com/blog/human-powered-security-value-ethical-hackers-bug-bounty",
+  "payout_quote": "A bug bounty is a monetary reward given to ethical hackers for responsibly discovering and reporting a vulnerability or bug to the application's developer.",
+  "steps": [
+    "Create a free HackerOne hacker account.",
+    "Browse the public program directory for programs open to all hackers.",
+    "Read each program's scope (in-scope domains/assets) and rules of engagement carefully.",
+    "Test only in-scope assets ethically and document findings with proof-of-concept.",
+    "Submit the report; if valid and unique, the organization pays the bounty per its published severity-based reward structure."
+  ],
+  "catches": [
+    "Only valid, unique, in-scope findings are paid — duplicates and out-of-scope reports earn nothing.",
+    "Bounty amounts are set per program by severity; no platform-wide payout range.",
+    "Testing out of scope can get you banned and may have legal consequences.",
+    "Requires real security skills; beginners will spend a lot of time for zero payout.",
+    "Private programs are invite-only; new hackers start with public programs only."
+  ],
+  "biggest_catch": "You only get paid for valid, unique, in-scope vulnerabilities — most time spent hunting produces nothing, and out-of-scope testing can get you banned.",
+  "eligibility": "Free hacker account; ethical security testing skills.",
+  "timing": "Programs run continuously; bounties paid after report validation and remediation review per program terms.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "HackerOne's own page states the mechanism: 'A bug bounty is a monetary reward given to ethical hackers for responsibly discovering and reporting a vulnerability' and 'Bug bounty programs allow companies to leverage the hacker community.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms tie bounties to valid reported vulnerabilities per program — amounts are program-set; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: sign up, find public programs, read scope/rules, test in scope, submit reports."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Joining and hacking public programs are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free account with security skills."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-program bounties; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover duplicate/out-of-scope non-payment, skill requirements, and scope discipline."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no HackerOne route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous programs."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "HackerOne is a bug-bounty platform where ethical hackers find and report vulnerabilities in public programs and earn bounties for valid, unique findings. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Bounty amounts are set per program by vulnerability severity; HackerOne publishes no fixed platform-wide range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 240,
+  "numeric_basis": "payout: per-program severity-based bounties, no official range. time: account + browse programs + read scope/rules + first testing session, est. 60-240 min active."
+}

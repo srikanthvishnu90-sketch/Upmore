@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The payout is a digital gift card, not cash, and it 'may not be redeemed for cash' - plus Salal can delay or refuse any reward for any reason under its verification rules.",
+  "catches": [
+    "Referrer gets a $100 Visa digital gift card per valid referral; gift cards have no cash value and cannot be transferred, auctioned, traded, or sold.",
+    "Cap: $500 in rewards per year (5 referrals); max 25 referrals per session, 500 total per user over the program.",
+    "Rewards subject to verification; Salal may delay a reward for investigation or refuse to verify/process any transaction for any reason.",
+    "Referrer must be a US resident 18+; referrals must be personal (no bulk email/spam to strangers).",
+    "No self-referrals or fake accounts; employees, subsidiaries, and promotional agencies ineligible.",
+    "Members responsible for federal/state/local taxes on rewards.",
+    "Program may be cancelled, modified, or terminated at any time for any reason."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Salal CU Refer-a-Friend terms (salalcu.org, REV 8/26 - current as of 2026-09-23): 'By making a valid referral, you will receive a $100 Visa digital gift card and your Friend will receive a $100 Visa digital gift card. You can earn a maximum of $500 in rewards per year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms PDF on salalcu.org domain (REV 8/26), fetched live 2026-09-23; terminable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend completes the referral as described in the referral message",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no salalcu.org route; catalog has no Salal CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: US resident 18+. Friend: completes the referral as described in the referral message via share.salalcu.org.",
+  "notes": "Verified 2026-09-23. Salal Credit Union (Seattle, WA). Referrer earns a $100 Visa digital gift card per valid referral; cap $500/year (5 referrals). Corrected to current REV 8/26 terms (earlier draft used superseded REV 10/25 terms at $50).",
+  "numeric_basis": "payout from current official salalcu.org terms REV 8/26 ($100 Visa digital gift card per valid referral; cap $500/yr); time: share referral link est. 5-15 min active",
+  "official_url": "https://share.salalcu.org",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "By making a valid referral, you will receive a $100 Visa digital gift card and your Friend will receive a $100 Visa digital gift card. You can earn a maximum of $500 in rewards per year.",
+  "payout_value_note": "$100 Visa digital gift card to the referrer per valid referral; cap $500/year. Not redeemable for cash.",
+  "route_id": "R4784",
+  "standard": {
+    "s1": {
+      "note": "Terms REV 8/26 on salalcu.org, fetched 2026-09-23; terminable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer US resident 18+; friend completes referral via share.salalcu.org",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: completes the referral as described in the referral message",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards subject to verification; no fixed payout window stated",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: members responsible for federal/state/local taxes on rewards",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit share.salalcu.org and follow the onscreen instructions to refer friends.",
+    "Receive your unique personal referral link and share it personally (no bulk/spam).",
+    "Friend completes the referral as described in the referral message.",
+    "You receive a $100 Visa digital gift card per valid referral (up to $500/year)."
+  ],
+  "terms_url": "https://www.salalcu.org/wp-content/uploads/2026/07/scu-4244-refer-a-friend-terms-8-26.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Rewards subject to verification; Salal may delay rewards for investigation; no fixed payout window.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

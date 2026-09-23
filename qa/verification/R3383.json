@@ -1,0 +1,89 @@
+{
+  "route_id": "R3383",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "verdict": "verify",
+  "official_url": "https://www.northshorebank.com/taf",
+  "terms_url": "https://www.northshorebank.com/taf",
+  "payout_min_usd": 25,
+  "payout_max_usd": 25,
+  "payout_value_note": "Flat $25 credited to the referrer's account per qualifying referral; up to $500 in referral payments per calendar year (cap in catches/notes).",
+  "payout_quote": "We will credit your account $25 within 45 days of the new customer account opening. Earn up to $500 in referral payments during a calendar year.",
+  "numeric_basis": "payout from official northshorebank.com/taf page ('We will credit your account $25 within 45 days'); time: submitting names/emails est. 5-15 min active",
+  "eligibility": "North Shore Bank (WI/IL) customers who provide names and email addresses of friends; each referred friend must be a new personal household (no North Shore Bank household currently) opening a new qualifying checking account.",
+  "steps": [
+    "Be a North Shore Bank customer",
+    "Provide the names and email addresses of the friends you would like to refer (on the official Tell-A-Friend page)",
+    "North Shore Bank emails your friend details on opening a new checking account (when opening online they use promo code TAF25)",
+    "Friend opens a new qualifying checking account (excludes Student Checking; new personal households only)",
+    "You get $25 credited to your account within 45 days of the new customer account opening"
+  ],
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official northshorebank.com/taf page live and indexed; no expiry stated"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Eligibility explicit: North Shore Bank customer referrer; friend must be a new personal household, new qualifying checking account"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Qualification summary: friend opens a new qualifying personal checking account and makes a qualifying direct deposit (payroll/SS/pension/govt benefit) within 75 days"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing: referrer's $25 credited within 45 days of the new customer account opening"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Tax disclosure: 'For tax reporting purposes, a 1099 will be issued for referral payments'"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to refer or participate"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider/referral mechanism not covered elsewhere"
+    }
+  },
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official North Shore Bank page (northshorebank.com/taf): 'We will credit your account $25 within 45 days of the new customer account opening'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official northshorebank.com domain, indexed and live"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; $25 referral credit per qualifying friend"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "grep + dedupe-check 'North Shore Bank': 0 catalog hits; evidence-file hits are unrelated (R0564 is a signup-bonus reject, R0588 is Abington Bank/TruNorth MA — different institution)"
+    }
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "weasel_words": [],
+  "biggest_catch": "New personal households only; customers who closed accounts in the past year don't qualify; excludes Student Checking; one new-customer incentive per household every 24 months; friend's $25 requires a payroll/SS/pension/government-benefit direct deposit within 75 days.",
+  "catches": [
+    "Official page: 'We will credit your account $25 within 45 days of the new customer account opening'",
+    "Cap: 'Earn up to $500 in referral payments during a calendar year'",
+    "1099 issued for referral payments for tax reporting",
+    "New personal households only; referred customers cannot be from an existing North Shore Bank household",
+    "Customers who have closed accounts in the past year do not qualify; excludes Student Checking Account",
+    "One new customer incentive bonus per household every 24 months",
+    "Friend's $25: credited within 45 days of direct deposit posting — payroll, Social Security, pension or other government benefit direct deposit within 75 days of account opening",
+    "Not valid with other offers; when opening online the friend uses promo code TAF25"
+  ],
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "timing": "Submitting friend names/emails takes ~10 minutes active; the $25 credit arrives within 45 days of the new customer account opening.",
+  "upfront_fee": false,
+  "notes": "Verified 2026-09-23 from official northshorebank.com (North Shore Bank, Brookfield WI, IL/WI branches). $25/referral with $500/year cap. Note: 'North Shore Bank' in Massachusetts (trunorthbank, formerly Abington Bank) is a different institution with a separate limited-time offer — not this route."
+}

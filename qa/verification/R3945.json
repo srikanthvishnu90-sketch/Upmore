@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Membership restricted to South Florida counties, and the bonus is paid two months after account opening.",
+  "catches": [
+    "You earn $125 and your referral earns $125 per qualifying new-member referral; official page: 'NO LIMIT to how many people you can refer'.",
+    "Referral must open savings + checking with at least a $300 direct deposit per month, OR savings + a share certificate (CD).",
+    "Both accounts must stay open in active use and good standing for at least 60 days; funds deposited two months after account opening.",
+    "Referrals must be submitted prior to account opening; new member cannot have been a signer on any MPS CU checking/savings in the prior six months.",
+    "Separate loan-referral payout: $100 each for closed loans over $10,000; $50 each for $5,000–$10,000; paid within 30 days of closing.",
+    "Membership open to those who live, work, or worship in Miami-Dade, Broward, Palm Beach, Martin, St. Lucie, or Monroe counties; employees and board members excluded."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official mpscu.org/referral: 'You earn $125' and 'Your referral earns $125' per qualifying account opened, with 'NO LIMIT to how many people you can refer'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms on official mpscu.org domain (/referral), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'mpscu' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: MPS CU member. Friend: new member in South Florida service counties, not a signer on any MPS CU personal checking/savings in prior six months.",
+  "notes": "Verified 2026-09-23. MPS Credit Union (Miami, FL). $125 to the referrer per qualifying new-member referral; official page explicitly states no referral limit. Separate loan-referral leg pays $50–$100 each side.",
+  "numeric_basis": "payout from official page ($125 per new-member referral; no limit stated); time: completing referral form est. 5-15 min active",
+  "official_url": "https://www.mpscu.org/referral",
+  "payout_max_usd": 125,
+  "payout_min_usd": 125,
+  "payout_quote": "when your friends or family open a qualifying account with MPSCU, YOU BOTH GET $125 for a total of $250",
+  "payout_value_note": "$125 to the referrer per qualifying new-member referral; official page explicitly states no referral limit.",
+  "route_id": "R3945",
+  "standard": {
+    "s1": {
+      "note": "Terms live on mpscu.org, fetched 2026-09-23; promotion subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: South Florida counties; referral submitted before account opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: savings+checking with $300/month DD or savings+CD; 60 days good standing",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: funds deposited two months after account opening",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the referral form before your friend opens their account.",
+    "Your friend opens a qualifying savings + checking account with $300/month direct deposit (or savings + CD).",
+    "Accounts stay open in good standing for 60 days.",
+    "You receive $125 two months after account opening."
+  ],
+  "terms_url": "https://www.mpscu.org/referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Funds deposited two months after account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

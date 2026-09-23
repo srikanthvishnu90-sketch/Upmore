@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open a checking account and deposit $500 within 60 days - without that deposit, you get nothing.",
+  "catches": [
+    "Referrer must be 18+ and Diamond CU account holder; refer via share page, referral email, or social link.",
+    "Friend must be a new member and open a checking account, depositing a total of $500 within 60 days of opening.",
+    "$50 reward per valid referral; maximum 10 rewards ($500) per year.",
+    "Rewards fulfilled after the friend meets all requirements; can take up to 60 days for the reward to arrive.",
+    "No spam/self-referrals; one reward per valid referral; 18+ to participate.",
+    "Program rules subject to full Terms and Conditions; not an unlimited offer."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Diamond Credit Union Refer-a-Friend terms (younity.diamondcu.org, Diamond CU's referral subdomain): 'With the Diamond Credit Union's Refer-a-Friend Program, you can earn a $50 reward for every friend who opens a checking account with Diamond. Your friends benefit too - they also get a $50 upon meeting program requirements.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms on Diamond CU's referral subdomain (younity.diamondcu.org), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens a checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no diamondcu.org route; catalog has no Diamond Credit Union entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 18+, Diamond CU account holder. Friend: new member.",
+  "notes": "Verified 2026-09-23. Diamond Credit Union. Referrer earns $50 per friend who opens a checking account and deposits $500 within 60 days; cap 10 referrals ($500)/year.",
+  "numeric_basis": "payout from official Diamond CU terms ($50 per referral; cap $500/yr); time: share referral link est. 5-15 min active",
+  "official_url": "https://younity.diamondcu.org/zone/faq?journey.campaign_id=7299160834878420757",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "With the Diamond Credit Union's Refer-a-Friend Program, you can earn a $50 reward for every friend who opens a checking account with Diamond. ... You can refer up to 10 people, per year, and receive a maximum of $500 in rewards through the program in one year.",
+  "payout_value_note": "$50 reward to the referrer per qualifying referral; cap $500/year (10 referrals).",
+  "route_id": "R4802",
+  "standard": {
+    "s1": {
+      "note": "Terms live on Diamond CU's referral subdomain, fetched 2026-09-23; terminable",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer 18+ account holder; friend new member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open checking account, deposit $500 total within 60 days of opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards fulfilled after friend meets requirements; can take up to 60 days",
+      "pass": true
+    },
+    "s5": {
+      "note": "No explicit tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit the Diamond CU share page and register with your account email.",
+    "Send the referral email or share your personal link on social channels.",
+    "Friend clicks your link, opens a checking account, and deposits $500 within 60 days.",
+    "You receive a $50 reward (up to 10 referrals/$500 per year)."
+  ],
+  "terms_url": "https://younity.diamondcu.org/zone/faq?journey.campaign_id=7299160834878420757",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward can take up to 60 days after the friend meets all requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

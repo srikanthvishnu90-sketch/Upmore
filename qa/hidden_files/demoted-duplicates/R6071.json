@@ -1,0 +1,87 @@
+{
+  "route_id": "R6071",
+  "verdict": "verify",
+  "official_url": "http://www.ngfcu.us/services/refer-a-friend",
+  "terms_url": "http://www.ngfcu.us/services/refer-a-friend",
+  "payout_quote": "Refer your friends, family members, and co-workers and you could earn $75 for each qualified referral that joins NGFCU.",
+  "steps": [
+    "Complete the referral form on ngfcu.us.",
+    "Your friend opens an NGFCU savings and checking account and joins as a member.",
+    "Friend completes the qualifying steps within 90 days (10 debit transactions + opt out of paper statements; 2 direct deposits of $100+)."
+  ],
+  "catches": [
+    "Cap: $750 per calendar year to a single referrer (10 referrals).",
+    "Friend must open BOTH savings and checking, complete 10 debit transactions and opt out of paper statements within 90 days, plus 2 direct deposits of at least $100 each \u2014 all required for full qualification.",
+    "Referrer must be a current NGFCU member in good standing, 18+.",
+    "Awards paid as deposits into your NGFCU regular share savings account and are subject to taxation.",
+    "NGFCU reserves the right to change or cancel the program at any time."
+  ],
+  "biggest_catch": "Your friend must complete the full checklist \u2014 savings + checking opened, 10 debit transactions, paperless statements, and 2 direct deposits of $100+ within 90 days \u2014 or you earn nothing; capped at $750/year.",
+  "eligibility": "Current Northrop Grumman FCU member in good standing, 18+; referred person must be eligible for NGFCU membership.",
+  "timing": "Referral form takes ~10 minutes; awards deposited to share savings after the friend completes 90-day requirements.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "qualified referral",
+    "referral award"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:42:01Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official ngfcu.us: 'earn $75 for each qualified referral' \u2014 concrete per-referral referrer payout."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official ngfcu.us/services/refer-a-friend page fetched 2026-09-23 with full terms."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "dedupe-check for 'Northrop Grumman Federal Credit Union' returned 0 catalog and 0 evidence-file hits; ngfcu.us absent from referral catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Page live on ngfcu.us fetched 2026-09-23; change/cancel clause present."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Referrer must be current member in good standing, 18+; friend membership-eligible."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirements concrete: savings+checking, 10 debit transactions, paperless, 2x $100+ DD within 90 days."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Awards distributed as deposits to regular share savings after requirements met."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Page states awards are subject to taxation."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct referrer-side earning mechanism; new institution."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official Northrop Grumman FCU Refer-a-Friend page. Referrer earns $75 per qualified referral; $750/year cap.",
+  "payout_min_usd": 75,
+  "payout_max_usd": 75,
+  "payout_value_note": "$75 award to referrer per qualified referral (deposited to NGFCU regular share savings).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $75 flat per qualified referral from official terms; time: referral form est. 5-15 min active"
+}

@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must sign up directly through a personalised referral link — signing up through a comparison site or Octopus's homepage invalidates the offer, and the £50 is only credited after the friend's supply goes live and their first direct debit succeeds.",
+  "catches": [
+    "The friend must sign up through your personalised referral link; signing up through another website misses out on the £50 credit.",
+    "The referred person must not already be an Octopus customer or have been one in the past 12 months.",
+    "The credit is applied only after the friend's switch completes and their first successful direct debit payment.",
+    "Reward is paid to you and shared with the referred friend (default 50/50 split, adjustable).",
+    "UK residential only; octopus.energy pages are geo-targeted, and terms can be amended without notice."
+  ],
+  "checked_at": "2026-09-23T07:08:54Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official supplier-owned domain (octopus.energy); friend-referral landing page live with the £50 offer and detailed terms in the official T&C PDF."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Reward amount, link requirement, and payout trigger stated on the official pages."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Incentive framed as savings on planned energy spending (account credit), never income."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Distinct supplier and mechanism; dedupe returned zero catalog and zero evidence-file hits for Octopus Energy."
+    }
+  },
+  "eligibility": "Existing Octopus Energy customers with a personalised referral link; referred person must be a new UK residential customer signing up through that link.",
+  "notes": "Two-sided referral: both the referrer and the friend get £50 account credit each. Credit offsets planned energy spending (savings), never income.",
+  "numeric_basis": "payout from official terms (£50 account credit per side per qualifying referral, converted at GBP→USD 1.334); time: referral share 5-15 min active",
+  "official_url": "https://octopus.energy/l/friend-referral/",
+  "payout_max_usd": 67,
+  "payout_min_usd": 67,
+  "payout_quote": "When you sign up directly through this page you'll both get £50 in your accounts.",
+  "payout_value_note": "£50 account credit per side (≈$66.70 at GBP→USD 1.334); offsets planned energy spending (savings).",
+  "route_id": "R5529",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "You are an existing Octopus Energy customer with a personalised referral link."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Share your personalised referral link with a friend."
+    },
+    "s3": {
+      "pass": true,
+      "note": "The friend signs up directly through that link and switches their energy supply."
+    },
+    "s4": {
+      "pass": true,
+      "note": "After the switch completes and the first direct debit is taken, both of you get £50 credit."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Credits are account credits offsetting energy bills; not cash."
+    },
+    "s6": {
+      "pass": true,
+      "note": "United Kingdom."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No referral limit stated; confirm program currency before sharing."
+    }
+  },
+  "steps": [
+    "As an existing Octopus Energy customer, get your personalised referral link from your online account.",
+    "Share the link with a friend.",
+    "The friend signs up directly through the link and switches their supply.",
+    "After the switch completes and the first direct debit payment succeeds, you and the friend each get £50 credit."
+  ],
+  "terms_url": "https://octopus.energy/static/pdf/octopus_energy/terms-and-conditions-3.9.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credit is applied after the switch completes and the first successful direct debit payment.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

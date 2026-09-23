@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must complete two $100+ direct deposits, two debit card transactions, and online banking registration within 60 days - otherwise you get nothing.",
+  "catches": [
+    "Referrer: NASB customer who registers for the program and shares the offer; NASB employees ineligible; referrer must not have closed an account within the past 90 days with a negative balance.",
+    "Referrer earns a $50 Visa Reward Card per individual referred; 'A Referrer may receive up to ten (10) Visa Reward Cards ($500 value) within a calendar year.'",
+    "Friend must: register, open a new NASB personal checking account (Advance, Thrive, or Prosper; Money Market Checking does not qualify), and within 60 days: complete two (2) direct deposits of $100 or more, complete two (2) or more debit card transactions (excl. ATM), and register for Online Banking.",
+    "Only one referrer may receive a Visa Reward Card per referred person; only one Visa Reward per referred person regardless of accounts opened.",
+    "Referred offer only for new customers.",
+    "Visa Reward Card delivered 4-6 weeks after completion of all requirements; cards subject to terms delivered with the card; may be reported as income to the IRS.",
+    "NASB may change or discontinue the offer at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official North American Savings Bank Refer-A-Friend Terms and Conditions (nasb.com, fetched live 2026-09-23): 'The person making the referral (Referrer) will earn a $50 Visa Reward Card for each individual referred (Referred Person) to NASB who registers for the offer, opens a new NASB personal checking account (Advance, Thrive, or Prosper), and completes the requirements within the time specified in the offer.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official nasb.com PDF, fetched live 2026-09-23; ongoing offer, subject to change",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no NASB route in the catalog (0 hits)",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: NASB customer registered for the program (not an employee). Friend: registers and opens a new NASB personal checking account.",
+  "notes": "Verified 2026-09-23. North American Savings Bank (Kansas City; FDIC). Referrer earns $50 Visa Reward Card per qualifying referral, up to 10 ($500) per calendar year.",
+  "numeric_basis": "payout from official NASB terms ($50 Visa per referral; max 10 = $500); time: register and share est. 5-15 min active",
+  "official_url": "https://www.nasb.com/docs/default-source/pdfs/refer-a-friend-terms-and-conditions.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 Visa Reward Card for each individual referred (Referred Person) to NASB who registers for the offer, opens a new NASB personal checking account (Advance, Thrive, or Prosper), and completes the requirements within the time specified in the offer. To make a referral, the Referrer must register for the program and share the offer with their friends, family, or coworkers. A Referrer may receive up to ten (10) Visa Reward Cards ($500 value) within a calendar year, but only one Referrer may receive a Visa Reward Card for each Referred Person who fulfills the requirements.",
+  "payout_value_note": "$50 Visa Reward Card to the referrer per qualifying referral; up to 10 per calendar year ($500).",
+  "route_id": "R4841",
+  "standard": {
+    "s1": {
+      "note": "Official nasb.com PDF fetched live 2026-09-23; ongoing, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registered NASB customer; friend opens new personal checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: two $100+ direct deposits, two debit transactions, online banking registration within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: Visa Reward Card delivered 4-6 weeks after completion of all requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: reward cards may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; no NASB route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the NASB Refer-A-Friend program and share the offer with friends, family, or coworkers.",
+    "Friend registers, opens a new NASB personal checking account, and completes the requirements within 60 days.",
+    "You receive a $50 Visa Reward Card per qualifying referral - up to ten ($500) per calendar year."
+  ],
+  "terms_url": "https://www.nasb.com/docs/default-source/pdfs/refer-a-friend-terms-and-conditions.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Visa Reward Card delivered 4-6 weeks after completion of all requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

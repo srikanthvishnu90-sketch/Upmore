@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": "",
+    "ios": ""
+  },
+  "biggest_catch": "'Up to $20 per hour' is a ceiling, not a floor - and some studies pay by entering you in a prize drawing instead of guaranteed pay, so check the study announcement before signing up.",
+  "catches": [
+    "Rate is 'up to $20 per hour' - no guaranteed floor; actual pay varies by study",
+    "Some studies pay via prize drawings instead of guaranteed compensation - not every study pays cash",
+    "Payment form/amount is only disclosed per-study in the Sona announcement",
+    "Payments processed within 7 business days, not instantly",
+    "In-person studies require travel to NYU Stern (many studies are online though)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "stern.nyu.edu participant pages fetched from search index (crawled 3 and 14 days before verification); pay terms quoted verbatim",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states concrete rate: 'making up to $20 per hour participating in surveys'; FAQ: 'studies pay up to $20 per hour'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps from official page: register a participant account, receive study announcement emails, sign up, complete study",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Free to register; no fee; short questionnaires/surveys, no physical exertion or medical procedures",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone 18+ can sign up; no NYU affiliation required (non-NYU users create a User ID ending in @nyu.edu)",
+  "notes": "Standing participant pool of NYU Stern's Center for Behavioral Research. Distinct from NYU's Center for Experimental Social Science (CESS, verified separately as R3048). Because the official rate is 'up to $20/hr' with no floor and some studies pay via drawings, payout_min is 0.",
+  "numeric_basis": "payout from official terms (up to $20/hr ceiling, no floor; drawing-only studies possible); time: stated 15-30 min typical studies plus registration estimate",
+  "official_url": "http://www.stern.nyu.edu/portal-partners/faculty-staff/behavior-lab/for-participants",
+  "payout_max_usd": 20,
+  "payout_min_usd": 0,
+  "payout_quote": "Are you interested in making up to $20 per hour participating in surveys?",
+  "payout_value_note": "Official stated ceiling of $20/hr; no floor guaranteed; per-study pay disclosed in each Sona study announcement.",
+  "route_id": "R3047",
+  "standard": {
+    "s1": {
+      "note": "Provider's own stated hourly ceiling; no conversion",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as a ceiling with variable per-study pay; drawing-only studies disclosed",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no floor, drawing-only studies, per-study disclosure",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not a credit card - n/a",
+      "pass": true
+    },
+    "s5": {
+      "note": "Timing: processed within 7 business days after study completion",
+      "pass": true
+    },
+    "s6": {
+      "note": "Deduped: no NYU route in catalog or evidence files; distinct from NYU CESS (R3048)",
+      "pass": true
+    },
+    "s7": {
+      "note": "'up to' is the operative hedge in the payout quote",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for a participant account (non-NYU users create a User ID ending in @nyu.edu and email behavior.lab@stern.nyu.edu)",
+    "Receive Study Announcement emails for new research opportunities",
+    "Check each study announcement for its duration and payment form/amount",
+    "Sign up for a study and complete it (mostly online; some in-person at NYU)",
+    "Receive payment within 7 business days (cash, gift card, PayPal, or Campus Cash)"
+  ],
+  "terms_url": "https://www.stern.nyu.edu/portal-partners/faculty-staff/behavior-lab/who-we-are/faqs",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "Payments processed within 7 business days after study completion.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "up to"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referrer must have been a TogetherCU member for at least 90 days to qualify for the $50 referral bonus, and the whole incentive offer is only valid through December 31, 2026.",
+  "catches": [
+    "Referrer must have been a TogetherCU member for at least 90 days to qualify for the $50 referral bonus.",
+    "Incentive offer valid January 1, 2026 - December 31, 2026.",
+    "Referred member must open a new consumer checking account (membership eligibility and account approval required); the referrer receives their incentive once the friend/family member opens their account.",
+    "Friend's extra $150 incentive requires posting within 60 days of checking account opening: one direct deposit of $500+, five Visa debit card point-of-sale transactions (no ATMs), and enrollment in eStatements.",
+    "Member must be in good standing at time of qualifying transaction; cash incentives subject to 1099 reporting.",
+    "All members must open and maintain a minimum $5 balance in a savings account.",
+    "TogetherCU reserves the right to cancel, modify, or terminate the program at any time."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TogetherCU member referral flyer (togethercu.org): 'REFER A NEW MEMBER & EARN $50!' 'Must be a member for at least 90 days to qualify for $50 referral bonus.' 'You will receive your incentive once your friend or family member opens their account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official TogetherCU member referral form/flyer on togethercu.org, fetched live 2026-09-23; incentive offer valid Jan 1, 2026 - Dec 31, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no togethercu.org route and no Together CU entry; catalog has no Together CU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: TogetherCU member for at least 90 days. Friend: new member opening a new consumer checking account (membership eligibility and account approval required).",
+  "notes": "Verified 2026-09-23. Together Credit Union (Missouri). Referrer earns $50 per qualifying referral ($50 to the friend too) when the referred member opens a new consumer checking account. Offer valid through 2026-12-31. Friend can earn an additional $150 by completing direct-deposit/debit-card/eStatement requirements within 60 days.",
+  "numeric_basis": "payout from official TogetherCU referral flyer ($50 referral bonus to the referrer when the referred member opens their account); time: fill out referral form est. 5-15 min active",
+  "official_url": "https://www.togethercu.org/docs/default-source/forms/memberreferralform.pdf?sfvrsn=7abbe048_6",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "REFER A NEW MEMBER & EARN $50! Must be a member for at least 90 days to qualify for $50 referral bonus. You will receive your incentive once your friend or family member opens their account.",
+  "payout_value_note": "$50 to the referrer per qualifying referral (friend also gets $50 for opening a checking account); no annual cap stated.",
+  "route_id": "R5678",
+  "standard": {
+    "s1": {
+      "note": "Official TogetherCU referral flyer live on togethercu.org, fetched 2026-09-23; valid Jan 1 - Dec 31, 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer a member for 90+ days; friend opens a new consumer checking account with membership eligibility/account approval",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirement concrete: referred member must open a new consumer checking account; extra $150 requires $500+ DD, 5 debit POS transactions, eStatements within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: referrer receives the incentive once the friend/family member opens their account",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: cash incentives subject to 1099 reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the MEMBER portion of the TogetherCU referral form and give it to your friend or family member to complete.",
+    "Friend takes the form to the nearest TogetherCU branch and opens a new consumer checking account.",
+    "You receive your $50 incentive once your friend or family member opens their account."
+  ],
+  "terms_url": "https://www.togethercu.org/docs/default-source/forms/memberreferralform.pdf?sfvrsn=7abbe048_6",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referrer receives the incentive once the friend or family member opens their account.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

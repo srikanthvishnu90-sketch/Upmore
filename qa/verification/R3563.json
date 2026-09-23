@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The discount is valid ONLY on the day you are approved, only with immediate approval — if your application needs further processing you get nothing. The 25.49% variable purchase APR means carrying any balance costs far more than the $100 maximum, and applying is a hard credit inquiry.",
+  "catches": [
+    "Savings, not income: the $100 maximum is a discount on planned Macy's spending — never buy extra just to chase it.",
+    "Valid only on the day you're approved, and ONLY with immediate approval — applications requiring additional processing are not eligible.",
+    "$0 annual fee (official macys.com FAQ), but the purchase APR is 25.49% variable (Prime + 21.99%, per the official Department Stores National Bank disclosure PDF on macys.com) — a carried balance wipes out the discount fast.",
+    "Full card application = hard inquiry on your credit report.",
+    "Excludes services, Macy's gift cards, and certain licensed departments; additional online exclusions apply and in-store exclusions may vary.",
+    "Does not apply to previous purchases or to upgrades from a Macy's Card to a Macy's Amex; employees of Macy's and affiliates are not eligible.",
+    "Standard 20%-up-to-$100 offer; Macy's may run promotional discounts with different percentages/limits instead of the standard discount."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Macy's is a real national retailer; the new-account discount terms are on the official macys.com customer-service article, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official macys.com article: 'When you open and are immediately approved for a Macy's Card or Macy's American Express Card, you'll receive 20% off qualifying purchases, up to $100 in total savings.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; $0 annual fee per official macys.com FAQ. APR and fees are post-account terms, not upfront.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Terms live on macys.com as fetched 2026-09-23 (UTC); no end date stated — ongoing standard offer, changeable.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Macy's Card or Macy's American Express Card accounts with IMMEDIATE approval on the day of application; subject to credit approval. Not valid for application upgrades or Macy's employees.",
+  "notes": "Verified on official macys.com new-account-discount article 2026-09-23 (UTC). Fee/APR figures from official macys.com sources: the Macy's Amex Card FAQ ('no annual fee') and the DSNB credit card disclosure PDF (25.49% variable purchase APR). 20% of $500 = $100 cap.",
+  "official_url": "https://www.macys.com/customer-service/articles/what-is-macys-new-account-discount",
+  "payout_max_usd": 100,
+  "payout_min_usd": 0,
+  "payout_quote": "When you open and are immediately approved for a Macy's Card or Macy's American Express Card, you'll receive 20% off qualifying purchases, up to $100 in total savings.",
+  "payout_value_note": "'up to' offer with no floor: 20% off qualifying purchases on approval day, capped at $100 total savings (official terms)",
+  "route_id": "R3563",
+  "standard": {
+    "s1": {
+      "note": "New-account signup discount mechanism; no Macy's card route exists in the catalog or verification files.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete steps: apply for the Macy's Card or Macy's Amex, receive immediate approval, make qualifying purchases the same day with the new card.",
+      "pass": true
+    },
+    "s3": {
+      "note": "No stated end date — ongoing standard offer; discount timing is same-day-only, captured in catches.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Catches include never-spend-extra-to-chase, $0 fee math, 25.49% APR balance-carry risk, hard inquiry, immediate-approval-only restriction, exclusions.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; $0 annual fee on both cards.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Public offer on macys.com — no invitation required; immediate approval is the only gate.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe: grep/dedupe-check/verification-file search — no Macy's route in catalog.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply for a Macy's Card or Macy's American Express Card and receive immediate approval (delayed applications get no discount).",
+    "On the day you are approved, make qualifying merchandise purchases with the newly approved card — plan up to $500 of already-planned spending to reach the full $100 savings.",
+    "Confirm exclusions (services, gift cards, certain licensed departments) with a store colleague before checkout if unsure.",
+    "Pay the statement balance in full by the due date so the 25.49% APR never applies."
+  ],
+  "terms_url": "https://www.macys.com/customer-service/articles/what-is-macys-new-account-discount",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "One-time discount valid only on the day of approval; ongoing standard offer with no stated end date.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms (20% off approval-day purchases, max $100 total savings); time: credit-card application est. 20-40 min active"
+}

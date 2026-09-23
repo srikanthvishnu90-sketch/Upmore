@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is an investigational imaging drug study: you receive an intravenous dose of 18F-OP-801 (not FDA approved) plus MRI and PET scans, and only about 3 visits over ~75 days earn the up-to-$2,200 — paid per completed visit.",
+  "catches": [
+    "Not everyone qualifies: enrollment is limited (5 healthy volunteers initially, then 10 ALS patients + 10 age-matched healthy volunteers + AD/MS/PD patients across sites; UCSF enrolls up to 20 subjects) and you must be determined eligible after screening",
+    "Medical risks: intravenous administration of an investigational imaging agent (OP-801, not FDA approved); procedures include PET scans, MRI, blood draws, and physical exams — ask the study team about side effects and risks before consenting",
+    "Time commitment: approximately 75 days in the study with about 3 site visits — the Day 1 dosing visit includes MRI and PET scans and is a long visit day",
+    "Location-specific: visits are at UCSF in San Francisco, CA — no remote option",
+    "Paid per completed visit ($600 screening + $1,200 Day 1 dosing + $400 follow-up = up to $2,200); withdrawing early means you only keep pay for visits completed"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "neuromuscular.ucsf.edu is the official UCSF Neuromuscular Division site; the research page lists trials that are currently enrolling.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official study page states 'you will be paid up to $2200 for taking part in this study. You will receive $600 for completing the screening visit, $1200 for completing the Day 1 dosing visit, and $400 for completing the follow up visit.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Official study page lists limited participant slots (healthy volunteers and ALS/AD/MS/PD patients; determined eligible after screening). No fee to participate stated or implied.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Compensation (up to $2,200 with per-visit breakdown), eligibility (healthy volunteers + ALS/AD/MS/PD patients, screening-determined), and schedule (approx. 3 visits over ~75 days) all stated on the official UCSF study page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Healthy volunteers (initial enrollment) or patients with ALS, Alzheimer's disease, multiple sclerosis, or Parkinson's disease; must be determined eligible after screening. UCSF enrolls up to 20 subjects.",
+  "notes": "One provider = one route. Anchored on the explicitly 'Enrolling' 18F-OP-801 Phase 1/2 imaging study (sponsor Ashvattha Therapeutics). Other UCSF Neuromuscular trials on the same page are separate opportunities under the same provider route.",
+  "numeric_basis": "payout from official UCSF study page (per-visit: $600 screening + $1,200 Day 1 dosing + $400 follow-up = $2,200 max; min 0 if no visits completed); time: page states approximately 3 site visits over ~75 days but does not publish visit durations, so durations are estimated: 2h per visit (min) to 5h per visit (max; Day 1 includes MRI + PET imaging). 3 visits x 120-300 min.",
+  "official_url": "https://neuromuscular.ucsf.edu/neuromuscular-research",
+  "payout_max_usd": 2200,
+  "payout_min_usd": 0,
+  "payout_quote": "In return for your time and effort, you will be paid up to $2200 for taking part in this study. You will receive $600 for completing the screening visit, $1200 for completing the Day 1 dosing visit, and $400 for completing the follow up visit.",
+  "payout_value_note": "Paid per completed visit: $600 screening + $1,200 Day 1 dosing visit + $400 follow-up visit = up to $2,200 total; paid in USD.",
+  "route_id": "R4605",
+  "standard": {
+    "s1": {
+      "note": "Official domain neuromuscular.ucsf.edu; research page live when checked 2026-09-23.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Specific currently-enrolling study: Phase 1/2 18F-OP-801 imaging study in ALS/AD/MS/PD patients and healthy volunteers, labeled 'Enrolling'.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Investigational imaging-agent study: one IV dose of OP-801 on Day 1, with medical history review, physical exams, blood draws, MRI, and PET scans; sponsor Ashvattha Therapeutics, Inc.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete compensation stated: up to $2,200 with a per-visit breakdown.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Eligibility: healthy volunteers or ALS/AD/MS/PD patients; must be determined eligible after screening; limited slots.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Must visit the UCSF research site in San Francisco, CA in person approximately 3 times over ~75 days.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No bundled sub-features; compensation is the study participation payment itself.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Go to the official UCSF Neuromuscular Division research page and find the 18F-OP-801 study (labeled Enrolling)",
+    "Email neuromuscular@ucsf.edu to express interest and confirm enrollment",
+    "Complete the screening visit (medical history review, physical exam) and be determined eligible",
+    "Attend the Day 1 dosing visit: receive one intravenous dose of 18F-OP-801 and undergo MRI and PET scans",
+    "Attend the follow-up visit",
+    "Receive $600 (screening) + $1,200 (Day 1) + $400 (follow-up) = up to $2,200 for completed visits"
+  ],
+  "terms_url": "https://neuromuscular.ucsf.edu/neuromuscular-research",
+  "time_max_minutes": 900,
+  "time_min_minutes": 360,
+  "timing": "Approximately 75 days in the study with about 3 site visits: screening visit, Day 1 dosing visit (IV administration of OP-801, MRI, PET scans), and one follow-up visit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

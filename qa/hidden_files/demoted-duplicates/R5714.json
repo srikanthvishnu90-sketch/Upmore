@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You receive no reward until the friend opens a new Ardent checking account AND completes at least 8 debit card purchases totaling $200+ within the first 60 days of account opening; rewards deposit within 60-90 days of account opening.",
+  "catches": [
+    "Referrer must be an Ardent member age 18+ with accounts in good standing and an email address on file; Ardent employees and Board members are not eligible.",
+    "Friend must be a non-member age 18+, accept the referral via your personal link with the same email address used when joining.",
+    "Friend must open a new Ardent checking account and complete at least 8 debit card purchases totaling $200+ within the first 60 days of account opening.",
+    "Reward: $50 deposited into the referrer's chosen Ardent account within 60-90 days of the friend's account opening.",
+    "Cap: earn rewards for up to 10 successful referrals per calendar year = $500 max."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Ardent CU page (ardentcu.org/resources/refer-a-friend): 'We'll give you $50 for every friend or family member who joins using your personal referral link and meets the referral requirements.' Repeated: 'You earn $50 for each successful referral, up to $500 per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Ardent CU page on ardentcu.org, fetched live 2026-09-23, with full eligibility, qualification, and reward-timing detail",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Ardent Credit Union' 2026-09-23 returned no verified referral route; no ardentcu.org route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Ardent member 18+ with accounts in good standing and an email address on file (employees/Board excluded). Friend: non-Ardent-member, 18+, accepts referral via the personal link using the same email address when joining.",
+  "notes": "Verified 2026-09-23. Ardent Credit Union (Pennsylvania) Referral Program. Referrer earns $50 cash per successful referral, capped at 10 referrals / $500 per calendar year. Registration page refer.ardentcu.org is the official referral portal linked from the page.",
+  "numeric_basis": "payout from official Ardent CU terms ($50 per successful referral; up to 10/$500 per calendar year); time: register and generate/share referral link est. 5-15 min active",
+  "official_url": "https://www.ardentcu.org/resources/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You earn $50 for each successful referral, up to $500 per calendar year.",
+  "payout_value_note": "$50 cash deposited to the referrer's Ardent account per successful referral; cap 10 referrals / $500 per calendar year.",
+  "route_id": "R5714",
+  "standard": {
+    "s1": {
+      "note": "Official Ardent CU page live on ardentcu.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is an Ardent member 18+ in good standing with email on file; friend is a new non-member 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: accept referral via personal link with same email, open new Ardent checking account, complete 8+ debit card purchases totaling $200+ within first 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Reward deposited within 60-90 days of the friend's account opening (includes 60-day qualification period + up to 30 days processing)",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated on fetched page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Ardent Referral Program and generate your personal referral link (emailed to you).",
+    "Share your referral link with friends and family.",
+    "Friend accepts via your link with their email address and joins Ardent, opening a new checking account with the same email.",
+    "Friend completes at least 8 debit card purchases totaling $200+ within the first 60 days of account opening.",
+    "Receive $50 deposited into your chosen Ardent account within 60-90 days of their account opening."
+  ],
+  "terms_url": "https://www.ardentcu.org/resources/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Rewards are deposited within 60-90 days of the friend's account opening; you get an email when each referral is successful.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

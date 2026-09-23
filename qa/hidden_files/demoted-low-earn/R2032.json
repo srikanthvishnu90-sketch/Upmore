@@ -1,0 +1,86 @@
+{
+  "route_id": "R2032",
+  "verdict": "verify",
+  "official_url": "https://www.instawork.com/",
+  "terms_url": "https://www.instawork.com/blog/how-to-work-at-your-favorite-football-stadium-this-fall",
+  "payout_quote": "view total earnings before the shift, and have the opportunity to get paid instantly through Instapay.",
+  "steps": [
+    "Download the Instawork app and create a free profile.",
+    "Select the shift positions matching your skills and interests and get activated for them (may take up to 24 hours).",
+    "Search open shifts in your city and book ones that fit your schedule — you see total earnings before booking.",
+    "Confirm your shift within the confirmation window and show up on time.",
+    "Complete the shift; pay goes to your bank account weekly, with Instapay instant-pay options after onboarding."
+  ],
+  "catches": [
+    "Shift rates are set per listing and you cannot negotiate them — you only accept or decline (per a 2024 Denver Labor determination on Instawork's model).",
+    "Performance ratings control your access: no-shows or unconfirmed shifts (auto-cancelled) hurt your rating and future bookings.",
+    "Shift availability is concentrated in 30-40 major metros; outside those areas there may be little work.",
+    "Work is physical hospitality/warehouse labor (bartending, serving, picking/packing).",
+    "You are responsible for transport to shift locations and for your own taxes as a flexible worker."
+  ],
+  "biggest_catch": "You cannot negotiate rates and your rating gates your access: bad ratings or missed confirmations can cut off your shift supply.",
+  "eligibility": "18+ with a smartphone; complete profile and position activation (experience checks and in-app quizzes).",
+  "timing": "Shifts post continuously; weekly pay to bank account, with Instapay instant options.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Instawork's own blog (instawork.com) states the mechanism: 'create a profile, find a shift that matches their skills and interests... view total earnings before the shift, and have the opportunity to get paid instantly through Instapay.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms show earnings per shift before booking but publish no fixed hourly range — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: profile, select positions, get activated, search shifts, book, work, get paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Joining as a Pro is free; no worker-side fees documented (clients pay the platform)."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is 18+ with a smartphone plus profile/position activation."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-shift pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover non-negotiable rates, rating-gated access, metro-limited availability, and physical work."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Instawork route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous shift postings; weekly pay."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Instawork is a shift-work app for hospitality, warehouse, and event gigs. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Earnings are shown per shift before booking; Instawork publishes no fixed official hourly range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-shift, no official range. time: app signup + profile + position activation + booking first shifts, est. 60-120 min active (excludes the shift work itself)."
+}

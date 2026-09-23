@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You earn a $100 Amazon eGift Card (not cash — Amazon eGift Cards cannot be redeemed for cash and may expire) per valid referral — and you must do the legwork: the friend must open a Rewards Checking Account, subscribe to online banking, and make 15 debit/credit card purchases in a single calendar month within 90 days of opening; capped at five paid referrals ($500) per year.",
+  "catches": [
+    "Valid referral requires the friend to: (i) open a TruWest Rewards Checking Account, (ii) subscribe to online banking and accept its terms, and (iii) make 15 debit or credit card purchases in a single calendar month within the first 90 days",
+    "Both referrer and friend receive a $100 Amazon eGift Card per valid referral; rewards may be redeemed in other forms at TruWest's sole discretion",
+    "Referrer cap: five paid referrals ($500) per year",
+    "Amazon.com is not a sponsor; eGift Cards are subject to amazon.com/gc-legal terms, may expire, cannot be replaced if lost/stolen/expired",
+    "Rewards are subject to verification; TruWest may delay or refuse verification for any reason",
+    "Rewards are taxable to the participant; TruWest reports income to tax authorities as required",
+    "Employees and their families are not eligible to participate as referrers or friends"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TruWest referral terms (refer.truwest.org): 'By making a Valid Referral, you will receive a $100 Amazon eGift Card and your Referred Friend will receive a $100 Amazon eGift Card... Referrer can earn a maximum of 6 Rewards per year (one Reward as a referred Friend and five Rewards as Referrer).'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official refer.truwest.org referral program terms, indexed and live",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $100 Amazon eGift Card per valid referral",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'TruWest': 0 catalog and 0 evidence-file hits — no duplicate",
+      "pass": true
+    }
+  },
+  "eligibility": "TruWest Credit Union participants referring friends who open a Rewards Checking Account, subscribe to online banking, and complete the card-purchase requirement within 90 days.",
+  "notes": "Official refer.truwest.org terms confirm $100 Amazon eGift Card to the referrer per valid referral, cap of five paid referrals ($500)/year. Per schema: gift card payout recorded at face value ($100).",
+  "numeric_basis": "payout from official TruWest referral terms ($100 Amazon eGift Card per valid referral; 6/year cap); time: referring via the referral site est. 5-15 min active",
+  "official_url": "https://refer.truwest.org/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "you will receive a $100 Amazon eGift Card and your Referred Friend will receive a $100 Amazon eGift Card",
+  "payout_value_note": "Flat $100 Amazon eGift Card per valid referral; cap five paid referrals ($500) per year.",
+  "route_id": "R3374",
+  "standard": {
+    "s1": {
+      "note": "Official refer.truwest.org referral program terms live and indexed; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer refers a friend who opens a Rewards Checking Account and subscribes to online banking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Qualification concrete: 15 debit/credit card purchases in a single calendar month within the first 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards subject to verification; TruWest may delay for investigation; no fixed timing",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax disclosure present: rewards are taxable; reported as required",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct provider/referral mechanism not covered elsewhere",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit the TruWest referral site and submit your friend's referral",
+    "Friend opens a TruWest Rewards Checking Account",
+    "Friend subscribes to online banking and accepts the terms",
+    "Friend makes 15 debit or credit card purchases in a single calendar month within the first 90 days",
+    "After verification, you receive a $100 Amazon eGift Card per valid referral (up to 6 per year)"
+  ],
+  "terms_url": "https://refer.truwest.org/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Submitting the referral takes ~10 minutes active; the $100 eGift Card is issued after verification (no fixed timing stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

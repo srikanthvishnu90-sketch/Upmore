@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must be a new member (no existing or prior-12-month GNWFCU accounts); accounts closed within 90 days trigger recapture of the referral payout.",
+  "catches": [
+    "You'll earn $50 for each person who becomes a member; up to $500 per year.",
+    "Your referral receives $25 upon account opening (up to $150 total with additional products).",
+    "Friend must be a new member with no existing or prior-12-month GNWFCU accounts.",
+    "Payouts deposited to primary savings of both parties within one month of the friend joining if the account is in good standing.",
+    "Payouts considered miscellaneous income; may be reportable on Form 1099-MISC.",
+    "Accounts closed within 90 days after opening are subject to a recapture fee of the total referral amount."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official greatnwfcu.com/referafriend: 'you'll earn $50 for each person who becomes a member. You can earn up to $500 per year!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page on official greatnwfcu.com domain, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'great northwest' found no coverage; grep of existing-providers found no match; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: GNWFCU member. Friend: new member (no existing accounts, none opened in the past 12 months).",
+  "notes": "Re-reviewed 2026-09-23. Great NorthWest FCU (greatnwfcu.com/referafriend): referrer earns $50 for each person who becomes a member, up to $500 per year. The referred member receives $25 upon account opening and can earn up to $150 total with additional products. Payouts deposited to both primary savings accounts within one month of joining if the account is in good standing; accounts closed within 90 days are subject to a recapture fee. Payouts are miscellaneous income and may be reported on Form 1099-MISC.",
+  "numeric_basis": "payout from official page ($50 per referral; $500/year cap); time: sending referral est. 5-15 min active",
+  "official_url": "https://www.greatnwfcu.com/referafriend",
+  "payout_max_usd": 500,
+  "payout_min_usd": 50,
+  "payout_quote": "Refer your friends and family to your credit union - you'll earn $50 for each person who becomes a member. You can earn up to $500 per year!",
+  "payout_value_note": "$50 per qualifying referral; up to $500 per year.",
+  "route_id": "R3950",
+  "standard": {
+    "s1": {
+      "note": "Terms live on greatnwfcu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: GNWFCU member; friend must be new",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new member, account in good standing",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: payouts within one month of the friend joining",
+      "pass": true
+    },
+    "s5": {
+      "note": "Miscellaneous income; may be reportable on Form 1099-MISC",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Send your friend the referral using the link on the page.",
+    "Your friend opens their account online or in-person.",
+    "You both get paid: $50 to you, $25+ to them."
+  ],
+  "terms_url": "https://www.greatnwfcu.com/referafriend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payouts deposited to both primary savings accounts within one month of the new member joining.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

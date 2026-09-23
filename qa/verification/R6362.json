@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only you earn \u2014 $100 in rewards usable toward your bill or a new device, not cash \u2014 and the rewards apply only 30 days after your referral's account is activated, with a separate account number and billing address required.",
+  "catches": [
+    "Rewards only \u2014 Referral Points ($1 each) usable toward the monthly bill or a device purchase; not cash and not transferable",
+    "Rewards applied 30 days after the referred account is activated; the referral must be an active, paying member for 30 days",
+    "Referrals must have separate account numbers and a different billing address",
+    "The referral must sign up online at patriotmobile.com",
+    "You must have an active, paying Patriot Mobile account to qualify",
+    "No stated reward for the referred friend (one-sided program)"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Patriot Mobile referral rewards page on patriotmobile.com/solutions/referral-rewards (crawled 1 hour ago) plus the Member Rewards Program page with definitions and terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Referral rewards page crawled 1 hour ago \u2014 live and current with the $100 figure.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amounts verbatim: 'Receive 100 referral rewards (equal to $100) for each new member you refer!!' / 'Each Referral Point has a monetary value equal to $1.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "30-day application rule, active-paying-30-day rule, separate account/billing-address rule, online-signup rule, and bill/device-only use all stated officially.",
+      "pass": true
+    }
+  },
+  "eligibility": "Active, paying Patriot Mobile member; friend must be a new member (or returning after 6+ months inactive in good standing) who signs up online with the referrer's phone number in the 'Referred By' field.",
+  "notes": "Verified 2026-09-23 against patriotmobile.com (official domain). Deduped: no Patriot Mobile routes in catalog, evidence files, or rejects-g60. One-sided referral: only the referrer earns; numeric fields reflect the referrer's $100.",
+  "numeric_basis": "payout from official terms (100 referral rewards = $100 to the referrer per new member); time: referral share 5-15 min active",
+  "official_url": "https://patriotmobile.com/solutions/referral-rewards",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Receive 100 referral rewards (equal to $100) for each new member you refer!! There is no limit to the number of referrals you can make. For example, if you referred 10 new members, you could earn 1000 referral rewards (equal to $1000). You can apply those to your monthly bill or buy a new device from our Shop Devices page.",
+  "payout_value_note": "100 referral rewards = $100 in Referral Points (1:1) to the referrer per new member \u2014 offsets the Patriot Mobile bill or device purchases, not cash. No stated reward for the friend (one-sided program).",
+  "route_id": "R6362",
+  "standard": {
+    "s1": {
+      "note": "Exact amount stated verbatim on the official page ($100 per referral).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: rewards offset planned Patriot Mobile spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (share your phone number, friend signs up online with it in 'Referred By', rewards after 30 days active).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: referrer-only, rewards not cash, 30-day wait.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own Patriot Mobile plan.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against patriotmobile.com (provider's own domain). Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your Patriot Mobile phone number with friends and family",
+    "Friend signs up online at patriotmobile.com",
+    "At checkout, friend enters your phone number in the 'Referred By' field and selects 'Member Referral'",
+    "Friend becomes an active, paying member for 30 days",
+    "100 referral rewards ($100 value) are applied to your account"
+  ],
+  "terms_url": "https://patriotmobile.com/solutions/member-rewards-program",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referral rewards are applied 30 days after the referred account is activated, once the referral has been an active, paying member for 30 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

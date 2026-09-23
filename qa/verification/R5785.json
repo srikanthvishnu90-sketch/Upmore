@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You must keep the funds in the account until February 5, 2028 (a ~1-year hold) to receive the cash back, and the biggest payouts require very large deposits ($500k+ for $5,000).",
+  "catches": [
+    "Bonus paid in CAD; USD figures here are converted at ~0.73",
+    "Cash back is tiered by funding: $1,000-$10,000 earns 5% of net new deposit; higher tiers are fixed ($550/$600/$700/$1,000/$2,500/$5,000)",
+    "Must use promo code OFFER2026 when opening; new clients only; one offer per client",
+    "Open by January 5, 2027 and fund by February 5, 2027; funds must stay until February 5, 2028 or the bonus is reduced/lost",
+    "Bonus credited on or around March 5, 2028 after the holding period - over a year of waiting",
+    "Extra $100 only if funded within 30 days; withdrawals or transfers out before Feb 5, 2028 reduce the bonus",
+    "Market fluctuations do not affect eligibility, but early withdrawals do"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Qtrade Direct Investing (qtrade.ca) - Canadian online brokerage owned by Aviso (CIPF member). Official 'Qtrade Cash Back Offer' campaign page fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'The more you fund, the more you gain... $1,000 to $10,000: 5% of the Net New Deposit amount ... $500,000.01+: $5,000.' 'Open a new account by January 5, 2027... Fund your account by February 5, 2027... with promo code OFFER2026.' 'The applicable cash back bonus will be credited to your Qtrade Direct Investing account on or around March 5, 2028.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: open with code OFFER2026 by Jan 5 2027, fund by Feb 5 2027, hold funds until Feb 5 2028. No trading required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Deposits are the user's own investable funds, withdrawable after the hold period; no purchase or fee required. Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Qtrade Direct Investing clients, residents of Canada; one offer per client (joint account = one client); securities must not be restricted/cease-trade.",
+  "notes": "G54 brokerage wave 2. Canadian provider; payouts shown in USD converted from CAD at ~0.73 with conversion noted. Transfer-fee reimbursement up to C$150 is a separate mechanism (not claimed here).",
+  "numeric_basis": "payout from official tier table (5% of min C$1,000 = C$50; max C$5,000 at C$500k+), converted to USD ~0.73; time: online application + funding setup est. 30-60 min active",
+  "official_url": "https://www.qtrade.ca/en/investor/campaign/cashbackoffer.html",
+  "payout_max_usd": 3650,
+  "payout_min_usd": 36,
+  "payout_quote": "Your cash back grows with the amount you fund... $1,000 to $10,000: 5% of the Net New Deposit amount ... $500,000.01+: $5,000. Open a new account by January 5, 2027. Fund your account by February 5, 2027. Earn up to $5,000 cash back based on your investment tier",
+  "payout_value_note": "Bonus paid in CAD; USD equivalents converted at ~0.73 (C$50->~$36, C$5,000->~$3,650). Extra C$100 for funding within 30 days not included in range.",
+  "route_id": "R5785",
+  "standard": {
+    "s1": {
+      "note": "New Qtrade clients only, Canada; promo code OFFER2026 required at application; one offer per client.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: open with code by Jan 5 2027, fund by Feb 5 2027, hold until Feb 5 2028.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Cash back credited on or around March 5, 2028 after the holding period.",
+      "pass": true
+    },
+    "s4": {
+      "note": "5%-of-deposit tiers and fixed amounts stated officially; no inflated claim.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.qtrade.ca/en/investor/campaign/cashbackoffer.html - official Qtrade page fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: apply with code, fund, hold, receive credit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Qtrade campaign page verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open a new Qtrade Direct Investing account at qtrade.ca by January 5, 2027, entering promo code OFFER2026 during the application",
+    "Fund the account by February 5, 2027 with at least C$1,000 (more funding = higher tier, up to C$5,000 cash back)",
+    "Keep all new deposits in the account until February 5, 2028 - any withdrawals or transfers out reduce or forfeit the bonus",
+    "Receive the cash back bonus credited to the account on or around March 5, 2028"
+  ],
+  "terms_url": "https://www.qtrade.ca/en/investor/campaign/cashbackoffer.html",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Open by Jan 5, 2027; fund by Feb 5, 2027; hold until Feb 5, 2028; bonus paid ~Mar 5, 2028.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

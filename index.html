@@ -413,6 +413,25 @@
     <p class="word">Upmore</p>
   </section>
 
+  <!-- ================= LOGIN: returning users ================= -->
+  <section class="screen" id="login" aria-label="Log in">
+    <div class="scroll">
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;min-height:52vh">
+        <svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="url(#silver)" mask="url(#logo)"/></svg>
+        <h1 style="margin-top:26px;max-width:14ch">Welcome back</h1>
+        <p class="why">Log in to pick up your plan and progress right where you left them.</p>
+      </div>
+    </div>
+    <div class="dock">
+      <button class="go light" id="googleGoLogin">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.3H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.3-2.1 3.7-5.1 3.7-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.8-2.9c-1 .7-2.4 1.2-4.1 1.2-3.1 0-5.8-2.1-6.8-5l-3.9 3C3.4 21.5 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.3 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.4 0 3.4 2.5 1.3 6.6l3.9 3c1-2.9 3.7-4.9 6.8-4.9z"/></svg>
+        <span>Continue with Google</span>
+      </button>
+      <p class="legal">We get your name and email so your plan and progress stay yours. That's it.</p>
+      <p class="legal" style="margin-top:10px">New to Upmore? <a href="#" id="loginToSignup">Get started</a></p>
+    </div>
+  </section>
+
   <!-- ================= SIGNUP: welcome ================= -->
   <section class="screen" id="welcome" aria-label="Welcome">
     <div class="scroll">
@@ -424,6 +443,7 @@
     </div>
     <div class="dock">
       <button class="go light" data-next>Get started</button>
+      <p class="legal">Already have an account? <a href="#" id="welcomeLogin">Log in</a></p>
       <p class="legal">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Some offers pay us a small cut — you still get every dollar.</p>
     </div>
   </section>
@@ -816,9 +836,10 @@ const UPMORE_DATA = {"version":"1767-route catalog 2026-09-24 (1500 verified, ra
   document.querySelectorAll("[data-back]").forEach(b => b.onclick = back);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => show(b.dataset.tab));
 
-  /* splash: tap or timer */
+  /* splash: tap or timer (timer stands down once boot has chosen a screen) */
+  let bootDone = false;
   $("splash").onclick = () => { if (current === "splash") show("welcome"); };
-  setTimeout(() => { if (current === "splash" && !location.hash) show("welcome"); }, 1800);
+  setTimeout(() => { if (!bootDone && current === "splash" && !location.hash) show("welcome"); }, 1800);
 
   /* ================= Signup: choices ================= */
   document.querySelectorAll("[data-pick]").forEach(g => {
@@ -934,19 +955,28 @@ const UPMORE_DATA = {"version":"1767-route catalog 2026-09-24 (1500 verified, ra
       </div>`).join("");
   }
 
-  /* ================= Auth: Google sign-in (last step) ================= */
-  const googleGo = $("googleGo");
-  const googleLabel = googleGo.innerHTML;
-  googleGo.onclick = async () => {
+  /* ================= Auth: Google sign-in ================= */
+  async function startGoogleLogin(btn, labelHtml) {
     try { localStorage.setItem("upmore-onboarding", JSON.stringify(data)); } catch (e) {}
-    googleGo.disabled = true;
-    googleGo.innerHTML = "<span>Opening Google…</span>";
+    btn.disabled = true;
+    btn.innerHTML = "<span>Opening Google…</span>";
     const { error } = await supa.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo: location.origin + location.pathname },
     });
-    if (error) { googleGo.disabled = false; googleGo.innerHTML = googleLabel; }
-  };
+    if (error) { btn.disabled = false; btn.innerHTML = labelHtml; }
+  }
+  const googleGo = $("googleGo");
+  const googleLabel = googleGo.innerHTML;
+  googleGo.onclick = () => startGoogleLogin(googleGo, googleLabel);
+  const googleGoLogin = $("googleGoLogin");
+  if (googleGoLogin) {
+    const loginLabel = googleGoLogin.innerHTML;
+    googleGoLogin.onclick = () => startGoogleLogin(googleGoLogin, loginLabel);
+  }
+  /* Login screen links */
+  $("welcomeLogin").onclick = (e) => { e.preventDefault(); show("login"); };
+  $("loginToSignup").onclick = (e) => { e.preventDefault(); show("welcome"); };
 
   /* ================= Home ================= */
   const prog = {};
@@ -1595,8 +1625,14 @@ const UPMORE_DATA = {"version":"1767-route catalog 2026-09-24 (1500 verified, ra
       show(tab);
       return;
     }
+    // No session: returning users (onboarding answers saved) go straight to
+    // the Login screen instead of redoing onboarding; brand-new users get splash.
+    let hasOnboarding = false;
+    try { hasOnboarding = !!localStorage.getItem("upmore-onboarding"); } catch (e) {}
     if (order.includes(h) && h !== "splash") show(h);
+    else if (hasOnboarding) show("login");
     else { show("splash"); }
+    bootDone = true;
   })();
   // Service worker: offline app-shell cache (mobile UX)
   if ("serviceWorker" in navigator) {

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "New Chase checking customers only \u2014 if you closed a Chase checking account in the past 90 days or closed one with a negative balance in the last 3 years, you are excluded.",
+  "catches": [
+    "New Chase checking customers only; excludes anyone who closed a Chase checking account in the past 90 days or closed one with a negative balance in the last 3 years.",
+    "One bonus per account; only one bonus every two years from the last offer enrollment.",
+    "An offer code is required \u2014 the page instructs you to check your email for the code, then open with it online or in a branch.",
+    "Bonus arrives within 15 days after completing the 10 qualifying transactions; account must be open and unrestricted at payout.",
+    "Bonus is taxable income (typically reported on IRS Form 1099-INT as with Chase bonuses).",
+    "Chase College Checking is discontinued \u2014 this Secure Banking offer is the current student offer; after age 24+ the account's monthly fee waiver rules change."
+  ],
+  "checked_at": "2026-09-23T04:28:11Z",
+  "critical": {
+    "c1": {
+      "evidence": "JPMorgan Chase Bank, N.A. \u2014 real operating bank; official college-offer page on the account.chase.com domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Chase 'college offer' page: 'Get $175 as a new Chase checking customer, when you open a Chase Secure BankingSM account with qualifying transactions' \u2014 plus FAQ detailing the 10-transaction / 60-day requirement and new-customer exclusions.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No minimum deposit to open ('Don't stress about a minimum deposit to open your account. There isn't one'); $0 Monthly Service Fee for customers age 17-24. No upfront fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "'Get $175 as a new Chase checking customer, when you open a Chase Secure BankingSM account with qualifying transactions.' FAQ: 'Your bonus arrives within 15 days after you complete qualifying transactions. Your account has to be open and unrestricted at the time of payout.'",
+      "pass": true
+    }
+  },
+  "eligibility": "College students who are new Chase checking customers (not an existing checking customer; no Chase checking account closed in the past 90 days or with a negative balance in the last 3 years). $0 monthly fee tier for ages 17-24; international students eligible with qualifying IDs.",
+  "notes": "The old Chase College Checking $100 bonus account is discontinued per the official FAQ ('The Chase College CheckingSM account is no longer available for those opening new accounts'); the current student offer is the Chase Secure Banking college offer at $175. Distinct from R0037 (Chase Business Complete Checking business bonus) \u2014 different product and terms.",
+  "numeric_basis": "payout from official terms ($175 flat); time: online/branch account application + completing 10 qualifying transactions, est. 30-60 min active",
+  "official_url": "https://account.chase.com/consumer/banking/studentSAchampion",
+  "payout_max_usd": 175,
+  "payout_min_usd": 175,
+  "payout_quote": "Get $175 as a new Chase checking customer, when you open a Chase Secure BankingSM account with qualifying transactions.",
+  "payout_value_note": "flat cash bonus per official terms",
+  "route_id": "R5881",
+  "standard": {
+    "s1": {
+      "note": "Eligibility concrete: new Chase checking customers only, 90-day / negative-balance-3-year exclusions, one bonus per account and one every two years.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Requirements concrete: open Secure Banking with the offer code, then 10 qualifying transactions (debit purchases, Zelle, ACH credits, QuickDeposit, online bill pay) within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing concrete: bonus credited within 15 days after completing qualifying transactions; account must be open and unrestricted.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$175 stated flatly; 'with qualifying transactions' is a stated condition, not weasel language.",
+      "pass": true
+    },
+    "s5": {
+      "note": "account.chase.com is JPMorgan Chase Bank's official account-offer domain; page content matches the live offer.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No earnings promise beyond the conditional $175; bonus treated as taxable income per standard bank-bonus treatment.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Numbers consistent: 175/175 USD flat; 30-60 active minutes for application + 10 transactions.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Request/receive the Chase college offer code via email.",
+    "Open a new Chase Secure Banking account online or in a branch, bringing the offer code and two acceptable forms of ID (plan about an hour in branch).",
+    "Complete 10 qualifying transactions within 60 days of account opening \u2014 debit card purchases, Zelle transfers, ACH credits, Chase QuickDeposit, or online bill payments.",
+    "Bonus of $175 is credited within 15 days after the qualifying transactions complete; keep the account open and unrestricted until payout."
+  ],
+  "terms_url": "https://account.chase.com/consumer/banking/studentSAchampion",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "Complete 10 qualifying transactions within 60 days of account opening; bonus arrives within 15 days after completion; account must be open and unrestricted at payout.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

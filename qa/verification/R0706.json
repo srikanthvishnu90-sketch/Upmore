@@ -3,19 +3,19 @@
     "android": null,
     "ios": null
   },
-  "biggest_catch": "There is a $0 annual fee, so the $200 bonus is yours to keep net \u2014 but existing or previous Cash Rewards accounts do not qualify, and product upgrades to this card are not eligible, so this is genuinely new-applicants-only.",
+  "biggest_catch": "There is a $0 annual fee, so the $200 bonus is yours to keep net — but existing or previous Cash Rewards accounts do not qualify, and product upgrades to this card are not eligible, so this is genuinely new-applicants-only.",
   "catches": [
-    "Only pursue spending you already planned to do \u2014 never overspend just to chase a bonus; buying things to hit a threshold wipes out the bonus math and is how people lose money on this.",
+    "Only pursue spending you already planned to do — never overspend just to chase a bonus; buying things to hit a threshold wipes out the bonus math and is how people lose money on this.",
     "Existing and previous Cash Rewards account holders do not qualify; upgrading an existing card to this product does not qualify.",
-    "Only eligible net purchases count \u2014 returns and credits are netted out.",
+    "Only eligible net purchases count — returns and credits are netted out.",
     "You must spend at least $1,000 in eligible net purchases within 90 days of account opening.",
     "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
-    "The card's variable APR (around 20%+) will erase the entire bonus in a month or two if you carry a balance \u2014 pay the full statement balance every month."
+    "The card's variable APR (around 20%+) will erase the entire bonus in a month or two if you carry a balance — pay the full statement balance every month."
   ],
-  "checked_at": "2026-09-23T01:49:32Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
-      "evidence": "U.S. Bank National Association \u2014 real operating bank; official terms on usbank.com.",
+      "evidence": "U.S. Bank National Association — real operating bank; official terms on usbank.com.",
       "pass": true
     },
     "c2": {
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "New applicants only. Existing/previous Cash Rewards accounts and product upgrades do not qualify.",
-  "notes": "Verified against the current production official U.S. Bank Cash+ terms ($200 after $1,000 in eligible net purchases within 90 days). Stale test/cross-sell pages showing a $250 offer were ignored as outdated.",
+  "notes": "Verified against the current production official U.S. Bank Cash+ terms ($200 after $1,000 in eligible net purchases within 90 days). Stale test/cross-sell pages showing a $250 offer were ignored as outdated. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus 20-40min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)]",
   "official_url": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
   "payout_quote": "$200 cash back after $1,000 in eligible net purchases within 90 days of account opening; the bonus posts within one to two billing cycles.",
   "route_id": "R0706",
@@ -50,7 +50,7 @@
       "pass": true
     },
     "s4": {
-      "note": "No weasel words on the core payout \u2014 $200, $1,000, and 90 days stated flatly.",
+      "note": "No weasel words on the core payout — $200, $1,000, and 90 days stated flatly.",
       "pass": true
     },
     "s5": {
@@ -69,7 +69,7 @@
   "steps": [
     "Go to the official U.S. Bank Cash+ page https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html and read the $200 / $1,000 terms.",
     "Apply online and get approved; save your approval confirmation.",
-    "Spend at least $1,000 in eligible net purchases \u2014 your already-planned spending \u2014 within 90 days of account opening.",
+    "Spend at least $1,000 in eligible net purchases — your already-planned spending — within 90 days of account opening.",
     "Pay the full statement balance every month so interest never eats the bonus.",
     "Confirm the $200 posts within one to two billing cycles after you qualify."
   ],
@@ -80,5 +80,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 200.0,
+  "payout_max_usd": 200.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 40.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)"
 }

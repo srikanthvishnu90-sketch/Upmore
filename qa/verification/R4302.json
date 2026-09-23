@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend has to do real banking within 60 days: make ten or more debit/credit card transactions AND receive one electronic deposit of $250+ (ACH, mobile deposit, or Zelle). A friend who opens the account but never uses it earns you nothing.",
+  "catches": [
+    "Friend must register, open a new Velocity Credit Union checking account, and within 60 days: complete ten (10) or more debit and/or credit card transactions (excluding ATM transactions), AND complete one (1) electronic deposit of $250 or more via ACH, mobile deposits, or Zelle deposits.",
+    "Both the referrer and the friend receive a $50 Mastercard Virtual Reward once all qualifications are completed ('you and the person who referred you will BOTH receive a Mastercard Virtual Reward!').",
+    "Allow 2-3 weeks for delivery of the Virtual Reward after completing all offer requirements.",
+    "No stated referral cap and no stated expiration on the fetched page.",
+    "No 1099/tax disclosure on the fetched page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Referral page on velocitycu.com, Velocity Credit Union's official domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page states '$50 For You, $50 For Them — Checking Account' and 'you and the person who referred you will BOTH receive a Mastercard Virtual Reward!' — concrete per-referral payout to the referrer.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Friend requirements stated: register, open a new checking account, and within 60 days complete 10+ debit/credit transactions (excl. ATM) AND one electronic deposit of $250+ (ACH/mobile/Zelle).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; registration and referral are free.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Velocity Credit Union member (referrer) whose friend registers through the referral. Referred friend must be eligible to open a Velocity CU checking account.",
+  "notes": "Verified 2026-09-23 from Velocity Credit Union's official referral page. dedupe-check 'Velocity Credit Union' clean — distinct from Velocity Community Credit Union (velocitycommunity.org, Palm Beach FL), which is a separate institution covered in R4300. No referral cap and no expiration stated on the fetched page.",
+  "numeric_basis": "payout from official terms ($50 Mastercard Virtual Reward per qualifying referral); time: share referral link with friend est. 5-15 min active",
+  "official_url": "https://www.velocitycu.com/referral/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "$50 For You, $50 For Them — Checking Account",
+  "payout_value_note": "$50 Mastercard Virtual Reward to the referrer per qualifying referral, delivered 2-3 weeks after qualification; no stated referral cap.",
+  "route_id": "R4302",
+  "standard": {
+    "s1": {
+      "note": "Refer-a-friend is a distinct mechanism from Velocity CU's account-opening promotions.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No existing Velocity Credit Union route in catalog or evidence files; R4300 covers the separate Velocity Community Credit Union.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Page live on official domain as of 2026-09-23; no stated expiration.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Framed as conditional: payout only when the friend completes all qualifications within 60 days.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No 1099 disclosure on the fetched page.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No cap stated on the fetched page.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Referral registration on the web; no app required.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your Velocity CU referral with a friend.",
+    "Your friend registers on the referral page and opens a new Velocity Credit Union checking account.",
+    "Within 60 days, your friend completes 10+ debit/credit card transactions (excl. ATM) and one electronic deposit of $250+ (ACH, mobile, or Zelle).",
+    "After all qualifications are completed, you and your friend each receive a $50 Mastercard Virtual Reward within 2-3 weeks."
+  ],
+  "terms_url": "https://www.velocitycu.com/referral/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Allow 2-3 weeks for delivery of the $50 Mastercard Virtual Reward after the friend completes all offer requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

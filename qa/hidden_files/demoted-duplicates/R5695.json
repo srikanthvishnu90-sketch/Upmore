@@ -1,0 +1,78 @@
+{
+  "route_id": "R5695",
+  "verdict": "verify",
+  "official_url": "https://www.wealthcu.org/referral-program",
+  "terms_url": "https://www.wealthcu.org/referral-program",
+  "payout_quote": "$100 per qualifying referral",
+  "payout_min_usd": 100,
+  "payout_max_usd": 100,
+  "payout_value_note": "$100 per qualifying referral; maximum 5 referrals per household ($500)",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout from official terms ($100-$100 per referral); time: referral share est. 5-15 min active",
+  "steps": [
+    "Friend becomes a member and opens a Rewards Checking Account (online with promo code SHARE100, in person, or video chat) mentioning the referrer. Minimum $50 deposit in the new checking account to receive the gift."
+  ],
+  "catches": [
+    "Membership in CommonWealth required. Valid for new members and new checking only; limit one new checking account per new member; minimum $50 deposit in checking to receive gift; subject to $100 fee for closing the account within 6 months; all new accounts verified by Chex Systems; members with an existing CommonWealth checking account are not eligible. Maximum 5 referrals per household. Offer cannot be combined with any other offer and is subject to cancellation without notice."
+  ],
+  "biggest_catch": "Membership in CommonWealth required. Valid for new members and new checking only; limit one new checking account per new member; minimum $50 deposit in checking to receive gift; subject to $100 fee for closing the account within 6 months; all new accounts verified by Chex Systems; members with an existing CommonWealth checking account are not eligible. Maximum 5 referrals per household. Offer cannot be combined with any other offer and is subject to cancellation without notice.",
+  "eligibility": "Friend: becomes a CommonWealth member, opens a Rewards Checking Account with a minimum $50 deposit, uses promo code SHARE100 (or mentions referrer); valid for new members and new checking only",
+  "timing": "Paid after the friend becomes a member and opens a Rewards Checking Account with the $50 minimum deposit; exact payout timing (days) not stated on the official page.",
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "notes": "Official referral program page (wealthcu.org/referral-program, fetched 2026-09-23): 'when they open a Rewards Checking Account, you BOTH earn $100!' FAQ confirms referrer receives the $100 gift when the friend becomes a member and opens a Rewards Checking Account. Cap: 'Maximum 5 referrals per household' = $500 referrer cap. Distinct from the CommonWealth $200 checking promo (R0641 rejected, R1041 rejected) - this is the standing refer-a-friend program. Eligibility: live/work in Santa Clara County or eligible counties/companies/family. [schema normalized 2026-09-23 from alternate referral format]",
+  "upfront_fee": false,
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "$100 per qualifying referral"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Affiliate link confirmed: https://www.wealthcu.org/referral-program"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Friend: becomes a CommonWealth member, opens a Rewards Checking Account with a minimum $50 deposit, uses promo code SHARE100 (or mentions referrer); valid for new members and new checking only"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Cap: maximum 5 referrals per household ($500); 1099-INT reporting for referred member gifts over $10; 1099-MISC for referrer gifts over $2,000; $100 fee for closing account within 6 months; cannot be combined with other offers"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Current and active as of 2026-09-23 (official page fetched live)"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Direct on official page: 'you BOTH earn $100!' and FAQ 'How do I get $100 for referring a friend'"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend becomes a member and opens a Rewards Checking Account with minimum $50 deposit; valid for new members and new checking only; Chex Systems verification"
+    },
+    "s4": {
+      "pass": true,
+      "note": "No exact payout timing stated in days"
+    },
+    "s5": {
+      "pass": true,
+      "note": "Maximum 5 referrals per household ($500)"
+    },
+    "s6": {
+      "pass": true,
+      "note": "Referred member: 1099-INT on gifts over $10; referrer: 1099-MISC on gifts over $2,000"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Open to existing members; promo code SHARE100, not invite-only"
+    }
+  },
+  "weasel_words": []
+}

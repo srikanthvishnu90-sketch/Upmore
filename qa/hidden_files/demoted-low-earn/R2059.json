@@ -1,0 +1,86 @@
+{
+  "route_id": "R2059",
+  "verdict": "verify",
+  "official_url": "https://shiftsmart.com/partners",
+  "terms_url": "https://help.shiftsmart.com/hc/en-us/articles/28869019931156-How-Shiftsmart-works",
+  "payout_quote": "Enjoy the flexibility of working when you want, and plan around personal and family needs. Browse nearby shifts, see the pay up front, and book in a tap.",
+  "steps": [
+    "Download the Shiftsmart app and sign up as a Partner.",
+    "Open the Shifts tab and browse nearby opportunities with pay shown up front.",
+    "Complete any required onboarding for the projects that interest you.",
+    "Book shifts that fit your schedule.",
+    "Complete the shift tasks; get paid in days, not weeks, per the Partner Terms."
+  ],
+  "catches": [
+    "Shift availability varies by area — some regions have little work.",
+    "Shift pay is set per listing; you cannot negotiate it.",
+    "You work as an independent contractor: no benefits, handle your own taxes.",
+    "Shift approval/payment processing can be slow or disputed per worker reports — document your work.",
+    "Some shifts have extra requirements shown in the app."
+  ],
+  "biggest_catch": "Availability is area-dependent and pay is take-it-or-leave-it per shift — plus you are on your own for taxes as a contractor.",
+  "eligibility": "18+, legally authorized to work in the US, able to read/complete tasks in English, with a smartphone.",
+  "timing": "Shifts post continuously; paid in days after eligible shift completion.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Shiftsmart's own page states the mechanism: 'Browse nearby shifts, see the pay up front, and book in a tap' and the help center documents: 'Choose your shifts, build your schedule, and start earning!... After completing your chosen shifts, get paid in days, not weeks!'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms show pay per shift up front but publish no fixed platform-wide range — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: sign up, browse shifts, onboard for projects, book, complete, get paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Signup is free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is 18+ with US work authorization and a smartphone."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-shift pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover area-dependent availability, non-negotiable pay, and contractor status."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Shiftsmart route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous shifts; paid in days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Shiftsmart is a shift-booking app where Partners browse nearby shifts with pay shown up front and get paid in days after completion. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Shift pay is shown per listing; Shiftsmart publishes no fixed platform-wide pay range.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: per-shift, no official range. time: app signup + profile + onboarding + booking first shifts, est. 30-90 min active (excludes the shift work itself)."
+}

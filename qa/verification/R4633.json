@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Payment is only for people who pass prescreening AND are found eligible for the main study visit — females aged 28 to 40, in person at Colorado State University — and 'up to $125' is a ceiling, not a guarantee.",
+  "catches": [
+    "Not everyone qualifies: only females aged 28 to 40, and only those found eligible for the main part of the study are paid — prescreening and the screening visit are gates.",
+    "'Up to $125' is a ceiling, not a guaranteed amount; payment is stated only for those found eligible for the main part of the study — no payment is described for prescreening or the screening visit alone.",
+    "Medical procedures involved: blood draws and a bone mineral density/body composition scan (non-invasive imaging), plus non-invasive vascular tests and cognitive testing — ask the study team about any procedure-related risks at informed consent.",
+    "In-person visits at Colorado State University; the visits are spread across roughly two months, so regional access matters.",
+    "You also receive some of your test results from the study procedures; follow up with your own doctor with any health concerns."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "source.colostate.edu is the official Colorado State University news/announcements site; the study announcement is a current recruiting post for a CSU Department of Health and Exercise Science research group.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states 'If you are found to be eligible for the main part of the study, you will be paid up to $125 for participating. You will also receive some test results.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Must be a female aged 28 to 40 who passes prescreening; payment only for those found eligible for the main part of the study. No fee to participate stated or implied.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Compensation (up to $125 for the main part), eligibility (females 28-40, prescreened and found eligible), and schedule (about 90-minute screening visit + about 3.5-hour main visit, ~2 months) all stated on the official CSU page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Females aged 28 to 40 who complete the online prescreening survey and are found eligible for the main part of the study by the CSU Department of Health and Exercise Science research team.",
+  "notes": "Observed 2026-09-23: the CSU announcement post was updated 2 days prior, so recruitment appears active. Prescreening survey link points to a REDCap instance hosted at redcap.ucdenver.edu, but the study page and recruiting institution are Colorado State University (Department of Health and Exercise Science). The $125 ceiling and per-eligibility payment condition are quoted verbatim; time estimate comes from the stated visit durations (90 min + ~3.5 hours) with the possible third visit duration unpublished. Medical catches grounded on the listed tests: blood draws plus a bone-density scan; ask the study team about procedure risks at consent.",
+  "numeric_basis": "payout 'up to $125' from official CSU page; time: stated ~90-min screening visit + ~3.5-hour main visit = 300 active minutes; the page says two or three research visits total, so a possible third visit (duration unpublished, estimated ~2h) gives a 420-min max. Span: ~2 months.",
+  "official_url": "https://source.colostate.edu/participants-needed-for-research-study-on-heart-and-brain-health-2/",
+  "payout_max_usd": 125,
+  "payout_min_usd": 0,
+  "payout_quote": "If you are found to be eligible for the main part of the study, you will be paid up to $125 for participating. You will also receive some test results.",
+  "payout_value_note": "'Up to $125' with no floor stated; min = 0. Paid only if found eligible for the main part of the study.",
+  "route_id": "R4633",
+  "standard": {
+    "s1": {
+      "note": "Official domain source.colostate.edu; announcement page live when checked 2026-09-23; post updated 2 days before check, indicating active recruitment.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Specific currently-recruiting study: CSU Department of Health and Exercise Science heart and brain health study recruiting females aged 28 to 40.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Research study involving blood pressure screening, blood draws, non-invasive blood vessel function tests, cognitive testing, and a bone mineral density/body composition scan; participants receive some test results.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Concrete compensation stated: up to $125 for completing the main part of the study.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Eligibility: females 28 to 40; must complete online prescreening and be found eligible for the main part of the study; limited research slots.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Must visit the CSU research site in person (Colorado State University) for the screening and main study visits; prescreening is done online.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No bundled sub-features; the payment is the study participation compensation itself.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Confirm you are a female aged 28 to 40 interested in a heart and brain health study at Colorado State University's Department of Health and Exercise Science.",
+    "Complete the online prescreening survey linked from the official CSU announcement page.",
+    "If prescreened as potentially eligible, attend the consent/screening visit (about 90 minutes) at the CSU research site.",
+    "If found eligible for the main part of the study, attend the main study visit (about three and a half hours): blood pressure screening, blood draws, non-invasive tests of blood vessel function, cognitive testing, and a bone mineral density and body composition scan.",
+    "Receive payment of up to $125 for completing the main part of the study, plus some of your test results. Participation spans approximately two months."
+  ],
+  "terms_url": "https://source.colostate.edu/participants-needed-for-research-study-on-heart-and-brain-health-2/",
+  "time_max_minutes": 420,
+  "time_min_minutes": 300,
+  "timing": "About 90 minutes for the consent/screening visit plus about 3.5 hours for the main study visit (two or three research visits total), with participation expected to span approximately two months.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "up to"
+  ]
+}

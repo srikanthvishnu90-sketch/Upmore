@@ -1,1 +1,83 @@
-{"app_links":{"android":null,"ios":null},"biggest_catch":"TD's own terms text does not name a dollar amount anywhere — it only says \"we'll deposit the bonus\" — so I cannot verify the claimed $300 payout from the bank's official domain and will not guess it.","catches":["Official td.com terms text states no concrete bonus amount — payout amount is unverifiable from the bank's own domain","Multiple third-party aggregators describe a $300 TD Beyond Checking bonus ($2,500 direct deposits within 60 days, ends 9/30/2026), but aggregators are excluded from the verdict by method rules","The loaded official page's promo runs through September 30, 2026 — only 8 days from verification date, so even if real it may expire imminently","Not eligible if you are an existing TD personal checking customer, closed a TD checking account in the last 12 months, or ever received a prior TD personal checking bonus","Payout can take up to 180 days from account opening; closing the account within 6 months lets TD claw back a paid bonus","TD Bank operates in CT, DC, DE, FL, MD, ME, MA, NC, NH, NJ, NY, PA, RI, SC, VT, VA — users outside these states/regions cannot qualify"],"checked_at":"2026-09-23T00:45:21Z","critical":{"c1":{"evidence":"TD Bank is a real operating bank (TD Bank, N.A.) on td.com","pass":true},"c2":{"evidence":"FAIL — the official td.com terms text says only \"we'll deposit the bonus in your new account on or before 180 days of account opening.\" It names NO concrete dollar amount (no $300, $200, or any figure). A concrete payout is required for verify","pass":false},"c3":{"evidence":"Official terms impose no upfront fee or required purchase to earn the bonus; $25 Beyond Checking / $15 Complete Checking monthly fees are waivable per official fee schedules","pass":true},"c4":{"evidence":"FAIL — because no concrete payout quote exists in the official terms text I could extract, I cannot supply an exact payout quote from td.com. Aggregator descriptions of the $300 offer cannot substitute per method rules","pass":false}},"eligibility":"Per official terms: not available if you are an existing TD Bank personal checking customer, had a previous personal checking account closed within the preceding 12 months, or received a prior personal checking bonus at any time. Offer valid through September 30, 2026, available only when opening through a qualifying website. TD Bank Employees and Canadian Cross-border banking Customers are not eligible. Direct deposits must be electronic payroll/pension/government-benefits deposits of at least $250 each; P2P and bank transfers don't count","notes":"Method: searched for the official TD offer page and loaded https://www.td.com/us/en/personal-banking/checking-bonus/pso in full (96 lines). The page's terms section discusses 'the bonus' generically with no dollar figure anywhere in extracted text. The offer hero may state the amount in copy/images the extraction missed, and aggregators uniformly describe a $300 Beyond Checking / $200 Complete Checking promo, but per the verdict rules aggregators cannot be used for the verdict and numbers must not be guessed. A browser-enabled follow-up could visually confirm the page hero; until then this route fails C1/C4 honestly. No app store links captured.","official_url":"https://www.td.com/us/en/personal-banking/checking-bonus/pso","payout_quote":"After you have completed the requirements outlined within, we'll deposit the bonus in your new account on or before 180 days of account opening. (Note: no dollar amount is stated in the official terms text.)","route_id":"R0044","standard":{"s1":{"note":"Documented: no existing/prior-12-month/ever-bonus TD personal checking customers; employees and Canadian cross-border customers excluded; ends 9/30/2026","pass":true},"s2":{"note":"Official page discloses Beyond Checking $25 / Complete Checking $15 monthly maintenance fees with waiver paths; no upfront cost to earn bonus","pass":true},"s3":{"note":"Official terms state payout \"on or before 180 days of account opening\" — slow payout documented, and TD may deduct a paid bonus if the account is closed within 6 months","pass":false},"s4":{"note":"The payout itself is not hedged with weasel words, but the core payout amount is missing entirely from the official terms text — worse than weasel words: no concrete promise to anchor on","pass":false},"s5":{"note":"Official offer page captured: https://www.td.com/us/en/personal-banking/checking-bonus/pso; signup goes through td.com","pass":true},"s6":{"note":"Steps are conditional on the unverified amount: open TD Beyond/Complete Checking online through the qualifying site by 9/30/2026; complete qualifying direct deposits. Cannot state the exact qualifying threshold for a specific dollar amount from official terms","pass":false},"s7":{"note":"Official td.com offer page WAS loaded live and read in full on 2026-09-23 — but the extracted terms text contains no concrete payout amount, which is the substance failure","pass":true}},"steps":["Go to https://www.td.com/us/en/personal-banking/checking-bonus/pso and open a new TD personal checking account online through the qualifying site by September 30, 2026","Set up qualifying direct deposits (electronic payroll, pension, or government benefits of at least $250 each; P2P and bank transfers do not count)","Keep the account open and not closed or restricted through payout (up to 180 days after opening); do not close within 6 months or TD may deduct a paid bonus","CAVEAT: confirm the exact bonus amount and direct-deposit threshold on the official page hero before acting — the terms text alone does not name a dollar amount"],"terms_url":"https://www.td.com/us/en/personal-banking/checking-bonus/pso","timing":"Per official terms: bonus deposited in the new account on or before 180 days of account opening; account must not be closed or restricted at payout; bonus may be deducted at closing if the account is closed within 6 months","upfront_fee":false,"verdict":"reject","weasel_words":{"present":true,"quote":"The official terms text avoids naming a payout amount entirely: \"we'll deposit the bonus in your new account on or before 180 days of account opening.\" No dollar figure appears in the terms — the core promise is unstated, which fails the concrete-payout requirement."}}
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "TD's own terms text does not name a dollar amount anywhere — it only says \"we'll deposit the bonus\" — so I cannot verify the claimed $300 payout from the bank's official domain and will not guess it.",
+  "catches": [
+    "Official td.com terms text states no concrete bonus amount — payout amount is unverifiable from the bank's own domain",
+    "Multiple third-party aggregators describe a $300 TD Beyond Checking bonus ($2,500 direct deposits within 60 days, ends 9/30/2026), but aggregators are excluded from the verdict by method rules",
+    "The loaded official page's promo runs through September 30, 2026 — only 8 days from verification date, so even if real it may expire imminently",
+    "Not eligible if you are an existing TD personal checking customer, closed a TD checking account in the last 12 months, or ever received a prior TD personal checking bonus",
+    "Payout can take up to 180 days from account opening; closing the account within 6 months lets TD claw back a paid bonus",
+    "TD Bank operates in CT, DC, DE, FL, MD, ME, MA, NC, NH, NJ, NY, PA, RI, SC, VT, VA — users outside these states/regions cannot qualify"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "TD Bank is a real operating bank (TD Bank, N.A.) on td.com",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "FAIL — the official td.com terms text says only \"we'll deposit the bonus in your new account on or before 180 days of account opening.\" It names NO concrete dollar amount (no $300, $200, or any figure). A concrete payout is required for verify",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "Official terms impose no upfront fee or required purchase to earn the bonus; $25 Beyond Checking / $15 Complete Checking monthly fees are waivable per official fee schedules",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "FAIL — because no concrete payout quote exists in the official terms text I could extract, I cannot supply an exact payout quote from td.com. Aggregator descriptions of the $300 offer cannot substitute per method rules",
+      "pass": false
+    }
+  },
+  "eligibility": "Per official terms: not available if you are an existing TD Bank personal checking customer, had a previous personal checking account closed within the preceding 12 months, or received a prior personal checking bonus at any time. Offer valid through September 30, 2026, available only when opening through a qualifying website. TD Bank Employees and Canadian Cross-border banking Customers are not eligible. Direct deposits must be electronic payroll/pension/government-benefits deposits of at least $250 each; P2P and bank transfers don't count",
+  "notes": "Method: searched for the official TD offer page and loaded https://www.td.com/us/en/personal-banking/checking-bonus/pso in full (96 lines). The page's terms section discusses 'the bonus' generically with no dollar figure anywhere in extracted text. The offer hero may state the amount in copy/images the extraction missed, and aggregators uniformly describe a $300 Beyond Checking / $200 Complete Checking promo, but per the verdict rules aggregators cannot be used for the verdict and numbers must not be guessed. A browser-enabled follow-up could visually confirm the page hero; until then this route fails C1/C4 honestly. No app store links captured.",
+  "official_url": "https://www.td.com/us/en/personal-banking/checking-bonus/pso",
+  "payout_quote": "After you have completed the requirements outlined within, we'll deposit the bonus in your new account on or before 180 days of account opening. (Note: no dollar amount is stated in the official terms text.)",
+  "route_id": "R0044",
+  "standard": {
+    "s1": {
+      "note": "Documented: no existing/prior-12-month/ever-bonus TD personal checking customers; employees and Canadian cross-border customers excluded; ends 9/30/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Official page discloses Beyond Checking $25 / Complete Checking $15 monthly maintenance fees with waiver paths; no upfront cost to earn bonus",
+      "pass": true
+    },
+    "s3": {
+      "note": "Official terms state payout \"on or before 180 days of account opening\" — slow payout documented, and TD may deduct a paid bonus if the account is closed within 6 months",
+      "pass": false
+    },
+    "s4": {
+      "note": "The payout itself is not hedged with weasel words, but the core payout amount is missing entirely from the official terms text — worse than weasel words: no concrete promise to anchor on",
+      "pass": false
+    },
+    "s5": {
+      "note": "Official offer page captured: https://www.td.com/us/en/personal-banking/checking-bonus/pso; signup goes through td.com",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are conditional on the unverified amount: open TD Beyond/Complete Checking online through the qualifying site by 9/30/2026; complete qualifying direct deposits. Cannot state the exact qualifying threshold for a specific dollar amount from official terms",
+      "pass": false
+    },
+    "s7": {
+      "note": "Official td.com offer page WAS loaded live and read in full on 2026-09-23 — but the extracted terms text contains no concrete payout amount, which is the substance failure",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Go to https://www.td.com/us/en/personal-banking/checking-bonus/pso and open a new TD personal checking account online through the qualifying site by September 30, 2026",
+    "Set up qualifying direct deposits (electronic payroll, pension, or government benefits of at least $250 each; P2P and bank transfers do not count)",
+    "Keep the account open and not closed or restricted through payout (up to 180 days after opening); do not close within 6 months or TD may deduct a paid bonus",
+    "CAVEAT: confirm the exact bonus amount and direct-deposit threshold on the official page hero before acting — the terms text alone does not name a dollar amount"
+  ],
+  "terms_url": "https://www.td.com/us/en/personal-banking/checking-bonus/pso",
+  "timing": "Per official terms: bonus deposited in the new account on or before 180 days of account opening; account must not be closed or restricted at payout; bonus may be deducted at closing if the account is closed within 6 months",
+  "upfront_fee": false,
+  "verdict": "reject",
+  "weasel_words": {
+    "present": true,
+    "quote": "The official terms text avoids naming a payout amount entirely: \"we'll deposit the bonus in your new account on or before 180 days of account opening.\" No dollar figure appears in the terms — the core promise is unstated, which fails the concrete-payout requirement."
+  }
+}

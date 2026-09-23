@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The payout is $250 in OneKeyCash — Expedia travel credit, not cash — and it only has value if you book on Expedia, Hotels.com, or Vrbo.",
+  "catches": [
+    "The $250 is paid in OneKeyCash, Expedia's travel rewards currency — it is NOT cash and can only be used toward Expedia, Hotels.com, or Vrbo bookings; if you never book travel there, this offer is worthless to you.",
+    "Never spend extra solely to chase the $1,000 threshold — only use spending you already planned.",
+    "The card is listed on Wells Fargo's own no-annual-fee cards page, so no fee drag — but carrying a balance at the variable APR erases the bonus; pay in full.",
+    "Applying involves a hard inquiry on your personal credit report.",
+    "Confirm the $250-after-$1,000 OneKey offer is still current on creditcards.wellsfargo.com before applying."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Wells Fargo — real card issuer (creditcards.wellsfargo.com); offer text observed on Wells Fargo's official no-annual-fee cards page (creditcards.wellsfargo.com, crawl 19 days before verification).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Wells Fargo page: 'Intro offer: Earn $250 in OneKeyCash after you spend $1,000 on purchases in the first 3 months' — concrete fixed-dollar-denominated payout with threshold.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Offer live on creditcards.wellsfargo.com at verification time; the card is listed on Wells Fargo's own 'No Annual Fee Credit Cards' page; no enrollment fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: spend $1,000 on purchases in the first 3 months to earn $250 in OneKeyCash.",
+      "pass": true
+    }
+  },
+  "eligibility": "New One Key Card cardmembers, subject to Wells Fargo approval.",
+  "notes": "VERIFIED: Wells Fargo's own page (creditcards.wellsfargo.com/no-annual-fee-credit-cards, crawl 19 days before verification 2026-09-23) states verbatim: 'Intro offer: Earn $250 in OneKeyCash after you spend $1,000 on purchases in the first 3 months.' OneKeyCash is Expedia's travel rewards currency (100 OneKeyCash = $1), usable on Expedia, Hotels.com, and Vrbo — labeled honestly as travel credit, NOT cash. No annual fee (listed on Wells Fargo's own no-annual-fee page). Distinct from the Signify Business Cash (R5361) and the Choice Privileges Mastercard (points — not verified). Evidence via issuer-domain crawl because direct page fetch was unavailable in this session.",
+  "official_url": "https://creditcards.wellsfargo.com/no-annual-fee-credit-cards/?sub_channel=WEB&vendor_code=WF",
+  "payout_max_usd": 250.0,
+  "payout_min_usd": 250.0,
+  "payout_quote": "Intro offer: Earn $250 in OneKeyCash after you spend $1,000 on purchases in the first 3 months",
+  "payout_value_note": "$250 in OneKeyCash (Expedia travel credit — 100 OneKeyCash = $1, usable on Expedia/Hotels.com/Vrbo only, NOT cash). Issuer-denominated in dollars.",
+  "route_id": "R5362",
+  "standard": {
+    "s1": {
+      "note": "New cardmembers subject to Wells Fargo approval.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No annual fee (Wells Fargo's own no-annual-fee page); confirm the $250-after-$1,000 offer is current before applying.",
+      "pass": true
+    },
+    "s3": {
+      "note": "$1,000 in purchases within the first 3 months.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No misleading framing — explicitly labeled as $250 in OneKeyCash travel credit, not cash.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://creditcards.wellsfargo.com/no-annual-fee-credit-cards/ — Wells Fargo's official domain; offer text observed on this domain 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: apply on creditcards.wellsfargo.com, spend $1,000 of planned purchases in 3 months, receive $250 in OneKeyCash, pay in full.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Wells Fargo page confirmed carrying the offer at verification time 2026-09-23 (19-day crawl).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open Wells Fargo's official page https://creditcards.wellsfargo.com/no-annual-fee-credit-cards/ and confirm the One Key Card $250-after-$1,000 offer is still showing.",
+    "Complete the application; Wells Fargo runs a hard inquiry when you apply.",
+    "If approved, spend $1,000 on purchases you were already planning within the first 3 months.",
+    "Pay the balance in full every month — carrying a balance destroys the bonus.",
+    "The $250 in OneKeyCash posts to your Expedia-side rewards; use it toward a hotel or flight you were already booking."
+  ],
+  "terms_url": "https://creditcards.wellsfargo.com/no-annual-fee-credit-cards/?sub_channel=WEB&vendor_code=WF",
+  "time_max_minutes": 40.0,
+  "time_min_minutes": 20.0,
+  "timing": "Application takes 20–40 min active; then spend $1,000 in already-planned purchases within 3 months; $250 in OneKeyCash (Expedia travel credit) follows.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms ($250 in OneKeyCash, denominated in dollars by issuer); time: credit-card application est. 20-40 min active"
+}

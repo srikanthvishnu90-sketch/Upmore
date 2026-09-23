@@ -1,0 +1,86 @@
+{
+  "route_id": "R2042",
+  "verdict": "verify",
+  "official_url": "https://cadcrowd.com/how-it-works/contests",
+  "terms_url": "https://www.cadcrowd.com/help/designers/what-is-cad-crowd/",
+  "payout_quote": "If we approve your account application, you can apply for job contracts and participate in design contests.",
+  "steps": [
+    "Sign up on Cad Crowd and create a detailed profile with skills, experience, certifications, and a portfolio of 3D models.",
+    "Submit your profile for membership consideration; wait for approval.",
+    "Browse fixed-rate jobs and apply with a flat-rate quote, or join public design contests matching your skills.",
+    "Deliver the work / submit contest entries; 1-to-1 projects are also offered via the expert leaderboard.",
+    "Get paid for completed job contracts or contest wins."
+  ],
+  "catches": [
+    "Account application must be approved — not everyone gets in.",
+    "Contest work is speculative: only winning designers are paid; most entries earn nothing.",
+    "Project budgets are set per client brief; no fixed payout range.",
+    "Requires real CAD/3D modeling/engineering skills; beginners will struggle to win work.",
+    "Managed-service matching is Cad Crowd's choice, not yours — flow depends on client demand."
+  ],
+  "biggest_catch": "Membership requires approval and contest entries are speculative: only approved members who win or complete contracts get paid.",
+  "eligibility": "CAD/3D design or engineering professionals whose membership application is approved.",
+  "timing": "Jobs and contests post continuously; payout on job completion or contest win.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Cad Crowd's own help center (cadcrowd.com/help) states: 'sign up and create a detailed profile for membership consideration. If we approve your account application, you can apply for job contracts and participate in design contests.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms publish no fixed designer payout range — pay is per job contract or contest prize; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: signup, profile, approval, job contracts / design contests / 1-to-1 projects."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Signup and account are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is skilled designers/engineers who pass membership review."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-job/per-contest pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover approval gating, speculative contest work, and client-set budgets."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Cad Crowd route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous postings."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Cad Crowd is a CAD/3D design and engineering marketplace: approved experts apply to fixed-rate job contracts or enter client design contests. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Project budgets and contest prizes are set per client brief; Cad Crowd publishes no fixed designer payout range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: per-contract/per-contest, no official range. time: profile + portfolio setup + application review + browsing/applying to first jobs, est. 60-180 min active."
+}

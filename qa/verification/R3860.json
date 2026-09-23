@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The top $25 only pays if the referred loan is actually FUNDED - a completed application alone earns just $10 - and rewards come as gift certificates to local businesses, not cash.",
+  "catches": [
+    "Current member earns a $10 gift certificate for a completed loan application, or a $25 gift certificate if the new loan is funded.",
+    "Referral program applies only to secured loans (excluding share-secured loans).",
+    "A current member may refer a new OR an existing member for a new loan.",
+    "Members in the same household are not eligible for referral rewards.",
+    "Referred person must include the referrer's name on the Loan Referral Form.",
+    "Gift certificates are to local businesses - not cash or account credit."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official TrailNorth FCU page (trailnorth.com): 'any current member who refers a qualified member for a new loan will receive either a $10.00 gift certificate for a completed loan application or if the new loan is funded, the referring member will receive a $25.00 gift certificate.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official trailnorth.com domain (trailnorth.com/borrow/loan-referrals), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend applies for a standard secured loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'trailnorth' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current TrailNorth FCU member. Friend: referred for a new secured loan (new or existing member), named on the Loan Referral Form.",
+  "notes": "Verified 2026-09-23. TrailNorth Federal Credit Union (Ticonderoga, NY; formerly Ticonderoga FCU). Referrer earns $10 gift certificate per completed loan application, $25 if the loan funds. Rewards are gift certificates to local businesses, not cash. Loan-only referral mechanism (no deposit-account track).",
+  "numeric_basis": "payout from official page ($10 per application / $25 per funded loan); time: sharing the loan referral form est. 5-15 min active",
+  "official_url": "https://www.trailnorth.com/borrow/loan-referrals",
+  "payout_max_usd": 25,
+  "payout_min_usd": 10,
+  "payout_quote": "any current member who refers a qualified member for a new loan will receive either a $10.00 gift certificate for a completed loan application or if the new loan is funded, the referring member will receive a $25.00 gift certificate.",
+  "payout_value_note": "$10 gift certificate per completed loan application, $25 if the referred loan is funded (gift certificates to local businesses).",
+  "route_id": "R3860",
+  "standard": {
+    "s1": {
+      "note": "Program page live on trailnorth.com, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: current member refers a qualified member for a new secured loan (share-secured excluded; same household excluded)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: complete a loan application (named on form) or fund a new secured loan",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend/family member (new or existing) for a new secured loan.",
+    "Have them include your name on the Loan Referral Form when they apply.",
+    "You receive a $10 gift certificate for the completed application.",
+    "If the new loan funds, you receive a $25 gift certificate instead."
+  ],
+  "terms_url": "https://www.trailnorth.com/borrow/loan-referrals",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward timing not stated on the page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

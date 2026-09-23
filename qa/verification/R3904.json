@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must keep the checking account 'active' with 5+ qualifying transactions per monthly statement cycle (debits, direct deposit, Bill Pay, etc.; transactions under $5 don't count).",
+  "catches": [
+    "Existing member earns $50 for each new member who opens an active checking account or qualifying loan.",
+    "Maximum $500 per year in referral rewards.",
+    "New member receives $50 with a new active checking account or a qualifying loan.",
+    "Checking is active with 5+ qualifying transactions per monthly statement cycle (debit card, direct deposit, Bill Pay, automatic withdrawal, check, or cash deposit; <$5 transactions don't count).",
+    "Excludes home mortgages and savings accounts; eligible on all consumer checking accounts and consumer loans.",
+    "Referral must be eligible for membership; existing member must be in good standing and fill out the Referral Form online.",
+    "Must be 18 or older; employees are not eligible.",
+    "Reward deposited into each member's savings account within 60 days of meeting the qualifications.",
+    "Member is responsible for any related taxes per MN law.",
+    "Offer effective 1/1/26 - 12/31/26 and subject to change without notice."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official SharePoint CU page (sharepointcu.com): 'Earn $50* for each eligible referral who opens an active checking account or qualifying loan. Total rewards are up to $500 per year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official sharepointcu.com domain (sharepointcu.com/refer), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account or takes standard loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'sharepoint' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Share Point CU member in good standing (non-employee). Friend: eligible for membership; opens an active checking account or qualifying loan.",
+  "notes": "Verified 2026-09-23. Share Point Credit Union (Brooklyn Park, MN). $50 to the referrer per eligible referral; up to $500/year. Offer effective January 1, 2026 through December 31, 2026.",
+  "numeric_basis": "payout from official page ($50 per eligible referral; $500/year cap); time: filling out the referral form est. 5-15 min active",
+  "official_url": "https://www.sharepointcu.com/refer",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Earn $50* for each eligible referral who opens an active checking account or qualifying loan. Total rewards are up to $500 per year.",
+  "payout_value_note": "$50 per eligible referral; up to $500 per year.",
+  "route_id": "R3904",
+  "standard": {
+    "s1": {
+      "note": "Program page live on sharepointcu.com, fetched 2026-09-23; offer effective 1/1/26-12/31/26, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member in good standing; friend eligible for membership; 18+; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open an active checking account (5+ transactions/cycle) or qualifying loan",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward deposited within 60 days of meeting the qualifications",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: member responsible for related taxes per MN law",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the Referral Form online as a Share Point member.",
+    "Friend joins and opens an active checking account (5+ transactions per cycle) or a qualifying loan.",
+    "Qualifications are met.",
+    "You receive $50 (up to $500/year), deposited within 60 days."
+  ],
+  "terms_url": "https://www.sharepointcu.com/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited within 60 days of meeting the qualifications.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

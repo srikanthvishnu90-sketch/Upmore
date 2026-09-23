@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "GOVX membership (military, first responders, and other eligible groups) is required to access the offer, and service must stay active and in good standing for 90 days before the card can be redeemed.",
+  "catches": [
+    "GOVX account sign-in required first — only GOVX members can reach this offer.",
+    "Service must remain active and in good standing for 90 days after installation before redemption.",
+    "Redemption happens at coxreward.com; allow 4–6 weeks from redemption to delivery (virtual card 5–7 days after validation).",
+    "Card expires 6 months after issuance; unused funds are forfeited.",
+    "No cash access; cannot be used to pay the Cox monthly bill; non-transferable.",
+    "The $250 tier requires bundling both internet and mobile signup; internet-only signup gets $100."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "share.cox.com is Cox's own domain; offer text served from share.cox.com on 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Cox's own page states: 'Sign up for internet to get a $100 prepaid Mastercard or mobile to get a $150 prepaid Mastercard. Bundle both internet and mobile and get $250.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Distinct mechanism: a signup promo paying a prepaid Mastercard for new Cox service, vs catalog's utility-rebate-only Cox entry (R0797).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Offer live on share.cox.com on 2026-09-23; the linked cox.com redemption-terms page is the current version with 90-day and redemption mechanics.",
+      "pass": true
+    }
+  },
+  "eligibility": "GOVX members (military, first responders, and other GOVX-eligible groups) who are new residential Cox customers in Cox service areas.",
+  "notes": "Verified on cox.com domains 2026-09-23. Amount: $100 for internet-only signup, $150 mobile-only, $250 for the bundle — route centers the $100 internet tier. Not a duplicate of R0797 (utility rebate). Card is spendable value from signup, not cash income.",
+  "numeric_basis": "payout from official terms ($100 internet-only prepaid Mastercard; $250 with bundle); time: GOVX verification + online signup est. 20-40 min active.",
+  "official_url": "https://share.cox.com/govx",
+  "payout_max_usd": 250,
+  "payout_min_usd": 100,
+  "payout_quote": "Sign up for internet to get a $100 prepaid Mastercard or mobile to get a $150 prepaid Mastercard. Bundle both internet and mobile and get $250.",
+  "payout_value_note": "Prepaid Mastercard = dollar-denominated spendable value (not cash access); $100 for internet-only signup, up to $250 with internet+mobile bundle; framed as signup value, not cash income.",
+  "route_id": "R1192",
+  "standard": {
+    "s1": {
+      "note": "GOVX membership required; new residential customers in Cox service areas.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Prepaid Mastercard has no cash access; framed as spendable card value.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Live 2026-09-23; no end date stated — recheck before ordering.",
+      "pass": true
+    },
+    "s4": {
+      "note": "90-day active/good-standing requirement and redemption mechanics are in Cox's own prepaid-card terms.",
+      "pass": true
+    },
+    "s5": {
+      "note": "GOVX verification + standard service-account info; no unusual PII.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Both the offer and the redemption terms are on cox.com domains.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No enrollment fee stated to earn the card; installation charges may apply to the service itself.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Sign into your GOVX account to verify eligibility.",
+    "After verification you are redirected to the Cox website.",
+    "Sign up for new residential Cox Internet service ($100 prepaid Mastercard); add mobile for $150, or bundle both for $250.",
+    "Keep the service active and in good standing for 90 days after installation.",
+    "Redeem at coxreward.com; virtual card arrives 5–7 days after validation, physical card 2–4 weeks after validation."
+  ],
+  "terms_url": "https://www.cox.com/residential/special-offers/prepaid-card.html?sc_id=cr_dm_camp_z_prepaidcard_vanity",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "One-time; card redeemable after 90 days of active, in-good-standing service; delivered 4–6 weeks after redemption.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

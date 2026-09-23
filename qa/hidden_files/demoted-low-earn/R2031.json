@@ -1,0 +1,88 @@
+{
+  "route_id": "R2031",
+  "verdict": "verify",
+  "official_url": "https://www.wonolo.com/",
+  "terms_url": "https://info.wonolo.com/blog/craigslist_gigs_vs_wonolo/",
+  "payout_quote": "You'll generally receive payment via your method of choice within 1-5 business days of completing the job.",
+  "steps": [
+    "Download the free Wonolo app and sign up.",
+    "Follow the in-app steps to create your profile and complete onboarding.",
+    "Browse and accept jobs (warehouse, events, merchandising, delivery, retail, food & beverage) that fit you — no interviews or resumes needed.",
+    "Show up on time (or give 12+ hours notice if you cannot make it).",
+    "Complete the job; once approved you are paid, generally within 1-5 business days, via your chosen payout method."
+  ],
+  "catches": [
+    "Pay is set per job by the business and varies; nothing is guaranteed beyond accepted jobs.",
+    "Your star rating controls future access — low ratings or late cancellations (<12h notice) limit the jobs you are offered.",
+    "Work is physical (warehouse, events, moving); injury and fatigue risk is real — occupational accident insurance is offered per Wonolo's own page.",
+    "You work as an independent contractor: no benefits, and you handle your own taxes.",
+    "Job availability depends heavily on your metro area."
+  ],
+  "biggest_catch": "Pay varies per job and access to future jobs depends on your ratings: a few bad ratings or late cancellations can dry up your job feed.",
+  "eligibility": "Adults 18+ with a smartphone; must complete Wonolo's in-app onboarding.",
+  "timing": "Jobs post continuously; payment generally within 1-5 business days of job approval.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "generally"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Wonolo's own site (info.wonolo.com) states the mechanism: 'Accept a job — Find and accept the right job for you. No interviews or resumes needed. Do the job... Get paid.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms give the payout timing ('within 1-5 business days') but no fixed pay rates — pay is per job, framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: download app, create profile, accept job, do the job, get paid."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "The app and signup are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is 18+ with a smartphone plus in-app onboarding."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-job pay; 'generally' hedge in the official payout line is flagged in weasel_words."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover rating-gated access, physical risk, contractor status, and area-dependent availability."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Wonolo route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous postings; pay 1-5 business days after approval."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Weasel word 'generally' appears in the official payout quote."
+    }
+  },
+  "notes": "Wonolo (Work Now Locally) is an on-demand staffing app for short-term shift jobs. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Pay is set per job by the posting business; Wonolo publishes no fixed hourly or per-job range.",
+  "time_min_minutes": 45,
+  "time_max_minutes": 120,
+  "numeric_basis": "payout: per-job, no official range. time: app signup + onboarding + browsing/accepting first jobs, est. 45-120 min active (excludes the shift work itself)."
+}

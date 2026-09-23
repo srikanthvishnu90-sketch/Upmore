@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must be a NEW member (no Desert Financial accounts in the last 12 months), open a Membership Savings with $25 minimum plus a free checking account, and within 90 days receive at least one direct deposit AND post at least 30 checking transactions - only then does your $100 arrive, deposited no later than 10 business days in the month following the end of the 90-day qualification period.",
+  "catches": [
+    "Friend must be a new member with no existing or open DFCU accounts in the last 12 months; must open Membership Savings ($25 minimum) and a qualified free checking account.",
+    "Within 90 calendar days of opening, the friend must have at least 30 posted transactions in the new checking account and receive a qualifying direct deposit (as determined by DFCU).",
+    "Friend must be 18+ with a valid U.S. Taxpayer Identification Number or SSN; membership eligibility required.",
+    "Referring member must be 18+ and be the primary owner of an open and active Membership Savings opened before the friend's account opening date.",
+    "Ineligible as referrer: existing joint account owners, primary owners who closed membership within the past 12 months, DFCU employees (including subsidiaries/affiliates/agencies) and their immediate family.",
+    "The referrer and friend may not begin credit union membership on the same day.",
+    "Accounts must be open and not delinquent more than 30 days at bonus time; bonus paid to the referrer's Membership Savings and the friend's qualifying checking.",
+    "Bonus subject to taxes and reported on IRS Form 1099-INT.",
+    "No stated cap on the number of referrals; may not be combined with other account-opening offers; subject to change without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Desert Financial page (desertfinancial.com): 'You can refer multiple friends and potentially earn $100 for each friend you help join Arizona's most trusted credit union!' and 'bonuses will be deposited no later than 10 business days in the month following the end of the 90-day qualification period into the New Member's qualifying checking account and the Referring Member's Membership Savings.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Desert Financial referral page on desertfinancial.com, fetched live 2026-09-23; no fixed expiry, subject to change without notice",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend's $25 savings minimum is their own money",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no desertfinancial.com route and no Desert Financial entry; catalog has no Desert Financial route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 18+, primary owner of an open and active Desert Financial Membership Savings opened before the friend's account opening (no employees/family, no joint owners, no recently closed memberships). Friend: 18+, U.S. TIN/SSN, new member with no DFCU accounts in the last 12 months.",
+  "notes": "Verified 2026-09-23. Desert Financial Credit Union (Arizona). Referrer earns $100 per qualifying referral deposited to Membership Savings, with no stated cap on the number of referrals. Friend must open $25 savings + free checking, receive a direct deposit and post 30+ checking transactions within 90 days.",
+  "numeric_basis": "payout from official Desert Financial terms ($100 per qualifying referral; no cap stated); time: log in + fill referral form est. 5-15 min active",
+  "official_url": "https://www.desertfinancial.com/en/who-we-are/member-benefits/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "You can refer multiple friends and potentially earn $100 for each friend you help join Arizona's most trusted credit union!",
+  "payout_value_note": "$100 per qualifying referral deposited to the referring member's Membership Savings; no cap on number of referrals stated.",
+  "route_id": "R5670",
+  "standard": {
+    "s1": {
+      "note": "Official Desert Financial referral page live on desertfinancial.com, fetched 2026-09-23; no fixed expiry, changeable without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer 18+ primary owner of active Membership Savings (exclusions listed); friend 18+, new member, no DFCU accounts in 12 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $25 savings + free checking, one direct deposit and 30+ posted checking transactions within 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonuses deposited no later than 10 business days in the month following the end of the 90-day qualification period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus subject to taxes, reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to Desert Financial Online Banking, click 'Refer someone', and fill out the form to send your friend an invite (or print the referral form for a branch visit).",
+    "Friend opens a Membership Savings ($25 minimum) and a free checking account via the referral email link, by phone, or with the completed form at a branch.",
+    "Within 90 days, the friend receives at least one direct deposit and posts at least 30 checking transactions.",
+    "Your $100 bonus is deposited to your Membership Savings no later than 10 business days in the month following the end of the 90-day qualification period."
+  ],
+  "terms_url": "https://www.desertfinancial.com/en/who-we-are/member-benefits/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus deposited to the referring member's Membership Savings no later than 10 business days in the month following the end of the 90-day qualification period.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

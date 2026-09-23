@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Referrals are capped at 10 per calendar year and only new memberships opened in 2026 qualify; the referred member must enter code REFER25 plus your name and email.",
+  "catches": [
+    "Referrer earns $25 for each referral that results in a new membership account being opened, with a maximum of ten (10) referrals ($250) per calendar year.",
+    "New member account must be opened between 01/01/2026 and 12/31/2026; the new member must not be an existing member.",
+    "New member must enter the Refer-A-Friend Code 'REFER25' and provide the name and email address of the referring member on the application.",
+    "Reward deposited into the referring member's account within 60 days of the new membership opening.",
+    "Referring member must be in good standing; only one referral awarded per new membership.",
+    "AA CU employees, their immediate family/permanent household members, business accounts, and Credit Union Coordinators are not eligible to refer.",
+    "Membership restricted to aviation industry, immediate family, household members, and FAA-program students/instructors."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official aacreditunion.org page: 'earn $25 for each new member you refer, up to $250' and 'Referring member will receive $25.00 for each referral that results in a new membership account being opened, with a maximum of ten (10) referrals per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms hosted on official aacreditunion.org subdomain (prod.aacreditunion.org/membership/Refer-Family-Member/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'american airlines credit union' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: AA CU member in good standing (not employees/CU coordinators). Referred: eligible new members (aviation industry, family, household members, FAA students/instructors).",
+  "notes": "Verified 2026-09-23. American Airlines Credit Union. $25 per qualifying new member; max 10 referrals ($250) per calendar year. Program window 2026-01-01–2026-12-31.",
+  "numeric_basis": "payout from official page ($25 per referral, 10/year = $250); time: requesting/sending invitation est. 5-15 min active",
+  "official_url": "https://prod.aacreditunion.org/membership/Refer-Family-Member/",
+  "payout_max_usd": 250,
+  "payout_min_usd": 25,
+  "payout_quote": "earn $25 for each new member you refer, up to $250",
+  "payout_value_note": "$25 per qualifying referral; max 10 referrals ($250) per calendar year.",
+  "route_id": "R3936",
+  "standard": {
+    "s1": {
+      "note": "Terms live on aacreditunion.org, fetched 2026-09-23; program runs 01/01/2026–12/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer in good standing; new-member eligibility rules linked",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new membership opened in 2026 with code REFER25 + referrer name/email",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward deposited within 60 days of new membership opening",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonuses subject to IRS reporting; recipient responsible for taxes",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Request an invitation email via the referral form.",
+    "Forward the invitation to an eligible friend or family member.",
+    "They enter your sponsorship info and code REFER25 when applying and join.",
+    "You receive $25 within 60 days of their membership opening."
+  ],
+  "terms_url": "https://prod.aacreditunion.org/membership/Refer-Family-Member/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward deposited within 60 days of the new membership opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

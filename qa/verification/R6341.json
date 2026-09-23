@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "It's account credit, not cash \u2014 $50 for your first successful referral and $25 for each one after, and your friend must activate a new Ting plan through your link for either side to get anything.",
+  "catches": [
+    "Service credits only \u2014 they offset your Ting bill; no cash value",
+    "$50 applies to the first successful referral only; every referral after that pays $25",
+    "Referred friend must sign up through your link and activate a device on a new Ting plan",
+    "Unused credit rolls over to the next month; your bill shows charges before credits are applied"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official 'Referring your friends to Ting' article on help.ting.com (Ting's own support domain): 'Our Refer a Friend program lets you earn Ting credits when your friends sign up.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Article live and current (crawled 4 days ago) with the $50/$25/$25 amounts still published.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amounts stated verbatim: '$50 credit for your first referral', '$25 credit for each referral after that', friend gets '$25 credit just for signing up with your link'.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Eligibility (new Ting customer, device activated on a new plan), credit timing (Billing History after activation), and rollover rules all stated on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Ting customer with a referral link; referred friend must be new to Ting and activate a device on a new Ting plan through the link.",
+  "notes": "Verified 2026-09-23 against help.ting.com. Deduped: no Ting routes in existing-providers.txt or qa/verification; rejects-g60 has no Ting entry. Distinct from wireless-carrier signup promos.",
+  "numeric_basis": "payout from official terms ($50 credit first referral, $25 each subsequent, account credit); time: referral share 5-15 min active",
+  "official_url": "https://help.ting.com/mobile-articles/referring-your-friends-to-ting",
+  "payout_max_usd": 50,
+  "payout_min_usd": 25,
+  "payout_quote": "$50 credit for your first referral. $25 credit for each referral after that. Your friends and family get a $25 credit just for signing up with your link.",
+  "payout_value_note": "$50 Ting account credit for the referrer's first successful referral, $25 for each referral after that; referred friend also gets $25 credit \u2014 credits offset Ting service bills, not cash.",
+  "route_id": "R6341",
+  "standard": {
+    "s1": {
+      "note": "Exact amounts stated verbatim in official terms ($50 first, $25 after, $25 to friend).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: credits offset planned Ting mobile spending, not income or cash.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official article (find link in account, share, friend signs up and activates, credits appear in Billing History).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: account credit only, and the friend must activate a new plan.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond the friend's own Ting plan.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against help.ting.com (Ting's own domain). Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Find your personalized referral link in your Ting account under the Refer Your Friends tab",
+    "Share the link with a friend or family member",
+    "Friend clicks the link, signs up for Ting, and activates a device on a new plan",
+    "Credits appear in your Ting account under Billing History after activation"
+  ],
+  "terms_url": "https://help.ting.com/mobile-articles/referring-your-friends-to-ting",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credit applied after the referred friend activates their first device with Ting; visible under Billing History.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

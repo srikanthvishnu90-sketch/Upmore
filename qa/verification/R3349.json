@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You and your friend each get a $50 Mastercard Reward Card only after the friend opens a new personal checking account and makes a direct deposit or $250+ in debit-card purchases within 60 days; no annual cap is stated on the official page.",
+  "catches": [
+    "Friend must open a new personal checking account (First Bank, NC/SC/VA) after registering",
+    "Friend must complete a direct deposit OR $250+ in debit-card purchases within 60 days of account opening (ATM withdrawals do not count)",
+    "Reward is a $50 Mastercard Reward Card for each party, not cash into the account",
+    "No annual referral cap stated on the official page; aggregator sources claim up to $1,000/year (20 referrals) — not confirmed by official terms",
+    "Membership/account eligibility applies (First Bank serves North and South Carolina)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Bank page (localfirstbank.com/refer): 'A few minutes can earn you both $50. ... you'll both get a $50 Mastercard Reward Card'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page on official localfirstbank.com domain; page live and fetchable 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $50 Mastercard Reward Card per qualifying referral for the referrer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Local First Bank' shows no catalog/evidence hits (one fuzzy hit was R0786 utility rebate 'Fi') — no duplicate",
+      "pass": true
+    }
+  },
+  "eligibility": "First Bank (North and South Carolina) existing customers. Referred friends must be new customers who open a new personal checking account.",
+  "notes": "dedupe-check 'Local First Bank' shows no existing routes. Official 'Refer A Friend' page on localfirstbank.com (First Bank, NC/SC) with concrete terms. Referrer gets a $50 Mastercard Reward Card per qualifying friend. Per schema: gift card per-referral payout recorded at face value ($50); no official cap stated.",
+  "numeric_basis": "payout from official First Bank (localfirstbank.com) referral page ($50 Mastercard Reward Card each, flat per referral); time: registering and sharing the referral link est. 5-15 min active",
+  "official_url": "https://localfirstbank.com/refer/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "A few minutes can earn you both $50. ... Once your friend follows through, you'll both get a $50 Mastercard Reward Card.",
+  "payout_value_note": "Flat $50 Mastercard Reward Card per qualifying referral; no annual cap stated on the official page.",
+  "route_id": "R3349",
+  "standard": {
+    "s1": {
+      "note": "Official First Bank referral page live and fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: existing First Bank customer; friend must open a new personal checking account",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new personal checking + direct deposit or $250+ debit purchases within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward paid after the friend completes the 60-day qualifying activity",
+      "pass": true
+    },
+    "s5": {
+      "note": "No explicit tax disclosure on the marketing page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct earning mechanism: referrer-side program",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be an existing First Bank customer",
+    "Sign up on the referral page to start earning referral rewards",
+    "Share your referral link with friends",
+    "Friend registers and opens a new personal checking account at First Bank",
+    "Friend makes a direct deposit or $250+ in debit-card purchases (excluding ATM withdrawals) within 60 days",
+    "You both receive a $50 Mastercard Reward Card"
+  ],
+  "terms_url": "https://localfirstbank.com/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Signing up and sharing the referral link takes ~10 minutes active; the $50 reward pays after the friend completes the 60-day qualifying activity (not instant).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

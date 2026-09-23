@@ -1,0 +1,90 @@
+{
+  "route_id": "R3385",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "verdict": "verify",
+  "official_url": "https://www.southeastbank.com/refer/",
+  "terms_url": "https://www.southeastbank.com/refer/",
+  "payout_min_usd": 50,
+  "payout_max_usd": 150,
+  "payout_value_note": "Tiered: $50 per referral who opens personal checking/savings, $100 per business referral, $150 when the new customer opens both personal and business same-day. No limit on qualified referrals.",
+  "payout_quote": "Current customers with eligible checking or savings accounts can earn $50, $100, or $150 for each new customer you refer to SouthEast Bank. Once your referral meets these qualifications, both of you earn the following rewards",
+  "numeric_basis": "payout tiers from official southeastbank.com/refer page ('earn $50, $100, or $150 for each new customer you refer'); time: registering and sharing referral est. 5-15 min active",
+  "eligibility": "Current SouthEast Bank customers with an eligible checking or savings account; referred friend must be a new customer opening an eligible account (personal and/or business).",
+  "steps": [
+    "Be a current SouthEast Bank customer with an eligible checking or savings account",
+    "Register for the Refer a Friend program and get your referral link",
+    "Share the referral link with friends/businesses",
+    "Friend opens an eligible personal checking/savings account and enrolls in eStatements, and completes a direct deposit of at least $500 or 10 debit card purchases within 60 days ($50 tier)",
+    "Or friend opens an eligible business checking/savings account, enrolls in eStatements, and completes an ACH or EFT of at least $1000 within 60 days ($100 tier)",
+    "Or friend opens both personal and business same-day and meets both sets of requirements ($150 tier)",
+    "Once your referral meets the qualifications, both of you earn the reward"
+  ],
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official southeastbank.com/refer page live and indexed; no expiry stated"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Eligibility explicit: current SouthEast Bank customers with eligible checking/savings; friend must be a new customer"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Qualification summary: eStatements enrollment + activity within 60 days (personal: $500 direct deposit or 10 debit purchases; business: $1000 ACH/EFT); positive balance at reward deposit"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing: rewards paid after referral meets qualifications within 60 days of account opening; no exact payout timing stated"
+    },
+    "s5": {
+      "pass": true,
+      "note": "No explicit tax disclosure on the page; aggregators note associates of SouthEast Bank Corporation are ineligible"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to refer or participate"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider/referral mechanism not covered elsewhere (R0060 is the bank's separate new-customer signup bonus)"
+    }
+  },
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official SouthEast Bank page (southeastbank.com/refer): 'earn $50, $100, or $150 for each new customer you refer to SouthEast Bank'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official southeastbank.com domain, indexed and live"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; tiered cash rewards $50/$100/$150 per qualifying referral"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "grep + dedupe-check 'SouthEast Bank': R0060 is the bank's separate new-customer Rewards Checking signup bonus (different mechanism); no referral route in catalog or evidence files"
+    }
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "weasel_words": [],
+  "biggest_catch": "All qualification requirements must be met within 60 days of account opening and the account must have a positive balance at the time the reward is deposited — if your friend misses the window, you get nothing.",
+  "catches": [
+    "Official page: 'Current customers with eligible checking or savings accounts can earn $50, $100, or $150 for each new customer you refer'",
+    "Tiers: $50 for personal checking/savings; $100 for business checking/savings; $150 when the new customer opens both personal and business same-day",
+    "'there's no limit to how many qualified referrals you can make'",
+    "All requirements must be met within 60 days of account opening and the account must have a positive balance at the time the reward is deposited",
+    "Personal tier: enroll in eStatements AND complete a direct deposit of at least $500 or post/settle at least 10 debit card purchases",
+    "Business tier: enroll in eStatements AND complete an ACH or EFT of at least $1000",
+    "Both referrer and friend earn the reward once qualifications are met"
+  ],
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "timing": "Registering and sharing your referral link takes ~10 minutes active; rewards are earned once the friend meets qualifications within 60 days of opening.",
+  "upfront_fee": false,
+  "notes": "Verified 2026-09-23 from official southeastbank.com/refer (SouthEast Bank, TN). Tiered per-referral cash rewards: $50 personal / $100 business / $150 both. No referral cap. Distinct from R0060 (bank's new-customer signup bonus)."
+}

@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must be a completely new member with no previous Service 1st relationship, and their debit card must make a transaction within 30 days of membership opening - otherwise neither of you gets anything.",
+  "catches": [
+    "Referrer must be 18+ and in good standing; rewards paid by direct deposit only to Service 1st members.",
+    "Friend must be a new member with NO previous Service 1st relationship (any previously closed account disqualifies them).",
+    "Friend must open a checking account with debit card, have Service 1st digital banking, and the debit card must perform a transaction within 30 days of membership opening.",
+    "If either account is closed before the reward is paid, neither party is eligible.",
+    "Cap: $50 per referred new member, maximum 6 referred members ($300/year).",
+    "Rewards may be reportable as taxable income; offer valid through December 31, 2026; cannot combine with other promotions (except the Checking Bundle)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Service 1st FCU page (service1.org/membership/refer-a-friend): '$50 will be credited to the referrer's share savings account when the debit card associated with the referred member's account has performed a transaction within 30 days of membership opening date' and 'Members are eligible to receive up to $50 per referred new member/maximum 6 referred new members.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program rules on official service1.org domain, fetched live 2026-09-23; offer valid through December 31, 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens membership ($5 minimum balance + $1 one-time membership fee)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification: prior R0608 is a Service 1st checking signup bonus (distinct mechanism); catalog has no Service 1st referral entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Service 1st member 18+ in good standing. Friend: brand-new member, no previous Service 1st relationship, opens checking with debit card + digital banking.",
+  "notes": "Verified 2026-09-23. Service 1st Federal Credit Union. Referrer earns $50 credited to share savings per qualifying referral; cap 6 referrals ($300) per the program rules. Valid through 12/31/2026. Distinct from the Service 1st checking signup bonus (R0608).",
+  "numeric_basis": "payout from official service1.org program rules ($50 to referrer per referred new member; max 6); time: share referral est. 5-15 min active",
+  "official_url": "https://service1.org/membership/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "$50 will be credited to the referrer's share savings account when the debit card associated with the referred member's account has performed a transaction within 30 days of membership opening date and meets the program requirements. ... Members are eligible to receive up to $50 per referred new member/maximum 6 referred new members.",
+  "payout_value_note": "$50 credited to the referrer's share savings per referred new member; maximum 6 referrals ($300) per the program rules.",
+  "route_id": "R4766",
+  "standard": {
+    "s1": {
+      "note": "Rules live on service1.org, fetched 2026-09-23; offer valid through December 31, 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer 18+ in good standing; friend brand-new member with no previous relationship",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking with debit card + digital banking, debit transaction within 30 days of opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: paid by direct deposit after the debit-card transaction condition is met; void if either account closes before payment",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: rewards may be reportable as taxable income (federal, state, local)",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution for the referral lane",
+      "pass": true
+    }
+  },
+  "steps": [
+    "As a Service 1st member in good standing, refer friends/family to join.",
+    "Friend opens a new membership (checking account with debit card + Service 1st digital banking).",
+    "Friend's debit card performs a transaction within 30 days of membership opening.",
+    "$50 is credited by direct deposit to your share savings account."
+  ],
+  "terms_url": "https://service1.org/membership/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 credited by direct deposit after the friend's debit card transacts within 30 days of membership opening; accounts must remain open until payment.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Rewards are limited to a maximum of 3 payments per calendar year per individual ($225 max), and you receive nothing until your referral opens a qualifying account - Membership Savings plus checking with at least $100 in direct deposit OR an eligible loan product.",
+  "catches": [
+    "Referrer must be a current MyUSA member and maintain an active account in good standing.",
+    "Friend must be a qualifying new member: open a Main Share Membership Savings Account ($5) plus a checking account with at least $100 in direct deposit OR an eligible loan product (credit cards excluded).",
+    "Friend cannot have existing accounts as primary owner, have closed an account within the past 90 days, or have been paid a promotional reward in the past 12 months.",
+    "Referral rewards limited to a maximum of 3 payments per calendar year per individual = $225 max.",
+    "$75 deposited into primary share account within 45 days of account qualification; accounts must remain open and in good standing for 90 days or MyUSA may reclaim the reward."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official MyUSA CU page (myusacu.com): 'you could both earn $75*' and FAQ 'You can earn $75 for each friend or family member who qualifies for the referral reward, up to $225 in a calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official MyUSA CU page on myusacu.com, fetched live 2026-09-23, with full qualification, timing, and cap detail",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'MyUSA Credit Union' 2026-09-23 returned no verified referral route; no myusacu.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current MyUSA Credit Union member in good standing. Friend: qualifying new member (Southwest Ohio counties: Butler, Clark, Greene, Miami, Montgomery, Warren) who opens Membership Savings plus checking with $100+ direct deposit or an eligible loan product.",
+  "notes": "Verified 2026-09-23. MyUSA Credit Union (Middletown, OH). Referrer earns $75 per qualifying referral, capped at 3 payments / $225 per calendar year, deposited into primary share account within 45 days of account qualification.",
+  "numeric_basis": "payout from official MyUSA CU terms ($75 per qualifying referral; max 3/$225 per calendar year); time: complete online referral form est. 5-15 min active",
+  "official_url": "https://www.myusacu.com/refer-a-friend-reward/",
+  "payout_max_usd": 75,
+  "payout_min_usd": 75,
+  "payout_quote": "You can earn $75 for each friend or family member who qualifies for the referral reward, up to $225 in a calendar year.",
+  "payout_value_note": "$75 deposited to the referrer's primary share account per qualifying referral; cap 3 referrals / $225 per calendar year.",
+  "route_id": "R5716",
+  "standard": {
+    "s1": {
+      "note": "Official MyUSA CU page live on myusacu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a current member in good standing; friend is a qualifying new member in eligible Southwest Ohio counties",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open Membership Savings plus checking with $100+ direct deposit or an eligible loan product (no credit cards)",
+      "pass": true
+    },
+    "s4": {
+      "note": "$75 deposited within 45 days of account qualification; FAQ notes 3-5 business days after account open",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated on fetched page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the MyUSA online referral form with your friend's or family member's information (or have them mention your name when opening).",
+    "Your friend becomes a qualifying new member and meets the program requirements.",
+    "Once all program requirements are met, you and your referral each receive a $75 reward deposited into your primary share account."
+  ],
+  "terms_url": "https://www.myusacu.com/refer-a-friend-reward/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$75 deposited into the referrer's primary share account within 45 days of account qualification (FAQ: 3-5 business days after account opening).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

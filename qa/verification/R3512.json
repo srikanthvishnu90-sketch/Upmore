@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Earnings depend on performance and completed work volume — the $25–$35 and $35–$50 figures are averages, not a fixed wage, and this is selective W-2 employment (application + preliminary assessments), not an on-demand gig you can join and earn immediately.",
+  "catches": [
+    "Hourly figures are averages based on performance and completed work volume — not a guaranteed wage.",
+    "Requires application and preliminary assessments; selective hiring, not open enrollment.",
+    "Earnings progression to $35–$50/hr typically takes about a year of work.",
+    "Work is part-time (20–30 hrs/week typical for new employees), not full-time salaried income."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Bookminders careers page live on 2026-09-23 with stated hourly ranges and work structure.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page states new employees (20–30 hrs/week) average $25–$35/hr; after ~a year typically $35–$50/hr.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply or join; no purchase or risk capital required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Bookminders entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "Bookkeeping/accounting experience; application and preliminary assessments required; new employees typically work 20–30 hours per week.",
+  "notes": "Bookminders is W-2 employment rather than a task marketplace, but it fits the assigned bookkeeping lane. Pay is performance/volume-based hourly, quoted as official ranges.",
+  "numeric_basis": "Payout from official terms ($25–$35/hr new, $35–$50/hr after ~1 year); time: paid per hour worked.",
+  "official_url": "https://bookminders.com/join-our-team/careers/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 25,
+  "payout_quote": "Most new employees choose to work 20 – 30 hours per week, averaging $25 – $35 per hour. After a year or so, the hourly wage is typically $35 – $50 per hour. Earnings are based on performance and volume of work completed.",
+  "payout_value_note": "Official stated ranges: $25–$35/hr for new employees (20–30 hrs/week); typically $35–$50/hr after about a year; performance/volume-based.",
+  "route_id": "R3512",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: apply, assessments, interview, onboarding, take client work.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document performance-based pay, selective hiring, ~1-year progression, part-time structure.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: bookkeeping experience, application + assessments.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Careers page live and current as of 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from bookminders.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as performance-based averages with selective hiring; never promises a fixed wage.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply on the official Bookminders careers page.",
+    "Complete the application and preliminary assessments.",
+    "Interview and onboarding if selected.",
+    "Work assigned client bookkeeping engagements 20–30 hours per week.",
+    "Earn hourly pay averaging $25–$35/hr initially, typically $35–$50/hr after about a year, based on performance and completed work volume."
+  ],
+  "terms_url": "https://bookminders.com/join-our-team/careers/",
+  "time_max_minutes": 60,
+  "time_min_minutes": 60,
+  "timing": "Ongoing hiring; paid hourly for completed work.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "typically"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "$100 per qualifying referral (checking tier), but your friend must sustain $1,000+ in qualified monthly direct deposits for 6 CONSECUTIVE months — and your bonus pays 90 days after their account opening, capped at $500 per calendar year.",
+  "catches": [
+    "Friend must provide promo code RAF26 and your name at account opening",
+    "For the checking tier: friend must have had no KeyPoint account or loan in the prior 2 years, open checking with $10+, and establish recurring qualified monthly DD of $1,000+ (employment income, Social Security, benefits, or pension only) for 6 consecutive months",
+    "First qualifying DD must post within 60 days of account opening; interruptions forfeit the bonus",
+    "Referrer's $100 checking-tier bonus is paid 90 days after account opening",
+    "Per-referred-member cap: $300 (3 services); annual cap: $500 total referral bonuses per calendar year",
+    "Offer window: 1/1/2026–12/31/2026; KeyPoint employees/officials and immediate families ineligible",
+    "Student and Kids Checking ineligible; taxes on bonuses are the recipient's responsibility",
+    "KeyPoint is a California Bay Area credit union (Contra Costa, Alameda, Santa Clara, Sacramento, and other listed counties)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official kpcu.com refer-a-friend page: 'Referring Member may receive one $100 bonus for each bonus-eligible KeyPoint service a referred Member opens' and for checking: 'Referring Member will get $100 bonus 90 days after account opening if eligibility requirements are met.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms published directly on official kpcu.com refer-a-friend page (fetched live 2026-09-23); offer dated 1/1/2026-12/31/2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend provides promo code RAF26 and referrer's name at account opening",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'keypoint' shows R1014 (KeyPoint checking signup bonus, distinct) and R0557 (reject); no existing KeyPoint referral route",
+      "pass": true
+    }
+  },
+  "eligibility": "Current KeyPoint Credit Union members (CA Bay Area footprint). Referred friends must be new to KeyPoint (no account or loan in the prior 2 years for the checking tier) and provide promo code RAF26 plus the referring member's name at account opening.",
+  "notes": "dedupe-check clean: R1014 is the KeyPoint checking SIGNUP bonus; this is the separate Refer-A-Friend program. Per-referral amount is $100 per bonus-eligible service opened by one referred member (checking/certificate/loan tiers); consumer anchor is the $100 checking tier. Annual cap $500, per-member cap $300. Payout is cash to the referrer's KeyPoint account.",
+  "numeric_basis": "payout from official KeyPoint referral terms ($100 per bonus-eligible service per referred member); time: sharing promo code RAF26 + your name with a friend est. 5-10 min active (the friend's 6-month DD qualification and 90-day payout wait are not active time)",
+  "official_url": "https://kpcu.com/about/membership/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Referring Member may receive one $100 bonus for each bonus-eligible KeyPoint service a referred Member opens, up to a maximum of $300 per referred Member and $500 in total referral bonuses per calendar year.",
+  "payout_value_note": "$100 cash per bonus-eligible service a referred member opens; cap is $300 per referred member and $500 total per calendar year.",
+  "route_id": "R3328",
+  "standard": {
+    "s1": {
+      "note": "Terms live on official kpcu.com page with explicit offer window 1/1/2026-12/31/2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: KeyPoint membership required; friend new to KeyPoint (2 years for checking tier)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: promo code RAF26 + name at opening; checking tier = $1,000+ qualified monthly DD for 6 consecutive months",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: referrer paid 90 days after account opening (checking tier)",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: taxes on bonuses are the recipient's responsibility",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side mechanism; loan/certificate tiers are separate services within the same program",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current KeyPoint Credit Union member",
+    "Give your friend promo code RAF26 and your name",
+    "Friend provides the code and your name when opening their new KeyPoint account",
+    "For the checking tier: friend opens checking with $10+ and sets up recurring qualified monthly direct deposits of $1,000+ that continue for 6 consecutive months (first DD within 60 days)",
+    "You receive $100 per bonus-eligible service the friend opens, paid 90 days after their account opening (cap $300 per referred member, $500 per year)"
+  ],
+  "terms_url": "https://kpcu.com/about/membership/refer-a-friend",
+  "time_max_minutes": 10,
+  "time_min_minutes": 5,
+  "timing": "Sharing the promo code + your name takes ~5-10 minutes active; the $100 pays 90 days after the friend's account opening once they complete the 6-month DD requirement.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

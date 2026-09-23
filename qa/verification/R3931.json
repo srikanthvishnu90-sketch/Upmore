@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referred member must complete all three requirements (share savings, High-Rate Checking, new online/mobile banking) within 60 days of account opening.",
+  "catches": [
+    "$25 bonus to both the Referring Member and the Referred Member per qualifying referral.",
+    "Referred member must: 1) deposit $5 into a share savings account; 2) open a High-Rate Checking with a $5 minimum deposit; 3) enroll in a new Online and Mobile Banking account.",
+    "All requirements must be met within 60 days of account opening.",
+    "Referring member must have an active Online or Mobile Banking account to share the unique referral code, and must have an open High-Rate Checking.",
+    "$25 bonus deposited into the account within 5 business days of account opening.",
+    "If the checking account is closed within six months, the bonus is deducted at closing.",
+    "No self-referrals; employees may refer only people with a pre-existing relationship.",
+    "No stated referral cap."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Infuze CU page: 'For the Referring Member and Referred Member to receive the $25 bonus, the Referred Member must 1) Become a member... 2) open a High-Rate Checking... AND 3) Enroll in a new Online and Mobile Banking account.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms hosted on official infuzecu.org domain (infuzecu.org/refer), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $5 minimums",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'infuze' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Infuze CU member with active online/mobile banking and an open High-Rate Checking. Friend: new member 18+ completing the three requirements.",
+  "notes": "Verified 2026-09-23. Infuze Credit Union (Central MO). $25 each side; no referral cap stated. Bonus paid within 5 business days of account opening.",
+  "numeric_basis": "payout from official page ($25 each side; no cap stated); time: sharing referral code est. 5-15 min active",
+  "official_url": "https://www.infuzecu.org/refer",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "For the Referring Member and Referred Member to receive the $25 bonus, the Referred Member must 1) Become a member of Infuze Credit Union by depositing $5 into a share savings account... 2) open a High-Rate Checking with a $5 minimum deposit; AND 3) Enroll in a new Online and Mobile Banking account.",
+  "payout_value_note": "$25 each side per referral; no referral cap stated.",
+  "route_id": "R3931",
+  "standard": {
+    "s1": {
+      "note": "Terms live on infuzecu.org, fetched 2026-09-23; subject to end/change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer with active online banking + open High-Rate Checking; no self-referrals",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $5 share + High-Rate Checking ($5) + new online/mobile banking within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $25 deposited within 5 business days of account opening; 6-month clawback",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log into Infuze online/mobile banking and get your unique referral code.",
+    "Share the code with a friend.",
+    "Friend becomes a member ($5 share), opens High-Rate Checking ($5 min), and enrolls in online/mobile banking within 60 days.",
+    "You both receive $25 within 5 business days of account opening."
+  ],
+  "terms_url": "https://www.infuzecu.org/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 deposited within 5 business days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

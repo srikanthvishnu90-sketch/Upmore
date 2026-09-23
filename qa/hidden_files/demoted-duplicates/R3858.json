@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must open a 'new qualifying account' - and for loan referrals the friend must mention you and the referring member by name AT the loan closing, or no one gets paid (no exceptions).",
+  "catches": [
+    "Earn $50 for every friend who opens a new qualifying account with WWFCU (no cap stated).",
+    "Loan referral: $50 to you AND $50 to the borrower when a referred loan closes; borrower must mention the referral at closing - no exceptions.",
+    "Referring member must be a current member in good standing for loan referrals.",
+    "Loan credit deposited to savings no later than 5 business days after the new loan closes."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official WWFCU page (wwfcu.org): 'Earn $50 for every friend you refer to open a new qualifying account' and 'The referring member and referred borrower will receive their $50 credit deposited into their savings account no later than 5 business days after the new loan closes.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official wwfcu.org domain (wwfcu.org/resources/refer-a-friend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'wayne westland' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: WWFCU member (current member in good standing for loan referrals). Friend: opens a new qualifying account, or closes a new loan with the referral mentioned at closing.",
+  "notes": "Verified 2026-09-23. Wayne Westland Federal Credit Union (Westland, MI). $50 per friend who opens a new qualifying account; $50 per referred loan that closes (both sides). No referral cap stated.",
+  "numeric_basis": "payout from official page ($50 per qualifying account/loan referral; no cap stated); time: sharing the referral est. 5-15 min active",
+  "official_url": "https://wwfcu.org/resources/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Earn $50 for every friend you refer to open a new qualifying account with Wayne Westland Federal Credit Union. ... The referring member and referred borrower will receive their $50 credit deposited into their savings account no later than 5 business days after the new loan closes.",
+  "payout_value_note": "$50 to the referring member per qualifying account or loan referral. No cap stated.",
+  "route_id": "R3858",
+  "standard": {
+    "s1": {
+      "note": "Program page live on wwfcu.org, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referring member (good standing for loans); friend opens new qualifying account or closes referred loan",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open new qualifying account; for loans, mention referral at closing",
+      "pass": true
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing explicit for loans: the credit is deposited into the member's account within 5 business days of the loan closing; account-referral credit timing is not stated separately (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend to open a new qualifying account or take a loan at WWFCU.",
+    "For loans, the friend must mention your name at the loan closing.",
+    "Friend opens the qualifying account or the new loan closes.",
+    "You receive $50 per qualifying referral (loan credits land within 5 business days of closing)."
+  ],
+  "terms_url": "https://wwfcu.org/resources/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Loan referral credits deposited within 5 business days of the loan closing; account-referral timing not stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

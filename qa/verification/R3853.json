@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must actually complete the qualifying activity - 10 debit transactions or $250 in direct deposits for checking; 5 transactions + $2,500 limit for the credit card; $10,000 auto loan with 3 on-time payments - before either of you earns anything.",
+  "catches": [
+    "Member earns a $50 Visa Reward Card per qualifying referral: checking account, unsecured credit card, or auto loan (friend gets $50/$100/$100 respectively).",
+    "Checking: friend must register and complete 10 debit transactions (non-ATM) OR $250+ in direct deposits within 60 days of account opening.",
+    "Credit card: friend must open an unsecured card, qualify for a $2,500 limit, and complete 5 transactions within 60 days.",
+    "Auto loan: minimum $10,000 balance within 6 months of referral registration, plus 3 payments with no deferral.",
+    "Friend must register for the offer before qualifying. No referral cap stated on the page.",
+    "No published timing for reward-card delivery on this page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Carolina Foothills FCU page: '$50 For Member, $50 For Friend | Checking Account' and '$50 For Member, $100 For Friend | Unsecured Credit Card' and '$50 For Member, $100 For Friend | Auto Loan'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official carolinafoothillsfcu.coop domain (carolinafoothillsfcu.coop/refer-a-friend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking/card/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'carolina foothills' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Carolina Foothills FCU member. Friend: registers for the offer and opens a new checking account, unsecured credit card, or auto loan meeting the stated requirements.",
+  "notes": "Verified 2026-09-23. Carolina Foothills FCU (Inman, SC). Member earns a $50 Visa Reward Card per qualifying referral across three product tracks (checking, credit card, auto loan); friend earns $50/$100/$100. No referral cap stated. Paid as Visa Reward Cards, not cash.",
+  "numeric_basis": "payout from official page ($50 Visa Reward Card to the member per qualifying referral); time: sharing the referral offer est. 5-15 min active",
+  "official_url": "https://www.carolinafoothillsfcu.coop/refer-a-friend",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "$50 For Member, $50 For Friend | Carolina Foothills FCU Checking Account ... $50 For Member, $100 For Friend | Carolina Foothills FCU Unsecured Credit Card ... $50 For Member, $100 For Friend | Carolina Foothills FCU Auto Loan",
+  "payout_value_note": "$50 Visa Reward Card to the member per qualifying referral (checking, unsecured card, or auto loan). No cap stated.",
+  "route_id": "R3853",
+  "standard": {
+    "s1": {
+      "note": "Program page live on carolinafoothillsfcu.coop, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: member refers; friend registers and opens new product",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete per track: 10 debit transactions or $250 DD (60 days); 5 card transactions + $2,500 limit (60 days); $10,000 auto loan + 3 payments (6 months)",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share the referral offer with friends/family.",
+    "Friend registers for the offer and opens a new checking account, unsecured credit card, or auto loan.",
+    "Friend completes the qualifying activity for their track within the timeframe (60 days checking/card; 6 months auto).",
+    "You receive a $50 Visa Reward Card per qualifying referral."
+  ],
+  "terms_url": "https://www.carolinafoothillsfcu.coop/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward-card delivery timing not stated on the page; friend has 60 days (checking/card) or 6 months (auto loan) to qualify.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You earn $100 per referral only when the friend opens both new Checking and Savings accounts on the same day and provides your name and account number on the application (it cannot be added later); the bonus lands in your savings within 120 days — the friend may also qualify for a separate $350 new-member bonus on their own.",
+  "catches": [
+    "Friend must be new to Frontwave, 18+, and open new Checking AND Savings accounts on the same day",
+    "The referrer's name and account number must be included on the new member's application at the time of submission — if added later, the incentive is not awarded",
+    "Referrer must be a current member with a Frontwave savings account in good standing; accounts must remain open and in good standing through processing",
+    "Limit one referral bonus per new member; no self-referrals; excludes Frontwave employees and volunteers",
+    "Eligibility: friend must live, work, worship, or attend school in San Diego, Riverside, Imperial, or San Bernardino counties (or meet another SEG/military qualification); current members, joint owners, and anyone with a Frontwave account closed in the past 18 months are not eligible",
+    "Offer effective as of August 1, 2025; may change or end without notice",
+    "Incentive credited within 120 days; a 1099-INT will be issued for tax reporting"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Frontwave CU page (frontwavecu.com/refer-a-friend): 'Share Frontwave with your friends and family, and when they join, we'll thank you with $100.' Terms: 'Once verified, we'll deposit the $100 into your Savings within 120 days.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official frontwavecu.com/refer-a-friend page, indexed and live",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; $100 deposit to the referrer per qualifying referral",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Frontwave': R0596 covers the Frontwave $350 new-member bonus (frontwavecu.com/new-member) — a signup bonus, distinct from this referrer-side program",
+      "pass": true
+    }
+  },
+  "eligibility": "Current Frontwave members with a savings account in good standing who refer eligible new members (18+, new to Frontwave, in eligible Southern CA counties or SEG/military-qualified).",
+  "notes": "Official frontwavecu.com/refer-a-friend confirms $100 to the referrer per qualifying new member. R0596 is the separate Frontwave new-member (signup) bonus — not a duplicate. Per schema, payout_min_usd/payout_max_usd = per-referral $100; the 'one referral bonus per new member' rule is a per-referee cap, not an annual aggregate cap.",
+  "numeric_basis": "payout from official Frontwave CU referral terms ($100 to the referrer per qualifying referral); time: sharing the referral (name + account number) est. 5-15 min active",
+  "official_url": "https://www.frontwavecu.com/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "when they join, we'll thank you with $100",
+  "payout_value_note": "Flat $100 deposit per qualifying referral; no annual cap stated (limit: one referral bonus per new member; friend may also earn a separate $350 new-member bonus).",
+  "route_id": "R3369",
+  "standard": {
+    "s1": {
+      "note": "Official frontwavecu.com/refer-a-friend page live and indexed; effective August 1, 2025; may end without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer must be a current member in good standing; friend must be 18+, new, and in eligible counties/SEG",
+      "pass": true
+    },
+    "s3": {
+      "note": "Qualification concrete: friend opens Checking + Savings same day and names the referrer on the application at submission",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $100 deposited into the referrer's savings within 120 days once verified",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax disclosure present: 1099-INT will be issued",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side mechanism from the Frontwave new-member signup bonus (R0596)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current Frontwave member with a savings account in good standing",
+    "Share Frontwave with your friend, giving them your name and Frontwave account number",
+    "Friend opens a new Frontwave Checking and Savings account on the same day, providing your name and account number on the application",
+    "Accounts must remain open and in good standing",
+    "Once verified, the $100 referral bonus is deposited into your savings within 120 days"
+  ],
+  "terms_url": "https://www.frontwavecu.com/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Sharing the referral takes ~10 minutes active; the $100 bonus arrives within 120 days after the friend's qualifying account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

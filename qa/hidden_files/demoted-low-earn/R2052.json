@@ -1,0 +1,86 @@
+{
+  "route_id": "R2052",
+  "verdict": "verify",
+  "official_url": "https://docs.bugcrowd.com/researchers/onboarding/becoming-a-researcher/",
+  "terms_url": "https://docs.bugcrowd.com/researchers/onboarding/becoming-a-researcher/",
+  "payout_quote": "Anyone can sign up to be a researcher. To become a researcher, you need to create an account. Researchers can participate in any public bounty program that we run.",
+  "steps": [
+    "Create a free Bugcrowd researcher account.",
+    "Read Bugcrowd's code of conduct and standard disclosure terms before starting.",
+    "Browse public bounty programs and review each program's rules and scope.",
+    "Perform authorized testing within scope and submit vulnerability reports.",
+    "Valid submissions earn points (reputation/leaderboard) and monetary bounties from the program owner, plus occasional swag."
+  ],
+  "catches": [
+    "Only valid submissions earn rewards — duplicates and out-of-scope reports earn nothing.",
+    "Bounty amounts are set per program; no platform-wide payout range.",
+    "Private programs may require identity verification before participation.",
+    "Requires real security skills; beginners earn nothing for a long time.",
+    "Strict rules of engagement: violating scope can end your researcher account."
+  ],
+  "biggest_catch": "Payment requires valid, unique, in-scope findings — the vast majority of time spent testing yields no payout.",
+  "eligibility": "Free account open to anyone; public programs need no invitation.",
+  "timing": "Programs run continuously; rewards paid per program terms after validation.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Bugcrowd's own researcher docs state: 'Anyone can sign up to be a researcher... Researchers can participate in any public bounty program that we run' and rewards are 'Monetary: Financial compensation that you receive from a company when you submit a valid vulnerability.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms tie monetary rewards to valid vulnerabilities per program — amounts are program-set; framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: create account, read rules, join public programs, test in scope, submit reports."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Joining and participating are free; no upfront fee documented."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free account."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-program bounties; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover duplicate/out-of-scope non-payment and skill requirements."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no Bugcrowd route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous programs."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "Bugcrowd's public bug-bounty programs let any signed-up researcher test in-scope assets and earn monetary bounties for valid vulnerabilities. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Bounty amounts are set per program; Bugcrowd publishes no fixed platform-wide range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 240,
+  "numeric_basis": "payout: per-program bounties, no official range. time: account + read rules + browse programs + first testing session, est. 60-240 min active."
+}

@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This $100 rate is a LIMITED-TIME 2x boost over the standard $50 referral incentive - it can end at any time once referral bonus funds are exhausted, so the amount is only as durable as the promo.",
+  "catches": [
+    "Referrer earns $100 per qualifying referral during the limited-time 2x promotion (double the standard $50 incentive); offer may end at any time once funds are exhausted.",
+    "Cap: $100 max referral bonus per referred member; $500 max total referral bonuses per calendar year.",
+    "Referrer must be an existing, active Cal Coast member in good standing, 18+.",
+    "Friend must: be a new Cal Coast member; pay a one-time $5 membership fee; open savings + checking with eStatements; maintain at least $50 in either account until the bonus is paid; enroll in Digital Banking, Bill Pay, or Direct Deposit.",
+    "Bonuses paid to the savings account within 3 business days after qualifications are met.",
+    "Bonuses considered interest, subject to tax, reported on IRS Form 1099-INT.",
+    "Cannot be combined with other offers; branch employees ineligible; membership and credit subject to approval."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Cal Coast page (calcoastcu.org/refer/): 'For a limited time get $100 for you, and $100 for anyone you refer to Cal Coast Credit Union.' and 'Limited-time 2x Rewards (earn double the standard $50 incentive)' and 'Bonus limits: a) $100 max referral bonus per referred member, b) $500 max total referral bonuses per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms on official calcoastcu.org domain, fetched live 2026-09-23; limited time, may end at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend pays a $5 one-time membership fee and opens savings + checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no calcoastcu.org route; catalog has no Cal Coast CU entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing active Cal Coast member 18+ in good standing. Friend: new member 13+ meeting eligibility, opening savings + checking with eStatements.",
+  "notes": "Verified 2026-09-23. California Coast Credit Union. Limited-time 2x promo: referrer earns $100 per qualifying referral (standard rate $50); cap $500/year. Friend must open savings + checking with eStatements and maintain $50.",
+  "numeric_basis": "payout from official calcoastcu.org terms (limited-time $100 per referral; cap $500/yr); time: share referral est. 5-15 min active",
+  "official_url": "https://calcoastcu.org/refer/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "For a limited time get $100 for you, and $100 for anyone you refer to Cal Coast Credit Union. ... Limited-time 2x Rewards (earn double the standard $50 incentive). ... Bonus limits: a) $100 max referral bonus per referred member, b) $500 max total referral bonuses per calendar year.",
+  "payout_value_note": "$100 to the referrer per qualifying referral during the limited-time 2x promotion; cap $500/calendar year.",
+  "route_id": "R4794",
+  "standard": {
+    "s1": {
+      "note": "Terms live on calcoastcu.org, fetched 2026-09-23; limited time, may end at any time once funds are exhausted",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer existing active member 18+ in good standing; friend new member 13+ meeting eligibility",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: $5 membership fee, savings + checking with eStatements, $50 balance maintained, enroll in digital banking/bill pay/direct deposit",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonuses paid to savings within 3 business days after qualifications met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonuses considered interest, reported on IRS Form 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to the referrer to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your Cal Coast referral with a friend.",
+    "Friend joins as a new member (one-time $5 fee) and opens savings + checking with eStatements, maintaining $50 in either account.",
+    "Friend enrolls in Digital Banking, Bill Pay, or Direct Deposit.",
+    "You earn $100 per qualifying referral (cap $500/year), paid to your savings within 3 business days."
+  ],
+  "terms_url": "https://calcoastcu.org/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Referral bonus paid to the savings account within 3 business days after qualifications are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

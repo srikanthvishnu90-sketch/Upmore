@@ -1,0 +1,87 @@
+{
+  "route_id": "R6063",
+  "verdict": "verify",
+  "official_url": "https://firstccu.com/resources/member-benefits-rewards/refer-a-friend-program",
+  "terms_url": "https://firstccu.com/resources/member-benefits-rewards/refer-a-friend-program",
+  "payout_quote": "Get $50* for each referral ... When they open a new checking account or loan, we'll give you $50 and they'll receive $100.*",
+  "steps": [
+    "Fill out the online referral form on firstccu.com (or print the coupon and give it to your friend).",
+    "Friend opens a new checking account or qualifying loan ($10,000+, no unsecured loans) and submits your referral at account opening.",
+    "Friend completes requirements within 60 days (checking: 20 debit transactions + direct deposit required)."
+  ],
+  "catches": [
+    "Friend must be a new member (no FirstCCU membership account for at least 1 year) and complete real requirements — 20 debit card transactions within 60 days for checking, plus direct deposit; loans must exceed $10,000.",
+    "Referral must be submitted at the time of account opening — late submissions don't qualify.",
+    "Referrer must be a current member in good standing at payout; incentives paid within 60 days after requirements are satisfied, deposited into membership savings.",
+    "No cap stated on official page, but program is subject to change at any time without notice; FirstCCU may disqualify referrals not made in good faith.",
+    "Employees and their households are not eligible."
+  ],
+  "biggest_catch": "Your friend has to actually qualify — 20 debit purchases plus direct deposit within 60 days for checking — and the referral must be submitted when they open the account, not after.",
+  "eligibility": "Current FirstCCU member in good standing (WI/IL credit union); friend must be a new member, 18+, meeting membership eligibility. Employees and household excluded.",
+  "timing": "Submit form in ~10 minutes; incentive deposited into membership savings within 60 days after the friend satisfies all requirements.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "incentive",
+    "new member"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:26:55Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official firstccu.com page: 'Get $50* for each referral' — concrete per-referral referrer payout."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official firstccu.com referral page, fetched 2026-09-23; full terms on same page."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate; $25 checking opening deposit is the friend's account funding, not a referral fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "dedupe-check for 'First Community Credit Union'/'FirstCCU' returned only token-match false positives; firstccu.com absent from referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Page live on firstccu.com fetched 2026-09-23; terms note program subject to change at any time."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Referrer must be current member in good standing; friend new member 18+, membership eligibility required; employees excluded."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirements concrete: 20 debit transactions in 60 days + direct deposit (checking), or $10,000+ loan."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Incentive paid within 60 days after requirements satisfied, deposited to membership savings."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No tax treatment stated on the official page; no generic tax assumption made."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct referrer-side earning mechanism; new institution not previously catalogued."
+    }
+  },
+  "notes": "Verified 2026-09-23 via live official FirstCCU (WI/IL) Refer a Friend page. Referrer earns $50 per referral (friend gets $100); no referral-count cap stated on the page.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 paid to referrer per qualified referral (cash deposited into membership savings).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 flat per referral from official terms; time: online form or coupon handoff est. 5-15 min active"
+}

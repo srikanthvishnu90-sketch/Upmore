@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You must work Election Day for the training pay to be released; pay takes approximately 30 business days to process.",
+  "catches": [
+    "Compensated $135 for each election: $60 for training + $75 for Election Day.",
+    "You must work Election Day in order to be paid for training.",
+    "Must attend a Poll Manager Training Session (3-4 hours) and pass an online certification test before EACH election.",
+    "Election Day: 6:00 AM until approximately 7:30 PM; pay is processed ~30 business days after the election.",
+    "Must be a registered voter in Charleston County or an adjoining county (Dorchester, Berkeley, Georgetown, Colleton), or aged 16-17."
+  ],
+  "checked_at": "2026-09-23T07:59:21Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Charleston County Board of Elections & Voter Registration poll manager application (charlestoncounty.org).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Compensated $135 for each election: $60 for training and $75 for working Election Day.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply, train, or serve.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Charleston County Board of Elections & Voter Registration payment.",
+      "pass": true
+    }
+  },
+  "eligibility": "Registered voter in Charleston County or an adjoining county (Dorchester, Berkeley, Georgetown, Colleton), or aged 16-17; nonpartisan, not an elected official.",
+  "notes": "Verify record: Charleston County poll manager (Election Day). $60 training + $75 Election Day = $135. Official application PDF, still hosted on county site.",
+  "numeric_basis": "payout from official county poll manager application ($135/election); time: training 3-4 hours + Election Day 6 AM-7:30 PM.",
+  "official_url": "https://www.charlestoncounty.org/departments/bevr/files/PM-Application.pdf?r=772",
+  "payout_max_usd": 135,
+  "payout_min_usd": 135,
+  "payout_quote": "They are also compensated $135 for each election they work, $60 for training and $75 for working Election Day. You must work Election Day in order for us to pay you for training.",
+  "payout_value_note": "Flat: $135 per election ($60 training + $75 Election Day), contingent on working Election Day.",
+  "route_id": "R4493",
+  "standard": {
+    "s1": {
+      "note": "Registered voter in Charleston County or adjoining county, or 16-17; nonpartisan.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Official charlestoncounty.org application PDF (crawled 99 days ago, still hosted).",
+      "pass": true
+    },
+    "s3": {
+      "note": "$60 training + $75 Election Day = $135 per election.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Training 3-4h + Election Day 6 AM-7:30 PM (13.5h).",
+      "pass": true
+    },
+    "s5": {
+      "note": "3-4 hour training session + online certification test before each election (test duration unstated).",
+      "pass": true
+    },
+    "s6": {
+      "note": "No upfront fee.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Charleston County Board of Elections payment; ~30 business days to process.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Meet eligibility: registered voter in Charleston County or an adjoining county (or aged 16-17).",
+    "Apply as a poll manager to the Charleston County Board of Elections & Voter Registration.",
+    "Attend the Poll Manager Training Session (3-4 hours) and pass the online certification test.",
+    "Work the entire Election Day (6:00 AM-approximately 7:30 PM).",
+    "Receive $135 ($60 training + $75 Election Day); pay processed in ~30 business days."
+  ],
+  "terms_url": "https://www.charlestoncounty.org/departments/bevr/files/PM-Application.pdf?r=772",
+  "time_max_minutes": 1050,
+  "time_min_minutes": 990,
+  "timing": "Election Day 6:00 AM-7:30 PM (13.5 hours) plus 3-4 hour training session and online certification test.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "The online certification test is required but its duration is not stated, so no test time is counted.",
+    "Training pay ($60) is only released if you work Election Day.",
+    "The county's separate 2026 recruitment flyer advertises 'earn up to $250' for the 2026 season; this route uses the exact per-election $135 figure from the official application."
+  ]
+}

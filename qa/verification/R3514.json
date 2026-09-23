@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Official pay figures conflict: the canonical FAQ says starting rates from $17/hour, but the official application portal shows $11–$17/hour with $11 initial — a new assistant may actually start at $11, so confirm the current offer at application before counting on $17.",
+  "catches": [
+    "Pay-rate conflict: FAQ says 'from $17/hour'; application portal showed $11–$17/hour with $11 initial. Confirm current offer before applying.",
+    "Average assistant works about 39 hours/month — this is part-time side income, not full-time pay.",
+    "Professional liability insurance is required after onboarding (an extra cost to factor in).",
+    "Selective: U.S.-based, relevant experience, workday availability, and home equipment required."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Time Etc FAQ page live on 2026-09-23 with starting rate, payment terms, hours, and requirements.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official FAQ states starting rates from $17/hour, direct hourly payment, payment guaranteed for completed work.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to join or apply; no purchase or risk capital required (professional liability insurance required after onboarding is disclosed as a catch).",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No Time Etc entry found in qa/existing-providers.txt or qa/verification/R*.json filenames on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "eligibility": "U.S.-based; relevant experience; workday availability; home equipment; professional liability insurance required after onboarding.",
+  "notes": "Time Etc virtual assistant work. Used the FAQ's $17 figure as the verified range bound with the $11 portal figure as the low bound, and the discrepancy is disclosed as the biggest catch.",
+  "numeric_basis": "Payout from official terms ($17/hr starting per FAQ; $11–$17/hr with $11 initial per application portal — discrepancy disclosed); time: paid per hour worked.",
+  "official_url": "https://www.timeetc.com/be-a-virtual-assistant/frequently-asked-questions",
+  "payout_max_usd": 17,
+  "payout_min_usd": 11,
+  "payout_quote": "Starting rates from $17/hour; direct hourly payment; payment guaranteed for completed work; average assistant works about 39 hours/month; positioned as flexible part-time work.",
+  "payout_value_note": "$17/hr starting per official FAQ; official application portal showed $11–$17/hr with $11 initial — confirm current offer at application.",
+  "route_id": "R3514",
+  "standard": {
+    "s1": {
+      "note": "Steps concrete: apply, screening/interview, onboarding, accept client hours, paid hourly.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Catches document the pay-rate conflict, ~39 hrs/month part-time reality, insurance cost, selectivity.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Eligibility stated: U.S.-based, experience, workday availability, home equipment, insurance after onboarding.",
+      "pass": true
+    },
+    "s4": {
+      "note": "FAQ page live and current as of 2026-09-23.",
+      "pass": true
+    },
+    "s5": {
+      "note": "All evidence from timeetc.com (provider's own domain); no aggregator used.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Framed as part-time hourly work with a pay discrepancy disclosed; never promises fixed income.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe checked: grep qa/existing-providers.txt + qa/dedupe-check.py + qa/verification filename glob on 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply on the Time Etc virtual-assistant application page.",
+    "Complete screening/interview steps; confirm the current hourly offer given the FAQ/portal discrepancy.",
+    "Onboard (including professional liability insurance after onboarding).",
+    "Accept client hours on your schedule (average assistant ~39 hours/month).",
+    "Get paid hourly by direct payment; payment guaranteed for completed work."
+  ],
+  "terms_url": "https://www.timeetc.com/be-a-virtual-assistant/frequently-asked-questions",
+  "time_max_minutes": 60,
+  "time_min_minutes": 60,
+  "timing": "Ongoing applications; paid per completed hour; average assistant works ~39 hours/month.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

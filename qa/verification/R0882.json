@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Current Michigan State University students only, enrolled in the 2026-2027 academic year; open MSUFCU checking with Visa Debit Card June 1 - October 31, 2026 and make 10 qualifying debit card purchases within 30 days of opening for a $50 bonus.",
+  "catches": [
+    "Only for current MSU students enrolled in the 2026-2027 academic year.",
+    "Not valid for members with current or previously closed checking accounts.",
+    "Cannot be combined with other checking offers.",
+    "Qualifying transactions: point-of-sale purchases with physical debit card or digital wallet; ATM, transfers, refunds, P2P excluded.",
+    "Transactions must post within 30 days of account opening.",
+    "$50 paid into Spartan Saver within 4 weeks of the qualifying 10th transaction.",
+    "Bonus may be taxable (1099-INT/1099-MISC).",
+    "Older IL $150 and June $100 MSUFCU offers are expired and not verified here."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Michigan State University Federal Credit Union (msufcu.org), East Lansing, Michigan - real NCUA-insured credit union; promo terms on official msufcu.org/specialoffers/students page (search crawl 2026-09-22).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: MSU students enrolled 2026-2027 opening MSUFCU checking with Visa Debit Card 6/1/26-10/31/26 and completing at least 10 qualifying debit card purchase transactions within 30 days receive a $50 bonus deposited into their Spartan Saver account.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No enrollment fee; bonus goes into the member's Spartan Saver share account.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "$50 deposited into Spartan Saver within 4 weeks after the qualifying 10th debit card purchase transaction is completed.",
+      "pass": true
+    }
+  },
+  "eligibility": "Current Michigan State University students enrolled in the 2026-2027 academic year; no current or previously closed MSUFCU checking accounts.",
+  "notes": "VERIFIED. Note: prior MSUFCU offers ($150 IL 'no requirements', June $100 with 3x $1,000+ direct deposits) are expired per aggregators. This JSON verifies only the currently-live $50 student promo on the official MSUFCU site. Offer valid through October 31, 2026.",
+  "numeric_basis": "Official terms: exact dollar amount ($50), transaction count (10 qualifying debit purchases within 30 days), payout timing (within 4 weeks of 10th transaction), and promo window (6/1/26-10/31/26).",
+  "official_url": "https://www.msufcu.org/specialoffers/students",
+  "payout_max_usd": 50.0,
+  "payout_min_usd": 50.0,
+  "payout_quote": "Current Michigan State University (MSU) students who are enrolled in the 2026-2027 academic year and open a Michigan State University Federal Credit Union (MSUFCU) checking account with a Visa Debit Card between 6/1/26 and 10/31/26 and complete at least 10 qualifying debit card purchase transactions within 30 days of account opening will receive a $50 bonus deposited into their Spartan Saver account.",
+  "payout_value_note": "Flat $50 student checking bonus; no tiering.",
+  "route_id": "R0882",
+  "standard": {
+    "s1": {
+      "note": "Current MSU students enrolled 2026-2027.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Open MSUFCU checking with Visa Debit Card 6/1/26-10/31/26; 10 qualifying debit purchases (POS or digital wallet) within 30 days of opening.",
+      "pass": true
+    },
+    "s3": {
+      "note": "$50 into Spartan Saver within 4 weeks of the qualifying 10th transaction.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Amount, conditions, timing stated flatly; no weasel words.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.msufcu.org/specialoffers/students - official MSUFCU promo page (search crawl).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: account type, debit card, count, day window, payout destination.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official page confirmed via search crawl 2026-09-22; direct page-open not re-attempted this session - flag for direct re-verification.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open an MSUFCU checking account with a Visa Debit Card between June 1, 2026 and October 31, 2026 as a current MSU student enrolled in the 2026-2027 academic year.",
+    "Make at least 10 qualifying debit card purchase transactions (point-of-sale with physical card or digital wallet; no ATM/transfers/P2P) within 30 days of account opening.",
+    "Receive $50 into your Spartan Saver account within 4 weeks of the qualifying 10th transaction."
+  ],
+  "terms_url": "https://www.msufcu.org/specialoffers/students",
+  "time_max_minutes": 45,
+  "time_min_minutes": 20,
+  "timing": "$50 deposited into Spartan Saver within 4 weeks after the qualifying 10th debit card purchase transaction is completed; account must be opened 6/1/26-10/31/26.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

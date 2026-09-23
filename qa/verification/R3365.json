@@ -1,0 +1,88 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Payouts rise with each referral ($250 for the first, up to $750 for the fifth and beyond), but the escalating tiers reset every January 1st and only count friends who join within the same calendar year; bonuses pay the day after the new member completes all requirements, which can take up to 120 days.",
+  "catches": [
+    "Tiered per-referral bonuses within one calendar year: $250 (1st), $400 (2nd), $500 (3rd), $600 (4th), $750 (5th and each after), up to 10 per calendar year",
+    "Tiers reset each January 1st; higher payouts require all referred members to join within the same calendar year",
+    "Referred member gives the referrer's unique promo code at account opening, then must meet membership eligibility and all qualification requirements (up to 120 days)",
+    "Cannot be combined with any other Stanford FCU promotional offers",
+    "Invalid if the referred member had a Stanford FCU account closed within the last two years",
+    "Stanford FCU employees, family members, and volunteers are not eligible; no bonuses for members in the same household",
+    "Stanford FCU may modify or cancel the program without notice"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Stanford FCU document (sfcu.org): 'The referring member will receive bonuses between $250 and $750 for each qualified referral as follows: $250 for the first referral, $400 for the second referral, $500 for the third referral, $600 for the fourth referral, $750 for the fifth referral and each referral after, up to a maximum of 10 per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official sfcu.org-hosted referral terms document, indexed and live",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; tiered cash bonuses $250-$750 per qualifying referral",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Stanford FCU': 0 hits; R0542 (Stanford Federal Credit Union) covers the CashBack+ rewards program — distinct",
+      "pass": true
+    }
+  },
+  "eligibility": "Stanford FCU members (18+) who generate a unique promo code and refer eligible new members. Referred members must join with the code and complete membership/activity requirements.",
+  "notes": "Official sfcu.org referral terms confirm tiered referrer payouts ($250/$400/$500/$600/$750) up to 10 referrals per calendar year. Per schema, per-referral payout range $250-$750 (annual aggregate max $6,250 recorded as cap context, not as payout_max_usd). The official document was crawled ~141 days before verification — flag if a newer version appears.",
+  "numeric_basis": "payout from official Stanford FCU referral terms ($250-$750 per qualifying referral by tier); time: generating and sharing the promo code est. 5-15 min active",
+  "official_url": "https://www.sfcu.org/wp-content/uploads/Stanford-Federal-Credit-Union-Exciting-Perks-Meta.pdf",
+  "payout_max_usd": 750,
+  "payout_min_usd": 250,
+  "payout_quote": "The referring member will receive bonuses between $250 and $750 for each qualified referral",
+  "payout_value_note": "$250 per referral (1st) rising to $750 per referral (5th+); up to 10 referrals/calendar year ($6,250 max aggregate).",
+  "route_id": "R3365",
+  "standard": {
+    "s1": {
+      "note": "Official sfcu.org referral terms document live and indexed; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referring member 18+; referred member must meet membership eligibility and requirements",
+      "pass": true
+    },
+    "s3": {
+      "note": "Qualification concrete: referred member provides the unique promo code at joining and meets all requirements within up to 120 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: bonus deposited into the member's account the day after the new member meets requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "No explicit tax disclosure in the referral terms",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referral mechanism from the Stanford FCU CashBack+ program (R0542)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Generate your unique promo code in your Stanford FCU account (Open & Apply → Refer a Friend)",
+    "Share your promo code with friends and family",
+    "Friend joins Stanford FCU and provides your promo code at account opening",
+    "Friend meets all membership eligibility and qualification requirements (up to 120 days)",
+    "Your bonus ($250-$750 based on your referral count this calendar year) is deposited the day after they qualify"
+  ],
+  "terms_url": "https://www.sfcu.org/wp-content/uploads/Stanford-Federal-Credit-Union-Exciting-Perks-Meta.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Sharing the promo code takes ~10 minutes active; the bonus arrives the day after the friend completes all requirements (up to ~120 days after they join).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

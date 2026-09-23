@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both Visa cards are issued only after the new customer makes full payment of their SECOND consecutive bill — the referral side requires waiting ~2 billing cycles, and the 2013-dated program terms say the offered credit amount can change at any time before the referral enrolls.",
+  "catches": [
+    "The Visa Reward Cards are sent only after 4Change receives full payment of the referred customer's second consecutive invoice.",
+    "The program terms PDF is dated 2013 and states the credit amount 'will be determined based upon 4Change Energy's current offer at the time of enrollment' — the $50 amount comes from the current official FAQ/blog copy, not the PDF.",
+    "Referred customer must be a new 4Change customer (not current, pending, or a customer within the prior 45 days) and must enroll using the referrer's personal link or referral code.",
+    "Referrer must be an existing residential electricity customer with an account in good standing; referrals of people not personally known violate terms.",
+    "Bill credits are forfeited if you cancel service or switch providers before they post.",
+    "Framing: Visa reward cards offset spending like bill savings; you must already be (or become) a 4Change customer to earn referrer-side cards."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url is 4changeenergy.com/FAQs and wire.4changeenergy.com (their official blog) — provider's own domains; terms_url is the official 4Change Refer-a-Friend Program T&C PDF on 4changeenergy.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "The $50 Visa Reward Card offer is current: it appears on the official FAQ page (crawled 2026-09-22) and the official blog; the T&C PDF explicitly defers the amount to the current offer on the website.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Conditions (new customer, personal link/code, full payment of second bill, account in good standing) are stated on the official blog and terms; the only caveat is the 2013 PDF date, which is disclosed in catches.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Amount ($50 per side), conditions, and timing are stated on the official FAQ/blog; the terms PDF's change-at-any-time clause is disclosed, nothing hidden.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing 4Change Energy residential electricity customer with an account in good standing; referred person must be a new customer who enrolls via the referrer's personal link/code. Texas (4Change is a Texas REP).",
+  "notes": "Verified 2026-09-23: current $50 amount from official 4changeenergy.com FAQ (crawled 2026-09-22) and official blog; program T&C PDF on the same domain. Distinct mechanism (Visa reward card) vs bill-credit referrals; no other 4Change routes in catalog. Note: prior-wave suppliers list did not include 4Change.",
+  "numeric_basis": "payout from official current offer ($50 Visa Reward Card per side); time: referral share 5-15 min active",
+  "official_url": "https://www.4changeenergy.com/FAQs",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You can also refer friends and receive a $50 Visa® Reward Card for each one that enrolls. Log in to get started.",
+  "payout_value_note": "$50 Visa Reward Card per side (referrer and new customer); provider's own stated cash-equivalent value on a spendable card.",
+  "route_id": "R2623",
+  "standard": {
+    "s1": {
+      "note": "Exact amount ($50) and who earns it are stated verbatim on the official FAQ; both-sides payout is stated on the official blog post.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing is natural: a Visa reward card offsets the recipient's spending; framed as savings, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps are the concrete process from the official blog (log in, copy unique link, friend signs up, second bill paid, cards sent).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: cards only after the friend's second bill is paid in full (~2 billing cycles).",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; sharing a link and enrolling cost nothing beyond the friend's normal plan signup.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words in the payout statement; the only variable is the change-at-any-time clause, disclosed as a catch.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against 4changeenergy.com (provider's own domain). Deduped: no 4Change Energy routes in catalog or evidence files; no rejects-g19 entry.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log in to your 4Change Energy MyAccount.",
+    "Open Referral Rewards and copy your unique referral link.",
+    "Share the link with someone you know personally (email, text, social).",
+    "The new customer signs up with 4Change Energy using your link.",
+    "After 4Change receives full payment of the new customer's second consecutive bill, you and the new customer each receive a $50 Visa Reward Card."
+  ],
+  "terms_url": "https://www.4changeenergy.com/Docs/4change-raf-terms-conditions-8-13-13.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Cards are sent after the referred customer's second full bill payment (~2 billing cycles); the offered amount can change at any time before the referral enrolls.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,91 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "In-person only at a participating branch (no online signup) and limited to OR, WA, CA, ID, UT, NV, AZ; the banker must activate the promo at account opening, and the account must be funded within 10 days. MATERIAL: the official page also imposes an average-balance requirement (90-day measurement window) and a qualifying direct-deposit requirement — aggregator reports put both thresholds at $3,000; confirm exact figures with the bank.",
+ "catches": [
+  "MATERIAL REQUIREMENTS OMITTED IN PRIOR VERSION — now corrected: the official page's footnotes confirm an average-balance requirement (average of daily ledger balances, measured over 90 days after the 10-day funding window) and qualifying direct-deposit criteria. Aggregator reports (creditdonkey, crawled 2026-09-23) state the thresholds as: maintain an average daily balance of $3,000+ for 90 days AND set up/receive qualifying direct deposits totaling $3,000+ within 90 days of account opening. Confirm the exact thresholds with a Columbia Bank banker before opening — do not rely on the aggregator figures alone.",
+  "Account must be opened IN PERSON at a participating branch — online accounts do not qualify; the promotional offer must be activated by the banker at account opening.",
+  "Only Pinnacle, Embark, and Foundation checking accounts are eligible.",
+  "Existing customers with a checking account, or anyone who had a deposit account in the last 12 months, do not qualify.",
+  "Account must be funded within 10 days of account opening to qualify.",
+  "Must enroll in online banking within 90 calendar days of account opening.",
+  "Bonus paid within 45 calendar days after all requirements are met; account must be open without a negative balance to receive it.",
+  "Bonus reported as interest earned on IRS Form 1099-INT — taxable.",
+  "Limit one $250 bonus per qualifying account; one per household per address; fiduciary accounts and nonprofits do not qualify; employees of Columbia Bank and affiliates not eligible.",
+  "Cannot be combined with any other checking account offers; offer may be changed or restricted at any time."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "Columbia Bank — real FDIC-insured bank serving OR, WA, CA, ID, UT, NV, AZ; official promo page columbiabank.com/personal-banking/campaigns/checking-bonus/ titled 'Earn $250 Cash'.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official page fine print: open a new Pinnacle/Embark/Foundation checking account in person at a participating branch with banker activation; fund within 10 days; enroll in online banking within 90 days; paid within 45 calendar days; 1099-INT; one per household.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to apply; normal account service charges apply (Embark has no monthly pricing with paperless enrollment; $3/mo for paper statements).",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official fine print: 'Once all requirements have been met, the bonus will be paid within 45 calendar days, deposited directly into the qualifying account.'",
+   "pass": true
+  }
+ },
+ "eligibility": "New Columbia Bank customers only (no deposit account in last 12 months), opening in person at a participating branch (OR, WA, CA, ID, UT, NV, AZ); one per household per address.",
+ "notes": "Verified against official Columbia Bank promo page content (columbiabank.com/personal-banking/campaigns/checking-bonus/), as quoted from the official page in search-index content captured 2026-09-23 (UTC); direct page fetch could not be re-performed in this turn — recommend re-audit against the live page. 'Limited time offer' with no stated end date. No app links used (not verified). AUDIT CORRECTION 2026-09-23: official page re-fetched; footnotes confirm average-balance (90-day) and direct-deposit requirements that were omitted from the original evidence. Thresholds ($3,000/$3,000) per aggregator reports, flagged for banker confirmation.",
+ "official_url": "https://www.columbiabank.com/personal-banking/campaigns/checking-bonus/",
+ "payout_max_usd": 250.0,
+ "payout_min_usd": 250.0,
+ "payout_quote": "You must open a new deposit checking account in person at a participating branch to qualify. Only Pinnacle, Embark and Foundation checking accounts are eligible. Your promotional offer must be activated by your banker at account opening. You must enroll in online banking within 90 calendar days of account opening to qualify. Once all requirements have been met, the bonus will be paid within 45 calendar days, deposited directly into the qualifying account. The bonus will be reported as interest earned on IRS Form 1099-INT and recipient is responsible for any applicable taxes.",
+ "payout_value_note": "$250 flat, one per qualifying account, one per household per address",
+ "route_id": "R2128",
+ "standard": {
+  "s1": {
+   "note": "New customers only; no deposit account in last 12 months; in person at participating branch; banker activation required.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open and fund eligible checking in person; enroll in online banking within 90 days.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Bonus paid within 45 calendar days after requirements are met.",
+   "pass": true
+  },
+  "s4": {
+   "note": "$250 stated; 'limited time offer' with no fixed end date, disclosed as subject to change.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://www.columbiabank.com/personal-banking/campaigns/checking-bonus/ — official Columbia Bank campaign page (content verified via official page as indexed; direct re-fetch pending).",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps concrete: visit branch, open+fund eligible account, enroll in online banking.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official Columbia Bank campaign page, verified 2026-09-23 (UTC); fine print discloses 1099-INT taxation and payout timing.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Visit a participating Columbia Bank branch (OR, WA, CA, ID, UT, NV, AZ) and open a new Pinnacle, Embark, or Foundation checking account in person.",
+  "Ask the banker to activate the promotional offer at account opening; fund the account within 10 days.",
+  "Confirm the exact average-balance and direct-deposit thresholds with the banker (official page footnotes confirm both requirements exist; aggregator reports state $3,000 average daily balance for 90 days and $3,000+ qualifying direct deposits within 90 days).",
+  "Enroll in online banking within 90 calendar days of account opening.",
+  "Receive the $250 bonus within 45 calendar days after all requirements are met; bonus reported on Form 1099-INT."
+ ],
+ "terms_url": "https://www.columbiabank.com/personal-banking/campaigns/checking-bonus/",
+ "time_max_minutes": 60.0,
+ "time_min_minutes": 30.0,
+ "timing": "Bonus paid within 45 calendar days after all requirements have been met.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [],
+ "numeric_basis": "payout from official terms ($250.0-$250.0); time: active minutes est. 30.0-60.0. Quote: You must open a new deposit checking account in person at a participating branch to qualify. Only Pinnacle, Embark and F"
+}

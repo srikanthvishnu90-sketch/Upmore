@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The reward is only $10 - small, but honest - and the friend must mention your referral during the account/loan opening or hand your referral card to a FORUM employee, or it doesn't count.",
+  "catches": [
+    "Referring member and the friend each receive $10 deposited into their accounts once qualifications are met.",
+    "Friend must open a new FORUM checking, savings, or loan product ($50 minimum deposit for deposit accounts).",
+    "Friend must mention the referral during the account/loan opening; the referral card must be given to a FORUM employee at the time of opening.",
+    "Health and secondary checking accounts excluded; new loans only (no refinances of current FORUM loans).",
+    "Accounts must be in good standing; allow 4-6 weeks for the deposit.",
+    "No cap stated on the official page.",
+    "No tax language on the page (standard bonus treatment; not stated)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official FORUM CU page (forumcu.com): 'Once qualifications are met, you and your friend will both receive $10 deposits into your accounts.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official forumcu.com domain (forumcu.com/refer-a-friend), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard product",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'forum credit union' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: FORUM member. Friend: opens a new FORUM checking, savings, or loan product (deposit accounts $50 min) and mentions the referral at opening.",
+  "notes": "Verified 2026-09-23. FORUM Credit Union (Indianapolis, IN). $10 to the referring member per qualifying new product opened; no cap stated. Small but current and explicit.",
+  "numeric_basis": "payout from official page ($10 to each side per qualifying new product; no cap stated); time: filling out the referral form est. 5-15 min active",
+  "official_url": "https://www.forumcu.com/refer-a-friend",
+  "payout_max_usd": 10,
+  "payout_min_usd": 10,
+  "payout_quote": "Once qualifications are met, you and your friend will both receive $10 deposits into your accounts.",
+  "payout_value_note": "$10 deposited to the referrer's account per qualifying referral. No cap stated.",
+  "route_id": "R3881",
+  "standard": {
+    "s1": {
+      "note": "Program page live on forumcu.com, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member; friend opens a new checking/savings/loan product (health/secondary checking excluded)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new FORUM product with $50 min deposit, mention referral at opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: allow 4-6 weeks for the deposit",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the FORUM refer-a-friend form.",
+    "Friend opens a new FORUM checking, savings, or loan product, mentioning your referral at opening (or present your referral card to a FORUM employee).",
+    "Both accounts must be in good standing.",
+    "You and your friend each receive a $10 deposit within 4-6 weeks."
+  ],
+  "terms_url": "https://www.forumcu.com/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Allow 4-6 weeks for the $10 deposit after qualifications are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

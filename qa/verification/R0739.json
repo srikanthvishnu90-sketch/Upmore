@@ -11,7 +11,7 @@
     "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
     "Carrying a balance at ~20%+ APR (this card: 17.49%–27.49% variable) will erase the entire $250 bonus fast — pay the full statement balance every month."
   ],
-  "checked_at": "2026-09-23T01:58:24Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "evidence": "Bank of America, N.A. — real operating issuer; official product page on bankofamerica.com.",
@@ -31,7 +31,7 @@
     }
   },
   "eligibility": "New cardmembers; at least $1,000 in purchases within the first 90 days of account opening.",
-  "notes": "Current limited-time $250 / $1,000-in-90-days offer, $0 annual fee, and 17.49%–27.49% variable APR confirmed on the official bankofamerica.com product page (search-indexed official copy; direct page fetch unavailable this turn). Bonus posting timing is not stated in the fetched copy; documented honestly in s3.",
+  "notes": "Current limited-time $250 / $1,000-in-90-days offer, $0 annual fee, and 17.49%–27.49% variable APR confirmed on the official bankofamerica.com product page (search-indexed official copy; direct page fetch unavailable this turn). Bonus posting timing is not stated in the fetched copy; documented honestly in s3. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus 20-40min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)]",
   "official_url": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
   "payout_quote": "Earn a $250 cash rewards bonus after spending at least $1,000 in purchases within the first 90 days of account opening. $0 annual fee.",
   "route_id": "R0739",
@@ -79,5 +79,11 @@
   "weasel_words": {
     "present": true,
     "quote": "Limited-time offer (affects offer availability only; the $250 bonus, $1,000 spend, and 90-day window are stated flatly)."
-  }
+  },
+  "payout_min_usd": 250.0,
+  "payout_max_usd": 250.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 40.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)"
 }

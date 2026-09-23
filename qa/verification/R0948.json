@@ -1,0 +1,69 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Business accounts only, opened IN A BRANCH. The $800 tier requires parking $20,000 for days 31-90 after account opening. Account must be opened between 02/03/2026 and 10/30/2026 (offer ends 2026-10-30).",
+  "catches": [
+    "New-to-business-deposit customer; open an Access Business Banking Checking or Pro Access Business Banking Checking account with a minimum opening deposit of $100 between 2/3/2026 and 10/30/2026 at any Old National banking center (in-branch only).",
+    "$800 tier: deposit a total of $20,000 or more within 30 days of account opening; maintain a balance of $20,000 or more during days 31-90; enroll in Small Business Digital Banking and log in within 30 calendar days of account opening.",
+    "$400 tier: deposit a total of $4,000 or more within 30 days of account opening; maintain a balance of $4,000 or more during days 31-90; enroll in Small Business Digital Banking and log in within 30 calendar days of account opening.",
+    "Qualifying deposits include teller/ATM/mobile deposits, wires, and external transfers from accounts at other financial institutions; transfers between Old National accounts do not qualify.",
+    "Balance reviewed daily during days 31-90 to confirm the minimum required balance is maintained.",
+    "Must maintain a positive/balance-greater-than-zero account at the time of bonus processing.",
+    "Bonus paid within 120 days of account opening per the official offer page (aggregators report between days 100-120).",
+    "Geography per aggregators: IA, IL, IN, KY, MI, MN, ND, TN, WI (in branch only)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Old National Bank (oldnational.com) is a real regional bank; its 'Earn up to $800 for Your Business' offer page publishes the full business-checking bonus terms (official search crawls, confirmed ~77 days ago).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'TO QUALIFY FOR THE SMALL BUSINESS CHECKING CASH BONUS OF UP TO $800: ... between 2/3/2026 and 10/30/2026, at any Old National banking center ... To qualify for $800 Cash Bonus: Deposit a total of $20,000 or more within 30 days of account opening. Maintain a balance of $20,000 or more during days 31-90 of account opening. Enroll in Small Business Digital Banking and log in within 30 calendar days of account opening. ... To qualify for $400 Cash Bonus: Deposit a total of $4,000 or more within 30 days ... Maintain a balance of $4,000 or more during days 31-90.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Both tiers, deposit thresholds, 30-day funding window, days-31-90 maintenance, digital-banking enrollment, in-branch requirement, and the 2/3/2026-10/30/2026 offer window are quoted verbatim from the official pages.",
+      "pass": true
+    }
+  },
+  "eligibility": "New-to-business-deposit customers; in-branch opening between 02/03/2026 and 10/30/2026; geography per aggregators: IA, IL, IN, KY, MI, MN, ND, TN, WI.",
+  "notes": "Official oldnational.com 'Earn up to $800 for Your Business' pages (crawls ~77 days). Recorded as one row covering both business tiers (min $400, max $800). Distinct from R0927 (personal $600 DD mechanism) and R0069 ($3,500). No sibling duplicate in R0851-R0947. Expires 2026-10-30.",
+  "numeric_basis": "payout: flat bonus amounts in official terms (tiered); time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.oldnational.com/business/small-business-banking/earn-$800-for-your-business/",
+  "payout_max_usd": 800.0,
+  "payout_min_usd": 400.0,
+  "payout_quote": "TO QUALIFY FOR THE SMALL BUSINESS CHECKING CASH BONUS OF UP TO $800: ... To qualify for $800 Cash Bonus: Deposit a total of $20,000 or more within 30 days of account opening. Maintain a balance of $20,000 or more during days 31-90 of account opening. Enroll in Small Business Digital Banking and log in within 30 calendar days of account opening. Maintain a positive account balance at the time of bonus processing.",
+  "payout_value_note": "flat bonus amounts in official terms (tiered)",
+  "route_id": "R0948",
+  "standard": {
+    "s1": {
+      "evidence": "New-to-business-deposit customers; in-branch only.",
+      "pass": true
+    },
+    "s2": {
+      "evidence": "$4,000 or $20,000 deposited within 30 days; balance maintained during days 31-90; digital-banking enrollment and login within 30 days.",
+      "pass": true
+    },
+    "s3": {
+      "evidence": "Bonus within 120 days of account opening; balance greater than zero at bonus processing; offer window ends 10/30/2026.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open an Access Business Banking Checking or Pro Access Business Banking Checking account at an Old National banking center (by 10/30/2026) with at least $100.",
+    "Deposit $4,000+ ($400 tier) or $20,000+ ($800 tier) within 30 days of account opening (new money; not transfers between Old National accounts).",
+    "Maintain the tier's minimum balance during days 31-90 of account opening.",
+    "Enroll in Small Business Digital Banking and log in within 30 calendar days of account opening.",
+    "Keep the account open with a positive balance; the bonus is paid within 120 days of account opening."
+  ],
+  "terms_url": "https://www.oldnational.com/business/small-business-banking/earn-$800-for-your-business/",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Open by 2026-10-30; fund within 30 days; maintain balance days 31-90; bonus within 120 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

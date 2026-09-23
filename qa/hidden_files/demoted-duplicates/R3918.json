@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referred person must open a fully banked checking account ($250 monthly deposit, Focus debit card, e-statements) or take out a new loan.",
+  "catches": [
+    "$50 to the referring member for each qualifying referral; referrals are unlimited.",
+    "Friend must open a fully banked checking account ($250 monthly deposit, Focus debit card, e-statements) or a new loan.",
+    "Register on the official referral portal to get a personal referral link; share via social media or email.",
+    "No end date stated on the official page."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Focus FCU page (focusok.com): 'For every friend or family member you refer to Focus FCU you'll receive $50*. Referrals are unlimited, and that cash is calling your name.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official focusok.com domain (focusok.com/refer/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'focus federal credit union' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Focus FCU member registering for a personal referral link. Friend: new member opening qualifying checking or loan.",
+  "notes": "Verified 2026-09-23. Focus Federal Credit Union (Oklahoma City, OK). $50 per referral; referrals unlimited.",
+  "numeric_basis": "payout from official page ($50 per referral; unlimited); time: registration + sharing link est. 5-15 min active",
+  "official_url": "https://focusok.com/refer/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "For every friend or family member you refer to Focus FCU you'll receive $50*. Referrals are unlimited, and that cash is calling your name.",
+  "payout_value_note": "$50 per qualifying referral; no referral limit stated (unlimited per official page).",
+  "route_id": "R3918",
+  "standard": {
+    "s1": {
+      "note": "Program page live on focusok.com, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: member referrer; friend joins Focus FCU",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: fully banked checking ($250 monthly deposit, debit card, e-statements) or new loan",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register at the official referral page to get a personal referral link.",
+    "Share the link with friends and family.",
+    "Each friend who joins and opens a fully banked checking account or new loan earns you $50."
+  ],
+  "terms_url": "https://focusok.com/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Timing not stated on official page.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

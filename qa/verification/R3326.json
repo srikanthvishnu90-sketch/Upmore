@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "$100 per referral is stated in official site marketing (not in the legal terms, which only promise 'an advocate reward'), and no annual cap is published — the program can be canceled or modified at any time.",
+  "catches": [
+    "The $100 referrer amount is advertised in official columbiacu.org marketing copy ('$100 for you! $100 for them!'); the binding terms define it generically as 'an advocate reward'",
+    "Friend must be a new member (no primary membership in the last 12 months) and open their first Columbia CU checking account",
+    "Friend must complete the referral as described in the referral message within 60 days of the referral",
+    "Bonus is deposited into the qualifying checking account within 10 business days of meeting qualifications",
+    "Rewards may be reported to the IRS; friend rewards reported on 1099-INT",
+    "Business, trust, estate, club/association, and beneficiary accounts ineligible; cannot refer yourself",
+    "No annual referral cap is stated in the official terms",
+    "Credit Union can cancel, modify, or terminate the program at any time; referrers disqualified for non-compliance",
+    "Columbia Credit Union serves Washington and Oregon (Vancouver, WA based)"
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official columbiacu.org pages (multiple, current): 'Refer a friend to open their first checking account with Columbia CU and we'll deposit $100 into BOTH of your accounts.' Terms add: 'you will receive an advocate reward... deposited into your/their Columbia Credit Union deposit accounts.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program and terms hosted on official columbiacu.org (love.columbiacu.org is the CU's official Extole referral subdomain); marketing pages fetched within days of 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; referrer generates a unique referral link on the Site",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'Columbia Credit Union' shows only R0797 (a utility 'Co' rebate record — unrelated company); no existing Columbia CU referral route",
+      "pass": true
+    }
+  },
+  "eligibility": "Current Columbia Credit Union members (WA/OR) 18+. Referred friends must be new members (no primary account in the last 12 months) who open their first Columbia CU checking account.",
+  "notes": "Caveat (recorded in standard s1): the $100 referrer figure lives in official site marketing copy rather than the binding legal terms, which phrase the reward generically as 'an advocate reward... advertised on the Site'. Treated as verified because the amount is stated concretely on the institution's own domain across multiple current pages. No annual cap is published in the terms. dedupe-check clean.",
+  "numeric_basis": "payout from official Columbia CU site marketing + referral terms ($100 per referral to the referrer); time: registering and sharing the referral link est. 10-15 min active (the friend's account opening, 60-day completion window, and 10-day payout processing are not active time)",
+  "official_url": "https://www.columbiacu.org/checking/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Refer a friend to open their first checking account with Columbia CU and we'll deposit $100 into BOTH of your accounts.",
+  "payout_value_note": "$100 cash deposited per qualifying referral; no annual referral cap is published in the official terms.",
+  "route_id": "R3326",
+  "standard": {
+    "s1": {
+      "note": "WEAK-ISH: $100 figure is in official marketing copy on columbiacu.org (several current pages) while the binding terms say 'an advocate reward... advertised on the Site' — amount concretely on official domain, flagged as caveat",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: 18+, member refers; friend must be new (no primary membership in last 12 months)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open first checking account and complete referral within 60 days; no deposit/activity threshold beyond account opening stated officially",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: bonus deposited within 10 business days of meeting qualifications",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: reward value may be reported to IRS; friend's on 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side mechanism; first Columbia Credit Union route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current Columbia Credit Union member 18+",
+    "Visit columbiacu.org and use the Refer a Friend flow to get your unique referral link",
+    "Share the link with friends/family",
+    "Friend registers via your link and opens their first Columbia CU checking account, completing the referral within 60 days",
+    "$100 is deposited into your Columbia CU deposit account within 10 business days of the friend meeting the qualifications"
+  ],
+  "terms_url": "https://love.columbiacu.org/zone/terms?journey.campaign_id=7239823518721760944",
+  "time_max_minutes": 15,
+  "time_min_minutes": 10,
+  "timing": "Registering + sharing the link takes ~10-15 minutes active; the $100 deposits within 10 business days after the friend completes the referral.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

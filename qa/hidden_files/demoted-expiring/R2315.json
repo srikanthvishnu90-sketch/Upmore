@@ -1,0 +1,92 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You must open the account through the promo page's specific links (otherwise no $150), then complete 30 valid debit card purchases AND log in to Digital Banking, both within 60 days of account opening — miss any piece and the bonus is gone. Prior UICCU checking holders within 24 months are excluded.",
+  "catches": [
+    "New Checking Account bonus of up to $150 for accounts opened between 4/15/2026 and 9/30/2026.",
+    "Must apply through the promo page's designated checking link ('Open Now' buttons); applying any other way disqualifies you.",
+    "Complete a minimum of 30 valid debit card purchase transactions from the new checking account within 60 days of account opening.",
+    "Register for or log in to Digital Banking within 60 days of account opening.",
+    "Maintain the account in good standing as of the bonus payout date.",
+    "Not eligible if you held any type of UICCU checking account in the last 24 months or received another UICCU checking promotional bonus.",
+    "One bonus per member, $150 maximum.",
+    "Must first qualify for and open a UICCU membership account; membership eligibility applies.",
+    "Bonus paid into the new checking account within 90 days of account opening once all conditions are met.",
+    "Cash bonuses are considered a taxable dividend and reported on IRS Form 1099-INT.",
+    "Offer may be withdrawn without notice; abuse/misuse disqualifies."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "University of Illinois Community Credit Union (UICCU) — real NCUA-insured credit union; official promo page https://www.uoficreditunion.org/grad-combo-promo/ fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'Open a new Checking Account - Get $150' with exact window (4/15–9/30/2026), 30 debit transactions/60 days, Digital Banking login/60 days, good standing, 24-month prior-checking exclusion, payout within 90 days, 1099-INT disclosure.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee to apply; required minimum deposit to open the checking account is a deposit, not a fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: 'New Checking Account bonus offer will be paid into the new checking account within 90 days of account opening once all qualifying conditions have been met.'",
+      "pass": true
+    }
+  },
+  "eligibility": "New UICCU checking members (no UICCU checking account held in the last 24 months; no prior UICCU checking promotional bonus); must qualify for UICCU membership first.",
+  "notes": "Verified against the official UICCU Grad Combo Promo page (uoficreditunion.org/grad-combo-promo/) on 2026-09-23 (UTC). Dedupe checked against qa/existing-providers.txt, dedupe-check.py, and qa/verification glob — no prior UICCU route exists. Distinct from the University of Iowa Community Credit Union (a different institution whose grad offer ended 7/31/2026). The checking bonus here is part of a combo promo but stands on its own as a checking signup mechanism; the credit-card and cashback-match components are separate credit-card-lane items and were not claimed. Promo window ends 9/30/2026 (within the 14-day warning window). App links left null rather than guessed.",
+  "numeric_basis": "payout from official terms ($150 flat checking bonus); time: online membership + checking application via promo links + Digital Banking registration est. 30–60 min active",
+  "official_url": "https://www.uoficreditunion.org/grad-combo-promo/",
+  "payout_max_usd": 150.0,
+  "payout_min_usd": 150.0,
+  "payout_quote": "New Checking Account bonus offer available to members who open a new qualified checking account at UICCU between 4/15/2026 and 9/30/2026... To receive the New Checking Account bonus offer, the member must (i) open a new checking account between 4/15/2026 and 9/30/2026 (ii) meet all eligibility requirements to hold a new first time checking account at UICCU, including making the required minimum deposit (iii) complete a minimum of 30 valid debit card purchase transactions from the new UICCU checking account within 60 days of account opening (iv) register for or login to Digital Banking within 60 days of account opening (v) maintain the account in good standing as of the New Checking Account bonus payout date.",
+  "payout_value_note": "$150 flat checking bonus paid into the new checking account",
+  "route_id": "R2315",
+  "standard": {
+    "s1": {
+      "note": "First-time UICCU checking member; no UICCU checking in prior 24 months; no prior checking promo bonus; UICCU membership eligibility required.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Open new checking 4/15/2026–9/30/2026 via the promo page's designated links; complete 30 valid debit purchases within 60 days; log in to Digital Banking within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus paid into new checking within 90 days of account opening once conditions are met.",
+      "pass": true
+    },
+    "s4": {
+      "note": "$150 flat; promo window 4/15/2026–9/30/2026 stated; payout timing stated.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.uoficreditunion.org/grad-combo-promo/ — official UICCU promo page, fetched 2026-09-23 (UTC).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: apply via promo links, 30 debit purchases in 60 days, Digital Banking login in 60 days, keep in good standing.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official UICCU page fetched 2026-09-23 (UTC); discloses IRS 1099-INT reporting of the taxable dividend.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Qualify for and open a UICCU membership account (membership eligibility required).",
+    "Open a new checking account between 4/15/2026 and 9/30/2026 using the designated checking link on the promo page (applying through any other channel disqualifies you).",
+    "Complete at least 30 valid debit card purchase transactions from the new checking account within 60 days of account opening.",
+    "Register for or log in to Digital Banking within 60 days of account opening.",
+    "Keep the account in good standing; the $150 bonus is paid into the new checking account within 90 days of account opening. It is a taxable dividend reported on IRS Form 1099-INT."
+  ],
+  "terms_url": "https://www.uoficreditunion.org/grad-combo-promo/",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Bonus paid into the new checking account within 90 days of account opening once all qualifying conditions are met; promo window ends 9/30/2026.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

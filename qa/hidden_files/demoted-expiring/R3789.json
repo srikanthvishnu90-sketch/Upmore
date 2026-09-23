@@ -1,0 +1,88 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The September 30, 2026 account-opening window closes 7 days after this verification - this offer is nearly over.",
+ "catches": [
+  "Business customers only, and only businesses with annual revenue under $10 million.",
+  "Account must be opened between July 1, 2026 and September 30, 2026 - only days remain.",
+  "The $2,000 average ledger balance must hold for each of the FIRST THREE statement cycles (about 3 months).",
+  "Requires at least 10 total qualifying transactions within those first three statement cycles.",
+  "Reward takes up to 90 days after all conditions are met to credit - expect the bonus around 6 months after opening.",
+  "Official terms: not eligible if any signer has signing authority on an existing PNC business checking account, has closed one within the past 90 days, or has been paid a promotional premium in the past 12 months.",
+  "Changing the checking product after opening can change the offer terms and reward amount.",
+  "Official terms: The value of the reward may be reported on IRS Form 1099, and may be considered taxable income to you; consult your tax advisor."
+ ],
+ "checked_at": "2026-09-23T07:21:24Z",
+ "critical": {
+  "c1": {
+   "evidence": "PNC Bank is a real operating national bank; the Business Checking Reward Offer terms are published on pnc.com (official-domain search capture, 2026-09-23 UTC).",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official pnc.com page states the $400 reward, the 7/1/26-9/30/26 open window, the $2,000 average ledger balance for the first three statement cycles, and the 10-transaction requirement.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No upfront fee; $100 minimum opening deposit is the business's own money.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Official pnc.com page: account must be opened between July 1, 2026 and September 30, 2026. This is within 14 days of 2026-09-23 - flagged as soon-expiring."
+  }
+ },
+ "eligibility": "Businesses with annual revenue less than $10 million; new PNC business checking customers; no signer with authority on an existing PNC business checking account, none closed within 90 days, and no promotional premium paid in the past 12 months.",
+ "notes": "Verified against official pnc.com bus400offer terms (official-domain search capture 2026-09-23 UTC; direct fetch blocked). Prior-account 90-day and 12-month premium exclusions and IRS Form 1099 tax statement are official provider text. No $100 opening-deposit claim asserted anywhere (no such official requirement found).",
+ "numeric_basis": "payout from official terms ($400 fixed); time: business account opening + funding est. 30-60 min active (excludes ~3 statement cycle qualification period)",
+ "official_url": "https://pnc.com/en/small-business/campaigns/bus400offer.html",
+ "payout_max_usd": 400,
+ "payout_min_usd": 400,
+ "payout_quote": "You may earn a $400 reward if you open a new PNC Business Checking or PNC Business Checking Plus account. To qualify for the reward, the new checking account must be opened between July 1, 2026, and September 30, 2026, and the following conditions must be met: (a) average ledger balance of $2,000 must be maintained in your new checking account for each of the first three statement cycles, and (b) at least 10 total qualifying transactions must be made within the first three statement cycles. Qualifying transactions include PNC Visa Business Debit Card purchases; ACH, Wire or Zelle debits or credits; PNC Online Banking or Bill Pay payments; deposits made using PNC Remote Deposit; electronic deposits from PNC merchant accounts; checks deposited into or written from the account. Your new checking account must be open in order for you to receive the reward, which will be credited to the eligible account within 90 days after all conditions have been met and will be identified as 'Credits NEW BUS BONUS' on your monthly statement. After you open a checking product, you must remain in that product to receive the corresponding reward; changing your checking product after account opening could result in your offer eligibility, terms, and corresponding reward amount changing. Offer only available to businesses with an annual revenue less than $10 million. New account will not be eligible for offer if any signer has signing authority on an existing PNC Bank business checking account or has closed an account within the past 90 days, or has been paid a promotional premium in the past 12 months. The value of the reward may be reported on Internal Revenue Service (IRS) Form 1099, and may be considered taxable income to you. Please consult your tax advisor regarding your specific situation.",
+ "payout_value_note": "Fixed $400 reward",
+ "route_id": "R3789",
+ "standard": {
+  "s1": {
+   "note": "Businesses under $10M revenue; new customers; exclusion for existing accounts/closures within 90 days or premium paid within 12 months.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Open Business Checking or Business Checking Plus by 9/30/26; $2,000 average ledger balance each of first three cycles; 10 qualifying transactions.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Reward credited within 90 days after all conditions are met.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words - fixed $400 reward.",
+   "pass": true
+  },
+  "s5": {
+   "note": "No early-closure fee in bonus terms; product change alters offer eligibility.",
+   "pass": true
+  },
+  "s6": {
+   "note": "FAIL: open by 9/30/2026 - within 14 days of verification. Flagged as soon-expiring.",
+   "pass": false
+  },
+  "s7": {
+   "note": "Distinct route: PNC business checking not in existing-providers.txt or prior evidence files (R0581 covers PNC personal Virtual Wallet).",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Confirm the business has annual revenue under $10 million and no PNC business checking held by any signer (or closed within 90 days / premium paid within 12 months).",
+  "Open a new PNC Business Checking or PNC Business Checking Plus account by September 30, 2026.",
+  "Maintain an average ledger balance of $2,000 for each of the first three statement cycles.",
+  "Make at least 10 total qualifying transactions within the first three statement cycles.",
+  "Receive the $400 reward within 90 days after all conditions are met."
+ ],
+ "terms_url": "https://pnc.com/en/small-business/campaigns/bus400offer.html",
+ "time_max_minutes": 60,
+ "time_min_minutes": 30,
+ "timing": "Reward credited to the eligible account within 90 days after all conditions have been met.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": []
+}

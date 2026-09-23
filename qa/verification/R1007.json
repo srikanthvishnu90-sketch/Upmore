@@ -1,0 +1,92 @@
+{
+  "route_id": "R1007",
+  "verdict": "verify",
+  "official_url": "https://wsecu.org/cashback-checking",
+  "terms_url": "https://wsecu.org/cashback-checking",
+  "payout_quote": "Beginning May 21, 2026, for a limited time only, eligible new WSECU members can earn a $300 cash bonus by meeting all the following requirements: 1. Open a Cash Back Checking account within 14 days of becoming a member.",
+  "steps": [
+    "Qualify for WSECU membership (anyone who lives in Washington state per WSECU membership rules; soft credit pull identity verification for new members)",
+    "Join WSECU and open a Cash Back Checking account within 14 days of becoming a member, using promo code CASHBACK300 when opening",
+    "Set up direct deposit in the first 90 days to receive $1,000+ per month (payroll, government benefits, or retirement income electronic deposits only - transfers, mobile deposits, P2P excluded)",
+    "Complete 25 eligible debit card purchases in the first 90 days (tap/chip/swipe/online/subscription; cash advances, ATM, bill pay, and transfers excluded)",
+    "The $300 bonus is deposited within 14 days after all requirements are met in the 90-day qualification period"
+  ],
+  "catches": [
+    "New members only - existing WSECU members and anyone who closed a WSECU checking account within the last 24 months are excluded",
+    "Account must be opened within 14 days of becoming a member",
+    "$1,000/month direct deposit is a high bar and must be payroll/government/retirement income - account transfers and P2P do not qualify",
+    "25 debit card purchases in 90 days in addition to the $1,000/month DD",
+    "Offer is 'limited time' with no stated end date - may be withdrawn without notice",
+    "Cannot be combined with other promotions; limit one bonus per member",
+    "Account must remain open and in good standing to receive the bonus",
+    "New members undergo a soft credit pull for identity verification (does not affect credit scores); credit freezes must be removed"
+  ],
+  "biggest_catch": "$1,000+ direct deposit per month for three months PLUS 25 debit purchases in 90 days - and the limited-time offer can be withdrawn without notice.",
+  "eligibility": "New WSECU members (WA) opening Cash Back Checking within 14 days of membership; no existing WSECU checking and none closed in the last 24 months; one bonus per member.",
+  "timing": "DD + 25 debit purchases completed within the first 90 days; $300 deposited within 14 days after all requirements are met.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "Offer may be modified or withdrawn at any time without notice",
+    "for a limited time only"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "WSECU (Washington State Employees Credit Union) - real operating Washington credit union; official cashback-checking page fetched directly 2026-09-23 lists the $300 new-member bonus."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official page 'Cash bonus offer' section states full terms: new members only, open within 14 days of membership, promo code CASHBACK300, $1,000+/month DD in first 90 days, 25 eligible debit transactions in first 90 days, exclusions."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: 'eligible new WSECU members can earn a $300 cash bonus by meeting all the following requirements' and 'The $300 bonus will be deposited into your account within 14 days after you meet all promotion requirements within the 90-day qualification period.'"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "New WSECU members only; Cash Back Checking opened within 14 days of membership; none closed in 24 months; one bonus per member; no combining promotions."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Concrete: open with promo code, $1,000+/month DD, 25 debit purchases, all within 90 days."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Bonus deposited within 14 days after all requirements are met in the 90-day window; account must be open and in good standing."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $300 stated; limited-time/withdrawal-without-notice disclaimers disclosed."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://wsecu.org/cashback-checking - official page content fetched directly 2026-09-23 (UTC)."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete: join, open with code, direct deposit, debit purchases, wait for payout."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official WSECU page verified 2026-09-23 (UTC)."
+    }
+  },
+  "notes": "Do not confuse with the rejected $500 variant (R0577) - the current official WSECU bonus is $300 with promo code CASHBACK300. The account also carries a standing 5.00% APY promo on balances up to $1,000 with $1,000/month DD (effective through 6/30/2027), separate from the one-time bonus.",
+  "payout_min_usd": 300,
+  "payout_max_usd": 300,
+  "payout_value_note": "Flat $300 stated on the official WSECU cashback-checking page.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from official terms ($300 flat); time: membership + account opening with promo code est. 30-60 min active (qualification spans 90 days)"
+}

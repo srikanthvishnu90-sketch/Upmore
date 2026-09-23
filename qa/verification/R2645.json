@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The page promises $50 per friend referred ($100 for dual-fuel) but links to Terms and Conditions that are not published on the fetched page, so payout timing and full qualification rules could not be independently confirmed.",
+  "catches": [
+    "The official page says 'See Terms and Conditions for details' but no referral T&C were published on the fetched page — payout timing and full qualification rules could not be confirmed.",
+    "The $100 amount requires the referred friend to sign up for both gas and electric service; single-service referrals earn $50.",
+    "Only the referrer-side amount is unambiguous in the fetched copy; the page states 'we're also going to pay the friends you refer' but the friend's exact amount is not broken out.",
+    "Framing: 'extra cash' here reduces energy bills (savings on planned spending); the offer is framed as bill-credit-style rewards, not wage income.",
+    "Major Energy is a Spark Energy-family brand; this is its own distinct brand with its own domain and referral program, separate from the Spark Energy routes (R1878/R1879)."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "official_url is majorenergy.com/earn/ (provider's own domain, title 'Earn Extra Cash For You and Your Friends - Major Energy'), fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page is live on the official site (search crawl 16 days old); no expiry stated.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Conditions (friend referred to Major Energy; $100 requires dual-fuel signup) are stated; however the referenced full T&C are not published on the page — disclosed as the biggest catch.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Amounts ($50, $100 dual-fuel, per side implied) are stated; timing is not stated — disclosed.",
+      "pass": true
+    }
+  },
+  "eligibility": "Current Major Energy customer; refer a friend who signs up for Major Energy electric or gas service in Major Energy's service areas. Higher ($100) amount requires the friend to sign up for both gas and electric.",
+  "notes": "Verified 2026-09-23 from Major Energy's official referral page. Caveat: full T&C referenced but not published on the page. Distinct brand route vs Spark Energy (R1878/R1879) — separate domain, separate program. No other Major Energy routes in catalog.",
+  "numeric_basis": "payout from official page ($50 flat per referral; $100 if friend signs up for both gas and electric); time: referral share 5-15 min active",
+  "official_url": "https://majorenergy.com/earn/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 50,
+  "payout_quote": "For every friend you refer to Major Energy, we're going to give you $50. If they sign up for both Gas and Electric, we'll make it $100. FOR BOTH OF YOU!",
+  "payout_value_note": "$50 per referred friend who signs up; $100 each side when the friend signs up for both gas and electric service. Applied as savings on Major Energy service.",
+  "route_id": "R2645",
+  "standard": {
+    "s1": {
+      "note": "Exact amounts ($50 / $100) are quoted verbatim from the official page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing: rewards reduce energy bills, framed as savings on planned spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Steps are the concrete referral flow (share, friend signs up, you earn).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: the referenced T&C are not published on the page, so timing and full rules are unconfirmed.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee; referring and signing up cost nothing beyond the friend's normal plan enrollment.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words in the payout statement; the 'see T&C' reference is disclosed.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against majorenergy.com (provider's own domain). Deduped: no Major Energy routes in catalog or evidence files; no rejects-g19 entry; distinct from Spark Energy R1878/R1879.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Be a current Major Energy customer.",
+    "Refer a friend to Major Energy.",
+    "Friend signs up for Major Energy electric or gas service.",
+    "You receive $50 per referred friend ($100 if they sign up for both gas and electric)."
+  ],
+  "terms_url": "https://majorenergy.com/earn/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Payout timing not stated on the official page (T&C referenced but not published there); no program end date stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

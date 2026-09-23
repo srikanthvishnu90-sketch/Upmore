@@ -1,0 +1,66 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Student-only: you must open with an email address ending in .edu and attend a college, university, or trade school within the 31 counties OSCU serves in Oregon and Washington. No direct deposit required, but you must complete 10 qualifying transactions within 60 days.",
+  "catches": [
+    "Open a new checking account using your student email address ending in .edu; you must be a student at a college, university, or trade school within the 31 counties OSCU serves in Oregon and Washington.",
+    "Not eligible: members under 18, businesses, trusts, or members with an existing checking account or who had a checking account within the previous 12 months.",
+    "Complete 10 qualifying transactions within 60 days of opening (debit card or mobile wallet purchases, bill pay, or Pay It Now money transfers).",
+    "Sign up for eStatements.",
+    "$300 is deposited into your Basic Savings account no later than the last day of the 4th calendar month after account opening.",
+    "A Basic Savings account comes free with every OSCU membership."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Oregon State Credit Union (oregonstatecu.com) is a real credit union; the $300 student checking offer is published on its official student-checking page.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: 'Say goodbye to your boring checking account and hello to $300* when you open a new checking account at Oregon State Credit Union. Students at any college, university, or trade school within the 31 counties we serve in Oregon and Washington with an email address ending in \".edu\" are eligible.' Terms and payout timing also from the official page.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "All steps, eligibility limits, and payout timing are quoted from the official oregonstatecu.com student-checking page (search crawl; page confirmed live).",
+      "pass": true
+    }
+  },
+  "eligibility": "Students at any college, university, or trade school within the 31 counties OSCU serves in Oregon and Washington with an email address ending in .edu; members 18+; businesses, trusts, and existing/recent (within 12 months) checking holders excluded.",
+  "notes": "Official oregonstatecu.com student-checking page (crawled 2026-09-23; page confirmed live). No direct deposit required for this tier - distinct mechanism from the general $300 checking offer (R0912, which requires $500/month recurring direct deposit). Payout timing (4th calendar month) is faster than the general tier's 5th month.",
+  "numeric_basis": "payout: flat bonus amount in official terms; time: category default Bank Bonus (30-60min active)",
+  "official_url": "https://www.oregonstatecu.com/student-checking/",
+  "payout_max_usd": 300.0,
+  "payout_min_usd": 300.0,
+  "payout_quote": "Say goodbye to your boring checking account and hello to $300* when you open a new checking account at Oregon State Credit Union. ... Your $300 will be deposited into your Basic Savings account no later than the last day of the 4th calendar month after account opening.",
+  "payout_value_note": "flat bonus amount in official terms",
+  "route_id": "R0913",
+  "standard": {
+    "s1": {
+      "pass": true,
+      "evidence": "Student with .edu email within OSCU's 31-county OR/WA field; 18+; no existing or recent (within 12 months) OSCU checking."
+    },
+    "s2": {
+      "pass": false,
+      "evidence": "No minimum new-money deposit stated in the offer terms seen."
+    },
+    "s3": {
+      "pass": true,
+      "evidence": "Bonus paid by last day of the 4th calendar month after opening into Basic Savings; bonus taxable."
+    }
+  },
+  "steps": [
+    "Open a new Oregon State Credit Union checking account using your student email address ending in .edu.",
+    "Complete 10 qualifying transactions within 60 days of opening (debit card or mobile wallet purchases, bill pay, or Pay It Now money transfers).",
+    "Sign up for eStatements.",
+    "Keep the account open; the $300 bonus is deposited into your Basic Savings account no later than the last day of the 4th calendar month after account opening."
+  ],
+  "terms_url": "https://www.oregonstatecu.com/student-checking/",
+  "time_max_minutes": 60.0,
+  "time_min_minutes": 30.0,
+  "timing": "Bonus deposited into Basic Savings no later than the last day of the 4th calendar month after account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only get the $100 if your friend becomes a DFCU member and closes an auto loan of $15,000 or more within six months — existing DFCU auto loan refinances are ineligible. A friend who joins but never borrows earns you nothing.",
+  "catches": [
+    "Auto loan tier: friend must become a member and close an auto loan of $15,000 or more within six months of registration.",
+    "Offer not valid on existing DFCU auto loan refinances.",
+    "Not available to referred persons who are already DFCU members.",
+    "U.S. residents only.",
+    "All deposit and loan accounts must meet membership, identity verification, and credit criteria.",
+    "Reward Card arrives 4-6 weeks after qualifications are completed.",
+    "DFCU may amend, suspend, or terminate the referral program at any time without notice.",
+    "Tax treatment not stated; treat as potentially reportable income."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "DFCU Financial's official ReferLive referral page on dfcufinancial.com/Open-An-Account/Referlive, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page states: \"You will earn $100 when your referral becomes a member and opens a qualifying checking account or auto loan\" and the Auto Loan section confirms the existing member receives a $100 Reward card per qualifying auto loan referral.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Friend (new member, not existing) must register via ReferLive and close a $15,000+ auto loan within six months; existing DFCU auto loan refinances ineligible.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee charged to the referrer; registration via the free ReferLive Auto Loan Program.",
+      "pass": true
+    }
+  },
+  "eligibility": "DFCU Financial existing members; referred friends must be new members (not existing DFCU members), U.S. residents, and complete ReferLive registration.",
+  "notes": "VERIFIED: DFCU Financial referral program (auto loan tier) on dfcufinancial.com, checked live 2026-09-23. This is the route-granularity split of former combined R4316 (now checking-only): referrer earns a $100 Mastercard Reward card per qualifying auto loan referral; members can earn up to $1,000 total across the program. The checking tier is R4316; the mortgage tier ($275/referrer) is R4317. Deduped: no existing DFCU auto-loan referral route.",
+  "numeric_basis": "payout from official DFCU terms ($100 Reward card per qualifying auto loan referral); time: registering + sharing a referral link est. 5-15 min active.",
+  "official_url": "https://dfcufinancial.com/Open-An-Account/Referlive",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Existing member will receive a $100 Reward card and new auto loan member will receive $100 Reward card!",
+  "payout_value_note": "$100 Mastercard Reward card per qualifying auto loan referral; $1,000 overall program cap — numeric fields hold per-referral payout.",
+  "route_id": "R4324",
+  "standard": {
+    "s1": {
+      "note": "DFCU Financial is a named, verifiable institution (Dearborn Federal Credit Union, Michigan); program on its official dfcufinancial.com domain.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete $100 Reward card per referral; no vague ranges.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Full referral terms and disclaimers published on the official page.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped against existing-providers.txt and dedupe-check.py — no existing DFCU Financial auto-loan referral route; distinct from the checking tier (R4316) and mortgage tier (R4317).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Program page live and current as of 2026-09-23; terms note the program may change/end, recorded as a catch.",
+      "pass": true
+    },
+    "s6": {
+      "note": "$1,000 overall program cap stated explicitly; numeric fields hold the per-referral $100.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Mastercard Reward card treated at face value $100.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the DFCU ReferLive Auto Loan Program.",
+    "Share the referral offer with friends and family.",
+    "Friend becomes a DFCU member and completes ReferLive registration.",
+    "Friend closes a new auto loan of $15,000 or more within six months (refinances of existing DFCU auto loans ineligible).",
+    "You receive a $100 Reward card per qualifying referral."
+  ],
+  "terms_url": "https://dfcufinancial.com/Open-An-Account/Referlive",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Reward Card arrives 4-6 weeks after the referred person completes all qualification requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

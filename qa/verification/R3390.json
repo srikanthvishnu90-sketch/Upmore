@@ -1,0 +1,88 @@
+{
+  "route_id": "R3390",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "verdict": "verify",
+  "official_url": "https://refer.centier.com/zones/faq",
+  "terms_url": "https://www.centier.com/invite-a-friend",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "Flat $50 credited to the referrer's checking account per qualifying personal checking referral; friend earns $50 too. No annual cap (unlimited referrals/rewards).",
+  "payout_quote": "Invite A Friend is a referral program that rewards you with $50 (credited to your checking account) for every friend you refer who opens a qualified personal checking account and completes the required actions. Your friend benefits too – they also earn $50 (credited to their checking account).",
+  "numeric_basis": "payout from official refer.centier.com FAQ ('$50 (credited to your checking account) for every friend you refer'); time: referral share signup + link sharing est. 5-15 min active",
+  "eligibility": "Centier Bank clients 18+; referred friend must not have an active personal checking account with Centier nor have had one in the last 12 months.",
+  "steps": [
+    "Be a Centier Bank client (18+)",
+    "Visit centier.com/invite-a-friend and sign up with your information to get your unique share link",
+    "Invite friends via text, email, or Facebook using your link",
+    "Friend clicks the link, signs up, opens a qualified personal checking account, and enrolls in e-Statements, Digital Banking, or Direct Deposit within 90 days",
+    "$50 reward deposited to both referrer's and friend's checking accounts within 90 days of account opening"
+  ],
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Official refer.centier.com FAQ (Centier Bank's own referral subdomain) live; no expiry stated"
+    },
+    "s2": {
+      "pass": true,
+      "note": "Eligibility explicit: referrer 18+; friend must not currently have nor have had an active personal checking account in the last 12 months"
+    },
+    "s3": {
+      "pass": true,
+      "note": "Qualification: friend opens a qualified personal checking account via the referral link and completes enrollment (e-Statements/Digital Banking/Direct Deposit) within 90 days"
+    },
+    "s4": {
+      "pass": true,
+      "note": "Timing: $50 to both referrer and friend deposited within 90 days of account opening"
+    },
+    "s5": {
+      "pass": true,
+      "note": "No explicit tax disclosure in the FAQ"
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to refer or participate"
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct provider/referral mechanism not covered elsewhere (no Centier Bank referral evidence files; dedupe-check 'Centier Bank' shows 0 evidence-file hits)"
+    }
+  },
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official refer.centier.com FAQ: 'rewards you with $50 (credited to your checking account) for every friend you refer who opens a qualified personal checking account and completes the required actions'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official Centier Bank referral subdomain (refer.centier.com), cross-linked from centier.com homepage ('Invite a friend, get $50')"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; flat $50 per qualifying personal checking referral, unlimited"
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "grep + dedupe-check 'Centier Bank': no existing Centier referral routes in catalog or evidence files"
+    }
+  },
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "weasel_words": [],
+  "biggest_catch": "The referred friend must not currently have nor have had an active Centier personal checking account within the last 12 months, and the reward is only paid after the friend completes the qualifying actions and the bank processes it (up to 90 days).",
+  "catches": [
+    "Official FAQ: 'for every friend you refer who opens a qualified personal checking account and completes the required actions'",
+    "Ineligible friends: those who 'currently have an active personal checking account or had an active personal checking account in the last 12 months'",
+    "Reward deposited 'within 90 days of account opening' — payout is not immediate",
+    "Money Market accounts are not included in the personal Invite A Friend program",
+    "Friend must complete enrollment in e-Statements, Digital Banking, or Direct Deposit within the first 90 days",
+    "No annual cap stated: 'You can invite an unlimited number of friends! ... The number of rewards is unlimited.'",
+    "18+ required to participate"
+  ],
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "timing": "Referral link signup and sharing takes ~10 minutes active; the $50 reward is deposited to the referrer's checking account within 90 days of the friend's account opening.",
+  "upfront_fee": false,
+  "notes": "Verified 2026-09-23 from the official Centier Bank referral FAQ (refer.centier.com/zones/faq). Invite A Friend: $50 to referrer per qualifying personal checking referral, friend earns $50 too, unlimited referrals/rewards, no annual cap. Distinct from the Centier Bank Invite A Business program (business checking), verified separately as R3391."
+}

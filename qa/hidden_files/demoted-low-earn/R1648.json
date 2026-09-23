@@ -1,0 +1,74 @@
+{
+  "route_id": "R1648",
+  "verdict": "verify",
+  "official_url": "https://www4.courts.ca.gov/juryservice.htm",
+  "terms_url": "https://www4.courts.ca.gov/juryservice.htm",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "payout_quote": "California pays jurors $15 every day starting on the second day of service; jurors receive at least 34 cents per mile round-trip (from day two) or up to $12/day for public transit (from day one). Government employees receiving full pay are excluded.",
+  "steps": [
+    "Receive a California state court jury summons",
+    "Report and serve",
+    "Receive $15/day from day two plus mileage/transit reimbursement"
+  ],
+  "catches": [
+    "No pay for day one — and California's one-day/one-trial system means most jurors serve only one day ($0).",
+    "Government employees get no fee (already paid by employer).",
+    "Mileage starts day two; only transit reimbursement starts day one."
+  ],
+  "biggest_catch": "Most Californians serve a single day and earn $0 — the $15/day starts on day two.",
+  "eligibility": "Persons summoned for jury service in California state courts (non-government employees).",
+  "timing": "Computed at completion; mailed within weeks.",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "California Courts official jury-service page (courts.ca.gov)."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "California pays jurors $15 every day starting on the second day of service; jurors receive at least 34 cents per mile round-trip (from day two) or up to $12/day for public transit (from day one). Government employees rec"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee; civic summons."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "No risk capital; show up as summoned."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Persons summoned for jury service in California state courts (non-government employees)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Government payment (check)."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Computed at completion; mailed within weeks."
+    },
+    "s4": {
+      "pass": true,
+      "note": "$0 day one; $15/day from day two; 34¢/mile or up to $12/day transit."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Official court/government source."
+    }
+  },
+  "notes": "Statewide rate; individual counties follow the same statute (CCP §215).",
+  "payout_min_usd": 0,
+  "payout_max_usd": 15,
+  "payout_value_note": "$0 day one; $15/day from day two; 34¢/mile or up to $12/day transit.",
+  "time_min_minutes": 480,
+  "time_max_minutes": 480,
+  "numeric_basis": "payout from official court terms; time: full court day of jury service, 480 min active."
+}

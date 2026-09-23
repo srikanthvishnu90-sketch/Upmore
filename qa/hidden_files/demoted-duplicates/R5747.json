@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must complete everything \u2014 open checking + savings, enroll in online banking, and complete 8 qualifying transactions within 60 days \u2014 and bonuses pay roughly 75 days after account opening.",
+  "catches": [
+    "Friend must qualify for Express CU membership (live or work in Washington State; exceptions for immediate family)",
+    "Referring member must complete the referral form on the website AND the friend must select 'Referral Campaign' as the referral source during application",
+    "Friend must open a checking account, savings account, and enroll in online banking",
+    "Friend must complete 8 or more qualifying transactions within 60 days of account opening",
+    "Accounts must remain open and in good standing for at least 60 days",
+    "Friend must not be an existing member or have been a member in the past 6 months",
+    "Referring member must be 18+, in good standing, and primary on the account",
+    "Bonuses may be reported to the IRS (1099-MISC for the referring member)"
+  ],
+  "checked_at": "2026-09-23T07:53:13Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Express Credit Union page (expresscu.org/refer/): 'Refer a friend or family member, and you'll both earn $100 when they open an account and complete the program requirements.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Express Credit Union page on expresscu.org (its own domain), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Referring member must be 18 or older, in good standing, and a primary on the account; friend must be within ECU's field of membership and not an existing or recent (6 months) member",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Friend must open checking + savings, enroll in online banking, and complete 8 qualifying transactions (debit purchases, direct deposits, ACH, checks, ATM/cash/in-branch activity) within 60 days of account opening",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer must be an Express Credit Union member, 18+, in good standing, and primary on the account. Friend must be eligible for Express CU membership (live or work in Washington State; immediate family exceptions) and must not be an existing member or have been one in the past 6 months.",
+  "notes": "Express Credit Union (expresscu.org), Washington State. Distinct from Expree Credit Union (R4762, expree.org); R5747 was wrongly rejected as a duplicate of R4762 and has now been converted to a verified route. Official terms page fetched live 2026-09-23. No stated referral cap or expiration; standing offer subject to termination at any time.",
+  "numeric_basis": "payout from official terms ($100 cash to the referrer per qualifying referral); time: referral form share 5-15 min active",
+  "official_url": "https://www.expresscu.org/refer/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Refer a friend or family member, and you'll both earn $100 when they open an account and complete the program requirements. After the first 60 days, Express Credit Union will review the account activity to verify eligibility. Once verified, $100 will be deposited into both the referring member's savings account and the new member's savings account within approximately 75 days of account opening.",
+  "payout_value_note": "$100 cash deposited to the referrer's savings account per qualifying referral; no referral cap stated.",
+  "route_id": "R5747",
+  "standard": {
+    "s1": {
+      "note": "Official Express CU page live on expresscu.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: member referrer 18+, in good standing, primary on account; friend within field of membership, not existing/recent member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend: select 'Referral Campaign' source, open checking + savings, enroll in online banking, complete 8 qualifying transactions within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Referral share via website referral form; friend selects the referral source at application",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonus deposited to the referring member's savings account within approximately 75 days of account opening, after eligibility review",
+      "pass": true
+    },
+    "s6": {
+      "note": "$100 bonus may be reported to the IRS on Form 1099-MISC for the referring member",
+      "pass": true
+    },
+    "s7": {
+      "note": "No referral limit stated; accounts must remain open and in good standing for at least 60 days",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the referral form on www.expresscu.org/refer/ with your name and your friend's name and email address",
+    "Express CU emails your friend with information about how to open an account",
+    "Your friend applies for membership (online, in person, or by phone) and selects 'Referral Campaign' as the referral source",
+    "Your friend opens a checking account, a savings account, and enrolls in online banking",
+    "Your friend completes 8 or more qualifying transactions within 60 days of account opening (debit card purchases, direct deposits, ACH transfers, checks, ATM/cash/in-branch deposits or withdrawals)",
+    "After the 60-day review, your $100 bonus is deposited into your savings account within approximately 75 days of account opening"
+  ],
+  "terms_url": "https://www.expresscu.org/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus deposited to the referring member's savings account within approximately 75 days of account opening, after the 60-day activity review.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

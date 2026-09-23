@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete the referral exactly as described in the referral message on share.salalcu.org (the T&Cs defer the qualification details there); if the friend's account doesn't qualify, no $100 gift card is paid to either party.",
+  "catches": [
+    "Referrer must be a US legal resident 18+ and a Salal member; employees of Salal and affiliates cannot participate.",
+    "Referrer may refer max 25 friends per session and 500 total over the life of the program.",
+    "Referrer earns a $100 Visa digital gift card per VALID referral; friend also receives $100; referrer cap is $500 in rewards per year.",
+    "Rewards are Visa DIGITAL gift cards - terms state rewards 'have no monetary value and may not be redeemed for cash' and are non-transferable.",
+    "Self-referrals, fake/fictitious accounts, bulk/spam distribution, and referring strangers are prohibited and can void rewards.",
+    "Rewards subject to verification; Salal may delay or refuse a reward for investigation or any reason.",
+    "Members responsible for federal/state/local taxes on rewards.",
+    "Program can be cancelled, modified, or terminated at any time.",
+    "The exact friend qualification (account type/actions) is stated in the referral message on share.salalcu.org, not in the T&Cs PDF; the prior form-based program required the friend to open a consumer checking account."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Salal CU Refer-a-Friend T&Cs (salalcu.org PDF, REV 8/26): 'By making a valid referral, you will receive a $100 Visa digital gift card and your Friend will receive a $100 Visa digital gift card. You can earn a maximum of $500 in rewards per year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms PDF hosted on official salalcu.org domain (wp-content/uploads/2026/07/scu-4244-refer-a-friend-terms-8-26.pdf), #SCU-4244 REV 8/26; program site share.salalcu.org named in terms",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; sharing a personal referral link only. Friend opens a standard Salal account per the referral message.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'salal' shows no Salal referral route in catalog or evidence; only signup-lane reject R1031 (expired $150 Welcome25 bonus) which noted only the old $25 form program remained - this $100 Extole-powered program (REV 8/26) supersedes it. Distinct referrer-side mechanism.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: US legal resident 18+, Salal Credit Union member (non-employee). Friend: completes the referral as described in the referral message at share.salalcu.org.",
+  "notes": "Verified 2026-09-23. Salal Credit Union (Seattle, WA). This is a NEW $100-per-referral program (T&Cs revised 8/26, powered by Extole) that supersedes the legacy $25 paper-form program documented in signup-lane reject R1031. Per-referral payout to the referrer is concrete ($100 Visa digital gift card); cap is $500/year (5 paid referrals/year). Friend-side qualification details live in the referral message on share.salalcu.org rather than the T&Cs PDF - flagged in catches.",
+  "numeric_basis": "payout from official T&Cs ($100 Visa digital gift card per valid referral to referrer; $500/year cap); time: sharing personal referral link est. 5-15 min active",
+  "official_url": "https://www.salalcu.org/wp-content/uploads/2026/07/scu-4244-refer-a-friend-terms-8-26.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "By making a valid referral, you will receive a $100 Visa digital gift card and your Friend will receive a $100 Visa digital gift card. You can earn a maximum of $500 in rewards per year.",
+  "payout_value_note": "$100 Visa digital gift card per valid referral to the referrer (stated face value); terms say not redeemable for cash.",
+  "route_id": "R3842",
+  "standard": {
+    "s1": {
+      "note": "T&Cs marked #SCU-4244 REV 8/26 (August 2026) - current; program live at share.salalcu.org per terms",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: US resident 18+, Salal member; employees excluded",
+      "pass": true
+    },
+    "s3": {
+      "pass": false,
+      "note": "PARTIAL FAIL: friend qualification deferred to the referral message on share.salalcu.org ('Referred friends must complete the referral as described in the referral message') - exact account/action requirements not enumerated in the T&Cs PDF; flagged as biggest catch"
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "note": "Tax responsibility stated: members responsible for federal/state/local taxes; consult tax professional",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer or participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; new program superseding the legacy $25 form program (R1031)",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit share.salalcu.org and follow the on-screen instructions to generate your personal referral link.",
+    "Share the link personally with friends, family, or colleagues (max 25 per session; no bulk/spam).",
+    "Each friend completes the referral exactly as described in the referral message (account opening/qualification steps shown there).",
+    "Receive a $100 Visa digital gift card per valid referral (up to $500 per year); friend also receives $100."
+  ],
+  "terms_url": "https://www.salalcu.org/wp-content/uploads/2026/07/scu-4244-refer-a-friend-terms-8-26.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "No fixed payout clock in terms; rewards subject to verification and may be delayed for investigation.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

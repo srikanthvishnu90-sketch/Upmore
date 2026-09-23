@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both you and your friend only get the $100 after the friend completes 10 qualifying transactions in the first 30 days AND keeps the accounts open and in good standing for 90 days - the bonus is deposited within 120 days of account opening, so expect a ~4-month wait.",
+  "catches": [
+    "Referrer must be 18+, in good standing, and primary on a BECU Member Share or Member Advantage savings account; BECU employees, joint account holders, and business/fiduciary/HSA/Zero Dividend/Early Saver holders cannot refer.",
+    "Friend must be a new member within BECU's field of membership (WA all counties, select OR/ID counties, or nationwide via partner association such as KEXP) and must not have been a BECU member in the past 6 months.",
+    "Friend must open checking AND savings using promo code REFER plus the referrer's unique referral code at application - BECU will not pay for accounts opened without both codes.",
+    "Within the first 30 days, friend must complete 10 required transactions (debit/credit card purchases, checks, deposits/withdrawals via checking).",
+    "Both accounts must remain open and in good standing for at least 90 days; bonus deposited to the Member Share/Advantage savings account within 120 days of opening.",
+    "Offer valid 1/1/2026 - 12/31/2026; no referral-count cap stated on the current program page.",
+    "Bonus reported as income (1099-INT for new member; may be 1099-MISC for referrer) per BECU's published referral terms."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official BECU refer-a-friend page (becu.org): 'Refer a friend to BECU. You could both earn a $100 bonus.' and 'Just like that, you and your friend each get a $100 bonus.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official becu.org domain (becu.org/members-matter/about-membership/refer-a-friend), fetched live 2026-09-23; eligibility terms also published on becu.org/Partners/Boeing",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking + Member Share/Advantage savings accounts",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'becu' shows no BECU route in catalog or evidence files. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 18+, BECU member in good standing, primary on Member Share/Advantage savings (no employees/joint holders). Friend: new member in BECU field of membership, not a member in past 6 months.",
+  "notes": "Verified 2026-09-23. BECU (Boeing Employees Credit Union, Tukwila WA). Current program: $100 to the referrer per qualifying referral; no referral-count cap stated on the program page (an older BECU offer capped at 5 referrals/$500, but that cap is not in the current official terms). The limited-time 90th-anniversary $190 variant on share.becu.org is a separate promo and is not claimed here.",
+  "numeric_basis": "payout from official becu.org program page ($100 to referrer per qualifying referral; no cap stated); time: sharing unique referral code + promo code est. 5-15 min active",
+  "official_url": "https://www.becu.org/members-matter/about-membership/refer-a-friend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Refer a friend to BECU. You could both earn a $100 bonus. ... Just like that, you and your friend each get a $100 bonus.",
+  "payout_value_note": "$100 cash bonus deposited to the referrer's Member Share/Advantage savings account per qualifying referral; no cap stated.",
+  "route_id": "R3847",
+  "standard": {
+    "s1": {
+      "note": "Program page live on becu.org, fetched 2026-09-23; offer window 1/1/2026 - 12/31/2026 stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer 18+ good standing primary on Member Share/Advantage; friend new member in field of membership, not a member in past 6 months",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking+savings with REFER + unique code, 10 transactions in first 30 days, accounts open 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing explicit: $100 bonus deposited within 120 days of opening qualifying accounts",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus reported as income - 1099-INT for new member, may be 1099-MISC for referrer (per BECU's published referral terms)",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your unique BECU referral code and promo code REFER with friends.",
+    "Friend joins BECU by opening a checking and savings account using promo code REFER and your unique referral code.",
+    "Within the first 30 days, friend completes 10 required transactions (card purchases, checks, deposits/withdrawals).",
+    "Both keep accounts open and in good standing for 90 days; you and your friend each receive a $100 bonus deposit within 120 days of account opening."
+  ],
+  "terms_url": "https://www.becu.org/members-matter/about-membership/refer-a-friend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 bonus deposited to Member Share/Advantage savings within 120 days of the friend opening qualifying accounts (after 10 transactions in 30 days + 90 days open).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

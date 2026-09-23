@@ -1,0 +1,90 @@
+{
+  "route_id": "R3779",
+  "verdict": "verify",
+  "official_url": "https://www.usbank.com/splash/business-checking/business-checking-promo-var-five.html",
+  "terms_url": "https://www.usbank.com/splash/business-checking/business-checking-promo-var-five.html",
+  "payout_quote": "Promo code Q3DIG26 MUST be used when opening a U.S. Bank Business Essentials or Platinum Business Checking account. Limit of one bonus per business. To earn a business checking bonus, open a qualifying U.S. Bank business checking account between 7/01/2026 and 9/27/2026. Make the required deposit(s) in new money within 30 days of account opening, maintain the same required daily balance through the 60th day, and complete 6 qualifying transactions based on posted date within 60 days of account opening. Business Essentials: $400 bonus with $5,000 deposits and daily balance. Platinum Business Checking: $1,200 bonus with $25,000 deposits and daily balance. New money is defined as funds from outside U.S. Bank. Bonus will be deposited into your new eligible U.S. Bank business checking account within 30 days after the month-end in which all offer requirements are met, provided the account remains open with a positive available balance. Existing businesses with a business checking account or had one closed within the past 12 months, do not qualify.",
+  "steps": [
+    "Confirm your business has no U.S. Bank business checking account and has not closed one in the past 12 months.",
+    "Open a new U.S. Bank Business Essentials or Platinum Business Checking account between 7/1/2026 and 9/27/2026 using promo code Q3DIG26 ($25 minimum deposit).",
+    "Deposit the required new money within 30 days: $5,000+ for Business Essentials ($400 bonus) or $25,000+ for Platinum ($1,200 bonus).",
+    "Maintain the required daily balance through the 60th day and complete 6 qualifying transactions within 60 days.",
+    "Receive the bonus within 30 days after the month-end in which all requirements are met."
+  ],
+  "catches": [
+    "OFFER EXPIRES SEPTEMBER 27, 2026 - 5 days from verification.",
+    "Business customers only - requires a business entity; not available to individuals.",
+    "Large new-money deposits required: $5,000 for $400 tier, $25,000 for $1,200 tier.",
+    "New money only - cannot transfer from another U.S. Bank product or affiliate.",
+    "Not eligible if your business has a U.S. Bank business checking account or closed one within the past 12 months.",
+    "Must maintain the full required daily balance through the 60th day - a single dip can disqualify you.",
+    "6 qualifying transactions required (debit purchases, ACH/wire, Zelle, mobile check deposit, bill pay); P2P, credit card transfers, and internal U.S. Bank transfers do not count.",
+    "Limit one bonus per business; cannot combine with other business checking bonus offers.",
+    "Platinum account has a $30 monthly maintenance fee unless waived ($25,000 average collected balance or other waivers)."
+  ],
+  "biggest_catch": "EXPIRES 9/27/2026. Business-only, and the $1,200 tier requires parking $25,000 in new money for 60 days with no balance dips.",
+  "eligibility": "New U.S. Bank business checking customers (no existing business checking, none closed within 12 months); limit one bonus per business.",
+  "timing": "Bonus deposited within 30 days after the month-end in which all offer requirements are met, if the account remains open with a positive available balance.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "U.S. Bank is a real operating national bank; business checking bonus terms are published on official usbank.com promo pages."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official disclosures state the $400/$1,200 tiers with promo code Q3DIG26, deposit/balance/transaction requirements, and the 7/1/26-9/27/26 window."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No upfront fee; $25 minimum opening deposit is the business's own money."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Offer valid through 9/27/2026 per official usbank.com pages (captured 2026-09-23 UTC). EXPIRING WITHIN 14 DAYS - FLAGGED."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Businesses without a U.S. Bank business checking account (or one closed within 12 months); one bonus per business."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Open with code Q3DIG26 by 9/27/26; deposit $5K/$25K new money in 30 days; hold through day 60; 6 qualifying transactions."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Paid within 30 days after the month-end in which requirements are met."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No weasel words - fixed $400 or $1,200 by account type."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Business Essentials has no stated monthly fee here; Platinum $30 fee waivable at the $25K balance the bonus requires."
+    },
+    "s6": {
+      "pass": false,
+      "note": "EXPIRES 9/27/2026 - within 14 days. FLAGGED for the user."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct route: U.S. Bank business checking not in existing-providers.txt or prior evidence files (personal U.S. Bank offers are separate routes)."
+    }
+  },
+  "notes": "Verified against official usbank.com business checking promo pages (official-domain search capture, 2026-09-23 UTC; page fetch tooling unavailable this turn). One promo, two account tiers ($400 Essentials / $1,200 Platinum) kept as a single route per the no-tier-splitting rule. EXPIRES 9/27/2026 - within 14 days, flagged.",
+  "payout_min_usd": 400,
+  "payout_max_usd": 1200,
+  "payout_value_note": "$400 Business Essentials / $1,200 Platinum tiers stated in official terms",
+  "time_min_minutes": 30,
+  "time_max_minutes": 60,
+  "numeric_basis": "payout from official terms ($400-$1,200 tiers); time: business account opening + funding est. 30-60 min active (excludes 60-day balance/transaction period)"
+}

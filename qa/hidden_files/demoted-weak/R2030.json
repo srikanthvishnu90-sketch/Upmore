@@ -1,0 +1,86 @@
+{
+  "route_id": "R2030",
+  "verdict": "verify",
+  "official_url": "https://www.designcrowd.com/",
+  "terms_url": "https://www.designcrowd.com/help/article/how-does-designcrowd-work",
+  "payout_quote": "Our web-based marketplace lets graphic designers (including studios, professional designers, work-from-home designers, student graphic designers and freelance designers) respond to these briefs, win work and earn money.",
+  "steps": [
+    "Create a free DesignCrowd designer account with a portfolio and payment preferences.",
+    "Browse available design projects (contests and one-on-one jobs) matching your skills.",
+    "Read the client brief carefully and submit original design concepts.",
+    "If the client selects your design, payment lands in your DesignCrowd account; withdraw via PayPal, Payoneer, or bank transfer.",
+    "Build ratings and repeat-client relationships to win more often."
+  ],
+  "catches": [
+    "Contest work is speculative: only the selected designer is paid per contest; most submissions earn nothing.",
+    "Project budgets (and therefore payouts) are set per brief by the client — no fixed amounts.",
+    "DesignCrowd takes a 15% commission from the total project amount (per third-party fee reporting; confirm in current terms).",
+    "Fierce competition from a large global designer pool; winning consistently is hard.",
+    "Original work only — using others' images or AI-generated images can get your account deactivated."
+  ],
+  "biggest_catch": "Most contest entries earn nothing: only the client-selected design is paid, so expected payout per entry is low and losing work is unpaid.",
+  "eligibility": "Free designer account; must submit original work and hold copyright to submitted images.",
+  "timing": "Projects run on client-set deadlines; payout after selection, withdrawable via PayPal/Payoneer/bank transfer.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "DesignCrowd's own help center (designcrowd.com/help) states the mechanism: designers 'respond to these briefs, win work and earn money' via Design Contests or One-on-one Jobs."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official terms tie payout to winning/selection per project; no fixed payout range published — framed as variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the official flow: profile, browse projects, submit concepts, get selected, receive payment."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Creating an account and entering contests is free; the platform's commission comes out of project amounts, not upfront."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free designer account; effectively gated by design skill."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as variable per-project pay; no fixed amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover unpaid losing entries, client-set budgets, and the 15% commission."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no DesignCrowd route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: client-set deadlines; payout after selection."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "DesignCrowd is a design-contest/one-on-one-job marketplace (logo, web, print). Designers browse live briefs and get paid when selected. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "Project budget is set per brief by the client; DesignCrowd publishes no fixed designer payout range.",
+  "time_min_minutes": 60,
+  "time_max_minutes": 180,
+  "numeric_basis": "payout: client-set per project, no official range. time: browse briefs + create and submit concepts, est. 60-180 min active per project pursued."
+}

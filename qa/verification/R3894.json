@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The new membership must stay open 12 months - if the friend's account closes earlier, your $25 is revoked and deducted.",
+  "catches": [
+    "Referring member earns $25 for each successful referral (the friend opening a new membership).",
+    "Limit 4 referrals per member per month ($100/month).",
+    "Referred member must qualify for membership (Adams, Cumberland, Franklin, Fulton, or York County, PA with exclusions).",
+    "New membership must remain open for 12 months after opening or the incentive is revoked and deducted from the remaining account balance.",
+    "The extra $25 (Visa card) and $50 (checking with $300/pay direct deposit) incentives go to the NEW member, not the referrer.",
+    "1st Ed reserves the right to terminate the program at any time.",
+    "No tax language on the page (standard bonus treatment; not stated)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official 1st Ed page (1edcu.org): 'Earn $25* for each successful referral' and 'Earn up to $100* per month' and 'Referred member must qualify for membership for $25 incentive to be distributed to either party.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official 1edcu.org domain (1edcu.org/refer-a-friend-earn-rewards/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard membership",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check '1st ed credit' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: 1st Ed CU member. Friend: qualifies for 1st Ed membership and opens a new membership.",
+  "notes": "Verified 2026-09-23. 1st Ed Credit Union (Chambersburg, PA). $25 to the referring member per successful referral; limit 4 per month ($100/month). The additional $25/$50 incentives are new-member (friend-side) rewards, not referrer payouts.",
+  "numeric_basis": "payout from official page ($25 per successful referral; 4/month, $100/month cap); time: making the referral est. 5-15 min active",
+  "official_url": "https://www.1edcu.org/refer-a-friend-earn-rewards/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Earn $25* for each successful referral ... Earn up to $100* per month ... Limit 4 referrals per member per month.",
+  "payout_value_note": "$25 per successful referral; up to 4 per month ($100/month).",
+  "route_id": "R3894",
+  "standard": {
+    "s1": {
+      "note": "Program page live on 1edcu.org, fetched 2026-09-23; CU reserves the right to terminate at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member; friend qualifies for 1st Ed membership (5 PA counties with exclusions)",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open a new membership qualifying for 1st Ed eligibility",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: incentive credited once membership is open (no day count); revoked if the account closes within 12 months",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Refer a friend or family member to 1st Ed Credit Union.",
+    "Friend qualifies for membership and opens a new membership.",
+    "Both accounts must be in good standing.",
+    "You earn $25 per successful referral (up to 4/month, $100/month)."
+  ],
+  "terms_url": "https://www.1edcu.org/refer-a-friend-earn-rewards/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 credited when the new membership is open; revoked if closed within 12 months.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

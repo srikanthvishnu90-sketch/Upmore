@@ -1,0 +1,85 @@
+{
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "biggest_catch": "The friend's qualification details live behind the program disclosure link — the landing page confirms $50 each but not the transaction/direct-deposit requirements in full.",
+ "catches": [
+  "Friend must meet the program qualifications (linked in the program disclosure) to trigger the payout.",
+  "Cap: up to $500 per year (i.e., 10 paid referrals).",
+  "Payout format is the program-described $50 reward; confirm exact form (cash/card) from program disclosure at build time."
+ ],
+ "checked_at": "2026-09-23T07:26:15Z",
+ "critical": {
+  "c1": {
+   "evidence": "Verifiable program on institution's official domain: One Nevada Credit Union's official page (onenevada.org/refer-a-friend) runs a Refer-A-Friend program paying the referrer for qualifying referrals.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Concrete per-referral payout: the referrer earns $50 for each qualified referral, up to $500 per year (i.e., 10 paid referrals).",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "Mechanism: enter the email associated with the One Nevada account to receive a personal referral link; share the link with friends/family by email, text, or social media; the friend uses the link to open a new One Nevada checking account and meets the program qualifications.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "Per the official FAQ: the referrer's $50 reward is emailed with redemption instructions after account requirements are met; the referred person receives their $50 after 60 days of becoming a member and meeting account opening criteria.",
+   "pass": true
+  }
+ },
+ "eligibility": "One Nevada Credit Union members referring friends who open a new checking account via the referral link.",
+ "notes": "Both parties earn $50. Program qualifications are in the linked program disclosure.",
+ "numeric_basis": "Per-referral reward of $50.00.",
+ "official_url": "https://www.onenevada.org/refer-a-friend",
+ "payout_max_usd": 50.0,
+ "payout_min_usd": 50.0,
+ "payout_quote": "Earn $50 for each qualified referral, up to $500 per year.",
+ "payout_value_note": "$50 reward per qualified referral as described in the program disclosure.",
+ "route_id": "R4354",
+ "standard": {
+  "s1": {
+   "note": "No upfront fee charged to the referrer.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Referral link is free; no cost to refer.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Tax treatment not disclosed on the official page.",
+   "pass": true
+  },
+  "s4": {
+   "note": "Cap: up to $500 per year.",
+   "pass": true
+  },
+  "s5": {
+   "note": "Offer live on the current official page (observed 2026-09-23); no expiration date is published.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Referral mechanics stated on the official page: enter the account email to receive a personal referral link; share by email, text, or social media.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Friend-side qualifying actions: use the referral link to open a new One Nevada checking account and meet the program qualifications.",
+   "pass": true
+  }
+ },
+ "steps": [
+  "Enter the email associated with your One Nevada account to get your personal referral link.",
+  "Share the link with friends/family by email, text, or social media.",
+  "Your friend opens a new One Nevada checking account via your link and meets the qualifications.",
+  "You earn $50 (up to $500/year); your $50 is emailed to you, your friend gets $50 after 60 days."
+ ],
+ "terms_url": "https://www.onenevada.org/refer-a-friend",
+ "time_max_minutes": 15.0,
+ "time_min_minutes": 5.0,
+ "timing": "The referrer's $50 reward is emailed with redemption instructions after account requirements are met; the referred friend receives $50 after 60 days of membership.",
+ "upfront_fee": false,
+ "verdict": "verify",
+ "weasel_words": [
+  "Friend-side qualification details are in the linked program disclosure rather than on the landing page; core payout and cap are explicit."
+ ]
+}

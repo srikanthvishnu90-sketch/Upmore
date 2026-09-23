@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Requires a 2010-or-newer insured vehicle in your name — and visits depend on demand in your market.",
+  "catches": [
+    "Requires a valid US driver's license and an insured vehicle (2010 or newer) in your name.",
+    "Must pass a background check, motor vehicle report, and Papa Safety Training.",
+    "Visit availability varies by market; pay and mileage depend on your location.",
+    "Visits are typically 2-4 hours; you only earn for completed visits."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Papa's official Pal application page (papa.com/pals) states: 'Pals on average earn $22 hr*' and 'Pals earn a base rate of $13-$18 an hour, plus bonuses and one-way commute mileage to each visit.' Pals help older adults with companionship, meal prep, errands, and house tasks with 'complete control over their work schedules' — a live, provider-owned deal channel.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: 'Pals earn a base rate of $13-$18 an hour, plus bonuses' — a stated provider pay range.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: provide info, complete qualification steps (fit questions, safety training, ID verification, background check), add bank info, find visits in the app.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No application fee appears on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Adults 21+ authorized to work in the US with a valid driver's license, insured 2010+ vehicle, smartphone, and a passing background check.",
+  "notes": "Scenario: senior companionship visits. Papa Pals provide companionship, meal prep, errands, house tasks, and transportation to older adults and families. Official pay: base $13-$18/hour plus bonuses and mileage, averaging $22/hour; rates vary by location. No caregiving experience needed. Variable, never guaranteed.",
+  "numeric_basis": "payout: official base rate $13-$18/hour plus bonuses (avg $22/hr); rates vary by location — variable. time: application + safety training + verification, est. 45-90 min active (background check takes days separately).",
+  "official_url": "https://www.papa.com/pals",
+  "payout_max_usd": 18,
+  "payout_min_usd": 13,
+  "payout_quote": "Pals earn a base rate of $13-$18 an hour, plus bonuses and one-way commute mileage to each visit.",
+  "payout_value_note": "Base $13-$18/hour plus bonuses; 'Pals on average earn $22 hr'; rates vary by location — variable.",
+  "route_id": "R5474",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: 21+ with US work authorization, driver's license, insured 2010+ vehicle.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Stated provider pay range of $13-$18/hour with the location-variance caveat explicit.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover vehicle needs, background check, market-dependent visits, and per-visit pay.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Papa absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official Pal application page captured 2026-09-23 (papa.com/pals).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: visits typically 2-4 hours, chosen on your own schedule.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Apply on Papa's Pal application page with your information.",
+    "Complete the qualification steps: fit questions, Papa Safety Training, ID verification, and background check.",
+    "Add your bank information in the Papa Pal app.",
+    "Find visits in the app and start helping members; get paid for completed visits."
+  ],
+  "terms_url": "https://www.papa.com/pals",
+  "time_max_minutes": 90,
+  "time_min_minutes": 45,
+  "timing": "Visits typically 2-4 hours; choose your own schedule in the app.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

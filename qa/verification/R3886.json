@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The annual cap text on the official page is internally inconsistent ('up to $1900 per year' vs 'up to ten cards valued at $1900 total' vs the $100 card) - but the per-referral payout is unambiguous: $100.",
+  "catches": [
+    "The referring member receives a $100 Visa Reward Card for each individual who registers, opens a new Affidian CU account, and completes the offer requirements.",
+    "Friend must register via the referral link, join Affidian CU, open a new personal checking account within 60 days of joining, and enroll in eStatements within 60 days of account opening.",
+    "Referrer must register for the program first and share the offer; referrals expire after 120 days.",
+    "Referrer must be an Affidian CU member with a current account in good standing; referred person must not have an existing account.",
+    "Friend also earns a $100 Visa Reward Card. Reward Cards delivered 4-6 weeks after all requirements are completed.",
+    "Reward Cards may be reported to the IRS as income. All offers subject to change at any time without notice.",
+    "Annual cap text is inconsistent on the page ('up to $1900 per year' / 'up to ten cards valued at $1900 total'); the $100 per-referral payout is stated clearly.",
+    "Eligibility is narrow: Colorado state government employees or family members of existing members."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Affidian CU page (affidiancu.org): 'The referring member (Referrer) will receive a $100 Visa Reward Card for each individual (Referred Person) who registers for the offer, opens a new Affidian Credit Union account, and completes the offer requirements within the specified timeframe.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official affidiancu.org domain (affidiancu.org/refer), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard checking account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'affidian' catalog hit is a false positive (R0786 utility rebate); 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Affidian CU member in good standing. Friend: Colorado state government employee or family member of an existing member; registers via referral link, joins, opens checking within 60 days.",
+  "notes": "Verified 2026-09-23. Affidian Credit Union (Denver, CO). $100 Visa Reward Card per qualifying referral (offer was $50 as of ~79 days ago; now $100). Annual cap text on the page is inconsistent ('$1900 per year' / 'up to ten cards valued at $1900 total') - flag the cap as stated by the page. Narrow eligibility: Colorado state government employees or family of existing members.",
+  "numeric_basis": "payout from official page ($100 Visa Reward Card per qualifying referral; annual cap text inconsistent); time: registering and sharing the referral link est. 5-15 min active",
+  "official_url": "https://affidiancu.org/refer",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "The referring member (Referrer) will receive a $100 Visa Reward Card for each individual (Referred Person) who registers for the offer, opens a new Affidian Credit Union account, and completes the offer requirements within the specified timeframe.",
+  "payout_value_note": "$100 Visa Reward Card per qualifying referral. Annual cap text on the page is inconsistent ($1900/year stated); per-referral payout is unambiguous.",
+  "route_id": "R3886",
+  "standard": {
+    "s1": {
+      "note": "Program page live on affidiancu.org, fetched 2026-09-23; offers subject to change without notice",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member in good standing; friend CO state government employee or family of existing member",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register via link, join, open new personal checking within 60 days, enroll in eStatements within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: 4-6 weeks for Reward Card delivery after all requirements are completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: Reward Cards may be reported to the IRS as income",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Affidian CU Refer a Friend program.",
+    "Share your personal referral link with friends/family via email, text, or social media.",
+    "Friend registers via your link, joins, and opens a new personal checking account within 60 days.",
+    "Friend enrolls in eStatements within 60 days of account opening.",
+    "You receive a $100 Visa Reward Card (4-6 weeks)."
+  ],
+  "terms_url": "https://affidiancu.org/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Visa Reward Card delivered 4-6 weeks after all requirements are completed.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

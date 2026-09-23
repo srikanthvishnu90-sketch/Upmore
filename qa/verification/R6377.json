@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Both $50 cards are paid only after the friend signs up for Sparklight internet AND stays connected for 30 days \u2014 if they cancel in the first month, nobody gets paid.",
+  "catches": [
+    "Friend must sign up for Sparklight internet and remain connected for 30 days",
+    "Program announced September 2025; the referral landing page (sparklight.com/refer) could not be fetched at verification time, so current availability rests on recent official press references",
+    "Program terms subject to change"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Sparklight press release on sparklight.com/news (Sept 4, 2025, crawled ~10 days ago): 'Through the program, both the referring customer and their friend will receive a $50 prepaid card when the friend signs up for Sparklight internet and remains connected for 30 days.' Multiple 2025 market campaigns on sparklight.com describe the same Refer-A-Friend program as their base.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official sparklight.com pages crawled within the last 10 days (one within 10 hours) still describe the Refer-A-Friend program; no expiry stated for the base program.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amount verbatim: 'both the referring customer and their friend will receive a $50 prepaid card when the friend signs up for Sparklight internet and remains connected for 30 days.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "30-day stay-connected condition stated officially; program registered via sparklight.com/refer with a custom referral link.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Sparklight customer registered at sparklight.com/refer; friend must sign up for Sparklight internet via the referral link and remain connected for 30 days.",
+  "notes": "Verified 2026-09-23 from official sparklight.com press materials (crawled Sept 2026). Deduped: no Sparklight routes in catalog, evidence files, existing-providers.txt, or rejects-g60. Caveat: the program launched September 2025 and the referral landing page itself could not be fetched at verification time; the base program has no stated end date and is still referenced in recent official pages.",
+  "numeric_basis": "payout from official terms ($50 prepaid card to each side); time: referral share 5-15 min active",
+  "official_url": "https://www.sparklight.com/news/sparklight-launches-refer-a-friend-program-customers-and-their-friends",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Through the program, both the referring customer and their friend will receive a $50 prepaid card when the friend signs up for Sparklight internet and remains connected for 30 days.",
+  "payout_value_note": "$50 prepaid card to both referrer and friend \u2014 offsets planned spending, not income.",
+  "route_id": "R6377",
+  "standard": {
+    "s1": {
+      "note": "Exact amount stated verbatim in the official announcement ($50 each).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: prepaid card offsets planned spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official announcement (register at sparklight.com/refer, share custom link, friend signs up and stays 30 days).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: 30-day stay-connected requirement gates both payouts.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own Sparklight service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words on the amount; program subject to change per standard terms.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against sparklight.com (provider's own domain). Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register to join at sparklight.com/refer",
+    "Receive a custom referral link and share it with friends and family",
+    "Friend uses the link to sign up for Sparklight internet",
+    "Friend remains connected for 30 days",
+    "Both the referring and new customer receive a $50 prepaid card"
+  ],
+  "terms_url": "https://www.sparklight.com/refer",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Both $50 prepaid cards paid after the friend has stayed connected for 30 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,86 @@
+{
+  "route_id": "R6069",
+  "verdict": "verify",
+  "official_url": "https://www.secumd.org/about-us/membership/referral-program/",
+  "terms_url": "https://www.secumd.org/about-us/membership/referral-program/",
+  "payout_quote": "If they join, we'll give you both a $50 bonus. ... The more friends you refer, the more bonuses you can receive. Earn up to $500 a month!",
+  "steps": [
+    "Complete and submit the short referral form on secumd.org.",
+    "Your friend receives an email invitation to set up their SECU membership and open an account.",
+    "After their new accounts are open, you each receive $50."
+  ],
+  "catches": [
+    "Cap: up to $500 per month in referral bonuses (10 referrals/month).",
+    "Friend must actually join and open accounts — no payout for incomplete signups.",
+    "SECU membership eligibility applies (Maryland-focused credit union); program terms can change.",
+    "Bonus payout timing not specified on the page."
+  ],
+  "biggest_catch": "You only earn if your friend completes joining and opens accounts; capped at $500 per month.",
+  "eligibility": "Existing SECU (Maryland) member; referred person must be eligible for SECU membership.",
+  "timing": "Submit the form in ~5 minutes; bonus paid after the friend's accounts are open (timing not specified).",
+  "upfront_fee": false,
+  "weasel_words": [
+    "bonus",
+    "ongoing benefit"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T04:37:09Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Official secumd.org: 'we'll give you both a $50 bonus' — concrete per-referral referrer payout."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Live official secumd.org referral page fetched 2026-09-23; described as ongoing member benefit."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to participate."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "dedupe-check for 'SECU Maryland' returned 0 hits; secumd.org absent from referral-domain catalog."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Page live on secumd.org fetched 2026-09-23; 'now an ongoing benefit'."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Existing SECU member referrer; friend must be membership-eligible."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Friend requirement: join + open accounts via the email invitation."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Paid 'after their new accounts are open' — exact timing not specified; noted in catches."
+    },
+    "s5": {
+      "pass": true,
+      "note": "No tax treatment stated on the official page; no generic tax assumption made."
+    },
+    "s6": {
+      "pass": true,
+      "note": "No fee to participate."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Distinct referrer-side earning mechanism; new institution; $500/month cap disclosed."
+    }
+  },
+  "notes": "Verified 2026-09-23 via official SECU Maryland referral page. Referrer earns $50 per referral; up to $500/month cap.",
+  "payout_min_usd": 50,
+  "payout_max_usd": 50,
+  "payout_value_note": "$50 bonus to referrer per friend who joins and opens accounts (friend also gets $50).",
+  "time_min_minutes": 5,
+  "time_max_minutes": 15,
+  "numeric_basis": "payout $50 flat per referral from official terms; time: short referral form est. 5-15 min active"
+}

@@ -12,7 +12,7 @@
     "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
     "The card's variable APR (~20%+) will erase the entire $250 bonus fast if you carry a balance — pay the full statement balance every month."
   ],
-  "checked_at": "2026-09-23T01:58:24Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "evidence": "U.S. Bank National Association — real operating issuer; official page on the usbank.com domain.",
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "New cardmembers; $2,000 in eligible purchases within the first 120 days of account opening.",
-  "notes": "Offer amount ($250), spend requirement ($2,000), 120-day window, and $0-first-year-then-$95 fee confirmed on the official U.S. Bank Shopper Cash Rewards page (usbank.com domain, indexed official copy crawled 2 hours before verification). Posting timing is not stated in the fetched copy; documented honestly in s3. Distinct product from Cash+ (R0706) and Altitude Connect (R0740).",
+  "notes": "Offer amount ($250), spend requirement ($2,000), 120-day window, and $0-first-year-then-$95 fee confirmed on the official U.S. Bank Shopper Cash Rewards page (usbank.com domain, indexed official copy crawled 2 hours before verification). Posting timing is not stated in the fetched copy; documented honestly in s3. Distinct product from Cash+ (R0706) and Altitude Connect (R0740). [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus 20-40min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Credit Card Bonus (20-40min active)] [numeric-backfill 2026-09-24: payout: flat bonus amount in official terms; time: category default Credit Card Bonus (20-40min active)]",
   "official_url": "https://it02.usbank.com/credit-cards/shopper-cash-rewards-visa-signature-credit-card.html",
   "payout_quote": "Earn a $250 bonus after you spend $2,000 in eligible purchases within the first 120 days of account opening. $0 intro annual fee for the first year, $95/year thereafter.",
   "route_id": "R0747",
@@ -80,5 +80,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 250.0,
+  "payout_max_usd": 250.0,
+  "payout_value_note": "flat bonus amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 40.0,
+  "numeric_basis": "backfill: payout: flat bonus amount in official terms; time: category default Credit Card Bonus (20-40min active)"
 }

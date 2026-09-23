@@ -1,0 +1,86 @@
+{
+  "route_id": "R2027",
+  "verdict": "verify",
+  "official_url": "https://www.reddit.com/r/forhire/",
+  "terms_url": "https://www.reddit.com/r/forhire/",
+  "payout_quote": null,
+  "steps": [
+    "Create a free Reddit account.",
+    "Browse r/forhire filtered by the [Hiring] flair for posts matching your skills.",
+    "Read each post's requirements, budget, and contact instructions (many posts list rates, e.g. '$18 per hour').",
+    "Reply to the post or DM the poster with your portfolio, rate, and availability.",
+    "Negotiate and agree on scope, pay, and payment method in writing before starting any work."
+  ],
+  "catches": [
+    "Pay is set by each poster and is often low; nothing is standardized or guaranteed.",
+    "No escrow or payment protection — agree on payment terms upfront; non-payment risk is yours.",
+    "Scam risk is real (advance-fee, fake-check, and phishing schemes); never pay to get a job and never cash checks for strangers.",
+    "Competition is intense: hundreds of thousands of members chase the same [Hiring] posts.",
+    "Posters are anonymous; check account age and history before engaging."
+  ],
+  "biggest_catch": "There is no payment protection and no guaranteed work: every dollar depends on a deal you negotiate yourself with an anonymous poster, and scams are common.",
+  "eligibility": "Free Reddit account (13+ per Reddit's terms); open worldwide.",
+  "timing": "New [Hiring] posts appear continuously, daily; you reply on your own schedule.",
+  "upfront_fee": false,
+  "weasel_words": [],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Subreddit verified real, public, and active via indexed data: 683k members; live [Hiring] posts (e.g. '[Hiring] Visual Director & Short-Form Video Editor'); sidebar rules text quoted verbatim: 'Scroll down for general information and our rules. Please read through these carefully, as breaking them can be a bannable offense.'"
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "A subreddit publishes no payout terms; all pay is negotiated privately per post — framed as fully variable."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Steps follow the subreddit's public posting format ([For Hire]/[Hiring] flairs, reply-or-DM contact)."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Free to browse, post, and reply; no fee documented anywhere in the subreddit's rules text."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility is a free Reddit account; posting and replying are open to all members."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Framed as fully variable self-negotiated pay; no amount promised."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Catches cover non-payment risk, scams, low pay, and competition."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Deduped: no r/forhire route in qa/existing-providers.txt, dedupe-check.py, or qa/verification/*.json."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Timing: continuous daily postings; no deadline pressure."
+    },
+    "s7": {
+      "pass": true,
+      "note": "No weasel words in the mechanism description."
+    }
+  },
+  "notes": "r/forhire is a 683k-member public subreddit where clients post [Hiring] threads and freelancers post [For Hire] threads across dev, design, writing, and other services. Browser live-fetch (browser_open) failed repeatedly this session (service errors); quotes below are verbatim from the provider's own published pages as indexed by web search on 2026-09-23.",
+  "payout_min_usd": 0,
+  "payout_max_usd": 0,
+  "payout_value_note": "No official dollar amount: pay is set per post by the poster and negotiated privately.",
+  "time_min_minutes": 30,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: none published; all amounts negotiated per post. time: account + scan [Hiring] posts + write reply/DM pitches, est. 30-90 min active (excludes the gig work itself)."
+}

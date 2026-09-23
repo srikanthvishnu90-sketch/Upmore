@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Bonus amount is randomly selected (£20-£100 personal) and not guaranteed; your friend must invest at least £100 via your link.",
+  "catches": [
+    "Bonus is a randomly selected investment bonus of £20-£200 each for Personal (ISA, GIA or SIPP) referrals per Referral Program Terms V1.4 (active 16/03/2026; from 1 May 2026); Business referrals £100-£400. Approx US$27-US$267 (personal) at ~1.3336 GBP/USD observed from Xe on 2026-09-23",
+    "Bonus amounts are selected at random at the point of claiming - the exact amount is not guaranteed and is only revealed on claim",
+    "Friend must be a new customer, sign up via your unique referral link, and invest at least £100; cannot be applied retroactively",
+    "Referrer must have invested at least £100 of their own money before making referrals; first 25 referrals only",
+    "Bonus must remain invested for at least 12 months before withdrawal; withdrawing early lets InvestEngine reclaim the bonus"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "InvestEngine (investengine.com) - UK FCA-regulated ETF investment platform (ISA, GIA, SIPP, Business accounts). Official referral scheme help page and terms-incentives page on investengine.com fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official: 'You and your friend could each receive a bonus of £20 to £100' for Personal Account referrals; '£100 to £200 each' for Business Accounts. Terms: 'any individual whose Referee completes registration and funds their ISA, GIA or SIPP Account with InvestEngine will qualify for up to £200 in Referral Funding for both the Referrer and Referee.' Friend must invest at least £100.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: refer friend via link, friend invests £100+, both claim bonus.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee to join or refer. Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "UK residents who can open an InvestEngine account; friend must be a new customer investing £100+.",
+  "notes": "G54 brokerage wave. Referral-bonus route with official current terms V1.4; bonus randomly selected so recorded as range £20-£200 (approx. US$27-US$267 at ~1.3336).",
+  "numeric_basis": "payout: £20-£200 'Referral Funding' per side for Personal accounts (approx. US$27-US$267 at ~1.3336 GBP/USD observed from Xe on 2026-09-23), randomly selected at claim; Business £100-£400; time: signup + invest £100 est. 30-45 min active",
+  "official_url": "https://investengine.com/refer-a-friend/",
+  "payout_max_usd": 267,
+  "payout_min_usd": 27,
+  "payout_quote": "We'll give you and your friend an investment bonus of between £20 & £200 when your friend invests from £100 with us. Plus, when you refer someone to our Business Accounts, we'll increase the bonus to between £100 & £400!",
+  "payout_value_note": "£20-£200 per side (approx. US$27-US$267 at ~1.3336 GBP/USD observed from Xe on 2026-09-23); randomly selected at claim; Business referrals £100-£400. Bonus must stay invested 12 months.",
+  "route_id": "R5834",
+  "standard": {
+    "s1": {
+      "note": "UK only; referrer and referee must be eligible InvestEngine customers.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: share link, friend invests £100+, both claim.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Bonus randomly selected within stated range; disclosed as variable.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No inflated claim; official range quoted with randomness disclosed.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://help.investengine.com/hc/en-gb/articles/31149236607389-How-Does-the-Referral-Scheme-Work - official InvestEngine help page fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: get link, share, friend invests, claim.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official InvestEngine pages and terms V1.4 verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open an InvestEngine account and invest at least £100 of your own money",
+    "Get your unique referral link from the Referrals section",
+    "Share it with a friend; when they sign up via your link and invest £100+, you both claim a randomly selected £20-£200 bonus"
+  ],
+  "terms_url": "https://investengine.com/terms-incentives/",
+  "time_max_minutes": 40,
+  "time_min_minutes": 20,
+  "timing": "Ongoing referral scheme; bonus claimed after friend's qualifying investment.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

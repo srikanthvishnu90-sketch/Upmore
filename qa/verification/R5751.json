@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must deposit at least $10,000 within 14 days of opening and maintain it for 90 days - small-dollar referrals earn you nothing, and the bonus takes 30+ days after that to reach your Cash Account.",
+  "catches": [
+    "Existing Raisin customers (Referrers) earn a $100 referral bonus for each new customer referred who opens an account with Raisin.com and makes a Qualifying Deposit of at least $10,000.",
+    "The referee must use the referrer's unique personal referral code at sign-up for the referrer to be eligible.",
+    "The qualifying deposit balance must be maintained continuously at or above $10,000 for the full 90-day maintenance period.",
+    "Referral bonuses are limited to a maximum of twenty (20) successful referrals per customer ($2,000).",
+    "Bonus payouts are credited directly to the referrer's and referee's Cash Accounts within 30 days of satisfying all requirements.",
+    "US customers only; not open to Raisin employees; Raisin may modify or end the offer at any time and may withhold or revoke bonuses in cases of fraud or abuse."
+  ],
+  "checked_at": "2026-09-23T07:54:55Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Raisin page (raisin.com): 'Earn $100 for each friend who opens and funds an account using your referral code, up to a maximum of 20 referrals.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Raisin Refer-a-Friend Bonus Offer page on raisin.com, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 2026-09-23: R0436 is the Raisin new-customer Welcome Bonus deposit tiers (different offer); R0437 is the Raisin CD bonus; no raisin.com refer-a-friend route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Raisin customer. Friend: new US customer who signs up with the referrer's referral code and deposits $10,000+ within 14 days.",
+  "notes": "Verified 2026-09-23. Raisin (savings/CD marketplace; not itself a bank - deposits are held at FDIC-insured partner banks) Refer-a-Friend. Referrer earns $100 per successful referral, capped at 20 ($2,000). Distinct from the Raisin new-customer Welcome Bonus tiers (R0436).",
+  "numeric_basis": "payout from official Raisin terms ($100 per referral; maximum 20 referrals = $2,000); time: share your unique referral code est. 5-15 min active",
+  "official_url": "https://www.raisin.com/en-us/refer-a-friend-program/",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Earn $100 for each friend who opens and funds an account using your referral code, up to a maximum of 20 referrals.",
+  "payout_value_note": "$100 to the referrer per successful referral; cap 20 referrals ($2,000).",
+  "route_id": "R5751",
+  "standard": {
+    "s1": {
+      "note": "Official Raisin page live on raisin.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is an existing Raisin customer; friend is a new US customer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: sign up with the referrer's referral code; make a qualifying deposit of at least $10,000 within 14 days; maintain the balance for 90 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Bonus payouts credited directly to the referrer's Cash Account within 30 days of satisfying all requirements",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated in fetched page text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your unique Raisin referral code with friends or family.",
+    "Friend signs up using your code and deposits at least $10,000 within 14 days of opening.",
+    "After the friend maintains the deposit for 90 days, you earn $100 per successful referral."
+  ],
+  "terms_url": "https://www.raisin.com/en-us/refer-a-friend-program/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus credited to the referrer's Cash Account within 30 days of satisfying all requirements (after the 90-day maintenance period).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

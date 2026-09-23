@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is a limited-time promo running now through October 31, 2026; the friend must complete 20 debit card transactions plus eStatements and an online/mobile login within 60 days of opening - a heavy requirement before you earn anything.",
+  "catches": [
+    "Limited-time promotion: new member must open a Rewards Checking account between 9/1/26 and 10/31/26; program may not exist after the window.",
+    "Referring member must be in good standing at time of payout to receive the $50 bonus.",
+    "Friend must complete all three Rewards Checking qualifications within 60 days of account opening: 20 debit card transactions, 1+ online or mobile banking login, enrollment in eStatements.",
+    "Friend must be a new member and meet membership eligibility requirements.",
+    "No referral-count cap stated on the page."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Expree Credit Union page (expree.org/refer/): 'Referring member must be in good standing at time of payout to receive the $50 bonus.' alongside 'How Your Referral Earns Their $100'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Page hosted on official expree.org domain, fetched live 2026-09-23; promotion window 9/1/26-10/31/26 stated as current",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens Rewards Checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no expree.org route; catalog has no Expree entry",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Expree member in good standing. Friend: new member meeting membership eligibility, opens Rewards Checking 9/1/26-10/31/26.",
+  "notes": "Verified 2026-09-23. Expree Credit Union. Referrer earns a flat $50 per qualifying referral; the $100 figure is the friend's bonus. Limited-time window ends 10/31/2026.",
+  "numeric_basis": "payout from official expree.org page ($50 to the referring member per qualifying referral); time: share referral est. 5-15 min active",
+  "official_url": "https://expree.org/refer/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "How Your Referral Earns Their $100: To qualify, your referral must: - 20 Debit card transactions - 1+ Online or mobile banking login - Enroll in eStatements. They must complete all three Rewards Checking qualifications within 60 days of account opening. ... Referring member must be in good standing at time of payout to receive the $50 bonus.",
+  "payout_value_note": "$50 bonus to the referring member per qualifying referral (friend earns $100); no cap stated; promo window 9/1/26-10/31/26.",
+  "route_id": "R4762",
+  "standard": {
+    "s1": {
+      "note": "Page live on expree.org, fetched 2026-09-23; promo window now through October 31, 2026",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referring member in good standing; friend a new member meeting membership eligibility",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open Rewards Checking 9/1/26-10/31/26, 20 debit transactions, 1+ online/mobile login, eStatements within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Payout after qualifications met; referring member must be in good standing at time of payout",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement on the page",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share Expree with friends while the promo runs (now through October 31, 2026).",
+    "Friend opens a new Expree Rewards Checking account as a new member.",
+    "Friend completes 20 debit card transactions, one online/mobile banking login, and eStatements enrollment within 60 days of account opening.",
+    "You receive the $50 bonus (friend receives $100)."
+  ],
+  "terms_url": "https://expree.org/refer/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid after the friend completes all qualifications within 60 days of account opening; referrer must be in good standing at payout.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

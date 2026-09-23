@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must open a new SAFE checking account with a $25 minimum and make 25 or more debit card purchases within 60 days; only after both conditions are met do you and the friend each get $50. The referral card is filled out on paper and must be submitted when the friend opens the account.",
+  "catches": [
+    "Friend must be a new SAFE Federal Credit Union member opening a new checking account with a $25 minimum opening balance (at any SAFE branch or online at www.safefed.org).",
+    "Friend must make 25 or more debit card purchases within 60 days of opening the account.",
+    "You fill out the paper BFF Referral Card and give it to your friend; the friend must submit it when opening the new account.",
+    "Bonus is $50 deposited into each of your accounts ($50 for you, $50 for the friend) once all activities are met.",
+    "Promotion details are from the official BFF Referral Program card; program can presumably be changed or ended."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official SAFE Federal Credit Union BFF Referral Program Card (safefed.org): 'Once all the above activities have been met, SAFE Federal Credit Union will deposit $50 in both of your accounts. Because that's what BFFs do.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official BFF card PDF hosted on safefed.org, fetched live 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens checking with a $25 minimum of their own money",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no safefed.org route and no SAFE Federal Credit Union entry (distinct from SAFE CU Sacramento, safecu.org); catalog has no SAFE Federal CU route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing SAFE Federal Credit Union member who fills out the BFF Referral Card. Friend: new SAFE Federal CU member opening a new checking account; submits the referral card at account opening.",
+  "notes": "Verified 2026-09-23. SAFE Federal Credit Union (South Carolina) BFF (Banking Friends Forever) program. Referrer earns $50 per qualifying referral ($50 to the friend too). Friend must open checking with $25 minimum and make 25+ debit card purchases within 60 days.",
+  "numeric_basis": "payout from official SAFE Federal CU BFF card ($50 deposited to both accounts per qualifying referral); time: fill out and hand over card est. 5-15 min active",
+  "official_url": "https://www.safefed.org/sites/default/files/BFF Referral Program Card.pdf",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Once all the above activities have been met, SAFE Federal Credit Union will deposit $50 in both of your accounts. Because that's what BFFs do.",
+  "payout_value_note": "$50 deposited into the referrer's account per qualifying referral; friend also receives $50.",
+  "route_id": "R5663",
+  "standard": {
+    "s1": {
+      "note": "Official BFF card PDF live on safefed.org, fetched 2026-09-23; no fixed expiry shown",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer fills out BFF card; friend opens new checking with $25 minimum, submits card at opening",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: 25+ debit card purchases within 60 days of account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 deposited to both accounts once all activities are met; no exact posting date given",
+      "pass": true
+    },
+    "s5": {
+      "note": "No tax statement in the card text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out your information on the BFF Referral Card and tear it off for your friend.",
+    "Give the card to your friend and remind them to submit it when opening their new SAFE checking account.",
+    "Friend opens a new SAFE checking account with a $25 minimum (branch or online) and makes 25 or more debit card purchases within 60 days.",
+    "SAFE deposits $50 into your account (and $50 into the friend's account) once all requirements are met."
+  ],
+  "terms_url": "https://www.safefed.org/sites/default/files/BFF Referral Program Card.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited to both accounts once all activities are met (no exact posting date stated).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

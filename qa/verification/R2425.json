@@ -1,0 +1,91 @@
+{
+  "route_id": "R2425",
+  "verdict": "verify",
+  "official_url": "https://public-aut.com/disclosures/referral-terms",
+  "terms_url": "https://public-aut.com/disclosures/referral-terms",
+  "payout_quote": "For each friend or family member who makes a deposit of at least $1,000, you will both receive $100 in a stock or ETF of your choice subject to the 'Terms and Conditions' below.",
+  "steps": [
+    "Hold a Public Investing brokerage account that is funded and in good standing.",
+    "Copy your unique referral link from the app (Rewards button > Copy link / Invite from contacts).",
+    "Share the link with personal friends or family members with whom you have a direct, personal relationship (with their consent).",
+    "Your friend uses your link to open and get approved for a Public brokerage account, and successfully deposits at least $1,000 as an initial one-time deposit.",
+    "Claim your reward in the app within 30 days (Public alerts you when you are cleared to claim); choose a stock or ETF from the available selection."
+  ],
+  "catches": [
+    "High bar on the friend's side: they must make a $1,000+ initial one-time deposit - most casual referrals will not qualify.",
+    "The $100 reward is a fractional share of a stock/ETF, not cash; the cash value cannot be withdrawn for 12 months after claiming or the account may face an early withdrawal fee of up to $100.",
+    "Cap: you may earn up to $500 of rewards through promotions and offers on the Public app, then lose reward eligibility.",
+    "You have 30 days to claim the reward or it expires (cannot be revived).",
+    "Personal use only - no spam, mass emails, commercial advertising, or publicly selling/buying referral codes; violations void referrals.",
+    "No guarantee the offer will be paid; Public can change or terminate the program at any time without notice.",
+    "The cash value of the reward may be reported as 'Other Income' on a Form 1099-Misc.",
+    "US residents only."
+  ],
+  "biggest_catch": "Your friend must deposit $1,000+ in one initial deposit - and the $100 is a fractional share you cannot withdraw as cash for 12 months.",
+  "eligibility": "Existing Public Investing members with a funded brokerage account in good standing; US residents; refers only personal friends/family without an existing Public account.",
+  "timing": "Public alerts you when cleared to claim; claim within 30 days; cash value of the reward locked from withdrawal for 12 months after claiming.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "up to $500 of rewards"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "Open to the Public Investing, Inc. - real SEC-registered broker-dealer; official disclosures domain public-aut.com, terms fetched 2026-09-23."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "Official Referral Program Terms state verbatim '$100 in a stock or ETF of your choice' per friend who deposits at least $1,000, with the full 21-term conditions."
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "No fee to refer; sharing a link; no purchase or spending required of the referrer."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official terms: alert when cleared to claim, 30-day claim window, 12-month withdrawal lock with up to $100 early withdrawal fee - concrete."
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Public Investing members with funded account in good standing; US residents; friends/family without existing Public accounts."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Friend opens via referral link, gets approved, deposits $1,000+ as initial one-time deposit."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Alerted when cleared to claim; claim within 30 days; reward locked from cash withdrawal for 12 months."
+    },
+    "s4": {
+      "pass": true,
+      "note": "Flat $100 notional stock/ETF value per referral stated; $500 lifetime rewards cap stated as a cap."
+    },
+    "s5": {
+      "pass": true,
+      "note": "https://public-aut.com/disclosures/referral-terms - official Public Investing referral terms."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps concrete: share link, friend opens + deposits $1,000 one-time, claim $100 stock/ETF within 30 days."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Official terms fetched directly 2026-09-23; program term commenced 2026-01-20, terminable without notice."
+    }
+  },
+  "notes": "dedupe-check 'public.com' shows R0019/R1067 brokerage account bonuses and R2214 - none is a refer-a-friend route; this referral program is distinct. Current program term commenced 2026-01-20.",
+  "payout_min_usd": 100.0,
+  "payout_max_usd": 100.0,
+  "payout_value_note": "$100 notional value of chosen stock/ETF fractional share per referral; cash value locked 12 months (up to $100 early withdrawal fee)",
+  "time_min_minutes": 5.0,
+  "time_max_minutes": 15.0,
+  "numeric_basis": "payout from official terms ($100 stock/ETF notional value per referral flat); time: category default App Referral share-link 5-15 min active"
+}

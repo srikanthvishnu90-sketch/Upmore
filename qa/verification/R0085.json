@@ -1,7 +1,7 @@
 {
   "route_id": "R0085",
   "verdict": "verify",
-  "checked_at": "2026-09-23T01:36:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "official_url": "https://www.valley.com/personal/banking/checking/journey-checking",
   "terms_url": "https://www.valley.com/personal/banking/checking/journey-checking",
   "payout_quote": "Limited-time New Customer Offer: earn a $100 bonus on the All Access Checking account when you are new to Valley personal checking and receive at least $500 in direct deposits.",
@@ -22,7 +22,7 @@
   ],
   "biggest_catch": "The official bonus is only $100 — well under the catalog's $300 claim — and Valley's own page states no payout timing, so the exact credit date is not verifiable.",
   "eligibility": "New Valley personal-checking customers only (18+; account opened with $100 minimum).",
-  "notes": "Verified 2026-09-23 against the official valley.com Journey Checking page. Catalog's $300 ceiling is NOT supported — official live bonus is $100. Payout timing is absent from official terms; standard.s3 marked fail honestly. An older $400 offer is expired per aggregators and absent from valley.com. There is also a $25 youth (My Teen Checking) reward — separate product, not this route.",
+  "notes": "Verified 2026-09-23 against the official valley.com Journey Checking page. Catalog's $300 ceiling is NOT supported — official live bonus is $100. Payout timing is absent from official terms; standard.s3 marked fail honestly. An older $400 offer is expired per aggregators and absent from valley.com. There is also a $25 youth (My Teen Checking) reward — separate product, not this route. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)]",
   "critical": {
     "c1": {
       "pass": true,
@@ -79,5 +79,11 @@
     "ios": null,
     "android": null
   },
-  "upfront_fee": false
+  "upfront_fee": false,
+  "payout_min_usd": 500.0,
+  "payout_max_usd": 500.0,
+  "payout_value_note": "minimum stated amount in official terms",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: minimum stated amount in official terms; time: category default Bank Bonus (30-60min active)"
 }

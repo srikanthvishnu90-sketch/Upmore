@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The application notes 'plus training pay' but does not state the training pay amount or training duration, so neither is counted in this route.",
+  "catches": [
+    "Clerk: $100 for Election Day (6:00 AM-9:00 PM); Inspector $115, Judge $100, Student Clerk $135.",
+    "Training is mandatory for inspectors, judges, and first-time clerks, but the application states no training pay amount or duration, so they are not counted here.",
+    "Must be 18+ on Election Day and a U.S. citizen or legal permanent resident with transportation and availability 6 AM-9 PM.",
+    "The application's training pay amount is unstated; a separate 2022 county article mentioned a $25 training stipend, not used here.",
+    "Paycheck arrives several weeks after the election (per county's separate 2016 payroll memo, not part of this route)."
+  ],
+  "checked_at": "2026-09-23T07:57:36Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Placer County Elections poll worker application PDF (placercountyelections.gov).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "CLERK: $100.00 for the day (plus training pay, amount unstated).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply, train, or serve.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Placer County Elections Office poll worker stipend payment.",
+      "pass": true
+    }
+  },
+  "eligibility": "18+ on Election Day; U.S. citizen or legal permanent resident; transportation to/from the polling place and training; available 6:00 AM-9:00 PM.",
+  "notes": "Verify record: Placer County Clerk (Election Day). $100/day, 6 AM-9 PM. Current official application PDF; training pay amount unstated and not counted.",
+  "numeric_basis": "payout from official Placer County Elections application (Clerk $100/day); time: application states 6:00 AM-9:00 PM on Election Day.",
+  "official_url": "https://www.placercountyelections.gov/PollPlaceLookup/ballots/bt000028.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "I would like to work as ... INSPECTOR  JUDGE  CLERK  STUDENT CLERK ... $115.00 for the day $100.00 for the day $100.00 for the day ... $135.00 for the day ... (plus training pay) ... Available to work between 6:00 AM and 9:00 PM on Election Day",
+  "payout_value_note": "Flat: $100 for the Election Day clerk shift. Application says 'plus training pay' but gives no amount, so no training pay is counted.",
+  "route_id": "R4490",
+  "standard": {
+    "s1": {
+      "note": "18+ on Election Day; US citizen or legal permanent resident; transportation; available 6 AM-9 PM.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Official placercountyelections.gov application PDF (crawled 50 days ago).",
+      "pass": true
+    },
+    "s3": {
+      "note": "Inspector $115 / Judge $100 / Clerk $100 / Student Clerk $135 per day.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Election Day 6:00 AM-9:00 PM (15h).",
+      "pass": true
+    },
+    "s5": {
+      "note": "Mandatory training for inspectors, judges, and first-time clerks; duration and pay unstated.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No upfront fee.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Placer County Elections Office poll worker payment.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Meet eligibility: 18+ on Election Day, U.S. citizen or legal permanent resident, with transportation.",
+    "Apply as a Clerk to the Placer County Elections Office.",
+    "Attend mandatory training (first-time clerks).",
+    "Work Election Day 6:00 AM-9:00 PM assisting voters.",
+    "Receive $100 for the day (plus training pay, amount not stated)."
+  ],
+  "terms_url": "https://www.placercountyelections.gov/PollPlaceLookup/ballots/bt000028.pdf",
+  "time_max_minutes": 960,
+  "time_min_minutes": 900,
+  "timing": "Election Day 6:00 AM-9:00 PM (15 hours), per official application.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "Mandatory training is required for first-time clerks, but its duration and pay amount are not stated, so no training time or pay is counted.",
+    "Inspector ($115) and Judge ($100) are separate mechanisms not used in this route.",
+    "The application file is hosted under a PollPlaceLookup path on the official elections domain."
+  ]
+}

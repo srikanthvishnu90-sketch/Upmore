@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only C$50 (about US$36) - small bonus relative to the C$250 deposit and 60-day funding window.",
+  "catches": [
+    "Bonus paid in CAD; USD figure converted at ~0.73",
+    "Must be a new client - no Questrade/Questwealth account now or in the last 5 years",
+    "Open and fund a self-directed account (excludes FX/CFD) with minimum C$250 within 60 days of application",
+    "Cashback deposited within 90 days after all requirements are met",
+    "One-time offer per client, first account only; cannot combine with other Questrade offers (except transfer-fee rebate)",
+    "Funding must be net new assets - cannot use funds from another Questrade account",
+    "Cashback counts as a contribution for registered accounts (TFSA/RRSP/RESP/FHSA) - check contribution room",
+    "Terms last modified Jan 8, 2025; Questrade may change terms without notice"
+  ],
+  "checked_at": "2026-09-23T07:21:54Z",
+  "critical": {
+    "c1": {
+      "evidence": "Questrade (my.questrade.com) - Canadian registered investment dealer, CIRO/CIPF member. Official 'AFFILIATE NEW CLIENT OFFERS Terms and Conditions' page fetched 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'To qualify for the $50 cashback, open and fund a new Questrade selfdirected investing account (excludes FX and CFD accounts) with a minimum of CAD $250.' 'You will receive a one time $50 cashback amount in your primary account/billing account... deposited into your primary account/billing account within 90 days after all eligibility requirements have been met.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Concretely conditional: new client, self-directed account, C$250+ funded within 60 days of application. No trading required.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "C$250 is the user's own investable money, fully withdrawable; no fee to claim. Not pay-to-play.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Questrade clients (no account in last 5 years); Canadian residents; self-directed accounts only (FX/CFD excluded); first account only; one-time offer.",
+  "notes": "G54 brokerage wave 2. Distinct from Qtrade R5785 (different provider). Amounts converted CAD->USD at ~0.73. The separate 'up to $10,000 managed free for one year' Questwealth fee-rebate is a different mechanism and not claimed here.",
+  "numeric_basis": "payout from official terms (flat C$50 cashback -> ~US$36 at 0.73); time: online application + C$250 funding est. 30-45 min active",
+  "official_url": "https://my.questrade.com/clients/my_accounts/affiliate_terms_and_conditions.ashx?affiliate=AFFLT",
+  "payout_max_usd": 36,
+  "payout_min_usd": 36,
+  "payout_quote": "To qualify for the $50 cashback, open and fund a new Questrade selfdirected investing account (excludes FX and CFD accounts) with a minimum of CAD $250. ... You will receive a one time $50 cashback amount in your primary account/billing account when you successfully complete the account application.",
+  "payout_value_note": "C$50 cashback converted to USD at ~0.73 -> ~$36.",
+  "route_id": "R5787",
+  "standard": {
+    "s1": {
+      "note": "New clients only (no Questrade account in last 5 years); first account only; one-time offer.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete: self-directed account, C$250+ funded within 60 days of application.",
+      "pass": true
+    },
+    "s3": {
+      "note": "One-time $50 cashback deposited to primary/billing account within 90 days.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat C$50 stated officially; no inflated claim.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://my.questrade.com/clients/my_accounts/affiliate_terms_and_conditions.ashx - official Questrade terms fetched 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: apply, fund within 60 days, receive cashback.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Questrade affiliate-offer terms verified 2026-09-23 (UTC).",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Submit a new Questrade self-directed investing account application (excludes FX and CFD accounts)",
+    "Open and fund the account with at least C$250 of net new assets within 60 days of submitting the application",
+    "Receive the one-time C$50 cashback in your primary/billing account within 90 days after all requirements are met"
+  ],
+  "terms_url": "https://my.questrade.com/clients/my_accounts/affiliate_terms_and_conditions.ashx?affiliate=AFFLT",
+  "time_max_minutes": 45,
+  "time_min_minutes": 30,
+  "timing": "Fund within 60 days of application; cashback deposited within 90 days after requirements met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

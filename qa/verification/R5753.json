@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only get paid once per friend (one referral bonus per recipient, regardless of how many accounts they open), and payment waits until their checking account has been open and in good standing for 30 days.",
+  "catches": [
+    "The referrer must be a Copper State CU member in good standing.",
+    "The recipient must open a new Cashback Checking account; eligible recipients do not include anyone who already has any Copper State CU accounts.",
+    "Referral recipient must download and log in to the mobile app, and the checking account must remain open and in good standing for 30 days before the $50.00 gift card incentive is provided to the referrer or referee.",
+    "Only one Referral Bonus and one Referee Bonus will be awarded per recipient, regardless of whether the recipient opens and funds multiple accounts.",
+    "Referral prospect account information or eligibility is never shared with the referring member.",
+    "Copper State CU reserves the right to disqualify anyone from the program at any time."
+  ],
+  "checked_at": "2026-09-23T07:54:55Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Copper State CU page (copperstatecu.org/refer): 'we're offering a $50 gift card for you and your referral' / 'You both get a $50 gift card of your choice when your friend opens a checking account and logs into the mobile app.'; official rules: 'a $50.00 gift card incentive will be provided to the referrer or referee.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Copper State Credit Union pages on copperstatecu.org, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 2026-09-23: no copperstatecu.org evidence in qa/verification; not in qa/existing-providers.txt",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Copper State CU member in good standing. Friend: new person with no Copper State CU accounts, 18+.",
+  "notes": "Verified 2026-09-23. Copper State Credit Union (Scottsdale, AZ) Member Referral Program. Referrer earns a $50 gift card per successful referral; no cap stated in official terms (limit is one bonus per recipient, not per referrer).",
+  "numeric_basis": "payout from official Copper State CU terms ($50 gift card to the referrer per referral; no cap stated); time: share your custom referral link est. 5-15 min active",
+  "official_url": "https://www.copperstatecu.org/refer",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You both get a $50 gift card of your choice when your friend opens a checking account and logs into the mobile app.",
+  "payout_value_note": "$50 gift card to the referrer per successful referral; no cap stated in official terms.",
+  "route_id": "R5753",
+  "standard": {
+    "s1": {
+      "note": "Official Copper State CU pages live on copperstatecu.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is a member in good standing; friend is a new person with no Copper State CU accounts, 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open a new CashBack Checking account, download and log in to the mobile app, account open and in good standing for 30 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "$50 gift card incentive provided to the referrer after the 30-day period",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax treatment not stated in fetched page text",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Access your custom share link and invite friends and family to join Copper State CU.",
+    "Your friend opens a new CashBack Checking account and downloads/signs in to the mobile app.",
+    "After 30 days with the account open and in good standing, you both get a $50 gift card."
+  ],
+  "terms_url": "https://www.copperstatecu.org/invited-referral",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Gift card provided after the recipient's checking account has been open and in good standing for 30 days.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

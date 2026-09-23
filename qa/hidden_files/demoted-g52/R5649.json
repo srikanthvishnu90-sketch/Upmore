@@ -1,0 +1,91 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Bonus funds must remain in the Stash account for the entire 90-day period from the bonus deposit date; Stash may refuse or recover bonus funds, IRAs and UGMA/UTMA accounts do not qualify, and Stash charges a subscription fee (confirmed on the offer page's fine print; amount not displayed), which reduces the net $25 value. NOTE for adjudication: the mandatory subscription may implicate the no-upfront-spending counting rule.",
+  "catches": [
+    "Bonus funds must remain in the Stash account for 90 days beginning from the bonus deposit date, for the entirety of the 90-day period.",
+    "Stash reserves the right to terminate the offer at any time and to refuse or recover bonus funds (fraud, inaccurate info, advisory-agreement violations).",
+    "Qualifying Account is an individual brokerage account advised by Stash Investments LLC; tax-advantaged accounts (Roth and Traditional IRAs) and UGMA/UTMA accounts do not qualify.",
+    "US residents only; offer not valid with any other offers and non-transferable.",
+    "Bonus funds may be taxable income; user is responsible for any federal or state taxes.",
+    "The offer page's fine print confirms Stash charges a subscription fee (ancillary fees not included in the subscription fee); the fee amount was not displayed on the offer page.",
+    "Investing involves risk and investments may lose value.",
+    "Account opening requires linking a funding source (bank account) and completing the account opening process.",
+    "No bonus posting date is stated in the terms \u2014 only that funds must remain for 90 days from the deposit date; no posting delay is asserted here."
+  ],
+  "checked_at": "2026-09-23T08:01:49Z",
+  "critical": {
+    "c1": {
+      "evidence": "stash.com/investing-app/get25 states 'Invest $5, earn $25'; stash.com Bonus Offers Terms require a min-$5 deposit into a Qualifying Account and a 90-day bonus retention period.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Terms are on Stash's own domain (stash.com); aggregator pages used only for discovery.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No purchase or risk capital required to earn the bonus: the $5 is your own investment into your own account (stays yours); the bonus is $25 cash-equivalent funds. Caveat: Stash charges a subscription fee (confirmed in the offer page's fine print; amount not displayed), so the net first-period value is $25 minus the subscription \u2014 adjudicator should weigh this against the no-upfront-spending rule.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No account-opening fee stated; only a $5 minimum investment is required to qualify.",
+      "pass": true
+    }
+  },
+  "eligibility": "US residents only; complete the Stash account opening process, link a funding source to an individual brokerage Qualifying Account, and deposit at least $5.00 USD. IRAs and UGMA/UTMA accounts do not qualify.",
+  "notes": "Verified 2026-09-23 from official Stash pages (investing-app/get25 offer page + terms-and-conditions Bonus Offers T&Cs), both fetched live during this wave. R0022 (Stash brokerage promo) was previously rejected with no captured terms, so this is the first verified Stash bonus route. Subscription-fee caveat added: the offer page's fine print confirms a subscription fee exists (amount not displayed); adjudicator should weigh it against the no-upfront-spending rule.",
+  "numeric_basis": "payout from official terms ($25 flat); time: Stash signup + bank linking + $5 investment est. 30-60 min active",
+  "official_url": "https://www.stash.com/investing-app/get25",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "We'll give you $25 when you invest $5 on Stash",
+  "payout_value_note": "$25 flat bonus, deposited into the Qualifying Account and required to remain for 90 days.",
+  "route_id": "R5649",
+  "standard": {
+    "s1": {
+      "note": "Payout stated exactly: $25 when you invest $5.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No upfront purchase required; the $5 is your own deposit that remains yours. The mandatory Stash subscription is a recurring account fee (amount not displayed on the offer page), disclosed in catches rather than hidden.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing: bonus funds must remain for 90 days from the bonus deposit date; no payout delay beyond that is stated.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Not referral-only; it is a public signup offer on stash.com.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No stated expiration on the fetched pages; Stash may terminate the offer at any time.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Official terms state bonus funds may be taxable income; user responsible for federal/state taxes.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official clawback terms: bonus funds must remain 90 days; Stash may refuse or recover bonus funds for fraud, inaccurate info, or Advisory Agreement violations.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the Stash account opening process and link a funding source (e.g., bank account) to an individual brokerage Qualifying Account.",
+    "Deposit at least $5.00 USD into the Qualifying Account (per the official terms).",
+    "Receive the $25 bonus funds into the Qualifying Account.",
+    "Keep the bonus funds in the Stash account for the full 90-day period beginning from the bonus deposit date."
+  ],
+  "terms_url": "https://www.stash.com/terms-and-conditions",
+  "time_max_minutes": 60,
+  "time_min_minutes": 30,
+  "timing": "$25 bonus deposited into the Qualifying Account (no posting date stated in the terms); bonus funds must remain in the account for 90 days beginning from the bonus deposit date.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "Stash reserves the right to terminate this offer at any time and to refuse or recover any bonus funds."
+  ]
+}

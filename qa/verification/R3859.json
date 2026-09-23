@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend can't just open a basic share account - they must ALSO open a secondary sub-account or a loan product before the referral counts, and the bonus only lands 'after requirements are met' with an unspecified processing time.",
+  "catches": [
+    "Referrer earns $25 per successful referral, capped at $250 per calendar year (10 referrals).",
+    "Friend must open a Serve Basic Share account (min $25 deposit) AND a secondary sub-account or loan product, and satisfy new-membership requirements.",
+    "Referrers must be 18+; both sides' $25 is deposited to their Basic Share accounts.",
+    "Payout for referrals capped at $250 per calendar year.",
+    "Membership and loan approval subject to eligibility and approval.",
+    "Serve will not solicit your referrals - the friend must mention your name."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Serve CU page (servecu.org): 'you can earn $25 for every successful referral - up to $250 per year' and 'the $25 incentive will be deposited into each member's Serve Basic Share account' and 'Payout for referrals is capped at $250 per calendar year.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official servecu.org domain (servecu.org/member-referral-program), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard share account + sub-account/loan",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'serve credit union' shows 0 catalog hits and 0 evidence-file hits. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Serve CU member 18+. Friend: eligible non-member who opens a Basic Share ($25 min) plus a secondary sub-account or loan product.",
+  "notes": "Verified 2026-09-23. Serve Credit Union ('Move Up the Ranks' program). $25 to the referrer per successful referral, $250/year cap. Serve CU serves those who serve their community; eligibility via servecu.org/become-a-member.",
+  "numeric_basis": "payout from official page ($25 per successful referral; $250/year cap); time: sharing Serve CU and ensuring the friend names you est. 5-15 min active",
+  "official_url": "https://www.servecu.org/member-referral-program",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "you can earn $25 for every successful referral* - up to $250 per year ... the $25 incentive will be deposited into each member's Serve Basic Share account ... Payout for referrals is capped at $250 per calendar year.",
+  "payout_value_note": "$25 deposited to the referrer's Basic Share account per successful referral; $250 cap per calendar year.",
+  "route_id": "R3859",
+  "standard": {
+    "s1": {
+      "note": "Program page live on servecu.org, fetched 2026-09-23; no expiry stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer 18+ member; friend eligible non-member meeting membership requirements",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: Basic Share with $25 min + secondary sub-account or loan product",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share Serve Credit Union with eligible friends/family; ensure they mention your name.",
+    "Friend opens a Serve Basic Share account (min $25) and a secondary sub-account or loan product.",
+    "Friend satisfies new-membership requirements.",
+    "You receive $25 per successful referral, deposited to your Basic Share account (up to $250/year)."
+  ],
+  "terms_url": "https://www.servecu.org/member-referral-program",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credited after all requirements met; allow for processing time (no fixed day count).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

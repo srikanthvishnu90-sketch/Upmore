@@ -1,0 +1,90 @@
+{
+ "route_id": "R6446",
+ "verdict": "verify",
+ "official_url": "https://comptroller.texas.gov/programs/education/match/how-to-apply.php",
+ "terms_url": "https://d3hbqavnw545ua.cloudfront.net/programs/education/match/docs/96-1723.pdf",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "Approved recipients can receive matching scholarships of tuition units worth up to $2,000 at today's prices, while top-scoring recipients also can receive a one-time grant of tuition units worth $3,000 at today's prices.",
+ "steps": [
+  "Confirm the child's eligibility (Texas Tuition Promise Fund beneficiary, grades 3-9, Texas resident, family income $120,000 or less).",
+  "Read the Matching Scholarship and Tuition Grant Description and Application Instructions.",
+  "Have the child research a career and write the student career essay; obtain the prior school year's report card or transcript.",
+  "Apply online at MatchThePromise.org (or by mail) between September 1 and December 31.",
+  "If approved, submit the federal tax return for income verification by May 31 and ensure at least $50 in contributions to the Promise Fund contract during the sales period (Sept 1-Aug 31)."
+ ],
+ "catches": [
+  "Competitive, not guaranteed: applications are scored on grade averages, income levels, and number of dependents; only approved recipients receive awards.",
+  "Grades 3-9 only; Texas resident; family income $120,000 or less; the child must be a Texas Tuition Promise Fund (prepaid tuition plan) beneficiary.",
+  "Awards are tuition units, not cash - deposited to a Foundation-owned scholarship account and disbursed directly to Texas public colleges for undergraduate resident tuition and required fees only.",
+  "At least $50 in Promise Fund contributions during the sales period (September 1-August 31) is required to receive an award.",
+  "Must reapply each year; the Promise (tuition grant) scholarship can be received only once.",
+  "Non-qualified use of 529 funds carries federal income tax on earnings plus a 10% federal penalty - consult a tax advisor."
+ ],
+ "biggest_catch": "Competitive and not guaranteed - applications are scored, and even winners receive tuition units (not cash) locked to undergraduate tuition and fees at Texas public colleges.",
+ "eligibility": "Texas resident student in grades 3-9 who is a Texas Tuition Promise Fund beneficiary and the tax dependent of a Texas resident, with family income of $120,000 or less.",
+ "timing": "Annual cycle: applications September 1-December 31; approvals notified in April; minimum contributions due by August 31; scholarship units deposited by end of September.",
+ "weasel_words": [
+  "competitive",
+  "approved recipients"
+ ],
+ "payout_min_usd": 0,
+ "payout_max_usd": 2000,
+ "payout_value_note": "Tuition units, not cash; up to $2,000 match; top scorers may also get a one-time $3,000 tuition-unit grant.",
+ "time_min_minutes": 30,
+ "time_max_minutes": 60,
+ "numeric_basis": "payout from official Comptroller terms (up to $2,000 in tuition units); time: application + child career essay + gathering report card/transcript, est. 30-60 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "comptroller.texas.gov is the official Texas Comptroller site; the how-to-apply page was fetched live 2026-09-23 (UTC) and the award amounts come from an official Comptroller press release."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official Comptroller release: 'Approved recipients can receive matching scholarships of tuition units worth up to $2,000 at today's prices, while top-scoring recipients also can receive a one-time grant of tuition units worth $3,000 at today's prices.'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No application fee; the award keys off the family's own Promise Fund contributions (minimum $50 in the sales period)."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Application window Sept 1-Dec 31 restated on the live comptroller.texas.gov page; 2025-26 program instructions current as of verification."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Competitive state matching-scholarship mechanism; no Texas 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: confirm eligibility, child writes career essay, gather report card, apply Sept-Dec, verify income, meet $50 contribution minimum."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Annual deadlines explicit: apply Sept 1-Dec 31, income verification by May 31, contributions by Aug 31, units deposited by end of September."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include competitive scoring, grade/income/residency gates, tuition-units-not-cash, Texas-public-college lock-in, and non-qualified-withdrawal tax plus 10% federal penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; the award keys off ordinary Promise Fund contributions."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on comptroller.texas.gov; no invitation required, eligibility criteria are the gate."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no Texas/Match the Promise route in catalog."
+  }
+ },
+ "notes": "Verified against comptroller.texas.gov 2026-09-23 (UTC). Honest framing: competitive scholarship, not a guaranteed match; awards are tuition units usable only at Texas public colleges, not cash."
+}

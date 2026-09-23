@@ -1,0 +1,91 @@
+{
+ "route_id": "R6443",
+ "verdict": "verify",
+ "official_url": "https://www.quest529.com/documents/kids_matching_grant_application.pdf",
+ "terms_url": "https://www.quest529.com/documents/kids_matching_grant_application.pdf",
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "checked_at": "2026-09-23T05:28:38Z",
+ "upfront_fee": false,
+ "payout_quote": "the state will match the first $600 that you contribute to your Quest529 account during 2026. You must contribute at least $100 during 2026 to be eligible.",
+ "steps": [
+  "Open a Quest529 account at Quest529.com if you do not already have one.",
+  "Complete the 2026 KIDS Program Application.",
+  "Attach 2025 federal tax returns or IRS transcripts for all household members required to file.",
+  "Mail the application and documents so they are received by the Kansas State Treasurer's Office no later than December 1, 2026 (supporting documents within 14 days of application).",
+  "Contribute $100-$600 to the KIDS Contribution Account during calendar 2026.",
+  "The matching grant is deposited to the Match Account no later than January 31, 2027."
+ ],
+ "catches": [
+  "Kansas residents only; 2025 household federal AGI must be above $0 and at or below 200% of the federal poverty level (e.g., $66,000 for a 4-person household).",
+  "Dollar-for-dollar on YOUR contributions: contribute $100, get $100; contribute $600, get $600; contribute $0, get $0.",
+  "Capped at 1,000 participants statewide (250 per congressional district), first-come, first-served - applying does not guarantee a slot.",
+  "Any withdrawal from the account during 2026 disqualifies that beneficiary for the 2026 match.",
+  "Rollovers from other 529 plans are not match-eligible.",
+  "Matching funds must be used for the beneficiary's qualified education expenses; a non-qualified withdrawal must be repaid to the State of Kansas and faces federal/state taxes plus possible federal penalties - consult a tax advisor."
+ ],
+ "biggest_catch": "Income-capped (200% of the federal poverty level) and slot-capped (1,000 participants, first-come, first-served): the match is dollar-for-dollar on your own 2026 contributions only, and any withdrawal during 2026 kills eligibility.",
+ "eligibility": "Quest529 account owner who is a Kansas resident, not a minor or someone else's tax dependent, with 2025 household federal AGI greater than $0 and at or below 200% of the federal poverty level.",
+ "timing": "2026 program year: application due December 1, 2026; qualifying contributions during calendar 2026; match deposited by January 31, 2027.",
+ "weasel_words": [
+  "provisional",
+  "subject to audit"
+ ],
+ "payout_min_usd": 100,
+ "payout_max_usd": 600,
+ "payout_value_note": "Dollar-for-dollar match on own 2026 contributions of $100-$600.",
+ "time_min_minutes": 30,
+ "time_max_minutes": 45,
+ "numeric_basis": "payout from official 2026 KIDS program description ($100-$600 match); time: paper application + gathering tax documents + account opening, est. 30-45 min active.",
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "quest529.com is the official Quest529 site administered by Kansas State Treasurer Steven Johnson; the 2026 KIDS Matching Grant Program Description PDF was fetched live 2026-09-23 (UTC)."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official 2026 program description: 'the state will match the first $600 that you contribute to your Quest529 account during 2026. You must contribute at least $100 during 2026 to be eligible.'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "No application fee; the match rides on the participant's own 529 contributions. No fee disclosed in the program description."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "2026 program-year document (application deadline December 1, 2026) fetched live 2026-09-23 (UTC) - current cycle."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "Dollar-for-dollar state matching grant; no Kansas 529 route exists in the catalog or verification files."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Concrete steps: open Quest529 account, mail KIDS application with 2025 tax docs by Dec 1 2026, contribute $100-$600 in 2026, match deposited by Jan 31 2027."
+  },
+  "s3": {
+   "pass": true,
+   "note": "Deadlines explicit: application by Dec 1, 2026; contributions in calendar 2026; match by Jan 31, 2027."
+  },
+  "s4": {
+   "pass": true,
+   "note": "Catches include income cap, 1,000-participant first-come cap, own-contribution requirement, withdrawal disqualification, and non-qualified-withdrawal repayment plus tax/penalty."
+  },
+  "s5": {
+   "pass": true,
+   "note": "No upfront fee; contributions are ordinary 529 savings."
+  },
+  "s6": {
+   "pass": true,
+   "note": "Public program on quest529.com; no invitation required, Kansas residency and income are the gates."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Dedupe: grep/dedupe-check.py/verification-file search - no Kansas/Learning Quest/Quest529 route in catalog."
+  }
+ },
+ "notes": "Verified against the official 2026 KIDS Matching Grant Program Description on quest529.com 2026-09-23 (UTC). Note: the plan was formerly branded Learning Quest; the 2026 program runs under the Quest529 brand."
+}

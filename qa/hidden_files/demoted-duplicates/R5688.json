@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Only the first referrer to enter a given person gets paid; the $100 referrer card is paid per referral (personal or business) while the $200 figure is the referred business's own reward.",
+  "catches": [
+    "Referrer earns $100 per referral (personal or business); the $200 Mastercard Reward Card in the business section is the referred business's reward, not yours.",
+    "Referrer must register for the program and submit a valid email address for both themselves and each referred person.",
+    "Only the first referrer to enter information for a given referred person is eligible for that person's reward.",
+    "Friend must not already have a First Commonwealth Bank checking account (minor-account exceptions apply).",
+    "Personal track: friend must open a new personal checking account and, within 60 days of opening, complete one direct deposit of $250+ OR 10 qualifying debit card purchases.",
+    "Business track: referred business must open a new business checking account and complete at least $2,000 in qualifying deposits within 60 days.",
+    "A referrer may receive up to five (5) Reward Cards ($500 value) within a calendar year.",
+    "Reward cards are mailed 4-6 weeks after all requirements are completed; the bonus may be reported as income to the IRS.",
+    "The program may be discontinued or changed at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official First Commonwealth Bank refer-a-friend terms (fcbanking.com): 'The person making the referral (Referrer) will earn a $100 Mastercard(R) Reward Card for each individual or business referred ...' The $200 card ('Business Account Qualifications: To earn a $200 Masetercard(R) Reward Card, the Referred Business must...') is the referred business's reward, not the referrer's.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official First Commonwealth Bank referral page on fcbanking.com, fetched live 2026-09-23; no end date stated (program may be discontinued at any time)",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'First Commonwealth Bank': 0 catalog hits (only false substring matches 'Fi'/'Co' on utility rebates); evidence hits were firstcomcu.org/fcbanking.com unrelated routes; no First Commonwealth referral in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: registered First Commonwealth Bank referrer who submits valid emails for themselves and each referred person. Personal track: referred individual with no existing FCB checking account who registers via the referral link, opens a new personal checking account, and completes a $250+ direct deposit or 10 qualifying debit purchases within 60 days. Business track: referred business opening a new business checking account with $2,000+ qualifying deposits within 60 days.",
+  "notes": "Verified 2026-09-23. First Commonwealth Bank (Pennsylvania/Ohio). Referrer earns a $100 Mastercard Reward Card per qualifying referral (personal or business); the $200 card in the business section is the referred business's own reward. Annual cap: 5 Reward Cards ($500 value) per calendar year. Cards are mailed 4-6 weeks after requirements are completed; the bonus may be reported to the IRS.",
+  "numeric_basis": "payout from official First Commonwealth terms ($100 Mastercard Reward Card to the referrer per qualifying referral; $200 business reward is the referee's); time: register and submit referral est. 5-15 min active",
+  "official_url": "https://www.fcbanking.com/personal/refer-a-friend/?cs_rl_cmpnid=2bb93a6d-8f3a-48c9-a9df-f2e6077393be",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "The person making the referral (Referrer) will earn a $100 Mastercard Reward Card for each individual or business referred (Referred Person or Business) to First Commonwealth Bank, who does not already have a First Commonwealth Bank checking account, registers for the offer, opens a new First Commonwealth personal or business checking account and completes the other requirements within the time specified in the offer. A Referrer may receive up to five (5) Reward Cards ($500 value) within a calendar year.",
+  "payout_value_note": "$100 Mastercard Reward Card to the referrer per qualifying referral (personal or business); the $200 amount in the business section is the referred business's reward, not the referrer's. Cap: 5 cards ($500) per calendar year.",
+  "route_id": "R5688",
+  "standard": {
+    "s1": {
+      "note": "Official First Commonwealth Bank page live on fcbanking.com, fetched 2026-09-23; program may be discontinued at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registers and submits valid emails; friend must not already have an FCB checking account",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: personal needs $250+ direct deposit or 10 qualifying debit purchases within 60 days; business needs $2,000+ qualifying deposits within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward cards mailed 4-6 weeks after all requirements are completed",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: page states the bonus may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the First Commonwealth Bank referral program and agree to the Terms and Conditions.",
+    "Submit valid email addresses for yourself and each person or business you refer.",
+    "The referred person registers via your referral link or social media and opens a new First Commonwealth personal or business checking account.",
+    "Personal: friend completes a $250+ direct deposit or 10 qualifying debit purchases within 60 days of opening. Business: referred business completes $2,000+ qualifying deposits within 60 days."
+  ],
+  "terms_url": "https://www.fcbanking.com/personal/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Mastercard Reward Cards are mailed to the referrer's address 4-6 weeks after the referred person completes all requirements; the friend must complete qualifying activity within 60 days of account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

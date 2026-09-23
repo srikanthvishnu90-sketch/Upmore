@@ -1,0 +1,89 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "You only get paid if your referral actually signs a Sunrun agreement, gets Sunrun sign-off within a year, and proceeds toward installation — a friend merely requesting a quote earns you nothing. The $1,000 is typically paid as a prepaid/gift reward card (not cash, non-transferable, expires 6 months after issuance).",
+  "catches": [
+    "Payment is contingent on a completed conversion: the referee must sign a Sunrun Customer Agreement, receive Sunrun Sign Off within one year of the referral, and pay any upfront/deposit fees — referrals that don't convert earn $0.",
+    "The $1,000 Referral Reward is issued in a form determined by Sunrun — typically a prepaid or gift reward card (Visa) that is non-transferable, not for resale, not redeemable for cash, and expires six months after issuance.",
+    "Both your and the referee's Sunrun accounts must be paid in full and in good standing at the time of payment.",
+    "Reward arrives within 90 days of installation beginning on the referee's system (per the general terms) — this is a months-long wait, not instant.",
+    "Cannot refer someone in the same household (second-home exception only); first to submit wins if multiple people refer the same person.",
+    "Rewards may be taxable — Sunrun may require tax documentation to issue a 1099; participants are responsible for reporting the reward.",
+    "Sunrun reserves the right to suspend or cancel promotions without notice.",
+    "This route covers the customer referral program (the referral page speaks to existing customers: 'You already made a smart move taking control of your energy'); non-customer referral amounts are set by separate program guidelines.",
+    "Standard disclosure: this is a referral-sharing route — share only with people who have consented to be contacted, per Sunrun's terms and telemarketing rules."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Sunrun is a real publicly traded US solar company (Nasdaq: RUN); the referral program is on the official sunrun.com domain, fetched live 2026-09-23.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official sunrun.com/referral: 'Share the Power. Earn $1,000*' — 'pass that power on to a neighbor, friend, or family member — and get paid $1,000 for doing it.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; sharing a referral link costs nothing. (The referee's solar purchase is their own decision, not a cost of this route.)",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Referral page live on sunrun.com as fetched 2026-09-23 (UTC) — current offer as of verification; terms reserve the right to change.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrers participate via Sunrun's referral program (customer referral page addresses existing Sunrun customers; a separate non-customer program exists with its own guidelines). Referee must be a new customer who signs a Sunrun Customer Agreement, receives Sunrun Sign Off within one year of the referral, and pays applicable upfront/deposit fees; both accounts in good standing.",
+  "notes": "Verified on official sunrun.com/referral and the official sunrun.com/tos customer-referral terms 2026-09-23 (UTC). The expired Winter 2025 $1,000 Direct Self Referral Promotion ($500, Dec 2025) is a different, expired promo and was excluded. Per-referral payout is flat $1,000 — no annual cap was found in the fetched terms; caps would go in catches only per the lane rules.",
+  "official_url": "https://www.sunrun.com/referral",
+  "payout_max_usd": 1000,
+  "payout_min_usd": 1000,
+  "payout_quote": "Share the Power. Earn $1,000*. You already made a smart move taking control of your energy. Now pass that power on to a neighbor, friend, or family member — and get paid $1,000 for doing it.",
+  "payout_value_note": "flat $1,000 per qualifying referral (official headline offer); paid via reward card, not cash",
+  "route_id": "R3570",
+  "standard": {
+    "s1": {
+      "note": "Per-referral bonus mechanism; no Sunrun route exists in the catalog or verification files.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Concrete steps: get your referral link from Sunrun, share it with a prospective customer, they sign a Sunrun agreement and reach installation; reward arrives within ~90 days of installation beginning.",
+      "pass": true
+    },
+    "s3": {
+      "note": "No expiry on the current offer page; payout timing (~90 days post-installation-start, after conversion conditions) captured.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Catches include conversion contingency, reward-card-not-cash form with 6-month expiry, good-standing requirement, months-long payout wait, same-household exclusion, 1099/tax treatment, and consent-based sharing.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Public referral program on sunrun.com — no special invitation required for the standard program.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Dedupe: grep/dedupe-check/verification-file search — no Sunrun route in catalog.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Get your personal Sunrun referral link (from your Sunrun account or the referral page).",
+    "Share the link with a neighbor, friend, or family member who is considering solar and has consented to be contacted.",
+    "Your referee signs a Sunrun Customer Agreement, receives Sunrun Sign Off within one year of the referral, and pays any upfront/deposit fees.",
+    "The $1,000 Referral Reward (typically a prepaid/gift reward card) is issued within 90 days of installation beginning on the referee's system, provided both accounts are paid in full and in good standing."
+  ],
+  "terms_url": "https://www.sunrun.com/tos/customer-referral-terms-of-service",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "No expiry on the current offer; the reward is paid within ~90 days after installation begins on the referee's system (months after the referral is made).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms ($1,000 per qualifying referral); time: referral share 5-15 min active (per schema referral-share guide)"
+}

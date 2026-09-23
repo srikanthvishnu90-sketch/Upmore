@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Free viewers see only a small slice of roles — the full 130,000+ database requires a paid unlock.",
+  "catches": [
+    "Free tier shows only a fraction of listings (~0.4% per the official page); the full database needs a paid upgrade.",
+    "No application tracking or messaging inside Remotive — you apply on employer pages.",
+    "Pay is set per employer; the board publishes no guaranteed ranges.",
+    "Tech-skewed categories; competition varies by role."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Remotive's official jobs pages (remotive.com) show live free listings (e.g. German Speaking Fintech Product Manager €60,000–€75,000; Quant Developer) with '10,778 remote jobs added this week' — a live, provider-owned deal channel with a free browse-and-apply path.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed pay range for seekers — compensation is per employer; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the board flow: browse free listings by category, click through to the employer's career page, apply.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "The free path exists: official pages display free browsable listings with apply links; the paid Accelerator is an optional upgrade, not a requirement to apply.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone able to work remotely; listings skew toward tech, product, design, marketing, sales, and support.",
+  "notes": "Scenario: curated remote job board. Remotive manually reviews remote listings (10,000+ added weekly per official pages) and shows a free browsable feed with direct employer apply links. Honest caveat: free viewers see only a small fraction of the database; full access requires a paid upgrade. Pay is per employer and negotiated — variable.",
+  "numeric_basis": "payout: compensation is set per employer; listings sometimes show salary bands. time: browse free listings + apply to matching roles, est. 30-90 min active.",
+  "official_url": "https://remotive.com/remote-fintech-jobs",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "10,778 remote jobs added this week",
+  "payout_value_note": "The board publishes no fixed pay for seekers — compensation is set per employer; some listings show salary bands. Variable.",
+  "route_id": "R5454",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to work remotely in the listed categories.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-employer negotiated pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover the limited free slice, no in-platform tracking, variable pay, and tech skew.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: Remotive absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official pages captured 2026-09-23 (remotive.com category page showing live free listings).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: listings refreshed hourly; hiring follows each employer.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Browse Remotive's free remote-job listings by category.",
+    "Open roles matching your skills and review requirements.",
+    "Click through to the employer's career page to apply directly.",
+    "Complete the employer's process and negotiate the offer."
+  ],
+  "terms_url": "https://remotive.com/remote-fintech-jobs",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Listings refreshed hourly; hiring timelines follow each employer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

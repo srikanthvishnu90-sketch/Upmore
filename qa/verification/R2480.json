@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend has to make 10 separate debit purchases of at least $5 each within 60 days of opening the account, or you get nothing.",
+  "catches": [
+    "The referred Friend must be a new WECU member (not a member in the last 12 months).",
+    "Friend must open a Spend Plus or Spend Free checking product and make 10 debit card purchases of at least $5 each from that account within the first 60 days of account opening.",
+    "Program cannot be combined with any other new member offers or promotions.",
+    "Referrer must be the Primary Account Holder (TRO) of at least one active deposit account and be in good standing to receive payment; employees of the company, its subsidiaries, affiliates or promotional agencies are ineligible.",
+    "Both Referrer and Friend must have an email on file with WECU.",
+    "Referrer can earn a maximum of 5 rewards per calendar year (maximum $500); rewards are scheduled to be paid on day 63, with possible delays."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "WECU (Whatcom Educational Credit Union, Bellingham WA); official domain wecu.com; official Refer A Friend: Checking terms PDF fetched 2026-09-23 (revised 04/2025).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official terms: 'By making a valid referral, Referrer will receive $100 and Friend will receive $50' - concrete per-referral amount.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; use the referral site to get your personal link; no purchase required of the referrer.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: $100 per referral; max 5 rewards per calendar year ($500); valid referral = friend applies, qualifies for membership, opens Spend Plus/Spend Free checking, and makes ten (10) debit card purchases of at least $5 each within 60 days of opening.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: WECU member 18+ who is primary account holder (TRO) of at least one active deposit account; not an employee. Referred: new WECU member (not a member in the last 12 months), 18+, legal US resident.",
+  "notes": "dedupe-check 'wecu' shows no existing route.",
+  "numeric_basis": "payout from official terms ($100 per valid referral flat); time: category default App Referral share-link 5-15 min active",
+  "official_url": "https://www.wecu.com/refer-a-friend/",
+  "payout_max_usd": 100.0,
+  "payout_min_usd": 100.0,
+  "payout_quote": "By making a valid referral, Referrer will receive $100 and Friend will receive $50. Referrer can earn a maximum of 5 rewards per calendar year (maximum of $500).",
+  "payout_value_note": "$100 per valid referral in official terms; max 5 per calendar year ($500)",
+  "route_id": "R2480",
+  "standard": {
+    "s1": {
+      "note": "Referrer: WECU member 18+, primary account holder (TRO) of an active deposit account, in good standing. Referred: new member, not a member in the last 12 months.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Share your personal link; friend applies and qualifies for membership, opens Spend Plus or Spend Free checking, makes 10 debit purchases of $5+ within 60 days.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Referrer reward deposited into the referrer's longest active WECU checking (or savings) account after 60 days if qualifications met; rewards scheduled to be paid on day 63.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Flat $100 per referral; 5 per calendar year ($500).",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.wecu.com/wp-content/uploads/refer-checking-terms-and-conditions.pdf - official WECU Refer A Friend: Checking terms.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps concrete: get personal link from referral site, friend applies and qualifies, opens qualifying checking, completes 10 debit purchases of $5+ in 60 days, $100 paid to referrer around day 63.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official WECU terms PDF fetched directly 2026-09-23 (revised 04/2025); terms text verbatim.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit the official WECU Refer A Friend checking site and follow the onscreen instructions to refer a friend.",
+    "Receive your unique personal referral link and provide it to a friend who is not a WECU member (and was not one in the last 12 months).",
+    "Your friend applies for and qualifies for WECU membership and opens a Spend Plus or Spend Free checking product.",
+    "Within the first 60 days of account opening, the friend makes 10 debit card purchases of at least $5 each from that checking account.",
+    "You receive $100 deposited into your longest active WECU checking (or savings) account after 60 days, scheduled for payment on day 63 - up to 5 rewards ($500) per calendar year."
+  ],
+  "terms_url": "https://www.wecu.com/wp-content/uploads/refer-checking-terms-and-conditions.pdf",
+  "time_max_minutes": 15.0,
+  "time_min_minutes": 5.0,
+  "timing": "Referrer reward deposited into the referrer's longest active WECU checking account (or savings if no checking) after 60 days, provided qualifications are met; rewards scheduled to be paid on day 63.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,81 +1,87 @@
 {
- "route_id": "R0314",
- "checked_at": "2026-09-23T01:00:00Z",
- "app_links": {
-  "ios": null,
-  "android": null
- },
- "upfront_fee": false,
- "verdict": "verify",
- "official_url": "https://www.epa.gov/watersense",
- "terms_url": "https://www.epa.gov/watersense",
- "critical": {
-  "c1": {
-   "evidence": "EPA's WaterSense program is live (page updated August 27, 2026) with a 'Find Rebates' directory of concrete utility rebate offers on labeled fixtures; the route's '$25-$500+ per fixture' range covers the concrete utility rebate amounts (typically $25-$150 per fixture).",
-   "pass": true
+  "route_id": "R0314",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "app_links": {
+    "ios": null,
+    "android": null
   },
-  "c2": {
-   "evidence": "Official EPA WaterSense page (epa.gov), loaded live 2026-09-22, last updated August 27, 2026, with a live 'Find Rebates' link.",
-   "pass": true
+  "upfront_fee": false,
+  "verdict": "verify",
+  "official_url": "https://www.epa.gov/watersense",
+  "terms_url": "https://www.epa.gov/watersense",
+  "critical": {
+    "c1": {
+      "evidence": "EPA's WaterSense program is live (page updated August 27, 2026) with a 'Find Rebates' directory of concrete utility rebate offers on labeled fixtures; the route's '$25-$500+ per fixture' range covers the concrete utility rebate amounts (typically $25-$150 per fixture).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official EPA WaterSense page (epa.gov), loaded live 2026-09-22, last updated August 27, 2026, with a live 'Find Rebates' link.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to use. Note: rebates require buying the fixture — discounts on spending, not income.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Varies by utility offer: typically a bill credit or check within weeks of documented purchase/installation.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to use. Note: rebates require buying the fixture \u2014 discounts on spending, not income.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Set by each local utility's offer: typically must be a customer of the utility and buy a WaterSense labeled fixture (toilets, showerheads, irrigation controllers).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Rebates are utility-specific — many areas have no offer at all; every rebate requires buying the fixture first; typical amounts are $25-$100, not $500.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Typically weeks after purchase, per the utility's process.",
+      "pass": true
+    },
+    "s4": {
+      "note": "EPA page makes no inflated payout claim; individual utility offers state concrete amounts.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.epa.gov/watersense — official EPA page, loaded live, updated 2026-08-27.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: use Find Rebates on the EPA page, confirm your utility's live offer, buy the labeled fixture, submit proof.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official EPA page loaded live 2026-09-22.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Varies by utility offer: typically a bill credit or check within weeks of documented purchase/installation.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Set by each local utility's offer: typically must be a customer of the utility and buy a WaterSense labeled fixture (toilets, showerheads, irrigation controllers).",
-   "pass": true
+  "payout_quote": "Take steps each day to save water and protect the environment by choosing WaterSense labeled products in your home, yard, and business.",
+  "timing": "Varies by utility offer: typically a bill credit or rebate check within weeks of documented purchase and installation.",
+  "eligibility": "Set by each local utility's rebate offer: generally must be a residential customer of the participating water utility and purchase a WaterSense labeled product (toilets, showerheads, faucets, irrigation controllers, etc.).",
+  "catches": [
+    "Rebates are utility-specific — many water utilities offer nothing, so a large share of users get $0.",
+    "Every rebate requires buying the fixture first — a discount on spending, not money earned.",
+    "Typical rebates are $25-$100 per fixture; the $500 top end is not representative.",
+    "The product must carry the WaterSense label; efficient but unlabeled products do not qualify."
+  ],
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "Rebates are utility-specific \u2014 many areas have no offer at all; every rebate requires buying the fixture first; typical amounts are $25-$100, not $500.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Typically weeks after purchase, per the utility's process.",
-   "pass": true
-  },
-  "s4": {
-   "note": "EPA page makes no inflated payout claim; individual utility offers state concrete amounts.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://www.epa.gov/watersense \u2014 official EPA page, loaded live, updated 2026-08-27.",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: use Find Rebates on the EPA page, confirm your utility's live offer, buy the labeled fixture, submit proof.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Official EPA page loaded live 2026-09-22.",
-   "pass": true
-  }
- },
- "payout_quote": "Take steps each day to save water and protect the environment by choosing WaterSense labeled products in your home, yard, and business.",
- "timing": "Varies by utility offer: typically a bill credit or rebate check within weeks of documented purchase and installation.",
- "eligibility": "Set by each local utility's rebate offer: generally must be a residential customer of the participating water utility and purchase a WaterSense labeled product (toilets, showerheads, faucets, irrigation controllers, etc.).",
- "catches": [
-  "Rebates are utility-specific \u2014 many water utilities offer nothing, so a large share of users get $0.",
-  "Every rebate requires buying the fixture first \u2014 a discount on spending, not money earned.",
-  "Typical rebates are $25-$100 per fixture; the $500 top end is not representative.",
-  "The product must carry the WaterSense label; efficient but unlabeled products do not qualify."
- ],
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "steps": [
-  "Go to https://www.epa.gov/watersense and use the 'Find Rebates' link to look up offers from your water utility.",
-  "Confirm the offer is currently live, the qualifying WaterSense labeled products, and any pre-approval requirement.",
-  "Buy and install the qualifying fixture and keep the receipt.",
-  "Submit the utility's rebate form with proof of purchase; the rebate arrives as a bill credit or check."
- ],
- "biggest_catch": "Real EPA rebate directory, but rebates are utility-specific (many areas have none) and require buying the fixture first \u2014 typically $25-$100 back, not $500; it is a discount, not income.",
- "notes": "Verified the live EPA WaterSense page 2026-09-22 (updated 2026-08-27). PRODUCT NOTE: water-fixture rebates are purchase discounts, not earnings."
+  "steps": [
+    "Go to https://www.epa.gov/watersense and use the 'Find Rebates' link to look up offers from your water utility.",
+    "Confirm the offer is currently live, the qualifying WaterSense labeled products, and any pre-approval requirement.",
+    "Buy and install the qualifying fixture and keep the receipt.",
+    "Submit the utility's rebate form with proof of purchase; the rebate arrives as a bill credit or check."
+  ],
+  "biggest_catch": "Real EPA rebate directory, but rebates are utility-specific (many areas have none) and require buying the fixture first — typically $25-$100 back, not $500; it is a discount, not income.",
+  "notes": "Verified the live EPA WaterSense page 2026-09-22 (updated 2026-08-27). PRODUCT NOTE: water-fixture rebates are purchase discounts, not earnings. [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)]",
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 0.0,
+  "payout_value_note": "no parseable amount; variable",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: no parseable amount; variable; time: category default Rebate/Incentive (20-45min active)"
 }

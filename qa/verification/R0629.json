@@ -12,7 +12,7 @@
     "$100 opening minimum; possible $15-$25 monthly balance fees if thresholds are not met.",
     "Account must remain open 180 days; closing earlier triggers clawback of bonuses paid plus the disclosed $30 closing fee."
   ],
-  "checked_at": "2026-09-23T05:45:00Z",
+  "checked_at": "2026-09-23T07:21:24Z",
   "critical": {
     "c1": {
       "pass": true,
@@ -32,7 +32,7 @@
     }
   },
   "eligibility": "New WaterStone business checking customers; Wisconsin in-branch. Business accounts only - personal checking does not qualify.",
-  "notes": "Official WaterStone page fetched 2026-09-23: 'Earn Up To $1,000 Business Checking Bonus'. Candidate '$300/$500 checking, WI, in branch' matches this updated business promotion with corrected tiers and the business-only restriction documented here.",
+  "notes": "Official WaterStone page fetched 2026-09-23: 'Earn Up To $1,000 Business Checking Bonus'. Candidate '$300/$500 checking, WI, in branch' matches this updated business promotion with corrected tiers and the business-only restriction documented here. [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus 30-60min] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)] [numeric-backfill 2026-09-24: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)]",
   "official_url": "https://www.wsbonline.com/promotion/earn-up-to-1000-business-checking-bonus/",
   "payout_quote": "Up to $1,000: base tiers $300/$500/$700 paid in the third full cycle based on average balance; Positive Pay ($250) and Merchant Services ($300) add-ons paid later (Merchant Services in the sixth cycle).",
   "route_id": "R0629",
@@ -81,5 +81,11 @@
   "weasel_words": {
     "present": false,
     "quote": null
-  }
+  },
+  "payout_min_usd": 0.0,
+  "payout_max_usd": 1000.0,
+  "payout_value_note": "'up to' amount in official terms; floor $0",
+  "time_min_minutes": 30.0,
+  "time_max_minutes": 60.0,
+  "numeric_basis": "backfill: payout: 'up to' amount in official terms; floor $0; time: category default Bank Bonus (30-60min active)"
 }

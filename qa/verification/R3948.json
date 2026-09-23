@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referral coupon must be turned in before the friend opens their account; the friend needs direct deposit or 10 debit transactions in the first 30 days.",
+  "catches": [
+    "You and your friend each receive a $100 bonus per qualifying referral.",
+    "Official flyer: 'There is no limit to how many referrals you can earn!'",
+    "Friend opens a new ACCU Central Checking or Advantage Checking account.",
+    "New account must have direct deposit or 10 debit transactions in the first 30 days.",
+    "Referral coupon must be received by ACCU before the account is opened.",
+    "Turn the coupon into a local ACCU branch and ACCU contacts your referral."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official alabamacentral.org referral flyer: 'You'll both receive a $100 bonus!' and 'There is no limit to how many referrals you can earn!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Flyer hosted on official alabamacentral.org domain (/wp-content/uploads/2026/03/ACCU_Referral_Form.pdf), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'alabama central' returned only a false-positive unrelated catalog hit; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: ACCU member. Friend: new member opening Central Checking or Advantage Checking.",
+  "notes": "Verified 2026-09-23. Alabama Central Credit Union. $100 per qualifying referral; flyer explicitly states no referral limit.",
+  "numeric_basis": "payout from official flyer ($100 per referral; no limit stated); time: completing coupon est. 5-15 min active",
+  "official_url": "https://alabamacentral.org/wp-content/uploads/2026/03/ACCU_Referral_Form.pdf",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Refer friends and family to open a new ACCU Central Checking or Advantage Checking account. You'll both receive a $100 bonus!",
+  "payout_value_note": "$100 per qualifying referral; flyer explicitly states no referral limit.",
+  "route_id": "R3948",
+  "standard": {
+    "s1": {
+      "note": "Terms live on alabamacentral.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility implicit: ACCU members; friend opens new checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: direct deposit or 10 debit transactions in first 30 days",
+      "pass": true
+    },
+    "s4": {
+      "pass": false,
+      "note": "No payout clock on the official referral terms; a qualification deadline or 'after qualification' trigger is not a payout window (re-adjudicated 2026-09-23)."
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the referral coupon with your info and your friend's info.",
+    "Turn the form into your local ACCU branch before the account is opened.",
+    "Your friend opens a new Central Checking or Advantage Checking account.",
+    "They set up direct deposit or complete 10 debit transactions within 30 days; both get $100."
+  ],
+  "terms_url": "https://alabamacentral.org/wp-content/uploads/2026/03/ACCU_Referral_Form.pdf",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid after the friend qualifies; exact timing not stated.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

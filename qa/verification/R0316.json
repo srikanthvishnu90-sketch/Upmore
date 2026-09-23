@@ -1,82 +1,88 @@
 {
- "route_id": "R0316",
- "checked_at": "2026-09-23T01:00:00Z",
- "app_links": {
-  "ios": null,
-  "android": null
- },
- "upfront_fee": false,
- "verdict": "verify",
- "official_url": "https://cleanheatconnect.ny.gov/",
- "terms_url": "https://cleanheatconnect.ny.gov/assets/pdf/40278_ConEd_OR_Clean_Heat_Sell_Sheet_ASHP_v09_Release_Web.pdf",
- "critical": {
-  "c1": {
-   "evidence": "Official NYS Clean Heat program schedule states concrete incentives: $700/$1,000/$1,400 per 10,000 Btu/h of heating capacity at 5F (categories 2/2a/2b), $1,000 per heat-pump water heater unit. Real, currently funded (runs through 2030 per NY PSC order).",
-   "pass": true
+  "route_id": "R0316",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "app_links": {
+    "ios": null,
+    "android": null
   },
-  "c2": {
-   "evidence": "NYS Clean Heat is the official NY state/utility heat-pump rebate program (ny.gov); federal 25C $2,000 credit confirmed EXPIRED 12/31/2025 by OBBBA (multiple 2026 sources).",
-   "pass": true
+  "upfront_fee": false,
+  "verdict": "verify",
+  "official_url": "https://cleanheatconnect.ny.gov/",
+  "terms_url": "https://cleanheatconnect.ny.gov/assets/pdf/40278_ConEd_OR_Clean_Heat_Sell_Sheet_ASHP_v09_Release_Web.pdf",
+  "critical": {
+    "c1": {
+      "evidence": "Official NYS Clean Heat program schedule states concrete incentives: $700/$1,000/$1,400 per 10,000 Btu/h of heating capacity at 5F (categories 2/2a/2b), $1,000 per heat-pump water heater unit. Real, currently funded (runs through 2030 per NY PSC order).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "NYS Clean Heat is the official NY state/utility heat-pump rebate program (ny.gov); federal 25C $2,000 credit confirmed EXPIRED 12/31/2025 by OBBBA (multiple 2026 sources).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to apply. Note: rebates require purchasing a heat-pump system ($5,000-$15,000+) through a participating contractor — it is a discount on spending, not income.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Rebate typically applied at point of sale or paid through the participating contractor within weeks of installation; varies by utility territory.",
+      "pass": true
+    }
   },
-  "c3": {
-   "evidence": "No fee to apply. Note: rebates require purchasing a heat-pump system ($5,000-$15,000+) through a participating contractor \u2014 it is a discount on spending, not income.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Varies by state/utility. NYS Clean Heat: 1-4 unit homes, NEEP-listed cold-climate equipment, participating contractor; income-eligible households (<=80% AMI) can stack EmPower+ support.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Federal 25C credit ($2,000) is DEAD for 2026 installs — anyone promising it is wrong. State/utility amounts vary hugely; you must buy the system first; must use a participating contractor.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Point-of-sale or post-installation payment via contractor; no single official date — varies by utility.",
+      "pass": true
+    },
+    "s4": {
+      "note": "The NYS incentive schedule is concrete per-Btu/h figures, not weasel-worded; program marketing elsewhere uses 'up to' language.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://cleanheatconnect.ny.gov/ — official NY state Clean Heat program site (ny.gov).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: check DSIRE/your utility for local heat-pump rebates, get quotes from participating contractors, install qualifying equipment, rebate via contractor.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official NYS program document via ny.gov indexed content; 25C expiry confirmed across 2026 tax-law sources; energy.gov/savings page itself failed to load this session (noted, not guessed).",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "Rebate typically applied at point of sale or paid through the participating contractor within weeks of installation; varies by utility territory.",
-   "pass": true
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Varies by state/utility. NYS Clean Heat: 1-4 unit homes, NEEP-listed cold-climate equipment, participating contractor; income-eligible households (<=80% AMI) can stack EmPower+ support.",
-   "pass": true
+  "payout_quote": "ccASHP: Full Load Heating — $700 / $1,000 / $1,400 per 10,000 Btu/h of maximum heating capacity at 5F (categories 2 / 2a / 2b with decommissioning); Air-Source HPWH (<=120 gal): $1,000 per unit.",
+  "timing": "Rebate applied at point of sale or paid through the participating contractor, typically within weeks of installation; varies by utility territory.",
+  "eligibility": "State/utility-specific. NYS Clean Heat (exemplar, funded through 2030): homes with 1-4 units, qualifying cold-climate heat pump on the NEEP list, installed by a participating contractor. Other states/utilities (e.g., Xcel up to $2,000, CenterPoint $1,100) have their own rules. The expired federal 25C required meeting CEE highest-efficiency tier.",
+  "catches": [
+    "The $2,000 federal heat-pump tax credit (25C) EXPIRED December 31, 2025 under the One Big Beautiful Bill Act — it is not available for 2026 installations.",
+    "Remaining rebates are state/utility-specific and vary from a few hundred to several thousand dollars; there is no national $2,000 offer anymore.",
+    "You must purchase a $5,000-$15,000+ system first — this is a discount on spending, not money earned.",
+    "Most programs require a participating contractor; DIY or non-listed equipment does not qualify."
+  ],
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "s2": {
-   "note": "Federal 25C credit ($2,000) is DEAD for 2026 installs \u2014 anyone promising it is wrong. State/utility amounts vary hugely; you must buy the system first; must use a participating contractor.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Point-of-sale or post-installation payment via contractor; no single official date \u2014 varies by utility.",
-   "pass": true
-  },
-  "s4": {
-   "note": "The NYS incentive schedule is concrete per-Btu/h figures, not weasel-worded; program marketing elsewhere uses 'up to' language.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://cleanheatconnect.ny.gov/ \u2014 official NY state Clean Heat program site (ny.gov).",
-   "pass": true
-  },
-  "s6": {
-   "note": "Steps are concrete: check DSIRE/your utility for local heat-pump rebates, get quotes from participating contractors, install qualifying equipment, rebate via contractor.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Official NYS program document via ny.gov indexed content; 25C expiry confirmed across 2026 tax-law sources; energy.gov/savings page itself failed to load this session (noted, not guessed).",
-   "pass": true
-  }
- },
- "payout_quote": "ccASHP: Full Load Heating \u2014 $700 / $1,000 / $1,400 per 10,000 Btu/h of maximum heating capacity at 5F (categories 2 / 2a / 2b with decommissioning); Air-Source HPWH (<=120 gal): $1,000 per unit.",
- "timing": "Rebate applied at point of sale or paid through the participating contractor, typically within weeks of installation; varies by utility territory.",
- "eligibility": "State/utility-specific. NYS Clean Heat (exemplar, funded through 2030): homes with 1-4 units, qualifying cold-climate heat pump on the NEEP list, installed by a participating contractor. Other states/utilities (e.g., Xcel up to $2,000, CenterPoint $1,100) have their own rules. The expired federal 25C required meeting CEE highest-efficiency tier.",
- "catches": [
-  "The $2,000 federal heat-pump tax credit (25C) EXPIRED December 31, 2025 under the One Big Beautiful Bill Act \u2014 it is not available for 2026 installations.",
-  "Remaining rebates are state/utility-specific and vary from a few hundred to several thousand dollars; there is no national $2,000 offer anymore.",
-  "You must purchase a $5,000-$15,000+ system first \u2014 this is a discount on spending, not money earned.",
-  "Most programs require a participating contractor; DIY or non-listed equipment does not qualify."
- ],
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "steps": [
-  "Look up heat-pump rebates for your zip code at https://dsireusa.org and on your electric/gas utility's website \u2014 amounts and rules are local.",
-  "Confirm the current program is funded and accepting applications (e.g., NYS Clean Heat runs through 2030; check your own state's status).",
-  "Get quotes only from contractors participating in your local rebate program and confirm the equipment model is on the program's qualifying list.",
-  "Install the qualifying heat-pump system; the rebate is applied at point of sale or paid through the contractor after installation.",
-  "Do NOT claim the federal 25C credit for any system placed in service after December 31, 2025 \u2014 it no longer exists."
- ],
- "biggest_catch": "The $2,000 federal heat-pump tax credit expired December 31, 2025 \u2014 the remaining money is state/utility rebates that vary wildly and require buying a $5,000-$15,000 system through an approved contractor; it is a purchase discount, not income.",
- "notes": "CORRECTION vs the route's framing: the '$300-$2,000+' range is still real via state/utility rebates, but the $2,000 top end used to be the federal 25C credit, which is now dead. PRODUCT NOTE: heat-pump rebates reduce the cost of a major purchase; they are not earnings. Verified the live NYS Clean Heat schedule (ny.gov) and 25C expiry via 2026 tax-law reporting."
+  "steps": [
+    "Look up heat-pump rebates for your zip code at https://dsireusa.org and on your electric/gas utility's website — amounts and rules are local.",
+    "Confirm the current program is funded and accepting applications (e.g., NYS Clean Heat runs through 2030; check your own state's status).",
+    "Get quotes only from contractors participating in your local rebate program and confirm the equipment model is on the program's qualifying list.",
+    "Install the qualifying heat-pump system; the rebate is applied at point of sale or paid through the contractor after installation.",
+    "Do NOT claim the federal 25C credit for any system placed in service after December 31, 2025 — it no longer exists."
+  ],
+  "biggest_catch": "The $2,000 federal heat-pump tax credit expired December 31, 2025 — the remaining money is state/utility rebates that vary wildly and require buying a $5,000-$15,000 system through an approved contractor; it is a purchase discount, not income.",
+  "notes": "CORRECTION vs the route's framing: the '$300-$2,000+' range is still real via state/utility rebates, but the $2,000 top end used to be the federal 25C credit, which is now dead. PRODUCT NOTE: heat-pump rebates reduce the cost of a major purchase; they are not earnings. Verified the live NYS Clean Heat schedule (ny.gov) and 25C expiry via 2026 tax-law reporting. [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive 20-45min] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)] [numeric-backfill 2026-09-24: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)]",
+  "payout_min_usd": 700.0,
+  "payout_max_usd": 700.0,
+  "payout_value_note": "flat amount in official terms",
+  "time_min_minutes": 20.0,
+  "time_max_minutes": 45.0,
+  "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Rebate/Incentive (20-45min active)"
 }

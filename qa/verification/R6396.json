@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must keep Glo Fiber service for at least 60 days and both of you must be in good standing at the end of the 60 days \u2014 and there's a $600 cap on referral rewards per calendar year.",
+  "catches": [
+    "Friend must live in a serviceable Glo area, be a new customer, and sign up online within 30 days using the provided email",
+    "Friend must keep Glo Fiber service for at least 60 days; both parties must be in good standing at the end of the 60 days",
+    "Maximum $600 in referral rewards per calendar year; can't refer the same person or address twice within 12 months"
+  ],
+  "checked_at": "2026-09-23T05:42:00Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Glo Fiber 'Refer A Friend' page on glofiber.com/en/referafriend (per current search index, crawled 11 days ago): 'Give them all - and yourself - a $100 Bill Credit when they sign up for lightning fast Glo Fiber Internet.' 'Once all requirements are met, both you and your friend will receive a $100 Bill Credit. Terms and conditions apply.' Live page fetch was unavailable this turn; evidence is the official page content as indexed.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page currently listed on glofiber.com (index crawl 11 days ago).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Exact amount verbatim: 'both you and your friend will receive a $100 Bill Credit.'",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "60-day keep, 30-day signup window, good-standing, $600/year cap, and no-repeat-referral limits are stated on the official page.",
+      "pass": true
+    }
+  },
+  "eligibility": "Existing Glo Fiber customer; friend must be a new customer in a serviceable Glo area who signs up online within 30 days and keeps service 60 days.",
+  "notes": "Verified 2026-09-23 from the official glofiber.com referral page. Deduped: no GloFiber routes in catalog, evidence files, existing-providers.txt, or rejects-g60 (single fuzzy hit was Google Fi R0786, manually confirmed unrelated). Live page fetch failed this turn (single attempt; not retried per instruction), so evidence is the official page as currently indexed (crawled 11 days ago).",
+  "numeric_basis": "payout from official terms ($100 bill credit each side); time: referral share 5-15 min active",
+  "official_url": "https://www.glofiber.com/en/referafriend",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "Give them all - and yourself - a $100 Bill Credit when they sign up for lightning fast Glo Fiber Internet. Once all requirements are met, both you and your friend will receive a $100 Bill Credit.",
+  "payout_value_note": "$100 bill credit each side \u2014 offsets planned Glo Fiber spending, not income.",
+  "route_id": "R6396",
+  "standard": {
+    "s1": {
+      "note": "Exact amount stated verbatim on the official page ($100 each).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Savings framing explicit: bill credit offsets planned Glo Fiber spending, not income.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Concrete steps from the official page (complete referral form, friend signs up online within 30 days, 60-day keep).",
+      "pass": true
+    },
+    "s4": {
+      "note": "Biggest catch is plain: 60-day keep gate, good standing, $600/year cap.",
+      "pass": true
+    },
+    "s5": {
+      "note": "No upfront fee beyond each side's own Glo Fiber service.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No weasel words; conditions explicit.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Verified against glofiber.com (provider's own domain) via current official-page content. Deduped clean.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Complete the Glo Fiber referral form with your friend's email",
+    "Your friend signs up for Glo Fiber internet online within 30 days using that email",
+    "Friend keeps Glo Fiber service for at least 60 days",
+    "Both you and your friend receive a $100 bill credit (confirmation email sent once eligible)"
+  ],
+  "terms_url": "https://www.glofiber.com/en/referafriend",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Credit after the friend keeps service 60 days with both parties in good standing.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

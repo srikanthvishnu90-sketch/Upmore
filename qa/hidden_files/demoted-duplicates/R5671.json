@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "This is TIERED, not a flat payout: your friend must hit Advantage relationship milestones within 90 days of opening - you earn $50 when they reach Advantage Plus Rewards status, $50 more if they hold $10,000+ in aggregate deposits, and $100 more if they take out $5,000+ in personal loans. If the friend qualifies for none of these, you earn $0. Not available in Wisconsin.",
+  "catches": [
+    "Friend must be a NEW Advia member (not previously a member) who qualifies for Advia field of membership and follows the referral program instructions.",
+    "Friend must open and maintain qualifying Advantage Relationship(s) within 90 days of new account opening: (1) $50 when reaching Advantage Plus Rewards status (see adviacu.org/advantageplus); and/or (2) $50 when accruing $10,000+ in new aggregate deposits held; and/or (3) $100 when obtaining $5,000+ in aggregate personal loans (auto/RV or signature loan balances).",
+    "Program not available in Wisconsin.",
+    "Referral bonus payout(s) paid in one sum via deposit into the Primary Share Savings of both the referring member and the qualifying new member, no more than 45 days after the first 3 months of membership.",
+    "Both accounts must be in good standing (no delinquent loan, no charged-off account, no negative share balance) at time of payment.",
+    "May not be combined with other promotional offers; individuals may not refer themselves; subject to change or discontinuation at any time.",
+    "Bonus may be reported to the IRS; taxes are the recipient's responsibility."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Advia CU page (adviacu.org): 'For every friend or family member you refer to Advia, you each could earn up to $200.' with tiers: '(1) $50 when the new member reaches Advantage Plus Rewards status; and/or (2) $50 when the new member accrues new aggregate deposits held of $10,000 or more; and/or (3) $100 when the new member obtains aggregate Personal Loans of $5,000 or more.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Advia CU referral pages on adviacu.org, fetched via live crawl 2026-09-23; no fixed expiry, changeable at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep of qa/verification found no adviacu.org route and no Advia entry; catalog has no Advia Credit Union route",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: existing Advia Credit Union member. Friend: new Advia member (not previously a member), qualifies for field of membership (not in Wisconsin for this offer).",
+  "notes": "Verified 2026-09-23. Advia Credit Union (MI, IL, not WI). Referrer earns tiered $50-$200 per qualifying referral depending on the friend's Advantage milestones within 90 days: $50 Advantage Plus Rewards status, +$50 for $10,000+ deposits, +$100 for $5,000+ loans. Paid in one sum to Primary Share Savings.",
+  "numeric_basis": "payout from official Advia terms (tiered $50/$50/$100 milestones = $50 min if first milestone hit, $200 max); time: submit referral form + share link est. 5-15 min active",
+  "official_url": "https://www.adviacu.org/refer-others",
+  "payout_max_usd": 200,
+  "payout_min_usd": 50,
+  "payout_quote": "For every friend or family member you refer to Advia, you each could earn up to $200. (1) $50 when the new member reaches Advantage Plus Rewards status; and/or (2) $50 when the new member accrues new aggregate deposits held of $10,000 or more; and/or (3) $100 when the new member obtains aggregate Personal Loans of $5,000 or more.",
+  "payout_value_note": "Tiered per-referral payout: $50 if friend reaches Advantage Plus Rewards status, +$50 for $10,000+ deposits, +$100 for $5,000+ loans ($50-$200 range); paid in one sum to the referrer's Primary Share Savings.",
+  "route_id": "R5671",
+  "standard": {
+    "s1": {
+      "note": "Official Advia CU referral pages live on adviacu.org, crawled 2026-09-23; no fixed expiry, changeable at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer existing member; friend new member qualifying for field of membership; not available in Wisconsin",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: reach Advantage milestones within 90 days (Advantage Plus status, $10k+ deposits, $5k+ loans)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus paid in one sum to Primary Share Savings no more than 45 days after the first 3 months of membership",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: bonus may be reported to the IRS, recipient responsible",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit the Advia referral page and complete the referral form with your information (name, phone, email matching your member account).",
+    "Share your referral link with friends/family via email or social media.",
+    "Friend informs Advia you referred them when opening their account (or within 90 days) and hits Advantage milestones within 90 days of account opening.",
+    "You receive the tiered referral incentive ($50-$200) deposited to your Primary Share Savings within 45 days after the friend's first 3 months of membership."
+  ],
+  "terms_url": "https://www.adviacu.org/refer-others",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus deposited to the referrer's Primary Share Savings no more than 45 days after the friend's first 3 months of membership, paid in one sum.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

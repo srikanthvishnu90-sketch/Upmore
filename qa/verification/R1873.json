@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Below 1,000 kWh/month you get zero credit while still paying the plan's energy rate — the credit only rewards high usage.",
+  "catches": [
+    "No credit at all below 1,000 kWh — the 'up to $50' is usage-gated.",
+    "36-month term with early termination fee ($150 shown on plan).",
+    "Credits are bill savings on energy you already buy, not cash."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Provider's own order page (orderconstellation.com) loaded and states the Usage Bill Credit plan terms.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Concrete amounts on the provider's own page: $35 in bill credits above 1,000 kWh, plus $15 above 2,000 kWh.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No enrollment fee; the plan is normal energy service with usage-gated bill credits.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Plan and credits live and current as of the 2026-09-23 check.",
+      "pass": true
+    }
+  },
+  "eligibility": "Texas residential customers enrolling on the Constellation Usage Bill Credit plan.",
+  "notes": "Bill credits framed as savings on planned energy spending, not income. Distinct from R0844 Constellation refer-a-friend (different mechanism).",
+  "numeric_basis": "payout from official order page ($35 + $15 tiers); time: online enrollment est. 20-30 min active",
+  "official_url": "https://orderconstellation.com/states/texas/202405",
+  "payout_max_usd": 50,
+  "payout_min_usd": 0,
+  "payout_quote": "Alongside a great fixed rate energy plan, you are entitled to up to $50 in bill credits depending on usage. $35 in bill credits if usage exceeds 1000 kWh. Additional $15 in bill credits if usage exceeds 2000 kWh.",
+  "payout_value_note": "Up to $50/month bill credit: $35 above 1,000 kWh, plus $15 above 2,000 kWh.",
+  "route_id": "R1873",
+  "standard": {
+    "s1": {
+      "note": "Texas residential customers on the Usage Bill Credit plan, per the provider's own order page.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No signup fee; early termination fee disclosed on the plan.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Credits apply automatically each billing cycle at qualifying usage.",
+      "pass": true
+    },
+    "s4": {
+      "note": "'Up to' language used; recorded in weasel_words.",
+      "pass": false
+    },
+    "s5": {
+      "note": "Official order page loaded live on 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: enroll, exceed 1,000 kWh, credit applies automatically.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Checked 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Enroll as a new Constellation customer on the Usage Bill Credit plan (Texas).",
+    "Use at least 1,000 kWh in a billing cycle to receive the $35 credit (2,000+ kWh for the extra $15).",
+    "Credits apply automatically on the monthly bill."
+  ],
+  "terms_url": "https://orderconstellation.com/states/texas/202405",
+  "time_max_minutes": 30,
+  "time_min_minutes": 20,
+  "timing": "Enrollment ~20 minutes online; credits apply each billing cycle automatically.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [
+    "up to"
+  ]
+}

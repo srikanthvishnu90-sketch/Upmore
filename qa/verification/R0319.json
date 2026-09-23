@@ -1,81 +1,81 @@
 {
- "route_id": "R0319",
- "checked_at": "2026-09-23T01:00:00Z",
- "app_links": {
-  "ios": null,
-  "android": null
- },
- "upfront_fee": false,
- "verdict": "reject",
- "official_url": "https://www.energy.gov/articles/biden-harris-administration-awards-first-state-funding-and-announces-progress-historic-88",
- "terms_url": "https://www.energy.gov/articles/biden-harris-administration-awards-first-state-funding-and-announces-progress-historic-88",
- "critical": {
-  "c1": {
-   "evidence": "DOE announced concrete caps (up to $8,000 heat pump, $1,750 heat-pump water heater, $840 dryer/stove), but there is NO uniform national program an average user can apply to today: California's HEEHRA hit capacity and went to waitlist in February 2026, other states have not launched or are still waiting on DOE to reopen funding, and DOE's June 2026 guidance bars using the restarted rebates to switch from fossil fuels to electric. The route's '$50-$500' has no currently-obtainable official source. FAIL.",
-   "pass": false
+  "route_id": "R0319",
+  "checked_at": "2026-09-23T07:21:24Z",
+  "app_links": {
+    "ios": null,
+    "android": null
   },
-  "c2": {
-   "evidence": "DOE's $8.8B Home Energy Rebates announcement is real, but current consumer availability could not be confirmed as open from any official source \u2014 CA waitlisted, states pending.",
-   "pass": false
+  "upfront_fee": false,
+  "verdict": "reject",
+  "official_url": "https://www.energy.gov/articles/biden-harris-administration-awards-first-state-funding-and-announces-progress-historic-88",
+  "terms_url": "https://www.energy.gov/articles/biden-harris-administration-awards-first-state-funding-and-announces-progress-historic-88",
+  "critical": {
+    "c1": {
+      "evidence": "DOE announced concrete caps (up to $8,000 heat pump, $1,750 heat-pump water heater, $840 dryer/stove), but there is NO uniform national program an average user can apply to today: California's HEEHRA hit capacity and went to waitlist in February 2026, other states have not launched or are still waiting on DOE to reopen funding, and DOE's June 2026 guidance bars using the restarted rebates to switch from fossil fuels to electric. The route's '$50-$500' has no currently-obtainable official source. FAIL.",
+      "pass": false
+    },
+    "c2": {
+      "evidence": "DOE's $8.8B Home Energy Rebates announcement is real, but current consumer availability could not be confirmed as open from any official source — CA waitlisted, states pending.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "No fee to apply where programs exist; moot — the program is not currently obtainable for an average user.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No reliable current payout timing exists because most state programs are waitlisted or not yet launched. FAIL.",
+      "pass": false
+    }
   },
-  "c3": {
-   "evidence": "No fee to apply where programs exist; moot \u2014 the program is not currently obtainable for an average user.",
-   "pass": true
+  "standard": {
+    "s1": {
+      "note": "Would be income-based (<=80% AMI full, 80-150% AMI partial) IF your state's program were open — most are not.",
+      "pass": false
+    },
+    "s2": {
+      "note": "Not currently obtainable: CA fully reserved/waitlist since Feb 2026; DOE June 2026 guidance excludes electrification fuel-switching from restarted rebates; other states pending.",
+      "pass": false
+    },
+    "s3": {
+      "note": "No reliable timing — programs are waitlisted or unlaunched.",
+      "pass": false
+    },
+    "s4": {
+      "note": "DOE's 'up to $8,000' figures are real caps but describe a program most users cannot access today.",
+      "pass": true
+    },
+    "s5": {
+      "note": "DOE announcement page is real but describes program design, not a currently open national offer.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No actionable current steps exist for an average user — 'check your state energy office' is the only honest advice.",
+      "pass": false
+    },
+    "s7": {
+      "note": "Status pieced together from DOE announcements plus 2026 program reporting; no official source confirms open consumer availability today — rejected rather than guessed.",
+      "pass": true
+    }
   },
-  "c4": {
-   "evidence": "No reliable current payout timing exists because most state programs are waitlisted or not yet launched. FAIL.",
-   "pass": false
-  }
- },
- "standard": {
-  "s1": {
-   "note": "Would be income-based (<=80% AMI full, 80-150% AMI partial) IF your state's program were open \u2014 most are not.",
-   "pass": false
+  "payout_quote": "Potential savings include up to: $8,000 off an ENERGY STAR-certified heat pump for space heating and cooling ... $840 for an ENERGY STAR-certified electric heat pump clothes dryer and/or an electric stove, cooktop, range, or oven. (DOE $8.8B Home Energy Rebates announcement — program design figures, not a currently open national offer.)",
+  "timing": "No reliable timing — state programs are waitlisted (California since February 2026) or not yet launched; DOE only began the funding-reopening process in June 2026.",
+  "eligibility": "Program design: household income below 80% of area median income for full rebates, 80-150% for partial. In practice: only whatever your state's energy office currently has open — most states have nothing open to new applicants today.",
+  "catches": [
+    "REJECTED: no uniform national program is currently accepting applications — California's HEEHRA reached capacity and went to waitlist in February 2026.",
+    "DOE's June 2026 guidance explicitly bars using the restarted rebates to ditch fossil fuels for electric heating — directly undercutting the route's premise.",
+    "The route's '$50-$500 per appliance' has no currently-obtainable official source; it is aspirational for an average user today.",
+    "Even where programs exist, rebates require buying the appliance first — a discount, not income."
+  ],
+  "weasel_words": {
+    "present": true,
+    "quote": "Potential savings include up to: $8,000 off an ENERGY STAR-certified heat pump"
   },
-  "s2": {
-   "note": "Not currently obtainable: CA fully reserved/waitlist since Feb 2026; DOE June 2026 guidance excludes electrification fuel-switching from restarted rebates; other states pending.",
-   "pass": false
-  },
-  "s3": {
-   "note": "No reliable timing \u2014 programs are waitlisted or unlaunched.",
-   "pass": false
-  },
-  "s4": {
-   "note": "DOE's 'up to $8,000' figures are real caps but describe a program most users cannot access today.",
-   "pass": true
-  },
-  "s5": {
-   "note": "DOE announcement page is real but describes program design, not a currently open national offer.",
-   "pass": true
-  },
-  "s6": {
-   "note": "No actionable current steps exist for an average user \u2014 'check your state energy office' is the only honest advice.",
-   "pass": false
-  },
-  "s7": {
-   "note": "Status pieced together from DOE announcements plus 2026 program reporting; no official source confirms open consumer availability today \u2014 rejected rather than guessed.",
-   "pass": true
-  }
- },
- "payout_quote": "Potential savings include up to: $8,000 off an ENERGY STAR-certified heat pump for space heating and cooling ... $840 for an ENERGY STAR-certified electric heat pump clothes dryer and/or an electric stove, cooktop, range, or oven. (DOE $8.8B Home Energy Rebates announcement \u2014 program design figures, not a currently open national offer.)",
- "timing": "No reliable timing \u2014 state programs are waitlisted (California since February 2026) or not yet launched; DOE only began the funding-reopening process in June 2026.",
- "eligibility": "Program design: household income below 80% of area median income for full rebates, 80-150% for partial. In practice: only whatever your state's energy office currently has open \u2014 most states have nothing open to new applicants today.",
- "catches": [
-  "REJECTED: no uniform national program is currently accepting applications \u2014 California's HEEHRA reached capacity and went to waitlist in February 2026.",
-  "DOE's June 2026 guidance explicitly bars using the restarted rebates to ditch fossil fuels for electric heating \u2014 directly undercutting the route's premise.",
-  "The route's '$50-$500 per appliance' has no currently-obtainable official source; it is aspirational for an average user today.",
-  "Even where programs exist, rebates require buying the appliance first \u2014 a discount, not income."
- ],
- "weasel_words": {
-  "present": true,
-  "quote": "Potential savings include up to: $8,000 off an ENERGY STAR-certified heat pump"
- },
- "steps": [
-  "Do NOT act on this route as a live offer \u2014 it is rejected pending real state-level availability.",
-  "If you still want to check: go to your state energy office's website (search '[your state] energy office' \u2014 use the .gov site) and look for Home Energy Rebates / HEAR program status.",
-  "Confirm the program is funded AND currently accepting applications in your state \u2014 a waitlist is not an open program.",
-  "Only then: confirm income eligibility (usually <=150% AMI), qualifying equipment list, and whether a participating contractor is required."
- ],
- "biggest_catch": "The federal electric-appliance rebates exist on paper but are not obtainable for an average user today \u2014 California's program hit capacity and went to waitlist in February 2026, other states haven't launched, and DOE's June 2026 guidance bars using the restarted rebates to switch from fossil fuels to electric.",
- "notes": "REJECTED per checklist: program status cannot be confirmed as currently funded AND accepting applications from any official source. DOE's $8.8B Home Energy Rebates (HOMES up to $8,000, HEAR/HEEHRA up to $14,000 per DOE) are real appropriations, but consumer availability is state-by-state and mostly closed: CA TECH/HEEHRA fully reserved Feb 2026 with no new income-verification applications processed, and DOE's June 2026 implementation guidance excludes electrification fuel-switching. Re-verify if/when a state program verifiably reopens."
+  "steps": [
+    "Do NOT act on this route as a live offer — it is rejected pending real state-level availability.",
+    "If you still want to check: go to your state energy office's website (search '[your state] energy office' — use the .gov site) and look for Home Energy Rebates / HEAR program status.",
+    "Confirm the program is funded AND currently accepting applications in your state — a waitlist is not an open program.",
+    "Only then: confirm income eligibility (usually <=150% AMI), qualifying equipment list, and whether a participating contractor is required."
+  ],
+  "biggest_catch": "The federal electric-appliance rebates exist on paper but are not obtainable for an average user today — California's program hit capacity and went to waitlist in February 2026, other states haven't launched, and DOE's June 2026 guidance bars using the restarted rebates to switch from fossil fuels to electric.",
+  "notes": "REJECTED per checklist: program status cannot be confirmed as currently funded AND accepting applications from any official source. DOE's $8.8B Home Energy Rebates (HOMES up to $8,000, HEAR/HEEHRA up to $14,000 per DOE) are real appropriations, but consumer availability is state-by-state and mostly closed: CA TECH/HEEHRA fully reserved Feb 2026 with no new income-verification applications processed, and DOE's June 2026 implementation guidance excludes electrification fuel-switching. Re-verify if/when a state program verifiably reopens."
 }

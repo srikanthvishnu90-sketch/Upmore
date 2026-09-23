@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must complete a demanding qualification: within 60 days, either 12 debit card purchases on a new checking account, a new credit card, or a new loan.",
+  "catches": [
+    "You and your friend each earn $100 per qualifying referral.",
+    "Up to $500 every year in referral incentives.",
+    "Friend must not have been a Verity member in the past two years and must be at least 18.",
+    "Friend qualification within 60 days: enroll in Digital Banking and sign in, plus open a checking account with 12+ debit card purchases, open a new Verity credit card, or open a new Verity loan (excludes first mortgages).",
+    "Rewards are deposited within 14 days after qualifications are met.",
+    "Cannot be combined with any other incentive offer.",
+    "Bonuses are considered interest and may be reported on IRS Form 1099-INT.",
+    "Membership: Washington State residents or immediate family of members.",
+    "$100 offer effective 6/15/25 and subject to change at any time.",
+    "Separate business referral: $100 to the referrer when a referred business opens a Verity Business Checking account (use promo code BUS100)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Verity page (veritycu.com): '$100 for you, $100 for your friend!' and 'You both earn $100! ... You can earn up to $500 every year for referring others!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page hosted on official veritycu.com domain (veritycu.com/referrals), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens standard account",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'verity' evidence-file hit was yeswehack.com (unrelated). No veritycu evidence files. Distinct referrer-side mechanism, new institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Verity CU member. Friend: has not been a Verity member in the past two years; enrolls in Digital Banking and qualifies within 60 days.",
+  "notes": "Verified 2026-09-23. Verity Credit Union (Seattle, WA). $100 to the referrer per qualifying referral; up to $500/year. Separate $100 business referral (promo code BUS100) counts as the same mechanism and is not a separate route.",
+  "numeric_basis": "payout from official page ($100 per qualifying referral; $500/year cap); time: submitting the referral in Digital Banking est. 5-15 min active",
+  "official_url": "https://www.veritycu.com/referrals",
+  "payout_max_usd": 100,
+  "payout_min_usd": 100,
+  "payout_quote": "$100 for you, $100 for your friend! ... You both earn $100! ... You can earn up to $500 every year for referring others!",
+  "payout_value_note": "$100 per qualifying referral; up to $500 per year.",
+  "route_id": "R3900",
+  "standard": {
+    "s1": {
+      "note": "Program page live on veritycu.com, fetched 2026-09-23; $100 offer effective 6/15/25, subject to change",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer member; friend not a member in past 2 years, 18+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: Digital Banking enrollment + checking with 12 debit purchases, new credit card, or new loan within 60 days",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: rewards deposited within 14 days after qualifications are met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: bonuses considered interest, may be reported on 1099-INT",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Add your referral's contact info (name and phone number) in the Refer a Friend section of Digital Banking.",
+    "Friend joins Verity (no membership in the past two years).",
+    "Friend enrolls in Digital Banking and within 60 days completes a qualifying action (12 debit purchases on a new checking account, a new credit card, or a new loan).",
+    "You and your friend each receive $100 within 14 days (up to $500/year)."
+  ],
+  "terms_url": "https://www.veritycu.com/referrals",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$100 deposited within 14 days after qualifications are met.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

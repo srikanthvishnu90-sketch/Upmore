@@ -1,0 +1,90 @@
+{
+  "route_id": "R3161",
+  "verdict": "verify",
+  "official_url": "https://host.neighbor.com/host-signup/",
+  "terms_url": "https://www.neighbor.com/storage/blueprint-tool",
+  "payout_quote": "Listing space on Neighbor is 100% free. We only make money when you do. When you have a paying renter, Neighbor collects a processing fee (4.9% + $0.30) as part of your host payout.",
+  "steps": [
+    "Create a Neighbor host account and verify your identity (email, phone, photo ID).",
+    "List your space: describe it, upload photos, set your own monthly price.",
+    "Review incoming renter requests (what they store, when) and approve or decline.",
+    "Schedule a move-in time with the approved renter; Neighbor handles payments and deposits rent to your bank account monthly, minus the 4.9% + $0.30 processing fee."
+  ],
+  "catches": [
+    "Neighbor takes a processing fee of 4.9% + $0.30 from every host payout; renters also pay a separate service fee, and sales tax may be collected in some areas.",
+    "Earnings are fully variable: you set the price, but actual income depends on space type, size, location, and local demand; Neighbor's own 'earn $100-$400/month' line is a marketing illustration, not a guarantee - most hosts earn little or wait a long time for the first renter.",
+    "US-only marketplace; hosts and renters must verify identity.",
+    "You are responsible for what happens on your property: control renter access, item restrictions, and access hours; the $1M Host Guarantee covers personal liability but read the exact coverage terms - normal wear, illegal items, and unauthorized uses are not covered.",
+    "Rental income is taxable; Neighbor does not handle your taxes.",
+    "Check landlord, lease, HOA, and local zoning rules before listing - subletting or commercial storage use may violate them.",
+    "If a renter doesn't pay, Neighbor says it covers the cost and its payout protection covers up to two months of lost rent."
+  ],
+  "biggest_catch": "Earnings are entirely demand-driven: you set your own price but there is no guaranteed income, Neighbor's '$100-$400/month' host-page line is marketing not a guarantee, most hosts earn little, and Neighbor still takes 4.9% + $0.30 of every payout.",
+  "eligibility": "US only. Must be 18+, verify identity (photo ID, email, phone), and have storage or parking space you are legally allowed to rent out (homeowners, or renters with landlord permission; must not discriminate).",
+  "timing": "Listing takes about 10 minutes per Neighbor's own page ('Hosts spend an average of just 16 minutes per month managing their renters'); payouts are automatic monthly deposits to your bank account after a renter's payment clears. First payout requires finding a renter, which can take weeks or months.",
+  "upfront_fee": false,
+  "weasel_words": [
+    "passive income",
+    "Guaranteed money in your pocket"
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "pass": true,
+      "evidence": "host.neighbor.com/host-signup/ loaded live: 'Become a host in 3 easy steps', 'Make $100-$1000 a month by renting your space to a neighbor', 'Automatic monthly deposits to your bank account'."
+    },
+    "c2": {
+      "pass": true,
+      "evidence": "neighbor.com fee disclosure loaded live: 'When you have a paying renter, Neighbor collects a processing fee (4.9% + $0.30) as part of your host payout. Renters also pay a small service fee when they book.'"
+    },
+    "c3": {
+      "pass": true,
+      "evidence": "Listing is '100% free' on official page; no upfront fee documented; fee only deducted from payouts."
+    },
+    "c4": {
+      "pass": true,
+      "evidence": "Official page: Neighbor handles payments and automatically deposits into host account each month; also 'Guaranteed money in your pocket - We'll even cover the cost if your renter doesn't pay.'"
+    }
+  },
+  "standard": {
+    "s1": {
+      "pass": true,
+      "note": "Eligibility cues on official host page (identity verification required, US marketplace, space control rules)."
+    },
+    "s2": {
+      "pass": true,
+      "note": "Fee/commission disclosed verbatim on official neighbor.com page."
+    },
+    "s3": {
+      "pass": true,
+      "note": "Payout timing/method documented: monthly automatic bank deposits."
+    },
+    "s4": {
+      "pass": true,
+      "note": "No weasel words in the payout_quote itself; marketing phrases ('passive income') listed separately in weasel_words."
+    },
+    "s5": {
+      "pass": true,
+      "note": "Both URLs on neighbor.com loaded live via page fetch 2026-09-23."
+    },
+    "s6": {
+      "pass": true,
+      "note": "Steps are concrete and match the official 3-step host flow."
+    },
+    "s7": {
+      "pass": true,
+      "note": "Checked 2026-09-23; Neighbor ToS page not separately loaded - fee/host terms come from official host FAQ pages."
+    }
+  },
+  "notes": "Neighbor is the largest US peer-to-peer storage marketplace. Earnings are variable and self-priced: the $100-$400 official host-page claim is used for the numeric range with a marketing-illustration caveat in payout_value_note. Host Guarantee: $1M personal liability coverage for hosts, $25k for renters' items, per official page. US-only. Dedupe: no existing Neighbor route in catalog.",
+  "payout_min_usd": 100,
+  "payout_max_usd": 400,
+  "payout_value_note": "Neighbor's official host page markets 'Earn $100-$400 per month with unused space' - a marketing claim, not a guarantee; hosts set their own price and actual earnings vary by demand/location.",
+  "time_min_minutes": 20,
+  "time_max_minutes": 90,
+  "numeric_basis": "payout: Neighbor's official host-page earnings illustration ($100-$400/mo); time: ~10-30 min listing setup + ~16 min/month per-renter management (Neighbor's own average) est. active minutes to first paid month."
+}

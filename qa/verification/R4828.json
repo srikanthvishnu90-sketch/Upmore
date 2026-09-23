@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Your friend must register, open a new personal checking account, and complete the offer requirements within the specified time - otherwise you get nothing.",
+  "catches": [
+    "Referrer: Texans Credit Union member who registers for the program and shares the offer.",
+    "Referrer earns a $50 reward bonus for each individual referred; 'A Referrer may receive up to ten (10) reward bonuses ($500 value) within a calendar year.'",
+    "Friend must: register for the offer, open a new Texans Credit Union personal checking account, and complete the offer requirements within the time specified in the offer.",
+    "Only one referrer may receive a reward bonus for each referred person who fulfills the requirements.",
+    "The dallascounty page version is framed for Dallas County employees, but the Refer-a-Friend terms are the standard Texans CU program; membership eligibility may require additional verification.",
+    "Program subject to change; terms available at the ReferLive referral dashboard.",
+    "Membership required for the friend's account."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Texans Credit Union page (texanscu.org/dallascounty, fetched live 2026-09-23): 'When you register and share Texans CU with your friends and family, you can earn $50 for each referral - up to $500 a year!' and 'The person making the referral (Referrer) will earn a $50 reward bonus for each individual referred (Referred Person) to Texans Credit Union who registers for the offer, opens a new Texans Credit Union personal checking account, and completes the offer requirements.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official texanscu.org page, fetched live 2026-09-23; ongoing offer",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer; friend opens personal checking",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "grep + dedupe-check found no Texans route in the catalog (0 hits)",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Texans Credit Union member who registers for the program. Friend: registers for the offer and opens a new Texans CU personal checking account.",
+  "notes": "Verified 2026-09-23. Texans Credit Union (Texas). Referrer earns $50 per qualifying referral, up to 10 ($500) per calendar year.",
+  "numeric_basis": "payout from official Texans CU terms ($50 per referral; max 10 = $500); time: register and share est. 5-15 min active",
+  "official_url": "https://www.texanscu.org/dallascounty",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "The person making the referral (Referrer) will earn a $50 reward bonus for each individual referred (Referred Person) to Texans Credit Union who registers for the offer, opens a new Texans Credit Union personal checking account, and completes the offer requirements within the time specified in the offer. To make a referral, the Referrer must register for the program and share the offer with their friends, family, or coworkers. A Referrer may receive up to ten (10) reward bonuses ($500 value) within a calendar year, but only one Referrer may receive a reward bonus for each Referred Person who fulfills the requirements.",
+  "payout_value_note": "$50 to the referrer per qualifying referral; up to 10 per calendar year ($500).",
+  "route_id": "R4828",
+  "standard": {
+    "s1": {
+      "note": "Official texanscu.org page fetched live 2026-09-23; ongoing",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer Texans CU member; friend opens new personal checking",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: register, open new personal checking, complete offer requirements in the specified time",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus after friend completes requirements (specific payment timing on the referral dashboard)",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: reward bonuses are standard reportable bank bonuses",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; no Texans route in catalog",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for the Texans Credit Union Refer a Friend program and share the offer with friends and family.",
+    "Friend registers, opens a new Texans CU personal checking account, and completes the offer requirements.",
+    "You receive $50 per qualifying referral - up to ten ($500) per calendar year."
+  ],
+  "terms_url": "https://www.texanscu.org/dallascounty",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid after the referred person completes the offer requirements.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

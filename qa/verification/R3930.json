@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must open a membership share savings account plus at least one additional deposit or consumer loan account (minimum $100 funding).",
+  "catches": [
+    "Referrer gets $50 for every referral; both the referrer and the person referred receive $50 when the friend opens a new account.",
+    "Friend must be over 18 and open a DFCU membership via a share savings account plus at least one additional deposit or consumer loan account.",
+    "Additional deposit account must be funded with a minimum of $100; overdraft line of credit, credit cards, and mortgage loans excluded.",
+    "Referrer must be a current DFCU member in good standing.",
+    "Allow 30 days after account opening for the incentive to be credited.",
+    "No stated referral cap."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Deseret First CU page: 'Get $50 for every referral... both you and the person you refer will receive $50 when they open a new account with us.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms hosted on official dfcu.com domain (dfcu.com/refer-a-friend/), fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'deseret first' found no coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: current DFCU member in good standing. Friend: 18+, new DFCU member.",
+  "notes": "Verified 2026-09-23. Deseret First Credit Union. $50 each side; no referral cap stated.",
+  "numeric_basis": "payout from official page ($50 each side; no cap stated); time: filling the referral form est. 5-15 min active",
+  "official_url": "https://www.dfcu.com/refer-a-friend/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "Get $50 for every referral... both you and the person you refer will receive $50 when they open a new account with us.",
+  "payout_value_note": "$50 each side per referral; no referral cap stated.",
+  "route_id": "R3930",
+  "standard": {
+    "s1": {
+      "note": "Terms live on dfcu.com, fetched 2026-09-23; no end date stated",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: current DFCU member referrer; 18+ new member friend",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: share savings + additional deposit ($100 min) or consumer loan account",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: allow 30 days after account opening for incentive credit",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Fill out the referral form on the official page with the required information.",
+    "Friend opens a DFCU membership via a share savings account plus an additional deposit account ($100 min funding) or consumer loan account.",
+    "You both receive $50 within 30 days of account opening."
+  ],
+  "terms_url": "https://www.dfcu.com/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Incentive credited within 30 days after account opening.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

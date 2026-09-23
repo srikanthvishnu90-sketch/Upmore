@@ -1,0 +1,86 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The referred friend must be a first-time Delta Community member opening both a Savings and a Checking Account, and complete 10 Visa debit card purchases within 60 days - ATM transactions do not count - or neither party gets paid.",
+  "catches": [
+    "Referrer must be the Primary Accountholder of an active, open account with Delta Community; former members cannot refer.",
+    "Friend must be a first-time Delta Community member: open a consumer Savings Account ($5) and any consumer Checking Account within 90 days, using the Refer-A-Friend promo code at account opening.",
+    "Friend must deposit $50 to the Checking Account and make 10 Visa debit card purchases within 60 calendar days of account opening (ATM transactions excluded); accounts must be in good standing.",
+    "Bonus paid within 60 calendar days of all requirements being met; IRS reporting applies.",
+    "Cap: earn up to $500 per calendar year (10 referrals at $50 each); the promotion is described as 'for a limited time' so it can change."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Delta Community CU FAQ (deltacommunitycu.com): 'you and your friend can each earn $50 when they join and meet a few simple requirements' and 'You can earn up to $500 per calendar year by referring your friends and family.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Delta Community CU FAQ page on deltacommunitycu.com, fetched live 2026-09-23, with full terms and conditions",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer stated",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check.py 'Delta Community Credit Union' 2026-09-23 returned no verified referral route; no deltacommunitycu.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Primary Accountholder of an active, open Delta Community account (former members ineligible). Friend: first-time Delta Community member age 13+, opens Savings + Checking and completes deposit/purchase requirements.",
+  "notes": "Verified 2026-09-23. Delta Community Credit Union (Georgia). Referrer earns $50 per qualifying referral, up to $500 per calendar year. Promotion is described as 'for a limited time'; terms link to deltacommunitycu.com/personal/refer.html.",
+  "numeric_basis": "payout from official Delta Community CU terms ($50 per qualifying referral; up to $500 per calendar year); time: share referral link via text/email/social est. 5-15 min active",
+  "official_url": "https://www.deltacommunitycu.com/personal/refer/refer-a-friend-program-faqs.html",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You can earn up to $500 per calendar year by referring your friends and family to join Delta Community.",
+  "payout_value_note": "$50 bonus to the referrer per qualifying referral; cap $500 per calendar year (10 referrals).",
+  "route_id": "R5717",
+  "standard": {
+    "s1": {
+      "note": "Official Delta Community CU FAQ live on deltacommunitycu.com, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer is Primary Accountholder of an active account; friend is a first-time member age 13+",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements: open Savings ($5) + Checking, use RAF promo code, deposit $50 to Checking, make 10 Visa debit purchases within 60 days of account opening",
+      "pass": true
+    },
+    "s4": {
+      "note": "Bonus paid within 60 calendar days of all program requirements being met",
+      "pass": true
+    },
+    "s5": {
+      "note": "Bonuses are subject to IRS reporting",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to refer",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Visit DeltaCommunityCU.com/Refer to get your personal referral link.",
+    "Share your unique referral link with eligible friends via text, email, or social media.",
+    "Friend follows the link, gets a unique promo code, and opens Savings + Checking accounts (promo code applied at opening).",
+    "Friend deposits $50 to Checking and makes 10 Visa debit card purchases within 60 days of account opening.",
+    "Receive your $50 bonus within 60 days of all requirements being met."
+  ],
+  "terms_url": "https://www.deltacommunitycu.com/personal/refer/refer-a-friend-program-faqs.html",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "Bonus paid within 60 calendar days of all program requirements being met; track status in the Refer-A-Friend Dashboard.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

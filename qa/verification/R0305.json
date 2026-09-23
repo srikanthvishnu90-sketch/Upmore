@@ -1,74 +1,74 @@
 {
- "route_id": "R0305",
- "verdict": "reject",
- "official_url": "https://ftc.gov/refunds",
- "terms_url": "https://www.ftc.gov/enforcement/refunds",
- "payout_quote": null,
- "timing": null,
- "biggest_catch": "Duplicate: R0302 is already VERIFIED against the same official FTC refund-program mechanism (ftc.gov/enforcement/refunds, with active programs such as Amazon Refunds, AT&T Data Throttling, and Grubhub Refunds listed in Sept 2026). Verifying R0305 as well would create two routes for one program. Users should use R0302.",
- "eligibility": null,
- "steps": [],
- "catches": [
-  "Same provider, same method, same official mechanism as verified R0302 — a pure catalog duplicate.",
-  "Keeping both would double-count one program in the catalog and the app."
- ],
- "app_links": {
-  "android": null,
-  "ios": null
- },
- "weasel_words": {
-  "present": false,
-  "quote": null
- },
- "upfront_fee": false,
- "checked_at": "2026-09-23T01:45:00Z",
- "notes": "Checked 2026-09-22/23: no existing FTC file was found at first glance, but a content search of ~/workspace/upmore/qa/verification/ located R0302.json — already verified against https://www.ftc.gov/enforcement/refunds with full evidence. Per the task instructions this duplication is noted honestly: R0305 is rejected as a duplicate, not as illegitimate — the underlying FTC program is real and is covered by R0302.",
- "critical": {
-  "c1": {
-   "evidence": "The FTC is a real federal agency and its refund programs are real — but that is exactly what verified R0302 already covers.",
-   "pass": true
+  "route_id": "R0305",
+  "verdict": "reject",
+  "official_url": "https://ftc.gov/refunds",
+  "terms_url": "https://www.ftc.gov/enforcement/refunds",
+  "payout_quote": null,
+  "timing": null,
+  "biggest_catch": "Duplicate: R0302 is already VERIFIED against the same official FTC refund-program mechanism (ftc.gov/enforcement/refunds, with active programs such as Amazon Refunds, AT&T Data Throttling, and Grubhub Refunds listed in Sept 2026). Verifying R0305 as well would create two routes for one program. Users should use R0302.",
+  "eligibility": null,
+  "steps": [],
+  "catches": [
+    "Same provider, same method, same official mechanism as verified R0302 — a pure catalog duplicate.",
+    "Keeping both would double-count one program in the catalog and the app."
+  ],
+  "app_links": {
+    "android": null,
+    "ios": null
   },
-  "c2": {
-   "evidence": "This route ID adds no distinct verifiable mechanism beyond R0302's verified FTC refund-program mechanism.",
-   "pass": false
+  "weasel_words": {
+    "present": false,
+    "quote": null
   },
-  "c3": {
-   "evidence": "Filing FTC-program claims is free (per R0302's verification), so no fee issue — but that applies to R0302's mechanism.",
-   "pass": true
+  "upfront_fee": false,
+  "checked_at": "2026-09-23T07:21:24Z",
+  "notes": "Checked 2026-09-22/23: no existing FTC file was found at first glance, but a content search of ~/workspace/upmore/qa/verification/ located R0302.json — already verified against https://www.ftc.gov/enforcement/refunds with full evidence. Per the task instructions this duplication is noted honestly: R0305 is rejected as a duplicate, not as illegitimate — the underlying FTC program is real and is covered by R0302.",
+  "critical": {
+    "c1": {
+      "evidence": "The FTC is a real federal agency and its refund programs are real — but that is exactly what verified R0302 already covers.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "This route ID adds no distinct verifiable mechanism beyond R0302's verified FTC refund-program mechanism.",
+      "pass": false
+    },
+    "c3": {
+      "evidence": "Filing FTC-program claims is free (per R0302's verification), so no fee issue — but that applies to R0302's mechanism.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No payout terms distinct to this route ID exist; the terms belong to R0302's verified mechanism.",
+      "pass": false
+    }
   },
-  "c4": {
-   "evidence": "No payout terms distinct to this route ID exist; the terms belong to R0302's verified mechanism.",
-   "pass": false
+  "standard": {
+    "s1": {
+      "note": "Eligibility belongs to R0302's verified mechanism.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Free under R0302's mechanism.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Timing belongs to R0302's mechanism.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No weasel words issue — the issue is duplication.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.ftc.gov/enforcement/refunds — already the official URL of verified R0302.",
+      "pass": true
+    },
+    "s6": {
+      "note": "No distinct steps — use R0302's steps.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Duplicate confirmed against R0302.json 2026-09-22/23.",
+      "pass": true
+    }
   }
- },
- "standard": {
-  "s1": {
-   "note": "Eligibility belongs to R0302's verified mechanism.",
-   "pass": true
-  },
-  "s2": {
-   "note": "Free under R0302's mechanism.",
-   "pass": true
-  },
-  "s3": {
-   "note": "Timing belongs to R0302's mechanism.",
-   "pass": true
-  },
-  "s4": {
-   "note": "No weasel words issue — the issue is duplication.",
-   "pass": true
-  },
-  "s5": {
-   "note": "https://www.ftc.gov/enforcement/refunds — already the official URL of verified R0302.",
-   "pass": true
-  },
-  "s6": {
-   "note": "No distinct steps — use R0302's steps.",
-   "pass": true
-  },
-  "s7": {
-   "note": "Duplicate confirmed against R0302.json 2026-09-22/23.",
-   "pass": true
-  }
- }
 }

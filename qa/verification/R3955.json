@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Friend must open a new Belco checking account, provide your referral at account opening, and keep it open in good standing for 60 days.",
+  "catches": [
+    "Earn $25 for every new member you refer - with no limit on how many you can invite.",
+    "Friend opens a new Belco checking account and provides your referral at account opening.",
+    "Friend's account must remain open and in good standing for 60 days.",
+    "Your $25 bonus is deposited to your S1 account after the 60-day requirement.",
+    "Referral bonus cannot be combined with any other offer; subject to change or cancellation at any time."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official belco.org/refer-a-friend: 'Earn $25* for every new member you refer - with no limit on how many you can invite.'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program page on official belco.org domain, fetched live 2026-09-23",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'belco' found only a false-positive catalog hit; grep of existing-providers found no match; no evidence-file coverage. New institution.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: Belco member. Friend: new member opening checking.",
+  "notes": "Verified 2026-09-23. Belco. $25 per qualifying referral; official source explicitly states no limit.",
+  "numeric_basis": "payout from official page ($25 per referral; no limit); time: sharing referral est. 5-15 min active",
+  "official_url": "https://belco.org/refer-a-friend/",
+  "payout_max_usd": 25,
+  "payout_min_usd": 25,
+  "payout_quote": "Earn $25* for every new member you refer - with no limit on how many you can invite.",
+  "payout_value_note": "$25 per qualifying referral; official source explicitly states no limit.",
+  "route_id": "R3955",
+  "standard": {
+    "s1": {
+      "note": "Terms live on belco.org, fetched 2026-09-23",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: Belco member; new member friend",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: new checking, referral at account opening, 60 days good standing",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: bonus deposited after the 60-day requirement",
+      "pass": true
+    },
+    "s5": {
+      "pass": false,
+      "note": "Tax treatment not stated on the official referral terms; cannot claim the amount is tax-free (re-adjudicated 2026-09-23)."
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism, new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Share your referral (referral coupon from a Belco branch).",
+    "Your friend opens a new Belco checking account and provides your referral at account opening.",
+    "After their account is open and in good standing for 60 days, your $25 is deposited."
+  ],
+  "terms_url": "https://belco.org/refer-a-friend/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$25 deposited after the friend's account meets the 60-day good-standing requirement.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,85 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must make at least one debit card purchase (ATM excluded) to trigger the $50.",
+  "catches": [
+    "$50 to the referrer when the friend opens a new LSB checking account and makes one debit card purchase; 'Refer 10 friends or more and make $500+!'.",
+    "$50 bonus deposited into the referrer's LSB checking account within 10 business days.",
+    "Referrer generates a code in Liberty Online Banking or the Liberty app (Services > Refer-a-Friend) and shares by email or text.",
+    "Limited-time offer, subject to change without notice; not valid with any other offer.",
+    "Bonuses are miscellaneous income, may be reported on Form 1099-MISC (or 1042-S)."
+  ],
+  "checked_at": "2026-09-23T08:16:18Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official Liberty Savings Bank page: 'You will receive $50* when your friend opens a new Liberty Savings Bank checking account and makes one debit card purchase. Refer 10 friends or more and make $500+*!'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Program terms hosted on official libertysavingsbank.com domain, fetched live 2026-09-23; Copyright 2026",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'liberty savings' found only bank-bonus coverage (R4279, R5150), no referral-program coverage. New route.",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: LSB account holder with online banking or the app. Friend: new LSB customer opening a checking account and making one debit card purchase.",
+  "notes": "Verified 2026-09-23. Liberty Savings Bank, F.S.B. (Wilmington, OH). $50 per qualifying referral when the friend opens a new checking account and makes one debit card purchase; bonus deposited to the referrer's checking within 10 business days. The page's 'Refer 10 friends or more and make $500+!' line is illustrative marketing, not an explicitly imposed cap - no cap stated. Re-adjudicated 2026-09-23: invented cap claim removed.",
+  "numeric_basis": "payout from official page ($50 per referral; 10 friends = $500+); time: generating + sharing code est. 5-15 min active",
+  "official_url": "https://www.libertysavingsbank.com/banking/personal/reward-yourself/",
+  "payout_max_usd": 50,
+  "payout_min_usd": 50,
+  "payout_quote": "You will receive $50* when your friend opens a new Liberty Savings Bank checking account and makes one debit card purchase. Refer 10 friends or more and make $500+*!",
+  "payout_value_note": "$50 per qualifying referral; no cap stated on the official page.",
+  "route_id": "R3919",
+  "standard": {
+    "s1": {
+      "note": "Terms live on libertysavingsbank.com, fetched 2026-09-23; Copyright 2026; limited-time offer",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility explicit: referrer account holder; referee new customer",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: open LSB checking, make one LSB debit card purchase (excluding ATM)",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: $50 deposited to referrer's checking within 10 business days",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax stated: miscellaneous income, may be reportable on 1099-MISC or 1042-S",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism; referral program not previously covered",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Log into Liberty Online Banking or the Liberty app.",
+    "Go to MENU > Services > Refer-a-Friend; your code auto-generates.",
+    "Tap Email or Text to share the auto-generated message with your friend.",
+    "Friend opens a new LSB checking account and makes one debit card purchase; you receive $50 within 10 business days."
+  ],
+  "terms_url": "https://www.libertysavingsbank.com/banking/personal/reward-yourself/",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "$50 deposited within 10 business days after the friend qualifies.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

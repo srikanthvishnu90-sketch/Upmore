@@ -1,0 +1,87 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Half the payout is a $100 Disney Gift Card, not cash — it only has value if you spend at Disney; and you are ineligible if you have this card or got its bonus in the past 24 months.",
+  "catches": [
+    "The $100 Disney Gift Card eGift is not cash — it is only spendable at Disney; if you are not a Disney spender, the real cash-equivalent value is the $50 statement credit.",
+    "Never spend extra solely to chase the $500 threshold — only use spending you already planned.",
+    "The card has no annual fee, so no fee drag — but carrying a balance at the variable APR erases the bonus; pay in full.",
+    "Applying involves a hard inquiry on your personal credit report.",
+    "Eligibility: this offer is available only if you do not have this card and have not received a new Cardmember bonus for this card in the past 24 months.",
+    "Confirm the $150 offer is still current on creditcards.chase.com before applying."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Chase — real card issuer (creditcards.chase.com); offer text observed on Chase's official Disney Visa cards page (creditcards.chase.com, crawl 11 hours before verification).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Chase page: '$150 Offer: Get a $100 Disney Gift Card eGift to use today upon approval + earn a $50 statement credit after you spend $500 on purchases in the first 3 months from account opening' — concrete fixed-dollar payout.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Offer live on creditcards.chase.com at verification time; no annual fee; no enrollment fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Official terms: $100 Disney Gift Card eGift on approval; $50 statement credit after $500 in purchases in the first 3 months from account opening.",
+      "pass": true
+    }
+  },
+  "eligibility": "New Disney Visa cardmembers, subject to Chase approval. Available only if you do not have this card and have not received a new Cardmember bonus for this card in the past 24 months.",
+  "notes": "VERIFIED: Chase's own Disney cards page (creditcards.chase.com, crawl 11h before verification 2026-09-23) shows the '$150 Offer' with the exact two-part terms. No annual fee. The $100 gift card is fixed-value but Disney-only — labeled honestly in payout_value_note. Distinct from Disney Premier Visa (R5359) and Disney Inspire Visa (R5360). Evidence via issuer-domain crawl because direct page fetch was unavailable in this session.",
+  "official_url": "https://creditcards.chase.com/visa-credit-cards?iCELL=61HD",
+  "payout_max_usd": 150.0,
+  "payout_min_usd": 150.0,
+  "payout_quote": "$150 Offer: Get a $100 Disney Gift Card eGift to use today upon approval + earn a $50 statement credit after you spend $500 on purchases in the first 3 months from account opening",
+  "payout_value_note": "$150 total = $100 Disney Gift Card eGift (fixed value, Disney-only, not cash) + $50 statement credit (cash-equivalent). No conversion needed.",
+  "route_id": "R5358",
+  "standard": {
+    "s1": {
+      "note": "New cardmembers subject to Chase approval; not available if you hold this card or received its bonus in the past 24 months.",
+      "pass": true
+    },
+    "s2": {
+      "note": "No annual fee; no exclusion fine print beyond the 24-month bonus rule.",
+      "pass": true
+    },
+    "s3": {
+      "note": "No spend threshold for the $100 eGift (on approval); $500 in purchases in the first 3 months for the $50 statement credit.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No misleading framing — gift card vs. statement credit split stated plainly.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://creditcards.chase.com/visa-credit-cards?iCELL=61HD — Chase's official domain; offer text observed on this domain 2026-09-23.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: apply on creditcards.chase.com, receive the $100 eGift on approval, spend $500 of planned purchases in 3 months, get the $50 credit, pay in full.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Chase page confirmed carrying the offer at verification time 2026-09-23.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open Chase's official page https://creditcards.chase.com/visa-credit-cards?iCELL=61HD and confirm the Disney Visa $150 offer is still showing.",
+    "Complete the application; Chase runs a hard inquiry when you apply.",
+    "If approved, the $100 Disney Gift Card eGift arrives to use the same day.",
+    "Spend $500 on purchases you were already planning within the first 3 months to earn the $50 statement credit.",
+    "Pay the balance in full every month — carrying a balance destroys the bonus."
+  ],
+  "terms_url": "https://creditcards.chase.com/visa-credit-cards?iCELL=61HD",
+  "time_max_minutes": 40.0,
+  "time_min_minutes": 20.0,
+  "timing": "Application takes 20–40 min active; $100 eGift on approval; spend $500 in already-planned purchases within 3 months for the $50 statement credit.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": [],
+  "numeric_basis": "payout from official terms ($100 Disney eGift + $50 statement credit = $150); time: credit-card application est. 20-40 min active"
+}

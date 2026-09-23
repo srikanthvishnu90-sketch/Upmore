@@ -1,0 +1,90 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "The friend must clear real hurdles - personal checking needs a $500 deposit plus 15 debit transactions within 60 days, and the referrer is paid only within 30 days after the friend finishes - so referrals of people who open an account and go quiet earn nothing.",
+  "catches": [
+    "Referrer must register for the program (form, Digital Banking, or with a teammate) and share the offer via email, text, or social media.",
+    "Only one reward bonus per referred person; only the first referrer for a given person is eligible.",
+    "Personal Checking track: referred person must be a new C&N customer who opens a new personal checking account and, within 60 days of opening, deposits at least $500 AND completes 15 debit-card transactions (excluding ATM).",
+    "Personal Savings track: new C&N Key Savings account with a daily balance of $500+ maintained for 60 days.",
+    "Business Checking track: new business checking account with five deposits of $500+ each within 90 days; valid once per account.",
+    "Business Loan track: new business loan of $25,000+ opened and funded within 90 days (excludes business credit cards; loans subject to credit approval).",
+    "Maximum $500 in reward bonuses per calendar year per referrer.",
+    "Reward deposited into the referrer's sole- or joint-ownership account with the most recent transaction, within 30 days of the referred person meeting the qualifications.",
+    "Must be 18 or older; offer valid only for new C&N customers in the C&N Market Area; C&N employees are ineligible; bonuses may be reported as income to the IRS.",
+    "Offer can be changed or withdrawn at any time without notice."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Official C&N page (cnbankpa.com): 'Personal Checking: To earn a $50 reward bonus, the Referred Person must...' 'Business Checking: To earn a $150 reward bonus, the Referred Person must...'",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official C&N (Citizens & Northern Bank) Refer A Friend page on cnbankpa.com, fetched live 2026-09-23; offer can be changed or withdrawn at any time",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No fee to refer",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "dedupe-check 'C&N Bank': 0 catalog hits, 0 evidence-file hits; no cnbankpa.com route in qa/verification",
+      "pass": true
+    }
+  },
+  "eligibility": "Referrer: registered C&N referrer. Personal tracks: new C&N customer (18+) in the C&N Market Area who registers via the referral link, opens a new personal checking account ($500 deposit + 15 debit transactions within 60 days) or a new Key Savings account ($500 daily balance for 60 days). Business tracks: new business checking with five $500+ deposits within 90 days, or a new $25,000+ business loan funded within 90 days.",
+  "notes": "Verified 2026-09-23. C&N (Citizens & Northern Bank, Pennsylvania/New York). Referrer earns $50 per qualifying personal referral (checking or savings track) or $150 per qualifying business referral (checking or loan track). Annual cap: $500 per calendar year. Reward deposited into the referrer's account within 30 days after the referred person meets the qualifications; bonuses may be reported to the IRS.",
+  "numeric_basis": "payout range from official C&N terms ($50 personal / $150 business reward bonus to the referrer per qualifying referral); time: register and share referral est. 5-15 min active",
+  "official_url": "http://www.cnbankpa.com/Personal/Bank/Checking-Accounts/Reward",
+  "payout_max_usd": 150,
+  "payout_min_usd": 50,
+  "payout_quote": "Personal Checking: To earn a $50 reward bonus, the Referred Person must register by following the link provided in the referral email, via text or social media, open a new C&N personal checking account, and meet the following requirements within 60 days of account opening: Deposit at least $500 into the new checking account, AND Complete fifteen (15) debit card transactions (excluding ATM transactions).",
+  "payout_value_note": "$50 (personal checking/savings) to $150 (business checking/loan) cash to the referrer per qualifying referral; $500 annual cap.",
+  "route_id": "R5689",
+  "standard": {
+    "s1": {
+      "note": "Official C&N Refer A Friend page live on cnbankpa.com, fetched 2026-09-23; offer can be changed or withdrawn at any time",
+      "pass": true
+    },
+    "s2": {
+      "note": "Eligibility: referrer registers and shares the offer; referred person must be a new C&N customer, 18+, in the C&N Market Area",
+      "pass": true
+    },
+    "s3": {
+      "note": "Friend requirements concrete: checking track needs $500 deposit + 15 debit transactions within 60 days; savings track needs $500 daily balance for 60 days; business tracks specified",
+      "pass": true
+    },
+    "s4": {
+      "note": "Timing: reward deposited into the referrer's account within 30 days of the referred person meeting the qualifications",
+      "pass": true
+    },
+    "s5": {
+      "note": "Tax: page states reward bonuses may be reported as income to the IRS",
+      "pass": true
+    },
+    "s6": {
+      "note": "No fee to participate",
+      "pass": true
+    },
+    "s7": {
+      "note": "Distinct referrer-side earning mechanism at a new institution",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Register for C&N's Refer&Reward program via the form, C&N Digital Banking, or with a C&N teammate.",
+    "Share the offer with friends, family, or coworkers via email, text, or social media.",
+    "The referred person registers via your link and opens a new qualifying C&N account.",
+    "Personal Checking: friend deposits at least $500 and completes 15 debit-card transactions within 60 days. (Savings/business tracks have their own stated requirements.)"
+  ],
+  "terms_url": "http://www.cnbankpa.com/Personal/Bank/Checking-Accounts/Reward",
+  "time_max_minutes": 15,
+  "time_min_minutes": 5,
+  "timing": "The referrer receives the reward within 30 days of the referred person meeting the qualifications; the friend must complete qualifying activity within 60 days of account opening (90 days for business tracks).",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "Applying never guarantees a response — employers choose who to engage with.",
+  "catches": [
+    "No payment handled by the board — offers and pay are negotiated with each employer.",
+    "Some roles carry location requirements despite remote/flexible labels.",
+    "Applying does not guarantee any employer response.",
+    "Platform centers women and underrepresented talent; some programs are identity-specific."
+  ],
+  "checked_at": "2026-09-23T07:21:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "PowerToFly's official jobs page (powertofly.com) states: 'Search jobs on PowerToFly. Browse thousands of open roles at companies that value building diverse and inclusive teams. Explore jobs by category, skill, experience level, work type, or location, or use the search above to find your next opportunity.' Live remote listings (e.g. Apartment Therapy, Dell, GitLab, Wikimedia Foundation) were observed this session.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official pages publish no fixed pay range — compensation is set per employer; framed as variable.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "Steps follow the official flow: search jobs by category/skill/experience/work type/location, open a role, apply.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No fee appears on official pages for browsing or applying.",
+      "pass": true
+    }
+  },
+  "eligibility": "Anyone able to meet listed role requirements; the platform centers women and underrepresented talent in tech and beyond.",
+  "notes": "Scenario: diversity-focused job board. PowerToFly hosts thousands of open roles at companies building diverse and inclusive teams, with remote and flexible jobs refreshed daily. Pay is per employer and negotiated — variable, never guaranteed.",
+  "numeric_basis": "payout: compensation is set per employer; the board publishes no pay ranges. time: search jobs + apply to matching roles, est. 30-90 min active.",
+  "official_url": "https://powertofly.com/jobs/?location=Remote%3B",
+  "payout_max_usd": 0,
+  "payout_min_usd": 0,
+  "payout_quote": "Browse thousands of open roles at companies that value building diverse and inclusive teams.",
+  "payout_value_note": "The board publishes no pay ranges — compensation is set per employer and negotiated per offer; variable.",
+  "route_id": "R5453",
+  "standard": {
+    "s1": {
+      "note": "Eligibility: anyone able to meet listed role requirements.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Framed as per-employer negotiated pay; no fixed amount promised.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Catches cover no platform payments, location restrictions, competition, and identity-specific programs.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Deduped: PowerToFly absent from qa/existing-providers.txt, dedupe-check.py, and qa/verification/*.json.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official pages captured 2026-09-23 (powertofly.com/jobs).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Timing: remote and flexible jobs refreshed daily; hiring follows each employer.",
+      "pass": true
+    },
+    "s7": {
+      "note": "No weasel words in the mechanism description.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Open PowerToFly's jobs page and search by category, skill, experience level, work type, or location.",
+    "Open roles matching your background and check requirements.",
+    "Apply via the listing's application path.",
+    "Complete each employer's process and negotiate the offer directly."
+  ],
+  "terms_url": "https://powertofly.com/jobs/?location=Remote%3B",
+  "time_max_minutes": 90,
+  "time_min_minutes": 30,
+  "timing": "Jobs refreshed daily; hiring timelines follow each employer.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": []
+}

@@ -1,0 +1,89 @@
+{
+ "route_id": "R2186",
+ "verdict": "verify",
+ "checked_at": "2026-09-23T07:21:24Z",
+ "official_url": "https://www.mmfcu.org/everyday-banking/checking/",
+ "terms_url": "https://www.mmfcu.org/everyday-banking/checking/",
+ "payout_min_usd": 300.0,
+ "payout_max_usd": 300.0,
+ "payout_quote": "The $300 bonus will be paid within 30 days of meeting the requirement (approximately 90 days after opening the account).",
+ "payout_value_note": "Flat $300 bonus per official terms.",
+ "time_min_minutes": 30.0,
+ "time_max_minutes": 60.0,
+ "timing": "$300 bonus paid within 30 days of meeting requirements (approximately 90 days after account opening).",
+ "biggest_catch": "A $300 penalty is imposed if the checking account is closed within the first six months — the entire bonus is clawed back. Payout takes roughly 90 days after opening.",
+ "eligibility": "New Rewards (Kasasa Cash / Kasasa Cash Back) checking account holders — the $300 is a new-account bonus on the official checking page; MMFCU membership required: live, work, worship, or attend school in any of 10 central Minnesota counties, or immediate family member of someone who does. Limit 1 Kasasa account per SSN.",
+ "catches": [
+  "The $300 bonus will be paid within 30 days of meeting the requirement (approximately 90 days after opening the account).",
+  "A $300 penalty will be imposed if the checking account is closed in the first six months.",
+  "Monthly qualifications: 1 ACH debit or credit, 12 debit card purchases, and receipt of electronic statements.",
+  "No minimum balance required to earn the bonus or open a Kasasa account; checking requires a $25 initial deposit and a $5 share savings balance for membership.",
+  "The $300 bonus is reportable income — you will receive a tax document.",
+  "Promotion ends at the discretion of MMFCU (no fixed expiration date listed).",
+  "There are no recurring monthly maintenance charges or fees to open or close the account."
+ ],
+ "steps": [
+  "Confirm MMFCU membership eligibility (live, work, worship, or attend school in one of 10 central MN counties, or immediate family member of someone who does).",
+  "Apply for a new Rewards (Kasasa) checking account — Kasasa Cash or Kasasa Cash Back — online or in a local office.",
+  "Make the $25 initial checking deposit and open the $5 share savings account required for membership.",
+  "Meet the monthly qualifications each Monthly Qualification Cycle: 1 ACH debit or credit, 12 debit card purchases, and receive electronic statements.",
+  "After meeting the requirements for the qualification window (~60 days), the $300 bonus is paid within 30 days (approximately 90 days after opening).",
+  "Keep the checking account open for at least 6 months to avoid the $300 early-closure penalty."
+ ],
+ "upfront_fee": false,
+ "weasel_words": [],
+ "app_links": {
+  "android": null,
+  "ios": null
+ },
+ "critical": {
+  "c1": {
+   "pass": true,
+   "evidence": "Mid Minnesota Federal Credit Union — real federally-insured credit union (NCUA); official checking page on mmfcu.org fetched 2026-09-23."
+  },
+  "c2": {
+   "pass": true,
+   "evidence": "Official page: 'Make the switch to MMFCU and get an additional $300 with a Rewards Checking Account.' Footnote: 'The $300 bonus will be paid within 30 days of meeting the requirement (approximately 90 days after opening the account).'"
+  },
+  "c3": {
+   "pass": true,
+   "evidence": "Official: 'No minimum balance is required to earn the bonus or open a Kasasa account.' $25 initial deposit + $5 share savings are refundable deposits, not fees; no recurring monthly maintenance charges."
+  },
+  "c4": {
+   "pass": true,
+   "evidence": "Official terms fetched 2026-09-23 from mmfcu.org checking page; no third-party evidence required."
+  }
+ },
+ "standard": {
+  "s1": {
+   "pass": true,
+   "note": "MMFCU membership: live/work/worship/attend school in 10 central MN counties or immediate family member. Limit 1 Kasasa account per SSN."
+  },
+  "s2": {
+   "pass": true,
+   "note": "Monthly qualifications: 1 ACH debit or credit, 12 debit card purchases, electronic statements; $25 opening deposit + $5 share savings."
+  },
+  "s3": {
+   "pass": true,
+   "note": "$300 bonus paid within 30 days of meeting requirements (approximately 90 days after opening)."
+  },
+  "s4": {
+   "pass": true,
+   "note": "No recurring monthly maintenance charges or fees to open or close; Kasasa Cash earns up to 5.00% APY on balances to $10,000."
+  },
+  "s5": {
+   "pass": true,
+   "note": "Official: 'The $300 bonus is reportable income for which you will receive a tax document.'"
+  },
+  "s6": {
+   "pass": true,
+   "note": "No fixed expiration; official terms state the promotion ends at the discretion of MMFCU — may be pulled at any time."
+  },
+  "s7": {
+   "pass": true,
+   "note": "Early-closing clawback: $300 penalty if the checking account is closed within the first six months."
+  }
+ },
+ "notes": "Official MMFCU checking page fetched 2026-09-23 (UTC). The $300 bonus applies to the Rewards (Kasasa Cash / Kasasa Cash Back) checking accounts. Promotion has no fixed expiry — ends at MMFCU's discretion. Kasasa account loses Kasasa status if it fails to qualify for three consecutive months (transferred to Simply Checking). Verified clean by all three dedupe checks (no prior verification of MMFCU exists).",
+ "numeric_basis": "backfill: payout: flat amount in official terms; time: category default Bank Bonus (30-60min active)"
+}
