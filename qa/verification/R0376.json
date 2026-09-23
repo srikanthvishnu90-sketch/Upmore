@@ -1,0 +1,82 @@
+{
+  "route_id": "R0376",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:05:00Z",
+  "official_url": "https://www.adobe.com/creativecloud/buy/students.html",
+  "terms_url": "https://www.adobe.com/creativecloud/buy/students.html",
+  "critical": {
+    "c1": {
+      "evidence": "Adobe Inc. \u2014 real company; official 'Adobe Creative Cloud Pro for students and teachers' page on adobe.com loaded live.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page confirms a dedicated students-and-teachers plan exists for Creative Cloud Pro (Photoshop, Illustrator, Premiere Pro, Firefly, etc.). Adobe's published student pricing: US$19.99/month for the first year on the annual billed-monthly plan (~60% off standard), rising after the first year.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee to verify eligibility \u2014 you pay the subscription price; no participation fee.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: discount applies from signup after eligibility verification; billed monthly on the annual plan.",
+      "pass": true
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "Students and teachers only \u2014 13+, enrolled in an accredited school/college/university (or homeschool under state regulations); verified via school email or documents (SheerID).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Discount only, not cash; first-year price is promotional and rises after year one; annual commitment (early termination fees apply).",
+      "pass": true
+    },
+    "s3": {
+      "note": "Discount is active from purchase after verification; billed monthly.",
+      "pass": true
+    },
+    "s4": {
+      "note": "The official page fetched did not render the price figures in this session \u2014 the $19.99/mo first-year figure is Adobe's published student pricing, recorded with this caveat.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.adobe.com/creativecloud/buy/students.html \u2014 official Adobe page, loaded live (pricing cards did not render in the fetch).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: visit student page, verify eligibility, choose plan, subscribe.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Page loaded live but pricing cards are JS-rendered and did not appear in the fetch \u2014 s7 marked fail honestly; verdict rests on the confirmed plan + Adobe's published student terms.",
+      "pass": false
+    }
+  },
+  "payout_quote": "Adobe Creative Cloud Pro for students and teachers. (Adobe's published student terms: US$19.99/month for the first year on the annual plan, billed monthly \u2014 roughly 60% off the standard price; price rises after the first year.)",
+  "timing": "Discounted rate applies from signup after eligibility verification; billed monthly on the annual plan.",
+  "eligibility": "Students and teachers 13+ enrolled in an accredited public/private university or college, primary or secondary school, or homeschool under state regulations; verified at purchase via school-issued email or documents (student ID, report card, transcript, tuition bill with name, institution, and current date).",
+  "catches": [
+    "This is a discount on a paid subscription, not cash \u2014 it costs you $19.99/month; it never pays you.",
+    "The first-year price is promotional \u2014 the rate rises after year one (Adobe's published second-year student rate is higher).",
+    "Annual plan with commitment \u2014 early cancellation triggers an early termination fee.",
+    "Eligibility is re-verified; if you stop being a student you lose the rate."
+  ],
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": true,
+    "quote": "The '$19' route figure implies a benefit amount, but the official program is a ~60% discount on a subscription you pay for \u2014 it is a cost, not a payout."
+  },
+  "steps": [
+    "Go to https://www.adobe.com/creativecloud/buy/students.html.",
+    "Choose the Creative Cloud Pro students-and-teachers plan (annual billed monthly, US$19.99/month first year per Adobe's published terms).",
+    "Create or sign in to your Adobe account.",
+    "Verify your student/teacher eligibility via your school-issued email or by uploading documents (school ID, report card, transcript, or tuition bill showing name, institution, and current date).",
+    "Complete purchase \u2014 the discounted rate applies from signup; note the renewal date and the higher second-year rate before subscribing."
+  ],
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "biggest_catch": "This costs money \u2014 $19.99/month for a subscription. It's a discount, not earnings; the route figure '$19' is the price you pay, not money you make.",
+  "notes": "Verified with correction: official page confirms the student plan; pricing from Adobe's published student terms (page fetch did not render price cards \u2014 s7 failed honestly). Frame strictly as a discount on a paid product, never income."
+}

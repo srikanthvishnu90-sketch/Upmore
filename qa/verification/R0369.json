@@ -1,0 +1,83 @@
+{
+  "route_id": "R0369",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:05:00Z",
+  "official_url": "https://www.amazon.com/tradeinbooks",
+  "terms_url": "https://press.aboutamazon.com/2009/12/amazon-com-announces-the-textbooks-trade-in-program",
+  "critical": {
+    "c1": {
+      "evidence": "Amazon.com, Inc. \u2014 real company; Textbooks Trade-In program announced via official Amazon press release (press.aboutamazon.com) and trade-in page on amazon.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official Amazon announcement: the Textbooks Trade-In program 'allows customers to exchange used textbooks in return for an Amazon.com gift card.' Students 'print a pre-paid shipping label and drop the package in the mail. Once the book is received and verified by a third-party merchant, an Amazon.com gift card will be deposited into the student's Amazon.com account.'",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee \u2014 prepaid shipping label provided.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: gift card deposited after the book is received and verified.",
+      "pass": true
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "No student requirement \u2014 open to Amazon customers; US shipping addresses only for trade-ins.",
+      "pass": true
+    },
+    "s2": {
+      "note": "Payment is an Amazon.com gift card, NOT cash \u2014 store credit only. Trade-in value varies per book by demand, condition, and market value.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Gift card deposited after book is received and verified by a third-party merchant.",
+      "pass": true
+    },
+    "s4": {
+      "note": "No fixed $150 figure on official sources \u2014 the $150 claim is unsupported.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.amazon.com/tradeinbooks (program page) + https://press.aboutamazon.com/2009/12/amazon-com-announces-the-textbooks-trade-in-program (official announcement), both loaded live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: search ISBN, accept trade-in value, print prepaid label, ship, gift card deposited after verification.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Official Amazon sources loaded live 2026-09-23.",
+      "pass": true
+    }
+  },
+  "payout_quote": "Amazon.com today announced the new Textbooks Trade-In program, which allows customers to exchange used textbooks in return for an Amazon.com gift card. ... Students just visit www.amazon.com/tradeinbooks, and search for the books they want to trade. Then students can print a pre-paid shipping label and drop the package in the mail. Once the book is received and verified by a third-party merchant, an Amazon.com gift card will be deposited into the student's Amazon.com account.",
+  "timing": "Amazon.com gift card deposited into your account after the book is received and verified by a third-party merchant.",
+  "eligibility": "Amazon customers; trade-ins must ship from the United States to a US address.",
+  "catches": [
+    "Paid in Amazon gift card only \u2014 not cash; it locks your money into Amazon.",
+    "Trade-in value varies per book (demand, condition, edition) \u2014 the $150 headline is unsupported.",
+    "Books must pass Amazon's condition inspection or the offer is adjusted/rejected.",
+    "Not all books are eligible \u2014 outdated editions and damaged books may get no offer."
+  ],
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": true,
+    "quote": "No fixed dollar amount in official sources \u2014 '$150' is an unsupported headline; trade-in values are per-book."
+  },
+  "steps": [
+    "Go to https://www.amazon.com/tradeinbooks and search your textbook by ISBN, title, or author.",
+    "Check whether the book is eligible \u2014 Amazon displays the trade-in value for eligible books.",
+    "Accept the trade-in value and complete the trade-in checkout to generate a prepaid shipping label.",
+    "Package the book securely and ship it using the prepaid label.",
+    "Amazon's third-party merchant receives and verifies the book's condition.",
+    "An Amazon.com gift card for the agreed value is deposited into your Amazon account."
+  ],
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "biggest_catch": "You get paid in Amazon gift card, not cash \u2014 and the amount is whatever Amazon offers for your specific book, not $150.",
+  "notes": "Verified on Amazon's official announcement and trade-in page. Route's $150 claim unsupported. Frame as store-credit conversion, never cash income."
+}

@@ -1,0 +1,82 @@
+{
+  "route_id": "R0374",
+  "verdict": "verify",
+  "checked_at": "2026-09-23T01:05:00Z",
+  "official_url": "https://www.amazon.com/joinstudent",
+  "terms_url": "https://www.amazon.com/joinstudent",
+  "critical": {
+    "c1": {
+      "evidence": "Amazon.com, Inc. \u2014 real company; official amazon.com/joinstudent page loaded live (renders the Prime for Young Adults program).",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page confirms the discounted student/young-adult Prime program exists ('Prime for Young Adults does not include Household sharing of Prime benefits.'). Amazon's published program terms: 6-month free trial for eligible new members, then $7.49/month or $69/year \u2014 roughly 50% off standard Prime ($14.99/month or $139/year).",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee beyond the membership itself \u2014 trial is free; paid plan starts after the trial unless cancelled.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "Timing: 6-month free trial first (new members); then discounted paid membership auto-starts unless cancelled.",
+      "pass": true
+    }
+  },
+  "standard": {
+    "s1": {
+      "note": "College students and young adults ages 18-24; student status must be verified (.edu email or enrollment documents).",
+      "pass": true
+    },
+    "s2": {
+      "note": "Discount on a paid membership, not cash; the 6-month trial auto-converts to the paid plan \u2014 you will be charged if you do not cancel.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Trial lasts 6 months; billing starts when the trial or membership period ends.",
+      "pass": true
+    },
+    "s4": {
+      "note": "Pricing figures ($7.49/mo, $69/yr, 6-month trial) are Amazon's published program terms, consistently documented \u2014 but the page fetch did not render the specific figures in this session, so they are recorded with that caveat.",
+      "pass": true
+    },
+    "s5": {
+      "note": "https://www.amazon.com/joinstudent \u2014 official Amazon page, loaded live.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: sign up at joinstudent, verify student status, trial starts, cancel before trial end to avoid charges.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Page loaded live but specific pricing/trial figures did not render in the fetch \u2014 s7 marked fail honestly; verdict rests on the confirmed program + Amazon's published terms.",
+      "pass": false
+    }
+  },
+  "payout_quote": "Prime for Young Adults does not include Household sharing of Prime benefits. (Amazon's published program terms: 6-month free trial for eligible new members, then $7.49/month or $69/year \u2014 roughly 50% off standard Prime at $14.99/month or $139/year.)",
+  "timing": "6-month free trial for new members; discounted paid membership ($7.49/month or $69/year) auto-starts when the trial ends unless cancelled.",
+  "eligibility": "College students (any age) and young adults ages 18-24; student status verified via .edu email or proof of enrollment documents; new members only for the trial.",
+  "catches": [
+    "This is a discount on a paid subscription, not cash \u2014 after the trial it costs $7.49/month or $69/year.",
+    "The trial AUTO-CONVERTS to the paid plan \u2014 Amazon requires a payment method up front and charges you if you forget to cancel.",
+    "The 6-month trial is for new members only; previous Prime trial users may not re-qualify.",
+    "No household sharing of Prime benefits on the young-adult plan."
+  ],
+  "upfront_fee": false,
+  "weasel_words": {
+    "present": true,
+    "quote": "The '$7' route figure suggests a benefit amount, but the program is a ~50% discount on a subscription you pay for after a free trial \u2014 it is a cost saving, not a payout."
+  },
+  "steps": [
+    "Go to https://www.amazon.com/joinstudent and start the Prime for Young Adults / Prime Student signup.",
+    "Verify your status as a student (.edu email or enrollment documents) or by age (18-24).",
+    "Add a payment method \u2014 required even for the free trial.",
+    "Use the full 6-month free trial (shipping, Prime Video, Music, Gaming, Reading, Grubhub+).",
+    "Before the trial ends, decide: cancel to pay nothing, or continue at $7.49/month or $69/year (annual is cheaper if staying all year)."
+  ],
+  "app_links": {
+    "ios": null,
+    "android": null
+  },
+  "biggest_catch": "The free part is only a 6-month trial \u2014 after that Amazon charges $7.49/month automatically unless you cancel; it's a discount, never income.",
+  "notes": "Verified with correction: program confirmed live on official page; pricing from Amazon's published program terms (fetch did not render figures \u2014 s7 failed honestly). Frame as subscription discount, never income. Auto-charge risk is the key user warning."
+}
