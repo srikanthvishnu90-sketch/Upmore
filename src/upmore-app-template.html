@@ -892,6 +892,9 @@
       <h3 class="wsec">About</h3>
       <button class="prow" id="howMoney"><span class="pl">How Upmore makes money<small>Short version: not from you</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="privacyRow"><span class="pl">Privacy Policy<small>What we collect, and what we never do</small></span><span class="pv">&#8250;</span></button>
+      <h3 class="wsec">Your data</h3>
+      <button class="prow" id="exportData"><span class="pl">Export my data<small>Download everything as JSON</small></span><span class="pv">&#8250;</span></button>
+      <button class="prow" id="deleteData"><span class="pl">Delete my data<small>Erase your profile and all records</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
     </div>
     <nav class="tabs" role="tablist">
@@ -1943,6 +1946,84 @@
   }
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
   $("signOut").onclick = () => supa.auth.signOut();
+
+  /* ---- Export / delete my data (the rights the Privacy Policy promises) ---- */
+  function toast(msg) {
+    let el = document.getElementById("umToast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "umToast";
+      el.style.cssText = "position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:#12261c;color:#eaf4ee;padding:10px 16px;border-radius:12px;font-size:14px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.35);max-width:86vw;text-align:center;";
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.display = "block";
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.display = "none"; }, 2600);
+  }
+  const userTables = () => {
+    const uid = session && session.user && session.user.id;
+    if (!uid) return null;
+    return { uid, specs: [
+      { t: "profiles", col: "id" },
+      { t: "playbook_progress", col: "user_id" },
+      { t: "save_subscriptions", col: "user_id" },
+      { t: "save_claims", col: "user_id" },
+      { t: "agent_threads", col: "user_id" },
+    ]};
+  };
+  $("exportData").onclick = async () => {
+    const u = userTables();
+    if (!u) { toast("Sign in first"); return; }
+    toast("Preparing your export…");
+    try {
+      const out = { exported_at: new Date().toISOString(), user_id: u.uid, tables: {} };
+      for (const s of u.specs) {
+        const { data, error } = await supa.from(s.t).select("*").eq(s.col, u.uid);
+        if (error) throw error;
+        out.tables[s.t] = data;
+      }
+      // Guide chat messages live under the user's threads
+      const tids = (out.tables.agent_threads || []).map(r => r.id);
+      if (tids.length) {
+        const { data, error } = await supa.from("agent_messages").select("*").in("thread_id", tids);
+        if (error) throw error;
+        out.tables.agent_messages = data;
+      } else out.tables.agent_messages = [];
+      try { out.local_prefs = JSON.parse(localStorage.getItem("upmore:prefs") || "null"); } catch (e) { out.local_prefs = null; }
+      const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "upmore-data-export.json";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+      toast("Export downloaded");
+    } catch (e) { toast("Export failed — try again"); }
+  };
+  $("deleteData").onclick = async () => {
+    const u = userTables();
+    if (!u) { toast("Sign in first"); return; }
+    const first = confirm("Delete ALL your Upmore data? This erases your profile, plan progress, subscriptions, claims, and Guide chat history. This cannot be undone.");
+    if (!first) return;
+    const second = prompt("Type DELETE to confirm erasing everything:");
+    if ((second || "").trim().toUpperCase() !== "DELETE") { toast("Cancelled"); return; }
+    try {
+      // Chat messages first (they reference threads)
+      const { data: threads } = await supa.from("agent_threads").select("id").eq("user_id", u.uid);
+      const tids = (threads || []).map(r => r.id);
+      if (tids.length) {
+        const { error } = await supa.from("agent_messages").delete().in("thread_id", tids);
+        if (error) throw error;
+      }
+      for (const s of u.specs) {
+        const { error } = await supa.from(s.t).delete().eq(s.col, u.uid);
+        if (error) throw error;
+      }
+      try { localStorage.removeItem("upmore:prefs"); } catch (e) {}
+      await supa.auth.signOut();
+      toast("All data deleted");
+    } catch (e) { toast("Delete failed — contact support"); }
+  };
 
   /* ---- Privacy sheet ---- */
   const SUPPORT_EMAIL = "support@upmore.app"; // provisional — swap for the real support address
