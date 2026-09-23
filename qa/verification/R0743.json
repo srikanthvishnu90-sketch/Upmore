@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "$0 annual fee, so the $100 is pure upside on the fee side — but it is a once-per-account bonus and the payout timing could not be confirmed on the official terms page (it failed to load), so watch your account yourself after you hit the $500. Only planned spending counts toward the $500-in-90-days — never buy extra to hit it. Applying triggers a hard credit inquiry, and the card's 20.49%–29.99% variable APR erases the $100 fast if you carry a balance — pay in full every month.",
+  "catches": [
+    "Only pursue spending you already planned to do — never buy extra things just to hit a bonus threshold; overspending to chase a bonus wipes out the bonus math and is how people lose money on it.",
+    "The bonus may be earned only once per account, and prior program-account holders may be ineligible.",
+    "Bonus posting timing is not confirmed — check your rewards balance a few billing cycles after you qualify.",
+    "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
+    "Carrying a balance at the card's ~20%+ variable APR (20.49%–29.99%) will erase the entire $100 bonus fast — pay the full statement balance every month."
+  ],
+  "checked_at": "2026-09-23T01:58:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Barclays Bank Delaware — real operating card issuer; official product page on cards.barclaycardus.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official product page: $100 cash-back bonus after $500 in purchases within 90 days of account opening; $0 annual fee.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; annual-fee math covered in biggest_catch.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No upfront fee to collect; exact bonus-posting timing not confirmed (terms page failed to load) — documented in s3.",
+      "pass": true
+    }
+  },
+  "eligibility": "New cardmembers; the bonus may be earned only once. Current or previous program-account holders may be ineligible.",
+  "notes": "Offer amount, spend window, $0 annual fee, 20.49%–29.99% variable APR, once-only rule, and prior-program-account caveat confirmed on the official AARP Essential Rewards product page. The dedicated terms page (tc45699) failed to load and was not retried per constraints, so payout timing is honestly marked unconfirmed in s3.",
+  "official_url": "https://cards.barclaycardus.com/banking/cards/aarp-essential-rewards-mastercard/",
+  "payout_quote": "Earn a $100 cash-back bonus after $500 in purchases within the first 90 days of account opening. $0 annual fee.",
+  "route_id": "R0743",
+  "standard": {
+    "s1": {
+      "note": "New cardmembers; bonus earnable once; prior program accounts may be ineligible.",
+      "pass": true
+    },
+    "s2": {
+      "note": "$0 annual fee; no hidden participation fee.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Posting timing unconfirmed — official terms page failed to load, not retried per constraints.",
+      "pass": false
+    },
+    "s4": {
+      "note": "No weasel words on the core payout — $100, $500, 90 days stated flatly.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official product page confirmed; terms page (tc45699) failed to load this turn. Limitation documented.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: official page, read terms, apply, planned $500 spend, pay in full, track posting.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Offer confirmed current on the official product page as of Sept 2026.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Go to the official AARP Essential Rewards page on cards.barclaycardus.com and read the $100 / $500 / 90-day terms.",
+    "Apply online and get approved; save your approval confirmation.",
+    "Spend $500 on your already-planned purchases within the first 90 days of account opening.",
+    "Pay the full statement balance every month so interest never eats the bonus.",
+    "Confirm the $100 cash-back bonus posts a few billing cycles after you qualify."
+  ],
+  "terms_url": "https://www.barclaycardus.com/applycontent/TnCs.jsp?tc45699",
+  "timing": "Posting timing could not be confirmed — the official terms page (tc45699) failed to load and was not retried per constraints; track the bonus yourself after you qualify.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}

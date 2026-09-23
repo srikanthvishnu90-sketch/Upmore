@@ -13,6 +13,19 @@ payload = json.dumps(data, separators=(",", ":"), ensure_ascii=False).replace("<
 script = "<script>\nconst UPMORE_DATA = " + payload + ";\n</script>"
 out = tpl.replace(ph, script, 1)
 
+# Keep the hardcoded marketing/copy counts in sync with the real data
+n_routes = len(data.get("routes", []))
+n_verified = sum(1 for r in data.get("routes", []) if r.get("status") == "verified")
+n_steps = sum(len(r.get("steps") or []) for r in data.get("routes", []))
+out = out.replace("Search 535 ways to earn…", f"Search {n_routes} ways to earn…")
+out = out.replace("(535 routes, 4,953 playbook", f"({n_routes} routes, {n_steps:,} playbook")
+out = out.replace("I can look up any of the 535 routes in the catalog",
+                  f"I can look up any of the {n_routes} routes in the catalog")
+out = out.replace("the real 535-route catalog", f"the real {n_routes}-route catalog")
+out = out.replace('"Rebate/Incentive":"tag"',
+                  '"Rebate/Incentive":"tag", "Credit Card Bonus":"card"')
+assert "535" not in out.split("const UPMORE_DATA")[0], "stale 535 count remains in template copy"
+
 # Vendor supabase-js inline so the app has zero external script dependencies
 js_ph = "<!--__SUPABASE_JS__-->"
 assert js_ph in out, "supabase placeholder missing from template"

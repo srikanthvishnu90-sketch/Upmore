@@ -1,0 +1,83 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "No annual fee ($0), so the $250 is pure upside on the fee side — the real catch is the 90-day clock on a limited-time offer that can change. Only planned spending counts toward the $1,000; buying extra things to fill the gap wipes out the bonus math. Applying triggers a hard credit inquiry, and if you carry a balance at the card's 17.49%–27.49% variable APR, interest erases the $250 in a matter of weeks — pay the full statement balance every month.",
+  "catches": [
+    "Only pursue spending you already planned to do — never buy extra things just to hit a bonus threshold; overspending to chase a bonus wipes out the bonus math and is how people lose money on it.",
+    "The offer is billed as limited-time and can change or end; confirm the $250 terms on the official page before you apply.",
+    "Bonus posting timing is not stated on the official offer page — check your rewards balance a few billing cycles after you qualify.",
+    "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
+    "Carrying a balance at ~20%+ APR (this card: 17.49%–27.49% variable) will erase the entire $250 bonus fast — pay the full statement balance every month."
+  ],
+  "checked_at": "2026-09-23T01:58:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "Bank of America, N.A. — real operating issuer; official product page on bankofamerica.com.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: $250 cash rewards bonus after at least $1,000 in purchases within the first 90 days of account opening; $0 annual fee.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; annual-fee math covered in biggest_catch.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No upfront fee to collect; bonus posts on the issuer's normal rewards cycle — exact timing not stated on the offer page (documented in s3).",
+      "pass": true
+    }
+  },
+  "eligibility": "New cardmembers; at least $1,000 in purchases within the first 90 days of account opening.",
+  "notes": "Current limited-time $250 / $1,000-in-90-days offer, $0 annual fee, and 17.49%–27.49% variable APR confirmed on the official bankofamerica.com product page (search-indexed official copy; direct page fetch unavailable this turn). Bonus posting timing is not stated in the fetched copy; documented honestly in s3.",
+  "official_url": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
+  "payout_quote": "Earn a $250 cash rewards bonus after spending at least $1,000 in purchases within the first 90 days of account opening. $0 annual fee.",
+  "route_id": "R0739",
+  "standard": {
+    "s1": {
+      "note": "New cardmembers; $1,000 in purchases within the first 90 days of account opening.",
+      "pass": true
+    },
+    "s2": {
+      "note": "$0 annual fee; no hidden participation fee.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Posting timing not stated on the official offer page.",
+      "pass": false
+    },
+    "s4": {
+      "note": "'Limited-time' flags availability, not payout; bonus numbers stated flatly.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official bankofamerica.com product page via search-indexed official copy; direct fetch unavailable this turn. Limitation documented.",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: official page, read terms, apply, planned $1,000 spend, pay in full, track posting.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Offer confirmed current in the Sept 2026 indexed official copy.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Go to the official Bank of America Unlimited Cash Rewards page and read the $250 / $1,000 / 90-day terms.",
+    "Apply online and get approved; save your approval confirmation.",
+    "Spend at least $1,000 on your already-planned purchases within the first 90 days of account opening.",
+    "Pay the full statement balance every month so interest never eats the bonus.",
+    "Confirm the $250 cash rewards bonus posts to your account a few billing cycles after you qualify."
+  ],
+  "terms_url": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
+  "timing": "Posting timing is not stated on the official offer page fetched; Bank of America typically credits signup bonuses within 8–12 weeks of qualifying.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": true,
+    "quote": "Limited-time offer (affects offer availability only; the $250 bonus, $1,000 spend, and 90-day window are stated flatly)."
+  }
+}

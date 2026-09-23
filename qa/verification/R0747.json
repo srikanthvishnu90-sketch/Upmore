@@ -1,0 +1,84 @@
+{
+  "app_links": {
+    "android": null,
+    "ios": null
+  },
+  "biggest_catch": "$0 annual fee the first year, then $95/year — do the fee math: the $250 bonus is only net-positive if you cancel or downgrade before year two's $95 fee hits, or if the card's categories earn their keep. And $2,000 in 120 days is a high bar — only planned spending counts, never buy extra to fill the gap. Applying triggers a hard credit inquiry, and carrying a balance at ~20%+ APR erases the bonus fast — pay in full every month.",
+  "catches": [
+    "Only pursue spending you already planned to do — never buy extra things just to hit a bonus threshold; overspending to chase a bonus wipes out the bonus math and is how people lose money on it.",
+    "The $95 annual fee starts in year two; set a reminder to cancel or downgrade before it hits if the card does not earn its keep.",
+    "$2,000 in 120 days is a high threshold — do not stretch or manufacture spending to reach it.",
+    "Bonus posting timing is not stated in the indexed official copy — check your rewards balance a couple of billing cycles after you qualify.",
+    "Applying triggers a hard credit inquiry, which can temporarily dip your credit score by a few points.",
+    "The card's variable APR (~20%+) will erase the entire $250 bonus fast if you carry a balance — pay the full statement balance every month."
+  ],
+  "checked_at": "2026-09-23T01:58:24Z",
+  "critical": {
+    "c1": {
+      "evidence": "U.S. Bank National Association — real operating issuer; official page on the usbank.com domain.",
+      "pass": true
+    },
+    "c2": {
+      "evidence": "Official page: $250 bonus after $2,000 in eligible purchases within the first 120 days of account opening.",
+      "pass": true
+    },
+    "c3": {
+      "evidence": "No upfront fee; annual-fee math covered in biggest_catch.",
+      "pass": true
+    },
+    "c4": {
+      "evidence": "No upfront fee to collect; exact bonus-posting timing not stated in the fetched copy (documented in s3).",
+      "pass": true
+    }
+  },
+  "eligibility": "New cardmembers; $2,000 in eligible purchases within the first 120 days of account opening.",
+  "notes": "Offer amount ($250), spend requirement ($2,000), 120-day window, and $0-first-year-then-$95 fee confirmed on the official U.S. Bank Shopper Cash Rewards page (usbank.com domain, indexed official copy crawled 2 hours before verification). Posting timing is not stated in the fetched copy; documented honestly in s3. Distinct product from Cash+ (R0706) and Altitude Connect (R0740).",
+  "official_url": "https://it02.usbank.com/credit-cards/shopper-cash-rewards-visa-signature-credit-card.html",
+  "payout_quote": "Earn a $250 bonus after you spend $2,000 in eligible purchases within the first 120 days of account opening. $0 intro annual fee for the first year, $95/year thereafter.",
+  "route_id": "R0747",
+  "standard": {
+    "s1": {
+      "note": "New cardmembers; $2,000 in eligible purchases within 120 days of account opening.",
+      "pass": true
+    },
+    "s2": {
+      "note": "$0 first year, then $95/year — fee math explicit in biggest_catch.",
+      "pass": true
+    },
+    "s3": {
+      "note": "Posting timing not stated in the indexed official copy.",
+      "pass": false
+    },
+    "s4": {
+      "note": "No weasel words on the core payout — $250, $2,000, 120 days stated flatly.",
+      "pass": true
+    },
+    "s5": {
+      "note": "Official usbank.com-domain page via search-indexed official copy (crawled ~2h before verification).",
+      "pass": true
+    },
+    "s6": {
+      "note": "Steps are concrete: official page, read terms, apply, planned $2,000 spend, pay in full, track posting.",
+      "pass": true
+    },
+    "s7": {
+      "note": "Offer confirmed current in the Sept 2026 indexed official copy.",
+      "pass": true
+    }
+  },
+  "steps": [
+    "Go to the official U.S. Bank Shopper Cash Rewards page and read the $250 / $2,000 / 120-day terms and the year-two $95 fee.",
+    "Apply online and get approved; save your approval confirmation.",
+    "Spend $2,000 in eligible purchases — your already-planned spending — within the first 120 days.",
+    "Pay the full statement balance every month so interest never eats the bonus.",
+    "Confirm the $250 bonus posts a couple of billing cycles after you qualify."
+  ],
+  "terms_url": "https://it02.usbank.com/credit-cards/shopper-cash-rewards-visa-signature-credit-card.html",
+  "timing": "Posting timing is not stated in the indexed official copy fetched; U.S. Bank typically credits card bonuses within 1–2 billing cycles of qualifying.",
+  "upfront_fee": false,
+  "verdict": "verify",
+  "weasel_words": {
+    "present": false,
+    "quote": null
+  }
+}
