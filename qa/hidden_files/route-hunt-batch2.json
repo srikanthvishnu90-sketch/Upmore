@@ -1,0 +1,1286 @@
+{
+  "report": {
+    "batch": "route-hunt-batch2",
+    "date": "2026-09-23",
+    "routes_kept": 45,
+    "lanes": [
+      {
+        "lane": "usability-testing",
+        "searched": 38,
+        "kept": 1,
+        "rejected": 37,
+        "note": "Testlio (weekly PayPal/Payoneer QA test runs). Rejects: Userbrain (12-17d cash), PlaybookUX ('within 8 days' — 1 day over bar), Userfeel (no official payout-timing page)."
+      },
+      {
+        "lane": "transcription",
+        "searched": 39,
+        "kept": 2,
+        "rejected": 37,
+        "note": "eScribers (weekly legal transcription), TranscriptionStaff (weekly PayPal). Rejects: $59 entrance-fee shop, suspended registrations, monthly payers."
+      },
+      {
+        "lane": "ai-data-annotation",
+        "searched": 40,
+        "kept": 1,
+        "rejected": 39,
+        "note": "Stellar AI (weekly PayPal, $25/hr base; rolling onboarding caveat). Rejects: Mercor (expert-gated), MTurk (10-day hold), Neevo (28d); Data Annotation was already R0270."
+      },
+      {
+        "lane": "fast-buyback",
+        "searched": 57,
+        "kept": 8,
+        "rejected": 49,
+        "note": "myGemma, Dave & Adam's Card World, Card Kingdom, BAM Good Bricks, Adorama, EagleSaver, CashForUsedLaptop, GreenBuyBack — all re-verified via direct official-page fetch by coordinator. Rejects: MPB/Bob's Watches/Carvana (duplicates), Money Metals (7+ biz days)."
+      },
+      {
+        "lane": "expert-calls",
+        "searched": 31,
+        "kept": 2,
+        "rejected": 29,
+        "note": "Codementor (weekly payouts), MentorCruise (Stripe ≤7d). Rejects: Clarity.fm (14d withdrawal), Guidepoint (10 biz days), Keen (psychic readings)."
+      },
+      {
+        "lane": "localization",
+        "searched": 40,
+        "kept": 0,
+        "rejected": 40,
+        "note": "Zero keeps — lane is structurally monthly-pay or invite-only. Closest miss: Smartcat (payout leg verified, no official evidence of same-week win/approve cycle)."
+      },
+      {
+        "lane": "live-deals",
+        "searched": 138,
+        "kept": 30,
+        "rejected": 108,
+        "note": "Real current paid-request posts (Threads/IG/FB, 2026-09-16..23): video editing, UGC, VA, voiceover, data entry, design, translation. Pay timing mostly unstated in posts — negotiated directly; no escrow. Rejects: pay-to-apply exam, $120/video spam template x6, $4,000 voiceover scam signals."
+      },
+      {
+        "lane": "ai-proof-ideas",
+        "searched": 694,
+        "kept": 1,
+        "rejected": 693,
+        "note": "Triaged 694 committed/contracted ideas from ai-proof-1000-ideas.json. Kept: Atom.com guaranteed naming contests. File's pay claims mostly speculative; caught fabricated pay (StickK referees, 7 Cups companions are unpaid volunteers); StartPlaying.Games failed get-paid-this-week (cold start)."
+      }
+    ],
+    "totals": {
+      "candidates": 1077,
+      "kept": 45,
+      "rejected": 1032
+    },
+    "caveats": [
+      "Live-deal evidence rests on social.search parsed public-post data (post URL, handle, timestamp, stated pay); direct page fetches failed for the worker. Spot-check URLs before promoting.",
+      "Lane-4 buyback keeps were re-verified by the coordinator with direct browser.open fetches of each official sell/FAQ page on 2026-09-23.",
+      "Buyback routes are asset liquidation, not earnings — framed as such in cards.",
+      "No commits, deploys, or production catalog/DB changes were made. This file is a staging deliverable only."
+    ]
+  },
+  "routes": [
+    {
+      "id": "R8400",
+      "title": "Testlio — QA Testing",
+      "category": "QA Testing",
+      "url": "https://help.testlio.com/en/articles/3247543-get-paid",
+      "speed": "days",
+      "who_pays": "Testlio pays workers — Weekly payouts via PayPal or Payoneer for approved tasks",
+      "qualifies": "18+; account signup, detailed profile, platform learning, and certification before matching; matched by skills, devices, availability, and location",
+      "availability": "Signup verified open as of 2026-09-23 via official page. Weekly payout cadence once onboarded, matched, and tasks approved; exact timing varies with certification, matching, and client demand",
+      "accepted": "Completed, approved work. Pay structure: Hourly (not per bug); rate varies by client and region.",
+      "costs_unpaid_time": "No fees. Unpaid time: Create account via the official join page; complete detailed profile, platform learning modules, and certification; matched to test runs by skills, devices, availability, and location.",
+      "cash_timing": "Weekly payouts via PayPal or Payoneer for approved tasks. Weekly payout cadence once onboarded, matched, and tasks approved; exact timing varies with certification, matching, and client demand.",
+      "repeatable": {
+        "value": true,
+        "cadence": "Ongoing while matched to available work; weekly payouts via paypal or payoneer for approved tasks"
+      },
+      "demand_side": "Testlio's client marketplace — demand comes from Testlio's paying customers; workers join/match at https://www.testlio.com/join-the-community",
+      "evidence_urls": [
+        "https://help.testlio.com/en/articles/3247543-get-paid"
+      ],
+      "realistic_weekly_earn": "Hourly (not per bug); rate varies by client and region",
+      "biggest_catch": "Remote QA network (functional, regression, payment, localization, AI, usability, exploratory testing). Hourly pay, not per-bug. Opportunity board ranges from a few hours to 30-40 hrs/week; matching and workload depend on profile and client demand, so treat as supplemental income, not guaranteed this-week cash. Tasks approved after Thursday's payout run go into the next weekly payout; unverified accounts stay on hold. PayPal/Payoneer-to-bank fees may apply; Testlio covers its outgoing transfer fee.",
+      "lane": "usability-testing",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Certification + platform learning modules before any paid work; matched by skills/devices, so workload is not guaranteed."
+    },
+    {
+      "id": "R8420",
+      "title": "eScribers — Transcription",
+      "category": "Transcription",
+      "url": "https://escribers.net/join-our-team/",
+      "speed": "days",
+      "who_pays": "eScribers pays workers — Weekly pay to contractors; 'We pay our contractors on a weekly basis' (official page)",
+      "qualifies": "PC or tablet, high-speed internet, correct English punctuation; legally eligible to work in the United States; current U.S. bank account to receive payments. No prior experience required (AAERT/NCRA certification helpful but not mandatory).",
+      "availability": "Signup verified open as of 2026-09-23 via official page. Weekly cadence after starting transcription work; exact first-week timing varies with onboarding",
+      "accepted": "Completed, approved work. Pay structure: Per legal transcription project; bonus opportunities offered.",
+      "costs_unpaid_time": "No fees. Unpaid time: Online application via official join page; recruitment team contact offered.",
+      "cash_timing": "Weekly pay to contractors; 'We pay our contractors on a weekly basis' (official page). Weekly cadence after starting transcription work; exact first-week timing varies with onboarding.",
+      "repeatable": {
+        "value": true,
+        "cadence": "Ongoing while matched to available work; weekly pay to contractors; 'we pay our contractors on a weekly basis' (official page)"
+      },
+      "demand_side": "eScribers's client marketplace — demand comes from eScribers's paying customers; workers join/match at https://escribers.net/join-our-team/",
+      "evidence_urls": [
+        "https://escribers.net/join-our-team/"
+      ],
+      "realistic_weekly_earn": "Per legal transcription project; bonus opportunities offered",
+      "biggest_catch": "Legal transcription/court reporting niche with 1,000+ U.S. contractors; choose when and how much to work from home. U.S.-only.",
+      "lane": "transcription",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "US-only; strong English punctuation required for legal transcription; application plus recruitment contact."
+    },
+    {
+      "id": "R8421",
+      "title": "TranscriptionStaff — Transcription",
+      "category": "Transcription",
+      "url": "https://www.transcriptionstaff.com/world/",
+      "speed": "days",
+      "who_pays": "TranscriptionStaff pays workers — Weekly PayPal payments, minimum payment US$3 (official page: 'We make weekly PayPal payments like clockwork')",
+      "qualifies": "PC, fast internet, headset; minimum 2 audio hours per week to keep account active.",
+      "availability": "Signup verified open as of 2026-09-23 via official page. Weekly PayPal cadence once approved and working; onboarding is an application form plus a 10-minute transcription test",
+      "accepted": "Completed, approved work. Pay structure: Up to $27.54/audio hour (part-time $7.50-$20.40/audio hour; full-time staff 35% more), based on audio difficulty.",
+      "costs_unpaid_time": "No fees. Unpaid time: Apply Now form + 10-minute transcription test; account manager contacts successful applicants.",
+      "cash_timing": "Weekly PayPal payments, minimum payment US$3 (official page: 'We make weekly PayPal payments like clockwork'). Weekly PayPal cadence once approved and working; onboarding is an application form plus a 10-minute transcription test.",
+      "repeatable": {
+        "value": true,
+        "cadence": "Ongoing while matched to available work; weekly paypal payments, minimum payment us$3 (official page: 'we make weekly paypal payments like clockwork')"
+      },
+      "demand_side": "TranscriptionStaff's client marketplace — demand comes from TranscriptionStaff's paying customers; workers join/match at https://www.transcriptionstaff.com/world/",
+      "evidence_urls": [
+        "https://www.transcriptionstaff.com/world/"
+      ],
+      "realistic_weekly_earn": "Up to $27.54/audio hour (part-time $7.50-$20.40/audio hour; full-time staff 35% more), based on audio difficulty",
+      "biggest_catch": "BPO wholesale transcription supplier. Work is project-based and availability is not guaranteed, so treat as supplemental income, not a full paycheck.",
+      "lane": "transcription",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Must pass a 10-minute transcription test; 2 audio-hours/week minimum to keep the account active."
+    },
+    {
+      "id": "R8440",
+      "title": "Stellar AI — AI Data / Annotation",
+      "category": "AI Data / Annotation",
+      "url": "https://joinstellar.ai/",
+      "speed": "days",
+      "who_pays": "Stellar AI pays workers — Weekly payouts (official: 'Get paid competitive rates on a weekly basis'); PayPal account required for payment",
+      "qualifies": "18+, reliable internet connection, strong attention to detail, English fluency, PayPal account. No prior AI experience needed; training materials provided. Must pass skill-match test and sign contractor agreements.",
+      "availability": "Signup verified open as of 2026-09-23 via official page. Weekly payout cadence once onboarded to a project; no official timeframe between joining the annotator pool and first project — depends on client demand",
+      "accepted": "Completed, approved work. Pay structure: Base rate $25/hour (official FAQ); varies by project, efficiency, and hours; higher rates sometimes offered for urgent tasks.",
+      "costs_unpaid_time": "No fees. Unpaid time: Online application; skill-match test; sign contractor agreements; set up payment info (official join page).",
+      "cash_timing": "Weekly payouts (official: 'Get paid competitive rates on a weekly basis'); PayPal account required for payment. Weekly payout cadence once onboarded to a project; no official timeframe between joining the annotator pool and first project — depends on client demand.",
+      "repeatable": {
+        "value": true,
+        "cadence": "Ongoing while matched to available work; weekly payouts (official: 'get paid competitive rates on a weekly basis'); paypal account required for payment"
+      },
+      "demand_side": "Stellar AI's client marketplace — demand comes from Stellar AI's paying customers; workers join/match at https://joinstellar.ai/",
+      "evidence_urls": [
+        "https://joinstellar.ai/"
+      ],
+      "realistic_weekly_earn": "Base rate $25/hour (official FAQ); varies by project, efficiency, and hours; higher rates sometimes offered for urgent tasks",
+      "biggest_catch": "Open annotator pool for AI-training/data-annotation work; independent contractor, remote, flexible hours. Onboarding is rolling and project-based — official FAQ states there is no set timeframe between joining the pool and being onboarded to a first project, so treat as supplemental income, not guaranteed this-week cash.",
+      "lane": "ai-data-annotation",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Skill-match test plus contractor agreements; rolling onboarding with no guaranteed first project."
+    },
+    {
+      "id": "R8460",
+      "title": "myGemma — instant buyout for luxury jewelry, watches & handbags",
+      "category": "Buyback",
+      "url": "http://mygemma.com/pages/sell",
+      "speed": "days",
+      "who_pays": "myGemma buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with authentic luxury items myGemma buys US sellers with authentic luxury items (fine jewelry, watches, designer handbags); items must match the described condition — final offer confirmed after inspection.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Buyout offer based on item, brand, and condition; may be adjusted after physical inspection. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "No fees; free fully insured shipping (per official sell page). Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "As little as 24 hours after receipt; wire transfer. ~2-4 days from shipment (transit + ~24h processing and wire). Method: Bank wire.",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: myGemma itself purchases your luxury goods outright — no waiting for a marketplace buyer and no consignment delay.",
+      "evidence_urls": [
+        "http://mygemma.com/pages/sell",
+        "http://mygemma.com/pages/sell"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): hundreds to thousands of dollars per piece depending on item.",
+      "biggest_catch": "Final offer can change after inspection; you must already own qualifying luxury goods; wire arrival depends on bank processing.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "mygemma.com sell page: direct luxury buyout with free fully insured shipping, no fees, and wire payment — process can take as little as 24 hours.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Fill a quote form, ship with a free insured label. Requires already owning authentic luxury items."
+    },
+    {
+      "id": "R8461",
+      "title": "Dave & Adam's Card World — sell sealed wax & cards from the buy list",
+      "category": "Buyback",
+      "url": "https://www.dacardworld.com/buying/buy-list/?utm_medium=paid&utm_source=ig&utm_id=120237333650080711&utm_content=120237333650100711&utm_term=120237333650090711&utm_campaign=120237333650080711",
+      "speed": "days",
+      "who_pays": "Dave & Adam's Card World buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with sealed trading-card products or cards on the buy list Anyone in the US with items exactly matching the buy list (check UPC/barcode); sealed trading-card products focus — single cards go through the buying team.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Buy-list prices published online; guaranteed offer for items matching the listing exactly. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "No fees; seller pays UPS/FedEx shipping (label not prepaid); $25 gift-card bonus on $500+ UPS shipments with tracking number provided. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Within 24-48 hours of receipt. ~3-5 days from shipment (transit + 24-48h processing). Method: Business check or PayPal (store credit also offered — choose a cash method).",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: Dave & Adam's buys off its published buy list at guaranteed prices — no auction, no waiting for a buyer.",
+      "evidence_urls": [
+        "https://www.dacardworld.com/buying/buy-list/?utm_medium=paid&utm_source=ig&utm_id=120237333650080711&utm_content=120237333650100711&utm_term=120237333650090711&utm_campaign=120237333650080711",
+        "https://www.dacardworld.com/buying/buy-list/?utm_medium=paid&utm_source=ig&utm_id=120237333650080711&utm_content=120237333650100711&utm_term=120237333650090711&utm_campaign=120237333650080711"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): tens to hundreds of dollars per sealed box depending on product.",
+      "biggest_catch": "You pay shipping; items must exactly match the buy list (verify UPC/barcode); sealed wax/products focus — singles need a buying-team quote.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "dacardworld.com buy list: 'Typically we can provide payment within 24 hours of receiving your shipment, however please allow up to 36 hours' — paid by business check, PayPal, or store credit.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Match the buy list, pack and ship (you pay shipping). Requires owning sealed trading-card products."
+    },
+    {
+      "id": "R8462",
+      "title": "Card Kingdom — sell Magic: The Gathering cards via buylist",
+      "category": "Buyback",
+      "url": "https://www.cardkingdom.com/purchasing/how_to_sell?gad_source=1&gad_campaignid=21202224692",
+      "speed": "days",
+      "who_pays": "Card Kingdom buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with Magic: The Gathering cards Anyone in the US with Magic: The Gathering cards on the buylist; cards graded on receipt — payout follows the final grade.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Buylist prices published per card and condition; grading on receipt may adjust the payout. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "No fees; seller pays shipping. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "1-5 business days to finalize after receipt + PayPal within 24h. ~4-7 days from shipment via PayPal (transit + up to 5 business days finalization). Method: PayPal (within 24h of finalization) or mailed check (3-5 business days — slower).",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: Card Kingdom buys cards itself off its buylist — no marketplace listing, no waiting for a buyer.",
+      "evidence_urls": [
+        "https://www.cardkingdom.com/purchasing/how_to_sell?gad_source=1&gad_campaignid=21202224692",
+        "https://www.cardkingdom.com/purchasing/how_to_sell?gad_source=1&gad_campaignid=21202224692"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): varies by card — bulk pennies, staples and reserved-list cards tens to hundreds of dollars.",
+      "biggest_catch": "Grading may adjust buylist value; choose PayPal — mailed checks are slow; seller pays shipping.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "cardkingdom.com sell page: orders 'finalized in one to five business days' after receipt; 'Paypal and Store Credit payments are issued within 24 hours of the order being finalized.'",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Sort cards against the buylist, ship. Requires owning Magic: The Gathering cards."
+    },
+    {
+      "id": "R8463",
+      "title": "BAM Good Bricks — mail in LEGO sets & minifigures for fast payout",
+      "category": "Buyback",
+      "url": "https://bamgoodbricks.com/pages/lego-trade-in",
+      "speed": "days",
+      "who_pays": "BAM Good Bricks buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with LEGO sets or minifigures to sell US sellers with LEGO sets/minifigures; mail-in program only — bulk loose LEGO is local drop-off only and excluded.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Quote based on set, completeness, and minifigure value; verified on receipt. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "Free UPS shipping label; no fees stated. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Immediately after verification, shortly after receipt. ~2-4 days from shipment (transit + verification). Method: Electronic payment immediately after verification (confirm exact method on the official page before shipping).",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: BAM Good Bricks buys LEGO sets and minifigures itself by mail — no marketplace listing.",
+      "evidence_urls": [
+        "https://bamgoodbricks.com/pages/lego-trade-in",
+        "https://bamgoodbricks.com/pages/lego-trade-in"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): tens to low hundreds of dollars per set depending on theme and completeness.",
+      "biggest_catch": "Sets/minifigures by mail-in only — bulk loose LEGO is local drop-off only and excluded; confirm payout method on the official page before shipping.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "bamgoodbricks.com trade-in page: US mail-in program for LEGO sets and minifigures with a free UPS shipping label and payment issued immediately after verification.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Quote, pack, ship with free label. Requires owning LEGO sets or minifigures."
+    },
+    {
+      "id": "R8464",
+      "title": "Adorama — sell used cameras, lenses & video gear for direct deposit",
+      "category": "Buyback",
+      "url": "https://www.adorama.com/g/sell-your-used-gear",
+      "speed": "days",
+      "who_pays": "Adorama buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with used cameras, lenses, or video equipment Anyone in the US with cameras, lenses, or video equipment; quote may be revised after physical inspection.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Online pricing engine quote by model and condition; specialist may raise or lower after inspection. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "No fees; free insured UPS shipping label. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Usually within 48 hours of receipt. ~3-5 days from shipment (transit + ~48h inspection and deposit). Method: Direct deposit (check or store credit also offered — choose direct deposit).",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: Adorama itself buys your camera gear — no marketplace listing, no waiting for a buyer.",
+      "evidence_urls": [
+        "https://www.adorama.com/g/sell-your-used-gear",
+        "https://www.adorama.com/g/sell-your-used-gear"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): typically $100-$1,000+ per body or lens depending on model and condition.",
+      "biggest_catch": "Quote may be revised after inspection; cameras, lenses, and video gear only; checks are slower than direct deposit.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "adorama.com sell-your-gear FAQ: quote 'inspected usually within 48 hours' of receipt; 'you will get paid by the method of your choice: i. Direct Deposit ii. Check iii. Store Credit'; free insured UPS label.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Quote online, ship free insured. Requires owning camera bodies or lenses."
+    },
+    {
+      "id": "R8465",
+      "title": "EagleSaver — sell books, DVDs, CDs & games with next-day processing",
+      "category": "Buyback",
+      "url": "http://eaglesaver.com",
+      "speed": "days",
+      "who_pays": "EagleSaver buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with books, DVDs, CDs, or video games to sell Anyone in the US with books (non-textbook per current catalog), DVDs/Blu-rays, CDs, or video games; items must match the quoted condition.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Per-item quotes by ISBN/UPC; media typically a few dollars per unit — bundles add up. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "Free shipping labels; no fees stated. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Processed within 1 business day of receipt; PayPal fastest. ~2-4 days from shipment (transit + 1 business day processing, PayPal). Method: PayPal or check.",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: EagleSaver buys your media itself — enter ISBNs/UPCs, no marketplace listing.",
+      "evidence_urls": [
+        "http://eaglesaver.com",
+        "http://eaglesaver.com"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): a few dollars per disc/book — bundles of 10-20 items add up.",
+      "biggest_catch": "Current catalog covers books (non-textbook), DVDs/Blu-rays, CDs, and games — textbooks excluded; condition must match quote; checks slower than PayPal.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "eaglesaver.com: order processing 'within one business day after receipt'; payments via PayPal or check; free shipping labels provided.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Scan ISBNs, box media, free label. Requires owning books, DVDs, CDs or games."
+    },
+    {
+      "id": "R8466",
+      "title": "CashForUsedLaptop — sell any-brand used laptops, paid in 1-2 days",
+      "category": "Buyback",
+      "url": "https://www.cashforusedlaptop.com/articles/ebay-vs-cashforusedlaptop-who-should-you-sell-to/",
+      "speed": "days",
+      "who_pays": "CashForUsedLaptop buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with a used laptop to sell Anyone in the US with a used laptop of any brand; quote locked at checkout, revised only if condition differs on assessment.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Instant quote by brand, model, and condition; assessment on receipt may revise the offer. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "Free UPS/USPS shipping label; no fees stated. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Within 1-2 business days of receipt. ~3-5 days from shipment (transit + 1-2 business days). Method: PayPal, Venmo, or check.",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: CashForUsedLaptop buys laptops itself across all brands — no marketplace listing.",
+      "evidence_urls": [
+        "https://www.cashforusedlaptop.com/articles/ebay-vs-cashforusedlaptop-who-should-you-sell-to/",
+        "https://www.cashforusedlaptop.com/articles/ebay-vs-cashforusedlaptop-who-should-you-sell-to/"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): roughly $100-$500+ per laptop depending on model, age, and condition.",
+      "biggest_catch": "Quote may be revised if condition differs on assessment; smaller buyer — confirm the quote in writing before shipping.",
+      "lane": "fast-buyback",
+      "official_terms_quote": "cashforusedlaptop.com: 'The money is transferred via PayPal or Venmo within 1 business day' after assessment; product pages state 'Within 2 business days of receiving your laptop, get paid via PayPal, or Check'; free UPS/USPS label.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Instant quote, ship free. Requires owning a used laptop."
+    },
+    {
+      "id": "R8467",
+      "title": "GreenBuyBack — sell phones & tablets (even damaged), paid in ~24h",
+      "category": "Buyback",
+      "url": "https://greenbuyback.com/faqs",
+      "speed": "days",
+      "who_pays": "GreenBuyBack buys your items directly (no consignment wait)",
+      "qualifies": "Anyone in the US with a used phone or tablet to sell Anyone in the US with a phone or tablet (any condition, including cracked); device must have a clean IMEI/ESN.",
+      "availability": "Buyback program operating as of 2026-09-23 (official sell page live; re-verified via direct page fetch).",
+      "accepted": "Instant quote by model, carrier, storage, and condition; damaged devices bought at reduced 'damaged' pricing. Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "Prepaid UPS label; no fees from GreenBuyBack (PayPal may charge its own fee). Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Typically within 24 hours of receipt (1-3 business days). ~2-4 days from shipment (transit + ~24h processing, PayPal). Method: PayPal (instant on issue) or check.",
+      "repeatable": {
+        "value": false,
+        "cadence": "once per item/asset you sell — liquidation, not recurring earnings"
+      },
+      "demand_side": "Direct buyer: GreenBuyBack buys phones and tablets itself — instant quote, no marketplace listing.",
+      "evidence_urls": [
+        "https://greenbuyback.com/faqs",
+        "https://greenbuyback.com/faqs"
+      ],
+      "realistic_weekly_earn": "One-time liquidation payout (not recurring earnings): roughly $20-$400+ per device depending on model and condition.",
+      "biggest_catch": "Device must have a clean IMEI/ESN; requote possible if condition differs; you pack the box yourself (label provided).",
+      "lane": "fast-buyback",
+      "official_terms_quote": "greenbuyback.com FAQ: 'We strive to make payments the same day that we receive your items. We typically pay within 24 hours of receiving your item(s)' via PayPal (instant once issued) or check; prepaid UPS label.",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Instant quote, ship prepaid. Requires owning a phone/tablet with a clean IMEI."
+    },
+    {
+      "id": "R8480",
+      "title": "Codementor — paid 1:1 coding help & freelance sessions",
+      "category": "Expert Calls",
+      "url": "https://support.codementor.io/en/categories/968577-payouts",
+      "speed": "days",
+      "who_pays": "Codementor — clients pay for sessions; Codementor processes payouts to experts",
+      "qualifies": "Vetted developers/experts who pass Codementor's mentor screening Mentors must pass Codementor's expert vetting (technical screening / portfolio review). Requires tax-form completion before payouts.",
+      "availability": "Expert/mentor signup open as of 2026-09-23 (official page live); first booking depends on vetting + demand.",
+      "accepted": "Mentors set their own per-session rates; platform fee 13-22% depending on weekly activity Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "Platform fee 13-22% of weekly activity (published); payout withdrawal fees may apply for PayPal. Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Weekly: payouts processed Tuesday night (US Pacific time); ACH typically 1-3 business days after processing. Weekly payout cycle; first payout lands within ~7 days of first session. Method: ACH (US bank), PayPal, Direct to Local Bank.",
+      "repeatable": {
+        "value": true,
+        "cadence": "per booked session/mentorship"
+      },
+      "demand_side": "On-demand marketplace: mentees request live 1:1 sessions, freelance jobs, and code reviews; new mentors can set availability for live help requests, but first booking depends on profile strength and demand.",
+      "evidence_urls": [
+        "https://support.codementor.io/en/categories/968577-payouts",
+        "https://www.codementor.io"
+      ],
+      "realistic_weekly_earn": "$40-$250 first week (1-3 booked sessions at own rate; varies with demand)",
+      "biggest_catch": "Mentors are independent contractors; platform fee ranges 13-22% of weekly activity; payouts can be held 'Under Review' if the client payment has issues; no paid work until vetted and booked.",
+      "lane": "expert-calls",
+      "official_terms_quote": "Payouts are processed to mentors on a weekly basis. We usually process payouts on Tuesday night (US Pacific time).",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Vetted developers only: technical screening plus portfolio review; no pay until vetted and booked."
+    },
+    {
+      "id": "R8481",
+      "title": "MentorCruise — paid career mentoring via Stripe",
+      "category": "Expert Calls",
+      "url": "https://help.mentorcruise.com/article/45-payout",
+      "speed": "days",
+      "who_pays": "MentorCruise — clients pay for sessions; MentorCruise processes payouts to experts",
+      "qualifies": "Professionals with real career experience who pass MentorCruise profile review Mentors apply with a profile and must be approved; mentee plans are monthly subscriptions, so you earn when a mentee books your plan.",
+      "availability": "Expert/mentor signup open as of 2026-09-23 (official page live); first booking depends on vetting + demand.",
+      "accepted": "You set your own monthly plan price; example: $100/mo plan nets $96.40 after fees Items/work must match the described condition/terms.",
+      "costs_unpaid_time": "MentorCruise fee charged on top of your price (example: $20 on $100) plus Stripe processing fees (example $3.60); ~20-23% total in published example Unpaid time: quoting and packing/shipping (buyback) or vetting, profile setup, unbooked availability (expert).",
+      "cash_timing": "Within ~7 days of mentee payment via Stripe (3 days or instant in some countries). Within ~7 days of first mentee payment via Stripe. Method: Stripe Connect (recommended) or Borderless bank transfer (monthly, slower — use Stripe).",
+      "repeatable": {
+        "value": true,
+        "cadence": "per booked session/mentorship"
+      },
+      "demand_side": "Public marketplace where mentees browse mentor profiles; new mentors can be booked quickly if their niche and price match active demand, but no guaranteed bookings.",
+      "evidence_urls": [
+        "https://help.mentorcruise.com/article/45-payout",
+        "https://mentorcruise.com"
+      ],
+      "realistic_weekly_earn": "$30-$150 first week (one new mentee on a $30-$150/mo plan; payout within ~7 days)",
+      "biggest_catch": "You are not paid until a mentee books; profile approval can take days; mentee churn ends the plan; Stripe payout timing varies by country.",
+      "lane": "expert-calls",
+      "official_terms_quote": "You'll see a new charge on your Stripe account as soon as your mentee pays. Stripe will generally process your payout within 7 days.",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Real career experience plus profile approval; no pay until a mentee books your plan."
+    },
+    {
+      "id": "R8520",
+      "title": "@christianlucky619 (Rajesh fatima): $250 per reel (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.threads.com/@christianlucky619/post/DdgTrARCOBS",
+      "speed": "days",
+      "who_pays": "@christianlucky619 (Rajesh fatima) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Video editing experience with real estate content; DM immediately to apply",
+      "availability": "Posted 2026-09-20. Poster seeks a freelance video editor specializing in real estate content at $250 per reel, expected volume 15-20 reels per month. Post still live with no fill notice as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-20. Poster seeks a freelance video editor specializing in real estate content at $250 per reel, expected volume 15-20 reels per month. Post still live with no fill notice as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @christianlucky619 on Threads immediately",
+      "cash_timing": "Per-reel payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @christianlucky619 on Threads immediately)",
+      "evidence_urls": [
+        "https://www.threads.com/@christianlucky619/post/DdgTrARCOBS"
+      ],
+      "realistic_weekly_earn": "One-off: $250 per reel",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Video editing experience with real estate content; portfolio expected."
+    },
+    {
+      "id": "R8521",
+      "title": "@smithskarlyn (Smith's Karlyn): $800-$1000 per video; $1.5-$3 per image (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.threads.com/@smithskarlyn/post/DdlxBCciFO4",
+      "speed": "days",
+      "who_pays": "@smithskarlyn (Smith's Karlyn) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Portfolio and past wedding photo/video editing experience; DM to apply",
+      "availability": "Posted 2026-09-22. Poster solicits freelance editors for wedding photography and videography work: $800-$1000 per video and $1.5-$3 per image (rates subject to change). Editing-only remote work. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Poster solicits freelance editors for wedding photography and videography work: $800-$1000 per video and $1.5-$3 per image (rates subject to change). Editing-only remote work. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @smithskarlyn on Threads with portfolio",
+      "cash_timing": "Per-video / per-image payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @smithskarlyn on Threads with portfolio)",
+      "evidence_urls": [
+        "https://www.threads.com/@smithskarlyn/post/DdlxBCciFO4"
+      ],
+      "realistic_weekly_earn": "One-off: $800-$1000 per video; $1.5-$3 per image",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Wedding photo/video editing portfolio required."
+    },
+    {
+      "id": "R8522",
+      "title": "@kukuk9074 (Madison Rose): $300 per video (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.threads.com/@kukuk9074/post/DdhVmjjjb9H",
+      "speed": "days",
+      "who_pays": "@kukuk9074 (Madison Rose) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Video editing; fast turnaround (poster asked for same-day completion of 2 videos); DM quickly with reference",
+      "availability": "Posted 2026-09-20. Urgent call for a video editor: two videos needed same-day at a stated budget of $300 each, with a reference provided. Post still live with no fill notice as of 2026-09-23; urgency means it may fill fast.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-20. Urgent call for a video editor: two videos needed same-day at a stated budget of $300 each, with a reference provided. Post still live with no fill notice as of 2026-09-23; urgency means it may fill fast.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @kukuk9074 on Threads quickly",
+      "cash_timing": "Per-video payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @kukuk9074 on Threads quickly)",
+      "evidence_urls": [
+        "https://www.threads.com/@kukuk9074/post/DdhVmjjjb9H"
+      ],
+      "realistic_weekly_earn": "One-off: $300 per video",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Professional editor with same-day turnaround capability."
+    },
+    {
+      "id": "R8523",
+      "title": "Aly Hmza: $10 per video, paid monthly (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.facebook.com/groups/947928056999454/permalink/1617728466686073/",
+      "speed": "days",
+      "who_pays": "Aly Hmza — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "YouTube editing: clean edits, good pacing, relevant B-roll for 20-minute videos; share portfolio link in comments",
+      "availability": "Posted 2026-09-19 in a public Facebook group. Poster seeks a YouTube video editor for 20-minute videos at $10 per video with monthly payment. Poster was actively moderating the thread asking for portfolios as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-19 in a public Facebook group. Poster seeks a YouTube video editor for 20-minute videos at $10 per video with monthly payment. Poster was actively moderating the thread asking for portfolios as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment on the Facebook group post with portfolio link; poster actively replies",
+      "cash_timing": "Monthly payment; method arranged directly with poster. Monthly pay cycle once working; exact first payout set with the poster. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment on the Facebook group post with portfolio link; poster actively replies)",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/947928056999454/permalink/1617728466686073/"
+      ],
+      "realistic_weekly_earn": "One-off: $10 per video, paid monthly",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Editing skill plus portfolio required; very low pay ($10) for a 20-minute video."
+    },
+    {
+      "id": "R8524",
+      "title": "Sam Sam: $7 USD per hour (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.facebook.com/groups/realestatevajobsph/permalink/1587873042205444/",
+      "speed": "days",
+      "who_pays": "Sam Sam — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "DaVinci Resolve proficiency; documentary-style and YouTube brand-film editing; ~1-2 projects per month; DM the word 'Editor' for full details",
+      "availability": "Posted 2026-09-16 in a public Facebook group. Remote, part-time freelance video editor role: 3-10 minute projects, audio and basic animation, one-week turnaround, $7/hour for approximately 1-2 projects per month. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-16 in a public Facebook group. Remote, part-time freelance video editor role: 3-10 minute projects, audio and basic animation, one-week turnaround, $7/hour for approximately 1-2 projects per month. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM Sam Sam with the word 'Editor' to receive application details",
+      "cash_timing": "Hourly payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM Sam Sam with the word 'Editor' to receive application details)",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/realestatevajobsph/permalink/1587873042205444/"
+      ],
+      "realistic_weekly_earn": "One-off: $7 USD per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "DaVinci Resolve proficiency; documentary/brand-film editing style."
+    },
+    {
+      "id": "R8525",
+      "title": "@nissimgambhire20 (Nissim Gambhire): ₹100 per reel; ₹250 per YouTube video (Video Editing gig)",
+      "category": "Live Deal: Video Editing",
+      "url": "https://www.instagram.com/reel/DdjHOkKtfl-/",
+      "speed": "days",
+      "who_pays": "@nissimgambhire20 (Nissim Gambhire) — individual poster on Instagram; payment arranged directly, no escrow",
+      "qualifies": "CapCut reel/YouTube editing; minimum 20 reels and 8+ YouTube videos per month; DM with previous work and delivery time",
+      "availability": "Posted 2026-09-21 as an Instagram reel. Poster (fashion/beauty/travel UGC creator) seeks an editor at ₹100/reel and ₹250/YouTube video, minimum 20 reels + 8 YouTube videos/month, stated monthly income ₹4,000+. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-21 as an Instagram reel. Poster (fashion/beauty/travel UGC creator) seeks an editor at ₹100/reel and ₹250/YouTube video, minimum 20 reels + 8 YouTube videos/month, stated monthly income ₹4,000+. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @nissimgambhire20 on Instagram with previous work and delivery time",
+      "cash_timing": "Per-piece payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Instagram public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @nissimgambhire20 on Instagram with previous work and delivery time)",
+      "evidence_urls": [
+        "https://www.instagram.com/reel/DdjHOkKtfl-/"
+      ],
+      "realistic_weekly_earn": "One-off: ₹100 per reel; ₹250 per YouTube video",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "CapCut skill plus previous work required; very low per-reel rates."
+    },
+    {
+      "id": "R8526",
+      "title": "@enepower05 (Godspower Enemuo): $50-$90 per hour (Design gig)",
+      "category": "Live Deal: Design",
+      "url": "https://www.threads.com/@enepower05/post/DdlPKlYjogG",
+      "speed": "days",
+      "who_pays": "@enepower05 (Godspower Enemuo) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "UX/UI design professional; freelance or contract",
+      "availability": "Posted 2026-09-22 by a talent acquisition professional. Recruitment notice for a UX/UI Designer role at $50-$90/hour, freelance or contract, remote-friendly. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22 by a talent acquisition professional. Recruitment notice for a UX/UI Designer role at $50-$90/hour, freelance or contract, remote-friendly. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Apply via the Threads post / DM @enepower05",
+      "cash_timing": "Hourly/contract payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Apply via the Threads post / DM @enepower05)",
+      "evidence_urls": [
+        "https://www.threads.com/@enepower05/post/DdlPKlYjogG"
+      ],
+      "realistic_weekly_earn": "One-off: $50-$90 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Professional UX/UI designer; freelance or contract."
+    },
+    {
+      "id": "R8527",
+      "title": "@digitlgld (Digital Gold): $25-$50 per hour (project-dependent) (Design gig)",
+      "category": "Live Deal: Design",
+      "url": "https://www.instagram.com/p/DdcZL3Wx4BC/",
+      "speed": "days",
+      "who_pays": "@digitlgld (Digital Gold) — individual poster on Instagram; payment arranged directly, no escrow",
+      "qualifies": "Photoshop, Illustrator, Premiere Pro, After Effects, Canva, motion graphics, social content design; send resume, portfolio, and introduction",
+      "availability": "Posted 2026-09-18 by Digital Gold Design Group. Part-time freelance digital designer, fully remote, $25-$50/hour depending on project, flexible hours: static/carousel design and 15-60s reels editing. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-18 by Digital Gold Design Group. Part-time freelance digital designer, fully remote, $25-$50/hour depending on project, flexible hours: static/carousel design and 15-60s reels editing. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Email resume, portfolio, and introduction to information@digitalgoldgroup.design",
+      "cash_timing": "Hourly/project payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Instagram public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Email resume, portfolio, and introduction to information@digitalgoldgroup.design)",
+      "evidence_urls": [
+        "https://www.instagram.com/p/DdcZL3Wx4BC/"
+      ],
+      "realistic_weekly_earn": "One-off: $25-$50 per hour (project-dependent)",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Portfolio across Photoshop/Illustrator/Premiere/After Effects plus motion graphics."
+    },
+    {
+      "id": "R8528",
+      "title": "Patient Wesseh (Mercor hiring post): $300 USD per finished hour (Voiceover gig)",
+      "category": "Live Deal: Voiceover",
+      "url": "https://www.facebook.com/groups/635149310977066/permalink/1851541779337807/",
+      "speed": "days",
+      "who_pays": "Patient Wesseh (Mercor hiring post) — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "Native Canadian French speaker also proficient in English; customer-service voice; professional home studio; exact transcript recording; 2-10 hours/week",
+      "availability": "Posted 2026-09-22 in a public Facebook group. Mercor is hiring native Canadian French speakers for a leading AI lab: $300 USD per finished hour, 2-10 hours per week, remote. Commenters showing interest as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22 in a public Facebook group. Mercor is hiring native Canadian French speakers for a leading AI lab: $300 USD per finished hour, 2-10 hours per week, remote. Commenters showing interest as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Apply via the details in the Facebook group post comments (Mercor hiring flow)",
+      "cash_timing": "Paid per finished hour; method arranged via Mercor. Set via Mercor's contractor terms; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Apply via the details in the Facebook group post comments (Mercor hiring flow))",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/635149310977066/permalink/1851541779337807/"
+      ],
+      "realistic_weekly_earn": "One-off: $300 USD per finished hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Native Canadian French plus professional home studio; exact-transcript discipline."
+    },
+    {
+      "id": "R8529",
+      "title": "@near.skill (Nearskill): Up to $45 USD per hour (Voiceover gig)",
+      "category": "Live Deal: Voiceover",
+      "url": "https://www.threads.com/@near.skill/post/DdlCQ8rEbmF",
+      "speed": "days",
+      "who_pays": "@near.skill (Nearskill) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Professional microphone, audio interface, treated home studio; Australian voice actor (open to AU, US, India, Canada, UK+); 2-10 hours/week for 1-2 weeks",
+      "availability": "Posted 2026-09-22. Remote hiring graphic for an Australian voice actor for an AI audio project: up to $45/hour, 2-10 hours per week for 1-2 weeks. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Remote hiring graphic for an Australian voice actor for an AI audio project: up to $45/hour, 2-10 hours per week for 1-2 weeks. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Apply via the Threads post / DM @near.skill",
+      "cash_timing": "Hourly payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Apply via the Threads post / DM @near.skill)",
+      "evidence_urls": [
+        "https://www.threads.com/@near.skill/post/DdlCQ8rEbmF"
+      ],
+      "realistic_weekly_earn": "One-off: Up to $45 USD per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Professional mic, audio interface, treated studio; specific accent required."
+    },
+    {
+      "id": "R8530",
+      "title": "@thepameffectxoxo (The Pam Effect XoXo): $500 (estimated ~2 hours of work) (Voiceover gig)",
+      "category": "Live Deal: Voiceover",
+      "url": "https://www.instagram.com/p/DdcyN8tFi1X/",
+      "speed": "days",
+      "who_pays": "@thepameffectxoxo (The Pam Effect XoXo) — individual poster on Instagram; payment arranged directly, no escrow",
+      "qualifies": "US-based, non-union American male VO artist aged 50s; work from home",
+      "availability": "Posted 2026-09-18 (caption Sept 18). Screenshot of a casting-platform listing for a paid, non-union TV commercial: $500 for an estimated two hours of work, work from home. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-18 (caption Sept 18). Screenshot of a casting-platform listing for a paid, non-union TV commercial: $500 for an estimated two hours of work, work from home. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment 'CREATE' on the Instagram post or follow the post link for application details",
+      "cash_timing": "Flat $500 for the spot; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Instagram public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment 'CREATE' on the Instagram post or follow the post link for application details)",
+      "evidence_urls": [
+        "https://www.instagram.com/p/DdcyN8tFi1X/"
+      ],
+      "realistic_weekly_earn": "One-off: $500 (estimated ~2 hours of work)",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Extremely specific casting: US-based non-union male voice artist in his 50s."
+    },
+    {
+      "id": "R8531",
+      "title": "@alsa_.official (ALSA Freelance & Service): ₹300 per hour (Indian languages) (Voiceover gig)",
+      "category": "Live Deal: Voiceover",
+      "url": "https://www.instagram.com/reel/DdkY4KET1wD/",
+      "speed": "days",
+      "who_pays": "@alsa_.official (ALSA Freelance & Service) — individual poster on Instagram; payment arranged directly, no escrow",
+      "qualifies": "Clear voice, stable internet, quiet setup, script-following; record short clips/voiceovers; meet deadlines",
+      "availability": "Posted 2026-09-18. Remote hiring for Audio & Voice Recording Experts: ₹300/hour for Indian languages (Hindi, Tamil, Telugu, Malayalam, Kannada, Gujarati, Marathi, Punjabi, Tibetan), 100% flexible schedule, explicitly zero registration fees and no upfront document fees. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-18. Remote hiring for Audio & Voice Recording Experts: ₹300/hour for Indian languages (Hindi, Tamil, Telugu, Malayalam, Kannada, Gujarati, Marathi, Punjabi, Tibetan), 100% flexible schedule, explicitly zero registration fees and no upfront document fees. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment 'REMOTE' on the reel or DM @alsa_.official for the application link",
+      "cash_timing": "Hourly payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Instagram public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment 'REMOTE' on the reel or DM @alsa_.official for the application link)",
+      "evidence_urls": [
+        "https://www.instagram.com/reel/DdkY4KET1wD/"
+      ],
+      "realistic_weekly_earn": "One-off: ₹300 per hour (Indian languages)",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": false,
+      "ease_note": "Easy for native speakers of the listed Indian languages; clear voice and quiet setup still required."
+    },
+    {
+      "id": "R8532",
+      "title": "@devtalksbusiness (Dev Taneja): ₹2,500-₹5,000 per reel (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.instagram.com/reel/DdlmI6eOOHa/",
+      "speed": "days",
+      "who_pays": "@devtalksbusiness (Dev Taneja) — individual poster on Instagram; payment arranged directly, no escrow",
+      "qualifies": "UGC videos only (no brand collaborations needed); public Instagram profile; upload previous brand-collab videos to a Google Drive folder with link sharing on; fill the Google Form",
+      "availability": "Posted 2026-09-22. Creator-economy recruiter seeking 500 UGC creators at ₹2,500-₹5,000 per reel via Unjob.ai; follower count does not matter. Some commenters questioned the rate, but the recruitment is active as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Creator-economy recruiter seeking 500 UGC creators at ₹2,500-₹5,000 per reel via Unjob.ai; follower count does not matter. Some commenters questioned the rate, but the recruitment is active as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment 'UGC' on the reel for the Google Form link, then submit the form",
+      "cash_timing": "Per-reel payment via the Unjob.ai platform flow; method set in the application form. Set via the platform flow; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Instagram public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment 'UGC' on the reel for the Google Form link, then submit the form)",
+      "evidence_urls": [
+        "https://www.instagram.com/reel/DdlmI6eOOHa/"
+      ],
+      "realistic_weekly_earn": "One-off: ₹2,500-₹5,000 per reel",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Needs a public Instagram profile plus previous brand-collaboration videos."
+    },
+    {
+      "id": "R8533",
+      "title": "@mehsixnova (mehsiXnova): $20 per video, up to $600 per month (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.threads.com/@mehsixnova/post/DdnQ003Aq7H",
+      "speed": "days",
+      "who_pays": "@mehsixnova (mehsiXnova) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "TikTok UGC creators (US-based per latest post); no large following required; all niches welcome; DM the word 'UGC'",
+      "availability": "Latest post 2026-09-23 (poster ran the same offer across several posts Sept 19-23). Paid TikTok brand collaborations: $20/video, up to $600/month, no follower-count requirement, simple structured content. Latest post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Latest post 2026-09-23 (poster ran the same offer across several posts Sept 19-23). Paid TikTok brand collaborations: $20/video, up to $600/month, no follower-count requirement, simple structured content. Latest post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @mehsixnova the word 'UGC' on Threads",
+      "cash_timing": "Per-video payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @mehsixnova the word 'UGC' on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@mehsixnova/post/DdnQ003Aq7H"
+      ],
+      "realistic_weekly_earn": "One-off: $20 per video, up to $600 per month",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "US-based, phone camera, no following required; DM to start."
+    },
+    {
+      "id": "R8534",
+      "title": "@diegoalmeidajj (Diego Almeida): $100-$200 per video (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.threads.com/@diegoalmeidajj/post/DdhGl3OkXzR",
+      "speed": "days",
+      "who_pays": "@diegoalmeidajj (Diego Almeida) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Female-oriented brand UGC creators (10 spots); comment on the post for further contact",
+      "availability": "Posted 2026-09-20. Recruiting 10 female-oriented brand UGC creators at $100-$200 per video depending on experience and results. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-20. Recruiting 10 female-oriented brand UGC creators at $100-$200 per video depending on experience and results. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment on the Threads post to apply",
+      "cash_timing": "Per-video payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment on the Threads post to apply)",
+      "evidence_urls": [
+        "https://www.threads.com/@diegoalmeidajj/post/DdhGl3OkXzR"
+      ],
+      "realistic_weekly_earn": "One-off: $100-$200 per video",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": false,
+      "ease_note": "Women only, 10 spots; pay depends on experience and results."
+    },
+    {
+      "id": "R8535",
+      "title": "@ugc.by.maro (Nova Creator Hub): UGC creators: $100-$150 per week; micro influencers: $50-$300 per post (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.threads.com/@ugc.by.maro/post/DdfsrTZiuoC",
+      "speed": "days",
+      "who_pays": "@ugc.by.maro (Nova Creator Hub) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "UGC creators: no follower count required. Micro influencers: 1,000+ followers and 5,000 average views; comment to apply",
+      "availability": "Posted 2026-09-20 by Nova Creator Hub, a hub for paid UGC creator opportunities. Two paid tracks: UGC creators $100-$150/week and micro influencers $50-$300/post. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-20 by Nova Creator Hub, a hub for paid UGC creator opportunities. Two paid tracks: UGC creators $100-$150/week and micro influencers $50-$300/post. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment on the Threads post to apply",
+      "cash_timing": "Weekly / per-post payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment on the Threads post to apply)",
+      "evidence_urls": [
+        "https://www.threads.com/@ugc.by.maro/post/DdfsrTZiuoC"
+      ],
+      "realistic_weekly_earn": "One-off: UGC creators: $100-$150 per week; micro influencers: $50-$300 per post",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "No follower count required; phone camera and a comment to apply."
+    },
+    {
+      "id": "R8536",
+      "title": "@lewelup.in (Lewel Up, influencer marketing agency): Up to ₹500 per video, plus referral earnings (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.threads.com/@lewelup.in/post/DdmLOknEhhz",
+      "speed": "days",
+      "who_pays": "@lewelup.in (Lewel Up, influencer marketing agency) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Book a demo with the tutor platform, then create a UGC video; DM the agency to start",
+      "availability": "Posted 2026-09-22 by an influencer marketing agency. Collaboration with a new tutor platform: book a demo, create a UGC video after the demo, payment up to ₹500 per video plus referral earnings. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22 by an influencer marketing agency. Collaboration with a new tutor platform: book a demo, create a UGC video after the demo, payment up to ₹500 per video plus referral earnings. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @lewelup.in on Threads",
+      "cash_timing": "Per-video payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @lewelup.in on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@lewelup.in/post/DdmLOknEhhz"
+      ],
+      "realistic_weekly_earn": "One-off: Up to ₹500 per video, plus referral earnings",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Book a demo, film a UGC video; no experience stated."
+    },
+    {
+      "id": "R8537",
+      "title": "@travel_squad._ (Travel Squad): Voice-only voiceover: ₹200-₹300; UGC voiceover reels: ₹500-₹600 (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.threads.com/@travel_squad._/post/DdVak1tk4vF",
+      "speed": "days",
+      "who_pays": "@travel_squad._ (Travel Squad) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Voiceover/UGC reel samples; work within the stated budget (no budget negotiation)",
+      "availability": "Posted 2026-09-16 by Travel Squad, a travel company. Two paid tracks: voice-only voiceover ₹200-₹300 and UGC voiceover reels ₹500-₹600. Samples via WhatsApp; budget discussions not permitted. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-16 by Travel Squad, a travel company. Two paid tracks: voice-only voiceover ₹200-₹300 and UGC voiceover reels ₹500-₹600. Samples via WhatsApp; budget discussions not permitted. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — WhatsApp 9056846226 with relevant samples and creator details; only contact if within budget",
+      "cash_timing": "Per-piece payment; method arranged directly with poster via WhatsApp. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (WhatsApp 9056846226 with relevant samples and creator details; only contact if within budget)",
+      "evidence_urls": [
+        "https://www.threads.com/@travel_squad._/post/DdVak1tk4vF"
+      ],
+      "realistic_weekly_earn": "One-off: Voice-only voiceover: ₹200-₹300; UGC voiceover reels: ₹500-₹600",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Voiceover samples required; budget is non-negotiable."
+    },
+    {
+      "id": "R8538",
+      "title": "Lister T. Rodriguez (@ProgrammerNaPogi): $1 per 100 words ($15-$30 per script) (UGC Creation gig)",
+      "category": "Live Deal: UGC Creation",
+      "url": "https://www.facebook.com/groups/2112345932384986/permalink/4736410813311805/",
+      "speed": "days",
+      "who_pays": "Lister T. Rodriguez (@ProgrammerNaPogi) — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "Record yourself reading scripts naturally on phone/webcam; send raw files; 15-20 second sample for quality check; DM with intro, experience, setup, availability",
+      "availability": "Posted 2026-09-18 in a public Facebook group. Ongoing talking-head video creator work: scripts of 1,500-3,000 words provided, record naturally on phone/webcam, send raw files (no editing), new batches every 2 days, $1 per 100 words ($15-$30 per script). Poster states recordings will not be used to train AI models. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-18 in a public Facebook group. Ongoing talking-head video creator work: scripts of 1,500-3,000 words provided, record naturally on phone/webcam, send raw files (no editing), new batches every 2 days, $1 per 100 words ($15-$30 per script). Poster states recordings will not be used to train AI models. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM Lister T. Rodriguez with introduction, experience, setup, and availability plus a 15-20 second sample",
+      "cash_timing": "Per-script payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM Lister T. Rodriguez with introduction, experience, setup, and availability plus a 15-20 second sample)",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/2112345932384986/permalink/4736410813311805/"
+      ],
+      "realistic_weekly_earn": "One-off: $1 per 100 words ($15-$30 per script)",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Read scripts on a phone/webcam, send raw files; no editing needed."
+    },
+    {
+      "id": "R8539",
+      "title": "@miw.ashi (Keiko Ishimura): $0.08-$0.12 per word (Translation gig)",
+      "category": "Live Deal: Translation",
+      "url": "https://www.threads.com/@miw.ashi/post/DdnWku9iALb",
+      "speed": "days",
+      "who_pays": "@miw.ashi (Keiko Ishimura) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Native target-language fluency plus literary translation experience; DM/reply with target language, samples, availability",
+      "availability": "Posted 2026-09-23. Freelance remote literary translators wanted for a 24,800-word book titled Brazilian Tales at $0.08-$0.12 per word. Comments show active applicant interest with the poster following up privately. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-23. Freelance remote literary translators wanted for a 24,800-word book titled Brazilian Tales at $0.08-$0.12 per word. Comments show active applicant interest with the poster following up privately. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM or reply to @miw.ashi with target language, samples, and availability",
+      "cash_timing": "Per-word payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM or reply to @miw.ashi with target language, samples, and availability)",
+      "evidence_urls": [
+        "https://www.threads.com/@miw.ashi/post/DdnWku9iALb"
+      ],
+      "realistic_weekly_earn": "One-off: $0.08-$0.12 per word",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "hard",
+      "anyone_can_do": false,
+      "ease_note": "Native target-language fluency plus literary translation experience."
+    },
+    {
+      "id": "R8540",
+      "title": "@elsaahmed474 (Elsa Ahmed): $20 per 800-word translation; $10 per typed page; $15 per five copies (Translation gig)",
+      "category": "Live Deal: Translation",
+      "url": "https://www.threads.com/@elsaahmed474/post/DdmAmuEiARP",
+      "speed": "days",
+      "who_pays": "@elsaahmed474 (Elsa Ahmed) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Native Spanish speaker with good spelling; comment 'YO' plus your skill to express interest",
+      "availability": "Posted 2026-09-22. Native Spanish speakers wanted for freelance remote work with per-task rates: $20 per 800-word translation (EN<->ES), $10 per typed page (PDF to Word), $15 for five social-media copies; paid weekly via PayPal or Wise. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Native Spanish speakers wanted for freelance remote work with per-task rates: $20 per 800-word translation (EN<->ES), $10 per typed page (PDF to Word), $15 for five social-media copies; paid weekly via PayPal or Wise. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Comment the word 'YO' plus your skill on the Threads post",
+      "cash_timing": "Weekly payment via PayPal or Wise. Weekly payout cadence; first payout timing set with the poster. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Comment the word 'YO' plus your skill on the Threads post)",
+      "evidence_urls": [
+        "https://www.threads.com/@elsaahmed474/post/DdmAmuEiARP"
+      ],
+      "realistic_weekly_earn": "One-off: $20 per 800-word translation; $10 per typed page; $15 per five copies",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": false,
+      "ease_note": "Easy work, but requires being a native Spanish speaker."
+    },
+    {
+      "id": "R8541",
+      "title": "@melvinremote (Melvin Remote): Rewriting $2,500/mo; translation $3,000/mo; logo design $3,000/mo; data entry $2,500/mo (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.threads.com/@melvinremote/post/DdmthCIjbRC",
+      "speed": "days",
+      "who_pays": "@melvinremote (Melvin Remote) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Beginner-friendly; message with country and availability",
+      "availability": "Posted 2026-09-22. Singapore-based company hiring beginners for fully remote work: rewriting $2,500/month, translation $3,000/month, logo design $3,000/month, data entry $2,500/month; applicants from the Philippines and India welcome. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Singapore-based company hiring beginners for fully remote work: rewriting $2,500/month, translation $3,000/month, logo design $3,000/month, data entry $2,500/month; applicants from the Philippines and India welcome. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @melvinremote with your country and availability",
+      "cash_timing": "Monthly payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @melvinremote with your country and availability)",
+      "evidence_urls": [
+        "https://www.threads.com/@melvinremote/post/DdmthCIjbRC"
+      ],
+      "realistic_weekly_earn": "One-off: Rewriting $2,500/mo; translation $3,000/mo; logo design $3,000/mo; data entry $2,500/mo",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Beginner-friendly; message with country and availability."
+    },
+    {
+      "id": "R8542",
+      "title": "Mae Elle: $4 per hour (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.facebook.com/groups/filvaph/permalink/28752508094366316/",
+      "speed": "days",
+      "who_pays": "Mae Elle — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "Proven WellSky platform experience; prior home care scheduling/recruitment and remote VA experience; strong communication and organization; email CV",
+      "availability": "Posted 2026-09-23 in a public Facebook group. Remote Virtual Assistant (Homecare Scheduler/Recruiter) for a long-term agency role at $4/hour: coordinate caregiver/clinician schedules on the WellSky platform, manage patient visits, monitor missed visits and coverage gaps. Shortlisted candidates contacted within 24-48 hours. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-23 in a public Facebook group. Remote Virtual Assistant (Homecare Scheduler/Recruiter) for a long-term agency role at $4/hour: coordinate caregiver/clinician schedules on the WellSky platform, manage patient visits, monitor missed visits and coverage gaps. Shortlisted candidates contacted within 24-48 hours. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Email CV to recruiter@risingstarsolutions.us; private messages not entertained",
+      "cash_timing": "Hourly payment via the agency; method set during hiring. Set during the agency hiring process; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Email CV to recruiter@risingstarsolutions.us; private messages not entertained)",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/filvaph/permalink/28752508094366316/"
+      ],
+      "realistic_weekly_earn": "One-off: $4 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Proven WellSky platform plus homecare scheduling/recruitment experience."
+    },
+    {
+      "id": "R8543",
+      "title": "@sandra993858 (Sandra Anderson): Up to ₱47,000 per month (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.threads.com/@sandra993858/post/DdnzPmQAtSm",
+      "speed": "days",
+      "who_pays": "@sandra993858 (Sandra Anderson) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Based in the Philippines; available for night shift; beginners welcome; DM to apply",
+      "availability": "Posted 2026-09-23. Singapore-based company seeking remote virtual assistants in the Philippines: permanent work-from-home night-shift positions paying up to ₱47,000/month; beginners welcome. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-23. Singapore-based company seeking remote virtual assistants in the Philippines: permanent work-from-home night-shift positions paying up to ₱47,000/month; beginners welcome. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @sandra993858 on Threads",
+      "cash_timing": "Monthly payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @sandra993858 on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@sandra993858/post/DdnzPmQAtSm"
+      ],
+      "realistic_weekly_earn": "One-off: Up to ₱47,000 per month",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Philippines-based, beginners welcome; night shift."
+    },
+    {
+      "id": "R8544",
+      "title": "@wixaswinging (Remote Recruitment, Calgary): $28 per hour (Data Entry gig)",
+      "category": "Live Deal: Data Entry",
+      "url": "https://www.threads.com/@wixaswinging/post/DdolI8HCKRX",
+      "speed": "days",
+      "who_pays": "@wixaswinging (Remote Recruitment, Calgary) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Basic computer skills, reliable internet; no prior experience required; apply via the Google Forms URL",
+      "availability": "Posted 2026-09-23 by a Calgary-based remote recruitment account. Immediate opening for a Data Entry Assistant: $28/hour, work from home, flexible hours, no prior experience required. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-23 by a Calgary-based remote recruitment account. Immediate opening for a Data Entry Assistant: $28/hour, work from home, flexible hours, no prior experience required. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Apply through the Google Forms link in the Threads post",
+      "cash_timing": "Hourly payment; method arranged during the application process. Set during the hiring process; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Apply through the Google Forms link in the Threads post)",
+      "evidence_urls": [
+        "https://www.threads.com/@wixaswinging/post/DdolI8HCKRX"
+      ],
+      "realistic_weekly_earn": "One-off: $28 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Basic computer skills; no prior experience required."
+    },
+    {
+      "id": "R8545",
+      "title": "@koajane (Koa Jane): $10-$16 per hour (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.threads.com/@koajane/post/DdcvkZUivom",
+      "speed": "days",
+      "who_pays": "@koajane (Koa Jane) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Guest communication, bookings, and reservations management for Airbnb listings",
+      "availability": "Posted 2026-09-19. Remote Airbnb virtual assistant position in the United States at $10-$16/hour: managing guest communication, bookings, and reservations. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-19. Remote Airbnb virtual assistant position in the United States at $10-$16/hour: managing guest communication, bookings, and reservations. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Apply via the Threads post / DM @koajane",
+      "cash_timing": "Hourly payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Apply via the Threads post / DM @koajane)",
+      "evidence_urls": [
+        "https://www.threads.com/@koajane/post/DdcvkZUivom"
+      ],
+      "realistic_weekly_earn": "One-off: $10-$16 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Guest communication plus bookings/reservations management for Airbnb listings."
+    },
+    {
+      "id": "R8546",
+      "title": "@wilsonbiggie007 (Wilson Richard): CAD $18-$30 per hour (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.threads.com/@wilsonbiggie007/post/DdmFDnwDMfT",
+      "speed": "days",
+      "who_pays": "@wilsonbiggie007 (Wilson Richard) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Based in Canada; Airbnb listings/guest messages/schedules/admin; DM to apply",
+      "availability": "Posted 2026-09-22. Airbnb Virtual Assistant to work remotely from Canada at CAD $18-$30/hour: managing listings, responding to guest messages, handling schedules, basic admin. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-22. Airbnb Virtual Assistant to work remotely from Canada at CAD $18-$30/hour: managing listings, responding to guest messages, handling schedules, basic admin. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @wilsonbiggie007 on Threads",
+      "cash_timing": "Hourly payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @wilsonbiggie007 on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@wilsonbiggie007/post/DdmFDnwDMfT"
+      ],
+      "realistic_weekly_earn": "One-off: CAD $18-$30 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "medium",
+      "anyone_can_do": false,
+      "ease_note": "Canada-based; Airbnb listings, guest messages and schedule management."
+    },
+    {
+      "id": "R8547",
+      "title": "@elisabeckett9912 (Elisa Beckett): Data entry $25-$30/hr; typing/transcription $20-$35/hr; form filling $30/hr; copy-paste $18-$30/hr; photo posting $20-$25/hr; video posting $20-$30/hr; VA $30-$40/hr (Data Entry gig)",
+      "category": "Live Deal: Data Entry",
+      "url": "https://www.threads.com/@elisabeckett9912/post/DdcDSZYiAMl",
+      "speed": "days",
+      "who_pays": "@elisabeckett9912 (Elisa Beckett) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Task-dependent (entry-level); send a message to apply",
+      "availability": "Posted 2026-09-18. Freelancers wanted for eight remote task types with stated hourly ranges: data entry $25-$30, typing/text transcription $20-$35, form filling $30, copy and paste $18-$30, photo posting $20-$25, video posting $20-$30, virtual assistant $30-$40 (writing rate not specified). Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-18. Freelancers wanted for eight remote task types with stated hourly ranges: data entry $25-$30, typing/text transcription $20-$35, form filling $30, copy and paste $18-$30, photo posting $20-$25, video posting $20-$30, virtual assistant $30-$40 (writing rate not specified). Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Send a message to @elisabeckett9912 on Threads",
+      "cash_timing": "Hourly payment; method arranged directly with poster. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Send a message to @elisabeckett9912 on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@elisabeckett9912/post/DdcDSZYiAMl"
+      ],
+      "realistic_weekly_earn": "One-off: Data entry $25-$30/hr; typing/transcription $20-$35/hr; form filling $30/hr; copy-paste $18-$30/hr; photo posting $20-$25/hr; video posting $20-$30/hr; VA $30-$40/hr",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Entry-level tasks; message to apply."
+    },
+    {
+      "id": "R8548",
+      "title": "Part Time Jobs in the Philippines: ₱4,000-₹9,000 per week (Virtual Assistant gig)",
+      "category": "Live Deal: Virtual Assistant",
+      "url": "https://www.facebook.com/groups/286905518381550/permalink/2478721342533279/",
+      "speed": "days",
+      "who_pays": "Part Time Jobs in the Philippines — individual poster on Facebook; payment arranged directly, no escrow",
+      "qualifies": "High school graduate (lower tier) or college graduate (higher tier); flexible, willing to be trained, start ASAP; PM to apply",
+      "availability": "Posted 2026-09-19 in a public Facebook group. Remote VA role titled 'HOME ENCODER': ₱4,000-₹9,000 paid weekly, 2-8 hours between 10AM and 10PM, high school graduate (lower tier) / college graduate (higher tier), phone-based application. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-19 in a public Facebook group. Remote VA role titled 'HOME ENCODER': ₱4,000-₹9,000 paid weekly, 2-8 hours between 10AM and 10PM, high school graduate (lower tier) / college graduate (higher tier), phone-based application. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — Send a private message to the Part Time Jobs in the Philippines page",
+      "cash_timing": "Weekly payment; method arranged directly with poster. Weekly payout cadence once started; exact first payout set with the poster. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Facebook public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (Send a private message to the Part Time Jobs in the Philippines page)",
+      "evidence_urls": [
+        "https://www.facebook.com/groups/286905518381550/permalink/2478721342533279/"
+      ],
+      "realistic_weekly_earn": "One-off: ₱4,000-₹9,000 per week",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "High school graduate; phone-based application, 2-8 hrs/day."
+    },
+    {
+      "id": "R8549",
+      "title": "@landoharvi (Lando Harvi): $12-$20 per hour (Data Entry gig)",
+      "category": "Live Deal: Data Entry",
+      "url": "https://www.threads.com/@landoharvi/post/DdjfGAmiLd5",
+      "speed": "days",
+      "who_pays": "@landoharvi (Lando Harvi) — individual poster on Threads; payment arranged directly, no escrow",
+      "qualifies": "Applicants in the United States or Malaysia; data entry/typing/documents; DM to apply",
+      "availability": "Posted 2026-09-21. Fully remote freelance data entry (data, typing, documents) for applicants in the United States and Malaysia at $12-$20/hour. Post still live as of 2026-09-23.",
+      "accepted": "Deliver what the poster asks. Posted 2026-09-21. Fully remote freelance data entry (data, typing, documents) for applicants in the United States and Malaysia at $12-$20/hour. Post still live as of 2026-09-23.",
+      "costs_unpaid_time": "No fees. Unpaid time: pitching/applying — DM @landoharvi on Threads",
+      "cash_timing": "Hourly payment; method arranged directly with poster via DM. Set directly with the poster; not stated in the post. NOTE: pay timing/method unstated in post unless quoted — negotiated directly with the poster.",
+      "repeatable": {
+        "value": false,
+        "cadence": "one-off post"
+      },
+      "demand_side": "Threads public paid-request posts — posters advertise gigs and hire via DMs/comments; reach them today at the post URL (DM @landoharvi on Threads)",
+      "evidence_urls": [
+        "https://www.threads.com/@landoharvi/post/DdjfGAmiLd5"
+      ],
+      "realistic_weekly_earn": "One-off: $12-$20 per hour",
+      "biggest_catch": "Individual poster with no escrow and no platform payment guarantee — confirm pay method/timing in writing before doing work; poster legitimacy varies.",
+      "lane": "live-deals",
+      "ease": "easy",
+      "anyone_can_do": true,
+      "ease_note": "Typing/data entry; US or Malaysia applicants."
+    }
+  ]
+}

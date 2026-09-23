@@ -170,7 +170,8 @@ for r in d["routes"]:
     else:
         r["rank"] = None
 
-d["version"] = f"{n}-route catalog 2026-09-24 ({nv} verified, ranked by earn rate)"
+n_served = sum(1 for r in d["routes"] if r.get("status") != "retired")
+d["version"] = f"{n_served}-route catalog 2026-09-24 ({nv} verified, ranked by earn rate)"
 
 json.dump(d, open(path, "w"), indent=1)
 print(f"routes={n} verified={nv} synced={synced} appended={appended}")
