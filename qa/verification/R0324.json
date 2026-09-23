@@ -1,0 +1,83 @@
+{
+ "route_id": "R0324",
+ "checked_at": "2026-09-23T01:00:00Z",
+ "app_links": {
+  "ios": null,
+  "android": null
+ },
+ "upfront_fee": false,
+ "verdict": "verify",
+ "official_url": "https://energy.gov/wap",
+ "terms_url": "https://energy.gov/wap",
+ "critical": {
+  "c1": {
+   "evidence": "DOE states a concrete quantified benefit: households 'save on average $372 or more every year' per a national evaluation; services themselves are free to eligible households.",
+   "pass": true
+  },
+  "c2": {
+   "evidence": "Official DOE Weatherization Assistance Program page on energy.gov, loaded live 2026-09-22; income rules confirmed in DOE Weatherization Program Notice 22-5.",
+   "pass": true
+  },
+  "c3": {
+   "evidence": "No fee to apply or participate; the program installs improvements free. Note: this is free services, not cash \u2014 it is savings, not income.",
+   "pass": true
+  },
+  "c4": {
+   "evidence": "No single payout date \u2014 free services are scheduled after application approval; DOE notes ~32,000 homes served per year with agency waitlists.",
+   "pass": true
+  }
+ },
+ "standard": {
+  "s1": {
+   "note": "Income at or below 200% of Federal Poverty Guidelines (DOE WPN 22-5); renters need written landlord permission; priority to elderly, disabled, families with children.",
+   "pass": true
+  },
+  "s2": {
+   "note": "Free services, not cash \u2014 you never receive money; waitlists of months are common; DOE publishes no per-home dollar figure, so the route's '$1,000-$10,000' is the value of free work, not a check.",
+   "pass": true
+  },
+  "s3": {
+   "note": "Services scheduled after approval; waitlist timing varies by state agency.",
+   "pass": true
+  },
+  "s4": {
+   "note": "No weasel words on the core DOE claims \u2014 $372 average savings and 32,000 homes/year stated flatly.",
+   "pass": true
+  },
+  "s5": {
+   "note": "https://energy.gov/wap \u2014 official DOE page, loaded live.",
+   "pass": true
+  },
+  "s6": {
+   "note": "Steps are concrete: confirm income, contact state WAP office via the DOE how-to-apply page, apply through local agency, energy audit, free installation.",
+   "pass": true
+  },
+  "s7": {
+   "note": "Official DOE page loaded live 2026-09-22; WPN 22-5 income rules via energy.gov PDF.",
+   "pass": true
+  }
+ },
+ "payout_quote": "Through weatherization improvements and upgrades, these households save on average $372 or more every year according to a national evaluation of the program.",
+ "timing": "No fixed payout \u2014 free weatherization services are scheduled after application approval; state-agency waitlists of several months are typical; savings accrue as lower energy bills.",
+ "eligibility": "Household income at or below 200% of Federal Poverty Guidelines (DOE WPN 22-5). Priority given to the elderly, persons with disabilities, and families with children. Renters are eligible with written permission from the landlord. Undocumented households follow HHS LIHEAP guidance referenced by DOE.",
+ "catches": [
+  "This pays $0 in cash \u2014 you receive free home improvements and lower bills, not money. It is savings, not income.",
+  "Income-restricted: at or below 200% of the federal poverty line. An average user above that line gets nothing.",
+  "State-administered with limited slots (~32,000 homes/year nationally per DOE) \u2014 waitlists of months are normal.",
+  "Renters need written landlord permission before any work.",
+  "DOE publishes no per-home dollar figure; the route's '$1,000-$10,000+' describes the value of free services, not a payment."
+ ],
+ "weasel_words": {
+  "present": false,
+  "quote": null
+ },
+ "steps": [
+  "Confirm your household income is at or below 200% of the Federal Poverty Guidelines (check the current HHS poverty guidelines table).",
+  "Go to the official DOE page https://energy.gov/wap and open the 'how to apply' page to find your state's WAP administrator.",
+  "Contact your state's WAP office or local community action agency and complete the application with income documentation.",
+  "A certified auditor performs a home energy audit to determine the most cost-effective improvements.",
+  "Approved improvements (insulation, air sealing, HVAC, etc.) are installed at no cost to you by the agency's contractors."
+ ],
+ "biggest_catch": "This pays $0 in cash \u2014 it is free home improvements and lower bills, not money earned \u2014 and only households at or below 200% of the poverty line qualify, with months-long state waitlists.",
+ "notes": "Verified against the live DOE WAP page 2026-09-22 (program active: 8,500 jobs, ~32,000 homes/year, news updates through July 2025) and DOE WPN 22-5 for the 200% FPG income rule. PRODUCT NOTE: WAP is cost savings for low-income households, not a way to make money \u2014 it should never be presented as income. The $10,000 top end is not a DOE-published figure."
+}
