@@ -6791,15 +6791,20 @@
    "provider": "Cash App Referral",
    "method": "Invite friends to join Cash App via your referral link",
    "what": "Share referral link, friend signs up and links bank, sends first payment",
-   "reward": "$5-$15 per qualifying referral",
+   "reward": "Friend gets $15 (send $5+ within 14 days of code entry); INVITER'S amount is not published \u2014 shown in-app only. Do not treat $15 as the referrer payout",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's first payment",
-   "catches": "Self-referrals banned; referral cap varies by account; must use your specific link",
-   "url": "https://cash.app",
+   "payout_timing": "Bonus posts after the friend enters the code and sends $5+ within 14 days; exact timing shown in-app.",
+   "catches": [
+    "Official cash.app referral landing page states the referred person gets $15; the inviter's amount is shown only in-app after the friend completes the action.",
+    "Friend must enter the referral code and send $5+ within 14 days of entering the code; the inviter bonus triggers only after that completes.",
+    "Referral program amounts are set per-offer and can change; Cash App can modify or end the program.",
+    "Both parties must be eligible US users in good standing; self-referrals and duplicate accounts void bonuses."
+   ],
+   "url": "https://cash.app/refer/MH15S3K",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 85,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -6807,51 +6812,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://cash.app or download the Cash App Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "In the Cash App app, tap your profile icon and copy your referral code: https://cash.app/refer/MH15S3K",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Share the code with a friend who does not already use Cash App.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Share referral link, friend signs up and links bank, sends first payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Your friend enters your code when signing up and sends $5 or more within 14 days of entering the code.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Your friend gets $15; your inviter bonus is shown in the app after they complete the send.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -6862,15 +6846,22 @@
    "provider": "Venmo Referral",
    "method": "Invite friends to join Venmo via referral link",
    "what": "Share referral link, friend signs up and makes first payment",
-   "reward": "$5-$10 per qualifying referral",
+   "reward": "$10 each \u2014 VENMO DEBIT CARD referral only: friend must get/use the debit card and spend $50+ on purchases within 30 days (P2P/ATM excluded); referrer needs in-app invite; 10 rewards ($100) cap",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's first payment",
-   "catches": "Self-referrals banned; referral cap applies",
-   "url": "https://venmo.com",
+   "payout_timing": "Reward credited within 30 days after the friend completes the $50+ qualifying spend.",
+   "catches": [
+    "The $10 requires the friend to get and use a Venmo Debit Card and spend at least $50 on purchases within 30 days \u2014 P2P transfers, ATM withdrawals, quasi-cash, and wallet funding do NOT count.",
+    "You can only refer if you received the in-app invitation; the offer is invite-only for referrers.",
+    "Reward is limited to 10 rewards ($100) per referrer.",
+    "Reward is credited within 30 days after the friend completes the qualifying spend.",
+    "Only personal friends and acquaintances \u2014 posting the referral link publicly is prohibited and can void rewards.",
+    "Venmo can modify or terminate the offer at any time."
+   ],
+   "url": "https://help.venmo.com/cs/articles/venmo-debit-card-referrals-faq-terms-vhel361",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 86,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -6878,51 +6869,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://venmo.com or download the Venmo Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "In the Venmo app, check for the in-app debit-card referral invitation and copy your referral link: https://help.venmo.com/cs/articles/venmo-debit-card-referrals-faq-terms-vhel361",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Send it to a friend personally (do not post it publicly).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Share referral link, friend signs up and makes first payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Your friend signs up, gets the Venmo Debit Card, and spends $50 or more on purchases within 30 days (P2P transfers, ATM withdrawals, quasi-cash, and wallet funding do not count).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "You and your friend each get a $10 cash reward, credited within 30 days after the qualifying spend.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "You can earn up to 10 rewards ($100 total) as a referrer.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -6933,15 +6910,21 @@
    "provider": "PayPal Referral",
    "method": "Invite friends to join PayPal via referral link",
    "what": "Share referral link, friend signs up and links bank, makes first payment",
-   "reward": "$5-$10 per qualifying referral",
+   "reward": "1,000 Rewards points per side (redeemable for $10 cash back), NOT $10 cash; friend: $5+ spend within 30 days of signup; 10-friend ($100) cap",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's first transaction",
-   "catches": "Self-referrals banned; referral cap applies",
-   "url": "https://paypal.com",
+   "payout_timing": "Points issued after the friend's qualifying $5+ spend is confirmed, per the PayPal Rewards Program Agreement.",
+   "catches": [
+    "US reward is 1,000 PayPal Rewards points per side (redeemable for $10 cash back), earned when the friend joins and spends at least $5 within 30 days of signup.",
+    "Friend must join AND link their bank account or card; spend must occur within 30 days of signup.",
+    "Cap: up to 10 friends \u2014 maximum 10,000 points (about $100 cash back) per referrer.",
+    "Points are subject to the PayPal Rewards Program Agreement; the offer may be modified or terminated at any time.",
+    "Older third-party pages describing a flat '$10 cash' version are outdated \u2014 the current official US offer is points-based."
+   ],
+   "url": "https://www.sandbox.paypal.com/us/webapps/mpp/invite/terms",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 87,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -6949,51 +6932,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://paypal.com or download the PayPal Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "In the PayPal app or site, find your referral link under the invite/offers section.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Share it with a friend who does not already have PayPal.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Share referral link, friend signs up and links bank, makes first payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Your friend signs up for a US personal PayPal account through your link and links their bank account or card.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Your friend spends at least $5 within 30 days of signup.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "You and your friend each earn 1,000 PayPal Rewards points (redeemable for $10 cash back); up to 10 friends ($100 cash back total).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -7004,15 +6973,22 @@
    "provider": "Robinhood Referral",
    "method": "Invite friends to open Robinhood account via your link",
    "what": "Share referral link, friend opens account and links bank, makes qualifying deposit",
-   "reward": "Free stock (value $5-$200) per referral",
+   "reward": "MILESTONE stock rewards, NOT $200/referral: $50 at 1 referral, $150 at 3, $800 at 10, $4,000 at 50, $10,000 at 200; $15K/yr cap; friend must fund settled deposit >$0; claim within 60 days; sell after 3 trading days; cash withdrawable after 60 days",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Stock granted after friend's deposit verifies",
-   "catches": "Self-referrals banned; referral cap varies; stock value random",
-   "url": "https://robinhood.com",
+   "payout_timing": "Milestone bonus credited approximately one week after claiming; stock sellable 3 trading days after grant; cash value withdrawable 60 days after claiming.",
+   "catches": [
+    "Referrer earns only at milestones: $50 at 1 referral, $150 at 3, $800 at 10, $4,000 at 50, $10,000 at 200 \u2014 no bonus for referrals between milestones.",
+    "Reward is stock (whole/fractional shares from a fixed list of 26 large-cap companies), not cash; cannot sell for 3 trading days; cash value cannot be withdrawn for 60 days after claiming.",
+    "Friend's signup must begin on or after September 1, 2026 at 9 AM PT to count under the current offer; friend must open an individual brokerage account and fund it with a deposit greater than $0 (merely linking a bank account does not count).",
+    "You and your friend must be US residents; you must have an active individual brokerage account in good standing; 60 days to claim each milestone reward before it expires.",
+    "$15,000 annual cap on bonus stock rewards; Robinhood can modify or terminate the offer at any time without notice.",
+    "Rewards reported for tax purposes (1099) and subject to capital gains treatment on sale."
+   ],
+   "url": "https://robinhood.com/us/en/support/articles/invite-friends-get-free-stock/?region=US",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 88,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -7020,51 +6996,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://robinhood.com or download the Robinhood Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "In the Robinhood app, go to Account (person icon) > Menu (3 bars) > Rewards to get your referral link or QR code: https://robinhood.com/us/en/support/articles/invite-friends-get-free-stock/?region=US",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Send your link to a friend who has never had a Robinhood account \u2014 they must be a US resident.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Your friend opens an individual taxable brokerage account and funds it with a settled deposit greater than $0 (linking a bank alone does not count).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Share referral link, friend opens account and links bank, makes qualifying deposit",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Track progress in the app under Rewards > clock icon; your first milestone ($50 in stock) triggers after the friend's deposit settles.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Claim the milestone reward within 60 days in the app, then pick whole/fractional shares from the 26-company list.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Wait 3 trading days to sell the stock; keep the cash value in the account 60 days before withdrawing.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -7075,15 +7044,23 @@
    "provider": "SoFi Referral",
    "method": "Invite friends to open SoFi account via your link",
    "what": "Share referral link, friend opens account and meets requirements",
-   "reward": "$25-$100+ per qualifying referral",
+   "reward": "Referrer $75 default / $100 only with SoFi Plus, eligible direct deposit, or $5K+ recent deposits; recipient $50; optional SoFi Plus bonus excluded (costs friend $10/mo). Friend: first SoFi product + $500 within 21 days; $10K/yr cap",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's requirements met",
-   "catches": "Self-referrals banned; tiered referral rewards; caps apply",
-   "url": "https://sofi.com",
+   "payout_timing": "Paid within 7 business days after SoFi validates the funding, no later than 74 days after the funding date.",
+   "catches": [
+    "Promotion period is narrow: starts September 17, 2026 at 1:00 PM ET and ends September 30, 2026 at 11:59 PM ET; only product openings and funding within that window count.",
+    "Standard referrer bonus: $100 only if referrer has SoFi Plus, an eligible direct deposit, or $5,000+ qualifying deposits in the 30 days before the referral; everyone else gets $75.",
+    "Recipient gets $50; the optional $25-each SoFi Plus bonus requires the friend to subscribe to SoFi Plus ($10/month) \u2014 do not present this as no-cost earnings.",
+    "Friend must open their FIRST SoFi product via the referral link AND deposit at least $500 within 21 days of opening; the 21-day clock is strict.",
+    "Bonuses are paid within seven business days after validation, but officially no later than 74 days after the funding date \u2014 expect delays.",
+    "Total combined referral and direct-deposit bonuses capped at $10,000 per calendar year per referrer; SoFi can discontinue or change the promotion at any time.",
+    "1099 tax reporting applies; SoFi reserves the right to claw back bonuses if the referred account is closed or deemed abusive."
+   ],
+   "url": "https://www.sofi.com/offers/bank-referral/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 89,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -7091,51 +7068,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://sofi.com or download the SoFi Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Log into SoFi and copy your referral link: https://www.sofi.com/offers/bank-referral/ (do this before September 30, 2026 at 11:59 PM ET).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Send the link to a friend who has never had a SoFi product.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Your friend opens their first SoFi product through your link and deposits at least $500 within 21 days of opening.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Share referral link, friend opens account and meets requirements",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "SoFi validates the funding; you get $75 ($100 if you have SoFi Plus, an eligible direct deposit, or $5,000+ in qualifying deposits in the prior 30 days) and your friend gets $50.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "The bonus is paid within 7 business days after validation, and no later than 74 days after the funding date.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Skip the optional SoFi Plus upsell \u2014 it costs your friend $10/month, so it is not free money.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -7146,15 +7116,21 @@
    "provider": "Chime Referral",
    "method": "Invite friends to join Chime via your referral link",
    "what": "Share referral link, friend opens account and receives qualifying direct deposit",
-   "reward": "$100-$200 per qualifying referral",
+   "reward": "Friend guaranteed $100; YOUR amount varies by active offer \u2014 no fixed $200 exists. Friend: $200+ qualifying direct deposit within 45 days + physical card activation within 14 days; 10 referrals/yr cap",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's direct deposit",
-   "catches": "Self-referrals banned; high referral reward; friend must use your link",
-   "url": "https://chime.com",
+   "payout_timing": "Bonuses typically posted within 10 business days after the friend meets all requirements.",
+   "catches": [
+    "The official page states the friend receives $100; the referrer's bonus 'varies based on the offer when they enroll' \u2014 no fixed referrer amount is published.",
+    "The $100 friend bonus requires a qualifying direct deposit of $200+ (not transfers from personal accounts, bank transfers, or crypto) within 45 days of account opening, AND physical card activation within 14 days of that deposit.",
+    "Referrer cap: up to 10 successful referral rewards per calendar year.",
+    "The referral offer can change or end at any time; amounts depend on the offer active when the friend enrolls.",
+    "Chime accounts are provided by The Bancorp Bank N.A. or Stride Bank N.A. \u2014 friend must be eligible to open an account."
+   ],
+   "url": "https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 90,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -7162,51 +7138,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://chime.com or download the Chime Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Open the Chime app and go to Settings (gear icon) > Refer Friends to get your referral link: https://help.chime.com/what-is-chimes-standard-referral-program-eca42e30",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Send the link to a friend who does not already have Chime \u2014 they must sign up through your link.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Your friend receives a qualifying direct deposit of $200 or more within 45 days of opening the account (payroll or benefits; personal transfers and crypto do not count).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Share referral link, friend opens account and receives qualifying direct deposit",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Your friend activates their physical Chime card within 14 days of the qualifying direct deposit.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Bonuses are typically posted within 10 business days after all requirements are met \u2014 your friend gets $100; your bonus matches the offer shown when you referred.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "You can earn up to 10 successful referral rewards per calendar year.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -7217,15 +7186,22 @@
    "provider": "Rakuten Referral",
    "method": "Invite friends to join Rakuten via your referral link",
    "what": "Share referral link, friend signs up and makes qualifying purchase",
-   "reward": "$25-$40 per qualifying referral",
+   "reward": "$50 per referral (not $40), unlimited referrals; friend: $50 qualifying Cash Back purchases within 90 days; paid ~60 days after; returns/non-Cash-Back purchases void it",
    "requirements": "18+, existing account on the platform, friends who don't already have the app, no self-referrals",
-   "payout_timing": "Bonus credited after friend's first qualifying purchase",
-   "catches": "Self-referrals banned; referral cap applies",
-   "url": "https://rakuten.com",
+   "payout_timing": "Generally within 60 days of the friend's qualifying purchase, typically at the next quarterly Cash Back payment.",
+   "catches": [
+    "Current official bonus is $50 per referral (not $40) for the July 1, 2026 \u2013 September 30, 2026 offer period.",
+    "Friend must join through your referral link AND make $50 in qualifying Cash Back purchases within 90 days of joining.",
+    "Only purchases that actually earn Cash Back count \u2014 returns, cancellations, exchanges, or purchases that fail to earn Cash Back void the bonus.",
+    "Referral bonus is generally paid within 60 days of the friend's qualifying purchase (typically at the next quarterly Cash Back payment).",
+    "Offer is US and DC only; friend must be new to Rakuten; self-referrals are prohibited and can void bonuses.",
+    "Rakuten may change or end the offer at any time without notice."
+   ],
+   "url": "https://www.rakuten.com/referral/default.do",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 91,
    "difficulty": 3.5,
    "tier": "Easy",
@@ -7233,51 +7209,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://rakuten.com or download the Rakuten Referral app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Log into Rakuten and copy your referral link: https://www.rakuten.com/referral/default.do",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Send the link to a friend who has never used Rakuten (US/DC only).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Share referral link, friend signs up and makes qualifying purchase",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Your friend joins through your link and makes $50 in qualifying Cash Back purchases within 90 days.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Returns, cancellations, or purchases that don't earn Cash Back do not count toward the $50.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Your $50 bonus is generally paid within 60 days of their qualifying purchase, typically at the next quarterly Cash Back payment.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
