@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Build the full Upmore app: inject upmore-data.json into the template."""
+import base64
+import hashlib
 import json, pathlib
+import re
 
 HERE = pathlib.Path(__file__).parent
 data = json.loads((HERE / "data" / "upmore-data.json").read_text())
@@ -40,6 +43,26 @@ assert js_ph in out, "supabase placeholder missing from template"
 vendor = (HERE / "vendor" / "supabase-js.min.js").read_text()
 assert "createClient" in vendor, "vendored supabase-js looks wrong"
 out = out.replace(js_ph, "<script>\n" + vendor + "\n</script>", 1)
+
+# Content-Security-Policy (audit M1): the app is 100% inline scripts, so hash
+# each <script> block and emit a strict script-src. Any future inline script
+# is picked up automatically at build time; a hash mismatch fails closed
+# (browser blocks the script) rather than silently weakening the policy.
+script_hashes = []
+for m in re.finditer(r"<script>(.*?)</script>", out, re.S):
+    digest = hashlib.sha256(m.group(1).encode("utf-8")).digest()
+    script_hashes.append("'sha256-" + base64.b64encode(digest).decode() + "'")
+assert script_hashes, "no inline script blocks found for CSP hashing"
+csp = (
+    "default-src 'self'; "
+    "script-src " + " ".join(script_hashes) + "; "
+    "style-src 'self' 'unsafe-inline'; "
+    "img-src 'self' data:; "
+    "font-src 'self'; "
+    "connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; "
+    "object-src 'none'; base-uri 'self'; form-action 'self'"
+)
+out = out.replace("<head>", "<head>\n<meta http-equiv=\"Content-Security-Policy\" content=\"" + csp + "\">", 1)
 
 dest = HERE / "upmore-app.html"
 dest.write_text(out)

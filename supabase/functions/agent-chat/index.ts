@@ -5,7 +5,7 @@
 // grounding post-check → save + return reply.
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/+esm";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/+esm";
 import {
   SYSTEM_PROMPT,
   renderRouteCards,
@@ -22,10 +22,30 @@ const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5-20251001";
 const MAX_TOKENS = 400; // tight budget: short, basic replies
 
-const cors = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, content-type",
-};
+const MAX_MESSAGE_LEN = 4000; // M2: cap input size — output already capped at MAX_TOKENS
+
+// L1: CORS allowlist (was: Access-Control-Allow-Origin: *). Every non-OPTIONS
+// path requires a valid user JWT, but a wildcard would let any website spend
+// the *user's own* rate-limit quota through their browser session. Only the
+// app's own origins get the header; unknown origins get none (browser blocks
+// the read). NOTE: add the custom domain here when it goes live.
+const ALLOWED_ORIGINS = new Set([
+  "https://upmore-srikanthvishnu90-sketchs-projects.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:8000",
+  "http://localhost:8080",
+  "http://127.0.0.1:8000",
+  "http://127.0.0.1:8080",
+]);
+function corsFor(req: Request): Record<string, string> {
+  const origin = req.headers.get("Origin") ?? "";
+  const h: Record<string, string> = {
+    "Access-Control-Allow-Headers": "authorization, content-type",
+    "Vary": "Origin",
+  };
+  if (ALLOWED_ORIGINS.has(origin)) h["Access-Control-Allow-Origin"] = origin;
+  return h;
+}
 
 // Generic provider words that must never trigger provider matching on their
 // own — they hijack unrelated questions ("this site ..." matched provider "Site").
@@ -41,6 +61,7 @@ function isGenericProviderWord(w: string): boolean {
 let catalogCache: { at: number; routes: any[] } | null = null;
 
 serve(async (req) => {
+  const cors = corsFor(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   try {
     // The gateway already verified the JWT signature (verify_jwt=true). Extract
@@ -49,14 +70,14 @@ serve(async (req) => {
     // would always return null and every signed-in user would get a 401.
     const authHeader = req.headers.get("Authorization") ?? "";
     const authM = authHeader.match(/^Bearer\s+(.+)$/i);
-    if (!authM) return json({ error: "unauthorized" }, 401);
+    if (!authM) return json(cors, { error: "unauthorized" }, 401);
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_ANON_KEY")!,
       { global: { headers: { Authorization: authHeader } } }
     );
     const { data: { user } } = await supabase.auth.getUser(authM[1]);
-    if (!user) return json({ error: "unauthorized" }, 401);
+    if (!user) return json(cors, { error: "unauthorized" }, 401);
 
     // The rate limiter FKs to profiles — make sure a profile row exists first
     // (the app upserts on sign-in, but API/test callers may not). Without this
@@ -72,7 +93,7 @@ serve(async (req) => {
     const { data: rlOk, error: rlErr } = await supabase.rpc("agent_rl_bump", { p_user: user.id, p_limit: RATE_LIMIT });
     if (rlErr) {
       console.error("agent_rl_bump failed:", rlErr.message);
-      return json({ error: "internal" }, 500);
+      return json(cors, { error: "internal" }, 500);
     }
     if (!rlOk) {
       return new Response(
@@ -82,7 +103,12 @@ serve(async (req) => {
     }
 
     const { thread_id, message } = await req.json();
-    if (!message || typeof message !== "string") return json({ error: "message required" }, 400);
+    if (!message || typeof message !== "string") return json(cors, cors, { error: "message required" }, 400);
+    if (message.length > MAX_MESSAGE_LEN) return json(cors, cors, { error: "message too long" }, 400);
+    // L4: thread_id must be a string when provided (non-string truthy values
+    // would otherwise cause a DB error → noisy 500).
+    if (thread_id !== undefined && thread_id !== null && typeof thread_id !== "string")
+      return json(cors, cors, { error: "thread_id must be a string" }, 400);
 
     // Thread (create if needed)
     let tid: string = thread_id;
@@ -103,7 +129,7 @@ serve(async (req) => {
         { thread_id: tid, role: "user", content: message },
         { thread_id: tid, role: "assistant", content: earlyGuard, meta: { capability: true, guard: true } },
       ]);
-      return json({ thread_id: tid, reply: earlyGuard, action: null });
+      return json(cors, { thread_id: tid, reply: earlyGuard, action: null });
     }
 
     // Parallel fetches: profile, playbook, reminders, history, expiring.
@@ -215,7 +241,7 @@ serve(async (req) => {
           status: "active", updated_at: new Date().toISOString(),
         }, { onConflict: "user_id,route_id" });
       }
-      return json({ thread_id: tid, reply: cap.reply, action: null });
+      return json(cors, { thread_id: tid, reply: cap.reply, action: null });
     }
 
     // Deterministic reminder intent: the user asked to be reminded about a
@@ -238,7 +264,7 @@ serve(async (req) => {
           { thread_id: tid, role: "user", content: message },
           { thread_id: tid, role: "assistant", content: detReply, meta: { capability: true, deterministic_reminder: true } },
         ]);
-        return json({ thread_id: tid, reply: detReply, action: null });
+        return json(cors, { thread_id: tid, reply: detReply, action: null });
       }
       console.error("deterministic reminder insert failed:", detRemErr.message);
       const detFail = `Quick heads-up: I tried to save that reminder but it didn't stick (technical hiccup on my end). Want me to try again?`;
@@ -246,7 +272,7 @@ serve(async (req) => {
         { thread_id: tid, role: "user", content: message },
         { thread_id: tid, role: "assistant", content: detFail, meta: { capability: true } },
       ]);
-      return json({ thread_id: tid, reply: detFail, action: null });
+      return json(cors, { thread_id: tid, reply: detFail, action: null });
     }
 
     const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined);
@@ -255,7 +281,7 @@ serve(async (req) => {
         { thread_id: tid, role: "user", content: message },
         { thread_id: tid, role: "assistant", content: fastReply, meta: { fast_path: true } },
       ]);
-      return json({ thread_id: tid, reply: fastReply, action: null });
+      return json(cors, { thread_id: tid, reply: fastReply, action: null });
     }
 
     const profileLine = profile
@@ -329,7 +355,7 @@ serve(async (req) => {
     if (!anthropicRes.ok) {
       const t = await anthropicRes.text();
       console.error("anthropic error", anthropicRes.status, t.slice(0, 300));
-      return json({ error: "agent_unavailable" }, 502);
+      return json(cors, { error: "agent_unavailable" }, 502);
     }
     const aj = await anthropicRes.json();
     let reply: string = aj.content?.map((b: any) => b.text ?? "").join("") ?? "";
@@ -561,14 +587,14 @@ serve(async (req) => {
       finalReply += `\n\nQuick correction: I said I'd set a reminder just now, but it didn't actually save. Tell me again and I'll make sure it sticks.`;
     }
 
-    return json({ thread_id: tid, reply: finalReply, action });
+    return json(cors, { thread_id: tid, reply: finalReply, action });
   } catch (e) {
     console.error(e);
-    return json({ error: "internal" }, 500);
+    return json(cors, { error: "internal" }, 500);
   }
 });
 
-function json(body: unknown, status = 200) {
+function json(cors: Record<string, string>, body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "content-type": "application/json" } });
 }
 

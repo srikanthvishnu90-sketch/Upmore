@@ -13,10 +13,12 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <title>Upmore</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Self-hosted Schibsted Grotesk (SIL OFL) — zero third-party requests. */
+  @font-face{
+    font-family:"Schibsted Grotesk"; font-style:normal; font-weight:400 700; font-display:swap;
+    src:url("fonts/schibsted-grotesk.woff2") format("woff2");
+  }
   :root {
     --bg: #0A0F0C;
     --surface: #101613;
@@ -1063,6 +1065,15 @@
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   }
+  // L3: only http(s) URLs may be rendered into href. A javascript: URL would
+  // still execute even after esc() neutralizes quotes. Returns "" for anything
+  // else, and callers must not render the link in that case.
+  function safeUrl(u) {
+    try {
+      const p = new URL(String(u).trim());
+      return (p.protocol === "http:" || p.protocol === "https:") ? p.href : "";
+    } catch (e) { return ""; }
+  }
   const short = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n).trimEnd() + "…" : s; };
   // 7-field quality framework (quick lanes): who pays, who qualifies, work
   // available, what gets accepted, costs & unpaid time, when cash arrives,
@@ -1341,7 +1352,7 @@
       <h3>${esc(s.text)}</h3>
       ${s.done_when ? `<p class="wdone"><b>You're done when:</b> ${esc(s.done_when)}</p>` : ""}
       ${s.warns ? `<p class="warn"><b>Heads up:</b> ${esc(s.warns)}</p>` : ""}
-      <div class="walklinks">${links.map(u => `<a class="walklink" href="${esc(u)}" target="_blank" rel="noopener"><span>Open ${esc(hostOf(u))}</span><span>&#8599;</span></a>`).join("")}</div>
+      <div class="walklinks">${links.map(u => { const su = safeUrl(u); return su ? `<a class="walklink" href="${esc(su)}" target="_blank" rel="noopener"><span>Open ${esc(hostOf(su))}</span><span>&#8599;</span></a>` : ""; }).join("")}</div>
       <button class="walknext">${isLast ? "Done — finish" : "Done — next step"}</button>
       <button class="walkhelp">I'm stuck on this step</button>`;
     chat.appendChild(card);
@@ -1829,7 +1840,7 @@
           ${sevenFields(r)}
           ${(r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0) ? `<div class="catch"><b>Note:</b> pays as ${esc(r.cash_or_credit)} — not cash in hand.</div>` : ""}
           ${r.affiliate ? `<div><span class="abadge">Affiliate</span> We may earn a commission if you use this link — it never comes out of your pocket.</div>` : ""}
-          <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
+          <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url && safeUrl(r.url) ? `<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
         </div>`;
       el.style.cursor = "pointer";
       el.querySelector(".xrow").onclick = () => { const dd = el.querySelector(".xdetail"); dd.hidden = !dd.hidden; };
@@ -2008,7 +2019,7 @@
       <p class="t">${esc(s.merchant)}${s.plan_name ? ` <span style="color:var(--muted);font-weight:400">· ${esc(s.plan_name)}</span>` : ""}</p>
       <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${when}</p>
       ${s.waste_note ? `<p class="m">💡 ${esc(s.waste_note)}</p>` : ""}
-      ${s.cancel_url ? `<p class="m"><a href="${esc(s.cancel_url)}" target="_blank" rel="noopener" style="color:var(--sky);font-weight:600">Cancel page →</a></p>` : ""}
+      ${s.cancel_url && safeUrl(s.cancel_url) ? `<p class="m"><a href="${esc(safeUrl(s.cancel_url))}" target="_blank" rel="noopener" style="color:var(--sky);font-weight:600">Cancel page →</a></p>` : ""}
       ${s.cancel_steps && !s.cancel_url ? `<p class="m">Cancel: ${esc(s.cancel_steps)}</p>` : ""}
     </div>${s.status === "cancelled"
       ? `<span class="pill">Cancelled</span>`
