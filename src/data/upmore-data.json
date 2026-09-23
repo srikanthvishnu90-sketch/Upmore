@@ -234,15 +234,19 @@
    "provider": "BookFinder (Textbook Buyback)",
    "method": "Sell used textbooks for cash",
    "what": "Search ISBN, compare buyback prices, ship textbook, receive payment",
-   "reward": "Varies by textbook ($5-$200+)",
+   "reward": "Comparison tool for textbook buyback prices (varies per book; BookFinder is not itself a buyer \u2014 no fixed $200)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Payment 1-2 weeks after book received",
-   "catches": "Compare prices across buyback sites for best deal",
-   "url": "https://bookfinder.com",
+   "payout_timing": "BookFinder pays nothing itself; timing depends on the buyback vendor you select from the comparison.",
+   "catches": [
+    "BookFinder never buys your book \u2014 it only compares other vendors' buyback offers; you complete the sale with a third party.",
+    "Buyback value varies per book, edition, condition, and vendor \u2014 the $200 headline is unsupported and unrealistic for most books.",
+    "Older editions and low-demand titles may get no offers at all."
+   ],
+   "url": "https://www.bookfinder.com/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 4,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -250,51 +254,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://bookfinder.com or download the BookFinder (Textbook Buyback) app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.bookfinder.com/ and use the 'Textbook Buyback' option in the For Students section.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Search by ISBN to get the exact edition of your textbook.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Compare the buyback offers from the listed vendors, including shipping costs.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Search ISBN, compare buyback prices, ship textbook, receive payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Pick the best offer and click through to that vendor's site.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Follow the vendor's own sell process (enter condition, accept quote, ship with their label).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Track the vendor's payment timing \u2014 BookFinder has no role after you leave its site.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -305,15 +302,19 @@
    "provider": "Chegg Textbook Buyback",
    "method": "Sell used textbooks to Chegg",
    "what": "Enter ISBN, get quote, ship free, receive payment",
-   "reward": "Varies by textbook ($5-$200+)",
+   "reward": "Chegg no longer buys books (since mid-2022) \u2014 selling routes through Valore's marketplace (functional duplicate of R0368)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Payment 1-2 weeks after book received",
-   "catches": "Free shipping; payment via PayPal or check",
-   "url": "https://chegg.com/sell-textbooks",
+   "payout_timing": "Chegg pays nothing itself; sales complete on Valore's marketplace \u2014 Valore issues payment within 14 business days of warehouse processing (check via USPS 7-14 days, PayPal 2-14 days).",
+   "catches": [
+    "Chegg does not buy your book \u2014 since 2022 all textbook selling is routed to Valore's marketplace, making this route functionally identical to Valore sellback.",
+    "Payout varies per book and condition \u2014 the $200 headline is unsupported.",
+    "Payment comes from Valore (check or PayPal), not Chegg, and can take weeks."
+   ],
+   "url": "https://www.chegg.com/books",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 5,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -321,51 +322,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://chegg.com/sell-textbooks or download the Chegg Textbook Buyback app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Start your search at https://www.chegg.com/books for the textbook you want to sell.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Chegg redirects book listings and purchases to Valore's marketplace product pages.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "On the Valore page, get your sellback quote for the book (amount varies by title and condition).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Enter ISBN, get quote, ship free, receive payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Accept the quote, use the prepaid shipping label, and ship within 7 days of the quote.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Valore's warehouse receives and evaluates the book; payment is issued within 14 business days.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Receive payment by check (USPS, 7-14 business days) or PayPal (2-14 business days).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -376,15 +370,20 @@
    "provider": "ValoreBooks Buyback",
    "method": "Sell used textbooks to ValoreBooks",
    "what": "Enter ISBN, get quote, ship free, receive payment",
-   "reward": "Varies by textbook ($5-$200+)",
+   "reward": "Textbook buyback with prepaid label (ship within 7 days); payment within 14 business days of processing \u2014 check 7-14d or PayPal 2-14d; quote varies per book",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Payment 1-2 weeks after book received",
-   "catches": "Compare with other buyback sites for best price",
-   "url": "https://valorebooks.com/sell-textbooks",
+   "payout_timing": "Payment issued within 14 business days of warehouse processing; check arrives 7-14 business days via USPS, PayPal posts 2-14 business days.",
+   "catches": [
+    "Payout varies per book, edition, condition, and demand \u2014 the $200 headline is unsupported; many books quote far less.",
+    "Books must be shipped within 7 days of the quote; prepaid labels expire after 10 days.",
+    "If the book's condition doesn't match your description, the quote can be revised down.",
+    "Full cycle (quote, ship, warehouse evaluation, payment) takes weeks."
+   ],
+   "url": "https://www.valore.com/sellback",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 6,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -392,51 +391,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://valorebooks.com/sell-textbooks or download the ValoreBooks Buyback app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.valore.com/sellback and enter your textbook's ISBN to get a sellback quote.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Accept the quote if the price works for you (quotes vary per book and condition).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Use Valore's prepaid shipping label and ship the book within 7 days of receiving the quote.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Enter ISBN, get quote, ship free, receive payment",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Valore's warehouse receives and evaluates the book against your stated condition.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Payment is issued within 14 business days of warehouse processing.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Receive payment by check (USPS, 7-14 business days) or PayPal (2-14 business days).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -447,15 +439,20 @@
    "provider": "Amazon Textbook Trade-in",
    "method": "Trade in textbooks for Amazon gift cards",
    "what": "Search ISBN, get quote, ship free, receive Amazon gift card",
-   "reward": "Varies by textbook ($5-$150+)",
+   "reward": "Trade textbooks for Amazon.com gift cards (prepaid label; gift card, NOT cash)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Gift card 2-3 weeks after book received",
-   "catches": "Payment as Amazon gift card only; compare with cash buyback",
-   "url": "https://amazon.com/trade-in",
+   "payout_timing": "Amazon.com gift card deposited into your account after the book is received and verified by a third-party merchant.",
+   "catches": [
+    "Paid in Amazon gift card only \u2014 not cash; it locks your money into Amazon.",
+    "Trade-in value varies per book (demand, condition, edition) \u2014 the $150 headline is unsupported.",
+    "Books must pass Amazon's condition inspection or the offer is adjusted/rejected.",
+    "Not all books are eligible \u2014 outdated editions and damaged books may get no offer."
+   ],
+   "url": "https://www.amazon.com/tradeinbooks",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 7,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -463,51 +460,44 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://amazon.com/trade-in or download the Amazon Textbook Trade-in app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.amazon.com/tradeinbooks and search your textbook by ISBN, title, or author.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Check whether the book is eligible \u2014 Amazon displays the trade-in value for eligible books.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Accept the trade-in value and complete the trade-in checkout to generate a prepaid shipping label.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Search ISBN, get quote, ship free, receive Amazon gift card",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Package the book securely and ship it using the prepaid label.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Amazon's third-party merchant receives and verifies the book's condition.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "An Amazon.com gift card for the agreed value is deposited into your Amazon account.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -731,15 +721,21 @@
    "provider": "GitHub Student Developer Pack",
    "method": "Free developer tools and credits for students",
    "what": "Verify student status, access free developer tools and cloud credits",
-   "reward": "$1000+ in free tools and credits",
+   "reward": "Free tools/credits for students: GitHub Pro, Copilot Student, JetBrains, $100 Azure credit (18+), $13/mo Heroku x24mo, $50 MongoDB credits (no official $1,000 total exists \u2014 value in free tools, not cash)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Immediate access upon verification",
-   "catches": "For CS/developer students; includes cloud credits, tools, learning resources",
-   "url": "https://education.github.com",
+   "payout_timing": "Approval usually takes a few days; individual partner offers activate when claimed from the Education dashboard.",
+   "catches": [
+    "Savings on tools and credits, not cash \u2014 this route cannot put money in your pocket.",
+    "No official $1,000 total exists \u2014 the $1,000 headline is unsupported; value depends on which offers you claim and use.",
+    "Some offers are age-restricted (Azure $100 credit is 18+).",
+    "Timed partner offers start when you claim them and most cannot be renewed after expiry.",
+    "Student status must be re-verified; benefits end when you are no longer enrolled."
+   ],
+   "url": "https://education.github.com/pack",
    "cash_or_credit": "Restricted credit",
    "earnings_class": "Speculative \u2014 $0 until withdrawn",
    "lane": "Restricted",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 11,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -747,51 +743,51 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://education.github.com or download the GitHub Student Developer Pack app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Create a free personal GitHub account at https://github.com if you do not have one (use your real legal name).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Go to https://education.github.com/pack and click 'Get your Student Benefits' / 'Get your pack'.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
+     "text": "Select Student, add your school-issued email address (or choose document upload if you have no school email).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 4,
-     "text": "Complete the required action: Verify student status, access free developer tools and cloud credits",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
+     "text": "Enter your school's name and describe how you plan to use GitHub.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "If prompted, upload clear proof of current enrollment (student ID with current date/semester, class schedule, or transcript \u2014 name, school, and date must be visible).",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "text": "Submit and wait for approval (usually a few days; confirmation email arrives when approved).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
      "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "text": "Return to https://education.github.com/pack, browse the partner offers, and claim the ones you will actually use (GitHub Pro, Copilot, JetBrains, cloud credits).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -802,15 +798,20 @@
    "provider": "Amazon Prime Student",
    "method": "Discounted Prime for students (6 months free)",
    "what": "Verify student status, get 6 months free Prime",
-   "reward": "$7.49/month after free trial (50% off)",
+   "reward": "6-month free trial then $7.49/mo or $69/yr per Amazon terms (AUTO-CHARGES if not cancelled)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Immediate access upon verification",
-   "catches": "Not cash but savings; includes streaming, free shipping",
-   "url": "https://amazon.com/prime/student",
+   "payout_timing": "6-month free trial for new members; discounted paid membership ($7.49/month or $69/year) auto-starts when the trial ends unless cancelled.",
+   "catches": [
+    "This is a discount on a paid subscription, not cash \u2014 after the trial it costs $7.49/month or $69/year.",
+    "The trial AUTO-CONVERTS to the paid plan \u2014 Amazon requires a payment method up front and charges you if you forget to cancel.",
+    "The 6-month trial is for new members only; previous Prime trial users may not re-qualify.",
+    "No household sharing of Prime benefits on the young-adult plan."
+   ],
+   "url": "https://www.amazon.com/joinstudent",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 12,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -818,51 +819,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://amazon.com/prime/student or download the Amazon Prime Student app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.amazon.com/joinstudent and start the Prime for Young Adults / Prime Student signup.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Verify your status as a student (.edu email or enrollment documents) or by age (18-24).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Verify student status, get 6 months free Prime",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Add a payment method \u2014 required even for the free trial.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Use the full 6-month free trial (shipping, Prime Video, Music, Gaming, Reading, Grubhub+).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Before the trial ends, decide: cancel to pay nothing, or continue at $7.49/month or $69/year (annual is cheaper if staying all year).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -944,15 +931,20 @@
    "provider": "Adobe Creative Cloud Student",
    "method": "Discounted Adobe CC for students",
    "what": "Verify student status, get discounted Creative Cloud",
-   "reward": "$19.99/month (60% off)",
+   "reward": "Student plan $19.99/mo first year per Adobe terms (discount on a paid subscription, NOT income)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Immediate discount upon verification",
-   "catches": "Not cash but savings; for design/creative students",
-   "url": "https://adobe.com/creativecloud/buy/students.html",
+   "payout_timing": "Discounted rate applies from signup after eligibility verification; billed monthly on the annual plan.",
+   "catches": [
+    "This is a discount on a paid subscription, not cash \u2014 it costs you $19.99/month; it never pays you.",
+    "The first-year price is promotional \u2014 the rate rises after year one (Adobe's published second-year student rate is higher).",
+    "Annual plan with commitment \u2014 early cancellation triggers an early termination fee.",
+    "Eligibility is re-verified; if you stop being a student you lose the rate."
+   ],
+   "url": "https://www.adobe.com/creativecloud/buy/students.html",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 14,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -960,51 +952,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://adobe.com/creativecloud/buy/students.html or download the Adobe Creative Cloud Student app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.adobe.com/creativecloud/buy/students.html.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Choose the Creative Cloud Pro students-and-teachers plan (annual billed monthly, US$19.99/month first year per Adobe's published terms).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Verify student status, get discounted Creative Cloud",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Create or sign in to your Adobe account.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Verify your student/teacher eligibility via your school-issued email or by uploading documents (school ID, report card, transcript, or tuition bill showing name, institution, and current date).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Complete purchase \u2014 the discounted rate applies from signup; note the renewal date and the higher second-year rate before subscribing.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -1015,15 +993,20 @@
    "provider": "Notion Free for Students",
    "method": "Free Notion Pro plan for students",
    "what": "Sign up with .edu email, get free Notion Pro",
-   "reward": "Free Pro plan (normally $10/month)",
+   "reward": "Free Plus Plan for a one-member workspace (institution email required; K-12 not eligible for the individual offer)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Immediate access upon signup",
-   "catches": "Productivity tool; free for students with .edu email",
-   "url": "https://notion.so/students",
+   "payout_timing": "Free Plus applied after verifying the institution-issued email; active while eligibility and school email remain valid.",
+   "catches": [
+    "Free software plan, not cash \u2014 saves the Plus subscription cost (~$10-12/month value) but never pays you.",
+    "One-member workspace only; not a team license.",
+    "School email from a WHED-listed institution is mandatory \u2014 student IDs and non-listed schools do not qualify.",
+    "K-12 students and educators are not eligible for the individual Education Plus offer."
+   ],
+   "url": "https://www.notion.com/product/notion-for-education",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 15,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -1031,51 +1014,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://notion.so/students or download the Notion Free for Students app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Sign up for Notion at https://www.notion.com/product/notion-for-education using your institution-issued school email.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Make sure your workspace is on the Free plan and contains only one member.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Sign up with .edu email, get free Notion Pro",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Go to Settings & Members, then Plans, and click 'Get the Education Plan'.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Verify your school email when prompted.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Your one-member workspace is upgraded to Plus for free while your eligibility and school email remain valid.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -1086,15 +1055,19 @@
    "provider": "Figma Education",
    "method": "Free Figma Professional for students",
    "what": "Verify student status, get free Figma Professional",
-   "reward": "Free Pro plan (normally $15/month)",
+   "reward": "100% free for students (Professional tier; over-13 + verification required)",
    "requirements": "Active student status, .edu email or student ID, may need verification through SheerID",
-   "payout_timing": "Immediate access upon verification",
-   "catches": "Design tool; free for students; for design/creative students",
-   "url": "https://figma.com/education",
+   "payout_timing": "Free access granted after education-status verification and Education team setup.",
+   "catches": [
+    "Free software access, not cash \u2014 this saves the cost of a paid tier but never pays you.",
+    "Access requires re-verification and ends when you leave school.",
+    "Under-13 students need their school to sign Figma's terms for schools (Enterprise tier path)."
+   ],
+   "url": "https://www.figma.com/education/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 16,
    "difficulty": 2.2,
    "tier": "Very Easy",
@@ -1102,51 +1075,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://figma.com/education or download the Figma Education app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.figma.com/education/ and create a Figma account using your student or teacher email address.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Verify your education status at Figma.com/education/apply.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Verify student status, get free Figma Professional",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Create or join an Education team to get access to all professional paid tools.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Use Figma and FigJam at the Professional tier for free while verified.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
