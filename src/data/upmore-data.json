@@ -24458,15 +24458,20 @@
    "provider": "Energy Star Rebates",
    "method": "Search for ENERGY STAR appliance rebates by ZIP code",
    "what": "Search Energy Star rebate finder, apply for rebates on qualifying purchases",
-   "reward": "$25-$500+ per appliance",
+   "reward": "EPA ENERGY STAR rebate-finder directory of live appliance rebates (purchase discounts on upgrades you're already buying)",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 4-12 weeks after submission",
-   "catches": "Must purchase qualifying ENERGY STAR appliance; rebate varies by utility/state",
-   "url": "https://energystar.gov/rebate-finder",
+   "payout_timing": "Varies by offer: instant rebates at participating retailers, or mail-in/online rebates typically paid 4-8 weeks after purchase.",
+   "catches": [
+    "Every rebate requires buying the appliance first \u2014 this is a discount on spending, not money earned.",
+    "Typical rebates are $25-$150 per product; the $500 top end is rare and offer-specific.",
+    "Offers are local and expire \u2014 always confirm the offer is live before buying.",
+    "The product must be on the certified list; a non-certified model, even efficient, does not qualify."
+   ],
+   "url": "https://www.energystar.gov/rebate-finder",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 297,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -24474,51 +24479,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://energystar.gov/rebate-finder or download the Energy Star Rebates app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.energystar.gov/rebate-finder and enter your zip code to see live rebates near you.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Open a specific offer and confirm it is current, the exact qualifying model numbers, and the purchase window.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Search Energy Star rebate finder, apply for rebates on qualifying purchases",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Buy the qualifying ENERGY STAR certified product from a participating retailer.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Submit the rebate form with proof of purchase; the rebate arrives as a check, gift card, or bill credit, typically in 4-8 weeks.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -24600,15 +24584,20 @@
    "provider": "Utility Rebate Programs",
    "method": "Search local utility for energy efficiency rebates",
    "what": "Contact local utility, apply for rebate on qualifying efficiency upgrades",
-   "reward": "$25-$1000+ per upgrade",
+   "reward": "National directory (DSIRE) of live utility rebate programs (purchase discounts, vary by utility \u2014 savings, not income)",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 4-12 weeks",
-   "catches": "Must be customer of participating utility; upgrades must qualify",
+   "payout_timing": "Varies by utility program: instant point-of-sale discounts, or mail-in/online rebates typically paid 4-8 weeks after purchase and installation.",
+   "catches": [
+    "This is a directory of thousands of separate programs, not one $1,000 offer \u2014 what you can get depends entirely on your utility and state.",
+    "Every rebate requires spending money on equipment or upgrades first; it is a discount, not cash earned.",
+    "Rebate amounts and qualifying product lists change yearly; always confirm the current program terms before buying.",
+    "Some utility rebates require pre-approval BEFORE purchase \u2014 buying first can disqualify you."
+   ],
    "url": "https://dsireusa.org",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 299,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -24616,51 +24605,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://dsireusa.org or download the Utility Rebate Programs app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://dsireusa.org and enter your 5-digit zip code to list incentive programs in your area.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Filter for residential rebate programs from your electric/gas utility and open the utility's program page for current amounts and terms.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Contact local utility, apply for rebate on qualifying efficiency upgrades",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Check whether the rebate needs pre-approval before purchase \u2014 if so, apply first.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Buy and install the qualifying efficient equipment within the program window and keep receipts.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Submit the utility's rebate application (online or mail-in) with proof of purchase; rebate arrives as a bill credit or check, typically in 4-8 weeks.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -24671,15 +24646,20 @@
    "provider": "Local EV Charger Incentives",
    "method": "Search for local EV charger installation rebates",
    "what": "Search local/state programs, apply for EV charger installation rebate",
-   "reward": "$100-$1000+ per charger",
+   "reward": "Federal 30% EV-charger credit (up to $1,000) EXPIRED 6/30/2026 \u2014 do not expect it for new 2026 installs. State/utility rebates remain; purchase discount, not income",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 8-16 weeks",
-   "catches": "Must install qualifying EV charger; varies by state/utility",
+   "payout_timing": "State and utility EV-charger incentive timing varies by program. The federal 30C credit expired for property placed in service after June 30, 2026 (claims for pre-deadline installs go on the 2026 tax return).",
+   "catches": [
+    "The federal EV charger tax credit (30%, up to $1,000) EXPIRED June 30, 2026 \u2014 do not promise it for new installations.",
+    "What remains are state and utility rebates that vary by location; many areas have nothing.",
+    "Every incentive requires buying and installing a charger ($500-$2,000+) first \u2014 a discount on spending, not money earned.",
+    "AFDC's own disclaimer: verify each incentive is still applicable before acting."
+   ],
    "url": "https://afdc.energy.gov/laws",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 300,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -24687,51 +24667,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://afdc.energy.gov/laws or download the Local EV Charger Incentives app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://afdc.energy.gov/laws and search incentives for your state, filtering for electric-vehicle charging infrastructure.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Open each listed program and confirm it is currently funded and accepting applications \u2014 do not rely on the AFDC summary alone.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Search local/state programs, apply for EV charger installation rebate",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Also check your electric utility's website for charger rebates not listed federally.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Buy and install a qualifying Level 2 charger per the program's rules (some require pre-approval or a licensed electrician).",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Submit the rebate application or claim the tax treatment per the program's instructions; keep all receipts and installation dates.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -24742,15 +24708,20 @@
    "provider": "Water Conservation Incentives",
    "method": "Search for water conservation rebates from local utility",
    "what": "Contact water utility, apply for rebate on water-saving fixtures",
-   "reward": "$25-$500+ per fixture",
+   "reward": "EPA WaterSense rebate directory (purchase discounts on water-efficient products)",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 4-12 weeks",
-   "catches": "Must install qualifying water-saving fixtures; varies by utility",
-   "url": "https://epa.gov/watersense",
+   "payout_timing": "Varies by utility offer: typically a bill credit or rebate check within weeks of documented purchase and installation.",
+   "catches": [
+    "Rebates are utility-specific \u2014 many water utilities offer nothing, so a large share of users get $0.",
+    "Every rebate requires buying the fixture first \u2014 a discount on spending, not money earned.",
+    "Typical rebates are $25-$100 per fixture; the $500 top end is not representative.",
+    "The product must carry the WaterSense label; efficient but unlabeled products do not qualify."
+   ],
+   "url": "https://www.epa.gov/watersense",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 301,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -24758,51 +24729,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://epa.gov/watersense or download the Water Conservation Incentives app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Go to https://www.epa.gov/watersense and use the 'Find Rebates' link to look up offers from your water utility.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Confirm the offer is currently live, the qualifying WaterSense labeled products, and any pre-approval requirement.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Contact water utility, apply for rebate on water-saving fixtures",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Buy and install the qualifying fixture and keep the receipt.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Submit the utility's rebate form with proof of purchase; the rebate arrives as a bill credit or check.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -24884,15 +24834,20 @@
    "provider": "Heat Pump Rebates",
    "method": "Search for heat pump installation rebates and tax credits",
    "what": "Search federal/state programs, apply for rebate or tax credit",
-   "reward": "$300-$2000+ per installation",
+   "reward": "Federal $2,000 credit EXPIRED 12/31/2025 \u2014 do not expect it for new 2026 work. Live money is state/utility rebates (e.g., NY: $700-$1,400 per 10k Btu/h + $1,000 HPWH, funded through 2030); purchase discount, not income",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 8-16 weeks",
-   "catches": "Must install qualifying heat pump; varies by state/income",
-   "url": "https://energy.gov",
+   "payout_timing": "Rebate applied at point of sale or paid through the participating contractor, typically within weeks of installation; varies by utility territory.",
+   "catches": [
+    "The $2,000 federal heat-pump tax credit (25C) EXPIRED December 31, 2025 under the One Big Beautiful Bill Act \u2014 it is not available for 2026 installations.",
+    "Remaining rebates are state/utility-specific and vary from a few hundred to several thousand dollars; there is no national $2,000 offer anymore.",
+    "You must purchase a $5,000-$15,000+ system first \u2014 this is a discount on spending, not money earned.",
+    "Most programs require a participating contractor; DIY or non-listed equipment does not qualify."
+   ],
+   "url": "https://cleanheatconnect.ny.gov/",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 303,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -24900,51 +24855,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://energy.gov or download the Heat Pump Rebates app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Look up heat-pump rebates for your zip code at https://dsireusa.org and on your electric/gas utility's website \u2014 amounts and rules are local.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Confirm the current program is funded and accepting applications (e.g., NYS Clean Heat runs through 2030; check your own state's status).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Search federal/state programs, apply for rebate or tax credit",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Get quotes only from contractors participating in your local rebate program and confirm the equipment model is on the program's qualifying list.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "Install the qualifying heat-pump system; the rebate is applied at point of sale or paid through the contractor after installation.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Do NOT claim the federal 25C credit for any system placed in service after December 31, 2025 \u2014 it no longer exists.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -25026,15 +24967,20 @@
    "provider": "Insulation Rebates",
    "method": "Search for home insulation rebates from local utility/state",
    "what": "Search programs, complete qualifying insulation upgrade, apply for rebate",
-   "reward": "$100-$1000+ per upgrade",
+   "reward": "Federal insulation credit EXPIRED 12/31/2025. Live channel is utility rebates, typically low hundreds; purchase discount, not income",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 8-16 weeks",
-   "catches": "Must complete qualifying insulation upgrade; varies by state/utility",
-   "url": "https://energy.gov/savings",
+   "payout_timing": "Utility rebates are typically paid 4-8 weeks after the insulation work is completed and documented. The federal 25C credit is closed for property placed in service after December 31, 2025.",
+   "catches": [
+    "The federal insulation tax credit (25C, up to $1,200/year) EXPIRED December 31, 2025 \u2014 not available for 2026 work.",
+    "Remaining rebates are utility-specific and typically a few hundred dollars, not $1,000.",
+    "You must pay for the insulation work first \u2014 this is a discount on spending, not money earned.",
+    "Many programs require pre-approval or an energy audit BEFORE the work; doing the work first can disqualify you."
+   ],
+   "url": "https://dsireusa.org",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 305,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -25042,51 +24988,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://energy.gov/savings or download the Insulation Rebates app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Find insulation and air-sealing rebates for your zip code at https://dsireusa.org and on your utility's website.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Check whether the program requires pre-approval or a home energy audit before work \u2014 complete that step first if so.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Search programs, complete qualifying insulation upgrade, apply for rebate",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Have the qualifying insulation/air-sealing work done by a qualified contractor and keep all invoices.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Submit the utility's rebate form with proof of purchase/installation; the rebate arrives as a bill credit or check, typically in 4-8 weeks.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -25168,15 +25093,20 @@
    "provider": "Cooling Rebate Programs",
    "method": "Search for AC/cooling system rebates",
    "what": "Search local utility, purchase qualifying system, apply for rebate",
-   "reward": "$25-$500+ per system",
+   "reward": "Federal cooling credit EXPIRED 12/31/2025. Live channel is utility rebates, typically $25-$300; purchase discount, not income",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 4-12 weeks",
-   "catches": "Must purchase qualifying cooling system; utility must offer program",
-   "url": "https://energystar.gov",
+   "payout_timing": "Utility rebates are typically paid 4-8 weeks after the cooling equipment is installed and documented. The federal 25C credit is closed for 2026 installations.",
+   "catches": [
+    "The federal tax credit for efficient cooling equipment (25C) EXPIRED December 31, 2025.",
+    "Remaining rebates are utility-specific and vary by location; amounts are typically $25-$300, not $500.",
+    "You must buy the equipment first \u2014 this is a discount on spending, not money earned.",
+    "Some programs require pre-approval before purchase."
+   ],
+   "url": "https://www.energystar.gov/rebate-finder",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 307,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -25184,51 +25114,30 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://energystar.gov or download the Cooling Rebate Programs app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Look up cooling rebates for your zip code at https://www.energystar.gov/rebate-finder and https://dsireusa.org.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Open your utility's specific offer and confirm it is live, the qualifying equipment specs, and any pre-approval requirement.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Search local utility, purchase qualifying system, apply for rebate",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Buy and install the qualifying cooling equipment or smart thermostat and keep receipts.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
-    },
-    {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 4,
+     "text": "Submit the rebate application with proof of purchase; the rebate arrives as a bill credit or check, typically in 4-8 weeks.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -25381,15 +25290,21 @@
    "provider": "Low-Income Home Energy Assistance (LIHEAP)",
    "method": "Apply for federal energy assistance if eligible",
    "what": "Apply through state LIHEAP office with income documentation",
-   "reward": "Varies by state/income ($100-$1000+)",
+   "reward": "Bill assistance: official averages $380 heating / $583 cooling, paid to the utility (not cash; income at or below 150% FPL or 60% state median income)",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 2-8 weeks",
-   "catches": "Income-qualified; must meet state eligibility guidelines",
-   "url": "https://liheaphelp.org",
+   "payout_timing": "Each state runs seasonal application windows; once approved, the benefit is paid directly to the household's energy vendor, typically within weeks. Crisis assistance for shutoff emergencies is expedited.",
+   "catches": [
+    "You never receive cash \u2014 LIHEAP pays your energy company directly. It is bill assistance, not income.",
+    "The national average heating benefit is about $380, far below the route's $1,000 top end.",
+    "Income-restricted: at or below 150% of the poverty line (or 60% of state median income).",
+    "Funding is limited \u2014 only a fraction of eligible households are served each year.",
+    "Applications are only open during each state's seasonal window; miss it and you wait a year."
+   ],
+   "url": "https://acf.gov/ocs/policy-guidance/liheap-im2026-01-federal-poverty-guidelines-fpg-and-state-median-income-smi",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 310,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -25397,51 +25312,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://liheaphelp.org or download the Low-Income Home Energy Assistance (LIHEAP) app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Confirm your household income is at or below 150% of the Federal Poverty Guidelines (or 60% of your state's median income).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Find your state's LIHEAP office and its current application window via the ACF LIHEAP guidance hub at https://acf.gov/ocs/policy-guidance/liheap-im2026-01-federal-poverty-guidelines-fpg-and-state-median-income-smi (follow links to state contacts).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Apply through state LIHEAP office with income documentation",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Apply during the open window with income documentation, ID, and a recent energy bill.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "If approved, the benefit is credited to your energy account by the vendor \u2014 no check comes to you.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "If facing a shutoff, ask about crisis assistance, which is processed faster.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
@@ -25452,15 +25353,21 @@
    "provider": "Weatherization Assistance Program",
    "method": "Apply for free home weatherization if income-eligible",
    "what": "Apply through state weatherization office with income documentation",
-   "reward": "Free home improvements (value $1000-$10000+)",
+   "reward": "Free weatherization services; DOE cites $372+/yr average energy savings (savings, not cash; income at or below 200% federal poverty level)",
    "requirements": "US resident, may need to be utility customer, proof of purchase required, processing time varies",
-   "payout_timing": "Processing time 2-6 months",
-   "catches": "Income-qualified; free home efficiency improvements; not cash",
+   "payout_timing": "No fixed payout \u2014 free weatherization services are scheduled after application approval; state-agency waitlists of several months are typical; savings accrue as lower energy bills.",
+   "catches": [
+    "This pays $0 in cash \u2014 you receive free home improvements and lower bills, not money. It is savings, not income.",
+    "Income-restricted: at or below 200% of the federal poverty line. An average user above that line gets nothing.",
+    "State-administered with limited slots (~32,000 homes/year nationally per DOE) \u2014 waitlists of months are normal.",
+    "Renters need written landlord permission before any work.",
+    "DOE publishes no per-home dollar figure; the route's '$1,000-$10,000+' describes the value of free services, not a payment."
+   ],
    "url": "https://energy.gov/wap",
    "cash_or_credit": "Cash or usable value",
    "earnings_class": "Count only actual received cash",
    "lane": "Standard",
-   "status": "CONFIRM OFFICIAL",
+   "status": "verified",
    "rank": 311,
    "difficulty": 4.5,
    "tier": "Moderate",
@@ -25468,51 +25375,37 @@
    "steps": [
     {
      "n": 1,
-     "text": "Go to https://energy.gov/wap or download the Weatherization Assistance Program app",
-     "who": "User",
-     "done_when": "App/site loaded",
+     "text": "Confirm your household income is at or below 200% of the Federal Poverty Guidelines (check the current HHS poverty guidelines table).",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 2,
-     "text": "Create an account with email or social login",
-     "who": "User",
-     "done_when": "Account created",
+     "text": "Go to the official DOE page https://energy.gov/wap and open the 'how to apply' page to find your state's WAP administrator.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     },
     {
      "n": 3,
-     "text": "Enter any signup bonus or referral code if available",
-     "who": "User",
-     "done_when": "Signup bonus applied",
-     "warns": "Upmore shows: search online for current referral codes before signing up"
-    },
-    {
-     "n": 4,
-     "text": "Complete the required action: Apply through state weatherization office with income documentation",
-     "who": "User",
-     "done_when": "Action completed",
-     "warns": "Upmore shows: read the exact requirements before starting"
-    },
-    {
-     "n": 5,
-     "text": "Wait for reward/payout to be confirmed",
+     "text": "Contact your state's WAP office or local community action agency and complete the application with income documentation.",
      "who": "Upmore",
-     "done_when": "Reward confirmed",
+     "done_when": "",
      "warns": ""
     },
     {
-     "n": 6,
-     "text": "Cash out or redeem when you reach the minimum threshold",
-     "who": "User",
-     "done_when": "Money/reward received",
-     "warns": "Upmore shows: track payout threshold and timing"
+     "n": 4,
+     "text": "A certified auditor performs a home energy audit to determine the most cost-effective improvements.",
+     "who": "Upmore",
+     "done_when": "",
+     "warns": ""
     },
     {
-     "n": 7,
-     "text": "Screenshot the payout and log in Proof Log",
-     "who": "User",
-     "done_when": "Proof uploaded",
+     "n": 5,
+     "text": "Approved improvements (insulation, air sealing, HVAC, etc.) are installed at no cost to you by the agency's contractors.",
+     "who": "Upmore",
+     "done_when": "",
      "warns": ""
     }
    ]
