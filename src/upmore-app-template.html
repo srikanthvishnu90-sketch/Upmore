@@ -308,6 +308,8 @@
   .xdetail { margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); font-size:13.5px; line-height:1.5; color:var(--muted); display:grid; gap:8px; }
   .xdetail b { color:var(--text); font-weight:600; }
   .xdetail .catch b { color:var(--sky); }
+  .xdetail .seven { display:grid; gap:6px; margin-top:4px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.02); }
+  .xdetail .seven b { color:var(--text); }
   .xsearch { display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:0 14px; margin:14px 0 10px; color:var(--dim); }
   .xsearch input { flex:1; background:none; border:0; outline:0; color:var(--ink); font-size:15px; padding:13px 0; font-family:inherit; }
   .xsearch input::placeholder { color:var(--dim); }
@@ -784,7 +786,9 @@
     "Receipt/Loyalty":"tag", "Buyback":"gift", "Recycling":"tag",
     "Government":"bank", "Pet Sitting":"gift", "Tutoring":"chart",
     "Design Market":"gift", "Mystery Shopping":"chart", "Car Advertising":"tag",
-    "Energy Switching":"tag", "Store Signup":"gift"
+    "Energy Switching":"tag", "Store Signup":"gift", "Referral Bonus":"gift",
+    "Cashback":"tag", "Gift Card Resale":"gift", "Delivery":"tag",
+    "Local Labor":"gift", "Tutoring & Gigs":"flask"
   };
   const XTILE = { green:"rgba(79,163,122,.20)", sky:"rgba(111,179,214,.20)" };
   const tileColor = r => r.tier === "Very Easy" ? XTILE.green : XTILE.sky;
@@ -805,6 +809,25 @@
     return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   }
   const short = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n).trimEnd() + "…" : s; };
+  // 7-field quality framework (quick lanes): who pays, who qualifies, work
+  // available, what gets accepted, costs & unpaid time, when cash arrives,
+  // repeatable cadence. Rendered in the route detail when present.
+  const sevenFields = r => {
+    const rows = [
+      ["Who pays you", r.who_pays],
+      ["Who qualifies", r.who_qualifies],
+      ["Work available", r.work_available],
+      ["What gets accepted", r.what_gets_accepted],
+      ["Costs & unpaid time", r.costs_and_unpaid_time],
+      ["When cash arrives", r.when_cash_arrives],
+    ].filter(([, v]) => v);
+    const rep = r.repeatable && r.repeatable.cadence ? r.repeatable.cadence : "";
+    if (!rows.length && !rep) return "";
+    let h = `<div class="seven">`;
+    rows.forEach(([k, v]) => { h += `<div><b>${k}:</b> ${esc(v)}</div>`; });
+    if (rep) h += `<div><b>Repeatable:</b> ${esc(rep)}</div>`;
+    return h + `</div>`;
+  };
 
   /* ================= Router ================= */
   const order = ["splash","welcome","time","about","situation","plan","phone","home","explore","guide","profile"];
@@ -1486,6 +1509,7 @@
           ${r.requirements ? `<div><b>Requirements:</b> ${esc(r.requirements)}</div>` : ""}
           ${r.payout_timing ? `<div><b>Paid:</b> ${esc(r.payout_timing)}</div>` : ""}
           ${r.catches ? `<div class="catch"><b>The catch:</b> ${esc(r.catches)}</div>` : ""}
+          ${sevenFields(r)}
           ${(r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0) ? `<div class="catch"><b>Note:</b> pays as ${esc(r.cash_or_credit)} — not cash in hand.</div>` : ""}
           ${r.affiliate ? `<div><span class="abadge">Affiliate</span> We may earn a commission if you use this link — it never comes out of your pocket.</div>` : ""}
           <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
