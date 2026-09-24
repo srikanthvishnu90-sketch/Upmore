@@ -875,7 +875,8 @@
       <div class="sheetcard">
         <div class="sheeticon" id="promoSheetIcon">S</div>
         <div style="text-align:center"><b id="promoSheetName" style="font-size:18px">SoFi</b>
-        <p class="psub" id="promoSheetMeta" style="margin:4px 0 14px">$300 bonus</p></div>
+        <p class="psub" id="promoSheetMeta" style="margin:4px 0 6px; overflow-wrap:anywhere">$300 bonus</p>
+        <p class="psub" id="promoSheetCatches" style="margin:0 0 14px; font-size:13px; overflow-wrap:anywhere"></p></div>
         <button class="primary" id="promoStartBtn">Start promo</button>
         <button class="ghostbtn" id="promoSheetClose">Not now</button>
       </div>
@@ -1030,7 +1031,7 @@
       return (p.protocol === "http:" || p.protocol === "https:") ? p.href : "";
     } catch (e) { return ""; }
   }
-  const short = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n).trimEnd() + "…" : s; };
+  const short = (s, n) => { s = String(s || ""); if (s.length <= n) return s; const cut = s.slice(0, n); const sp = cut.lastIndexOf(" "); return (sp > n * 0.4 ? cut.slice(0, sp) : cut).trimEnd() + "…"; };
   // 7-field quality framework (quick lanes): who pays, who qualifies, work
   // available, what gets accepted, costs & unpaid time, when cash arrives,
   // where the demand lives, repeatable cadence. Rendered in the route detail
@@ -1608,7 +1609,7 @@
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
-            sub: String(r.reward || "").slice(0, 90), dollars, conf, urg: 1, eff,
+            sub: short(r.reward, 90), dollars, conf, urg: 1, eff,
             cta: "Start", act: () => openPromoSheet(r.id),
             why: `$${Math.round(dollars)} x ${Math.round(conf * 100)}% / ${Math.round(eff)} min` });
         });
@@ -2035,7 +2036,9 @@
     if (!r) return;
     $("promoSheetIcon").outerHTML = appIcon(r.provider || r.category, "lg").replace('class="appicon"', 'class="sheeticon" id="promoSheetIcon"');
     $("promoSheetName").textContent = r.provider || "Promo";
-    $("promoSheetMeta").textContent = String(r.reward || "").slice(0, 80);
+    $("promoSheetMeta").textContent = String(r.reward || "Reward varies.");
+    const pc = $("promoSheetCatches");
+    if (pc) { pc.textContent = r.catches ? "Watch out: " + r.catches : ""; pc.style.display = r.catches ? "" : "none"; }
     $("promoSheet").hidden = false;
     $("promoStartBtn").onclick = () => {
       $("promoSheet").hidden = true;
