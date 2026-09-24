@@ -784,7 +784,7 @@
       <h1 class="ptitle">You</h1>
       <div class="pcard">
         <div class="pava" id="pAva">V</div>
-        <div><b id="pName">Vish</b><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
+        <div><b id="pName">Vish</b><p class="psub" id="pMail" style="margin-top:2px; font-size:12.5px"></p><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
       </div>
       <h2 class="sec">Money log</h2>
       <p class="psub" style="margin:-6px 0 10px">Only real results. Nothing counts on intent — every dollar below has a date and a note.</p>
@@ -1199,6 +1199,16 @@
     return pm / tm;
   };
   const NEEDS_SPEND_CATS = ["Rebate/Incentive","Cashback/Shopping","Energy Switching","Buyback","Recycling","Receipt/Loyalty","Insurance/Quote","Government","Student Program","Mystery Shopping"];
+  // Substring-matched: categories that need the user to already HAVE something
+  // (items to sell, gift cards to resell, assets to rent). Exact matching leaks
+  // "Niche Buyback", "Buyback/Resale", "Gift Card Resale", "Rent Assets".
+  const NEEDS_ASSETS_RES = [/buyback/i, /resale/i, /rent assets/i];
+  // Route IDs that require moving EXISTING assets (ACAT-style transfer promos) —
+  // a $0-cash beginner has nothing to transfer.
+  const NEEDS_EXISTING_IDS = ["R0018", "R0023", "R5782", "R1067"];
+  const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
+    || NEEDS_ASSETS_RES.some(rx => rx.test(r.category || ""))
+    || NEEDS_EXISTING_IDS.includes(String(r.id));
   function rankMoves() {
     const d = planData();
     const mins = parseInt(d.time, 10) || 60;
@@ -1208,18 +1218,19 @@
       // $0 cash: spend-dependent routes are NOT actionable first moves —
       // showing a broke user a "move" that requires spending is a broken
       // promise. They stay discoverable in Explore; they just can't lead.
-      .filter(r => !(noCash && NEEDS_SPEND_CATS.includes(r.category)))
+      .filter(r => !(noCash && needsSpend(r)))
       .map(r => {
       let s = earnRatioOf(r);
       const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
       if (tmid > 60 && tmid > mins * 3) s *= 0.5;   // needs more active time than they have
-      // Owner direction 2026-09-23: same-day money leads. A same-day route
-      // beats a higher-ratio slow route for first moves — the goal is money TODAY.
-      if (r.speed === "today") s *= 3;
-      else if (r.speed === "days") s *= 1.5;
       return { r, s };
     });
-    scored.sort((a, b) => b.s - a.s);
+    // Owner direction 2026-09-23: same-day money leads. Speed tiers sort
+    // before earn ratio — a same-day route beats a higher-ratio slow route
+    // for first moves, because the goal is money TODAY. (A 3x multiplier
+    // couldn't do this: ratios span orders of magnitude.)
+    const TIER = { today: 0, days: 1, weeks: 2 };
+    scored.sort((a, b) => ((TIER[a.r.speed] ?? 2) - (TIER[b.r.speed] ?? 2)) || (b.s - a.s));
     return scored.map(x => x.r);
   }
   function planData() {
@@ -2245,8 +2256,18 @@
         "Start where it costs $0. The unclaimed-money search is free and takes five minutes — most people find nothing, but when it hits, it's money already yours.",
         "After that: Fetch for receipt cashback and Microsoft Rewards for searches you already do. All three are in your first moves on Home." ] };
 
+    if (has("today")) {
+      const todays = rankMoves().filter(r => r.speed === "today").slice(0, 3);
+      if (todays.length) {
+        const items = todays.map((r, i) =>
+          `${i + 1}. ${r.provider} — ${r.reward || "reward varies"}. Who pays: ${r.who_pays || "the provider"}. Cash arrives: ${r.when_cash_arrives || r.payout_timing || "see the offer's terms"}${r.catches ? ` (catch: ${short(r.catches, 80)})` : ""}`);
+        return { paras: ["The fastest routes in the catalog — these pay out the same day you finish:", ...items.map(esc),
+          "Straight talk: you do the work first, then the provider pays on the timing above. Nothing here is free money with no effort."], card: routeCard(todays[0]) };
+      }
+    }
+
     if (has("easiest", "first", "start", "begin", "simplest")) {
-      const r = topList(stdRoutes(), 3, "The 3 easiest routes in the whole catalog:");
+      const r = topList(rankMoves(), 3, "The 3 easiest routes for you right now:");
       r.paras = r.paras.map(esc); r.card.title = esc(r.card.title); r.card.meta = esc(r.card.meta); r.card.tag = esc(r.card.tag);
       return r;
     }
@@ -2501,6 +2522,8 @@
     const dispName = realName || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
     $("pAva").textContent = dispName.charAt(0).toUpperCase();
     $("pName").textContent = dispName;
+    const pm = $("pMail");
+    if (pm) { pm.textContent = who ? who.email : ""; pm.style.display = who ? "" : "none"; }
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
     renderLedger(); wireLedger(); wireYouExtras();
