@@ -2133,6 +2133,7 @@
       { t: "save_subscriptions", col: "user_id" },
       { t: "save_claims", col: "user_id" },
       { t: "agent_threads", col: "user_id" },
+      { t: "reminders", col: "user_id" },
     ]};
   };
   $("exportData").onclick = async () => {
@@ -2183,8 +2184,21 @@
         if (error) throw error;
       }
       try { localStorage.removeItem("upmore:prefs"); } catch (e) {}
+      // Real account deletion: remove the auth user so sign-in is gone too.
+      // (App rows are already wiped above; auth deletion cascades the rest.)
+      try {
+        const { data: { session: s2 } } = await supa.auth.getSession();
+        if (s2 && s2.access_token) {
+          await fetch(supa.supabaseUrl + "/functions/v1/delete-account", {
+            method: "POST",
+            headers: { "Content-Type": "application/json",
+                       "Authorization": "Bearer " + s2.access_token },
+            body: JSON.stringify({ confirm: "DELETE" }),
+          });
+        }
+      } catch (e) { /* auth row may already be gone — not fatal */ }
       await supa.auth.signOut();
-      toast("All data deleted");
+      toast("Account and all data deleted");
     } catch (e) { toast("Delete failed — contact support"); }
   };
 

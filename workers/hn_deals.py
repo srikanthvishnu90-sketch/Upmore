@@ -72,8 +72,23 @@ def main():
         return
     # Pick the newest by creation date, not the first hit
     threads.sort(key=lambda h: h.get("created_at_i", 0), reverse=True)
-    story_id = threads[0]["objectID"]
-    print("thread:", story_id, threads[0].get("title"))
+    # Freshness guard (beta fix 2026-09-24): on 2026-09-23 the scraper picked
+    # stale thread 22665398 instead of the current month's 49522897. Never
+    # scrape a thread older than 35 days or one whose title doesn't match the
+    # current month/year — a stale "live" lane is worse than an empty one.
+    now = time.time()
+    best = threads[0]
+    age_days = (now - best.get("created_at_i", 0)) / 86400
+    title = best.get("title") or ""
+    import datetime as _dt
+    cur = _dt.datetime.now(_dt.timezone.utc)
+    month_ok = cur.strftime("%B %Y") in title  # e.g. "September 2026"
+    if age_days > 35 or not month_ok:
+        print(f"STALE THREAD REJECTED: {best['objectID']} {title!r} "
+              f"({age_days:.0f}d old, month_ok={month_ok}) — skipping run")
+        return
+    story_id = best["objectID"]
+    print("thread:", story_id, title)
 
     # 2. Existing source_ids (dedupe)
     seen = set()

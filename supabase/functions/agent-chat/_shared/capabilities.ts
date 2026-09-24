@@ -95,6 +95,7 @@ const NEEDS_SPEND_CATS = new Set([
   "Buyback/Resale", "Gift Card Resale",
   "Recycling", "Receipt/Loyalty", "Insurance/Quote", "Government",
   "Student Program", "Mystery Shopping",
+  "Telecom Promo", // beta 2026-09-24: carrier promos require service purchase or pay in non-cash
 ]);
 const WINDFALL_CATS = new Set(["Unclaimed/Recovery", "Competition"]);
 // Wager routes (bet your own money to win): risk capital, not schedulable
@@ -115,7 +116,9 @@ const ONE_SHOT_CATS = new Set(["Niche Buyback"]);
 // Skill-gated windfalls (bug bounties): expected payout for an ordinary
 // person is ~$0 (owner rule 2026-09-23 — top figures must never be presented
 // as attainable). Excluded from earn stacks; still searchable in Explore.
-const NO_EARN_STACK_CATS = new Set(["Code Bounties", "Promo Arbitrage"]);
+const NO_EARN_STACK_CATS = new Set(["Code Bounties", "Promo Arbitrage"
+  "Store Signup", // beta 2026-09-24: in-person violates online-only; pays in credits not cash
+]);
 // Rental income (rent out space/assets): monthly per-listing income. A payout
 // midpoint over listing-setup minutes is NOT an hourly rate (beta find
 // 2026-09-24: Neighbor rendered as "~$273/hr of work").
