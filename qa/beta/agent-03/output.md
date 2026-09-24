@@ -1,0 +1,16 @@
+# Beta agent 03 - output
+
+Completed: 2026-09-24T20:39:24Z
+Scenario: QUEUE CTA (Home -> top card "Resume" -> Guide walkthrough -> back)
+
+## Assertions
+1. Top queue card: title "Continue: SoFi Invest — Brokerage account bonus" (Step 2 of 5, "Already started - $50000 x 90% / 12 min"), CTA label "Resume" - PASS
+2. Tapping "Resume" was not a dead tap: navigated to Guide tab (#guide), opened live step-by-step walkthrough - "Picking up SoFi Invest at step 2 of 5", heading "Initiate an ACAT transfer of existing brokerage assets into your SoFi Invest brokerage account", bonus facts (1% ACAT match up to $50,000, ends Sept 30 2026, 5-year lock), working "Done — next step" / "I'm stuck on this step" buttons - PASS
+3. Navigated back to Home; queue still renders all cards, top card intact - PASS
+
+No console errors. No test data created; no user data deleted.
+
+## Retrospective verdict
+Tapping the CTA moved closer to actually earning money rather than theater: it opened a concrete in-progress multi-step walkthrough tied to a real $50,000 bonus task (step 2 of 5: initiating an ACAT transfer), with per-step completion controls. The tap transitioned the user from a queue card into actionable guidance, not a decorative animation or empty screen.
+
+## Result: PASS (3/3)

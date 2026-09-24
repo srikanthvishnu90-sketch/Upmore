@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-FlFcD2hzGJEF6Sd424GsRDaTNHuKF9TgMMXCEJtkk9c='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-0bxGSjhD6PEsvbuXdGtsQ1SKuhdeHgpjsuH71dwEkak='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -756,7 +756,7 @@
               <label class="f"><span>Amount</span><input id="subAmount" inputmode="decimal" placeholder="15.99" autocomplete="off"></label>
               <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option></select></div></label>
             </div>
-            <label class="f"><span>Next bill date (optional — powers renewal reminders)</span><input id="subNextBill" type="date"></label>
+            <label class="f"><span>Next bill date (optional — renewal reminder when it's within 14 days)</span><input id="subNextBill" type="date"></label>
             <button class="go" id="subAdd" style="height:50px">Save</button>
           </div>
         </details>
@@ -1467,9 +1467,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   function qDaysUntil(iso) {
     if (!iso) return null;
-    const t = new Date(String(iso).slice(0, 10) + "T23:59:59");
+    const p = String(iso).slice(0, 10).split("-");
+    if (p.length < 3) return null;
+    const t = new Date(+p[0], +p[1] - 1, +p[2]); // local midnight of target day
+    const n = new Date(); n.setHours(0, 0, 0, 0); // local midnight today
     if (isNaN(t)) return null;
-    return Math.ceil((t.getTime() - Date.now()) / 86400000);
+    return Math.round((t.getTime() - n.getTime()) / 86400000); // calendar-day difference
   }
   function qDueText(days) {
     if (days == null) return "";
@@ -1949,10 +1952,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (nb !== (s.next_billing_date || null)) updates.next_billing_date = nb;
       if (!Object.keys(updates).length) { $("subSheet").hidden = true; return; }
       $("subUpdateBtn").disabled = true;
-      try { await supa.from("save_subscriptions").update(updates).eq("id", s.id); } catch (e) {}
+      let uerr = null;
+      try { ({ error: uerr } = await supa.from("save_subscriptions").update(updates).eq("id", s.id)); } catch (e) { uerr = e; }
       $("subUpdateBtn").disabled = false;
       $("subSheet").hidden = true;
-      toast("Updated");
+      toast(uerr ? "Couldn't save — try again" : "Updated");
       renderSubs(); renderQueue();
     };
     const flow = cancelFlowFor(s.merchant);
@@ -1962,9 +1966,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("subSheet").hidden = false;
     $("subCancelBtn").onclick = async () => {
       $("subCancelBtn").disabled = true;
-      try { await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id); } catch (e) {}
+      let cerr = null;
+      try { ({ error: cerr } = await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id)); } catch (e) { cerr = e; }
       $("subCancelBtn").disabled = false;
       $("subSheet").hidden = true;
+      if (cerr) { toast("Couldn't cancel — try again"); return; }
       renderSubs(); renderQueue();
       show("guide");
       const fl = cancelFlowFor(s.merchant);
