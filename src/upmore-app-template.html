@@ -1495,6 +1495,10 @@
     if (days === 0) return "today";
     return "in " + days + (days === 1 ? " day" : " days");
   }
+  function qSubDue(s) {
+    const d = qDaysUntil(s.next_billing_date);
+    return d == null ? "" : " · renews " + qDueText(d);
+  }
   const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
   const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
   const qDollars = r => Number(r.payout_max ?? r.payout_min ?? 0) || 0;
@@ -1896,7 +1900,7 @@
     $("subList").innerHTML = act.length ? act.map(s => `
       <div class="item"><div class="grow">
         <p class="t">${esc(s.merchant)}</p>
-        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}</p>
+        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}</p>
       </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`).join("")
       : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
     $("subList").querySelectorAll("[data-unsub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.unsub));

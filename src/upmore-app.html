@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-3Mx/nLGVx13kALU6WVzZ1l9WRwjEAZVbMQg97KKX68U='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-wcrdg+crLObv4O77ZhmEK5nEeRUXZwT7j7nTPuDQVJk='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1516,6 +1516,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (days === 0) return "today";
     return "in " + days + (days === 1 ? " day" : " days");
   }
+  function qSubDue(s) {
+    const d = qDaysUntil(s.next_billing_date);
+    return d == null ? "" : " · renews " + qDueText(d);
+  }
   const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
   const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
   const qDollars = r => Number(r.payout_max ?? r.payout_min ?? 0) || 0;
@@ -1917,7 +1921,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("subList").innerHTML = act.length ? act.map(s => `
       <div class="item"><div class="grow">
         <p class="t">${esc(s.merchant)}</p>
-        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}</p>
+        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}</p>
       </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`).join("")
       : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
     $("subList").querySelectorAll("[data-unsub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.unsub));
