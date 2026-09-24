@@ -49,3 +49,14 @@ Retrospective: ranks every action by dollars x confidence x urgency / effort wit
 ## DEDUP FIX CONFIRMATION on build aef5744 (2026-09-24T21:06:37Z)
 Exactly 1 SoFi card in the "Up next" queue: "Continue: SoFi Invest — Brokerage account bonus" / "Step 2 of 5" / "Already started - $50000 x 90% / 12 min" / "Resume" CTA (data-type=continue, data-qid=cont-R0018, score 5625.00). No second SoFi "Start" card. A "SoFi Invest — Brokerage account bonus" row in the search results above the queue is search, not a queue duplicate - acceptable.
 ## Agent 01 final: PASS on aef5744 (dedup verified fixed)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 01 — Home queue render. RESULT: PASS (5/5 assertions).
+- Exactly one 'Up next' h2 section (explainer: "One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.").
+- 9 article.qcard elements in the section (JM Bullion, SoFi Invest brokerage, Microsoft, Robinhood Referral, SoFi Invest claim, Tradestation, National Grid, Sunrun, Old National Bank).
+- Top card (JM Bullion — Niche Buyback): label "Up next", title, sub-line "Payment is typically issued in 1-3 business days…", why-line "$50000 x 70% / 33 min - pays fast", CTA "Walk me through it".
+- Every card carries data-dollar/data-conf/data-urg/data-eff/data-score (verified via rendered HTML inspection; e.g. top card data-dollar="50000" data-conf="0.7" data-urg="1.5" data-eff="33" data-score="1615.38").
+- No horizontal overflow at the app's own 390px device frame (body/.device overflow:hidden; vertical-only inner scrollers).
+Retrospective: queue is transparent (formula stated openly, effort/payout-timing/difficulty/"the catch" per card) but optimizes expected-dollar math over attainability — top picks need $1,000+ of precious metals (JM Bullion), elite security expertise (Microsoft bounties), or moving existing brokerage funds (SoFi/Tradestation). Serves an informed asset-holding user well; for a typical user seeking fast online income it should weight qualification fit / barrier-to-first-dollar more heavily or lead with low-barrier items.
+Notes: signed in as qa01 via #login (app shows display name "Vish" — default for non-onboarded profile). Build marker 'upmore-ob-nonce' not visible to the task (page serializes to ~7MB; only first 65,536 chars retrievable) — parent verified independently via production fetch: marker present 5×. Zero reloads; hash-only navigation.
+OPEN QUESTION for parent: top-card data-score 1615.38 does not reproduce exactly from the rounded data-* attributes (50000×0.7×1.5/33 = 1590.91) — attributes appear rounded while the score uses fuller precision. Verify whether this breaks B4's runtime data-* verification.

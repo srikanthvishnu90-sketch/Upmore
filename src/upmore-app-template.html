@@ -1473,9 +1473,9 @@
   }
   function qDueText(days) {
     if (days == null) return "";
-    if (days < 0) return Math.abs(days) + "d overdue";
+    if (days < 0) return Math.abs(days) + (Math.abs(days) === 1 ? " day overdue" : " days overdue");
     if (days === 0) return "today";
-    return "in " + days + "d";
+    return "in " + days + (days === 1 ? " day" : " days");
   }
   const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
   const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -1685,6 +1685,7 @@
       }
       $("dlAdd").disabled = false;
       if (ok) { ["dlName", "dlDate", "dlAmount", "dlNotes"].forEach(id => $(id).value = ""); renderDeadlines(); renderQueue(); toast("Tracked"); }
+      else toast("Couldn't save - check your connection and try again.");
     };
   }
 
@@ -1714,13 +1715,14 @@
   async function ledgerReverse(id, rows) {
     const r = (rows || []).find(x => String(x.id) === String(id));
     if (!r || r.reversed) return;
-    await saveInsert("save_ledger", {
+    const ok = await saveInsert("save_ledger", {
       bucket: r.bucket, amount: -Number(r.amount || 0),
       title: "Reversal: " + r.title, detail: r.detail || "",
       occurred_on: new Date().toISOString().slice(0, 10)
     });
+    if (!ok) { toast("Couldn't save - check your connection and try again."); return; }
     try { await supa.from("save_ledger").update({ reversed: true }).eq("id", r.id); } catch (e) {}
-    renderLedger();
+    renderLedger(); toast("Reversed");
   }
   let ledgerWired = false;
   function wireLedger() {
@@ -1735,12 +1737,19 @@
       const title = $("lgTitle").value.trim();
       if (!(amt > 0) || !title) { toast("Add an amount and a note"); return; }
       $("lgSave").disabled = true;
-      const ok = await saveInsert("save_ledger", {
-        bucket: $("lgType").value, amount: amt, title, detail: "",
-        occurred_on: $("lgDate").value || new Date().toISOString().slice(0, 10)
-      });
+      let ok = false;
+      try {
+        ok = await Promise.race([
+          saveInsert("save_ledger", {
+            bucket: $("lgType").value, amount: amt, title, detail: "",
+            occurred_on: $("lgDate").value || new Date().toISOString().slice(0, 10)
+          }),
+          new Promise(res => setTimeout(() => res(false), 15000))
+        ]);
+      } catch (e) { ok = false; }
       $("lgSave").disabled = false;
       if (ok) { ["lgAmount", "lgTitle"].forEach(id => $(id).value = ""); $("ledgerForm").hidden = true; renderLedger(); toast("Logged"); }
+      else toast("Couldn't save - check your connection and try again.");
     };
   }
 
@@ -1876,6 +1885,7 @@
       });
       b.disabled = false;
       if (ok) { ["subMerchant", "subAmount"].forEach(id => $(id).value = ""); $("subNextBill").value = ""; renderSubs(); renderQueue(); }
+      else toast("Couldn't save - check your connection and try again.");
     };
   }
   initSave();

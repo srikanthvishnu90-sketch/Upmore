@@ -36,3 +36,10 @@ Retrospective: worth the effort for the immediate concrete payoff ("Keep $192/yr
 4. Cancelled via sheet (Guide-tab confirmation chat); Track back to 5 active, no BetaFlixF04, card gone - PASS
 Retrospective: surprisingly worth the effort - 4-field form under a minute, immediate legible payoff ("$192/yr x 100% / 5 min" turns vague drain into concrete figure); 14-day gating is sensible anti-noise; cancel-sheet guided checklist makes subs actionable.
 ## Final-build result: PASS (4/4)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 04 — Add subscription. RESULT: PASS (2/2 assertions).
+- Added 'BetaFlix04' $15.99 Monthly, next bill 2026-10-15: Track section showed "BetaFlix04" with "$15.99/mo"; header "≈$15.99/mo · 1 active". Detail sheet showed amount $15.99, cadence Monthly, next bill 2026-10-15 (Month 10 / Day 15 / Year 2026).
+- Cleanup: "Cancel" opened detail sheet with exact stored values; "Cancel subscription" removed the entry immediately; confirmed gone. After cancelling, app routed to Guide tab with a draft walkthrough to help confirm cancellation with the real merchant — honest about scope (did not imply it cancelled with the merchant itself).
+Retrospective: adding and removing was simple and honest; no dark patterns. Minor UX friction: date field month/day/year segments reject direct text entry and calendar popup next-month navigation was hard to drive; keyboard digits worked.
+Note: one mid-scenario sign-out from the known localStorage-drop environment quirk; signed back in per brief and continued with zero reloads — not a product failure.

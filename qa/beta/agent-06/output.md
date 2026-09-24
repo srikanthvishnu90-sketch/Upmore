@@ -31,3 +31,14 @@ As designed, the detector would not catch a hike the user hadn't noticed, becaus
 Observations: edit sheet opens via queue card Review button, not Track row click; date spinbuttons need digit keypresses; sheet "Cancel subscription" navigates to Guide with pre-filled cancellation walkthrough draft (not sent).
 Retrospective: catches a hike a user would miss - dedicated card with before/after, monthly delta, annualized +$60/yr impact, attributed to user-entered hike. Trustworthy only because the update persists now; weakness is edit-sheet discoverability (behind Review button, not row click).
 ## Final-build result: PASS (4/4) - the blocking spike-detector bug is verified fixed
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 06 — Spike detector. RESULT: PASS (5/5 assertions).
+- Added 'SpikeTest06' $10 Monthly: Track "≈$10.00/mo · 1 active".
+- Updated to $15 via edit panel: "Updated" toast; Track "≈$15.00/mo · 1 active".
+- 'Bill went up' queue card appeared immediately: "SpikeTest06 bill went up", "$10.00 -> $15.00/mo (+$60/yr)", why "+$60/yr x 95% / 10 min - price hike you entered", Review button. Math correct ($5/mo × 12 = $60/yr).
+- Companion "Cancel SpikeTest06" card consistently updated "Keep $120/yr" → "Keep $180/yr".
+- Signed in as qa06 (You tab: profile "Friend", Sign out / Export / Delete present).
+Retrospective: served intent — prominent card at top of queue the moment the bill increased, exact before/after, correctly annualized impact, honest source label ("price hike you entered"), 95% confidence, 10-min effort, actionable Review.
+Cleanup done: cancelled via panel; Track "Nothing tracked yet"; both queue cards gone; You money log $0.00; no test data remains. Zero reloads.
+Environment note: mid-scenario localStorage drop signed the session out (landed on #welcome) and the first added subscription vanished from Track; signed back in and completed cleanly on second pass. Mutations reliable post-re-sign-in.

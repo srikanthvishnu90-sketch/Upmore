@@ -27,3 +27,14 @@ The You tab feels honest about what the app can and cannot do. Bank sync is expl
 4. Delete flow: "Delete my data" modal warns scope, requires typing DELETE to confirm, "Delete everything" stays disabled; cancelled out, nothing deleted - PASS
 Retrospective: real practical ownership - export on demand, typed-confirmation delete gate, honest private-beta framing. Gap: export fidelity/deletion completeness not independently confirmed at data level.
 ## Final-build result: PASS (4/4)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 10 — You-tab controls. RESULT: PASS (6/6 assertions).
+- Signed in as qa10@upmore.app via #login; You tab shows profile "Friend / Illinois · about an hour a week" with Sign out, Export data, Delete data — no sign-in prompt.
+- Bank-sync sheet: "Connect your bank — Real bank connections are in private beta. We use read-only access — we can see balances and transactions, but we can never move money or log in as you." Email field prefilled qa10@upmore.app; "Notify me" waitlist button. No fake balances, no invented transactions anywhere.
+- Sheet closes cleanly via Close button; no residual overlay.
+- Export: "Export data" triggers download of "upmore-data.json". Contents not byte-verified (browser tooling limitation); inferred from the export path.
+- Delete: dialog "Delete my data" lists scope (profile, plan progress, subscriptions, money log, renewals, claims, reminders, …) and requires "Type DELETE to confirm"; "Delete everything" stays disabled until DELETE is typed.
+- Typed DELETE, then clicked Cancel: dialog dismissed, profile and data intact — nothing deleted.
+Retrospective: honest and safe. Bank sync framed as private-beta waitlist with clear read-only framing; export is one-click JSON with no upsells; deletion is a deliberate two-step gate with visible Cancel and explicit scope listing. No dark patterns.
+Note: zero reloads after initial hard refresh; one transient demo-session sign-in replaced with qa10 credentials before the scenario; no mid-scenario sign-outs.

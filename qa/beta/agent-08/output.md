@@ -24,3 +24,13 @@ Manual deadline/claim tracking is a feature users would adopt selectively but ab
 3. Exact "in 10d" / "in 20d" - PASS. No off-by-one (9d/11d/19d/21d) in cards or section.
 4. Cleanup - PASS (both marked Done; cards gone; section "No deadlines tracked")
 ## Final-build result: PASS (4/4)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 08 — Deadlines. RESULT: PASS (6/6 assertions).
+- Signed in as qa08@upmore.app; You tab shows profile (Friend, Illinois, Money log, Sign out).
+- 'BetaInsurance08' renewal (+10d = 2026-10-04) in Track list: "BetaInsurance08" / "renewal - in 10d".
+- 'BetaRebate08' $50 claim (+20d = 2026-10-14) in Track list: "BetaRebate08 - claim" / "$50.00 - due - in 20d".
+- Both as Home queue cards: "BetaInsurance08" / "Renews in 10d" / "Deadline in 10d - no dollars set, ranked on urgency" (Mark done); "BetaRebate08 - claim" / "due in 20d" / "$50 x 90% / 15 min - due in 20d" (Mark claimed).
+- Marked both done: Track shows "No deadlines tracked"; both cards gone from queue; no "Beta" residue anywhere.
+Retrospective: served intent — money dates visible in two surfaces (Track countdowns + urgency-ranked queue cards); marking done cleared both cleanly. Caveats: (1) date entry only registered via the native calendar picker; typing digits into date spinbuttons changed the displayed value but Save then silently did nothing with no error feedback — same silent-failure class as the ledger bug, now fixed with an honest toast; (2) queue ranked the $50 rebate (20d) above the no-dollar renewal (10d) per dollars×confidence×urgency÷effort — designed behavior, not a defect. (Note: "in 10d" copy becomes "in 10 days" with the qDueText fix.)
+Note: two mid-scenario sign-outs from the known localStorage-drop quirk; signed back in and continued; zero reloads during scenario.

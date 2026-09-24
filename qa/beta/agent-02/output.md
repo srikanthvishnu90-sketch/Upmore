@@ -37,3 +37,14 @@ Retrospective: serves "find a way to earn" well, "fits me" weakly - no profile-b
 4. Overflow: not measurable; visually all fits phone frame, no clipping/scrollbar - INCONCLUSIVE
 Retrospective: search serves "find a way to earn that fits me" - honest research-backed detail (explicit "The catch", "Costs & unpaid time") beats most gig-aggregators; gaps: 23/64 unbadged results give no basis for comparison, opaque relevance ranking (game-offer/utility-rebate entries in "survey").
 ## Final-build result: PASS (3/3 verifiable)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 02 — Catalog search. RESULT: PASS (5/5 assertions).
+- Typing 'survey' returned 64 results (40 rendered, 24 more after "Show more").
+- Badge audit: 41 badges total across all 64 results; EVERY badge reads "✓ Researched"; ZERO read "✓ Verified". (24 post-"Show more" results, e.g. MyPoints, InboxDollars, Pinecone Research, carry no badge at all — badge absence, not a "Verified" badge.)
+- Tapped "Qmee — Survey": inline detail opened with "Requirements:", "Paid:" / "When cash arrives:", "The catch:", "Who pays you:", difficulty, and an "Official site →" link.
+- Tapped card again: detail collapsed, results list restored, search text preserved.
+- No horizontal overflow observed at phone width (screenshots; scrollWidth could not be read programmatically in this environment).
+Retrospective: serves intent well — big relevant set, "✓ Researched" trust signal, unusually honest detail views answering "is this legit?" and "how fast do I get paid?". Caveats: (1) 24 results with no badge and no legend explaining badge absence dilutes the trust signal; (2) loose relevance (SEO microtasks, grocery-receipt scanning, utility rebates barely survey-related); (3) DATA BUG: Qmee detail's "Who qualifies" row referenced SurveyJunkie.
+Note: signed out pre-existing demo session first per brief; You tab showed profile; one hard refresh in setup; zero reloads during scenario; attempt 1 of 2.
+OPEN GAPS for parent: (a) badge-less catalog results need a legend or badge; (b) Qmee/SurveyJunkie cross-reference data bug.

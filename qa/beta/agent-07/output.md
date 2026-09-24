@@ -28,3 +28,12 @@ The reminder comes early enough in principle - 5 days' lead gives a comfortable 
 2. Queue card reads EXACTLY "RenewTest07 renews in 5d" (sub "$12 x 100% / 5 min - renews in 5d"), not "in 6d" - PASS. Off-by-one bug fixed.
 3. Cleanup - PASS (cancelled; Track back to 5 active originals; card gone)
 ## Final-build result: PASS (3/3)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 07 — Renewal detector. RESULT: FAIL (0/1 — copy mismatch).
+- Added 'RenewTest07' $12.99 Monthly, next bill 2026-09-29 (exactly 5 days out; date entered via keyboard digits — direct fill/type refused by the native date control).
+- Queue card appeared immediately: heading 'RenewTest07 renews in 5d', body '$12.99/mo - review before it renews', why '$12.99 x 100% / 5 min - renews in 5d'. Expected exact string 'renews in 5 days' per benchmark; app abbreviates to '5d'. Deterministic copy mismatch — no retry would change it.
+- Functionally the warning serves intent: inside the 14-day window stated on the form, shows amount, urges review, offers Review action.
+- Secondary observation: queue simultaneously pushes a 'Cancel RenewTest07 — Keep $156/yr' upsell card, framing the renewal as a problem to fix rather than neutral information.
+- Cleanup done: cancelled via sheet; Track back to 'Nothing tracked yet'; no RenewTest07 card remains.
+FIX APPLIED (same day, unreleased): qDueText() in src/upmore-app-template.html now renders "in 5 days" / "3 days overdue" / "in 1 day" (singular handled) instead of "in 5d" / "3d overdue". Affects renewal card titles/why-lines, deadline cards, and Track list due text. No test asserts the old abbreviated format. Pending rebuild + redeploy, then rerun agents 07 and 23.

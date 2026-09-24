@@ -42,3 +42,12 @@ Retrospective: genuinely useful - fired immediately, named merchant, counted "2 
 UX notes: Save button still obscured by sticky tab bar in this build (aef5744's scroll-padding fix not yet verified by an agent); keyboard activation worked.
 Retrospective: genuinely useful - fired immediately with evidence-backed specifics + annualized stakes/confidence/effort; self-clearing shows live state tracking. Untested limit: near-duplicates ("Netflix" vs "Netflix Inc.") vs exact-match only; copy slightly technical.
 ## Final-build result: PASS (3/3)
+
+## FINAL-BUILD run (2026-09-24, build 70f89f3)
+AGENT: 05 — Duplicate detector. RESULT: PASS (4/4 assertions).
+- First 'DupeTest05' $9.99 Monthly added: Track "≈$9.99/mo · 1 active"; queue added "Cancel DupeTest05 — Keep $120/yr".
+- Second identical entry added: Track "≈$19.98/mo · 2 active".
+- 'Possible duplicate' queue card appeared naming DupeTest05: "Possible duplicate: DupeTest05" — "2 active charges look like the same subscription" — "$120/yr at stake x 80% / 3 min" with Review button. ($120/yr = one subscription's annual cost = the potential double-payment.)
+- Cleanup: both entries cancelled via Cancel → "Cancel subscription" sheet; Track shows "Nothing tracked yet"; duplicate card gone from queue — no stale warning.
+Retrospective: served intent well — fired immediately, named the subscription, explained the trigger, quantified the stake, 80% confidence, one-tap Review (3 min). Exactly the protection the feature promises.
+Notes: two mid-run sign-outs from the known localStorage-drop environment quirk (no reload by the agent); signed back in each time. OBSERVATION: while signed out, the Save button's clicks silently did nothing (no subscription created, no error); after confirmed sign-in, Save worked first try. Silent no-op while signed out may deserve a sign-in prompt — agent-15's auth-state run will cover this. Each "Cancel subscription" confirmation navigated to the Guide tab chat; returning Home showed the entry removed.
