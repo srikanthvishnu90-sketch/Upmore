@@ -296,6 +296,21 @@
   .homerow .num { margin-left:auto; color:var(--muted); font-weight:500; }
   .homerow .chev { color:var(--muted); font-size:20px; }
   .linkbtn { background:none; border:none; color:var(--muted); font-size:14px; text-decoration:underline; cursor:pointer; padding:8px; }
+  /* Home: icon rows */
+  .sec { font-size:17px; font-weight:700; margin:22px 2px 10px; }
+  .iconrow { display:flex; align-items:center; gap:12px; width:100%; background:#fff; border:1px solid var(--line);
+    border-radius:14px; padding:10px 12px; margin-bottom:8px; text-align:left; cursor:pointer; }
+  .appicon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:700; font-size:20px; flex-shrink:0; }
+  .iconrow .grow { flex:1; min-width:0; }
+  .iconrow .t { font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .iconrow .s { font-size:13px; color:var(--muted); margin-top:1px; }
+  .iconrow .amt { font-weight:700; font-size:15px; }
+  .sheeticon { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:700; font-size:28px; margin:4px auto 10px; }
+  .danger { background:#c0392b; color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; width:100%; cursor:pointer; }
+  .primary { background:#111; color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; width:100%; cursor:pointer; }
+  .ghostbtn { background:none; border:none; color:var(--muted); font-size:15px; padding:12px; width:100%; cursor:pointer; }
   .hero.t-green { background:linear-gradient(160deg, rgba(79,163,122,.17), rgba(79,163,122,.03) 70%); border-color:rgba(79,163,122,.28); }
   .hero.t-sky { background:linear-gradient(160deg, rgba(111,179,214,.16), rgba(111,179,214,.03) 70%); border-color:rgba(111,179,214,.28); }
   .hkick { font-size:12.5px; font-weight:600; color:var(--muted); }
@@ -652,9 +667,29 @@
         <button class="cta" id="heroCta">Start</button>
       </article>
 
-      <button class="homerow" id="homeSubs">
-        <span>Subscriptions</span><span class="num" id="homeSubTotal"></span><span class="chev">›</span>
-      </button>
+      <h2 class="sec">Subscriptions</h2>
+      <div id="homeSubList"></div>
+
+      <h2 class="sec">Promos</h2>
+      <div id="homePromoList"></div>
+    </div>
+    <div class="sheet" id="subSheet" hidden>
+      <div class="sheetcard">
+        <div class="sheeticon" id="subSheetIcon">N</div>
+        <div style="text-align:center"><b id="subSheetName" style="font-size:18px">Netflix</b>
+        <p class="psub" id="subSheetMeta" style="margin:4px 0 14px">$15.99/mo</p></div>
+        <button class="danger" id="subCancelBtn">Cancel subscription</button>
+        <button class="ghostbtn" id="subSheetClose">Keep it</button>
+      </div>
+    </div>
+    <div class="sheet" id="promoSheet" hidden>
+      <div class="sheetcard">
+        <div class="sheeticon" id="promoSheetIcon">S</div>
+        <div style="text-align:center"><b id="promoSheetName" style="font-size:18px">SoFi</b>
+        <p class="psub" id="promoSheetMeta" style="margin:4px 0 14px">$300 bonus</p></div>
+        <button class="primary" id="promoStartBtn">Start promo</button>
+        <button class="ghostbtn" id="promoSheetClose">Not now</button>
+      </div>
     </div>
     <nav class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="home">
@@ -1381,19 +1416,151 @@
     $("heroMeta").textContent = routeMeta(r);
     $("heroCta").textContent = r.url ? "Open official site" : "Start this move";
     $("heroCta").onclick = () => { if (r.url) window.open(r.url, "_blank", "noopener"); };
-    $("homeSubs").onclick = () => show("save");
-    updateHomeSubTotal();
-  }
-  function updateHomeSubTotal() {
-    const el = $("homeSubTotal");
-    if (!el) return;
-    try {
-      const subs = JSON.parse(localStorage.getItem("upmore_subs") || "[]");
-      const total = subs.reduce((a, s) => a + (+s.cost || 0), 0);
-      el.textContent = subs.length ? ("$" + total.toFixed(0) + "/mo") : "";
-    } catch (e) { el.textContent = ""; }
+    renderHomeSubs();
+    renderHomePromos();
   }
 
+
+
+  /* ================= Save (subscriptions) ================= */
+  const saveUid = () => (session && session.user && session.user.id) || null;
+  const money$ = v => (v == null || isNaN(Number(v))) ? "\u2014" : "$" + Number(v).toFixed(2);
+  async function saveRows(table, orderCol, asc) {
+    if (!saveUid()) return [];
+    try {
+      const { data, error } = await supa.from(table).select("*").eq("user_id", saveUid()).order(orderCol, { ascending: !!asc });
+      return error ? [] : (data || []);
+    } catch (e) { return []; }
+  }
+  async function saveInsert(table, row) {
+    if (!saveUid()) return false;
+    try {
+      const { error } = await supa.from(table).insert(Object.assign({ user_id: saveUid() }, row));
+      return !error;
+    } catch (e) { return false; }
+  }
+  const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
+  const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
+  async function renderSave() {
+    const signed = !!(await getSessionToken());
+    $("saveSignedOut").hidden = signed;
+    $("saveSignedIn").hidden = !signed;
+    if (!signed) return;
+    renderSubs();
+  }
+  async function renderSubs() {
+    const rows = await saveRows("save_subscriptions", "created_at", false);
+    const act = rows.filter(r => r.status !== "cancelled");
+    const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
+    $("subMonthly").textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 ${act.length} active` : "";
+    $("subList").innerHTML = act.length ? act.map(s => `
+      <div class="item"><div class="grow">
+        <p class="t">${esc(s.merchant)}</p>
+        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}</p>
+      </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`).join("")
+      : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
+    $("subList").querySelectorAll("[data-unsub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.unsub));
+  }
+  let saveInit = false;
+  function initSave() {
+    if (saveInit) return; saveInit = true;
+    const svGo = $("svSignin");
+    if (svGo) { const lbl = svGo.innerHTML; svGo.onclick = () => startGoogleLogin(svGo, lbl); }
+    $("subAdd").onclick = async () => {
+      const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
+      if (!m || !(amt > 0) || !saveUid()) return;
+      b.disabled = true;
+      const ok = await saveInsert("save_subscriptions", {
+        merchant: m, amount: amt, currency: "USD",
+        billing_interval: $("subInterval").value,
+        status: "active", detected_via: "manual",
+      });
+      b.disabled = false;
+      if (ok) { ["subMerchant", "subAmount"].forEach(id => $(id).value = ""); renderSubs(); renderHomeSubs(); }
+    };
+  }
+  initSave();
+
+  /* ================= Home: icon rows ================= */
+  function iconHue(name) {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
+    return h;
+  }
+  function appIcon(name, size) {
+    const h = iconHue(name || "?");
+    const letter = (name || "?").trim().charAt(0).toUpperCase();
+    const px = size === "lg" ? 'width:64px;height:64px;border-radius:16px;font-size:28px;' : 'width:44px;height:44px;border-radius:11px;font-size:20px;';
+    return `<span class="appicon" style="${px}background:linear-gradient(135deg,hsl(${h},65%,55%),hsl(${(h + 40) % 360},65%,42%))">${esc(letter)}</span>`;
+  }
+  async function renderHomeSubs() {
+    const list = $("homeSubList");
+    if (!list) return;
+    const rows = await saveRows("save_subscriptions", "created_at", false);
+    const act = rows.filter(r => r.status !== "cancelled");
+    list.innerHTML = act.length ? act.map(s => `
+      <button class="iconrow" data-sub="${s.id}">
+        ${appIcon(s.merchant)}
+        <span class="grow"><span class="t">${esc(s.merchant)}</span>
+        <span class="s">${money$(s.amount)}${INTPER[s.billing_interval] || ""}</span></span>
+        <span class="chev">\u203a</span>
+      </button>`).join("")
+      : `<button class="iconrow" id="homeSubEmpty"><span class="grow"><span class="t">Track a subscription</span><span class="s">See what you\u2019re paying each month</span></span><span class="chev">\u203a</span></button>`;
+    list.querySelectorAll("[data-sub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.sub));
+    const empty = $("homeSubEmpty");
+    if (empty) empty.onclick = () => show("save");
+  }
+  let homeSubCache = [];
+  async function openSubSheet(id) {
+    const rows = await saveRows("save_subscriptions", "created_at", false);
+    const s = rows.find(r => String(r.id) === String(id));
+    if (!s) return;
+    homeSubCache = rows;
+    $("subSheetIcon").outerHTML = appIcon(s.merchant, "lg").replace('class="appicon"', 'class="sheeticon" id="subSheetIcon"');
+    $("subSheetName").textContent = s.merchant;
+    $("subSheetMeta").textContent = `${money$(s.amount)}${INTPER[s.billing_interval] || ""}`;
+    $("subSheet").hidden = false;
+    $("subCancelBtn").onclick = async () => {
+      $("subCancelBtn").disabled = true;
+      try { await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id); } catch (e) {}
+      $("subCancelBtn").disabled = false;
+      $("subSheet").hidden = true;
+      renderSubs(); renderHomeSubs();
+      show("guide");
+      guideAsk(`Walk me through cancelling my ${s.merchant} subscription step by step`);
+    };
+  }
+  function renderHomePromos() {
+    const list = $("homePromoList");
+    if (!list) return;
+    const promos = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : [])).filter(r =>
+      ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 3);
+    list.innerHTML = promos.length ? promos.map(r => `
+      <button class="iconrow" data-promo="${r.id}">
+        ${appIcon(r.provider || r.category)}
+        <span class="grow"><span class="t">${esc(r.provider || "Promo")}</span>
+        <span class="s">${esc(String(r.reward || "").slice(0, 60))}</span></span>
+        <span class="chev">\u203a</span>
+      </button>`).join("") : "";
+    list.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
+  }
+  function openPromoSheet(id) {
+    const r = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : [])).find(x => String(x.id) === String(id));
+    if (!r) return;
+    $("promoSheetIcon").outerHTML = appIcon(r.provider || r.category, "lg").replace('class="appicon"', 'class="sheeticon" id="promoSheetIcon"');
+    $("promoSheetName").textContent = r.provider || "Promo";
+    $("promoSheetMeta").textContent = String(r.reward || "").slice(0, 80);
+    $("promoSheet").hidden = false;
+    $("promoStartBtn").onclick = () => {
+      $("promoSheet").hidden = true;
+      show("guide");
+      guideAsk(`I want to start this promo: ${r.provider} \u2014 ${String(r.reward || "").slice(0, 100)}. Give me the exact steps to claim it.`);
+    };
+  }
+  $("subSheetClose").onclick = () => { $("subSheet").hidden = true; };
+  $("promoSheetClose").onclick = () => { $("promoSheet").hidden = true; };
+  $("subSheet").addEventListener("click", e => { if (e.target.id === "subSheet") $("subSheet").hidden = true; });
+  $("promoSheet").addEventListener("click", e => { if (e.target.id === "promoSheet") $("promoSheet").hidden = true; });
 
   /* ================= Guide ================= */
   /* ================= Guide: answers from the real catalog ================= */
