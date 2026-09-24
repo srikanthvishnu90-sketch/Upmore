@@ -2046,6 +2046,11 @@
     $("pName").textContent = d.name || "Friend";
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
+    $("signOut").onclick = async () => {
+      try { await supa.auth.signOut(); } catch (e) {}
+      session = null; dbProfile = null;
+      show("welcome");
+    };
   }
   /* Reminder/preference toggles: persist in localStorage, and in the signed-in
      profile's prefs when we have one. Restored on boot. */
