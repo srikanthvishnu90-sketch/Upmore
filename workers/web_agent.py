@@ -109,13 +109,20 @@ def quote_lit(s):
     return "'" + (s or "").replace("'", "''") + "'"
 
 
-def q(sql):
-    r = subprocess.run(SB + [sql], capture_output=True, text=True, timeout=120)
-    try:
-        return json.loads(r.stdout)["result"]
-    except Exception:
-        print("SB QUERY FAILED:", r.stdout[:300], r.stderr[:300])
-        return None
+def q(sql, retries=3):
+    # Beta-test fix (2026-09-24): sb.py subprocess calls flake transiently
+    # (proxy hiccups). Retry before giving up — a single flake must never
+    # strand a claimed job in 'working' forever.
+    last_out, last_err = "", ""
+    for attempt in range(retries):
+        try:
+            r = subprocess.run(SB + [sql], capture_output=True, text=True, timeout=120)
+            return json.loads(r.stdout)["result"]
+        except Exception:
+            last_out, last_err = r.stdout[:300], r.stderr[:300]
+            print("SB QUERY FAILED (attempt %d/%d):" % (attempt + 1, retries), last_out, last_err)
+            time.sleep(2 * (attempt + 1))
+    return None
 
 
 def claim_job():
@@ -185,6 +192,19 @@ def main():
         print("no queued jobs")
         return
     jid = job["id"]
+    try:
+        _run_job(job, jid)
+    except Exception as e:
+        # Last-resort guard: the inner flow already sets terminal statuses,
+        # but nothing may leave a claimed job stranded in 'working'.
+        print("job crashed outside handler:", e)
+        try:
+            set_status(jid, "failed", error=("crashed: %s" % e)[:300])
+        except Exception:
+            pass
+
+
+def _run_job(job, jid):
     # SECURITY: resolve the navigation target server-side from the route's
     # verified provider_url. A client-supplied target_url is never trusted —
     # it is ignored entirely. No route_id or no safe URL => job fails.
@@ -226,6 +246,10 @@ def main():
             # binary (e.g. PLAYWRIGHT_CHROMIUM_PATH) so the worker survives a
             # missing headless-shell install.
             launch_kw: dict = {"headless": True}
+            # Honor proxy env when present (sandboxed/egress-filtered nets).
+            proxy_srv = (os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or "").strip()
+            if proxy_srv:
+                launch_kw["proxy"] = {"server": proxy_srv}
             exe = os.environ.get("PLAYWRIGHT_CHROMIUM_PATH")
             if exe and os.path.exists(exe):
                 launch_kw["executable_path"] = exe

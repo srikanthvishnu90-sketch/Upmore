@@ -9,7 +9,8 @@ at a time.
 
 YOUR KNOWLEDGE
 You are given ROUTE CARDS: verified money-making routes. Each card has an id
-(like R0119), exact steps, the official link, payout facts, catches, and a
+(like R0119), exact steps, the official link, payout facts, catches, app
+download links (when the route needs an app), and a
 verified_at date. This is the ONLY source of truth you may use for money claims.
 
 GROUNDING RULES — you must obey these every single reply:
@@ -19,8 +20,10 @@ GROUNDING RULES — you must obey these every single reply:
    LINKS: copy the card's Link line character-for-character, including the
    https://. Never shorten a URL (use fetchrewards.com exactly as written, not
    fetch.com), never wrap a URL in **bold** markers, never guess an app-store
-   or help-page link. If the card has no app download link, say "grab the app
-   from your phone's app store" with no URL at all.
+   or help-page link. When a step involves installing the app and the card has
+   an App line, include it verbatim: "Download the app: <the exact links>".
+   If the card has no App line, say "grab the app from your phone's app store"
+   with no URL at all.
 2. Only present a route as a live offer if its status is "verified" AND
    verified_at is within the last 7 days. Otherwise say plainly:
    "I haven't verified this one yet, so I can't walk you through it as live."
@@ -140,9 +143,15 @@ export function renderRouteCards(routes: RouteCard[]): string {
       const steps = r.steps
         .map((s, i) => `  ${i + 1}. ${s.text}` + (s.done_when ? ` [done when: ${s.done_when}]` : ""))
         .join("\n");
+      const iosUrl = (r as any).ios_url || "";
+      const andUrl = (r as any).android_url || "";
+      const appLine = iosUrl || andUrl
+        ? `App: Download the app: ${[iosUrl, andUrl].filter(Boolean).join(" | ")}`
+        : null;
       return [
         `ROUTE ${r.route_id} — ${r.name} (${r.provider}) [${live}]`,
         `Link: ${r.provider_url}`,
+        appLine,
         `Category: ${r.category} | Difficulty: ${r.difficulty} | Lane: ${r.lane}`,
         `Payout: ${r.payout_text ?? "not stated"} | Timing: ${r.payout_timing ?? "not stated"}`,
         r.min_age != null ? `Minimum age: ${r.min_age}+` : null,

@@ -286,7 +286,7 @@ serve(async (req) => {
       return json(cors, { thread_id: tid, reply: detFail, action: null });
     }
 
-    const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined, agentVals);
+    const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined, agentVals, hist);
     if (fastReply) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
@@ -423,9 +423,13 @@ serve(async (req) => {
     // must be fresh-verified (7 days) — a stale card gets no walkthrough.
     const walkStart = /\b(walk me through|step by step|get (me )?started with|start.*walkthrough)\b/i.test(message);
     if (walkStart && !playbook) {
-      const target = routes.find((r) =>
+      const targetNamed = routes.find((r) =>
         message.toLowerCase().includes(r.provider.toLowerCase()) ||
         message.toLowerCase().includes(r.name.toLowerCase()));
+      const target = targetNamed ??
+        (lastMentionedRouteId(hist)
+          ? routes.find((r) => r.route_id === lastMentionedRouteId(hist))
+          : undefined);
       const targetFresh = target && target.status === "verified" && target.verified_at &&
         Date.now() - new Date(target.verified_at).getTime() < 7 * 24 * 3600 * 1000;
       if (target && targetFresh) {
@@ -641,6 +645,21 @@ function parseDueAt(when: unknown): string {
   return new Date(now + 24 * 3600000).toISOString();
 }
 
+
+// Beta-test fix (2026-09-24): when the user says "walk me through step 1" /
+// "yes, do it" right after a recommendation, the message names no provider.
+// Fall back to the most recent route id the ASSISTANT mentioned in this
+// thread (e.g. "**Mindswarms** (R7242)") before asking "which route?".
+function lastMentionedRouteId(hist: { role: string; content: string }[]): string | null {
+  for (let i = hist.length - 1; i >= 0; i--) {
+    const h = hist[i];
+    if (h.role !== "assistant") continue;
+    const m = /\((R\d{3,})\)/.exec(String(h.content ?? ""));
+    if (m) return m[1];
+  }
+  return null;
+}
+
 // Deterministic fast-path: answer factual questions about verified routes
 // directly from the card, no LLM call. Returns null if the question isn't
 // a safe factual pattern (falls through to the model).
@@ -648,7 +667,8 @@ function tryFastPath(
   message: string,
   routes: RouteCard[],
   playbookRoute?: RouteCard,
-  agentVals?: { name: string; email: string; state: string }
+  agentVals?: { name: string; email: string; state: string },
+  hist: { role: string; content: string }[] = []
 ): string | null {
   const msg = message.toLowerCase().trim();
   // Never fast-path: guarantees, scams, advice, comparisons, unknowns.
@@ -710,7 +730,11 @@ function tryFastPath(
   const named = routes
     .filter((r) => providerHits(r) > 0)
     .sort((a, b) => (providerHits(b) + nameHits(b)) - (providerHits(a) + nameHits(a)))[0];
-  const route = named ?? playbookRoute;
+  const threadRouteId = lastMentionedRouteId(hist);
+  const threadRoute = threadRouteId
+    ? routes.find((r) => r.route_id === threadRouteId)
+    : undefined;
+  const route = named ?? playbookRoute ?? threadRoute;
   if (!route) return null;
   const fresh =
     route.status === "verified" && route.verified_at &&

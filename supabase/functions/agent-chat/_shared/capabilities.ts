@@ -44,6 +44,7 @@ export const APP_LINKS: Record<string, { ios?: string; android?: string }> = {
   R0358: { android: "https://play.google.com/store/apps/details?id=com.checkpoints.app" },
   R0364: { ios: "https://apps.apple.com/us/app/upside-cash-back-gas-food/id1099997174", android: "https://play.google.com/store/apps/details?id=com.upside.consumer.android" },
   R0438: { android: "https://play.google.com/store/apps/details?id=company.coinpop.coinpop" },
+  R7242: { ios: "https://apps.apple.com/us/app/mindswarms/id490426157", android: "https://play.google.com/store/apps/details?id=com.mindswarms.consumerApp" },
 };
 
 
