@@ -1091,6 +1091,7 @@
     if (!$(id)) id = "splash";
     id = LEGACY_TABS[id] || id;
     if (!$(id)) id = "splash";
+    hideToast();
     document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
     current = id;
     if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
@@ -1365,8 +1366,8 @@
     if (i < 0) i = 0;
     walk = { id, i };
     addAI([i === 0
-      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap <b>Done</b> when you finish each one.`
-      : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap <b>Done</b> when you finish each one.`]);
+      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap **Done** when you finish each one.`
+      : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
     setTimeout(renderWalkStep, 950);
   }
 
@@ -1517,7 +1518,7 @@
       cards.push({ type: "earn", id: "earn-" + r.id, title: routeTitle(r), sub: routeMeta(r),
         dollars, conf, urg, eff, cta: "Walk me through it", act: () => startWalkthrough(r.id),
         why: dollars > 0
-          ? `$${Math.round(dollars)} x ${Math.round(conf * 100)}% / ${Math.round(eff)} min${urg > 1 ? " - pays fast" : ""}`
+          ? `$${Math.round(dollars)} x ${Math.round(conf * 100)}% x ${urg} / ${Math.round(eff)} min${r.speed === "today" ? " - pays fast" : ""}`
           : `Payout varies - researched ${Math.round(conf * 100)}%` });
     });
     // continue: the walkthrough already started
@@ -1628,7 +1629,7 @@
     box.innerHTML = cards.map((c, i) => `
       <article class="qcard${i === 0 ? " top" : ""}" data-type="${c.type}"
         data-dollar="${Math.round(c.dollars)}" data-conf="${c.conf}" data-urg="${c.urg}"
-        data-eff="${Math.round(c.eff)}" data-score="${c.score.toFixed(2)}">
+        data-eff="${+c.eff.toFixed(2)}" data-score="${c.score.toFixed(2)}">
         ${i === 0 ? `<p class="qtop">Up next</p>` : ""}
         <h4>${esc(c.title)}</h4>
         <p class="qm">${esc(c.sub)}</p>
@@ -1690,6 +1691,7 @@
     $("dlAdd").onclick = async () => {
       const name = $("dlName").value.trim(), date = $("dlDate").value, kind = $("dlKind").value;
       if (!name || !date) { toast("Give it a name and a date"); return; }
+      if (needSignIn()) return;
       const amt = parseFloat($("dlAmount").value);
       const notes = $("dlNotes").value.trim();
       $("dlAdd").disabled = true;
@@ -1731,6 +1733,7 @@
   async function ledgerReverse(id, rows) {
     const r = (rows || []).find(x => String(x.id) === String(id));
     if (!r || r.reversed) return;
+    if (needSignIn()) return;
     const ok = await saveInsert("save_ledger", {
       bucket: r.bucket, amount: -Number(r.amount || 0),
       title: "Reversal: " + r.title, detail: r.detail || "",
@@ -1752,6 +1755,7 @@
       const amt = parseFloat($("lgAmount").value);
       const title = $("lgTitle").value.trim();
       if (!(amt > 0) || !title) { toast("Add an amount and a note"); return; }
+      if (needSignIn()) return;
       $("lgSave").disabled = true;
       let ok = false;
       try {
@@ -1844,6 +1848,17 @@
 
   /* ================= Save (subscriptions) ================= */
   const saveUid = () => (session && session.user && session.user.id) || null;
+  // Write entry points call this first so signed-out taps get a sign-in
+  // prompt instead of a misleading "check your connection" error.
+  function needSignIn() {
+    if (saveUid()) return false;
+    toast("Sign in to save \u2014 your stuff only lives in your account.");
+    return true;
+  }
+  function hideToast() {
+    const t = document.getElementById("upmoreToast");
+    if (t) { clearTimeout(t._h); t.style.opacity = "0"; }
+  }
   const money$ = v => (v == null || isNaN(Number(v))) ? "\u2014" : "$" + Number(v).toFixed(2);
   async function saveRows(table, orderCol, asc) {
     if (!saveUid()) return [];
@@ -1890,7 +1905,8 @@
     wireDeadlines();
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
-      if (!m || !(amt > 0) || !saveUid()) return;
+      if (!m || !(amt > 0)) return;
+      if (needSignIn()) return;
       b.disabled = true;
       const nb = $("subNextBill").value || null;
       const ok = await saveInsert("save_subscriptions", {
@@ -2467,11 +2483,14 @@
   function renderProfile() {
     const d = planData();
     const st = NAMES[d.state] || "";
-    $("pAva").textContent = (d.name || "V").charAt(0).toUpperCase();
-    $("pName").textContent = d.name || "Friend";
+    const who = (session && session.user) || null;
+    const dispName = d.name || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
+    $("pAva").textContent = dispName.charAt(0).toUpperCase();
+    $("pName").textContent = dispName;
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
     renderLedger(); wireLedger(); wireYouExtras();
+    $("signOut").hidden = !who;
     $("signOut").onclick = async () => {
       try { await supa.auth.signOut(); } catch (e) {}
       session = null; dbProfile = null;
