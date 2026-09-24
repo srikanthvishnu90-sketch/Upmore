@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-Eq4r8oTf2MLCfwypm0DctfTVZPW+ZHRSnB19C3Rz6i4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-teEjRojK+P8QmnF9vLMZuK8FDdZce7qKW3nCV4g+98E='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1030,6 +1030,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
           <p id="termsSection"><b>Terms of Service (plain English).</b> Upmore is a guide, not a guarantee — payouts come from third-party companies with their own terms. You're responsible for your own accounts and actions; never share passwords with anyone, including us. Don't use Upmore for fraud or fake accounts. Upmore is in beta and things may change; we may suspend accounts that abuse the service.</p>
         </div>
+      </div>
+    </div>
+    <div class="sheet" id="deleteSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Delete my data</b><button class="iconbtn" id="deleteClose" aria-label="Close">✕</button></div>
+        <p class="psub" style="margin-top:8px">This erases your profile, plan progress, subscriptions, claims, reminders, and Guide chat history. This cannot be undone.</p>
+        <p class="psub" style="margin-top:8px">Type <b>DELETE</b> to confirm:</p>
+        <input id="deleteConfirmInput" type="text" placeholder="Type DELETE" autocomplete="off" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <div class="row" style="margin-top:12px;gap:8px;">
+          <button class="btn" id="deleteCancel" style="flex:1">Cancel</button>
+          <button class="btn" id="deleteConfirmBtn" style="flex:1;background:#c0392b;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;opacity:0.5" disabled>Delete everything</button>
+        </div>
+        <p class="psub" id="deleteStatus" style="margin-top:8px;min-height:20px;"></p>
       </div>
     </div>
     <div class="sheet" id="agentSheet" hidden>
@@ -2188,10 +2201,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   $("deleteData").onclick = async () => {
     const u = userTables();
     if (!u) { toast("Sign in first"); return; }
-    const first = confirm("Delete ALL your Upmore data? This erases your profile, plan progress, subscriptions, claims, and Guide chat history. This cannot be undone.");
-    if (!first) return;
-    const second = prompt("Type DELETE to confirm erasing everything:");
-    if ((second || "").trim().toUpperCase() !== "DELETE") { toast("Cancelled"); return; }
+    // In-app confirmation sheet (native confirm/prompt are unreliable on mobile + untestable)
+    $("deleteSheet").hidden = false;
+    $("deleteConfirmInput").value = "";
+    $("deleteConfirmBtn").disabled = true;
+    $("deleteStatus").textContent = "";
+    setTimeout(() => $("deleteConfirmInput").focus(), 100);
+  };
+  $("deleteClose").onclick = () => { $("deleteSheet").hidden = true; };
+  $("deleteCancel").onclick = () => { $("deleteSheet").hidden = true; };
+  $("deleteSheet").addEventListener("click", (e) => { if (e.target.id === "deleteSheet") $("deleteSheet").hidden = true; });
+  $("deleteConfirmInput").oninput = (e) => {
+    $("deleteConfirmBtn").disabled = e.target.value.trim().toUpperCase() !== "DELETE";
+    $("deleteConfirmBtn").style.opacity = $("deleteConfirmBtn").disabled ? "0.5" : "1";
+  };
+  $("deleteConfirmBtn").onclick = async () => {
+    const u = userTables();
+    if (!u) { toast("Sign in first"); return; }
+    $("deleteConfirmBtn").disabled = true;
+    $("deleteStatus").textContent = "Deleting…";
     try {
       // Chat messages first (they reference threads)
       const { data: threads } = await supa.from("agent_threads").select("id").eq("user_id", u.uid);
@@ -2219,8 +2247,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         }
       } catch (e) { /* auth row may already be gone — not fatal */ }
       await supa.auth.signOut();
+      $("deleteSheet").hidden = true;
       toast("Account and all data deleted");
-    } catch (e) { toast("Delete failed — contact support"); }
+    } catch (e) {
+      $("deleteStatus").textContent = "Delete failed — contact support";
+      $("deleteConfirmBtn").disabled = false;
+    }
   };
 
   /* ---- Privacy sheet ---- */
