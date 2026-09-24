@@ -2050,6 +2050,8 @@
     }
   }
 
+  /* ================= Boot ================= */
+  (async function boot() {
     const h = location.hash.slice(1);
     const isAuthCallback = /(^|&)access_token=/.test(h);
     // Let supabase-js consume the OAuth callback before we touch the URL.
