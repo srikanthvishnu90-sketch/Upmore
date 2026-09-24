@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-uBGZyJHfioHmosXLuc0z9p2KMqg9JTHh0CJeCP2xvVo='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-hGXNGQmqMytH32aypkrUZyYXI2UOzOnnsuga7Rsv7Xc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -311,6 +311,14 @@
   .dock { display:flex; gap:14px; overflow-x:auto; padding:6px 2px 12px; scrollbar-width:none; }
   .dock::-webkit-scrollbar { display:none; }
   .dockitem { background:none; border:none; padding:0; cursor:pointer; flex-shrink:0; }
+  /* Home: more-moves horizontal cards */
+  .movecards { display:flex; gap:12px; overflow-x:auto; padding:6px 2px 12px; scrollbar-width:none; }
+  .movecards::-webkit-scrollbar { display:none; }
+  .movecard { flex:0 0 230px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; text-align:left; cursor:pointer; font:inherit; color:inherit; }
+  .movecard h4 { margin:0 0 6px; font-size:15px; line-height:1.3; }
+  .movecard p { margin:0 0 10px; font-size:13px; color:var(--muted); line-height:1.4; }
+  .movecard .go { font-size:13px; font-weight:700; color:var(--green); }
+  .dockline { font-size:13px; color:var(--muted); margin:2px 0 0; padding:0 2px; }
   .sheeticon { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center;
     color:#fff; font-weight:700; font-size:28px; margin:4px auto 10px; }
   .danger { background:#c0392b; color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; width:100%; cursor:pointer; }
@@ -672,8 +680,15 @@
         <button class="cta" id="heroCta">Start</button>
       </article>
 
+      <h2 class="sec" id="continueSec" hidden>Continue</h2>
+      <div id="continueRow"></div>
+
+      <h2 class="sec" id="moreMovesSec">More moves</h2>
+      <div class="movecards" id="moreMoves"></div>
+
       <h2 class="sec">Subscriptions</h2>
       <div id="homeSubList"></div>
+      <p class="dockline" id="homeSubLine"></p>
 
       <h2 class="sec">Promos</h2>
       <div id="homePromoList"></div>
@@ -1338,8 +1353,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (!r || !r.steps.length) return;
     show("guide");
     chat.innerHTML = "";
-    walk = { id, i: 0 };
-    addAI([`Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap <b>Done</b> when you finish each one.`]);
+    // Resume where the user left off: first step not yet marked done.
+    const doneSteps = prog[id] || [];
+    let i = r.steps.findIndex(s => !doneSteps.includes(s.n));
+    if (i < 0) i = 0;
+    walk = { id, i };
+    addAI([i === 0
+      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap <b>Done</b> when you finish each one.`
+      : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap <b>Done</b> when you finish each one.`]);
     setTimeout(renderWalkStep, 950);
   }
 
@@ -1444,8 +1465,47 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("heroMeta").textContent = routeMeta(r);
     $("heroCta").textContent = r.url ? "Open official site" : "Start this move";
     $("heroCta").onclick = () => { if (r.url) window.open(r.url, "_blank", "noopener"); };
+    renderContinue();
+    renderMoreMoves(moves);
     renderHomeSubs();
     renderHomePromos();
+  }
+
+  /* Continue: the one route the user started but hasn't finished, if any. */
+  function renderContinue() {
+    const sec = $("continueSec"), row = $("continueRow");
+    if (!sec || !row) return;
+    const cand = Object.keys(prog).map(id => {
+      const r = routeById(id);
+      if (!r || !r.steps || !r.steps.length) return null;
+      const done = (prog[id] || []).length;
+      return { r, done, total: r.steps.length };
+    }).filter(x => x && x.done > 0 && x.done < x.total)[0];
+    if (!cand) { sec.hidden = true; row.innerHTML = ""; return; }
+    sec.hidden = false;
+    row.innerHTML = `
+      <button class="iconrow" data-resume="${cand.r.id}">
+        <span class="grow"><span class="t">Continue: ${esc(short(routeTitle(cand.r), 52))}</span>
+        <span class="s">Step ${cand.done + 1} of ${cand.total}</span></span>
+        <span class="chev">\u203a</span>
+      </button>`;
+    row.querySelector("[data-resume]").onclick = e => startWalkthrough(e.currentTarget.dataset.resume);
+  }
+
+  /* More moves: ranked moves #2-4 as horizontal cards, tap to walk through. */
+  function renderMoreMoves(moves) {
+    const sec = $("moreMovesSec"), wrap = $("moreMoves");
+    if (!sec || !wrap) return;
+    const rest = (moves || []).slice(1, 4);
+    if (!rest.length) { sec.hidden = true; wrap.innerHTML = ""; return; }
+    sec.hidden = false;
+    wrap.innerHTML = rest.map(r => `
+      <button class="movecard" data-move="${r.id}">
+        <h4>${esc(short(routeTitle(r), 64))}</h4>
+        <p>${esc(short(routeMeta(r), 90))}</p>
+        <span class="go">Walk me through it &rarr;</span>
+      </button>`).join("");
+    wrap.querySelectorAll("[data-move]").forEach(b => b.onclick = () => startWalkthrough(b.dataset.move));
   }
 
 
@@ -1574,6 +1634,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     list.querySelectorAll("[data-sub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.sub));
     const empty = $("homeSubEmpty");
     if (empty) empty.onclick = () => show("save");
+    const line = $("homeSubLine");
+    if (line) {
+      const monthly = act.reduce((t, s) => t + Number(s.amount || 0) * (INT2MO[s.billing_interval] || 1), 0);
+      line.textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 ${act.length} active` : "";
+    }
   }
   let homeSubCache = [];
   async function openSubSheet(id) {
