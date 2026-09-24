@@ -310,9 +310,14 @@ export function tryMakeMeX(
   const ranked = rankRoutesForTarget(routes, target, message, hist, exclHist);
   if (!ranked.length) return null;
   const SPEED_TIERS = ["today", "days", "weeks"];
+  // Volume-gated work (surveys, user tests) can never headline as "fastest
+  // honest money" — invitations aren't a schedule (beta find 2026-09-24:
+  // Mindswarms headlined "make me $1000" with "Pays today"). Same rule as
+  // the plan stack: gated routes get per-hit reality text, never the pick.
+  const isGatedX = (x: typeof ranked[number]) => VOLUME_GATED_CATS.has(x.r.category ?? "");
   let pick: typeof ranked[number] | undefined;
   for (const tier of SPEED_TIERS) {
-    pick = ranked.find((x) => x.hours < Infinity && (x.r.speed ?? "weeks") === tier);
+    pick = ranked.find((x) => x.hours < Infinity && !isGatedX(x) && (x.r.speed ?? "weeks") === tier);
     if (pick) break;
   }
   if (!pick) {
@@ -365,7 +370,17 @@ export function tryMakeMeX(
   const andUrl = (r as any).android_url || links?.android;
   const linkLine = r.provider_url +
     (iosUrl || andUrl ? `\nDownload the app: ${iosUrl ?? andUrl}` : "");
+  // "Also real" alternates: gated (per-hit) routes never get an "~Xh"
+  // figure — their derived hourly math reads as a wage promise (beta find
+  // 2026-09-24: "Mindswarms (~2h)" implied 2 hours to $1000).
   const others = ranked.filter((x) => x.r.route_id !== r.route_id && x.hours < Infinity).slice(0, 2);
+  const otherLine = (x: typeof others[number]) => {
+    if (VOLUME_GATED_CATS.has(x.r.category ?? "")) {
+      const ph = planPerHit({ r: x.r });
+      return ph ? `${x.r.provider} (~$${Math.round(ph.per)}/hit, per-hit only)` : x.r.provider;
+    }
+    return Math.round(x.hours) > 0 ? `${x.r.provider} (~${Math.round(x.hours)}h)` : x.r.provider;
+  };
 
   const headline = gated
     ? `Fastest honest money right now: **${r.provider}** (${r.route_id}).${speedTag}`
@@ -380,7 +395,7 @@ export function tryMakeMeX(
     `Biggest catch: ${cm.catch}` +
     (gated ? gated.text : "") +
     (others.length
-      ? `\n\nAlso real: ` + others.map((x) => Math.round(x.hours) > 0 ? `${x.r.provider} (~${Math.round(x.hours)}h)` : `${x.r.provider}`).join(", ") + `.`
+      ? `\n\nAlso real: ` + others.map(otherLine).join(", ") + `.`
       : "") +
     `\n\nWant me to walk you through step 1?`
   );
