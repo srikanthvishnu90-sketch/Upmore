@@ -18,7 +18,7 @@ import { CANCEL_PATHS, CancelPath } from "./cancel_paths.ts";
 // "save" keyword can never hijack an "earn" question.
 
 const fresh = (r: RouteCard): boolean =>
-  r.status === "verified" &&
+  r.status === "researched" &&
   !!r.verified_at &&
   Date.now() - new Date(r.verified_at).getTime() < 7 * 24 * 3600 * 1000;
 

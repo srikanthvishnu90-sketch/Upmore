@@ -148,7 +148,7 @@ serve(async (req) => {
       ? Promise.resolve(null)
       : Promise.all(
           [0, 1, 2, 3, 4].map((p) =>
-            supabase.from("routes").select("*").eq("status", "verified")
+            supabase.from("routes").select("*").eq("status", "researched")
               .order("route_id").range(p * 1000, p * 1000 + 999)
           ),
         );
@@ -174,10 +174,10 @@ serve(async (req) => {
       // Expiring within 14 days (warn before recommending) vs already
       // expired (never present as live) — tracked separately.
       supabase.from("routes")
-        .select("route_id, name, expires_at").eq("status", "verified")
+        .select("route_id, name, expires_at").eq("status", "researched")
         .not("expires_at", "is", null).gte("expires_at", nowIso).lte("expires_at", soonIso).limit(5),
       supabase.from("routes")
-        .select("route_id, name, expires_at").eq("status", "verified")
+        .select("route_id, name, expires_at").eq("status", "researched")
         .not("expires_at", "is", null).lt("expires_at", nowIso).limit(5),
       // Open Wanted-board listings (electronics people need; others can accept).
       supabase.from("listings")
@@ -458,7 +458,7 @@ serve(async (req) => {
         (lastMentionedRouteId(hist)
           ? routes.find((r) => r.route_id === lastMentionedRouteId(hist))
           : undefined);
-      const targetFresh = target && target.status === "verified" && target.verified_at &&
+      const targetFresh = target && target.status === "researched" && target.verified_at &&
         Date.now() - new Date(target.verified_at).getTime() < 7 * 24 * 3600 * 1000;
       if (target && targetFresh) {
         await supabase.from("playbook_progress").upsert({
@@ -725,7 +725,7 @@ function tryFastPath(
     // Only routes verified within the last 7 days may be called "live right
     // now" — a stale card must never be listed as a live offer.
     const fresh7 = (r: RouteCard) =>
-      r.status === "verified" && r.verified_at &&
+      r.status === "researched" && r.verified_at &&
       Date.now() - new Date(r.verified_at).getTime() < 7 * 24 * 3600 * 1000;
     const live = routes.filter(fresh7);
     if (live.length > 0) {
@@ -770,7 +770,7 @@ function tryFastPath(
   const route = named ?? playbookRoute ?? threadRoute;
   if (!route) return null;
   const fresh =
-    route.status === "verified" && route.verified_at &&
+    route.status === "researched" && route.verified_at &&
     Date.now() - new Date(route.verified_at).getTime() < 7 * 24 * 3600 * 1000;
   if (!fresh) return null;
 

@@ -493,6 +493,22 @@
   .readbox{ margin-top:10px; font-size:13px; color:var(--muted); border:1px dashed var(--line);
     border-radius:12px; padding:10px 12px; line-height:1.5; }
   .readbox b{ color:var(--text); }
+
+  /* Queue (the CFO): one ranked list */
+  .qcard { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; margin:0 0 10px; }
+  .qcard.top { border:2px solid #1d5c3f; }
+  .qcard h4 { margin:0 0 4px; font-size:16px; }
+  .qm { margin:0 0 6px; color:var(--dim); font-size:13.5px; }
+  .qwhy { margin:0 0 10px; font-size:12.5px; color:var(--dim); font-style:italic; }
+  .qtop { margin:0 0 6px; font-size:11.5px; font-weight:700; color:#1d5c3f; text-transform:uppercase; letter-spacing:.06em; }
+  .qcta { width:100%; padding:12px; border-radius:10px; border:none; background:#1d5c3f; color:#fff; font-size:15px; font-weight:600; }
+  .qcta:active { transform:scale(.99); }
+  /* Ledger totals */
+  .ledgertots { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:0 0 12px; }
+  .ledgertot { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 2px; text-align:center; }
+  .ledgertot b { display:block; font-size:13.5px; }
+  .ledgertot span { font-size:10px; color:var(--dim); }
+  .lrev { opacity:.55; text-decoration:line-through; }
 </style>
 </head>
 <body>
@@ -704,121 +720,31 @@
       </div>
 
       <h1 class="hello" id="hello">Good evening, Vish</h1>
-      <p class="sub" id="homeSub">Your next step: open the state&apos;s official search.</p>
+      <p class="sub" id="homeSub">Your money queue — biggest score first.</p>
 
-      <article class="hero t-green" id="heroCard">
-        <h3 id="heroTitle">See if Illinois owes you money</h3>
-        <p class="hmeta" id="heroMeta">$0 to start &middot; about 5 minutes</p>
-        <button class="cta" id="heroCta">Start</button>
-      </article>
-
-      <h2 class="sec" id="continueSec" hidden>Continue</h2>
-      <div id="continueRow"></div>
-
-      <h2 class="sec" id="moreMovesSec">More moves</h2>
-      <div class="movecards" id="moreMoves"></div>
-
-      <h2 class="sec">Subscriptions</h2>
-      <div id="homeSubList"></div>
-      <p class="dockline" id="homeSubLine"></p>
-
-      <h2 class="sec">Promos</h2>
-      <div id="homePromoList"></div>
-    </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
-  </section>
-
-  <!-- ================= EXPLORE ================= -->
-  <section class="screen" id="explore" aria-label="Explore offers">
-    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <h1 class="ptitle">Explore</h1>
       <div class="xsearch">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
       </div>
-      <div id="wantWrap">
-        <h2 class="ptitle" style="font-size:17px;margin:18px 0 8px">Wanted</h2>
-        <div class="xlist" id="xwant" style="margin-top:0"></div>
-        <button class="ghostbtn" id="wantPost" style="margin:8px 0 4px">+ Post what you need</button>
-      </div>
-      <h2 class="ptitle" style="font-size:17px;margin:18px 0 8px">Ways to earn</h2>
       <div class="xlist" id="xlist"></div>
       <button class="ghostbtn" id="xmore" hidden></button>
-    </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
-  </section>
 
-  <!-- ================= SAVE ================= -->
-  <section class="screen" id="save" aria-label="Save money">
-    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <h1 class="ptitle">Save</h1>
-      <p class="psub">Keep more of the money you already earn.</p>
-      <p class="fine">We prepare. You act. Upmore never cancels, files, or moves money for you — you always sign and click.</p>
+      <h2 class="sec">Up next</h2>
+      <p class="psub" style="margin:-6px 0 10px">One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.</p>
+      <div id="queue"></div>
 
+      <h2 class="sec">Track</h2>
       <div id="saveSignedOut" hidden>
-        <div class="next" style="margin-top:16px">
-          <div class="row"><span class="pill good">Save side</span></div>
+        <div class="next" style="margin-top:4px">
           <h3>Stop the leaks, keep the cash</h3>
           <div class="steps">
-            <div class="stepbtn" style="cursor:default"><span class="txt">Track every subscription in one place — and what each one really costs per month</span></div>
-            <div class="stepbtn" style="cursor:default"><span class="txt">Never miss a return window, refund deadline, or renewal again</span></div>
-            <div class="stepbtn" style="cursor:default"><span class="txt">Log every dollar you save — counted honestly, never on intent</span></div>
+            <div class="stepbtn" style="cursor:default"><span class="txt">Track every subscription — we flag duplicates, price hikes, and renewals from what you enter</span></div>
+            <div class="stepbtn" style="cursor:default"><span class="txt">Never miss a renewal, claim deadline, or return window</span></div>
           </div>
-          <button class="cta" id="svSignin">Sign in with Google to use Save</button>
-          <p class="fine">Your subscriptions, receipts, and savings log are private to your account.</p>
+          <button class="cta" id="svSignin">Sign in with Google to track</button>
+          <p class="fine">Your subscriptions, deadlines, and money log are private to your account.</p>
         </div>
       </div>
-
       <div id="saveSignedIn" hidden>
         <p class="psub" id="subMonthly" style="margin:8px 0 12px"></p>
         <div class="list" id="subList"></div>
@@ -829,80 +755,68 @@
               <label class="f"><span>Amount</span><input id="subAmount" inputmode="decimal" placeholder="15.99" autocomplete="off"></label>
               <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option></select></div></label>
             </div>
+            <label class="f"><span>Next bill date (optional — powers renewal reminders)</span><input id="subNextBill" type="date"></label>
             <button class="go" id="subAdd" style="height:50px">Save</button>
+          </div>
+        </details>
+        <h3 class="sec" style="font-size:15px;margin-top:18px">Deadlines &amp; claims</h3>
+        <div class="list" id="deadlineList"></div>
+        <details class="svdetails"><summary>Add a deadline or claim</summary>
+          <div class="svform">
+            <label class="f"><span>What</span><input id="dlName" placeholder="Car insurance renewal" autocomplete="off"></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label class="f"><span>Date</span><input id="dlDate" type="date"></label>
+              <label class="f"><span>Kind</span><div class="sel"><select id="dlKind"><option value="renewal">Bill renewal</option><option value="claim">Claim / rebate</option><option value="return">Return window</option><option value="other">Other</option></select></div></label>
+            </div>
+            <label class="f"><span>Amount at stake ($) (optional)</span><input id="dlAmount" inputmode="decimal" placeholder="120" autocomplete="off"></label>
+            <label class="f"><span>Notes (optional)</span><input id="dlNotes" placeholder="Call to renegotiate" autocomplete="off"></label>
+            <button class="go" id="dlAdd" style="height:50px">Save</button>
           </div>
         </details>
       </div>
     </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="false" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="true" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
+    <nav class="tabs" role="tablist" data-nav></nav>
   </section>
 
-  <!-- ================= MONEY ================= -->
-  <section class="screen" id="money" aria-label="Manage your finances">
+  
+  
+  
+  <!-- ================= PROFILE ================= -->
+  <section class="screen" id="profile" aria-label="Profile">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <h1 class="ptitle">Money</h1>
-      <p class="psub">Your AI money agent watches this daily.</p>
-
-      <h2 class="sec">Right now</h2>
-      <div class="moneygrid" id="moneyNow"></div>
-
-      <h2 class="sec">Needs your eye</h2>
-      <div id="moneyAlerts"></div>
-
-      <h2 class="sec">Put your cash to work</h2>
-      <div id="moneyPromos"></div>
-
-      <h2 class="sec">Goals</h2>
-      <div id="moneyGoals"></div>
-      <button class="ghostbtn" id="goalAdd" style="margin:8px 0 4px">+ New goal</button>
-      <div id="goalForm" hidden style="margin:4px 0 8px">
-        <input id="goalName" type="text" placeholder="Goal name — e.g. Emergency fund" maxlength="60" style="width:100%;padding:12px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
-        <input id="goalTarget" type="number" inputmode="decimal" min="1" step="1" placeholder="Target amount ($)" style="width:100%;padding:12px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
-        <div class="row" style="gap:8px">
-          <button class="btn" id="goalCancel" style="flex:1">Cancel</button>
-          <button class="btn" id="goalSave" style="flex:1;background:#1d5c3f;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Save goal</button>
+      <h1 class="ptitle">You</h1>
+      <div class="pcard">
+        <div class="pava" id="pAva">V</div>
+        <div><b id="pName">Vish</b><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
+      </div>
+      <h2 class="sec">Money log</h2>
+      <p class="psub" style="margin:-6px 0 10px">Only real results. Nothing counts on intent — every dollar below has a date and a note.</p>
+      <div id="ledgerTotals" class="ledgertots"></div>
+      <div class="list" id="ledgerList"></div>
+      <button class="ghostbtn" id="ledgerAdd" style="margin:8px 0 4px">+ Log a result</button>
+      <div id="ledgerForm" hidden>
+        <div class="svform">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label class="f"><span>Type</span><div class="sel"><select id="lgType"><option>Received</option><option>Avoided</option><option>Reduced</option><option>Found</option><option>Cash flow</option></select></div></label>
+            <label class="f"><span>Amount ($)</span><input id="lgAmount" inputmode="decimal" placeholder="25.00" autocomplete="off"></label>
+          </div>
+          <label class="f"><span>What happened</span><input id="lgTitle" placeholder="Cancelled Netflix" autocomplete="off"></label>
+          <label class="f"><span>Date</span><input id="lgDate" type="date"></label>
+          <div class="row" style="gap:8px">
+            <button class="btn" id="lgCancel" style="flex:1">Cancel</button>
+            <button class="btn" id="lgSave" style="flex:1;background:#1d5c3f;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Log it</button>
+          </div>
         </div>
       </div>
-
-      <h2 class="sec">Your agent is watching</h2>
-      <div class="watchcard" id="moneyWatch">
-        <div class="wrow"><span class="wdot"></span><span>New recurring charges</span></div>
-        <div class="wrow"><span class="wdot"></span><span>Bill spikes vs. last month</span></div>
-        <div class="wrow"><span class="wdot"></span><span>Low-balance risk</span></div>
-        <div class="wrow"><span class="wdot"></span><span>Payday arrivals</span></div>
-        <p class="wlast" id="moneyWatchLast">Last checked today</p>
+      <button class="prow" id="bankBetaRow" style="margin-top:16px"><span class="pl">Bank sync — private beta</span><span class="pv">›</span></button>
+      <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
+      <div style="margin-top:24px;display:flex;gap:16px;justify-content:center">
+        <button class="linkbtn" id="exportData">Export data</button>
+        <button class="linkbtn" id="deleteData">Delete data</button>
       </div>
-
-      <h2 class="sec">Accounts</h2>
-      <div id="moneyAccts"></div>
-      <button class="ghostbtn" id="bankConnect" style="margin:8px 0 4px">Connect your bank</button>
-      <p class="psub" id="moneyDemoNote" style="margin-top:4px" hidden>Showing demo data — connect your bank for the real thing.</p>
     </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
     <div class="sheet" id="bankSheet" hidden>
       <div class="sheetcard">
         <div class="row"><b style="font-size:18px">Connect your bank</b><button class="iconbtn" id="bankClose" aria-label="Close">✕</button></div>
@@ -915,75 +829,7 @@
         <p class="psub" id="bankStatus" style="margin-top:8px;min-height:20px;"></p>
       </div>
     </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="false" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="true" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
-  </section>
 
-  <!-- ================= PROFILE ================= -->
-  <section class="screen" id="profile" aria-label="Profile">
-    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <h1 class="ptitle">You</h1>
-      <div class="pcard">
-        <div class="pava" id="pAva">V</div>
-        <div><b id="pName">Vish</b><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
-      </div>
-      <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
-      <div style="margin-top:24px;display:flex;gap:16px;justify-content:center">
-        <button class="linkbtn" id="exportData">Export data</button>
-        <button class="linkbtn" id="deleteData">Delete data</button>
-      </div>
-    </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
-  </section>
 
   <!-- ================= GUIDE ================= -->
   <section class="screen" id="guide" aria-label="Guide">
@@ -1008,32 +854,7 @@
         <button class="send" id="send" disabled aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
     </div>
-    <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
-        Guide
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
-        Explore
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
-        Save
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="money">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
-        Money
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
-        You
-      </button>
-    </nav>
+    <nav class="tabs" role="tablist" data-nav></nav>
   </section>
 
     <div class="sheet" id="subSheet" hidden>
@@ -1044,6 +865,13 @@
         <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
         <button class="danger" id="subCancelBtn">Cancel subscription</button>
         <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
+        <div class="svform" style="margin-top:12px;text-align:left">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label class="f"><span>Amount</span><input id="subEditAmount" inputmode="decimal" autocomplete="off"></label>
+            <label class="f"><span>Next bill</span><input id="subEditBill" type="date"></label>
+          </div>
+          <button class="go" id="subUpdateBtn" style="height:44px">Update</button>
+        </div>
         <button class="ghostbtn" id="subSheetClose">Keep it</button>
       </div>
     </div>
@@ -1056,14 +884,7 @@
         <button class="ghostbtn" id="promoSheetClose">Not now</button>
       </div>
     </div>
-    <div class="sheet" id="moneyActionSheet" hidden>
-      <div class="sheetcard">
-        <div class="row"><b style="font-size:18px" id="maTitle">Action</b><button class="iconbtn" id="maClose" aria-label="Close">✕</button></div>
-        <div id="maBody" style="margin-top:8px"></div>
-        <div class="row" style="margin-top:12px;gap:8px;" id="maBtns"></div>
-      </div>
-    </div>
-  <div class="homebar"></div>
+    <div class="homebar"></div>
 </div>
 
 <!--__UPMORE_DATA__-->
@@ -1089,7 +910,7 @@
     <div class="sheet" id="deleteSheet" hidden>
       <div class="sheetcard">
         <div class="row"><b style="font-size:18px">Delete my data</b><button class="iconbtn" id="deleteClose" aria-label="Close">✕</button></div>
-        <p class="psub" style="margin-top:8px">This erases your profile, plan progress, subscriptions, claims, reminders, and Guide chat history. This cannot be undone.</p>
+        <p class="psub" style="margin-top:8px">This erases your profile, plan progress, subscriptions, money log, renewals, claims, reminders, and Guide chat history. This cannot be undone.</p>
         <p class="psub" style="margin-top:8px">Type <b>DELETE</b> to confirm:</p>
         <input id="deleteConfirmInput" type="text" placeholder="Type DELETE" autocomplete="off" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
         <div class="row" style="margin-top:12px;gap:8px;">
@@ -1236,10 +1057,43 @@
     return h + `</div>`;
   };
 
+  function toast(msg) {
+    let t = document.getElementById("upmoreToast");
+    if (!t) {
+      t = document.createElement("div");
+      t.id = "upmoreToast";
+      t.style.cssText = "position:fixed;left:50%;bottom:calc(var(--bot,80px) + 16px);transform:translateX(-50%);background:#111;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:9999;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center;";
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.style.opacity = "1";
+    clearTimeout(t._h);
+    t._h = setTimeout(() => { t.style.opacity = "0"; }, 2200);
+  }
+
   /* ================= Router ================= */
-  const order = ["splash","welcome","time","about","situation","plan","phone","home","explore","save","guide","profile"];
+  const order = ["splash","welcome","time","about","situation","plan","phone","home","guide","profile"];
+  const LEGACY_TABS = { money: "home", save: "home", explore: "home" };
+  const TABS = [
+    { id: "home", label: "Home", icon: '<path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>' },
+    { id: "guide", label: "Guide", icon: '<path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/>' },
+    { id: "profile", label: "You", icon: '<circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/>' }
+  ];
+  /* Single source of truth for the tab bar: every screen's <nav data-nav>
+     is rendered from TABS, so tabs can never drift out of sync again. */
+  function renderNav() {
+    const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+    document.querySelectorAll("nav[data-nav]").forEach(nav => {
+      nav.setAttribute("role", "tablist");
+      nav.innerHTML = TABS.map(t =>
+        `<button class="tab" role="tab" data-tab="${t.id}" aria-selected="${t.id === current}">${svg(t.icon)}${t.label}</button>`).join("");
+      nav.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => show(b.dataset.tab));
+    });
+  }
   let current = "splash";
   function show(id) {
+    if (!$(id)) id = "splash";
+    id = LEGACY_TABS[id] || id;
     if (!$(id)) id = "splash";
     document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
     current = id;
@@ -1247,17 +1101,14 @@
     document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === id ? "true" : "false"));
     if (id === "plan") buildPlan();
     if (id === "home") renderHome();
-    if (id === "explore") renderExplore();
-    if (id === "save") renderSave();
-    if (id === "money") renderMoney();
     if (id === "guide") renderGuideEmpty();
     if (id === "profile") renderProfile();
+    renderNav();
   }
   const next = () => show(order[Math.min(order.indexOf(current) + 1, order.length - 1)]);
   const back = () => show(order[Math.max(order.indexOf(current) - 1, 0)]);
   document.querySelectorAll("[data-next]").forEach(b => b.onclick = next);
   document.querySelectorAll("[data-back]").forEach(b => b.onclick = back);
-  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => show(b.dataset.tab));
 
   /* splash: tap, or auto-advance once boot leaves a fresh user on splash.
      Timer stands down when boot chose any other screen (session -> home, etc.) */
@@ -1567,69 +1418,376 @@
     chat.scrollTop = chat.scrollHeight;
   }
 
+
+
+  /* Continue: the one route the user started but hasn't finished, if any. */
+
+
+  /* More moves: ranked moves #2-4 as horizontal cards, tap to walk through. */
+
+
+
+
+
+  /* ================= The queue: one ranked list (the CFO) =================
+     score = dollars_at_stake x confidence x urgency(days_to_deadline) / effort_minutes
+     Every card carries its inputs as data-* attributes so the ranking is
+     auditable, and the top card states the math in plain words. */
+  function qScore(dollars, conf, urg, eff) {
+    return (Number(dollars) || 0) * conf * urg / Math.max(Number(eff) || 1, 1);
+  }
+  function qUrgency(days) {
+    if (days == null || isNaN(days)) return 1;
+    if (days <= 1) return 5;
+    if (days <= 3) return 4;
+    if (days <= 7) return 3;
+    if (days <= 30) return 2;
+    return 1;
+  }
+  function qDaysUntil(iso) {
+    if (!iso) return null;
+    const t = new Date(String(iso).slice(0, 10) + "T23:59:59");
+    if (isNaN(t)) return null;
+    return Math.ceil((t.getTime() - Date.now()) / 86400000);
+  }
+  function qDueText(days) {
+    if (days == null) return "";
+    if (days < 0) return Math.abs(days) + "d overdue";
+    if (days === 0) return "today";
+    return "in " + days + "d";
+  }
+  const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
+  const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const qDollars = r => Number(r.payout_max ?? r.payout_min ?? 0) || 0;
+  const qConf = r => r.status === "researched" ? 0.7 : 0.4;
+  const qEffort = r => { const t = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2; return t > 0 ? t : 30; };
+
+  async function buildQueue() {
+    const cards = [];
+    const d = planData();
+    // earn: top ranked moves
+    const moves = (d._moves || rankMoves()).slice(0, 6);
+    moves.forEach(r => {
+      const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
+      const urg = r.speed === "today" ? 2 : r.speed === "days" ? 1.5 : 1;
+      cards.push({ type: "earn", id: "earn-" + r.id, title: routeTitle(r), sub: routeMeta(r),
+        dollars, conf, urg, eff, cta: "Walk me through it", act: () => startWalkthrough(r.id),
+        why: dollars > 0
+          ? `$${Math.round(dollars)} x ${Math.round(conf * 100)}% / ${Math.round(eff)} min${urg > 1 ? " - pays fast" : ""}`
+          : `Payout varies - researched ${Math.round(conf * 100)}%` });
+    });
+    // continue: the walkthrough already started
+    const cont = Object.keys(prog).map(id => {
+      const r = routeById(id);
+      if (!r || !r.steps || !r.steps.length) return null;
+      const done = (prog[id] || []).length;
+      return (done > 0 && done < r.steps.length) ? { r, done } : null;
+    }).filter(Boolean)[0];
+    if (cont) {
+      const dollars = qDollars(cont.r);
+      const eff = Math.max((cont.r.steps.length - cont.done) * 3, 3);
+      cards.push({ type: "continue", id: "cont-" + cont.r.id, title: "Continue: " + routeTitle(cont.r),
+        sub: `Step ${cont.done + 1} of ${cont.r.steps.length}`, dollars, conf: 0.9, urg: 1.5, eff,
+        cta: "Resume", act: () => startWalkthrough(cont.r.id),
+        why: `Already started - $${Math.round(dollars)} x 90% / ${eff} min` });
+    }
+    if (saveUid()) {
+      const subs = (await saveRows("save_subscriptions", "created_at", false))
+        .filter(x => x.status !== "cancelled");
+      // detector 1: possible duplicate recurring charges
+      const groups = {};
+      subs.forEach(x => { const k = normMerch(x.merchant); (groups[k] = groups[k] || []).push(x); });
+      Object.values(groups).forEach(g => {
+        if (g.length < 2) return;
+        const dollars = g.slice(1).reduce((t, x) => t + qAnnual(x), 0);
+        cards.push({ type: "duplicate", id: "dup-" + normMerch(g[0].merchant),
+          title: `Possible duplicate: ${g[0].merchant}`,
+          sub: `${g.length} active charges look like the same subscription`,
+          dollars, conf: 0.8, urg: 1.5, eff: 3,
+          cta: "Review", act: () => openSubSheet(g[1].id),
+          why: `$${Math.round(dollars)}/yr at stake x 80% / 3 min` });
+      });
+      subs.forEach(x => {
+        // detector 2: bill spike (amount raised vs what you last entered)
+        if (x.previous_amount != null && Number(x.amount) > Number(x.previous_amount)) {
+          const up = (Number(x.amount) - Number(x.previous_amount)) * (INT2MO[x.billing_interval] || 1) * 12;
+          cards.push({ type: "spike", id: "spike-" + x.id,
+            title: `${x.merchant} bill went up`,
+            sub: `${money$(x.previous_amount)} -> ${money$(x.amount)}${INTPER[x.billing_interval] || ""} (+$${Math.round(up)}/yr)`,
+            dollars: up, conf: 0.95, urg: 2, eff: 10,
+            cta: "Review", act: () => openSubSheet(x.id),
+            why: `+$${Math.round(up)}/yr x 95% / 10 min - price hike you entered` });
+        }
+        // detector 3: renewal approaching (date you entered)
+        const bd = qDaysUntil(x.next_billing_date);
+        if (bd != null && bd <= 14) {
+          const per = Number(x.amount) || 0, urg = qUrgency(bd);
+          cards.push({ type: "renewal", id: "ren-" + x.id,
+            title: `${x.merchant} renews ${qDueText(bd)}`,
+            sub: `${money$(x.amount)}${INTPER[x.billing_interval] || ""} - review before it renews`,
+            dollars: per, conf: 1.0, urg, eff: 5,
+            cta: "Review", act: () => openSubSheet(x.id),
+            why: `$${per} x 100% / 5 min - renews ${qDueText(bd)}` });
+        }
+        // cancel candidate: every recurring charge is a keep-or-cut decision
+        const annual = qAnnual(x);
+        cards.push({ type: "cancel", id: "cancel-" + x.id,
+          title: `Cancel ${x.merchant}`,
+          sub: `Keep $${Math.round(annual)}/yr`, dollars: annual, conf: 1.0, urg: 1, eff: 5,
+          cta: "Review", act: () => openSubSheet(x.id),
+          why: `$${Math.round(annual)}/yr x 100% / 5 min` });
+      });
+      // deadline engine: renewals + claims you entered
+      const rens = await saveRows("save_renewals", "renews_on", true);
+      rens.filter(r => r.status === "upcoming").forEach(r => {
+        const days = qDaysUntil(r.renews_on), urg = qUrgency(days);
+        cards.push({ type: "renewal", id: "renewal-" + r.id, title: r.name,
+          sub: `Renews ${qDueText(days)}${r.prep_notes ? " - " + r.prep_notes : ""}`,
+          dollars: 0, conf: 1.0, urg, eff: 10,
+          cta: "Mark done", act: () => deadlineDone("save_renewals", r.id),
+          why: `Deadline ${qDueText(days)} - no dollars set, ranked on urgency` });
+      });
+      const claims = await saveRows("save_claims", "deadline", true);
+      claims.filter(c => c.status === "open").forEach(c => {
+        const days = qDaysUntil(c.deadline), urg = qUrgency(days);
+        const dollars = Number(c.amount || 0);
+        cards.push({ type: "deadline", id: "claim-" + c.id,
+          title: c.merchant ? `${c.merchant} - ${c.kind}` : c.kind,
+          sub: `${c.steps ? c.steps + " - " : ""}due ${qDueText(days)}`,
+          dollars, conf: 0.9, urg, eff: 15,
+          cta: "Mark claimed", act: () => deadlineDone("save_claims", c.id),
+          why: `$${dollars} x 90% / 15 min - due ${qDueText(days)}` });
+      });
+      // claim: promos that fit
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 3)
+        .forEach(r => {
+          const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
+          cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
+            sub: String(r.reward || "").slice(0, 90), dollars, conf, urg: 1, eff,
+            cta: "Start", act: () => openPromoSheet(r.id),
+            why: `$${Math.round(dollars)} x ${Math.round(conf * 100)}% / ${Math.round(eff)} min` });
+        });
+    }
+    cards.forEach(c => { c.score = qScore(c.dollars, c.conf, c.urg, c.eff); });
+    cards.sort((a, b) => b.score - a.score);
+    return cards;
+  }
+
+  async function renderQueue() {
+    const box = $("queue");
+    if (!box) return;
+    const cards = await buildQueue();
+    if (!cards.length) {
+      box.innerHTML = `<p class="psub">Nothing queued yet - search above or track a subscription below.</p>`;
+      return;
+    }
+    box.innerHTML = cards.map((c, i) => `
+      <article class="qcard${i === 0 ? " top" : ""}" data-type="${c.type}"
+        data-dollar="${Math.round(c.dollars)}" data-conf="${c.conf}" data-urg="${c.urg}"
+        data-eff="${Math.round(c.eff)}" data-score="${c.score.toFixed(2)}">
+        ${i === 0 ? `<p class="qtop">Up next</p>` : ""}
+        <h4>${esc(c.title)}</h4>
+        <p class="qm">${esc(c.sub)}</p>
+        <p class="qwhy">${esc(c.why)}</p>
+        <button class="qcta" data-qid="${esc(c.id)}">${esc(c.cta)}</button>
+      </article>`).join("");
+    const byId = Object.fromEntries(cards.map(c => [c.id, c]));
+    box.querySelectorAll("[data-qid]").forEach(b => b.onclick = () => { const c = byId[b.dataset.qid]; if (c) c.act(); });
+    const top = cards[0];
+    const hs = $("homeSub");
+    if (hs && top) hs.textContent = `Up next: ${top.title} - ${top.why}`;
+  }
+
+  async function deadlineDone(table, id) {
+    try { await supa.from(table).update({ status: table === "save_claims" ? "claimed" : "done" }).eq("id", id); } catch (e) {}
+    renderQueue(); renderDeadlines();
+  }
+
   function renderHome() {
     const d = planData();
-    const moves = d._moves || rankMoves();
-    const r = moves[0];
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
     $("hello").textContent = `Good ${part}, ${d.name}`;
     const av = $("avatar");
     av.textContent = (d.name || "V").charAt(0).toUpperCase();
     av.onclick = () => show("profile");
-    const steps = r.steps.length ? r.steps : [{ n: 1, text: r.what, who: "User", done_when: "", warns: "" }];
-    const firstOpen = steps.find(s => !(prog[r.id] || []).includes(s.n)) || steps[0];
-    const nx = firstOpen.text;
-    $("homeSub").textContent = "Your next step: " + nx.charAt(0).toLowerCase() + nx.slice(1, 110) + (nx.length > 110 ? "…" : "");
-    $("heroCard").className = "hero t-" + (r.tier === "Very Easy" ? "green" : "sky");
-    $("heroTitle").textContent = routeTitle(r);
-    $("heroMeta").textContent = routeMeta(r);
-    $("heroCta").textContent = r.url ? "Open official site" : "Start this move";
-    $("heroCta").onclick = () => { if (r.url) window.open(r.url, "_blank", "noopener"); };
-    renderContinue();
-    renderMoreMoves(moves);
-    renderHomeSubs();
-    renderHomePromos();
+    renderExplore();
+    renderQueue();
+    renderTracker();
   }
 
-  /* Continue: the one route the user started but hasn't finished, if any. */
-  function renderContinue() {
-    const sec = $("continueSec"), row = $("continueRow");
-    if (!sec || !row) return;
-    const cand = Object.keys(prog).map(id => {
-      const r = routeById(id);
-      if (!r || !r.steps || !r.steps.length) return null;
-      const done = (prog[id] || []).length;
-      return { r, done, total: r.steps.length };
-    }).filter(x => x && x.done > 0 && x.done < x.total)[0];
-    if (!cand) { sec.hidden = true; row.innerHTML = ""; return; }
-    sec.hidden = false;
-    row.innerHTML = `
-      <button class="iconrow" data-resume="${cand.r.id}">
-        <span class="grow"><span class="t">Continue: ${esc(short(routeTitle(cand.r), 52))}</span>
-        <span class="s">Step ${cand.done + 1} of ${cand.total}</span></span>
-        <span class="chev">\u203a</span>
-      </button>`;
-    row.querySelector("[data-resume]").onclick = e => startWalkthrough(e.currentTarget.dataset.resume);
+  /* ================= Deadlines & claims (Track section) ================= */
+  async function renderDeadlines() {
+    const box = $("deadlineList");
+    if (!box) return;
+    if (!saveUid()) { box.innerHTML = ""; return; }
+    const [rens, claims] = await Promise.all([
+      saveRows("save_renewals", "renews_on", true),
+      saveRows("save_claims", "deadline", true)
+    ]);
+    const items = [
+      ...rens.filter(r => r.status === "upcoming").map(r => ({ t: "save_renewals", id: r.id, name: r.name, date: r.renews_on, sub: r.kind || "renewal" })),
+      ...claims.filter(c => c.status === "open").map(c => ({ t: "save_claims", id: c.id, name: c.merchant ? c.merchant + " - " + c.kind : c.kind, date: c.deadline, sub: (c.amount ? money$(c.amount) + " - " : "") + "due" }))
+    ].sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    box.innerHTML = items.length ? items.map(it => {
+      const days = qDaysUntil(it.date);
+      return `<div class="item"><div class="grow"><p class="t">${esc(it.name)}</p>
+        <p class="m">${esc(it.sub)} - ${esc(qDueText(days))}</p></div>
+        <button class="linkbtn" data-done="${it.t}:${it.id}">Done</button></div>`;
+    }).join("") : `<div class="item"><div class="grow"><p class="m">No deadlines tracked - add renewals and claims below.</p></div></div>`;
+    box.querySelectorAll("[data-done]").forEach(b => b.onclick = () => {
+      const [t, id] = b.dataset.done.split(":");
+      deadlineDone(t, id);
+    });
+  }
+  let dlWired = false;
+  function wireDeadlines() {
+    if (dlWired) return; dlWired = true;
+    $("dlAdd").onclick = async () => {
+      const name = $("dlName").value.trim(), date = $("dlDate").value, kind = $("dlKind").value;
+      if (!name || !date) { toast("Give it a name and a date"); return; }
+      const amt = parseFloat($("dlAmount").value);
+      const notes = $("dlNotes").value.trim();
+      $("dlAdd").disabled = true;
+      let ok = false;
+      if (kind === "renewal") {
+        ok = await saveInsert("save_renewals", { name, renews_on: date, kind: "renewal", prep_notes: notes, status: "upcoming" });
+      } else {
+        ok = await saveInsert("save_claims", { merchant: name, kind, amount: amt > 0 ? amt : null, deadline: date, steps: notes, status: "open" });
+      }
+      $("dlAdd").disabled = false;
+      if (ok) { ["dlName", "dlDate", "dlAmount", "dlNotes"].forEach(id => $(id).value = ""); renderDeadlines(); renderQueue(); toast("Tracked"); }
+    };
   }
 
-  /* More moves: ranked moves #2-4 as horizontal cards, tap to walk through. */
-  function renderMoreMoves(moves) {
-    const sec = $("moreMovesSec"), wrap = $("moreMoves");
-    if (!sec || !wrap) return;
-    const rest = (moves || []).slice(1, 4);
-    if (!rest.length) { sec.hidden = true; wrap.innerHTML = ""; return; }
-    sec.hidden = false;
-    wrap.innerHTML = rest.map(r => `
-      <button class="movecard" data-move="${r.id}">
-        <h4>${esc(short(routeTitle(r), 64))}</h4>
-        <p>${esc(short(routeMeta(r), 90))}</p>
-        <span class="go">Walk me through it &rarr;</span>
-      </button>`).join("");
-    wrap.querySelectorAll("[data-move]").forEach(b => b.onclick = () => startWalkthrough(b.dataset.move));
+  /* ================= Money log (You tab) =================
+     Backed by save_ledger. Totals are computed live as SUM(amount):
+     a reversal inserts an offsetting entry and flags the original.
+     Entries are never edited or deleted. */
+  const LEDGER_BUCKETS = ["Received", "Avoided", "Reduced", "Cash flow", "Found"];
+  async function renderLedger() {
+    const box = $("ledgerList"), tots = $("ledgerTotals");
+    if (!box || !tots) return;
+    if (!saveUid()) { tots.innerHTML = ""; box.innerHTML = `<p class="psub">Sign in to keep your money log.</p>`; return; }
+    const rows = await saveRows("save_ledger", "occurred_on", false);
+    const sums = {};
+    LEDGER_BUCKETS.forEach(b => sums[b] = 0);
+    rows.forEach(r => { if (sums[r.bucket] !== undefined) sums[r.bucket] += Number(r.amount || 0); });
+    tots.innerHTML = LEDGER_BUCKETS.map(b =>
+      `<div class="ledgertot"><b>${money$(sums[b])}</b><span>${b}</span></div>`).join("");
+    box.innerHTML = rows.length ? rows.map(r => `
+      <div class="item"><div class="grow${r.reversed ? " lrev" : ""}">
+        <p class="t">${esc(r.title)}${Number(r.amount) < 0 ? " (reversal)" : ""}</p>
+        <p class="m num">${money$(r.amount)} - ${esc(r.bucket)} - ${esc(r.occurred_on || "")}${r.detail ? " - " + esc(r.detail) : ""}</p>
+      </div>${!r.reversed && Number(r.amount) !== 0 ? `<button class="linkbtn" data-rev="${r.id}">Reverse</button>` : ""}</div>`
+    ).join("") : `<div class="item"><div class="grow"><p class="m">$0.00 - log your first real result below.</p></div></div>`;
+    box.querySelectorAll("[data-rev]").forEach(b => b.onclick = () => ledgerReverse(b.dataset.rev, rows));
+  }
+  async function ledgerReverse(id, rows) {
+    const r = (rows || []).find(x => String(x.id) === String(id));
+    if (!r || r.reversed) return;
+    await saveInsert("save_ledger", {
+      bucket: r.bucket, amount: -Number(r.amount || 0),
+      title: "Reversal: " + r.title, detail: r.detail || "",
+      occurred_on: new Date().toISOString().slice(0, 10)
+    });
+    try { await supa.from("save_ledger").update({ reversed: true }).eq("id", r.id); } catch (e) {}
+    renderLedger();
+  }
+  let ledgerWired = false;
+  function wireLedger() {
+    if (ledgerWired) return; ledgerWired = true;
+    $("ledgerAdd").onclick = () => {
+      $("ledgerForm").hidden = !$("ledgerForm").hidden;
+      if (!$("ledgerForm").hidden && !$("lgDate").value) $("lgDate").value = new Date().toISOString().slice(0, 10);
+    };
+    $("lgCancel").onclick = () => { $("ledgerForm").hidden = true; };
+    $("lgSave").onclick = async () => {
+      const amt = parseFloat($("lgAmount").value);
+      const title = $("lgTitle").value.trim();
+      if (!(amt > 0) || !title) { toast("Add an amount and a note"); return; }
+      $("lgSave").disabled = true;
+      const ok = await saveInsert("save_ledger", {
+        bucket: $("lgType").value, amount: amt, title, detail: "",
+        occurred_on: $("lgDate").value || new Date().toISOString().slice(0, 10)
+      });
+      $("lgSave").disabled = false;
+      if (ok) { ["lgAmount", "lgTitle"].forEach(id => $(id).value = ""); $("ledgerForm").hidden = true; renderLedger(); toast("Logged"); }
+    };
   }
 
-
+  /* ================= You extras: bank beta, export, delete ================= */
+  let youExtrasWired = false;
+  function wireYouExtras() {
+    if (youExtrasWired) return; youExtrasWired = true;
+    $("bankBetaRow").onclick = () => {
+      const em = (typeof session !== "undefined" && session && session.user && session.user.email) || "";
+      if (em) $("bankEmail").value = em;
+      $("bankStatus").textContent = "";
+      $("bankSheet").hidden = false;
+    };
+    $("bankClose").onclick = () => { $("bankSheet").hidden = true; };
+    $("bankSheet").addEventListener("click", e => { if (e.target.id === "bankSheet") $("bankSheet").hidden = true; });
+    $("bankNotify").onclick = async () => {
+      const email = $("bankEmail").value.trim();
+      if (!email || email.indexOf("@") < 0) { $("bankStatus").textContent = "Enter a valid email."; return; }
+      try {
+        const { error } = await supa.from("finance_waitlist").upsert({ user_id: saveUid(), email }, { onConflict: "email" });
+        $("bankStatus").textContent = error ? "Something went wrong - try again." : "You're on the list. We'll email your invite.";
+      } catch (e) { $("bankStatus").textContent = "Something went wrong - try again."; }
+    };
+    $("exportData").onclick = exportUserData;
+    wireDeleteSheet();
+  }
+  async function exportUserData() {
+    if (!saveUid()) { toast("Sign in to export"); return; }
+    const tables = ["save_subscriptions", "save_ledger", "save_renewals", "save_claims", "save_receipts"];
+    const out = { exported_at: new Date().toISOString(), user_id: saveUid() };
+    for (const t of tables) out[t] = await saveRows(t, "created_at", false);
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "upmore-data.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    toast("Downloaded");
+  }
+  let deleteWired = false;
+  function wireDeleteSheet() {
+    if (deleteWired) return; deleteWired = true;
+    $("deleteData").onclick = () => {
+      $("deleteConfirmInput").value = "";
+      $("deleteStatus").textContent = "";
+      $("deleteConfirmBtn").disabled = true;
+      $("deleteConfirmBtn").style.opacity = 0.5;
+      $("deleteSheet").hidden = false;
+    };
+    $("deleteClose").onclick = () => { $("deleteSheet").hidden = true; };
+    $("deleteCancel").onclick = () => { $("deleteSheet").hidden = true; };
+    $("deleteSheet").addEventListener("click", e => { if (e.target.id === "deleteSheet") $("deleteSheet").hidden = true; });
+    $("deleteConfirmInput").oninput = e => {
+      const ok = e.target.value.trim() === "DELETE";
+      $("deleteConfirmBtn").disabled = !ok;
+      $("deleteConfirmBtn").style.opacity = ok ? 1 : 0.5;
+    };
+    $("deleteConfirmBtn").onclick = async () => {
+      $("deleteConfirmBtn").disabled = true;
+      $("deleteStatus").textContent = "Deleting...";
+      const uid = saveUid();
+      try {
+        for (const t of ["save_subscriptions", "save_ledger", "save_renewals", "save_claims", "save_receipts"]) {
+          await supa.from(t).delete().eq("user_id", uid);
+        }
+        try { await supa.functions.invoke("delete-account"); } catch (e) {}
+        try { await supa.auth.signOut(); } catch (e) {}
+      } catch (e) {}
+      session = null; dbProfile = null;
+      $("deleteSheet").hidden = true;
+      show("welcome");
+    };
+  }
 
   /* ================= Save (subscriptions) ================= */
   const saveUid = () => (session && session.user && session.user.id) || null;
@@ -1650,12 +1808,13 @@
   }
   const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
   const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
-  async function renderSave() {
+  async function renderTracker() {
     const signed = !!(await getSessionToken());
     $("saveSignedOut").hidden = signed;
     $("saveSignedIn").hidden = !signed;
     if (!signed) return;
     renderSubs();
+    renderDeadlines();
   }
   async function renderSubs() {
     const rows = await saveRows("save_subscriptions", "created_at", false);
@@ -1675,17 +1834,20 @@
     if (saveInit) return; saveInit = true;
     const svGo = $("svSignin");
     if (svGo) { const lbl = svGo.innerHTML; svGo.onclick = () => startGoogleLogin(svGo, lbl); }
+    wireDeadlines();
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
       if (!m || !(amt > 0) || !saveUid()) return;
       b.disabled = true;
+      const nb = $("subNextBill").value || null;
       const ok = await saveInsert("save_subscriptions", {
         merchant: m, amount: amt, currency: "USD",
         billing_interval: $("subInterval").value,
+        next_billing_date: nb,
         status: "active", detected_via: "manual",
       });
       b.disabled = false;
-      if (ok) { ["subMerchant", "subAmount"].forEach(id => $(id).value = ""); renderSubs(); renderHomeSubs(); }
+      if (ok) { ["subMerchant", "subAmount"].forEach(id => $(id).value = ""); $("subNextBill").value = ""; renderSubs(); renderQueue(); }
     };
   }
   initSave();
@@ -1742,25 +1904,7 @@
     const letter = (name || "?").trim().charAt(0).toUpperCase();
     return `<span class="appicon" style="${px}font-size:${a[2]}px;background:linear-gradient(135deg,hsl(${h},65%,55%),hsl(${(h + 40) % 360},65%,42%))">${esc(letter)}</span>`;
   }
-  async function renderHomeSubs() {
-    const list = $("homeSubList");
-    if (!list) return;
-    const rows = await saveRows("save_subscriptions", "created_at", false);
-    const act = rows.filter(r => r.status !== "cancelled");
-    list.innerHTML = act.length ? `<div class="dock">` + act.map(s => `
-      <button class="dockitem" data-sub="${s.id}" aria-label="${esc(s.merchant)}, ${money$(s.amount)}${INTPER[s.billing_interval] || ""}">
-        ${appIcon(s.merchant, "dock")}
-      </button>`).join("") + `</div>`
-      : `<button class="iconrow" id="homeSubEmpty"><span class="grow"><span class="t">Track a subscription</span><span class="s">See what you\u2019re paying each month</span></span><span class="chev">\u203a</span></button>`;
-    list.querySelectorAll("[data-sub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.sub));
-    const empty = $("homeSubEmpty");
-    if (empty) empty.onclick = () => show("save");
-    const line = $("homeSubLine");
-    if (line) {
-      const monthly = act.reduce((t, s) => t + Number(s.amount || 0) * (INT2MO[s.billing_interval] || 1), 0);
-      line.textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 ${act.length} active` : "";
-    }
-  }
+
   let homeSubCache = [];
   async function openSubSheet(id) {
     const rows = await saveRows("save_subscriptions", "created_at", false);
@@ -1770,6 +1914,26 @@
     $("subSheetIcon").outerHTML = appIcon(s.merchant, "lg").replace('class="appicon"', 'class="sheeticon" id="subSheetIcon"');
     $("subSheetName").textContent = s.merchant;
     $("subSheetMeta").textContent = `${money$(s.amount)}${INTPER[s.billing_interval] || ""}`;
+    $("subEditAmount").value = s.amount != null ? s.amount : "";
+    $("subEditBill").value = s.next_billing_date || "";
+    $("subUpdateBtn").onclick = async () => {
+      const na = parseFloat($("subEditAmount").value);
+      const nb = $("subEditBill").value || null;
+      const updates = {};
+      if (na > 0 && na !== Number(s.amount)) {
+        updates.previous_amount = s.amount;
+        updates.previous_amount_at = new Date().toISOString();
+        updates.amount = na;
+      }
+      if (nb !== (s.next_billing_date || null)) updates.next_billing_date = nb;
+      if (!Object.keys(updates).length) { $("subSheet").hidden = true; return; }
+      $("subUpdateBtn").disabled = true;
+      try { await supa.from("save_subscriptions").update(updates).eq("id", s.id); } catch (e) {}
+      $("subUpdateBtn").disabled = false;
+      $("subSheet").hidden = true;
+      toast("Updated");
+      renderSubs(); renderQueue();
+    };
     const flow = cancelFlowFor(s.merchant);
     const link = $("subCancelLink"), stepsEl = $("subCancelSteps");
     if (flow && flow.url) { link.href = flow.url; link.style.display = "block"; } else { link.style.display = "none"; }
@@ -1780,7 +1944,7 @@
       try { await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id); } catch (e) {}
       $("subCancelBtn").disabled = false;
       $("subSheet").hidden = true;
-      renderSubs(); renderHomeSubs();
+      renderSubs(); renderQueue();
       show("guide");
       const fl = cancelFlowFor(s.merchant);
       const brief = fl
@@ -1789,17 +1953,7 @@
       guideAsk(brief);
     };
   }
-  function renderHomePromos() {
-    const list = $("homePromoList");
-    if (!list) return;
-    const promos = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : [])).filter(r =>
-      ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 3);
-    list.innerHTML = promos.length ? `<div class="dock">` + promos.map(r => `
-      <button class="dockitem" data-promo="${r.id}" aria-label="${esc(r.provider || "Promo")}, ${esc(String(r.reward || "").slice(0, 60))}">
-        ${appIcon(r.provider || r.category, "dock")}
-      </button>`).join("") + `</div>` : "";
-    list.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
-  }
+
   function openPromoSheet(id) {
     const r = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : [])).find(x => String(x.id) === String(id));
     if (!r) return;
@@ -1817,210 +1971,6 @@
   $("promoSheetClose").onclick = () => { $("promoSheet").hidden = true; };
   $("subSheet").addEventListener("click", e => { if (e.target.id === "subSheet") $("subSheet").hidden = true; });
   $("promoSheet").addEventListener("click", e => { if (e.target.id === "promoSheet") $("promoSheet").hidden = true; });
-
-  /* ================= Money: manage your finances ================= */
-  async function renderMoney() {
-    if (!saveUid()) return;
-    const [accts, alerts, goals, snaps] = await Promise.all([
-      saveRows("finance_accounts", "created_at", true),
-      saveRows("finance_alerts", "created_at", false),
-      saveRows("finance_goals", "created_at", true),
-      saveRows("finance_snapshots", "month", false)
-    ]);
-    renderMoneyNow(accts, snaps[0]);
-    renderMoneyAlerts(alerts.filter(a => a.status === "open"));
-    renderMoneyPromos(accts);
-    renderMoneyGoals(goals.filter(g => g.status === "active"));
-    renderMoneyAccts(accts);
-    moneyAcctsCache = accts;
-    wireMoneyOnce();
-  }
-  const moneyCash = accts => accts.filter(a => ["checking", "savings", "manual"].includes(a.account_type))
-    .reduce((t, a) => t + Number(a.balance_current || 0), 0);
-  function renderMoneyNow(accts, snap) {
-    const el = $("moneyNow");
-    if (!el) return;
-    const cash = moneyCash(accts);
-    const inflow = Number(snap && snap.inflow || 0), outflow = Number(snap && snap.outflow || 0);
-    el.innerHTML = `
-      <div class="moneystat"><div class="v">${money$(cash)}</div><div class="l">Cash now</div></div>
-      <div class="moneystat"><div class="v">${money$(inflow)}</div><div class="l">In this month</div></div>
-      <div class="moneystat"><div class="v">${money$(inflow - outflow)}</div><div class="l">Left this month</div></div>`;
-  }
-  function renderMoneyAlerts(alerts) {
-    const el = $("moneyAlerts");
-    if (!el) return;
-    el.innerHTML = alerts.length ? alerts.map(a => `
-      <div class="alertcard">
-        <h4>${esc(a.title)}</h4>
-        ${a.detail ? `<p>${esc(a.detail)}</p>` : ""}
-        ${a.evidence ? `<p class="ev">${esc(a.evidence)}</p>` : ""}
-        <div class="arow">
-          ${a.action_label ? `<button class="alertbtn primary" data-aid="${a.id}" data-act="go">${esc(a.action_label)}</button>` : ""}
-          <button class="alertbtn" data-aid="${a.id}" data-act="dismiss">Dismiss</button>
-        </div>
-      </div>`).join("")
-      : `<p class="psub">All clear. Your agent is watching.</p>`;
-    el.querySelectorAll("[data-act]").forEach(b => b.onclick = () => moneyAlertAct(b.dataset.aid, b.dataset.act, alerts));
-  }
-  async function moneyAlertAct(id, act, alerts) {
-    const a = alerts.find(x => String(x.id) === String(id));
-    if (act === "dismiss") {
-      try { await supa.from("finance_alerts").update({ status: "dismissed" }).eq("id", id); } catch (e) {}
-      renderMoney();
-    } else if (act === "go" && a) {
-      if (a.kind === "payday") { openPaydaySheet(a); return; }
-      if (a.kind === "spike") { openSpikeSheet(a); return; }
-      try { await supa.from("finance_alerts").update({ status: "acted" }).eq("id", id); } catch (e) {}
-      if (a.action_tab) show(a.action_tab);
-      else if (a.action_url) window.open(a.action_url, "_blank", "noopener");
-      else renderMoney();
-    }
-  }
-  let moneyAcctsCache = [];
-  const moneyAmts = s => (String(s || "").match(/\$[\d,]+(?:\.\d{2})?/g) || []);
-  function maButtons(btns) {
-    const box = $("maBtns");
-    box.innerHTML = "";
-    btns.forEach(b => {
-      const el = document.createElement("button");
-      el.className = "alertbtn" + (b.primary ? " primary" : "");
-      el.style.flex = "1";
-      el.textContent = b.label;
-      el.onclick = b.onClick;
-      box.appendChild(el);
-    });
-  }
-  function maCopy(text, doneText) {
-    const done = () => toast(doneText || "Copied");
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
-    } else fallbackCopy(text, done);
-  }
-  async function maResolve(id, status) {
-    try { await supa.from("finance_alerts").update({ status }).eq("id", id); } catch (e) {}
-    $("moneyActionSheet").hidden = true;
-    renderMoney();
-  }
-  function openPaydaySheet(a) {
-    const amts = moneyAmts(a.detail);
-    const arrived = amts[0] || "Your paycheck";
-    const suggest = amts[1] || "$200";
-    const checking = moneyAcctsCache.find(x => x.account_type === "checking");
-    const savings = moneyAcctsCache.find(x => x.account_type === "savings");
-    const fromTxt = checking ? `${esc(checking.institution_name)} ${esc(checking.account_name)}${checking.mask ? " …" + esc(checking.mask) : ""}` : "your checking account";
-    const toTxt = savings ? `${esc(savings.institution_name)} ${esc(savings.account_name)}${savings.mask ? " …" + esc(savings.mask) : ""}` : "your savings account";
-    const steps = `Move ${suggest} to savings:\n1. Open your ${checking ? esc(checking.institution_name) : "bank"} app.\n2. Transfer ${suggest} from ${fromTxt.replace(/<[^>]*>/g, "")} to ${toTxt.replace(/<[^>]*>/g, "")}.\n3. Come back here and tap "Done — I moved it".`;
-    $("maTitle").textContent = "Payday landed";
-    $("maBody").innerHTML = `
-      <p class="psub" style="margin:0 0 8px">${esc(arrived)} just landed. I can\u2019t move money for you \u2014 your bank needs the tap to come from you \u2014 but here\u2019s the exact move, ready to go:</p>
-      <div class="alertcard" style="margin-bottom:8px"><h4>Move ${esc(suggest)} to savings</h4>
-      <p>1. Open your ${checking ? esc(checking.institution_name) : "bank"} app.<br>2. Transfer ${esc(suggest)} from ${fromTxt} to ${toTxt}.<br>3. Come back and tap \u201cDone \u2014 I moved it\u201d.</p></div>
-      <p class="psub" style="margin:0">This keeps your emergency fund on track. Nothing moves until you do it.</p>`;
-    maButtons([
-      { label: "Copy the steps", onClick: () => maCopy(steps, "Copied — paste it anywhere") },
-      { label: "Done \u2014 I moved it", primary: true, onClick: () => { maResolve(a.id, "acted"); toast("Logged. Nice move."); } },
-      { label: "Not now", onClick: () => { $("moneyActionSheet").hidden = true; } }
-    ]);
-    $("moneyActionSheet").hidden = false;
-  }
-  function openSpikeSheet(a) {
-    const amts = moneyAmts(a.detail);
-    const now = amts[0] || "this month\u2019s amount";
-    const was = amts[1] || "last month\u2019s";
-    const maskM = String(a.evidence || a.detail || "").match(/…(\d{4})/);
-    const maskTxt = maskM ? ` \u2014 account ending ${maskM[1]}` : "";
-    const provM = String(a.detail || "").match(/^(.+?)\s+charged/i);
-    const prov = provM ? provM[1] : "utility";
-    const script = `Hi, I\u2019m calling about my ${prov} bill${maskTxt}. I was charged ${now} this month, up from ${was} last month, and my usage hasn\u2019t changed. Can you check for a billing error, and tell me what rate plans or discounts could bring this back down?`;
-    $("maTitle").textContent = "Lower this bill";
-    $("maBody").innerHTML = `
-      <p class="psub" style="margin:0 0 8px">${a.detail ? esc(a.detail) : ""}${a.evidence ? ` <span class="ev">${esc(a.evidence)}</span>` : ""}</p>
-      <div class="alertcard" style="margin-bottom:8px"><h4>Your call script</h4><p style="color:var(--text)">${esc(script)}</p></div>
-      <p class="psub" style="margin:0">Services like Rocket Money charge 35\u201360% of first-year savings for this call. Doing it yourself costs $0.</p>`;
-    maButtons([
-      { label: "Copy script", onClick: () => maCopy(script, "Copied — read it on the call") },
-      { label: "Mark as handled", primary: true, onClick: () => { maResolve(a.id, "acted"); } },
-      { label: "Not now", onClick: () => { $("moneyActionSheet").hidden = true; } }
-    ]);
-    $("moneyActionSheet").hidden = false;
-  }
-  function renderMoneyPromos(accts) {
-    const el = $("moneyPromos");
-    if (!el) return;
-    const cash = moneyCash(accts);
-    const promos = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : []))
-      .filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 2);
-    if (!promos.length) { el.innerHTML = ""; return; }
-    const why = cash > 0
-      ? `You have ${money$(cash)} in cash — these fit what you hold.`
-      : `These fit most people getting started.`;
-    const trunc = s => { s = String(s || ""); if (s.length <= 90) return s; const c = s.slice(0, 90); const sp = c.lastIndexOf(" "); return (sp > 40 ? c.slice(0, sp) : c) + "…"; };
-    el.innerHTML = `<p class="psub" style="margin:0 0 8px">${esc(why)}</p>` + promos.map(r => `
-      <button class="promocard" data-promo="${r.id}">
-        ${appIcon(r.provider || r.category)}
-        <span class="grow"><span class="t">${esc(r.provider || "Promo")}</span>
-        <span class="s">${esc(trunc(r.reward))}</span></span>
-        <span class="chev">\u203a</span>
-      </button>`).join("");
-    el.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
-  }
-  function renderMoneyGoals(goals) {
-    const el = $("moneyGoals");
-    if (!el) return;
-    el.innerHTML = goals.length ? goals.map(g => {
-      const pct = Math.min(100, Math.round(100 * Number(g.current_amount || 0) / Number(g.target_amount || 1)));
-      return `<div class="goalcard">
-        <div class="grow"><span class="t">${esc(g.name)}</span><span class="amt">${money$(g.current_amount)} of ${money$(g.target_amount)}</span></div>
-        <div class="goaltrack"><div class="goalfill" style="width:${pct}%"></div></div>
-      </div>`;
-    }).join("") : `<p class="psub">No goals yet — set one and your agent tracks it from your real balances.</p>`;
-  }
-  function renderMoneyAccts(accts) {
-    const el = $("moneyAccts");
-    if (!el) return;
-    el.innerHTML = accts.length ? accts.map(a => `
-      <div class="acctrow">
-        <span class="grow"><span class="t">${esc(a.institution_name)} ${esc(a.account_name)}</span>
-        <span class="s">${a.mask ? "\u2026" + esc(a.mask) + " \u00b7 " : ""}${esc(a.account_type)}</span></span>
-        <span class="amt">${money$(a.balance_current)}</span>
-      </div>`).join("") : `<p class="psub">No accounts yet.</p>`;
-    const note = $("moneyDemoNote");
-    if (note) note.hidden = !accts.some(a => a.source === "demo");
-  }
-  let moneyWired = false;
-  function wireMoneyOnce() {
-    if (moneyWired) return; moneyWired = true;
-    $("goalAdd").onclick = () => { $("goalForm").hidden = !$("goalForm").hidden; };
-    $("goalCancel").onclick = () => { $("goalForm").hidden = true; };
-    $("goalSave").onclick = async () => {
-      const name = $("goalName").value.trim();
-      const target = Number($("goalTarget").value);
-      if (!name || !(target > 0)) { toast("Give your goal a name and a target amount"); return; }
-      if (await saveInsert("finance_goals", { name, target_amount: target, current_amount: 0, status: "active" })) {
-        $("goalName").value = ""; $("goalTarget").value = ""; $("goalForm").hidden = true;
-        renderMoney();
-      }
-    };
-    $("bankConnect").onclick = () => {
-      const em = (typeof session !== "undefined" && session && session.user && session.user.email) || "";
-      if (em) $("bankEmail").value = em;
-      $("bankStatus").textContent = "";
-      $("bankSheet").hidden = false;
-    };
-    $("bankClose").onclick = () => { $("bankSheet").hidden = true; };
-    $("bankSheet").addEventListener("click", e => { if (e.target.id === "bankSheet") $("bankSheet").hidden = true; });
-    $("maClose").onclick = () => { $("moneyActionSheet").hidden = true; };
-    $("moneyActionSheet").addEventListener("click", e => { if (e.target.id === "moneyActionSheet") $("moneyActionSheet").hidden = true; });
-    $("bankNotify").onclick = async () => {
-      const email = $("bankEmail").value.trim();
-      if (!email || email.indexOf("@") < 0) { $("bankStatus").textContent = "Enter a valid email."; return; }
-      try {
-        const { error } = await supa.from("finance_waitlist").upsert({ user_id: saveUid(), email }, { onConflict: "email" });
-        $("bankStatus").textContent = error ? "Something went wrong \u2014 try again." : "You're on the list. We'll email your invite.";
-      } catch (e) { $("bankStatus").textContent = "Something went wrong \u2014 try again."; }
-    };
-  }
 
   /* ================= Guide ================= */
   /* ================= Guide: answers from the real catalog ================= */
@@ -2046,15 +1996,15 @@
       aff: r.affiliate ? "We may earn a commission on this offer — it never comes out of your pocket." : "" };
   }
   function routeParas(r) {
-    const verified = r.status === "verified";
-    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.${verified ? " Checked against " + r.provider + "'s own official terms." : ""}`];
+    const researched = r.status === "researched";
+    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.${researched ? " Researched against " + r.provider + "'s own official terms - confirm live terms before you start." : ""}`];
     if (r.requirements) p.push(`You'll need: ${r.requirements}`);
     if (r.payout_timing) p.push(`When it pays: ${r.payout_timing}`);
     if (r.catches) p.push(`The catch, straight: ${r.catches}`);
     if (r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0)
       p.push(`Important: this pays as ${r.cash_or_credit} — not cash in hand.`);
-    if (!verified)
-      p.push(`One honest note: we haven't verified the live terms on this one yet. I'll check the provider's own page with you before you start.`);
+    if (!researched)
+      p.push(`One honest note: we haven't researched this one against the provider's official terms yet. I'll check the provider's own page with you before you start.`);
     return p;
   }
 
@@ -2131,7 +2081,7 @@
     if (has("audit my subscriptions", "audit subscriptions"))
       return { paras: [
         "Here's the audit playbook: list every recurring charge, flag anything you haven't used in 30 days, then cancel from the merchant's own page — I'll give you the exact steps for each one.",
-        "Open the Save tab and add your subscriptions (tap “Add a subscription”). Tell me what you listed and I'll flag the likely waste.",
+        "On Home, scroll to Track and tap “Add a subscription”. Tell me what you listed and I'll flag the likely waste.",
         "One rule: I prepare, you click. I never cancel anything for you." ] };
 
     if (has("negotiat", "lower my bill", "lower a bill"))
@@ -2182,11 +2132,11 @@
     }
 
     if (has("verif", "legit", "trustworthy", " is this real", "scam")) {
-      const nv = D.routes.filter(r => r.status === "verified").length;
+      const nv = D.routes.filter(r => r.status === "researched").length;
       const nt = D.routes.length;
       return { paras: [
-        `Straight answer: ${nv} of ${nt} routes are verified against the provider's own official terms — reward, requirements, and dates included.`,
-        "The rest are researched but not yet verified — I'll confirm them against the provider's own page before you start anything.",
+        `Straight answer: ${nv} of ${nt} routes are researched against the provider's own official terms — reward, requirements, and dates included.`,
+        "The rest aren't researched yet — I'll confirm them against the provider's own page before you start anything.",
         "If terms changed or an offer died, I'll tell you and pick the next-best one." ] };
     }
 
@@ -2390,7 +2340,7 @@
     tag: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>',
     gift: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v9h14v-9M12 8v13"/></svg>'
   };
-  const xState = { q: "", tier: "all", cat: "all", speed: "all", lane: false, shown: 40 };
+  const xState = { q: "", tier: "all", cat: "all", speed: "all", lane: false, shown: 12 };
   const TIERS = ["Very Easy", "Easy", "Moderate", "Hard", "Very Hard"];
 
   function xFiltered() {
@@ -2406,7 +2356,6 @@
   }
 
   function renderExplore() {
-    loadListings();
     const list = xFiltered();
     const box = $("xlist");
     box.innerHTML = "";
@@ -2414,10 +2363,10 @@
       const el = document.createElement("div");
       el.className = "xitem";
       const laneBadge = r.lane !== "Standard" ? `<span class="rbadge">Higher-risk</span>` : "";
-      const verifiedBadge = r.status === "verified" ? `<span class="vbadge">✓ Verified</span>` : "";
+      const researchedBadge = r.status === "researched" ? `<span class="vbadge">\u2713 Researched</span>` : "";
       el.innerHTML = `<div class="xrow">
           <span class="xtile" style="background:${tileColor(r)}">${XICONS[CATICON[r.category]] || XICONS.tag}</span>
-          <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${verifiedBadge}</b><span>${esc(routeMeta(r))}</span>${earnLine(r) ? `<span class="xearn">${esc(earnLine(r))}</span>` : ""}</span>
+          <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${researchedBadge}</b><span>${esc(routeMeta(r))}</span>${earnLine(r) ? `<span class="xearn">${esc(earnLine(r))}</span>` : ""}</span>
           <span class="xpill">${esc(r.tier || "—")}</span>
         </div>
         <div class="xdetail" hidden>
@@ -2457,6 +2406,7 @@
     $("pName").textContent = d.name || "Friend";
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
+    renderLedger(); wireLedger(); wireYouExtras();
     $("signOut").onclick = async () => {
       try { await supa.auth.signOut(); } catch (e) {}
       session = null; dbProfile = null;
@@ -2493,7 +2443,8 @@
     if (session) {
       await ensureProfile();
       await loadProgress();
-      const tab = order.includes(h) && ["home", "explore", "save", "guide", "profile"].includes(h) ? h : "home";
+      const hh0 = LEGACY_TABS[h] || h;
+      const tab = order.includes(hh0) && ["home", "guide", "profile"].includes(hh0) ? hh0 : "home";
       show(tab);
       return;
     }
@@ -2501,7 +2452,8 @@
     // the Login screen instead of redoing onboarding; brand-new users get splash.
     let hasOnboarding = false;
     try { hasOnboarding = !!localStorage.getItem("upmore-onboarding"); } catch (e) {}
-    if (order.includes(h) && h !== "splash") { show(h); bootDone = true; }
+    const hh1 = LEGACY_TABS[h] || h;
+    if (order.includes(hh1) && hh1 !== "splash") { show(hh1); bootDone = true; }
     else if (hasOnboarding) { show("login"); bootDone = true; }
     else { show("splash"); /* splash timer advances to welcome */ }
   })();

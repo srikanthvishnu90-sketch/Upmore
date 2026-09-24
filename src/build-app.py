@@ -24,7 +24,7 @@ out = tpl.replace(ph, script, 1)
 
 # Keep the hardcoded marketing/copy counts in sync with the real data
 n_routes = len(data.get("routes", []))
-n_verified = sum(1 for r in data.get("routes", []) if r.get("status") == "verified")
+n_researched = sum(1 for r in data.get("routes", []) if r.get("status") == "researched")
 n_steps = sum(len(r.get("steps") or []) for r in data.get("routes", []))
 out = out.replace("Search 535 ways to earn…", f"Search {n_routes} ways to earn…")
 out = out.replace("(535 routes, 4,953 playbook", f"({n_routes} routes, {n_steps:,} playbook")

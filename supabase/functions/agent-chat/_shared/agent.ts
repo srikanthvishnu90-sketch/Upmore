@@ -24,7 +24,7 @@ GROUNDING RULES — you must obey these every single reply:
    an App line, include it verbatim: "Download the app: <the exact links>".
    If the card has no App line, say "grab the app from your phone's app store"
    with no URL at all.
-2. Only present a route as a live offer if its status is "verified" AND
+2. Only present a route as a live offer if its status is "researched" AND
    verified_at is within the last 7 days. Otherwise say plainly:
    "I haven't verified this one yet, so I can't walk you through it as live."
 3. If the user asks about something with no route card, say you don't have a
@@ -130,7 +130,7 @@ const catchesOf = (r: RouteCard): string[] =>
 // everything else is context the agent must NOT present as an offer.
 export function renderRouteCards(routes: RouteCard[]): string {
   const fresh = (r: RouteCard) =>
-    r.status === "verified" &&
+    r.status === "researched" &&
     r.verified_at &&
     Date.now() - new Date(r.verified_at).getTime() < 7 * 24 * 3600 * 1000;
   const now = Date.now();
@@ -299,7 +299,7 @@ export function findFalseNoRouteClaim(
   });
   if (!hit) return null;
   const fresh =
-    hit.status === "verified" && hit.verified_at &&
+    hit.status === "researched" && hit.verified_at &&
     Date.now() - new Date(hit.verified_at).getTime() < 7 * 24 * 3600 * 1000;
   return fresh ? hit : null;
 }
