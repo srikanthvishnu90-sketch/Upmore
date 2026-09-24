@@ -1098,10 +1098,11 @@
   document.querySelectorAll("[data-back]").forEach(b => b.onclick = back);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => show(b.dataset.tab));
 
-  /* splash: tap or timer (timer stands down once boot has chosen a screen) */
+  /* splash: tap, or auto-advance once boot leaves a fresh user on splash.
+     Timer stands down when boot chose any other screen (session -> home, etc.) */
   let bootDone = false;
   $("splash").onclick = () => { if (current === "splash") show("welcome"); };
-  setTimeout(() => { if (!bootDone && current === "splash" && !location.hash) show("welcome"); }, 1800);
+  setTimeout(() => { if (!bootDone && current === "splash") show("welcome"); }, 1800);
 
   /* ================= Signup: choices ================= */
   document.querySelectorAll("[data-pick]").forEach(g => {
@@ -2071,10 +2072,9 @@
     // the Login screen instead of redoing onboarding; brand-new users get splash.
     let hasOnboarding = false;
     try { hasOnboarding = !!localStorage.getItem("upmore-onboarding"); } catch (e) {}
-    if (order.includes(h) && h !== "splash") show(h);
-    else if (hasOnboarding) show("login");
-    else { show("splash"); }
-    bootDone = true;
+    if (order.includes(h) && h !== "splash") { show(h); bootDone = true; }
+    else if (hasOnboarding) { show("login"); bootDone = true; }
+    else { show("splash"); /* splash timer advances to welcome */ }
   })();
   // Service worker: offline app-shell cache (mobile UX)
   if ("serviceWorker" in navigator) {
