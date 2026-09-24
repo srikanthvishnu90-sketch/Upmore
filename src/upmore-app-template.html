@@ -725,26 +725,6 @@
       <h2 class="sec">Promos</h2>
       <div id="homePromoList"></div>
     </div>
-    <div class="sheet" id="subSheet" hidden>
-      <div class="sheetcard">
-        <div class="sheeticon" id="subSheetIcon">N</div>
-        <div style="text-align:center"><b id="subSheetName" style="font-size:18px">Netflix</b>
-        <p class="psub" id="subSheetMeta" style="margin:4px 0 14px">$15.99/mo</p></div>
-        <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
-        <button class="danger" id="subCancelBtn">Cancel subscription</button>
-        <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
-        <button class="ghostbtn" id="subSheetClose">Keep it</button>
-      </div>
-    </div>
-    <div class="sheet" id="promoSheet" hidden>
-      <div class="sheetcard">
-        <div class="sheeticon" id="promoSheetIcon">S</div>
-        <div style="text-align:center"><b id="promoSheetName" style="font-size:18px">SoFi</b>
-        <p class="psub" id="promoSheetMeta" style="margin:4px 0 14px">$300 bonus</p></div>
-        <button class="primary" id="promoStartBtn">Start promo</button>
-        <button class="ghostbtn" id="promoSheetClose">Not now</button>
-      </div>
-    </div>
     <nav class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
@@ -1056,6 +1036,33 @@
     </nav>
   </section>
 
+    <div class="sheet" id="subSheet" hidden>
+      <div class="sheetcard">
+        <div class="sheeticon" id="subSheetIcon">N</div>
+        <div style="text-align:center"><b id="subSheetName" style="font-size:18px">Netflix</b>
+        <p class="psub" id="subSheetMeta" style="margin:4px 0 14px">$15.99/mo</p></div>
+        <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
+        <button class="danger" id="subCancelBtn">Cancel subscription</button>
+        <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
+        <button class="ghostbtn" id="subSheetClose">Keep it</button>
+      </div>
+    </div>
+    <div class="sheet" id="promoSheet" hidden>
+      <div class="sheetcard">
+        <div class="sheeticon" id="promoSheetIcon">S</div>
+        <div style="text-align:center"><b id="promoSheetName" style="font-size:18px">SoFi</b>
+        <p class="psub" id="promoSheetMeta" style="margin:4px 0 14px">$300 bonus</p></div>
+        <button class="primary" id="promoStartBtn">Start promo</button>
+        <button class="ghostbtn" id="promoSheetClose">Not now</button>
+      </div>
+    </div>
+    <div class="sheet" id="moneyActionSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px" id="maTitle">Action</b><button class="iconbtn" id="maClose" aria-label="Close">✕</button></div>
+        <div id="maBody" style="margin-top:8px"></div>
+        <div class="row" style="margin-top:12px;gap:8px;" id="maBtns"></div>
+      </div>
+    </div>
   <div class="homebar"></div>
 </div>
 
@@ -1825,6 +1832,7 @@
     renderMoneyPromos(accts);
     renderMoneyGoals(goals.filter(g => g.status === "active"));
     renderMoneyAccts(accts);
+    moneyAcctsCache = accts;
     wireMoneyOnce();
   }
   const moneyCash = accts => accts.filter(a => ["checking", "savings", "manual"].includes(a.account_type))
@@ -1861,11 +1869,81 @@
       try { await supa.from("finance_alerts").update({ status: "dismissed" }).eq("id", id); } catch (e) {}
       renderMoney();
     } else if (act === "go" && a) {
+      if (a.kind === "payday") { openPaydaySheet(a); return; }
+      if (a.kind === "spike") { openSpikeSheet(a); return; }
       try { await supa.from("finance_alerts").update({ status: "acted" }).eq("id", id); } catch (e) {}
       if (a.action_tab) show(a.action_tab);
       else if (a.action_url) window.open(a.action_url, "_blank", "noopener");
       else renderMoney();
     }
+  }
+  let moneyAcctsCache = [];
+  const moneyAmts = s => (String(s || "").match(/\$[\d,]+(?:\.\d{2})?/g) || []);
+  function maButtons(btns) {
+    const box = $("maBtns");
+    box.innerHTML = "";
+    btns.forEach(b => {
+      const el = document.createElement("button");
+      el.className = "alertbtn" + (b.primary ? " primary" : "");
+      el.style.flex = "1";
+      el.textContent = b.label;
+      el.onclick = b.onClick;
+      box.appendChild(el);
+    });
+  }
+  function maCopy(text, doneText) {
+    const done = () => toast(doneText || "Copied");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+    } else fallbackCopy(text, done);
+  }
+  async function maResolve(id, status) {
+    try { await supa.from("finance_alerts").update({ status }).eq("id", id); } catch (e) {}
+    $("moneyActionSheet").hidden = true;
+    renderMoney();
+  }
+  function openPaydaySheet(a) {
+    const amts = moneyAmts(a.detail);
+    const arrived = amts[0] || "Your paycheck";
+    const suggest = amts[1] || "$200";
+    const checking = moneyAcctsCache.find(x => x.account_type === "checking");
+    const savings = moneyAcctsCache.find(x => x.account_type === "savings");
+    const fromTxt = checking ? `${esc(checking.institution_name)} ${esc(checking.account_name)}${checking.mask ? " …" + esc(checking.mask) : ""}` : "your checking account";
+    const toTxt = savings ? `${esc(savings.institution_name)} ${esc(savings.account_name)}${savings.mask ? " …" + esc(savings.mask) : ""}` : "your savings account";
+    const steps = `Move ${suggest} to savings:\n1. Open your ${checking ? esc(checking.institution_name) : "bank"} app.\n2. Transfer ${suggest} from ${fromTxt.replace(/<[^>]*>/g, "")} to ${toTxt.replace(/<[^>]*>/g, "")}.\n3. Come back here and tap "Done — I moved it".`;
+    $("maTitle").textContent = "Payday landed";
+    $("maBody").innerHTML = `
+      <p class="psub" style="margin:0 0 8px">${esc(arrived)} just landed. I can\u2019t move money for you \u2014 your bank needs the tap to come from you \u2014 but here\u2019s the exact move, ready to go:</p>
+      <div class="alertcard" style="margin-bottom:8px"><h4>Move ${esc(suggest)} to savings</h4>
+      <p>1. Open your ${checking ? esc(checking.institution_name) : "bank"} app.<br>2. Transfer ${esc(suggest)} from ${fromTxt} to ${toTxt}.<br>3. Come back and tap \u201cDone \u2014 I moved it\u201d.</p></div>
+      <p class="psub" style="margin:0">This keeps your emergency fund on track. Nothing moves until you do it.</p>`;
+    maButtons([
+      { label: "Copy the steps", onClick: () => maCopy(steps, "Copied — paste it anywhere") },
+      { label: "Done \u2014 I moved it", primary: true, onClick: () => { maResolve(a.id, "acted"); toast("Logged. Nice move."); } },
+      { label: "Not now", onClick: () => { $("moneyActionSheet").hidden = true; } }
+    ]);
+    $("moneyActionSheet").hidden = false;
+  }
+  function openSpikeSheet(a) {
+    const amts = moneyAmts(a.detail);
+    const now = amts[0] || "this month\u2019s amount";
+    const was = amts[1] || "last month\u2019s";
+    const maskM = String(a.evidence || a.detail || "").match(/…(\d{4})/);
+    const maskTxt = maskM ? ` \u2014 account ending ${maskM[1]}` : "";
+    const provM = String(a.detail || "").match(/^(.+?)\s+charged/i);
+    const prov = provM ? provM[1] : "utility";
+    const script = `Hi, I\u2019m calling about my ${prov} bill${maskTxt}. I was charged ${now} this month, up from ${was} last month, and my usage hasn\u2019t changed. Can you check for a billing error, and tell me what rate plans or discounts could bring this back down?`;
+    $("maTitle").textContent = "Lower this bill";
+    $("maBody").innerHTML = `
+      <p class="psub" style="margin:0 0 8px">${a.detail ? esc(a.detail) : ""}${a.evidence ? ` <span class="ev">${esc(a.evidence)}</span>` : ""}</p>
+      <div class="alertcard" style="margin-bottom:8px"><h4>Your call script</h4><p style="color:var(--text)">${esc(script)}</p></div>
+      <p class="psub" style="margin:0">Services like Rocket Money charge 35\u201360% of first-year savings for this call. Doing it yourself costs $0.</p>`;
+    maButtons([
+      { label: "Copy script", onClick: () => maCopy(script, "Copied — read it on the call") },
+      { label: "Mark as handled", primary: true, onClick: () => { maResolve(a.id, "acted"); } },
+      { label: "Not now", onClick: () => { $("moneyActionSheet").hidden = true; } }
+    ]);
+    $("moneyActionSheet").hidden = false;
   }
   function renderMoneyPromos(accts) {
     const el = $("moneyPromos");
@@ -1877,11 +1955,12 @@
     const why = cash > 0
       ? `You have ${money$(cash)} in cash — these fit what you hold.`
       : `These fit most people getting started.`;
+    const trunc = s => { s = String(s || ""); if (s.length <= 90) return s; const c = s.slice(0, 90); const sp = c.lastIndexOf(" "); return (sp > 40 ? c.slice(0, sp) : c) + "…"; };
     el.innerHTML = `<p class="psub" style="margin:0 0 8px">${esc(why)}</p>` + promos.map(r => `
       <button class="promocard" data-promo="${r.id}">
         ${appIcon(r.provider || r.category)}
         <span class="grow"><span class="t">${esc(r.provider || "Promo")}</span>
-        <span class="s">${esc(String(r.reward || "").slice(0, 90))}</span></span>
+        <span class="s">${esc(trunc(r.reward))}</span></span>
         <span class="chev">\u203a</span>
       </button>`).join("");
     el.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
@@ -1931,6 +2010,8 @@
     };
     $("bankClose").onclick = () => { $("bankSheet").hidden = true; };
     $("bankSheet").addEventListener("click", e => { if (e.target.id === "bankSheet") $("bankSheet").hidden = true; });
+    $("maClose").onclick = () => { $("moneyActionSheet").hidden = true; };
+    $("moneyActionSheet").addEventListener("click", e => { if (e.target.id === "moneyActionSheet") $("moneyActionSheet").hidden = true; });
     $("bankNotify").onclick = async () => {
       const email = $("bankEmail").value.trim();
       if (!email || email.indexOf("@") < 0) { $("bankStatus").textContent = "Enter a valid email."; return; }
