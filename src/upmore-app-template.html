@@ -1260,7 +1260,7 @@
   function buildPlan() {
     const d = planData();
     const st = NAMES[d.state] || "your state";
-    const moves = rankMoves();
+    const moves = rankMoves().slice(0, 3);
     PLAN_MOVES = moves;
     d._moves = moves;
     const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";

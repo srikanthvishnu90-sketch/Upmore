@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-AN3RoNjmbxZhcbleT1EyCP4VRx0wdB4KTk57KYnbp38='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-Eq4r8oTf2MLCfwypm0DctfTVZPW+ZHRSnB19C3Rz6i4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1281,7 +1281,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function buildPlan() {
     const d = planData();
     const st = NAMES[d.state] || "your state";
-    const moves = rankMoves();
+    const moves = rankMoves().slice(0, 3);
     PLAN_MOVES = moves;
     d._moves = moves;
     const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";
