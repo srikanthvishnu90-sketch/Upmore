@@ -152,7 +152,7 @@ serve(async (req) => {
               .order("route_id").range(p * 1000, p * 1000 + 999)
           ),
         );
-    const [profRes, playRes, remRes, verPages, histRes, exclRes, expRes, expiredRes] = await Promise.all([
+    const [profRes, playRes, remRes, verPages, histRes, exclRes, expRes, expiredRes, listRes] = await Promise.all([
       supabase.from("profiles").select("*").eq("id", user.id).single(),
       supabase.from("playbook_progress")
         .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
@@ -179,6 +179,10 @@ serve(async (req) => {
       supabase.from("routes")
         .select("route_id, name, expires_at").eq("status", "verified")
         .not("expires_at", "is", null).lt("expires_at", nowIso).limit(5),
+      // Open Wanted-board listings (electronics people need; others can accept).
+      supabase.from("listings")
+        .select("id, title, description, budget_max, created_at").eq("status", "open")
+        .order("created_at", { ascending: false }).limit(10),
     ]);
     const profile = profRes.data;
     // Agentic walkthrough parity: {{name}}/{{email}}/{{state}} values resolved
@@ -343,12 +347,28 @@ serve(async (req) => {
         ? "You have ZERO verified routes right now. Never claim you have verified routes to walk through. Say new routes are being verified and you'll have them soon."
         : "Only present routes marked LIVE below as offers.");
 
-    const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
+    const openListings = listRes.data ?? [];
+    // Keyword-match open Wanted listings against the user's message so the
+    // model only hears about relevant ones (avoids dumping the whole board).
+    const msgWords = new Set(message.toLowerCase().split(/[^a-z0-9+]+/).filter(w => w.length > 2));
+    const matchListings = openListings.filter((l: any) => {
+      const hay = `${l.title ?? ""} ${l.description ?? ""}`.toLowerCase();
+      const hayWords = new Set(hay.split(/[^a-z0-9+]+/).filter(w => w.length > 2));
+      for (const w of msgWords) if (hayWords.has(w)) return true;
+      return false;
+    }).slice(0, 3);
+    const listingLine = matchListings.length > 0
+      ? `WANTED BOARD (real users need these electronics right now — mention the relevant one(s) naturally when the user asks about selling, trading, or finding electronics; tell them to open the Explore tab's Wanted board to accept): ` +
+        matchListings.map((l: any) => `"${l.title}"${l.budget_max != null ? ` (up to $${l.budget_max})` : ""}${l.description ? ` — ${l.description}` : ""}`).join("; ") + "."
+      : (openListings.length > 0
+        ? `Wanted board has ${openListings.length} open electronics listing(s), none matching this message — don't mention them unless the user asks about electronics/selling.`
+        : "Wanted board is empty right now.");
+    const system = SYSTEM_PROMPT + "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine +
       `\n${catalogLine}\n\n` +
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
 
     const systemStatic = SYSTEM_PROMPT; // stable: cacheable
-    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine +
+    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine +
       `\n${catalogLine}\n\n` +
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
 

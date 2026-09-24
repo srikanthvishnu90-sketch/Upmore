@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-teEjRojK+P8QmnF9vLMZuK8FDdZce7qKW3nCV4g+98E='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-/TE1EuFsd3/mCPplF9/imcbh3BytxODL+jJrTmKyURs='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -715,6 +715,12 @@
         <p class="psub" style="margin:0 0 8px">Fresh contract posts from public hiring threads — not verified by us, read the post before applying.</p>
         <div class="xlist" id="xlive" style="margin-top:0"></div>
       </div>
+      <div id="wantWrap">
+        <h2 class="ptitle" style="font-size:17px;margin:14px 0 4px">📦 Wanted board</h2>
+        <p class="psub" style="margin:0 0 8px">People near you post electronics they need. Have one? Accept the listing.</p>
+        <button class="ghostbtn" id="wantPost" style="margin-bottom:8px">+ Post what you need</button>
+        <div class="xlist" id="xwant" style="margin-top:0"></div>
+      </div>
       <div class="lane"><button class="tgl" id="laneTgl" aria-pressed="false" aria-label="Include higher-risk routes"></button><span>Include higher-risk routes <span id="laneN"></span></span></div>
       <div class="xlist" id="xlist"></div>
       <button class="ghostbtn" id="xmore" hidden></button>
@@ -1055,6 +1061,23 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           <p class="agentnote" style="font-size:12.5px;color:var(--muted)">The agent fills your name, email and state — never passwords, ID numbers, payment details, and never the final Submit. That tap is always yours.</p>
           <button class="agentcancel" id="agentCancel">Cancel</button>
         </div>
+      </div>
+    </div>
+    <div class="sheet" id="listSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Post what you need</b><button class="iconbtn" id="listClose" aria-label="Close">✕</button></div>
+        <p class="psub" style="margin-top:8px">Electronics you need — phones, laptops, consoles, audio, cameras. Your listing goes live on the Wanted board immediately.</p>
+        <label class="fine" for="listTitle" style="display:block;margin-top:10px">What do you need?</label>
+        <input id="listTitle" type="text" placeholder="e.g. iPhone 13, 128GB, good condition" autocomplete="off" maxlength="80" style="width:100%;padding:12px;margin-top:4px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <label class="fine" for="listDesc" style="display:block;margin-top:10px">Details (optional)</label>
+        <textarea id="listDesc" placeholder="Color, storage, condition you'll accept…" maxlength="300" style="width:100%;padding:12px;margin-top:4px;border:1px solid #ddd;border-radius:8px;font-size:16px;min-height:64px;resize:vertical;"></textarea>
+        <label class="fine" for="listBudget" style="display:block;margin-top:10px">Max you'll pay ($)</label>
+        <input id="listBudget" type="number" inputmode="decimal" min="1" step="1" placeholder="e.g. 400" style="width:100%;padding:12px;margin-top:4px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <div class="row" style="margin-top:12px;gap:8px;">
+          <button class="btn" id="listCancel" style="flex:1">Cancel</button>
+          <button class="btn" id="listSubmit" style="flex:1;background:#1d5c3f;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Post listing</button>
+        </div>
+        <p class="psub" id="listStatus" style="margin-top:8px;min-height:20px;"></p>
       </div>
     </div>
 <script>
@@ -1926,6 +1949,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   function renderExplore() {
     loadLiveDeals();
+    loadListings();
     const list = xFiltered();
     $("xcount").textContent = `${list.length} ways to earn, highest earn rate first. Tap one for the honest catch.`;
     const box = $("xlist");
@@ -2077,6 +2101,112 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     } catch (e) { /* live section is best-effort */ }
   }
 
+  /* ---- Wanted board: user listings for electronics ---- */
+  let wantLoaded = false;
+  async function loadListings() {
+    if (wantLoaded) return;
+    wantLoaded = true;
+    try {
+      const { data, error } = await supa.from("listings")
+        .select("id, title, description, budget_max, created_at, user_id")
+        .eq("status", "open")
+        .order("created_at", { ascending: false }).limit(20);
+      if (error || !data || !data.length) {
+        $("xwant").innerHTML = `<p class="fine">No listings yet — be the first to post what you need.</p>`;
+        return;
+      }
+      const mine = session ? session.user.id : null;
+      $("xwant").innerHTML = data.map(l => {
+        const when = l.created_at ? new Date(l.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
+        const isMine = mine && l.user_id === mine;
+        const budget = l.budget_max != null ? `<br><span class="lpay">Up to $${esc(String(l.budget_max))}</span>` : "";
+        return `<div class="livecard">
+          <b>${esc(l.title)}</b>
+          <span class="lmeta">Posted ${esc(when)}${isMine ? " · yours" : ""}</span>
+          ${l.description ? `<br><span class="lmeta">${esc(l.description)}</span>` : ""}
+          ${budget}
+          <br>${isMine
+            ? `<button class="ghostbtn" data-cancel-listing="${esc(l.id)}" style="margin-top:6px">Cancel listing</button>`
+            : `<button class="ghostbtn" data-accept-listing="${esc(l.id)}" style="margin-top:6px">Accept — I have this</button>`}
+        </div>`;
+      }).join("");
+    } catch (e) { /* wanted board is best-effort */ }
+  }
+  $("wantPost").onclick = () => {
+    if (!session) { toast("Sign in to post a listing"); return; }
+    $("listTitle").value = ""; $("listDesc").value = ""; $("listBudget").value = ""; $("listStatus").textContent = "";
+    $("listSheet").hidden = false;
+  };
+  const closeListSheet = () => { $("listSheet").hidden = true; };
+  $("listClose").onclick = closeListSheet;
+  $("listCancel").onclick = closeListSheet;
+  $("listSheet").addEventListener("click", e => { if (e.target === $("listSheet")) closeListSheet(); });
+  $("listSubmit").onclick = async () => {
+    if (!session) { toast("Sign in to post a listing"); return; }
+    const title = $("listTitle").value.trim();
+    const desc = $("listDesc").value.trim();
+    const budgetRaw = $("listBudget").value.trim();
+    if (!title) { $("listStatus").textContent = "Give your listing a title."; return; }
+    const budget = budgetRaw ? Number(budgetRaw) : null;
+    if (budgetRaw && (!isFinite(budget) || budget <= 0)) { $("listStatus").textContent = "Budget must be a positive number."; return; }
+    $("listStatus").textContent = "Posting…";
+    try {
+      const { error } = await supa.from("listings").insert({
+        user_id: session.user.id,
+        title: title.slice(0, 80),
+        description: desc ? desc.slice(0, 300) : null,
+        category: "electronics",
+        budget_max: budget,
+        status: "open"
+      });
+      if (error) throw error;
+      closeListSheet();
+      wantLoaded = false;
+      await loadListings();
+      toast("Listing is live on the Wanted board");
+    } catch (e) {
+      $("listStatus").textContent = "Couldn't post — try again.";
+    }
+  };
+  document.addEventListener("click", async e => {
+    const acc = e.target && e.target.closest ? e.target.closest("[data-accept-listing]") : null;
+    const can = e.target && e.target.closest ? e.target.closest("[data-cancel-listing]") : null;
+    if (acc) {
+      if (!session) { toast("Sign in to accept a listing"); return; }
+      const id = acc.getAttribute("data-accept-listing");
+      acc.disabled = true; acc.textContent = "Accepting…";
+      try {
+        const { error } = await supa.from("listings")
+          .update({ status: "accepted", accepted_by: session.user.id })
+          .eq("id", id).eq("status", "open");
+        if (error) throw error;
+        wantLoaded = false;
+        await loadListings();
+        toast("Listing accepted — you can arrange the handoff in chat");
+      } catch (err) {
+        acc.disabled = false; acc.textContent = "Accept — I have this";
+        toast("Couldn't accept — it may already be taken");
+      }
+      return;
+    }
+    if (can) {
+      const id = can.getAttribute("data-cancel-listing");
+      can.disabled = true;
+      try {
+        const { error } = await supa.from("listings")
+          .update({ status: "cancelled" })
+          .eq("id", id).eq("user_id", session.user.id);
+        if (error) throw error;
+        wantLoaded = false;
+        await loadListings();
+        toast("Listing cancelled");
+      } catch (err) {
+        can.disabled = false;
+        toast("Couldn't cancel — try again");
+      }
+    }
+  });
+
   /* ---- "Do it for me" web agent ----
      The agent drives a real browser for the user: opens the signup page,
      fills name/email/state, screenshots everything, and STOPS before any
@@ -2168,6 +2298,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       { t: "save_claims", col: "user_id" },
       { t: "agent_threads", col: "user_id" },
       { t: "reminders", col: "user_id" },
+      { t: "listings", col: "user_id" },
     ]};
   };
   $("exportData").onclick = async () => {
