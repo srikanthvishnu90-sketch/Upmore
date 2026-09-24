@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-2sUxxm3lDLwQMuAMyt+YSqS6b2p6T+wlGs/ASC11n/8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-VKUnFgy5BJZUCPx1jIt96CmxQJuJJBa6j1v7nnn0AUg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1156,9 +1156,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const nameI = $("name"), dobI = $("dob");
   function checkAbout() {
     let ok = nameI.value.trim().length > 0;
+    // Caret-preserving mask: count digits left of the caret, reformat, then
+    // put the caret back after the same number of digits. Without this,
+    // typing (or automation typing char-by-char) lands digits in the wrong
+    // place once the " / " separators appear.
+    const caret = dobI.selectionStart == null ? dobI.value.length : dobI.selectionStart;
+    const digitsBefore = dobI.value.slice(0, caret).replace(/\D/g, "").length;
     const d = dobI.value.replace(/\D/g, "").slice(0, 8);
     dobI.value = d.length > 4 ? `${d.slice(0,2)} / ${d.slice(2,4)} / ${d.slice(4)}`
                : d.length > 2 ? `${d.slice(0,2)} / ${d.slice(2)}` : d;
+    let seen = 0, pos = dobI.value.length;
+    for (let i = 0; i < dobI.value.length; i++) {
+      if (seen >= digitsBefore) { pos = i; break; }
+      if (/\d/.test(dobI.value[i])) seen++;
+      pos = i + 1;
+    }
+    try { dobI.setSelectionRange(pos, pos); } catch (e) {}
     const h = $("dobHint"); h.textContent = ""; h.className = "hint";
     data.minor = false;
     if (d.length === 8) {
@@ -1253,7 +1266,16 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   /* ================= Auth: Google sign-in ================= */
   async function startGoogleLogin(btn, labelHtml) {
-    try { localStorage.setItem("upmore-onboarding", JSON.stringify(data)); } catch (e) {}
+    // The OAuth round-trip reloads the page, wiping in-memory onboarding
+    // answers. Stash them nonce-bound (one-time, consumed on return) so the
+    // profile is saved with the user's real answers — and so a different
+    // person's answers can never leak into this profile.
+    try {
+      const nonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      sessionStorage.setItem("upmore-ob-nonce", nonce);
+      localStorage.setItem("upmore-onboarding-" + nonce, JSON.stringify(data));
+      localStorage.setItem("upmore-onboarding", "1"); // returning-user marker only
+    } catch (e) {}
     btn.disabled = true;
     btn.innerHTML = "<span>Opening Google…</span>";
     const { error } = await supa.auth.signInWithOAuth({
@@ -2027,14 +2049,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   function routeParas(r) {
     const researched = r.status === "researched";
-    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.${researched ? " Researched against " + r.provider + "'s own official terms - confirm live terms before you start." : ""}`];
+    const p = [`${r.provider} — ${r.method}. Published reward: ${r.reward || "varies"}.${researched ? " Cataloged and researched; live terms have not been confirmed — check before you start." : ""}`];
     if (r.requirements) p.push(`You'll need: ${r.requirements}`);
     if (r.payout_timing) p.push(`When it pays: ${r.payout_timing}`);
     if (r.catches) p.push(`The catch, straight: ${r.catches}`);
     if (r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0)
       p.push(`Important: this pays as ${r.cash_or_credit} — not cash in hand.`);
     if (!researched)
-      p.push(`One honest note: we haven't researched this one against the provider's official terms yet. I'll check the provider's own page with you before you start.`);
+      p.push(`One honest note: this one is cataloged but not yet researched — live terms have not been confirmed. I'll check the provider's own page with you before you start.`);
     return p;
   }
 
@@ -2165,7 +2187,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const nv = D.routes.filter(r => r.status === "researched").length;
       const nt = D.routes.length;
       return { paras: [
-        `Straight answer: ${nv} of ${nt} routes are researched against the provider's own official terms — reward, requirements, and dates included.`,
+        `Straight answer: ${nv} of ${nt} routes are cataloged and researched — reward, requirements, and dates included. Live terms have not been confirmed; check before you start.`,
         "The rest aren't researched yet — I'll confirm them against the provider's own page before you start anything.",
         "If terms changed or an offer died, I'll tell you and pick the next-best one." ] };
     }
@@ -2292,7 +2314,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
 
   supa.auth.onAuthStateChange((ev) => {
-    if (ev === "SIGNED_OUT") { session = null; dbProfile = null; location.hash = ""; location.reload(); }
+    if (ev === "SIGNED_OUT") {
+      try {
+        localStorage.removeItem("upmore-onboarding");
+        const nonce = sessionStorage.getItem("upmore-ob-nonce");
+        if (nonce) localStorage.removeItem("upmore-onboarding-" + nonce);
+        sessionStorage.removeItem("upmore-ob-nonce");
+      } catch (e) {}
+      session = null; dbProfile = null; location.hash = ""; location.reload();
+    }
   });
 
   function guideAsk(text) {
@@ -2471,6 +2501,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       await new Promise(r => setTimeout(r, 100));
     }
     if (session) {
+      // One-time restore: answers stashed before the OAuth redirect come back
+      // into memory so saveProfile() writes the user's real answers.
+      try {
+        const nonce = sessionStorage.getItem("upmore-ob-nonce");
+        if (nonce) {
+          const raw = localStorage.getItem("upmore-onboarding-" + nonce);
+          if (raw) Object.assign(data, JSON.parse(raw));
+          localStorage.removeItem("upmore-onboarding-" + nonce);
+          sessionStorage.removeItem("upmore-ob-nonce");
+        }
+      } catch (e) {}
       await ensureProfile();
       await loadProgress();
       const hh0 = LEGACY_TABS[h] || h;
