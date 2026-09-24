@@ -678,7 +678,9 @@
         <div class="sheeticon" id="subSheetIcon">N</div>
         <div style="text-align:center"><b id="subSheetName" style="font-size:18px">Netflix</b>
         <p class="psub" id="subSheetMeta" style="margin:4px 0 14px">$15.99/mo</p></div>
+        <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page \u2192</a>
         <button class="danger" id="subCancelBtn">Cancel subscription</button>
+        <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
         <button class="ghostbtn" id="subSheetClose">Keep it</button>
       </div>
     </div>
@@ -1481,6 +1483,31 @@
   }
   initSave();
 
+  /* Known direct cancel pages (verified 2026-09-24). Key = lowercase merchant match. */
+  const CANCEL_FLOWS = {
+    "netflix": { url: "https://www.netflix.com/cancelplan",
+      steps: "Sign in \u2192 Finish Cancellation. Stays active until end of billing period." },
+    "spotify": { url: "https://www.spotify.com/account/subscription/",
+      steps: "Your plan \u2192 Change plan \u2192 Cancel Premium. Playlists survive on free tier." },
+    "hulu": { url: "https://www.hulu.com/account",
+      steps: "Account \u2192 Cancel \u2192 confirm. If billed via Apple/Google, cancel there instead." },
+    "disney": { url: "https://www.disneyplus.com/account",
+      steps: "Subscription \u2192 Cancel Subscription \u2192 confirm." },
+    "prime": { url: "https://www.amazon.com/gp/primecentral",
+      steps: "Manage membership \u2192 End membership \u2192 confirm." },
+    "youtube": { url: "https://www.youtube.com/paid_memberships",
+      steps: "YouTube Premium \u2192 Manage \u2192 Cancel \u2192 confirm." },
+    "audible": { url: "https://www.audible.com/account/cancel",
+      steps: "Cancel membership \u2192 confirm. You keep purchased audiobooks." },
+    "apple": { url: "",
+      steps: "iPhone: Settings \u2192 your name \u2192 Subscriptions \u2192 pick it \u2192 Cancel Subscription." },
+  };
+  function cancelFlowFor(merchant) {
+    const m = (merchant || "").toLowerCase();
+    for (const k of Object.keys(CANCEL_FLOWS)) if (m.includes(k)) return CANCEL_FLOWS[k];
+    return null;
+  }
+
   /* ================= Home: icon rows ================= */
   function iconHue(name) {
     let h = 0;
@@ -1519,6 +1546,10 @@
     $("subSheetIcon").outerHTML = appIcon(s.merchant, "lg").replace('class="appicon"', 'class="sheeticon" id="subSheetIcon"');
     $("subSheetName").textContent = s.merchant;
     $("subSheetMeta").textContent = `${money$(s.amount)}${INTPER[s.billing_interval] || ""}`;
+    const flow = cancelFlowFor(s.merchant);
+    const link = $("subCancelLink"), stepsEl = $("subCancelSteps");
+    if (flow && flow.url) { link.href = flow.url; link.style.display = "block"; } else { link.style.display = "none"; }
+    stepsEl.textContent = flow ? flow.steps : "";
     $("subSheet").hidden = false;
     $("subCancelBtn").onclick = async () => {
       $("subCancelBtn").disabled = true;
@@ -1527,7 +1558,11 @@
       $("subSheet").hidden = true;
       renderSubs(); renderHomeSubs();
       show("guide");
-      guideAsk(`Walk me through cancelling my ${s.merchant} subscription step by step`);
+      const fl = cancelFlowFor(s.merchant);
+      const brief = fl
+        ? `I just cancelled my ${s.merchant} subscription (${money$(s.amount)}${INTPER[s.billing_interval] || ""}). Walk me through confirming it's really cancelled. The direct cancel page is ${fl.url || "in the app settings"}, and the steps are: ${fl.steps}`
+        : `I just cancelled my ${s.merchant} subscription. Walk me through confirming it's really cancelled on their site.`;
+      guideAsk(brief);
     };
   }
   function renderHomePromos() {
