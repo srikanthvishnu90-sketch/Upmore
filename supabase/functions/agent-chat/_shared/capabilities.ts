@@ -116,7 +116,7 @@ const ONE_SHOT_CATS = new Set(["Niche Buyback"]);
 // Skill-gated windfalls (bug bounties): expected payout for an ordinary
 // person is ~$0 (owner rule 2026-09-23 — top figures must never be presented
 // as attainable). Excluded from earn stacks; still searchable in Explore.
-const NO_EARN_STACK_CATS = new Set(["Code Bounties", "Promo Arbitrage"
+const NO_EARN_STACK_CATS = new Set(["Code Bounties", "Promo Arbitrage",
   "Store Signup", // beta 2026-09-24: in-person violates online-only; pays in credits not cash
 ]);
 // Rental income (rent out space/assets): monthly per-listing income. A payout
