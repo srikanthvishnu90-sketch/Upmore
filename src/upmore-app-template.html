@@ -1568,8 +1568,8 @@
           cta: "Mark claimed", act: () => deadlineDone("save_claims", c.id),
           why: `$${dollars} x 90% / 15 min - due ${qDueText(days)}` });
       });
-      // claim: promos that fit
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 3)
+      // claim: promos that fit (excluding routes already in progress — they have Continue cards)
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id))).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",

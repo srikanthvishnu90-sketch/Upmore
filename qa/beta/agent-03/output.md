@@ -23,3 +23,12 @@ Tapping the CTA moved closer to actually earning money rather than theater: it o
 3. Back on Home, queue intact - PASS
 Retrospective: genuinely closer to earning (stateful walkthrough at correct step, exact physical action named); caveat: money earned off-app at SoFi, value depends on user acting.
 ## Rerun result: PASS (3/3) on ef57c14
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:02:45Z, on 6d8aac8; bbc525a diff is CSS scroll-padding only, behavior-neutral for this scenario)
+1. Top card "Continue: SoFi Invest — Brokerage account bonus" (Step 2 of 5, "Already started - $50000 x 90% / 12 min"), CTA "Resume" - PASS
+2. "Resume" -> #guide, live walkthrough "Picking up SoFi Invest at step 2 of 5" with "Done — next step" / "I'm stuck on this step" + chat input - PASS (not a dead tap)
+3. Back on Home, queue re-renders with same top card + full ranked queue + Track + 3 tabs - PASS
+Retrospective: genuine, not theater - one tap back into the live walkthrough at the right step with concrete next action and progress tracking; queue state preserved. Soft spot: step copy generic, earning needs substantial off-app work.
+## Final-build result: PASS (3/3)

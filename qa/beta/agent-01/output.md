@@ -31,3 +31,15 @@ Yes - the queue largely serves "tell me what to do right now to make money". Exp
 New nit: 2nd card re-lists the same SoFi offer as a fresh "Start" (redundant with top "Continue") - FIXED via queue dedup (in-progress walkthrough routes excluded from fresh earn cards). Also: some why-lines are bare formulas without plain-words suffix - cosmetic nit, top card explains in plain words per B4.
 Retrospective: intent served - unambiguous next action first, everything ranked by the formula with verb CTAs; caveats: ranking-duplication (fixed), tail shifts from earning to cancellations (defensible as net money, dilutes "make money right now").
 ## Rerun result: PASS (4/4 verifiable) on ef57c14; dedup fix verified in final build wave below
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:03:48Z, on 6d8aac8)
+1. Exactly one "Up next" queue - PASS (hero subtitle "Up next:" is not a second queue)
+2. 13 cards (8 earn + 5 cancel) - PASS
+3. Top card: "Up next" label, "Continue: SoFi Invest — Brokerage account bonus", "Step 2 of 5", "Already started - $50000 x 90% / 12 min", "Resume" CTA - PASS
+4. All 13 qcards carry all five data-* attributes (top: data-dollar=50000 data-conf=0.9 data-urg=1 data-eff=12 data-score=3750) - PASS
+5. SoFi dedup - FAIL (real bug): queue showed both "Continue: SoFi Invest — Brokerage account bonus" (Resume) AND a fresh "SoFi Invest" claim card (Start). Root cause: the "claim: promos that fit" section adds the first 3 Bank Bonus/Brokerage Promo/Signup Bonus routes - R0018 SoFi Invest is one of them - and my dedup only excluded startedIds from the earn-moves list, not from the claim-promos list. FIXED: claim-promos filter now also excludes startedIds. (Agent's exact "$1,000 bonus on new funds" text is not in catalog data - likely paraphrase of the reward sub-line; the duplicate itself is confirmed by code inspection.)
+6. Overflow: not measurable; visually fits the 390px phone frame, no cutoff/bleed - INCONCLUSIVE
+Retrospective: ranks every action by dollars x confidence x urgency / effort with plain-words economics + concrete CTA; duplicate SoFi card (fixed) undermined clarity; "Show more (1632 left)" stack above queue is noise.
+## Final-build result: FAIL->FIXED (dedup now covers claim-promos); needs one more final-build confirmation run
