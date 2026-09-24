@@ -26,3 +26,13 @@ The one-time add is quick (under a minute) and pays off immediately via auto-gen
 UI friction: date spinbuttons reject direct fill (digit-keypress workaround); Save/date-picker/Cancel clicks blocked as "obscured" by sticky nav.tabs - scrolling ~400px resolved it. Phone-frame form vs sticky nav remains a real mobile UX wart.
 Retrospective: worth the effort for the immediate concrete payoff ("Keep $192/yr" card is the emotional hook); longevity depends on import/reminder nudges.
 ## Rerun result: PASS (4/4) on ef57c14; final-build rerun (BetaFlixF04) in flight
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:04:57Z, on 6d8aac8; bbc525a/aef5744 diffs are CSS/queue-dedup only, behavior-neutral for this scenario)
+1. Added BetaFlixF04 $15.99 Monthly, next bill 2026-10-15 (date via digit keystrokes; obscured Save via focus+Enter) - PASS
+2. Track row "BetaFlixF04 / $15.99/mo" - PASS
+3. "Cancel BetaFlixF04 — Keep $192/yr" queue card ("$192/yr x 100% / 5 min"); no renewal card; form labels field "renewal reminder when it's within 14 days" - PASS
+4. Cancelled via sheet (Guide-tab confirmation chat); Track back to 5 active, no BetaFlixF04, card gone - PASS
+Retrospective: surprisingly worth the effort - 4-field form under a minute, immediate legible payoff ("$192/yr x 100% / 5 min" turns vague drain into concrete figure); 14-day gating is sensible anti-noise; cancel-sheet guided checklist makes subs actionable.
+## Final-build result: PASS (4/4)

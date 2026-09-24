@@ -32,3 +32,13 @@ Sticky-nav note (3rd report): fixed bottom tab bar covers the "Save" button; aut
 Oddity: a "BetaFlixR04" row + "Cancel BetaFlixR04" card transiently appeared after first save (another agent's concurrent test); gone by end; final state matched pre-test.
 Retrospective: genuinely useful - fired immediately, named merchant, counted "2 active charges", quantified $120/yr at 80% confidence / 3 min, ranked into the dollars x confidence x urgency / effort queue. 80% (not 100%) confidence is honest; low-effort dismissal covers false positives (family plans). Would catch real double-billing.
 ## Rerun result: PASS (4/4) on ef57c14; final-build rerun (DupeTestF05) in flight
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:04:59Z, on 6d8aac8; bbc525a/aef5744 diffs are CSS/queue-dedup only, behavior-neutral for this scenario)
+1. Added DupeTestF05 $9.99 Monthly twice (Track 5 -> 6 -> 7 active, two identical rows) - PASS
+2. Card: Title "Possible duplicate: DupeTestF05" | Sub "2 active charges look like the same subscription" | Why "$120/yr at stake x 80% / 3 min" | Review button ($9.99x12=$119.88 -> $120). Self-cleared when only one remained - PASS
+3. Cleanup - PASS (both cancelled; Track back to 5 active original subs; no DupeTestF05 rows/cards). "Cancel subscription" navigates to Guide with canned cancellation chat - designed flow.
+UX notes: Save button still obscured by sticky tab bar in this build (aef5744's scroll-padding fix not yet verified by an agent); keyboard activation worked.
+Retrospective: genuinely useful - fired immediately with evidence-backed specifics + annualized stakes/confidence/effort; self-clearing shows live state tracking. Untested limit: near-duplicates ("Netflix" vs "Netflix Inc.") vs exact-match only; copy slightly technical.
+## Final-build result: PASS (3/3)

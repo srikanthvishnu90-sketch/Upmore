@@ -20,3 +20,11 @@ No console errors. "Delete data" never touched. Pre-existing test data (SpikeTes
 The reminder comes early enough in principle - 5 days' lead gives a comfortable cancel window, the card sits in the ranked queue with an explicit countdown, amount, and one-tap Review/cancel path. But the off-by-one countdown eroded trust in the exact deadline (now fixed). No configurable "remind me N days before" threshold exists - the reminder window is whatever the entered date produces. With correct day-count math, this is a reliably cancel-in-time reminder.
 
 ## Result: PASS (2/2 product assertions; 1 real bug found and fixed)
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:09:00Z, on aef5744)
+1. Added RenewTest07 $12 Monthly, next bill 2026-09-29 (exactly 5 days out; date via digit keypresses) - PASS
+2. Queue card reads EXACTLY "RenewTest07 renews in 5d" (sub "$12 x 100% / 5 min - renews in 5d"), not "in 6d" - PASS. Off-by-one bug fixed.
+3. Cleanup - PASS (cancelled; Track back to 5 active originals; card gone)
+## Final-build result: PASS (3/3)

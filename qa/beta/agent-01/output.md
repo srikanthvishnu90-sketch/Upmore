@@ -43,3 +43,9 @@ Retrospective: intent served - unambiguous next action first, everything ranked 
 6. Overflow: not measurable; visually fits the 390px phone frame, no cutoff/bleed - INCONCLUSIVE
 Retrospective: ranks every action by dollars x confidence x urgency / effort with plain-words economics + concrete CTA; duplicate SoFi card (fixed) undermined clarity; "Show more (1632 left)" stack above queue is noise.
 ## Final-build result: FAIL->FIXED (dedup now covers claim-promos); needs one more final-build confirmation run
+
+---
+
+## DEDUP FIX CONFIRMATION on build aef5744 (2026-09-24T21:06:37Z)
+Exactly 1 SoFi card in the "Up next" queue: "Continue: SoFi Invest — Brokerage account bonus" / "Step 2 of 5" / "Already started - $50000 x 90% / 12 min" / "Resume" CTA (data-type=continue, data-qid=cont-R0018, score 5625.00). No second SoFi "Start" card. A "SoFi Invest — Brokerage account bonus" row in the search results above the queue is search, not a queue duplicate - acceptable.
+## Agent 01 final: PASS on aef5744 (dedup verified fixed)

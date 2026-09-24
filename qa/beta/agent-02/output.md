@@ -27,3 +27,13 @@ Search serves "help me find a way to earn that fits me" - every result carries f
 - Polish notes: ≈$/min uses midpoint/midpoint math (KashKick 6.67/min from $400/60min) - the ≈ covers it but low-end ($0) users see an optimistic rate; near-duplicates in results (PlaytestCloud x2, Qmee x2, PrizeRebel x2, Panel App x2, Mindswarms x2); some keyword-loose entries (login bonuses, passive apps, microtasks in "survey" results).
 Retrospective: serves "find a way to earn" well, "fits me" weakly - no profile-based filtering or Up-next-style scoring in search ranking; user self-selects from transparent data.
 ## Rerun result: PASS (3/3 verifiable; 1 unverifiable-overflow) on ef57c14
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:04:29Z, on 6d8aac8; bbc525a/aef5744 diffs are CSS/queue-dedup only, behavior-neutral for search)
+1. "survey" -> 40 results + "Show more (24 left)"; expanded to all 64 (41 badged + 23 unbadged) - PASS
+2. Every badge reads "✓ Researched"; zero "✓ Verified" - PASS (23 unbadged results show title + description only)
+3. Qmee detail: Requirements, Paid, The catch, Who pays/qualifies, Work available, accepted, Costs & unpaid time, When cash arrives, demand, Repeatable, difficulty, first-money estimate, Official site link; collapsed cleanly - PASS
+4. Overflow: not measurable; visually all fits phone frame, no clipping/scrollbar - INCONCLUSIVE
+Retrospective: search serves "find a way to earn that fits me" - honest research-backed detail (explicit "The catch", "Costs & unpaid time") beats most gig-aggregators; gaps: 23/64 unbadged results give no basis for comparison, opaque relevance ranking (game-offer/utility-rebate entries in "survey").
+## Final-build result: PASS (3/3 verifiable)

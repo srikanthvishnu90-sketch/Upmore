@@ -20,3 +20,14 @@ No console errors observed. "Delete data" never tapped.
 As designed, the detector would not catch a hike the user hadn't noticed, because it's triggered only by the user manually typing the new amount - an act that already requires noticing. At best the card reframes a known increase as annualized impact (+$60/yr). A genuine spike detector needs automatic transaction monitoring. And the manual update path was broken (now fixed at the DB + error-handling level; awaiting rebuild/deploy/re-test).
 
 ## Result: FAIL (2/4; 1 real DB-schema bug + 1 error-swallowing bug, both fixed, pending rebuild + rerun)
+
+---
+
+## FINAL-BUILD run (2026-09-24T21:16:46Z, on aef5744)
+1. Added SpikeTest06 $10 Monthly, next bill 2026-10-20 (persisted; "Cancel SpikeTest06" card "Keep $120/yr") - PASS
+2. Updated amount 10 -> 15: toast "Updated"; Track $15.00/mo; reopened sheet confirmed $15 persisted - PASS. The false-toast bug is FIXED.
+3. Spike card: title "SpikeTest06 bill went up", sub "$10.00 -> $15.00/mo (+$60/yr)", why-line "+$60/yr x 95% / 10 min - price hike you entered", Review button - PASS
+4. Cleanup - PASS (cancelled; Track 5 active ≈$68.95/mo; both SpikeTest06 cards gone; persisted after full reload)
+Observations: edit sheet opens via queue card Review button, not Track row click; date spinbuttons need digit keypresses; sheet "Cancel subscription" navigates to Guide with pre-filled cancellation walkthrough draft (not sent).
+Retrospective: catches a hike a user would miss - dedicated card with before/after, monthly delta, annualized +$60/yr impact, attributed to user-entered hike. Trustworthy only because the update persists now; weakness is edit-sheet discoverability (behind Review button, not row click).
+## Final-build result: PASS (4/4) - the blocking spike-detector bug is verified fixed
