@@ -56,7 +56,7 @@ export const APP_LINKS: Record<string, { ios?: string; android?: string }> = {
 // trickles, bonus waits) — they only appear as "closest honest plays".
 interface CashMath {
   dollars_per_hour: number | null;
-  model: "hourly" | "needs_spend" | "windfall" | "slow" | "credit_only" | "bonus_wait";
+  model: "hourly" | "needs_spend" | "windfall" | "slow" | "credit_only" | "bonus_wait" | "wager" | "variable";
   math: string;      // one-line honest math, e.g. "~$10/hr of studies"
   min_cashout: string;
   catch: string;     // biggest catch in one line
@@ -259,6 +259,12 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
       text: `\n\nReality check: that's about ${n} separate payouts at ~$${Math.round(per)} each, and they only arrive when you qualify — expect weeks of waiting for invitations, not a straight shot at $${target}. Treat this as spare cash per hit, not a $${target} plan.`,
     };
   })();
+  const honest = (() => {
+    const h = Math.max(1, Math.round(hours));
+    return hours <= 4
+      ? `about ${h} hour${h === 1 ? "" : "s"} of work`
+      : `roughly ${Math.round(hours)} hours of work`;
+  })();
   const mathLine = gated
     ? `Each hit pays ~$${gated.per} when one lands (${cm.math}). `
     : `The math: ${cm.math}, so $${target} ≈ ${honest}. `;
@@ -268,12 +274,6 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   const andUrl = (r as any).android_url || links?.android;
   const linkLine = r.provider_url +
     (iosUrl || andUrl ? `\nDownload the app: ${iosUrl ?? andUrl}` : "");
-  const honest = (() => {
-    const h = Math.max(1, Math.round(hours));
-    return hours <= 4
-      ? `about ${h} hour${h === 1 ? "" : "s"} of work`
-      : `roughly ${Math.round(hours)} hours of work`;
-  })();
   const others = ranked.filter((x) => x.r.route_id !== r.route_id && x.hours < Infinity).slice(0, 2);
 
   const headline = gated

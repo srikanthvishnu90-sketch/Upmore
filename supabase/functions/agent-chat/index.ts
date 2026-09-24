@@ -51,7 +51,10 @@ function corsFor(req: Request): Record<string, string> {
 // own — they hijack unrelated questions ("this site ..." matched provider "Site").
 const GENERIC_PROVIDER_WORDS = new Set([
   "site", "app", "website", "online", "money", "cash", "pay", "earn",
-  "free", "best", "new", "top", "get", "make",
+  "free", "best", "new", "top", "get", "make", "work", "works", "working",
+  "job", "jobs", "gig", "gigs", "task", "tasks", "micro", "quick", "easy",
+  "fast", "platform", "program", "reward", "rewards", "bonus", "survey",
+  "surveys", "testing", "review", "reviews", "extra", "side", "hustle",
 ]);
 function isGenericProviderWord(w: string): boolean {
   return GENERIC_PROVIDER_WORDS.has(w);
@@ -103,12 +106,12 @@ serve(async (req) => {
     }
 
     const { thread_id, message } = await req.json();
-    if (!message || typeof message !== "string") return json(cors, cors, { error: "message required" }, 400);
-    if (message.length > MAX_MESSAGE_LEN) return json(cors, cors, { error: "message too long" }, 400);
+    if (!message || typeof message !== "string") return json(cors, { error: "message required" }, 400);
+    if (message.length > MAX_MESSAGE_LEN) return json(cors, { error: "message too long" }, 400);
     // L4: thread_id must be a string when provided (non-string truthy values
     // would otherwise cause a DB error → noisy 500).
     if (thread_id !== undefined && thread_id !== null && typeof thread_id !== "string")
-      return json(cors, cors, { error: "thread_id must be a string" }, 400);
+      return json(cors, { error: "thread_id must be a string" }, 400);
 
     // Thread (create if needed)
     let tid: string = thread_id;
@@ -172,6 +175,14 @@ serve(async (req) => {
         .not("expires_at", "is", null).lt("expires_at", nowIso).limit(5),
     ]);
     const profile = profRes.data;
+    // Agentic walkthrough parity: {{name}}/{{email}}/{{state}} values resolved
+    // via the module-level resolvePlaceholders (plain text in chat; the app
+    // renders tap-to-copy chips for the same placeholders).
+    const agentVals = {
+      name: (profile && profile.display_name) || "",
+      email: (user && user.email) || "",
+      state: (profile && profile.state) || "",
+    };
     const playbook = playRes.data;
     const reminders = remRes.data;
     // Catalog: warm-isolate cache hit, or concatenate the fresh pages.
@@ -275,7 +286,7 @@ serve(async (req) => {
       return json(cors, { thread_id: tid, reply: detFail, action: null });
     }
 
-    const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined);
+    const fastReply = tryFastPath(message, standardRoutes, playbook?.routes as RouteCard | undefined, agentVals);
     if (fastReply) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
@@ -598,6 +609,19 @@ function json(cors: Record<string, string>, body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "content-type": "application/json" } });
 }
 
+// Resolve {{name}}/{{email}}/{{state}} step placeholders with the user's real
+// values (plain text in chat; the app renders tap-to-copy chips for the same
+// placeholders). Module-level so deterministic helpers can use it.
+function resolvePlaceholders(
+  t: string,
+  vals: { name: string; email: string; state: string }
+): string {
+  return String(t).replace(
+    /\{\{(name|email|state)\}\}/g,
+    (_m, k: string) => vals[k as keyof typeof vals] || _m
+  );
+}
+
 // Parse a reminder "when" into an ISO datetime. Accepts ISO strings, "tomorrow",
 // "in N hours|days|weeks"; anything else defaults to 24h from now.
 function parseDueAt(when: unknown): string {
@@ -623,7 +647,8 @@ function parseDueAt(when: unknown): string {
 function tryFastPath(
   message: string,
   routes: RouteCard[],
-  playbookRoute?: RouteCard
+  playbookRoute?: RouteCard,
+  agentVals?: { name: string; email: string; state: string }
 ): string | null {
   const msg = message.toLowerCase().trim();
   // Never fast-path: guarantees, scams, advice, comparisons, unknowns.
@@ -717,7 +742,7 @@ function tryFastPath(
   }
   // "how does X work" / "what is X" / "tell me about X"
   if (/\b(how does|what is|tell me about|explain)\b/i.test(msg)) {
-    const steps = route.steps.slice(0, 3).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
+    const steps = route.steps.slice(0, 3).map((s, i) => `${i + 1}. ${resolvePlaceholders(s.text, agentVals ?? { name: "", email: "", state: "" })}`).join("\n");
     return `${route.name} (${route.provider}) — route ${route.route_id}.\n\n` +
       `Here's how it works:\n${steps}\n\n` +
       `Payout: ${route.payout_text ?? "see terms"} (${route.payout_timing ?? "timing varies"}).\n` +
@@ -789,7 +814,7 @@ function tryFastPath(
   }
   // "link" / "where do I sign up" / "download"
   if (/\b(link|sign up|signup|download|where.*(start|app|site))\b/i.test(msg)) {
-    const steps = route.steps.slice(0, 4).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
+    const steps = route.steps.slice(0, 4).map((s, i) => `${i + 1}. ${resolvePlaceholders(s.text, agentVals ?? { name: "", email: "", state: "" })}`).join("\n");
     const stepsBlock = steps
       ? `\n\nExact steps to start earning:\n${steps}\n\nCheck the official site if anything looks different — steps change over time.`
       : `\n\nStart at Step 1: ${route.steps[0]?.text ?? "follow the on-screen steps"}.`;

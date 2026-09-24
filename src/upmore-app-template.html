@@ -304,6 +304,10 @@
   .chip { flex:none; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:8px 15px; font-size:13.5px; font-weight:600; }
   .chip[aria-pressed="true"] { background:var(--text); color:#0B0B0C; border-color:var(--text); }
   .xlist { margin-top:12px; display:flex; flex-direction:column; gap:10px; }
+  .livecard{display:block;background:#fff;border:1px solid #ffd9d9;border-left:4px solid #e5484d;border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--text)}
+  .livecard b{display:block;font-size:14.5px;line-height:1.35;margin-bottom:4px}
+  .livecard .lmeta{font-size:12px;color:var(--muted)}
+  .livecard .lpay{display:inline-block;font-size:12px;font-weight:800;color:#14532d;background:#e8f6ee;border-radius:8px;padding:2px 8px;margin-top:6px}
   .xitem { border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:14px; }
   .xrow { display:flex; gap:12px; align-items:center; }
   .xtile { flex:none; width:44px; height:44px; border-radius:14px; display:grid; place-items:center; }
@@ -367,6 +371,16 @@
   .walklinks{display:flex;flex-direction:column;gap:8px;margin-top:12px}
   .walklink{display:flex;align-items:center;justify-content:space-between;background:#f0f9ff;border:1px solid #d5ebf7;border-radius:12px;padding:11px 13px;font-size:14px;font-weight:700;color:#0b6fa4;text-decoration:none}
   .walknext{width:100%;margin-top:12px;background:var(--green);color:#fff;border:0;border-radius:14px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
+  .copychip{display:inline-flex;align-items:center;gap:6px;background:#e8f6ee;border:1px dashed #1d7a43;color:#14532d;border-radius:10px;padding:5px 10px;font-size:14px;font-weight:700;cursor:pointer;margin:0 2px;vertical-align:baseline;font-family:inherit}
+  .copychip .cc-ic{font-size:12px;opacity:.7}
+  .copychip:active{transform:scale(.96)}
+  .onetap{margin:12px 0 0;font-size:13.5px;background:#e8f6ee;border:1px solid #bfe6cd;border-radius:12px;padding:10px 12px;line-height:1.45;color:#14532d}
+  .doforme{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:0;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;margin-top:10px}
+  .doforme:active{transform:scale(.97)}
+  .agentshot{width:100%;border-radius:12px;border:1px solid var(--line);margin-top:10px}
+  .agentnote{font-size:14px;line-height:1.5;margin-top:10px;color:var(--text)}
+  .agentstatus{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;background:#e8f6ee;color:#14532d;margin-top:8px}
+  .agentcancel{width:100%;margin-top:12px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:11px;font-size:14px;font-weight:600;cursor:pointer}
   .walknext:disabled{opacity:.55}
   .walkhelp{width:100%;margin-top:6px;background:none;border:0;color:#5b7a89;font-size:13px;cursor:pointer;padding:6px}
 
@@ -695,6 +709,11 @@
       <div class="chips" id="xchips" role="group" aria-label="Filter by difficulty"></div>
       <div class="chips" id="xspeed" role="group" aria-label="Filter by payout speed"></div>
       <div class="xcats" id="xcats" role="group" aria-label="Filter by category"></div>
+      <div id="liveWrap" hidden>
+        <h2 class="ptitle" style="font-size:17px;margin:14px 0 4px">🔴 Live right now</h2>
+        <p class="psub" style="margin:0 0 8px">Fresh paid gigs people just posted — checked minutes ago.</p>
+        <div class="xlist" id="xlive" style="margin-top:0"></div>
+      </div>
       <div class="lane"><button class="tgl" id="laneTgl" aria-pressed="false" aria-label="Include higher-risk routes"></button><span>Include higher-risk routes <span id="laneN"></span></span></div>
       <div class="xlist" id="xlist"></div>
       <button class="ghostbtn" id="xmore" hidden></button>
@@ -989,6 +1008,18 @@
           <p><b>Children.</b> Upmore isn't for under-13s.</p>
           <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
           <p id="termsSection"><b>Terms of Service (plain English).</b> Upmore is a guide, not a guarantee — payouts come from third-party companies with their own terms. You're responsible for your own accounts and actions; never share passwords with anyone, including us. Don't use Upmore for fraud or fake accounts. Upmore is in beta and things may change; we may suspend accounts that abuse the service.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sheet" id="agentSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Do it for me</b><button class="iconbtn" id="agentClose" aria-label="Close">✕</button></div>
+        <div id="agentBody">
+          <span class="agentstatus" id="agentStatus">Starting…</span>
+          <p class="agentnote" id="agentNote">The agent is opening the page. You'll watch it work here.</p>
+          <img class="agentshot" id="agentShot" alt="Agent browser view" hidden>
+          <p class="agentnote" style="font-size:12.5px;color:var(--muted)">The agent fills your name, email and state — never passwords, ID numbers, payment details, and never the final Submit. That tap is always yours.</p>
+          <button class="agentcancel" id="agentCancel">Cancel</button>
         </div>
       </div>
     </div>
@@ -1341,6 +1372,44 @@
     setTimeout(renderWalkStep, 950);
   }
 
+  // Agentic walkthrough: the agent does the paperwork, the user only taps.
+  // Step text may contain {{name}}, {{email}}, {{state}} — replaced with the
+  // user's real values as tap-to-copy chips. Anything the agent can't know
+  // stays as plain text; the user is never asked to type what we already know.
+  function agentVals() {
+    const p = (typeof dbProfile !== "undefined" && dbProfile) || {};
+    const em = (typeof session !== "undefined" && session && session.user && session.user.email) || "";
+    return { name: p.display_name || "", email: em, state: p.state || "" };
+  }
+  function agentify(text) {
+    const v = agentVals();
+    return String(text).split(/(\{\{(?:name|email|state)\}\})/g).map(part => {
+      const m = part.match(/^\{\{(name|email|state)\}\}$/);
+      if (!m) return esc(part);
+      const val = v[m[1]];
+      if (!val) return esc(part);
+      return `<button class="copychip" data-copy="${esc(val)}" title="Tap to copy">${esc(val)}<span class="cc-ic">⧉</span></button>`;
+    }).join("");
+  }
+  // One delegated listener for all copy chips (walkthrough cards re-render).
+  document.addEventListener("click", e => {
+    const chip = e.target && e.target.closest ? e.target.closest(".copychip") : null;
+    if (!chip || !chip.dataset.copy) return;
+    const val = chip.dataset.copy;
+    const done = () => toast("Copied — paste it in the form");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(done, () => fallbackCopy(val, done));
+    } else fallbackCopy(val, done);
+  });
+  function fallbackCopy(val, done) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = val; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); ta.remove(); done();
+    } catch (err) {}
+  }
+
   function renderWalkStep() {
     if (!walk) return;
     const r = routeById(walk.id);
@@ -1352,9 +1421,10 @@
     card.className = "walkcard";
     card.innerHTML = `
       <p class="wstep">Step ${walk.i + 1} of ${steps.length}</p>
-      <h3>${esc(s.text)}</h3>
+      <h3>${agentify(s.text)}</h3>
       ${s.done_when ? `<p class="wdone"><b>You're done when:</b> ${esc(s.done_when)}</p>` : ""}
       ${s.warns ? `<p class="warn"><b>Heads up:</b> ${esc(s.warns)}</p>` : ""}
+      ${isLast ? `<p class="onetap"><b>One tap left.</b> I can't click Submit for you — it's your account — but everything above is ready to paste. That's the whole job.</p>` : ""}
       <div class="walklinks">${links.map(u => { const su = safeUrl(u); return su ? `<a class="walklink" href="${esc(su)}" target="_blank" rel="noopener"><span>Open ${esc(hostOf(su))}</span><span>&#8599;</span></a>` : ""; }).join("")}</div>
       <button class="walknext">${isLast ? "Done — finish" : "Done — next step"}</button>
       <button class="walkhelp">I'm stuck on this step</button>`;
@@ -1821,6 +1891,7 @@
   }
 
   function renderExplore() {
+    loadLiveDeals();
     const list = xFiltered();
     $("xcount").textContent = `${list.length} ways to earn, highest earn rate first. Tap one for the honest catch.`;
     const box = $("xlist");
@@ -1844,6 +1915,7 @@
           ${(r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0) ? `<div class="catch"><b>Note:</b> pays as ${esc(r.cash_or_credit)} — not cash in hand.</div>` : ""}
           ${r.affiliate ? `<div><span class="abadge">Affiliate</span> We may earn a commission if you use this link — it never comes out of your pocket.</div>` : ""}
           <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url && safeUrl(r.url) ? `<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
+          ${r.url && safeUrl(r.url) ? `<button class="doforme" data-difm="${esc(r.id)}">✨ Do it for me — agent fills the form</button>` : ""}
         </div>`;
       el.style.cursor = "pointer";
       el.querySelector(".xrow").onclick = () => { const dd = el.querySelector(".xdetail"); dd.hidden = !dd.hidden; };
@@ -1947,7 +2019,98 @@
   $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
   $("signOut").onclick = () => supa.auth.signOut();
 
-  /* ---- Export / delete my data (the rights the Privacy Policy promises) ---- */
+  /* ---- Live deals: fresh paid gigs from the scraping workers ---- */
+  let liveLoaded = false;
+  async function loadLiveDeals() {
+    if (liveLoaded) return;
+    liveLoaded = true;
+    try {
+      const since = new Date(Date.now() - 14 * 86400000).toISOString();
+      const { data, error } = await supa.from("live_opportunities")
+        .select("title, url, pay_hint, posted_at")
+        .eq("status", "live").gte("posted_at", since)
+        .order("posted_at", { ascending: false }).limit(8);
+      if (error || !data || !data.length) return;
+      $("liveWrap").hidden = false;
+      $("xlive").innerHTML = data.map(d => {
+        const when = d.posted_at ? new Date(d.posted_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
+        return `<a class="livecard" href="${esc(safeUrl(d.url) || "#")}" target="_blank" rel="noopener">
+          <b>${esc(d.title)}</b>
+          <span class="lmeta">Posted ${esc(when)} · via Hacker News</span>
+          ${d.pay_hint ? `<br><span class="lpay">${esc(d.pay_hint)}</span>` : ""}
+        </a>`;
+      }).join("");
+    } catch (e) { /* live section is best-effort */ }
+  }
+
+  /* ---- "Do it for me" web agent ----
+     The agent drives a real browser for the user: opens the signup page,
+     fills name/email/state, screenshots everything, and STOPS before any
+     submit. The user watches here and does the final tap themselves. */
+  let agentJobId = null, agentTimer = null;
+  document.addEventListener("click", e => {
+    const b = e.target && e.target.closest ? e.target.closest(".doforme") : null;
+    if (!b) return;
+    e.stopPropagation();
+    startAgentJob(b.dataset.difm);
+  });
+  async function startAgentJob(routeId) {
+    if (!session) { toast("Sign in first — the agent needs your details"); return; }
+    const r = routeById(routeId);
+    const url = r && r.url && safeUrl(r.url);
+    if (!url) { toast("No signup link for this one"); return; }
+    // One active job at a time per user
+    const { data: existing } = await supa.from("web_agent_jobs")
+      .select("id").eq("user_id", session.user.id)
+      .in("status", ["queued", "working"]).limit(1).maybeSingle();
+    if (existing) { openAgentSheet(existing.id); return; }
+    const { data, error } = await supa.from("web_agent_jobs").insert({
+      user_id: session.user.id,
+      route_id: routeId,
+      target_url: url,
+      goal: "Fill the signup form with my details; stop before submitting.",
+    }).select("id").single();
+    if (error || !data) { toast("Couldn't start the agent — try again"); return; }
+    openAgentSheet(data.id);
+  }
+  function openAgentSheet(jobId) {
+    agentJobId = jobId;
+    $("agentSheet").hidden = false;
+    $("agentStatus").textContent = "Starting…";
+    $("agentNote").textContent = "The agent is opening the page. You'll watch it work here.";
+    $("agentShot").hidden = true;
+    clearInterval(agentTimer);
+    pollAgentJob();
+    agentTimer = setInterval(pollAgentJob, 3000);
+  }
+  async function pollAgentJob() {
+    if (!agentJobId) return;
+    const { data, error } = await supa.from("web_agent_jobs")
+      .select("status, screenshots, agent_note, error").eq("id", agentJobId).maybeSingle();
+    if (error || !data) { return; }
+    const label = { queued: "In line…", working: "Working…", waiting_user: "Your turn", done: "Done", failed: "Couldn't do it", cancelled: "Cancelled" };
+    $("agentStatus").textContent = label[data.status] || data.status;
+    const shots = data.screenshots || [];
+    if (shots.length) {
+      const last = shots[shots.length - 1];
+      $("agentShot").src = last.image;
+      $("agentShot").hidden = false;
+    }
+    if (data.status === "waiting_user") {
+      $("agentNote").textContent = data.agent_note || "The agent filled what it could. Review the screenshot, open the site, and tap Submit yourself — that's the whole remaining job.";
+    } else if (data.status === "failed") {
+      $("agentNote").textContent = "The agent hit a wall (" + (data.error || "unknown") + "). The guided walkthrough still works — tap a route to start it.";
+      clearInterval(agentTimer);
+    } else if (data.status === "done" || data.status === "cancelled") {
+      clearInterval(agentTimer);
+    }
+  }
+  $("agentClose").onclick = () => { $("agentSheet").hidden = true; clearInterval(agentTimer); agentJobId = null; };
+  $("agentCancel").onclick = async () => {
+    if (agentJobId) { await supa.from("web_agent_jobs").delete().eq("id", agentJobId); }
+    $("agentSheet").hidden = true; clearInterval(agentTimer); agentJobId = null;
+    toast("Agent cancelled");
+  };
   function toast(msg) {
     let el = document.getElementById("umToast");
     if (!el) {
