@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-eAf4Weyja3wTJHneEdjH6HQ2qbI6HzWMrgtaKzcWiWs='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-35LPMozxFa0SGpwW39chZhUilue4ajtqILe43wDyukA='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -307,6 +307,10 @@
   .iconrow .t { font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .iconrow .s { font-size:13px; color:var(--muted); margin-top:1px; }
   .iconrow .amt { font-weight:700; font-size:15px; }
+  /* Home: horizontal icon dock — real app icons, icon only */
+  .dock { display:flex; gap:14px; overflow-x:auto; padding:6px 2px 12px; scrollbar-width:none; }
+  .dock::-webkit-scrollbar { display:none; }
+  .dockitem { background:none; border:none; padding:0; cursor:pointer; flex-shrink:0; }
   .sheeticon { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center;
     color:#fff; font-weight:700; font-size:28px; margin:4px auto 10px; }
   .danger { background:#c0392b; color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; width:100%; cursor:pointer; }
@@ -1530,30 +1534,42 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return null;
   }
 
-  /* ================= Home: icon rows ================= */
+  /* ================= Home: icon dock ================= */
+  /* Real app icons, vendored in icons/. Key = lowercase merchant/provider match. */
+  const APP_ICONS = {
+    netflix: "netflix", spotify: "spotify", prime: "amazon", amazon: "amazon",
+    hulu: "hulu", disney: "disneyplus",
+    sofi: "sofi", sunrun: "sunrun", "old national": "oldnational",
+  };
+  function appIconSlug(name) {
+    const n = (name || "").toLowerCase();
+    for (const k of Object.keys(APP_ICONS)) if (n.includes(k)) return APP_ICONS[k];
+    return null;
+  }
   function iconHue(name) {
     let h = 0;
     for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
     return h;
   }
+  const ICON_PX = { lg: [64, 16, 28], dock: [60, 15, 0], "": [44, 11, 20] };
   function appIcon(name, size) {
+    const a = ICON_PX[size] || ICON_PX[""];
+    const px = `width:${a[0]}px;height:${a[0]}px;border-radius:${a[1]}px;`;
+    const slug = appIconSlug(name);
+    if (slug) return `<img class="appicon" src="icons/${slug}.jpg" alt="${esc(name || "")}" loading="lazy" style="${px}object-fit:cover;">`;
     const h = iconHue(name || "?");
     const letter = (name || "?").trim().charAt(0).toUpperCase();
-    const px = size === "lg" ? 'width:64px;height:64px;border-radius:16px;font-size:28px;' : 'width:44px;height:44px;border-radius:11px;font-size:20px;';
-    return `<span class="appicon" style="${px}background:linear-gradient(135deg,hsl(${h},65%,55%),hsl(${(h + 40) % 360},65%,42%))">${esc(letter)}</span>`;
+    return `<span class="appicon" style="${px}font-size:${a[2]}px;background:linear-gradient(135deg,hsl(${h},65%,55%),hsl(${(h + 40) % 360},65%,42%))">${esc(letter)}</span>`;
   }
   async function renderHomeSubs() {
     const list = $("homeSubList");
     if (!list) return;
     const rows = await saveRows("save_subscriptions", "created_at", false);
     const act = rows.filter(r => r.status !== "cancelled");
-    list.innerHTML = act.length ? act.map(s => `
-      <button class="iconrow" data-sub="${s.id}">
-        ${appIcon(s.merchant)}
-        <span class="grow"><span class="t">${esc(s.merchant)}</span>
-        <span class="s">${money$(s.amount)}${INTPER[s.billing_interval] || ""}</span></span>
-        <span class="chev">\u203a</span>
-      </button>`).join("")
+    list.innerHTML = act.length ? `<div class="dock">` + act.map(s => `
+      <button class="dockitem" data-sub="${s.id}" aria-label="${esc(s.merchant)}, ${money$(s.amount)}${INTPER[s.billing_interval] || ""}">
+        ${appIcon(s.merchant, "dock")}
+      </button>`).join("") + `</div>`
       : `<button class="iconrow" id="homeSubEmpty"><span class="grow"><span class="t">Track a subscription</span><span class="s">See what you\u2019re paying each month</span></span><span class="chev">\u203a</span></button>`;
     list.querySelectorAll("[data-sub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.sub));
     const empty = $("homeSubEmpty");
@@ -1592,13 +1608,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (!list) return;
     const promos = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : [])).filter(r =>
       ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 3);
-    list.innerHTML = promos.length ? promos.map(r => `
-      <button class="iconrow" data-promo="${r.id}">
-        ${appIcon(r.provider || r.category)}
-        <span class="grow"><span class="t">${esc(r.provider || "Promo")}</span>
-        <span class="s">${esc(String(r.reward || "").slice(0, 60))}</span></span>
-        <span class="chev">\u203a</span>
-      </button>`).join("") : "";
+    list.innerHTML = promos.length ? `<div class="dock">` + promos.map(r => `
+      <button class="dockitem" data-promo="${r.id}" aria-label="${esc(r.provider || "Promo")}, ${esc(String(r.reward || "").slice(0, 60))}">
+        ${appIcon(r.provider || r.category, "dock")}
+      </button>`).join("") + `</div>` : "";
     list.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
   }
   function openPromoSheet(id) {

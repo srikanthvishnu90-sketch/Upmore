@@ -76,3 +76,12 @@ sw_src = HERE / "sw.js"
 if sw_src.exists():
     (root / "sw.js").write_text(sw_src.read_text())
     print(f"published {root / 'sw.js'}")
+icons_src = HERE / "icons"
+if icons_src.is_dir():
+    import shutil
+    icons_dst = root / "icons"
+    shutil.rmtree(icons_dst, ignore_errors=True)
+    shutil.copytree(icons_src, icons_dst)
+    n = len(list(icons_src.iterdir()))
+    assert n > 0, "no icons to publish"
+    print(f"published {icons_dst} ({n} icons)")
