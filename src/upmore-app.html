@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-hGXNGQmqMytH32aypkrUZyYXI2UOzOnnsuga7Rsv7Xc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-J0kUyN0JOKOzb4ndtRpz7BT6N1Vr1Sgnp3xM7osE7sM=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-P72h37OKeP9VE00hp6gXQNLKYpaI4UdaMV1loN+2C+M='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -283,7 +283,7 @@
 
   /* ---------- v2: color accents + new screens ---------- */
   :root { --sky:#6FB3D6; --sky-soft:rgba(111,179,214,.14); }
-  .tabs { gap:24px; }
+  .tabs { gap:16px; }
   .tab { font-size:10.5px; padding:4px 6px; }
   .avatar { cursor:pointer; }
   .ptitle { margin-top:18px; font-size:29px; line-height:1.18; font-weight:600; letter-spacing:-0.01em; }
@@ -320,6 +320,38 @@
   .movecard p { margin:0 0 10px; font-size:13px; color:var(--muted); line-height:1.4; }
   .movecard .go { font-size:13px; font-weight:700; color:var(--green); }
   .dockline { font-size:13px; color:var(--muted); margin:2px 0 0; padding:0 2px; }
+  /* Money tab */
+  .moneygrid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0 4px; }
+  .moneystat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 10px; }
+  .moneystat .v { font-size:18px; font-weight:700; }
+  .moneystat .l { font-size:11.5px; color:var(--muted); margin-top:3px; }
+  .alertcard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:8px; }
+  .alertcard h4 { margin:0 0 4px; font-size:15px; }
+  .alertcard p { margin:0 0 4px; font-size:13.5px; color:var(--muted); line-height:1.4; }
+  .alertcard .ev { font-size:12px; color:var(--muted); font-style:italic; }
+  .alertcard .arow { display:flex; gap:8px; margin-top:10px; }
+  .alertbtn { flex:1; border:1px solid var(--line); background:none; color:var(--text); border-radius:10px; padding:9px; font-size:13.5px; font-weight:600; cursor:pointer; }
+  .alertbtn.primary { background:var(--green); border-color:var(--green); color:#fff; }
+  .promocard { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; margin-bottom:8px; width:100%; text-align:left; cursor:pointer; font:inherit; color:inherit; }
+  .promocard .grow { flex:1; min-width:0; }
+  .promocard .t { font-weight:600; font-size:14.5px; }
+  .promocard .s { font-size:12.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .promocard .chev { color:var(--muted); font-size:20px; }
+  .goalcard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:8px; }
+  .goalcard .grow { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+  .goalcard .t { font-weight:600; font-size:15px; }
+  .goalcard .amt { font-size:13px; color:var(--muted); }
+  .goaltrack { height:8px; background:var(--line); border-radius:4px; overflow:hidden; }
+  .goalfill { height:100%; background:var(--green); border-radius:4px; }
+  .watchcard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; }
+  .wrow { display:flex; align-items:center; gap:10px; padding:7px 0; font-size:14px; }
+  .wdot { width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; }
+  .wlast { font-size:12px; color:var(--muted); margin:8px 0 0; }
+  .acctrow { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:8px; }
+  .acctrow .grow { flex:1; }
+  .acctrow .t { font-weight:600; font-size:15px; }
+  .acctrow .s { font-size:12.5px; color:var(--muted); }
+  .acctrow .amt { font-weight:700; font-size:15px; }
   .sheeticon { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center;
     color:#fff; font-weight:700; font-size:28px; margin:4px auto 10px; }
   .danger { background:#c0392b; color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; width:100%; cursor:pointer; }
@@ -731,6 +763,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
         Save
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
+      </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
         You
@@ -771,6 +807,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="save">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
         Save
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
@@ -832,6 +872,91 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
         Save
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
+        You
+      </button>
+    </nav>
+  </section>
+
+  <!-- ================= MONEY ================= -->
+  <section class="screen" id="money" aria-label="Manage your finances">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <h1 class="ptitle">Money</h1>
+      <p class="psub">Your AI money agent watches this daily.</p>
+
+      <h2 class="sec">Right now</h2>
+      <div class="moneygrid" id="moneyNow"></div>
+
+      <h2 class="sec">Needs your eye</h2>
+      <div id="moneyAlerts"></div>
+
+      <h2 class="sec">Put your cash to work</h2>
+      <div id="moneyPromos"></div>
+
+      <h2 class="sec">Goals</h2>
+      <div id="moneyGoals"></div>
+      <button class="ghostbtn" id="goalAdd" style="margin:8px 0 4px">+ New goal</button>
+      <div id="goalForm" hidden style="margin:4px 0 8px">
+        <input id="goalName" type="text" placeholder="Goal name — e.g. Emergency fund" maxlength="60" style="width:100%;padding:12px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <input id="goalTarget" type="number" inputmode="decimal" min="1" step="1" placeholder="Target amount ($)" style="width:100%;padding:12px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <div class="row" style="gap:8px">
+          <button class="btn" id="goalCancel" style="flex:1">Cancel</button>
+          <button class="btn" id="goalSave" style="flex:1;background:#1d5c3f;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Save goal</button>
+        </div>
+      </div>
+
+      <h2 class="sec">Your agent is watching</h2>
+      <div class="watchcard" id="moneyWatch">
+        <div class="wrow"><span class="wdot"></span><span>New recurring charges</span></div>
+        <div class="wrow"><span class="wdot"></span><span>Bill spikes vs. last month</span></div>
+        <div class="wrow"><span class="wdot"></span><span>Low-balance risk</span></div>
+        <div class="wrow"><span class="wdot"></span><span>Payday arrivals</span></div>
+        <p class="wlast" id="moneyWatchLast">Last checked today</p>
+      </div>
+
+      <h2 class="sec">Accounts</h2>
+      <div id="moneyAccts"></div>
+      <button class="ghostbtn" id="bankConnect" style="margin:8px 0 4px">Connect your bank</button>
+      <p class="psub" id="moneyDemoNote" style="margin-top:4px" hidden>Showing demo data — connect your bank for the real thing.</p>
+    </div>
+    <div class="sheet" id="bankSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Connect your bank</b><button class="iconbtn" id="bankClose" aria-label="Close">✕</button></div>
+        <p class="psub" style="margin-top:8px">Real bank connections are in private beta. We use read-only access — we can see balances and transactions, but we can never move money or log in as you.</p>
+        <label class="fine" for="bankEmail" style="display:block;margin-top:10px">Email for your invite</label>
+        <input id="bankEmail" type="email" placeholder="you@example.com" autocomplete="email" style="width:100%;padding:12px;margin-top:4px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
+        <div class="row" style="margin-top:12px;gap:8px;">
+          <button class="btn" id="bankNotify" style="flex:1;background:#1d5c3f;color:#fff;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Notify me</button>
+        </div>
+        <p class="psub" id="bankStatus" style="margin-top:8px;min-height:20px;"></p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="false" data-tab="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        Home
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/></svg>
+        Guide
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="explore">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg>
+        Explore
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
+        Save
+      </button>
+      <button class="tab" role="tab" aria-selected="true" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
+      </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
         You
@@ -869,6 +994,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="save">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
         Save
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
@@ -916,6 +1045,10 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="save">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13.5" r="6.5"/><path d="M7.8 7.6h6.4"/><path d="M16.6 9.4l2-1.8"/><path d="M8.6 19.4v1.3M13.4 19.4v1.3"/></svg>
         Save
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="money">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6.5 9.8h.01M17.5 15.2h.01"/></svg>
+        Money
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/></svg>
@@ -1130,6 +1263,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (id === "home") renderHome();
     if (id === "explore") renderExplore();
     if (id === "save") renderSave();
+    if (id === "money") renderMoney();
     if (id === "guide") renderGuideEmpty();
     if (id === "profile") renderProfile();
   }
@@ -1697,6 +1831,136 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   $("promoSheetClose").onclick = () => { $("promoSheet").hidden = true; };
   $("subSheet").addEventListener("click", e => { if (e.target.id === "subSheet") $("subSheet").hidden = true; });
   $("promoSheet").addEventListener("click", e => { if (e.target.id === "promoSheet") $("promoSheet").hidden = true; });
+
+  /* ================= Money: manage your finances ================= */
+  async function renderMoney() {
+    if (!saveUid()) return;
+    const [accts, alerts, goals, snaps] = await Promise.all([
+      saveRows("finance_accounts", "created_at", true),
+      saveRows("finance_alerts", "created_at", false),
+      saveRows("finance_goals", "created_at", true),
+      saveRows("finance_snapshots", "month", false)
+    ]);
+    renderMoneyNow(accts, snaps[0]);
+    renderMoneyAlerts(alerts.filter(a => a.status === "open"));
+    renderMoneyPromos(accts);
+    renderMoneyGoals(goals.filter(g => g.status === "active"));
+    renderMoneyAccts(accts);
+    wireMoneyOnce();
+  }
+  const moneyCash = accts => accts.filter(a => ["checking", "savings", "manual"].includes(a.account_type))
+    .reduce((t, a) => t + Number(a.balance_current || 0), 0);
+  function renderMoneyNow(accts, snap) {
+    const el = $("moneyNow");
+    if (!el) return;
+    const cash = moneyCash(accts);
+    const inflow = Number(snap && snap.inflow || 0), outflow = Number(snap && snap.outflow || 0);
+    el.innerHTML = `
+      <div class="moneystat"><div class="v">${money$(cash)}</div><div class="l">Cash now</div></div>
+      <div class="moneystat"><div class="v">${money$(inflow)}</div><div class="l">In this month</div></div>
+      <div class="moneystat"><div class="v">${money$(inflow - outflow)}</div><div class="l">Left this month</div></div>`;
+  }
+  function renderMoneyAlerts(alerts) {
+    const el = $("moneyAlerts");
+    if (!el) return;
+    el.innerHTML = alerts.length ? alerts.map(a => `
+      <div class="alertcard">
+        <h4>${esc(a.title)}</h4>
+        ${a.detail ? `<p>${esc(a.detail)}</p>` : ""}
+        ${a.evidence ? `<p class="ev">${esc(a.evidence)}</p>` : ""}
+        <div class="arow">
+          ${a.action_label ? `<button class="alertbtn primary" data-aid="${a.id}" data-act="go">${esc(a.action_label)}</button>` : ""}
+          <button class="alertbtn" data-aid="${a.id}" data-act="dismiss">Dismiss</button>
+        </div>
+      </div>`).join("")
+      : `<p class="psub">All clear. Your agent is watching.</p>`;
+    el.querySelectorAll("[data-act]").forEach(b => b.onclick = () => moneyAlertAct(b.dataset.aid, b.dataset.act, alerts));
+  }
+  async function moneyAlertAct(id, act, alerts) {
+    const a = alerts.find(x => String(x.id) === String(id));
+    if (act === "dismiss") {
+      try { await supa.from("finance_alerts").update({ status: "dismissed" }).eq("id", id); } catch (e) {}
+      renderMoney();
+    } else if (act === "go" && a) {
+      try { await supa.from("finance_alerts").update({ status: "acted" }).eq("id", id); } catch (e) {}
+      if (a.action_tab) show(a.action_tab);
+      else if (a.action_url) window.open(a.action_url, "_blank", "noopener");
+      else renderMoney();
+    }
+  }
+  function renderMoneyPromos(accts) {
+    const el = $("moneyPromos");
+    if (!el) return;
+    const cash = moneyCash(accts);
+    const promos = ((typeof UPMORE_DATA !== "undefined" ? UPMORE_DATA.routes : []))
+      .filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category)).slice(0, 2);
+    if (!promos.length) { el.innerHTML = ""; return; }
+    const why = cash > 0
+      ? `You have ${money$(cash)} in cash — these fit what you hold.`
+      : `These fit most people getting started.`;
+    el.innerHTML = `<p class="psub" style="margin:0 0 8px">${esc(why)}</p>` + promos.map(r => `
+      <button class="promocard" data-promo="${r.id}">
+        ${appIcon(r.provider || r.category)}
+        <span class="grow"><span class="t">${esc(r.provider || "Promo")}</span>
+        <span class="s">${esc(String(r.reward || "").slice(0, 90))}</span></span>
+        <span class="chev">\u203a</span>
+      </button>`).join("");
+    el.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => openPromoSheet(b.dataset.promo));
+  }
+  function renderMoneyGoals(goals) {
+    const el = $("moneyGoals");
+    if (!el) return;
+    el.innerHTML = goals.length ? goals.map(g => {
+      const pct = Math.min(100, Math.round(100 * Number(g.current_amount || 0) / Number(g.target_amount || 1)));
+      return `<div class="goalcard">
+        <div class="grow"><span class="t">${esc(g.name)}</span><span class="amt">${money$(g.current_amount)} of ${money$(g.target_amount)}</span></div>
+        <div class="goaltrack"><div class="goalfill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join("") : `<p class="psub">No goals yet — set one and your agent tracks it from your real balances.</p>`;
+  }
+  function renderMoneyAccts(accts) {
+    const el = $("moneyAccts");
+    if (!el) return;
+    el.innerHTML = accts.length ? accts.map(a => `
+      <div class="acctrow">
+        <span class="grow"><span class="t">${esc(a.institution_name)} ${esc(a.account_name)}</span>
+        <span class="s">${a.mask ? "\u2026" + esc(a.mask) + " \u00b7 " : ""}${esc(a.account_type)}</span></span>
+        <span class="amt">${money$(a.balance_current)}</span>
+      </div>`).join("") : `<p class="psub">No accounts yet.</p>`;
+    const note = $("moneyDemoNote");
+    if (note) note.hidden = !accts.some(a => a.source === "demo");
+  }
+  let moneyWired = false;
+  function wireMoneyOnce() {
+    if (moneyWired) return; moneyWired = true;
+    $("goalAdd").onclick = () => { $("goalForm").hidden = !$("goalForm").hidden; };
+    $("goalCancel").onclick = () => { $("goalForm").hidden = true; };
+    $("goalSave").onclick = async () => {
+      const name = $("goalName").value.trim();
+      const target = Number($("goalTarget").value);
+      if (!name || !(target > 0)) { toast("Give your goal a name and a target amount"); return; }
+      if (await saveInsert("finance_goals", { name, target_amount: target, current_amount: 0, status: "active" })) {
+        $("goalName").value = ""; $("goalTarget").value = ""; $("goalForm").hidden = true;
+        renderMoney();
+      }
+    };
+    $("bankConnect").onclick = () => {
+      const em = (typeof session !== "undefined" && session && session.user && session.user.email) || "";
+      if (em) $("bankEmail").value = em;
+      $("bankStatus").textContent = "";
+      $("bankSheet").hidden = false;
+    };
+    $("bankClose").onclick = () => { $("bankSheet").hidden = true; };
+    $("bankSheet").addEventListener("click", e => { if (e.target.id === "bankSheet") $("bankSheet").hidden = true; });
+    $("bankNotify").onclick = async () => {
+      const email = $("bankEmail").value.trim();
+      if (!email || email.indexOf("@") < 0) { $("bankStatus").textContent = "Enter a valid email."; return; }
+      try {
+        const { error } = await supa.from("finance_waitlist").upsert({ user_id: saveUid(), email }, { onConflict: "email" });
+        $("bankStatus").textContent = error ? "Something went wrong \u2014 try again." : "You're on the list. We'll email your invite.";
+      } catch (e) { $("bankStatus").textContent = "Something went wrong \u2014 try again."; }
+    };
+  }
 
   /* ================= Guide ================= */
   /* ================= Guide: answers from the real catalog ================= */
