@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-jrHSowEIuMVgIOq8BiTzG02tYrhzTlZ7gPe7rGIX8zE='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-3Mx/nLGVx13kALU6WVzZ1l9WRwjEAZVbMQg97KKX68U='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1572,7 +1572,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           sub: `${g.length} active charges look like the same subscription`,
           dollars, conf: 0.8, urg: 1.5, eff: 3,
           cta: "Review", act: () => openSubSheet(g[1].id),
-          why: `${qMoney(dollars)}/yr at stake x 80% / 3 min` });
+          why: `${qMoney(dollars)}/yr in duplicate charges x 80% / 3 min` });
       });
       subs.forEach(x => {
         // detector 2: bill spike (amount raised vs what you last entered)

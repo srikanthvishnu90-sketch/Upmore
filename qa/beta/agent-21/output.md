@@ -15,3 +15,14 @@ Retrospective: duplicate detection is clearly labeled, but figures are rounded t
 Cleanup: done — both cancelled; Track empty.
 Note: mid-test the known localStorage-drop quirk wiped the session; signed back in and re-ran the full scenario from scratch. Not a product failure.
 FIX (same day, unreleased): queue money figures now render exact values via a qMoney() formatter — cents preserved when fractional ("$119.88/yr at stake", "Keep $119.88/yr", "+$60/yr" stays whole), no "~" prefix because nothing is rounded away. Earn-card why-lines and the queue data-dollar attribute also carry exact cents. Pending rebuild + redeploy, then rerun agent 21.
+
+## Rerun 2 (2026-09-24, build 6e9bac8, account qa21r@upmore.app) — RESULT: PASS
+Fresh-build protocol PASS (no History button). Profile "qa21r" (no session mismatch).
+- Step 1 PASS: "DupeExact21" $9.99 Monthly -> Track "≈$9.99/mo · 1 active".
+- Step 2 PASS: added again -> "≈$19.98/mo · 2 active", two Cancel buttons.
+- Step 3 PASS: duplicate card "Possible duplicate: DupeExact21" / "2 active charges look like the same subscription" / "$119.88/yr at stake x 80% / 3 min" — EXACT cents, not $120. Both "Cancel DupeExact21" cards: "Keep $119.88/yr", "$119.88/yr x 100% / 5 min".
+- Observation: "at stake" figure = sum of EXTRA subscriptions beyond the first (the actual duplicate waste, $119.88), not combined $239.76. Correct math, but wording left it ambiguous. Clarified in code: why-line now reads "$119.88/yr in duplicate charges x 80% / 3 min".
+- Step 4 (observation): "Review" opens ONE subscription's detail sheet (acts on g[1]); defensible since cancellation is per-subscription.
+- Step 5 PASS: both cancelled via Track Cancel -> sheet "Cancel subscription"; Track empty ("Nothing tracked yet"); duplicate/cancel cards gone; signed out. No test data remains.
+- Minor label nit (not failed): Track row "Cancel" opens the detail sheet instead of cancelling directly — a two-tap confirm pattern; the destructive action itself is confirmed in-sheet.
+Retrospective: duplicate detection + exact numbers serve the intent — the queue caught the double charge immediately with precise "$119.88/yr" and per-card "Keep $119.88/yr" framing at the decision point.
