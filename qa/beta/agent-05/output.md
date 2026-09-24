@@ -20,3 +20,15 @@ Other observations: a "BetaFlix04" subscription ($15.99/mo) from another beta ag
 Genuinely useful for the narrow case it covers - fired immediately on two identical charges, surfaced at the top of the ranked queue, translated into concrete stakes ($120/yr) with a one-tap Review path. Ceiling depends on fuzzy matching: real duplicate charges arrive as slightly different descriptors/amounts/billing dates, so the strict same-name/amount/interval rule catches "accidentally signed up twice" but misses messier bank-statement variants. Verdict: useful first line of defense; fuzzy descriptor/amount matching is the obvious next hardening step.
 
 ## Result: PASS (4/4)
+
+---
+
+## RERUN on build ef57c14 (2026-09-24T21:01:41Z)
+1. Added DupeTestR05 $9.99 Monthly twice (Track: 6 active -> 7 active, two rows) - PASS
+2. "Possible duplicate" queue card naming DupeTestR05 appeared immediately after second save - PASS
+3. Exact text: Title "Possible duplicate: DupeTestR05" | Sub "2 active charges look like the same subscription" | Why-line "$120/yr at stake x 80% / 3 min" - PASS
+4. Cleanup - PASS (both cancelled via sheets; Track back to 5 active original subs; duplicate card gone). Each "Cancel subscription" navigates to Guide with a cancellation-confirmation chat - designed flow.
+Sticky-nav note (3rd report): fixed bottom tab bar covers the "Save" button; automated clicks refused as "obscured"; scrolling further resolved it. FIX APPLIED: added `scroll-padding-bottom: 120px` to .scroll so programmatic scrolls leave clearance above the tab bar (rides the next rebuild; behavior-neutral CSS, no functional change).
+Oddity: a "BetaFlixR04" row + "Cancel BetaFlixR04" card transiently appeared after first save (another agent's concurrent test); gone by end; final state matched pre-test.
+Retrospective: genuinely useful - fired immediately, named merchant, counted "2 active charges", quantified $120/yr at 80% confidence / 3 min, ranked into the dollars x confidence x urgency / effort queue. 80% (not 100%) confidence is honest; low-effort dismissal covers false positives (family plans). Would catch real double-billing.
+## Rerun result: PASS (4/4) on ef57c14; final-build rerun (DupeTestF05) in flight

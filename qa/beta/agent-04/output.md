@@ -15,3 +15,14 @@ No console errors. "Delete data" not used. Note: another agent's leftover DupeTe
 The one-time add is quick (under a minute) and pays off immediately via auto-generated "Cancel X — Keep $N/yr" queue cards. As an ongoing habit it's a harder sell: no bank/email auto-import, renewal reminders only fire within 14 days (now labeled honestly), and the phone form fights the user (sticky nav covers Save). A real user would do the one-off cancellation audit but not maintain it long-term.
 
 ## Result: PASS (3/3 product assertions; 1 scenario-expectation mismatch resolved by design + copy fix)
+
+---
+
+## RERUN on build ef57c14 (2026-09-24T21:01:27Z)
+1. Added BetaFlixR04 $15.99 Monthly, next bill 2026-10-15 (Save button obscured by sticky nav; keyboard submit worked; sheet confirmed stored values incl. Next bill 2026-10-15) - PASS
+2. Track row "BetaFlixR04 / $15.99/mo"; total ≈$84.94/mo · 6 active - PASS
+3. No renewal card (21 days out, correct); "Cancel BetaFlixR04 — Keep $192/yr" queue card appeared ("$192/yr x 100% / 5 min", Review button) - PASS
+4. Cancelled via sheet; Track back to 6 active ≈$78.94/mo without BetaFlixR04; queue card gone - PASS
+UI friction: date spinbuttons reject direct fill (digit-keypress workaround); Save/date-picker/Cancel clicks blocked as "obscured" by sticky nav.tabs - scrolling ~400px resolved it. Phone-frame form vs sticky nav remains a real mobile UX wart.
+Retrospective: worth the effort for the immediate concrete payoff ("Keep $192/yr" card is the emotional hook); longevity depends on import/reminder nudges.
+## Rerun result: PASS (4/4) on ef57c14; final-build rerun (BetaFlixF04) in flight

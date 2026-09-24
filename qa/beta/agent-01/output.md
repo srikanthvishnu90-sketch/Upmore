@@ -19,3 +19,15 @@ No console errors observed. No test data created or modified.
 Yes - the queue largely serves "tell me what to do right now to make money". Explicitly ranked by dollars x confidence x urgency / effort, biggest first; top item is an already-started SoFi bonus with a concrete 12-minute resume step; every card pairs expected payoff with an action CTA. Weaknesses: queue mixes "earn new money" with "keep money by cancelling subscriptions" (cancellations aren't earning), and several top items demand prerequisites an ordinary user may lack (existing brokerage assets for the SoFi ACAT match, $1,000+ of bullion, security-research skill) - so "right now" applies most cleanly to the resumed in-progress item at the top.
 
 ## Result: PASS (4/4 verifiable; 1 inconclusive)
+
+---
+
+## RERUN on build ef57c14 (2026-09-24T21:00:13Z)
+1. One "Up next" queue section - PASS
+2. 15 cards rendered - PASS
+3. Top card: "Up next" label, "Continue: SoFi Invest — Brokerage account bonus", "Step 2 of 5", "Already started - $50000 x 90% / 12 min", "Resume" CTA - PASS
+4. All 15 cards carry all five data-* attributes; sorted by data-score descending (top 5625.00, lowest "Cancel Hulu" 23.98) - PASS
+5. Overflow: not numerically measurable (no JS execution); visually all content fits phone frame, vertical scroll only - INCONCLUSIVE
+New nit: 2nd card re-lists the same SoFi offer as a fresh "Start" (redundant with top "Continue") - FIXED via queue dedup (in-progress walkthrough routes excluded from fresh earn cards). Also: some why-lines are bare formulas without plain-words suffix - cosmetic nit, top card explains in plain words per B4.
+Retrospective: intent served - unambiguous next action first, everything ranked by the formula with verb CTAs; caveats: ranking-duplication (fixed), tail shifts from earning to cancellations (defensible as net money, dilutes "make money right now").
+## Rerun result: PASS (4/4 verifiable) on ef57c14; dedup fix verified in final build wave below
