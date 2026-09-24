@@ -57,7 +57,7 @@ export const APP_LINKS: Record<string, { ios?: string; android?: string }> = {
 // trickles, bonus waits) — they only appear as "closest honest plays".
 interface CashMath {
   dollars_per_hour: number | null;
-  model: "hourly" | "needs_spend" | "windfall" | "slow" | "credit_only" | "bonus_wait" | "wager" | "variable";
+  model: "hourly" | "needs_spend" | "windfall" | "slow" | "credit_only" | "bonus_wait" | "wager" | "variable" | "asset_sale" | "rental";
   math: string;      // one-line honest math, e.g. "~$10/hr of studies"
   min_cashout: string;
   catch: string;     // biggest catch in one line
@@ -91,7 +91,7 @@ const BONUS_WAIT_CATS = new Set([
   "Crypto Reward", "Prediction Market",
 ]);
 const NEEDS_SPEND_CATS = new Set([
-  "Rebate/Incentive", "Cashback/Shopping", "Energy Switching", "Buyback",
+  "Rebate/Incentive", "Cashback", "Cashback/Shopping", "Energy Switching", "Buyback",
   "Buyback/Resale", "Gift Card Resale",
   "Recycling", "Receipt/Loyalty", "Insurance/Quote", "Government",
   "Student Program", "Mystery Shopping",
@@ -100,12 +100,32 @@ const WINDFALL_CATS = new Set(["Unclaimed/Recovery", "Competition"]);
 // Wager routes (bet your own money to win): risk capital, not schedulable
 // income. Tracked by route ID — deterministic, no text guessing.
 const WAGER_IDS = new Set(["R0495"]); // HealthyWage: weight-loss wager
+// Needs-spend routes miscategorized outside the needs-spend categories
+// (cashback-on-purchases framed as earnings). Tracked by route ID —
+// deterministic, no text guessing. Beta find 2026-09-24: Fluz App (R0535)
+// headlined a $1,000 cash stack at "~$24/hr" when you must buy first.
+const NEEDS_SPEND_IDS = new Set([
+  "R0535", // Fluz App: cashback on gift-card purchases — no purchase, no reward
+]);
+// One-shot asset sales (sell something you already own): a payout midpoint
+// divided by transaction minutes is NOT an hourly rate, and the work isn't
+// repeatable. Schedulable=false — big swings only, never "~$/hr".
+// Beta find 2026-09-24: JM Bullion rendered as "~$47,077/hr of work".
+const ONE_SHOT_CATS = new Set(["Niche Buyback"]);
+// Skill-gated windfalls (bug bounties): expected payout for an ordinary
+// person is ~$0 (owner rule 2026-09-23 — top figures must never be presented
+// as attainable). Excluded from earn stacks; still searchable in Explore.
+const NO_EARN_STACK_CATS = new Set(["Code Bounties", "Promo Arbitrage"]);
+// Rental income (rent out space/assets): monthly per-listing income. A payout
+// midpoint over listing-setup minutes is NOT an hourly rate (beta find
+// 2026-09-24: Neighbor rendered as "~$273/hr of work").
+const RENTAL_CATS = new Set(["Rent Assets"]);
 // Creator / referral / ambassador / freelance programs pay per conversion,
 // per client, monthly commission tiers, or one-off bonuses — a payout
 // midpoint divided by active minutes is NOT an hourly rate and must never
 // be presented as one.
 const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador",
-  "Translation", "Tutoring", "Voiceover/Audio", "AI Training",
+  "Translation", "Transcription", "Tutoring", "Tutoring & Gigs", "Voiceover/Audio", "AI Training",
   "Lead Sourcing", "Media/Music"]);
 
 // Per-invitation work (surveys, user tests, studies): each payout is real,
@@ -114,7 +134,7 @@ const VARIABLE_CATS = new Set(["UGC/Creator", "App Referral", "Brand Ambassador"
 // reality check when the target needs many separate payouts.
 const VOLUME_GATED_CATS = new Set([
   "Survey", "Regional Surveys", "User Testing", "Focus Group",
-  "Research Study", "Mock Jury",
+  "Research Study", "Mock Jury", "Accessibility", "Human Judgment",
 ]);
 
 function deriveCashMath(r: RouteCard): CashMath | null {
@@ -139,17 +159,46 @@ function deriveCashMath(r: RouteCard): CashMath | null {
     };
   }
   if (BONUS_WAIT_CATS.has(cat)) {
+    // Percentage matches (1% ACAT etc.): the cap is NOT a payout. A pmid
+    // midpoint would fabricate an "earnable" bonus — say what it actually is.
+    // Beta find 2026-09-24: SoFi's $50k match cap rendered as "$25,000 bonus".
+    const pct = (r.payout_text ?? "").match(/\d+(\.\d+)?\s*%/);
+    if (pct) {
+      return {
+        dollars_per_hour: null, model: "bonus_wait",
+        math: `${pct[0]} match on qualifying activity (caps at ~$${Math.round(pmax)}) — your bonus scales with what you move`,
+        min_cashout: cashout, catch: catch1, schedulable: false,
+      };
+    }
     return {
       dollars_per_hour: null, model: "bonus_wait",
       math: `$${Math.round(pmid)} bonus with qualifying activity; pays weeks after you qualify`,
       min_cashout: cashout, catch: catch1, schedulable: false,
     };
   }
-  if (NEEDS_SPEND_CATS.has(cat)) {
+  if (NEEDS_SPEND_CATS.has(cat) || NEEDS_SPEND_IDS.has(r.route_id)) {
     return {
       dollars_per_hour: null, model: "needs_spend",
       math: pmid > 0 ? `up to ~$${Math.round(pmid)} back on spending you're already doing` : "savings on spending you're already doing",
       min_cashout: cashout, catch: "You have to spend first — it's savings on intended spending, not earnings.", schedulable: false,
+    };
+  }
+  if (ONE_SHOT_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "asset_sale",
+      math: pmax > 0 ? `one-shot sale — up to ~$${Math.round(pmax)} for your asset` : "one-shot asset sale",
+      min_cashout: cashout,
+      catch: "You must already own the asset; one payout per item — liquidation, not recurring work.",
+      schedulable: false,
+    };
+  }
+  if (RENTAL_CATS.has(cat)) {
+    return {
+      dollars_per_hour: null, model: "rental",
+      math: pmid > 0 ? `~$${Math.round(pmin)}\u2013$${Math.round(pmax)}/month per listing \u2014 not hourly work` : "monthly rental income \u2014 not hourly work",
+      min_cashout: cashout,
+      catch: "Income starts only when someone rents; payouts are monthly and slow to start.",
+      schedulable: false,
     };
   }
   if (WINDFALL_CATS.has(cat)) {
@@ -190,26 +239,49 @@ function deriveCashMath(r: RouteCard): CashMath | null {
 const MAKE_X_RX = /\bmake me\s*\$?\s?([\d,]{1,7})\b|\bmake \$?\s?([\d,]{1,7})\b|\bi need\s*\$?\s?([\d,]{1,7})\b.{0,20}\b(fast|quick|today|now|asap)\b|\bearn\s*\$?\s?([\d,]{1,7})\b.{0,20}\b(fast|quick|today)\b|\bi want to make (some )?(extra )?money\b|\bhelp me make (some )?(extra )?money\b|\b(trying to make (some )?(extra )?money)\b/i;
 const VAGUE_OPENER_RX = /i want to make (some )?(extra )?money|help me make (some )?(extra )?money|trying to make (some )?(extra )?money/i;
 
-export function tryMakeMeX(message: string, routes: RouteCard[]): string | null {
-  const m = message.match(MAKE_X_RX);
-  if (!m) return null;
-  // Vague openers ("i want to make money") anchor on a concrete $20 plan.
-  const rawTarget = m[1] ?? m[2] ?? m[3] ?? m[5] ?? "0";
-  const target = VAGUE_OPENER_RX.test(message)
-    ? 20
-    : parseInt(rawTarget.replace(/,/g, ""), 10);
-  if (!target || target <= 0 || target > 100000) return null;
-  const live = routes.filter(fresh).filter((r) => (r.lane ?? "Standard") === "Standard");
-  if (!live.length) return null;
-
-  // Rank verified routes by honest hours to reach the target. Hand-curated
-  // entries win; the rest are derived from DB numerics. Non-schedulable
-  // routes (windfalls, needs-spend, bonus waits, wagers, variable gigs) can
-  // never be the headline pick — they only show up as closest honest plays.
-  // Owner direction 2026-09-23: same-day money wins. Pick the best
-  // schedulable route from the fastest-paying tier that has one —
-  // today beats this week beats later, always.
-  const ranked = live
+// Shared honest ranking for money targets: verified Standard-lane routes,
+// ordered by hours of work to reach the target. Non-schedulable routes
+// (windfalls, needs-spend, bonus waits, wagers, variable gigs) sort last
+// with hours = Infinity — they can never be the headline pick, only
+// closest honest plays. Owner direction 2026-09-23: same-day money wins.
+function rankRoutesForTarget(
+  routes: RouteCard[],
+  target: number,
+  message = "",
+  hist: { role: string; content: string }[] = [],
+  exclHist: { role: string; content: string }[] = hist,
+) {
+  // User payout exclusions ("no points", "no gift cards", "no credits"):
+  // drop routes whose verified payout text shows they pay that way.
+  // Owner rule: only withdrawable cash counts unless the user says otherwise.
+  // A standing exclusion from earlier in the thread still applies — the FULL
+  // thread is scanned via exclHist (beta fix 2026-09-24: the 30-message window
+  // aged the original "no points" out and GrabPoints headlined the $1,000 plan
+  // again). A later "points are fine" lifts it.
+  const scope = message + "\n" + exclHist.map((h) => h.content).join("\n");
+  const lift = /\bpoints? (are|is) (fine|ok|okay)\b|\ballow points\b/i.test(scope);
+  const lastNo = Math.max(
+    scope.toLowerCase().lastIndexOf("no points"),
+    scope.toLowerCase().lastIndexOf("no gift card"),
+    scope.toLowerCase().lastIndexOf("no credit"),
+  );
+  const lastLift = scope.toLowerCase().lastIndexOf("points are fine");
+  const noPoints = /\bno\s+points\b/i.test(scope) && !(lift && lastLift > lastNo);
+  const noGiftCards = /\bno\s+gift\s*cards?\b/i.test(scope);
+  const noCredits = /\bno\s+credits\b/i.test(scope);
+  const live = routes
+    .filter(fresh)
+    .filter((r) => (r.lane ?? "Standard") === "Standard")
+    .filter((r) => !NO_EARN_STACK_CATS.has(r.category ?? ""))
+    .filter((r) => {
+      if (!noPoints && !noGiftCards && !noCredits) return true;
+      const t = `${r.payout_text ?? ""} ${catchesOf(r).join(" ")}`.toLowerCase();
+      if (noPoints && /\bpoints?\b|\bpts\b/.test(t)) return false;
+      if (noGiftCards && /gift\s*cards?/.test(t)) return false;
+      if (noCredits && /\bcredits\b|store credit|bill credit/.test(t)) return false;
+      return true;
+    });
+  return live
     .map((r) => ({ r, cm: CASH_MATH[r.route_id] ?? deriveCashMath(r) }))
     .filter((x) => x.cm)
     .map((x) => ({
@@ -219,6 +291,24 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
         : Infinity,
     }))
     .sort((a, b) => a.hours - b.hours);
+}
+
+export function tryMakeMeX(
+  message: string,
+  routes: RouteCard[],
+  hist: { role: string; content: string }[] = [],
+  exclHist: { role: string; content: string }[] = hist,
+): string | null {
+  const m = message.match(MAKE_X_RX);
+  if (!m) return null;
+  // Vague openers ("i want to make money") anchor on a concrete $20 plan.
+  const rawTarget = m[1] ?? m[2] ?? m[3] ?? m[5] ?? "0";
+  const target = VAGUE_OPENER_RX.test(message)
+    ? 20
+    : parseInt(rawTarget.replace(/,/g, ""), 10);
+  if (!target || target <= 0 || target > 100000) return null;
+  const ranked = rankRoutesForTarget(routes, target, message, hist, exclHist);
+  if (!ranked.length) return null;
   const SPEED_TIERS = ["today", "days", "weeks"];
   let pick: typeof ranked[number] | undefined;
   for (const tier of SPEED_TIERS) {
@@ -234,7 +324,7 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
       `The closest honest plays:\n` +
       (alternates.length
         ? alternates.map((x) => `• ${x.r.provider} (${x.r.route_id}) — ${x.cm!.math}`).join("\n")
-        : live.slice(0, 3).map((r) => `• ${r.provider} (${r.route_id}) — ${r.payout_text ?? ""}`).join("\n")) +
+        : ranked.slice(0, 3).map((x) => `• ${x.r.provider} (${x.r.route_id}) — ${x.r.payout_text ?? ""}`).join("\n")) +
       `\n\nWant the full step-by-step for any of these?`
     );
   }
@@ -248,16 +338,14 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
   // hours of work" reads as a promise the catalog can't keep.
   const gated = (() => {
     if (!VOLUME_GATED_CATS.has(r.category ?? "")) return null;
-    const pmin = (r as any).payout_min == null ? NaN : Number((r as any).payout_min);
-    const pmax = (r as any).payout_max == null ? NaN : Number((r as any).payout_max);
-    if (!isFinite(pmin) || !isFinite(pmax)) return null;
-    const per = (pmin + pmax) / 2;
-    if (!(per > 0)) return null;
-    const n = Math.ceil(target / per);
+    const ph = planPerHit({ r });
+    if (!ph) return null;
+    const n = Math.ceil(target / ph.per);
     if (n <= 5) return null;
+    const perTxt = ph.wide ? `$${Math.round(ph.pmin)}–$${Math.round(ph.pmax)} (most land at the low end)` : `~$${Math.round(ph.per)}`;
     return {
-      per: Math.round(per), n,
-      text: `\n\nReality check: that's about ${n} separate payouts at ~$${Math.round(per)} each, and they only arrive when you qualify — expect weeks of waiting for invitations, not a straight shot at $${target}. Treat this as spare cash per hit, not a $${target} plan.`,
+      per: Math.round(ph.per), n,
+      text: `\n\nReality check: that's about ${n} separate payouts at ${perTxt} each, and they only arrive when you qualify — expect weeks of waiting for invitations, not a straight shot at $${target}. Treat this as spare cash per hit, not a $${target} plan.`,
     };
   })();
   const honest = (() => {
@@ -266,8 +354,10 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
       ? `about ${h} hour${h === 1 ? "" : "s"} of work`
       : `roughly ${Math.round(hours)} hours of work`;
   })();
+  // Gated routes: per-hit reality only — the derived $/hr parenthetical
+  // would read as a wage promise for invitation-gated work.
   const mathLine = gated
-    ? `Each hit pays ~$${gated.per} when one lands (${cm.math}). `
+    ? `Each hit pays ~$${gated.per} when one lands. `
     : `The math: ${cm.math}, so $${target} ≈ ${honest}. `;
   const steps = r.steps.slice(0, 5).map((s, i) => `${i + 1}. ${s.text}`).join("\n");
   const links = APP_LINKS[r.route_id];
@@ -293,6 +383,163 @@ export function tryMakeMeX(message: string, routes: RouteCard[]): string | null 
       ? `\n\nAlso real: ` + others.map((x) => Math.round(x.hours) > 0 ? `${x.r.provider} (~${Math.round(x.hours)}h)` : `${x.r.provider}`).join(", ") + `.`
       : "") +
     `\n\nWant me to walk you through step 1?`
+  );
+}
+
+// ---------- 1b. honest multi-route plan ("the stack") ----------
+// Beta-test finding 2026-09-24 ($1,000 challenge): asking for "the actual
+// plan" got the single-route recommendation repeated. No single verified
+// route reaches a big target fast, so plan-language requests get a
+// deterministic stack: verified routes across buckets, ordered by payout
+// speed, each with its own honest math toward the target. Never promises
+// the total — every line is one verified route with its own catch.
+const PLAN_RX = /\b(game plan|full plan|the plan|a plan|my plan|roadmap|stack|strategy|playbook)\b|\bfastest realistic\b|\bhow do i (get|reach|hit)\b|\busing everything you know\b|\bbest (way|path|route)\b/i;
+
+// Per-hit planning math. Extreme ranges (max >= 10x min) plan on the LOW end —
+// the midpoint of a $100–$1,500 range is not a plan (beta find 2026-09-24:
+// Focusinsite rendered "2 payouts to $1,000" when most studies land low).
+// Ordinary ranges (e.g. $10–$50) keep the midpoint.
+function planPerHit(x: { r: RouteCard }): { per: number; wide: boolean; pmin: number; pmax: number } | null {
+  const pmin = (x.r as any).payout_min == null ? NaN : Number((x.r as any).payout_min);
+  const pmax = (x.r as any).payout_max == null ? NaN : Number((x.r as any).payout_max);
+  if (!isFinite(pmin) || !isFinite(pmax) || pmin <= 0 || pmax <= 0) return null;
+  const wide = pmax >= 10 * pmin;
+  return { per: wide ? pmin : (pmin + pmax) / 2, wide, pmin, pmax };
+}
+
+export function tryPlanStack(
+  message: string,
+  routes: RouteCard[],
+  hist: { role: string; content: string }[] = [],
+  exclHist: { role: string; content: string }[] = hist,
+): string | null {
+  if (!PLAN_RX.test(message)) return null;
+  // Earn-context guard: "a plan" also appears in save-side requests ("I have
+  // a plan to cancel Netflix"). Only build the money stack when the message
+  // or the thread is about earning.
+  const EARN_CTX_RX = /\b(earn|make|money|cash|income|paid|pay|payout|withdraw)\b|\$/i;
+  const threadEarn = hist.some((h) => EARN_CTX_RX.test(h.content));
+  if (!EARN_CTX_RX.test(message) && !threadEarn) return null;
+  let target: number | null = null;
+  const mm = message.match(/\$\s?([\d,]{1,7})/);
+  if (mm) target = parseInt(mm[1].replace(/,/g, ""), 10);
+  if (!target) {
+    for (let i = hist.length - 1; i >= 0; i--) {
+      const hm = hist[i].content.match(/\$\s?([\d,]{1,7})/);
+      if (hm) { target = parseInt(hm[1].replace(/,/g, ""), 10); break; }
+    }
+  }
+  if (!target || target <= 0 || target > 100000) {
+    return "Tell me the target number and I'll build the stack — e.g. \"plan to get me $1,000\". What's the goal?";
+  }
+  const ranked = rankRoutesForTarget(routes, target, message, hist, exclHist);
+  if (!ranked.length) return null;
+
+  // Volume-gated work (surveys, user tests, research studies) is per-hit,
+  // not a wage — it always renders with per-hit math, never "~$/hr".
+  // (Same honesty rule as tryMakeMeX's gated block.)
+  const isGated = (x: (typeof ranked)[number]) => VOLUME_GATED_CATS.has(x.r.category ?? "");
+  const sched = ranked.filter((x) => x.hours < Infinity && !isGated(x));
+  const gated = ranked.filter(isGated);
+  const swings = ranked.filter((x) => x.hours === Infinity && !isGated(x));
+
+  const entry = (x: (typeof ranked)[number], idx: number): string => {
+    const r = x.r;
+    const links = APP_LINKS[r.route_id];
+    const iosUrl = (r as any).ios_url || links?.ios;
+    const dl = iosUrl || (r as any).android_url || links?.android
+      ? `\n   Download the app: ${iosUrl ?? (r as any).android_url ?? links?.android}` : "";
+    const speedNote = (r.speed === "today") ? "pays today"
+      : (r.speed === "days") ? "pays within about a week" : "pays in weeks";
+    const mathBit = x.hours < Infinity && x.cm!.dollars_per_hour
+      ? `~$${Math.round(x.cm!.dollars_per_hour)}/hr of work`
+      : x.cm!.math;
+    return `${idx}. **${r.provider}** (${r.route_id}) — ${mathBit}, ${speedNote}.${dl}\n   ${r.provider_url}\n   Catch: ${x.cm!.catch}`;
+  };
+
+  const lines: string[] = [];
+  let idx = 0;
+  const pushBucket = (title: string, items: typeof ranked, note?: string) => {
+    if (!items.length) return;
+    lines.push(`\n${title}`);
+    if (note) lines.push(note);
+    for (const x of items) lines.push(entry(x, ++idx));
+  };
+
+  // Anyone-can-do work leads: expert-gated routes (anyone_can_do=false)
+  // get their own clearly-labeled bucket, never the top pick. Beta find
+  // 2026-09-24: Kolabtree ("requires real advanced expertise") headlined the
+  // $1,000 plan as the starting pick.
+  const canDo = (x: (typeof ranked)[number]) => (x.r as any).anyone_can_do !== false;
+  const doable = sched.filter(canDo);
+  const expert = sched.filter((x) => !canDo(x));
+  // Fastest schedulable work first: today-speed, then days-speed.
+  pushBucket("START TODAY — fastest cash:", doable.filter((x) => x.r.speed === "today").slice(0, 2));
+  pushBucket("THIS WEEK — solid per-hour work:", doable.filter((x) => x.r.speed !== "today").slice(0, 2));
+  // Volume-gated per-hit routes with the honest unit math.
+  const gatedShown = gated.slice(0, 2).map((x) => {
+    const ph = planPerHit(x);
+    const n = ph ? Math.ceil(target! / ph.per) : 0;
+    const r = x.r;
+    const links = APP_LINKS[r.route_id];
+    const iosUrl = (r as any).ios_url || links?.ios;
+    const dl = iosUrl || (r as any).android_url || links?.android
+      ? `\n   Download the app: ${iosUrl ?? (r as any).android_url ?? links?.android}` : "";
+    const hitTxt = ph
+      ? (ph.wide
+        ? `~$${Math.round(ph.pmin)}–$${Math.round(ph.pmax)}/hit (most land at the low end) — plan on ${n}+ payouts`
+        : `~$${Math.round(ph.per)}/hit, ${n} separate payouts to reach $${target}`)
+      : `per-hit payouts`;
+    return `${++idx}. **${r.provider}** (${r.route_id}) — ${hitTxt} — only when you qualify, expect weeks.${dl}\n   ${r.provider_url}\n   Catch: ${x.cm!.catch}`;
+  });
+  if (gatedShown.length) {
+    lines.push("\nPER-HIT — spare cash, not a schedule:");
+    lines.push("These only pay when you qualify. Run them in the background of everything else.");
+    lines.push(...gatedShown);
+  }
+  // Big swings: asset buyback, capital promos — real money, strict gates.
+  const swingsShown = swings
+    .slice()
+    .sort((a, b) => (Number((b.r as any).payout_max) || 0) - (Number((a.r as any).payout_max) || 0))
+    .slice(0, 2);
+  pushBucket(
+    "BIG SWINGS — only if you qualify:",
+    swingsShown,
+    "One payout here can cover the target — but each has a hard gate (assets you own, capital to move, approval).",
+  );
+  const rentals = ranked.filter((x) => x.cm!.model === "rental");
+  pushBucket(
+    "SLOW BURN \u2014 monthly, not fast:",
+    rentals.slice(0, 2),
+    "Recurring income once running \u2014 contributes over months, won't get you to $1,000 quickly.",
+  );
+
+  pushBucket(
+    "EXPERT ONLY — needs real credentials:",
+    expert.slice(0, 2),
+    "Only if you already have the skills — not a starting point for most people.",
+  );
+  if (!lines.length) return null;
+  // Top pick = first entry in display order (today-speed beats days-speed
+  // beats per-hit beats swings), so the "walk me through step 1" continuity
+  // fallback lands on the route the stack lists first.
+  // Top pick prefers the fastest speed tier: a weeks-speed route with a
+  // 2-4 week hiring delay is not the fastest first step even at a higher
+  // $/hr (beta find 2026-09-24: TELUS outranked Userfeel as the $1,000 pick).
+  const firstToday = doable.filter((x) => x.r.speed === "today")[0];
+  const firstDays = doable.filter((x) => x.r.speed === "days")[0];
+  const firstWeeks = doable.filter((x) => x.r.speed !== "today" && x.r.speed !== "days")[0];
+  const top = firstToday ?? firstDays ?? firstWeeks ?? gated[0] ?? swingsShown[0];
+  // The top pick is mentioned LAST so the existing "walk me through step 1"
+  // continuity fallback (lastMentionedRouteId) resolves to it.
+  const closer = top
+    ? `\nMy pick to start with: **${top.r.provider}** (${top.r.route_id}) — fastest verified cash. Want me to walk you through its step 1?`
+    : "";
+
+  return (
+    `Straight answer on $${target}: no single verified route gets you there fast. ` +
+    `Here's the honest stack — run them in parallel, fastest cash first. Every line is one verified route:` +
+    lines.join("\n") + closer
   );
 }
 
@@ -418,9 +665,28 @@ const WALK_ALIASES: Array<[RegExp, string]> = [
 const WALK_INTENT =
   /walk me through|guide me through|talk me through|step.by.step|show me the steps|how do i (actually |really )?(use|do|start|earn)/i;
 
+// Most recently mentioned route ID in assistant history, e.g. "(R6702)".
+// Shared with index.ts's copy: the plan stack names its top pick last so a
+// bare "walk me through step 1" resolves to it.
+function lastMentionedRouteId(hist: { role: string; content: string }[]): string | null {
+  for (let i = hist.length - 1; i >= 0; i--) {
+    const h = hist[i];
+    if (h.role !== "assistant") continue;
+    // LAST match in the message: the plan stack names its top pick last
+    // ("My pick to start with: ... (R3445)"), so "walk me through step 1"
+    // resolves to the pick, not the first-listed route. Beta fix 2026-09-24:
+    // first-match semantics resolved TELUS (listed #1) instead of Userfeel
+    // (the actual pick, named last).
+    const ms = String(h.content ?? "").match(/\((R\d{3,})\)/g);
+    if (ms && ms.length) return ms[ms.length - 1].slice(1, -1);
+  }
+  return null;
+}
+
 export function tryWalkthrough(
   message: string,
   routes: any[],
+  hist: { role: string; content: string }[] = [],
 ): { reply: string; routeId: string } | null {
   if (!WALK_INTENT.test(message)) return null;
   const t = message.toLowerCase();
@@ -438,6 +704,14 @@ export function tryWalkthrough(
         t.includes(String(r.provider).toLowerCase()),
     );
     if (hit) rid = hit.route_id;
+  }
+  if (!rid) {
+    // Continuity fallback: "walk me through step 1" right after a plan that
+    // named a route. Without this the request fell through to the model,
+    // which invented details (beta find 2026-09-24: a "paid" TELUS
+    // qualification test that the verified steps never mention).
+    const lastId = lastMentionedRouteId(hist);
+    if (lastId) rid = lastId;
   }
   if (!rid) return null;
   const r = routes.find((x) => x.route_id === rid);
@@ -1264,6 +1538,8 @@ export async function tryCapabilities(
   message: string,
   routes: RouteCard[],
   ctx?: CapCtx,
+  hist: { role: string; content: string }[] = [],
+  exclHist: { role: string; content: string }[] = hist,
 ): Promise<{ reply: string; routeId?: string } | null> {
   // Note: gambling/privacy/scam guards run even earlier in index.ts (before
   // the catalog fetch) for speed; they're listed here as a fallback in case
@@ -1276,9 +1552,11 @@ export async function tryCapabilities(
   if (scam) return { reply: scam };
   const sysprompt = trySyspromptGuard(message);
   if (sysprompt) return { reply: sysprompt };
-  const makeMe = tryMakeMeX(message, routes);
+  const plan = tryPlanStack(message, routes, hist, exclHist);
+  if (plan) return { reply: plan };
+  const makeMe = tryMakeMeX(message, routes, hist, exclHist);
   if (makeMe) return { reply: makeMe };
-  const walk = tryWalkthrough(message, routes);
+  const walk = tryWalkthrough(message, routes, hist);
   if (walk) return walk;
   const monthly = tryMonthlyEstimate(message, routes);
   if (monthly) return { reply: monthly };

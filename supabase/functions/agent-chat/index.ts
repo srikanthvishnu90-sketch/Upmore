@@ -152,7 +152,7 @@ serve(async (req) => {
               .order("route_id").range(p * 1000, p * 1000 + 999)
           ),
         );
-    const [profRes, playRes, remRes, verPages, histRes, expRes, expiredRes] = await Promise.all([
+    const [profRes, playRes, remRes, verPages, histRes, exclRes, expRes, expiredRes] = await Promise.all([
       supabase.from("profiles").select("*").eq("id", user.id).single(),
       supabase.from("playbook_progress")
         .select("*, routes!inner(*)").eq("user_id", user.id).eq("status", "active")
@@ -164,7 +164,13 @@ serve(async (req) => {
         .order("due_at", { ascending: true }).limit(3),
       routePagesPromise,
       supabase.from("agent_messages")
-        .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(10),
+        .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(30),
+      // Full-thread user messages for payout-exclusion scanning ("no points"
+      // etc.): the 30-message window ages standing exclusions out of long
+      // threads (beta fix 2026-09-24). Content-only, no model prompt cost.
+      supabase.from("agent_messages")
+        .select("content").eq("thread_id", tid).eq("role", "user")
+        .order("id", { ascending: true }).limit(200),
       // Expiring within 14 days (warn before recommending) vs already
       // expired (never present as live) — tracked separately.
       supabase.from("routes")
@@ -238,7 +244,9 @@ serve(async (req) => {
     // quantitative stock screen (live market data, transparent factor model),
     // prediction-market/gambling guard (critical-thinking takedown).
     // Deterministic output needs no grounding post-check; persist like fast path.
-    const cap = await tryCapabilities(message, routes, { supa: supabase, userId: user.id });
+    const exclHist = [{ role: "user", content: message },
+      ...((exclRes.data ?? []).map((m: any) => ({ role: "user", content: String(m.content ?? "") })))];
+    const cap = await tryCapabilities(message, routes, { supa: supabase, userId: user.id }, hist, exclHist);
     if (cap) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
@@ -654,8 +662,13 @@ function lastMentionedRouteId(hist: { role: string; content: string }[]): string
   for (let i = hist.length - 1; i >= 0; i--) {
     const h = hist[i];
     if (h.role !== "assistant") continue;
-    const m = /\((R\d{3,})\)/.exec(String(h.content ?? ""));
-    if (m) return m[1];
+    // LAST match in the message: the plan stack names its top pick last
+    // ("My pick to start with: ... (R3445)"), so "walk me through step 1"
+    // resolves to the pick, not the first-listed route. Beta fix 2026-09-24:
+    // first-match semantics resolved TELUS (listed #1) instead of Userfeel
+    // (the actual pick, named last).
+    const ms = String(h.content ?? "").match(/\((R\d{3,})\)/g);
+    if (ms && ms.length) return ms[ms.length - 1].slice(1, -1);
   }
   return null;
 }
