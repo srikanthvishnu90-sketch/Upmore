@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-DjkFyXLe+NGzETfxHYYIL4aGEZ6A0TdKEWBSxpTcKQI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ul7iCOYC2dktB4iksVLDP35+FaWCJpghR8P21Um7Y2E=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-RI/BhXfll0urYkDCg1nw+kIVv1wo4khrjw6d4qrrqEU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -2319,9 +2319,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   async function saveProfile() {
     if (!session) return;
     const meta = session.user.user_metadata || {};
+    // Fall back to the email prefix (real account identifier), never a placeholder name.
+    const emailName = ((session.user.email || "").split("@")[0] || "").trim() || null;
     const row = {
       id: session.user.id,
-      display_name: data.name || meta.full_name || meta.name || "Friend",
+      display_name: data.name || meta.full_name || meta.name || emailName || "Friend",
       state: data.state || null,
       free_time_hours: data.time != null ? (+data.time) / 60 : null,
       paycheck_status: data.paycheck || null,
@@ -2508,7 +2510,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const d = planData();
     const st = NAMES[d.state] || "";
     const who = (session && session.user) || null;
-    const dispName = d.name || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
+    // A stored "Friend" is a placeholder from an old first-sign-in write, not a real name: ignore it.
+    const realName = (d.name && d.name !== "Friend") ? d.name : null;
+    const dispName = realName || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
     $("pAva").textContent = dispName.charAt(0).toUpperCase();
     $("pName").textContent = dispName;
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";

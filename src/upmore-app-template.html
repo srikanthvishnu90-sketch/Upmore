@@ -2298,9 +2298,11 @@
   async function saveProfile() {
     if (!session) return;
     const meta = session.user.user_metadata || {};
+    // Fall back to the email prefix (real account identifier), never a placeholder name.
+    const emailName = ((session.user.email || "").split("@")[0] || "").trim() || null;
     const row = {
       id: session.user.id,
-      display_name: data.name || meta.full_name || meta.name || "Friend",
+      display_name: data.name || meta.full_name || meta.name || emailName || "Friend",
       state: data.state || null,
       free_time_hours: data.time != null ? (+data.time) / 60 : null,
       paycheck_status: data.paycheck || null,
@@ -2487,7 +2489,9 @@
     const d = planData();
     const st = NAMES[d.state] || "";
     const who = (session && session.user) || null;
-    const dispName = d.name || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
+    // A stored "Friend" is a placeholder from an old first-sign-in write, not a real name: ignore it.
+    const realName = (d.name && d.name !== "Friend") ? d.name : null;
+    const dispName = realName || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
     $("pAva").textContent = dispName.charAt(0).toUpperCase();
     $("pName").textContent = dispName;
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
