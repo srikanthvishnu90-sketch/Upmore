@@ -37,3 +37,14 @@ AGENT: 09 — Ledger add + reverse. RESULT: FAIL (0/2 — "Log it" silent no-op)
 DIAGNOSIS (parent, verified against DB + source): the insert path itself is healthy — direct API insert to save_ledger returns HTTP 201 and the table/RLS/row shape are all correct. The bug is client-side error handling: when `saveInsert` fails or hangs (flaky network — this environment saw repeated IncompleteRead/RemoteDisconnected to supabase.co today), the lgSave handler does `$("lgSave").disabled=false` then `if (ok)` with NO else branch — no toast, no error, and a hung request leaves the button permanently disabled. The user sees a dead button; retries can pile up duplicate rows server-side.
 FIX APPLIED (same day, unreleased): (1) lgSave handler now races the insert against a 15s timeout and shows "Couldn't save - check your connection and try again." on failure instead of silence; (2) same honest failure toast added to the deadline add (dlAdd), subscription add (subAdd), and ledgerReverse handlers, which shared the silent-`if (ok)` pattern; (3) ledgerReverse now toasts "Reversed" on success. Pending rebuild + redeploy, then rerun agent 09.
 Note: parent's own API probes created two $25 "Beta payout 09" rows during diagnosis; both reversed via offsetting entries the same day. qa09 ledger net zero.
+
+## RERUN (2026-09-24, build fac0778 — ledger save fix)
+AGENT: 09 — Ledger add + reverse. RESULT: PASS (6/6).
+- Starting state: Money log totals $0.00 across all buckets (Received/Avoided/Reduced/Cash flow/Found) — matches the cleaned ledger (probe rows net $0.00; totals computed from rows, never stored).
+- Add: "+ Log a result" opened the form; logging $25.00 Received titled "Beta payout 09" (2026-09-24) showed an honest "Logged" toast — no silent behavior, feedback immediate.
+- Totals increased by exactly $25.00 (main total and Received bucket $0.00 -> $25.00); new entry appeared in the list dated 2026-09-24.
+- Reverse: Reverse control on the newest entry showed a "Reversed" toast, added an explicit "Reversal: Beta payout 09 (reversal)" -$25.00 row; totals returned to $0.00 everywhere.
+- Totals-equal-rows check: final $0.00 equals sum of all visible ledger rows (7x$25 - 7x$25), confirming derived totals.
+Retrospective: the fix works — save and reverse are honest, visible operations; reversals are explicit audit-trail rows, not silent deletions. Minor friction: identical-titled rows are indistinguishable in the list, so finding "my" entry relies on newest-first ordering.
+Cleanup: done — $25 entry reversed; ledger nets $0.00, all buckets $0.00.
+Note: two mid-run sign-outs from the known localStorage-drop quirk; signed back in and continued.

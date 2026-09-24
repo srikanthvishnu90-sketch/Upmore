@@ -1105,6 +1105,14 @@
   const back = () => show(order[Math.max(order.indexOf(current) - 1, 0)]);
   document.querySelectorAll("[data-next]").forEach(b => b.onclick = next);
   document.querySelectorAll("[data-back]").forEach(b => b.onclick = back);
+  // Route external hash changes too (address-bar edits, back/forward buttons).
+  // show() uses replaceState, which never fires this, so there is no loop.
+  window.addEventListener("hashchange", () => {
+    const h = location.hash.slice(1);
+    if (/(^|&)access_token=/.test(h)) return; // let supabase-js consume OAuth callbacks
+    const id = LEGACY_TABS[h] || h;
+    if ($(id) && id !== current) show(id);
+  });
 
   /* splash: tap, or auto-advance once boot leaves a fresh user on splash.
      Timer stands down when boot chose any other screen (session -> home, etc.) */
@@ -1267,10 +1275,18 @@
   const googleLabel = googleGo.innerHTML;
   googleGo.onclick = () => startGoogleLogin(googleGo, googleLabel);
   const googleGoLogin = $("googleGoLogin");
+  const googleGoLoginLabel = googleGoLogin ? googleGoLogin.innerHTML : "";
   if (googleGoLogin) {
-    const loginLabel = googleGoLogin.innerHTML;
-    googleGoLogin.onclick = () => startGoogleLogin(googleGoLogin, loginLabel);
+    googleGoLogin.onclick = () => startGoogleLogin(googleGoLogin, googleGoLoginLabel);
   }
+  // If the Google OAuth round-trip is abandoned (back button / bfcache restore),
+  // the button comes back stuck disabled in its "Opening Google…" state.
+  // A completed OAuth redirects away, so any pageshow means we were abandoned:
+  // always reset to a tappable button.
+  window.addEventListener("pageshow", () => {
+    if (googleGo) { googleGo.disabled = false; googleGo.innerHTML = googleLabel; }
+    if (googleGoLogin) { googleGoLogin.disabled = false; googleGoLogin.innerHTML = googleGoLoginLabel; }
+  });
   /* Login screen links */
   $("welcomeLogin").onclick = (e) => { e.preventDefault(); show("login"); };
   $("loginToSignup").onclick = (e) => { e.preventDefault(); show("welcome"); };

@@ -37,3 +37,12 @@ AGENT: 07 — Renewal detector. RESULT: FAIL (0/1 — copy mismatch).
 - Secondary observation: queue simultaneously pushes a 'Cancel RenewTest07 — Keep $156/yr' upsell card, framing the renewal as a problem to fix rather than neutral information.
 - Cleanup done: cancelled via sheet; Track back to 'Nothing tracked yet'; no RenewTest07 card remains.
 FIX APPLIED (same day, unreleased): qDueText() in src/upmore-app-template.html now renders "in 5 days" / "3 days overdue" / "in 1 day" (singular handled) instead of "in 5d" / "3d overdue". Affects renewal card titles/why-lines, deadline cards, and Track list due text. No test asserts the old abbreviated format. Pending rebuild + redeploy, then rerun agents 07 and 23.
+
+## RERUN (2026-09-24, build fac0778 — qDueText fix)
+AGENT: 07 — Renewal detector. RESULT: PASS (3/3).
+- Added 'RenewTest07' $12.99 Monthly, next bill 2026-09-29 — saved; Track showed "~$12.99/mo · 1 active" with the merchant listed.
+- Renewal queue card in "Up next" reads EXACTLY 'renews in 5 days' — heading "RenewTest07 renews in 5 days", score line "$12.99 x 100% / 5 min - renews in 5 days". The old 'renews in 5d' wording is gone; fix verified in production.
+- Cancelled the test subscription (Track -> Cancel -> "Cancel subscription"); Track shows "Nothing tracked yet"; no RenewTest07 cards remain in queue.
+Retrospective: intent well served — renewal surfaced as a top-ranked "Up next" card ("RenewTest07 renews in 5 days / $12.99/mo - review before it renews") plus a companion "Cancel RenewTest07 — Keep $156/yr" nudge. Friction: native date input rejected fill/type, needed individual key presses into spinbuttons; the subscription save failed twice with the new honest "Couldn't save - check your connection" toast (network flakiness, not silence — the fix working as designed) before succeeding after a reload; cancelling opens a Guide chat rather than a simple confirm, which felt indirect.
+Cleanup: done — subscription cancelled, gone from Track and queue.
+Note: two mid-run sign-outs from the known localStorage-drop quirk; signed back in and continued.
