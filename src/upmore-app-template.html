@@ -124,6 +124,7 @@
 
   label.f { display: block; }
   .f > span { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .f { min-width: 0; }
   .f input { width: 100%; height: 56px; padding: 0 16px; border-radius: 14px;
     border: 1.5px solid var(--line); background: var(--surface); font-size: 18px; }
   .f input::placeholder { color: #56625A; }
@@ -136,11 +137,11 @@
   .link { background: none; border: 0; color: var(--green); font-weight: 600; font-size: 15px; padding: 8px 0; align-self: flex-start; }
 
   .sel { position: relative; }
-  .sel select { appearance: none; -webkit-appearance: none; width: 100%; height: 56px; padding: 0 44px 0 16px;
+  .sel select { appearance: none; -webkit-appearance: none; width: 100%; height: 56px; padding: 0 34px 0 14px;
     border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface); font-size: 18px; color: var(--text); }
   .sel select:focus { border-color: var(--green); outline: none; }
   .sel select.empty { color: #56625A; }
-  .sel::after { content: ""; position: absolute; right: 18px; top: 50%; width: 8px; height: 8px; margin-top: -6px;
+  .sel::after { content: ""; position: absolute; right: 13px; top: 50%; width: 8px; height: 8px; margin-top: -6px;
     border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); pointer-events: none; }
 
   /* plan */
@@ -255,7 +256,7 @@
   .starters { margin-top: 22px; display: grid; gap: 8px; }
   .starter { text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); font-size: 15px; font-weight: 500; }
   .starter span { display: block; margin-top: 2px; font-size: 12.5px; color: var(--muted); font-weight: 400; }
-  .msg { margin-top: 18px; animation: rise .25s ease-out; }
+  .msg { margin-top: 18px; animation: rise .25s ease-out; min-width: 0; overflow-wrap: break-word; }
   @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .msg.me { align-self: flex-end; max-width: 80%; padding: 11px 15px; border-radius: 20px 20px 6px 20px; background: #1F2023; font-size: 15.5px; line-height: 1.4; }
   .msg.ai { font-size: 17px; line-height: 1.5; color: #E7E7E5; }
@@ -839,7 +840,6 @@
       </div>
     </div>
     <div class="chead">
-      <button class="iconbtn" aria-label="History"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></button>
       <div class="title"><b>Guide</b><span>Knows your plan</span></div>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
@@ -1518,7 +1518,7 @@
       cards.push({ type: "earn", id: "earn-" + r.id, title: routeTitle(r), sub: routeMeta(r),
         dollars, conf, urg, eff, cta: "Walk me through it", act: () => startWalkthrough(r.id),
         why: dollars > 0
-          ? `$${Math.round(dollars)} x ${Math.round(conf * 100)}% x ${urg} / ${Math.round(eff)} min${r.speed === "today" ? " - pays fast" : ""}`
+          ? `${qMoney(dollars)} x ${Math.round(conf * 100)}% x ${urg} / ${Math.round(eff)} min${r.speed === "today" ? " - pays fast" : ""}`
           : `Payout varies - researched ${Math.round(conf * 100)}%` });
     });
     // continue: the walkthrough already started
@@ -1550,7 +1550,7 @@
           sub: `${g.length} active charges look like the same subscription`,
           dollars, conf: 0.8, urg: 1.5, eff: 3,
           cta: "Review", act: () => openSubSheet(g[1].id),
-          why: `$${Math.round(dollars)}/yr at stake x 80% / 3 min` });
+          why: `${qMoney(dollars)}/yr at stake x 80% / 3 min` });
       });
       subs.forEach(x => {
         // detector 2: bill spike (amount raised vs what you last entered)
@@ -1558,10 +1558,10 @@
           const up = (Number(x.amount) - Number(x.previous_amount)) * (INT2MO[x.billing_interval] || 1) * 12;
           cards.push({ type: "spike", id: "spike-" + x.id,
             title: `${x.merchant} bill went up`,
-            sub: `${money$(x.previous_amount)} -> ${money$(x.amount)}${INTPER[x.billing_interval] || ""} (+$${Math.round(up)}/yr)`,
+            sub: `${money$(x.previous_amount)} -> ${money$(x.amount)}${INTPER[x.billing_interval] || ""} (+${qMoney(up)}/yr)`,
             dollars: up, conf: 0.95, urg: 2, eff: 10,
             cta: "Review", act: () => openSubSheet(x.id),
-            why: `+$${Math.round(up)}/yr x 95% / 10 min - price hike you entered` });
+            why: `+${qMoney(up)}/yr x 95% / 10 min - price hike you entered` });
         }
         // detector 3: renewal approaching (date you entered)
         const bd = qDaysUntil(x.next_billing_date);
@@ -1578,9 +1578,9 @@
         const annual = qAnnual(x);
         cards.push({ type: "cancel", id: "cancel-" + x.id,
           title: `Cancel ${x.merchant}`,
-          sub: `Keep $${Math.round(annual)}/yr`, dollars: annual, conf: 1.0, urg: 1, eff: 5,
+          sub: `Keep ${qMoney(annual)}/yr`, dollars: annual, conf: 1.0, urg: 1, eff: 5,
           cta: "Review", act: () => openSubSheet(x.id),
-          why: `$${Math.round(annual)}/yr x 100% / 5 min` });
+          why: `${qMoney(annual)}/yr x 100% / 5 min` });
       });
       // deadline engine: renewals + claims you entered
       const rens = await saveRows("save_renewals", "renews_on", true);
@@ -1628,7 +1628,7 @@
     }
     box.innerHTML = cards.map((c, i) => `
       <article class="qcard${i === 0 ? " top" : ""}" data-type="${c.type}"
-        data-dollar="${Math.round(c.dollars)}" data-conf="${c.conf}" data-urg="${c.urg}"
+        data-dollar="${+c.dollars.toFixed(2)}" data-conf="${c.conf}" data-urg="${c.urg}"
         data-eff="${+c.eff.toFixed(2)}" data-score="${c.score.toFixed(2)}">
         ${i === 0 ? `<p class="qtop">Up next</p>` : ""}
         <h4>${esc(c.title)}</h4>
@@ -1860,6 +1860,9 @@
     if (t) { clearTimeout(t._h); t.style.opacity = "0"; }
   }
   const money$ = v => (v == null || isNaN(Number(v))) ? "\u2014" : "$" + Number(v).toFixed(2);
+  // Queue money figures: exact cents when fractional, whole dollars otherwise
+  // (never a bare rounded "$120" for $119.88).
+  const qMoney = v => { const n = Number(v); return "$" + (Math.abs(n - Math.round(n)) < 0.005 ? String(Math.round(n)) : n.toFixed(2)); };
   async function saveRows(table, orderCol, asc) {
     if (!saveUid()) return [];
     try {

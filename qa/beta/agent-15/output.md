@@ -16,3 +16,13 @@ AGENT: 15 — Auth states. RESULT: PASS (8/8).
 Retrospective: intent served — signed-out users get explicit sign-in prompts, save attempts surface instead of vanishing, data survives sign-out/sign-in. Friction: (1) the failed-save error blames the connection instead of saying sign-in is required, and the banner persisted/stuck across navigation and even after re-signing in; (2) You tab still shows a "Sign out" button while signed out; (3) profile header shows generic "Friend" even when signed in; (4) "Cancel subscription" routes into Guide chat with a prefilled draft rather than inline removal (draft never sent; subscription was removed from tracking).
 Cleanup: done.
 FIX (same day, unreleased): (1) save handlers now check sign-in FIRST and show "Sign in to save — your stuff only lives in your account." instead of the connection error; (2) toast banners now auto-dismiss after 4s and clear on navigation; (3) "Sign out" button hidden when signed out; (4) profile header shows the user's actual first name when signed in. Pending rebuild + redeploy, then rerun agent 15's signed-out-save probe.
+
+## RERUN 1 (2026-09-24, build dbb4578 — STALE RESULT, see diagnosis)
+AGENT: 15 — Signed-out save rerun. RESULT: FAIL (5/5) — **diagnosed as a stale service-worker cache, NOT a product-code failure.**
+- (1a/b/c) All three signed-out save paths showed the OLD "Couldn't save - check your connection" message.
+- (2) The error toast persisted across navigation and never auto-dismissed.
+- (3) "Sign out" button visible while signed out.
+- (4) Profile header showed "Friend" after sign-in (and oddly showed a cached "Vish" while signed out — stale localStorage from the shared test profile, not a product bug).
+Diagnosis: the app's service worker used a CONSTANT cache name ("upmore-v3") with a CACHE-FIRST fetch handler for "/" and "/index.html" — it served the previous build's HTML immediately while updating in the background. This agent's browser loaded the pre-fix build; agents 16r/18r (same batch, loaded moments later) got the fixed build and PASSED. The dbb4578 fixes were verified live via curl (needSignIn x5, pays-fast marker present).
+FIX (same day, unreleased): (1) sw.js cache name is now stamped per build by src/build-app.py (short git hash), so every deploy gets a fresh cache version and old caches are purged on activate; (2) the fetch handler is now NETWORK-FIRST for "/" and "/index.html" (always serve the latest deployed build; cache only as offline fallback), cache-first retained for icons/manifest. Pending rebuild + redeploy, then rerun agent 15 against a guaranteed-fresh build.
+Cleanup: done — nothing persisted (all saves failed on the stale build; Track/Deadlines/Money log all empty).

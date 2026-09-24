@@ -17,6 +17,14 @@ assert ph in tpl, "placeholder missing from template"
 # They stay in the source JSON + DB as retired for audit.
 data["routes"] = [r for r in data.get("routes", []) if r.get("status") != "retired"]
 
+# Normalize list-valued copy fields to display strings. The template renders
+# them inline; a raw JS array would stringify with bare commas ("a.,b").
+for r in data.get("routes", []):
+    for k in ("catches", "requirements"):
+        v = r.get(k)
+        if isinstance(v, list):
+            r[k] = "; ".join(str(x).strip().rstrip(";") for x in v if str(x).strip())
+
 # JSON with </script> escaped so the inline data can't break the page
 payload = json.dumps(data, separators=(",", ":"), ensure_ascii=False).replace("</script>", "<\\/script>")
 script = "<script>\nconst UPMORE_DATA = " + payload + ";\n</script>"
@@ -74,8 +82,14 @@ root = HERE.parent
 print(f"published {root / 'index.html'}")
 sw_src = HERE / "sw.js"
 if sw_src.exists():
-    (root / "sw.js").write_text(sw_src.read_text())
-    print(f"published {root / 'sw.js'}")
+    import subprocess
+    try:
+        build = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=HERE, capture_output=True, text=True).stdout.strip() or "dev"
+    except Exception:
+        build = "dev"
+    sw_text = sw_src.read_text().replace("__BUILD__", build)
+    (root / "sw.js").write_text(sw_text)
+    print(f"published {root / 'sw.js'} (cache {build})")
 icons_src = HERE / "icons"
 if icons_src.is_dir():
     import shutil

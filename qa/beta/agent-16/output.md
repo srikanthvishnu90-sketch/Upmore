@@ -14,3 +14,13 @@ Retrospective: queue is strictly score-ordered, but the top does not serve "fast
 Cleanup: done — no test data created.
 Note: one mid-run sign-out from the known localStorage-drop quirk; signed back in and continued.
 FIX (same day, unreleased): (1) why-line now renders the urgency multiplier numerically ("$50000 x 70% x 1.5 / 33 min - pays fast"); (2) data-eff now carries the unrounded value used in the score computation (e.g. data-eff="32.5") so attributes reconcile exactly with data-score. Pending rebuild + redeploy, then rerun agent 16.
+
+## RERUN (2026-09-24, build dbb4578 — why-line urgency + data-eff fixes)
+AGENT: 16 — Ranking order rerun. RESULT: PASS (5/5).
+- [PASS] Top "Up next" card why-line states urgency numerically: "$50000 x 70% x 1.5 / 33 min" (x 1.5 present).
+- [PASS] Top card (JM Bullion) math EXACT: 50000 x 0.7 x 1.5 / 32.5 = 1615.3846 -> data-score=1615.38 (diff 0.0046, within 0.01). data-eff is fractional (32.5); the why-line displays "33 min" (rounded display) while the score uses 32.5 as-is.
+- [PASS] All 8 visible queue-card scores match dollar x conf x urg / eff within 0.01: 1166.67 (SoFi Invest earn), 1060.61 (Microsoft), 1050.00 (Robinhood), 777.78 (SoFi Invest claim), 344.62 (National Grid), 70.00 (Sunrun), 54.44 (Old National Bank).
+- [PASS] data-scores strictly descending: 1615.38 > 1166.67 > 1060.61 > 1050.00 > 777.78 > 344.62 > 70.00 > 54.44.
+- [PASS] No "- pays fast" suffix on any visible queue card (intentional).
+Retrospective: rerun confirms the deployed fixes — urgency renders as a numeric multiplier, scores compute exactly from the fractional data-eff, ordering strictly descending.
+Cleanup: done — no test data created.
