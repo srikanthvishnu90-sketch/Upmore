@@ -290,6 +290,12 @@
 
   /* home hero: one clear action, tinted per move */
   .hero { margin-top:12px; border-radius:22px; border:1px solid var(--line); background:var(--surface-2); padding:18px; }
+  .homerow { margin-top:12px; width:100%; display:flex; align-items:center; gap:10px; padding:16px 18px;
+    border-radius:18px; border:1px solid var(--line); background:var(--surface-2); color:var(--text);
+    font-size:16px; font-weight:600; text-align:left; cursor:pointer; }
+  .homerow .num { margin-left:auto; color:var(--muted); font-weight:500; }
+  .homerow .chev { color:var(--muted); font-size:20px; }
+  .linkbtn { background:none; border:none; color:var(--muted); font-size:14px; text-decoration:underline; cursor:pointer; padding:8px; }
   .hero.t-green { background:linear-gradient(160deg, rgba(79,163,122,.17), rgba(79,163,122,.03) 70%); border-color:rgba(79,163,122,.28); }
   .hero.t-sky { background:linear-gradient(160deg, rgba(111,179,214,.16), rgba(111,179,214,.03) 70%); border-color:rgba(111,179,214,.28); }
   .hkick { font-size:12.5px; font-weight:600; color:var(--muted); }
@@ -640,37 +646,14 @@
       <h1 class="hello" id="hello">Good evening, Vish</h1>
       <p class="sub" id="homeSub">Your next step: open the state&apos;s official search.</p>
 
-      <div class="money">
-        <div><p class="lbl"><span class="dot" style="background:var(--green)"></span>In your pocket</p><p class="val num">$0.00</p></div>
-        <div><p class="lbl"><span class="dot" style="background:var(--sky)"></span>On its way</p><p class="val num">$0.00</p></div>
-        <div><p class="lbl"><span class="dot" style="background:#fff"></span>Working on</p><p class="val num">1 move</p></div>
-      </div>
-      <p class="note">We only count money that's actually reached your account.</p>
-
-      <div class="sec"><h2>Your next move</h2><span class="num" id="moveCount">Move 1 of 3</span></div>
       <article class="hero t-green" id="heroCard">
-        <p class="hkick" id="heroKick">Start here</p>
         <h3 id="heroTitle">See if Illinois owes you money</h3>
-        <p class="hmeta" id="heroMeta">$0 to start &middot; about 5 minutes &middot; official state site</p>
-        <div class="progress"><div class="bar2"><i id="heroBar"></i></div><span id="heroText" class="num">0 of 3 steps</span></div>
-        <div class="steps" id="heroSteps"></div>
-        <button class="cta" id="heroCta">Open official site</button>
-        <div class="foot"><span>Terms not yet verified</span><button id="heroWrong">What could go wrong</button></div>
+        <p class="hmeta" id="heroMeta">$0 to start &middot; about 5 minutes</p>
+        <button class="cta" id="heroCta">Start</button>
       </article>
 
-      <div class="sec"><h2>Save money</h2><span>Keep more of what you earn</span></div>
-      <div class="svgrid">
-        <button class="svbtn" id="svAudit">Audit subscriptions</button>
-        <button class="svbtn" id="svScan">Scan a receipt</button>
-        <button class="svbtn" id="svLog">Log a saving</button>
-      </div>
-
-      <div class="sec"><h2>Start with an app you know</h2><span class="num">Tap one — I&apos;ll walk you through it</span></div>
-      <div class="appcards" id="appCards"></div>
-
-      <button class="askbar" id="askbar">
-        <svg class="spark" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"/></svg>
-        Ask about this move
+      <button class="homerow" id="homeSubs">
+        <span>Subscriptions</span><span class="num" id="homeSubTotal"></span><span class="chev">›</span>
       </button>
     </div>
     <nav class="tabs" role="tablist">
@@ -701,29 +684,18 @@
   <section class="screen" id="explore" aria-label="Explore offers">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
       <h1 class="ptitle">Explore</h1>
-      <p class="psub" id="xcount"></p>
       <div class="xsearch">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
       </div>
-      <div class="chips" id="xchips" role="group" aria-label="Filter by difficulty"></div>
-      <div class="chips" id="xspeed" role="group" aria-label="Filter by payout speed"></div>
-      <div class="xcats" id="xcats" role="group" aria-label="Filter by category"></div>
-      <div id="liveWrap" hidden>
-        <h2 class="ptitle" style="font-size:17px;margin:14px 0 4px">🔴 Live right now</h2>
-        <p class="psub" style="margin:0 0 8px">Fresh contract posts from public hiring threads — not verified by us, read the post before applying.</p>
-        <div class="xlist" id="xlive" style="margin-top:0"></div>
-      </div>
       <div id="wantWrap">
-        <h2 class="ptitle" style="font-size:17px;margin:14px 0 4px">📦 Wanted board</h2>
-        <p class="psub" style="margin:0 0 8px">People near you post electronics they need. Have one? Accept the listing.</p>
-        <button class="ghostbtn" id="wantPost" style="margin-bottom:8px">+ Post what you need</button>
+        <h2 class="ptitle" style="font-size:17px;margin:18px 0 8px">Wanted</h2>
         <div class="xlist" id="xwant" style="margin-top:0"></div>
+        <button class="ghostbtn" id="wantPost" style="margin:8px 0 4px">+ Post what you need</button>
       </div>
-      <div class="lane"><button class="tgl" id="laneTgl" aria-pressed="false" aria-label="Include higher-risk routes"></button><span>Include higher-risk routes <span id="laneN"></span></span></div>
+      <h2 class="ptitle" style="font-size:17px;margin:18px 0 8px">Ways to earn</h2>
       <div class="xlist" id="xlist"></div>
       <button class="ghostbtn" id="xmore" hidden></button>
-      <p class="fine">Terms change — we re-check every morning. Nothing here is verified against live terms yet.</p>
     </div>
     <nav class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="home">
@@ -771,104 +743,18 @@
       </div>
 
       <div id="saveSignedIn" hidden>
-        <div class="sec" id="svSubs"><h2>Subscriptions</h2><span class="num" id="subMonthly"></span></div>
+        <p class="psub" id="subMonthly" style="margin:8px 0 12px"></p>
         <div class="list" id="subList"></div>
-        <button class="ghostbtn" id="auditBtn">Audit my subscriptions</button>
         <details class="svdetails"><summary>Add a subscription</summary>
           <div class="svform">
-            <label class="f"><span>Merchant</span><input id="subMerchant" placeholder="Netflix" autocomplete="off"></label>
-            <label class="f"><span>Plan name</span><input id="subPlan" placeholder="Standard" autocomplete="off"></label>
+            <label class="f"><span>Name</span><input id="subMerchant" placeholder="Netflix" autocomplete="off"></label>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <label class="f"><span>Amount</span><input id="subAmount" inputmode="decimal" placeholder="15.99" autocomplete="off"></label>
               <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option></select></div></label>
             </div>
-            <label class="f"><span>Next billing date</span><input id="subNext" type="date"></label>
-            <button class="go" id="subAdd" style="height:50px">Save subscription</button>
+            <button class="go" id="subAdd" style="height:50px">Save</button>
           </div>
         </details>
-
-        <div class="sec" id="svReceipts"><h2>Receipts</h2><span>Return windows</span></div>
-        <div class="list" id="rcptList"></div>
-        <details class="svdetails"><summary>Add a receipt</summary>
-          <div class="svform">
-            <label class="f"><span>Merchant</span><input id="rcMerchant" placeholder="Target" autocomplete="off"></label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <label class="f"><span>Date</span><input id="rcDate" type="date"></label>
-              <label class="f"><span>Total</span><input id="rcTotal" inputmode="decimal" placeholder="42.18" autocomplete="off"></label>
-            </div>
-            <label class="f"><span>Return by (optional)</span><input id="rcReturn" type="date"></label>
-            <label class="f"><span>Paste receipt text</span><textarea id="rcText" placeholder="Paste the text from your receipt or confirmation email…"></textarea></label>
-            <button class="go" id="rcAdd" style="height:50px">Save receipt</button>
-          </div>
-        </details>
-
-        <div class="sec" id="svClaims"><h2>Refunds &amp; claims</h2><span class="num" id="claimOpen"></span></div>
-        <div class="list" id="claimList"></div>
-        <button class="ghostbtn" id="refundBtn">Check a refund</button>
-        <details class="svdetails"><summary>Add a claim</summary>
-          <div class="svform">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <label class="f"><span>What</span><input id="clWhat" placeholder="Price adjustment" autocomplete="off"></label>
-              <label class="f"><span>Merchant</span><input id="clMerchant" placeholder="Target" autocomplete="off"></label>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <label class="f"><span>Amount (optional)</span><input id="clAmount" inputmode="decimal" placeholder="12.50" autocomplete="off"></label>
-              <label class="f"><span>Deadline (optional)</span><input id="clDeadline" type="date"></label>
-            </div>
-            <label class="f"><span>Steps / notes</span><input id="clSteps" placeholder="Call support, reference order #" autocomplete="off"></label>
-            <button class="go" id="clAdd" style="height:50px">Track claim</button>
-          </div>
-        </details>
-
-        <div class="sec" id="svBills"><h2>Bills</h2><span>Lower them</span></div>
-        <div class="pcard" style="display:block">
-          <b>Negotiate a bill</b>
-          <p class="psub" style="margin-top:6px">Internet, phone, insurance — most bills have a lower price if you ask the right way. I draft the script; you make the call.</p>
-          <button class="ghostbtn" id="negBtn">Prep a negotiation</button>
-        </div>
-
-        <div class="sec" id="svFees"><h2>Fees</h2><span>Find the leaks</span></div>
-        <div class="pcard" style="display:block">
-          <b>Hidden fees</b>
-          <p class="psub" style="margin-top:6px">Bank fees, subscription add-ons, “convenience” charges — I help you spot them line by line.</p>
-          <button class="ghostbtn" id="feeBtn">Find my fees</button>
-        </div>
-
-        <div class="sec" id="svLedger"><h2>Savings ledger</h2><span>Honestly counted</span></div>
-        <div class="ledger5" id="ledgerGrid"></div>
-        <p class="fine">Nothing counts on intent. Annualized numbers are projections, never results. Saved is never earned. Reversals count against the total.</p>
-        <details class="svdetails"><summary>Log a saving</summary>
-          <div class="svform">
-            <label class="f"><span>Bucket</span><div class="sel"><select id="lgBucket"><option>Received</option><option>Avoided</option><option>Reduced</option><option>Cash flow</option><option>Found</option><option>Pending</option></select></div></label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <label class="f"><span>Amount</span><input id="lgAmount" inputmode="decimal" placeholder="25.00" autocomplete="off"></label>
-              <label class="f"><span>Date</span><input id="lgDate" type="date"></label>
-            </div>
-            <label class="f"><span>What happened</span><input id="lgTitle" placeholder="Cancelled unused streaming plan" autocomplete="off"></label>
-            <label class="frow"><input type="checkbox" id="lgAnnual"> <span>This is an annualized projection (not cash in hand — excluded from the total)</span></label>
-            <button class="go" id="lgAdd" style="height:50px">Log it</button>
-          </div>
-        </details>
-
-        <div class="sec" id="svRenewals"><h2>Renewals</h2><span class="num" id="renCount"></span></div>
-        <div class="list" id="renList"></div>
-        <details class="svdetails"><summary>Add a renewal</summary>
-          <div class="svform">
-            <label class="f"><span>Name</span><input id="rnName" placeholder="Car insurance" autocomplete="off"></label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <label class="f"><span>Renews on</span><input id="rnDate" type="date"></label>
-              <label class="f"><span>Kind</span><input id="rnKind" placeholder="Insurance" autocomplete="off"></label>
-            </div>
-            <label class="f"><span>Prep notes</span><input id="rnNotes" placeholder="Shop 2 quotes a week before" autocomplete="off"></label>
-            <button class="go" id="rnAdd" style="height:50px">Add renewal</button>
-          </div>
-        </details>
-
-        <div class="sec" id="svAlt"><h2>Cheaper equivalents</h2><span>Coming soon</span></div>
-        <div class="pcard" style="display:block">
-          <b>Not live yet</b>
-          <p class="psub" style="margin-top:6px">We’ll compare what you buy against cheaper equivalents that do the same job. No fake numbers until it’s real.</p>
-        </div>
       </div>
     </div>
     <nav class="tabs" role="tablist">
@@ -899,28 +785,15 @@
   <section class="screen" id="profile" aria-label="Profile">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
       <h1 class="ptitle">You</h1>
-      <p class="psub">Your plan, your settings.</p>
       <div class="pcard">
         <div class="pava" id="pAva">V</div>
         <div><b id="pName">Vish</b><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
       </div>
-      <h3 class="wsec">Your plan</h3>
-      <button class="prow" data-go="time"><span class="pl">Time per week<small>How much you can put in</small></span><span class="pv" id="pTime">About an hour</span></button>
-      <button class="prow" data-go="about"><span class="pl">Name and state<small>Who&apos;s earning, and where</small></span><span class="pv" id="pAbout">Vish &middot; Illinois</span></button>
-      <button class="prow" data-go="situation"><span class="pl">Money setup<small>Paycheck and cash you can park</small></span><span class="pv" id="pSit">Direct deposit &middot; Up to $100</span></button>
-      <h3 class="wsec">Notifications</h3>
-      <div class="prow"><span class="pl">Payout reminders<small>Nudges before money lands</small></span><button class="tgl prefTgl" id="remTgl" aria-pressed="true" aria-label="Payout reminders"><i></i></button></div>
-      <div class="prow"><span class="pl">New offers<small>When a better move appears</small></span><button class="tgl prefTgl" id="newsTgl" aria-pressed="true" aria-label="New offers"><i></i></button></div>
-      <h3 class="wsec">Connections</h3>
-      <button class="prow" id="connGmailRow"><span class="pl">Gmail<small>Receipts &amp; subscription charges · read-only</small></span><span class="pv" id="connGmailPv">Not connected</span></button>
-      <button class="prow" id="connPlaidRow"><span class="pl">Bank (Plaid)<small>Recurring charges · read-only</small></span><span class="pv" id="connPlaidPv">Not connected</span></button>
-      <h3 class="wsec">About</h3>
-      <button class="prow" id="howMoney"><span class="pl">How Upmore makes money<small>Short version: not from you</small></span><span class="pv">&#8250;</span></button>
-      <button class="prow" id="privacyRow"><span class="pl">Privacy Policy<small>What we collect, and what we never do</small></span><span class="pv">&#8250;</span></button>
-      <h3 class="wsec">Your data</h3>
-      <button class="prow" id="exportData"><span class="pl">Export my data<small>Download everything as JSON</small></span><span class="pv">&#8250;</span></button>
-      <button class="prow" id="deleteData"><span class="pl">Delete my data<small>Erase your profile and all records</small></span><span class="pv">&#8250;</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
+      <div style="margin-top:24px;display:flex;gap:16px;justify-content:center">
+        <button class="linkbtn" id="exportData">Export data</button>
+        <button class="linkbtn" id="deleteData">Delete data</button>
+      </div>
     </div>
     <nav class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="home">
@@ -960,7 +833,6 @@
     <div class="chead">
       <button class="iconbtn" aria-label="History"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></button>
       <div class="title"><b>Guide</b><span>Knows your plan</span></div>
-      <button class="iconbtn" id="connectBtn" aria-label="Connect accounts"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8V3.5M15 8V3.5"/><path d="M7 8h10v4.5a5 5 0 0 1-10 0z"/><path d="M12 17.5V21"/></svg></button>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
     <div class="chat" id="chat"><div class="empty" id="empty"></div></div>
@@ -1504,42 +1376,22 @@
     const firstOpen = steps.find(s => !(prog[r.id] || []).includes(s.n)) || steps[0];
     const nx = firstOpen.text;
     $("homeSub").textContent = "Your next step: " + nx.charAt(0).toLowerCase() + nx.slice(1, 110) + (nx.length > 110 ? "…" : "");
-    $("moveCount").textContent = `Move 1 of ${moves.length}`;
     $("heroCard").className = "hero t-" + (r.tier === "Very Easy" ? "green" : "sky");
-    $("heroKick").textContent = r.tier + " · Start here";
     $("heroTitle").textContent = routeTitle(r);
     $("heroMeta").textContent = routeMeta(r);
-    const paint = () => {
-      const n = (prog[r.id] || []).length;
-      $("heroBar").style.width = (n / steps.length * 100) + "%";
-      $("heroText").textContent = `${n} of ${steps.length} steps`;
-      $("heroCta").textContent = n === steps.length ? "Ask Guide what's next" : (r.url ? "Open official site" : "Start this move");
-    };
-    const stepsEl = $("heroSteps");
-    const done = prog[r.id] || [];
-    stepsEl.innerHTML = steps.map(s => `
-      <button class="stepbtn" aria-pressed="${done.includes(s.n)}"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span><span class="txt">${esc(s.text)}${s.who === "Upmore" ? ' <em class="uptag">(we track this)</em>' : ""}</span></button>`).join("");
-    const btns = [...stepsEl.querySelectorAll(".stepbtn")];
-    btns.forEach((b, i) => b.onclick = () => {
-      const arr = prog[r.id] = prog[r.id] || [];
-      const sn = steps[i].n, at = arr.indexOf(sn);
-      if (at > -1) arr.splice(at, 1); else arr.push(sn);
-      b.setAttribute("aria-pressed", at === -1 ? "true" : "false");
-      paint();
-      syncProgress(r.id);
-    });
-    paint();
-    $("heroCta").onclick = () => {
-      const n = (prog[r.id] || []).length;
-      if (n === steps.length) { show("guide"); guideAsk("What's my next move after this one?"); }
-      else if (r.url) window.open(r.url, "_blank", "noopener");
-    };
-    $("heroWrong").onclick = () => { show("guide"); guideAsk("What's the catch with " + r.provider + "?"); };
-    $("askbar").onclick = () => { show("guide"); guideAsk("What should I do first?"); };
-    renderAppCards();
-    $("svAudit").onclick = () => { show("guide"); guideAsk("Audit my subscriptions"); };
-    $("svScan").onclick = () => gotoSave("svReceipts");
-    $("svLog").onclick = () => gotoSave("svLedger");
+    $("heroCta").textContent = r.url ? "Open official site" : "Start this move";
+    $("heroCta").onclick = () => { if (r.url) window.open(r.url, "_blank", "noopener"); };
+    $("homeSubs").onclick = () => show("save");
+    updateHomeSubTotal();
+  }
+  function updateHomeSubTotal() {
+    const el = $("homeSubTotal");
+    if (!el) return;
+    try {
+      const subs = JSON.parse(localStorage.getItem("upmore_subs") || "[]");
+      const total = subs.reduce((a, s) => a + (+s.cost || 0), 0);
+      el.textContent = subs.length ? ("$" + total.toFixed(0) + "/mo") : "";
+    } catch (e) { el.textContent = ""; }
   }
 
 
@@ -1927,10 +1779,8 @@
   }
 
   function renderExplore() {
-    loadLiveDeals();
     loadListings();
     const list = xFiltered();
-    $("xcount").textContent = `${list.length} ways to earn, highest earn rate first. Tap one for the honest catch.`;
     const box = $("xlist");
     box.innerHTML = "";
     list.slice(0, xState.shown).forEach(r => {
@@ -1965,40 +1815,11 @@
 
   function initExplore() {
     $("xq").placeholder = `Search ${D.routes.length} ways to earn…`;
-    const tc = $("xchips");
-    const mkChip = (parent, val, label, get, set) => {
-      const b = document.createElement("button");
-      b.className = "chip"; b.textContent = label;
-      b.setAttribute("aria-pressed", get() === val ? "true" : "false");
-      b.onclick = () => {
-        set(val); xState.shown = 40;
-        parent.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
-        b.setAttribute("aria-pressed", "true");
-        renderExplore();
-      };
-      parent.appendChild(b);
-    };
-    mkChip(tc, "all", "All", () => xState.tier, v => xState.tier = v);
-    TIERS.forEach(t => mkChip(tc, t, t, () => xState.tier, v => xState.tier = v));
-    const sc = $("xspeed");
-    mkChip(sc, "all", "Any speed", () => xState.speed, v => xState.speed = v);
-    mkChip(sc, "today", "⚡ Pays today", () => xState.speed, v => xState.speed = v);
-    mkChip(sc, "days", "Pays this week", () => xState.speed, v => xState.speed = v);
-    const cc = $("xcats");
-    mkChip(cc, "all", "All", () => xState.cat, v => xState.cat = v);
-    D.categories.forEach(c => mkChip(cc, c.name, `${c.name} (${c.count})`, () => xState.cat, v => xState.cat = v));
     let deb;
     $("xq").oninput = e => {
       clearTimeout(deb);
       deb = setTimeout(() => { xState.q = e.target.value.trim(); xState.shown = 40; renderExplore(); }, 180);
     };
-    const lt = $("laneTgl");
-    lt.onclick = () => {
-      xState.lane = !xState.lane;
-      lt.setAttribute("aria-pressed", String(xState.lane));
-      xState.shown = 40; renderExplore();
-    };
-    $("laneN").textContent = `(${D.routes.filter(r => r.lane !== "Standard").length})`;
     $("xmore").onclick = () => { xState.shown += 60; renderExplore(); };
   }
   initExplore();
@@ -2009,18 +1830,7 @@
     $("pName").textContent = d.name || "Friend";
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
-    $("pTime").textContent = { "15":"15 minutes", "60":"About an hour", "180":"A few hours" }[d.time] || "—";
-    $("pAbout").textContent = [d.name, st].filter(Boolean).join(" · ") || "—";
-    const pay = { yes:"Direct deposit", no:"No direct deposit", unsure:"Paycheck unclear" }[d.paycheck] || "—";
-    const cash = { 0:"$0 to park", 100:"Up to $100", 1000:"$100–$1,000", 1001:"Over $1,000" }[d.cash] || "";
-    $("pSit").textContent = cash ? pay + " · " + cash : pay;
-    renderProfileConns();
   }
-  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => show(b.dataset.go));
-  document.querySelectorAll(".tgl:not(#laneTgl):not(.prefTgl)").forEach(t => t.onclick = e => {
-    e.stopPropagation();
-    t.setAttribute("aria-pressed", t.getAttribute("aria-pressed") !== "true" ? "true" : "false");
-  });
   /* Reminder/preference toggles: persist in localStorage, and in the signed-in
      profile's prefs when we have one. Restored on boot. */
   function readPrefs() {
@@ -2037,671 +1847,7 @@
       if (!error && dbProfile) dbProfile.prefs = merged;
     }
   }
-  function initPrefs() {
-    const p = readPrefs();
-    if (p.reminders === false) $("remTgl").setAttribute("aria-pressed", "false");
-    if (p.newOffers === false) $("newsTgl").setAttribute("aria-pressed", "false");
-    document.querySelectorAll(".prefTgl").forEach(t => {
-      t.onclick = e => {
-        e.stopPropagation();
-        const on = t.getAttribute("aria-pressed") !== "true";
-        t.setAttribute("aria-pressed", String(on));
-        const p2 = readPrefs();
-        if (t.id === "remTgl") p2.reminders = on;
-        if (t.id === "newsTgl") p2.newOffers = on;
-        writePrefs(p2);
-      };
-    });
-  }
-  $("howMoney").onclick = () => { show("guide"); guideAsk("How does Upmore make money?"); };
-  $("signOut").onclick = () => supa.auth.signOut();
 
-  /* ---- Live deals: fresh paid gigs from the scraping workers ---- */
-  let liveLoaded = false;
-  async function loadLiveDeals() {
-    if (liveLoaded) return;
-    liveLoaded = true;
-    try {
-      const since = new Date(Date.now() - 14 * 86400000).toISOString();
-      const { data, error } = await supa.from("live_opportunities")
-        .select("title, url, pay_hint, posted_at")
-        .eq("status", "live").gte("posted_at", since)
-        .order("posted_at", { ascending: false }).limit(8);
-      if (error || !data || !data.length) return;
-      $("liveWrap").hidden = false;
-      $("xlive").innerHTML = data.map(d => {
-        const when = d.posted_at ? new Date(d.posted_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
-        return `<a class="livecard" href="${esc(safeUrl(d.url) || "#")}" target="_blank" rel="noopener">
-          <b>${esc(d.title)}</b>
-          <span class="lmeta">Posted ${esc(when)} · via Hacker News</span>
-          ${d.pay_hint ? `<br><span class="lpay">${esc(d.pay_hint)}</span>` : ""}
-        </a>`;
-      }).join("");
-    } catch (e) { /* live section is best-effort */ }
-  }
-
-  /* ---- Wanted board: user listings for electronics ---- */
-  let wantLoaded = false;
-  async function loadListings() {
-    if (wantLoaded) return;
-    wantLoaded = true;
-    try {
-      const { data, error } = await supa.from("listings")
-        .select("id, title, description, budget_max, created_at, user_id")
-        .eq("status", "open")
-        .order("created_at", { ascending: false }).limit(20);
-      if (error || !data || !data.length) {
-        $("xwant").innerHTML = `<p class="fine">No listings yet — be the first to post what you need.</p>`;
-        return;
-      }
-      const mine = session ? session.user.id : null;
-      $("xwant").innerHTML = data.map(l => {
-        const when = l.created_at ? new Date(l.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
-        const isMine = mine && l.user_id === mine;
-        const budget = l.budget_max != null ? `<br><span class="lpay">Up to $${esc(String(l.budget_max))}</span>` : "";
-        return `<div class="livecard">
-          <b>${esc(l.title)}</b>
-          <span class="lmeta">Posted ${esc(when)}${isMine ? " · yours" : ""}</span>
-          ${l.description ? `<br><span class="lmeta">${esc(l.description)}</span>` : ""}
-          ${budget}
-          <br>${isMine
-            ? `<button class="ghostbtn" data-cancel-listing="${esc(l.id)}" style="margin-top:6px">Cancel listing</button>`
-            : `<button class="ghostbtn" data-accept-listing="${esc(l.id)}" style="margin-top:6px">Accept — I have this</button>`}
-        </div>`;
-      }).join("");
-    } catch (e) { /* wanted board is best-effort */ }
-  }
-  $("wantPost").onclick = () => {
-    if (!session) { toast("Sign in to post a listing"); return; }
-    $("listTitle").value = ""; $("listDesc").value = ""; $("listBudget").value = ""; $("listStatus").textContent = "";
-    $("listSheet").hidden = false;
-  };
-  const closeListSheet = () => { $("listSheet").hidden = true; };
-  $("listClose").onclick = closeListSheet;
-  $("listCancel").onclick = closeListSheet;
-  $("listSheet").addEventListener("click", e => { if (e.target === $("listSheet")) closeListSheet(); });
-  $("listSubmit").onclick = async () => {
-    if (!session) { toast("Sign in to post a listing"); return; }
-    const title = $("listTitle").value.trim();
-    const desc = $("listDesc").value.trim();
-    const budgetRaw = $("listBudget").value.trim();
-    if (!title) { $("listStatus").textContent = "Give your listing a title."; return; }
-    const budget = budgetRaw ? Number(budgetRaw) : null;
-    if (budgetRaw && (!isFinite(budget) || budget <= 0)) { $("listStatus").textContent = "Budget must be a positive number."; return; }
-    $("listStatus").textContent = "Posting…";
-    try {
-      const { error } = await supa.from("listings").insert({
-        user_id: session.user.id,
-        title: title.slice(0, 80),
-        description: desc ? desc.slice(0, 300) : null,
-        category: "electronics",
-        budget_max: budget,
-        status: "open"
-      });
-      if (error) throw error;
-      closeListSheet();
-      wantLoaded = false;
-      await loadListings();
-      toast("Listing is live on the Wanted board");
-    } catch (e) {
-      $("listStatus").textContent = "Couldn't post — try again.";
-    }
-  };
-  document.addEventListener("click", async e => {
-    const acc = e.target && e.target.closest ? e.target.closest("[data-accept-listing]") : null;
-    const can = e.target && e.target.closest ? e.target.closest("[data-cancel-listing]") : null;
-    if (acc) {
-      if (!session) { toast("Sign in to accept a listing"); return; }
-      const id = acc.getAttribute("data-accept-listing");
-      acc.disabled = true; acc.textContent = "Accepting…";
-      try {
-        const { error } = await supa.from("listings")
-          .update({ status: "accepted", accepted_by: session.user.id })
-          .eq("id", id).eq("status", "open");
-        if (error) throw error;
-        wantLoaded = false;
-        await loadListings();
-        toast("Listing accepted — you can arrange the handoff in chat");
-      } catch (err) {
-        acc.disabled = false; acc.textContent = "Accept — I have this";
-        toast("Couldn't accept — it may already be taken");
-      }
-      return;
-    }
-    if (can) {
-      const id = can.getAttribute("data-cancel-listing");
-      can.disabled = true;
-      try {
-        const { error } = await supa.from("listings")
-          .update({ status: "cancelled" })
-          .eq("id", id).eq("user_id", session.user.id);
-        if (error) throw error;
-        wantLoaded = false;
-        await loadListings();
-        toast("Listing cancelled");
-      } catch (err) {
-        can.disabled = false;
-        toast("Couldn't cancel — try again");
-      }
-    }
-  });
-
-  /* ---- "Do it for me" web agent ----
-     The agent drives a real browser for the user: opens the signup page,
-     fills name/email/state, screenshots everything, and STOPS before any
-     submit. The user watches here and does the final tap themselves. */
-  let agentJobId = null, agentTimer = null;
-  document.addEventListener("click", e => {
-    const b = e.target && e.target.closest ? e.target.closest(".doforme") : null;
-    if (!b) return;
-    e.stopPropagation();
-    startAgentJob(b.dataset.difm);
-  });
-  async function startAgentJob(routeId) {
-    if (!session) { toast("Sign in first — the agent needs your details"); return; }
-    const r = routeById(routeId);
-    const url = r && r.url && safeUrl(r.url);
-    if (!url) { toast("No signup link for this one"); return; }
-    // One active job at a time per user
-    const { data: existing } = await supa.from("web_agent_jobs")
-      .select("id").eq("user_id", session.user.id)
-      .in("status", ["queued", "working"]).limit(1).maybeSingle();
-    if (existing) { openAgentSheet(existing.id); return; }
-    const { data, error } = await supa.from("web_agent_jobs").insert({
-      user_id: session.user.id,
-      route_id: routeId,
-      target_url: url,
-      goal: "Fill the signup form with my details; stop before submitting.",
-    }).select("id").single();
-    if (error || !data) { toast("Couldn't start the agent — try again"); return; }
-    openAgentSheet(data.id);
-  }
-  function openAgentSheet(jobId) {
-    agentJobId = jobId;
-    $("agentSheet").hidden = false;
-    $("agentStatus").textContent = "Starting…";
-    $("agentNote").textContent = "The agent is opening the page. You'll watch it work here.";
-    $("agentShot").hidden = true;
-    clearInterval(agentTimer);
-    pollAgentJob();
-    agentTimer = setInterval(pollAgentJob, 3000);
-  }
-  async function pollAgentJob() {
-    if (!agentJobId) return;
-    const { data, error } = await supa.from("web_agent_jobs")
-      .select("status, screenshots, agent_note, error").eq("id", agentJobId).maybeSingle();
-    if (error || !data) { return; }
-    const label = { queued: "In line…", working: "Working…", waiting_user: "Your turn", done: "Done", failed: "Couldn't do it", cancelled: "Cancelled" };
-    $("agentStatus").textContent = label[data.status] || data.status;
-    const shots = data.screenshots || [];
-    if (shots.length) {
-      const last = shots[shots.length - 1];
-      $("agentShot").src = last.image;
-      $("agentShot").hidden = false;
-    }
-    if (data.status === "waiting_user") {
-      $("agentNote").textContent = data.agent_note || "The agent filled what it could. Review the screenshot, open the site, and tap Submit yourself — that's the whole remaining job.";
-    } else if (data.status === "failed") {
-      $("agentNote").textContent = "The agent hit a wall (" + (data.error || "unknown") + "). The guided walkthrough still works — tap a route to start it.";
-      clearInterval(agentTimer);
-    } else if (data.status === "done" || data.status === "cancelled") {
-      clearInterval(agentTimer);
-    }
-  }
-  $("agentClose").onclick = () => { $("agentSheet").hidden = true; clearInterval(agentTimer); agentJobId = null; };
-  $("agentCancel").onclick = async () => {
-    if (agentJobId) { await supa.from("web_agent_jobs").delete().eq("id", agentJobId); }
-    $("agentSheet").hidden = true; clearInterval(agentTimer); agentJobId = null;
-    toast("Agent cancelled");
-  };
-  function toast(msg) {
-    let el = document.getElementById("umToast");
-    if (!el) {
-      el = document.createElement("div");
-      el.id = "umToast";
-      el.style.cssText = "position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:#12261c;color:#eaf4ee;padding:10px 16px;border-radius:12px;font-size:14px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.35);max-width:86vw;text-align:center;";
-      document.body.appendChild(el);
-    }
-    el.textContent = msg;
-    el.style.display = "block";
-    clearTimeout(el._t);
-    el._t = setTimeout(() => { el.style.display = "none"; }, 2600);
-  }
-  const userTables = () => {
-    const uid = session && session.user && session.user.id;
-    if (!uid) return null;
-    return { uid, specs: [
-      { t: "profiles", col: "id" },
-      { t: "playbook_progress", col: "user_id" },
-      { t: "save_subscriptions", col: "user_id" },
-      { t: "save_claims", col: "user_id" },
-      { t: "agent_threads", col: "user_id" },
-      { t: "reminders", col: "user_id" },
-      { t: "listings", col: "user_id" },
-    ]};
-  };
-  $("exportData").onclick = async () => {
-    const u = userTables();
-    if (!u) { toast("Sign in first"); return; }
-    toast("Preparing your export…");
-    try {
-      const out = { exported_at: new Date().toISOString(), user_id: u.uid, tables: {} };
-      for (const s of u.specs) {
-        const { data, error } = await supa.from(s.t).select("*").eq(s.col, u.uid);
-        if (error) throw error;
-        out.tables[s.t] = data;
-      }
-      // Guide chat messages live under the user's threads
-      const tids = (out.tables.agent_threads || []).map(r => r.id);
-      if (tids.length) {
-        const { data, error } = await supa.from("agent_messages").select("*").in("thread_id", tids);
-        if (error) throw error;
-        out.tables.agent_messages = data;
-      } else out.tables.agent_messages = [];
-      try { out.local_prefs = JSON.parse(localStorage.getItem("upmore:prefs") || "null"); } catch (e) { out.local_prefs = null; }
-      const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "upmore-data-export.json";
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-      toast("Export downloaded");
-    } catch (e) { toast("Export failed — try again"); }
-  };
-  $("deleteData").onclick = async () => {
-    const u = userTables();
-    if (!u) { toast("Sign in first"); return; }
-    // In-app confirmation sheet (native confirm/prompt are unreliable on mobile + untestable)
-    $("deleteSheet").hidden = false;
-    $("deleteConfirmInput").value = "";
-    $("deleteConfirmBtn").disabled = true;
-    $("deleteStatus").textContent = "";
-    setTimeout(() => $("deleteConfirmInput").focus(), 100);
-  };
-  $("deleteClose").onclick = () => { $("deleteSheet").hidden = true; };
-  $("deleteCancel").onclick = () => { $("deleteSheet").hidden = true; };
-  $("deleteSheet").addEventListener("click", (e) => { if (e.target.id === "deleteSheet") $("deleteSheet").hidden = true; });
-  $("deleteConfirmInput").oninput = (e) => {
-    $("deleteConfirmBtn").disabled = e.target.value.trim().toUpperCase() !== "DELETE";
-    $("deleteConfirmBtn").style.opacity = $("deleteConfirmBtn").disabled ? "0.5" : "1";
-  };
-  $("deleteConfirmBtn").onclick = async () => {
-    const u = userTables();
-    if (!u) { toast("Sign in first"); return; }
-    $("deleteConfirmBtn").disabled = true;
-    $("deleteStatus").textContent = "Deleting…";
-    try {
-      // Chat messages first (they reference threads)
-      const { data: threads } = await supa.from("agent_threads").select("id").eq("user_id", u.uid);
-      const tids = (threads || []).map(r => r.id);
-      if (tids.length) {
-        const { error } = await supa.from("agent_messages").delete().in("thread_id", tids);
-        if (error) throw error;
-      }
-      for (const s of u.specs) {
-        const { error } = await supa.from(s.t).delete().eq(s.col, u.uid);
-        if (error) throw error;
-      }
-      try { localStorage.removeItem("upmore:prefs"); } catch (e) {}
-      // Real account deletion: remove the auth user so sign-in is gone too.
-      // (App rows are already wiped above; auth deletion cascades the rest.)
-      try {
-        const { data: { session: s2 } } = await supa.auth.getSession();
-        if (s2 && s2.access_token) {
-          await fetch(supa.supabaseUrl + "/functions/v1/delete-account", {
-            method: "POST",
-            headers: { "Content-Type": "application/json",
-                       "Authorization": "Bearer " + s2.access_token },
-            body: JSON.stringify({ confirm: "DELETE" }),
-          });
-        }
-      } catch (e) { /* auth row may already be gone — not fatal */ }
-      await supa.auth.signOut();
-      $("deleteSheet").hidden = true;
-      toast("Account and all data deleted");
-    } catch (e) {
-      $("deleteStatus").textContent = "Delete failed — contact support";
-      $("deleteConfirmBtn").disabled = false;
-    }
-  };
-
-  /* ---- Privacy sheet ---- */
-  const SUPPORT_EMAIL = "support@upmore.app"; // provisional — swap for the real support address
-  function openPrivacy(scrollToTerms) {
-    $("privacySheet").hidden = false;
-    const em = $("privacyEmail");
-    if (em) { em.textContent = SUPPORT_EMAIL; em.href = "mailto:" + SUPPORT_EMAIL; em.onclick = (e) => e.stopPropagation(); }
-    if (scrollToTerms) setTimeout(() => { const t = $("termsSection"); if (t) t.scrollIntoView(); }, 50);
-  }
-  $("privacyRow").onclick = () => openPrivacy(false);
-  $("privacyClose").onclick = () => { $("privacySheet").hidden = true; };
-  $("privacySheet").addEventListener("click", (e) => { if (e.target.id === "privacySheet") $("privacySheet").hidden = true; });
-  ["welcomePrivacy", "welcomeTerms"].forEach(id => {
-    const a = $(id);
-    if (a) a.onclick = (e) => { e.preventDefault(); openPrivacy(id === "welcomeTerms"); };
-  });
-
-  /* ================= Save side =================
-     Tables (created in parallel, all per-user via RLS):
-       save_subscriptions, save_receipts, save_ledger, save_renewals, save_claims.
-     Every query is guarded: no session → empty lists, no crash. */
-  const saveUid = () => (session && session.user && session.user.id) || null;
-  const money$ = v => (v == null || isNaN(Number(v))) ? "—" : "$" + Number(v).toFixed(2);
-  const fdate = d => {
-    if (!d) return "";
-    try { return new Date(String(d).slice(0, 10) + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }); }
-    catch (e) { return String(d).slice(0, 10); }
-  };
-  const daysUntil = d => {
-    if (!d) return null;
-    const t = new Date(); t.setHours(0, 0, 0, 0);
-    return Math.ceil((new Date(String(d).slice(0, 10) + "T12:00:00") - t) / 86400000);
-  };
-  const cdlHtml = d => {
-    const n = daysUntil(d);
-    if (n == null) return `<span class="cdl ok">No deadline set</span>`;
-    if (n < 0) return `<span class="cdl over">${-n} day${-n === 1 ? "" : "s"} overdue</span>`;
-    if (n === 0) return `<span class="cdl soon">Due today</span>`;
-    return `<span class="cdl ${n <= 7 ? "soon" : "ok"}">${n} day${n === 1 ? "" : "s"} left</span>`;
-  };
-  async function saveRows(table, orderCol, asc) {
-    if (!saveUid()) return [];
-    try {
-      const { data, error } = await supa.from(table).select("*").eq("user_id", saveUid()).order(orderCol, { ascending: !!asc });
-      return error ? [] : (data || []);
-    } catch (e) { return []; }
-  }
-  async function saveInsert(table, row) {
-    if (!saveUid()) return false;
-    try {
-      const { error } = await supa.from(table).insert(Object.assign({ user_id: saveUid() }, row));
-      return !error;
-    } catch (e) { return false; }
-  }
-  async function renderSave() {
-    const signed = !!(await getSessionToken());
-    $("saveSignedOut").hidden = signed;
-    $("saveSignedIn").hidden = !signed;
-    if (!signed) return;
-    renderSubs(); renderRcpts(); renderClaims(); renderLedger(); renderRenewals();
-  }
-  function gotoSave(anchor) {
-    show("save");
-    setTimeout(() => { const el = $(anchor); if (el) el.scrollIntoView({ block: "start" }); }, 90);
-  }
-
-  /* ---- Subscriptions ---- */
-  const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
-  const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
-  function subItem(s) {
-    const n = daysUntil(s.next_billing_date);
-    const when = s.next_billing_date ? ` · next ${fdate(s.next_billing_date)}${n != null && n >= 0 ? ` (${n}d)` : ""}` : "";
-    return `<div class="item"><div class="grow">
-      <p class="t">${esc(s.merchant)}${s.plan_name ? ` <span style="color:var(--muted);font-weight:400">· ${esc(s.plan_name)}</span>` : ""}</p>
-      <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${when}</p>
-      ${s.waste_note ? `<p class="m">💡 ${esc(s.waste_note)}</p>` : ""}
-      ${s.cancel_url && safeUrl(s.cancel_url) ? `<p class="m"><a href="${esc(safeUrl(s.cancel_url))}" target="_blank" rel="noopener" style="color:var(--sky);font-weight:600">Cancel page →</a></p>` : ""}
-      ${s.cancel_steps && !s.cancel_url ? `<p class="m">Cancel: ${esc(s.cancel_steps)}</p>` : ""}
-    </div>${s.status === "cancelled"
-      ? `<span class="pill">Cancelled</span>`
-      : `<button class="link" data-subcancel="${esc(s.id)}">Mark cancelled</button>`}
-    </div>`;
-  }
-  async function renderSubs() {
-    const rows = await saveRows("save_subscriptions", "next_billing_date", true);
-    const act = rows.filter(r => r.status !== "cancelled");
-    const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
-    $("subMonthly").textContent = act.length ? `≈${money$(monthly)}/mo · ${act.length} active` : "";
-    $("subList").innerHTML = rows.length ? rows.map(subItem).join("")
-      : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet — add your first subscription below.</p></div></div>`;
-    $("subList").querySelectorAll("[data-subcancel]").forEach(b => b.onclick = async () => {
-      b.disabled = true;
-      try { await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", b.dataset.subcancel); } catch (e) {}
-      renderSubs();
-    });
-  }
-
-  /* ---- Receipts ---- */
-  async function renderRcpts() {
-    const rows = await saveRows("save_receipts", "purchased_at", false);
-    $("rcptList").innerHTML = rows.length ? rows.slice(0, 10).map(r => `
-      <div class="item"><div class="grow">
-        <p class="t">${esc(r.merchant || "Receipt")}</p>
-        <p class="m num">${r.purchased_at ? fdate(r.purchased_at) + " · " : ""}${money$(r.total)}</p>
-        ${r.return_window_end ? `<p class="m">Return window: ${cdlHtml(r.return_window_end)}</p>` : ""}
-      </div></div>`).join("")
-      : `<div class="item"><div class="grow"><p class="m">No receipts yet — paste your first one below and never miss a return window.</p></div></div>`;
-  }
-
-  /* ---- Refunds & claims ---- */
-  async function renderClaims() {
-    const rows = await saveRows("save_claims", "deadline", true);
-    const open = rows.filter(r => (r.status || "open") === "open");
-    $("claimOpen").textContent = open.length ? `${open.length} open` : "";
-    $("claimList").innerHTML = rows.length ? rows.map(c => `
-      <div class="item"><div class="grow">
-        <p class="t">${esc(c.kind || "Claim")}${c.merchant ? ` · ${esc(c.merchant)}` : ""}</p>
-        <p class="m num">${c.amount != null ? money$(c.amount) + " · " : ""}${cdlHtml(c.deadline)}</p>
-        ${c.steps ? `<p class="m">${esc(c.steps)}</p>` : ""}
-      </div>${(c.status || "open") === "open"
-        ? `<button class="link" data-claimdone="${esc(c.id)}">Mark done</button>`
-        : `<span class="pill good">Done</span>`}
-      </div>`).join("")
-      : `<div class="item"><div class="grow"><p class="m">No refunds or claims tracked. Price drop, late delivery, double charge — if you're owed money, ask the Guide and I'll log it here.</p></div></div>`;
-    $("claimList").querySelectorAll("[data-claimdone]").forEach(b => b.onclick = async () => {
-      b.disabled = true;
-      try { await supa.from("save_claims").update({ status: "done" }).eq("id", b.dataset.claimdone); } catch (e) {}
-      renderClaims();
-    });
-  }
-
-  /* ---- Ledger: 5 buckets, reversals subtract ---- */
-  const BUCKETS = ["Received", "Avoided", "Reduced", "Cash flow", "Found"];
-  async function renderLedger() {
-    const rows = await saveRows("save_ledger", "occurred_on", false);
-    const sums = {}, rev = {};
-    BUCKETS.forEach(b => { sums[b] = 0; rev[b] = 0; });
-    let pending = 0, annualized = 0;
-    rows.forEach(r => {
-      if (r.annualized) { annualized += Number(r.amount || 0); return; } // projections never count — the Guide agrees
-      if (r.bucket === "Pending") { if (!r.reversed) pending += Number(r.amount || 0); return; } // pending never counts until real
-      const b = BUCKETS.includes(r.bucket) ? r.bucket : "Found";
-      if (r.reversed) rev[b] += Number(r.amount || 0); else sums[b] += Number(r.amount || 0);
-    });
-    const total = BUCKETS.reduce((t, b) => t + sums[b] - rev[b], 0);
-    $("ledgerGrid").innerHTML = BUCKETS.map(b =>
-      `<div class="lbkt"><span>${b}</span><b class="num">${money$(sums[b] - rev[b])}</b></div>`).join("") +
-      `<div class="lbkt" style="grid-column:span 2;border-color:rgba(79,163,122,.35)"><span>Total kept</span><b class="num">${money$(total)}</b></div>`;
-    if (pending) $("ledgerGrid").innerHTML +=
-      `<div class="lbkt" style="grid-column:span 2"><span>Pending — doesn't count until it's real</span><b class="num">${money$(pending)}</b></div>`;
-    if (annualized) $("ledgerGrid").innerHTML +=
-      `<div class="lbkt" style="grid-column:span 2"><span>Annualized projections — excluded</span><b class="num">${money$(annualized)}/yr</b></div>`;
-  }
-
-  /* ---- Renewals ---- */
-  async function renderRenewals() {
-    const rows = await saveRows("save_renewals", "renews_on", true);
-    const act = rows.filter(r => (r.status || "upcoming") !== "done");
-    $("renCount").textContent = act.length ? `${act.length} upcoming` : "";
-    $("renList").innerHTML = act.length ? act.map(r => `
-      <div class="item"><div class="grow">
-        <p class="t">${esc(r.name)}${r.kind ? ` <span style="color:var(--muted);font-weight:400">· ${esc(r.kind)}</span>` : ""}</p>
-        <p class="m">${r.renews_on ? fdate(r.renews_on) + " · " : ""}${cdlHtml(r.renews_on)}</p>
-        ${r.prep_notes ? `<p class="m">${esc(r.prep_notes)}</p>` : ""}
-      </div><button class="link" data-rn="${esc(r.id)}" data-name="${esc(r.name)}" data-date="${esc(r.renews_on || "")}" data-notes="${esc(r.prep_notes || "")}">Prep</button></div>`).join("")
-      : `<div class="item"><div class="grow"><p class="m">No renewals tracked — add insurance, memberships, and annual plans so they never auto-renew by surprise.</p></div></div>`;
-    $("renList").querySelectorAll("[data-rn]").forEach(b => b.onclick = () => {
-      show("guide");
-      guideAsk(`Help me prep for "${b.dataset.name}" renewing ${b.dataset.date || "soon"}.${b.dataset.notes ? " My notes: " + b.dataset.notes : ""} I want to pay less or cancel.`);
-    });
-  }
-
-  /* ---- Connect sheet: Gmail + Plaid (honest states, manual fallbacks) ---- */
-  const CONN_DEF = {
-    gmail: { title: "Gmail", why: "Find receipts & subscription charges in your email — read-only, so you stop pasting them by hand.",
-      pieces: [["receipts", "Receipts", "Order confirmations & receipts"], ["subs", "Subscription charges", "Billing emails & renewal notices"]],
-      setup: "Gmail needs a Google restricted-scope security assessment before any connection can go live.",
-      fallback: ["paste a receipt manually", "svReceipts"] },
-    plaid: { title: "Bank (Plaid)", why: "Detect recurring charges across your accounts — read-only. We never move money.",
-      pieces: [["recurring", "Recurring charges", "Repeating debits & subscriptions"]],
-      setup: "Bank connections need Plaid API keys before any connection can go live.",
-      fallback: ["list your subscriptions manually", "svSubs"] },
-  };
-  function connState() {
-    const c = { gmail: { connected: false, consent: { receipts: true, subs: true }, read: [] },
-                plaid: { connected: false, consent: { recurring: true }, read: [] } };
-    try {
-      const s = JSON.parse(localStorage.getItem("upmore-connect") || "{}");
-      ["gmail", "plaid"].forEach(k => {
-        if (s[k]) { c[k].connected = !!s[k].connected; c[k].consent = Object.assign(c[k].consent, s[k].consent || {}); c[k].read = s[k].read || []; }
-      });
-    } catch (e) {}
-    return c;
-  }
-  function connSave(c) { try { localStorage.setItem("upmore-connect", JSON.stringify(c)); } catch (e) {} }
-  function renderConnect() {
-    const c = connState();
-    ["gmail", "plaid"].forEach(k => {
-      const def = CONN_DEF[k], st = c[k];
-      const el = $(k === "gmail" ? "connGmail" : "connPlaid");
-      el.innerHTML = `
-        <div class="conn">
-          <div class="ct"><b>${def.title}</b><span class="pill">Read-only</span></div>
-          <p class="why">${def.why}</p>
-          <div class="consent">${def.pieces.map(([pk, pl, sm]) => `
-            <div class="prow"><span class="pl">${pl}<small>${sm} · allowed when available</small></span>
-            <button class="tgl" data-cc="${k}" data-ck="${pk}" aria-pressed="${st.consent[pk] ? "true" : "false"}" aria-label="${pl} consent"><i></i></button></div>`).join("")}
-          </div>
-          <div class="notavail"><b>Not available yet — needs owner setup.</b><br>${def.setup} <b>Owner action.</b><br><br><b>Works right now instead:</b> <button class="link" data-cfb="${k}">${def.fallback[0]}</button></div>
-          <div class="readbox"><b>What was read:</b><br>${st.read.length ? st.read.map(x => esc(x)).join("<br>") : "Nothing yet — we only read what you toggle on, after you connect."}</div>
-          <button class="ghostbtn" data-cdisc="${k}" ${st.connected ? "" : "disabled"}>Disconnect &amp; delete stored data</button>
-        </div>`;
-    });
-    document.querySelectorAll("[data-cc]").forEach(t => t.onclick = e => {
-      e.stopPropagation();
-      const cc = connState(), k = t.dataset.cc, key = t.dataset.ck;
-      cc[k].consent[key] = !cc[k].consent[key]; connSave(cc);
-      t.setAttribute("aria-pressed", String(cc[k].consent[key]));
-    });
-    document.querySelectorAll("[data-cfb]").forEach(b => b.onclick = () => {
-      $("connectSheet").hidden = true;
-      gotoSave(CONN_DEF[b.dataset.cfb].fallback[1]);
-    });
-    document.querySelectorAll("[data-cdisc]").forEach(b => b.onclick = () => {
-      const cc = connState(), k = b.dataset.cdisc;
-      cc[k] = { connected: false, consent: cc[k].consent, read: [] };
-      connSave(cc); renderConnect(); renderProfileConns();
-    });
-  }
-  function openConnect() { renderConnect(); $("connectSheet").hidden = false; }
-  function renderProfileConns() {
-    const c = connState();
-    const g = $("connGmailPv"), p = $("connPlaidPv");
-    if (g) g.textContent = c.gmail.connected ? "Connected · read-only" : "Not connected";
-    if (p) p.textContent = c.plaid.connected ? "Connected · read-only" : "Not connected";
-  }
-
-  /* ---- Save forms (bound once; all no-ops without a session) ---- */
-  let saveInit = false;
-  function initSave() {
-    if (saveInit) return; saveInit = true;
-    const svGo = $("svSignin");
-    if (svGo) { const lbl = svGo.innerHTML; svGo.onclick = () => startGoogleLogin(svGo, lbl); }
-    $("auditBtn").onclick = () => { show("guide"); guideAsk("Audit my subscriptions"); };
-    $("refundBtn").onclick = () => { show("guide"); guideAsk("I want to check if I'm owed a refund"); };
-    $("negBtn").onclick = () => { show("guide"); guideAsk("Help me prep to negotiate a bill"); };
-    $("feeBtn").onclick = () => { show("guide"); guideAsk("Help me find my fees"); };
-    const today = new Date().toISOString().slice(0, 10);
-    $("rcDate").value = today; $("lgDate").value = today;
-    $("subAdd").onclick = async () => {
-      const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
-      if (!m || !(amt > 0) || !saveUid()) return;
-      b.disabled = true;
-      const ok = await saveInsert("save_subscriptions", {
-        merchant: m, plan_name: $("subPlan").value.trim() || null, amount: amt, currency: "USD",
-        billing_interval: $("subInterval").value, next_billing_date: $("subNext").value || null,
-        status: "active", detected_via: "manual",
-      });
-      b.disabled = false;
-      if (ok) { ["subMerchant", "subPlan", "subAmount", "subNext"].forEach(id => $(id).value = ""); renderSubs(); }
-    };
-    $("rcAdd").onclick = async () => {
-      const b = $("rcAdd"), m = $("rcMerchant").value.trim(), tot = parseFloat($("rcTotal").value);
-      if (!m || !(tot > 0) || !saveUid()) return;
-      b.disabled = true;
-      const ok = await saveInsert("save_receipts", {
-        merchant: m, purchased_at: $("rcDate").value || null, total: tot,
-        raw_text: $("rcText").value.trim() || null,
-        return_window_end: $("rcReturn").value || null, source: "manual",
-      });
-      b.disabled = false;
-      if (ok) { ["rcMerchant", "rcTotal", "rcText", "rcReturn"].forEach(id => $(id).value = ""); $("rcDate").value = today; renderRcpts(); }
-    };
-    $("lgAdd").onclick = async () => {
-      const b = $("lgAdd"), amt = parseFloat($("lgAmount").value), ti = $("lgTitle").value.trim();
-      if (!(amt > 0) || !ti || !saveUid()) return;
-      b.disabled = true;
-      const ok = await saveInsert("save_ledger", {
-        bucket: $("lgBucket").value, amount: amt, title: ti,
-        occurred_on: $("lgDate").value || today, reversed: false,
-        annualized: $("lgAnnual").checked,
-      });
-      b.disabled = false;
-      if (ok) { $("lgAmount").value = ""; $("lgTitle").value = ""; $("lgAnnual").checked = false; renderLedger(); }
-    };
-    $("clAdd").onclick = async () => {
-      const b = $("clAdd"), what = $("clWhat").value.trim() || "claim";
-      if (!saveUid()) return;
-      b.disabled = true;
-      const amt = parseFloat($("clAmount").value);
-      const ok = await saveInsert("save_claims", {
-        kind: what, merchant: $("clMerchant").value.trim() || null,
-        amount: amt > 0 ? amt : null,
-        deadline: $("clDeadline").value || null, steps: $("clSteps").value.trim() || null,
-        status: "open",
-      });
-      b.disabled = false;
-      if (ok) { ["clWhat", "clMerchant", "clAmount", "clDeadline", "clSteps"].forEach(id => $(id).value = ""); renderClaims(); }
-    };
-    $("rnAdd").onclick = async () => {
-      const b = $("rnAdd"), nm = $("rnName").value.trim();
-      if (!nm || !saveUid()) return;
-      b.disabled = true;
-      const ok = await saveInsert("save_renewals", {
-        name: nm, renews_on: $("rnDate").value || null, kind: $("rnKind").value.trim() || null,
-        prep_notes: $("rnNotes").value.trim() || null, status: "upcoming",
-      });
-      b.disabled = false;
-      if (ok) { ["rnName", "rnDate", "rnKind", "rnNotes"].forEach(id => $(id).value = ""); renderRenewals(); }
-    };
-    $("connectBtn").onclick = openConnect;
-    $("connectClose").onclick = () => { $("connectSheet").hidden = true; };
-    $("connectSheet").addEventListener("click", e => { if (e.target.id === "connectSheet") $("connectSheet").hidden = true; });
-    const gr = $("connGmailRow"), pr = $("connPlaidRow");
-    if (gr) gr.onclick = () => { show("guide"); openConnect(); };
-    if (pr) pr.onclick = () => { show("guide"); openConnect(); };
-  }
-  initSave();
-
-  /* ================= Boot ================= */
-  (async function boot() {
-    // Onboarding answers survive the Google OAuth round-trip via localStorage.
-    // Restored values are validated against known choices so a stale or
-    // hand-edited blob can never break the app ("undefined a week" bug).
-    try {
-      const saved = localStorage.getItem("upmore-onboarding");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        const clean = {};
-        if (typeof parsed.name === "string" && parsed.name.trim()) clean.name = parsed.name.trim().slice(0, 40);
-        if (parsed.state && NAMES[parsed.state]) clean.state = parsed.state;
-        if (["15", "60", "180"].indexOf(String(parsed.time)) >= 0) clean.time = String(parsed.time);
-        if (["yes", "no", "unsure"].indexOf(parsed.paycheck) >= 0) clean.paycheck = parsed.paycheck;
-        if (["0", "100", "1000", "1001"].indexOf(String(parsed.cash)) >= 0) clean.cash = String(parsed.cash);
-        Object.assign(data, clean);
-      }
-    } catch (e) {}
-    initPrefs();
     const h = location.hash.slice(1);
     const isAuthCallback = /(^|&)access_token=/.test(h);
     // Let supabase-js consume the OAuth callback before we touch the URL.
