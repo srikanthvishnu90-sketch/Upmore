@@ -53,6 +53,61 @@ FORBIDDEN_CLICK = re.compile(
 MAX_FIELDS = 12
 NAV_TIMEOUT = 25000
 
+# SSRF guard: the worker only ever navigates to a URL resolved server-side
+# from the routes table (never a client-supplied URL), and that URL must be a
+# public http(s) address — no localhost, no private ranges, no metadata IPs,
+# no non-standard ports.
+import ipaddress
+from urllib.parse import urlparse
+
+BLOCKED_HOSTS = {"localhost"}
+BLOCKED_NETS = [
+    ipaddress.ip_network("127.0.0.0/8"),
+    ipaddress.ip_network("10.0.0.0/8"),
+    ipaddress.ip_network("172.16.0.0/12"),
+    ipaddress.ip_network("192.168.0.0/16"),
+    ipaddress.ip_network("169.254.0.0/16"),
+    ipaddress.ip_network("::1/128"),
+    ipaddress.ip_network("fc00::/7"),
+]
+
+
+def safe_url(raw):
+    """Return the URL if it's a public http(s) URL, else None."""
+    try:
+        u = urlparse((raw or "").strip())
+    except Exception:
+        return None
+    if u.scheme not in ("http", "https") or not u.hostname:
+        return None
+    host = u.hostname.lower()
+    if host in BLOCKED_HOSTS or host.endswith(".localhost"):
+        return None
+    try:
+        ip = ipaddress.ip_address(host)
+        if any(ip in net for net in BLOCKED_NETS):
+            return None
+    except ValueError:
+        pass  # hostname, not a literal IP
+    if u.port and u.port not in (80, 443):
+        return None
+    return u.geturl()
+
+
+def resolve_route_url(route_id):
+    """Server-side URL resolution: the ONLY URL the worker may visit."""
+    rows = q(
+        "SELECT provider_url FROM routes WHERE route_id = %s LIMIT 1"
+        % quote_lit(route_id)
+    )
+    if not rows:
+        return None
+    return safe_url(rows[0].get("provider_url"))
+
+
+def quote_lit(s):
+    return "'" + (s or "").replace("'", "''") + "'"
+
 
 def q(sql):
     r = subprocess.run(SB + [sql], capture_output=True, text=True, timeout=120)
@@ -130,7 +185,20 @@ def main():
         print("no queued jobs")
         return
     jid = job["id"]
-    print("claimed job", jid, job["target_url"])
+    # SECURITY: resolve the navigation target server-side from the route's
+    # verified provider_url. A client-supplied target_url is never trusted —
+    # it is ignored entirely. No route_id or no safe URL => job fails.
+    route_id = job.get("route_id")
+    if not route_id:
+        set_status(jid, "failed", error="no route_id: refusing to visit a client-supplied URL")
+        return
+    target = resolve_route_url(route_id)
+    if not target:
+        set_status(jid, "failed", error="no safe provider_url for route %s" % route_id)
+        return
+    if job.get("target_url") and job["target_url"] != target:
+        print("ignoring client target_url (using route provider_url)")
+    print("claimed job", jid, target)
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
@@ -176,7 +244,7 @@ def main():
                 browser = pw.chromium.launch(**launch_kw)
             page = browser.new_page(viewport={"width": 390, "height": 844})  # phone-sized
             try:
-                page.goto(job["target_url"], timeout=NAV_TIMEOUT,
+                page.goto(target, timeout=NAV_TIMEOUT,
                           wait_until="domcontentloaded")
             except Exception as e:
                 set_status(jid, "failed", error="could not load page: %s" % e)
