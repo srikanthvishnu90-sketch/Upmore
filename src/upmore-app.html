@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-0bxGSjhD6PEsvbuXdGtsQ1SKuhdeHgpjsuH71dwEkak='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-y8AhJuJt779hjqH8C6yaEmMg+nbfFpto21PwvYbFJDE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-iI9MqtrkNPc8V2elw00e+TxFOF1dxX7iBHLJ1WN19JM='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1489,8 +1489,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   async function buildQueue() {
     const cards = [];
     const d = planData();
-    // earn: top ranked moves
-    const moves = (d._moves || rankMoves()).slice(0, 6);
+    // routes with a walkthrough already started: shown as Continue cards, not fresh earn cards
+    const startedIds = new Set(Object.keys(prog).map(id => {
+      const r = routeById(id);
+      if (!r || !r.steps || !r.steps.length) return null;
+      const done = (prog[id] || []).length;
+      return (done > 0 && done < r.steps.length) ? String(id) : null;
+    }).filter(Boolean));
+    // earn: top ranked moves (excluding routes already in progress)
+    const moves = (d._moves || rankMoves()).filter(r => !startedIds.has(String(r.id))).slice(0, 6);
     moves.forEach(r => {
       const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
       const urg = r.speed === "today" ? 2 : r.speed === "days" ? 1.5 : 1;

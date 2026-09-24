@@ -1468,8 +1468,15 @@
   async function buildQueue() {
     const cards = [];
     const d = planData();
-    // earn: top ranked moves
-    const moves = (d._moves || rankMoves()).slice(0, 6);
+    // routes with a walkthrough already started: shown as Continue cards, not fresh earn cards
+    const startedIds = new Set(Object.keys(prog).map(id => {
+      const r = routeById(id);
+      if (!r || !r.steps || !r.steps.length) return null;
+      const done = (prog[id] || []).length;
+      return (done > 0 && done < r.steps.length) ? String(id) : null;
+    }).filter(Boolean));
+    // earn: top ranked moves (excluding routes already in progress)
+    const moves = (d._moves || rankMoves()).filter(r => !startedIds.has(String(r.id))).slice(0, 6);
     moves.forEach(r => {
       const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
       const urg = r.speed === "today" ? 2 : r.speed === "days" ? 1.5 : 1;

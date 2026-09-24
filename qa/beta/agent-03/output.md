@@ -14,3 +14,12 @@ No console errors. No test data created; no user data deleted.
 Tapping the CTA moved closer to actually earning money rather than theater: it opened a concrete in-progress multi-step walkthrough tied to a real $50,000 bonus task (step 2 of 5: initiating an ACAT transfer), with per-step completion controls. The tap transitioned the user from a queue card into actionable guidance, not a decorative animation or empty screen.
 
 ## Result: PASS (3/3)
+
+---
+
+## RERUN on build ef57c14 (2026-09-24T20:58:57Z)
+1. Top card: "Continue: SoFi Invest — Brokerage account bonus", CTA "Resume" - PASS
+2. Tapping "Resume" navigated to #guide, opened walkthrough "Picking up SoFi Invest at step 2 of 5" with working "Done — next step" / "I'm stuck on this step" and 5-step progress tracker - PASS
+3. Back on Home, queue intact - PASS
+Retrospective: genuinely closer to earning (stateful walkthrough at correct step, exact physical action named); caveat: money earned off-app at SoFi, value depends on user acting.
+## Rerun result: PASS (3/3) on ef57c14
