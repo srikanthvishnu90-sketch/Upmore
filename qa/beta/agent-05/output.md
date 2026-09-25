@@ -1,63 +1,26 @@
-# Beta agent 05 - output
+# Beta agent 05 - output (final run, build b4f62b4, 2026-09-25)
 
-Completed: 2026-09-24T20:41:11Z
-Scenario: DUPLICATE DETECTOR
+FRESH-BUILD GATE: PASS. Guide header shows only "New chat" — no History button.
 
-## Assertions
-1. Added "DupeTest05" $9.99 Monthly twice - PASS (Track showed "7 active" with two DupeTest05 entries)
-2. "Possible duplicate" queue card naming DupeTest05 - PASS (appeared at top of "Up next" queue)
-3. Exact card text - PASS:
-   - Title: "Possible duplicate: DupeTest05"
-   - Sub: "2 active charges look like the same subscription"
-   - Why-line: "$120/yr at stake x 80% / 3 min"
-4. Cleanup - PASS (cancelled both via sheets; Track back to "6 active", no DupeTest05, duplicate card gone from queue). Note: "Cancel subscription" navigates to the Guide tab and starts an AI-guided cancellation move - the app's designed flow; entries were actually removed from the active list.
+SIGN-IN & SESSION: PASS (qa05@upmore.app verified twice). One anomaly: mid-run a reload briefly rendered "Good evening, Vish" (default signed-out name) before the session held stable again.
 
-No console errors. "Delete data" never touched.
+## Scenario: DUPLICATE DETECTOR — BLOCKED, could not complete
+1. Add 'DupeTest05' $9.99 Monthly twice — FAIL (blocked). Save failed 4x with "Couldn't save - check your connection and try again." (before/after session drop, after re-login, after reload, after 15s wait).
+2. 'Possible duplicate' card naming DupeTest05 — FAIL (blocked, nothing saved).
+3. Side-by-side comparison — FAIL (blocked).
+4. Cancel both; Track empty — N/A. Track showed "Nothing tracked yet".
 
-Other observations: a "BetaFlix04" subscription ($15.99/mo) from another beta agent appeared in the Track list; left untouched. Viewport could not be set to 390x844 in this environment; all elements still reachable.
+Alternate route: Guide chat asked to track the subscription — replied generically about the catalog; no subscription-tracking capability. Track form is the only add path.
 
-## Retrospective verdict
-Genuinely useful for the narrow case it covers - fired immediately on two identical charges, surfaced at the top of the ranked queue, translated into concrete stakes ($120/yr) with a one-tap Review path. Ceiling depends on fuzzy matching: real duplicate charges arrive as slightly different descriptors/amounts/billing dates, so the strict same-name/amount/interval rule catches "accidentally signed up twice" but misses messier bank-statement variants. Verdict: useful first line of defense; fuzzy descriptor/amount matching is the obvious next hardening step.
+## Post-run investigation (same session)
+- Direct PostgREST insert as qa05 WITHOUT user_id → 403 RLS (expected; app always sets user_id).
+- Direct insert WITH user_id → HTTP 201. The write path and RLS policy are fine.
+- DB shows two DupeTest05 rows created+cancelled at 2026-09-25T00:59Z — saves DID succeed when the session was healthy.
+- Conclusion: failures correlate with session drops in the shared leased browser profile (4-5 concurrent tasks share one Chromium profile and clobber each other's localStorage sessions). saveInsert returns false immediately when saveUid() is null → the exact "Couldn't save" toast. NOT a product write-path bug: the identical UI path saved successfully in earlier waves and via direct API now.
+- Per standing rule, managed-browser session behavior is not classified as a product defect without isolated reproduction.
 
-## Result: PASS (4/4)
+PLAN: rerun this scenario alone (no concurrent tasks) on the same b4f62b4 build for a clean signal.
 
----
+CLEANUP: signed out. No active test data (4 cancelled rows from this + earlier runs remain as audit trail, all status=cancelled).
 
-## RERUN on build ef57c14 (2026-09-24T21:01:41Z)
-1. Added DupeTestR05 $9.99 Monthly twice (Track: 6 active -> 7 active, two rows) - PASS
-2. "Possible duplicate" queue card naming DupeTestR05 appeared immediately after second save - PASS
-3. Exact text: Title "Possible duplicate: DupeTestR05" | Sub "2 active charges look like the same subscription" | Why-line "$120/yr at stake x 80% / 3 min" - PASS
-4. Cleanup - PASS (both cancelled via sheets; Track back to 5 active original subs; duplicate card gone). Each "Cancel subscription" navigates to Guide with a cancellation-confirmation chat - designed flow.
-Sticky-nav note (3rd report): fixed bottom tab bar covers the "Save" button; automated clicks refused as "obscured"; scrolling further resolved it. FIX APPLIED: added `scroll-padding-bottom: 120px` to .scroll so programmatic scrolls leave clearance above the tab bar (rides the next rebuild; behavior-neutral CSS, no functional change).
-Oddity: a "BetaFlixR04" row + "Cancel BetaFlixR04" card transiently appeared after first save (another agent's concurrent test); gone by end; final state matched pre-test.
-Retrospective: genuinely useful - fired immediately, named merchant, counted "2 active charges", quantified $120/yr at 80% confidence / 3 min, ranked into the dollars x confidence x urgency / effort queue. 80% (not 100%) confidence is honest; low-effort dismissal covers false positives (family plans). Would catch real double-billing.
-## Rerun result: PASS (4/4) on ef57c14; final-build rerun (DupeTestF05) in flight
-
----
-
-## FINAL-BUILD run (2026-09-24T21:04:59Z, on 6d8aac8; bbc525a/aef5744 diffs are CSS/queue-dedup only, behavior-neutral for this scenario)
-1. Added DupeTestF05 $9.99 Monthly twice (Track 5 -> 6 -> 7 active, two identical rows) - PASS
-2. Card: Title "Possible duplicate: DupeTestF05" | Sub "2 active charges look like the same subscription" | Why "$120/yr at stake x 80% / 3 min" | Review button ($9.99x12=$119.88 -> $120). Self-cleared when only one remained - PASS
-3. Cleanup - PASS (both cancelled; Track back to 5 active original subs; no DupeTestF05 rows/cards). "Cancel subscription" navigates to Guide with canned cancellation chat - designed flow.
-UX notes: Save button still obscured by sticky tab bar in this build (aef5744's scroll-padding fix not yet verified by an agent); keyboard activation worked.
-Retrospective: genuinely useful - fired immediately with evidence-backed specifics + annualized stakes/confidence/effort; self-clearing shows live state tracking. Untested limit: near-duplicates ("Netflix" vs "Netflix Inc.") vs exact-match only; copy slightly technical.
-## Final-build result: PASS (3/3)
-
-## FINAL-BUILD run (2026-09-24, build 70f89f3)
-AGENT: 05 — Duplicate detector. RESULT: PASS (4/4 assertions).
-- First 'DupeTest05' $9.99 Monthly added: Track "≈$9.99/mo · 1 active"; queue added "Cancel DupeTest05 — Keep $120/yr".
-- Second identical entry added: Track "≈$19.98/mo · 2 active".
-- 'Possible duplicate' queue card appeared naming DupeTest05: "Possible duplicate: DupeTest05" — "2 active charges look like the same subscription" — "$120/yr at stake x 80% / 3 min" with Review button. ($120/yr = one subscription's annual cost = the potential double-payment.)
-- Cleanup: both entries cancelled via Cancel → "Cancel subscription" sheet; Track shows "Nothing tracked yet"; duplicate card gone from queue — no stale warning.
-Retrospective: served intent well — fired immediately, named the subscription, explained the trigger, quantified the stake, 80% confidence, one-tap Review (3 min). Exactly the protection the feature promises.
-Notes: two mid-run sign-outs from the known localStorage-drop environment quirk (no reload by the agent); signed back in each time. OBSERVATION: while signed out, the Save button's clicks silently did nothing (no subscription created, no error); after confirmed sign-in, Save worked first try. Silent no-op while signed out may deserve a sign-in prompt — agent-15's auth-state run will cover this. Each "Cancel subscription" confirmation navigated to the Guide tab chat; returning Home showed the entry removed.
-
-## RERUN — final suite (build 968ece1, 2026-09-25)
-Account: qa05@upmore.app (email-matched gate).
-Fresh-build gate: PASS.
-1. Two DupeTest05 $9.99/mo subscriptions added — PASS (Track "≈$19.98/mo · 2 active").
-2. 'Possible duplicate' card — PASS ("Possible duplicate: DupeTest05", "2 active charges look like the same subscription", "$119.88/yr in duplicate charges x 80% / 3 min", "Review").
-3. Review shows side-by-side — PASS ("2 charges look like the same subscription — compare:" + both charges listed with per-charge Cancel; the NEW compare UI verified live).
-4. Cleanup — PASS (both cancelled; Track empty; duplicate card gone).
-Retrospective: serves intent — fired immediately, quantified waste, side-by-side compare is exactly what the user needs to decide which to kill.
-AGENT 05 FINAL RESULT: PASS
+RESULT: BLOCKED (environment) — rerun pending

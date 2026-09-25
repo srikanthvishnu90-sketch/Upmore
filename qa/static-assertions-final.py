@@ -77,7 +77,12 @@ t("no referral/gift-card-resale route leads", true);
 t("R0032 cash bonus can lead", canLead(byId("R0032")));
 t("R8329 PayPal cash can lead", canLead(byId("R8329")));
 t("R1565 never-store-credit cash can lead", canLead(byId("R1565")));
-t("R4105 cash-back-redeemable points can lead", canLead(byId("R4105")));
+t("R4105 cash-back-redeemable points cannot lead", !canLead(byId("R4105")));
+t("R0519 XP-mechanism route cannot lead", !canLead(byId("R0519")));
+t("R5683 points (worth $150) cannot lead", !canLead(byId("R5683")));
+t("R3731 'No points. Just real cash.' can lead", canLead(byId("R3731")));
+t("R2341 'not ... points-equivalent' can lead", canLead(byId("R2341")));
+t("R3825 Point-of-Sale bonus can lead", canLead(byId("R3825")));
 t("R0069 bank bonus can lead", canLead(byId("R0069")));
 // completed-route exclusion helper exists
 t("completed-route exclusion in queue", /doneIds/.test(LEAD_SRC2));

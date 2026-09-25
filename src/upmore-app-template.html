@@ -1255,7 +1255,27 @@
     }
     return false;
   }
-  const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category) && !nonCashLead(r);
+  // Points-based payout mechanisms never lead the queue: XP, points, coins,
+  // tokens earned as the reward — even when redeemable for cash (owner rule:
+  // points must not lead Home or Guide). "Point of sale" is a retail phrase,
+  // not a points mechanism; explicit negations ("No points. Just real cash.",
+  // "not a rate, rebate, or points-equivalent") are respected per occurrence.
+  const LEAD_POS = /points?\s+of\s+sale|point-of-sale/gi;
+  const LEAD_PTSIG = /\b(XP|points?|coins?|tokens?)\b/gi;
+  const LEAD_PTNEG_BEFORE = /(never|no|not|without|isn't|aren't|don't|doesn't)\b[^.!?|]{0,40}$/i;
+  const LEAD_PTNEG_AFTER = /^[^.!?|]{0,25}?\b(not|no|never|without|isn't|aren't)\b/i;
+  function pointsMechanism(r) {
+    const s = [r.reward, r.method, r.what, r.payout_timing].map(x => String(x || "")).join(" ").replace(LEAD_POS, " ");
+    LEAD_PTSIG.lastIndex = 0;
+    let m;
+    while ((m = LEAD_PTSIG.exec(s))) {
+      const before = s.slice(Math.max(0, m.index - 45), m.index);
+      const after = s.slice(m.index + m[0].length, m.index + m[0].length + 30);
+      if (!LEAD_PTNEG_BEFORE.test(before) && !LEAD_PTNEG_AFTER.test(after)) return true;
+    }
+    return false;
+  }
+  const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category) && !nonCashLead(r) && !pointsMechanism(r);
   // Routes with a hard minimum deposit the user must front themselves.
   const NEEDS_DEPOSIT_IDS = ["R0616", "R4790"]; // $100 / $25 minimum opening deposit
   const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
