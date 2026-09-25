@@ -24,3 +24,9 @@ DEFECT (confirmed, real): SoFi Invest promo sheet truncated reward mid-word at 3
 Secondary observation (intentional by design, not a defect): cancelling a subscription routes to Guide with a "confirm it's really cancelled" walkthrough — marking cancelled in-app doesn't cancel with the merchant, so the hand-off serves the intent.
 FIX deployed as 2d55442: promo sheet now shows the FULL reward text + a "Watch out:" catches line (overflow-wrap:anywhere); short() truncates at word boundaries with ellipsis; queue claim subtitles use short(r.reward, 90). Production probe confirms full text renders ("...earns $0") with catches shown, no overflow.
 Retrospective: the phone experience serves its intent — dead-simple money page, thumb-navigable, writes persist. The one defect hit the worst possible spot (offer fine print) and is now fixed.
+
+## Rerun 3 (2026-09-25 ~00:19 UTC, build 0e4651c, signed-out) — RESULT: PASS
+Targeted check of the 2d55442 promo-sheet truncation fix at 390px. Freshness gate PASS (no Guide History button).
+- SoFi Invest promo sheet: reward shown IN FULL, word-boundary wrapping — the old "...requires moving EX" defect is fixed. Labeled "The catch:" line present (US; ACAT transfers must remain 5 years; early-withdrawal fee). No horizontal overflow, nothing clipped at the right edge. Tail reads: "...an ordinary user with no other brokerage earns $0 · Weeks to months" — the catalog data itself is honest about the $0 case, which validates the blocked() filter's rationale.
+- Robinhood promo: full 105-char reward text, "The catch:" line present (targeted offer; 7-day window; 1-year lock), no overflow.
+- VERDICT: AGENT 20 RERUN 3: PASS. No test data created; nothing to clean.
