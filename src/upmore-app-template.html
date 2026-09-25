@@ -2017,13 +2017,23 @@
           : clsRaw.includes("Count only actual") ? "Fixed reward"
           : "Fixed reward"; // default
         const ver = routeVerification(r);
+        // FIX (E3-v2): Element order must be 1,2,3,4,5,6,7,8.
+        // Was: 1,2,3,8,4,5,6,7 (vbadge in wrong position).
+        // Now: vbadge (element 8) is LAST.
+        // FIX (E3-v2): Handle null time values — 273 routes have null times.
+        // Was: "≈null min" or "≈null–null min". Now: "Time not stated".
+        const timeStr = (r.time_min_minutes == null && r.time_max_minutes == null)
+          ? "Time not stated"
+          : (r.time_min_minutes === r.time_max_minutes
+              ? `≈${r.time_max_minutes} min`
+              : `≈${r.time_min_minutes}–${r.time_max_minutes} min`) + " active";
         extra = `
         <div class="earn8">
           <span class="ebadge">${esc(cls)}</span>
-          <span class="vbadge v-${ver}">${esc(ver)}</span>
           <p class="ereq"><b>Requires:</b> ${esc(r.requirements || "—")}</p>
           <p class="ecatch"><b>The catch:</b> ${esc(r.catches || "—")}</p>
-          <p class="emeta">${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active · ${esc(r.payout_timing || r.time_to_first || "")}</p>
+          <p class="emeta">${timeStr} · ${esc(r.payout_timing || r.time_to_first || "")}</p>
+          <span class="vbadge v-${ver}">${esc(ver)}</span>
         </div>`;
       }
       // SPEC 02: Cancel cards carry the seven ordered elements.
