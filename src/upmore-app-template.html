@@ -3755,11 +3755,14 @@
   }
 
   // Deterministic functions. Code computes; model explains.
+  // FIX (B4-v2): Compare on calendar-day, not Date objects.
+  // Was: new Date('2026-10-01T08:00:00') (local) vs new Date('2026-10-01') (UTC midnight)
+  // caused time-carrying changes to be silently dropped. Now: string slice YYYY-MM-DD.
   function projectBalance(currentBalance, changes, throughDate) {
     let bal = currentBalance;
-    const thru = new Date(throughDate);
-    changes.filter(c => new Date(c.date) <= thru)
-      .sort((a, b) => a.date.localeCompare(b.date))
+    const thruDay = String(throughDate).slice(0, 10); // YYYY-MM-DD
+    changes.filter(c => String(c.date).slice(0, 10) <= thruDay)
+      .sort((a, b) => String(a.date).localeCompare(String(b.date)))
       .forEach(c => { bal += c.amount; });
     return bal;
   }
