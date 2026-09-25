@@ -2,7 +2,7 @@
 // f4f5fc7 is stamped by src/build-app.py (short git hash) so every deploy
 // gets a fresh cache version — a stale service worker must never serve an
 // old build of the app shell.
-const CACHE = "upmore-f4f5fc7";
+const CACHE = "upmore-d687fa9";
 const SHELL = [
   "/",
   "/index.html",
