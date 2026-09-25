@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-+fRx4VyECXxVWU20xF+LGoNw3sY4qjyQKU4CUaOQJao='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-MMode2HNyqzurGv5gR0B0gzAXoBwPvNpkXF/46OPnF4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -3156,6 +3156,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("xmore").onclick = () => { xState.shown += 60; renderExplore(); };
   }
   initExplore();
+  // FIX (X1-F1): Attempt live SimpleFIN data on app load.
+  // If connected, replaces demo data with real bank data.
+  try { initLiveTrackData(); } catch (e) {}
   // FIX (C3): Run the cancel confirmation watcher on app load.
   // Checks claimed cancellations: billing date + 2 days with no charge → confirmed.
   try { runCancelWatcher(); } catch (e) {}
@@ -3440,6 +3443,44 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function loadTrackData() {
     if (!trackData) trackData = TransactionSource.demo();
     return trackData;
+  }
+
+  // FIX (X1-F1): Try live SimpleFIN data first. If the proxy returns data,
+  // use it instead of demo. The demo is a fallback, not the default.
+  // This runs async on app load; renderTrackStrip etc. re-render when done.
+  async function initLiveTrackData() {
+    try {
+      // Only fetch if user is signed in (proxy requires JWT)
+      if (!session || !supa) return;
+      const { data: { session: s } } = await supa.auth.getSession();
+      if (!s) return;
+      const res = await supa.functions.invoke("simplefin-proxy", {
+        body: {},
+      });
+      const live = res.data;
+      if (!live || !live.accounts || live.accounts.length === 0) return;
+      // Map live data to our transaction format
+      trackData = {
+        accounts: live.accounts,
+        transactions: (live.transactions || []).map(t => ({
+          id: t.id,
+          posted_at: t.posted_at,
+          amount: t.amount,
+          merchant_raw: t.merchant_raw,
+          merchant_id: (t.merchant_raw || "").toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+          category: "Other", // TODO: proper categorization
+          category_source: "provider",
+          is_pending: t.is_pending,
+          is_transfer: /transfer/i.test(t.merchant_raw || ""),
+          provider_id: t.id,
+        })),
+        isLive: true, // flag: this is real user data, not demo
+      };
+      // Re-render the track UI with live data
+      if (typeof renderTrackStrip === "function") renderTrackStrip();
+    } catch (e) {
+      // Live data unavailable — demo remains. This is expected if not connected.
+    }
   }
 
   // Home strip: free cash, days to payday, left to spend/day.
