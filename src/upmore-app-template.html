@@ -1744,7 +1744,9 @@
   }
   const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
   const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-  const qDollars = r => Number(r.payout_max ?? r.payout_min ?? 0) || 0;
+  // FIX (X1-F7): Use payout MIN for ranking, not MAX. A "$50–$500 variable" route
+  // must not outrank fixed routes by scoring as $500. Conservative = honest.
+  const qDollars = r => Number(r.payout_min ?? r.payout_max ?? 0) || 0;
   const qConf = r => r.status === "researched" ? 0.7 : 0.4;
   const qEffort = r => { const t = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2; return t > 0 ? t : 30; };
 
@@ -1837,7 +1839,13 @@
       rec.forEach(s => {
         const days = Math.max(0, Math.round((new Date(s.next_date) - new Date()) / 864e5));
         const annual = s.amount * (s.interval === "monthly" ? 12 : s.interval === "yearly" ? 1 : 52);
-        const score = wasteScore(annual, 0.5, renewalUrgency(days), s.confidence);
+        // FIX (X1-F8): Don't invent usage_signal. The spec says the app cannot know
+        // usage — it must ask. Use stored user input if available, else 0.5 as a
+        // neutral placeholder AND prompt the user on the card.
+        // TODO: Add "How much do you use this?" UI to cancel cards; store per-merchant.
+        const storedUsage = null; // TODO: load from user prefs per merchant_id
+        const usageSignal = storedUsage !== null ? storedUsage : 0.5;
+        const score = wasteScore(annual, usageSignal, renewalUrgency(days), s.confidence);
         if (score < 30) return; // only material waste enters the queue
         const card = cancelCard(s, null);
         cards.push({ type: "cancel", id: "cancel-" + s.merchant_id,
