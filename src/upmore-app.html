@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-gCyBmYesm2/8HOPZ1pMAlZQ8Euhg//aExSJPNUltS/I='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-qOFXfiR+1vTkleAjHpos5435VC69RQjr+VMQ1tD2Wvg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1888,7 +1888,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const rec = detectRecurrence(transactions);
       rec.forEach(s => {
         const days = Math.max(0, Math.round((new Date(s.next_date) - new Date()) / 864e5));
-        const annual = s.amount * (s.interval === "monthly" ? 12 : s.interval === "yearly" ? 1 : 52);
+        // FIX (C5-v2): Annualization must handle quarterly (×4) and biweekly (×26).
+        // Was: monthly→12, yearly→1, else→52 (wrong for quarterly/biweekly).
+        const annualMult = s.interval === "monthly" ? 12
+          : s.interval === "yearly" ? 1
+          : s.interval === "quarterly" ? 4
+          : s.interval === "biweekly" ? 26
+          : s.interval === "weekly" ? 52 : 12; // default monthly
+        const annual = s.amount * annualMult;
         // FIX (X1-F8): Don't invent usage_signal. The spec says the app cannot know
         // usage — it must ask. Use stored user input if available, else 0.5 as a
         // neutral placeholder AND prompt the user on the card.
@@ -1902,6 +1909,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           title: card.title, elements: card.elements, // SPEC 02: 7 elements
           sub: `${card.elements.amount} · ${card.elements.annual} · bills ${card.elements.nextBilling}`,
           dollars: annual, conf: s.confidence, urg: card.urgency, eff: card.effort,
+          // FIX (C5-v2): Store waste_score for cancel-card-specific sorting.
+          waste_score: score,
           cta: "Show me how", act: () => startCancelFlow(s),
           why: `$${Math.round(annual)}/yr × ${Math.round(s.confidence*100)}% × ${card.urgency.toFixed(1)} / ${card.effort} min` });
       });
@@ -2019,7 +2028,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         });
       }
     } catch (e) {}
-    cards.forEach(c => { c.score = qScore(c.dollars, c.conf, c.urg, c.eff); });
+    cards.forEach(c => { 
+      // FIX (C5-v2): Cancel cards sort by waste_score descending (spec requirement).
+      // Other cards use the global qScore formula.
+      c.score = (c.type === "cancel" && c.waste_score !== undefined) 
+        ? c.waste_score 
+        : qScore(c.dollars, c.conf, c.urg, c.eff); 
+    });
     cards.sort((a, b) => b.score - a.score);
     return cards;
   }
@@ -3330,11 +3345,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function wasteScore(annualCost, usageSignal, renewalUrgency, confidence) {
     return annualCost * (1 - usageSignal) * renewalUrgency * confidence;
   }
+  // FIX (C5-v2): renewalUrgency must decay at 60+ days, not floor at 31.
+  // Was: return 0.3 for all >30 days. Now: decays to 0.2 at 60+, 0.1 at 90+.
   function renewalUrgency(daysToBilling) {
     if (daysToBilling <= 7) return 1.0;
     if (daysToBilling <= 14) return 0.8;
     if (daysToBilling <= 30) return 0.6;
-    return 0.3;
+    if (daysToBilling <= 60) return 0.3;
+    if (daysToBilling <= 90) return 0.2;
+    return 0.1;
   }
 
   // Cancel state machine: active → cancel_started → cancel_claimed → cancel_confirmed
@@ -3429,7 +3448,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   // Cancel card: exactly seven elements. Never claim non-usage — ask.
   function cancelCard(sub, cancelPath) {
-    const annual = sub.amount * (sub.interval === "monthly" ? 12 : sub.interval === "yearly" ? 1 : 52);
+    // FIX (C5-v2): Same quarterly/biweekly annualization fix as buildQueue.
+    const annualMult = sub.interval === "monthly" ? 12
+      : sub.interval === "yearly" ? 1
+      : sub.interval === "quarterly" ? 4
+      : sub.interval === "biweekly" ? 26
+      : sub.interval === "weekly" ? 52 : 12;
+    const annual = sub.amount * annualMult;
     const days = Math.max(0, Math.round((new Date(sub.next_date) - new Date()) / 864e5));
     return {
       kind: "cancel",
