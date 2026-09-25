@@ -3617,6 +3617,19 @@
     // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
     const cycleEnd = nextPay || new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
     const fixedRem = rec.filter(r => r.next_date <= cycleEnd).reduce((s, r) => s + r.amount, 0);
+    // FIX (B1-v2 DEFECT 3): committed_estimate_remaining was hardcoded to 0.
+    // Spec formula: safe_to_spend = balance - fixed_remaining - committed_estimate_remaining - buffer.
+    // Committed = variable-but-essential: Groceries, Utilities, Transport.
+    // Estimate from last 30 days of transactions, prorated to remaining cycle days.
+    const committedCats = ["Groceries", "Utilities", "Transport"];
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    const committedLast30 = (transactions || [])
+      .filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer &&
+              committedCats.includes(t.category) &&
+              t.posted_at >= thirtyDaysAgo)
+      .reduce((s, t) => s + Math.abs(t.amount), 0);
+    const daysRemaining = Math.max(1, Math.round((new Date(cycleEnd) - new Date()) / 864e5));
+    const committedRem = Math.round((committedLast30 / 30) * daysRemaining);
     // FIX (B1-v2): Buffer from localStorage (adjustable), default $100.
     // Spec rule 3: buffer as separate line, user can change it.
     let bufferAmt = 100;
@@ -3624,7 +3637,8 @@
       const saved = localStorage.getItem("upmore_buffer");
       if (saved !== null) bufferAmt = Math.max(0, parseInt(saved, 10) || 0);
     } catch (e) {}
-    const sts = calcSafeToSpend(balance, fixedRem, 0, bufferAmt, cycleEnd);
+    // FIX (B1-v2 DEFECT 3): Pass real committed estimate, not 0.
+    const sts = calcSafeToSpend(balance, fixedRem, committedRem, bufferAmt, cycleEnd);
     $("safeSpend").hidden = false;
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.

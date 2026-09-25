@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-3gxuqGA0Mu7rNz/xd9gOSU1hyk+XQSruglmOber2xno='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-gCyBmYesm2/8HOPZ1pMAlZQ8Euhg//aExSJPNUltS/I='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -3638,6 +3638,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
     const cycleEnd = nextPay || new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
     const fixedRem = rec.filter(r => r.next_date <= cycleEnd).reduce((s, r) => s + r.amount, 0);
+    // FIX (B1-v2 DEFECT 3): committed_estimate_remaining was hardcoded to 0.
+    // Spec formula: safe_to_spend = balance - fixed_remaining - committed_estimate_remaining - buffer.
+    // Committed = variable-but-essential: Groceries, Utilities, Transport.
+    // Estimate from last 30 days of transactions, prorated to remaining cycle days.
+    const committedCats = ["Groceries", "Utilities", "Transport"];
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    const committedLast30 = (transactions || [])
+      .filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer &&
+              committedCats.includes(t.category) &&
+              t.posted_at >= thirtyDaysAgo)
+      .reduce((s, t) => s + Math.abs(t.amount), 0);
+    const daysRemaining = Math.max(1, Math.round((new Date(cycleEnd) - new Date()) / 864e5));
+    const committedRem = Math.round((committedLast30 / 30) * daysRemaining);
     // FIX (B1-v2): Buffer from localStorage (adjustable), default $100.
     // Spec rule 3: buffer as separate line, user can change it.
     let bufferAmt = 100;
@@ -3645,7 +3658,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const saved = localStorage.getItem("upmore_buffer");
       if (saved !== null) bufferAmt = Math.max(0, parseInt(saved, 10) || 0);
     } catch (e) {}
-    const sts = calcSafeToSpend(balance, fixedRem, 0, bufferAmt, cycleEnd);
+    // FIX (B1-v2 DEFECT 3): Pass real committed estimate, not 0.
+    const sts = calcSafeToSpend(balance, fixedRem, committedRem, bufferAmt, cycleEnd);
     $("safeSpend").hidden = false;
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
