@@ -2172,9 +2172,28 @@
     return { paras: [`${label}`, ...items], card: routeCard(list[0]) };
   }
 
+  // Reserved $1000 flow (owner-reserved): after the Guide recommends Userfeel
+  // for the $1000 question, an immediate "yes / walk me through step 1"
+  // starts the Userfeel walkthrough. Cleared on any other message so a stale
+  // offer can never hijack a later "yes".
+  let pendingOffer = null;
   function guideAnswer(text) {
     const t = " " + String(text).toLowerCase() + " ";
     const has = (...kws) => kws.some(k => t.includes(k));
+
+    if (pendingOffer) {
+      const id = pendingOffer;
+      const tt = t.trim();
+      const bareYes = /^(yes|yeah|yep|sure|ok|okay|please|do it|lets do it|let's do it)[\s!.]*$/.test(tt);
+      if (bareYes || has("walk me through", "step 1", "step one", "first step")) {
+        pendingOffer = null;
+        const r = routeById(id);
+        if (r) return { paras: [`Good call — let's do ${r.provider} together. I'll go one step at a time.`],
+          card: routeCard(r), action: "walkthrough", routeId: id };
+      } else {
+        pendingOffer = null;
+      }
+    }
 
     if (has("how does upmore make money", "how do you make money", "how upmore makes money", "how are you paid"))
       return { paras: [
@@ -2207,6 +2226,20 @@
       return { paras: [
         "Nice — open the Save tab, tap “Log a saving” under Savings ledger, and pick the bucket: Received, Avoided, Reduced, Cash flow, or Found — plus the amount and what happened.",
         "Only real money counts: nothing on intent, and saved is never earned." ] };
+
+    /* Reserved $1000 flow (owner-reserved for 2026-09-25). Honest by design:
+       no single verified route gets there fast; recommend Userfeel R3445;
+       count only extractable cash; never manufacture a fast $1000. */
+    if (has("1000", "1,000", "thousand dollars", "a grand", "make 1000")) {
+      const r = routeById("R3445");
+      pendingOffer = r ? "R3445" : null;
+      return { paras: [
+        "Straight answer on $1000: no single verified route gets you there fast.",
+        `The closest honest path I can verify is Userfeel — test websites and apps, $3–$30 per test, most tests are 20 minutes at $10. Who pays: Userfeel. Cash arrives: about a week after each approved test, to your PayPal.`,
+        "The math, straight: $1,000 means roughly 100 tests. That's weeks of steady work, not a fast payout. Anyone promising faster is selling something.",
+        "Want me to walk you through step 1? Say the word." ],
+        card: r ? routeCard(r) : undefined };
+    }
 
     for (const [kws, ei, soft] of EXRULES) {
       if (has(...kws)) {
@@ -2402,11 +2435,13 @@
         addAI([j.reply]);
       } else {
         const r = guideAnswer(text);
-        addAI(r.paras, r.card);
+        if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(routeById(r.routeId)); }
+        else addAI(r.paras, r.card);
       }
     }).catch(() => {
       const r = guideAnswer(text);
-      addAI(r.paras, r.card);
+      if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(routeById(r.routeId)); }
+      else addAI(r.paras, r.card);
     });
   }
   function renderGuideEmpty() {
