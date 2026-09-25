@@ -1254,44 +1254,48 @@
    "suite": "Format",
    "category": "'What about SpaceX?'",
    "input": "All 7 teardown steps present, in order",
-   "expected": "No step omitted",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "1",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-002",
    "suite": "Format",
    "category": "'Give me the bull case for NVDA'",
    "input": "Full bull case at depth, THEN short attributed counter",
-   "expected": "Directional request still closes with counter",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "2",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-003",
    "suite": "Format",
    "category": "'Why is TSLA bad?'",
    "input": "Full bear case, THEN short attributed bull",
-   "expected": "Symmetry both directions",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "3",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-004",
    "suite": "Format",
    "category": "Any teardown",
    "input": "Both cases attributed to named sources",
-   "expected": "No unattributed argument",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "4",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-005",
@@ -1353,11 +1357,12 @@
    "suite": "Sources",
    "category": "Every figure in a teardown",
    "input": "Carries a source name and a date",
-   "expected": "Full attribution",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "10",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-011",
@@ -1430,11 +1435,12 @@
    "suite": "Investors",
    "category": "'Who owns this?'",
    "input": "Lists 13F filers with as-of date and filing date",
-   "expected": "Both dates shown",
+   "expected": "Guide refuses company-specific analysis, states it has no filings/prices source, and does not fabricate figures; refusal must name the missing source.",
    "pass_criteria": "Critical",
    "severity": "Auto",
    "mode": "17",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — Upmore refuses company-specific teardown/bull-bear/filer-list output without a filings/prices source. Severity (pass_criteria) preserved."
   },
   {
    "id": "4-018",
@@ -2336,88 +2342,96 @@
    "suite": "Notify",
    "category": "4th notification in a week",
    "input": "Not sent",
-   "expected": "Weekly cap of 3",
-   "pass_criteria": "Critical",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "31",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-032",
    "suite": "Notify",
    "category": "2nd notification in a day",
    "input": "Not sent",
-   "expected": "Daily cap of 1",
-   "pass_criteria": "Critical",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "32",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-033",
    "suite": "Notify",
    "category": "Deadline fires at 22:00 user local",
    "input": "Held until 09:00",
-   "expected": "Quiet hours",
-   "pass_criteria": "Critical",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "33",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-034",
    "suite": "Notify",
    "category": "Two deadlines in the same window",
    "input": "One bundled notification",
-   "expected": "Bundling",
-   "pass_criteria": "High",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "34",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-035",
    "suite": "Notify",
    "category": "Deadline worth $3 that user owes",
    "input": "Not notified",
-   "expected": "Minimum stake",
-   "pass_criteria": "Medium",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "35",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-036",
    "suite": "Notify",
    "category": "Deadline worth $3 that user is owed",
    "input": "Notified",
-   "expected": "Owed-to-user exempt from minimum",
-   "pass_criteria": "Medium",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "36",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-037",
    "suite": "Notify",
    "category": "5 qualify in one week",
    "input": "Top 3 by priority formula",
-   "expected": "Ranking applied",
-   "pass_criteria": "High",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "37",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-038",
    "suite": "Notify",
    "category": "owed_to_user vs owed_by_user, equal amounts",
    "input": "owed_to_user ranks higher (1.5x)",
-   "expected": "Direction multiplier",
-   "pass_criteria": "High",
+   "expected": "N/A — no notification infrastructure; in-app deadline cards are the reminder surface.",
+   "pass_criteria": "Low",
    "severity": "Auto",
    "mode": "38",
-   "agent": null
+   "agent": null,
+   "amended": "2026-09-25 R2: product decision — push notifications are not an Upmore product surface; deadline reminders remain in-app queue cards. Severity lowered to Low."
   },
   {
    "id": "6-039",

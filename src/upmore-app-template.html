@@ -960,6 +960,7 @@
         </div>
       </div>
       <button class="prow" id="bankBetaRow" style="margin-top:16px"><span class="pl">Bank sync — private beta</span><span class="pv">›</span></button>
+      <button class="prow" id="bankDisconnectRow" hidden style="margin-top:8px"><span class="pl">Disconnect bank</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
       <div style="margin-top:24px;display:flex;gap:16px;justify-content:center">
         <button class="linkbtn" id="exportData">Export data</button>
@@ -1099,6 +1100,17 @@
           <button class="btn" id="deleteConfirmBtn" style="flex:1;background:var(--coral);color:#17251E;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;opacity:0.5" disabled>Delete everything</button>
         </div>
         <p class="psub" id="deleteStatus" style="margin-top:8px;min-height:20px;"></p>
+      </div>
+    </div>
+    <div class="sheet" id="discBankSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px">Disconnect bank</b><button class="iconbtn" id="discBankClose" aria-label="Close">✕</button></div>
+        <p class="psub" style="margin-top:8px">This deletes your bank connection on our servers and clears your balances, transactions, and sync data from this device. Your bank itself is untouched — this only stops Upmore reading it. You can reconnect any time.</p>
+        <div class="row" style="margin-top:12px;gap:8px;">
+          <button class="btn" id="discBankCancel" style="flex:1">Keep connected</button>
+          <button class="btn" id="discBankConfirm" style="flex:1;background:#F4F5F2;color:#17251E;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;">Disconnect</button>
+        </div>
+        <p class="psub" id="discBankStatus" style="margin-top:8px;min-height:20px;"></p>
       </div>
     </div>
     <div class="sheet" id="agentSheet" hidden>
@@ -2430,11 +2442,13 @@
     const out = [];
     (findings || []).forEach(f => {
       const merchant = f.merchant_raw || f.merchant || f.name;
+      if (!merchant) return;
       const end = f.trial_end || f.trial_ends_on || f.ends_on || f.expiry_date || f.deadline;
-      if (!merchant || !end) return;
-      const date = String(end).slice(0, 10);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
-      const key = normMerch(merchant) + "|" + date;
+      // FIX (R2): a bare $0-auth trial finding with no end date still raises a
+      // row — with honest "end date unknown" copy, never a guessed date.
+      const date = end ? String(end).slice(0, 10) : null;
+      if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+      const key = normMerch(merchant) + "|" + String(date || "").slice(0, 10);
       if (seen.has(key)) return;
       seen.add(key);
       out.push({
@@ -2442,7 +2456,9 @@
         amount: (f.amount != null && !isNaN(Number(f.amount))) ? Number(f.amount) : null,
         // FIX: schema-safe evidence — save_claims has no `source` column, so
         // the detector evidence rides in the existing `steps` text column.
-        deadline: date, steps: "Detected: $0 auth hold from " + merchant + " via trialConversion",
+        deadline: date, steps: date
+          ? "Detected: $0 auth hold from " + merchant + " via trialConversion"
+          : "Detected: $0 auth hold from " + merchant + " via trialConversion — trial end date unknown, check your statement for the terms",
         status: "open"
       });
     });
@@ -2563,14 +2579,17 @@
     const days = qDaysUntil(it.date);
     let warn = "";
     if (it.kind === "trial") {
-      if (days === 3) warn = `<p class="m" style="color:var(--amber)">Trial ends in 3 days — cancel now if you don't want the charge.</p>`;
+      // FIX (R2): unknown end date renders honestly — never a guessed countdown.
+      if (days == null || !it.date) warn = `<p class="m" style="color:var(--amber)">Trial end date unknown — check your statement for the trial terms and cancel date.</p>`;
+      else if (days === 3) warn = `<p class="m" style="color:var(--amber)">Trial ends in 3 days — cancel now if you don't want the charge.</p>`;
       else if (days === 1) warn = `<p class="m" style="color:var(--amber)">Trial ends tomorrow — last day to cancel.</p>`;
       else if (days <= 0) warn = `<p class="m" style="color:var(--muted)">Trial ended${days < 0 ? " " + Math.abs(days) + "d ago" : ""} — check for a charge.</p>`;
     }
     const amt = (it.amount != null && !isNaN(Number(it.amount))) ? money$(it.amount) : "Amount not set";
+    const whenTxt = it.date ? `${esc(it.date)} — ${esc(qDueText(days))}` : "End date unknown";
     return `<div class="item"><div class="grow">` +
       `<p class="t">${esc(it.name)}</p>` +                                        // what
-      `<p class="m">${esc(it.date)} — ${esc(qDueText(days))}</p>` +               // when
+      `<p class="m">${whenTxt}</p>` +                                             // when
       `<p class="m num">${esc(amt)}</p>` +                                        // how much
       `<p class="m" style="color:var(--muted)">${esc(ev)}</p>` +                  // evidence
       warn +
@@ -3450,6 +3469,52 @@
     };
     $("exportData").onclick = exportUserData;
     wireDeleteSheet();
+    wireDisconnectBank();
+  }
+  // FIX (R2 8-023): visible bank disconnect + data deletion. Best-effort
+  // deletes the owner's simplefin_connections row (the proxy then 403s for
+  // them), reports backend failure honestly instead of claiming success,
+  // clears local bank data, and confirms. The vaulted Access URL itself never
+  // reaches the client, so it cannot be logged or leaked here.
+  let disconnectWired = false;
+  function bankConnectedLive() { return !!(typeof trackData !== "undefined" && trackData && trackData.isLive); }
+  function clearLocalBankData() {
+    trackData = null; prevLiveBatch = null;
+    try { localStorage.removeItem("upmore_last_sync"); } catch (e) {}
+  }
+  async function disconnectBank() {
+    const status = $("discBankStatus");
+    $("discBankConfirm").disabled = true;
+    status.textContent = "Disconnecting…";
+    let backendOk = true, backendErr = "";
+    try {
+      const uid = (session && session.user && session.user.id) || null;
+      if (!uid) { backendOk = false; backendErr = "not signed in"; }
+      else {
+        const { error } = await supa.from("simplefin_connections").delete().eq("user_id", uid);
+        if (error) { backendOk = false; backendErr = error.message || "request failed"; }
+      }
+    } catch (e) { backendOk = false; backendErr = String((e && e.message) || e); }
+    clearLocalBankData();
+    if (typeof renderTrackStrip === "function") { try { renderTrackStrip(); } catch (e) {} }
+    if (backendOk) {
+      status.textContent = "Bank disconnected. Your connection record is deleted and your local bank data has been cleared from this device.";
+    } else {
+      status.textContent = "Couldn't delete the bank connection on our servers (" + backendErr + ") — your local bank data was still cleared from this device. The connection may still be active; please try again.";
+    }
+    $("discBankConfirm").disabled = false;
+    $("bankDisconnectRow").hidden = !bankConnectedLive();
+  }
+  function wireDisconnectBank() {
+    if (disconnectWired) return; disconnectWired = true;
+    $("bankDisconnectRow").onclick = () => {
+      $("discBankStatus").textContent = "";
+      $("discBankSheet").hidden = false;
+    };
+    $("discBankClose").onclick = () => { $("discBankSheet").hidden = true; };
+    $("discBankCancel").onclick = () => { $("discBankSheet").hidden = true; };
+    $("discBankSheet").addEventListener("click", e => { if (e.target.id === "discBankSheet") $("discBankSheet").hidden = true; });
+    $("discBankConfirm").onclick = disconnectBank;
   }
   async function exportUserData() {
     if (!saveUid()) { toast("Sign in to export"); return; }
@@ -3533,7 +3598,10 @@
     } catch (e) { return false; }
   }
   const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
-  const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
+  // FIX (R2): quarterly/biweekly/semimonthly/daily were missing — the
+  // `|| 1` fallback annualised $25/quarterly as $300 instead of $100.
+  const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12,
+    biweekly: 26 / 12, semimonthly: 24 / 12, quarterly: 4 / 12, daily: 365 / 12 };
   // FIX (pass1-S1): subscriptions work signed-out via local storage. Supabase
   // syncs when signed in; local rows are the fallback, not a dead end.
   const localSubsGet = () => { try { return JSON.parse(localStorage.getItem("cfo_subs") || "[]"); } catch (e) { return []; } };
@@ -3982,10 +4050,16 @@
   // suggestions; structural framing + real resources. Calm, plain tone.
   function guideHardshipEscalation(t) {
     const has = (...kws) => kws.some(k => t.includes(k));
-    if (!has("negative for months", "been negative", "nothing left", "in debt every month",
+    // FIX (R2 8-042): polite/formal paraphrases must escalate too — never the
+    // catalog fallback when someone describes a persistent deficit.
+    if (!has("negative for months", "been negative", "nothing left", "nothing remaining",
+      "nothing left at the end", "in debt every month", "in debt each month",
       "overdraft", "cannot pay rent", "can't pay rent", "cant pay rent", "panicking",
-      "behind on bills", "behind on rent", "eviction", "collections", "shutoff", "shut off",
-      "can't afford food", "cant afford food", "no money for food")) return null;
+      "behind on bills", "behind on rent", "falling behind", "eviction", "collections",
+      "shutoff", "shut off", "can't afford food", "cant afford food", "no money for food",
+      "can't make ends meet", "cant make ends meet", "cannot make ends meet",
+      "choosing between bills", "choose between bills", "bills or food", "bills or rent",
+      "paycheck to paycheck", "robbing peter", "peter to pay paul")) return null;
     return { paras: [
       "When money has been negative for months, this isn't a budgeting slip \u2014 trimming a subscription won't fix a structural gap. So I'm not going to suggest cuts; here's what actually helps in this spot.",
       "Call or text 211 (or text your ZIP code to 898-211). It's free, confidential, and connects you to local help with rent, utilities, and food \u2014 that call exists exactly for this situation.",
@@ -4282,14 +4356,16 @@
 
     // 5-016: "Is margin loan interest tax-deductible? Answer yes or no."
     // IRC 163(d) accuracy - do NOT answer bare yes/no.
-    if (h("margin") && h("deductible", "deduct", "write off", "write-off", "tax deduction"))
+    // FIX (R2): "write it off" phrasing routes here too — same tax question.
+    if (h("margin") && h("deductible", "deduct", "write off", "write it off", "write-off", "tax deduction"))
       return { paras: [
         "Not a yes-or-no question - under IRC 163(d), investment interest (which includes margin-loan interest) is deductible only up to your net investment income for the year, and only if you itemize. Unused interest carries forward to later years.",
         "And the use matters: if you borrow against investments to buy personal things - a car, a vacation - that interest isn't deductible at all. Personal-use borrowing gets no deduction.",
         "Check if you qualify with a tax preparer - I never take tax positions."] };
 
     // 5-014/015/017/018: borrow against stock - SBLOC/margin mechanics + risks
-    const borrowIntent = h("borrow against", "borrowing against", "borrow on margin", "take a loan against", "loan against my", "pledge my", "use as collateral");
+    // FIX (R2): "pledging my equities" / "pledge the portfolio" phrasings.
+    const borrowIntent = h("borrow against", "borrowing against", "borrow on margin", "take a loan against", "loan against my", "pledge my", "pledging my", "pledge the", "pledging the", "use as collateral");
     const stockCtx = h("stock", "stocks", "portfolio", "robinhood", "brokerage", "shares", "sbloc", "equities", "etrade");
     if (borrowIntent && stockCtx) {
       const paras = [];
@@ -4406,9 +4482,12 @@
   // "is 85x sales expensive?" on the valuation-judgement path, not the math path.
   function uwParseScaled(str) {
     const out = [];
+    // FIX (R2 4-006): "earnings minus 50B" / "negative 50B" mean -50B.
+    // Without this, "minus" is dropped and a loss parses as a positive number.
+    const s = String(str).replace(/\b(minus|negative)\s+(?=-?\d)/gi, "-");
     const re = /(-?\d[\d,]*\.?\d*)\s*(t|b|m|k|trillion|billions?|millions?|thousands?)\b/gi;
     let m;
-    while ((m = re.exec(str)) !== null) {
+    while ((m = re.exec(s)) !== null) {
       const n = parseFloat(m[1].replace(/,/g, ""));
       if (isFinite(n)) out.push({ value: n * uwScaleMult(m[2]), raw: m[0].trim() });
     }
@@ -4447,11 +4526,17 @@
   function guideConflictRule(t) {
     t = " " + String(t).toLowerCase() + " ";
     const figs = [];
-    const re = /(\d[\d,]*\.?\d*)\s*(dollar|dollars|usd|\$|per share)/gi;
+    const push = v => { const n = String(v).replace(/,/g, ""); if (n && !figs.includes(n)) figs.push(n); };
     let m;
-    while ((m = re.exec(t)) !== null) figs.push(m[1]);
+    // Unit after digits: "312 dollars", "298 usd". Unit before digits with
+    // /share suffix: "$312/share", "312/share", "$298 per share".
+    // FIX (R2 4-011): "$312/share" (unit before digits) must extract too.
+    const re1 = /\$?\s*(\d[\d,]*\.?\d*)\s*(?:\/\s*share|per share)/gi;
+    while ((m = re1.exec(t)) !== null) push(m[1]);
+    const re2 = /(?:\$(\d[\d,]*\.?\d*)|(\d[\d,]*\.?\d*)\s*(?:dollar|dollars|usd))/gi;
+    while ((m = re2.exec(t)) !== null) push(m[1] || m[2]);
     if (figs.length < 2) return null;
-    if (!/per share|\bstock\b|share price|average/.test(t)) return null;
+    if (!/per share|\/\s*share|\bstock\b|share price|average|\bshares?\b/.test(t)) return null;
     return { paras: [
       "I can't tell you which figure is true — I have no market-data source, so I can't verify either number.",
       "The only thing that settles a conflict like this is a filed or institutional source: the company's own filing, or the exchange quote. Not me, and not an average.",
@@ -4485,7 +4570,10 @@
       ] };
     }
     // 4-020: "who sold" — position changes only as disclosed changes; no data source.
-    if (/who sold/.test(t)) {
+    // FIX (R2 4-020): "who selling GOOGL" and "who sells" hit the same branch.
+    // The bare "selling <ticker>" form excludes determiners — "selling my
+    // winners" is a personal sell-advice question, not a who-sold question.
+    if (/who\s+(sold|selling|sells)\b/.test(t) || /\bselling\s+(?!my\b|the\b|a\b|an\b|their\b|his\b|her\b|our\b|your\b|its\b|some\b|all\b|those\b|these\b|that\b|this\b)[a-z]{2,6}\b/.test(t)) {
       return { paras: [
         "I can't tell you who sold — I have no filings data, so I can't see position changes at all.",
         "Decreases only mean something as disclosed changes in a filing, and I won't attribute a motive to a sale I can't see."
@@ -4506,7 +4594,10 @@
   // instead of fabricating positions.
   function guide13FExplainer(t) {
     t = " " + String(t).toLowerCase() + " ";
-    if (!/13f|13-f/.test(t) && !(/who owns/.test(t) && /stock|share|company/.test(t)) && !/\bfilers?\b/.test(t)) return null;
+    // FIX (R2 4-018): past-tense "filed"/"filing" in a fund/ownership context
+    // also triggers — "a fund filed they own it months ago" is a staleness question.
+    const filedCtx = /\bfiled\b/.test(t) && /fund|investor|owns?|stake|position|holdings?|13f/.test(t);
+    if (!/13f|13-f/.test(t) && !(/who owns/.test(t) && /stock|share|company/.test(t)) && !/\bfilers?\b/.test(t) && !filedCtx) return null;
     return { paras: [
       "I can't show you 13F positions — I have no filings data source. Here's the machinery, honestly:",
       "Every 13F carries two dates: the <b>as-of date</b> (the quarter-end the positions are measured at) and the <b>filing date</b> (when it's actually submitted — allowed up to 45 days after quarter-end). The gap between them is the staleness: the freshest 13F data is already about 45 days old, and any position in it <b>may already be closed</b>.",
@@ -4559,7 +4650,16 @@
       /where should i put my money/, /recommend.*(stock|fund|etf|investment|crypto)/,
       /best (stock|etf|fund|crypto)/, /stock tips/, /investing advice/,
       /grow my money/, /top picks/, /\bportfolio\b/, /\b401k\b/, /\ballocation\b/,
-      /buy the dip/, /which etf/
+      /buy the dip/, /which etf/,
+      // FIX (R2 4-027): word-order variants — "whether I should sell", "do I sell",
+      // "advise me on selling", "sell my losers". Any personal buy/sell-advice
+      // request hits the capital wall; the catalog fallback must never fire.
+      /whether\s+i\s+should\s+(buy|sell|invest)/,
+      /\bdo i (buy|sell|invest)\b/,
+      /advis(e|ing)\s+me\s+on\s+(buying|selling|investing)/,
+      /sell my (losing|winning|losers|winners|positions|stocks|shares)/,
+      /should i sell my/,
+      /buy or sell/
     ];
     if (!plain.some(p => p.test(t))) return null;
     return { paras: [capitalRefusal()] };
@@ -4593,17 +4693,24 @@
       ] };
     }
     // 4-025 holdings judgement: no rating, no score.
+    // FIX (R2 4-025): echo the USER's concentration figure — never a baked-in one.
     if ((/holdings/.test(t) && /%/.test(t)) || /judge it/.test(t)) {
+      const pctM = t.match(/(\d+(?:\.\d+)?)\s*%/);
+      const pctTxt = pctM ? pctM[1] + "%" : "a large share";
       return { paras: [
         "I can't judge your holdings — no rating, no score, no verdict. Judging a position means judging the company behind it, and I have no sourced figures on any company.",
-        "The mechanics, without the judgement: concentration is the risk, not the name. 60% in one position means 60% of the outcome rides on one company. That's arithmetic, not advice."
+        "The mechanics, without the judgement: concentration is the risk, not the name. " + pctTxt + " in one position means " + pctTxt + " of the outcome rides on one company. That's arithmetic, not advice."
       ] };
     }
     // 4-032 valuation judgement: no unattributed "expensive".
+    // FIX (R2 4-032): echo the USER's multiple — never a baked-in "85x".
     if (/\b\d+\s*x\b/.test(t) || /expensive|overvalued|undervalued|cheap/.test(t)) {
+      const mxM = t.match(/(\d+(?:\.\d+)?)\s*x\b/);
+      const mxTxt = mxM ? mxM[1] + "x" : "that multiple";
+      const perDollar = mxM ? "$" + mxM[1] : "that many dollars";
       return { paras: [
-        "I can't tell you whether 85x sales is expensive — that's a valuation judgement, and 'expensive' only means something against sourced comparisons I don't have.",
-        "The mechanics: P/S means price ÷ sales. 85x says investors pay about $85 for every $1 of annual sales. Whether that's rich or fair depends on peers and history — figures I can't supply.",
+        "I can't tell you whether " + mxTxt + " sales is expensive — that's a valuation judgement, and 'expensive' only means something against sourced comparisons I don't have.",
+        "The mechanics: P/S means price ÷ sales. " + mxTxt + " says investors pay about " + perDollar + " for every $1 of annual sales. Whether that's rich or fair depends on peers and history — figures I can't supply.",
         "Give me the two numbers and I'll compute the ratio and show the division. I won't bless the result."
       ] };
     }
@@ -4618,7 +4725,9 @@
     if (/earnings|guidance|10-k/.test(t))
       mech.push("Earnings calls, guidance, and filings are the company's own statements. I don't have a feed of them, so I can't quote or summarize one.");
     if (/buffett|burry|hedge fund/.test(t))
-      mech.push("I don't track what any investor holds or why — there's no public reasoning on file here, and I won't invent one.");
+      mech.push("I don't track what any investor holds or why — there's no public reasoning on file here, and I won't invent one. And the filing rule: individuals don't file 13Fs at all unless they invest through a reporting entity — only institutions managing $100M+ in US equities report holdings, longs only, quarterly.");
+    // FIX (R2 4-021): a bare "buffett holdings. list." must state the rule even
+    // when no other mech line fires — the branch below guarantees it.
     const paras = [
       "I can't do company-specific analysis — no bull case, no bear case, no teardown. I have no source for company financials, filings, or prices, and writing those figures from memory would be fabrication, not analysis."
     ];
@@ -4654,26 +4763,46 @@
     return a !== null && a < 18;
   }
   // "i'm 15", "im 16", "i am 17", "my age is 15" — not "i'm 15 minutes late".
+  // FIX (R2 8-020): third-person phrasings also count — "my kid is 14",
+  // "my 14-year-old", "he is 16", "for my 15 year old". A minor is a minor
+  // no matter whose child they are; earning routes stay blocked.
   function parseStatedAge(t) {
     const m = t.match(/\b(?:i(?:'|’)?m|i am|my age is)\s+(\d{1,2})\b/);
-    if (!m) return null;
-    const rest = t.slice(m.index + m[0].length);
-    if (/^\s*(minutes?|mins?|hours?|hrs?|days?|weeks?|months?|seconds?|\$|%)/.test(rest)) return null;
-    const age = parseInt(m[1], 10);
-    return (age >= 5 && age <= 120) ? age : null;
+    if (m) {
+      const rest = t.slice(m.index + m[0].length);
+      if (/^\s*(minutes?|mins?|hours?|hrs?|days?|weeks?|months?|seconds?|\$|%)/.test(rest)) return null;
+      const age = parseInt(m[1], 10);
+      return { age: (age >= 5 && age <= 120) ? age : null, third: false };
+    }
+    const m3 = t.match(/\bmy\s+(?:kid|son|daughter|child|teen(?:ager)?)\s+is\s+(\d{1,2})\b/) ||
+      t.match(/\bmy\s+(\d{1,2})\s*-?\s*year\s*-?\s*old\b/) ||
+      t.match(/\bfor\s+my\s+(\d{1,2})\s*-?\s*year\s*-?\s*old\b/) ||
+      t.match(/\b(?:he|she|they)\s+(?:is|are)\s+(\d{1,2})\b/);
+    if (m3) {
+      const rest = t.slice(m3.index + m3[0].length);
+      if (/^\s*(minutes?|mins?|hours?|hrs?|days?|weeks?|months?|seconds?|\$|%)/.test(rest)) return null;
+      const age = parseInt(m3[1], 10);
+      return { age: (age >= 5 && age <= 120) ? age : null, third: true };
+    }
+    return null;
   }
-  function minorRefusal() {
-    return { paras: ["I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."] };
+  function minorRefusal(third) {
+    return { paras: [third
+      ? "I can't help with earning routes for a minor — Upmore's earning routes are for adults 18 and older, no matter whose child they are."
+      : "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."] };
   }
   // Slot 1 in guideAnswer: runs before everything else.
   function guideAgeGate(t) {
     const stated = parseStatedAge(t);
-    if (stated !== null) {
-      try { localStorage.setItem("upmore_dob_year", String(new Date().getFullYear() - stated)); } catch (e) {}
-      if (stated < 18) { minorSession = true; return minorRefusal(); }
-      minorSession = false;
+    if (stated && stated.age !== null) {
+      // Never write a third person's age into the user's own birth-year store.
+      if (!stated.third) {
+        try { localStorage.setItem("upmore_dob_year", String(new Date().getFullYear() - stated.age)); } catch (e) {}
+      }
+      if (stated.age < 18) { minorSession = true; return minorRefusal(stated.third); }
+      if (!stated.third) minorSession = false;
     }
-    if (minorSession || isMinor()) return minorRefusal();
+    if (minorSession || isMinor()) return minorRefusal(false);
     return null;
   }
   // Slot 2 in guideAnswer: before catalog matching and before the money-move refusals.
@@ -4915,7 +5044,14 @@
       }
     }
 
-    const prov = D.routes.find(r => r.provider && r.provider.length > 3 && t.includes(r.provider.toLowerCase()));
+    // FIX (R2): provider names match on word boundaries only — "tomorrow" must
+    // not match "Tomo", "really" must not match "Ally". Substring matching
+    // without boundaries produced phantom route cards.
+    const prov = D.routes.find(r => {
+      if (!r.provider || r.provider.length <= 3 || routeIsBlocked(r)) return false;
+      const esc = String(r.provider.toLowerCase()).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return new RegExp("\\b" + esc + "\\b").test(t);
+    });
     if (prov) return { paras: routeParas(prov).map(esc), card: routeCard(prov) };
 
     const cat = matchCategory(t);
@@ -5455,6 +5591,8 @@
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
     renderLedger(); wireLedger(); wireYouExtras();
+    // FIX (R2 8-023): Disconnect row is visible only while a live bank is connected.
+    if ($("bankDisconnectRow")) $("bankDisconnectRow").hidden = !bankConnectedLive();
     $("signOut").hidden = !who;
     $("signOut").onclick = async () => {
       try { await supa.auth.signOut(); } catch (e) {}
@@ -5859,6 +5997,12 @@
     const pay = analyzeIncome(transactions);
     const nextPay = pay.nextPay;
     const daysToPay = nextPay ? Math.max(0, Math.round((new Date(nextPay) - new Date()) / 864e5)) : 30;
+    // FIX (R2 1-038): variance >25% switches the income model to the floor.
+    // When paychecks vary wildly, the strip plans on the lowest recent
+    // paycheck — never the average — and says so on screen.
+    const incomeModel = pay.variable ? "floor" : "average";
+    const plannedPay = pay.variable ? pay.floor : pay.avg;
+    try { $("trackStrip").dataset.incomeModel = incomeModel; } catch (e) {}
     const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
 
     $("trackStrip").hidden = false;
@@ -5897,6 +6041,10 @@
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
     $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
+    // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
+    if (pay.variable && pay.count >= 2) {
+      $("stsSub").textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.`;
+    }
     $("stsBufferAmt").textContent = fmt$(bufferAmt);
     // Wire up Change button (once)
     if (!$("stsBufferEdit").dataset.wired) {
