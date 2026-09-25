@@ -57,3 +57,28 @@ Three throwaway QA users created across test runs (`qa-throwaway-nonowner@`, `qa
 1. Apply the one-line fix (`getUser(jwt)`) to `supabase/functions/simplefin-proxy/index.ts` and redeploy via `sb.py deploy simplefin-proxy`.
 2. Re-run: owner-authenticated success (needs Vishnu's session) and non-owner 403 + zero leakage.
 3. Then the SimpleFIN checklist is complete.
+
+---
+
+## Re-test after auth fix (2026-09-25 ~15:14 CDT)
+
+The one-line fix (`userClient.auth.getUser(jwt)` instead of `getUser()`) was applied to `supabase/functions/simplefin-proxy/index.ts` and redeployed (v3, ACTIVE). All tests re-run against the fixed function.
+
+### 1. Non-owner 403 with zero leakage — PASS
+- Throwaway user `qa-throwaway-simplefin-retest@example.com` created via GoTrue admin API, signed in, POSTed to the proxy with its valid JWT.
+- Status: **403**. Exact response body: `{"error":"No bank connection on this account"}`
+- Zero-leakage check: body contains no account names, balances, transactions, Access URL, credentials, or other user IDs. **PASS**.
+- The fix works: the same test returned 401 before the fix; now the JWT is properly verified and the owner check (not the auth check) denies the request.
+
+### 2. Garbage JWT still rejected — PASS
+- Malformed JWT → **401** `{"code":"UNAUTHORIZED_LEGACY_JWT","message":"Invalid JWT"}`. Auth still rejects garbage.
+
+### 3. Budget not consumed by 403s — PASS
+- `simplefin_requests` queried for the throwaway user_id after the 403: **0 rows**. Failed owner checks do not consume the 24/day budget.
+
+### 4. Cleanup — COMPLETE
+- Throwaway user deleted via GoTrue admin API (DELETE → 200), deletion verified (GET → 404).
+- 0 QA rows in `simplefin_requests`; `simplefin_connections` untouched (owner row never read); vaulted Access URL never touched; temp script removed.
+
+## What still cannot be tested (honest gap)
+- **Owner-authenticated success**: the full `/accounts` fetch through the proxy (Vishnu's live session → his two Chase accounts, errlist surfacing) requires Vishnu's live JWT. Not attempted, not fabricated. This is the last open SimpleFIN item and needs him.

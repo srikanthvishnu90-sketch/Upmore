@@ -1459,7 +1459,10 @@
   //  - referral gating ("refer a friend ... you each get") is
   //    acceptance-dependent, so it can't lead either.
   // Blocked routes stay discoverable in the catalog — they just never lead.
-  const LEAD_NONCASH = /gift card|statement credit|bill credits?|store credit|merchant credit|account credits?|tax credit|price match/gi;
+  // FIX (pass2-E1): coupons and spend-discounts ("$15 off $50", "% off") are
+  // never extractable cash — a $0 user served a coupon as Move 2 is a broken
+  // promise. Same negation/cash-alternative guards as the other patterns.
+  const LEAD_NONCASH = /gift card|statement credit|bill credits?|store credit|merchant credit|account credits?|tax credit|price match|\bcoupon\b|\$\d[\d,]*\s+off\b|\d+\s*%+\s*off\b/gi;
   const LEAD_NEG = /\b(never|not|no|n't|without|instead of|rather than|avoid)\b/i;
   const LEAD_CASH = /cash payouts?|via paypal|paid in cash|direct deposit|cash back| venmo| zelle|mailed check|paper check/i;
   const LEAD_REFGATE = /\brefer (a|your) friends?\b/i;
@@ -3031,10 +3034,34 @@
     k401: 24500, k401catch: 8000, ira: 7500, iracatch: 1100, // IRS Notice 2025-67
     eitcMax: 8231, ctc: 2200, actc: 1700,
   };
+  // 2026 federal marginal brackets (Rev. Proc. 2025-32), taxable-income tops.
+  // FIX (pass2-T3/T6): the marginal rate is DERIVED from income + filing
+  // status — never a hardcoded default. Every tax figure traces to inputs.
+  const TAX_BRACKETS_2026 = {
+    single: [[12400,10],[50400,12],[105700,22],[201775,24],[256225,32],[640600,35],[Infinity,37]],
+    mfj:    [[24800,10],[100800,12],[211400,22],[403550,24],[512450,32],[768700,35],[Infinity,37]],
+    hoh:    [[17700,10],[67450,12],[105700,22],[201750,24],[256200,32],[640600,35],[Infinity,37]],
+  };
+  function marginalRate2026(income, fs) {
+    const key = fs === "mfj" ? "mfj" : fs === "hoh" ? "hoh" : "single";
+    const dedKey = key === "mfj" ? "married" : key;
+    const taxable = Math.max(0, (parseFloat(income) || 0) - (TAX_2026.stdDed[dedKey] || 0));
+    for (const [top, rate] of TAX_BRACKETS_2026[key]) if (taxable <= top) return rate;
+    return 37;
+  }
+  // Marginal rate: user's explicit override wins; otherwise derived from
+  // their entered income + filing status (12% at $54k MFJ, not 22%).
+  function cfoMarginalRate() {
+    if (cfoGet("tax_rate_manual", 0)) {
+      const v = parseFloat(cfoGet("tax_rate", ""));
+      if (v > 0 && v < 100) return v;
+    }
+    return marginalRate2026(cfoGet("tax_inc", 0), cfoGet("tax_fs", "single"));
+  }
   function cfoTax(body) {
     // FIX (pass1-T3/T4/T5/T6): personalization engine. Every credit is now gated
     // on the user's filing status / kids / income / student / HDHP inputs.
-    const gig = cfoGet("tax_gig", 0), rate = cfoGet("tax_rate", 22);
+    const gig = cfoGet("tax_gig", 0), rate = cfoMarginalRate();
     const tfs = cfoGet("tax_fs", "single"), tkids = cfoGet("tax_kids", 0), tinc = cfoGet("tax_inc", 0);
     const tstud = cfoGet("tax_stud", "no"), thdhp = cfoGet("tax_hdhp", "no"), thsaType = cfoGet("tax_hsa_type", "individual");
     const thsa = cfoGet("tax_hsa", 0), tk401 = cfoGet("tax_401k", 0);
@@ -3116,7 +3143,7 @@
       <div class="svform">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <label class="f"><span>Expected gig profit this year ($)</span><input id="tGig" inputmode="decimal" value="${gig}"></label>
-          <label class="f"><span>Your marginal income-tax rate (%)</span><input id="tRate" inputmode="decimal" value="${rate}"></label>
+          <label class="f"><span>Your marginal income-tax rate (%) — auto from income; edit to override</span><input id="tRate" inputmode="decimal" value="${rate}"></label>
         </div>
       </div>
       <div class="pcard" style="margin-top:8px">
@@ -3132,7 +3159,7 @@
         <div class="item"><div class="grow"><p class="t">401(k) — $${kGap.toLocaleString()} of $${TAX_2026.k401.toLocaleString()} room left</p><p class="m">Filling it at your ${rate}% marginal rate defers <b>~$${Math.round(kSave).toLocaleString()}</b> of federal tax this year. IRA: $${TAX_2026.ira.toLocaleString()} (+$${TAX_2026.iracatch.toLocaleString()} at 50+).${iraNote}</p></div></div>
       </div>
       <p class="fine" style="margin-top:12px">Sources: Rev. Proc. 2025-32, IRS Notice 2025-67, Rev. Proc. 2025-19. We never file or submit anything to the IRS. Multi-state income, AMT, or stock comp — see a CPA.</p>`;
-    const upd = () => { cfoSet("tax_gig", parseFloat($("tGig").value) || 0); cfoSet("tax_rate", parseFloat($("tRate").value) || 0); cfoTax(body); };
+    const upd = () => { cfoSet("tax_gig", parseFloat($("tGig").value) || 0); cfoSet("tax_rate", parseFloat($("tRate").value) || 0); cfoSet("tax_rate_manual", 1); cfoTax(body); };
     $("tGig").onchange = upd; $("tRate").onchange = upd;
     const upd2 = () => {
       cfoSet("tax_fs", $("tFs").value); cfoSet("tax_kids", parseInt($("tKids").value, 10) || 0);
@@ -4883,7 +4910,11 @@
     const cat = String(r.category || "").toLowerCase();
     if (cat === "prediction market" || cat === "crypto reward" || cat === "crypto learn") return true;
     const blob = [r.provider, r.method, r.what, r.reward].map(x => String(x || "")).join(" ").toLowerCase();
-    return /\b(polymarket|kalshi|zensports|stepbet|healthywage|binance|bybit|kucoin|kraken|coinbase)\b/.test(blob);
+    // FIX (pass2-E1/X1): FanDuel/PrizePicks/DraftKings/BetMGM/DietBet were
+    // Standard-lane and passed all 9 gates. Named here so no future
+    // Standard-lane gambling/wager route can ever pass, even if its lane
+    // is wrong in the catalog.
+    return /\b(polymarket|kalshi|zensports|stepbet|healthywage|dietbet|fanduel|prizepicks|draftkings|betmgm|binance|bybit|kucoin|kraken|coinbase)\b/.test(blob);
   }
 
   function guideAnswer(text) {
@@ -4948,7 +4979,11 @@
 
     // CFO IN CHAT (Vishnu 2026-09-25): the seven CFO tools answer conversationally
     // here, computing from the same stored data the screens use.
-    if (has("debt payoff", "pay off my debt", "pay down my debt", "avalanche", "snowball", "which debt", "debt plan", "credit card debt")) {
+    // FIX (pass2-D1): "which card do I pay first?" must route to debt
+    // sequencing, never to "The 3 easiest routes" bank-signup offers — the
+    // substring "first" was hijacking debt intent into earn routes.
+    const debtOrder = /which (card|debt|loan|balance)/.test(t) || (/first/.test(t) && /pay/.test(t) && /(card|debt|loan|balance|apr|interest)/.test(t));
+    if (has("debt payoff", "pay off my debt", "pay down my debt", "avalanche", "snowball", "which debt", "debt plan", "credit card debt") || debtOrder) {
       const debts = cfoGet("debts", []);
       if (!debts.length) return { paras: ["I can run your payoff plan — but I don't have your debts yet. Add them on Home → Debt payoff plan (balance, APR, minimum each), then ask me again and I'll rank them and price avalanche vs minimums."] };
       const order = [...debts].sort((a, b) => b.apr - a.apr);
@@ -4973,7 +5008,7 @@
       if (thdhp === "yes") {
         const lim = cfoGet("tax_hsa_type", "individual") === "family" ? 8750 : 4400;
         const gap = Math.max(0, lim - (cfoGet("tax_hsa", 0) || 0));
-        if (gap > 0) lines.push(`HSA: $${gap.toLocaleString()} of room left — filling it saves ~$${Math.round(gap * (cfoGet("tax_rate", 22) / 100)).toLocaleString()}/yr in federal tax. Deadline Apr 15, 2027.`);
+        if (gap > 0) lines.push(`HSA: $${gap.toLocaleString()} of room left — filling it saves ~$${Math.round(gap * (cfoMarginalRate() / 100)).toLocaleString()}/yr in federal tax. Deadline Apr 15, 2027.`);
       }
       if (!lines.length) return { paras: [
         "I can check what you're leaving on the table — I need your filing status, kids, income, and whether you're a student or have an HDHP.",
@@ -5005,7 +5040,12 @@
       out.push("Full read with your numbers: Home → Coverage check. General info, not insurance advice.");
       return { paras: out };
     }
-    if (has("underpaid", "ask for a raise", "freelance rate", "how much should i charge", "hourly rate")) {
+    // FIX (pass2-I1/I4): salary-context "raise" must never match the provider
+    // named "Raise" (gift-card resale). "should I ask for a 20% raise?" has
+    // salary intent — the word "raise" plus a pay/job/boss cue routes here,
+    // before the provider-name matcher below.
+    const salaryRaise = /\braise\b/.test(t) && /(salary|\bpay\b|job|boss|wage|promotion|\bincrease\b|negotiat|ask for|\d+\s*%|\breview\b)/.test(t);
+    if (has("underpaid", "ask for a raise", "freelance rate", "how much should i charge", "hourly rate") || salaryRaise) {
       const sal = cfoGet("inc_sal", 0), mult = cfoGet("inc_mult", 2.5);
       const lines = [];
       if (sal > 0) lines.push(`Freelance floor: <b>${cfo2$(sal / 2080 * mult)}/hr</b> (target), never below <b>${cfo2$(sal / 1000)}/hr</b> (hard floor).`);
@@ -5110,6 +5150,10 @@
     // without boundaries produced phantom route cards.
     const prov = D.routes.find(r => {
       if (!r.provider || r.provider.length <= 3 || routeIsBlocked(r)) return false;
+      // FIX (pass2-I1/I4): the provider named "Raise" (gift-card resale) must
+      // never win on salary-context queries — those are handled by the
+      // income-side branch above. Double-guard in case that branch is bypassed.
+      if (r.provider.toLowerCase() === "raise" && /(salary|\bpay\b|job|boss|wage|promotion|\bincrease\b|negotiat|ask for|\d+\s*%|\breview\b)/.test(t)) return false;
       const esc = String(r.provider.toLowerCase()).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return new RegExp("\\b" + esc + "\\b").test(t);
     });
@@ -5853,7 +5897,12 @@
       ["age", () => !route.min_age || user.age >= route.min_age],
       ["state", () => !route.states || route.states.includes(user.state)],
       ["deadline", () => !route.deadline || new Date(route.deadline) >= new Date()],
-      ["freshness", () => route.verification === "confirmed" || route.verification === "unverified"],
+      // FIX (pass2-E1/E2): use the mapped verification taxonomy, not the raw
+      // catalog field (routes carry `status`, not `verification` — the raw
+      // check failed for every route and blanked the Earn surface).
+      // Researched routes are operator-researched and fresh enough to show;
+      // the badge (routeVerification) still says "researched", never "confirmed".
+      ["freshness", () => { const v = routeVerification(route); return v === "verified" || v === "researched" || v === "unverified"; }],
       ["loss", () => route.cannot_lose !== false],
       ["capital", () => (route.required_capital || 0) <= (user.free_cash || 0)],
       ["time", () => !route.active_minutes || route.active_minutes <= (user.free_minutes || 60)],
