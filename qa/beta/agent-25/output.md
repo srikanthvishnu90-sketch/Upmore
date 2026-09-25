@@ -60,3 +60,22 @@ recommendations were unachievable for the target first-timer.
 - Open catalog gap (not a code bug): speed="today" means "work finishes
   today" on some referral routes while cash arrives in ≤60 days; speed
   semantics need a catalog pass.
+
+## CHECK 1 RERUN (2026-09-25 ~00:13 UTC, build 0e4651c, hardened protocol) — PASS
+- Build canary FRESH on first try: Guide "what pays today" answer contained the
+  exact "Straight talk:" line. No stale-build straddle this run.
+- Signed-out onboarding as "Canary": time "About an hour", cash "$0" CONFIRMED
+  visually selected (green highlighted border, aria-pressed) before continuing.
+- Home queue first 3 cards (matches the node harness prediction exactly):
+  1. Reward XP Games — earn XP playing games, up to $1,000 per game (today tier)
+  2. Strike — referral, fee-free trading (today tier)
+  3. Southeastbank — referral bonus $50/$100/$150 (today tier)
+- None: JM Bullion/buyback, SoFi/Moomoo/Sogotrade/Public transfer promos,
+  Microsoft bounties, nothing requiring $1k+ assets. All beginner-actionable.
+- "Up next:" header shows the formula components ($1000 x 70% x 2 / 60 min).
+- FINAL: agent 25's three gaps are all closed on 0e4651c.
+- Remaining product note (open catalog gap, not a check failure): speed="today"
+  conflates "your work finishes today" with "cash arrives today" — e.g.
+  Southeastbank's payout_timing says the friend must qualify within 60 days;
+  Strike's reward is fee-free trading, not cash. Catalog speed semantics need
+  a dedicated pass before the final full-suite rerun.
