@@ -71,10 +71,15 @@ queue does something (no dead taps); every sheet closes.
 Verify: beta agents 1–10 assert viewport overflow == 0 and exercise every
 control on their path.
 
-## B11 — Guide $1000 flow untouched
-The Guide's $1000 money-plan logic (reserved for 2026-09-25) is byte-identical
-before and after this change, except the mechanical status-tier rename.
-Verify: `git diff` on the $1000 plan code paths shows no logic change.
+## B11 — Guide $1000 flow behaves as specified
+The reserved $1000 money-plan logic was implemented on 2026-09-25 per the
+specified behavior: exact first line "Straight answer on $1000: no single
+verified route gets you there fast.", Userfeel R3445 recommendation with
+$3–$30/test and ~1 week to PayPal, honest math (~100 tests = weeks, not fast),
+extractable-cash-only counting, walkthrough offer that resolves to R3445,
+and pending-offer clearing on unrelated messages.
+Verify: beta agent-13 rerun 2b on production (walkthrough reached STEP 2 OF 4);
+`git log --oneline --grep="1000"` shows the implementation commits.
 
 ## B12 — Home is one queue
 Home shows a single ranked queue — no competing hero + "more moves" +

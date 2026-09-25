@@ -394,6 +394,7 @@
   .xpill { font-size:11.5px; font-weight:600; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 9px; white-space:nowrap; align-self:center; }
   .rbadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:var(--sky); border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .vbadge { font-size:10.5px; font-weight:700; color:#fff; background:#1F7A4D; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
+  .ubadge { font-size:10.5px; font-weight:700; color:#5b5346; background:#EDE8DC; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .abadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:#FFD666; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .xfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; font-size:12.5px; color:var(--dim); }
   .xfoot a { color:var(--sky); font-weight:600; text-decoration:none; white-space:nowrap; }
@@ -858,16 +859,17 @@
         <div class="sheeticon" id="subSheetIcon">N</div>
         <div style="text-align:center"><b id="subSheetName" style="font-size:18px">Netflix</b>
         <p class="psub" id="subSheetMeta" style="margin:4px 0 14px">$15.99/mo</p></div>
-        <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
-        <button class="danger" id="subCancelBtn">Cancel subscription</button>
-        <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
-        <div class="svform" style="margin-top:12px;text-align:left">
+        <div id="subDupCompare" style="margin-bottom:12px" hidden></div>
+        <div class="svform" style="margin-top:0;text-align:left">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <label class="f"><span>Amount</span><input id="subEditAmount" inputmode="decimal" autocomplete="off"></label>
             <label class="f"><span>Next bill</span><input id="subEditBill" type="date"></label>
           </div>
           <button class="go" id="subUpdateBtn" style="height:44px">Update</button>
         </div>
+        <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
+        <button class="danger" id="subCancelBtn">Cancel subscription</button>
+        <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
         <button class="ghostbtn" id="subSheetClose">Keep it</button>
       </div>
     </div>
@@ -1598,7 +1600,7 @@
           title: `Possible duplicate: ${g[0].merchant}`,
           sub: `${g.length} active charges look like the same subscription`,
           dollars, conf: 0.8, urg: 1.5, eff: 3,
-          cta: "Review", act: () => openSubSheet(g[1].id),
+          cta: "Review", act: () => openSubSheet(g[0].id, g),
           why: `${qMoney(dollars)}/yr in duplicate charges x 80% / 3 min` });
       });
       subs.forEach(x => {
@@ -2031,7 +2033,7 @@
   }
 
   let homeSubCache = [];
-  async function openSubSheet(id) {
+  async function openSubSheet(id, group) {
     const rows = await saveRows("save_subscriptions", "created_at", false);
     const s = rows.find(r => String(r.id) === String(id));
     if (!s) return;
@@ -2039,6 +2041,19 @@
     $("subSheetIcon").outerHTML = appIcon(s.merchant, "lg").replace('class="appicon"', 'class="sheeticon" id="subSheetIcon"');
     $("subSheetName").textContent = s.merchant;
     $("subSheetMeta").textContent = `${money$(s.amount)}${INTPER[s.billing_interval] || ""}`;
+    // Duplicate side-by-side: when opened from the duplicate card, list every
+    // matching charge so the user can compare and cancel the right one.
+    const dupBox = $("subDupCompare");
+    const dupes = (group || []).filter(g => String(g.id) !== String(s.id) && g.status !== "cancelled");
+    if (dupes.length) {
+      dupBox.hidden = false;
+      dupBox.innerHTML = `<p class="psub" style="margin:0 0 8px;text-align:center">${dupes.length + 1} charges look like the same subscription — compare:</p>` +
+        [s, ...dupes].map((d, i) =>
+          `<div class="item" style="margin-bottom:6px"><div class="grow"><p class="t">${esc(d.merchant)}${i === 0 ? " (this one)" : ""}</p>` +
+          `<p class="m num">${money$(d.amount)}${INTPER[d.billing_interval] || ""}${d.next_billing_date ? " · next " + esc(d.next_billing_date) : ""}</p></div>` +
+          `<button class="linkbtn" data-dupcancel="${d.id}">Cancel</button></div>`).join("");
+      dupBox.querySelectorAll("[data-dupcancel]").forEach(b => b.onclick = () => cancelSubById(b.dataset.dupcancel, b));
+    } else { dupBox.hidden = true; dupBox.innerHTML = ""; }
     $("subEditAmount").value = s.amount != null ? s.amount : "";
     $("subEditBill").value = s.next_billing_date || "";
     $("subUpdateBtn").onclick = async () => {
@@ -2065,21 +2080,25 @@
     if (flow && flow.url) { link.href = flow.url; link.style.display = "block"; } else { link.style.display = "none"; }
     stepsEl.textContent = flow ? flow.steps : "";
     $("subSheet").hidden = false;
-    $("subCancelBtn").onclick = async () => {
-      $("subCancelBtn").disabled = true;
-      let cerr = null;
-      try { ({ error: cerr } = await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id)); } catch (e) { cerr = e; }
-      $("subCancelBtn").disabled = false;
-      $("subSheet").hidden = true;
-      if (cerr) { toast("Couldn't cancel — try again"); return; }
-      renderSubs(); renderQueue();
-      show("guide");
-      const fl = cancelFlowFor(s.merchant);
-      const brief = fl
-        ? `I just cancelled my ${s.merchant} subscription (${money$(s.amount)}${INTPER[s.billing_interval] || ""}). Walk me through confirming it's really cancelled. The direct cancel page is ${fl.url || "in the app settings"}, and the steps are: ${fl.steps}`
-        : `I just cancelled my ${s.merchant} subscription. Walk me through confirming it's really cancelled on their site.`;
-      guideAsk(brief);
-    };
+    $("subCancelBtn").onclick = () => cancelSubById(s.id, $("subCancelBtn"));
+  }
+  async function cancelSubById(id, btn) {
+    const rows = homeSubCache && homeSubCache.length ? homeSubCache : await saveRows("save_subscriptions", "created_at", false);
+    const s = rows.find(r => String(r.id) === String(id));
+    if (!s) return;
+    if (btn) btn.disabled = true;
+    let cerr = null;
+    try { ({ error: cerr } = await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id)); } catch (e) { cerr = e; }
+    if (btn) btn.disabled = false;
+    $("subSheet").hidden = true;
+    if (cerr) { toast("Couldn't cancel — try again"); return; }
+    renderSubs(); renderQueue();
+    show("guide");
+    const fl = cancelFlowFor(s.merchant);
+    const brief = fl
+      ? `I just cancelled my ${s.merchant} subscription (${money$(s.amount)}${INTPER[s.billing_interval] || ""}). Walk me through confirming it's really cancelled. The direct cancel page is ${fl.url || "in the app settings"}, and the steps are: ${fl.steps}`
+      : `I just cancelled my ${s.merchant} subscription. Walk me through confirming it's really cancelled on their site.`;
+    guideAsk(brief);
   }
 
   function openPromoSheet(id) {
@@ -2548,7 +2567,7 @@
       const el = document.createElement("div");
       el.className = "xitem";
       const laneBadge = r.lane !== "Standard" ? `<span class="rbadge">Higher-risk</span>` : "";
-      const researchedBadge = r.status === "researched" ? `<span class="vbadge">\u2713 Researched</span>` : "";
+      const researchedBadge = r.status === "researched" ? `<span class="vbadge">\u2713 Researched</span>` : `<span class="ubadge">Unverified</span>`;
       el.innerHTML = `<div class="xrow">
           <span class="xtile" style="background:${tileColor(r)}">${XICONS[CATICON[r.category]] || XICONS.tag}</span>
           <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${researchedBadge}</b><span>${esc(routeMeta(r))}</span>${earnLine(r) ? `<span class="xearn">${esc(earnLine(r))}</span>` : ""}</span>
