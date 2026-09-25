@@ -2815,6 +2815,13 @@
     if (busy) return; busy = true;
     addMe(text);
     try {
+      // SPEC 01 Capital wall: pull-only, never recommends securities.
+      // "What should I invest in?" gets the fixed refusal, not the agent.
+      const t = text.toLowerCase();
+      if (/what.*invest|should i (buy|invest)|best stock|stock.*(buy|pick)|crypto.*(buy|invest)|recommend.*(stock|fund|etf|investment)/i.test(t)) {
+        // Suppress entirely if free cash negative or recent overdrafts (spec).
+        addAI([capitalRefusal()]); busy = false; return;
+      }
       // Tracked data first: the user's own deadlines/subscriptions/ledger
       // must never be intercepted by the remote agent's generic replies.
       const tr = await trackedAnswer(text);
