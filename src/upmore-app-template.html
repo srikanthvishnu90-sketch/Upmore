@@ -1209,16 +1209,24 @@
   const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
     || NEEDS_ASSETS_RES.some(rx => rx.test(r.category || ""))
     || NEEDS_EXISTING_IDS.includes(String(r.id));
+  // Hard prerequisites for first moves: a queued move the user cannot act on
+  // is a broken promise. Blocked routes stay discoverable in Explore; they
+  // just can't lead the queue. cash = "cash you could leave in a new account
+  // for 3 months" from onboarding (0 for a broke beginner).
+  const blocked = (r, cash) => {
+    if (needsSpend(r) && cash <= 0) return true;
+    if (NEEDS_EXISTING_IDS.includes(String(r.id)) && cash < 10000) return true; // ACAT needs $10k+ to move
+    if (NEEDS_ASSETS_RES.some(rx => rx.test(r.category || "")) && cash < 1000) return true; // buyback needs $1k+ in items
+    return false;
+  };
   function rankMoves() {
     const d = planData();
     const mins = parseInt(d.time, 10) || 60;
-    const cash = parseInt(d.cash, 10);
-    const noCash = (cash || 0) <= 0;
+    const cash = parseInt(d.cash, 10) || 0;
     const scored = stdRoutes()
-      // $0 cash: spend-dependent routes are NOT actionable first moves —
-      // showing a broke user a "move" that requires spending is a broken
-      // promise. They stay discoverable in Explore; they just can't lead.
-      .filter(r => !(noCash && needsSpend(r)))
+      // Prerequisite filter: moves the user cannot act on can't lead.
+      // They stay discoverable in Explore.
+      .filter(r => !blocked(r, cash))
       .map(r => {
       let s = earnRatioOf(r);
       const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
@@ -1619,8 +1627,10 @@
           cta: "Mark claimed", act: () => deadlineDone("save_claims", c.id),
           why: `$${dollars} x 90% / 15 min - due ${qDueText(days)}` });
       });
-      // claim: promos that fit (excluding routes already in progress — they have Continue cards)
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id))).slice(0, 3)
+      // claim: promos that fit (excluding routes already in progress — they have Continue cards;
+      // and excluding routes whose prerequisites the user can't meet — same rule as earn cards)
+      const cash0 = parseInt(d.cash, 10) || 0;
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !blocked(r, cash0)).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
@@ -2261,7 +2271,7 @@
       if (todays.length) {
         const items = todays.map((r, i) =>
           `${i + 1}. ${r.provider} — ${r.reward || "reward varies"}. Who pays: ${r.who_pays || "the provider"}. Cash arrives: ${r.when_cash_arrives || r.payout_timing || "see the offer's terms"}${r.catches ? ` (catch: ${short(r.catches, 80)})` : ""}`);
-        return { paras: ["The fastest routes in the catalog — these pay out the same day you finish:", ...items.map(esc),
+        return { paras: ["The fastest routes in the catalog — check \"Cash arrives\" on each before you start:", ...items.map(esc),
           "Straight talk: you do the work first, then the provider pays on the timing above. Nothing here is free money with no effort."], card: routeCard(todays[0]) };
       }
     }
