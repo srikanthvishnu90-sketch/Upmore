@@ -1206,6 +1206,28 @@
   // Route IDs that require moving EXISTING assets (ACAT-style transfer promos) —
   // a $0-cash beginner has nothing to transfer.
   const NEEDS_EXISTING_IDS = ["R0018", "R0023", "R5782", "R1067"];
+  // Routes that can't lead the queue. They stay discoverable in Explore with
+  // honest labels — but the queue counts only extractable cash the user can
+  // actually act on, so these never top it as earn/claim cards or Guide picks:
+  //  - non-cash rewards: gift cards, store credit, reward dollars, spend
+  //    discounts, fee waivers, point-of-sale instant rebates (never received
+  //    as money)
+  //  - credit-card applications / cardholder-gated offers (no credit cards rule)
+  //  - existing-member-gated referrals (a non-member cannot act on them)
+  const NO_LEAD_IDS = [
+    "R6401", "R6403", "R7413", "R7414", "R0815", "R6411", // non-cash rewards
+    "R0751", "R0767", "R0761", "R0765",                   // POS instant rebates (discounts, not cash)
+    "R1932", "R6402", "R3561", "R3562", "R3563", "R1930", // credit-card offers
+    "R3570", "R6446", "R3571", "R3566",                   // "signup bonuses" paid as reward cards / tuition units / locked savings
+    "R0035", "R0875", "R4203", "R0021",                   // promos paid as credits, reward cards, or shares — not cash
+  ];
+  // Referral bonuses can't lead either: every referral is gated on being an
+  // existing customer/member or depends on someone else acting
+  // (acceptance-dependent work) — the product keeps referrals separate.
+  const NO_LEAD_CATS = ["Referral Bonus"];
+  const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category);
+  // Routes with a hard minimum deposit the user must front themselves.
+  const NEEDS_DEPOSIT_IDS = ["R0616", "R4790"]; // $100 / $25 minimum opening deposit
   const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
     || NEEDS_ASSETS_RES.some(rx => rx.test(r.category || ""))
     || NEEDS_EXISTING_IDS.includes(String(r.id));
@@ -1217,6 +1239,7 @@
     if (needsSpend(r) && cash <= 0) return true;
     if (NEEDS_EXISTING_IDS.includes(String(r.id)) && cash < 10000) return true; // ACAT needs $10k+ to move
     if (NEEDS_ASSETS_RES.some(rx => rx.test(r.category || "")) && cash < 1000) return true; // buyback needs $1k+ in items
+    if (NEEDS_DEPOSIT_IDS.includes(String(r.id)) && cash <= 0) return true; // can't front the minimum deposit
     return false;
   };
   function rankMoves() {
@@ -1225,8 +1248,10 @@
     const cash = parseInt(d.cash, 10) || 0;
     const scored = stdRoutes()
       // Prerequisite filter: moves the user cannot act on can't lead.
-      // They stay discoverable in Explore.
-      .filter(r => !blocked(r, cash))
+      // Cash-only rule: the queue counts extractable cash — gift cards,
+      // discounts, fee waivers, credit-card offers, and member-gated
+      // referrals stay discoverable in Explore.
+      .filter(r => !blocked(r, cash) && canLead(r))
       .map(r => {
       let s = earnRatioOf(r);
       const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
@@ -1628,9 +1653,10 @@
           why: `$${dollars} x 90% / 15 min - due ${qDueText(days)}` });
       });
       // claim: promos that fit (excluding routes already in progress — they have Continue cards;
-      // and excluding routes whose prerequisites the user can't meet — same rule as earn cards)
+      // and excluding routes whose prerequisites the user can't meet — same rule as earn cards;
+      // and non-cash / credit-card / member-gated rewards — the queue counts extractable cash only)
       const cash0 = parseInt(d.cash, 10) || 0;
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !blocked(r, cash0)).slice(0, 3)
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
