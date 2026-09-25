@@ -2789,6 +2789,31 @@
       return r;
     }
 
+    // FIX (B3): Wire the budget plan engine. When user asks for a budget plan,
+    // call buildBudgetPlan() and render the actions. Max 3, first doable today.
+    if (has("budget plan", "spending plan", "cut spending", "save money", "reduce spending")) {
+      try {
+        const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
+        const { transactions } = trackData;
+        const rec = (typeof detectRecurrence === "function") ? detectRecurrence(transactions) : [];
+        // Build fact pack from real data
+        const factPack = {
+          freeCash: 5000, // TODO: compute from real data
+          recurring: rec,
+          fees: [], // TODO: detect overdraft/late fees
+          goals: [] // TODO: load user goals
+        };
+        const plan = (typeof buildBudgetPlan === "function") ? buildBudgetPlan(factPack) : [];
+        if (plan && plan.length > 0) {
+          const paras = ["Here's your budget plan — max 3 actions, first one you can do today:"];
+          plan.forEach((a, i) => {
+            paras.push(`${i + 1}. **${a.title}** — ${a.evidence}${a.doableToday ? " (doable today)" : ""}`);
+          });
+          return { paras };
+        }
+      } catch (e) { /* fall through to default */ }
+    }
+
     return { paras: [
       `I can look up any of the ${D.routes.length} routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.`,
       "Or ask me what's the catch with any offer, and I'll give it to you straight." ] };
