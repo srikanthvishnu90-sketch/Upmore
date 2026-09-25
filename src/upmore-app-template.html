@@ -1901,7 +1901,9 @@
     const d = qDaysUntil(s.next_billing_date);
     return d == null ? "" : " · renews " + qDueText(d);
   }
-  const qAnnual = sub => Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12;
+  // FIX (R3): round to cents — 4/12 is inexact in binary floating point, so
+  // $25/quarterly annualised as 99.99999999999999 instead of exactly 100.
+  const qAnnual = sub => Math.round(Number(sub.amount || 0) * (INT2MO[sub.billing_interval] || 1) * 12 * 100) / 100;
   const normMerch = m => String(m || "").toLowerCase().replace(/[^a-z0-9]/g, "");
   // FIX (X1-F7): Use payout MIN for ranking, not MAX. A "$50–$500 variable" route
   // must not outrank fixed routes by scoring as $500. Conservative = honest.
@@ -2424,7 +2426,12 @@
   // evidence. Detected rows: require source transactions.
   function deadlineEvidence(r) {
     const raw = r.raw || {};
-    if (!r.name || !r.date) return null;
+    if (!r.name) return null;
+    // FIX (R3): unknown-date trials are SURFACED, not suppressed. The row's
+    // steps text is the evidence; deadlineCard renders "End date unknown" +
+    // the amber "check your statement" warn instead of a guessed countdown.
+    if (r.kind === "trial" && !r.date) return raw.steps ? String(raw.steps) : null;
+    if (!r.date) return null;
     if (raw.detected_via === "detection") {
       const n = Number(raw.occurrences || 0);
       return n > 0 ? `Detected from ${n} charge${n === 1 ? "" : "s"}` : null;
@@ -4052,14 +4059,21 @@
     const has = (...kws) => kws.some(k => t.includes(k));
     // FIX (R2 8-042): polite/formal paraphrases must escalate too — never the
     // catalog fallback when someone describes a persistent deficit.
-    if (!has("negative for months", "been negative", "nothing left", "nothing remaining",
+    // FIX (R3 8-042): generalized pairings — "choosing between X and Y" with
+    // rent/food/bills/meds, and bare "rent ... food" proximity in either order.
+    const hardshipHit = has("negative for months", "been negative", "nothing left", "nothing remaining",
       "nothing left at the end", "in debt every month", "in debt each month",
       "overdraft", "cannot pay rent", "can't pay rent", "cant pay rent", "panicking",
       "behind on bills", "behind on rent", "falling behind", "eviction", "collections",
       "shutoff", "shut off", "can't afford food", "cant afford food", "no money for food",
       "can't make ends meet", "cant make ends meet", "cannot make ends meet",
-      "choosing between bills", "choose between bills", "bills or food", "bills or rent",
-      "paycheck to paycheck", "robbing peter", "peter to pay paul")) return null;
+      "choosing between bills", "choose between bills", "choosing between rent",
+      "bills or food", "bills or rent", "rent and food", "rent or food",
+      "paycheck to paycheck", "robbing peter", "peter to pay paul") ||
+      (/choos\w*\s+between\s+\w+\s+and\s+\w+/.test(t) &&
+        /rent|food|bill|grocer|medication|medicine|utility|utilities/.test(t)) ||
+      /\brent\b.{0,40}\bfood\b|\bfood\b.{0,40}\brent\b/.test(t);
+    if (!hardshipHit) return null;
     return { paras: [
       "When money has been negative for months, this isn't a budgeting slip \u2014 trimming a subscription won't fix a structural gap. So I'm not going to suggest cuts; here's what actually helps in this spot.",
       "Call or text 211 (or text your ZIP code to 898-211). It's free, confidential, and connects you to local help with rent, utilities, and food \u2014 that call exists exactly for this situation.",
@@ -4500,23 +4514,54 @@
   function guideRatioMath(t) {
     t = " " + String(t).toLowerCase() + " ";
     if (!/p\/s|p\/e|price.to.sales|price.to.earnings/.test(t)) return null;
-    const nums = uwParseScaled(t);
+    // Normalize "minus|negative N" the same way uwParseScaled does, so raw
+    // number strings are findable in this copy for operand identification.
+    const tnorm = t.replace(/\b(minus|negative)\s+(?=-?\d)/gi, "-");
+    const nums = uwParseScaled(tnorm);
     if (nums.length < 2) return null;
     const a = nums[0], b = nums[1];
     const isPE = /p\/e|price.to.earnings|\bearnings\b/.test(t);
     const name = isPE ? "P/E" : "P/S";
+    if (isPE) {
+      // FIX (R3 4-006): identify operands by keyword context, not position.
+      // P/E = price ÷ earnings. The number CLOSEST after an "earning" mention
+      // is the denominator; the other is the price.
+      let earnI = -1, bestDist = Infinity;
+      nums.forEach((n, i) => {
+        const pos = tnorm.indexOf(String(n.raw).toLowerCase());
+        if (pos < 0) return;
+        const from = Math.max(0, pos - 30);
+        const ePos = tnorm.slice(from, pos).lastIndexOf("earning");
+        if (ePos >= 0) {
+          const dist = pos - (from + ePos);
+          if (dist < bestDist) { bestDist = dist; earnI = i; }
+        }
+      });
+      const earnN = earnI >= 0 ? nums[earnI] : b;
+      const priceN = earnI >= 0 ? nums[earnI === 0 ? 1 : 0] : a;
+      if (!(earnN.value > 0)) {
+        return { paras: [
+          name + " is undefined here — earnings are " + uwNumFmt(earnN.value) + ", and you can't divide by zero or negative earnings and get a meaningful multiple. A P/E against losses doesn't price anything."
+        ] };
+      }
+      const r = priceN.value / earnN.value;
+      const rShow = r >= 100 ? String(Math.round(r)) : String(Math.round(r * 10) / 10);
+      return { paras: [
+        name + " = " + priceN.raw + " ÷ " + earnN.raw + " = " + uwNumFmt(priceN.value) + " ÷ " + uwNumFmt(earnN.value) + " ≈ <b>" + rShow + "</b>. Computed by code from your numbers — no model arithmetic.",
+        "What it means: price ÷ earnings per share. It says how many dollars of price each dollar of annual earnings costs — nothing more.",
+        "Caveat: these are your inputs and I can't verify them against any source — the math is only as good as the numbers you gave me."
+      ] };
+    }
     if (!(b.value > 0)) {
       return { paras: [
-        name + " is undefined here — the second figure is " + uwNumFmt(b.value) + ", and you can't divide by zero or negative earnings and get a meaningful multiple. A P/E against losses doesn't price anything."
+        name + " is undefined here — the second figure is " + uwNumFmt(b.value) + ", and you can't divide by zero or negative sales and get a meaningful multiple."
       ] };
     }
     const r = a.value / b.value;
     const rShow = r >= 100 ? String(Math.round(r)) : String(Math.round(r * 10) / 10);
     return { paras: [
       name + " = " + a.raw + " ÷ " + b.raw + " = " + uwNumFmt(a.value) + " ÷ " + uwNumFmt(b.value) + " ≈ <b>" + rShow + "</b>. Computed by code from your numbers — no model arithmetic.",
-      isPE
-        ? "What it means: price ÷ earnings per share. It says how many dollars of price each dollar of annual earnings costs — nothing more."
-        : "What it means: price ÷ sales. A P/S of " + rShow + " says investors pay roughly $" + Math.round(r) + " for every $1 of annual sales. It's a multiple, not a verdict.",
+      "What it means: price ÷ sales. A P/S of " + rShow + " says investors pay roughly $" + Math.round(r) + " for every $1 of annual sales. It's a multiple, not a verdict.",
       "Caveat: these are your inputs and I can't verify them against any source — the math is only as good as the numbers you gave me."
     ] };
   }
@@ -4644,7 +4689,9 @@
   function guideCapitalPlain(t) {
     t = " " + String(t).toLowerCase() + " ";
     // Margin/SBLOC phrasings belong to guideTaxInfo (runs later); don't claim them here.
-    if (/borrow against|borrowing against|\bmargin\b|\bsbloc\b/.test(t) && /stock|portfolio|robinhood|brokerage|shares|equities|etrade/.test(t)) return null;
+    // FIX (R3): "pledging my portfolio for a loan" must fall through to the
+    // SBLOC tax branch, not hit the capital wall.
+    if (/borrow against|borrowing against|pledging|\bpledge\b|\bmargin\b|\bsbloc\b/.test(t) && /stock|portfolio|robinhood|brokerage|shares|equities|etrade|loan/.test(t)) return null;
     const plain = [
       /should i (buy|invest|sell)/, /what.*invest/, /should i put money in/,
       /where should i put my money/, /recommend.*(stock|fund|etf|investment|crypto)/,
@@ -4671,13 +4718,20 @@
   function guideCapitalDeep(t) {
     t = " " + String(t).toLowerCase() + " ";
     // Margin/SBLOC phrasings belong to guideTaxInfo (runs later); don't claim them here.
-    if (/borrow against|borrowing against|\bmargin\b|\bsbloc\b/.test(t) && /stock|portfolio|robinhood|brokerage|shares|equities|etrade/.test(t)) return null;
+    // FIX (R3): "pledging my portfolio for a loan" must fall through to the
+    // SBLOC tax branch, not hit the capital wall.
+    if (/borrow against|borrowing against|pledging|\bpledge\b|\bmargin\b|\bsbloc\b/.test(t) && /stock|portfolio|robinhood|brokerage|shares|equities|etrade|loan/.test(t)) return null;
     const tickers = /\b(aapl|tsla|msft|googl|amzn|nvda|meta|spacex)\b/;
     const hit =
-      /teardown|\bbull case\b|\bbear case\b|price\s+target|analyst rating|earnings call|\bearnings\b|10-k/.test(t) ||
+      /teardown|tear\s*down|\bbull case\b|\bbear case\b|price\s+target|analyst rating|earnings call|\bearnings\b|10-k/.test(t) ||
       (/guidance/.test(t) && /company|ceo|cfo|quarter|analyst|stock|earnings/.test(t)) ||
       /warren buffett|\bbuffett\b|\bburry\b|michael burry|hedge fund/.test(t) ||
-      (tickers.test(t) && /bad|good|bull|bear|worth|teardown|buy|sell|hold|invest|overvalued|undervalued|expensive|cheap/.test(t)) ||
+      (tickers.test(t) && /bad|good|bull|bear|worth|teardown|tear\s*down|buy|sell|hold|invest|overvalued|undervalued|expensive|cheap/.test(t)) ||
+      // FIX (R3 4-010): "AMZN numbers with dates", "figures with sources" —
+      // company-analysis phrasings that demand sourced figures. The product has
+      // no filings/prices source, so these route to the no-fabrication refusal.
+      (((/numbers?\s+with\s+(dates|sources)/.test(t) || /figures?\s+with\s+(dates|sources)/.test(t)) &&
+        (tickers.test(t) || /company|stock|shares|ticker|equity|equities/.test(t)))) ||
       ((/holdings/.test(t) && /%/.test(t)) || (/judge it/.test(t) && /%|holdings|stock/.test(t))) ||
       (/\b\d+\s*x\b/.test(t) && /sales|revenue|earnings|expensive|cheap|multiple/.test(t)) ||
       (/expensive|overvalued|undervalued/.test(t) && /stock|sales|multiple|company/.test(t)) ||
@@ -4801,6 +4855,13 @@
       }
       if (stated.age < 18) { minorSession = true; return minorRefusal(stated.third); }
       if (!stated.third) minorSession = false;
+    }
+    // FIX (R3 8-020): bare minor nouns with no numeric age ("my teen wants to
+    // earn cash") — treat as under-18 when earning intent is present. No age
+    // was stated, so nothing is written to upmore_dob_year.
+    if (!stated && /\bmy\s+(teen|teenager|kid|child|son|daughter)\b/.test(t) &&
+        /earn|making money|make money|\bjob\b|\bgig\b|\bwork\b|income|side hustle|\bcash\b/.test(t)) {
+      minorSession = true; return minorRefusal(true);
     }
     if (minorSession || isMinor()) return minorRefusal(false);
     return null;
@@ -6000,8 +6061,11 @@
     // FIX (R2 1-038): variance >25% switches the income model to the floor.
     // When paychecks vary wildly, the strip plans on the lowest recent
     // paycheck — never the average — and says so on screen.
+    // FIX (R3 1-038): the floor is CONSUMED, not just displayed. Variable
+    // income holds back (avg − floor) as an income-variability reserve from
+    // the safe-to-spend total: planning on the floor means the safe number
+    // assumes the small paycheck arrived, not the average one.
     const incomeModel = pay.variable ? "floor" : "average";
-    const plannedPay = pay.variable ? pay.floor : pay.avg;
     try { $("trackStrip").dataset.incomeModel = incomeModel; } catch (e) {}
     const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
 
@@ -6037,13 +6101,22 @@
     } catch (e) {}
     // FIX (B1-v2 DEFECT 3): Pass real committed estimate, not 0.
     const sts = calcSafeToSpend(balance, fixedRem, committedRem, bufferAmt, cycleEnd);
+    // FIX (R3 1-038): income-variability reserve — the floor model changes the
+    // number, not just the copy. Variable income → hold back (avg − floor).
+    let incomeReserve = 0;
+    if (pay.variable && pay.count >= 2 && pay.avg > pay.floor) {
+      incomeReserve = Math.round(pay.avg - pay.floor);
+      sts.total -= incomeReserve;
+      sts.daily = sts.total / sts.days;
+    }
     $("safeSpend").hidden = false;
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
     $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
     // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
     if (pay.variable && pay.count >= 2) {
-      $("stsSub").textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.`;
+      $("stsSub").textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
+        (incomeReserve > 0 ? ` ${fmt$(incomeReserve)} held back for income variability.` : "");
     }
     $("stsBufferAmt").textContent = fmt$(bufferAmt);
     // Wire up Change button (once)
