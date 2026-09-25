@@ -3141,7 +3141,12 @@
         accounts: hasConnectedBank ? ["bank_account"] : []
       };
       list = list.filter(r => routePassesGates(r, gateUser).pass);
-    } catch (e) { /* gates unavailable, show unfiltered */ }
+    } catch (e) {
+      // FIX (E1-v2 CRITICAL): Fail CLOSED, not open. If gates can't be evaluated,
+      // show NOTHING rather than all routes (which could include 21+ gambling,
+      // fee traps, etc. to ineligible users). Safety over availability.
+      list = [];
+    }
     return list;
   }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-nozn6mqUQYEWkC16anoWVoeI9glQgrSG5t1NhmWReCY='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-mAOvZK0U+eIRnrDpbl6C0qJ1ynKrtGHl81wHcAcuLbc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -3162,7 +3162,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         accounts: hasConnectedBank ? ["bank_account"] : []
       };
       list = list.filter(r => routePassesGates(r, gateUser).pass);
-    } catch (e) { /* gates unavailable, show unfiltered */ }
+    } catch (e) {
+      // FIX (E1-v2 CRITICAL): Fail CLOSED, not open. If gates can't be evaluated,
+      // show NOTHING rather than all routes (which could include 21+ gambling,
+      // fee traps, etc. to ineligible users). Safety over availability.
+      list = [];
+    }
     return list;
   }
 
