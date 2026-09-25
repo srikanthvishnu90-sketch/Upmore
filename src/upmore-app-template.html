@@ -412,6 +412,8 @@
   .ebadge, .vbadge { display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; margin:0 6px 8px 0; }
   .ebadge { background:#e8f5e9; color:#2e7d32; }
   .vbadge { background:#f5f5f5; color:#666; }
+  .vbadge.v-verified { background:#e3f2fd; color:#1565c0; }
+  .vbadge.v-researched { background:#e8f0fe; color:#3b5bdb; }
   .vbadge.v-confirmed { background:#e3f2fd; color:#1565c0; }
   .vbadge.v-stale { background:#fff3e0; color:#e65100; }
   .earn8 p { font-size:13px; margin:6px 0; line-height:1.4; }
@@ -444,6 +446,8 @@
   .vbadge.v-retired { background:#ffebee; color:#c62828; }
   .vbadge.v-expired { background:#ffebee; color:#c62828; }
   .vbadge.v-stale { background:#fff3e0; color:#e65100; }
+  .vbadge.v-verified { background:#1F7A4D; color:#fff; }
+  .vbadge.v-researched { background:#2f6b4f; color:#fff; }
   .vbadge.v-confirmed { background:#1F7A4D; color:#fff; }
   .ubadge { font-size:10.5px; font-weight:700; color:#5b5346; background:#EDE8DC; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .abadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:#FFD666; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
@@ -839,9 +843,10 @@
             <label class="f"><span>Name</span><input id="subMerchant" placeholder="Netflix" autocomplete="off"></label>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <label class="f"><span>Amount</span><input id="subAmount" inputmode="decimal" placeholder="15.99" autocomplete="off"></label>
-              <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option></select></div></label>
+              <label class="f"><span>Bills every</span><div class="sel"><select id="subInterval"><option value="monthly">Monthly</option><option value="yearly">Yearly</option><option value="weekly">Weekly</option><option value="trial">Free trial</option></select></div></label>
             </div>
-            <label class="f"><span>Next bill date (optional — renewal reminder when it's within 14 days)</span><input id="subNextBill" type="date"></label>
+            <label class="f"><span>Next bill / trial-end date (optional — reminder when it's within 14 days)</span><input id="subNextBill" type="date"></label>
+            <label class="f"><span>Annual plan price $ (optional — shows monthly-vs-annual savings)</span><input id="subAnnualPrice" inputmode="decimal" placeholder="120" autocomplete="off"></label>
             <button class="go" id="subAdd" style="height:50px">Save</button>
           </div>
         </details>
@@ -2078,9 +2083,10 @@
           <span class="ebadge">${esc(cls)}</span>
           <p class="ereq"><b>Requires:</b> ${esc(r.requirements || "—")}</p>
           <p class="ecatch"><b>The catch:</b> ${esc(r.catches || "—")}</p>
-          // FIX (E3-v2): Element 7 must label timing as "advertised" vs "observed median".
-          // Catalog has no observed payout data, so all timings are advertised from terms.
           <p class="emeta">${timeStr} · ${esc(r.payout_timing || r.time_to_first ? (r.payout_timing || r.time_to_first) + " (advertised)" : "")}</p>
+          ${(() => { const rp = r.repeatable; return rp && typeof rp === "object" ? `<p class="emeta">${esc(rp.value ? "Repeatable — " + (rp.cadence || "ongoing") : "One-time — " + (rp.cadence || "once"))}</p>` : ""; })()}
+          ${r.difficulty ? `<p class="emeta">Skill level: ${esc(String(r.difficulty))}</p>` : ""}
+          ${r.when_cash_arrives ? `<p class="emeta">Cash arrives: ${esc(r.when_cash_arrives)}</p>` : ""}
           <span class="vbadge v-${ver}">${esc(ver)}</span>
         </div>`;
       }
@@ -2237,11 +2243,22 @@
         let totalInt = 0, months = 0;
         const mins = bals.reduce((s, d) => s + d.min, 0);
         const pay = mins + (extraAmt === undefined ? extra : extraAmt);
+        const nowMs = Date.now();
+        // FIX (pass1-D1/D2): promo-aware APR. Before the promo end date the promo
+        // rate (d.apr, often 0) accrues; after it, the revert APR accrues.
+        const effApr = (d, monthIdx) => {
+          if (d.promo && d.revertApr) {
+            const promoEndMs = new Date(d.promo).getTime();
+            const monthsToExpiry = (promoEndMs - nowMs) / (864e5 * 30.44);
+            if (monthIdx > monthsToExpiry) return d.revertApr;
+          }
+          return d.apr;
+        };
         while (bals.some(d => d.bal > 0.01) && months < 600) {
           months++;
           // Interest accrues on the outstanding balance first (standard amortization),
           // then payments are applied. Never the reverse — that would understate cost.
-          for (const d of bals) { const i = d.bal * d.apr / 1200; totalInt += i; d.bal += i; }
+          for (const d of bals) { const i = d.bal * effApr(d, months) / 1200; totalInt += i; d.bal += i; }
           const seq = strat === "avalanche"
             ? [...bals].sort((a, b) => b.apr - a.apr)
             : [...bals].sort((a, b) => a.bal - b.bal);
@@ -2268,13 +2285,24 @@
           <label class="f"><span>APR (%)</span><input id="dApr" inputmode="decimal" placeholder="24.99"></label>
           <label class="f"><span>Min payment ($)</span><input id="dMin" inputmode="decimal" placeholder="120"></label>
         </div>
-        <label class="f"><span>0% promo ends (optional)</span><input id="dPromo" type="date"></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>0% promo ends (optional)</span><input id="dPromo" type="date"></label>
+          <label class="f"><span>APR after promo ends (%)</span><input id="dRevert" inputmode="decimal" placeholder="26.99"></label>
+        </div>
         <button class="go" id="dAdd" style="height:50px">Add debt</button>
       </div>
       <div style="margin-top:12px"><label class="f"><span>Extra per month beyond minimums ($)</span><input id="dExtra" inputmode="decimal" value="${esc(String(extra))}"></label></div>
       <div class="list" style="margin-top:8px">${debts.map((d, i) => {
         const mi = d.bal * d.apr / 1200;
-        const promoWarn = d.promo ? (() => { const days = Math.round((new Date(d.promo) - Date.now()) / 864e5); return days >= 0 && days <= 90 ? `<p class="m" style="color:#a33">⚠ 0% ends in ${days} days — then ${d.apr}% applies.</p>` : ""; })() : "";
+        const promoWarn = d.promo ? (() => {
+          const days = Math.round((new Date(d.promo) - Date.now()) / 864e5);
+          if (days < 0 || days > 90) return "";
+          // FIX (pass1-D1): was "then ${d.apr}% applies" — false for 0% promo debts. Uses revert APR.
+          const thenTxt = d.revertApr ? ` — then ${d.revertApr}% applies` : "";
+          const monthsLeft = Math.max(1, Math.round(days / 30.44));
+          const target = d.bal / monthsLeft;
+          return `<p class="m" style="color:#a33">⚠ 0% ends in ${days} days${thenTxt}. Pay $${cfo2$(target)}/mo to kill it before the cliff.</p>`;
+        })() : "";
         return `<div class="item"><div class="grow"><p class="t">${esc(d.name)} — ${cfo$(d.bal)} at ${d.apr}%</p>
           <p class="m">Costs ${cfo2$(mi)}/mo in interest · min ${cfo2$(d.min)}</p>${promoWarn}</div>
           <button class="linkbtn" data-ddel="${i}">Remove</button></div>`;
@@ -2286,6 +2314,30 @@
         `</div><div class="pcard" style="margin-top:12px"><p><b>Avalanche:</b> ${cfo$(r.av.totalInt)} total interest, debt-free in ~${r.av.months} mo (${end.toLocaleDateString("en-US", { month: "short", year: "numeric" })}).</p>
         <p style="margin-top:6px"><b>Minimums only:</b> ${cfo$(r.mo.totalInt)} interest over ~${r.mo.months} months — <b>${cfo$(Math.max(0, r.mo.totalInt - r.av.totalInt))} more</b> than your avalanche plan.</p>
         <p class="psub" style="margin-top:6px">Snowball (lowest balance first): ${cfo$(r.sb.totalInt)} interest — ${cfo$(Math.max(0, r.sb.totalInt - r.av.totalInt))} more than avalanche. Your call; now it's priced.</p></div>`;
+      // FIX (pass1-D3): refinance-vs-paydown comparison. Decision rule, not a recommendation.
+      const totalBal = debts.reduce((s, d) => s + d.bal, 0);
+      const rfApr = cfoGet("debt_rf_apr", 0), rfTerm = cfoGet("debt_rf_term", 60), rfFee = cfoGet("debt_rf_fee", 0);
+      let rfHtml = "";
+      if (rfApr > 0 && rfTerm > 0) {
+        const mr = rfApr / 1200;
+        const pmt = mr > 0 ? totalBal * mr / (1 - Math.pow(1 + mr, -rfTerm)) : totalBal / rfTerm;
+        const rfTotalInt = pmt * rfTerm - totalBal;
+        const rfAllIn = rfTotalInt + rfFee;
+        const wins = rfAllIn < r.av.totalInt;
+        rfHtml = `<div class="pcard" style="margin-top:8px">
+          <p>Loan payment: <b>${cfo2$(pmt)}/mo</b> for ${rfTerm} mo. Total interest: <b>${cfo$(rfTotalInt)}</b>${rfFee > 0 ? ` + ${cfo$(rfFee)} fees` : ""} = <b>${cfo$(rfAllIn)} all-in</b>.</p>
+          <p style="margin-top:6px">Your avalanche plan costs <b>${cfo$(r.av.totalInt)}</b> in interest over ~${r.av.months} mo.</p>
+          <p style="margin-top:6px"><b>${wins ? "The loan wins on total cost" : "Your avalanche plan wins on total cost"}</b> — by ${cfo$(Math.abs(rfAllIn - r.av.totalInt))}.</p>
+          ${pmt < (debts.reduce((s, d) => s + d.min, 0) + extra) && !wins ? `<p class="m" style="color:#a33;margin-top:6px">Term trap: the loan's payment is lower but you pay MORE total — that's the price of stretching it over ${rfTerm} months.</p>` : ""}
+          <p class="psub" style="margin-top:6px">Rule: refinance wins only if all-in cost (rate + fees + term) beats your current path. Compare APRs, not monthly payments. We never recommend a lender.</p></div>`;
+      }
+      html += `<h2 class="sec">Refinance vs paydown</h2>
+        <p class="psub">Got a consolidation offer? Price it against your avalanche plan. Total debt: <b>${cfo$(totalBal)}</b>.</p>
+        <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <label class="f"><span>Offer APR (%)</span><input id="dRfApr" inputmode="decimal" value="${rfApr || ""}" placeholder="11.99"></label>
+          <label class="f"><span>Term (months)</span><input id="dRfTerm" inputmode="decimal" value="${rfTerm || ""}" placeholder="60"></label>
+          <label class="f"><span>Fees ($)</span><input id="dRfFee" inputmode="decimal" value="${rfFee || ""}" placeholder="0"></label>
+        </div></div>${rfHtml}`;
     }
     html += `<p class="fine" style="margin-top:12px">Educational math only — not financial advice. We never recommend specific cards or loans, and nothing here moves money.</p>`;
     body.innerHTML = html;
@@ -2294,10 +2346,17 @@
       const bal = parseFloat($("dBal").value), apr = parseFloat($("dApr").value), min = parseFloat($("dMin").value);
       if (!(bal > 0) || !(apr >= 0) || !(min > 0)) { toast("Enter balance, APR, and minimum payment"); return; }
       const ds = cfoGet("debts", []);
-      ds.push({ name, bal, apr, min, promo: $("dPromo").value || "" });
+      ds.push({ name, bal, apr, min, promo: $("dPromo").value || "", revertApr: parseFloat($("dRevert").value) || 0 });
       cfoSet("debts", ds); cfoDebt(body);
     };
     $("dExtra").onchange = e => { cfoSet("debt_extra", parseFloat(e.target.value) || 0); cfoDebt(body); };
+    const rfUpd = () => {
+      cfoSet("debt_rf_apr", parseFloat($("dRfApr").value) || 0);
+      cfoSet("debt_rf_term", parseInt($("dRfTerm").value, 10) || 0);
+      cfoSet("debt_rf_fee", parseFloat($("dRfFee").value) || 0);
+      cfoDebt(body);
+    };
+    ["dRfApr", "dRfTerm", "dRfFee"].forEach(id => { const el = $(id); if (el) el.onchange = rfUpd; });
     body.querySelectorAll("[data-ddel]").forEach(b => b.onclick = () => {
       const ds = cfoGet("debts", []); ds.splice(+b.dataset.ddel, 1); cfoSet("debts", ds); cfoDebt(body);
     });
@@ -2351,8 +2410,35 @@
            <p class="psub">${cfo$(liquid)} liquid ÷ ${cfo$(burn)}/week burn.</p>
            <p class="psub" style="margin-top:6px">${esc(detail)}. Excludes transfers and pending.</p>`}
       </div>
-      ${isLive ? "" : `<p class="fine" style="margin-top:10px;color:#b45309">Sample data — connect your bank for your real runway.</p>`}
+      ${isLive ? "" : `<p class="fine" style="margin-top:10px;color:#b45309">Sample data — connect your bank or enter your numbers below for your real runway.</p>`}
+      <h2 class="sec">Or enter your numbers</h2>
+      <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <label class="f"><span>Cash + savings you could spend ($)</span><input id="rwLiquid" inputmode="decimal" value="${cfoGet("rw_liquid", "")}" placeholder="8000"></label>
+        <label class="f"><span>Essential spend ($/month)</span><input id="rwBurn" inputmode="decimal" value="${cfoGet("rw_burn", "")}" placeholder="2500"></label>
+      </div></div>
+      <div class="pcard" style="margin-top:8px" id="rwManual"></div>
       <p class="fine" style="margin-top:12px">Burn = trailing-90-day essential spend ÷ 13. Liquid = bank balances. Tap any number's source in Track.</p>`;
+    // FIX (pass1-C2): manual runway inputs when bank data is absent
+    const rwUpd = () => {
+      cfoSet("rw_liquid", parseFloat($("rwLiquid").value) || 0);
+      cfoSet("rw_burn", parseFloat($("rwBurn").value) || 0);
+      cfoRunway(body);
+    };
+    ["rwLiquid", "rwBurn"].forEach(id => { const el = $(id); if (el) el.onchange = rwUpd; });
+    (() => {
+      const liq = cfoGet("rw_liquid", 0), brn = cfoGet("rw_burn", 0);
+      const el = $("rwManual");
+      if (!el) return;
+      if (liq > 0 && brn > 0) {
+        const wks = liq / (brn * 12 / 52);
+        el.innerHTML = `<p style="font-size:15px">If your income stopped today, you have</p>
+          <p style="font-size:36px;font-weight:700;margin:6px 0">${wks < 52 ? wks.toFixed(1) + " weeks" : (wks / 52).toFixed(1) + " years"}</p>
+          <p class="psub">${cfo$(liq)} ÷ ${cfo$(brn * 12 / 52)}/week essential burn. From your entered numbers.</p>
+          ${wks < 4 ? `<p class="m" style="color:#a33;margin-top:6px">Under a month — building even a $1,000 buffer changes this fast.</p>` : ""}`;
+      } else {
+        el.innerHTML = `<p class="psub">Enter both numbers above for your runway.</p>`;
+      }
+    })();
   }
 
   /* ---- 6. Monthly close ---- */
@@ -2398,11 +2484,21 @@
   function cfoInsurance(body) {
     const a = cfoGet("ins", {});
     const set = (k, v) => { const x = cfoGet("ins", {}); x[k] = v; cfoSet("ins", x); cfoInsurance(body); };
+    const num = (k) => parseFloat(a[k]) || 0;
+    const inc = num("income"), ndep = parseInt(a.ndep, 10) || 0, cov = num("lifeamt");
+    // FIX (pass1-N1): personal DIME-lite target. 10x income + ~$100k per dependent child.
+    const target = inc > 0 ? inc * 10 + ndep * 100000 : 0;
     const yn = (k, label) => `<div class="item"><div class="grow"><p class="t">${label}</p></div>
       <button class="linkbtn" data-ins="${k}" data-v="yes" style="${a[k] === "yes" ? "font-weight:700;color:#1d5c3f" : ""}">Yes</button>
       <button class="linkbtn" data-ins="${k}" data-v="no" style="${a[k] === "no" ? "font-weight:700;color:#a33" : ""}">No</button></div>`;
     let verdicts = [];
-    if (a.life === "no" && a.depend === "yes") verdicts.push(["Life insurance", "Someone depends on your income and you have no life coverage. Quick math: 10–12× gross income (the DIME method — debts + income×10 + mortgage + ~$100k/child − savings — is more precise). Term beats whole life for almost everyone; a healthy 30-year-old pays ~$23–30/mo for $500k of 20-year term (2026 price indexes). People under 30 overestimate that cost 10–12× — price is rarely the real barrier (2025 Insurance Barometer Study)."]);
+    const lifeTxt = target > 0
+      ? `Someone depends on your income and you have no life coverage. Your personal target: <b>${cfo$(target)}</b> (10× your $${Math.round(inc).toLocaleString()} income${ndep ? ` + ~$100k × ${ndep} ${ndep === 1 ? "child" : "children"}` : ""}). Term beats whole life for almost everyone; a healthy 30-year-old pays ~$23–30/mo for $500k of 20-year term (2026 price indexes).`
+      : `Someone depends on your income and you have no life coverage. Quick math: 10–12× gross income (the DIME method — debts + income×10 + mortgage + ~$100k/child − savings — is more precise). Enter your income above for your personal target. Term beats whole life for almost everyone; a healthy 30-year-old pays ~$23–30/mo for $500k of 20-year term (2026 price indexes).`;
+    if (a.life === "no" && a.depend === "yes") verdicts.push(["Life insurance", lifeTxt]);
+    if (a.life === "yes" && target > 0 && cov > 0) verdicts.push(["Life insurance",
+      cov >= target ? `You're fine — your ${cfo$(cov)} meets your ~${cfo$(target)} target.` :
+      `You have ${cfo$(cov)} against a ~${cfo$(target)} target — a ${cfo$(target - cov)} gap. Worth pricing more term coverage.`]);
     if (a.life === "no" && a.depend === "no") verdicts.push(["Life insurance", "You're fine — no dependents means no income to replace."]);
     if (a.disab === "no") verdicts.push(["Disability insurance", "The stat that matters: a 20-year-old has a 24% chance of disability before 67 vs 13% chance of death (SSA Office of the Chief Actuary, 2025). Employer plans usually cap at ~60% of base salary, exclude bonuses, are taxable if the employer pays, aren't portable, and often flip to a stricter definition after ~24 months. SSDI approves only ~30% of first applications and pays ~$1,580/mo (2025). Worth pricing individual coverage — it runs ~1–3% of income."]);
     if (a.disab === "yes") verdicts.push(["Disability insurance", "You're fine on this one — keep the own-occupation definition and a future-purchase rider if you have them."]);
@@ -2413,6 +2509,11 @@
     if (a.assets === "yes" && a.umbrella === "no") verdicts.push(["Umbrella insurance", "You own a home or have meaningful assets and no umbrella policy. ~$150–300/yr buys $1M of extra liability on top of your auto/home — the first million is the cheapest coverage you'll ever buy. Worth a quote."]);
     if (a.umbrella === "yes") verdicts.push(["Umbrella insurance", "You're fine — confirm the underlying auto/home limits meet the carrier's requirement (usually 100/300/100 or 250/500)."]);
     body.innerHTML = `<p class="psub">The opposite of "switch and save": are you actually covered? Answer honestly — we're happy to tell you you're fine.</p>
+      <div class="svform" style="margin-bottom:10px"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <label class="f"><span>Your income ($/yr)</span><input id="insIncome" inputmode="decimal" value="${a.income || ""}" placeholder="75000"></label>
+        <label class="f"><span>Dependent children</span><input id="insNdep" inputmode="numeric" value="${a.ndep || ""}" placeholder="2"></label>
+        <label class="f"><span>Life coverage you have ($)</span><input id="insLifeAmt" inputmode="decimal" value="${a.lifeamt || ""}" placeholder="500000"></label>
+      </div></div>
       <div class="list">
         ${yn("depend", "Does anyone depend on your income?")}
         ${yn("life", "Do you have life insurance?")}
@@ -2428,6 +2529,14 @@
         `<div class="item"><div class="grow"><p class="t">${t}</p><p class="m">${v}</p></div></div>`).join("") + `</div>` : `<p class="psub" style="margin-top:8px">Answer the questions above for your read.</p>`}
       <p class="fine" style="margin-top:12px">General information, not insurance advice. We sell nothing and earn nothing here — if there's a gap, talk to an independent agent.</p>`;
     body.querySelectorAll("[data-ins]").forEach(b => b.onclick = () => set(b.dataset.ins, b.dataset.v));
+    const insNum = () => {
+      const x = cfoGet("ins", {});
+      x.income = parseFloat($("insIncome").value) || "";
+      x.ndep = $("insNdep").value.trim();
+      x.lifeamt = parseFloat($("insLifeAmt").value) || "";
+      cfoSet("ins", x); cfoInsurance(body);
+    };
+    ["insIncome", "insNdep", "insLifeAmt"].forEach(id => { const el = $(id); if (el) el.onchange = insNum; });
   }
 
   /* ---- 3. Tax positioning (verified 2026; see research/tax-positioning-2026.md) ---- */
@@ -2438,18 +2547,84 @@
     eitcMax: 8231, ctc: 2200, actc: 1700,
   };
   function cfoTax(body) {
+    // FIX (pass1-T3/T4/T5/T6): personalization engine. Every credit is now gated
+    // on the user's filing status / kids / income / student / HDHP inputs.
     const gig = cfoGet("tax_gig", 0), rate = cfoGet("tax_rate", 22);
+    const tfs = cfoGet("tax_fs", "single"), tkids = cfoGet("tax_kids", 0), tinc = cfoGet("tax_inc", 0);
+    const tstud = cfoGet("tax_stud", "no"), thdhp = cfoGet("tax_hdhp", "no"), thsaType = cfoGet("tax_hsa_type", "individual");
+    const thsa = cfoGet("tax_hsa", 0), tk401 = cfoGet("tax_401k", 0);
     const q = gig * rate / 100 / 4;
     const se = gig * 0.9235 * 0.153;
+    // 2026 EITC table (Rev. Proc. 2025-32). Investment income must be <= $12,200.
+    const EITC = [
+      { max: 664, lim: 19540, limMFJ: 26820 },
+      { max: 4427, lim: 51593, limMFJ: 58863 },
+      { max: 7316, lim: 58629, limMFJ: 65899 },
+      { max: 8231, lim: 62974, limMFJ: 70244 },
+    ];
+    const ek = Math.min(tkids, 3), e = EITC[ek];
+    const elim = tfs === "mfj" ? e.limMFJ : e.lim;
+    const eGate = tinc > 0
+      ? (tinc <= elim
+        ? `Your income ($${tinc.toLocaleString()}) is under the $${elim.toLocaleString()} limit — <b>check the IRS EITC Assistant</b> to see if you qualify.`
+        : `Your income ($${tinc.toLocaleString()}) is over the $${elim.toLocaleString()} limit — likely not eligible this year.`)
+      : `Income limit: $${elim.toLocaleString()} (${tfs === "mfj" ? "joint" : "single/head of household"}). Enter your income above for a verdict.`;
+    const kidLabel = ek === 3 ? "3+" : String(ek);
+    const ctcTotal = tkids * 2200;
+    const saverBlock = tstud === "yes"
+      ? `<div class="item"><div class="grow"><p class="t">Saver's Credit — not for you right now</p><p class="m">Full-time students under 24 can't claim it. Revisit after graduation — it's up to $1,000 ($2,000 joint) on Form 8880.</p></div></div>`
+      : `<div class="item"><div class="grow"><p class="t">Saver's Credit — up to $1,000 ($2,000 joint)</p><p class="m">10–50% of the first $2,000 of retirement contributions back, if your income qualifies. Claimed on Form 8880 — most eligible 401(k) contributors never file it.</p></div></div>`;
+    const eduBlock = tstud === "yes"
+      ? `<div class="item"><div class="grow"><p class="t">Education credits — up to $2,500/yr</p><p class="m"><b>American Opportunity:</b> first 4 years, at least half-time, degree-seeking, no felony drug conviction — 40% refundable (up to $1,000). <b>Lifetime Learning:</b> $2,000/yr, any enrollment level. Never both for the same student in one year. Phase out $80K–$90K single / $160K–$180K joint.</p></div></div>`
+      : `<div class="item"><div class="grow"><p class="t">Education credits — up to $2,000/yr</p><p class="m">Not currently a student, so the <b>Lifetime Learning Credit</b> (20% of first $10,000, no half-time requirement) is the one that would apply to future courses. Phase out $80K–$90K single.</p></div></div>`;
+    // HSA personal math
+    const hsaLim = thsaType === "family" ? 8750 : 4400;
+    const hsaGap = Math.max(0, hsaLim - thsa);
+    const hsaSave = hsaGap * rate / 100;
+    const hsaBlock = thdhp === "yes"
+      ? `<div class="item"><div class="grow"><p class="t">HSA — your room: $${hsaGap.toLocaleString()} left of $${hsaLim.toLocaleString()}</p><p class="m">Filling it at your ${rate}% marginal rate saves <b>~$${Math.round(hsaSave).toLocaleString()}/yr</b> in federal tax (plus FICA if through payroll). Triple advantage: deductible in, tax-free growth, tax-free out for medical. Deadline: <b>Apr 15, 2027</b> for 2026. HDHP guardrails: min deductible $1,700/$3,400, max out-of-pocket $8,500/$17,000.</p></div></div>`
+      : `<div class="item"><div class="grow"><p class="t">HSA — $4,400 individual / $8,750 family (+$1,000 at 55+)</p><p class="m">Needs a high-deductible plan (min $1,700/$3,400 deductible). Triple tax advantage: deductible in, tax-free growth, tax-free out for medical. Set "I have an HDHP" above for your personal number.</p></div></div>`;
+    // 401(k) personal gap
+    const kGap = Math.max(0, 24500 - tk401);
+    const kSave = kGap * rate / 100;
+    const iraNote = (tfs !== "mfj" && tinc >= 150000) || (tfs === "mfj" && tinc >= 236000)
+      ? ` At your income the traditional-IRA deduction phases out — Roth or backdoor Roth is the usual path; talk to a CPA.`
+      : ``;
     body.innerHTML = `<p class="psub">Forward-looking: keep more of what you earn <i>this</i> year. 2026 figures verified Sept 25, 2026 — confirm at irs.gov before acting. General information, not tax advice.</p>
+      <h2 class="sec">Your situation</h2>
+      <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <label class="f"><span>Filing status</span><select id="tFs">
+          <option value="single"${tfs === "single" ? " selected" : ""}>Single</option>
+          <option value="mfj"${tfs === "mfj" ? " selected" : ""}>Married filing jointly</option>
+          <option value="hoh"${tfs === "hoh" ? " selected" : ""}>Head of household</option>
+        </select></label>
+        <label class="f"><span>Qualifying children</span><select id="tKids">
+          ${[0, 1, 2, 3].map(n => `<option value="${n}"${tkids === n ? " selected" : ""}>${n === 3 ? "3+" : n}</option>`).join("")}
+        </select></label>
+        <label class="f"><span>Household income ($/yr)</span><input id="tInc" inputmode="decimal" value="${tinc || ""}" placeholder="62000"></label>
+        <label class="f"><span>Full-time student?</span><select id="tStud">
+          <option value="no"${tstud === "no" ? " selected" : ""}>No</option>
+          <option value="yes"${tstud === "yes" ? " selected" : ""}>Yes</option>
+        </select></label>
+        <label class="f"><span>Have an HDHP?</span><select id="tHdhp">
+          <option value="no"${thdhp === "no" ? " selected" : ""}>No</option>
+          <option value="yes"${thdhp === "yes" ? " selected" : ""}>Yes</option>
+        </select></label>
+        <label class="f"><span>HSA coverage</span><select id="tHsaType">
+          <option value="individual"${thsaType === "individual" ? " selected" : ""}>Individual</option>
+          <option value="family"${thsaType === "family" ? " selected" : ""}>Family</option>
+        </select></label>
+        <label class="f"><span>HSA contributed so far ($)</span><input id="tHsa" inputmode="decimal" value="${thsa || ""}" placeholder="1000"></label>
+        <label class="f"><span>401(k) contributed so far ($)</span><input id="tK401" inputmode="decimal" value="${tk401 || ""}" placeholder="12000"></label>
+      </div></div>
       <h2 class="sec">W-4: the fastest cash-flow fix</h2>
       <div class="list"><div class="item"><div class="grow"><p class="m">The average 2026 refund was <b>$3,275</b> — about $273/month of your own money lent to the IRS at 0%. File a new W-4 when: new job, second job, marriage/divorce, new gig income, new dependent. Use the <b>IRS Tax Withholding Estimator</b> (irs.gov/W4App, updated March 2026) — 10 minutes, exact numbers, effective next pay cycle.</p></div></div></div>
-      <h2 class="sec">Credits people leave on the table</h2>
+      <h2 class="sec">Credits, gated on your situation</h2>
       <div class="list">
-        <div class="item"><div class="grow"><p class="t">Earned Income Tax Credit — up to $${TAX_2026.eitcMax.toLocaleString()}</p><p class="m">Refundable — paid even with zero tax liability. ~20% of eligible workers never claim it, mostly because you must <b>file a return</b> even below the filing threshold. Check the IRS EITC Assistant.</p></div></div>
-        <div class="item"><div class="grow"><p class="t">Child Tax Credit — $${TAX_2026.ctc.toLocaleString()}/child (under 17)</p><p class="m">Up to $${TAX_2026.actc.toLocaleString()} refundable per child. Phases out above $200K single / $400K joint. A valid SSN is now required for the claimant.</p></div></div>
-        <div class="item"><div class="grow"><p class="t">Saver's Credit — up to $1,000 ($2,000 joint)</p><p class="m">10–50% of the first $2,000 of retirement contributions back, if your income qualifies. Claimed on Form 8880 — most eligible 401(k) contributors never file it.</p></div></div>
-        <div class="item"><div class="grow"><p class="t">Education credits — up to $2,500/yr</p><p class="m">American Opportunity (first 4 yrs, 40% refundable) or Lifetime Learning ($2,000/yr, covers grad school). Phase out $80K–$90K single.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">Earned Income Tax Credit — up to $${e.max.toLocaleString()} (${kidLabel} ${ek === 1 ? "child" : "children"})</p><p class="m">Refundable — paid even with zero tax liability. Investment income must be ≤ $12,200. ${eGate} ~20% of eligible workers never claim it, mostly because you must <b>file a return</b> even below the filing threshold.</p></div></div>
+        ${tkids > 0 ? `<div class="item"><div class="grow"><p class="t">Child Tax Credit — $${ctcTotal.toLocaleString()} for your ${tkids} ${tkids === 1 ? "child" : "children"}</p><p class="m">$2,200 per child under 17 at year-end, up to $1,700 refundable each. Phases out above $200K single / $400K joint. A valid SSN is now required for the claimant.</p></div></div>` : ""}
+        ${saverBlock}
+        ${eduBlock}
         <div class="item"><div class="grow"><p class="t">Child &amp; Dependent Care — expanded for 2026</p><p class="m">Up to 50% of $3,000/$6,000 in care costs (max $1,500/$3,000). Nonrefundable, Form 2441. If your employer offers a Dependent Care FSA, the pre-tax set-aside usually beats the credit.</p></div></div>
       </div>
       <h2 class="sec">Gig work: quarterly estimates</h2>
@@ -2468,13 +2643,22 @@
       <div class="list"><div class="item"><div class="grow"><p class="t">Single $${TAX_2026.stdDed.single.toLocaleString()} · Joint $${TAX_2026.stdDed.married.toLocaleString()} · Head of household $${TAX_2026.stdDed.hoh.toLocaleString()}</p><p class="m">About 90% of filers take it. Itemize only if SALT (capped $40,400) + mortgage interest + charitable + medical over 7.5% of AGI beats it. New 2026: non-itemizers get an above-the-line charitable deduction — $1,000 single / $2,000 joint, cash gifts only.</p></div></div></div>
       <h2 class="sec">HSA / retirement room (2026)</h2>
       <div class="list">
-        <div class="item"><div class="grow"><p class="t">HSA — $${TAX_2026.hsa.individual.toLocaleString()} individual / $${TAX_2026.hsa.family.toLocaleString()} family (+$1,000 at 55+)</p><p class="m">Needs a high-deductible plan (min $1,700/$3,400 deductible). Triple tax advantage: deductible in, tax-free growth, tax-free out for medical. Maxing a family HSA at 22% saves roughly $2,600/yr.</p></div></div>
-        <div class="item"><div class="grow"><p class="t">401(k) — $${TAX_2026.k401.toLocaleString()} (+$${TAX_2026.k401catch.toLocaleString()} at 50+) · IRA — $${TAX_2026.ira.toLocaleString()} (+$${TAX_2026.iracatch.toLocaleString()} at 50+)</p><p class="m">Every pre-tax dollar at a 22% marginal rate saves 22 cents this year. $24,500 pre-tax at 22% = $5,390 of tax deferred.</p></div></div>
+        ${hsaBlock}
+        <div class="item"><div class="grow"><p class="t">401(k) — $${kGap.toLocaleString()} of $${TAX_2026.k401.toLocaleString()} room left</p><p class="m">Filling it at your ${rate}% marginal rate defers <b>~$${Math.round(kSave).toLocaleString()}</b> of federal tax this year. IRA: $${TAX_2026.ira.toLocaleString()} (+$${TAX_2026.iracatch.toLocaleString()} at 50+).${iraNote}</p></div></div>
       </div>
       <p class="fine" style="margin-top:12px">Sources: Rev. Proc. 2025-32, IRS Notice 2025-67, Rev. Proc. 2025-19. We never file or submit anything to the IRS. Multi-state income, AMT, or stock comp — see a CPA.</p>`;
     const upd = () => { cfoSet("tax_gig", parseFloat($("tGig").value) || 0); cfoSet("tax_rate", parseFloat($("tRate").value) || 0); cfoTax(body); };
     $("tGig").onchange = upd; $("tRate").onchange = upd;
+    const upd2 = () => {
+      cfoSet("tax_fs", $("tFs").value); cfoSet("tax_kids", parseInt($("tKids").value, 10) || 0);
+      cfoSet("tax_inc", parseFloat($("tInc").value) || 0); cfoSet("tax_stud", $("tStud").value);
+      cfoSet("tax_hdhp", $("tHdhp").value); cfoSet("tax_hsa_type", $("tHsaType").value);
+      cfoSet("tax_hsa", parseFloat($("tHsa").value) || 0); cfoSet("tax_401k", parseFloat($("tK401").value) || 0);
+      cfoTax(body);
+    };
+    ["tFs", "tKids", "tInc", "tStud", "tHdhp", "tHsaType", "tHsa", "tK401"].forEach(id => { const el = $(id); if (el) el.onchange = upd2; });
   }
+
 
   /* ---- 7. Income side ---- */
   const BLS_2024 = [ // BLS Occupational Employment & Wages, May 2024 median annual. Verify current at bls.gov.
@@ -2491,6 +2675,14 @@
     body.innerHTML = `<h2 class="sec">What your role pays</h2>
       <p class="psub">BLS median annual pay, May 2024 — check bls.gov for current. If you're 20%+ under median, that's raise-or-move data. BLS is the verifiable benchmark; treat Glassdoor/Blind as self-reported.</p>
       <div class="list">${BLS_2024.map(([r, p]) => `<div class="item"><div class="grow"><p class="t">${r}</p></div><b>${cfo$(p)}</b></div>`).join("")}</div>
+      <h2 class="sec">Your pay vs market</h2>
+      <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <label class="f"><span>Your role</span><div class="sel"><select id="iRole">
+          ${BLS_2024.map(([r], i) => `<option value="${i}"${i === cfoGet("inc_role", 0) ? " selected" : ""}>${r}</option>`).join("")}
+        </select></div></label>
+        <label class="f"><span>Your pay ($/yr)</span><input id="iPay" inputmode="decimal" value="${cfoGet("inc_pay", "")}" placeholder="75000"></label>
+      </div><label class="f"><span>Metro / location (optional — benchmarks are national)</span><input id="iLoc" placeholder="Chicago" autocomplete="off" value="${esc(cfoGet("inc_loc", ""))}"></label></div>
+      <div class="pcard" style="margin-top:8px" id="iVerdict"></div>
       <h2 class="sec">Raise timing</h2>
       <div class="pcard"><p>2026 employer budgets: ~3.2% merit, ~8.7% average promotion raise (Mercer). Honest framing: 3% is normal, 5% is strong, 10%+ almost always means promotion, market correction, or an outside offer. Below the 25th percentile for your role/metro = a real underpaid case. Note: the old "job-hop for 20%" advice is stale — by Aug 2025 the switcher-vs-stayer premium had collapsed to ~0.1% (BofA/Fed data), so switch for the role, not the bump.</p></div>
       <h2 class="sec">Freelance rate calculator</h2>
@@ -2498,7 +2690,8 @@
         <label class="f"><span>Salary equivalent ($/yr)</span><input id="iSal" inputmode="decimal" value="${sal}"></label>
         <label class="f"><span>Multiplier (2–3× covers taxes, gaps, overhead)</span><input id="iMult" inputmode="decimal" value="${mult}"></label>
       </div></div>
-      <div class="pcard" style="margin-top:8px"><p>Charge at least <b>${cfo2$(hr)}/hr</b>. Below ${cfo2$(sal / 2080)}/hr you're earning less than the salary. Rule of thumb (industry heuristic, not a benchmark): salary ÷ 1,000 ≈ hourly floor — the 2× covers SE tax (15.3%), benefits, and the fact that only ~1,100 of your hours are billable. Most people underprice by dividing by 2,080 and forgetting taxes.</p></div>
+      <div class="pcard" style="margin-top:8px"><p>Charge at least <b>${cfo2$(hr)}/hr</b>. Below ${cfo2$(sal / 2080)}/hr you're earning less than the salary.</p>
+        <p style="margin-top:6px">Hard floor: <b>${cfo2$(sal / 1000)}/hr</b> (salary ÷ 1,000) — never bid below this. The 2× covers SE tax (15.3%), benefits, and the fact that only ~1,100 of your hours are billable. Most people underprice by dividing by 2,080 and forgetting taxes.</p></div>
       <h2 class="sec">Invoice tracker</h2>
       <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <label class="f"><span>Client</span><input id="vClient" placeholder="Acme Co" autocomplete="off"></label>
@@ -2508,13 +2701,43 @@
       <div class="list" style="margin-top:8px">${invs.map((v, i) => {
         const days = Math.round((now - new Date(v.due).getTime()) / 864e5);
         const late = days > 0;
+        // FIX (pass1-I3): per-invoice chase stage, not a generic "OVERDUE".
+        const stage = !late ? `Due ${v.due}`
+          : days <= 2 ? `OVERDUE ${days}d — gentle nudge (assume oversight)`
+          : days <= 6 ? `OVERDUE ${days}d — follow up, reference the due date`
+          : days <= 13 ? `OVERDUE ${days}d — firm: state the late fee and updated total`
+          : days <= 29 ? `OVERDUE ${days}d — pause new work until paid`
+          : `OVERDUE ${days}d — final demand`;
         return `<div class="item"><div class="grow"><p class="t">${esc(v.client)} — ${cfo$(v.amt)}</p>
-          <p class="m" style="${late ? "color:#a33;font-weight:600" : ""}">${late ? `OVERDUE ${days} days — follow up today` : `Due ${v.due}`}</p></div>
+          <p class="m" style="${late ? "color:#a33;font-weight:600" : ""}">${stage}</p></div>
           <button class="linkbtn" data-vdel="${i}">Paid</button></div>`;
       }).join("") || `<p class="psub">No invoices tracked.</p>`}</div>
       <p class="fine" style="margin-top:12px">Chase cadence that works: invoice the day work ships, reminder 2–3 days before due, gentle nudge day 1 (assume oversight), firm at day 7 (state the late fee and updated total), pause new work at day 14, final demand at day 30–45. Late fees (1.5–3%/mo) only stick if they're in the contract. We never contact anyone for you.</p>`;
     const upd = () => { cfoSet("inc_sal", parseFloat($("iSal").value) || 0); cfoSet("inc_mult", parseFloat($("iMult").value) || 2); cfoIncome(body); };
     $("iSal").onchange = upd; $("iMult").onchange = upd;
+    // FIX (pass1-I1): role/pay/location benchmark verdict
+    const iUpd2 = () => {
+      cfoSet("inc_role", parseInt($("iRole").value, 10) || 0);
+      cfoSet("inc_pay", parseFloat($("iPay").value) || 0);
+      cfoSet("inc_loc", $("iLoc").value.trim());
+      cfoIncome(body);
+    };
+    ["iRole", "iPay", "iLoc"].forEach(id => { const el = $(id); if (el) el.onchange = iUpd2; });
+    (() => {
+      const ri = cfoGet("inc_role", 0), pay = cfoGet("inc_pay", 0);
+      const v = $("iVerdict");
+      if (!v) return;
+      if (!(pay > 0)) { v.innerHTML = `<p class="psub">Enter your pay above for a verdict against the BLS median.</p>`; return; }
+      const [role, med] = BLS_2024[ri] || BLS_2024[0];
+      const pct = Math.round(pay / med * 100);
+      const verdict = pct >= 120 ? "above market — strong position for your next negotiation"
+        : pct >= 95 ? "at market — fair pay for the role"
+        : pct >= 80 ? "below market — raise-or-move data; bring this number"
+        : "well below market — this is an underpaid case, act on it";
+      const loc = cfoGet("inc_loc", "");
+      v.innerHTML = `<p><b>${role}</b>: you $${Math.round(pay).toLocaleString()} vs BLS median $${med.toLocaleString()} — <b>${pct}% of median</b>${loc ? ` (${esc(loc)} — benchmark is national; big metros run higher)` : ""}.</p>
+        <p style="margin-top:6px">${verdict}.</p>`;
+    })();
     $("vAdd").onclick = () => {
       const client = $("vClient").value.trim(), amt = parseFloat($("vAmt").value), due = $("vDue").value;
       if (!client || !(amt > 0) || !due) { toast("Client, amount, and due date needed"); return; }
@@ -2704,24 +2927,46 @@
   }
   const INTPER = { monthly: "/mo", yearly: "/yr", weekly: "/wk" };
   const INT2MO = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 };
+  // FIX (pass1-S1): subscriptions work signed-out via local storage. Supabase
+  // syncs when signed in; local rows are the fallback, not a dead end.
+  const localSubsGet = () => { try { return JSON.parse(localStorage.getItem("cfo_subs") || "[]"); } catch (e) { return []; } };
+  const localSubsSet = rows => { try { localStorage.setItem("cfo_subs", JSON.stringify(rows)); } catch (e) {} };
   async function renderTracker() {
     const signed = !!(await getSessionToken());
     $("saveSignedOut").hidden = signed;
     $("saveSignedIn").hidden = !signed;
-    if (!signed) return;
+    // FIX (pass1-S1): render subscription list even signed-out (local rows).
     renderSubs();
-    renderDeadlines();
+    if (signed) renderDeadlines();
   }
   async function renderSubs() {
-    const rows = await saveRows("save_subscriptions", "created_at", false);
+    const signed = !!(await getSessionToken());
+    const rows = signed ? await saveRows("save_subscriptions", "created_at", false) : localSubsGet();
     const act = rows.filter(r => r.status !== "cancelled");
     const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
-    $("subMonthly").textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 ${act.length} active` : "";
-    $("subList").innerHTML = act.length ? act.map(s => `
+    const yearly = monthly * 12;
+    // FIX (pass1-S1/S2): annual total shown; ranked by monthly cost in render.
+    $("subMonthly").textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 $${Math.round(yearly).toLocaleString()}/yr \u00b7 ${act.length} active` : "";
+    const ranked = [...act].sort((a, b) => (Number(b.amount || 0) * (INT2MO[b.billing_interval] || 1)) - (Number(a.amount || 0) * (INT2MO[a.billing_interval] || 1)));
+    $("subList").innerHTML = ranked.length ? ranked.map(s => {
+      // Trial-expiry math (pass1-S3)
+      let trialTxt = "";
+      if (s.billing_interval === "trial" && s.next_billing_date) {
+        const days = Math.round((new Date(s.next_billing_date) - Date.now()) / 864e5);
+        trialTxt = days >= 0 ? ` \u00b7 trial ends in ${days}d \u2014 cancel before` : ` \u00b7 trial ended`;
+      }
+      // Annual-vs-monthly math (pass1-S2)
+      let annualTxt = "";
+      if (s.billing_interval === "monthly" && Number(s.annual_price) > 0) {
+        const save = Number(s.amount) * 12 - Number(s.annual_price);
+        if (save > 0) annualTxt = ` \u00b7 annual $${Number(s.annual_price).toFixed(0)} saves $${save.toFixed(0)}/yr`;
+      }
+      return `
       <div class="item"><div class="grow" data-open="${s.id}" style="cursor:pointer">
         <p class="t">${esc(s.merchant)}</p>
-        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}</p>
-      </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`).join("")
+        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}${trialTxt}${annualTxt}</p>
+      </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`;
+    }).join("")
       : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
     $("subList").querySelectorAll("[data-unsub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.unsub));
     $("subList").querySelectorAll("[data-open]").forEach(g => g.onclick = () => openSubSheet(g.dataset.open));
@@ -2736,17 +2981,22 @@
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
       if (!m || !(amt > 0)) return;
-      if (needSignIn()) return;
+      // FIX (pass1-S1): signed-out users get local tracking instead of a sign-in wall.
+      const signed = !!(await getSessionToken());
       b.disabled = true;
       const nb = $("subNextBill").value || null;
-      const ok = await saveInsert("save_subscriptions", {
+      const row = {
         merchant: m, amount: amt, currency: "USD",
         billing_interval: $("subInterval").value,
         next_billing_date: nb,
+        annual_price: parseFloat($("subAnnualPrice").value) || null,
         status: "active", detected_via: "manual",
-      });
+      };
+      let ok;
+      if (signed) { ok = await saveInsert("save_subscriptions", row); }
+      else { const lr = localSubsGet(); row.id = "local-" + Date.now(); lr.push(row); localSubsSet(lr); ok = true; }
       b.disabled = false;
-      if (ok) { ["subMerchant", "subAmount"].forEach(id => $(id).value = ""); $("subNextBill").value = ""; renderSubs(); renderQueue(); }
+      if (ok) { ["subMerchant", "subAmount", "subAnnualPrice"].forEach(id => $(id).value = ""); $("subNextBill").value = ""; renderSubs(); renderQueue(); }
       else toast("Couldn't save - check your connection and try again.");
     };
   }
@@ -2807,7 +3057,8 @@
 
   let homeSubCache = [];
   async function openSubSheet(id, group) {
-    const rows = await saveRows("save_subscriptions", "created_at", false);
+    const signed = !!(await getSessionToken());
+    const rows = signed ? await saveRows("save_subscriptions", "created_at", false) : localSubsGet();
     const s = rows.find(r => String(r.id) === String(id));
     if (!s) return;
     homeSubCache = rows;
@@ -2842,7 +3093,10 @@
       if (!Object.keys(updates).length) { $("subSheet").hidden = true; return; }
       $("subUpdateBtn").disabled = true;
       let uerr = null;
-      try { ({ error: uerr } = await supa.from("save_subscriptions").update(updates).eq("id", s.id)); } catch (e) { uerr = e; }
+      try {
+        if (signed) { ({ error: uerr } = await supa.from("save_subscriptions").update(updates).eq("id", s.id)); }
+        else { const lr = localSubsGet(); const ix = lr.findIndex(r => String(r.id) === String(s.id)); if (ix >= 0) { Object.assign(lr[ix], updates); localSubsSet(lr); } }
+      } catch (e) { uerr = e; }
       $("subUpdateBtn").disabled = false;
       $("subSheet").hidden = true;
       toast(uerr ? "Couldn't save — try again" : "Updated");
@@ -2856,12 +3110,16 @@
     $("subCancelBtn").onclick = () => cancelSubById(s.id, $("subCancelBtn"));
   }
   async function cancelSubById(id, btn) {
-    const rows = homeSubCache && homeSubCache.length ? homeSubCache : await saveRows("save_subscriptions", "created_at", false);
+    const signed = !!(await getSessionToken());
+    const rows = homeSubCache && homeSubCache.length ? homeSubCache : (signed ? await saveRows("save_subscriptions", "created_at", false) : localSubsGet());
     const s = rows.find(r => String(r.id) === String(id));
     if (!s) return;
     if (btn) btn.disabled = true;
     let cerr = null;
-    try { ({ error: cerr } = await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id)); } catch (e) { cerr = e; }
+    try {
+      if (signed) { ({ error: cerr } = await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", s.id)); }
+      else { const lr = localSubsGet(); const ix = lr.findIndex(r => String(r.id) === String(s.id)); if (ix >= 0) { lr[ix].status = "cancelled"; localSubsSet(lr); } }
+    } catch (e) { cerr = e; }
     if (btn) btn.disabled = false;
     $("subSheet").hidden = true;
     if (cerr) { toast("Couldn't cancel — try again"); return; }
@@ -3065,6 +3323,38 @@
   function guideAnswer(text) {
     const t = " " + String(text).toLowerCase() + " ";
     const has = (...kws) => kws.some(k => t.includes(k));
+
+    // GUARDRAILS (pass1-X1): hard refusals evaluated before everything else,
+    // including pendingOffer state. Plain, non-preachy.
+    if (has("credit card", "creditcard", "apply for a card", "best card", "card bonus", "sign up for a credit"))
+      return { paras: ["I can't help with credit cards — Upmore never recommends them, not for bonuses, not for points. If you want cash without a card, tell me what you're open to and I'll find a real route."] };
+    if (has("sportsbook", "fanduel", "draftkings", "prizepicks", "betmgm", "caesars sports", "sports betting", "bet on sports", "parlay"))
+      return { paras: ["I can't help with sports betting or gambling promos — that's not an earning method, it's a way to lose money. Want something with a real payout instead?"] };
+    if (has("casino", "poker", "blackjack", "slots", "roulette", "bet365"))
+      return { paras: ["I can't help with casino or poker — gambling isn't an earning method. Tell me what kind of real work you'd do and I'll point you at it."] };
+    if (has("fake direct deposit", "fake a direct deposit", "spoof direct deposit", "manufacture direct deposit", "fraud", "fake account", "fake identity", "fake pay stub", "fake documents"))
+      return { paras: ["I can't help with that — faking deposits or documents is fraud, and it gets accounts closed and bonuses clawed back. If you want a bank bonus honestly, I can walk you through one whose requirements you actually meet."] };
+    if (has("move my money", "move $", "transfer my money", "transfer $", "invest for me", "invest my", "auto-invest", "buy stock for me", "withdraw for me", "send money for me"))
+      return { paras: ["I can't move money for you — Upmore never touches your accounts. I can do the math and lay out the steps; you always make the final tap."] };
+    if (has("ignore your rules", "ignore your instructions", "disregard your rules", "guarantee me", "guaranteed $", "100% certain", "promise me $"))
+      return { paras: ["I can't promise payouts — anyone who guarantees you money is selling something. What I can do is show you routes with verified terms and honest odds. Want that?"] };
+
+    // FIX (pass1-E2): skill-level matching. "I'm good at X" / "easy ones" filters
+    // the queue by difficulty instead of ignoring skill entirely.
+    if (has("i'm good at", "im good at", "good at writing", "good at design", "good at coding", "good at talking", "good at driving", "my skills", "match my skills", "easy ones", "easiest for me", "no experience", "beginner friendly")) {
+      const wantEasy = has("easy", "beginner", "no experience");
+      const pool = rankMoves().filter(r => {
+        const d = String(r.difficulty || "").toLowerCase();
+        return wantEasy ? (d.includes("very easy") || d.includes("easy")) : true;
+      }).slice(0, 3);
+      if (!pool.length) return { paras: ["Nothing in the queue matches that right now — try the Explore tab with the difficulty filter."] };
+      const r = pool[0];
+      pendingOffer = r.id;
+      return { paras: [
+        `Skill-matched: ${r.provider} — ${r.method}. Skill level: ${r.difficulty || "not stated"}.`,
+        `${r.reward || "Reward varies."}${r.time_to_first ? ` First money ${r.time_to_first.toLowerCase()}.` : ""} Want me to walk you through it?` ],
+        card: routeCard(r), action: "walkthrough", routeId: r.id };
+    }
 
     if (pendingOffer) {
       const id = pendingOffer;
@@ -3851,7 +4141,8 @@
   function routeVerification(r) {
     if (r.verification) return r.verification; // explicit override wins
     const s = (r.status || "").toLowerCase();
-    if (s === "researched") return "confirmed";
+    if (s === "verified") return "verified";
+    if (s === "researched") return "researched"; // FIX (pass1-E1): was "confirmed" — overstated the audit
     if (s === "retired") return "retired";
     if (s === "expired") return "expired";
     return "unverified";
