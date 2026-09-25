@@ -7,4 +7,4 @@ You are beta agent 02. Test BOTH: (1) can it do the function, (2) in retrospect,
 Clean up any test data you create (cancel test subscriptions, reverse test ledger entries, mark test deadlines done) before finishing.
 
 ## Scenario
-SEARCH. In Home's search box type 'survey'. Assert: results appear; every result badge reads 'Researched' (never '✓ Verified'); tap a result -> detail expands showing requirements, payout, and catch; close the detail. Assert no horizontal overflow.
+SEARCH. In Home's search box type 'survey'. Assert: results appear; NO result badge claims 'Verified' (researched routes badge 'Researched', genuinely-unverified routes honestly badge 'Unverified' — that is the intended catalog-honesty design, not a failure); tap a result -> detail expands showing requirements, payout, and catch; close the detail. Assert no horizontal overflow.

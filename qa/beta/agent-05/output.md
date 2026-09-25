@@ -1,26 +1,20 @@
-# Beta agent 05 - output (final run, build b4f62b4, 2026-09-25)
+# Beta agent 05 - output (FINAL run, build 2a9d29b, 2026-09-25 — PASS on solo rerun)
 
-FRESH-BUILD GATE: PASS. Guide header shows only "New chat" — no History button.
+Account: qa05@upmore.app. Fresh-build gate PASS (no History button). Email verified qa05@upmore.app, no re-sign-in needed. Signed out at end.
 
-SIGN-IN & SESSION: PASS (qa05@upmore.app verified twice). One anomaly: mid-run a reload briefly rendered "Good evening, Vish" (default signed-out name) before the session held stable again.
+Attempt 1 (concurrent with agent 04) was environment-blocked: saves failed with "Couldn't save - check your connection" because the shared browser profile flipped stored auth tokens between qa04/qa05. Direct API test with a valid token returned HTTP 201, proving the product path works. This solo rerun (no concurrency) is the valid verdict.
 
-## Scenario: DUPLICATE DETECTOR — BLOCKED, could not complete
-1. Add 'DupeTest05' $9.99 Monthly twice — FAIL (blocked). Save failed 4x with "Couldn't save - check your connection and try again." (before/after session drop, after re-login, after reload, after 15s wait).
-2. 'Possible duplicate' card naming DupeTest05 — FAIL (blocked, nothing saved).
-3. Side-by-side comparison — FAIL (blocked).
-4. Cancel both; Track empty — N/A. Track showed "Nothing tracked yet".
+## Scenario: LEDGER ADD + REVERSE
+1. Starting totals recorded — PASS. "$0.00" total, all buckets $0.00, "Total across all buckets · 0 entries".
+2. Log $25 Received 'Beta payout 09' — PASS. "Logged" confirmation, no error banner. Totals $0.00 → $25.00 (exactly +$25). Entry: "Beta payout 09 — $25.00 - Received - 2026-09-24" with Reverse button.
+3. Reverse entry — PASS. Offsetting entry "Reversal: Beta payout 09 (reversal) — $-25.00 - Received - 2026-09-24"; original untouched below it. Totals returned to "$0.00", all buckets $0.00. True reversal, not edit/delete; audit trail intact.
+4. Totals computed, new user starts at $0 — PASS. $0.00 at 0 entries → $25.00 after log → $0.00 after reversal. Deterministic from entries, never a stored static number.
 
-Alternate route: Guide chat asked to track the subscription — replied generically about the catalog; no subscription-tracking capability. Track form is the only add path.
+Minor nit (not a failure): after the reversal the list showed 2 entries but the caption read "1 entry" — slightly muddles the mental model.
 
-## Post-run investigation (same session)
-- Direct PostgREST insert as qa05 WITHOUT user_id → 403 RLS (expected; app always sets user_id).
-- Direct insert WITH user_id → HTTP 201. The write path and RLS policy are fine.
-- DB shows two DupeTest05 rows created+cancelled at 2026-09-25T00:59Z — saves DID succeed when the session was healthy.
-- Conclusion: failures correlate with session drops in the shared leased browser profile (4-5 concurrent tasks share one Chromium profile and clobber each other's localStorage sessions). saveInsert returns false immediately when saveUid() is null → the exact "Couldn't save" toast. NOT a product write-path bug: the identical UI path saved successfully in earlier waves and via direct API now.
-- Per standing rule, managed-browser session behavior is not classified as a product defect without isolated reproduction.
+## Retrospective
+Add-and-reverse worked exactly as designed: sensible form pre-fill, immediate save with clear confirmation, Reverse creates a properly labeled negative offsetting entry while preserving the original — a textbook ledger reversal serving "correct a mistake without erasing history". For a user logging income who occasionally undoes an entry, both function and intent delivered — accuracy you can audit.
 
-PLAN: rerun this scenario alone (no concurrent tasks) on the same b4f62b4 build for a clean signal.
+CLEANUP: signed out. Totals $0.00 across all buckets (reversal audit entries remain by design — correct ledger behavior).
 
-CLEANUP: signed out. No active test data (4 cancelled rows from this + earlier runs remain as audit trail, all status=cancelled).
-
-RESULT: BLOCKED (environment) — rerun pending
+RESULT: PASS

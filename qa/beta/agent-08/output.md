@@ -1,46 +1,18 @@
-# Beta agent 08 - output
+# Beta agent 08 - output (FINAL run, build 2a9d29b, 2026-09-25 — PASS after data-layer fix)
 
-Completed: 2026-09-24T20:47:25Z
-Scenario: DEADLINES AND CLAIMS
+Account: qa08@upmore.app. Fresh-build gate PASS (no History button). Session PASS (qa08@upmore.app). Signed out at end; no test data left. Pre-existing "Reversal: Freelance08 (reversal)" -$40.00 entry left untouched.
 
-## Assertions
-1. Added renewal deadline "BetaInsurance08" (Bill renewal, 10/04/2026 = 10 days out) - PASS. Appeared in Track "Deadlines & claims" list and as an "Up next" queue card ("BetaInsurance08 / Renews in 11d / Deadline in 11d - no dollars set, ranked on urgency", "Mark done" button). NOTE: countdown rendered "in 11d" for a 10-day-out date - the same off-by-one bug agent 07 found; already fixed in qDaysUntil (calendar-day difference).
-2. Added claim "BetaRebate08" (Claim/rebate, $50, 10/14/2026 = 20 days out) - PASS. Track list: "BetaRebate08 - claim / $50.00 - due - in 21d"; queue card: "BetaRebate08 - claim / due in 21d / $50 x 90% / 15 min - due in 21d", "Mark claimed" button. Same off-by-one note (21d for 20 days) - fixed.
-3. Both in list AND queue simultaneously - PASS.
-4. Marked both done - PASS. Both disappeared from the list ("No deadlines tracked") and from the queue.
+## Attempt 1: blocked by product bug (missing save_renewals.amount column) — fixed via ALTER TABLE ... ADD COLUMN amount numeric on the Upmore project; verified via direct API (HTTP 201 insert, 204 delete). No code change; deployed build 2a9d29b unchanged.
 
-No console errors. No other user data touched; "Delete data" never tapped. Date entry needed visual-automation digit typing (native date input refused direct fill) - test-env quirk, not app bug.
+## Attempt 2 (solo rerun): ALL PASS
+1. Add 2 deadlines — PASS. 'DeadlineTestA' due 2026-09-26 and 'DeadlineTestB' due 2026-09-29 (kind "Bill renewal") both saved with no error banners, no retry needed. Track listed "DeadlineTestA / renewal - in 2 days" and "DeadlineTestB / renewal - in 5 days". (Dates set via per-segment digit key-presses; bulk fill refused on native date segments — tooling limitation.)
+2. Expiring-soon queue card — PASS. Up next card for the sooner deadline: "DeadlineTestA", "Renews in 2 days", "Deadline in 2 days - no dollars set, ranked on urgency", "Mark done" button — ranked ahead of DeadlineTestB's "Renews in 5 days" card.
+3. Mark Done — PASS. Done on DeadlineTestA's row removed it from Track and the queue; only DeadlineTestB's card remained.
+4. Cleanup to empty — PASS. Done on DeadlineTestB → Track "No deadlines tracked - add renewals and claims below.", no deadline cards in queue; empty state persisted across reload. (Only removal path is "Done"/"Mark done" — no separate delete; muddies cancel-vs-complete but achieves removal.)
 
-## Retrospective verdict
-Manual deadline/claim tracking is a feature users would adopt selectively but abandon as a habit - adding an entry is quick and low-friction, but it demands users remember to input obligations the app could more reliably detect, so maintenance would decay after the first wins. The queue surfacing meaningfully justifies the effort: once an entry exists it becomes a ranked action card competing alongside earning offers ("due in 21d", "$50 x 90% / 15 min"), giving tracking real consequence instead of a digital notebook. Worth shipping as a complement to automated detection, but only maintained if the app nudges at the right moment ("add the renewal date from this bill?").
+Minor frictions: due labels are relative-only ("in 2 days", no absolute date for cross-checking).
 
-## Result: PASS (4/4; off-by-one countdown confirmed again, already fixed)
+## Retrospective
+Deadlines fulfilled function and intent: add → surface → complete → clear all worked and persisted across reload. The queue proactively surfaced the sooner deadline first with an urgency-ranking note. Serves "stay ahead of upcoming bills without forgetting them" — one-tap completion reflected in both queue and Track.
 
----
-
-## FINAL-BUILD run (2026-09-24T21:11:12Z, on aef5744; 390x844 phone frame)
-1. Added renewal "DeadlineTest08" dated 2026-10-04 (exactly 10 days out; date via digit keypresses) - PASS. Queue card "DeadlineTest08 / Renews in 10d / Deadline in 10d"; section "DeadlineTest08 — renewal - in 10d".
-2. Added claim "ClaimTest08" deadline 2026-10-14 (exactly 20 days out) - PASS. Queue card "ClaimTest08 - claim / due in 20d"; section "ClaimTest08 - claim — due - in 20d".
-3. Exact "in 10d" / "in 20d" - PASS. No off-by-one (9d/11d/19d/21d) in cards or section.
-4. Cleanup - PASS (both marked Done; cards gone; section "No deadlines tracked")
-## Final-build result: PASS (4/4)
-
-## FINAL-BUILD run (2026-09-24, build 70f89f3)
-AGENT: 08 — Deadlines. RESULT: PASS (6/6 assertions).
-- Signed in as qa08@upmore.app; You tab shows profile (Friend, Illinois, Money log, Sign out).
-- 'BetaInsurance08' renewal (+10d = 2026-10-04) in Track list: "BetaInsurance08" / "renewal - in 10d".
-- 'BetaRebate08' $50 claim (+20d = 2026-10-14) in Track list: "BetaRebate08 - claim" / "$50.00 - due - in 20d".
-- Both as Home queue cards: "BetaInsurance08" / "Renews in 10d" / "Deadline in 10d - no dollars set, ranked on urgency" (Mark done); "BetaRebate08 - claim" / "due in 20d" / "$50 x 90% / 15 min - due in 20d" (Mark claimed).
-- Marked both done: Track shows "No deadlines tracked"; both cards gone from queue; no "Beta" residue anywhere.
-Retrospective: served intent — money dates visible in two surfaces (Track countdowns + urgency-ranked queue cards); marking done cleared both cleanly. Caveats: (1) date entry only registered via the native calendar picker; typing digits into date spinbuttons changed the displayed value but Save then silently did nothing with no error feedback — same silent-failure class as the ledger bug, now fixed with an honest toast; (2) queue ranked the $50 rebate (20d) above the no-dollar renewal (10d) per dollars×confidence×urgency÷effort — designed behavior, not a defect. (Note: "in 10d" copy becomes "in 10 days" with the qDueText fix.)
-Note: two mid-scenario sign-outs from the known localStorage-drop quirk; signed back in and continued; zero reloads during scenario.
-
-## RERUN — final suite (build 968ece1, 2026-09-25)
-Account: qa08@upmore.app (email-matched gate).
-Fresh-build gate: PASS.
-1. Entry added — PASS ("Freelance08 — $40.00 - Received - 2026-09-25"; net $40.00).
-2. Reversed entry keeps amount/title/date (void marker) — PASS (original remains, dimmed + strikethrough, not removed).
-3. Separate offsetting entry — PASS ("Reversal: Freelance08 (reversal)" $-40.00 above the struck original).
-4. Net $0.00 after reversal — PASS (all category chips $0.00).
-Retrospective: serves intent — auditable history, zeroed net, reversal itself reversible.
-AGENT 08 FINAL RESULT: PASS
+RESULT: PASS

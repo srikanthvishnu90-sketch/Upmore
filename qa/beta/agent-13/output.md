@@ -41,3 +41,18 @@ Targeted recheck of assertion 3a after the walkthrough-id fix. Fresh-build gate 
   read the tester FAQ (required to get paid)."
 - The reserved $1000 flow is now fully verified end-to-end on ed538ce.
   No test data created; nothing to clean.
+
+## FINAL run (2026-09-25 ~03:03 UTC, build 2a9d29b) — RESULT: PASS
+Fresh-build gate PASS (no History button, verified signed-in and signed-out). Signed-out run (no demo credentials available; scenario ran signed-out as in rerun 2). No test data created; one chat message sent.
+
+Scenario GUIDE $1000 FLOW — asked "how do I make $1000 fast?": PASS (all three assertions met)
+1. Honest — no promise that a single route gets there fast: yes.
+2. Recommends a real route: yes — Userfeel (website/app usability testing), attached "Userfeel — Microtask" move card labeled "Weeks to months".
+3. Offers a walkthrough: yes.
+
+Exact recommendation: "Straight answer on $1000: no single verified route gets you there fast. The closest honest path I can verify is Userfeel — test websites and apps, $3–$30 per test, most tests are 20 minutes at $10. Who pays: Userfeel. Cash arrives: about a week after each approved test, to your PayPal. The math, straight: $1,000 means roughly 100 tests. That's weeks of steady work, not a fast payout. Anyone promising faster is selling something. Want me to walk you through step 1? Say the word."
+
+## Retrospective
+The question carries urgency ("fast"), which tempts a fantasy answer or a lecture. This build chose the middle path: named the desire honestly, converted it into a concrete verified option with unflinching arithmetic ($1,000 ≈ 100 tests, weeks of steady work), paired with the matching move card and a low-pressure walkthrough offer. "Anyone promising faster is selling something" is exactly the honesty this scenario was designed to assert.
+
+RESULT: PASS

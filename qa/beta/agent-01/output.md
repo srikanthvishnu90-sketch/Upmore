@@ -1,74 +1,14 @@
-# Beta agent 01 - output
+# Beta agent 01 - output (FINAL run, build 2a9d29b, 2026-09-25)
 
-Completed: 2026-09-24T20:39:40Z
-Scenario: HOME QUEUE RENDER
+Account: qa01@upmore.app. Fresh-build gate PASS (no History button). Session PASS (email verified). Signed out at end; no test data ($0.00, 0 entries).
 
-## Assertions
-1. Exactly one "Up next" ranked queue section (h2 "Up next" + single #queue container) - PASS
-2. Queue contains >=1 card - PASS (15 cards rendered)
-3. Top card shows "Up next" label, title, sub-line, plain-words why-line, CTA - PASS
-   - Title: "Continue: SoFi Invest — Brokerage account bonus", sub "Step 2 of 5",
-     why-line "Already started - $50000 x 90% / 12 min", CTA "Resume"
-4. Every card carries data-dollar/data-conf/data-urg/data-eff/data-score - PASS
-   (all 15 <article class="qcard"> verified; top card: data-dollar="50000" data-conf="0.9" data-urg="1.5" data-eff="12" data-score="5625.00"; cards sorted descending by score)
-5. No horizontal overflow - NOT VERIFIABLE (no JS/viewport control in this environment); visual screenshot shows no scrollbar or clipped content - INCONCLUSIVE
+## Scenario: HOME QUEUE RENDER
+1. Exactly one "Up next" section, >=1 card, top card complete — PASS. 9 queue cards. Top card: "Mindswarms — Focus Group"; sub-line "You can receive $10-$50 (and sometimes more) per study, within 24 hours via PayPal. · Minutes to hours"; why-line "$50 x 70% x 2 / 4 min - pays fast"; CTA "Walk me through it".
+2. Scoring attributes on every card — PASS. All 9 carry data-dollar, data-conf, data-urg, data-eff, data-score: Mindswarms 50/0.7/2/4/17.50; Gaultenergy — Energy Switching 150/0.7/2/22.5/9.33; Blazecu — Bank bonus 250/0.7/2/45/7.78; BOK Financial 450/0.7/1/45/7.00; Nymcu 350/0.7/1/45/5.44; Old National Bank 300/0.7/1/45/4.67; Pampers Club — Receipt/Loyalty 10/0.7/2/10/1.40; Adobe Creative Cloud Student 19/0.7/2/30/0.89; Lampsplus — Signup Bonus 15/0.7/2/25/0.84.
+3. No horizontal overflow at 390px — PASS (visual via screenshots; all cards fit, no horizontal scrollbar).
+4. CRITICAL: top card is extractable cash — PASS. "You can receive $10-$50 (and sometimes more) per study, within 24 hours via PayPal." Dollar-denominated, PayPal payout. Not points/XP, not gift cards, not credit, not tax credit, not referral-gated. The pointsMechanism() fix works: no points route leads.
 
-No console errors observed. No test data created or modified.
+## Retrospective
+Queue mechanics work; the top pick is genuinely extractable cash serving "find real extra money". Observation (not a scenario failure): cards 7–9 are non-cash routes scored in dollars — Pampers Club (rewards-catalog store credit), Adobe Creative Cloud Student (labeled "discount on a paid subscription, NOT income"), Lampsplus ("$15 Off $50" coupon). They don't LEAD (standing rule is about leading), and the Adobe card discloses honestly, but a user trusting the queue past the top card drifts from extractable cash. Flagged as an open product judgment call for the owner: whether non-cash routes belong in the "Up next" money queue at all, or should be separated.
 
-## Retrospective verdict
-Yes - the queue largely serves "tell me what to do right now to make money". Explicitly ranked by dollars x confidence x urgency / effort, biggest first; top item is an already-started SoFi bonus with a concrete 12-minute resume step; every card pairs expected payoff with an action CTA. Weaknesses: queue mixes "earn new money" with "keep money by cancelling subscriptions" (cancellations aren't earning), and several top items demand prerequisites an ordinary user may lack (existing brokerage assets for the SoFi ACAT match, $1,000+ of bullion, security-research skill) - so "right now" applies most cleanly to the resumed in-progress item at the top.
-
-## Result: PASS (4/4 verifiable; 1 inconclusive)
-
----
-
-## RERUN on build ef57c14 (2026-09-24T21:00:13Z)
-1. One "Up next" queue section - PASS
-2. 15 cards rendered - PASS
-3. Top card: "Up next" label, "Continue: SoFi Invest — Brokerage account bonus", "Step 2 of 5", "Already started - $50000 x 90% / 12 min", "Resume" CTA - PASS
-4. All 15 cards carry all five data-* attributes; sorted by data-score descending (top 5625.00, lowest "Cancel Hulu" 23.98) - PASS
-5. Overflow: not numerically measurable (no JS execution); visually all content fits phone frame, vertical scroll only - INCONCLUSIVE
-New nit: 2nd card re-lists the same SoFi offer as a fresh "Start" (redundant with top "Continue") - FIXED via queue dedup (in-progress walkthrough routes excluded from fresh earn cards). Also: some why-lines are bare formulas without plain-words suffix - cosmetic nit, top card explains in plain words per B4.
-Retrospective: intent served - unambiguous next action first, everything ranked by the formula with verb CTAs; caveats: ranking-duplication (fixed), tail shifts from earning to cancellations (defensible as net money, dilutes "make money right now").
-## Rerun result: PASS (4/4 verifiable) on ef57c14; dedup fix verified in final build wave below
-
----
-
-## FINAL-BUILD run (2026-09-24T21:03:48Z, on 6d8aac8)
-1. Exactly one "Up next" queue - PASS (hero subtitle "Up next:" is not a second queue)
-2. 13 cards (8 earn + 5 cancel) - PASS
-3. Top card: "Up next" label, "Continue: SoFi Invest — Brokerage account bonus", "Step 2 of 5", "Already started - $50000 x 90% / 12 min", "Resume" CTA - PASS
-4. All 13 qcards carry all five data-* attributes (top: data-dollar=50000 data-conf=0.9 data-urg=1 data-eff=12 data-score=3750) - PASS
-5. SoFi dedup - FAIL (real bug): queue showed both "Continue: SoFi Invest — Brokerage account bonus" (Resume) AND a fresh "SoFi Invest" claim card (Start). Root cause: the "claim: promos that fit" section adds the first 3 Bank Bonus/Brokerage Promo/Signup Bonus routes - R0018 SoFi Invest is one of them - and my dedup only excluded startedIds from the earn-moves list, not from the claim-promos list. FIXED: claim-promos filter now also excludes startedIds. (Agent's exact "$1,000 bonus on new funds" text is not in catalog data - likely paraphrase of the reward sub-line; the duplicate itself is confirmed by code inspection.)
-6. Overflow: not measurable; visually fits the 390px phone frame, no cutoff/bleed - INCONCLUSIVE
-Retrospective: ranks every action by dollars x confidence x urgency / effort with plain-words economics + concrete CTA; duplicate SoFi card (fixed) undermined clarity; "Show more (1632 left)" stack above queue is noise.
-## Final-build result: FAIL->FIXED (dedup now covers claim-promos); needs one more final-build confirmation run
-
----
-
-## DEDUP FIX CONFIRMATION on build aef5744 (2026-09-24T21:06:37Z)
-Exactly 1 SoFi card in the "Up next" queue: "Continue: SoFi Invest — Brokerage account bonus" / "Step 2 of 5" / "Already started - $50000 x 90% / 12 min" / "Resume" CTA (data-type=continue, data-qid=cont-R0018, score 5625.00). No second SoFi "Start" card. A "SoFi Invest — Brokerage account bonus" row in the search results above the queue is search, not a queue duplicate - acceptable.
-## Agent 01 final: PASS on aef5744 (dedup verified fixed)
-
-## FINAL-BUILD run (2026-09-24, build 70f89f3)
-AGENT: 01 — Home queue render. RESULT: PASS (5/5 assertions).
-- Exactly one 'Up next' h2 section (explainer: "One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.").
-- 9 article.qcard elements in the section (JM Bullion, SoFi Invest brokerage, Microsoft, Robinhood Referral, SoFi Invest claim, Tradestation, National Grid, Sunrun, Old National Bank).
-- Top card (JM Bullion — Niche Buyback): label "Up next", title, sub-line "Payment is typically issued in 1-3 business days…", why-line "$50000 x 70% / 33 min - pays fast", CTA "Walk me through it".
-- Every card carries data-dollar/data-conf/data-urg/data-eff/data-score (verified via rendered HTML inspection; e.g. top card data-dollar="50000" data-conf="0.7" data-urg="1.5" data-eff="33" data-score="1615.38").
-- No horizontal overflow at the app's own 390px device frame (body/.device overflow:hidden; vertical-only inner scrollers).
-Retrospective: queue is transparent (formula stated openly, effort/payout-timing/difficulty/"the catch" per card) but optimizes expected-dollar math over attainability — top picks need $1,000+ of precious metals (JM Bullion), elite security expertise (Microsoft bounties), or moving existing brokerage funds (SoFi/Tradestation). Serves an informed asset-holding user well; for a typical user seeking fast online income it should weight qualification fit / barrier-to-first-dollar more heavily or lead with low-barrier items.
-Notes: signed in as qa01 via #login (app shows display name "Vish" — default for non-onboarded profile). Build marker 'upmore-ob-nonce' not visible to the task (page serializes to ~7MB; only first 65,536 chars retrievable) — parent verified independently via production fetch: marker present 5×. Zero reloads; hash-only navigation.
-OPEN QUESTION for parent: top-card data-score 1615.38 does not reproduce exactly from the rounded data-* attributes (50000×0.7×1.5/33 = 1590.91) — attributes appear rounded while the score uses fuller precision. Verify whether this breaks B4's runtime data-* verification.
-
-## RERUN — final suite (build 968ece1, 2026-09-25)
-Account: qa01@upmore.app (per-agent account; display name "Vish" is a stale field from wave 1 — email matched, parent confirmed correct account).
-Fresh-build gate: PASS (no Guide History button; "Unverified" badges present in Explore search).
-1. Exactly one 'Up next' queue section — PASS (single section + "Ranked by dollars × confidence × urgency ÷ effort — biggest score first." explainer).
-2. >=1 queue card — PASS (9 cards: Old National Bank, BOK Financial, Nymcu, Reward XP Games, Mindswarms, Home Depot, Lowe's, Gaultenergy, Blazecu).
-3. Top card label/title/sub/why/CTA — PASS ("Up next" / "Old National Bank" / "$300 (open 2/3/26-10/30/26 with $50; 3+ direct deposits totaling $3,500 within first 4…" / "$3500 x 70% / 45 min" / "Start").
-4. data-dollar/conf/urg/eff/score on every card — PASS; scores strictly descending (54.44 → 7.78).
-5. No horizontal overflow at 390px — PASS.
-Retrospective: serves intent — beginner instantly sees what to do next; ranking math transparent; every card answers what/involved/why/action. Minor: "pays fast" suffix unexplained on lower cards; terse titles ("Nymcu").
-Cleanup: none created. Signed out.
-AGENT 01 FINAL RESULT: PASS
+RESULT: PASS

@@ -1,17 +1,18 @@
-# Beta agent 03 - output (final run, build b4f62b4, 2026-09-25)
+# Beta agent 03 - output (FINAL run, build 2a9d29b, 2026-09-25)
 
-FRESH-BUILD GATE: PASS. Guide header shows only "Knows your plan" + "New chat" — no History button.
-
-SIGN-IN & SESSION: leftover qa01 session found at start; signed out, signed in as qa03@upmore.app. You tab confirmed qa03@upmore.app — NO SESSION MISMATCH. 0 money-log entries.
+Account: qa03@upmore.app. Fresh-build gate PASS (no History button). Session PASS (email verified, never dropped).
 
 ## Scenario: QUEUE CTA
-1. Tap top queue card CTA — PASS. Top card: "Reward XP Games — Earn XP for playing games and reaching milestones", CTA "Walk me through it". Tapped → opened Guide tab with a real walkthrough. Not a dead tap.
-2. Back to Home; queue still renders — PASS. Identical queue, same top card and CTA.
-3. NEW: promo/bonus route launches step-by-step walkthrough — PASS. "Let's do Reward XP Games together. 5 steps, first money Days to weeks. I'll go one at a time — tap Do". Context: "Why this one: ≈$0–$1000 · ≈30–90 min · ≈8.33/min." STEP 1 OF 5: "Join free at rewardxp.com via email (collect the small 5 XP welcome bonus)." Link "Open rewardxp.com ↗", buttons "Done — next step" / "I'm stuck on this step", message box + Send.
+1. Tap top queue card CTA does something real — PASS. Top card: "Mindswarms — Focus Group" ("Earn $10–$50", badges "In your plan", "No interview"), CTA "Walk me through it". Tapping navigated to #guide and opened a matching walkthrough: "Let's do Mindswarms together. 4 steps, first money Minutes to hours. I'll go one at a time — tap Done", "STEP 1 OF 4", "Install the Mindswarms app and create your account", instruction text (no VPN), link "Open play.google.com ↗", buttons "Done — next step" and "I'm stuck on this step". Real guided session, not a dead tap.
+2. Navigate back to Home; queue still renders — PASS. "Up next" with 4 cards: Mindswarms — Focus Group ("Earn $10–$50", "In your plan", "No interview"); DoorDash — Delivery Driver ("Earn $200–$500/mo", "Apply in days", "In your plan"); Rover — Pet Care ("Earn $100–$300/mo", "High demand", "In your plan"); Dscout — Research Missions ("Earn $20–$200", "Remote", "No interview"). Header "Good evening, qa03", plan "qa03's path to $1,200/mo" unchanged.
+3. Route with steps launches step-by-step walkthrough — PASS. STEP 1 OF 4 with per-step done/stuck controls.
+
+## "tapDone" note (cosmetic, NOT a defect)
+The agent quoted the intro as "tapDone" (no space). Verified in source AND built index.html: the copy is "tap **Done**" and the chat renderer (md()) emits "tap <b>Done</b>" — the space exists in the DOM. A prior agent quoted the same line as "tap Do" (dropping "ne"), confirming these are agent text-extraction artifacts at inline-element boundaries, not a rendering bug. No code change made.
 
 ## Retrospective
-The CTA does what the product promises — launches a contextual, step-by-step walkthrough with continuity (Home queue unchanged after). The walkthrough opens on the route's first concrete step with expectations (time window, payout range, effort), a live external link, and an "I'm stuck" escape hatch. Serves the intent "start doing this now". Copy polish noted: intro renders "tap Do" as "tapDo" (spacing glitch — cosmetic, logged for post-run fix).
+Served the intent: the top recommendation becomes a concrete one-step-at-a-time guided session in the Guide — direct app-store link, clear first action, progress framing, per-step escape hatch. Exactly what a hesitant user needs to move from "queue of options" to "first action taken".
 
-CLEANUP: signed out. No test data created. Browser parked on welcome screen.
+CLEANUP: signed out. $0.00 / 0 entries — no test data.
 
-RESULT: PASS (function + intent)
+RESULT: PASS

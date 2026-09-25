@@ -1,54 +1,19 @@
-# Beta agent 04 - output
+# Beta agent 04 - output (FINAL run, build 2a9d29b, 2026-09-25)
 
-Completed: 2026-09-24T20:42:11Z
-Scenario: ADD SUBSCRIPTION (BetaFlix04)
+Account: qa04@upmore.app. Fresh-build gate PASS (no History button). Session verified twice; two spontaneous drops mid-run (shared profile — agent 05 concurrent; data persisted server-side, re-signed in).
 
-## Assertions
-1. Add BetaFlix04 $15.99 Monthly, next bill 2026-10-15 - PASS (form saved; phone-frame workaround needed: sticky nav obscured Save/date-picker, date spinbuttons needed keyboard digit entry)
-2. Appears in Track list showing $15.99/mo - PASS ("≈$94.93/mo · 7 active", "BetaFlix04 — $15.99/mo" top row)
-3. Renewal queue card for BetaFlix04 (bill 21 days out) - EXPECTATION MISMATCH, not a product bug. The renewal detector fires only when the bill is within 14 days (by design, verified in code: `if (bd != null && bd <= 14)`). The scenario used a 21-day-out date, so no renewal card was ever expected. What appeared instead was the designed "Cancel BetaFlix04 — Keep $192/yr" queue card. FIX APPLIED: the form label said "powers renewal reminders" with no window; changed to "renewal reminder when it's within 14 days" so users aren't misled. Will ride the batch rebuild.
-4. Cleanup - PASS (cancelled via sheet; Track back to "≈$68.95/mo · 5 active", BetaFlix04 gone)
+## Scenario: ADD SUBSCRIPTION (BetaFlix04 / $15.99 / Monthly)
+1. Add + appears in Track with right amount — PASS. "≈$15.99/mo · 1 active", row "BetaFlix04" / "$15.99/mo" with Cancel button. Queue card: "Cancel BetaFlix04", "Keep $191.88/yr", "$191.88/yr x 100% / 5 min", Review button.
+2. Tap row → edit/cancel sheet — PASS. Sheet: "BetaFlix04" / "$15.99/mo", editable Amount "15.99", "Next bill" date field, "Update", "Cancel subscription", "Keep it" buttons.
+3. Cancel via sheet → Track empty — PASS. "Nothing tracked yet — add your first subscription below." (Also auto-opened a Guide draft: "I just cancelled my BetaFlix04 subscription. Walk me through confirming it's really cancelled on the…" — unsent.)
+4. Date input — NOT EXERCISED. Month spinbutton fill refused by tooling; clicking the spinbutton correlated with a session drop (re-signed in); "Show date picker" reported obscured by a div (retry after scroll still refused). Saved WITHOUT the next-bill date (field is optional). One retry only, then reported per instructions.
 
-No console errors. "Delete data" not used. Note: another agent's leftover DupeTest05 was present at start and disappeared during the run (concurrent agent cleaned its own data on the shared demo account - no interference with this agent's assertions).
+## Date-input status — RESOLVED by isolated probe (2026-09-25)
+PROBE RESULT: DATE INPUT WORKS. The field is a plain native `<input id="subNextBill" type="date">` — no overlay divs. The automation's bulk fill/type was refused (tooling limitation on native date elements), but real keyboard digit entry set 10/15/2026 successfully, and saving with the date worked: Track showed "DateProbe04 — $9.99/mo · renews in 21 days" and the sheet displayed "Next bill: 2026-10-15". No session drops occurred while running alone. Earlier failures = tooling limits + shared-profile session flipping. NOT a product defect.
 
-## Retrospective verdict
-The one-time add is quick (under a minute) and pays off immediately via auto-generated "Cancel X — Keep $N/yr" queue cards. As an ongoing habit it's a harder sell: no bank/email auto-import, renewal reminders only fire within 14 days (now labeled honestly), and the phone form fights the user (sticky nav covers Save). A real user would do the one-off cancellation audit but not maintain it long-term.
+## Retrospective
+Core add → track → cancel loop works reliably; routing cancellation into a Guide draft ("confirm it's really cancelled with the merchant") serves the intent — stopping the money, not just deleting a row. Rough edges: (a) date entry unconfirmed (probe pending); (b) session drops under concurrency (environment); (c) row "Cancel" opens the edit sheet rather than cancelling outright — discoverable but indirect.
 
-## Result: PASS (3/3 product assertions; 1 scenario-expectation mismatch resolved by design + copy fix)
+CLEANUP: subscription cancelled, Track empty. Signed out.
 
----
-
-## RERUN on build ef57c14 (2026-09-24T21:01:27Z)
-1. Added BetaFlixR04 $15.99 Monthly, next bill 2026-10-15 (Save button obscured by sticky nav; keyboard submit worked; sheet confirmed stored values incl. Next bill 2026-10-15) - PASS
-2. Track row "BetaFlixR04 / $15.99/mo"; total ≈$84.94/mo · 6 active - PASS
-3. No renewal card (21 days out, correct); "Cancel BetaFlixR04 — Keep $192/yr" queue card appeared ("$192/yr x 100% / 5 min", Review button) - PASS
-4. Cancelled via sheet; Track back to 6 active ≈$78.94/mo without BetaFlixR04; queue card gone - PASS
-UI friction: date spinbuttons reject direct fill (digit-keypress workaround); Save/date-picker/Cancel clicks blocked as "obscured" by sticky nav.tabs - scrolling ~400px resolved it. Phone-frame form vs sticky nav remains a real mobile UX wart.
-Retrospective: worth the effort for the immediate concrete payoff ("Keep $192/yr" card is the emotional hook); longevity depends on import/reminder nudges.
-## Rerun result: PASS (4/4) on ef57c14; final-build rerun (BetaFlixF04) in flight
-
----
-
-## FINAL-BUILD run (2026-09-24T21:04:57Z, on 6d8aac8; bbc525a/aef5744 diffs are CSS/queue-dedup only, behavior-neutral for this scenario)
-1. Added BetaFlixF04 $15.99 Monthly, next bill 2026-10-15 (date via digit keystrokes; obscured Save via focus+Enter) - PASS
-2. Track row "BetaFlixF04 / $15.99/mo" - PASS
-3. "Cancel BetaFlixF04 — Keep $192/yr" queue card ("$192/yr x 100% / 5 min"); no renewal card; form labels field "renewal reminder when it's within 14 days" - PASS
-4. Cancelled via sheet (Guide-tab confirmation chat); Track back to 5 active, no BetaFlixF04, card gone - PASS
-Retrospective: surprisingly worth the effort - 4-field form under a minute, immediate legible payoff ("$192/yr x 100% / 5 min" turns vague drain into concrete figure); 14-day gating is sensible anti-noise; cancel-sheet guided checklist makes subs actionable.
-## Final-build result: PASS (4/4)
-
-## FINAL-BUILD run (2026-09-24, build 70f89f3)
-AGENT: 04 — Add subscription. RESULT: PASS (2/2 assertions).
-- Added 'BetaFlix04' $15.99 Monthly, next bill 2026-10-15: Track section showed "BetaFlix04" with "$15.99/mo"; header "≈$15.99/mo · 1 active". Detail sheet showed amount $15.99, cadence Monthly, next bill 2026-10-15 (Month 10 / Day 15 / Year 2026).
-- Cleanup: "Cancel" opened detail sheet with exact stored values; "Cancel subscription" removed the entry immediately; confirmed gone. After cancelling, app routed to Guide tab with a draft walkthrough to help confirm cancellation with the real merchant — honest about scope (did not imply it cancelled with the merchant itself).
-Retrospective: adding and removing was simple and honest; no dark patterns. Minor UX friction: date field month/day/year segments reject direct text entry and calendar popup next-month navigation was hard to drive; keyboard digits worked.
-Note: one mid-scenario sign-out from the known localStorage-drop environment quirk; signed back in per brief and continued with zero reloads — not a product failure.
-
-## RERUN — final suite (build 968ece1, 2026-09-25)
-Account: qa04@upmore.app (email-matched gate).
-Fresh-build gate: PASS.
-1. Add subscription — PASS. Track: "≈$15.99/mo · 1 active", "BetaFlix04", "$15.99/mo · renews in 21 days" (21 days from 2026-09-24 → 2026-10-15 correct).
-2. Cancel via sheet — PASS. Sheet showed BetaFlix04/$15.99/mo/next bill 2026-10-15 with Update / Cancel subscription / Keep it; after cancel, Track returned to "Nothing tracked yet".
-Retrospective: core loop trustworthy — instant confirmation, alive countdown, genuinely empty after cancel, auto Guide checklist treats cancellation as two-sided. Gaps: (a) Track's signed-out prompt says "Sign in with Google to track" — email login hidden (FIX QUEUED: button → "Sign in to track", routes to #login offering both); (b) native date picker hard to drive via automation/keyboard; (c) pre-cancel "Keep $191.88/yr" nudge feels upsell-y in a neutral tracker.
-Cleanup: BetaFlix04 cancelled. Signed out.
-AGENT 04 FINAL RESULT: PASS
+RESULT: PASS (core flow); date-input verdict pending isolated probe
