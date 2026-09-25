@@ -1964,6 +1964,23 @@
             why: `$${Math.round(dollars)} x ${Math.round(conf * 100)}% / ${Math.round(eff)} min` });
         });
     }
+    // FIX (T3-v2): Wire up TrackMonitors.categorySpike — it was defined but never called (dead code).
+    // Category >40% above 3-month average (min $50) → spike card in queue.
+    try {
+      if (typeof TrackMonitors !== "undefined" && TrackMonitors.categorySpike) {
+        const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
+        const spikeCards = TrackMonitors.categorySpike(trackData.transactions || []);
+        spikeCards.forEach(sc => {
+          cards.push({
+            type: "spike", id: "catspike-" + sc.title.replace(/[^a-z0-9]+/gi, "-").toLowerCase(),
+            title: sc.title, sub: sc.body,
+            dollars: sc.dollars, conf: sc.confidence, urg: sc.urgency, eff: sc.effort,
+            cta: "Review", act: () => { show("guide"); guideAsk("Show me my spending by category"); },
+            why: sc.evidence
+          });
+        });
+      }
+    } catch (e) {}
     cards.forEach(c => { c.score = qScore(c.dollars, c.conf, c.urg, c.eff); });
     cards.sort((a, b) => b.score - a.score);
     return cards;
