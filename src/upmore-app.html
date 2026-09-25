@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-uvxUS8GEATJ2CkAKI1+yGVvezlsPdF6mYytUcpbTEg8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-HvS2QG2F/vLnLbHQ7VwfslL3FKaDiboH0gK4rcrUvuQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -2056,9 +2056,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         // FIX (E6-v2 G8): Map catalog earnings_class to the 4 spec classes.
         // Catalog values: "Count only actual received cash" (1967 routes), "Speculative — $0 until withdrawn" (23 routes).
         // Spec classes: Fixed reward, Paid-if-selected, Variable, Non-cash.
+        // FIX (E7-v2): Complete mapping — was only handling 2 catalog values.
+        // Now: Restricted lane → Non-cash; payout range → Variable; selection language → Paid-if-selected.
         const clsRaw = r.earnings_class || "";
-        const cls = clsRaw.includes("Speculative") ? "Variable"
-          : clsRaw.includes("Count only actual") ? "Fixed reward"
+        const rewardText = String(r.reward || "").toLowerCase();
+        const isRestricted = (r.lane || "").toLowerCase() === "restricted";
+        const hasRange = /\$\d+\s*[-–]\s*\$\d+/.test(String(r.reward || "")) || /up to/i.test(String(r.reward || ""));
+        const hasSelectionLang = /if selected|if accepted|if approved|subject to approval|paid if/i.test(rewardText + " " + String(r.requirements || "").toLowerCase());
+        const cls = isRestricted ? "Non-cash"
+          : hasSelectionLang ? "Paid-if-selected"
+          : hasRange ? "Variable"
+          : clsRaw.includes("Speculative") ? "Variable"
           : "Fixed reward"; // default
         const ver = routeVerification(r);
         // FIX (E3-v2): Element order must be 1,2,3,4,5,6,7,8.
