@@ -3414,15 +3414,29 @@
     // Gate 1: age — parse "18+" / "21+" from who_qualifies.
     // FIX (E1): Only match age patterns, NOT dollar amounts. Require the pattern
     // to NOT be preceded by $ and to appear in age context (age, years old, or standalone).
+    // FIX (E1-v2): "90+ days" must NOT match as age 90. The "+" must NOT be followed
+    // by "days", "day", or other time words. Only match when followed by age context,
+    // punctuation, or end of string.
+    // FIX (E1-v2 CRITICAL): R6801 FanDuel has "18+ in DC/KY/PR/WY, 21+ in AZ...IL...".
+    // The old code took the FIRST age (18+), but user in IL needs 21+. Take the MAXIMUM
+    // age found (most restrictive) to ensure state-specific higher ages are enforced.
     let minAge = 0;
     const agePatterns = [
-      /age\s+(\d{2})\+/i,           // "age 18+"
-      /(\d{2})\+\s*(years?\s+old|y\.?o\.?)/i, // "18+ years old"
-      /(?:^|[^$\d])(\d{2})\+(?![\d])/ // "18+" not preceded by $ or digit
+      /age\s+(\d{2})\+/gi,           // "age 18+" - global to find all
+      /(\d{2})\+\s*(years?\s+old|y\.?o\.?)/gi, // "18+ years old" - global
+      // "18+" standalone: not preceded by $, not followed by days/day/time words - global
+      /(?:^|[^$\d])(\d{2})\+(?!\d)(?!\s*(days?|months?|years?)\b)/gi
     ];
+    // Find ALL ages, take the maximum (most restrictive)
     for (const pat of agePatterns) {
-      const m = q.match(pat);
-      if (m) { minAge = parseInt(m[1]); break; }
+      let m;
+      pat.lastIndex = 0; // reset global regex
+      while ((m = pat.exec(q)) !== null) {
+        const age = parseInt(m[1]);
+        if (age > minAge && age < 100) { // sanity: age < 100 (not "90+ days")
+          minAge = age;
+        }
+      }
     }
     // Gate 5/6: loss & capital — upfront costs in costs_and_unpaid_time
     // FIX (E1): Distinguish MANDATORY loss from optional fees.
