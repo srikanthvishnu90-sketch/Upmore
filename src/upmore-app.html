@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-mAOvZK0U+eIRnrDpbl6C0qJ1ynKrtGHl81wHcAcuLbc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-dxkGgnsYReJlIc/18aeWrtl8VvrcmV2kBM8PmffDLcg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1626,6 +1626,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // Only on fresh start (i === 0), not on resume.
     // FIX (E4-v2): All 4 disclosures required: (1) exact reward + when it arrives,
     // (2) exact requirements verbatim, (3) the catch, (4) honest abandonment terms.
+    // FIX (E4-v2b): Added (5) failure risks — what could go wrong.
     if (i === 0) {
       const costs = r.costs_and_unpaid_time || "No upfront cost stated.";
       const data = r.requirements || "—";
@@ -1638,7 +1639,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const abandon = isHighConsequence
         ? "If you stop halfway: you may lose eligibility for the bonus. Check the terms before starting."
         : "If you stop halfway: nothing is submitted until you complete the final step — you can abandon anytime.";
-      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Reward:** ${reward}\n**When it arrives:** ${timing}\n**Requirements:** ${data}\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**The catch:** ${catches}\n**${abandon}**\n\nReady?`]);
+      // FIX (E4-v2b): Failure risks — what could prevent payout.
+      const risks = r.failure_risks || "Payout isn't guaranteed: the provider may reject your application, delay payment, or change terms. If requirements aren't met exactly, you may get nothing for your time.";
+      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Reward:** ${reward}\n**When it arrives:** ${timing}\n**Requirements:** ${data}\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**The catch:** ${catches}\n**Risks:** ${risks}\n**${abandon}**\n\nReady?`]);
       // Add a start button manually (addAI card shape doesn't support custom actions)
       const btn = document.createElement("button");
       btn.className = "qcta"; btn.textContent = "Start walkthrough"; btn.style.margin = "8px 0";

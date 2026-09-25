@@ -1605,6 +1605,7 @@
     // Only on fresh start (i === 0), not on resume.
     // FIX (E4-v2): All 4 disclosures required: (1) exact reward + when it arrives,
     // (2) exact requirements verbatim, (3) the catch, (4) honest abandonment terms.
+    // FIX (E4-v2b): Added (5) failure risks — what could go wrong.
     if (i === 0) {
       const costs = r.costs_and_unpaid_time || "No upfront cost stated.";
       const data = r.requirements || "—";
@@ -1617,7 +1618,9 @@
       const abandon = isHighConsequence
         ? "If you stop halfway: you may lose eligibility for the bonus. Check the terms before starting."
         : "If you stop halfway: nothing is submitted until you complete the final step — you can abandon anytime.";
-      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Reward:** ${reward}\n**When it arrives:** ${timing}\n**Requirements:** ${data}\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**The catch:** ${catches}\n**${abandon}**\n\nReady?`]);
+      // FIX (E4-v2b): Failure risks — what could prevent payout.
+      const risks = r.failure_risks || "Payout isn't guaranteed: the provider may reject your application, delay payment, or change terms. If requirements aren't met exactly, you may get nothing for your time.";
+      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Reward:** ${reward}\n**When it arrives:** ${timing}\n**Requirements:** ${data}\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**The catch:** ${catches}\n**Risks:** ${risks}\n**${abandon}**\n\nReady?`]);
       // Add a start button manually (addAI card shape doesn't support custom actions)
       const btn = document.createElement("button");
       btn.className = "qcta"; btn.textContent = "Start walkthrough"; btn.style.margin = "8px 0";
