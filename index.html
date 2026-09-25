@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-VNqr3PM8GPELoTqcZ5livsV4n1xHGDFdfg2n99vuoMA='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-0UG1zuNHAnaV5fm7Z6eVy7v+srYUgxH51zegMqvMtAg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -2879,23 +2879,49 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // FIX (B3): Wire the budget plan engine. When user asks for a budget plan,
     // call buildBudgetPlan() and render the actions. Max 3, first doable today.
-    if (has("budget plan", "spending plan", "cut spending", "save money", "reduce spending")) {
+    // FIX (B3-v2 F6): Broadened intent matching — was missing 11 natural phrasings.
+    if (has("budget plan", "spending plan", "cut spending", "save money", "reduce spending",
+            "plan my budget", "help me budget", "budget help", "cut my spending",
+            "spend less", "tighten my budget", "lower my spending", "save some money",
+            "get my spending under control", "i need help with my budget")) {
       try {
         const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
         const { transactions } = trackData;
         const rec = (typeof detectRecurrence === "function") ? detectRecurrence(transactions) : [];
-        // Build fact pack from real data
+        // FIX (B3-v2 F4): Build fact pack from real data, not fabricated.
+        // Was: freeCash: 5000 (fake), fees: [], goals: [].
+        // Now: derive from Track transactions; load goals from storage.
+        const fees = (transactions || []).filter(t => 
+          /overdraft|late fee|insufficient/i.test(t.description || t.merchant || "")
+        ).slice(-10); // Last 10 fee-like transactions
+        const storedGoals = (() => {
+          try {
+            return JSON.parse(localStorage.getItem("upmore_goals") || "[]");
+          } catch { return []; }
+        })();
+        // Compute free cash from recent transactions (income minus spending, last 30 days)
+        const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
+        const recent = (transactions || []).filter(t => new Date(t.date).getTime() > thirtyDaysAgo);
+        const income = recent.filter(t => t.amount > 0).reduce((s, t) => s + t.amount, 0);
+        const spending = recent.filter(t => t.amount < 0).reduce((s, t) => s + Math.abs(t.amount), 0);
         const factPack = {
-          freeCash: 5000, // TODO: compute from real data
+          freeCash: Math.max(0, income - spending),
+          monthlyDelta: (income - spending), // Monthly surplus/deficit
           recurring: rec,
-          fees: [], // TODO: detect overdraft/late fees
-          goals: [] // TODO: load user goals
+          fees: fees, // FIX (B3-v2 F2): Caller passes 'fees', engine was reading 'feeHistory'
+          goals: storedGoals // FIX (B3-v2 F3): Load real goals, not []
         };
         const plan = (typeof buildBudgetPlan === "function") ? buildBudgetPlan(factPack) : [];
         if (plan && plan.length > 0) {
-          const paras = ["Here's your budget plan — max 3 actions, first one you can do today:"];
+          // FIX (B3-v2 F5): Intro must be conditional — was always claiming "first one you can do today".
+          const firstDoable = plan[0] && plan[0].doableToday;
+          const intro = firstDoable
+            ? "Here's your budget plan — max 3 actions, first one you can do today:"
+            : "Here's your budget plan — max 3 actions:";
+          const paras = [intro];
           plan.forEach((a, i) => {
-            paras.push(`${i + 1}. **${a.title}** — ${a.evidence}${a.doableToday ? " (doable today)" : ""}`);
+            // FIX (B3-v2 F1): Engine writes 'text', renderer was reading 'title' (rendered "undefined").
+            paras.push(`${i + 1}. **${a.text}** — ${a.evidence}${a.doableToday ? " (doable today)" : ""}`);
           });
           return { paras };
         }
@@ -3738,7 +3764,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         doableToday: true,
       });
     }
-    const fees = factPack.feeHistory || [];
+    // FIX (B3-v2 F2): Engine was reading 'feeHistory', caller passes 'fees'.
+    // Changed to 'fees' so the fee action is reachable.
+    const fees = factPack.fees || [];
     if (fees.length >= 2 && actions.length < 3) {
       actions.push({
         text: `Move a billing date to stop overdraft fees`,
