@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-0UG1zuNHAnaV5fm7Z6eVy7v+srYUgxH51zegMqvMtAg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-/OApzIPAdsvaoFylpmr8/rUqv4xwzHtl35r1HOr/P+Q='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -438,6 +438,14 @@
   .xpill { font-size:11.5px; font-weight:600; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 9px; white-space:nowrap; align-self:center; }
   .rbadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:var(--sky); border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .vbadge { font-size:10.5px; font-weight:700; color:#fff; background:#1F7A4D; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
+  // FIX (E2-v2 F2): Variant badges must override the green default.
+  // Was: unverified/retired/expired rendered GREEN (wrong — implies verified).
+  // Now: gray for unverified, red for retired/expired.
+  .vbadge.v-unverified { background:#f5f5f5; color:#666; }
+  .vbadge.v-retired { background:#ffebee; color:#c62828; }
+  .vbadge.v-expired { background:#ffebee; color:#c62828; }
+  .vbadge.v-stale { background:#fff3e0; color:#e65100; }
+  .vbadge.v-confirmed { background:#1F7A4D; color:#fff; }
   .ubadge { font-size:10.5px; font-weight:700; color:#5b5346; background:#EDE8DC; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .abadge { font-size:10.5px; font-weight:700; color:#0B0B0C; background:#FFD666; border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .xfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; font-size:12.5px; color:var(--dim); }
@@ -3224,7 +3232,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       el.className = "xitem";
       el.dataset.xcard = r.id;
       const laneBadge = r.lane !== "Standard" ? `<span class="rbadge">Higher-risk</span>` : "";
-      const researchedBadge = r.status === "researched" ? `<span class="vbadge">\u2713 Researched</span>` : `<span class="ubadge">Unverified</span>`;
+      // FIX (E2-v2 F1): Unify badge text with Queue. Was: hardcoded "✓ Researched" vs Queue's "confirmed".
+      // Now: both use routeVerification() for consistent text.
+      const ver = (typeof routeVerification === "function") ? routeVerification(r) : (r.status === "researched" ? "confirmed" : "unverified");
+      const researchedBadge = `<span class="vbadge v-${ver}">${ver}</span>`;
       el.innerHTML = `<div class="xrow">
           <span class="xtile" style="background:${tileColor(r)}">${XICONS[CATICON[r.category]] || XICONS.tag}</span>
           <span class="xbody"><b>${esc(routeTitle(r))}${laneBadge}${researchedBadge}</b><span>${esc(routeMeta(r))}</span>${earnLine(r) ? `<span class="xearn">${esc(earnLine(r))}</span>` : ""}</span>
