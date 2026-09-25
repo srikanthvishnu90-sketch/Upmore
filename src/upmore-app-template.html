@@ -421,6 +421,12 @@
   .cancel7 { margin:8px 0; padding:10px; background:rgba(179,38,30,.04); border-radius:10px; }
   .cancel7 p { font-size:13px; margin:6px 0; line-height:1.4; }
   .cancel7 .cret { color:#666; font-style:italic; }
+  /* HOME 5 THINGS: Connect card — incredibly simple, one button */
+  .connectcard { background:#f8f9fa; border:1px solid #e0e0e0; border-radius:14px; padding:16px; margin:12px 0; }
+  .connectcard .cc-top b { font-size:16px; display:block; margin-bottom:4px; }
+  .connectcard .cc-top p { font-size:13px; color:#666; margin:0 0 12px; line-height:1.4; }
+  .connectcard .cta { width:100%; margin:0 0 8px; }
+  .connectcard .fine { font-size:11px; color:#999; margin:0; text-align:center; }
   .xcats { display:flex; gap:8px; overflow-x:auto; padding:2px 0 12px; scrollbar-width:none; }
   .xcats::-webkit-scrollbar { display:none; }
   .xcats .chip { white-space:nowrap; }
@@ -766,6 +772,19 @@
       <div class="safetospend" id="safeSpend" hidden>
         <div class="sts-top"><span>Safe to spend</span><b id="stsTotal">—</b></div>
         <div class="sts-sub" id="stsSub">—</div>
+      </div>
+
+      <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
+           Shows when no bank is connected. One button, no forms, no friction. -->
+      <div class="connectcard" id="connectCard" hidden>
+        <div class="cc-top">
+          <div>
+            <b>Connect your bank</b>
+            <p>Read-only. We see transactions, never move money. Takes 30 seconds.</p>
+          </div>
+        </div>
+        <button class="cta" id="connectBankBtn">Connect bank</button>
+        <p class="fine">Powered by Plaid. Your credentials go to your bank, never to us.</p>
       </div>
 
       <div class="xsearch">
@@ -3202,6 +3221,17 @@
     $("safeSpend").hidden = false;
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd} · $${sts.buffer} buffer`;
+
+    // HOME 5 THINGS: Connect card — show when no live bank is connected.
+    // Incredibly simple: one button opens the connect sheet.
+    const hasLiveBank = false; // TODO: true when Plaid/SimpleFIN connected
+    $("connectCard").hidden = hasLiveBank;
+    if (!hasLiveBank) {
+      $("connectBankBtn").onclick = () => {
+        show("guide");
+        $("connectSheet").hidden = false;
+      };
+    }
   }
 
   // Transaction list: date, merchant, amount, category. Search + filter.
