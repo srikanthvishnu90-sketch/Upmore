@@ -1964,7 +1964,7 @@
       if (c.type === "earn" && c.route) {
         const r = c.route;
         const cls = r.earnings_class || "Fixed reward";
-        const ver = r.verification || "unverified";
+        const ver = routeVerification(r);
         extra = `
         <div class="earn8">
           <span class="ebadge">${esc(cls)}</span>
@@ -3321,11 +3321,18 @@
     return { pass: true, failedGate: null };
   }
 
-  function verifyRoute(route, termsHashChanged, daysSinceVerified) {
-    if (route.verification === "retired" || route.verification === "expired") return route.verification;
-    if (termsHashChanged) return "stale";
-    if (route.verification === "confirmed" && daysSinceVerified > 30) return "stale";
-    return route.verification || "unverified";
+  // FIX (E2): Map catalog status → spec verification taxonomy in ONE place.
+  // Catalog uses `status`: researched (1402), retired (323), unverified (265).
+  // Spec uses: unverified → confirmed → stale → expired → retired.
+  // Mapping: researched → confirmed (operator-verified), retired → retired,
+  // unverified → unverified. This unifies the two trust systems.
+  function routeVerification(r) {
+    if (r.verification) return r.verification; // explicit override wins
+    const s = (r.status || "").toLowerCase();
+    if (s === "researched") return "confirmed";
+    if (s === "retired") return "retired";
+    if (s === "expired") return "expired";
+    return "unverified";
   }
 
   function capitalRefusal() {
@@ -3375,7 +3382,7 @@
       min_age: minAge || undefined,
       states: undefined, // catalog is US-wide; no state restrictions encoded
       deadline: undefined, // no deadlines in catalog
-      verification: r.verification || "unverified",
+      verification: routeVerification(r),
       cannot_lose: cannotLose,
       required_capital: upfront,
       active_minutes: activeMinutes,
