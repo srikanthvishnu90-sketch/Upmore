@@ -3540,12 +3540,15 @@
   function renderTxList(filter = "") {
     const { transactions } = loadTrackData();
     const q = filter.toLowerCase();
+    // FIX (T5-v2): Validate category against TRACK_CATS fixed 12; fallback to "Other".
+    // This ensures no 13th category label can ever render.
+    const validCat = (c) => TRACK_CATS.includes(c) ? c : "Other";
     const rows = transactions
       .filter(t => !q || t.merchant_raw.toLowerCase().includes(q) || t.category.toLowerCase().includes(q))
       .slice(0, 100);
     return rows.map(t => `
       <div class="txrow" data-tx="${esc(t.id)}">
-        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}<i>${esc(t.posted_at)} · ${esc(t.category)}</i></div>
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}<i>${esc(t.posted_at)} · ${esc(validCat(t.category))}</i></div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`).join("");
   }
@@ -3739,7 +3742,7 @@
       tx.push({
         id: "demo-transfer-1", posted_at: d(5), amount: -500.00,
         merchant_raw: "Chase Transfer to Savings", merchant_id: "chase-transfer-to-savings",
-        category: "Transfer", category_source: "provider",
+        category: "Transfers", category_source: "provider", // FIX (T5-v2): must be "Transfers" (plural) to match TRACK_CATS fixed 12
         is_pending: false, is_transfer: true, provider_id: "demo-transfer-1",
       });
       tx.push({
