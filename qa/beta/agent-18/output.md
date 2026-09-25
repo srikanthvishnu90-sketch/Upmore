@@ -20,3 +20,14 @@ AGENT: 18 — Badge honesty rerun. RESULT: PASS (3/3).
 - Full rendered page text searched: the string "pays fast" appears nowhere on the page.
 Retrospective: Better. The two problem cards previously implied near-instant payout while actually paying in 3-7 business days / weeks-to-months with a 5-year lock — the mismatch that would burn a cash-seeking user. With the bogus suffix gone and true payout timelines stated plainly, the top 3 set honest expectations without changing the ranking; "what should I do right now" is answered more truthfully than before. (The deeper ranking-formula question — max-dollar figures, flat 0.7 confidence — remains a product-design decision for the owner.)
 Cleanup: done — read-only observation; no test data.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa18@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+(a) Entry appears exact — PASS ("Freelance18 — $40.00 - Received - 2026-09-25").
+(b) Total updates — PASS ($0.00 → $40.00).
+(c) Persists after reload — PASS.
+(d) Reversal returns total — PASS ($0.00, status "Reversed"; ledger-style reversal, audit trail preserved — trust-positive).
+(e) Bank-sync waitlist — PASS ("You're on the list. We'll email your invite.").
+RETROSPECTIVE: Track serves intent — fast, legible, trustworthy money record. Minor UX notes (not bugs): type labels (Received/Sent/Owes me) unexplained for non-finance users; money log shares the You tab with settings.
+AGENT 18 FINAL RESULT: PASS

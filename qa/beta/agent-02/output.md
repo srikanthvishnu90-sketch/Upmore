@@ -48,3 +48,15 @@ AGENT: 02 — Catalog search. RESULT: PASS (5/5 assertions).
 Retrospective: serves intent well — big relevant set, "✓ Researched" trust signal, unusually honest detail views answering "is this legit?" and "how fast do I get paid?". Caveats: (1) 24 results with no badge and no legend explaining badge absence dilutes the trust signal; (2) loose relevance (SEO microtasks, grocery-receipt scanning, utility rebates barely survey-related); (3) DATA BUG: Qmee detail's "Who qualifies" row referenced SurveyJunkie.
 Note: signed out pre-existing demo session first per brief; You tab showed profile; one hard refresh in setup; zero reloads during scenario; attempt 1 of 2.
 OPEN GAPS for parent: (a) badge-less catalog results need a legend or badge; (b) Qmee/SurveyJunkie cross-reference data bug.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa02@upmore.app (email-matched gate).
+Fresh-build gate: PASS (no Guide History button).
+1. Results for 'survey' — PASS (~58: 34 + 24 via "Show more").
+2. Badges "✓ Researched" or "Unverified" only — PASS (full audit; zero "✓ Verified").
+3. ≥1 "Unverified" badge — PASS (24 unverified entries: MyPoints, InboxDollars, SendEarnings, CashCrate, Reward XP, ySense, Toluna Influencers, Make Money, Survey Junkie Pulse, LifePoints, MyPoints Surveys, Opinion Outpost, Maru Springboard, Superpay.me, Panel App, National Consumer Panel, Nielsen Mobile Panel, RapidWorkers, SproutGigs, SEOClerks, Pinecone Research).
+4. Detail expands w/ requirements, payout, catch — PASS (MyPoints: what/requirements/paid/catch + "Official site →" + agent-assist button).
+5. Detail closes — PASS. 6. No horizontal overflow — PASS.
+Retrospective: serves intent — honest differentiation (researched rates vs labeled-unverified), fit-check facts per result. Weakness: ranking mirrors badge status more than fit; "Do it for me" path untested.
+Cleanup: none created. Signed out.
+AGENT 02 FINAL RESULT: PASS

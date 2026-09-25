@@ -42,3 +42,12 @@ AGENT: 03 — Queue CTA. RESULT: PASS (5/5 assertions).
 - Zero reloads; no console errors observed.
 Retrospective: CTA serves underlying intent well — one tap from a ranked opportunity into a guided 5-step walkthrough for that exact opportunity, a concrete next step toward money rather than just information.
 Note: task automation could not set viewport to 390x844; ran at browser default width. Sign-in confirmed (You tab: Friend, Illinois, "about an hour a week").
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa03@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Top queue card CTA does something real — PASS. "Start" on "Old National Bank" opened a walkthrough modal: offer image, promo terms ("$300 (open 2/3/26-10/30/26 with $50; 3+ direct deposits totaling $3,500 within first 4 months…"), "Watch out" block ("You must be new to Old National personal checking…"), buttons "Start promo" / "Not now".
+2. Queue still renders after navigating back — PASS ("Not now" dismissed; same top card + BOK Financial, Nymcu, Reward XP Games…).
+Retrospective: serves intent — one tap surfaces terms + caveats. Mild caveat: "Start promo" label is ambiguous (tracks the promo vs opens offer walkthrough?).
+Cleanup: none created. Signed out.
+AGENT 03 FINAL RESULT: PASS

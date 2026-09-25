@@ -34,3 +34,13 @@ AGENT: 08 — Deadlines. RESULT: PASS (6/6 assertions).
 - Marked both done: Track shows "No deadlines tracked"; both cards gone from queue; no "Beta" residue anywhere.
 Retrospective: served intent — money dates visible in two surfaces (Track countdowns + urgency-ranked queue cards); marking done cleared both cleanly. Caveats: (1) date entry only registered via the native calendar picker; typing digits into date spinbuttons changed the displayed value but Save then silently did nothing with no error feedback — same silent-failure class as the ledger bug, now fixed with an honest toast; (2) queue ranked the $50 rebate (20d) above the no-dollar renewal (10d) per dollars×confidence×urgency÷effort — designed behavior, not a defect. (Note: "in 10d" copy becomes "in 10 days" with the qDueText fix.)
 Note: two mid-scenario sign-outs from the known localStorage-drop quirk; signed back in and continued; zero reloads during scenario.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa08@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Entry added — PASS ("Freelance08 — $40.00 - Received - 2026-09-25"; net $40.00).
+2. Reversed entry keeps amount/title/date (void marker) — PASS (original remains, dimmed + strikethrough, not removed).
+3. Separate offsetting entry — PASS ("Reversal: Freelance08 (reversal)" $-40.00 above the struck original).
+4. Net $0.00 after reversal — PASS (all category chips $0.00).
+Retrospective: serves intent — auditable history, zeroed net, reversal itself reversible.
+AGENT 08 FINAL RESULT: PASS

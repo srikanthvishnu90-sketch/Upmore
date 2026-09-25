@@ -24,3 +24,16 @@ AGENT: 16 — Ranking order rerun. RESULT: PASS (5/5).
 - [PASS] No "- pays fast" suffix on any visible queue card (intentional).
 Retrospective: rerun confirms the deployed fixes — urgency renders as a numeric multiplier, scores compute exactly from the fractional data-eff, ordering strictly descending.
 Cleanup: done — no test data created.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa16@upmore.app (email-matched gate). Signed out, onboarded fresh (IL / ~1hr / checking+DD yes / up to $100).
+Fresh-build gate: PASS.
+(a) Questions once, sensible order — PASS (time → about → situation → plan).
+(b) Lands on personalized plan — PASS ("QA, here are your first 3 moves.", "Picked for Illinois · about an hour a week.").
+(c) Top card fits $100-cash profile — PASS (Reward XP Games, no deposit; no >$100-cash route leads; Blaze CU absent).
+Moves: Reward XP Games / Mindswarms ($10–$50/study, ~24h PayPal) / Home Depot gift-card resale.
+RETROSPECTIVE FINDINGS (real):
+1. R7419 data garbage: method "Gift Card Resale" but body copy = Home Depot price-match policy; who_pays literally "It's savings, not income" — yet it LED the queue as Move 3. Root: blocked()/needsSpend() only tested r.category ("Rebate/Incentive"), not method.
+2. "Why this one" was identical boilerplate on all 3 cards ("the best earn rate for your time and budget").
+FIXES QUEUED (uncommitted): (i) blocked()/needsSpend() now test category + method against NEEDS_ASSETS_RES; (ii) R7419 method → "Price matching", added to NO_LEAD_IDS (savings, not extractable cash); (iii) new whyLine(r,d): "Why this one: pays {as fast as today|within days|…}, {effort}, {cost}." personalized per route+profile. Inline syntax OK.
+AGENT 16 FINAL RESULT: PASS (assertions); 2 fixes queued

@@ -60,3 +60,15 @@ AGENT: 01 — Home queue render. RESULT: PASS (5/5 assertions).
 Retrospective: queue is transparent (formula stated openly, effort/payout-timing/difficulty/"the catch" per card) but optimizes expected-dollar math over attainability — top picks need $1,000+ of precious metals (JM Bullion), elite security expertise (Microsoft bounties), or moving existing brokerage funds (SoFi/Tradestation). Serves an informed asset-holding user well; for a typical user seeking fast online income it should weight qualification fit / barrier-to-first-dollar more heavily or lead with low-barrier items.
 Notes: signed in as qa01 via #login (app shows display name "Vish" — default for non-onboarded profile). Build marker 'upmore-ob-nonce' not visible to the task (page serializes to ~7MB; only first 65,536 chars retrievable) — parent verified independently via production fetch: marker present 5×. Zero reloads; hash-only navigation.
 OPEN QUESTION for parent: top-card data-score 1615.38 does not reproduce exactly from the rounded data-* attributes (50000×0.7×1.5/33 = 1590.91) — attributes appear rounded while the score uses fuller precision. Verify whether this breaks B4's runtime data-* verification.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa01@upmore.app (per-agent account; display name "Vish" is a stale field from wave 1 — email matched, parent confirmed correct account).
+Fresh-build gate: PASS (no Guide History button; "Unverified" badges present in Explore search).
+1. Exactly one 'Up next' queue section — PASS (single section + "Ranked by dollars × confidence × urgency ÷ effort — biggest score first." explainer).
+2. >=1 queue card — PASS (9 cards: Old National Bank, BOK Financial, Nymcu, Reward XP Games, Mindswarms, Home Depot, Lowe's, Gaultenergy, Blazecu).
+3. Top card label/title/sub/why/CTA — PASS ("Up next" / "Old National Bank" / "$300 (open 2/3/26-10/30/26 with $50; 3+ direct deposits totaling $3,500 within first 4…" / "$3500 x 70% / 45 min" / "Start").
+4. data-dollar/conf/urg/eff/score on every card — PASS; scores strictly descending (54.44 → 7.78).
+5. No horizontal overflow at 390px — PASS.
+Retrospective: serves intent — beginner instantly sees what to do next; ranking math transparent; every card answers what/involved/why/action. Minor: "pays fast" suffix unexplained on lower cards; terse titles ("Nymcu").
+Cleanup: none created. Signed out.
+AGENT 01 FINAL RESULT: PASS

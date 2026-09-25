@@ -48,3 +48,16 @@ AGENT: 09 — Ledger add + reverse. RESULT: PASS (6/6).
 Retrospective: the fix works — save and reverse are honest, visible operations; reversals are explicit audit-trail rows, not silent deletions. Minor friction: identical-titled rows are indistinguishable in the list, so finding "my" entry relies on newest-first ordering.
 Cleanup: done — $25 entry reversed; ledger nets $0.00, all buckets $0.00.
 Note: two mid-run sign-outs from the known localStorage-drop quirk; signed back in and continued.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa09@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+(a) Walkthrough shows Qmee offer w/ payout — COULD NOT VERIFY (walkthrough never started).
+(b) "who qualifies" has no "SurveyJunkie:" prefix — PASS ("Who qualifies:US residents 13+ or 18+ (varies), with an email account, an honest demographic profile, and PayPal.").
+(c) "Why this works for you" rationale — NOT FOUND on 968ece1.
+(d) Complete walkthrough end-to-end — FAIL. The "✨ Do it for me — agent fills the form" CTA on all 3 Qmee offer cards was DEAD (12+ taps, AX + visual + Enter, two page loads — zero response). Contrast: "Walk me through it" buttons on Explore articles WORKED (Reward XP Games → "STEP 1 OF 5").
+ROOT CAUSE (code): the Explore card renderer emitted `<button data-difm>` with NO click handler wired anywhere; the backing "agentSheet" UI was never implemented (no open/close logic). The button promised a feature that doesn't exist.
+FIXES QUEUED (uncommitted, suite stays on 968ece1): (1) dead button replaced with working "Walk me through it →" wired to startWalkthrough(r.id), rendered only when r.steps.length; (2) walkthrough opener now includes a "Why this one: …" rationale line (earnLine/routeMeta).
+Retrospective: as-shipped, a dead CTA promising agent help is worse than no CTA — sets an expectation that silently never materializes.
+Cleanup: none created. Signed out.
+AGENT 09 FINAL RESULT: FAIL (build 968ece1)

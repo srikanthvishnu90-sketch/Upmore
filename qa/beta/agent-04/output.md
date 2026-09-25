@@ -43,3 +43,12 @@ AGENT: 04 — Add subscription. RESULT: PASS (2/2 assertions).
 - Cleanup: "Cancel" opened detail sheet with exact stored values; "Cancel subscription" removed the entry immediately; confirmed gone. After cancelling, app routed to Guide tab with a draft walkthrough to help confirm cancellation with the real merchant — honest about scope (did not imply it cancelled with the merchant itself).
 Retrospective: adding and removing was simple and honest; no dark patterns. Minor UX friction: date field month/day/year segments reject direct text entry and calendar popup next-month navigation was hard to drive; keyboard digits worked.
 Note: one mid-scenario sign-out from the known localStorage-drop environment quirk; signed back in per brief and continued with zero reloads — not a product failure.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa04@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Add subscription — PASS. Track: "≈$15.99/mo · 1 active", "BetaFlix04", "$15.99/mo · renews in 21 days" (21 days from 2026-09-24 → 2026-10-15 correct).
+2. Cancel via sheet — PASS. Sheet showed BetaFlix04/$15.99/mo/next bill 2026-10-15 with Update / Cancel subscription / Keep it; after cancel, Track returned to "Nothing tracked yet".
+Retrospective: core loop trustworthy — instant confirmation, alive countdown, genuinely empty after cancel, auto Guide checklist treats cancellation as two-sided. Gaps: (a) Track's signed-out prompt says "Sign in with Google to track" — email login hidden (FIX QUEUED: button → "Sign in to track", routes to #login offering both); (b) native date picker hard to drive via automation/keyboard; (c) pre-cancel "Keep $191.88/yr" nudge feels upsell-y in a neutral tracker.
+Cleanup: BetaFlix04 cancelled. Signed out.
+AGENT 04 FINAL RESULT: PASS

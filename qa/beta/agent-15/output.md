@@ -47,3 +47,14 @@ Three claims investigated with independent Playwright probes (fresh Chromium pro
 Cleanup: probe test subscription PWTest deleted via REST; qa15 tables empty; profiles row retains display_name="Friend" in DB but renders as "qa15" (self-repair verified).
 RERUN 2 adjusted verdict: PASS on 5 of 7 agent assertions; the 2 FAILs split into 1 agent-observation error (toast), 1 environment artifact (data), 1 real bug (name — now fixed in 00826d2).
 Next: rerun 15r3 (full scenario) against 00826d2 with hardened protocol (verify signed-in identity matches the login email before saving; no reliance on shared-profile localStorage across the sign-out reload).
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa15@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Sign-in — PASS. 2. You tab email — PASS ("qa15@upmore.app").
+3. Tab switches Home→Guide→You→Home — 4/4 PASS (signed-in held, no login prompt/splash).
+4. Reload persistence — PASS (session survived; You tab intact).
+5. Sign out — PASS (splash "Real ways to make extra money. One at a time."; no account data).
+FINDING (minor): Home greeting read "Good evening, Friend" while You tab showed "qa15" — renderHome used raw profile name without the "Friend"-placeholder guard that renderProfile has.
+FIX QUEUED (uncommitted): new displayName() helper (Friend → user_metadata → email prefix → "Friend"); used by renderHome greeting + avatar, buildPlan title, and renderProfile (replacing its inline copy).
+AGENT 15 FINAL RESULT: PASS (with queued name fix)

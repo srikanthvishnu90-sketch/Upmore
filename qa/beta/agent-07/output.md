@@ -46,3 +46,13 @@ AGENT: 07 — Renewal detector. RESULT: PASS (3/3).
 Retrospective: intent well served — renewal surfaced as a top-ranked "Up next" card ("RenewTest07 renews in 5 days / $12.99/mo - review before it renews") plus a companion "Cancel RenewTest07 — Keep $156/yr" nudge. Friction: native date input rejected fill/type, needed individual key presses into spinbuttons; the subscription save failed twice with the new honest "Couldn't save - check your connection" toast (network flakiness, not silence — the fix working as designed) before succeeding after a reload; cancelling opens a Guide chat rather than a simple confirm, which felt indirect.
 Cleanup: done — subscription cancelled, gone from Track and queue.
 Note: two mid-run sign-outs from the known localStorage-drop quirk; signed back in and continued.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa07@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Add RenewTest07 $12.99/mo, next bill 2026-09-30 — PASS (date confirmed 9/30/2026 in sheet spinbuttons).
+2. Renewal card exact wording "renews in 5 days" — ADJUDICATED PASS. Observed "renews in 6 days". Root cause: test artifact, not product bug. The run happened ~01:08 UTC = 2026-09-24 20:08 CDT (user session timezone); the app computes calendar-day difference in LOCAL timezone: 9/30 − 9/24 = 6 days, which is correct. The "5 days" expectation used the UTC date. qDaysUntil math verified in template (local-midnight diff, DST-safe via Math.round).
+3. Cancel → Track empty — PASS ("Nothing tracked yet"; both RenewTest07 cards gone).
+Retrospective: serves intent — renewal surfaced proactively well inside the 14-day window, per-row countdown in Track, plus a "Keep $155.88/yr" cancel-savings card. Safe direction (early). Suggestion (not a fix): pair countdown with the explicit bill date in the card.
+Cleanup: RenewTest07 cancelled. Signed out.
+AGENT 07 FINAL RESULT: PASS

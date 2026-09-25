@@ -13,3 +13,14 @@ Retrospective: technically clean on the observable surface; copy avoids implying
 Cleanup: done — no test data remains (client-side search only, guide chat wiped by the environment quirk, history empty, all Money-log counters $0/0).
 Note: one mid-run sign-out from the known localStorage-drop quirk (after a DevTools shortcut crashed the remote browser); signed back in and continued.
 FIX (same day, unreleased): fixed the literal "<b>Done</b>" tag rendering in guide chat (message now escaped/rendered as HTML properly). Dead CSS classes left in place (inert, zero user impact). Pending rebuild + redeploy, then rerun the affected surface.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa19@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+(a) Concrete $200-weekend plan — FAIL. Guide deflected: "I can look up any of the 1667 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch." No route named, no amounts, no plan.
+(b) Who pays + timing — FAIL (nothing named).
+(c) No prohibited primary move — PASS (trivially; nothing recommended).
+(d) "Is Qmee legit?" — PASS (route card: who pays, no-minimum PayPal/Venmo cashout, real-time piggy bank, honest catch incl. data sharing + "live terms not confirmed").
+RETROSPECTIVE: Guide answers provider-specific questions like a coach but fails plan synthesis — behaves as a search box on goal queries.
+FIX QUEUED (uncommitted): new general money-goal branch in guideAsk — matches "make/earn/need/get $N" ($20–$20k, $1000 keeps its branch), synthesizes top-3 fastest verified routes (speed today/days) with who-pays/cash-arrival per route, honest per-unit math ("at ~$X a go, $200 means roughly N of these"), and a walkthrough offer. Placed after provider/category matching so named providers still win. Inline syntax OK.
+AGENT 19 FINAL RESULT: FAIL (assertions); fix queued for final build

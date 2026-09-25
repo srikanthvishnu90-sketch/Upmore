@@ -38,3 +38,12 @@ AGENT: 10 — You-tab controls. RESULT: PASS (6/6 assertions).
 - Typed DELETE, then clicked Cancel: dialog dismissed, profile and data intact — nothing deleted.
 Retrospective: honest and safe. Bank sync framed as private-beta waitlist with clear read-only framing; export is one-click JSON with no upsells; deletion is a deliberate two-step gate with visible Cancel and explicit scope listing. No dark patterns.
 Note: zero reloads after initial hard refresh; one transient demo-session sign-in replaced with qa10 credentials before the scenario; no mid-scenario sign-outs.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa10@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Add deadline ClaimBonus10 / Claim / 2026-10-10 / $25 — PASS (Track: "ClaimBonus10 - claim", "$25.00 - due - in 16 days"; queue card "ClaimBonus10 - claim / due in 16 days / $25 x 90% / 15 min" with "Mark claimed").
+2. Mark Done → list empty — PASS ("No deadlines tracked"; persisted after reload; queue card gone).
+Retrospective: serves intent — one compact form, visible in Track + queue with stake quantified, one-tap Done that sticks. Friction: native date input rejects typed automation input (works for real users via picker; not a defect).
+Cleanup: deadline marked Done. Signed out.
+AGENT 10 FINAL RESULT: PASS

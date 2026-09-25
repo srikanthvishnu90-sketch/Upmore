@@ -79,3 +79,17 @@ recommendations were unachievable for the target first-timer.
   Southeastbank's payout_timing says the friend must qualify within 60 days;
   Strike's reward is fee-free trading, not cash. Catalog speed semantics need
   a dedicated pass before the final full-suite rerun.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa25n@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Export — PASS (upmore-data.json downloaded; contents unverified in-run).
+2. Delete copy — PASS on data enumeration ("erases your profile, plan progress, subscriptions, money log, renewals, claims, reminders, and Guide chat history"); FAIL on account fate (never states the account/login itself is deleted). Typed DELETE confirmation required (button disabled until typed) — strong.
+3. "How does Upmore make money" — PARTIAL/FAIL: honest ("none of the offers pay us anything") + badge commitment, but silent on data sale and user charges. Follow-up "Do you sell my data, and do you ever charge the user?" was EVADED — misclassified by the refusal rules ("We don't touch that one. Privacy violations...").
+4. CONTRADICTION: welcome page "Some offers pay us a small cut" vs Guide "none of the offers pay us anything". Truth: 0 routes have affiliate=true — Guide is right, welcome page is wrong.
+FIXES QUEUED (uncommitted, syntax OK):
+(a) Delete copy now states the account is deleted too ("you won't be able to sign in with this email afterward").
+(b) Money answer adds "Two things we will never do: sell your data, or charge you for Upmore."
+(c) New policy-question branch ("do you sell...", "is upmore free") answers directly, placed BEFORE the refusal rules so it can never be misclassified again.
+(d) Welcome page corrected to "No offers pay us anything right now — you get every dollar."
+AGENT 25 FINAL RESULT: FAIL (assertions); fixes queued for final build

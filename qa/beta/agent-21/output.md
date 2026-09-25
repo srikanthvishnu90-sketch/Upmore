@@ -26,3 +26,15 @@ Fresh-build protocol PASS (no History button). Profile "qa21r" (no session misma
 - Step 5 PASS: both cancelled via Track Cancel -> sheet "Cancel subscription"; Track empty ("Nothing tracked yet"); duplicate/cancel cards gone; signed out. No test data remains.
 - Minor label nit (not failed): Track row "Cancel" opens the detail sheet instead of cancelling directly — a two-tap confirm pattern; the destructive action itself is confirmed in-sheet.
 Retrospective: duplicate detection + exact numbers serve the intent — the queue caught the double charge immediately with precise "$119.88/yr" and per-card "Keep $119.88/yr" framing at the decision point.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa21r@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. First sub — PASS ("≈$9.99/mo · 1 active"). 2. Duplicate added — PASS ("≈$19.98/mo · 2 active", 2 Cancel buttons).
+3. Duplicate card — PASS ("Possible duplicate: DupeExact21", "2 active charges look like the same subscription", "$119.88/yr in duplicate charges x 80% / 3 min"; exact cents everywhere, never rounded).
+   Observation: "$119.88/yr in duplicate charges" didn't say per-sub vs combined.
+4. Review — opened in-page detail sheet for one entry ("DupeExact21 (this one)", "2 charges look like the same subscription — compare:") with per-entry Cancel buttons (observation only).
+5. Cleanup — PASS (both cancelled; Track empty; signed out).
+FIX QUEUED (uncommitted): duplicate card why-line now reads "$119.88/yr on the extra charge(s) x 80% / 3 min" — explicit that the figure is the redundant charge(s), not the combined total.
+RETROSPECTIVE: exact-cent math makes the duplicate alert trustworthy and actionable.
+AGENT 21 FINAL RESULT: PASS

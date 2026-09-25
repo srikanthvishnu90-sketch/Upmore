@@ -30,3 +30,12 @@ Targeted check of the 2d55442 promo-sheet truncation fix at 390px. Freshness gat
 - SoFi Invest promo sheet: reward shown IN FULL, word-boundary wrapping — the old "...requires moving EX" defect is fixed. Labeled "The catch:" line present (US; ACAT transfers must remain 5 years; early-withdrawal fee). No horizontal overflow, nothing clipped at the right edge. Tail reads: "...an ordinary user with no other brokerage earns $0 · Weeks to months" — the catalog data itself is honest about the $0 case, which validates the blocked() filter's rationale.
 - Robinhood promo: full 105-char reward text, "The catch:" line present (targeted offer; 7-day window; 1-year lock), no overflow.
 - VERDICT: AGENT 20 RERUN 3: PASS. No test data created; nothing to clean.
+
+## RERUN 3 — final suite (build 968ece1, 2026-09-25)
+Signed-out scenario (no account created).
+Fresh-build gate: PASS.
+(a) Reward not cut mid-word — PASS (full text renders; mid-word fragments were accessibility-tree truncation, not app rendering).
+(b) "Watch out:" catches line — PASS ("The catch: US; Qualifying transfers must remain ... for five (5) years ... early-withdrawal fee ...").
+(c) No 390px overflow — PASS.
+(d) Payout = $50–$400 tier — NOT A BUG: wrong expectation. The SoFi Invest card (R0018) correctly shows its own terms: "1% ACAT match up to $50,000" (payout 0/50000 correct — 1% of transferred assets). The $50–$400 direct-deposit tier is the separate R0096 SoFi fintech card (already fixed to 50/400). R0018 is ACAT-gated (NEEDS_EXISTING_IDS, blocked for cash <$10k) so it can't lead for beginners.
+AGENT 20 FINAL RESULT: PASS (promo-sheet truncation fix verified)

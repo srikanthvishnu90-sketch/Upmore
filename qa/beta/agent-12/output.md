@@ -13,3 +13,16 @@ Note (outside asserted screens): #welcome says "We check every offer ourselves, 
 Retrospective: genuinely honest answer — led with downsides, explicitly disclaimed certainty instead of overstating. Helpful as a fact sheet (eligibility, payout timing, real catches), though it answered "Is Swagbucks legit?" with facts rather than an explicit yes/no verdict — slightly less direct than the question asked. No overpromising anywhere.
 Cleanup: done. Only test artifact was the Guide chat itself; not visible in UI after navigating away (History opens no panel, no per-chat delete control), so nothing further removable via UI. Money log $0.00, Track/Deadlines empty.
 Note: two mid-run sign-outs from the known localStorage-drop quirk; signed back in and continued.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa12@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+Question: "I have $0 and need money today. What is the fastest verified way to get cash?"
+(a) No unguaranteed dollar amount — PASS (no dollar figure at all).
+(b) No credit cards/contests/upfront-payment — PASS (nothing recommended).
+(c) Names a concrete route w/ payout timing — FAIL. Answer was catalog-stats meta ("1402 of 1667 routes are cataloged and researched…") — zero routes named.
+ROOT CAUSE (code): the "verif" keyword branch matched before the "today" branch, so "verified" in the question hijacked the urgent-money intent. A working fastest-routes branch existed but sat below it.
+FIX QUEUED (uncommitted): "today" branch moved above "verif"; triggers expanded to fastest/quickest/asap/right now/urgent/same-day. It recommends rankMoves() speed=today routes (already cash-only + prerequisite-filtered via canLead/blocked), with who-pays + cash-arrival + catch per route.
+Retrospective: honest but useless — answered "how we verify" instead of the urgent question. Fixed.
+Cleanup: New chat started. Signed out.
+AGENT 12 FINAL RESULT: FAIL (build 968ece1)

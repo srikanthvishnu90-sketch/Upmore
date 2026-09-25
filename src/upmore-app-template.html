@@ -596,7 +596,7 @@
     <div class="dock">
       <button class="go light" data-next>Get started</button>
       <p class="legal">Already have an account? <a href="#" id="welcomeLogin">Log in</a></p>
-      <p class="legal">By continuing you agree to the <a href="#" id="welcomeTerms">Terms</a> and <a href="#" id="welcomePrivacy">Privacy Policy</a>. Some offers pay us a small cut — you still get every dollar.</p>
+      <p class="legal">By continuing you agree to the <a href="#" id="welcomeTerms">Terms</a> and <a href="#" id="welcomePrivacy">Privacy Policy</a>. No offers pay us anything right now — you get every dollar.</p>
     </div>
   </section>
 
@@ -739,7 +739,7 @@
             <div class="stepbtn" style="cursor:default"><span class="txt">Track every subscription — we flag duplicates, price hikes, and renewals from what you enter</span></div>
             <div class="stepbtn" style="cursor:default"><span class="txt">Never miss a renewal, claim deadline, or return window</span></div>
           </div>
-          <button class="cta" id="svSignin">Sign in with Google to track</button>
+          <button class="cta" id="svSignin">Sign in to track</button>
           <p class="fine">Your subscriptions, deadlines, and money log are private to your account.</p>
         </div>
       </div>
@@ -909,7 +909,7 @@
     <div class="sheet" id="deleteSheet" hidden>
       <div class="sheetcard">
         <div class="row"><b style="font-size:18px">Delete my data</b><button class="iconbtn" id="deleteClose" aria-label="Close">✕</button></div>
-        <p class="psub" style="margin-top:8px">This erases your profile, plan progress, subscriptions, money log, renewals, claims, reminders, and Guide chat history. This cannot be undone.</p>
+        <p class="psub" style="margin-top:8px">This erases your profile, plan progress, subscriptions, money log, renewals, claims, reminders, and Guide chat history — and deletes your account, so you won't be able to sign in with this email afterward. This cannot be undone.</p>
         <p class="psub" style="margin-top:8px">Type <b>DELETE</b> to confirm:</p>
         <input id="deleteConfirmInput" type="text" placeholder="Type DELETE" autocomplete="off" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:8px;font-size:16px;">
         <div class="row" style="margin-top:12px;gap:8px;">
@@ -1222,16 +1222,44 @@
     "R1932", "R6402", "R3561", "R3562", "R3563", "R1930", // credit-card offers
     "R3570", "R6446", "R3571", "R3566",                   // "signup bonuses" paid as reward cards / tuition units / locked savings
     "R0035", "R0875", "R4203", "R0021",                   // promos paid as credits, reward cards, or shares — not cash
+    "R7419",                                               // price matching: savings, not extractable cash
   ];
-  // Referral bonuses can't lead either: every referral is gated on being an
-  // existing customer/member or depends on someone else acting
-  // (acceptance-dependent work) — the product keeps referrals separate.
-  const NO_LEAD_CATS = ["Referral Bonus"];
-  const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category);
+  // Referral-gated routes can't lead either: every referral depends on
+  // someone else acting (acceptance-dependent work) — the product keeps
+  // referrals separate. Gift Card Resale is never extractable cash.
+  const NO_LEAD_CATS = ["Referral Bonus", "Gift Card Resale", "App Referral"];
+  // Durable cash-eligibility rule: a route whose payout is explicitly
+  // non-cash (gift card, statement/bill/store/merchant/account credit, tax
+  // credit, price match) cannot lead Home or Guide. Guards:
+  //  - negation ("never store credit" means cash, not credit)
+  //  - cash alternative ("cash back or gift cards" is extractable cash)
+  //  - referral gating ("refer a friend ... you each get") is
+  //    acceptance-dependent, so it can't lead either.
+  // Blocked routes stay discoverable in the catalog — they just never lead.
+  const LEAD_NONCASH = /gift card|statement credit|bill credits?|store credit|merchant credit|account credits?|tax credit|price match/gi;
+  const LEAD_NEG = /\b(never|not|no|n't|without|instead of|rather than|avoid)\b/i;
+  const LEAD_CASH = /cash payouts?|via paypal|paid in cash|direct deposit|cash back| venmo| zelle|mailed check|paper check/i;
+  const LEAD_REFGATE = /\brefer (a|your) friends?\b/i;
+  function nonCashLead(r) {
+    const blob = [r.reward, r.method, r.catches].map(x => String(x || "")).join(" ");
+    for (const m of blob.matchAll(LEAD_NONCASH)) {
+      const before = blob.slice(Math.max(0, m.index - 25), m.index);
+      if (LEAD_NEG.test(before)) continue;
+      if (LEAD_CASH.test(blob)) continue;
+      return true;
+    }
+    const rm = LEAD_REFGATE.exec(blob);
+    if (rm) {
+      const before = blob.slice(Math.max(0, rm.index - 25), rm.index);
+      if (!LEAD_NEG.test(before)) return true;
+    }
+    return false;
+  }
+  const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category) && !nonCashLead(r);
   // Routes with a hard minimum deposit the user must front themselves.
   const NEEDS_DEPOSIT_IDS = ["R0616", "R4790"]; // $100 / $25 minimum opening deposit
   const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
-    || NEEDS_ASSETS_RES.some(rx => rx.test(r.category || ""))
+    || NEEDS_ASSETS_RES.some(rx => rx.test((r.category || "") + " " + (r.method || "")))
     || NEEDS_EXISTING_IDS.includes(String(r.id));
   // Hard prerequisites for first moves: a queued move the user cannot act on
   // is a broken promise. Blocked routes stay discoverable in Explore; they
@@ -1240,7 +1268,7 @@
   const blocked = (r, cash) => {
     if (needsSpend(r) && cash <= 0) return true;
     if (NEEDS_EXISTING_IDS.includes(String(r.id)) && cash < 10000) return true; // ACAT needs $10k+ to move
-    if (NEEDS_ASSETS_RES.some(rx => rx.test(r.category || "")) && cash < 1000) return true; // buyback needs $1k+ in items
+    if (NEEDS_ASSETS_RES.some(rx => rx.test((r.category || "") + " " + (r.method || ""))) && cash < 1000) return true; // buyback needs $1k+ in items
     if (NEEDS_DEPOSIT_IDS.includes(String(r.id)) && cash <= 0) return true; // can't front the minimum deposit
     return false;
   };
@@ -1280,6 +1308,26 @@
     }
     return base;
   }
+  // A stored "Friend" is a placeholder from an old first-sign-in write, not a real name.
+  function displayName() {
+    const d = planData();
+    const who = (typeof session !== "undefined" && session && session.user) || null;
+    return (d.name && d.name !== "Friend") ? d.name
+      : (who && (who.user_metadata.full_name || who.user_metadata.name))
+      || (who ? who.email.split("@")[0] : null) || "Friend";
+  }
+  // Personalized reason line: speed, effort vs their stated time, cost vs their
+  // stated cash — so the plan reads as picked for them, not boilerplate.
+  function whyLine(r, d) {
+    const sp = { today: "as fast as today", days: "within days", weeks: "within weeks" }[r.speed] || "once you're set up";
+    const tmid = Math.round((((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2) || 0);
+    const effort = tmid >= 120 ? `about ${Math.round(tmid / 60)} hours of work`
+      : tmid > 0 ? `about ${tmid} minutes of work` : "a little of your time";
+    const cost = needsSpend(r) ? "uses items you already have"
+      : NEEDS_DEPOSIT_IDS.includes(String(r.id)) ? "needs a small deposit you can cover"
+      : "no cash needed up front";
+    return `Why this one: pays ${sp}, ${effort}, ${cost}.`;
+  }
   function buildPlan() {
     const d = planData();
     const st = NAMES[d.state] || "your state";
@@ -1287,7 +1335,7 @@
     PLAN_MOVES = moves;
     d._moves = moves;
     const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";
-    $("planTitle").textContent = `${d.name}, here are your first 3 moves`;
+    $("planTitle").textContent = `${displayName()}, here are your first 3 moves`;
     $("based").innerHTML = `Picked for ${st} · ${tl} a week · <button type="button" id="editBtn">Edit answers</button>`;
     $("editBtn").onclick = () => show("about");
     $("moves").innerHTML = moves.map((r, n) => `
@@ -1295,7 +1343,7 @@
         <div class="top"><span class="step">Move ${n + 1}</span><span class="badge">${esc(r.tier)}</span></div>
         <h3>${esc(routeTitle(r))}</h3>
         <p class="meta">${esc(routeMeta(r))}</p>
-        <p class="reason">Why this one: the best earn rate for your time and budget, ${esc(short(r.time_to_first || "quick to start", 60))}.</p>
+        <p class="reason">${esc(whyLine(r, d))}</p>
       </div>`).join("");
   }
 
@@ -1387,6 +1435,9 @@
   }
 
   let walk = null;
+  // Last route the user engaged with (promo sheet or walkthrough) — used so
+  // the Guide can answer "what's my next move" with continuity.
+  let lastRouteId = null;
   const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return u; } };
   const NEXTS = ["Got it. Next:", "Nice. Here's the next one:", "Done. Moving on:", "Good. Next step:"];
 
@@ -1405,6 +1456,7 @@
   function startWalkthrough(id) {
     const r = routeById(id);
     if (!r || !r.steps.length) return;
+    lastRouteId = String(id);
     show("guide");
     chat.innerHTML = "";
     // Resume where the user left off: first step not yet marked done.
@@ -1413,7 +1465,7 @@
     if (i < 0) i = 0;
     walk = { id, i };
     addAI([i === 0
-      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap **Done** when you finish each one.`
+      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap **Done** when you finish each one.\n\nWhy this one: ${esc(earnLine(r) || routeMeta(r) || "it fits your plan")}.`
       : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
     setTimeout(renderWalkStep, 950);
   }
@@ -1561,8 +1613,14 @@
       const done = (prog[id] || []).length;
       return (done > 0 && done < r.steps.length) ? String(id) : null;
     }).filter(Boolean));
+    // fully completed: all steps done — don't offer "Start" again
+    const doneIds = new Set(Object.keys(prog).map(id => {
+      const r = routeById(id);
+      if (!r || !r.steps || !r.steps.length) return null;
+      return (prog[id] || []).length >= r.steps.length ? String(id) : null;
+    }).filter(Boolean));
     // earn: top ranked moves (excluding routes already in progress)
-    const moves = (d._moves || rankMoves()).filter(r => !startedIds.has(String(r.id))).slice(0, 6);
+    const moves = (d._moves || rankMoves()).filter(r => !startedIds.has(String(r.id)) && !doneIds.has(String(r.id))).slice(0, 6);
     moves.forEach(r => {
       const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
       const urg = r.speed === "today" ? 2 : r.speed === "days" ? 1.5 : 1;
@@ -1601,7 +1659,7 @@
           sub: `${g.length} active charges look like the same subscription`,
           dollars, conf: 0.8, urg: 1.5, eff: 3,
           cta: "Review", act: () => openSubSheet(g[0].id, g),
-          why: `${qMoney(dollars)}/yr in duplicate charges x 80% / 3 min` });
+          why: `${qMoney(dollars)}/yr on the extra charge${g.length > 2 ? "s" : ""} x 80% / 3 min` });
       });
       subs.forEach(x => {
         // detector 2: bill spike (amount raised vs what you last entered)
@@ -1658,7 +1716,7 @@
       // and excluding routes whose prerequisites the user can't meet — same rule as earn cards;
       // and non-cash / credit-card / member-gated rewards — the queue counts extractable cash only)
       const cash0 = parseInt(d.cash, 10) || 0;
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
@@ -1706,9 +1764,9 @@
     const d = planData();
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
-    $("hello").textContent = `Good ${part}, ${d.name}`;
+    $("hello").textContent = `Good ${part}, ${displayName()}`;
     const av = $("avatar");
-    av.textContent = (d.name || "V").charAt(0).toUpperCase();
+    av.textContent = (displayName() || "V").charAt(0).toUpperCase();
     av.onclick = () => show("profile");
     renderExplore();
     renderQueue();
@@ -1751,7 +1809,7 @@
       $("dlAdd").disabled = true;
       let ok = false;
       if (kind === "renewal") {
-        ok = await saveInsert("save_renewals", { name, renews_on: date, kind: "renewal", prep_notes: notes, status: "upcoming" });
+        ok = await saveInsert("save_renewals", { name, renews_on: date, kind: "renewal", prep_notes: notes, status: "upcoming", amount: amt > 0 ? amt : null });
       } else {
         ok = await saveInsert("save_claims", { merchant: name, kind, amount: amt > 0 ? amt : null, deadline: date, steps: notes, status: "open" });
       }
@@ -1766,6 +1824,10 @@
      a reversal inserts an offsetting entry and flags the original.
      Entries are never edited or deleted. */
   const LEDGER_BUCKETS = ["Received", "Avoided", "Reduced", "Cash flow", "Found"];
+  const localISODate = () => {
+    const d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  };
   async function renderLedger() {
     const box = $("ledgerList"), tots = $("ledgerTotals");
     if (!box || !tots) return;
@@ -1774,8 +1836,11 @@
     const sums = {};
     LEDGER_BUCKETS.forEach(b => sums[b] = 0);
     rows.forEach(r => { if (sums[r.bucket] !== undefined) sums[r.bucket] += Number(r.amount || 0); });
+    const grand = Object.values(sums).reduce((s, v) => s + v, 0);
+    const nAct = rows.filter(r => !r.reversed).length;
     tots.innerHTML = LEDGER_BUCKETS.map(b =>
-      `<div class="ledgertot"><b>${money$(sums[b])}</b><span>${b}</span></div>`).join("");
+      `<div class="ledgertot"><b>${money$(sums[b])}</b><span>${b}</span></div>`).join("") +
+      `<div class="ledgertot ledgertotal"><b>${money$(grand)}</b><span>Total across all buckets · ${nAct} entr${nAct === 1 ? "y" : "ies"}</span></div>`;
     box.innerHTML = rows.length ? rows.map(r => `
       <div class="item"><div class="grow${r.reversed ? " lrev" : ""}">
         <p class="t">${esc(r.title)}${Number(r.amount) < 0 ? " (reversal)" : ""}</p>
@@ -1791,7 +1856,7 @@
     const ok = await saveInsert("save_ledger", {
       bucket: r.bucket, amount: -Number(r.amount || 0),
       title: "Reversal: " + r.title, detail: r.detail || "",
-      occurred_on: new Date().toISOString().slice(0, 10)
+      occurred_on: localISODate()
     });
     if (!ok) { toast("Couldn't save - check your connection and try again."); return; }
     try { await supa.from("save_ledger").update({ reversed: true }).eq("id", r.id); } catch (e) {}
@@ -1802,7 +1867,7 @@
     if (ledgerWired) return; ledgerWired = true;
     $("ledgerAdd").onclick = () => {
       $("ledgerForm").hidden = !$("ledgerForm").hidden;
-      if (!$("ledgerForm").hidden && !$("lgDate").value) $("lgDate").value = new Date().toISOString().slice(0, 10);
+      if (!$("ledgerForm").hidden && !$("lgDate").value) $("lgDate").value = localISODate();
     };
     $("lgCancel").onclick = () => { $("ledgerForm").hidden = true; };
     $("lgSave").onclick = async () => {
@@ -1816,7 +1881,7 @@
         ok = await Promise.race([
           saveInsert("save_ledger", {
             bucket: $("lgType").value, amount: amt, title, detail: "",
-            occurred_on: $("lgDate").value || new Date().toISOString().slice(0, 10)
+            occurred_on: $("lgDate").value || localISODate()
           }),
           new Promise(res => setTimeout(() => res(false), 15000))
         ]);
@@ -1947,18 +2012,19 @@
     const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
     $("subMonthly").textContent = act.length ? `\u2248${money$(monthly)}/mo \u00b7 ${act.length} active` : "";
     $("subList").innerHTML = act.length ? act.map(s => `
-      <div class="item"><div class="grow">
+      <div class="item"><div class="grow" data-open="${s.id}" style="cursor:pointer">
         <p class="t">${esc(s.merchant)}</p>
         <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}</p>
       </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`).join("")
       : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
     $("subList").querySelectorAll("[data-unsub]").forEach(b => b.onclick = () => openSubSheet(b.dataset.unsub));
+    $("subList").querySelectorAll("[data-open]").forEach(g => g.onclick = () => openSubSheet(g.dataset.open));
   }
   let saveInit = false;
   function initSave() {
     if (saveInit) return; saveInit = true;
     const svGo = $("svSignin");
-    if (svGo) { const lbl = svGo.innerHTML; svGo.onclick = () => startGoogleLogin(svGo, lbl); }
+    if (svGo) svGo.onclick = () => show("login");
     wireDeadlines();
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
@@ -2112,6 +2178,10 @@
     $("promoSheet").hidden = false;
     $("promoStartBtn").onclick = () => {
       $("promoSheet").hidden = true;
+      lastRouteId = String(r.id);
+      // The route has real steps: walk the user through them instead of
+      // dropping them in the Guide with a dead-end "Open move" button.
+      if (r.steps && r.steps.length) { startWalkthrough(r.id); return; }
       show("guide");
       guideAsk(`I want to start this promo: ${r.provider} \u2014 ${String(r.reward || "").slice(0, 100)}. Give me the exact steps to claim it.`);
     };
@@ -2141,7 +2211,7 @@
   }
 
   function routeCard(r) {
-    return { tag: `${r.category} · ${r.tier || "Unranked"}`, title: routeTitle(r), meta: routeMeta(r),
+    return { id: r.id, tag: `${r.category} · ${r.tier || "Unranked"}`, title: routeTitle(r), meta: routeMeta(r),
       aff: r.affiliate ? "We may earn a commission on this offer — it never comes out of your pocket." : "" };
   }
   function routeParas(r) {
@@ -2222,6 +2292,69 @@
   // starts the Userfeel walkthrough. Cleared on any other message so a stale
   // offer can never hijack a later "yes".
   let pendingOffer = null;
+  // Tracked-data answers: the Guide "knows your plan" — deadlines,
+  // renewals, subscriptions, and the money log — not just the catalog.
+  // Returns {paras, card?} or null when the query isn't about tracked data.
+  async function trackedAnswer(text) {
+    const t = " " + String(text).toLowerCase() + " ";
+    const has = (...kws) => kws.some(k => t.includes(k));
+    // Named-lookup signal ("when does X renew") vs overview signal
+    // ("my upcoming deadlines"). Catalog questions naming a provider fall
+    // through to the catalog — tracked data never hijacks them.
+    const selfData = has("my upcoming", "my deadline", "my renewal",
+      "my subscription", "my money log", "my log", "my saving",
+      "how much have i", "what have i saved", "tracked");
+    const namedQ = has("when does", "when is", "is my") && has("renew", "deadline");
+    if (!selfData && !namedQ) return null;
+    const provHit = (UPMORE_DATA.routes || []).some(r =>
+      r.provider && t.includes(" " + String(r.provider).toLowerCase() + " "));
+    if (provHit && !selfData) return null;
+    if (!saveUid()) return { paras: ["You're signed out — sign in and I'll pull up your tracked items: renewals, subscriptions, and your money log."] };
+    const [rens, claims, subs, ledger] = await Promise.all([
+      saveRows("save_renewals", "renews_on", true),
+      saveRows("save_claims", "due_on", true),
+      saveRows("save_subscriptions", "created_at", false),
+      saveRows("save_ledger", "occurred_on", false),
+    ]);
+    const upcoming = rens.filter(r => r.status === "upcoming" || r.status == null);
+    const actSubs = subs.filter(x => x.status !== "cancelled");
+    const net = ledger.filter(x => !x.reversed).reduce((s, x) => s + (Number(x.amount) || 0), 0);
+    // Named lookup: "when does RenewTest23 renew"
+    const name = t.replace(/when does|when is|does|do|my|the|a|an|renew|renewal|deadline|deadlines|upcoming|\?/g, " ").trim();
+    if (name.length > 1) {
+      const hit = upcoming.find(r => String(r.name || "").toLowerCase().includes(name)) ||
+        claims.find(r => String(r.name || "").toLowerCase().includes(name)) ||
+        actSubs.find(x => String(x.merchant || "").toLowerCase().includes(name));
+      if (hit) {
+        if (hit.renews_on) {
+          const days = qDaysUntil(hit.renews_on);
+          return { paras: [`${hit.name} renews ${qDueText(days)} — ${hit.renews_on}.${hit.prep_notes ? " Note: " + hit.prep_notes : ""}`] };
+        }
+        if (hit.due_on) {
+          const days = qDaysUntil(hit.due_on);
+          return { paras: [`${hit.name} is due ${qDueText(days)} — ${hit.due_on}.`] };
+        }
+        if (hit.merchant) {
+          return { paras: [`${hit.merchant}: ${money$(hit.amount)}${INTPER[hit.billing_interval] || ""}${hit.next_billing_date ? ", next billing " + hit.next_billing_date : ""} — still active.`] };
+        }
+      }
+    }
+    // Overview of everything tracked
+    const paras = [];
+    if (upcoming.length) {
+      paras.push("Your upcoming deadlines: " + upcoming.slice(0, 5).map(r =>
+        `${r.name} — ${qDueText(qDaysUntil(r.renews_on))} (${r.renews_on})`).join("; ") +
+        (upcoming.length > 5 ? `, plus ${upcoming.length - 5} more in Track.` : "."));
+    } else paras.push("No upcoming deadlines tracked.");
+    if (actSubs.length) {
+      const mo = actSubs.reduce((s, x) => s + (Number(x.amount) || 0) * (INT2MO[x.billing_interval] || 1), 0);
+      paras.push(`${actSubs.length} active subscription${actSubs.length > 1 ? "s" : ""}, about ${money$(mo)}/mo: ` +
+        actSubs.slice(0, 5).map(x => `${x.merchant} ${money$(x.amount)}${INTPER[x.billing_interval] || ""}`).join(", ") + ".");
+    } else paras.push("No active subscriptions tracked.");
+    paras.push(`Money log total: ${money$(net)} across ${ledger.filter(x => !x.reversed).length} entries.`);
+    return { paras };
+  }
+
   function guideAnswer(text) {
     const t = " " + String(text).toLowerCase() + " ";
     const has = (...kws) => kws.some(k => t.includes(k));
@@ -2243,7 +2376,13 @@
     if (has("how does upmore make money", "how do you make money", "how upmore makes money", "how are you paid"))
       return { paras: [
         "Right now, none of the offers in the catalog pay us anything — you get every dollar the offer promises.",
-        "If that ever changes, the offer's card will carry a badge that says so. And we'd rather lose the cut than push a worse offer on you." ] };
+        "If that ever changes, the offer's card will carry a badge that says so. And we'd rather lose the cut than push a worse offer on you.",
+        "Two things we will never do: sell your data, or charge you for Upmore." ] };
+    // Data-sale / charge questions are ABOUT our policy — never refuse them.
+    if (has("do you sell", "selling my data", "sell user data", "do you charge", "is upmore free", "cost to use"))
+      return { paras: [
+        "No. We never sell your data — your tracked subscriptions, money log, and plan stay yours, and you can export or delete everything from the You tab.",
+        "Upmore is free for you. If we ever earned a commission on an offer, the offer's card would carry a badge saying so — right now none do." ] };
 
     /* Save-side intents: deterministic answers, honest about what the app can do */
     if (has("audit my subscriptions", "audit subscriptions"))
@@ -2310,7 +2449,55 @@
 
     if (has("next move")) {
       const d = planData(); const mv = (d._moves || rankMoves())[1];
-      if (mv) return { paras: [`After this one: ${esc(routeTitle(mv))}.`, esc(`${mv.reward || "Reward varies."}${mv.time_to_first ? ` First money ${mv.time_to_first.toLowerCase()}.` : ""}`)], card: routeCard(mv) };
+      // Continuity: reference the move the user was just on, if any.
+      let prefix = "";
+      if (lastRouteId) {
+        const lr = routeById(lastRouteId);
+        if (lr && lr.steps && lr.steps.length) {
+          const done = (prog[lr.id] || []).length;
+          prefix = done >= lr.steps.length ? `You finished ${esc(lr.provider)}. `
+            : done > 0 ? `You were on ${esc(lr.provider)} — step ${done + 1} of ${lr.steps.length}. `
+            : `You were looking at ${esc(lr.provider)}. `;
+        }
+      }
+      if (mv) return { paras: [`${prefix}After this one: ${esc(routeTitle(mv))}.`, esc(`${mv.reward || "Reward varies."}${mv.time_to_first ? ` First money ${mv.time_to_first.toLowerCase()}.` : ""}`)], card: routeCard(mv) };
+    }
+
+    // General money goal ("make $200 this weekend", "earn $500 this month"):
+    // synthesize an honest plan from the fastest verified routes instead of
+    // deflecting to search. Runs after provider/category matches so a named
+    // provider still wins; the $1000 branch above keeps its specific math.
+    const gm = t.match(/(?:make|earn|need|get|save up|save)\s+\$?\s?(\d[\d,]*)/) || t.match(/\$(\d[\d,]*)\s*(this weekend|by friday|this week|this month|today|asap|right now)/);
+    if (gm && !has("1000", "1,000", "thousand dollars", "a grand")) {
+      const goal = parseInt(gm[1].replace(/,/g, ""), 10);
+      if (goal >= 20 && goal <= 20000) {
+        const fast = rankMoves().filter(r => r.speed === "today" || r.speed === "days").slice(0, 3);
+        if (fast.length) {
+          const items = fast.map((r, i) =>
+            `${i + 1}. ${r.provider} — ${short(r.reward || "reward varies", 90)}. Who pays: ${short(r.who_pays || "the provider", 70)}. Cash arrives: ${short(r.when_cash_arrives || r.payout_timing || "see the offer's terms", 70)}`);
+          const top = fast[0];
+          const unit = top.payout_max > 0 ? top.payout_max : 0;
+          const math = unit > 0
+            ? ` The math, straight: at ~$${unit} a go, $${goal} means roughly ${Math.ceil(goal / unit)} of these — that's steady work, not a quick payout. Anyone promising faster is selling something.`
+            : "";
+          return { paras: [
+            `Straight answer on $${goal}: no single fast route pays that in one shot. Here's the fastest honest stack I can verify:`,
+            ...items.map(esc),
+            `Straight talk: you do the work first, then the provider pays on the timing above.${math}`,
+            "Want me to walk you through step 1? Say the word." ],
+            card: routeCard(top) };
+        }
+      }
+    }
+
+    if (has("today", "fastest", "quickest", "asap", "right now", "urgent", "same-day", "same day")) {
+      const todays = rankMoves().filter(r => r.speed === "today").slice(0, 3);
+      if (todays.length) {
+        const items = todays.map((r, i) =>
+          `${i + 1}. ${r.provider} — ${r.reward || "reward varies"}. Who pays: ${r.who_pays || "the provider"}. Cash arrives: ${r.when_cash_arrives || r.payout_timing || "see the offer's terms"}${r.catches ? ` (catch: ${short(r.catches, 80)})` : ""}`);
+        return { paras: ["The fastest routes in the catalog — check \"Cash arrives\" on each before you start:", ...items.map(esc),
+          "Straight talk: you do the work first, then the provider pays on the timing above. Nothing here is free money with no effort."], card: routeCard(todays[0]) };
+      }
     }
 
     if (has("verif", "legit", "trustworthy", " is this real", "scam")) {
@@ -2343,16 +2530,6 @@
       return { paras: [
         "Start where it costs $0. The unclaimed-money search is free and takes five minutes — most people find nothing, but when it hits, it's money already yours.",
         "After that: Fetch for receipt cashback and Microsoft Rewards for searches you already do. All three are in your first moves on Home." ] };
-
-    if (has("today")) {
-      const todays = rankMoves().filter(r => r.speed === "today").slice(0, 3);
-      if (todays.length) {
-        const items = todays.map((r, i) =>
-          `${i + 1}. ${r.provider} — ${r.reward || "reward varies"}. Who pays: ${r.who_pays || "the provider"}. Cash arrives: ${r.when_cash_arrives || r.payout_timing || "see the offer's terms"}${r.catches ? ` (catch: ${short(r.catches, 80)})` : ""}`);
-        return { paras: ["The fastest routes in the catalog — check \"Cash arrives\" on each before you start:", ...items.map(esc),
-          "Straight talk: you do the work first, then the provider pays on the timing above. Nothing here is free money with no effort."], card: routeCard(todays[0]) };
-      }
-    }
 
     if (has("easiest", "first", "start", "begin", "simplest")) {
       const r = topList(rankMoves(), 3, "The 3 easiest routes for you right now:");
@@ -2467,15 +2644,20 @@
     }
   });
 
-  function guideAsk(text) {
+  async function guideAsk(text) {
     if (busy) return; busy = true;
     addMe(text);
-    agentAsk(text).then(j => {
+    try {
+      // Tracked data first: the user's own deadlines/subscriptions/ledger
+      // must never be intercepted by the remote agent's generic replies.
+      const tr = await trackedAnswer(text);
+      if (tr) { addAI(tr.paras, tr.card); busy = false; return; }
+      const j = await agentAsk(text);
       if (j && j.reply) {
         // Real agent reply. Apply walkthrough actions.
         if (j.action && j.action.type === "start_walkthrough" && j.action.route_id) {
           const r = routeById(j.action.route_id);
-          if (r) { addAI([j.reply]); startWalkthrough(j.action.route_id); return; }
+          if (r) { addAI([j.reply]); startWalkthrough(j.action.route_id); busy = false; return; }
         }
         addAI([j.reply]);
       } else {
@@ -2483,11 +2665,12 @@
         if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(r.routeId); }
         else addAI(r.paras, r.card);
       }
-    }).catch(() => {
+    } catch (e) {
       const r = guideAnswer(text);
       if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(r.routeId); }
       else addAI(r.paras, r.card);
-    });
+    }
+    busy = false;
   }
   function renderGuideEmpty() {
     if (guideInit && $("empty")) return;
@@ -2520,7 +2703,20 @@
       m.insertAdjacentHTML("beforeend", paras.map(p => `<p>${md(p)}</p>`).join(""));
       if (card) m.insertAdjacentHTML("beforeend",
         `<div class="mini"><span>${card.tag}</span><b>${card.title}</b><span>${card.meta}</span>${card.aff ? `<span class="abadge">Affiliate</span>` : ""}<button data-open>Open move</button></div>`);
-      const b = m.querySelector("[data-open]"); if (b) b.onclick = () => show("home");
+      const b = m.querySelector("[data-open]");
+      if (b) b.onclick = () => {
+        const r = card.id ? routeById(card.id) : null;
+        // The move has real steps: open the walkthrough right here instead of
+        // bouncing the user back to Home to find the Start button again.
+        if (r && r.steps && r.steps.length) { startWalkthrough(r.id); return; }
+        show("home");
+        const q = $("xq");
+        if (q && r) { q.value = r.provider || ""; q.dispatchEvent(new Event("input", { bubbles: true })); }
+        if (card.id) setTimeout(() => {
+          const elx = document.querySelector(`[data-xcard="${card.id}"]`);
+          if (elx) { const dd = elx.querySelector(".xdetail"); if (dd) dd.hidden = false; elx.scrollIntoView({ block: "center" }); }
+        }, 600);
+      };
       chat.scrollTop = chat.scrollHeight; busy = false;
     }, 900);
   }
@@ -2566,6 +2762,7 @@
     list.slice(0, xState.shown).forEach(r => {
       const el = document.createElement("div");
       el.className = "xitem";
+      el.dataset.xcard = r.id;
       const laneBadge = r.lane !== "Standard" ? `<span class="rbadge">Higher-risk</span>` : "";
       const researchedBadge = r.status === "researched" ? `<span class="vbadge">\u2713 Researched</span>` : `<span class="ubadge">Unverified</span>`;
       el.innerHTML = `<div class="xrow">
@@ -2582,10 +2779,11 @@
           ${(r.cash_or_credit && r.cash_or_credit.toLowerCase().indexOf("cash") < 0) ? `<div class="catch"><b>Note:</b> pays as ${esc(r.cash_or_credit)} — not cash in hand.</div>` : ""}
           ${r.affiliate ? `<div><span class="abadge">Affiliate</span> We may earn a commission if you use this link — it never comes out of your pocket.</div>` : ""}
           <div class="xfoot"><span>Difficulty ${r.difficulty == null ? "—" : r.difficulty}/10${r.time_to_first ? " · first money: " + esc(r.time_to_first) : ""}</span>${r.url && safeUrl(r.url) ? `<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">Official site →</a>` : ""}</div>
-          ${r.url && safeUrl(r.url) ? `<button class="doforme" data-difm="${esc(r.id)}">✨ Do it for me — agent fills the form</button>` : ""}
+          ${r.steps && r.steps.length ? `<button class="doforme" data-walk="${esc(r.id)}">Walk me through it →</button>` : ""}
         </div>`;
       el.style.cursor = "pointer";
       el.querySelector(".xrow").onclick = () => { const dd = el.querySelector(".xdetail"); dd.hidden = !dd.hidden; };
+      el.querySelectorAll("[data-walk]").forEach(b => b.onclick = e => { e.stopPropagation(); startWalkthrough(b.dataset.walk); });
       box.appendChild(el);
     });
     const more = $("xmore");
@@ -2608,8 +2806,7 @@
     const st = NAMES[d.state] || "";
     const who = (session && session.user) || null;
     // A stored "Friend" is a placeholder from an old first-sign-in write, not a real name: ignore it.
-    const realName = (d.name && d.name !== "Friend") ? d.name : null;
-    const dispName = realName || (who && (who.user_metadata.full_name || who.user_metadata.name)) || (who ? who.email.split("@")[0] : null) || "Friend";
+    const dispName = displayName();
     $("pAva").textContent = dispName.charAt(0).toUpperCase();
     $("pName").textContent = dispName;
     const pm = $("pMail");

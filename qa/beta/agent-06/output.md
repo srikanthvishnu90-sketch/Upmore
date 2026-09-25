@@ -42,3 +42,14 @@ AGENT: 06 — Spike detector. RESULT: PASS (5/5 assertions).
 Retrospective: served intent — prominent card at top of queue the moment the bill increased, exact before/after, correctly annualized impact, honest source label ("price hike you entered"), 95% confidence, 10-min effort, actionable Review.
 Cleanup done: cancelled via panel; Track "Nothing tracked yet"; both queue cards gone; You money log $0.00; no test data remains. Zero reloads.
 Environment note: mid-scenario localStorage drop signed the session out (landed on #welcome) and the first added subscription vanished from Track; signed back in and completed cleanly on second pass. Mutations reliable post-re-sign-in.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa06@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Add SpikeTest06 $10/mo — PASS ("≈$10.00/mo · 1 active").
+2. Update $10 → $15 via sheet — PASS (Track "≈$15.00/mo · 1 active").
+3. 'bill went up' card — PASS ("SpikeTest06 bill went up", "$10.00 -> $15.00/mo (+$60/yr)", "+$60/yr x 95% / 10 min - price hike you entered", "Review").
+4. Cancel → Track empty — PASS ("Nothing tracked yet").
+Retrospective: serves intent — precise before/after + annualized cost at a glance. Gap: tapping the subscription ROW did nothing; only the row's Cancel button opened the sheet (FIX QUEUED: row tap now opens the sheet via data-open).
+Cleanup: SpikeTest06 cancelled. Signed out.
+AGENT 06 FINAL RESULT: PASS

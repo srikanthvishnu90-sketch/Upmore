@@ -51,3 +51,13 @@ AGENT: 05 — Duplicate detector. RESULT: PASS (4/4 assertions).
 - Cleanup: both entries cancelled via Cancel → "Cancel subscription" sheet; Track shows "Nothing tracked yet"; duplicate card gone from queue — no stale warning.
 Retrospective: served intent well — fired immediately, named the subscription, explained the trigger, quantified the stake, 80% confidence, one-tap Review (3 min). Exactly the protection the feature promises.
 Notes: two mid-run sign-outs from the known localStorage-drop environment quirk (no reload by the agent); signed back in each time. OBSERVATION: while signed out, the Save button's clicks silently did nothing (no subscription created, no error); after confirmed sign-in, Save worked first try. Silent no-op while signed out may deserve a sign-in prompt — agent-15's auth-state run will cover this. Each "Cancel subscription" confirmation navigated to the Guide tab chat; returning Home showed the entry removed.
+
+## RERUN — final suite (build 968ece1, 2026-09-25)
+Account: qa05@upmore.app (email-matched gate).
+Fresh-build gate: PASS.
+1. Two DupeTest05 $9.99/mo subscriptions added — PASS (Track "≈$19.98/mo · 2 active").
+2. 'Possible duplicate' card — PASS ("Possible duplicate: DupeTest05", "2 active charges look like the same subscription", "$119.88/yr in duplicate charges x 80% / 3 min", "Review").
+3. Review shows side-by-side — PASS ("2 charges look like the same subscription — compare:" + both charges listed with per-charge Cancel; the NEW compare UI verified live).
+4. Cleanup — PASS (both cancelled; Track empty; duplicate card gone).
+Retrospective: serves intent — fired immediately, quantified waste, side-by-side compare is exactly what the user needs to decide which to kill.
+AGENT 05 FINAL RESULT: PASS
