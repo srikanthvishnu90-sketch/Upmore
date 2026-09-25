@@ -28,3 +28,16 @@ Fresh-build gate PASS (Straight-talk canary). Signed-out, no data created.
   startWalkthrough(id); routeById(object) never matches, silent early return.
   The backend action path had the same latent bug. Fixed in ed538ce: pass the
   id string at both call sites.
+
+## Rerun 2b (2026-09-25 ~00:32 UTC, build ed538ce) — RESULT: PASS
+Targeted recheck of assertion 3a after the walkthrough-id fix. Fresh-build gate PASS.
+- "how do I make $1000 fast?" → first line exactly "Straight answer on $1000:
+  no single verified route gets you there fast."
+- "Yes, walk me through step 1" → walkthrough step card rendered within
+  seconds: "STEP 1 OF 4 — Sign up on userfeel.com and complete the free
+  qualification test." (You're done when: You're signed up. + Open
+  userfeel.com link).
+- "Done — next step" → "STEP 2 OF 4 — Watch the mandatory training video and
+  read the tester FAQ (required to get paid)."
+- The reserved $1000 flow is now fully verified end-to-end on ed538ce.
+  No test data created; nothing to clean.
