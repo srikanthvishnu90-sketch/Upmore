@@ -2701,8 +2701,13 @@
     /* Save-side intents: deterministic answers, honest about what the app can do */
     if (has("audit my subscriptions", "audit subscriptions"))
       return { paras: [
-        "Here's the audit playbook: list every recurring charge, flag anything you haven't used in 30 days, then cancel from the merchant's own page — I'll give you the exact steps for each one.",
-        "On Home, scroll to Track and tap “Add a subscription”. Tell me what you listed and I'll flag the likely waste.",
+        // FIX (C4-v1/v2): Never claim non-usage. Upmore sees charges, not usage.
+        // Was: "flag anything you haven't used in 30 days" (states unobservable fact).
+        // Now: asks the user which ones they use.
+        "Here's the audit playbook: list every recurring charge, then tell me which ones you actually use — I'll rank the rest by dollars at stake and give you the exact cancel steps for each one.",
+        // FIX (C4-v2): "I'll flag the likely waste" implies app judges non-usage.
+        // Was: "I'll flag the likely waste." Now: asks user to identify.
+        "On Home, scroll to Track and tap “Add a subscription”. Tell me what you listed and which ones you don't use — I'll rank them by dollars at stake.",
         "One rule: I prepare, you click. I never cancel anything for you." ] };
 
     if (has("negotiat", "lower my bill", "lower a bill"))
