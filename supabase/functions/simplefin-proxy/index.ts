@@ -62,7 +62,7 @@ serve(async (req) => {
     const userClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: `Bearer ${jwt}` } },
     });
-    const { data: { user }, error: authErr } = await userClient.auth.getUser();
+    const { data: { user }, error: authErr } = await userClient.auth.getUser(jwt);
     if (authErr || !user) return json({ error: "Invalid session" }, 401);
 
     const admin = createClient(supabaseUrl, serviceKey);
