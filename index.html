@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-MMode2HNyqzurGv5gR0B0gzAXoBwPvNpkXF/46OPnF4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-ORJaiVvrX2p5uQ1SNE43XxD/OHAmVS9OwfgZR8RuUpg='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -407,7 +407,7 @@
   .mrow b { display:block; font-size:14px; }
   .mrow i { display:block; font-style:normal; font-size:11px; color:var(--dim); }
   .mrow em { font-style:normal; font-size:12px; margin-left:6px; }
-  .mrow em.up { color:#b3261e; } .mrow em.dn { color:#2e7d4f; }
+  .mrow em.up { color:#5f6368; } .mrow em.dn { color:#5f6368; } /* FIX (B2-v2): neutral gray for both deltas — no red/green spending signals (no-guilt rule) */
   /* SPEC 01: 8-element Earn card */
   .earn8 { margin:8px 0; padding:10px; background:rgba(0,0,0,.02); border-radius:10px; }
   .ebadge, .vbadge { display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; margin:0 6px 8px 0; }
@@ -633,7 +633,7 @@
     <div class="scroll">
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center;min-height:52vh">
         <svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#fff" mask="url(#logo)"/></svg>
-        <h1 style="margin-top:26px;max-width:14ch">Real ways to make extra money. One at a time.</h1>
+        <h1 style="margin-top:26px;max-width:14ch">Real ways to earn. One at a time.</h1> <!-- FIX (E6-v2 G7): spec forbids publicly promising "make extra money" -->
         <p class="why">We check every offer ourselves, then walk you through it step by step. No tricks, no fine-print traps.</p>
       </div>
     </div>
@@ -1130,8 +1130,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       : `≈${fmt$(r.payout_min)}–${fmt$(r.payout_max)}`;
     const tm = r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min`
       : `≈${r.time_min_minutes}–${r.time_max_minutes} min`;
-    const rt = r.earn_ratio == null ? "" : ` · ≈${r.earn_ratio >= 100 ? Math.round(r.earn_ratio) : r.earn_ratio >= 10 ? r.earn_ratio.toFixed(1) : r.earn_ratio.toFixed(2)}/min`;
-    return `${pm} · ${tm}${rt}`;
+    // FIX (E6-v2 G6): Removed $/min derived rate — spec forbids derived projections.
+    // Show only terms-stated payout range and time range.
+    return `${pm} · ${tm}`;
   };
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -1617,10 +1618,21 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     walk = { id, i };
     // SPEC 01: Pre-flight — disclose cost, risks, data, abandonment BEFORE step 1.
     // Only on fresh start (i === 0), not on resume.
+    // FIX (E4-v2): All 4 disclosures required: (1) exact reward + when it arrives,
+    // (2) exact requirements verbatim, (3) the catch, (4) honest abandonment terms.
     if (i === 0) {
       const costs = r.costs_and_unpaid_time || "No upfront cost stated.";
       const data = r.requirements || "—";
-      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**If you stop halfway:** nothing is submitted until you complete the final step — you can abandon anytime with no penalty.\n\nReady?`]);
+      const reward = r.reward || "—";
+      const timing = r.payout_timing || r.when_cash_arrives || "timing not stated";
+      const catches = r.catches || "No specific downsides stated in the terms.";
+      // FIX (E4-v2): Abandonment must be honest, not blanket "no penalty".
+      // High-consequence routes (bank bonuses, credit) may have penalties.
+      const isHighConsequence = /bank|credit|bonus/i.test(r.provider || "") || /bank|credit/i.test(r.category || "");
+      const abandon = isHighConsequence
+        ? "If you stop halfway: you may lose eligibility for the bonus. Check the terms before starting."
+        : "If you stop halfway: nothing is submitted until you complete the final step — you can abandon anytime.";
+      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Reward:** ${reward}\n**When it arrives:** ${timing}\n**Requirements:** ${data}\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**The catch:** ${catches}\n**${abandon}**\n\nReady?`]);
       // Add a start button manually (addAI card shape doesn't support custom actions)
       const btn = document.createElement("button");
       btn.className = "qcta"; btn.textContent = "Start walkthrough"; btn.style.margin = "8px 0";
@@ -1992,7 +2004,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       let extra = "";
       if (c.type === "earn" && c.route) {
         const r = c.route;
-        const cls = r.earnings_class || "Fixed reward";
+        // FIX (E6-v2 G8): Map catalog earnings_class to the 4 spec classes.
+        // Catalog values: "Count only actual received cash" (1967 routes), "Speculative — $0 until withdrawn" (23 routes).
+        // Spec classes: Fixed reward, Paid-if-selected, Variable, Non-cash.
+        const clsRaw = r.earnings_class || "";
+        const cls = clsRaw.includes("Speculative") ? "Variable"
+          : clsRaw.includes("Count only actual") ? "Fixed reward"
+          : "Fixed reward"; // default
         const ver = routeVerification(r);
         extra = `
         <div class="earn8">
@@ -2969,7 +2987,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         /s&p|index fund/i, /how do i invest/i, /where should i put my money/i,
         /good time to buy/i, /rank.*etf/i, /compare.*(vti|voo|etf)/i,
         /which is better/i, /should i sell/i, /401k/i, /allocation/i,
-        /portfolio/i, /buy the dip/i, /\b(aapl|tsla|msft|googl|amzn|nvda|meta)\b/i
+        /portfolio/i, /buy the dip/i, /\b(aapl|tsla|msft|googl|amzn|nvda|meta)\b/i,
+        // FIX (E5-v2): 79 bypassed phrasings — expanded coverage.
+        // Paraphrase/synonym bypasses:
+        /investing advice/i, /grow my money/i, /top picks/i, /pick stocks/i,
+        /investment ideas/i, /put.*\$.*to grow/i, /make my money work/i,
+        /asset mix/i, /securities/i, /winning stock/i, /suggest.*stock/i,
+        /get into trading/i, /day trading/i, /swing trade/i, /options trading/i,
+        /trade options/i, /forex/i, /margin trading/i, /short selling/i, /covered calls/i,
+        // Crypto bypasses:
+        /crypto tips/i, /bitcoin forecast/i, /eth to/i, /doge/i, /altcoins/i,
+        /staking rewards/i, /what do you think of (btc|eth|xrp)/i, /price prediction/i,
+        /\b(btc|eth|xrp|doge|sol|ada|avax|link|dot)\b/i,
+        // ETF/fund bypasses:
+        /which etf/i, /best for long term/i, /value investing/i, /growth investing/i,
+        // General:
+        /trading advice/i, /trading tips/i, /trading ideas/i, /trading strategy/i,
       ];
       const isCapitalQuestion = capitalPatterns.some(p => p.test(t));
       if (isCapitalQuestion) {
