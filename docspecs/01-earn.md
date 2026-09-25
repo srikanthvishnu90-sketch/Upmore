@@ -72,5 +72,7 @@ Capital is education, never advice. Hard nevers:
 - Never count unrealised investment value in the ledger.
 - Never pair broker affiliate links with specific securities.
 - Never treat 13F disclosures as current recommendations. Any 13F position shown must state as-of date, filing date, age in days, and that it may already be closed.
+- "Execute" never moves money: assembled cart, pre-filled order, one tap by the user. Everything up to the payment. (Money transmission = licensed state-by-state = company-ending.)
+- No affiliate steering anywhere: if Upmore earns commission on a recommendation, show the cheapest option even when it pays nothing, and disclose on the card.
 
 Capital remains disabled/pull-only pending securities-lawyer review of the system prompt. No security recommendations, rankings, buy/sell/hold language, allocations, forecasts, or model-derived math — ever.

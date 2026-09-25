@@ -814,6 +814,11 @@
       <p class="psub" style="margin:-6px 0 10px">One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.</p>
       <div id="queue"></div>
 
+      <!-- SPEC 05 CFO: seven money-health tools, ranked by dollars. -->
+      <h2 class="sec">Your money, like a CFO sees it</h2>
+      <p class="psub" style="margin:-6px 0 10px">The biggest dollars in your financial life, in order. Tap any card to open the tool.</p>
+      <div class="list" id="cfoList"></div>
+
       <h2 class="sec">Track</h2>
       <div id="saveSignedOut" hidden>
         <div class="next" style="margin-top:4px">
@@ -933,6 +938,15 @@
       </div>
     </div>
 
+
+  <!-- SPEC 05 CFO: detail screen for the seven money-health tools. -->
+  <section class="screen" id="cfoDetail" aria-label="Money tool">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand" id="cfoTitle">Money tool</div></div>
+      <div id="cfoBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
 
   <!-- ================= GUIDE ================= -->
   <section class="screen" id="guide" aria-label="Guide">
@@ -1090,8 +1104,9 @@
   // Platform-aware: prefer per-platform app store links when the route has them.
   const IS_IOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  // Retired routes (offer ended) never render as earnable anywhere.
-  const stdRoutes = () => D.routes.filter(r => r.lane === "Standard" && r.status !== "retired");
+  // Retired routes (offer ended) and unverified routes (audit-demoted: expired, false, gated, dead, policy-violating) never render as earnable anywhere.
+  const earnable = r => r.status !== "retired" && r.status !== "unverified";
+  const stdRoutes = () => D.routes.filter(r => r.lane === "Standard" && earnable(r));
   const routeById = id => D.routes.find(r => r.id === id);
   const CATICON = {
     "Cashback/Shopping":"tag", "Bank Bonus":"card", "Unclaimed/Recovery":"bank",
@@ -1981,7 +1996,7 @@
       // and excluding routes whose prerequisites the user can't meet — same rule as earn cards;
       // and non-cash / credit-card / member-gated rewards — the queue counts extractable cash only)
       const cash0 = parseInt(d.cash, 10) || 0;
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && earnable(r) && !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
@@ -2116,6 +2131,7 @@
     renderExplore();
     renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend
     renderQueue();
+    renderCFOList(); // SPEC 05: seven money-health tools
     renderTracker();
   }
 
@@ -2163,6 +2179,350 @@
       if (ok) { ["dlName", "dlDate", "dlAmount", "dlNotes"].forEach(id => $(id).value = ""); renderDeadlines(); renderQueue(); toast("Tracked"); }
       else toast("Couldn't save - check your connection and try again.");
     };
+  }
+
+  /* ================= SPEC 05 CFO: seven money-health tools =================
+     Hard constraints: nothing here moves money (pre-filled + user tap only);
+     no affiliate steering — cheapest shown even at zero commission, disclosed.
+     Code computes; model explains. Every figure shows its inputs. */
+
+  const CFO_TOOLS = [
+    { id: "debt", title: "Debt payoff plan", hook: "Which balance to attack first — priced to the dollar." },
+    { id: "cash", title: "Idle cash check", hook: "What your checking balance costs you per year." },
+    { id: "tax", title: "Tax positioning", hook: "W-4, credits, quarterly estimates — forward-looking, not filing." },
+    { id: "insurance", title: "Coverage check", hook: "Are you actually covered? We'll tell you if you're fine." },
+    { id: "runway", title: "Runway", hook: "If your income stopped today: how many weeks you have." },
+    { id: "close", title: "Monthly close", hook: "90 seconds, once a month: in, out, changed, coming." },
+    { id: "income", title: "Income side", hook: "What your role pays, freelance rates, late invoices." },
+  ];
+
+  const cfoGet = (k, fb) => { try { const v = localStorage.getItem("cfo_" + k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } };
+  const cfoSet = (k, v) => { try { localStorage.setItem("cfo_" + k, JSON.stringify(v)); } catch (e) {} };
+  const cfo$ = n => "$" + Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: 0 });
+  const cfo2$ = n => "$" + Number(n || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function renderCFOList() {
+    const box = $("cfoList");
+    if (!box) return;
+    box.innerHTML = CFO_TOOLS.map(t =>
+      `<button class="item" data-cfo="${t.id}" style="text-align:left;width:100%">
+        <div class="grow"><p class="t">${esc(t.title)}</p><p class="m">${esc(t.hook)}</p></div>
+        <span class="pv">›</span>
+      </button>`).join("");
+    box.querySelectorAll("[data-cfo]").forEach(b => b.onclick = () => openCFO(b.dataset.cfo));
+  }
+
+  function openCFO(id) {
+    const tool = CFO_TOOLS.find(t => t.id === id);
+    if (!tool) return;
+    $("cfoTitle").textContent = tool.title;
+    const body = $("cfoBody");
+    ({ debt: cfoDebt, cash: cfoCash, tax: cfoTax, insurance: cfoInsurance,
+       runway: cfoRunway, close: cfoClose, income: cfoIncome })[id](body);
+    show("cfoDetail");
+    // Explicit back: override any global data-back wiring for this screen.
+    const back = document.querySelector("#cfoDetail [data-back]");
+    if (back) back.onclick = () => show("home");
+  }
+
+  /* ---- 1. Debt sequencing ---- */
+  function cfoDebt(body) {
+    const debts = cfoGet("debts", []);
+    const extra = cfoGet("debt_extra", 200);
+    const calc = () => {
+      if (!debts.length) return null;
+      const order = [...debts].sort((a, b) => b.apr - a.apr);
+      const sim = (ds, strat, extraAmt) => {
+        let bals = ds.map(d => ({ ...d }));
+        let totalInt = 0, months = 0;
+        const mins = bals.reduce((s, d) => s + d.min, 0);
+        const pay = mins + (extraAmt === undefined ? extra : extraAmt);
+        while (bals.some(d => d.bal > 0.01) && months < 600) {
+          months++;
+          // Interest accrues on the outstanding balance first (standard amortization),
+          // then payments are applied. Never the reverse — that would understate cost.
+          for (const d of bals) { const i = d.bal * d.apr / 1200; totalInt += i; d.bal += i; }
+          const seq = strat === "avalanche"
+            ? [...bals].sort((a, b) => b.apr - a.apr)
+            : [...bals].sort((a, b) => a.bal - b.bal);
+          let pool = pay;
+          for (const d of bals) { const p = Math.min(d.min, d.bal); d.bal = Math.max(0, d.bal - p); pool -= p; }
+          for (const d of seq) {
+            if (pool <= 0.005) break;
+            if (d.bal <= 0.01) continue;
+            const p = Math.min(pool, d.bal);
+            d.bal -= p; pool -= p;
+          }
+        }
+        return { totalInt, months };
+      };
+      const av = sim(debts, "avalanche"), sb = sim(debts, "snowball"), mo = sim(debts, "avalanche", 0);
+      return { order, av, sb, mo };
+    };
+    const r = calc();
+    let html = `<p class="psub">Highest APR first (avalanche) always minimizes total interest. Enter your balances and see the price of each choice.</p>
+      <div class="svform">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>Name</span><input id="dName" placeholder="Chase card" autocomplete="off"></label>
+          <label class="f"><span>Balance ($)</span><input id="dBal" inputmode="decimal" placeholder="4500"></label>
+          <label class="f"><span>APR (%)</span><input id="dApr" inputmode="decimal" placeholder="24.99"></label>
+          <label class="f"><span>Min payment ($)</span><input id="dMin" inputmode="decimal" placeholder="120"></label>
+        </div>
+        <label class="f"><span>0% promo ends (optional)</span><input id="dPromo" type="date"></label>
+        <button class="go" id="dAdd" style="height:50px">Add debt</button>
+      </div>
+      <div style="margin-top:12px"><label class="f"><span>Extra per month beyond minimums ($)</span><input id="dExtra" inputmode="decimal" value="${esc(String(extra))}"></label></div>
+      <div class="list" style="margin-top:8px">${debts.map((d, i) => {
+        const mi = d.bal * d.apr / 1200;
+        const promoWarn = d.promo ? (() => { const days = Math.round((new Date(d.promo) - Date.now()) / 864e5); return days >= 0 && days <= 90 ? `<p class="m" style="color:#a33">⚠ 0% ends in ${days} days — then ${d.apr}% applies.</p>` : ""; })() : "";
+        return `<div class="item"><div class="grow"><p class="t">${esc(d.name)} — ${cfo$(d.bal)} at ${d.apr}%</p>
+          <p class="m">Costs ${cfo2$(mi)}/mo in interest · min ${cfo2$(d.min)}</p>${promoWarn}</div>
+          <button class="linkbtn" data-ddel="${i}">Remove</button></div>`;
+      }).join("") || `<p class="psub">No debts entered yet.</p>`}</div>`;
+    if (r) {
+      const end = new Date(); end.setMonth(end.getMonth() + r.av.months);
+      html += `<h2 class="sec">Attack order (avalanche)</h2><div class="list">` +
+        r.order.map((d, i) => `<div class="item"><div class="grow"><p class="t">${i + 1}. ${esc(d.name)}</p><p class="m">${cfo$(d.bal)} at ${d.apr}% — ${cfo2$(d.bal * d.apr / 1200)}/mo interest</p></div></div>`).join("") +
+        `</div><div class="pcard" style="margin-top:12px"><p><b>Avalanche:</b> ${cfo$(r.av.totalInt)} total interest, debt-free in ~${r.av.months} mo (${end.toLocaleDateString("en-US", { month: "short", year: "numeric" })}).</p>
+        <p style="margin-top:6px"><b>Minimums only:</b> ${cfo$(r.mo.totalInt)} interest over ~${r.mo.months} months — <b>${cfo$(Math.max(0, r.mo.totalInt - r.av.totalInt))} more</b> than your avalanche plan.</p>
+        <p class="psub" style="margin-top:6px">Snowball (lowest balance first): ${cfo$(r.sb.totalInt)} interest — ${cfo$(Math.max(0, r.sb.totalInt - r.av.totalInt))} more than avalanche. Your call; now it's priced.</p></div>`;
+    }
+    html += `<p class="fine" style="margin-top:12px">Educational math only — not financial advice. We never recommend specific cards or loans, and nothing here moves money.</p>`;
+    body.innerHTML = html;
+    $("dAdd").onclick = () => {
+      const name = $("dName").value.trim() || "Debt";
+      const bal = parseFloat($("dBal").value), apr = parseFloat($("dApr").value), min = parseFloat($("dMin").value);
+      if (!(bal > 0) || !(apr >= 0) || !(min > 0)) { toast("Enter balance, APR, and minimum payment"); return; }
+      const ds = cfoGet("debts", []);
+      ds.push({ name, bal, apr, min, promo: $("dPromo").value || "" });
+      cfoSet("debts", ds); cfoDebt(body);
+    };
+    $("dExtra").onchange = e => { cfoSet("debt_extra", parseFloat(e.target.value) || 0); cfoDebt(body); };
+    body.querySelectorAll("[data-ddel]").forEach(b => b.onclick = () => {
+      const ds = cfoGet("debts", []); ds.splice(+b.dataset.ddel, 1); cfoSet("debts", ds); cfoDebt(body);
+    });
+  }
+
+  /* ---- 2. Idle cash ---- */
+  function cfoCash(body) {
+    let checking = 0;
+    try {
+      const { accounts } = loadTrackData();
+      checking = accounts.filter(a => /check/i.test(a.name || "") || !a.type).reduce((s, a) => s + (a.balance || 0), 0) || (accounts[0]?.balance || 0);
+    } catch (e) {}
+    const manual = cfoGet("idle_manual", null);
+    const bal = manual !== null ? manual : Math.max(0, checking);
+    const rate = cfoGet("hysa_rate", 4.2);
+    const nowInt = bal * 0.0001, hysaInt = bal * rate / 100, gap = hysaInt - nowInt;
+    body.innerHTML = `<p class="psub">Money in checking earns ~0.01%. Top high-yield savings paid ~4.2–4.5% as of Sept 25, 2026 (FDIC national average: 0.38%). The gap below is free money for doing nothing.</p>
+      <div class="svform"><label class="f"><span>Checking balance ($) — from your bank data or edit</span><input id="cBal" inputmode="decimal" value="${Math.round(bal)}"></label>
+      <label class="f"><span>HYSA rate you can actually get (% APY — edit to today's rate)</span><input id="cRate" inputmode="decimal" value="${rate}"></label></div>
+      <div class="pcard" style="margin-top:12px">
+        <p><b>${cfo$(bal)}</b> in checking earns ~<b>${cfo2$(nowInt)}/yr</b>.</p>
+        <p style="margin-top:6px">At <b>${rate}%</b> it would earn <b>${cfo$(hysaInt)}/yr</b>.</p>
+        <p style="margin-top:6px;font-size:17px"><b>Left on the table: ${cfo$(gap)}/yr.</b></p>
+        <p class="psub" style="margin-top:8px">Keep 3–6 months of essentials liquid (in the HYSA, not a CD) and one month of bills in checking. Only <i>above</i> that is idle cash. We never move money — opening and funding is your tap.</p>
+      </div>
+      <p class="fine" style="margin-top:12px">HYSA rates are variable — verify today's APY on the bank's own page before acting. Interest is taxable income. If we ever show a rate we earn commission on, the best rate still comes first and the card says so.</p>`;
+    const upd = () => { cfoSet("idle_manual", parseFloat($("cBal").value) || 0); cfoSet("hysa_rate", parseFloat($("cRate").value) || 0); cfoCash(body); };
+    $("cBal").onchange = upd; $("cRate").onchange = upd;
+  }
+
+  /* ---- 5. Runway ---- */
+  function cfoRunway(body) {
+    let weeks = null, liquid = 0, burn = 0, detail = "", isLive = false;
+    try {
+      const { accounts, transactions, isLive: live } = loadTrackData();
+      isLive = !!live;
+      liquid = accounts.reduce((s, a) => s + Math.max(0, a.balance || 0), 0);
+      const cutoff = Date.now() - 90 * 864e5;
+      const spend = transactions.filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer &&
+        new Date(t.posted_at).getTime() > cutoff &&
+        !["Transfers", "Other"].includes(t.category));
+      const total90 = spend.reduce((s, t) => s + Math.abs(t.amount), 0);
+      burn = total90 / (90 / 7);
+      weeks = burn > 0 ? liquid / burn : null;
+      detail = `${spend.length} spending transactions, last 90 days`;
+    } catch (e) { detail = "No transaction data yet."; }
+    body.innerHTML = `<div class="pcard" style="margin-top:4px">
+        ${weeks === null ? `<p><b>Can't compute runway yet</b> — connect your bank or wait for transaction data.</p><p class="psub" style="margin-top:6px">${esc(detail)}</p>`
+        : `<p style="font-size:15px">If your income stopped today, you have</p>
+           <p style="font-size:42px;font-weight:700;margin:6px 0">${weeks < 52 ? weeks.toFixed(1) + " weeks" : (weeks / 52).toFixed(1) + " years"}</p>
+           <p class="psub">${cfo$(liquid)} liquid ÷ ${cfo$(burn)}/week burn.</p>
+           <p class="psub" style="margin-top:6px">${esc(detail)}. Excludes transfers and pending.</p>`}
+      </div>
+      ${isLive ? "" : `<p class="fine" style="margin-top:10px;color:#b45309">Sample data — connect your bank for your real runway.</p>`}
+      <p class="fine" style="margin-top:12px">Burn = trailing-90-day essential spend ÷ 13. Liquid = bank balances. Tap any number's source in Track.</p>`;
+  }
+
+  /* ---- 6. Monthly close ---- */
+  function cfoClose(body) {
+    let html = "";
+    try {
+      const { transactions, isLive } = loadTrackData();
+      const now = new Date(), ym = now.toISOString().slice(0, 7);
+      const inM = d => (d || "").slice(0, 7);
+      const real = transactions.filter(t => !t.is_pending && !t.is_transfer);
+      const thisM = real.filter(t => inM(t.posted_at) === ym);
+      const inflow = thisM.filter(t => t.amount > 0).reduce((s, t) => s + t.amount, 0);
+      const outgo = thisM.filter(t => t.amount < 0).reduce((s, t) => s - t.amount, 0);
+      // trailing 3 full months average
+      const avgs = [];
+      for (let i = 1; i <= 3; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1).toISOString().slice(0, 7);
+        const m = real.filter(t => inM(t.posted_at) === d);
+        avgs.push(m.filter(t => t.amount < 0).reduce((s, t) => s - t.amount, 0));
+      }
+      const avgOut = avgs.reduce((s, x) => s + x, 0) / 3;
+      const byCat = {};
+      thisM.filter(t => t.amount < 0).forEach(t => { byCat[t.category] = (byCat[t.category] || 0) - t.amount; });
+      const movers = Object.entries(byCat).sort((a, b) => b[1] - a[1]).slice(0, 3);
+      const reviewed = cfoGet("close_" + ym, null);
+      html = `<div class="pcard"><p><b>${now.toLocaleDateString("en-US", { month: "long", year: "numeric" })}</b></p>
+        <p style="margin-top:8px">In: <b>${cfo$(inflow)}</b> · Out: <b>${cfo$(outgo)}</b></p>
+        <p style="margin-top:4px;font-size:17px">Net: <b style="color:${inflow - outgo >= 0 ? "#1d5c3f" : "#a33"}">${inflow - outgo >= 0 ? "+" : "−"}${cfo$(Math.abs(inflow - outgo))}</b></p>
+        <p class="psub" style="margin-top:6px">Spending vs 3-month average (${cfo$(avgOut)}): ${outgo > avgOut ? "up " + cfo$(outgo - avgOut) : "down " + cfo$(avgOut - outgo)}.</p></div>
+        <h2 class="sec">Biggest categories</h2><div class="list">` +
+        (movers.map(([c, v]) => `<div class="item"><div class="grow"><p class="t">${esc(c)}</p></div><b>${cfo$(v)}</b></div>`).join("") || `<p class="psub">No spending this month yet.</p>`) +
+        `</div>
+        <button class="cta" id="closeDone" style="margin-top:14px">${reviewed ? "Reviewed ✓ " + reviewed : "Mark as reviewed (90 seconds, done)"}</button>
+        ${isLive ? "" : `<p class="fine" style="margin-top:8px;color:#b45309">Sample data — connect your bank for your real monthly close.</p>`}
+        <p class="fine" style="margin-top:8px">No streaks, no shame. Missed months are just listed.</p>`;
+    } catch (e) { html = `<p class="psub">No transaction data yet.</p>`; }
+    body.innerHTML = html;
+    const btn = $("closeDone");
+    if (btn) btn.onclick = () => { const ym = new Date().toISOString().slice(0, 7); cfoSet("close_" + ym, new Date().toLocaleDateString()); cfoClose(body); toast("Closed. See you next month."); };
+  }
+
+  /* ---- 4. Insurance adequacy ---- */
+  function cfoInsurance(body) {
+    const a = cfoGet("ins", {});
+    const set = (k, v) => { const x = cfoGet("ins", {}); x[k] = v; cfoSet("ins", x); cfoInsurance(body); };
+    const yn = (k, label) => `<div class="item"><div class="grow"><p class="t">${label}</p></div>
+      <button class="linkbtn" data-ins="${k}" data-v="yes" style="${a[k] === "yes" ? "font-weight:700;color:#1d5c3f" : ""}">Yes</button>
+      <button class="linkbtn" data-ins="${k}" data-v="no" style="${a[k] === "no" ? "font-weight:700;color:#a33" : ""}">No</button></div>`;
+    let verdicts = [];
+    if (a.life === "no" && a.depend === "yes") verdicts.push(["Life insurance", "Someone depends on your income and you have no life coverage. Quick math: 10–12× gross income (the DIME method — debts + income×10 + mortgage + ~$100k/child − savings — is more precise). Term beats whole life for almost everyone; a healthy 30-year-old pays ~$23–30/mo for $500k of 20-year term (2026 price indexes). People under 30 overestimate that cost 10–12× — price is rarely the real barrier (2025 Insurance Barometer Study)."]);
+    if (a.life === "no" && a.depend === "no") verdicts.push(["Life insurance", "You're fine — no dependents means no income to replace."]);
+    if (a.disab === "no") verdicts.push(["Disability insurance", "The stat that matters: a 20-year-old has a 24% chance of disability before 67 vs 13% chance of death (SSA Office of the Chief Actuary, 2025). Employer plans usually cap at ~60% of base salary, exclude bonuses, are taxable if the employer pays, aren't portable, and often flip to a stricter definition after ~24 months. SSDI approves only ~30% of first applications and pays ~$1,580/mo (2025). Worth pricing individual coverage — it runs ~1–3% of income."]);
+    if (a.disab === "yes") verdicts.push(["Disability insurance", "You're fine on this one — keep the own-occupation definition and a future-purchase rider if you have them."]);
+    if (a.rent === "yes" && a.rentins === "no") verdicts.push(["Renters insurance", "~$13/mo ($151/yr per NerdWallet, Jan 2026) buys $30k of property coverage plus $100k liability with a $500 deductible. The liability half is the real value — plus loss-of-use coverage (hotel/food if displaced). One claim repays decades of premiums."]);
+    if (a.rentins === "yes") verdicts.push(["Renters insurance", "You're fine — just confirm liability is ≥$100k and the deductible is affordable."]);
+    if (a.auto === "yes" && a.autolim === "no") verdicts.push(["Auto insurance", "State minimums (often 25/50/25) leave you personally exposed past the limit. Expert consensus: 100/300/100 with matching uninsured-motorist coverage — higher limits cost only slightly more. In the worst state, 28% of drivers are uninsured (IRC), so UM should mirror your liability limits."]);
+    if (a.autolim === "yes") verdicts.push(["Auto insurance", "You're fine — 100/300/100 or better with matching uninsured-motorist coverage."]);
+    if (a.assets === "yes" && a.umbrella === "no") verdicts.push(["Umbrella insurance", "You own a home or have meaningful assets and no umbrella policy. ~$150–300/yr buys $1M of extra liability on top of your auto/home — the first million is the cheapest coverage you'll ever buy. Worth a quote."]);
+    if (a.umbrella === "yes") verdicts.push(["Umbrella insurance", "You're fine — confirm the underlying auto/home limits meet the carrier's requirement (usually 100/300/100 or 250/500)."]);
+    body.innerHTML = `<p class="psub">The opposite of "switch and save": are you actually covered? Answer honestly — we're happy to tell you you're fine.</p>
+      <div class="list">
+        ${yn("depend", "Does anyone depend on your income?")}
+        ${yn("life", "Do you have life insurance?")}
+        ${yn("disab", "Do you have disability insurance (beyond basic employer coverage)?")}
+        ${yn("rent", "Do you rent your home?")}
+        ${a.rent === "yes" ? yn("rentins", "Do you carry renters insurance?") : ""}
+        ${yn("auto", "Do you drive regularly?")}
+        ${a.auto === "yes" ? yn("autolim", "Is your liability at least 100/300/100?") : ""}
+        ${yn("assets", "Do you own a home or have meaningful savings/assets?")}
+        ${a.assets === "yes" ? yn("umbrella", "Do you carry an umbrella policy?") : ""}
+      </div>
+      ${verdicts.length ? `<h2 class="sec">Your coverage read</h2><div class="list">` + verdicts.map(([t, v]) =>
+        `<div class="item"><div class="grow"><p class="t">${t}</p><p class="m">${v}</p></div></div>`).join("") + `</div>` : `<p class="psub" style="margin-top:8px">Answer the questions above for your read.</p>`}
+      <p class="fine" style="margin-top:12px">General information, not insurance advice. We sell nothing and earn nothing here — if there's a gap, talk to an independent agent.</p>`;
+    body.querySelectorAll("[data-ins]").forEach(b => b.onclick = () => set(b.dataset.ins, b.dataset.v));
+  }
+
+  /* ---- 3. Tax positioning (verified 2026; see research/tax-positioning-2026.md) ---- */
+  const TAX_2026 = {
+    stdDed: { single: 16100, married: 32200, hoh: 24150 }, // Rev. Proc. 2025-32
+    hsa: { individual: 4400, family: 8750, catchup55: 1000 }, // Rev. Proc. 2025-19
+    k401: 24500, k401catch: 8000, ira: 7500, iracatch: 1100, // IRS Notice 2025-67
+    eitcMax: 8231, ctc: 2200, actc: 1700,
+  };
+  function cfoTax(body) {
+    const gig = cfoGet("tax_gig", 0), rate = cfoGet("tax_rate", 22);
+    const q = gig * rate / 100 / 4;
+    const se = gig * 0.9235 * 0.153;
+    body.innerHTML = `<p class="psub">Forward-looking: keep more of what you earn <i>this</i> year. 2026 figures verified Sept 25, 2026 — confirm at irs.gov before acting. General information, not tax advice.</p>
+      <h2 class="sec">W-4: the fastest cash-flow fix</h2>
+      <div class="list"><div class="item"><div class="grow"><p class="m">The average 2026 refund was <b>$3,275</b> — about $273/month of your own money lent to the IRS at 0%. File a new W-4 when: new job, second job, marriage/divorce, new gig income, new dependent. Use the <b>IRS Tax Withholding Estimator</b> (irs.gov/W4App, updated March 2026) — 10 minutes, exact numbers, effective next pay cycle.</p></div></div></div>
+      <h2 class="sec">Credits people leave on the table</h2>
+      <div class="list">
+        <div class="item"><div class="grow"><p class="t">Earned Income Tax Credit — up to $${TAX_2026.eitcMax.toLocaleString()}</p><p class="m">Refundable — paid even with zero tax liability. ~20% of eligible workers never claim it, mostly because you must <b>file a return</b> even below the filing threshold. Check the IRS EITC Assistant.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">Child Tax Credit — $${TAX_2026.ctc.toLocaleString()}/child (under 17)</p><p class="m">Up to $${TAX_2026.actc.toLocaleString()} refundable per child. Phases out above $200K single / $400K joint. A valid SSN is now required for the claimant.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">Saver's Credit — up to $1,000 ($2,000 joint)</p><p class="m">10–50% of the first $2,000 of retirement contributions back, if your income qualifies. Claimed on Form 8880 — most eligible 401(k) contributors never file it.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">Education credits — up to $2,500/yr</p><p class="m">American Opportunity (first 4 yrs, 40% refundable) or Lifetime Learning ($2,000/yr, covers grad school). Phase out $80K–$90K single.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">Child &amp; Dependent Care — expanded for 2026</p><p class="m">Up to 50% of $3,000/$6,000 in care costs (max $1,500/$3,000). Nonrefundable, Form 2441. If your employer offers a Dependent Care FSA, the pre-tax set-aside usually beats the credit.</p></div></div>
+      </div>
+      <h2 class="sec">Gig work: quarterly estimates</h2>
+      <div class="svform">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>Expected gig profit this year ($)</span><input id="tGig" inputmode="decimal" value="${gig}"></label>
+          <label class="f"><span>Your marginal income-tax rate (%)</span><input id="tRate" inputmode="decimal" value="${rate}"></label>
+        </div>
+      </div>
+      <div class="pcard" style="margin-top:8px">
+        <p>Income tax on gig profit: <b>${cfo$(q * 4)}/yr</b> — set aside <b>${cfo$(q)}/quarter</b>.</p>
+        <p style="margin-top:6px">Self-employment tax (15.3% on 92.35% of net): another <b>~${cfo$(se)}/yr</b>. Rule of thumb: park <b>25–30% of every freelance dollar</b> the day it arrives.</p>
+        <p class="psub" style="margin-top:6px">2026 due dates: Apr 15 · Jun 15 · Sep 15 · Jan 15, 2027. Safe harbor: pay 100% of last year's tax (110% if AGI &gt; $150K) across the four quarters and there is no underpayment penalty.</p>
+      </div>
+      <h2 class="sec">Standard deduction (2026)</h2>
+      <div class="list"><div class="item"><div class="grow"><p class="t">Single $${TAX_2026.stdDed.single.toLocaleString()} · Joint $${TAX_2026.stdDed.married.toLocaleString()} · Head of household $${TAX_2026.stdDed.hoh.toLocaleString()}</p><p class="m">About 90% of filers take it. Itemize only if SALT (capped $40,400) + mortgage interest + charitable + medical over 7.5% of AGI beats it. New 2026: non-itemizers get an above-the-line charitable deduction — $1,000 single / $2,000 joint, cash gifts only.</p></div></div></div>
+      <h2 class="sec">HSA / retirement room (2026)</h2>
+      <div class="list">
+        <div class="item"><div class="grow"><p class="t">HSA — $${TAX_2026.hsa.individual.toLocaleString()} individual / $${TAX_2026.hsa.family.toLocaleString()} family (+$1,000 at 55+)</p><p class="m">Needs a high-deductible plan (min $1,700/$3,400 deductible). Triple tax advantage: deductible in, tax-free growth, tax-free out for medical. Maxing a family HSA at 22% saves roughly $2,600/yr.</p></div></div>
+        <div class="item"><div class="grow"><p class="t">401(k) — $${TAX_2026.k401.toLocaleString()} (+$${TAX_2026.k401catch.toLocaleString()} at 50+) · IRA — $${TAX_2026.ira.toLocaleString()} (+$${TAX_2026.iracatch.toLocaleString()} at 50+)</p><p class="m">Every pre-tax dollar at a 22% marginal rate saves 22 cents this year. $24,500 pre-tax at 22% = $5,390 of tax deferred.</p></div></div>
+      </div>
+      <p class="fine" style="margin-top:12px">Sources: Rev. Proc. 2025-32, IRS Notice 2025-67, Rev. Proc. 2025-19. We never file or submit anything to the IRS. Multi-state income, AMT, or stock comp — see a CPA.</p>`;
+    const upd = () => { cfoSet("tax_gig", parseFloat($("tGig").value) || 0); cfoSet("tax_rate", parseFloat($("tRate").value) || 0); cfoTax(body); };
+    $("tGig").onchange = upd; $("tRate").onchange = upd;
+  }
+
+  /* ---- 7. Income side ---- */
+  const BLS_2024 = [ // BLS Occupational Employment & Wages, May 2024 median annual. Verify current at bls.gov.
+    ["Software developer", 133080], ["Marketing manager", 159660], ["Financial analyst", 101910],
+    ["Registered nurse", 93600], ["Accountant", 81680], ["Graphic designer", 58910],
+    ["Truck driver (heavy)", 57440], ["Customer service rep", 41750], ["Retail salesperson", 36200],
+    ["Elementary teacher", 65470],
+  ];
+  function cfoIncome(body) {
+    const invs = cfoGet("invoices", []);
+    const sal = cfoGet("inc_sal", 70000), mult = cfoGet("inc_mult", 2.5);
+    const hr = sal / 2080 * mult;
+    const now = Date.now();
+    body.innerHTML = `<h2 class="sec">What your role pays</h2>
+      <p class="psub">BLS median annual pay, May 2024 — check bls.gov for current. If you're 20%+ under median, that's raise-or-move data. BLS is the verifiable benchmark; treat Glassdoor/Blind as self-reported.</p>
+      <div class="list">${BLS_2024.map(([r, p]) => `<div class="item"><div class="grow"><p class="t">${r}</p></div><b>${cfo$(p)}</b></div>`).join("")}</div>
+      <h2 class="sec">Raise timing</h2>
+      <div class="pcard"><p>2026 employer budgets: ~3.2% merit, ~8.7% average promotion raise (Mercer). Honest framing: 3% is normal, 5% is strong, 10%+ almost always means promotion, market correction, or an outside offer. Below the 25th percentile for your role/metro = a real underpaid case. Note: the old "job-hop for 20%" advice is stale — by Aug 2025 the switcher-vs-stayer premium had collapsed to ~0.1% (BofA/Fed data), so switch for the role, not the bump.</p></div>
+      <h2 class="sec">Freelance rate calculator</h2>
+      <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <label class="f"><span>Salary equivalent ($/yr)</span><input id="iSal" inputmode="decimal" value="${sal}"></label>
+        <label class="f"><span>Multiplier (2–3× covers taxes, gaps, overhead)</span><input id="iMult" inputmode="decimal" value="${mult}"></label>
+      </div></div>
+      <div class="pcard" style="margin-top:8px"><p>Charge at least <b>${cfo2$(hr)}/hr</b>. Below ${cfo2$(sal / 2080)}/hr you're earning less than the salary. Rule of thumb (industry heuristic, not a benchmark): salary ÷ 1,000 ≈ hourly floor — the 2× covers SE tax (15.3%), benefits, and the fact that only ~1,100 of your hours are billable. Most people underprice by dividing by 2,080 and forgetting taxes.</p></div>
+      <h2 class="sec">Invoice tracker</h2>
+      <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <label class="f"><span>Client</span><input id="vClient" placeholder="Acme Co" autocomplete="off"></label>
+        <label class="f"><span>Amount ($)</span><input id="vAmt" inputmode="decimal" placeholder="1500"></label>
+      </div><label class="f"><span>Due date</span><input id="vDue" type="date"></label>
+      <button class="go" id="vAdd" style="height:50px">Track invoice</button></div>
+      <div class="list" style="margin-top:8px">${invs.map((v, i) => {
+        const days = Math.round((now - new Date(v.due).getTime()) / 864e5);
+        const late = days > 0;
+        return `<div class="item"><div class="grow"><p class="t">${esc(v.client)} — ${cfo$(v.amt)}</p>
+          <p class="m" style="${late ? "color:#a33;font-weight:600" : ""}">${late ? `OVERDUE ${days} days — follow up today` : `Due ${v.due}`}</p></div>
+          <button class="linkbtn" data-vdel="${i}">Paid</button></div>`;
+      }).join("") || `<p class="psub">No invoices tracked.</p>`}</div>
+      <p class="fine" style="margin-top:12px">Chase cadence that works: invoice the day work ships, reminder 2–3 days before due, gentle nudge day 1 (assume oversight), firm at day 7 (state the late fee and updated total), pause new work at day 14, final demand at day 30–45. Late fees (1.5–3%/mo) only stick if they're in the contract. We never contact anyone for you.</p>`;
+    const upd = () => { cfoSet("inc_sal", parseFloat($("iSal").value) || 0); cfoSet("inc_mult", parseFloat($("iMult").value) || 2); cfoIncome(body); };
+    $("iSal").onchange = upd; $("iMult").onchange = upd;
+    $("vAdd").onclick = () => {
+      const client = $("vClient").value.trim(), amt = parseFloat($("vAmt").value), due = $("vDue").value;
+      if (!client || !(amt > 0) || !due) { toast("Client, amount, and due date needed"); return; }
+      const xs = cfoGet("invoices", []); xs.push({ client, amt, due }); cfoSet("invoices", xs); cfoIncome(body);
+    };
+    body.querySelectorAll("[data-vdel]").forEach(b => b.onclick = () => {
+      const xs = cfoGet("invoices", []); xs.splice(+b.dataset.vdel, 1); cfoSet("invoices", xs); cfoIncome(body); toast("Paid. Nice.");
+    });
   }
 
   /* ================= Money log (You tab) =================
@@ -2853,8 +3213,8 @@
     }
 
     if (has("verif", "legit", "trustworthy", " is this real", "scam")) {
-      const nv = D.routes.filter(r => r.status === "researched").length;
-      const nt = D.routes.length;
+      const nv = D.routes.filter(r => r.status === "researched" || r.status === "verified").length;
+      const nt = D.routes.filter(r => r.status !== "retired" && r.status !== "unverified").length;
       return { paras: [
         `Straight answer: ${nv} of ${nt} routes are cataloged and researched — reward, requirements, and dates included. Live terms have not been confirmed; check before you start.`,
         "The rest aren't researched yet — I'll confirm them against the provider's own page before you start anything.",
@@ -3198,7 +3558,7 @@
   const TIERS = ["Very Easy", "Easy", "Moderate", "Hard", "Very Hard"];
 
   function xFiltered() {
-    let list = xState.lane ? D.routes.filter(r => r.status !== "retired") : stdRoutes();
+    let list = xState.lane ? D.routes.filter(earnable) : stdRoutes();
     if (xState.tier !== "all") list = list.filter(r => r.tier === xState.tier);
     if (xState.speed !== "all") list = list.filter(r => r.speed === xState.speed);
     if (xState.cat !== "all") list = list.filter(r => r.category === xState.cat);
