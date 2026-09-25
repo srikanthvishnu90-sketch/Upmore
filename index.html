@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-5ymTV4mCP/xg8FlWOEZAslm/WpBHqevvvbbWpoPXqIU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-nozn6mqUQYEWkC16anoWVoeI9glQgrSG5t1NhmWReCY='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -775,6 +775,12 @@
       <div class="safetospend" id="safeSpend" hidden>
         <div class="sts-top"><span>Safe to spend</span><b id="stsTotal">—</b></div>
         <div class="sts-sub" id="stsSub">—</div>
+        <!-- FIX (B1-v2): Buffer as separate line, adjustable. Spec rule 3: "show the buffer
+             as a separate line, so the user knows it exists and can change it." -->
+        <div class="sts-buffer" id="stsBufferLine" style="margin-top:6px;font-size:12px;color:var(--muted);">
+          Buffer: <b id="stsBufferAmt">$100</b>
+          <button id="stsBufferEdit" style="margin-left:8px;font-size:11px;padding:2px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);">Change</button>
+        </div>
       </div>
 
       <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
@@ -3570,10 +3576,32 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
     const cycleEnd = nextPay || new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
     const fixedRem = rec.filter(r => r.next_date <= cycleEnd).reduce((s, r) => s + r.amount, 0);
-    const sts = calcSafeToSpend(balance, fixedRem, 0, 100, cycleEnd);
+    // FIX (B1-v2): Buffer from localStorage (adjustable), default $100.
+    // Spec rule 3: buffer as separate line, user can change it.
+    let bufferAmt = 100;
+    try {
+      const saved = localStorage.getItem("upmore_buffer");
+      if (saved !== null) bufferAmt = Math.max(0, parseInt(saved, 10) || 0);
+    } catch (e) {}
+    const sts = calcSafeToSpend(balance, fixedRem, 0, bufferAmt, cycleEnd);
     $("safeSpend").hidden = false;
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
-    $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd} · $${sts.buffer} buffer`;
+    // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
+    $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
+    $("stsBufferAmt").textContent = fmt$(bufferAmt);
+    // Wire up Change button (once)
+    if (!$("stsBufferEdit").dataset.wired) {
+      $("stsBufferEdit").dataset.wired = "1";
+      $("stsBufferEdit").onclick = () => {
+        const v = prompt("Set your safety buffer amount:", String(bufferAmt));
+        if (v !== null) {
+          const n = Math.max(0, parseInt(v.replace(/[^0-9]/g, ""), 10) || 0);
+          try { localStorage.setItem("upmore_buffer", String(n)); } catch (e) {}
+          // Re-render
+          if (typeof renderHome === "function") renderHome();
+        }
+      };
+    }
 
     // HOME 5 THINGS: Connect card — show when no live bank is connected.
     // Incredibly simple: one button opens the connect sheet.
