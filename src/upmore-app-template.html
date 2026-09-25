@@ -2430,17 +2430,17 @@
         // Real agent reply. Apply walkthrough actions.
         if (j.action && j.action.type === "start_walkthrough" && j.action.route_id) {
           const r = routeById(j.action.route_id);
-          if (r) { addAI([j.reply]); startWalkthrough(r); return; }
+          if (r) { addAI([j.reply]); startWalkthrough(j.action.route_id); return; }
         }
         addAI([j.reply]);
       } else {
         const r = guideAnswer(text);
-        if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(routeById(r.routeId)); }
+        if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(r.routeId); }
         else addAI(r.paras, r.card);
       }
     }).catch(() => {
       const r = guideAnswer(text);
-      if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(routeById(r.routeId)); }
+      if (r.action === "walkthrough" && r.routeId) { addAI(r.paras, r.card); startWalkthrough(r.routeId); }
       else addAI(r.paras, r.card);
     });
   }
