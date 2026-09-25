@@ -3586,11 +3586,11 @@
         return t.toISOString().slice(0, 10);
       };
       // 90 days of realistic demo transactions
+      // NOTE: Netflix, Spotify, ComEd, AT&T are NOT in the random pool — they
+      // have dedicated recurring schedules below (genuinely monthly).
       const merchants = [
         ["Whole Foods", "Groceries", -85.40], ["Trader Joe's", "Groceries", -62.15],
         ["Chipotle", "Dining", -14.80], ["Starbucks", "Dining", -6.20],
-        ["Netflix", "Subscriptions", -15.99], ["Spotify", "Subscriptions", -10.99],
-        ["ComEd", "Utilities", -89.10], ["AT&T", "Utilities", -65.00],
         ["Shell", "Transport", -45.00], ["Uber", "Transport", -18.50],
         ["Amazon", "Shopping", -42.99], ["Target", "Shopping", -78.30],
         ["CVS", "Health", -22.40], ["AMC", "Entertainment", -32.00],
@@ -3616,6 +3616,56 @@
           });
         }
       }
+      // FIX (C2): Generate GENUINELY recurring charges on fixed monthly schedules.
+      // The old round-robin produced irregular gaps (5, 14, 19 days) so the
+      // detector found 0 recurrences. These land on the same day-of-month each cycle.
+      const recurring = [
+        ["Netflix", "Subscriptions", -15.99, 15],
+        ["Spotify", "Subscriptions", -10.99, 3],
+        ["ComEd", "Utilities", -89.10, 22],
+        ["AT&T", "Utilities", -65.00, 8],
+        ["Planet Fitness", "Subscriptions", -25.00, 1],
+      ];
+      recurring.forEach(([name, cat, amt, dom]) => {
+        for (let m = 0; m < 4; m++) { // 4 billing cycles
+          const t = new Date(today);
+          t.setMonth(t.getMonth() - m);
+          t.setDate(Math.min(dom, 28)); // safe day-of-month
+          if (t > today) continue; // not yet billed this cycle
+          tx.push({
+            id: "demo-rec-" + name.replace(/\s+/g, "-").toLowerCase() + "-" + m,
+            posted_at: t.toISOString().slice(0, 10),
+            amount: amt,
+            merchant_raw: name,
+            merchant_id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+            category: cat,
+            category_source: "provider",
+            is_pending: false,
+            is_transfer: false,
+            provider_id: "demo-rec-" + id++,
+          });
+        }
+      });
+      // FIX (T6): Add synthetic pending / transfer / refund cases so the
+      // exclusion rules are behaviorally verifiable in the live app.
+      tx.push({
+        id: "demo-pending-1", posted_at: d(1), amount: -42.50,
+        merchant_raw: "Amazon", merchant_id: "amazon",
+        category: "Shopping", category_source: "provider",
+        is_pending: true, is_transfer: false, provider_id: "demo-pending-1",
+      });
+      tx.push({
+        id: "demo-transfer-1", posted_at: d(5), amount: -500.00,
+        merchant_raw: "Chase Transfer to Savings", merchant_id: "chase-transfer-to-savings",
+        category: "Transfer", category_source: "provider",
+        is_pending: false, is_transfer: true, provider_id: "demo-transfer-1",
+      });
+      tx.push({
+        id: "demo-refund-1", posted_at: d(3), amount: 42.99,
+        merchant_raw: "Amazon Refund", merchant_id: "amazon-refund",
+        category: "Shopping", category_source: "provider",
+        is_pending: false, is_transfer: false, provider_id: "demo-refund-1",
+      });
       // Paychecks (biweekly)
       for (let k = 0; k < 7; k++) {
         tx.push({
