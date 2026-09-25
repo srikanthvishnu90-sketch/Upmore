@@ -2040,7 +2040,9 @@
           <span class="ebadge">${esc(cls)}</span>
           <p class="ereq"><b>Requires:</b> ${esc(r.requirements || "—")}</p>
           <p class="ecatch"><b>The catch:</b> ${esc(r.catches || "—")}</p>
-          <p class="emeta">${timeStr} · ${esc(r.payout_timing || r.time_to_first || "")}</p>
+          // FIX (E3-v2): Element 7 must label timing as "advertised" vs "observed median".
+          // Catalog has no observed payout data, so all timings are advertised from terms.
+          <p class="emeta">${timeStr} · ${esc(r.payout_timing || r.time_to_first ? (r.payout_timing || r.time_to_first) + " (advertised)" : "")}</p>
           <span class="vbadge v-${ver}">${esc(ver)}</span>
         </div>`;
       }
