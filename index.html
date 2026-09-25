@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-BMbMZ9tSNEqwgNKUhWp0jEpou4U3bV+2V9p9ehe32tI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-7r2Ps2qiBgHxlbrol7pqra/Z/o25kjCFkarsJO9FSH4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -1594,9 +1594,24 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     let i = r.steps.findIndex(s => !doneSteps.includes(s.n));
     if (i < 0) i = 0;
     walk = { id, i };
-    addAI([i === 0
-      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap **Done** when you finish each one.\n\nWhy this one: ${esc(earnLine(r) || routeMeta(r) || "it fits your plan")}.`
-      : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
+    // SPEC 01: Pre-flight — disclose cost, risks, data, abandonment BEFORE step 1.
+    // Only on fresh start (i === 0), not on resume.
+    if (i === 0) {
+      const costs = r.costs_and_unpaid_time || "No upfront cost stated.";
+      const data = r.requirements || "—";
+      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**If you stop halfway:** nothing is submitted until you complete the final step — you can abandon anytime with no penalty.\n\nReady?`]);
+      // Add a start button manually (addAI card shape doesn't support custom actions)
+      const btn = document.createElement("button");
+      btn.className = "qcta"; btn.textContent = "Start walkthrough"; btn.style.margin = "8px 0";
+      btn.onclick = () => {
+        btn.remove();
+        addAI([`Let's do ${r.provider} together. ${r.steps.length} steps, first money ${r.time_to_first || "varies"}. I'll go one at a time — tap **Done** when you finish each one.\n\nWhy this one: ${earnLine(r) || routeMeta(r) || "it fits your plan"}.`]);
+        setTimeout(renderWalkStep, 950);
+      };
+      chat.appendChild(btn); chat.scrollTop = chat.scrollHeight;
+      return;
+    }
+    addAI([`Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
     setTimeout(renderWalkStep, 950);
   }
 

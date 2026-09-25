@@ -1573,9 +1573,24 @@
     let i = r.steps.findIndex(s => !doneSteps.includes(s.n));
     if (i < 0) i = 0;
     walk = { id, i };
-    addAI([i === 0
-      ? `Let's do ${esc(r.provider)} together. ${r.steps.length} steps, first money ${esc(r.time_to_first || "varies")}. I'll go one at a time — tap **Done** when you finish each one.\n\nWhy this one: ${esc(earnLine(r) || routeMeta(r) || "it fits your plan")}.`
-      : `Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
+    // SPEC 01: Pre-flight — disclose cost, risks, data, abandonment BEFORE step 1.
+    // Only on fresh start (i === 0), not on resume.
+    if (i === 0) {
+      const costs = r.costs_and_unpaid_time || "No upfront cost stated.";
+      const data = r.requirements || "—";
+      addAI([`Before we start ${r.provider} — quick pre-flight:\n\n**Cost:** ${costs}\n**Time:** ${r.time_min_minutes === r.time_max_minutes ? `≈${r.time_max_minutes} min` : `≈${r.time_min_minutes}–${r.time_max_minutes} min`} active\n**They'll ask for:** ${data}\n**If you stop halfway:** nothing is submitted until you complete the final step — you can abandon anytime with no penalty.\n\nReady?`]);
+      // Add a start button manually (addAI card shape doesn't support custom actions)
+      const btn = document.createElement("button");
+      btn.className = "qcta"; btn.textContent = "Start walkthrough"; btn.style.margin = "8px 0";
+      btn.onclick = () => {
+        btn.remove();
+        addAI([`Let's do ${r.provider} together. ${r.steps.length} steps, first money ${r.time_to_first || "varies"}. I'll go one at a time — tap **Done** when you finish each one.\n\nWhy this one: ${earnLine(r) || routeMeta(r) || "it fits your plan"}.`]);
+        setTimeout(renderWalkStep, 950);
+      };
+      chat.appendChild(btn); chat.scrollTop = chat.scrollHeight;
+      return;
+    }
+    addAI([`Picking up ${esc(r.provider)} at step ${i + 1} of ${r.steps.length}. Tap **Done** when you finish each one.`]);
     setTimeout(renderWalkStep, 950);
   }
 
