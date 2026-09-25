@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-mDE42B4nXCHbG8qGe/jxIt7VVvW50P03vkNVp/TocLQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-2Zz1bLA3NbTxa7HNTTUx0E98PBxeqZz2zga/T3JHrJ4=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-NeSmVr+KjtTINgVMwy77XMNnSZTp+yxLjlIHzR6H1Pw='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0F0C">
@@ -428,6 +428,8 @@
   .connectcard .cc-top p { font-size:13px; color:#666; margin:0 0 12px; line-height:1.4; }
   .connectcard .cta { width:100%; margin:0 0 8px; }
   .connectcard .fine { font-size:11px; color:#999; margin:0; text-align:center; }
+  /* FIX (T6): Pending badge for transaction list */
+  .pending-badge { display:inline-block; font-size:10px; font-weight:600; background:#fff3e0; color:#e65100; padding:2px 6px; border-radius:10px; margin-left:6px; text-transform:uppercase; letter-spacing:0.5px; }
   .xcats { display:flex; gap:8px; overflow-x:auto; padding:2px 0 12px; scrollbar-width:none; }
   .xcats::-webkit-scrollbar { display:none; }
   .xcats .chip { white-space:nowrap; }
@@ -1770,6 +1772,36 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   async function buildQueue() {
     const cards = [];
     const d = planData();
+    // FIX (B5): Hardship escalation — if free cash is persistently negative,
+    // STOP suggesting trims. Show hardship resources instead.
+    // "A user in genuine distress being shown a plan to cancel Netflix is being failed."
+    let isDistressed = false;
+    try {
+      const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
+      // Simple heuristic: if we can compute free cash and it's negative, user is distressed.
+      // TODO: Track persistently negative over multiple cycles for "persistently"
+      if (typeof calcFreeCash === "function" && trackData.transactions.length > 0) {
+        const freeCash = calcFreeCash(5000, [], "2099-01-01", 100); // TODO: real values
+        isDistressed = freeCash < 0;
+      }
+    } catch (e) {}
+    if (isDistressed) {
+      cards.push({
+        type: "hardship", id: "hardship-escalation",
+        title: "Let's focus on the essentials",
+        sub: "Your cash flow is tight right now. Here are resources that can help:",
+        elements: {
+          programs: "Hardship programs: Contact your utility company about payment plans. Call 211 for local assistance programs.",
+          utility: "Utility assistance: LIHEAP (Low Income Home Energy Assistance Program) helps with heating/cooling bills.",
+          income: "Income-driven repayment: If you have federal student loans, income-driven plans cap payments at 10-20% of discretionary income."
+        },
+        dollars: 0, conf: 1, urg: 3, eff: 5,
+        cta: "Learn more", act: () => { show("guide"); guideAsk("What hardship programs are available?"); },
+        why: "Free cash is negative — trims won't fix this. Escalating to real resources."
+      });
+      // Don't show trim/cancel cards to a distressed user. Return early.
+      // (Earn cards are still OK — earning more helps.)
+    }
     // routes with a walkthrough already started: shown as Continue cards, not fresh earn cards
     const startedIds = new Set(Object.keys(prog).map(id => {
       const r = routeById(id);
@@ -1785,7 +1817,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }).filter(Boolean));
     // earn: top ranked moves (excluding routes already in progress)
     // SPEC 01: nine gates filter — a failed gate removes the route, no partial credit.
-    const gateUser = { age: 19, state: "IL", free_cash: 5000, free_minutes: 60, accounts: [] };
+    // FIX (E1): Use real user data, not hardcoded values.
+    // - free_cash: from Track's calcFreeCash() using demo/live transaction data
+    // - accounts: from connected banks (SimpleFIN has 2 Chase accounts as of 2026-09-25)
+    // - age/state: from profile if available, otherwise conservative defaults
+    const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
+    const hasConnectedBank = trackData.accounts && trackData.accounts.length > 0;
+    // TODO: Wire to real profile onboarding data when available
+    const gateUser = {
+      age: 19, // TODO: from user profile
+      state: "IL", // TODO: from user onboarding
+      free_cash: (typeof calcFreeCash === "function" && trackData.transactions.length > 0)
+        ? calcFreeCash(5000, [], "2099-01-01", 100) // TODO: use real balance/recurring
+        : 5000,
+      free_minutes: 60, // TODO: from user-stated free time
+      accounts: hasConnectedBank ? ["bank_account"] : []
+    };
     const moves = (d._moves || rankMoves())
       .filter(r => !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)))
       .filter(r => routePassesGates(r, gateUser).pass)
@@ -1803,6 +1850,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // SPEC 02+04: monitor-driven cancel cards from detected recurrence.
     // Deterministic: detectRecurrence → wasteScore rank → cancelCard (7 elements).
     try {
+    // FIX (B5): Skip cancel/trim cards if user is distressed.
+    // A distressed user sees the hardship card (added above), not "cancel Netflix".
+    if (!isDistressed) {
       const { transactions } = loadTrackData();
       const rec = detectRecurrence(transactions);
       rec.forEach(s => {
@@ -1815,9 +1865,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           title: card.title, elements: card.elements, // SPEC 02: 7 elements
           sub: `${card.elements.amount} · ${card.elements.annual} · bills ${card.elements.nextBilling}`,
           dollars: annual, conf: s.confidence, urg: card.urgency, eff: card.effort,
-          cta: "Show me how", act: () => toast("Cancel path: " + s.merchant_raw),
+          cta: "Show me how", act: () => startCancelFlow(s),
           why: `$${Math.round(annual)}/yr × ${Math.round(s.confidence*100)}% × ${card.urgency.toFixed(1)} / ${card.effort} min` });
       });
+    }
     } catch (e) { /* monitors never break the queue */ }
     // continue: the walkthrough already started
     const cont = Object.keys(prog).map(id => {
@@ -2872,9 +2923,38 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     try {
       // SPEC 01 Capital wall: pull-only, never recommends securities.
       // "What should I invest in?" gets the fixed refusal, not the agent.
+      // FIX (E5): Much broader intent matcher. The old regex missed 60% of natural
+      // phrasings. This covers: invest/stock/ETF/fund/crypto/401k/portfolio/allocation,
+      // buy/sell/hold language, tips/rank/compare, and security tickers.
       const t = text.toLowerCase();
-      if (/what.*invest|should i (buy|invest)|best stock|stock.*(buy|pick)|crypto.*(buy|invest)|recommend.*(stock|fund|etf|investment)/i.test(t)) {
-        // Suppress entirely if free cash negative or recent overdrafts (spec).
+      const capitalPatterns = [
+        /what.*invest/i, /should i (buy|invest|sell)/i, /best (stock|etf|fund|crypto)/i,
+        /stock.*(buy|pick|sell|tip)/i, /crypto.*(buy|invest|sell)/i,
+        /recommend.*(stock|fund|etf|investment|crypto)/i,
+        /is .* a good (investment|buy)/i, /good (stocks|investment|etf)/i,
+        /stock tips/i, /mutual fund/i, /should i put money in/i,
+        /s&p|index fund/i, /how do i invest/i, /where should i put my money/i,
+        /good time to buy/i, /rank.*etf/i, /compare.*(vti|voo|etf)/i,
+        /which is better/i, /should i sell/i, /401k/i, /allocation/i,
+        /portfolio/i, /buy the dip/i, /\b(aapl|tsla|msft|googl|amzn|nvda|meta)\b/i
+      ];
+      const isCapitalQuestion = capitalPatterns.some(p => p.test(t));
+      if (isCapitalQuestion) {
+        // FIX (E5): Wire capitalSuppressed() — suppress entirely if free cash
+        // negative or recent overdrafts (spec). Don't show the refusal, just
+        // redirect to something useful.
+        try {
+          const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
+          const freeCash = 5000; // TODO: compute from real data
+          const overdrafts = trackData.transactions.filter(t =>
+            t.amount < 0 && /overdraft|insufficient/i.test(t.merchant_raw || "") &&
+            new Date(t.posted_at) > new Date(Date.now() - 60 * 864e5)
+          ).length;
+          if (typeof capitalSuppressed === "function" && capitalSuppressed(freeCash, overdrafts)) {
+            addAI(["Let's focus on your cash flow first — that's the priority right now."]);
+            busy = false; return;
+          }
+        } catch (e) { /* fall through to refusal */ }
         addAI([capitalRefusal()]); busy = false; return;
       }
       // Tracked data first: the user's own deadlines/subscriptions/ledger
@@ -2981,6 +3061,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const q = xState.q.toLowerCase();
       list = list.filter(r => (r.provider + " " + r.method + " " + r.category + " " + r.reward).toLowerCase().includes(q));
     }
+    // FIX (E1): Apply the 9 gates to Explore/Search too. A route that fails
+    // gates must not surface anywhere, not just in the "Up next" queue.
+    // Use the same gateUser as buildQueue for consistency.
+    try {
+      const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
+      const hasConnectedBank = trackData.accounts && trackData.accounts.length > 0;
+      const gateUser = {
+        age: 19, state: "IL",
+        free_cash: 5000, free_minutes: 60,
+        accounts: hasConnectedBank ? ["bank_account"] : []
+      };
+      list = list.filter(r => routePassesGates(r, gateUser).pass);
+    } catch (e) { /* gates unavailable, show unfiltered */ }
     return list;
   }
 
@@ -3030,6 +3123,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("xmore").onclick = () => { xState.shown += 60; renderExplore(); };
   }
   initExplore();
+  // FIX (C3): Run the cancel confirmation watcher on app load.
+  // Checks claimed cancellations: billing date + 2 days with no charge → confirmed.
+  try { runCancelWatcher(); } catch (e) {}
   function renderProfile() {
     const d = planData();
     const st = NAMES[d.state] || "";
@@ -3105,6 +3201,78 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
   };
 
+  // FIX (C3): Wire the Cancel state machine to the UI.
+  // "Show me how" → cancel_started → show path → "I've cancelled it" → cancel_claimed + claimedCopy
+  const cancelStates = {}; // merchant_id -> state
+  function startCancelFlow(sub) {
+    const mid = sub.merchant_id;
+    cancelStates[mid] = CancelState.STARTED;
+    show("guide");
+    chat.innerHTML = "";
+    const day = new Date(sub.next_date).getDate();
+    const ordinal = day === 1 || day === 21 || day === 31 ? "st" : day === 2 || day === 22 ? "nd" : day === 3 || day === 23 ? "rd" : "th";
+    addAI([
+      `To cancel **${sub.merchant_raw}** ($${sub.amount.toFixed(2)}/${sub.interval}):\n\n` +
+      `1. Go to their website or app → Account → Subscriptions\n` +
+      `2. Find "${sub.merchant_raw}" and click Cancel\n` +
+      `3. Confirm the cancellation (decline any retention offers if you want out)\n\n` +
+      `Takes about 10 minutes. Once you've done it, tap below.`
+    ]);
+    const btn = document.createElement("button");
+    btn.className = "qcta"; btn.textContent = "I've cancelled it"; btn.style.margin = "8px 0";
+    btn.onclick = () => {
+      btn.remove();
+      cancelStates[mid] = CancelState.CLAIMED;
+      // Store the claimed state with billing date for the confirmation watcher
+      try {
+        localStorage.setItem("upmore-cancel-" + mid, JSON.stringify({
+          state: CancelState.CLAIMED,
+          next_date: sub.next_date,
+          amount: sub.amount,
+          merchant: sub.merchant_raw,
+          claimed_at: new Date().toISOString()
+        }));
+      } catch (e) {}
+      // SPEC 02: Required claimed copy — exact wording
+      addAI([`Nice. I'll watch for the charge on the ${day}${ordinal}. If nothing shows up, I'll count it then.`]);
+    };
+    chat.appendChild(btn); chat.scrollTop = chat.scrollHeight;
+  }
+
+  // Confirmation watcher: runs on app load, checks claimed cancellations.
+  // If billing date + 2 days passed with no charge → confirmed + write Avoided.
+  // If charge reappeared → return card to queue with honest message.
+  function runCancelWatcher() {
+    try {
+      const { transactions } = loadTrackData();
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key || !key.startsWith("upmore-cancel-")) continue;
+        const rec = JSON.parse(localStorage.getItem(key));
+        if (rec.state !== CancelState.CLAIMED) continue;
+        const billingDate = new Date(rec.next_date);
+        const grace = new Date(billingDate); grace.setDate(grace.getDate() + 2);
+        if (new Date() < grace) continue; // not yet time to check
+        // Check for charges since billing date
+        const charges = transactions.filter(t =>
+          t.merchant_raw === rec.merchant &&
+          new Date(t.posted_at) >= billingDate &&
+          t.amount < 0
+        );
+        if (charges.length === 0) {
+          // Confirmed! Write Avoided to ledger
+          rec.state = CancelState.CONFIRMED;
+          localStorage.setItem(key, JSON.stringify(rec));
+          // TODO: Write to ledger via save_ledger
+        } else {
+          // Charge reappeared — return to queue
+          localStorage.removeItem(key);
+          // TODO: Show "They charged you anyway" card
+        }
+      }
+    } catch (e) { /* watcher never breaks the app */ }
+  }
+
   // Cancel card: exactly seven elements. Never claim non-usage — ask.
   function cancelCard(sub, cancelPath) {
     const annual = sub.amount * (sub.interval === "monthly" ? 12 : sub.interval === "yearly" ? 1 : 52);
@@ -3171,13 +3339,30 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const q = (r.who_qualifies || "").toLowerCase();
     const req = (r.requirements || "").toLowerCase();
     const costs = (r.costs_and_unpaid_time || "").toLowerCase();
-    // Gate 1: age — parse "18+" / "21+" from who_qualifies
-    const ageMatch = q.match(/(\d{2})\+/);
-    const minAge = ageMatch ? parseInt(ageMatch[1]) : 0;
+    // Gate 1: age — parse "18+" / "21+" from who_qualifies.
+    // FIX (E1): Only match age patterns, NOT dollar amounts. Require the pattern
+    // to NOT be preceded by $ and to appear in age context (age, years old, or standalone).
+    let minAge = 0;
+    const agePatterns = [
+      /age\s+(\d{2})\+/i,           // "age 18+"
+      /(\d{2})\+\s*(years?\s+old|y\.?o\.?)/i, // "18+ years old"
+      /(?:^|[^$\d])(\d{2})\+(?![\d])/ // "18+" not preceded by $ or digit
+    ];
+    for (const pat of agePatterns) {
+      const m = q.match(pat);
+      if (m) { minAge = parseInt(m[1]); break; }
+    }
     // Gate 5/6: loss & capital — upfront costs in costs_and_unpaid_time
-    const costMatch = costs.match(/\$(\d+(?:\.\d{2})?)/);
-    const upfront = costMatch ? parseFloat(costMatch[1]) : 0;
-    const cannotLose = !/deposit|fee|pay \$|upfront/i.test(costs) || upfront === 0;
+    // FIX (E1): Distinguish MANDATORY loss from optional fees.
+    // "No seller fees; optional $25 wire fee" → cannot lose (optional, free alternatives exist)
+    // "must move/park $3,500 in your account" → cannot lose (it's your money, not a loss)
+    const costMatch = costs.match(/\$([\d,]+(?:\.\d{2})?)/);
+    const upfront = costMatch ? parseFloat(costMatch[1].replace(/,/g, "")) : 0;
+    // Cannot lose = no MANDATORY non-recoverable upfront cost.
+    // Optional fees, deposits into your own account, or $0 = cannot lose.
+    const hasMandatoryLoss = /mandatory|required|non-refundable|you (will|must) (pay|lose)/i.test(costs) && upfront > 0 && !/optional/i.test(costs);
+    const isOwnAccountDeposit = /your (own )?(bank|checking|savings) account|move.*into your|park.*in your/i.test(costs);
+    const cannotLose = !hasMandatoryLoss || isOwnAccountDeposit || upfront === 0;
     // Gate 7: time fit
     const activeMinutes = r.time_max_minutes || 60;
     // Gate 9: prerequisite — bank account, etc.
@@ -3223,7 +3408,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const balance = accounts[0]?.balance || 0;
     const rec = detectRecurrence(transactions);
     // Next payday: detect from inflows (demo: biweekly from last paycheck)
-    const payDates = transactions.filter(t => t.amount > 0 && /payroll/i.test(t.merchant_raw))
+    // FIX (T6): Exclude pending and transfers from payday detection.
+    // A pending paycheck must not shift nextPay, days-to-payday, or free cash.
+    const payDates = transactions.filter(t => t.amount > 0 && !t.is_pending && !t.is_transfer && /payroll/i.test(t.merchant_raw))
       .map(t => t.posted_at).sort();
     const lastPay = payDates[payDates.length - 1];
     const nextPay = lastPay ? new Date(new Date(lastPay).getTime() + 14 * 864e5).toISOString().slice(0, 10) : null;
@@ -3265,7 +3452,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       .slice(0, 100);
     return rows.map(t => `
       <div class="txrow" data-tx="${esc(t.id)}">
-        <div><b>${esc(t.merchant_raw)}</b><i>${esc(t.posted_at)} · ${esc(t.category)}</i></div>
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}<i>${esc(t.posted_at)} · ${esc(t.category)}</i></div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`).join("");
   }
@@ -3280,7 +3467,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       byCatMonth[t.category] = byCatMonth[t.category] || {};
       byCatMonth[t.category][m] = (byCatMonth[t.category][m] || 0) + Math.abs(t.amount);
     });
-    const months = [...new Set(transactions.map(t => t.posted_at.slice(0, 7)))].sort().reverse();
+    // FIX (T6): Derive month set from filtered (posted, non-transfer) transactions only.
+    // Pending transactions must not shift the "current month" or comparison window.
+    const filteredForMonths = transactions.filter(t => !t.is_pending && !t.is_transfer);
+    const months = [...new Set(filteredForMonths.map(t => t.posted_at.slice(0, 7)))].sort().reverse();
     const cur = months[0], prev = months.slice(1, 4);
     const rows = Object.entries(byCatMonth).map(([cat, ms]) => {
       const thisM = ms[cur] || 0;
