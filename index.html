@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-daIn7XZHHCml65SMa8tq9vuCT6A7P14m2soAMnuXFq8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-OchsG6FIstbOoLFL8bGRC2TDR7JIsYzJYImYxAkaYFk='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -5171,10 +5171,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // without boundaries produced phantom route cards.
     const prov = D.routes.find(r => {
       if (!r.provider || r.provider.length <= 3 || routeIsBlocked(r)) return false;
-      // FIX (pass2-I1/I4): the provider named "Raise" (gift-card resale) must
-      // never win on salary-context queries — those are handled by the
-      // income-side branch above. Double-guard in case that branch is bypassed.
-      if (r.provider.toLowerCase() === "raise" && /(salary|\bpay\b|job|boss|wage|promotion|\bincrease\b|negotiat|ask for|\d+\s*%|\breview\b)/.test(t)) return false;
+      // FIX (pass2-I1/I4 + verify-93-96): the provider named "Raise" (gift-card
+      // resale) only matches when gift-card context is present — "raise" as a
+      // bare verb ("raise money fast") or salary context must never match it.
+      if (r.provider.toLowerCase() === "raise" && !/(gift\s*card|giftcard|resell|resale|sell (my|the|a) )/.test(t)) return false;
       const esc = String(r.provider.toLowerCase()).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return new RegExp("\\b" + esc + "\\b").test(t);
     });

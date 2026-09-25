@@ -5150,10 +5150,10 @@
     // without boundaries produced phantom route cards.
     const prov = D.routes.find(r => {
       if (!r.provider || r.provider.length <= 3 || routeIsBlocked(r)) return false;
-      // FIX (pass2-I1/I4): the provider named "Raise" (gift-card resale) must
-      // never win on salary-context queries — those are handled by the
-      // income-side branch above. Double-guard in case that branch is bypassed.
-      if (r.provider.toLowerCase() === "raise" && /(salary|\bpay\b|job|boss|wage|promotion|\bincrease\b|negotiat|ask for|\d+\s*%|\breview\b)/.test(t)) return false;
+      // FIX (pass2-I1/I4 + verify-93-96): the provider named "Raise" (gift-card
+      // resale) only matches when gift-card context is present — "raise" as a
+      // bare verb ("raise money fast") or salary context must never match it.
+      if (r.provider.toLowerCase() === "raise" && !/(gift\s*card|giftcard|resell|resale|sell (my|the|a) )/.test(t)) return false;
       const esc = String(r.provider.toLowerCase()).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return new RegExp("\\b" + esc + "\\b").test(t);
     });
