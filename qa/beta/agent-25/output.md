@@ -30,3 +30,33 @@ recommendations were unachievable for the target first-timer.
 - Guide "today" branch: answers from same-day routes with who-pays +
   when-cash-arrives + straight-talk line that work comes first.
 - You tab: signed-in account email now shown under the profile name (pMail).
+
+## REVERIFY (2026-09-24/25, build 9a82747) — RESULT: 2 PASS, 1 FAIL (stale-build suspected)
+- Check 2 (Guide today answer) PASS: "The fastest routes in the whole catalog —
+  these pay out the same day you finish" + Who pays / Cash arrives per route +
+  "Straight talk: you do the work first..." No buyback/brokerage/bounty routes.
+  Observation (not a fail): Southeastbank's own "Cash arrives" (friend must
+  qualify within 60 days) contradicts the "same day you finish" intro; its
+  reward is fee-free trading, not cash. → fixed in 0e4651c (softer intro).
+- Check 3 (account email) PASS: You tab shows qa25n@upmore.app under the name.
+  Note: name showed "QA" (stored from run 1's signed-out onboarding via
+  saveProfile on sign-in) — correct behavior, not a bug.
+- Check 1 (first moves) FAIL as reported: JM Bullion / Microsoft / Robinhood
+  topped the queue. ANALYSIS: impossible on 9a82747 for any cash value —
+  node harness on the real built code proves rankMoves filters/tier-sorts
+  correctly (top-6 all speed="today" for cash=0; JM Bullion speed="days" can
+  never outrank 111 today-routes under tier sort). Check 2's copy proves the
+  agent HAD 9a82747 later in the same run → the run straddled a deploy: check 1
+  ran on the pre-deploy build (805587c: old ratio sort, exact-match filter).
+  Lesson: the History-button freshness gate cannot detect staleness (that
+  button never existed). Future runs must canary on a build-specific string.
+
+## FIXES (shipped 0e4651c, verified live 2026-09-25)
+- blocked(r, cash): needsSpend && cash<=0; ACAT IDs && cash<10000;
+  buyback/resale/rent-assets && cash<1000. rankMoves AND claim cards use it.
+- Guide today intro softened: "check Cash arrives on each before you start".
+- Node harness (full queue pipeline incl. qScore sort): no buyback /
+  brokerage-transfer / bug-bounty in top-3 for cash=0 or cash=100.
+- Open catalog gap (not a code bug): speed="today" means "work finishes
+  today" on some referral routes while cash arrives in ≤60 days; speed
+  semantics need a catalog pass.
