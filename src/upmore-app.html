@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-fIlE4aa27MkO0FLsf17W5Q7zJPjU78lbGPLAioixlGo=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-cgoRQXKxXiIK4cwojW5ytkRVXs3oh+MIDcwtK7SjSiY=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -3604,6 +3604,18 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const CLAIM_SEARCH_URL = "https://www.missingmoney.com/";
   const claimGet = () => { try { return JSON.parse(localStorage.getItem("claim_searched") || "[]"); } catch (e) { return []; } };
   const claimSet = v => { try { localStorage.setItem("claim_searched", JSON.stringify(v)); } catch (e) {} };
+  const addrGet = () => { try { return JSON.parse(localStorage.getItem("claim_addresses") || "[]"); } catch (e) { return []; } };
+  const addrSet = v => { try { localStorage.setItem("claim_addresses", JSON.stringify(v)); } catch (e) {} };
+  function renderClaimAddrs() {
+    const box = $("claimAddrList"); if (!box) return;
+    const list = addrGet();
+    box.innerHTML = list.length ? list.map((a, i) =>
+      `<div class="mrow"><div><b>${esc(a.city || "")}${a.state ? ", " + esc(a.state) : ""}</b><i>${esc(a.street || "")}${a.years ? " · " + esc(a.years) : ""}</i></div><button class="tgt" data-cadel="${i}" aria-label="Remove address">✕</button></div>`).join("")
+      : `<p class="psub">None yet. Start with where you live now, then add old ones.</p>`;
+    box.querySelectorAll("[data-cadel]").forEach(b => b.onclick = () => {
+      const l = addrGet(); l.splice(Number(b.dataset.cadel), 1); addrSet(l); renderClaimAddrs();
+    });
+  }
 
   function openClaim() {
     renderClaim();
@@ -3621,6 +3633,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <p class="fine">The only search site endorsed by the state treasurers' association (NAUPA). It links you to each state's official claim site. Never pay to search or claim — anyone asking for a fee or a percentage is a scam.</p>
       <h3 class="sec" style="font-size:15px;margin-top:18px">States I've searched <span class="dim">${searched.length} of ${CLAIM_STATES.length}</span></h3>
       <div class="chipwrap" id="claimChips">${CLAIM_STATES.map(s => `<button class="chip" data-st="${esc(s)}" aria-pressed="${searched.includes(s)}">${esc(s)}</button>`).join("")}</div>
+      <h3 class="sec" style="font-size:15px;margin-top:18px">Addresses to search under</h3>
+      <p class="psub">States match by name <i>and</i> old addresses. Add everywhere you've lived — it takes one search per address.</p>
+      <div class="bcard" id="claimAddrList"></div>
+      <div class="svform" style="margin-top:8px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <label class="f"><span>Street (optional)</span><input id="caStreet" placeholder="123 Main St" autocomplete="off"></label>
+          <label class="f"><span>City</span><input id="caCity" placeholder="Chicago" autocomplete="off"></label>
+          <label class="f"><span>State</span><div class="sel"><select id="caState">${CLAIM_STATES.map(s => `<option>${esc(s)}</option>`).join("")}</select></div></label>
+          <label class="f"><span>Years (optional)</span><input id="caYears" placeholder="2019–2022" autocomplete="off"></label>
+        </div>
+        <button class="ghostbtn" id="caAdd" style="margin-top:8px">+ Add address</button></div>
       <h3 class="sec" style="font-size:15px;margin-top:18px">Found something?</h3>
       <p class="psub">File it here and we'll count down to your check-in. Nothing counts until the money lands.</p>
       <div class="svform">
@@ -3663,6 +3686,16 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (p) p.onclick = () => window.open(CLAIM_PORTALS[cfState.value] || CLAIM_SEARCH_URL, "_blank", "noopener");
     };
     if (cfState) { cfState.onchange = paintChecklist; paintChecklist(); }
+    renderClaimAddrs();
+    $("caAdd").onclick = () => {
+      const city = $("caCity").value.trim(), state = $("caState").value;
+      if (!city) { toast("City needed."); return; }
+      const l = addrGet();
+      l.push({ street: $("caStreet").value.trim(), city, state, years: $("caYears").value.trim() });
+      addrSet(l); renderClaimAddrs();
+      $("caStreet").value = ""; $("caCity").value = ""; $("caYears").value = "";
+      toast("Address added.");
+    };
     $("cfSave").onclick = trackClaim;
     renderClaimList();
   }
