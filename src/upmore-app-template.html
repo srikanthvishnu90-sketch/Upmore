@@ -445,6 +445,7 @@
   .brow .bt b { font-size:14.5px; }
   .brow .bs { font-size:12.5px; color:var(--dim); margin-top:3px; }
   .brow .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px; }
+  .bcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:2px 16px; }
   .bstat { font-size:12.5px; color:var(--dim); margin-top:6px; }
   .bkv { display:flex; gap:10px; margin:10px 0; }
   .bkv .pcard { flex:1; margin:0; }
@@ -7129,13 +7130,14 @@
         ? `${bm0(r.left)} left of ${bm0(r.effective)}`
         : `${bm0(-r.left)} over your ${bm0(r.effective)} budget`;
       const rollTxt = r.rollover > 0 ? ` · ${bm0(r.rollover)} rolled over from last month` : ``;
-      const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested from your spending`;
-      const trend = model.prevMonths.length && r.prevAvg > 0
-        ? `<div class="bs">Usual: ${bm0(r.prevAvg)}/mo${r.spent - r.prevAvg >= 50 ? ` · ${bm0(r.spent - r.prevAvg)} over norm` : r.prevAvg - r.spent >= 50 ? ` · ${bm0(r.prevAvg - r.spent)} under norm` : ``}</div>` : ``;
+      const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested budget`;
+      const trendTxt = model.prevMonths.length && r.prevAvg > 0
+        ? ` · usual ${bm0(r.prevAvg)}/mo` : ``;
       return `<div class="brow">
-        <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)} <button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)}</button></span></div>
+        <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)}</span></div>
         <div class="bbar" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget"><i style="width:${pct}%"></i></div>
-        <div class="bstat">${status}${rollTxt}</div>${trend}</div>`;
+        <div class="bstat">${status}${rollTxt}</div>
+        <div class="bs"><button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)} — change</button>${trendTxt}</div></div>`;
     }).join("");
 
     const merchRows = model.topMerchants.map(([m, v]) =>
@@ -7165,7 +7167,7 @@
       ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across your accounts right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
       <h2 class="sec">Your budgets</h2>
       <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
-      <div class="pcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
+      <div class="bcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
       <button class="ghostbtn" id="brAddCat" style="margin-top:10px">+ Add your own category</button>
       <h2 class="sec">Monthly keep goal</h2>
       <div class="pcard"><p class="bsum" style="font-size:14.5px">${keepTarget != null
@@ -7173,10 +7175,10 @@
         : `No goal set yet. Pick a number to keep each month and we'll track it here.`}
         <button class="tgt" id="brKeepEdit" style="margin-left:6px">${keepTarget != null ? "Change" : "Set a goal"}</button></p></div>
       <h2 class="sec">Where it went</h2>
-      <div class="pcard">${merchRows || `<p class="psub">Nothing here yet.</p>`}</div>
+      <div class="bcard">${merchRows || `<p class="psub">Nothing here yet.</p>`}</div>
       <h2 class="sec">Recurring charges</h2>
       <p class="psub" style="margin:-6px 0 10px">${bm0(model.rec.total)}/month on autopilot across ${model.rec.list.length} subscriptions and bills.</p>
-      <div class="pcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
+      <div class="bcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
       ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
       ${nudge}`;
 
