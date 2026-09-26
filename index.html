@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-x/xI7D2ziwCAbuWpxAKk5p6Rb0pSE59ysfjmkBSVG1o=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-r5x14pw6Ik9dx51n4k6dBWbPYd+3bvdsODQ6e4KMvO0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1117,6 +1117,13 @@
           </div>
         </div>
       </div>
+      <h2 class="sec" style="margin-top:18px">Household</h2>
+      <p class="psub" style="margin:-6px 0 10px">People who share this budget — partner, roommate, family. Tag transactions with who spent, and see per-person totals.</p>
+      <div class="bcard" id="householdList"></div>
+      <div class="svform" style="margin-top:8px"><div class="row" style="gap:8px">
+        <label class="f" style="flex:1"><span>Name</span><input id="hhName" placeholder="Alex" maxlength="24" autocomplete="off"></label>
+        <button class="ghostbtn" id="hhAdd" style="align-self:flex-end">+ Add</button>
+      </div></div>
       <button class="prow" id="bankBetaRow" style="margin-top:16px"><span class="pl">Bank sync — private beta</span><span class="pv">›</span></button>
       <button class="prow" id="bankDisconnectRow" hidden style="margin-top:8px"><span class="pl">Disconnect bank</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -6418,6 +6425,54 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // FIX (C3): Run the cancel confirmation watcher on app load.
   // Checks claimed cancellations: billing date + 2 days with no charge → confirmed.
   try { runCancelWatcher(); } catch (e) {}
+  // SPEC 09t: household — members + per-transaction attribution.
+  const HH_LS = "upmore_household_v1";
+  const HHWHO_LS = "upmore_tx_who_v1";
+  function hhGet() { try { const v = JSON.parse(localStorage.getItem(HH_LS) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function hhSet(m) { try { localStorage.setItem(HH_LS, JSON.stringify(m)); } catch (e) {} }
+  function txWhoGet() { try { return JSON.parse(localStorage.getItem(HHWHO_LS) || "{}"); } catch (e) { return {}; } }
+  function txWhoSet(m) { try { localStorage.setItem(HHWHO_LS, JSON.stringify(m)); } catch (e) {} }
+  function txWho(t) { const m = txWhoGet(); const id = t && t.id != null ? String(t.id) : null; return id && m[id] ? m[id] : null; }
+  function setTxWho(txId, who) {
+    const m = txWhoGet(); const id = String(txId);
+    if (who) m[id] = who; else delete m[id];
+    txWhoSet(m);
+  }
+  function hhTotals(transactions, ym) {
+    const members = hhGet();
+    if (!members.length) return null;
+    const totals = {}; members.forEach(m => totals[m] = 0);
+    let unattributed = 0;
+    (transactions || []).forEach(t => {
+      if (!isCountableSpend(t) || t.is_transfer) return;
+      if (ym && String(t.posted_at || "").slice(0, 7) !== ym) return;
+      const who = txWho(t);
+      if (who && totals[who] != null) totals[who] += Math.abs(t.amount);
+      else unattributed += Math.abs(t.amount);
+    });
+    return { members, totals, unattributed };
+  }
+  function renderHousehold() {
+    const box = $("householdList"); if (!box) return;
+    const members = hhGet();
+    box.innerHTML = members.length
+      ? members.map(m => `<div class="mrow"><div><b>${esc(m)}</b></div><button class="tgt" data-hhdel="${esc(m)}" aria-label="Remove ${esc(m)}">Remove</button></div>`).join("")
+      : `<p class="psub">Just you for now — add anyone you split money with.</p>`;
+    box.querySelectorAll("[data-hhdel]").forEach(b => b.onclick = () => {
+      hhSet(hhGet().filter(x => x !== b.dataset.hhdel)); renderHousehold();
+    });
+    const add = $("hhAdd");
+    if (add && !add.dataset.wired) {
+      add.dataset.wired = "1";
+      add.onclick = () => {
+        const v = $("hhName").value.trim();
+        if (!v) { toast("Name needed."); return; }
+        const cur = hhGet();
+        if (cur.some(x => x.toLowerCase() === v.toLowerCase())) { toast("Already added."); return; }
+        cur.push(v); hhSet(cur); $("hhName").value = ""; renderHousehold(); toast(`${v} added to your household.`);
+      };
+    }
+  }
   function renderProfile() {
     const d = planData();
     const st = NAMES[d.state] || "";
@@ -6430,7 +6485,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (pm) { pm.textContent = who ? who.email : ""; pm.style.display = who ? "" : "none"; }
     const tl = { "15":"15 minutes", "60":"about an hour", "180":"a few hours" }[d.time] || "about an hour";
     $("pLine").textContent = [st, tl + " a week"].filter(Boolean).join(" · ");
-    renderLedger(); wireLedger(); wireYouExtras();
+    renderLedger(); wireLedger(); wireYouExtras(); renderHousehold();
     // FIX (R2 8-023): Disconnect row is visible only while a live bank is connected.
     if ($("bankDisconnectRow")) $("bankDisconnectRow").hidden = !bankConnectedLive();
     $("signOut").hidden = !who;
@@ -7721,6 +7776,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (liquid >= 5000) nudge = `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">You have ${bm0(liquid)} sitting in your accounts. The Idle cash check shows what that's costing you per year.</p><button class="ghostbtn" id="brIdle" style="margin-top:8px">Check idle cash →</button></div>`;
     } catch (e) {}
 
+    // SPEC 09t: household per-person totals.
+    let hhHtml = "";
+    try {
+      const hh = hhTotals(transactions, ym);
+      if (hh) {
+        const rows = hh.members.map(m => {
+          const v = hh.totals[m] || 0;
+          return `<div class="mrow"><div><b>${esc(m)}</b></div><span class="num">${bm0(v)}</span></div>`;
+        }).join("");
+        const unatt = hh.unattributed > 0 ? `<div class="mrow"><div><i>Unassigned</i></div><span class="num">${bm0(hh.unattributed)}</span></div>` : "";
+        hhHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px"><b>Who spent what</b> <span class="dim">— ${esc(ym)}</span></p>${rows}${unatt}<p class="fine" style="margin-top:6px">Tap any transaction to tag who spent it.</p></div>`;
+      }
+    } catch (e) {}
     const isCurMonth = ym === new Date().toISOString().slice(0, 7);
     // SPEC 09b: committed upcoming bills per category (Monarch "upcoming" parity).
     // Maps each recurring charge to its category via a same-merchant transaction lookup.
@@ -7821,6 +7889,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <button class="ghostbtn" id="brCal" style="margin-top:10px">Bills calendar →</button>
       ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
       ${reviewHtml}
+      ${hhHtml}
       ${nudge}`;
 
     // ---- wiring ----
@@ -7897,11 +7966,18 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // Recategorize from the transaction list: tap a row -> category picker.
   function openRecatSheet(txId, currentLabel) {
     const cats = allCats();
+    const members = (typeof hhGet === "function" ? hhGet() : []);
+    const whoHtml = members.length ? `
+      <h3 class="sec" style="font-size:14px;margin-top:14px">Who spent this?</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+        <button class="ghostbtn" data-pickwho="" style="margin:0">Unassigned</button>
+        ${members.map(m => `<button class="ghostbtn" data-pickwho="${esc(m)}" style="margin:0">${esc(m)}</button>`).join("")}
+      </div>` : ``;
     openBudgetSheet(`Move transaction`, `
       <p class="psub">${esc(currentLabel || "")}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
         ${cats.map(c => `<button class="ghostbtn" data-pickcat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
-      </div>
+      </div>${whoHtml}
       <button class="ghostbtn" id="recatRuleBtn" style="margin-top:10px">Always use one category for this merchant →</button>`);
     const rrb = $("recatRuleBtn");
     if (rrb) rrb.onclick = () => {
@@ -7916,6 +7992,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (typeof renderTxScreen === "function") renderTxScreen();
       renderBudgetReportMonthReset();
       toast(`Moved to ${b.dataset.pickcat}.`);
+    });
+    $("budgetSheetBody").querySelectorAll("[data-pickwho]").forEach(b => b.onclick = () => {
+      setTxWho(txId, b.dataset.pickwho || null);
+      closeBudgetSheet();
+      if (typeof renderTxScreen === "function") renderTxScreen();
+      toast(b.dataset.pickwho ? `Tagged: ${b.dataset.pickwho}.` : "Attribution cleared.");
     });
   }
   function renderBudgetReportMonthReset() { /* keep current month; no-op guard */ }
