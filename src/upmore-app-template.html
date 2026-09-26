@@ -1585,6 +1585,13 @@
   }
   // SPEC 04: transaction list screen wiring
   function renderTxScreen() {
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    if (_si && !_td.isLive) {
+      $("txList").innerHTML = `<div class="pcard"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      const cb = $("txConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
     // SPEC 09: bulk-recategorize bar (Monarch parity).
     const bh = $("txBulkHost");
     if (bh) { bh.innerHTML = txBulkBarHtml(); wireBulkBar(); }
@@ -1613,7 +1620,15 @@
     });
   }
   function renderMonthScreen() {
-    const { transactions } = loadTrackData();
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    if (_si && !_td.isLive) {
+      $("monthRows").innerHTML = `<div class="pcard"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
+      $("monthCov").textContent = "";
+      const cb = $("moConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
+    const { transactions } = _td;
     const dates = transactions.map(t => t.posted_at).sort();
     $("monthCov").textContent = `From ${dates[0]} to ${dates[dates.length-1]} — every aggregate states its coverage.`;
     $("monthRows").innerHTML = renderMonthView();

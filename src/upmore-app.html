@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-r5x14pw6Ik9dx51n4k6dBWbPYd+3bvdsODQ6e4KMvO0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-BWHj4fXxoEWFACiGu1c767VuVNzkKiIWkhYDMHjLhys=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1606,6 +1606,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   // SPEC 04: transaction list screen wiring
   function renderTxScreen() {
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    if (_si && !_td.isLive) {
+      $("txList").innerHTML = `<div class="pcard"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      const cb = $("txConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
     // SPEC 09: bulk-recategorize bar (Monarch parity).
     const bh = $("txBulkHost");
     if (bh) { bh.innerHTML = txBulkBarHtml(); wireBulkBar(); }
@@ -1634,7 +1641,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     });
   }
   function renderMonthScreen() {
-    const { transactions } = loadTrackData();
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    if (_si && !_td.isLive) {
+      $("monthRows").innerHTML = `<div class="pcard"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
+      $("monthCov").textContent = "";
+      const cb = $("moConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
+    const { transactions } = _td;
     const dates = transactions.map(t => t.posted_at).sort();
     $("monthCov").textContent = `From ${dates[0]} to ${dates[dates.length-1]} — every aggregate states its coverage.`;
     $("monthRows").innerHTML = renderMonthView();
