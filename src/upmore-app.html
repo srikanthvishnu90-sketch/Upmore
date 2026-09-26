@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-sLU8rFi3BWJGIHepokIznAhAQ77JNaJpAFVcHTkq/r4=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-tgGKIIXZnGx1PvN3cxJj0W6JV00pqaDD4zBT5JBARV0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -7494,14 +7494,33 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (!(avgKept > 0)) return { done: false, weeks: Infinity };
     return { done: false, weeks: Math.ceil(remaining / avgKept * 4.33) };
   }
+  // SPEC 09m: deadline math — required $/month to hit the target date,
+  // and on-track status vs the user's current saving pace.
+  function goalDeadlineInfo(g, avgKept) {
+    if (!g.deadline) return null;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const dl = new Date(g.deadline + "T00:00:00");
+    if (isNaN(dl.getTime())) return null;
+    const monthsLeft = Math.max(0, (dl.getFullYear() - today.getFullYear()) * 12 + (dl.getMonth() - today.getMonth()) + (dl.getDate() >= today.getDate() ? 1 : 0));
+    const remaining = Math.max(0, g.target - g.current);
+    if (remaining <= 0) return { monthsLeft, perMonth: 0, onTrack: true, label: "Done — nice." };
+    if (monthsLeft <= 0) return { monthsLeft: 0, perMonth: remaining, onTrack: false, label: `Deadline passed with ${bm0(remaining)} to go.` };
+    const perMonth = Math.ceil(remaining / monthsLeft);
+    const pace = avgKept > 0 ? avgKept : 0;
+    const onTrack = pace >= perMonth;
+    return { monthsLeft, perMonth, onTrack,
+      label: onTrack ? `On track — ${bm0(perMonth)}/mo hits ${g.deadline}.`
+                     : `Needs ${bm0(perMonth)}/mo by ${g.deadline} — you're keeping about ${bm0(pace)}/mo.` };
+  }
   function goalsHtml(avgKept) {
     const goals = goalsGet();
     const rows = goals.map(g => {
       const pct = g.target > 0 ? Math.min(100, g.current / g.target * 100) : 0;
       const proj = goalProject(g, avgKept);
-      const when = proj.done ? "Done — nice." :
+      const dl = goalDeadlineInfo(g, avgKept);
+      const when = dl ? dl.label : (proj.done ? "Done — nice." :
         (proj.weeks === Infinity ? "Add to it each month and we'll project the finish." :
-         `about ${Math.round(proj.weeks / 4.33)} months at your current pace`);
+         `about ${Math.round(proj.weeks / 4.33)} months at your current pace`));
       return `<div class="brow"><div class="bt"><b>${esc(g.name)}</b><span>${bm0(g.current)} of ${bm0(g.target)}</span></div>
         <div class="bbar" role="img" aria-label="${esc(g.name)}: ${bm0(g.current)} of ${bm0(g.target)}"><i style="width:${pct}%"></i></div>
         <div class="bstat">${esc(when)}</div>
@@ -7512,14 +7531,16 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <div class="svform" style="margin-top:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <label class="f"><span>Goal name</span><input id="goalName" placeholder="Emergency fund" autocomplete="off"></label>
       <label class="f"><span>Target ($)</span><input id="goalTarget" inputmode="decimal" placeholder="1000" autocomplete="off"></label></div>
-      <button class="go" id="goalAdd" style="height:44px">Add goal</button></div>`;
+      <label class="f" style="margin-top:10px"><span>Deadline (optional)</span><input id="goalDeadline" type="date" autocomplete="off"></label>
+      <button class="go" id="goalAdd" style="height:44px;margin-top:10px">Add goal</button></div>`;
   }
   function wireGoals(avgKept) {
     const add = $("goalAdd");
     if (add) add.onclick = () => {
       const name = $("goalName").value.trim(), target = parseFloat($("goalTarget").value);
       if (!name || !(target > 0)) { toast("Name and target needed."); return; }
-      const g = goalsGet(); g.push({ id: "g" + Date.now(), name, target, current: 0 });
+      const dl = $("goalDeadline").value || null;
+      const g = goalsGet(); g.push({ id: "g" + Date.now(), name, target, current: 0, deadline: dl });
       goalsSet(g); renderBudgetReport(); toast("Goal added.");
     };
     document.querySelectorAll("[data-goaladd]").forEach(b => b.onclick = () => {
