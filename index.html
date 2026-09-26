@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-ZL2PaShj4tpQ1WBlpWGOUGfC/XQe+Bj4m67GH6opIyE='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-lkIT9L3YwMjxxXU1hsrwucTPcLwQRx2uMvjMJse+OFc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1622,8 +1622,16 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // FIX (auth-translate): identity defaults are neutral. A signed-in user's
     // real name/state come from their profile (dbProfile), onboarding (data),
     // or Google metadata (displayName fallback chain) — never a hardcoded
-    // placeholder. time/paycheck/cash keep functional demo defaults.
+    // placeholder.
+    // LAUNCH FIX 2026-09-26: time/paycheck/cash defaults are honest ONLY when
+    // shown with an "edit answers" path. For signed-in users with no profile
+    // AND no onboarding answers, flag the plan as default-based so the UI can
+    // prompt them to complete setup instead of silently planning on guesses.
+    const signedIn = (typeof session !== "undefined" && !!session);
+    const hasProfile = !!(dbProfile && (dbProfile.state || dbProfile.free_time_hours != null));
+    const hasOnboarding = !!(data && (data.state || data.time || data.paycheck || data.cash));
     const base = Object.assign({ name: "Friend", state: null, time: "60", paycheck: "yes", cash: "100" }, data);
+    base._usingDefaults = signedIn && !hasProfile && !hasOnboarding;
     if (PLAN_MOVES) base._moves = PLAN_MOVES;
     if (dbProfile) {
       if (dbProfile.display_name) base.name = dbProfile.display_name;
@@ -1665,7 +1673,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     d._moves = moves;
     const tl = { "15": "15 minutes", "60": "about an hour", "180": "a few hours" }[d.time] || "some time";
     $("planTitle").textContent = `${displayName()}, here are your first 3 moves`;
-    $("based").innerHTML = `Picked for ${st} · ${tl} a week · <button type="button" id="editBtn">Edit answers</button>`;
+    // LAUNCH FIX 2026-09-26: if the plan was built on default guesses for a
+    // signed-in user (no profile, no onboarding), say so and route them to
+    // answer the questions instead of silently planning on made-up inputs.
+    const basedLine = d._usingDefaults
+      ? `Based on default guesses — <button type="button" id="editBtn">answer 3 quick questions</button> for your real plan`
+      : `Picked for ${st} · ${tl} a week · <button type="button" id="editBtn">Edit answers</button>`;
+    $("based").innerHTML = basedLine;
     $("editBtn").onclick = () => show("about");
     $("moves").innerHTML = moves.map((r, n) => `
       <div class="move${n === 0 ? " first" : ""}">
@@ -6140,8 +6154,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   let trackData = null; // {accounts, transactions} from TransactionSource
   let prevLiveBatch = null; // FIX (D1-032/1-034): previous live batch for reconciliation
 
+  // Demo/live-data honesty (launch fix 2026-09-26):
+  // - Anonymous visitors may see labeled sample data (marketing preview).
+  // - Authenticated users must NEVER see demo numbers as their own money.
+  //   With no live bank connection they get the connect-bank card, not figures.
+  // - A failed live sync is surfaced on the connect card, never silently masked.
+  let liveTrackError = null;
   function loadTrackData() {
-    if (!trackData) trackData = TransactionSource.demo();
+    if (!trackData) {
+      trackData = TransactionSource.demo();
+      trackData.isDemo = true;
+    }
     return trackData;
   }
 
@@ -6190,13 +6213,42 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       // Re-render the track UI with live data
       if (typeof renderTrackStrip === "function") renderTrackStrip();
     } catch (e) {
-      // Live data unavailable — demo remains. This is expected if not connected.
+      // Live data unavailable — record WHY so the UI can say so honestly.
+      // Authenticated users see the connect card with the failure reason,
+      // never silent demo numbers.
+      liveTrackError = (e && e.message) ? String(e.message).slice(0, 120) : "sync failed";
+      try {
+        if (typeof session !== "undefined" && session && $("connectCard")) {
+          $("connectCard").hidden = false;
+          const t = $("ccTitle");
+          if (t && /connect your bank/i.test(t.textContent || "")) {
+            t.textContent = "Bank sync failed — try again";
+          }
+        }
+      } catch (_) {}
     }
   }
 
   // Home strip: free cash, days to payday, left to spend/day.
   function renderTrackStrip() {
-    const { accounts, transactions, isLive } = loadTrackData();
+    const { accounts, transactions, isLive, isDemo } = loadTrackData();
+    const signedIn = (typeof session !== "undefined" && !!session);
+    // LAUNCH FIX 2026-09-26: authenticated users must never see demo figures
+    // as their own money. No live connection -> connect-bank card, not numbers.
+    if (signedIn && !isLive) {
+      try {
+        $("trackStrip").hidden = true;
+        $("safeSpend").hidden = true;
+        $("connectCard").hidden = false;
+        if (liveTrackError) {
+          const t = $("ccTitle");
+          if (t) t.textContent = "Bank sync failed — try again";
+        }
+        const btn = $("connectBankBtn");
+        if (btn) btn.onclick = () => { show("guide"); const s = $("connectSheet"); if (s) s.hidden = false; };
+      } catch (_) {}
+      return;
+    }
     // FIX (D1-044): stale connection — withhold free_cash/balance as current, prompt reconnect.
     const staleInfo = isDataStale();
     if (isLive && staleInfo.stale) {
@@ -6232,6 +6284,21 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
 
     $("trackStrip").hidden = false;
+    // LAUNCH FIX 2026-09-26: anonymous visitors see demo figures — label them
+    // as sample data so nobody mistakes them for real money.
+    if (!signedIn && isDemo) {
+      try {
+        let badge = $("tsSampleBadge");
+        if (!badge) {
+          badge = document.createElement("span");
+          badge.id = "tsSampleBadge";
+          badge.textContent = "Sample data";
+          badge.setAttribute("style", "font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:8px;vertical-align:middle;");
+          const wrap = $("trackStrip");
+          if (wrap) wrap.appendChild(badge);
+        }
+      } catch (_) {}
+    }
     $("tsFree").textContent = fmt$(Math.round(freeCash));
     $("tsDays").textContent = daysToPay;
     // 2-021: no payday detected → suppress the daily figure ("—"), never divide by a guessed denominator.
