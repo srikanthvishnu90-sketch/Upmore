@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-K4/n3D8Sfcxq8gnb+prJ5PQw4dYZ/2nDquHnNDO81R4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-cgEeq1vWjjexhSeGn6iwNpJyhEA3Ine71wxo87cBPb8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -432,6 +432,25 @@
   .mrow i { display:block; font-style:normal; font-size:11px; color:var(--dim); }
   .mrow em { font-style:normal; font-size:12px; margin-left:6px; }
   .mrow em.up { color:var(--dim); } .mrow em.dn { color:var(--dim); } /* FIX (B2-v2): neutral gray for both deltas — no red/green spending signals (no-guilt rule) */
+  /* SPEC 07 Budget report: plain-language full-screen report. No red/green
+     spending signals anywhere (no-guilt rule) — over-budget reads as words. */
+  .bmonthnav { display:flex; align-items:center; justify-content:space-between; margin:6px 0 12px; }
+  .bmonthnav button { border:1px solid var(--line); background:var(--surface); border-radius:10px; padding:8px 14px; font-size:15px; }
+  .bmonthnav b { font-size:16px; }
+  .bsum { font-size:15.5px; line-height:1.6; }
+  .bbar { height:8px; background:var(--line); border-radius:5px; overflow:hidden; margin-top:8px; }
+  .bbar > i { display:block; height:100%; background:var(--ink); border-radius:5px; }
+  .brow { padding:13px 0; border-bottom:1px solid var(--line); }
+  .brow:last-child { border-bottom:none; }
+  .brow .bt { display:flex; justify-content:space-between; align-items:baseline; }
+  .brow .bt b { font-size:14.5px; }
+  .brow .bs { font-size:12.5px; color:var(--dim); margin-top:3px; }
+  .brow .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px; }
+  .bstat { font-size:12.5px; color:var(--dim); margin-top:6px; }
+  .bkv { display:flex; gap:10px; margin:10px 0; }
+  .bkv .pcard { flex:1; margin:0; }
+  .bkv b.k { display:block; font-size:19px; }
+  .bkv span.k { font-size:12px; color:var(--dim); }
   /* SPEC 01: 8-element Earn card */
   .earn8 { margin:8px 0; padding:10px; background:rgba(0,0,0,.02); border-radius:10px; }
   .ebadge, .vbadge { display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; margin:0 6px 8px 0; }
@@ -824,6 +843,14 @@
         </div>
       </div>
 
+      <!-- SPEC 07 Budget report entry: full-screen plain-language report.
+           Monarch parity (budgets, custom categories, rollover, trends, cash
+           flow, recurring, keep goal) plus the CFO edge. Nobody should win. -->
+      <button class="item" id="budgetReportBtn" style="text-align:left;width:100%;margin-top:12px">
+        <div class="grow"><p class="t">Budget report</p><p class="m">Where your money went this month, in plain words — budgets, trends, cash flow.</p></div>
+        <span class="pv">›</span>
+      </button>
+
       <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
            Shows when no bank is connected. One button, no forms, no friction. -->
       <div class="connectcard" id="connectCard" hidden>
@@ -932,6 +959,24 @@
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
   </section>
+
+  <!-- SPEC 07 Budget report: full-screen plain-language report. Everything
+       Monarch's budgeting does (budgets per category, custom categories,
+       rollover, trends, cash flow, recurring, keep goal), explained in basic
+       terms, with the CFO edge on top. -->
+  <section class="screen" id="budgetReport" aria-label="Budget report">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Budget report</div></div>
+      <div id="budgetReportBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
+  <div class="sheet" id="budgetSheet" hidden>
+    <div class="sheetcard">
+      <div class="row"><b style="font-size:18px" id="budgetSheetTitle">Edit</b><button class="iconbtn" id="budgetSheetClose" aria-label="Close">✕</button></div>
+      <div id="budgetSheetBody" style="margin-top:10px"></div>
+    </div>
+  </div>
 
   <!-- ================= PROFILE ================= -->
   <section class="screen" id="profile" aria-label="Profile">
@@ -1352,12 +1397,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (id === "profile") renderProfile();
     if (id === "transactions") renderTxScreen();
     if (id === "monthview") renderMonthScreen();
+    if (id === "budgetReport") renderBudgetReport();
     renderNav();
   }
 
   // SPEC 04: transaction list screen wiring
   function renderTxScreen() {
     $("txList").innerHTML = renderTxList($("txq").value || "");
+    // SPEC 07: tap a transaction to recategorize it.
+    $("txList").querySelectorAll("[data-rect]").forEach(el => {
+      const open = () => {
+        const id = el.dataset.rect;
+        const { transactions } = loadTrackData();
+        const t = (transactions || []).find(x => String(x.id) === String(id));
+        if (t && typeof openRecatSheet === "function")
+          openRecatSheet(t.id, `${t.merchant_raw} — $${Math.abs(t.amount).toFixed(2)} on ${t.posted_at} (now: ${effCat(t)})`);
+      };
+      el.onclick = open;
+      el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } };
+    });
   }
   function renderMonthScreen() {
     const { transactions } = loadTrackData();
@@ -3815,6 +3873,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (svGo) svGo.onclick = () => show("login");
     wireDeadlines();
     wireTrackUI(); // SPEC 04: strip → transactions → month view
+    if (typeof wireBudgetReport === "function") wireBudgetReport(); // SPEC 07
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
       if (!m || !(amt > 0)) return;
@@ -6520,15 +6579,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function renderTxList(filter = "") {
     const { transactions } = loadTrackData();
     const q = filter.toLowerCase();
-    // FIX (T5-v2): Validate category against TRACK_CATS fixed 12; fallback to "Other".
-    // This ensures no 13th category label can ever render.
-    const validCat = (c) => TRACK_CATS.includes(c) ? c : "Other";
+    // SPEC 07: validate against allCats() (12 fixed + user custom); effCat
+    // applies recategorization overrides. Supersedes the fixed-12 T5-v2 check.
     const rows = transactions
-      .filter(t => !q || t.merchant_raw.toLowerCase().includes(q) || t.category.toLowerCase().includes(q))
+      .filter(t => !q || t.merchant_raw.toLowerCase().includes(q) || effCat(t).toLowerCase().includes(q))
       .slice(0, 100);
     return rows.map(t => `
-      <div class="txrow" data-tx="${esc(t.id)}">
-        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}<i>${esc(t.posted_at)} · ${esc(validCat(t.category))}</i></div>
+      <div class="txrow" data-tx="${esc(t.id)}" data-rect="${esc(t.id)}" role="button" tabindex="0" aria-label="Recategorize ${esc(t.merchant_raw)}">
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`).join("");
   }
@@ -6867,6 +6925,367 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       .filter(r => r.next_date <= nextPayday && !r.dormant)
       .reduce((s, r) => s + r.amount, 0);
     return balance - due - buffer;
+  }
+
+  /* ================= SPEC 07: BUDGET REPORT =================
+     Full-screen plain-language budget report. Monarch parity checklist:
+     budget-vs-actual per category, custom categories, rollover, trends,
+     cash flow, recurring charges, keep goal, transaction recategorization.
+     Plus the CFO edge on top. Directive: "nobody should win" — Upmore never
+     loses a head-to-head on budgeting AND keeps the CFO math.
+     Plain-language rule: every number gets basic-terms words next to it.
+     No-guilt rule: no red/green spending signals; over-budget reads as words. */
+
+  const BUDGET_LS = {
+    targets: "upmore_budget_targets_v1",
+    customCats: "upmore_custom_cats_v1",
+    overrides: "upmore_tx_cat_overrides_v1",
+    keepTarget: "upmore_keep_target_v1",
+  };
+  function blsGet(k, fb) { try { const v = localStorage.getItem(k); return v == null ? fb : JSON.parse(v); } catch (e) { return fb; } }
+  function blsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  // Whole-dollar money, with sign: -$1,234 / $1,234
+  const bm0 = v => (v < 0 ? "−$" : "$") + Math.abs(Math.round(v)).toLocaleString("en-US");
+
+  // ---- Categories: 12 fixed + user custom. effCat applies recategorization
+  // overrides, so custom categories actually collect spending. ----
+  function getCustomCats() {
+    const c = blsGet(BUDGET_LS.customCats, []);
+    return Array.isArray(c) ? c.filter(x => typeof x === "string" && x.trim() && x.trim().length <= 24).map(x => x.trim()).slice(0, 20) : [];
+  }
+  function allCats() { return TRACK_CATS.concat(getCustomCats()); }
+  function effCat(t) {
+    const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+    if (t && t.id != null && ov[t.id] && allCats().includes(ov[t.id])) return ov[t.id];
+    const c = t && t.category;
+    return allCats().includes(c) ? c : "Other";
+  }
+  function addCustomCat(name) {
+    name = String(name || "").trim();
+    if (!name || name.length > 24) return false;
+    const cur = getCustomCats();
+    if (cur.some(c => c.toLowerCase() === name.toLowerCase()) || TRACK_CATS.some(c => c.toLowerCase() === name.toLowerCase())) return false;
+    cur.push(name); blsSet(BUDGET_LS.customCats, cur);
+    return true;
+  }
+  function removeCustomCat(name) {
+    blsSet(BUDGET_LS.customCats, getCustomCats().filter(c => c !== name));
+    // Drop targets/overrides pointing at the deleted category.
+    const t = getBudgetTargets(); delete t[name]; blsSet(BUDGET_LS.targets, t);
+    const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+    Object.keys(ov).forEach(k => { if (ov[k] === name) delete ov[k]; });
+    blsSet(BUDGET_LS.overrides, ov);
+  }
+  function setTxCategory(txId, cat) {
+    if (!allCats().includes(cat)) return false;
+    const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+    ov[txId] = cat; blsSet(BUDGET_LS.overrides, ov);
+    return true;
+  }
+
+  // ---- Budget targets: user-set wins; otherwise smart default = 3-month
+  // average for that category, rounded to $10, labeled as derived. ----
+  function getBudgetTargets() { return blsGet(BUDGET_LS.targets, {}) || {}; }
+  function setBudgetTarget(cat, amt) {
+    const t = getBudgetTargets();
+    if (amt == null || isNaN(amt) || amt <= 0) delete t[cat];
+    else t[cat] = Math.round(Number(amt));
+    blsSet(BUDGET_LS.targets, t);
+  }
+  function defaultTargetFor(cat, transactions, monthsDesc) {
+    const ms = monthsDesc.slice(0, 3);
+    let s = 0;
+    transactions.filter(t => !t.is_pending && !t.is_transfer && t.amount < 0 && effCat(t) === cat && ms.includes(String(t.posted_at || "").slice(0, 7)))
+      .forEach(t => { s += Math.abs(t.amount); });
+    return Math.max(0, Math.round((s / Math.max(1, ms.length)) / 10) * 10);
+  }
+  function targetFor(cat, transactions, monthsDesc) {
+    const t = getBudgetTargets();
+    if (t[cat] != null && t[cat] > 0) return { value: t[cat], custom: true };
+    return { value: defaultTargetFor(cat, transactions, monthsDesc), custom: false };
+  }
+
+  // ---- Month math (pure, deterministic). ----
+  function budgetMonths(transactions) {
+    const s = new Set();
+    (transactions || []).filter(t => !t.is_pending && !t.is_transfer && t.posted_at)
+      .forEach(t => s.add(String(t.posted_at).slice(0, 7)));
+    return [...s].sort().reverse(); // newest first, YYYY-MM sorts lexically
+  }
+  function monthName(ym) {
+    const p = String(ym).split("-"); const d = new Date(+p[0], +p[1] - 1, 1);
+    return isNaN(d) ? ym : d.toLocaleString("en-US", { month: "long", year: "numeric" });
+  }
+  function monthAgg(transactions, ym) {
+    const agg = { in: 0, out: 0, kept: 0, byCat: {}, byMerchant: {}, count: 0 };
+    (transactions || []).filter(t => !t.is_pending && !t.is_transfer && t.posted_at && String(t.posted_at).slice(0, 7) === ym)
+      .forEach(t => {
+        agg.count++;
+        const a = Math.abs(Number(t.amount) || 0);
+        if (Number(t.amount) < 0) {
+          agg.out += a;
+          const c = effCat(t);
+          agg.byCat[c] = (agg.byCat[c] || 0) + a;
+          const mn = t.merchant_raw || "Unknown";
+          agg.byMerchant[mn] = (agg.byMerchant[mn] || 0) + a;
+        } else { agg.in += a; }
+      });
+    agg.kept = agg.in - agg.out;
+    return agg;
+  }
+  // Rollover: unspent budget carries forward, month by month, oldest first.
+  // Only positive leftovers roll; overspend never borrows from next month.
+  function rolloverFor(cat, ym, transactions, monthsAsc, targetsByCat) {
+    let carry = 0;
+    for (const m of monthsAsc) {
+      if (m >= ym) break;
+      const spent = monthAgg(transactions, m).byCat[cat] || 0;
+      carry = Math.max(0, (targetsByCat[cat] + carry) - spent);
+    }
+    return Math.round(carry);
+  }
+  function budgetReportModel(transactions, ym) {
+    const monthsDesc = budgetMonths(transactions);
+    const monthsAsc = [...monthsDesc].sort();
+    const agg = monthAgg(transactions, ym);
+    const prevMonths = monthsDesc.filter(m => m < ym).slice(0, 3);
+    const prevAvgOut = prevMonths.length
+      ? prevMonths.reduce((s, m) => s + monthAgg(transactions, m).out, 0) / prevMonths.length : 0;
+    const targetsByCat = {};
+    const cats = allCats().filter(c => c !== "Transfers");
+    cats.forEach(c => { targetsByCat[c] = targetFor(c, transactions, monthsDesc).value; });
+    const rows = cats.map(cat => {
+      const tg = targetFor(cat, transactions, monthsDesc);
+      const roll = rolloverFor(cat, ym, transactions, monthsAsc, targetsByCat);
+      const effective = tg.value + roll;
+      const spent = agg.byCat[cat] || 0;
+      const prevAvg = prevMonths.length
+        ? prevMonths.reduce((s, m) => s + (monthAgg(transactions, m).byCat[cat] || 0), 0) / prevMonths.length : 0;
+      return { cat, target: tg.value, isCustomTarget: tg.custom, rollover: roll,
+               effective, spent, left: effective - spent, prevAvg };
+    }).filter(r => r.spent > 0.005 || r.target > 0 || r.isCustomTarget);
+    rows.sort((a, b) => b.spent - a.spent);
+    const topMerchants = Object.entries(agg.byMerchant).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const rec = recurringMonthly(transactions);
+    return { ym, monthsDesc, prevMonths, prevAvgOut, agg, rows, topMerchants, rec };
+  }
+  // Recurring charges normalized to a monthly number.
+  function recurringMonthly(transactions) {
+    let list = [];
+    try { list = (detectRecurrence(transactions) || []).filter(r => !r.dormant); } catch (e) {}
+    const mult = { weekly: 4.33, biweekly: 2.17, monthly: 1, quarterly: 1 / 3, annual: 1 / 12 };
+    const total = list.reduce((s, r) => s + (Number(r.amount) || 0) * (mult[r.interval] || 1), 0);
+    return { total, list: list.sort((a, b) => b.amount - a.amount) };
+  }
+  // Plain-language summary. Basic terms, no jargon.
+  function budgetSummaryText(model) {
+    const parts = [];
+    parts.push(`In ${monthName(model.ym)} you spent ${bm0(model.agg.out)}.`);
+    if (model.prevMonths.length) {
+      const d = model.agg.out - model.prevAvgOut;
+      if (Math.abs(d) < 25) parts.push(`That's about your usual ${bm0(model.prevAvgOut)} a month.`);
+      else if (d > 0) parts.push(`That's ${bm0(d)} more than your usual ${bm0(model.prevAvgOut)} a month.`);
+      else parts.push(`That's ${bm0(-d)} less than your usual ${bm0(model.prevAvgOut)} a month.`);
+    }
+    const driver = [...model.rows]
+      .filter(r => r.prevAvg > 0)
+      .sort((a, b) => (b.spent - b.prevAvg) - (a.spent - a.prevAvg))[0];
+    if (driver && driver.spent - driver.prevAvg >= 50)
+      parts.push(`${driver.cat} drove it — ${bm0(driver.spent)}, about ${bm0(driver.spent - driver.prevAvg)} over your norm.`);
+    if (model.agg.in > 0)
+      parts.push(model.agg.kept >= 0
+        ? `You kept ${bm0(model.agg.kept)} of the ${bm0(model.agg.in)} that came in.`
+        : `You spent ${bm0(-model.agg.kept)} more than the ${bm0(model.agg.in)} that came in.`);
+    return parts.join(" ");
+  }
+
+  // ---- Render ----
+  let budgetReportMonth = null; // YYYY-MM; null = latest
+  function renderBudgetReport() {
+    const body = $("budgetReportBody");
+    const { transactions, accounts, isLive, isDemo } = loadTrackData();
+    const signedIn = (typeof session !== "undefined" && !!session);
+    // LAUNCH HONESTY: signed-in without live data -> connect prompt, never demo numbers.
+    if (signedIn && !isLive) {
+      body.innerHTML = `<div class="pcard"><p class="bsum">Your budget report needs your real transactions. Connect your bank and it builds itself — budgets from your actual spending, trends, cash flow, all of it.</p>
+        <button class="cta" id="brConnect" style="margin-top:12px">Connect bank</button>
+        <p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      const bc = $("brConnect"); if (bc) bc.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
+    const months = budgetMonths(transactions);
+    if (!months.length) {
+      body.innerHTML = `<div class="pcard"><p class="bsum">No transactions yet. Once your spending flows in, this becomes your full budget report — every category, trend, and dollar, in plain words.</p></div>`;
+      return;
+    }
+    if (!budgetReportMonth || !months.includes(budgetReportMonth)) budgetReportMonth = months[0];
+    const ym = budgetReportMonth;
+    const idx = months.indexOf(ym);
+    const model = budgetReportModel(transactions, ym);
+    const sampleTag = (isDemo && !signedIn) ? `<p class="fine" style="margin:0 0 8px">Sample data — connect your bank for your real numbers.</p>` : ``;
+    const cov = (() => { const ds = transactions.map(t => t.posted_at).sort(); return `Covers ${ds[0]} to ${ds[ds.length - 1]}.`; })();
+
+    // Keep goal
+    const keepTarget = blsGet(BUDGET_LS.keepTarget, null);
+    const kept = model.agg.kept;
+
+    // Net worth line from accounts
+    let netWorth = null;
+    try { netWorth = (accounts || []).reduce((s, a) => s + (Number(a.balance) || 0), 0); } catch (e) {}
+
+    // Spike alerts (reuse TrackMonitors)
+    let spikes = [];
+    try { if (typeof TrackMonitors !== "undefined" && TrackMonitors.categorySpike) spikes = TrackMonitors.categorySpike(transactions) || []; } catch (e) {}
+
+    // CFO nudge: idle cash hint when liquid balances are high
+    let nudge = "";
+    try {
+      const liquid = (accounts || []).reduce((s, a) => s + Math.max(0, Number(a.balance) || 0), 0);
+      if (liquid >= 5000) nudge = `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">You have ${bm0(liquid)} sitting in your accounts. The Idle cash check shows what that's costing you per year.</p><button class="ghostbtn" id="brIdle" style="margin-top:8px">Check idle cash →</button></div>`;
+    } catch (e) {}
+
+    const catRows = model.rows.map(r => {
+      const pct = r.effective > 0 ? Math.min(100, (r.spent / r.effective) * 100) : (r.spent > 0 ? 100 : 0);
+      const status = r.left >= 0
+        ? `${bm0(r.left)} left of ${bm0(r.effective)}`
+        : `${bm0(-r.left)} over your ${bm0(r.effective)} budget`;
+      const rollTxt = r.rollover > 0 ? ` · ${bm0(r.rollover)} rolled over from last month` : ``;
+      const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested from your spending`;
+      const trend = model.prevMonths.length && r.prevAvg > 0
+        ? `<div class="bs">Usual: ${bm0(r.prevAvg)}/mo${r.spent - r.prevAvg >= 50 ? ` · ${bm0(r.spent - r.prevAvg)} over norm` : r.prevAvg - r.spent >= 50 ? ` · ${bm0(r.prevAvg - r.spent)} under norm` : ``}</div>` : ``;
+      return `<div class="brow">
+        <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)} <button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)}</button></span></div>
+        <div class="bbar" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget"><i style="width:${pct}%"></i></div>
+        <div class="bstat">${status}${rollTxt}</div>${trend}</div>`;
+    }).join("");
+
+    const merchRows = model.topMerchants.map(([m, v]) =>
+      `<div class="mrow"><div><b>${esc(m)}</b></div><span>${bm0(v)}</span></div>`).join("");
+
+    const recRows = model.rec.list.slice(0, 8).map(r =>
+      `<div class="mrow"><div><b>${esc(r.merchant_raw)}</b><i>${esc(r.interval)} · next ${esc(r.next_date)}</i></div><span>${bm0(r.amount)}</span></div>`).join("");
+
+    const spikeHtml = spikes.slice(0, 3).map(s =>
+      `<div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:14px">${esc(s.body || s.title)}</p></div>`).join("");
+
+    body.innerHTML = `
+      ${sampleTag}
+      <div class="bmonthnav">
+        <button id="brPrev" ${idx >= months.length - 1 ? "disabled" : ""} aria-label="Previous month">‹</button>
+        <b>${monthName(ym)}</b>
+        <button id="brNext" ${idx <= 0 ? "disabled" : ""} aria-label="Next month">›</button>
+      </div>
+      <p class="fine" style="margin:-6px 0 10px">${esc(cov)} Every number below comes from your transactions.</p>
+      <div class="pcard"><p class="bsum">${esc(budgetSummaryText(model))}</p></div>
+      <h2 class="sec">Money in vs money out</h2>
+      <div class="bkv">
+        <div class="pcard"><b class="k">${bm0(model.agg.in)}</b><span class="k">came in</span></div>
+        <div class="pcard"><b class="k">${bm0(model.agg.out)}</b><span class="k">went out</span></div>
+        <div class="pcard"><b class="k">${bm0(model.agg.kept)}</b><span class="k">${kept >= 0 ? "you kept" : "overspent"}</span></div>
+      </div>
+      ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across your accounts right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
+      <h2 class="sec">Your budgets</h2>
+      <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
+      <div class="pcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
+      <button class="ghostbtn" id="brAddCat" style="margin-top:10px">+ Add your own category</button>
+      <h2 class="sec">Monthly keep goal</h2>
+      <div class="pcard"><p class="bsum" style="font-size:14.5px">${keepTarget != null
+        ? (kept >= keepTarget ? `Goal met — you kept ${bm0(kept)} of your ${bm0(keepTarget)} goal.` : `You kept ${bm0(kept)} of your ${bm0(keepTarget)} goal — ${bm0(keepTarget - kept)} to go.`)
+        : `No goal set yet. Pick a number to keep each month and we'll track it here.`}
+        <button class="tgt" id="brKeepEdit" style="margin-left:6px">${keepTarget != null ? "Change" : "Set a goal"}</button></p></div>
+      <h2 class="sec">Where it went</h2>
+      <div class="pcard">${merchRows || `<p class="psub">Nothing here yet.</p>`}</div>
+      <h2 class="sec">Recurring charges</h2>
+      <p class="psub" style="margin:-6px 0 10px">${bm0(model.rec.total)}/month on autopilot across ${model.rec.list.length} subscriptions and bills.</p>
+      <div class="pcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
+      ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
+      ${nudge}`;
+
+    // ---- wiring ----
+    const pv = $("brPrev"), nx = $("brNext");
+    if (pv) pv.onclick = () => { budgetReportMonth = months[Math.min(months.length - 1, idx + 1)]; renderBudgetReport(); };
+    if (nx) nx.onclick = () => { budgetReportMonth = months[Math.max(0, idx - 1)]; renderBudgetReport(); };
+    body.querySelectorAll("[data-edittarget]").forEach(b => b.onclick = () => openTargetSheet(b.dataset.edittarget));
+    const ac = $("brAddCat"); if (ac) ac.onclick = openAddCatSheet;
+    const ke = $("brKeepEdit"); if (ke) ke.onclick = openKeepSheet;
+    const bi = $("brIdle"); if (bi) bi.onclick = () => openCFO("cash");
+  }
+
+  // ---- Sheets: edit target, add category, set keep goal ----
+  function openBudgetSheet(title, bodyHtml) {
+    $("budgetSheetTitle").textContent = title;
+    $("budgetSheetBody").innerHTML = bodyHtml;
+    $("budgetSheet").hidden = false;
+  }
+  function closeBudgetSheet() { $("budgetSheet").hidden = true; }
+  function openTargetSheet(cat) {
+    const t = getBudgetTargets();
+    const cur = t[cat] != null ? t[cat] : "";
+    openBudgetSheet(`${cat} budget`, `
+      <p class="psub">Monthly spending target. Unspent money rolls into next month automatically.</p>
+      <label class="f"><span>Budget ($/month)</span><input id="bsTargetAmt" inputmode="decimal" placeholder="300" value="${esc(String(cur))}" autocomplete="off"></label>
+      <div class="row" style="gap:8px;margin-top:10px">
+        <button class="btn" id="bsTargetClear" style="flex:1">Use suggested</button>
+        <button class="go" id="bsTargetSave" style="flex:1;height:50px">Save</button>
+      </div>`);
+    $("bsTargetSave").onclick = () => { setBudgetTarget(cat, parseFloat($("bsTargetAmt").value)); closeBudgetSheet(); renderBudgetReport(); };
+    $("bsTargetClear").onclick = () => { setBudgetTarget(cat, null); closeBudgetSheet(); renderBudgetReport(); };
+  }
+  function openAddCatSheet() {
+    const custom = getCustomCats();
+    openBudgetSheet(`Your categories`, `
+      <p class="psub">Add categories Monarch-style — Pets, Kids, Travel, whatever you track. They show up in your budgets and you can move transactions into them from the transaction list.</p>
+      <label class="f"><span>New category name</span><input id="bsCatName" placeholder="Pets" maxlength="24" autocomplete="off"></label>
+      <button class="go" id="bsCatAdd" style="height:50px;margin-top:10px">Add category</button>
+      ${custom.length ? `<h3 class="sec" style="font-size:14px;margin-top:14px">Yours</h3>` + custom.map(c =>
+        `<div class="mrow"><div><b>${esc(c)}</b></div><button class="tgt" data-delcat="${esc(c)}">Remove</button></div>`).join("") : ``}`);
+    $("bsCatAdd").onclick = () => {
+      const v = $("bsCatName").value;
+      if (!addCustomCat(v)) { toast("That category already exists."); return; }
+      closeBudgetSheet(); renderBudgetReport(); toast(`"${v.trim()}" added.`);
+    };
+    $("budgetSheetBody").querySelectorAll("[data-delcat]").forEach(b => b.onclick = () => {
+      removeCustomCat(b.dataset.delcat); closeBudgetSheet(); renderBudgetReport();
+    });
+  }
+  function openKeepSheet() {
+    const cur = blsGet(BUDGET_LS.keepTarget, null);
+    openBudgetSheet(`Monthly keep goal`, `
+      <p class="psub">How much you want left over each month, after everything. We'll track it at the top of every report.</p>
+      <label class="f"><span>Keep ($/month)</span><input id="bsKeepAmt" inputmode="decimal" placeholder="500" value="${cur != null ? esc(String(cur)) : ""}" autocomplete="off"></label>
+      <button class="go" id="bsKeepSave" style="height:50px;margin-top:10px">Save</button>`);
+    $("bsKeepSave").onclick = () => {
+      const v = parseFloat($("bsKeepAmt").value);
+      blsSet(BUDGET_LS.keepTarget, (isNaN(v) || v <= 0) ? null : Math.round(v));
+      closeBudgetSheet(); renderBudgetReport();
+    };
+  }
+  // Recategorize from the transaction list: tap a row -> category picker.
+  function openRecatSheet(txId, currentLabel) {
+    const cats = allCats();
+    openBudgetSheet(`Move transaction`, `
+      <p class="psub">${esc(currentLabel || "")}</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+        ${cats.map(c => `<button class="ghostbtn" data-pickcat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
+      </div>`);
+    $("budgetSheetBody").querySelectorAll("[data-pickcat]").forEach(b => b.onclick = () => {
+      setTxCategory(txId, b.dataset.pickcat);
+      closeBudgetSheet();
+      if (typeof renderTxScreen === "function") renderTxScreen();
+      renderBudgetReportMonthReset();
+      toast(`Moved to ${b.dataset.pickcat}.`);
+    });
+  }
+  function renderBudgetReportMonthReset() { /* keep current month; no-op guard */ }
+
+  // ---- Home wiring + show() hook ----
+  function wireBudgetReport() {
+    const btn = $("budgetReportBtn");
+    if (btn) btn.onclick = () => show("budgetReport");
+    const cl = $("budgetSheetClose");
+    if (cl) cl.onclick = closeBudgetSheet;
+    const sh = $("budgetSheet");
+    if (sh) sh.addEventListener("click", e => { if (e.target === sh) closeBudgetSheet(); });
   }
 
   // Seven deterministic monitors (spec 04). Each returns a card or null.
