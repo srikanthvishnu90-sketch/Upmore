@@ -801,7 +801,7 @@
         <div class="avatar" id="avatar">V</div>
       </div>
 
-      <h1 class="hello" id="hello">Good evening, Vish</h1>
+      <h1 class="hello" id="hello">Good evening, Friend</h1>
       <p class="sub" id="homeSub">Your money queue — biggest score first.</p>
 
       <!-- SPEC 04 Track: Home strip — free cash, days to payday, left to spend.
@@ -938,7 +938,7 @@
       <h1 class="ptitle">You</h1>
       <div class="pcard">
         <div class="pava" id="pAva">V</div>
-        <div><b id="pName">Vish</b><p class="psub" id="pMail" style="margin-top:2px; font-size:12.5px"></p><p class="psub" id="pLine" style="margin-top:2px">Illinois &middot; about an hour a week</p></div>
+        <div><b id="pName">Friend</b><p class="psub" id="pMail" style="margin-top:2px; font-size:12.5px"></p><p class="psub" id="pLine" style="margin-top:2px"></p></div>
       </div>
       <h2 class="sec">Money log</h2>
       <p class="psub" style="margin:-6px 0 10px">Only real results. Nothing counts on intent — every dollar below has a date and a note.</p>
@@ -1543,7 +1543,11 @@
     return scored.map(x => x.r);
   }
   function planData() {
-    const base = Object.assign({ name: "Vish", state: "IL", time: "60", paycheck: "yes", cash: "100" }, data);
+    // FIX (auth-translate): identity defaults are neutral. A signed-in user's
+    // real name/state come from their profile (dbProfile), onboarding (data),
+    // or Google metadata (displayName fallback chain) — never a hardcoded
+    // placeholder. time/paycheck/cash keep functional demo defaults.
+    const base = Object.assign({ name: "Friend", state: null, time: "60", paycheck: "yes", cash: "100" }, data);
     if (PLAN_MOVES) base._moves = PLAN_MOVES;
     if (dbProfile) {
       if (dbProfile.display_name) base.name = dbProfile.display_name;
