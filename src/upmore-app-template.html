@@ -833,7 +833,7 @@
           </div>
         </div>
         <button class="cta" id="connectBankBtn">Connect bank</button>
-        <p class="fine">Powered by Plaid. Your credentials go to your bank, never to us.</p>
+        <p class="fine">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p>
       </div>
 
       <div class="xsearch">
@@ -1074,11 +1074,11 @@
     <div class="sheet" id="privacySheet" hidden>
       <div class="sheetcard">
         <div class="row"><b style="font-size:18px">Privacy Policy</b><button class="iconbtn" id="privacyClose" aria-label="Close privacy policy">✕</button></div>
-        <p class="psub" style="margin-top:6px">Last updated: September 23, 2026</p>
+        <p class="psub" style="margin-top:6px">Last updated: September 26, 2026</p>
         <div class="legalbody">
           <p><b>The short version.</b> We collect the minimum needed to run your account and your money plan: your name, email, onboarding answers, plan progress, things you save, and your Guide chats. We never sell your data. No ads, no third-party trackers. Your chat messages are processed by our AI provider to answer you. You can ask us to export or delete everything at any time.</p>
           <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences.</p>
-          <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. Bank and Gmail connections aren't live yet — when they are, they'll be read-only, optional, and this policy will be updated first.</p>
+          <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. The optional bank connection (SimpleFIN) is read-only — we see account balances and transactions, we never move money, and we never see your bank password.</p>
           <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it). Nobody else. We never sell your data.</p>
           <p><b>Cookies &amp; tracking.</b> Your sign-in session lives in your browser's local storage so you stay signed in. No third-party analytics or ad trackers.</p>
           <p><b>How long we keep it.</b> While your account is active. Ask us to delete your account and we delete your profile, chats, progress, and saved items.</p>
@@ -3113,7 +3113,7 @@
     return 37;
   }
   // Marginal rate: user's explicit override wins; otherwise derived from
-  // their entered income + filing status (12% at $54k MFJ, not 22%).
+  // their entered income + filing status (10% at $54k MFJ, not 22%).
   function cfoMarginalRate() {
     if (cfoGet("tax_rate_manual", 0)) {
       const v = parseFloat(cfoGet("tax_rate", ""));

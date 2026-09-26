@@ -1,6 +1,6 @@
 # Upmore Privacy Policy
 
-**Last updated: September 23, 2026**
+**Last updated: September 26, 2026**
 
 ## The short version
 
@@ -19,7 +19,7 @@ We collect the minimum needed to run your account and your money plan: your name
 - Payout proof you submit
 - Reminders you set and notification preferences
 
-**What we don't collect.** No payment details, no bank logins, no location tracking, no contacts, no advertising IDs. The bank (Plaid) and Gmail connections shown in the app are not live yet — when they go live they will be read-only and optional, and this policy will be updated first.
+**What we don't collect.** No payment details, no bank logins, no location tracking, no contacts, no advertising IDs. The optional bank connection (SimpleFIN) is read-only — we see account balances and transactions, we never move money, and we never see your bank password.
 
 ## Who processes your data
 
@@ -62,7 +62,7 @@ Questions about your data: **support@upmore.app** (provisional — final support
 
 # Upmore Terms of Service (plain-English summary)
 
-**Last updated: September 23, 2026**
+**Last updated: September 26, 2026**
 
 - Upmore is a guide, not a guarantee. Payouts come from third-party companies, each with their own terms — we verify what we can, but the final decision to pay is theirs.
 - You're responsible for your own accounts and actions on third-party sites. Never share passwords with anyone, including us — we'll never ask.
