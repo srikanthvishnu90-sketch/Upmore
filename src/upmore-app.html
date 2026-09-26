@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-lkIT9L3YwMjxxXU1hsrwucTPcLwQRx2uMvjMJse+OFc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-MkmWLUErnss86g9oQbRb3blcI8FI8TFIga0yKBp6+Ak='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1053,8 +1053,38 @@
         </div>
         <a class="primary" id="subCancelLink" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;text-align:center;margin-bottom:8px">Open cancel page →</a>
         <button class="danger" id="subCancelBtn">Cancel subscription</button>
+        <button class="primary" id="agentCancelBtn" style="display:none;margin-top:8px">Cancel it for me</button>
         <p class="psub" id="subCancelSteps" style="margin:10px 0 0;text-align:center"></p>
         <button class="ghostbtn" id="subSheetClose">Keep it</button>
+      </div>
+    </div>
+    <div class="sheet" id="agentSheet" hidden>
+      <div class="sheetcard">
+        <div style="text-align:center"><b id="agentSheetTitle" style="font-size:18px">Cancel for me</b>
+        <p class="psub" id="agentSheetSub" style="margin:4px 0 14px"></p></div>
+        <div id="agentApproveView">
+          <div class="item" style="margin-bottom:12px"><div class="grow">
+            <p class="t" id="agentMerchantName">Devin</p>
+            <p class="m num" id="agentPlanMeta">$20.00/mo</p>
+          </div></div>
+          <p class="psub" style="text-align:left;margin-bottom:12px">The Upmore agent will sign in to your account and cancel this subscription. It never moves money. Every step is logged below.</p>
+          <button class="primary" id="agentApproveBtn">Approve — cancel it</button>
+          <button class="ghostbtn" id="agentSheetClose1" style="margin-top:8px">Not now</button>
+        </div>
+        <div id="agentCredView" hidden>
+          <p class="psub" style="text-align:left;margin-bottom:12px">The agent needs your <b id="agentCredMerchant">Devin</b> login. It's stored encrypted in your Upmore vault — only the agent can use it, and only after you approve each action.</p>
+          <div class="svform" style="margin-top:0;text-align:left">
+            <label class="f"><span>Username or email</span><input id="agentCredUser" autocomplete="username"></label>
+            <label class="f"><span>Password</span><input id="agentCredPass" type="password" autocomplete="current-password"></label>
+            <button class="go" id="agentCredSaveBtn" style="height:44px">Save login &amp; continue</button>
+          </div>
+          <button class="ghostbtn" id="agentSheetClose2" style="margin-top:8px">Not now</button>
+        </div>
+        <div id="agentRunView" hidden>
+          <p class="psub" id="agentRunStatus" style="text-align:center;margin:12px 0">Working…</p>
+          <div id="agentRunEvidence"></div>
+          <button class="ghostbtn" id="agentSheetClose3" style="margin-top:8px">Close</button>
+        </div>
       </div>
     </div>
     <div class="sheet" id="promoSheet" hidden>
@@ -3915,6 +3945,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     stepsEl.textContent = flow ? flow.steps : "";
     $("subSheet").hidden = false;
     $("subCancelBtn").onclick = () => cancelSubById(s.id, $("subCancelBtn"));
+    // Tier 2 agent: "Cancel it for me" — only signed-in, only merchants with a playbook.
+    const agentBtn = $("agentCancelBtn");
+    const mkey = merchantKeyFor(s.merchant);
+    if (signed && mkey && s.status !== "cancelled") {
+      agentBtn.style.display = "block";
+      agentBtn.onclick = () => { $("subSheet").hidden = true; openAgentSheet(s, mkey); };
+    } else {
+      agentBtn.style.display = "none";
+    }
   }
   async function cancelSubById(id, btn) {
     const signed = !!(await getSessionToken());
@@ -3937,6 +3976,106 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       ? `I just cancelled my ${s.merchant} subscription (${money$(s.amount)}${INTPER[s.billing_interval] || ""}). Walk me through confirming it's really cancelled. The direct cancel page is ${fl.url || "in the app settings"}, and the steps are: ${fl.steps}`
       : `I just cancelled my ${s.merchant} subscription. Walk me through confirming it's really cancelled on their site.`;
     guideAsk(brief);
+  }
+
+  /* ============ Real-world execution agent (Tier 2) ============ */
+  /* The Upmore agent cancels subscriptions for real: per-action approval,
+     vaulted merchant login, every run audited. Never moves money. */
+  function merchantKeyFor(name) {
+    const m = (name || "").toLowerCase();
+    if (m.includes("devin") || m.includes("cognition")) return "devin";
+    return null;
+  }
+  async function agentCredExists(mkey) {
+    try {
+      const { data } = await supa.from("exec_credential_refs")
+        .select("merchant_key").eq("merchant_key", mkey).maybeSingle();
+      return !!data;
+    } catch (e) { return false; }
+  }
+  function agentShowView(which) {
+    ["agentApproveView", "agentCredView", "agentRunView"].forEach(id => {
+      $(id).hidden = id !== which;
+    });
+  }
+  async function openAgentSheet(sub, mkey) {
+    $("agentSheetTitle").textContent = "Cancel for me";
+    $("agentSheetSub").textContent = "Upmore's agent does it — you approve once.";
+    $("agentMerchantName").textContent = sub.merchant;
+    $("agentPlanMeta").textContent = `${money$(sub.amount)}${INTPER[sub.billing_interval] || ""}` +
+      (sub.next_billing_date ? ` · next bill ${esc(sub.next_billing_date)}` : "");
+    $("agentCredMerchant").textContent = sub.merchant;
+    const hasCred = await agentCredExists(mkey);
+    agentShowView(hasCred ? "agentApproveView" : "agentCredView");
+    $("agentSheet").hidden = false;
+    $("agentApproveBtn").onclick = () => agentApprove(sub, mkey);
+    $("agentCredSaveBtn").onclick = () => agentSaveCred(sub, mkey);
+    $("agentSheetClose1").onclick = $("agentSheetClose2").onclick = $("agentSheetClose3").onclick =
+      () => { $("agentSheet").hidden = true; };
+  }
+  async function agentSaveCred(sub, mkey) {
+    const u = $("agentCredUser").value.trim(), p = $("agentCredPass").value;
+    if (!u || !p) { toast("Enter both username and password"); return; }
+    $("agentCredSaveBtn").disabled = true;
+    try {
+      const { data, error } = await supa.functions.invoke("exec-vault-store", {
+        body: { merchant_key: mkey, username: u, password: p, label: sub.merchant },
+      });
+      if (error || !data || !data.ok) throw error || new Error("save failed");
+      $("agentCredPass").value = "";
+      agentShowView("agentApproveView");
+      toast("Login saved — approve to continue");
+    } catch (e) { toast("Couldn't save login — try again"); }
+    $("agentCredSaveBtn").disabled = false;
+  }
+  async function agentApprove(sub, mkey) {
+    agentShowView("agentRunView");
+    $("agentRunStatus").textContent = "Working — the agent is cancelling it…";
+    $("agentRunEvidence").innerHTML = "";
+    try {
+      if (!session) await refreshSession();
+      const uid = session && session.user && session.user.id;
+      if (!uid) throw new Error("sign in first");
+      const { data: ap, error: aerr } = await supa.from("exec_approvals").insert({
+        user_id: uid, merchant: sub.merchant, merchant_key: mkey,
+        plan_name: sub.plan_name || null, amount: sub.amount,
+        billing_date: sub.next_billing_date || null,
+        action: "cancel_subscription", status: "approved", decided_at: new Date().toISOString(),
+      }).select("id").single();
+      if (aerr || !ap) throw aerr || new Error("approval failed");
+      const { data: ex, error: xerr } = await supa.functions.invoke("agent-exec", {
+        body: { approval_id: ap.id },
+      });
+      if (xerr) throw xerr;
+      if (ex && ex.error && !ex.ok) throw new Error(ex.error);
+      // Poll the run row for completion.
+      const t0 = Date.now();
+      let run = null;
+      while (Date.now() - t0 < 120000) {
+        await new Promise(r => setTimeout(r, 3000));
+        const { data } = await supa.from("exec_runs").select("status,evidence,error")
+          .eq("approval_id", ap.id).order("started_at", { ascending: false }).limit(1).maybeSingle();
+        if (data && (data.status === "done" || data.status === "failed")) { run = data; break; }
+      }
+      if (!run) throw new Error("Timed out waiting for the agent — check the audit log.");
+      const ev = run.evidence || {};
+      if (run.status === "done") {
+        $("agentRunStatus").textContent = "Cancelled ✓";
+        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(ev.note || "Subscription cancelled.")}</p>`;
+        // Mark the subscription cancelled in-app too.
+        try {
+          await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", sub.id);
+        } catch (e) {}
+        renderSubs(); renderQueue();
+        toast("Cancelled — proof logged");
+      } else {
+        $("agentRunStatus").textContent = "Couldn't complete it";
+        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(run.error || ev.note || "The agent hit a wall — nothing was changed.")}</p>`;
+      }
+    } catch (e) {
+      $("agentRunStatus").textContent = "Couldn't start";
+      $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(e.message || "Something went wrong.")}</p>`;
+    }
   }
 
   function openPromoSheet(id) {
