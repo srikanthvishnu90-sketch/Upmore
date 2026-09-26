@@ -9262,21 +9262,47 @@
       else nwListSet(NW_LS.liabs, nwListGet(NW_LS.liabs).filter(x => String(x.id) !== id));
       renderNetWorth();
     });
+    // SPEC 09v: richer asset/liability types with revalue guidance.
+    const NW_TYPES = {
+      a: [["Real estate", "Revalue yearly — Zillow/Redfin estimate, not what you paid."],
+          ["Vehicle", "Revalue yearly — KBB private-party value."],
+          ["Crypto", "Revalue whenever you check — volatile."],
+          ["Investments", "Brokerage or retirement accounts not synced."],
+          ["Cash", "Savings stashes, safe cash."],
+          ["Business", "Your best honest estimate."],
+          ["Collectibles", "What it would actually sell for."],
+          ["Other", "Anything with value."]],
+      l: [["Mortgage", "Remaining balance."],
+          ["Auto loan", "Remaining balance."],
+          ["Student loan", "Remaining balance."],
+          ["Credit card", "Statement balance."],
+          ["Personal loan", "Remaining balance."],
+          ["Other", "Anything you owe."]],
+    };
     const form = (kind, existing) => {
+      const types = NW_TYPES[kind] || NW_TYPES.a;
+      const curType = existing && existing.nwtype ? existing.nwtype : types[types.length - 1][0];
       $("nwForm").innerHTML = `<div class="svform" style="margin-top:12px">
+        <label class="f"><span>Type</span><div class="sel"><select id="nwType">${types.map(([t]) => `<option${t === curType ? " selected" : ""}>${esc(t)}</option>`).join("")}</select></div></label>
+        <p class="fine" id="nwTypeHint" style="margin:-4px 0 8px">${esc((types.find(([t]) => t === curType) || ["", ""])[1])}</p>
         <label class="f"><span>Name</span><input id="nwName" value="${esc(existing ? existing.name : "")}" placeholder="${kind === "a" ? "Car, crypto, home…" : "Loan, credit card…"}" autocomplete="off"></label>
         <label class="f"><span>Value ($) — update this when the real value changes</span><input id="nwVal" value="${existing ? existing.value : ""}" inputmode="decimal" placeholder="15000" autocomplete="off"></label>
         <button class="go" id="nwSave" style="height:48px">${existing ? "Update value" : "Save"}</button></div>`;
+      $("nwType").onchange = e => {
+        const hint = (types.find(([t]) => t === e.target.value) || ["", ""])[1];
+        $("nwTypeHint").textContent = hint;
+      };
       $("nwSave").onclick = () => {
         const name = $("nwName").value.trim(), val = parseFloat($("nwVal").value);
         if (!name || !(val >= 0)) { toast("Name and value needed."); return; }
+        const nwtype = $("nwType").value;
         const key = kind === "a" ? NW_LS.assets : NW_LS.liabs;
         const list = nwListGet(key);
         if (existing) {
           const it = list.find(x => String(x.id) === String(existing.id));
-          if (it) { it.name = name; it.value = val; it.updated = new Date().toISOString(); }
+          if (it) { it.name = name; it.value = val; it.nwtype = nwtype; it.kind = nwtype; it.updated = new Date().toISOString(); }
         } else {
-          list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val, added: new Date().toISOString() });
+          list.push({ id: "nw" + Date.now(), name, kind: nwtype, nwtype, value: val, added: new Date().toISOString() });
         }
         nwListSet(key, list); renderNetWorth(); toast(existing ? "Value updated." : "Saved.");
       };
