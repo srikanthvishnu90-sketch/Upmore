@@ -1474,6 +1474,16 @@
       if (LEAD_CASH.test(blob)) continue;
       return true;
     }
+    // FIX (50sweep-6): a discounted purchase is not income — routes whose
+    // OFFER (reward/method, not fine-print catches) is a discount can't lead
+    // the earn queue. Scoped to the offer so mixed routes with a real cash
+    // primary (e.g. R3022's $250 bonus) aren't demoted by fine print.
+    const offer = [r.reward, r.method].map(x => String(x || "")).join(" ");
+    if (/\bdiscounts?\b/i.test(offer) && !LEAD_CASH.test(blob)) {
+      const dm = /\bdiscounts?\b/i.exec(offer);
+      const before = offer.slice(Math.max(0, dm.index - 25), dm.index);
+      if (!LEAD_NEG.test(before)) return true;
+    }
     const rm = LEAD_REFGATE.exec(blob);
     if (rm) {
       const before = blob.slice(Math.max(0, rm.index - 25), rm.index);
@@ -1502,20 +1512,65 @@
     return false;
   }
   const canLead = r => !NO_LEAD_IDS.includes(String(r.id)) && !NO_LEAD_CATS.includes(r.category) && !nonCashLead(r) && !pointsMechanism(r);
-  // Routes with a hard minimum deposit the user must front themselves.
-  const NEEDS_DEPOSIT_IDS = ["R0616", "R4790"]; // $100 / $25 minimum opening deposit
+  // Routes with a hard minimum deposit the user must front themselves: id -> $.
+  const NEEDS_DEPOSIT = { "R0616": 100, "R4790": 25 }; // $100 / $25 minimum opening deposit
   const needsSpend = r => NEEDS_SPEND_CATS.includes(r.category)
     || NEEDS_ASSETS_RES.some(rx => rx.test((r.category || "") + " " + (r.method || "")))
-    || NEEDS_EXISTING_IDS.includes(String(r.id));
+    || NEEDS_EXISTING_IDS.includes(String(r.id))
+    // FIX (50sweep-3): cashback-on-spending routes (e.g. Fluz: "earn cash back
+    // for shopping") require the user to spend first — a cash=0 user cannot
+    // act on them, and "no cash needed up front" would be a lie.
+    || (/\bcash\s?back\b/i.test((r.method || "") + " " + (r.what || ""))
+        && /\b(shop|shopping|spend|spending|purchase|buy)\b/i.test((r.method || "") + " " + (r.what || "")));
+  // US state name -> abbreviation, for parsing route state restrictions.
+  const US_STATES = {alabama:"AL",alaska:"AK",arizona:"AZ",arkansas:"AR",california:"CA",colorado:"CO",connecticut:"CT",delaware:"DE","district of columbia":"DC",florida:"FL",georgia:"GA",hawaii:"HI",idaho:"ID",illinois:"IL",indiana:"IN",iowa:"IA",kansas:"KS",kentucky:"KY",louisiana:"LA",maine:"ME",maryland:"MD",massachusetts:"MA",michigan:"MI",minnesota:"MN",mississippi:"MS",missouri:"MO",montana:"MT",nebraska:"NE",nevada:"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND",ohio:"OH",oklahoma:"OK",oregon:"OR",pennsylvania:"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD",tennessee:"TN",texas:"TX",utah:"UT",vermont:"VT",virginia:"VA",washington:"WA","west virginia":"WV",wisconsin:"WI",wyoming:"WY"};
+  // FIX (50sweep-2): parse state restrictions from route text. The catalog has
+  // no structured state field — restrictions like "Minnesota/Wisconsin
+  // membership" or "geo: Colorado residents only" live in who_qualifies /
+  // requirements. Returns abbreviations, or null when no restriction found
+  // (route treated as US-wide). Conservative: requires restriction context
+  // near the state mention, so incidental mentions don't over-block.
+  function routeStates(r) {
+    const q = String(r.who_qualifies || ""), req = String(r.requirements || "");
+    if (!q.trim() && !req.trim()) return null;
+    const txt = (q + "\n" + req).toLowerCase();
+    const found = new Set();
+    for (const name of Object.keys(US_STATES)) {
+      let idx = txt.indexOf(name);
+      while (idx >= 0) {
+        const ctx = txt.slice(Math.max(0, idx - 60), idx + name.length + 60);
+        if (/(only|must|required|requirement|eligible|eligibility|membership|resident|residence|taxpayer|customer|geo\b|available|exclusive)/.test(ctx)) {
+          found.add(US_STATES[name]);
+          break;
+        }
+        idx = txt.indexOf(name, idx + 1);
+      }
+    }
+    // Abbreviation pairs like "MN/WI".
+    const abbrs = Object.values(US_STATES);
+    const up = q + " " + req;
+    const pairRe = /\b([A-Z]{2})\/([A-Z]{2})\b/g;
+    let m;
+    while ((m = pairRe.exec(up)) !== null) {
+      if (abbrs.includes(m[1]) && abbrs.includes(m[2])) { found.add(m[1]); found.add(m[2]); }
+    }
+    return found.size ? [...found] : null;
+  }
   // Hard prerequisites for first moves: a queued move the user cannot act on
   // is a broken promise. Blocked routes stay discoverable in Explore; they
   // just can't lead the queue. cash = "cash you could leave in a new account
   // for 3 months" from onboarding (0 for a broke beginner).
-  const blocked = (r, cash) => {
+  const blocked = (r, cash, state) => {
     if (needsSpend(r) && cash <= 0) return true;
     if (NEEDS_EXISTING_IDS.includes(String(r.id)) && cash < 10000) return true; // ACAT needs $10k+ to move
     if (NEEDS_ASSETS_RES.some(rx => rx.test((r.category || "") + " " + (r.method || ""))) && cash < 1000) return true; // buyback needs $1k+ in items
-    if (NEEDS_DEPOSIT_IDS.includes(String(r.id)) && cash <= 0) return true; // can't front the minimum deposit
+    // FIX (50sweep-4): compare the ACTUAL minimum deposit against the user's
+    // cash — a $25-cash user cannot front R0616's $100 minimum.
+    const dep = NEEDS_DEPOSIT[String(r.id)];
+    if (dep && cash < dep) return true; // can't front the minimum deposit
+    // FIX (50sweep-2): state-restricted routes can't lead for ineligible users.
+    const rs = routeStates(r);
+    if (rs && rs.length && state && !rs.includes(state)) return true;
     return false;
   };
   function rankMoves() {
@@ -1527,7 +1582,7 @@
       // Cash-only rule: the queue counts extractable cash — gift cards,
       // discounts, fee waivers, credit-card offers, and member-gated
       // referrals stay discoverable in Explore.
-      .filter(r => !blocked(r, cash) && canLead(r))
+      .filter(r => !blocked(r, cash, d.state) && canLead(r))
       .map(r => {
       let s = earnRatioOf(r);
       const tmid = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2;
@@ -1573,8 +1628,11 @@
     const tmid = Math.round((((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2) || 0);
     const effort = tmid >= 120 ? `about ${Math.round(tmid / 60)} hours of work`
       : tmid > 0 ? `about ${tmid} minutes of work` : "a little of your time";
+    // FIX (50sweep-4): name the actual deposit amount. blocked() guarantees the
+    // queued user can cover it, so "you can cover" stays honest.
+    const depAmt = NEEDS_DEPOSIT[String(r.id)];
     const cost = needsSpend(r) ? "uses items you already have"
-      : NEEDS_DEPOSIT_IDS.includes(String(r.id)) ? "needs a small deposit you can cover"
+      : depAmt ? `needs a $${depAmt} deposit you can cover`
       : "no cash needed up front";
     return `Why this one: pays ${sp}, ${effort}, ${cost}.`;
   }
@@ -1986,12 +2044,13 @@
     // TODO: Wire to real profile onboarding data when available
     const gateUser = {
       age: gateAge(), // FIX (redlines-8-020): stored birth year when known, else 19
-      state: "IL", // TODO: from user onboarding
+      // FIX (50sweep-2/5): real user state and real user cash. Hardcoded
+      // "IL" / 5000 let state-restricted and deposit-heavy routes reach users
+      // who can't act on them.
+      state: d.state || null,
       // FIX (D1-044): never present stale free_cash as current in the Guide.
       free_cash: (trackData.isLive && isDataStale().stale) ? 0
-        : (typeof calcFreeCash === "function" && trackData.transactions.length > 0)
-        ? calcFreeCash(5000, [], "2099-01-01", 100) // TODO: use real balance/recurring
-        : 5000,
+        : (parseInt(d.cash, 10) || 0),
       free_minutes: 60, // TODO: from user-stated free time
       accounts: hasConnectedBank ? ["bank_account"] : []
     };
@@ -2142,7 +2201,7 @@
       // and excluding routes whose prerequisites the user can't meet — same rule as earn cards;
       // and non-cash / credit-card / member-gated rewards — the queue counts extractable cash only)
       const cash0 = parseInt(d.cash, 10) || 0;
-      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && earnable(r) && !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)) && !blocked(r, cash0) && canLead(r)).slice(0, 3)
+      D.routes.filter(r => ["Bank Bonus", "Brokerage Promo", "Signup Bonus"].includes(r.category) && earnable(r) && !startedIds.has(String(r.id)) && !doneIds.has(String(r.id)) && !blocked(r, cash0, d.state) && canLead(r)).slice(0, 3)
         .forEach(r => {
           const dollars = qDollars(r), conf = qConf(r), eff = qEffort(r);
           cards.push({ type: "claim", id: "claim-" + r.id, title: r.provider || "Promo",
@@ -4914,6 +4973,16 @@
     const cat = String(r.category || "").toLowerCase();
     if (cat === "prediction market" || cat === "crypto reward" || cat === "crypto learn") return true;
     const blob = [r.provider, r.method, r.what, r.reward].map(x => String(x || "")).join(" ").toLowerCase();
+    // FIX (50sweep-1): credit-card applications / cardholder-gated offers are
+    // never earning routes — not in the queue, not in Explore, not in Guide
+    // picks. (Binding: no credit cards in Earn.) Known card-offer IDs, plus
+    // application language so future Standard-lane card offers are caught too.
+    const CARD_IDS = new Set(["R1932", "R6402", "R3561", "R3562", "R3563", "R1930"]);
+    if (CARD_IDS.has(String(r.id))) return true;
+    if (/\bcredit cards?\b/.test(blob) && /\b(appl|approv)/.test(blob)) return true;
+    if (/\bvisa accounts?\b/.test(blob)) return true;
+    if (/\bcardmember\b/.test(blob)) return true;
+    if (/\bopen a new [\w'& ]{0,24}card\b/.test(blob)) return true;
     // FIX (pass2-E1/X1): FanDuel/PrizePicks/DraftKings/BetMGM/DietBet were
     // Standard-lane and passed all 9 gates. Named here so no future
     // Standard-lane gambling/wager route can ever pass, even if its lane
@@ -5617,9 +5686,12 @@
     try {
       const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
       const hasConnectedBank = trackData.accounts && trackData.accounts.length > 0;
+      // FIX (50sweep-2/5): Explore gates use the real user state and real
+      // user-stated cash — never hardcoded "IL" / 5000.
+      const pd = (typeof planData === "function") ? planData() : {};
       const gateUser = {
-        age: gateAge(), state: "IL", // FIX (redlines-8-020): stored birth year when known, else 19
-        free_cash: 5000, free_minutes: 60,
+        age: gateAge(), state: pd.state || null, // FIX (redlines-8-020): stored birth year when known, else 19
+        free_cash: parseInt(pd.cash, 10) || 0, free_minutes: parseInt(pd.time, 10) || 60,
         accounts: hasConnectedBank ? ["bank_account"] : []
       };
       list = list.filter(r => routePassesGates(r, gateUser).pass);
@@ -5899,7 +5971,9 @@
     if (isMinor()) return { pass: false, failedGate: "age" };
     const gates = [
       ["age", () => !route.min_age || user.age >= route.min_age],
-      ["state", () => !route.states || route.states.includes(user.state)],
+      // FIX (50sweep-2): state restrictions are parsed from route text by
+      // routeStates(). Unknown user state never blocks (can't judge fit).
+      ["state", () => !route.states || !user.state || route.states.includes(user.state)],
       ["deadline", () => !route.deadline || new Date(route.deadline) >= new Date()],
       // FIX (pass2-E1/E2): use the mapped verification taxonomy, not the raw
       // catalog field (routes carry `status`, not `verification` — the raw
@@ -5993,20 +6067,33 @@
     const upfront = costMatch ? parseFloat(costMatch[1].replace(/,/g, "")) : 0;
     // Cannot lose = no MANDATORY non-recoverable upfront cost.
     // Optional fees, deposits into your own account, or $0 = cannot lose.
+    // FIX (50sweep-7): own-money movement (opening/minimum/direct deposits,
+    // parked balances) is recoverable — never a loss even when costs call it
+    // "required". The old "your ... account" phrasing rescue missed "the
+    // account" / "deposits required" and killed 130+ legit bank bonuses.
+    // Non-refundable/forfeited deposits stay losses.
     const hasMandatoryLoss = /mandatory|required|non-refundable|you (will|must) (pay|lose)/i.test(lossTxt) && upfront > 0 && !/optional/i.test(lossTxt);
     const isOwnAccountDeposit = /your (own )?(bank|checking|savings) account|move.*into your|park.*in your/i.test(lossTxt);
-    const cannotLose = !hasMandatoryLoss || isOwnAccountDeposit || upfront === 0;
+    const isOwnMoneyMovement = /deposit|direct deposit|\bpark\b|move.{0,30}into your|share (savings )?balance/i.test(lossTxt)
+      && !/non-refundable|forfeit/i.test(lossTxt);
+    const cannotLose = !hasMandatoryLoss || isOwnAccountDeposit || isOwnMoneyMovement || upfront === 0;
     // Gate 7: time fit
     const activeMinutes = r.time_max_minutes || 60;
     // Gate 9: prerequisite — bank account, etc.
     const needsAccount = /bank account|checking account/i.test(req) ? "bank_account" : null;
     return {
       min_age: minAge || undefined,
-      states: undefined, // catalog is US-wide; no state restrictions encoded
+      // FIX (50sweep-2): parse state restrictions from who_qualifies /
+      // requirements text (e.g. "Minnesota/Wisconsin membership"). Null =
+      // no restriction found, route treated as US-wide.
+      states: routeStates(r),
       deadline: undefined, // no deadlines in catalog
       verification: routeVerification(r),
       cannot_lose: cannotLose,
-      required_capital: upfront,
+      // FIX (50sweep-4): prefer the operator-verified minimum deposit for known
+      // deposit routes over the first-$ parse, so the capital gate agrees with
+      // blocked() instead of inventing a different number.
+      required_capital: NEEDS_DEPOSIT[String(r.id)] != null ? NEEDS_DEPOSIT[String(r.id)] : upfront,
       active_minutes: activeMinutes,
       prerequisite: needsAccount,
       id: r.id,
@@ -6020,7 +6107,8 @@
     // Gate 8 (cooldown): completed_routes from user progress
     const gateUser = Object.assign({}, user, {
       completed_routes: user.completed_routes || [],
-      free_cash: user.free_cash !== undefined ? user.free_cash : 10000, // default if unknown
+      // FIX (50sweep-5): unknown cash fails closed (0), never 10000.
+      free_cash: user.free_cash !== undefined ? user.free_cash : 0, // default if unknown
       free_minutes: user.free_minutes || 60,
       accounts: user.accounts || [],
     });
