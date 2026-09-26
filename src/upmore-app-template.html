@@ -3610,7 +3610,7 @@
           <label class="f"><span>Date filed</span><input id="cfDate" type="date" value="${localISODate()}"></label>
         </div>
         <button class="go" id="cfSave" style="height:50px">Track my claim</button>
-        <p class="fine">Claims typically take 30–90 days. We'll remind you to check back in 45 days.</p>
+        <p class="fine">Claims typically take 30–180 days depending on the state and claim size. We'll remind you to check back in 45 days.</p>
       </div>
       <div id="claimChecklist"></div>
       <h3 class="sec" style="font-size:15px;margin-top:18px">My claims</h3>
@@ -7274,6 +7274,55 @@
 
   // ---- Render ----
   let budgetReportMonth = null; // YYYY-MM; null = latest
+  // SPEC 09c: savings goals (Monarch/YNAB parity). Local-first; progress
+  // bar + projected finish from the user's actual average monthly kept.
+  const GOALS_LS = "upmore_goals_v1";
+  function goalsGet() { try { const v = JSON.parse(localStorage.getItem(GOALS_LS) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function goalsSet(g) { try { localStorage.setItem(GOALS_LS, JSON.stringify(g)); } catch (e) {} }
+  function goalProject(g, avgKept) {
+    const remaining = g.target - g.current;
+    if (remaining <= 0) return { done: true, weeks: 0 };
+    if (!(avgKept > 0)) return { done: false, weeks: Infinity };
+    return { done: false, weeks: Math.ceil(remaining / avgKept * 4.33) };
+  }
+  function goalsHtml(avgKept) {
+    const goals = goalsGet();
+    const rows = goals.map(g => {
+      const pct = g.target > 0 ? Math.min(100, g.current / g.target * 100) : 0;
+      const proj = goalProject(g, avgKept);
+      const when = proj.done ? "Done — nice." :
+        (proj.weeks === Infinity ? "Add to it each month and we'll project the finish." :
+         `about ${Math.round(proj.weeks / 4.33)} months at your current pace`);
+      return `<div class="brow"><div class="bt"><b>${esc(g.name)}</b><span>${bm0(g.current)} of ${bm0(g.target)}</span></div>
+        <div class="bbar" role="img" aria-label="${esc(g.name)}: ${bm0(g.current)} of ${bm0(g.target)}"><i style="width:${pct}%"></i></div>
+        <div class="bstat">${esc(when)}</div>
+        <div class="bs"><button class="tgt" data-goaladd="${g.id}">+ Add money</button>
+        <button class="tgt" data-goaldel="${g.id}" aria-label="Remove goal">Remove</button></div></div>`;
+    }).join("");
+    return `${rows || `<p class="psub">No goals yet — an emergency fund, a trip, a deposit. Name it and watch the bar move.</p>`}
+      <div class="svform" style="margin-top:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <label class="f"><span>Goal name</span><input id="goalName" placeholder="Emergency fund" autocomplete="off"></label>
+      <label class="f"><span>Target ($)</span><input id="goalTarget" inputmode="decimal" placeholder="1000" autocomplete="off"></label></div>
+      <button class="go" id="goalAdd" style="height:44px">Add goal</button></div>`;
+  }
+  function wireGoals(avgKept) {
+    const add = $("goalAdd");
+    if (add) add.onclick = () => {
+      const name = $("goalName").value.trim(), target = parseFloat($("goalTarget").value);
+      if (!name || !(target > 0)) { toast("Name and target needed."); return; }
+      const g = goalsGet(); g.push({ id: "g" + Date.now(), name, target, current: 0 });
+      goalsSet(g); renderBudgetReport(); toast("Goal added.");
+    };
+    document.querySelectorAll("[data-goaladd]").forEach(b => b.onclick = () => {
+      const amt = parseFloat(prompt("How much are you putting toward this goal?") || "");
+      if (!(amt > 0)) return;
+      const g = goalsGet(); const it = g.find(x => x.id === b.dataset.goaladd);
+      if (it) { it.current = Math.round((it.current + amt) * 100) / 100; goalsSet(g); renderBudgetReport(); }
+    });
+    document.querySelectorAll("[data-goaldel]").forEach(b => b.onclick = () => {
+      goalsSet(goalsGet().filter(x => x.id !== b.dataset.goaldel)); renderBudgetReport();
+    });
+  }
   // SPEC 09b: Month in Review builder (extracted for tests).
   function monthReviewHtml(transactions, months, idx) {
     const prevYm = months[idx + 1];
@@ -7322,6 +7371,11 @@
     // Keep goal
     const keepTarget = blsGet(BUDGET_LS.keepTarget, null);
     const kept = model.agg.kept;
+    const avgKept = (() => {
+      const ms = months.slice(0, 6);
+      if (!ms.length) return 0;
+      return ms.reduce((t, m) => t + monthAgg(transactions, m).kept, 0) / ms.length;
+    })();
 
     // Net worth line from accounts
     let netWorth = null;
@@ -7422,6 +7476,8 @@
       <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
       <div class="bcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
       <button class="ghostbtn" id="brAddCat" style="margin-top:10px">+ Add your own category</button>
+      <h2 class="sec">Goals</h2>
+      <div class="bcard">${goalsHtml(avgKept)}</div>
       <h2 class="sec">Monthly keep goal</h2>
       <div class="pcard"><p class="bsum" style="font-size:14.5px">${keepTarget != null
         ? (kept >= keepTarget ? `Goal met — you kept ${bm0(kept)} of your ${bm0(keepTarget)} goal.` : `You kept ${bm0(kept)} of your ${bm0(keepTarget)} goal — ${bm0(keepTarget - kept)} to go.`)
@@ -7445,6 +7501,7 @@
     const ac = $("brAddCat"); if (ac) ac.onclick = openAddCatSheet;
     const ke = $("brKeepEdit"); if (ke) ke.onclick = openKeepSheet;
     const bi = $("brIdle"); if (bi) bi.onclick = () => openCFO("cash");
+    wireGoals(avgKept);
     const bc2btn = $("brCal"); if (bc2btn) bc2btn.onclick = () => show("reccal");
   }
 
