@@ -2998,7 +2998,7 @@
   // disclosure list only.
   const ANNUAL_HINT = /annual|yearly|12[\s-]?mo|per year|\/yr|renewal/i;
   function annualCoverageGaps(transactions) {
-    const txs = (transactions || []).filter(t => !t.is_pending && !t.is_transfer && t.amount < 0 && t.posted_at);
+    const txs = (transactions || []).filter(t => !t.is_pending && !t.is_transfer && t.amount < 0 && !t.is_excluded && t.posted_at);
     if (!txs.length) return [];
     const times = txs.map(t => new Date(t.posted_at).getTime()).filter(x => !isNaN(x));
     if (!times.length) return [];
@@ -3323,7 +3323,7 @@
       isLive = !!live;
       liquid = accounts.reduce((s, a) => s + Math.max(0, a.balance || 0), 0);
       const cutoff = Date.now() - 90 * 864e5;
-      const spend = transactions.filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer &&
+      const spend = transactions.filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer && !t.is_excluded &&
         new Date(t.posted_at).getTime() > cutoff &&
         !["Transfers", "Other"].includes(t.category));
       const total90 = spend.reduce((s, t) => s + Math.abs(t.amount), 0);
@@ -4866,7 +4866,7 @@
         ] };
       }
       if (!posted.length) return { paras: ["I have no transactions to compute from \u2014 connect your bank in Track first."] };
-      const hits = posted.filter(x => x.amount < 0 && cats.includes(x.category) && x.posted_at >= w0 && x.posted_at <= w1);
+      const hits = posted.filter(x => x.amount < 0 && !x.is_excluded && cats.includes(x.category) && x.posted_at >= w0 && x.posted_at <= w1);
       const total = hits.reduce((s, x) => s + Math.abs(Number(x.amount)), 0);
       return { paras: [
         "Spending on " + cats.join(" + ") + ", " + wLabel + ": " + m$(total) + " across " + hits.length + " transaction" + (hits.length === 1 ? "" : "s") + ".",
@@ -4877,7 +4877,7 @@
     // --- 3-006: monthly burn rate from coverage math, or an honest can't ---
     if (has("burn rate", "monthly burn", "spend per month", "spending per month", "average monthly spend", "average monthly spending")) {
       if (covDays < 30) return { paras: ["I can't compute a monthly rate from " + covDays + " days of data \u2014 that's not a month, and I won't estimate. Connect your bank for more history."] };
-      const out = posted.filter(x => x.amount < 0).reduce((s, x) => s + Math.abs(Number(x.amount)), 0);
+      const out = posted.filter(x => x.amount < 0 && !x.is_excluded).reduce((s, x) => s + Math.abs(Number(x.amount)), 0);
       const per30 = out / covDays * 30;
       return { paras: [
         "Your monthly burn rate: about " + m$(per30) + " per 30 days \u2014 that's " + m$(out) + " total outflow over " + covDays + " days (" + covMin + " to " + covMax + ").",
@@ -5974,7 +5974,7 @@
         const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
         const recent = (transactions || []).filter(t => new Date(t.date).getTime() > thirtyDaysAgo);
         const income = recent.filter(t => t.amount > 0).reduce((s, t) => s + t.amount, 0);
-        const spending = recent.filter(t => t.amount < 0).reduce((s, t) => s + Math.abs(t.amount), 0);
+        const spending = recent.filter(t => t.amount < 0 && !t.is_excluded).reduce((s, t) => s + Math.abs(t.amount), 0);
         const factPack = {
           freeCash: Math.max(0, income - spending),
           monthlyDelta: (income - spending), // Monthly surplus/deficit
@@ -8772,7 +8772,7 @@
     const isCur = ym === new Date().toISOString().slice(0, 7);
     const elapsed = isCur ? Math.min(new Date().getDate(), days) : days;
     const daily = new Array(days + 1).fill(0);
-    (transactions || []).filter(t => t && t.amount < 0 && !t.is_pending && !t.is_transfer && String(t.posted_at || "").slice(0, 7) === ym)
+    (transactions || []).filter(t => t && t.amount < 0 && !t.is_pending && !t.is_transfer && !t.is_excluded && String(t.posted_at || "").slice(0, 7) === ym)
       .forEach(t => { const d = Math.min(days, Math.max(1, +String(t.posted_at).slice(8, 10) || 1)); daily[d] += Math.abs(t.amount); });
     const cum = []; let run = 0;
     for (let d = 1; d <= days; d++) { run += daily[d]; cum[d] = run; }
