@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-cgoRQXKxXiIK4cwojW5ytkRVXs3oh+MIDcwtK7SjSiY=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-reQ5JEi3WBwwIY9S8oqlW/GSkjVA3mfNOGaqrF1kB/M=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -852,15 +852,20 @@
 
       <h1 class="hello" id="hello">Good evening, Friend</h1>
       <p class="sub" id="homeSub">Your money queue — biggest score first.</p>
+      <button class="ghostbtn" id="homeCustomBtn" style="margin:2px 0 6px;font-size:12px">Customize home</button>
+      <div id="homeCustomSheet" hidden></div>
 
       <!-- SPEC 04 Track: Home strip — free cash, days to payday, left to spend.
            Tapping opens the transaction list. -->
+      <div data-widget="track">
       <button class="trackstrip" id="trackStrip" hidden>
         <span><b id="tsFree">—</b><i>free cash</i></span>
         <span><b id="tsDays">—</b><i>days to payday</i></span>
         <span><b id="tsDaily">—</b><i>left to spend / day</i></span>
       </button>
+      </div>
       <!-- SPEC 03 Budget: Safe to Spend — total, daily pace, buffer, cycle end. -->
+      <div data-widget="safe">
       <div class="safetospend" id="safeSpend" hidden>
         <div class="sts-top"><span>Safe to spend</span><b id="stsTotal">—</b></div>
         <div class="sts-sub" id="stsSub">—</div>
@@ -871,29 +876,37 @@
           <button id="stsBufferEdit" style="margin-left:8px;font-size:11px;padding:2px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);">Change</button>
         </div>
       </div>
+      </div>
 
       <!-- SPEC 07 Budget report entry: full-screen plain-language report.
            Monarch parity (budgets, custom categories, rollover, trends, cash
            flow, recurring, keep goal) plus the CFO edge. Nobody should win. -->
+      <div data-widget="budget">
       <button class="item" id="budgetReportBtn" style="text-align:left;width:100%;margin-top:12px">
         <div class="grow"><p class="t">Budget report</p><p class="m">Where your money went this month, in plain words — budgets, trends, cash flow.</p></div>
         <span class="pv">›</span>
       </button>
+      </div>
 
       <!-- SPEC 08 Investments X-ray entry: read-only holdings analysis. -->
+      <div data-widget="invest">
       <button class="item" id="investBtn" style="text-align:left;width:100%;margin-top:12px">
         <div class="grow"><p class="t">Investments</p><p class="m">What you hold, what it costs, where it's concentrated — a read-only X-ray.</p></div>
         <span class="pv">›</span>
       </button>
+      </div>
 
       <!-- SPEC 09 Net worth entry: accounts + assets − liabilities, with trend. -->
+      <div data-widget="networth">
       <button class="item" id="nwBtn" style="text-align:left;width:100%;margin-top:12px">
         <div class="grow"><p class="t">Net worth</p><p class="m" id="nwHomeSub">Everything you own minus everything you owe — one number, tracked monthly.</p></div>
         <span class="pv">›</span>
       </button>
+      </div>
 
       <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
            Shows when no bank is connected. One button, no forms, no friction. -->
+      <div data-widget="connect">
       <div class="connectcard" id="connectCard" hidden>
         <div class="cc-top">
           <div>
@@ -904,9 +917,11 @@
         <button class="cta" id="connectBankBtn">Connect bank</button>
         <p class="fine">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p>
       </div>
+      </div>
 
       
 
+      <div data-widget="claims">
       <h2 class="sec">Find money you're owed</h2>
       <div class="list">
         <button class="item" id="claimCard" style="text-align:left;width:100%">
@@ -914,11 +929,14 @@
           <span class="pv">›</span>
         </button>
       </div>
+      </div>
 
       <!-- SPEC 05 CFO: seven money-health tools, ranked by dollars. -->
+      <div data-widget="cfo">
       <h2 class="sec">Your money, like a CFO sees it</h2>
       <p class="psub" style="margin:-6px 0 10px">The biggest dollars in your financial life, in order. Tap any card to open the tool.</p>
       <div class="list" id="cfoList"></div>
+      </div>
 
       <nav class="tabs" role="tablist" data-nav></nav>
   </section>
@@ -988,6 +1006,8 @@
       </div>
     </div>
     
+      </div>
+      </div>
       </div>
       <nav class="tabs" role="tablist" data-nav></nav>
     </section>
@@ -2670,6 +2690,68 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     renderQueue(); renderDeadlines();
   }
 
+  // SPEC 09j: customizable Home widgets (Monarch parity). Order + visibility
+  // stored in localStorage; applied on every renderHome.
+  const HOME_WIDGETS = [
+    { id: "track", label: "Cash strip" },
+    { id: "safe", label: "Safe to spend" },
+    { id: "budget", label: "Budget report" },
+    { id: "invest", label: "Investments" },
+    { id: "networth", label: "Net worth" },
+    { id: "connect", label: "Connect bank" },
+    { id: "claims", label: "Unclaimed money" },
+    { id: "cfo", label: "CFO tools" },
+  ];
+  const homeWidgetState = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem("upmore_home_widgets") || "null");
+      if (raw && Array.isArray(raw.order)) return raw;
+    } catch (e) {}
+    return { order: HOME_WIDGETS.map(w => w.id), hidden: [] };
+  };
+  const homeWidgetSave = st => { try { localStorage.setItem("upmore_home_widgets", JSON.stringify(st)); } catch (e) {} };
+  function applyHomeWidgets() {
+    const st = homeWidgetState();
+    const first = document.querySelector("#home [data-widget]"); if (!first) return;
+    const parent = first.parentElement; if (!parent) return;
+    const els = {};
+    parent.querySelectorAll(":scope > [data-widget]").forEach(el => { els[el.dataset.widget] = el; });
+    st.order.forEach(id => {
+      const el = els[id]; if (!el) return;
+      el.style.display = (st.hidden || []).includes(id) ? "none" : "";
+      parent.appendChild(el); // append in order = reorder; moves existing nodes
+    });
+  }
+  function openHomeCustomize() {
+    const sheet = $("homeCustomSheet"); if (!sheet) return;
+    sheet.hidden = !sheet.hidden;
+    if (!sheet.hidden) renderHomeCustomizeSheet();
+  }
+  function renderHomeCustomizeSheet() {
+    const sheet = $("homeCustomSheet"); if (!sheet) return;
+    const st = homeWidgetState();
+    const lbl = id => (HOME_WIDGETS.find(w => w.id === id) || {}).label || id;
+    sheet.innerHTML = `<div class="pcard" style="margin:8px 0"><p class="bsum" style="font-size:14px">Choose what shows on Home, in what order.</p>` +
+      st.order.map((id, i) =>
+        `<div class="mrow"><div><b>${esc(lbl(id))}</b></div><span style="display:flex;gap:4px">
+          <button class="tgt" data-hw="up:${i}" aria-label="Move up" ${i === 0 ? "disabled" : ""}>↑</button>
+          <button class="tgt" data-hw="dn:${i}" aria-label="Move down" ${i === st.order.length - 1 ? "disabled" : ""}>↓</button>
+          <button class="tgt" data-hw="tg:${i}" aria-label="Show or hide">${(st.hidden || []).includes(id) ? "show" : "hide"}</button>
+        </span></div>`).join("") +
+      `<button class="ghostbtn" id="hwReset" style="margin-top:8px">Reset to default</button></div>`;
+    sheet.querySelectorAll("[data-hw]").forEach(b => b.onclick = () => {
+      const [op, ix] = b.dataset.hw.split(":"); const i = Number(ix);
+      if (op === "up" && i > 0) [st.order[i - 1], st.order[i]] = [st.order[i], st.order[i - 1]];
+      if (op === "dn" && i < st.order.length - 1) [st.order[i + 1], st.order[i]] = [st.order[i], st.order[i + 1]];
+      if (op === "tg") {
+        st.hidden = st.hidden || [];
+        const id = st.order[i];
+        st.hidden = st.hidden.includes(id) ? st.hidden.filter(x => x !== id) : st.hidden.concat([id]);
+      }
+      homeWidgetSave(st); applyHomeWidgets(); renderHomeCustomizeSheet();
+    });
+    $("hwReset").onclick = () => { homeWidgetSave({ order: HOME_WIDGETS.map(w => w.id), hidden: [] }); applyHomeWidgets(); renderHomeCustomizeSheet(); };
+  }
   function renderHome() {
     const d = planData();
     const hr = new Date().getHours();
@@ -2681,6 +2763,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const cc = $("claimCard"); if (cc) cc.onclick = openClaim;
     renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend
     renderCFOList(); // SPEC 05: money-health tools
+    const hcb = $("homeCustomBtn"); if (hcb && !hcb.dataset.wired) { hcb.dataset.wired = "1"; hcb.onclick = openHomeCustomize; }
+    applyHomeWidgets();
   }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
