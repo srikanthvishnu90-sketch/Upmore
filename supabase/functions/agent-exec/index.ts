@@ -1,11 +1,25 @@
 // Upmore agent-exec edge function.
-// The real-world execution agent. POST /functions/v1/agent-exec  { approval_id }
-// Auth: Supabase JWT in Authorization header.
+// The real-world execution agent.
+//
+// Actions (POST /functions/v1/agent-exec, Supabase JWT required):
+//   { approval_id }                                   -> run the merchant playbook
+//   { action: "submit_otp", run_id, otp_code }         -> resume an awaiting_otp run
+//   { action: "browser_selftest" }                    -> health check: real Browserbase
+//                                                      session, hardcoded safe target
+//                                                      (https://example.com) only
+//
 // Flow: verify approval (owned by caller, status approved) -> load vaulted
-// merchant credential -> run merchant playbook -> record evidence -> done/failed.
+// merchant credential -> run merchant playbook (HTTP cookie-jar, or a real
+// browser driven over CDP via Browserbase) -> record evidence -> done/failed.
+//
+// OTP handoff: when a browser playbook reaches a one-time-code step it pauses
+// as awaiting_otp. The Browserbase session is created with keepAlive so it
+// survives the pause; the app collects the code from the user and calls
+// submit_otp, which reconnects to the SAME session and continues the playbook.
 //
 // Safety: only acts on approvals the user explicitly approved. Every run is
-// written to exec_runs with evidence. Never moves money.
+// written to exec_runs with evidence. Never moves money. OTP codes and API
+// keys are never written to evidence, logs, or responses.
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/+esm";
@@ -27,6 +41,10 @@ function corsFor(req: Request): Record<string, string> {
   if (ALLOWED_ORIGINS.has(origin)) h["Access-Control-Allow-Origin"] = origin;
   return h;
 }
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+// JSON-stringify for safe embedding inside page-context JS expressions.
+const jsq = (v: unknown) => JSON.stringify(v);
 
 type ExecContext = {
   username: string;
@@ -86,168 +104,461 @@ async function fetchFollow(jar: Jar, url: string): Promise<{ res: Response; text
   return { res, text: await res.text() };
 }
 
-// ---- merchant playbooks ----
-const playbooks: Record<string, (ctx: ExecContext) => Promise<ExecResult>> = {
-  // Devin (Cognition AI) — implemented from auth recon 2026-09-26.
-  "devin": playbookDevin,
-};
+// ================= Browserbase driver =================
+const BB_API = "https://api.browserbase.com/v1";
 
-async function playbookDevin(ctx: ExecContext): Promise<ExecResult> {
-  // Adaptive playbook: probes the live login page, detects the auth
-  // mechanism, and either executes the cancellation or fails with a
-  // precise reason (e.g. needs_browser for OAuth/magic-link). Never fakes.
-  const ev: Record<string, unknown> = { merchant: "devin" };
-  const jar = new Jar();
+function bbApiKey(): string {
+  const k = Deno.env.get("BROWSERBASE_API_KEY");
+  if (!k) throw new Error("BROWSERBASE_API_KEY is not configured");
+  return k;
+}
+function bbProjectId(): string {
+  const p = Deno.env.get("BROWSERBASE_PROJECT_ID");
+  if (!p) throw new Error("BROWSERBASE_PROJECT_ID is not configured");
+  return p;
+}
+
+async function bbCreateSession(keepAlive: boolean): Promise<{ id: string; connectUrl: string }> {
+  const res = await fetch(`${BB_API}/sessions`, {
+    method: "POST",
+    headers: { "x-bb-api-key": bbApiKey(), "Content-Type": "application/json" },
+    body: JSON.stringify({ projectId: bbProjectId(), keepAlive }),
+  });
+  if (!res.ok) throw new Error(`Browserbase create session failed (HTTP ${res.status})`);
+  const j = await res.json();
+  if (!j.id || !j.connectUrl) throw new Error("Browserbase returned no session id/connectUrl");
+  return { id: j.id as string, connectUrl: j.connectUrl as string };
+}
+
+async function bbRefreshSession(id: string): Promise<{ connectUrl: string; status: string }> {
+  const res = await fetch(`${BB_API}/sessions/${id}`, {
+    headers: { "x-bb-api-key": bbApiKey() },
+  });
+  if (!res.ok) throw new Error(`Browserbase session ${id} not reachable (HTTP ${res.status})`);
+  const j = await res.json();
+  if (!j.connectUrl) throw new Error("Browserbase session has no connectUrl");
+  return { connectUrl: j.connectUrl as string, status: j.status as string };
+}
+
+async function bbStopSession(id: string): Promise<void> {
   try {
-    // 1. Fetch login page (following redirects), detect auth mechanism.
-    let lp = await fetchWithJar(jar, "https://app.devin.ai/auth/login?redirect=/&reauth=true");
-    for (let i = 0; i < 5; i++) {
-      const loc = lp.headers.get("location");
-      if (!loc || (lp.status !== 301 && lp.status !== 302 && lp.status !== 303 && lp.status !== 307 && lp.status !== 308)) break;
-      lp = await fetchWithJar(jar, new URL(loc, "https://app.devin.ai").toString());
-    }
-    const html = await lp.text();
-    ev.login_page_status = lp.status;
-    ev.login_page_bytes = html.length;
-    const lower = html.toLowerCase();
-    const hasPassword = /type=["']password["']/i.test(html);
-    const hasGoogle = /continue with google|accounts\.google\.com/i.test(html);
-    const hasMagicLink = /magic link|send.*link.*email|check your email/i.test(html) && !hasPassword;
-    const hasGithub = /continue with github|github\.com\/login\/oauth/i.test(html);
-    // Devin ships a JS SPA shell: no server-rendered form. Their bundle
-    // (verified 2026-09-26) uses Auth0 SPA (loginWithRedirect) + a React
-    // billing UI with an interactive cancel dialog on private APIs.
-    const isSpaShell = /<div id=["']root["']><\/div>|__vite__|rolldown-runtime/i.test(html) && !hasPassword;
-    ev.auth_detected = { password_form: hasPassword, google_oauth: hasGoogle, magic_link: hasMagicLink, github_oauth: hasGithub, spa_shell: isSpaShell };
-
-    if (!hasPassword) {
-      ev.stage = "auth_unsupported";
-      const which = isSpaShell
-        ? "a JavaScript SPA login (Auth0 redirect flow — verified from their shipped bundle)"
-        : hasGoogle ? "Google OAuth" : hasMagicLink ? "email magic link" : hasGithub ? "GitHub OAuth" : "unknown";
-      return { ok: false, evidence: ev, error: `Devin sign-in uses ${which} — needs a real browser session. (needs_browser)` };
-    }
-
-    // 2. Password form: parse action + fields, submit.
-    ev.stage = "login_attempt";
-    const formMatch = html.match(/<form[^>]*action=["']([^"']*)["'][^>]*>/i);
-    let action = formMatch ? formMatch[1] : "";
-    if (action && !action.startsWith("http")) {
-      action = new URL(action, "https://app.devin.ai").toString();
-    }
-    if (!action) action = "https://app.devin.ai/auth/login?redirect=/&reauth=true";
-    ev.login_action = action;
-    // Collect hidden inputs (CSRF etc.)
-    const hidden: Record<string, string> = {};
-    const re = /<input[^>]*type=["']hidden["'][^>]*>/gi;
-    let m: RegExpExecArray | null;
-    while ((m = re.exec(html))) {
-      const nm = m[0].match(/name=["']([^"']+)["']/i);
-      const vv = m[0].match(/value=["']([^"']*)["']/i);
-      if (nm) hidden[nm[1]] = vv ? vv[1] : "";
-    }
-    // Guess credential field names from the HTML.
-    const emailName = (html.match(/<input[^>]*type=["']email["'][^>]*name=["']([^"']+)["']/i) || [])[1]
-      || (html.match(/<input[^>]*name=["']([^"']*email[^"']*)["'][^>]*type=["'](?:email|text)["']/i) || [])[1]
-      || "email";
-    const passName = (html.match(/<input[^>]*type=["']password["'][^>]*name=["']([^"']+)["']/i) || [])[1] || "password";
-    const body = new URLSearchParams({ ...hidden, [emailName]: ctx.username, [passName]: ctx.password });
-    const loginRes = await fetchWithJar(jar, action, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: body.toString(),
+    await fetch(`${BB_API}/sessions/${id}`, {
+      method: "DELETE",
+      headers: { "x-bb-api-key": bbApiKey() },
     });
-    ev.login_status = loginRes.status;
-    // Follow redirects manually to keep the jar.
-    let cur = loginRes;
-    for (let i = 0; i < 5; i++) {
-      const loc = cur.headers.get("location");
-      if (!loc || (cur.status !== 301 && cur.status !== 302 && cur.status !== 303 && cur.status !== 307 && cur.status !== 308)) break;
-      const next = new URL(loc, "https://app.devin.ai").toString();
-      cur = await fetchWithJar(jar, next);
-    }
-    const afterLogin = await cur.text();
-    ev.after_login_bytes = afterLogin.length;
-    const loggedIn = !/auth\/login|sign in/i.test(afterLogin.slice(0, 5000)) || jar.header().length > 0;
-    ev.logged_in_guess = loggedIn;
-    if (!loggedIn && !jar.header()) {
-      ev.stage = "login_failed";
-      return { ok: false, evidence: ev, error: "Devin login did not produce a session — check the saved login." };
-    }
+  } catch { /* best effort */ }
+}
 
-    // 3. Find billing/subscription management.
-    ev.stage = "find_billing";
-    const billingPaths = ["/settings/billing", "/settings/subscription", "/account/billing", "/settings", "/account"];
-    let billingHtml = "";
-    let billingUrl = "";
-    for (const p of billingPaths) {
-      const { res: r, text: t } = await fetchFollow(jar, "https://app.devin.ai" + p);
-      if (r.ok && /cancel|subscription|billing|plan/i.test(t)) { billingHtml = t; billingUrl = p; break; }
-    }
-    // Also scan for a billing link on the main page.
-    if (!billingHtml) {
-      const { text: mainT } = await fetchFollow(jar, "https://app.devin.ai/");
-      const linkM = mainT.match(/href=["']([^"']*(?:billing|subscription|settings)[^"']*)["']/i);
-      if (linkM) {
-        billingUrl = new URL(linkM[1], "https://app.devin.ai").toString();
-        const { text } = await fetchFollow(jar, billingUrl);
-        billingHtml = text;
-      }
-    }
-    ev.billing_url = billingUrl || null;
-    if (!billingHtml) {
-      ev.stage = "billing_not_found";
-      return { ok: false, evidence: ev, error: "Signed in, but could not locate Devin's billing page." };
-    }
+// ---- minimal CDP client over Deno's native WebSocket ----
+class Cdp {
+  private ws: WebSocket;
+  private nextId = 0;
+  private pending = new Map<number, { resolve: (v: any) => void; reject: (e: Error) => void }>();
+  private waiters: Array<{ method: string; sessionId?: string; done: () => void }> = [];
+  private constructor(ws: WebSocket) { this.ws = ws; }
 
-    // 4. Find and submit the cancel action.
-    ev.stage = "cancel_attempt";
-    // Look for cancel forms/links.
-    const cancelForm = billingHtml.match(/<form[^>]*(?:action=["']([^"']*)["'])?[^>]*>(?:(?!<\/form>).)*cancell(?:ation|ing|ed)?(?:(?!<\/form>).)*<\/form>/is);
-    const cancelLink = billingHtml.match(/href=["']([^"']*)["'][^>]*>[^<]*cancell/i);
-    if (cancelForm) {
-      let cAction = cancelForm[1] || billingUrl;
-      if (cAction && !cAction.startsWith("http")) cAction = new URL(cAction, "https://app.devin.ai").toString();
-      const cHidden: Record<string, string> = {};
-      const cre = /<input[^>]*type=["']hidden["'][^>]*>/gi;
-      let cm: RegExpExecArray | null;
-      const formHtml = cancelForm[0];
-      while ((cm = cre.exec(formHtml))) {
-        const nm = cm[0].match(/name=["']([^"']+)["']/i);
-        const vv = cm[0].match(/value=["']([^"']*)["']/i);
-        if (nm) cHidden[nm[1]] = vv ? vv[1] : "";
-      }
-      const cRes = await fetchWithJar(jar, cAction, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(cHidden).toString(),
-      });
-      const cText = await cRes.text();
-      ev.cancel_status = cRes.status;
-      const confirmed = /cancell?ed|cancellation (confirmed|scheduled)|subscription (will )?(end|cancel)|no longer be billed/i.test(cText);
-      ev.cancel_confirmed_guess = confirmed;
-      if (confirmed) {
-        ev.stage = "done";
-        ev.note = "Devin subscription cancellation submitted and confirmation detected.";
-        return { ok: true, evidence: ev };
-      }
-      ev.stage = "cancel_unconfirmed";
-      return { ok: false, evidence: ev, error: "Cancel submitted but no confirmation detected — check Devin dashboard before retrying." };
+  static connect(url: string, timeoutMs = 25000): Promise<Cdp> {
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const ws = new WebSocket(url);
+      const cdp = new Cdp(ws);
+      const t = setTimeout(() => {
+        if (!settled) { settled = true; try { ws.close(); } catch { /* ignore */ } reject(new Error("CDP connect timeout")); }
+      }, timeoutMs);
+      ws.onopen = () => { if (!settled) { settled = true; clearTimeout(t); resolve(cdp); } };
+      ws.onerror = () => { if (!settled) { settled = true; clearTimeout(t); reject(new Error("CDP websocket error")); } };
+      ws.onmessage = (ev) => cdp.onMessage(String(ev.data));
+      ws.onclose = () => {
+        for (const [, p] of cdp.pending) p.reject(new Error("CDP socket closed"));
+        cdp.pending.clear();
+      };
+    });
+  }
+
+  private onMessage(data: string) {
+    let msg: any;
+    try { msg = JSON.parse(data); } catch { return; }
+    if (msg.id != null && this.pending.has(msg.id)) {
+      const p = this.pending.get(msg.id)!;
+      this.pending.delete(msg.id);
+      if (msg.error) p.reject(new Error("CDP error: " + JSON.stringify(msg.error).slice(0, 200)));
+      else p.resolve(msg.result);
+      return;
     }
-    if (cancelLink) {
-      ev.cancel_link = cancelLink[1];
-      ev.stage = "cancel_link_found";
-      return { ok: false, evidence: ev, error: "Found a cancel link but it needs an interactive step (confirmation dialog/JS). Needs a real browser. (needs_browser)" };
+    if (msg.method) {
+      const hit = this.waiters.filter((w) => w.method === msg.method && (w.sessionId == null || w.sessionId === msg.sessionId));
+      this.waiters = this.waiters.filter((w) => !hit.includes(w));
+      hit.forEach((w) => w.done());
     }
-    ev.stage = "cancel_not_found";
-    return { ok: false, evidence: ev, error: "Signed in and found billing, but no cancel action detected on the page." };
-  } catch (e) {
-    ev.stage = "exception";
-    return { ok: false, evidence: ev, error: String(e?.message || e) };
+  }
+
+  send(method: string, params: Record<string, unknown> = {}, sessionId?: string): Promise<any> {
+    const id = ++this.nextId;
+    const payload: Record<string, unknown> = { id, method, params };
+    if (sessionId) payload.sessionId = sessionId;
+    return new Promise((resolve, reject) => {
+      this.pending.set(id, { resolve, reject });
+      try { this.ws.send(JSON.stringify(payload)); }
+      catch (e) { this.pending.delete(id); reject(e); }
+    });
+  }
+
+  waitForEvent(method: string, sessionId: string | undefined, timeoutMs: number): Promise<boolean> {
+    return new Promise((resolve) => {
+      const done = () => { clearTimeout(t); resolve(true); };
+      const t = setTimeout(() => {
+        this.waiters = this.waiters.filter((w) => w.done !== done);
+        resolve(false);
+      }, timeoutMs);
+      this.waiters.push({ method, sessionId, done });
+    });
+  }
+
+  close() { try { this.ws.close(); } catch { /* ignore */ } }
+
+  async eval(sessionId: string, expression: string): Promise<any> {
+    const r = await this.send("Runtime.evaluate",
+      { expression, returnByValue: true, awaitPromise: true }, sessionId);
+    if (r?.exceptionDetails) throw new Error("page eval failed");
+    return r?.result?.value;
   }
 }
 
-// ---- main ----
+// ---- a controllable page inside a Browserbase session ----
+class BbPage {
+  private constructor(private cdp: Cdp, readonly sessionId: string) {}
+
+  static async open(cdp: Cdp): Promise<BbPage> {
+    const { targetInfos } = await cdp.send("Target.getTargets");
+    const infos: any[] = targetInfos || [];
+    let target = infos.find((t) =>
+      t.type === "page" && t.targetId && t.url &&
+      !t.url.startsWith("chrome") && !t.url.startsWith("devtools"));
+    if (!target) {
+      const created = await cdp.send("Target.createTarget", { url: "about:blank" });
+      target = { targetId: created.targetId };
+    }
+    const { sessionId } = await cdp.send("Target.attachToTarget",
+      { targetId: target.targetId, flatten: true });
+    const page = new BbPage(cdp, sessionId);
+    await cdp.send("Page.enable", {}, sessionId);
+    return page;
+  }
+
+  async goto(url: string, timeoutMs = 40000): Promise<void> {
+    await this.cdp.send("Page.navigate", { url }, this.sessionId);
+    // Wait for load; continue anyway on timeout (SPA navigations).
+    await this.cdp.waitForEvent("Page.loadEventFired", this.sessionId, timeoutMs);
+  }
+
+  eval(expression: string): Promise<any> { return this.cdp.eval(this.sessionId, expression); }
+  url(): Promise<string> { return this.eval("location.href"); }
+  title(): Promise<string> { return this.eval("document.title"); }
+
+  async waitFor(checkJs: string, timeoutMs = 20000, pollMs = 700): Promise<boolean> {
+    const t0 = Date.now();
+    while (Date.now() - t0 < timeoutMs) {
+      try { if (await this.eval(checkJs)) return true; } catch { /* mid-navigation */ }
+      await sleep(pollMs);
+    }
+    return false;
+  }
+
+  async clickFirst(selectors: string[]): Promise<string | null> {
+    for (const sel of selectors) {
+      const r = await this.eval(`(() => {
+        const el = document.querySelector(${jsq(sel)});
+        if (!el || el.offsetParent === null) return null;
+        el.scrollIntoView({ block: "center" });
+        el.click();
+        return "clicked";
+      })()`).catch(() => null);
+      if (r === "clicked") return sel;
+    }
+    return null;
+  }
+
+  // Click the first visible button/link whose text matches (case-insensitive).
+  async clickText(pattern: string): Promise<string | null> {
+    const r = await this.eval(`(() => {
+      const re = new RegExp(${jsq(pattern)}, "i");
+      const els = [...document.querySelectorAll("button, a, [role=button], input[type=submit]")];
+      for (const el of els) {
+        const t = ((el.innerText || el.value) || "").trim();
+        if (t && re.test(t) && el.offsetParent !== null) {
+          el.scrollIntoView({ block: "center" });
+          el.click();
+          return t.slice(0, 80);
+        }
+      }
+      return null;
+    })()`).catch(() => null);
+    return r;
+  }
+
+  // Click inside an open dialog first (avoids dismiss "Cancel" buttons).
+  async clickDialogButton(pattern: string): Promise<string | null> {
+    const r = await this.eval(`(() => {
+      const re = new RegExp(${jsq(pattern)}, "i");
+      const scope = document.querySelector('[role="dialog"], [data-state="open"]') || document;
+      const els = [...scope.querySelectorAll("button")];
+      for (const el of els) {
+        const t = (el.innerText || "").trim();
+        if (t && re.test(t) && el.offsetParent !== null) {
+          el.scrollIntoView({ block: "center" });
+          el.click();
+          return t.slice(0, 80);
+        }
+      }
+      return null;
+    })()`).catch(() => null);
+    return r;
+  }
+
+  // Type into the first visible matching input (React-compatible events).
+  async typeInto(selectors: string[], text: string): Promise<string | null> {
+    for (const sel of selectors) {
+      const r = await this.eval(`(() => {
+        const el = document.querySelector(${jsq(sel)});
+        if (!el || el.offsetParent === null) return null;
+        el.focus();
+        const tag = (el.tagName || "").toUpperCase();
+        const proto = tag === "TEXTAREA"
+          ? window.HTMLTextAreaElement.prototype
+          : window.HTMLInputElement.prototype;
+        const desc = Object.getOwnPropertyDescriptor(proto, "value");
+        if (desc && desc.set) desc.set.call(el, ${jsq(text)});
+        else el.value = ${jsq(text)};
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        el.dispatchEvent(new Event("change", { bubbles: true }));
+        return "typed";
+      })()`).catch(() => null);
+      if (r === "typed") return sel;
+    }
+    return null;
+  }
+
+  // Fill a one-time code: single input, else split-box OTP inputs.
+  // The code travels only to the page; callers must never store it.
+  async fillOtp(otp: string): Promise<string> {
+    const single = await this.typeInto(
+      ['input[autocomplete="one-time-code"]', 'input[name*="code" i]',
+       'input[name*="otp" i]', 'input[inputmode="numeric"]', 'input[maxlength="6"]'],
+      otp);
+    if (single) {
+      const sub = await this.clickFirst(['button[type="submit"]', 'input[type="submit"]']);
+      if (!sub) {
+        await this.eval(`(() => {
+          const a = document.activeElement;
+          if (a) a.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", code: "Enter", bubbles: true }));
+        })()`).catch(() => null);
+      }
+      return "single:" + single;
+    }
+    const n = await this.eval(`(() => {
+      const code = ${jsq(otp)};
+      const boxes = [...document.querySelectorAll("input")].filter((el) => {
+        if (el.offsetParent === null) return false;
+        const ml = el.getAttribute("maxlength");
+        return ml === "1" || (el.inputMode === "numeric" && (el.value || "").length <= 1);
+      });
+      if (boxes.length < 4) return 0;
+      boxes.slice(0, code.length).forEach((b, i) => {
+        b.focus();
+        const desc = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value");
+        if (desc && desc.set) desc.set.call(b, code[i] || "");
+        else b.value = code[i] || "";
+        b.dispatchEvent(new Event("input", { bubbles: true }));
+      });
+      return boxes.length;
+    })()`).catch(() => 0);
+    return n ? "boxes:" + n : "";
+  }
+
+  async screenshot(label: string): Promise<{ label: string; data: string } | null> {
+    try {
+      const r = await this.cdp.send("Page.captureScreenshot",
+        { format: "jpeg", quality: 40 }, this.sessionId);
+      return r?.data ? { label, data: r.data as string } : null;
+    } catch { return null; }
+  }
+}
+
+// ================= merchant playbooks =================
+
+// HTTP playbooks (cookie-jar based). Currently none — every supported
+// merchant needs a real browser. The machinery above (Jar, fetchWithJar,
+// fetchFollow) stays for future HTTP-capable merchants.
+const playbooks: Record<string, (ctx: ExecContext) => Promise<ExecResult>> = {};
+
+// ---- browser playbooks ----
+type BrowserOutcome =
+  | { awaitingOtp: true; otpHint: string; resume: Record<string, unknown> }
+  | { ok: true }
+  | { ok: false; error: string };
+
+type BrowserPlaybookDef = {
+  // Run until the OTP pause (or terminal). Must never store secrets in ev.
+  start: (ctx: ExecContext, page: BbPage, ev: Record<string, unknown>) => Promise<BrowserOutcome>;
+  // Continue after the user supplies the code. `otp` must never be stored.
+  resume: (ctx: ExecContext, page: BbPage, otp: string, ev: Record<string, unknown>, resume: Record<string, unknown>) => Promise<BrowserOutcome>;
+};
+
+function pushShot(ev: Record<string, unknown>, shot: { label: string; data: string } | null) {
+  if (!shot) return;
+  const shots = (ev.shots as Array<{ label: string; data: string }>) || (ev.shots = []);
+  shots.push(shot);
+}
+
+// Devin (Cognition AI) browser playbook.
+// Verified 2026-09-26: login is email-first + passwordless email OTP
+// (Auth0 SPA underneath); cancel is a React dialog on private APIs.
+// Stages: email -> OTP prompt (pause, awaiting_otp) -> on resume: enter
+// code -> billing -> cancel dialog -> confirm -> capture confirmation.
+const EMAIL_SELECTORS = [
+  'input[type="email"]', 'input[name="email"]',
+  'input[autocomplete="email"]', 'input[placeholder*="mail" i]',
+];
+
+async function devinStart(
+  ctx: ExecContext, page: BbPage, ev: Record<string, unknown>,
+): Promise<BrowserOutcome> {
+  ev.login_url = "https://app.devin.ai/auth/login?redirect=/&reauth=true";
+  await page.goto(ev.login_url as string);
+  ev.after_goto_url = await page.url().catch(() => null);
+  ev.title = await page.title().catch(() => null);
+  pushShot(ev, await page.screenshot("login"));
+
+  // Email-first: enter the email, then continue.
+  const emailSel = await page.typeInto(EMAIL_SELECTORS, ctx.username);
+  ev.email_field = emailSel;
+  if (!emailSel) {
+    return { ok: false, error: "Devin login page showed no email field — layout changed. Nothing was changed." };
+  }
+  const contSel = await page.clickFirst(['button[type="submit"]', 'input[type="submit"]']);
+  const contText = contSel ? contSel : await page.clickText("^(continue|sign in|log in)$");
+  ev.continue_clicked = contSel || contText;
+  if (!ev.continue_clicked) {
+    return { ok: false, error: "Entered the email but found no continue button. Nothing was changed." };
+  }
+
+  // Wait for the OTP prompt (code field or "check your email" copy).
+  const otpSeen = await page.waitFor(`(() => {
+    const t = (document.body.innerText || "").toLowerCase();
+    return /check your email|enter (the )?code|verification code|one-time/.test(t) ||
+      !!document.querySelector('input[autocomplete="one-time-code"], input[name*="code" i], input[name*="otp" i]');
+  })()`, 25000);
+  ev.otp_prompt = otpSeen;
+  ev.after_continue_url = await page.url().catch(() => null);
+  pushShot(ev, await page.screenshot("otp-prompt"));
+  if (!otpSeen) {
+    return { ok: false, error: "Entered the email but no verification-code prompt appeared. Nothing was changed." };
+  }
+  return {
+    awaitingOtp: true,
+    otpHint: "Devin emailed you a sign-in code — enter it here to continue.",
+    resume: { stage: "otp" },
+  };
+}
+
+async function devinResume(
+  ctx: ExecContext, page: BbPage, otp: string,
+  ev: Record<string, unknown>, _resume: Record<string, unknown>,
+): Promise<BrowserOutcome> {
+  void ctx; void _resume;
+  // Enter the code (single input or split boxes).
+  const how = await page.fillOtp(otp);
+  ev.otp_entry = how || null;
+  if (!how) {
+    return { ok: false, error: "The code field disappeared — the session may have expired. Nothing was changed." };
+  }
+  await sleep(2000);
+  pushShot(ev, await page.screenshot("otp-entered"));
+
+  // Wait until we leave the auth area (logged in).
+  const loggedIn = await page.waitFor(
+    `!location.pathname.startsWith("/auth") && !/sign ?in|log ?in/i.test(document.title || "")`,
+    45000);
+  ev.logged_in = loggedIn;
+  ev.post_login_url = await page.url().catch(() => null);
+  if (!loggedIn) {
+    return { ok: false, error: "The code was rejected or expired — nothing was changed." };
+  }
+  pushShot(ev, await page.screenshot("logged-in"));
+
+  // Find billing: scan for a billing link, else try known paths.
+  let billingUrl: string | null = null;
+  const foundLink = await page.eval(`(() => {
+    const els = [...document.querySelectorAll("a[href]")];
+    const m = els.find((a) =>
+      /billing|subscription/i.test(a.getAttribute("href") || "") ||
+      /billing|subscription/i.test(a.innerText || ""));
+    return m ? m.getAttribute("href") : null;
+  })()`).catch(() => null);
+  if (foundLink) {
+    try {
+      billingUrl = foundLink.startsWith("http")
+        ? foundLink
+        : new URL(foundLink, await page.url()).toString();
+      await page.goto(billingUrl, 25000);
+    } catch { billingUrl = null; }
+  }
+  if (!billingUrl) {
+    for (const p of ["/settings/billing", "/settings", "/account"]) {
+      const u = "https://app.devin.ai" + p;
+      await page.goto(u, 25000);
+      const t = ((await page.eval("document.body.innerText || \"\"").catch(() => "")) as string);
+      if (/cancel (your |the )?(subscription|plan)|billing/i.test(t)) { billingUrl = u; break; }
+    }
+  }
+  ev.billing_url = billingUrl;
+  pushShot(ev, await page.screenshot("billing"));
+  if (!billingUrl) {
+    return { ok: false, error: "Signed in, but couldn't find the billing page — nothing was changed." };
+  }
+
+  // Click "cancel subscription/plan" (word-boundary match avoids dismiss buttons).
+  const clicked = await page.clickText("cancel (your |the )?(subscription|plan)");
+  ev.cancel_clicked = clicked;
+  if (!clicked) {
+    return { ok: false, error: "Found billing but no cancel-subscription control — nothing was changed." };
+  }
+  await sleep(2500);
+  const dialogSeen = await page.waitFor(
+    `/are you sure|confirm|cancellation|before you go/i.test(document.body.innerText || "")`,
+    12000);
+  ev.confirm_dialog = dialogSeen;
+  pushShot(ev, await page.screenshot("confirm-dialog"));
+
+  // Confirm inside the dialog.
+  const confirmed = await page.clickDialogButton("confirm|yes,?\\s*cancel|cancel (my |the )?subscription");
+  ev.confirm_clicked = confirmed;
+  if (!confirmed) {
+    return { ok: false, error: "The cancel dialog appeared but the confirm button couldn't be clicked — nothing was changed." };
+  }
+  await sleep(4000);
+  const pageText = ((await page.eval("document.body.innerText || \"\"").catch(() => "")) as string);
+  const m = pageText.match(/cancell?ed|cancellation confirmed|subscription (will |has )?(end|cancel)|no longer be billed|access until/i);
+  if (m) {
+    const i = pageText.indexOf(m[0]);
+    ev.confirmation_text = pageText.slice(Math.max(0, i - 120), i + 200);
+  }
+  pushShot(ev, await page.screenshot("confirmation"));
+  if (!m) {
+    return { ok: false, error: "Clicked cancel but no confirmation text appeared — check the Devin dashboard before retrying." };
+  }
+  ev.note = "Devin subscription cancellation confirmed in the browser.";
+  return { ok: true };
+}
+
+const browserPlaybooks: Record<string, BrowserPlaybookDef> = {
+  // Only runs when a real approved exec_approvals row exists — the serve()
+  // handler enforces this before any playbook is invoked. Never invent
+  // approvals, never run in tests.
+  "devin": { start: devinStart, resume: devinResume },
+};
+
+// ================= serve =================
 serve(async (req) => {
   const cors = corsFor(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -268,7 +579,116 @@ serve(async (req) => {
     if (authErr || !user) return json({ error: "Invalid session" }, 401);
     const admin = createClient(supabaseUrl, serviceKey);
 
-    const { approval_id } = await req.json().catch(() => ({}));
+    const body = await req.json().catch(() => ({}));
+    const action = body.action || "execute";
+
+    // ---- health check: real Browserbase session, safe target only ----
+    if (action === "browser_selftest") {
+      let session: { id: string; connectUrl: string } | null = null;
+      try {
+        session = await bbCreateSession(false);
+        const cdp = await Cdp.connect(session.connectUrl);
+        try {
+          const page = await BbPage.open(cdp);
+          await page.goto("https://example.com", 30000);
+          const title = await page.title();
+          return json({ ok: true, title, session_id: session.id });
+        } finally {
+          cdp.close();
+        }
+      } catch (e) {
+        return json({ ok: false, error: String(e?.message || e) }, 500);
+      } finally {
+        if (session) await bbStopSession(session.id);
+      }
+    }
+
+    // ---- OTP resume: reconnect to the SAME session and continue ----
+    if (action === "submit_otp") {
+      const { run_id, otp_code } = body;
+      if (!run_id || typeof otp_code !== "string" || !otp_code.trim()) {
+        return json({ error: "run_id and otp_code required" }, 400);
+      }
+      const { data: run } = await admin.from("exec_runs")
+        .select("*").eq("id", run_id).maybeSingle();
+      if (!run || run.user_id !== user.id) {
+        return json({ error: "Run not found" }, 404);
+      }
+      // Never accept an OTP for a run that isn't awaiting one or isn't the caller's.
+      if (run.status !== "awaiting_otp") {
+        return json({ error: `Run is ${run.status}, not waiting for a code` }, 409);
+      }
+      if (!run.browserbase_session_id) {
+        return json({ error: "Run has no browser session" }, 409);
+      }
+      // Atomic lock: only one resume proceeds.
+      const { data: locked } = await admin.from("exec_runs")
+        .update({ status: "started" })
+        .eq("id", run.id).eq("status", "awaiting_otp")
+        .select("id");
+      if (!locked || !locked.length) {
+        return json({ error: "This code is already being processed" }, 409);
+      }
+
+      const { data: approval } = await admin.from("exec_approvals")
+        .select("*").eq("id", run.approval_id).maybeSingle();
+      const def = approval && browserPlaybooks[approval.merchant_key as string];
+      if (!approval || !def) {
+        await admin.from("exec_runs").update({
+          status: "failed", error: "No browser playbook for this run",
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        return json({ error: "No browser playbook for this run" }, 400);
+      }
+
+      const ev: Record<string, unknown> = {
+        ...((run.evidence as Record<string, unknown>) || {}),
+        resumed_at: new Date().toISOString(),
+      };
+      const resumeState = (ev.resume as Record<string, unknown>) || {};
+      let sessionAlive = false;
+      try {
+        const { connectUrl } = await bbRefreshSession(run.browserbase_session_id as string);
+        sessionAlive = true;
+        const cdp = await Cdp.connect(connectUrl);
+        let outcome: BrowserOutcome;
+        try {
+          const page = await BbPage.open(cdp);
+          // The OTP travels only into the page — never into evidence/logs.
+          outcome = await def.resume(
+            { username: "", password: "", approval, admin },
+            page, otp_code.trim(), ev, resumeState);
+        } finally {
+          cdp.close();
+        }
+        await bbStopSession(run.browserbase_session_id as string);
+        const finalStatus = outcome.ok ? "done" : "failed";
+        const err = outcome.ok ? null : (outcome as { error: string }).error;
+        await admin.from("exec_runs").update({
+          status: finalStatus, evidence: ev, error: err,
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        await admin.from("exec_approvals").update({
+          status: finalStatus, decided_at: new Date().toISOString(),
+        }).eq("id", run.approval_id);
+        return json({ ok: outcome.ok, status: finalStatus, error: err });
+      } catch (e) {
+        if (sessionAlive) await bbStopSession(run.browserbase_session_id as string);
+        const msg = String(e?.message || e);
+        await admin.from("exec_runs").update({
+          status: "failed", evidence: ev,
+          error: "Resume failed: " + msg,
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        await admin.from("exec_approvals").update({
+          status: "failed", decided_at: new Date().toISOString(),
+        }).eq("id", run.approval_id);
+        return json({ ok: false, status: "failed", error: "Resume failed: " + msg }, 500);
+      }
+    }
+
+    // ---- default: execute an approved approval ----
+    const { approval_id } = body;
     if (!approval_id) return json({ error: "approval_id required" }, 400);
 
     // Load + verify approval. Must be owned by caller and in approved state.
@@ -283,12 +703,14 @@ serve(async (req) => {
     if (approval.action !== "cancel_subscription") {
       return json({ error: `Unsupported action ${approval.action}` }, 400);
     }
-    const playbook = playbooks[approval.merchant_key];
-    if (!playbook) {
+    const browserDef = browserPlaybooks[approval.merchant_key];
+    const httpPlaybook = playbooks[approval.merchant_key];
+    if (!browserDef && !httpPlaybook) {
       return json({ error: `No playbook for ${approval.merchant_key}` }, 400);
     }
 
-    // Load vaulted credential.
+    // Load vaulted credential. Browser playbooks (passwordless OTP flows)
+    // need only the username/email; HTTP playbooks need both.
     const { data: credRef } = await admin.from("exec_credential_refs")
       .select("*").eq("user_id", user.id).eq("merchant_key", approval.merchant_key).maybeSingle();
     if (!credRef) {
@@ -302,9 +724,13 @@ serve(async (req) => {
     const vrows = await vres.json();
     let cred: { username?: string; password?: string } = {};
     try { cred = JSON.parse(vrows?.[0]?.secret || "{}"); } catch { /* ignore */ }
-    if (!cred.username || !cred.password) {
+    if (!cred.username || (!browserDef && !cred.password)) {
       return json({ error: "Saved login is incomplete. Reconnect it in the app." }, 409);
     }
+    const ctx: ExecContext = {
+      username: cred.username, password: cred.password || "",
+      approval, admin,
+    };
 
     // Mark executing + open run row.
     await admin.from("exec_approvals").update({ status: "executing" }).eq("id", approval.id);
@@ -312,9 +738,65 @@ serve(async (req) => {
       .insert({ approval_id: approval.id, user_id: user.id, status: "started", evidence: {} })
       .select("id").single();
 
+    // ---- browser path ----
+    if (browserDef) {
+      let session: { id: string; connectUrl: string } | null = null;
+      const ev: Record<string, unknown> = {
+        merchant: approval.merchant_key, driver: "browserbase",
+      };
+      try {
+        session = await bbCreateSession(true); // keepAlive: survives the OTP pause
+        ev.session_id = session.id;
+        const cdp = await Cdp.connect(session.connectUrl);
+        let outcome: BrowserOutcome;
+        try {
+          const page = await BbPage.open(cdp);
+          outcome = await browserDef.start(ctx, page, ev);
+        } finally {
+          cdp.close();
+        }
+        if ("awaitingOtp" in outcome && outcome.awaitingOtp) {
+          // Pause: keep the session alive, wait for the user's code.
+          ev.resume = outcome.resume;
+          await admin.from("exec_runs").update({
+            status: "awaiting_otp",
+            evidence: ev,
+            browserbase_session_id: session.id,
+            otp_hint: outcome.otpHint,
+          }).eq("id", run.id);
+          return json({ ok: false, status: "awaiting_otp", run_id: run.id, otp_hint: outcome.otpHint });
+        }
+        await bbStopSession(session.id);
+        session = null;
+        const finalStatus = outcome.ok ? "done" : "failed";
+        const err = outcome.ok ? null : (outcome as { error: string }).error;
+        await admin.from("exec_runs").update({
+          status: finalStatus, evidence: ev, error: err,
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        await admin.from("exec_approvals").update({
+          status: finalStatus, decided_at: new Date().toISOString(),
+        }).eq("id", approval.id);
+        return json({ ok: outcome.ok, status: finalStatus, evidence: ev, error: err });
+      } catch (e) {
+        if (session) await bbStopSession(session.id);
+        const msg = String(e?.message || e);
+        await admin.from("exec_runs").update({
+          status: "failed", evidence: ev,
+          error: "Browser run failed: " + msg,
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        await admin.from("exec_approvals").update({
+          status: "failed", decided_at: new Date().toISOString(),
+        }).eq("id", approval.id);
+        return json({ ok: false, status: "failed", error: "Browser run failed: " + msg }, 500);
+      }
+    }
+
+    // ---- HTTP path ----
     let result: ExecResult;
     try {
-      result = await playbook({ username: cred.username, password: cred.password, approval, admin });
+      result = await httpPlaybook!(ctx);
     } catch (e) {
       result = { ok: false, evidence: { merchant: approval.merchant_key, stage: "exception" }, error: String(e?.message || e) };
     }

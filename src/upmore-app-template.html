@@ -1246,6 +1246,15 @@
         <div id="agentRunView" hidden>
           <p class="psub" id="agentRunStatus" style="text-align:center;margin:12px 0">Working…</p>
           <div id="agentRunEvidence"></div>
+          <div id="agentOtpView" hidden>
+            <p class="psub" style="text-align:left;margin:10px 0 2px"><b style="font-size:16px">Enter the code</b></p>
+            <p class="psub" id="agentOtpHint" style="text-align:left;margin-bottom:8px"></p>
+            <div class="svform" style="margin-top:0;text-align:left">
+              <label class="f"><span>Verification code</span><input id="agentOtpInput" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code"></label>
+              <button class="go" id="agentOtpSubmitBtn" style="height:44px">Submit code</button>
+            </div>
+            <p class="psub" id="agentOtpStatus" style="margin-top:8px;min-height:20px"></p>
+          </div>
           <button class="ghostbtn" id="agentSheetClose3" style="margin-top:8px">Close</button>
         </div>
       </div>
@@ -4508,8 +4517,38 @@
   }
   async function agentApprove(sub, mkey) {
     agentShowView("agentRunView");
+    $("agentOtpView").hidden = true;
+    $("agentOtpInput").value = "";
+    $("agentOtpStatus").textContent = "";
     $("agentRunStatus").textContent = "Working — the agent is cancelling it…";
     $("agentRunEvidence").innerHTML = "";
+    // Poll the latest run row until it reaches a terminal or OTP state.
+    async function pollAgentRun(approvalId, timeoutMs) {
+      const t0 = Date.now();
+      while (Date.now() - t0 < timeoutMs) {
+        await new Promise(r => setTimeout(r, 3000));
+        const { data } = await supa.from("exec_runs").select("id,status,evidence,error,otp_hint")
+          .eq("approval_id", approvalId).order("started_at", { ascending: false }).limit(1).maybeSingle();
+        if (data && (data.status === "done" || data.status === "failed" || data.status === "awaiting_otp")) return data;
+      }
+      return null;
+    }
+    async function renderAgentRunResult(run, sub) {
+      const ev = run.evidence || {};
+      if (run.status === "done") {
+        $("agentRunStatus").textContent = "Cancelled ✓";
+        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(ev.note || "Subscription cancelled.")}</p>`;
+        // Mark the subscription cancelled in-app too.
+        try {
+          await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", sub.id);
+        } catch (e) {}
+        renderSubs(); renderQueue();
+        toast("Cancelled — proof logged");
+      } else {
+        $("agentRunStatus").textContent = "Couldn't complete it";
+        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(run.error || ev.note || "The agent hit a wall — nothing was changed.")}</p>`;
+      }
+    }
     try {
       if (!session) await refreshSession();
       const uid = session && session.user && session.user.id;
@@ -4528,30 +4567,38 @@
       // executing server-side — poll the run row regardless.
       if (xerr) console.warn("agent-exec invoke transport issue; polling run row", xerr);
       else if (ex && ex.error && !ex.ok) throw new Error(ex.error);
-      // Poll the run row for completion.
-      const t0 = Date.now();
-      let run = null;
-      while (Date.now() - t0 < 120000) {
-        await new Promise(r => setTimeout(r, 3000));
-        const { data } = await supa.from("exec_runs").select("status,evidence,error")
-          .eq("approval_id", ap.id).order("started_at", { ascending: false }).limit(1).maybeSingle();
-        if (data && (data.status === "done" || data.status === "failed")) { run = data; break; }
-      }
+      let run = await pollAgentRun(ap.id, 180000);
       if (!run) throw new Error("Timed out waiting for the agent — check the audit log.");
-      const ev = run.evidence || {};
-      if (run.status === "done") {
-        $("agentRunStatus").textContent = "Cancelled ✓";
-        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(ev.note || "Subscription cancelled.")}</p>`;
-        // Mark the subscription cancelled in-app too.
-        try {
-          await supa.from("save_subscriptions").update({ status: "cancelled" }).eq("id", sub.id);
-        } catch (e) {}
-        renderSubs(); renderQueue();
-        toast("Cancelled — proof logged");
-      } else {
-        $("agentRunStatus").textContent = "Couldn't complete it";
-        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(run.error || ev.note || "The agent hit a wall — nothing was changed.")}</p>`;
+      // OTP handoff: the agent paused at a verification-code step.
+      if (run.status === "awaiting_otp") {
+        $("agentRunStatus").textContent = "Check your email — enter the code to continue";
+        $("agentOtpHint").textContent = run.otp_hint || "Enter the verification code to continue.";
+        $("agentOtpView").hidden = false;
+        $("agentOtpSubmitBtn").onclick = async () => {
+          const code = $("agentOtpInput").value.trim();
+          if (!code) { toast("Enter the code first"); return; }
+          $("agentOtpSubmitBtn").disabled = true;
+          $("agentOtpStatus").textContent = "Submitting…";
+          try {
+            const { data: rs, error: rerr } = await supa.functions.invoke("agent-exec", {
+              body: { action: "submit_otp", run_id: run.id, otp_code: code },
+            });
+            if (rerr || !rs || rs.error) throw rerr || new Error((rs && rs.error) || "Couldn't submit the code");
+            $("agentOtpInput").value = "";
+            $("agentOtpView").hidden = true;
+            $("agentOtpStatus").textContent = "";
+            $("agentRunStatus").textContent = "Code accepted — finishing the cancellation…";
+            const run2 = await pollAgentRun(ap.id, 300000);
+            if (!run2) throw new Error("Timed out — check the audit log.");
+            renderAgentRunResult(run2, sub);
+          } catch (e) {
+            $("agentOtpStatus").textContent = e.message || "Couldn't submit — try again.";
+          }
+          $("agentOtpSubmitBtn").disabled = false;
+        };
+        return;
       }
+      renderAgentRunResult(run, sub);
     } catch (e) {
       $("agentRunStatus").textContent = "Couldn't start";
       $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(e.message || "Something went wrong.")}</p>`;
