@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-kKu/a7wf4IAJx1mhRLjHTdRMcoFk/fKmU6H5FNn++Z0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-qc64Yz3aC2s8ZE6IqAVHWsCZcJjHpdNEl1aRSulgzsk=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -411,6 +411,34 @@
   .xsearch { display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:0 14px; margin:14px 0 10px; color:var(--dim); }
   .xsearch input { flex:1; background:none; border:0; outline:0; color:var(--ink); font-size:15px; padding:13px 0; font-family:inherit; }
   .xsearch input::placeholder { color:var(--dim); }
+  /* SPEC 09 "Nobody should win" additions (2026-09-26): pace chart, calendar,
+     net worth, checklists, bulk select. No red/green anywhere — no-guilt palette. */
+  .pacewrap { margin: 10px 0 4px; }
+  .pacewrap svg { width: 100%; height: 120px; display: block; }
+  .pacelegend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .pacelegend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--ink); vertical-align: middle; margin-right: 4px; }
+  .pacelegend i.dotted { border-top-style: dotted; }
+  .bbar i.proj { background: var(--amber, #C98A2B); }
+  .bbar i.over { background: var(--amberdeep, #A86A12); }
+  .bbar.outline { outline: 1.5px dashed var(--muted); outline-offset: 2px; }
+  .calgrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 10px; }
+  .calgrid .dow { font-size: 10.5px; color: var(--muted); text-align: center; padding: 2px 0; }
+  .calgrid .day { min-height: 44px; border: 1px solid var(--line); border-radius: 8px; padding: 3px 4px; font-size: 11px; position: relative; }
+  .calgrid .day .dn { color: var(--muted); font-size: 10.5px; }
+  .calgrid .day .bill { display: block; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .calgrid .day .bill.unpaid { color: var(--ink); font-weight: 600; }
+  .calgrid .day .bill.paid { color: var(--muted); text-decoration: line-through; }
+  .calgrid .day .pay { display: block; font-size: 10px; color: var(--green, #2E7D4F); font-weight: 700; }
+  .calgrid .day.today { border-color: var(--ink); border-width: 1.5px; }
+  .nwrow { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  .nwrow:last-child { border-bottom: none; }
+  .chklist { margin: 8px 0 0; padding-left: 0; list-style: none; }
+  .chklist li { font-size: 13.5px; padding: 6px 0 6px 26px; position: relative; border-bottom: 1px solid var(--line); }
+  .chklist li:before { content: "☐"; position: absolute; left: 2px; color: var(--muted); }
+  .bulkbar { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; align-items: center; background: var(--surface); padding: 8px 0; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+  .txrow.sel { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+  .scriptbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 14px; line-height: 1.55; white-space: pre-wrap; margin: 10px 0; }
+
   /* SPEC 04 Track strip + SPEC 03 Safe to Spend */
   .trackstrip { display:flex; width:100%; gap:8px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin:12px 0 4px; cursor:pointer; font-family:inherit; color:var(--ink); }
   .trackstrip span { flex:1; text-align:left; }
@@ -858,6 +886,12 @@
         <span class="pv">›</span>
       </button>
 
+      <!-- SPEC 09 Net worth entry: accounts + assets − liabilities, with trend. -->
+      <button class="item" id="nwBtn" style="text-align:left;width:100%;margin-top:12px">
+        <div class="grow"><p class="t">Net worth</p><p class="m" id="nwHomeSub">Everything you own minus everything you owe — one number, tracked monthly.</p></div>
+        <span class="pv">›</span>
+      </button>
+
       <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
            Shows when no bank is connected. One button, no forms, no friction. -->
       <div class="connectcard" id="connectCard" hidden>
@@ -909,6 +943,7 @@
       </div>
       <div id="saveSignedIn" hidden>
         <p class="psub" id="subMonthly" style="margin:8px 0 12px"></p>
+        <button class="ghostbtn" id="subCalBtn" style="margin:0 0 10px">Bills calendar →</button>
         <div class="list" id="subList"></div>
         <details class="svdetails"><summary>Add a subscription</summary>
           <div class="svform">
@@ -953,6 +988,11 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input id="txq" type="search" placeholder="Search transactions…" autocomplete="off" aria-label="Search transactions">
       </div>
+      <div style="display:flex;gap:8px;margin:8px 0 0">
+        <button class="ghostbtn" id="txSelectBtn" style="margin:0">Select</button>
+        <button class="ghostbtn" id="txCalBtn" style="margin:0">Bills calendar →</button>
+      </div>
+      <div id="txBulkHost"></div>
       <div id="txList"></div>
       <button class="ghostbtn" id="txMonthBtn" style="margin-top:12px">View month vs average →</button>
     </div>
@@ -991,6 +1031,25 @@
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
       <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Investments</div></div>
       <div id="investBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
+
+  <!-- SPEC 09 Net worth: accounts + manual assets - liabilities. Every number
+       traces to a row; monthly snapshots for the trend. -->
+  <section class="screen" id="networth" aria-label="Net worth">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Net worth</div></div>
+      <div id="nwBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
+
+  <!-- SPEC 09 Recurring calendar: bills + payday on one grid. -->
+  <section class="screen" id="reccal" aria-label="Bills calendar">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Bills calendar</div></div>
+      <div id="reccalBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
   </section>
@@ -1416,12 +1475,26 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (id === "monthview") renderMonthScreen();
     if (id === "budgetReport") renderBudgetReport();
     if (id === "investments") renderInvestments();
+    if (id === "networth") renderNetWorth();
+    if (id === "reccal") renderRecCal();
     renderNav();
   }
 
   // SPEC 04: transaction list screen wiring
   function renderTxScreen() {
+    // SPEC 09: bulk-recategorize bar (Monarch parity).
+    const bh = $("txBulkHost");
+    if (bh) { bh.innerHTML = txBulkBarHtml(); wireBulkBar(); }
+    syncTxSelectBtn();
     $("txList").innerHTML = renderTxList($("txq").value || "");
+    $("txList").querySelectorAll("[data-bulk]").forEach(cb => {
+      cb.onclick = e => e.stopPropagation();
+      cb.onchange = () => {
+        const id = String(cb.dataset.bulk);
+        if (cb.checked) txBulkSel.add(id); else txBulkSel.delete(id);
+        renderTxScreen();
+      };
+    });
     // SPEC 07: tap a transaction to recategorize it.
     $("txList").querySelectorAll("[data-rect]").forEach(el => {
       const open = () => {
@@ -1444,6 +1517,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function wireTrackUI() {
     $("trackStrip").onclick = () => show("transactions");
     $("txMonthBtn").onclick = () => show("monthview");
+    const tsb = $("txSelectBtn");
+    if (tsb) tsb.onclick = () => { txSelectMode = !txSelectMode; txBulkSel.clear(); renderTxScreen(); };
+    const tcb = $("txCalBtn");
+    if (tcb) tcb.onclick = () => show("reccal");
     $("txq").oninput = e => { $("txList").innerHTML = renderTxList(e.target.value); };
     document.querySelectorAll("[data-back]").forEach(b => b.onclick = () => show("home"));
   }
@@ -2415,6 +2492,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           why: "Charge reappeared after a confirmed cancel — needs review." });
       }
     } catch (e) {}
+    // SPEC 09: subscription-defense cards (trial warnings, approval queue,
+    // fee waivers, negotiation). Defined in the SPEC 09 module below.
+    try { cards.push(...(await subDefenseCards())); } catch (e) {}
     cards.forEach(c => { 
       // FIX (C5-v2): Cancel cards sort by waste_score descending (spec requirement).
       // Other cards use the global qScore formula.
@@ -2887,6 +2967,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     { id: "runway", title: "Runway", hook: "If your income stopped today: how many weeks you have." },
     { id: "close", title: "Monthly close", hook: "90 seconds, once a month: in, out, changed, coming." },
     { id: "income", title: "Income side", hook: "What your role pays, freelance rates, late invoices." },
+    { id: "credit", title: "Credit factors", hook: "The five factors lenders use \u2014 and your utilization math." },
   ];
 
   const cfoGet = (k, fb) => { try { const v = localStorage.getItem("cfo_" + k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } };
@@ -2911,7 +2992,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("cfoTitle").textContent = tool.title;
     const body = $("cfoBody");
     ({ debt: cfoDebt, cash: cfoCash, tax: cfoTax, insurance: cfoInsurance,
-       runway: cfoRunway, close: cfoClose, income: cfoIncome })[id](body);
+       runway: cfoRunway, close: cfoClose, income: cfoIncome, credit: cfoCredit })[id](body);
     show("cfoDetail");
     // Explicit back: override any global data-back wiring for this screen.
     const back = document.querySelector("#cfoDetail [data-back]");
@@ -3498,14 +3579,35 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <button class="go" id="cfSave" style="height:50px">Track my claim</button>
         <p class="fine">Claims typically take 30–90 days. We'll remind you to check back in 45 days.</p>
       </div>
+      <div id="claimChecklist"></div>
       <h3 class="sec" style="font-size:15px;margin-top:18px">My claims</h3>
       <div class="list" id="claimList"><p class="psub">No claims tracked yet.</p></div>`;
     $("claimSearch").onclick = () => window.open(CLAIM_SEARCH_URL, "_blank", "noopener");
     body.querySelectorAll("#claimChips .chip").forEach(c => c.onclick = () => {
       const s = c.dataset.st; let cur = claimGet();
-      cur = cur.includes(s) ? cur.filter(x => x !== s) : [...cur, s];
-      claimSet(cur); renderClaim();
+      const wasSearched = cur.includes(s);
+      cur = wasSearched ? cur.filter(x => x !== s) : [...cur, s];
+      claimSet(cur);
+      // SPEC 09: annual re-search reminder — states receive new property constantly.
+      if (!wasSearched) {
+        const d = new Date(); d.setFullYear(d.getFullYear() + 1);
+        let rs = {}; try { rs = JSON.parse(localStorage.getItem("claim_research") || "{}"); } catch (e) {}
+        rs[s] = d.toISOString().slice(0, 10);
+        try { localStorage.setItem("claim_research", JSON.stringify(rs)); } catch (e) {}
+        toast(`${s} marked searched — we'll nudge you to check again next year.`);
+      }
+      renderClaim();
     });
+    // SPEC 09: per-state document checklist (DoNotPay-style guidance, free).
+    const cfState = $("cfState");
+    const paintChecklist = () => {
+      const host = $("claimChecklist");
+      if (!host || !cfState) return;
+      host.innerHTML = claimChecklistHtml(cfState.value);
+      const p = $("cfPortal");
+      if (p) p.onclick = () => window.open(CLAIM_PORTALS[cfState.value] || CLAIM_SEARCH_URL, "_blank", "noopener");
+    };
+    if (cfState) { cfState.onchange = paintChecklist; paintChecklist(); }
     $("cfSave").onclick = trackClaim;
     renderClaimList();
   }
@@ -3874,10 +3976,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         const save = Number(s.amount) * 12 - Number(s.annual_price);
         if (save > 0) annualTxt = ` \u00b7 annual $${Number(s.annual_price).toFixed(0)} saves $${save.toFixed(0)}/yr`;
       }
+      // SPEC 09: annualized cost on every row — the number that makes subscriptions real.
+      const yrRow = Math.round(Number(s.amount || 0) * (INT2MO[s.billing_interval] || 1) * 12);
       return `
       <div class="item"><div class="grow" data-open="${s.id}" style="cursor:pointer">
         <p class="t">${esc(s.merchant)}</p>
-        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""}${esc(qSubDue(s))}${trialTxt}${annualTxt}</p>
+        <p class="m num">${money$(s.amount)}${INTPER[s.billing_interval] || ""} · $${yrRow}/yr${esc(qSubDue(s))}${trialTxt}${annualTxt}</p>
       </div><button class="linkbtn" data-unsub="${s.id}">Cancel</button></div>`;
     }).join("")
       : `<div class="item"><div class="grow"><p class="m">Nothing tracked yet \u2014 add your first subscription below.</p></div></div>`;
@@ -3890,6 +3994,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const svGo = $("svSignin");
     if (svGo) svGo.onclick = () => show("login");
     wireDeadlines();
+    const scb = $("subCalBtn");
+    if (scb) scb.onclick = () => show("reccal");
     wireTrackUI(); // SPEC 04: strip → transactions → month view
     if (typeof wireBudgetReport === "function") wireBudgetReport(); // SPEC 07
     if (typeof wireInvestments === "function") wireInvestments(); // SPEC 08
@@ -6561,6 +6667,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("stsTotal").textContent = fmt$(Math.round(sts.total));
     // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
     $("stsSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
+    // SPEC 09: committed-spending visibility — bills due + essentials estimate,
+    // the two numbers already subtracted above. Copilot shows "committed"; now we do too.
+    $("stsSub").textContent += ` · ${fmt$(Math.round(fixedRem))} bills due, ${fmt$(Math.round(committedRem))} essentials est.`;
     // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
     if (pay.variable && pay.count >= 2) {
       $("stsSub").textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
@@ -6603,11 +6712,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const rows = transactions
       .filter(t => !q || t.merchant_raw.toLowerCase().includes(q) || effCat(t).toLowerCase().includes(q))
       .slice(0, 100);
-    return rows.map(t => `
-      <div class="txrow" data-tx="${esc(t.id)}" data-rect="${esc(t.id)}" role="button" tabindex="0" aria-label="Recategorize ${esc(t.merchant_raw)}">
+    return rows.map(t => {
+      const sel = typeof txSelectMode !== "undefined" && txSelectMode;
+      const checked = sel && typeof txBulkSel !== "undefined" && txBulkSel.has(String(t.id));
+      return `
+      <div class="txrow${checked ? " sel" : ""}" data-tx="${esc(t.id)}" ${sel ? "" : `data-rect="${esc(t.id)}"`} role="button" tabindex="0" aria-label="${sel ? "Select" : "Recategorize"} ${esc(t.merchant_raw)}">
+        ${sel ? `<input type="checkbox" data-bulk="${esc(t.id)}" ${checked ? "checked" : ""} aria-label="Select ${esc(t.merchant_raw)}" style="margin-right:8px;flex-shrink:0">` : ""}
         <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
-      </div>`).join("");
+      </div>`; }).join("");
   }
 
   // Month view: spending by category, this month vs 3-month average.
@@ -6976,6 +7089,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function effCat(t) {
     const ov = blsGet(BUDGET_LS.overrides, {}) || {};
     if (t && t.id != null && ov[t.id] && allCats().includes(ov[t.id])) return ov[t.id];
+    // SPEC 09: merchant rules beat provider categories, lose to per-tx overrides.
+    try { const rl = txRuleFor(t); if (rl && allCats().includes(rl)) return rl; } catch (e) {}
     const c = t && t.category;
     return allCats().includes(c) ? c : "Other";
   }
@@ -7163,10 +7278,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (liquid >= 5000) nudge = `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">You have ${bm0(liquid)} sitting in your accounts. The Idle cash check shows what that's costing you per year.</p><button class="ghostbtn" id="brIdle" style="margin-top:8px">Check idle cash →</button></div>`;
     } catch (e) {}
 
+    const isCurMonth = ym === new Date().toISOString().slice(0, 7);
     const catRows = model.rows.map(r => {
       const pct = r.effective > 0 ? Math.min(100, (r.spent / r.effective) * 100) : (r.spent > 0 ? 100 : 0);
+      // SPEC 09: projection coloring (Copilot parity, no-guilt palette).
+      // over -> solid amber; projected-over -> amber + dotted outline; else neutral.
+      const proj = catProjection(r.spent, ym);
+      const isOver = r.left < 0;
+      const projOver = !isOver && isCurMonth && r.effective > 0 && proj > r.effective * 1.02;
+      const barCls = isOver ? "over" : (projOver ? "proj" : "");
+      const outlineCls = projOver ? " outline" : "";
+      const projTxt = isCurMonth && !isOver && r.effective > 0
+        ? (projOver ? ` · on pace for ${bm0(proj)}` : ` · on pace`) : ``;
       const status = r.left >= 0
-        ? `${bm0(r.left)} left of ${bm0(r.effective)}`
+        ? `${bm0(r.left)} left of ${bm0(r.effective)}${projTxt}`
         : `${bm0(-r.left)} over your ${bm0(r.effective)} budget`;
       const rollTxt = r.rollover > 0 ? ` · ${bm0(r.rollover)} rolled over from last month` : ``;
       const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested budget`;
@@ -7174,7 +7299,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         ? ` · usual ${bm0(r.prevAvg)}/mo` : ``;
       return `<div class="brow">
         <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)}</span></div>
-        <div class="bbar" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget"><i style="width:${pct}%"></i></div>
+        <div class="bbar${outlineCls}" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget${projOver ? ", projected over budget" : ""}"><i class="${barCls}" style="width:${pct}%"></i></div>
         <div class="bstat">${status}${rollTxt}</div>
         <div class="bs"><button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)} — change</button>${trendTxt}</div></div>`;
     }).join("");
@@ -7187,6 +7312,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     const spikeHtml = spikes.slice(0, 3).map(s =>
       `<div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:14px">${esc(s.body || s.title)}</p></div>`).join("");
+    // SPEC 09: savings rate (Monarch card) + Age of Money (YNAB metric).
+    const saveRate = savingsRate(model);
+    const aomVal = ageOfMoney(transactions);
+    const srAomHtml = (saveRate != null || aomVal != null)
+      ? `<div class="bkv">` +
+        (saveRate != null ? `<div class="pcard"><b class="k">${saveRate}%</b><span class="k">savings rate</span></div>` : ``) +
+        (aomVal != null ? `<div class="pcard"><b class="k">${aomVal} days</b><span class="k">age of money</span></div>` : ``) +
+        `</div><p class="psub" style="margin:-4px 0 8px">${aomVal != null ? `A dollar you earn sits about ${aomVal} days before it\u2019s spent \u2014 the longer, the calmer. ` : ""}${saveRate != null && saveRate < 20 ? `Under 20% is normal when you\u2019re starting out.` : ""}</p>`
+      : ``;
 
     body.innerHTML = `
       ${sampleTag}
@@ -7196,7 +7330,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <button id="brNext" ${idx <= 0 ? "disabled" : ""} aria-label="Next month">›</button>
       </div>
       <p class="fine" style="margin:-6px 0 10px">${esc(cov)} Every number below comes from your transactions.</p>
-      <div class="pcard"><p class="bsum">${esc(budgetSummaryText(model))}</p></div>
+      <div class="pcard"><p class="bsum">${esc(budgetSummaryText(model))}</p>${paceChartSVG(transactions, ym)}</div>
       <h2 class="sec">Money in vs money out</h2>
       <div class="bkv">
         <div class="pcard"><b class="k">${bm0(model.agg.in)}</b><span class="k">came in</span></div>
@@ -7204,6 +7338,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <div class="pcard"><b class="k">${bm0(model.agg.kept)}</b><span class="k">${kept >= 0 ? "you kept" : "overspent"}</span></div>
       </div>
       ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across your accounts right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
+      ${srAomHtml}
       <h2 class="sec">Your budgets</h2>
       <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
       <div class="bcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
@@ -7218,6 +7353,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <h2 class="sec">Recurring charges</h2>
       <p class="psub" style="margin:-6px 0 10px">${bm0(model.rec.total)}/month on autopilot across ${model.rec.list.length} subscriptions and bills.</p>
       <div class="bcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
+      <button class="ghostbtn" id="brCal" style="margin-top:10px">Bills calendar →</button>
       ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
       ${nudge}`;
 
@@ -7229,6 +7365,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const ac = $("brAddCat"); if (ac) ac.onclick = openAddCatSheet;
     const ke = $("brKeepEdit"); if (ke) ke.onclick = openKeepSheet;
     const bi = $("brIdle"); if (bi) bi.onclick = () => openCFO("cash");
+    const bc2btn = $("brCal"); if (bc2btn) bc2btn.onclick = () => show("reccal");
   }
 
   // ---- Sheets: edit target, add category, set keep goal ----
@@ -7287,7 +7424,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <p class="psub">${esc(currentLabel || "")}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
         ${cats.map(c => `<button class="ghostbtn" data-pickcat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
-      </div>`);
+      </div>
+      <button class="ghostbtn" id="recatRuleBtn" style="margin-top:10px">Always use one category for this merchant →</button>`);
+    const rrb = $("recatRuleBtn");
+    if (rrb) rrb.onclick = () => {
+      const { transactions } = loadTrackData();
+      const t = (transactions || []).find(x => String(x.id) === String(txId));
+      if (t) openRuleSheet(t.merchant_raw, t.merchant_id || normalizeMerchant(t.merchant_raw || ""));
+      else toast("Couldn't find that transaction.");
+    };
     $("budgetSheetBody").querySelectorAll("[data-pickcat]").forEach(b => b.onclick = () => {
       setTxCategory(txId, b.dataset.pickcat);
       closeBudgetSheet();
@@ -7529,7 +7674,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const concHtml = sum.concentrated.length
         ? `<h2 class="sec">Concentration</h2><div class="bcard">` + sum.concentrated.map(h => {
             const pct = Math.round(h.value / sum.total * 100);
-            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)}</i></div><span>${pct}% of everything</span></div>`;
+            const trim = Math.max(0, h.value - 0.25 * sum.total);
+            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)} \u00b7 trim ${bm0(trim)} to get back under 25%</i></div><span>${pct}% of everything</span></div>`;
           }).join("") + `</div><p class="psub" style="margin-top:8px">${sum.concentrated.length === 1 ? "One position is a quarter or more of your investments — a lot riding on a single name." : "Several positions are a quarter or more each — worth knowing how concentrated this is."} This isn't advice; it's arithmetic.</p>`
         : "";
       const feeHtml = sum.feeKnownValue > 0 || sum.feeUnknown > 0
@@ -7543,11 +7689,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const holdRows = sum.sorted.map(h => {
         const f = feeFor(h);
         const gain = h.cost_basis != null && h.cost_basis > 0 ? h.value - h.cost_basis : null;
+        const retPct = gain != null && h.cost_basis > 0 ? (gain / h.cost_basis * 100) : null;
         const sub = h.source === "manual" ? "Added by you"
           : esc(h.account_name || (h.source === "plaid" ? "Brokerage" : ""));
         return `<div class="brow" data-hold="${esc(h.id)}" role="button" tabindex="0" style="cursor:pointer">
           <div class="bt"><b>${esc(h.symbol)}</b><span>${bm0(h.value)}</span></div>
-          <div class="bs">${esc(h.name)} · ${h.quantity} @ ${bc2(h.price)}${gain != null ? ` · ${gain >= 0 ? "up" : "down"} ${bm0(Math.abs(gain))}` : ""}${f.known && (h.bucket === "Funds" || h.bucket === "Stocks") ? ` · ${(f.rate * 100).toFixed(2)}% fee` : ""}</div>
+          <div class="bs">${esc(h.name)} · ${h.quantity} @ ${bc2(h.price)}${gain != null ? ` · ${gain >= 0 ? "up" : "down"} ${bm0(Math.abs(gain))}${retPct != null ? ` (${retPct >= 0 ? "+" : ""}${retPct.toFixed(1)}%)` : ""}` : ""}${f.known && (h.bucket === "Funds" || h.bucket === "Stocks") ? ` · ${(f.rate * 100).toFixed(2)}% fee` : ""}</div>
           ${sub ? `<div class="bs" style="color:var(--dim)">${sub}</div>` : ""}</div>`;
       }).join("");
       mainHtml = `
@@ -7557,7 +7704,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         ${concHtml}${feeHtml}${cashHtml}
         <h2 class="sec">Positions</h2>
         <div class="bcard">${holdRows}</div>
-        <button class="ghostbtn" id="invAdd" style="margin-top:10px">+ Add a holding manually</button>`;
+        <button class="ghostbtn" id="invAdd" style="margin-top:10px">+ Add a holding manually</button>
+        <h2 class="sec">Retirement check</h2>
+        <div class="pcard" id="mcCard"><p class="bsum" style="font-size:14px">Will your investments cover retirement? We run 1,000 market scenarios with your numbers — not a promise, just the math.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+            <label class="f"><span>Your age</span><input id="mcAge" inputmode="numeric" value="19"></label>
+            <label class="f"><span>Retire at</span><input id="mcRet" inputmode="numeric" value="65"></label>
+            <label class="f"><span>Invested now ($)</span><input id="mcNow" inputmode="decimal"></label>
+            <label class="f"><span>Adding ($/mo)</span><input id="mcAdd" inputmode="decimal" value="200"></label>
+            <label class="f"><span>Need at retirement ($/yr, today\u2019s dollars)</span><input id="mcNeed" inputmode="decimal" value="50000"></label>
+            <label class="f"><span>Compare: add extra ($/mo)</span><input id="mcAdd2" inputmode="decimal" value="400"></label>
+          </div>
+          <button class="go" id="mcRun" style="margin-top:10px;height:48px">Run the scenarios</button>
+          <div id="mcOut" style="margin-top:10px"></div>
+          <p class="fine" style="margin-top:8px">Assumes 7% average yearly return with 15% volatility, 2.5% inflation, 1,000 scenarios, same seed every run. Analysis only — not advice, not a prediction.</p></div>`;
     }
 
     // Balance-only accounts
@@ -7578,6 +7738,26 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     };
     const ia = $("invAdd") || $("invAddFirst"); if (ia) ia.onclick = () => openHoldingSheet(null);
     const ii = $("invIdle"); if (ii) ii.onclick = () => openCFO("cash");
+    // SPEC 09: Monte Carlo retirement check (analysis only).
+    const mcNowEl = $("mcNow");
+    try { if (mcNowEl && !mcNowEl.value && typeof sum !== "undefined" && sum.total > 0) mcNowEl.value = Math.round(sum.total); } catch (e) {}
+    const mr = $("mcRun");
+    if (mr) mr.onclick = () => {
+      const g = id => { const el = $(id); const v = el ? parseFloat(el.value) : NaN; return isNaN(v) ? 0 : v; };
+      const age = Math.max(16, Math.min(90, g("mcAge") || 19));
+      const ret = Math.max(age + 1, Math.min(100, g("mcRet") || 65));
+      const now = Math.max(0, g("mcNow"));
+      const add = Math.max(0, g("mcAdd"));
+      const need = Math.max(0, g("mcNeed") || 50000);
+      const add2 = Math.max(0, g("mcAdd2"));
+      const out = $("mcOut");
+      const r1 = monteCarlo({ age, ret, now, monthly: add, need });
+      const r2 = monteCarlo({ age, ret, now, monthly: add2, need });
+      out.innerHTML =
+        `<div class="bcard"><div class="mrow"><div><b>Adding ${bm0(add)}/mo</b><i>${r1.success}% of scenarios cover ${bm0(need)}/yr · median ${bm0(r1.median)} at ${ret}</i></div><span>${r1.success >= 80 ? "on track" : r1.success >= 50 ? "coin flip" : "short"}</span></div>` +
+        (add2 !== add ? `<div class="mrow"><div><b>Adding ${bm0(add2)}/mo instead</b><i>${r2.success}% of scenarios · median ${bm0(r2.median)}</i></div><span>${r2.success >= 80 ? "on track" : r2.success >= 50 ? "coin flip" : "short"}</span></div>` : ``) +
+        `</div><p class="psub" style="margin-top:8px">${r1.success >= 80 ? "In most simulated markets this plan covers the goal." : "In most simulated markets this plan falls short — the gap is the math talking, not a verdict on you."} Not advice; assumptions are listed above.</p>`;
+    };
     body.querySelectorAll("[data-hold]").forEach(el => {
       const open = () => openHoldingSheet(el.dataset.hold);
       el.onclick = open;
@@ -7918,6 +8098,624 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     else if (hasOnboarding) { show("login"); bootDone = true; }
     else { show("splash"); /* splash timer advances to welcome */ }
   })();
+
+  /* ================= SPEC 09: "NOBODY SHOULD WIN" (2026-09-26) =================
+     Competitive gaps closed vs Monarch / YNAB / Rocket Money / Copilot /
+     EveryDollar / Empower / DoNotPay / state programs:
+       - subscription defense: trial warnings, approval queue, negotiation
+         scripts, fee-waiver scripts, annualized rows (zombie-charge monitoring
+         already shipped: the cancel watcher re-queues "They charged you anyway")
+       - budget: pace chart, projection colors, savings rate, age of money,
+         committed spending from real upcoming charges, recurring calendar
+       - transactions: merchant rules, bulk recategorize
+       - net worth: assets − liabilities + monthly snapshots + trend
+       - investments: per-holding return % (wired into positions), trim math
+         (wired into concentration), Monte Carlo retirement check (below)
+       - claim: per-state document checklists + annual re-search reminders
+       - CFO: credit factors tool
+     No red/green anywhere — the no-guilt palette holds for every new element. */
+
+  // ---- Monte Carlo retirement check (SPEC 08 depth, Empower parity) ----
+  // Deterministic: mulberry32 seed → identical results every run. Assumptions
+  // are disclosed next to the button; analysis only, never a promise.
+  function monteCarlo(o) {
+    const years = Math.max(1, (o.ret || 65) - (o.age || 19));
+    const MEAN = 0.07, SD = 0.15, INFL = 0.025, N = 1000;
+    let seed = 20260926;
+    const rnd = () => {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+    const needAtRet = (o.need || 50000) * Math.pow(1 + INFL, years);
+    const target = needAtRet / 0.04; // 4% rule
+    let wins = 0; const finals = new Array(N);
+    for (let i = 0; i < N; i++) {
+      let v = Math.max(0, o.now || 0);
+      for (let y = 0; y < years; y++) {
+        const u1 = rnd(), u2 = rnd();
+        const z = Math.sqrt(-2 * Math.log(u1 + 1e-12)) * Math.cos(2 * Math.PI * u2);
+        v = v * (1 + MEAN + SD * z) + (o.monthly || 0) * 12;
+        if (v < 0) v = 0;
+      }
+      finals[i] = v;
+      if (v >= target) wins++;
+    }
+    finals.sort((a, b) => a - b);
+    return { success: Math.round(wins / N * 100), median: Math.round(finals[500]), target: Math.round(target) };
+  }
+
+  // ---- Subscription defense: queue cards (SPEC 02 extension) ----
+  const NEGOTIATE_FOR = /(at&t|verizon|t-mobile|spectrum|comcast|xfinity|cox|dish|directv|geico|progressive|state farm|allstate|pge|comed|con ?ed|duke energy|national grid|centurylink|lumen|frontier|optimum|charter)/i;
+  const FEE_RE = /(overdraft|insufficient fund|late fee|late payment|maintenance fee|monthly service fee|atm fee|foreign transaction fee|returned item|nonsufficient)/i;
+
+  function detectFees(txs) {
+    return (txs || []).filter(t => t && t.amount < 0 && !t.is_pending && !t.is_transfer
+      && FEE_RE.test(t.merchant_raw || "")).slice(0, 5);
+  }
+
+  async function subDefenseCards() {
+    const cards = [];
+    try {
+      const { transactions } = loadTrackData();
+      const signed = (typeof getSessionToken === "function") ? !!(await getSessionToken()) : false;
+      const rows = signed && typeof saveRows === "function"
+        ? await saveRows("save_subscriptions", "created_at", false) : localSubsGet();
+      const act = (rows || []).filter(r => r.status !== "cancelled");
+      const nowMs = Date.now();
+      // (a) Trial conversion warnings ≤ 7 days out. Rocket Money paywalls
+      // early warnings; ours are free and fire before the charge.
+      act.filter(s => s.billing_interval === "trial" && s.next_billing_date).forEach(s => {
+        const days = Math.round((new Date(s.next_billing_date) - nowMs) / 864e5);
+        if (days >= 0 && days <= 7) {
+          cards.push({
+            type: "trial", id: "trialwarn-" + s.id,
+            title: `${s.merchant} trial ends in ${days} day${days === 1 ? "" : "s"}`,
+            sub: `First charge ${money$(s.amount)} hits ${s.next_billing_date}. Cancel before if you're not keeping it.`,
+            dollars: Number(s.amount) * 12, conf: 0.95, urg: 5, eff: 3,
+            cta: "How to cancel",
+            act: () => { show("guide"); if (typeof guideAsk === "function") guideAsk(`How do I cancel ${s.merchant} before the trial ends on ${s.next_billing_date}?`); },
+            why: "Trial converts to a paid charge within 7 days."
+          });
+        }
+      });
+      // (b) Recurring-charge approval queue: detected but not tracked yet.
+      // Monarch prompts to verify new recurring charges — same idea, one card.
+      let recs = [];
+      try { recs = (detectRecurrence(transactions || []) || []).filter(r => !r.dormant); } catch (e) {}
+      const trackedMids = new Set(act.map(s => normalizeMerchant(s.merchant || "")));
+      let dismissed = new Set();
+      try { dismissed = new Set(JSON.parse(localStorage.getItem("upmore_rec_dismissed") || "[]")); } catch (e) {}
+      const fresh = recs.filter(r => !trackedMids.has(r.merchant_id) && !dismissed.has(r.merchant_id));
+      if (fresh.length) {
+        cards.push({
+          type: "approval", id: "rec-approval",
+          title: `Found ${fresh.length} repeating charge${fresh.length === 1 ? "" : "s"}`,
+          sub: fresh.slice(0, 3).map(r => `${r.merchant_raw} ${money$(Math.abs(r.amount))}/${r.interval}`).join(" · ") + (fresh.length > 3 ? ` +${fresh.length - 3} more` : ""),
+          dollars: fresh.reduce((s, r) => s + Math.abs(r.amount) * 12, 0), conf: 0.9, urg: 3, eff: 2,
+          cta: "Review them", act: () => openApprovalQueue(fresh),
+          why: "Repeating charges that aren't on your tracked list yet."
+        });
+      }
+      // (c) Bank-fee waiver script from detected fee transactions.
+      const fees = detectFees(transactions);
+      if (fees.length) {
+        const f = fees[0];
+        cards.push({
+          type: "fee", id: "feewaive-" + f.id,
+          title: `A $${Math.abs(f.amount).toFixed(2)} bank fee from ${f.merchant_raw}`,
+          sub: "First-time fees get waived when you ask the right way — here's the exact script.",
+          dollars: Math.abs(f.amount), conf: 0.9, urg: 3, eff: 4,
+          cta: "Get the script", act: () => openFeeSheet(f),
+          why: "Bank fee detected — waiver scripts work well on first offenses."
+        });
+      }
+      // (d) Bill negotiation: utility/telecom subs get the exact call script, free.
+      const neg = act.find(s => NEGOTIATE_FOR.test(s.merchant || ""));
+      if (neg && !dismissed.has("neg-" + neg.id)) {
+        cards.push({
+          type: "negotiate", id: "neg-" + neg.id,
+          title: `Lower your ${neg.merchant} bill`,
+          sub: `You're paying ${money$(neg.amount)}/mo. A 5-minute call with this exact script often cuts 10–30%.`,
+          dollars: Math.round(Number(neg.amount) * 12 * 0.2), conf: 0.5, urg: 2, eff: 6,
+          cta: "Get the script", act: () => openNegotiateSheet(neg),
+          cta2: "Not interested", act2: () => { dismissed.add("neg-" + neg.id); try { localStorage.setItem("upmore_rec_dismissed", JSON.stringify([...dismissed])); } catch (e) {} renderQueue(); },
+          why: "Utility/telecom bills are negotiable — script included, no fee."
+        });
+      }
+      // (e) Annual re-search reminders for already-searched states.
+      let rs = {};
+      try { rs = JSON.parse(localStorage.getItem("claim_research") || "{}"); } catch (e) {}
+      const todayIso = new Date().toISOString().slice(0, 10);
+      Object.entries(rs).forEach(([st, due]) => {
+        if (due <= todayIso) {
+          cards.push({
+            type: "research", id: "research-" + st,
+            title: `Time to re-search ${st} unclaimed property`,
+            sub: "States receive new unclaimed money all the time — a yearly check takes two minutes and it's free.",
+            dollars: 0, conf: 0.6, urg: 2, eff: 8,
+            cta: "Search again",
+            act: () => {
+              window.open(typeof CLAIM_SEARCH_URL !== "undefined" ? CLAIM_SEARCH_URL : "https://www.missingmoney.com/", "_blank", "noopener");
+              const d = new Date(); d.setFullYear(d.getFullYear() + 1);
+              rs[st] = d.toISOString().slice(0, 10);
+              try { localStorage.setItem("claim_research", JSON.stringify(rs)); } catch (e) {}
+              renderQueue();
+            },
+            why: "Annual re-search reminder for a state you already checked."
+          });
+        }
+      });
+    } catch (e) { /* defense never breaks the queue */ }
+    return cards;
+  }
+
+  function openApprovalQueue(recs) {
+    openBudgetSheet(`Repeating charges (${recs.length})`,
+      `<p class="psub">These bill on a schedule but aren't on your tracked list. Track the ones you want to watch — or dismiss the rest.</p>` +
+      recs.map(r => `<div class="mrow"><div><b>${esc(r.merchant_raw)}</b><i>${money$(Math.abs(r.amount))} ${esc(r.interval)} · ${r.occurrences} charges seen</i></div>
+        <span style="display:flex;gap:6px;flex-shrink:0"><button class="tgt" data-track="${esc(r.merchant_id)}">Track</button><button class="tgt" data-nosub="${esc(r.merchant_id)}">Not a sub</button></span></div>`).join(""));
+    const body = $("budgetSheetBody");
+    body.querySelectorAll("[data-track]").forEach(b => b.onclick = async () => {
+      const r = recs.find(x => x.merchant_id === b.dataset.track);
+      if (!r) return;
+      const row = { merchant: r.merchant_raw, amount: Math.abs(r.amount), currency: "USD",
+        billing_interval: r.interval === "monthly" ? "monthly" : r.interval === "yearly" ? "yearly" : "monthly",
+        next_billing_date: r.next_date || null, status: "active", detected_via: "approval_queue" };
+      const signed = (typeof getSessionToken === "function") ? !!(await getSessionToken()) : false;
+      if (signed && typeof saveInsert === "function") await saveInsert("save_subscriptions", row);
+      else { const lr = localSubsGet(); row.id = "local-" + Date.now(); lr.push(row); localSubsSet(lr); }
+      toast(`${r.merchant_raw} is now tracked.`);
+      closeBudgetSheet(); renderSubs(); renderQueue();
+    });
+    body.querySelectorAll("[data-nosub]").forEach(b => b.onclick = () => {
+      let d = new Set();
+      try { d = new Set(JSON.parse(localStorage.getItem("upmore_rec_dismissed") || "[]")); } catch (e) {}
+      d.add(b.dataset.nosub);
+      try { localStorage.setItem("upmore_rec_dismissed", JSON.stringify([...d])); } catch (e) {}
+      b.closest(".mrow").remove();
+      renderQueue();
+    });
+  }
+
+  function negotiateScript(s) {
+    const years = "a while";
+    return `Call the number on your ${s.merchant} bill (or the "contact us" page in your account). Say exactly this:\n\n"Hi, I've been a customer for ${years} and my bill is ${money$(s.amount)} a month now. I'd like to lower it — can you check what retention or loyalty offers are on my account?"\n\nThen wait. Don't accept the first offer. If they say nothing is available:\n\n"I understand. Before I look at other options, is there a supervisor who can review loyalty pricing?"\n\nNotes that matter:\n• Call mid-month, Tuesday–Thursday mornings — shortest holds.\n• Have your account number ready.\n• If they offer a promo rate, ask: "How long does that rate last, and what does it go to after?"\n• Never agree to a longer contract to get the discount unless you want it.`;
+  }
+
+  function openNegotiateSheet(s) {
+    openBudgetSheet(`Lower your ${s.merchant} bill`,
+      `<p class="psub">Paying ${money$(s.amount)}/mo${s.billing_interval && s.billing_interval !== "monthly" ? ` (${esc(s.billing_interval)})` : ""}. Copy this into the call:</p>
+       <div class="scriptbox">${esc(negotiateScript(s))}</div>
+       <button class="go" id="negCopy" style="height:48px">Copy script</button>
+       <p class="fine" style="margin-top:8px">Bill negotiators charge 25–60% of what they save you. This script is free — the savings are all yours.</p>`);
+    const c = $("negCopy");
+    if (c) c.onclick = () => {
+      const txt = negotiateScript(s);
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => toast("Script copied.")).catch(() => toast("Copy failed — long-press the text."));
+      else toast("Long-press the text to copy.");
+    };
+  }
+
+  function feeWaiverScript(f) {
+    return `Call the number on the back of your debit card. Say exactly this:\n\n"Hi, I see a ${money$(Math.abs(f.amount))} ${f.merchant_raw} fee on ${f.posted_at}. This is my first time — can you waive it as a courtesy?"\n\nIf they hesitate:\n\n"I've been a customer in good standing. I'd really appreciate a one-time courtesy waiver."\n\nIf they still say no, ask for a supervisor — supervisors can waive what reps can't.\n\nAfter the call: set up a low-balance alert in your banking app so it doesn't happen again.`;
+  }
+
+  function openFeeSheet(f) {
+    openBudgetSheet(`Waive the ${money$(Math.abs(f.amount))} fee`,
+      `<p class="psub">${esc(f.merchant_raw)} · ${esc(f.posted_at)}. First-time fees are waived more often than not:</p>
+       <div class="scriptbox">${esc(feeWaiverScript(f))}</div>
+       <button class="go" id="feeCopy" style="height:48px">Copy script</button>`);
+    const c = $("feeCopy");
+    if (c) c.onclick = () => {
+      const txt = feeWaiverScript(f);
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => toast("Script copied.")).catch(() => toast("Copy failed — long-press the text."));
+      else toast("Long-press the text to copy.");
+    };
+  }
+
+  // ---- Budget: pace chart, projections, savings rate, age of money ----
+  function paceChartSVG(transactions, ym) {
+    const days = new Date(+ym.slice(0, 4), +ym.slice(5, 7), 0).getDate();
+    const isCur = ym === new Date().toISOString().slice(0, 7);
+    const elapsed = isCur ? Math.min(new Date().getDate(), days) : days;
+    const daily = new Array(days + 1).fill(0);
+    (transactions || []).filter(t => t && t.amount < 0 && !t.is_pending && !t.is_transfer && String(t.posted_at || "").slice(0, 7) === ym)
+      .forEach(t => { const d = Math.min(days, Math.max(1, +String(t.posted_at).slice(8, 10) || 1)); daily[d] += Math.abs(t.amount); });
+    const cum = []; let run = 0;
+    for (let d = 1; d <= days; d++) { run += daily[d]; cum[d] = run; }
+    const spent = cum[elapsed] || 0;
+    const proj = elapsed > 0 ? spent / elapsed * days : spent;
+    const maxV = Math.max(proj, spent, 1) * 1.08;
+    const W = 340, H = 110, P = 8;
+    const X = d => P + (d - 1) / (days - 1) * (W - 2 * P);
+    const Y = v => H - P - (v / maxV) * (H - 2 * P);
+    const line = pts => pts.map((p, i) => `${i ? "L" : "M"}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(" ");
+    const actual = []; for (let d = 1; d <= elapsed; d++) actual.push([d, cum[d]]);
+    const ideal = [[1, proj / days], [days, proj]];
+    const todayX = X(Math.max(1, elapsed)).toFixed(1);
+    return `<div class="pacewrap" role="img" aria-label="Spending pace: ${bm0(spent)} spent so far, on pace for ${bm0(proj)}">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+        <line x1="${todayX}" y1="${P}" x2="${todayX}" y2="${H - P}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3"/>
+        <path d="${line(ideal)}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <path d="${line(actual.length ? actual : [[1, 0]])}" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+      </svg>
+      <div class="pacelegend"><span><i></i>your spending</span><span><i class="dotted"></i>ideal pace → ${bm0(proj)}</span></div>
+    </div>`;
+  }
+
+  function catProjection(spent, ym) {
+    const days = new Date(+ym.slice(0, 4), +ym.slice(5, 7), 0).getDate();
+    const isCur = ym === new Date().toISOString().slice(0, 7);
+    const elapsed = isCur ? Math.max(1, Math.min(new Date().getDate(), days)) : days;
+    return spent / elapsed * days;
+  }
+
+  function savingsRate(model) {
+    if (!model || !model.agg || !(model.agg.in > 0)) return null;
+    return Math.round(model.agg.kept / model.agg.in * 100);
+  }
+
+  // Age of Money (YNAB-style): average days a dollar sits between arriving
+  // and being spent. Weighted by outflow amount. Labeled as an estimate.
+  function ageOfMoney(txs) {
+    const flows = (txs || []).filter(t => t && !t.is_pending && !t.is_transfer && t.posted_at)
+      .sort((a, b) => String(a.posted_at).localeCompare(String(b.posted_at)));
+    let lastIn = null, wDays = 0, wSum = 0;
+    flows.forEach(t => {
+      const d = new Date(String(t.posted_at).slice(0, 10) + "T12:00:00");
+      if (t.amount > 0) lastIn = d;
+      else if (lastIn && d >= lastIn) {
+        const days = Math.round((d - lastIn) / 864e5);
+        wDays += days * Math.abs(t.amount); wSum += Math.abs(t.amount);
+      }
+    });
+    return wSum > 0 ? Math.round(wDays / wSum) : null;
+  }
+
+  // ---- Recurring calendar: bills + payday on one grid ----
+  function projectDates(rec, year, month) {
+    // Returns day-of-month numbers in (year, month) this recurrence bills.
+    const out = [];
+    try {
+      const iv = rec.interval;
+      const step = iv === "weekly" ? 7 : iv === "biweekly" ? 14 : iv === "quarterly" ? null : iv === "yearly" ? null : 30;
+      let base = null;
+      if (rec.next_date) base = new Date(rec.next_date + "T12:00:00");
+      else if (rec.last_date) base = new Date(rec.last_date + "T12:00:00");
+      if (!base || isNaN(base)) return out;
+      if (iv === "monthly" || step === 30) {
+        const dom = base.getDate();
+        const dim = new Date(year, month + 1, 0).getDate();
+        out.push(Math.min(dom, dim));
+      } else if (iv === "yearly") {
+        if (base.getMonth() === month) out.push(Math.min(base.getDate(), new Date(year, month + 1, 0).getDate()));
+      } else if (iv === "quarterly") {
+        if ((month - base.getMonth()) % 3 === 0 && new Date(year, month, 1) >= new Date(base.getFullYear(), base.getMonth(), 1))
+          out.push(Math.min(base.getDate(), new Date(year, month + 1, 0).getDate()));
+      } else if (step) {
+        // walk weekly/biweekly from base
+        const first = new Date(year, month, 1), last = new Date(year, month + 1, 0);
+        let d = new Date(base);
+        while (d < first) d.setDate(d.getDate() + step);
+        while (d <= last) { out.push(d.getDate()); d.setDate(d.getDate() + step); }
+      }
+    } catch (e) {}
+    return out;
+  }
+
+  function detectPaydays(txs) {
+    // Regular large inflows: group by merchant, need ≥2 with a stable gap.
+    const byM = {};
+    (txs || []).filter(t => t && t.amount > 0 && !t.is_pending && !t.is_transfer)
+      .forEach(t => { const mid = t.merchant_id || normalizeMerchant(t.merchant_raw || ""); (byM[mid] = byM[mid] || []).push(t); });
+    const out = [];
+    Object.values(byM).forEach(ts => {
+      if (ts.length < 2) return;
+      const ds = ts.map(t => String(t.posted_at).slice(0, 10)).sort();
+      const gaps = [];
+      for (let i = 1; i < ds.length; i++) gaps.push(Math.round((new Date(ds[i]) - new Date(ds[i - 1])) / 864e5));
+      const avg = gaps.reduce((a, b) => a + b, 0) / gaps.length;
+      const stable = gaps.every(g => Math.abs(g - avg) <= 3);
+      const big = ts.every(t => t.amount >= 200);
+      if (stable && big && (avg >= 6 && avg <= 32)) {
+        out.push({ merchant: ts[0].merchant_raw, amount: Math.round(ts.reduce((s, t) => s + t.amount, 0) / ts.length), gap: Math.round(avg), last: ds[ds.length - 1] });
+      }
+    });
+    return out.sort((a, b) => b.amount - a.amount).slice(0, 2);
+  }
+
+  let recCalMonth = null; // YYYY-MM; null = current
+  function renderRecCal() {
+    const body = $("reccalBody"); if (!body) return;
+    const { transactions } = loadTrackData();
+    const now = new Date();
+    if (!recCalMonth) recCalMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+    const [Y, M1] = recCalMonth.split("-").map(Number); const M = M1 - 1;
+    let recs = [];
+    try { recs = (detectRecurrence(transactions || []) || []).filter(r => !r.dormant); } catch (e) {}
+    const paydays = detectPaydays(transactions || []);
+    // Map day -> bills
+    const bills = {};
+    recs.forEach(r => projectDates(r, Y, M).forEach(d => {
+      (bills[d] = bills[d] || []).push({ name: r.merchant_raw, amount: Math.abs(r.amount) });
+    }));
+    const payDays = {};
+    paydays.forEach(p => {
+      const last = new Date(p.last + "T12:00:00");
+      const first = new Date(Y, M, 1), lastD = new Date(Y, M + 1, 0);
+      let d = new Date(last);
+      while (d < first) d.setDate(d.getDate() + p.gap);
+      const seen = new Set();
+      while (d <= lastD) { if (!seen.has(d.getDate())) { (payDays[d.getDate()] = payDays[d.getDate()] || []).push(p); seen.add(d.getDate()); } d.setDate(d.getDate() + p.gap); }
+    });
+    const dim = new Date(Y, M + 1, 0).getDate();
+    const lead = new Date(Y, M, 1).getDay();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    let cells = "";
+    ["S", "M", "T", "W", "T", "F", "S"].forEach(d => cells += `<div class="dow">${d}</div>`);
+    for (let i = 0; i < lead; i++) cells += `<div class="day" style="visibility:hidden"></div>`;
+    let monthBills = 0;
+    for (let d = 1; d <= dim; d++) {
+      const ds = `${Y}-${String(M1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+      const isToday = ds === todayStr;
+      let inner = `<span class="dn">${d}</span>`;
+      (payDays[d] || []).forEach(p => { inner += `<span class="pay">Payday +${bm0(p.amount)}</span>`; });
+      (bills[d] || []).forEach(b => { monthBills += b.amount; inner += `<span class="bill unpaid">${esc(b.name)} ${bm0(b.amount)}</span>`; });
+      cells += `<div class="day${isToday ? " today" : ""}">${inner}</div>`;
+    }
+    const prevM = new Date(Y, M - 1, 1), nextM = new Date(Y, M + 1, 1);
+    const fmtM = dt => `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`;
+    body.innerHTML = `
+      <p class="psub">Every bill and every payday, on one grid. Tap a bill's merchant in the list to track it.</p>
+      <div class="bmonthnav">
+        <button id="rcPrev" aria-label="Previous month">‹</button>
+        <b>${monthName(recCalMonth)}</b>
+        <button id="rcNext" aria-label="Next month">›</button>
+      </div>
+      <div class="calgrid">${cells}</div>
+      <div class="pcard" style="margin-top:12px"><p class="bsum" style="font-size:14px">${bm0(Math.round(monthBills))} in bills this month${paydays.length ? ` · payday${paydays.length > 1 ? "s" : ""} detected: ${paydays.map(p => esc(p.merchant)).join(", ")}` : ""}.</p></div>
+      ${recs.length ? `<h2 class="sec">Bills on autopilot (${recs.length})</h2><div class="bcard">` +
+        recs.slice(0, 10).map(r => `<div class="mrow"><div><b>${esc(r.merchant_raw)}</b><i>${esc(r.interval)}${r.next_date ? " · next " + esc(r.next_date) : ""}</i></div><span>${bm0(Math.abs(r.amount))}</span></div>`).join("") + `</div>` : ""}`;
+    $("rcPrev").onclick = () => { recCalMonth = fmtM(prevM); renderRecCal(); };
+    $("rcNext").onclick = () => { recCalMonth = fmtM(nextM); renderRecCal(); };
+  }
+
+
+  // ---- Transactions: merchant rules + bulk recategorize (Monarch/YNAB parity) ----
+  const TXRULE_LS = "upmore_tx_rules_v1";
+  function txRulesGet() { try { return JSON.parse(localStorage.getItem(TXRULE_LS) || "{}"); } catch (e) { return {}; } }
+  function txRulesSet(r) { try { localStorage.setItem(TXRULE_LS, JSON.stringify(r)); } catch (e) {} }
+  function txRuleFor(t) {
+    if (!t) return null;
+    const rules = txRulesGet();
+    const mid = t.merchant_id || (typeof normalizeMerchant === "function" ? normalizeMerchant(t.merchant_raw || "") : "");
+    return rules[mid] || null;
+  }
+  function setTxRule(merchantRaw, merchantId, cat) {
+    const rules = txRulesGet();
+    rules[merchantId] = cat;
+    txRulesSet(rules);
+  }
+  // Open the rule picker: pick a category once, apply to every past + future
+  // transaction from this merchant.
+  function openRuleSheet(merchantRaw, merchantId) {
+    const cats = allCats();
+    openBudgetSheet(`Rule: ${merchantRaw}`,
+      `<p class="psub">Pick a category. Every transaction from ${esc(merchantRaw)} — past and future — goes there automatically. You can still move single ones by hand.</p>
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+        ${cats.map(c => `<button class="ghostbtn" data-rulecat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
+       </div>`);
+    $("budgetSheetBody").querySelectorAll("[data-rulecat]").forEach(b => b.onclick = () => {
+      const cat = b.dataset.rulecat;
+      setTxRule(merchantRaw, merchantId, cat);
+      // Apply to all existing matching transactions via overrides.
+      const { transactions } = loadTrackData();
+      const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+      let n = 0;
+      (transactions || []).forEach(t => {
+        const mid = t.merchant_id || (typeof normalizeMerchant === "function" ? normalizeMerchant(t.merchant_raw || "") : "");
+        if (mid === merchantId && t.id != null) { ov[t.id] = cat; n++; }
+      });
+      blsSet(BUDGET_LS.overrides, ov);
+      closeBudgetSheet();
+      if (typeof renderTxScreen === "function") renderTxScreen();
+      toast(`Rule saved — ${n} transaction${n === 1 ? "" : "s"} moved to ${cat}.`);
+    });
+  }
+
+  // Bulk select state for the transaction list.
+  let txSelectMode = false;
+  const txBulkSel = new Set();
+  function txBulkBarHtml() {
+    if (!txSelectMode) return "";
+    return `<div class="bulkbar">
+      <b style="font-size:13.5px">${txBulkSel.size} selected</b>
+      <div class="sel" style="flex:1"><select id="bulkCat" aria-label="Category for selected">${allCats().map(c => `<option>${esc(c)}</option>`).join("")}</select></div>
+      <button class="tgt" id="bulkApply">Move</button>
+      <button class="tgt" id="bulkDone">Done</button>
+    </div>`;
+  }
+  function wireBulkBar() {
+    const ap = $("bulkApply"), dn = $("bulkDone");
+    if (dn) dn.onclick = () => { txSelectMode = false; txBulkSel.clear(); renderTxScreen(); syncTxSelectBtn(); };
+    if (ap) ap.onclick = () => {
+      const cat = $("bulkCat").value;
+      if (!allCats().includes(cat) || !txBulkSel.size) return;
+      const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+      txBulkSel.forEach(id => { ov[id] = cat; });
+      blsSet(BUDGET_LS.overrides, ov);
+      toast(`${txBulkSel.size} moved to ${cat}.`);
+      txBulkSel.clear(); renderTxScreen();
+    };
+  }
+  function syncTxSelectBtn() {
+    const b = $("txSelectBtn");
+    if (b) b.textContent = txSelectMode ? "Cancel" : "Select";
+  }
+
+  // ---- Net worth: accounts + manual assets − liabilities, monthly snapshots ----
+  const NW_LS = { assets: "upmore_nw_assets_v1", liabs: "upmore_nw_liabs_v1", snaps: "upmore_nw_snaps_v1" };
+  function nwListGet(k) { try { const v = JSON.parse(localStorage.getItem(k) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function nwListSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function netWorthCalc() {
+    const { accounts } = loadTrackData();
+    const bank = (accounts || []).reduce((s, a) => s + (Number(a.balance) || 0), 0);
+    const assets = nwListGet(NW_LS.assets).reduce((s, a) => s + Number(a.value || 0), 0);
+    const liabs = nwListGet(NW_LS.liabs).reduce((s, a) => s + Number(a.value || 0), 0);
+    let debts = 0;
+    try { debts = (JSON.parse(localStorage.getItem("cfo_debt_debts") || "[]") || []).reduce((s, x) => s + Number(x.balance || 0), 0); } catch (e) {}
+    return { bank, assets, liabs, debts, total: bank + assets - liabs - debts };
+  }
+  function nwSnapshot(total) {
+    const ym = new Date().toISOString().slice(0, 7);
+    let snaps = {};
+    try { snaps = JSON.parse(localStorage.getItem(NW_LS.snaps) || "{}"); } catch (e) {}
+    snaps[ym] = Math.round(total);
+    try { localStorage.setItem(NW_LS.snaps, JSON.stringify(snaps)); } catch (e) {}
+    return snaps;
+  }
+  function nwSparkSVG(snaps) {
+    const keys = Object.keys(snaps).sort().slice(-12);
+    if (keys.length < 2) return `<p class="psub">Two months of history and the trend line appears here.</p>`;
+    const vals = keys.map(k => snaps[k]);
+    const min = Math.min(...vals), max = Math.max(...vals), rng = Math.max(1, max - min);
+    const W = 340, H = 90, P = 10;
+    const X = i => P + i / (keys.length - 1) * (W - 2 * P);
+    const Y = v => H - P - ((v - min) / rng) * (H - 2 * P);
+    const d = vals.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+    const chg = vals[vals.length - 1] - vals[0];
+    return `<div class="pacewrap" role="img" aria-label="Net worth trend: ${bm0(vals[0])} to ${bm0(vals[vals.length - 1])}">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><path d="${d}" fill="none" stroke="var(--ink)" stroke-width="2.5"/></svg>
+      <div class="pacelegend"><span>${esc(keys[0])}: ${bm0(vals[0])}</span><span>now: ${bm0(vals[vals.length - 1])} (${chg >= 0 ? "+" : "−"}${bm0(Math.abs(chg))})</span></div></div>`;
+  }
+  function renderNetWorth() {
+    const body = $("nwBody"); if (!body) return;
+    const nw = netWorthCalc();
+    const snaps = nwSnapshot(nw.total);
+    const assets = nwListGet(NW_LS.assets), liabs = nwListGet(NW_LS.liabs);
+    const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}</span></div>
+      <span>${bm0(a.value)} <button class="tgt" data-nwdel="${kind}:${a.id}" aria-label="Remove">✕</button></span></div>`;
+    body.innerHTML = `
+      <p class="psub">Everything you own minus everything you owe. Bank balances come from your connected accounts; the rest you add once and update when it changes.</p>
+      <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
+        <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p></div>
+      <h2 class="sec">Trend</h2>
+      <div class="pcard">${nwSparkSVG(snaps)}</div>
+      <h2 class="sec">Other assets (${assets.length})</h2>
+      <div class="bcard">${assets.length ? assets.map(a => row(a, "a")).join("") : `<p class="psub">None yet — home, car, crypto, anything with value.</p>`}</div>
+      <button class="ghostbtn" id="nwAddA" style="margin-top:8px">+ Add asset</button>
+      <h2 class="sec">Debts & liabilities (${liabs.length})</h2>
+      <div class="bcard">${liabs.length ? liabs.map(a => row(a, "l")).join("") : `<p class="psub">None added here. Balances from the Debt payoff plan count automatically.</p>`}</div>
+      <button class="ghostbtn" id="nwAddL" style="margin-top:8px">+ Add liability</button>
+      <div id="nwForm"></div>`;
+    body.querySelectorAll("[data-nwdel]").forEach(b => b.onclick = () => {
+      const [kind, id] = b.dataset.nwdel.split(":");
+      if (kind === "a") nwListSet(NW_LS.assets, nwListGet(NW_LS.assets).filter(x => String(x.id) !== id));
+      else nwListSet(NW_LS.liabs, nwListGet(NW_LS.liabs).filter(x => String(x.id) !== id));
+      renderNetWorth();
+    });
+    const form = (kind) => {
+      $("nwForm").innerHTML = `<div class="svform" style="margin-top:12px">
+        <label class="f"><span>Name</span><input id="nwName" placeholder="${kind === "a" ? "Car, crypto, home…" : "Loan, credit card…"}" autocomplete="off"></label>
+        <label class="f"><span>Value ($)</span><input id="nwVal" inputmode="decimal" placeholder="15000" autocomplete="off"></label>
+        <button class="go" id="nwSave" style="height:48px">Save</button></div>`;
+      $("nwSave").onclick = () => {
+        const name = $("nwName").value.trim(), val = parseFloat($("nwVal").value);
+        if (!name || !(val >= 0)) { toast("Name and value needed."); return; }
+        const key = kind === "a" ? NW_LS.assets : NW_LS.liabs;
+        const list = nwListGet(key);
+        list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val });
+        nwListSet(key, list); renderNetWorth(); toast("Saved.");
+      };
+    };
+    $("nwAddA").onclick = () => form("a");
+    $("nwAddL").onclick = () => form("l");
+  }
+
+  // ---- Claim: per-state document checklists + annual re-search reminders ----
+  // Portal URLs below are the well-known official filing sites; everything
+  // else routes through MissingMoney.com (NAUPA-endorsed). Notarization rules
+  // change — every checklist says to confirm on the state site.
+  const CLAIM_PORTALS = {
+    "California": "https://claimit.ca.gov", "Texas": "https://www.claimittexas.gov",
+    "New York": "https://www.osc.ny.gov/unclaimed-funds", "Florida": "https://www.fltreasurehunt.gov",
+    "Illinois": "https://icash.illinoistreasurer.gov", "Pennsylvania": "https://www.patreasury.gov/unclaimed-property",
+    "Ohio": "https://www.com.ohio.gov/unclaimed", "Michigan": "https://www.michigan.gov/unclaimedproperty",
+    "New Jersey": "https://www.unclaimedproperty.nj.gov", "Washington": "https://ucp.dor.wa.gov",
+    "Massachusetts": "https://www.findmassmoney.gov", "Virginia": "https://www.vamoneysearch.gov",
+  };
+  const CLAIM_DOCS = [
+    "Government photo ID (driver's license or passport)",
+    "Proof of Social Security number",
+    "Proof of address tying you to the address on record (old mail, lease, utility bill)",
+    "Proof you owned it, if you have it (old statement, pay stub, policy)",
+    "Notarization: most states require it for larger claims — the state site says when",
+    "Heir claim? You'll also need the death certificate and proof you're the heir",
+  ];
+  function claimChecklistHtml(state) {
+    const portal = CLAIM_PORTALS[state] || CLAIM_SEARCH_URL;
+    return `<div class="pcard" style="margin-top:12px"><p class="bsum" style="font-size:14.5px"><b>Claiming in ${esc(state)}</b></p>
+      <ul class="chklist">${CLAIM_DOCS.map(d => `<li>${esc(d)}</li>`).join("")}</ul>
+      <p class="psub" style="margin-top:10px">File at the official site — never pay anyone to claim for you.</p>
+      <button class="ghostbtn" id="cfPortal">Open ${esc(state)}'s official claim site →</button></div>`;
+  }
+
+  // ---- CFO: credit factors tool (Credit Karma parity, math not scores) ----
+  // We never show or predict a score — only the factors lenders use and the
+  // arithmetic on utilization. FICO + Vantage weights labeled.
+  function cfoCredit(body) {
+    const factors = [
+      ["Payment history", "35% of FICO · 40% of VantageScore", "One on-time streak matters more than anything else."],
+      ["Amounts owed (utilization)", "30% of FICO · 21% of VantageScore", "Balance ÷ limit across cards. Under 30% is the common line; under 10% is better."],
+      ["Length of history", "15% of FICO · 20% of VantageScore", "Average age of accounts. Don't close your oldest card."],
+      ["New credit", "10% of FICO · 5% of VantageScore", "Hard inquiries from applications. A few is fine."],
+      ["Credit mix", "10% of FICO · 11% of VantageScore", "Cards + installment loans. Don't open accounts just for mix."],
+    ];
+    body.innerHTML = `
+      <p class="psub">Nobody can tell you your exact score without pulling it — but these are the five factors every lender's model uses, and the utilization math is exact.</p>
+      <h2 class="sec">The five factors</h2>
+      <div class="bcard">${factors.map(f => `<div class="mrow"><div><b>${esc(f[0])}</b><i>${esc(f[1])} — ${esc(f[2])}</i></div></div>`).join("")}</div>
+      <h2 class="sec">Utilization calculator</h2>
+      <div class="pcard"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <label class="f"><span>Total card balances ($)</span><input id="crBal" inputmode="decimal" placeholder="1200"></label>
+        <label class="f"><span>Total credit limits ($)</span><input id="crLim" inputmode="decimal" placeholder="5000"></label>
+        <label class="f"><span>Pay down ($, optional)</span><input id="crPay" inputmode="decimal" placeholder="500"></label>
+      </div>
+      <button class="go" id="crRun" style="margin-top:10px;height:48px">Do the math</button>
+      <div id="crOut" style="margin-top:10px"></div></div>
+      <p class="fine" style="margin-top:8px">Weights: FICO Score 35/30/15/10/10; VantageScore 4.0 40/21/20/11/5/3 (the last 3% is "available credit"). This is education, not a score prediction.</p>`;
+    $("crRun").onclick = () => {
+      const g = id => { const v = parseFloat(($(id) || {}).value); return isNaN(v) ? 0 : v; };
+      const bal = Math.max(0, g("crBal")), lim = Math.max(0, g("crLim")), pay = Math.max(0, g("crPay"));
+      const out = $("crOut");
+      if (!(lim > 0)) { out.innerHTML = `<p class="psub">Enter your total credit limit first.</p>`; return; }
+      const u = bal / lim * 100, u2 = Math.max(0, bal - pay) / lim * 100;
+      const band = x => x < 10 ? "excellent territory (under 10%)" : x < 30 ? "under the 30% line lenders like" : "above 30% — the factor dragging hardest";
+      out.innerHTML = `<div class="bcard"><div class="mrow"><div><b>Now: ${u.toFixed(1)}%</b><i>${band(u)}</i></div><span>${bm0(bal)} / ${bm0(lim)}</span></div>` +
+        (pay > 0 ? `<div class="mrow"><div><b>After paying ${bm0(pay)}: ${u2.toFixed(1)}%</b><i>${band(u2)}</i></div><span>${bm0(Math.max(0, bal - pay))} / ${bm0(lim)}</span></div>` : "") +
+        `</div><p class="psub" style="margin-top:8px">Paying down balances is the fastest lever you control — no new accounts needed.</p>`;
+    };
+  }
+
+  // SPEC 09: home wiring — net worth button + live subtitle.
+  (function wireSpec09Home() {
+    const nb = $("nwBtn");
+    if (nb && !nb.dataset.wired) { nb.dataset.wired = "1"; nb.onclick = () => show("networth"); }
+  })();
+  try {
+    const _renderHome09 = renderHome;
+    renderHome = function() {
+      _renderHome09();
+      try {
+        const nw = netWorthCalc();
+        const el = $("nwHomeSub");
+        if (el) el.textContent = `Worth ${bm0(nw.total)} right now — accounts, assets, and debts in one place.`;
+      } catch (e) {}
+    };
+  } catch (e) {}
+
   // Service worker: offline app-shell cache (mobile UX)
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
