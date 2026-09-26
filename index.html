@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-DYwx9NOZ/s79AGoKEQJyYzkFj8v1e+h8G8W3Tfezir0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-GT16rQohlW0wkwbq52T+taZ3zycPJ7dLTDf4bAI/xrk=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -2564,11 +2564,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         // FIX (D1-035): duplicate-charge findings → queue cards.
         if (TrackMonitors.duplicateCharge) {
           TrackMonitors.duplicateCharge(trackData.transactions || []).forEach(dc => {
+            const dupId = "dup-" + dc.merchant.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + "-" + dc.detected_date;
             cards.push({
-              type: "duplicate", id: "dup-" + dc.merchant.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + "-" + dc.detected_date,
+              type: "duplicate", id: dupId,
               title: dc.title, sub: dc.body,
               dollars: dc.dollars, conf: dc.confidence, urg: dc.urgency, eff: dc.effort,
-              cta: "Review", act: () => { show("guide"); guideAsk("Was I double charged by " + dc.merchant + "?"); },
+              cta: "Both are real", act: () => { dismissQueueCard(dupId); toast("Got it — both charges stand."); },
+              cta2: "It's a duplicate", act2: () => {
+                dismissQueueCard(dupId);
+                try {
+                  const cf = JSON.parse(localStorage.getItem("upmore_confirmed_dup") || "[]");
+                  cf.push({ merchant: dc.merchant, date: dc.detected_date, amount: dc.dollars, at: new Date().toISOString() });
+                  localStorage.setItem("upmore_confirmed_dup", JSON.stringify(cf));
+                } catch (e) {}
+                show("guide");
+                guideAsk("I was double charged by " + dc.merchant + " on " + dc.detected_date + " for $" + dc.dollars.toFixed(2) + ". How do I dispute it?");
+              },
               why: dc.evidence
             });
           });

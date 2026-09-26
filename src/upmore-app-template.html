@@ -2543,11 +2543,22 @@
         // FIX (D1-035): duplicate-charge findings → queue cards.
         if (TrackMonitors.duplicateCharge) {
           TrackMonitors.duplicateCharge(trackData.transactions || []).forEach(dc => {
+            const dupId = "dup-" + dc.merchant.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + "-" + dc.detected_date;
             cards.push({
-              type: "duplicate", id: "dup-" + dc.merchant.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + "-" + dc.detected_date,
+              type: "duplicate", id: dupId,
               title: dc.title, sub: dc.body,
               dollars: dc.dollars, conf: dc.confidence, urg: dc.urgency, eff: dc.effort,
-              cta: "Review", act: () => { show("guide"); guideAsk("Was I double charged by " + dc.merchant + "?"); },
+              cta: "Both are real", act: () => { dismissQueueCard(dupId); toast("Got it — both charges stand."); },
+              cta2: "It's a duplicate", act2: () => {
+                dismissQueueCard(dupId);
+                try {
+                  const cf = JSON.parse(localStorage.getItem("upmore_confirmed_dup") || "[]");
+                  cf.push({ merchant: dc.merchant, date: dc.detected_date, amount: dc.dollars, at: new Date().toISOString() });
+                  localStorage.setItem("upmore_confirmed_dup", JSON.stringify(cf));
+                } catch (e) {}
+                show("guide");
+                guideAsk("I was double charged by " + dc.merchant + " on " + dc.detected_date + " for $" + dc.dollars.toFixed(2) + ". How do I dispute it?");
+              },
               why: dc.evidence
             });
           });
