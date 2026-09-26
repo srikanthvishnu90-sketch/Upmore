@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-GT16rQohlW0wkwbq52T+taZ3zycPJ7dLTDf4bAI/xrk=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-x/xI7D2ziwCAbuWpxAKk5p6Rb0pSE59ysfjmkBSVG1o=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -7409,12 +7409,35 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return Array.isArray(c) ? c.filter(x => typeof x === "string" && x.trim() && x.trim().length <= 24).map(x => x.trim()).slice(0, 20) : [];
   }
   function allCats() { return TRACK_CATS.concat(getCustomCats()); }
+  // SPEC 09s: built-in merchant knowledge — common merchants auto-categorize
+  // when the provider gives nothing useful. User rules and per-tx overrides
+  // always win; this only fills the gap.
+  const BUILTIN_MERCHANT_CATS = [
+    [/\b(walmart|costco|target|kroger|safeway|trader joe'?s?|whole foods|aldi|publix|wegmans|food lion|giant|stop ?& ?shop)\b/i, "Groceries"],
+    [/\b(mcdonald|starbucks|chipotle|chick-fil-a|taco bell|wendy|panera|dominos|pizza hut|doordash|uber ?eats|grubhub)\b/i, "Dining"],
+    [/\b(shell|chevron|exxon|bp |marathon|circle k|speedway|sunoco)\b/i, "Transport"],
+    [/\b(uber(?! ?eats)|lyft)\b/i, "Transport"],
+    [/\b(netflix|spotify|hulu|disney\+?|hbo|max |paramount\+|peacock|apple ?music|youtube ?premium)\b/i, "Subscriptions"],
+    [/\b(cvs|walgreens|rite aid)\b/i, "Health"],
+    [/\b(amazon|ebay|etsy|best buy|home depot|lowes|ikea)\b/i, "Shopping"],
+    [/\b(comcast|xfinity|spectrum|at&t|verizon|t-mobile|con ?ed|pge|duke energy)\b/i, "Utilities"],
+    [/\b(amc| Regal |cinemark|ticketmaster|steam|playstation|xbox)\b/i, "Entertainment"],
+  ];
+  function builtinCatFor(t) {
+    const raw = String((t && (t.merchant_raw || t.merchant)) || "");
+    for (const [re, cat] of BUILTIN_MERCHANT_CATS) {
+      if (re.test(raw) && allCats().includes(cat)) return cat;
+    }
+    return null;
+  }
   function effCat(t) {
     const ov = blsGet(BUDGET_LS.overrides, {}) || {};
     if (t && t.id != null && ov[t.id] && allCats().includes(ov[t.id])) return ov[t.id];
     // SPEC 09: merchant rules beat provider categories, lose to per-tx overrides.
     try { const rl = txRuleFor(t); if (rl && allCats().includes(rl)) return rl; } catch (e) {}
     const c = t && t.category;
+    if (allCats().includes(c) && c !== "Other") return c;
+    try { const bc = builtinCatFor(t); if (bc) return bc; } catch (e) {}
     return allCats().includes(c) ? c : "Other";
   }
   function addCustomCat(name) {
