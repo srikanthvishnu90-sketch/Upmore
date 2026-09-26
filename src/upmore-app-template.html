@@ -4024,9 +4024,11 @@
       if (aerr || !ap) throw aerr || new Error("approval failed");
       const { data: ex, error: xerr } = await supa.functions.invoke("agent-exec", {
         body: { approval_id: ap.id },
-      });
-      if (xerr) throw xerr;
-      if (ex && ex.error && !ex.ok) throw new Error(ex.error);
+      }).catch(e => ({ data: null, error: e }));
+      // Even if the invoke HTTP call failed/timed out, the run may still be
+      // executing server-side — poll the run row regardless.
+      if (xerr) console.warn("agent-exec invoke transport issue; polling run row", xerr);
+      else if (ex && ex.error && !ex.ok) throw new Error(ex.error);
       // Poll the run row for completion.
       const t0 = Date.now();
       let run = null;

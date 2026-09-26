@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-MkmWLUErnss86g9oQbRb3blcI8FI8TFIga0yKBp6+Ak='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/HcUI7LyQjlcGEhyfqQk3s1Xs5Of8PqYKpMA7zPd5go=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-K4/n3D8Sfcxq8gnb+prJ5PQw4dYZ/2nDquHnNDO81R4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -4045,9 +4045,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (aerr || !ap) throw aerr || new Error("approval failed");
       const { data: ex, error: xerr } = await supa.functions.invoke("agent-exec", {
         body: { approval_id: ap.id },
-      });
-      if (xerr) throw xerr;
-      if (ex && ex.error && !ex.ok) throw new Error(ex.error);
+      }).catch(e => ({ data: null, error: e }));
+      // Even if the invoke HTTP call failed/timed out, the run may still be
+      // executing server-side — poll the run row regardless.
+      if (xerr) console.warn("agent-exec invoke transport issue; polling run row", xerr);
+      else if (ex && ex.error && !ex.ok) throw new Error(ex.error);
       // Poll the run row for completion.
       const t0 = Date.now();
       let run = null;
