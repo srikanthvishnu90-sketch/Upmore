@@ -851,6 +851,12 @@
         <span class="pv">›</span>
       </button>
 
+      <!-- SPEC 08 Investments X-ray entry: read-only holdings analysis. -->
+      <button class="item" id="investBtn" style="text-align:left;width:100%;margin-top:12px">
+        <div class="grow"><p class="t">Investments</p><p class="m">What you hold, what it costs, where it's concentrated — a read-only X-ray.</p></div>
+        <span class="pv">›</span>
+      </button>
+
       <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
            Shows when no bank is connected. One button, no forms, no friction. -->
       <div class="connectcard" id="connectCard" hidden>
@@ -977,6 +983,16 @@
       <div id="budgetSheetBody" style="margin-top:10px"></div>
     </div>
   </div>
+
+  <!-- SPEC 08 Investments X-ray: read-only holdings analysis. Analysis only —
+       never buy/sell advice. Every number traces to holding rows. -->
+  <section class="screen" id="investments" aria-label="Investments">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Investments</div></div>
+      <div id="investBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
 
   <!-- ================= PROFILE ================= -->
   <section class="screen" id="profile" aria-label="Profile">
@@ -1378,6 +1394,7 @@
     if (id === "transactions") renderTxScreen();
     if (id === "monthview") renderMonthScreen();
     if (id === "budgetReport") renderBudgetReport();
+    if (id === "investments") renderInvestments();
     renderNav();
   }
 
@@ -3854,6 +3871,7 @@
     wireDeadlines();
     wireTrackUI(); // SPEC 04: strip → transactions → month view
     if (typeof wireBudgetReport === "function") wireBudgetReport(); // SPEC 07
+    if (typeof wireInvestments === "function") wireInvestments(); // SPEC 08
     $("subAdd").onclick = async () => {
       const b = $("subAdd"), m = $("subMerchant").value.trim(), amt = parseFloat($("subAmount").value);
       if (!m || !(amt > 0)) return;
@@ -7267,6 +7285,344 @@
     if (cl) cl.onclick = closeBudgetSheet;
     const sh = $("budgetSheet");
     if (sh) sh.addEventListener("click", e => { if (e.target === sh) closeBudgetSheet(); });
+  }
+
+  /* ================= SPEC 08: INVESTMENTS X-RAY =================
+     Read-only portfolio X-ray. Data tiers:
+       1. Plaid holdings (full detail) — needs the owner's live Plaid keys.
+       2. Manual positions (user-entered) — works today, no keys.
+       3. Balance-only investment accounts (bank data, name heuristic).
+     Compliance: analysis only. Never buy/sell/hold advice, never projections
+     presented as promises. Every number traces to holding rows. Code computes;
+     the model explains. */
+
+  const HOLD_LS = { manual: "upmore_holdings_manual_v1", plaid: "upmore_plaid_holdings_v1" };
+  // Well-known fund expense ratios (2026). Unknown funds -> user-entered or "unknown", never guessed.
+  const FUND_FEES = {
+    VTI: 0.0003, VOO: 0.0003, IVV: 0.0003, SCHB: 0.0003, SPLG: 0.0002,
+    SPY: 0.000945, QQQ: 0.002, SCHD: 0.0006, VTV: 0.0004, VUG: 0.0004,
+    VXUS: 0.0008, IXUS: 0.0009, BND: 0.0003, AGG: 0.0003, VTEB: 0.0006,
+    SGOV: 0.0009, VTSAX: 0.0004, VFIAX: 0.0004, VTIAX: 0.0012, VBTLX: 0.0005,
+    VEMAX: 0.0014, FSKAX: 0.0002, FXAIX: 0.0002, FTIHX: 0.0006, SWPPX: 0.0002, SWTSX: 0.0003,
+  };
+  const bc2 = v => "$" + Number(v || 0).toFixed(2);
+  const BUCKETS = ["Stocks", "Funds", "Bonds", "Cash", "Crypto", "Other"];
+  function bucketOf(type) {
+    const t = String(type || "").toLowerCase();
+    if (/equity|stock/.test(t)) return "Stocks";
+    if (/etf|mutual/.test(t)) return "Funds";
+    if (/fixed income|bond/.test(t)) return "Bonds";
+    if (/cash|money market/.test(t)) return "Cash";
+    if (/crypto/.test(t)) return "Crypto";
+    return "Other";
+  }
+  // Normalized holding: {id, source, account_id, account_name, symbol, name,
+  //   bucket, quantity, price, value, cost_basis|null, expense_ratio|null, as_of}
+  function normalizePlaidHoldings(res) {
+    const secs = {};
+    (res.securities || []).forEach(s => { secs[s.security_id] = s; });
+    const acctNames = {};
+    (res.accounts || []).forEach(a => { acctNames[a.id] = a.name || "Investment account"; });
+    return (res.holdings || []).map(h => {
+      const s = secs[h.security_id] || {};
+      const sym = (s.ticker_symbol || "").toUpperCase();
+      const value = Number(h.institution_value) || 0;
+      return {
+        id: "plaid:" + h.account_id + ":" + h.security_id,
+        source: "plaid",
+        account_id: h.account_id,
+        account_name: acctNames[h.account_id] || "Investment account",
+        symbol: sym || (s.name || "Unknown").slice(0, 12),
+        name: s.name || sym || "Unknown holding",
+        bucket: bucketOf(s.type),
+        quantity: Number(h.quantity) || 0,
+        price: Number(h.institution_price) || 0,
+        value,
+        cost_basis: h.cost_basis != null ? Number(h.cost_basis) : null,
+        expense_ratio: FUND_FEES[sym] != null ? FUND_FEES[sym] : null,
+        as_of: h.institution_price_as_of || null,
+      };
+    }).filter(h => h.value > 0.005);
+  }
+  function getManualHoldings() { return blsGet(HOLD_LS.manual, []) || []; }
+  function saveManualHolding(h) {
+    const all = getManualHoldings();
+    h.id = h.id || ("manual:" + Date.now().toString(36));
+    h.source = "manual";
+    h.value = (Number(h.quantity) || 0) * (Number(h.price) || 0);
+    const i = all.findIndex(x => x.id === h.id);
+    if (i >= 0) all[i] = h; else all.push(h);
+    blsSet(HOLD_LS.manual, all);
+    return h;
+  }
+  function deleteManualHolding(id) {
+    blsSet(HOLD_LS.manual, getManualHoldings().filter(x => x.id !== id));
+  }
+  function getPlaidCache() { return blsGet(HOLD_LS.plaid, null); }
+  function allHoldings() {
+    const c = getPlaidCache();
+    return (c && c.holdings ? c.holdings : []).concat(getManualHoldings());
+  }
+  function feeFor(h) {
+    if (h.expense_ratio != null) return { rate: h.expense_ratio, known: true };
+    const sym = String(h.symbol || "").toUpperCase();
+    if (FUND_FEES[sym] != null) return { rate: FUND_FEES[sym], known: true };
+    return { rate: null, known: false };
+  }
+  // Pure portfolio math.
+  function portfolioSummary(holdings) {
+    const total = holdings.reduce((s, h) => s + (h.value || 0), 0);
+    const byBucket = {};
+    BUCKETS.forEach(b => { byBucket[b] = 0; });
+    holdings.forEach(h => { byBucket[h.bucket] = (byBucket[h.bucket] || 0) + (h.value || 0); });
+    const sorted = [...holdings].sort((a, b) => b.value - a.value);
+    const concentrated = sorted.filter(h => total > 0 && h.value / total >= 0.25);
+    let costKnown = 0, gainKnown = 0, gainCount = 0;
+    holdings.forEach(h => {
+      if (h.cost_basis != null && h.cost_basis > 0) {
+        costKnown += h.cost_basis; gainKnown += h.value - h.cost_basis; gainCount++;
+      }
+    });
+    let feeYearly = 0, feeKnownValue = 0, feeUnknown = 0;
+    holdings.forEach(h => {
+      const f = feeFor(h);
+      if (f.known && (h.bucket === "Funds" || h.bucket === "Stocks")) { feeYearly += h.value * f.rate; feeKnownValue += h.value; }
+      else if (!f.known && h.bucket !== "Cash") feeUnknown++;
+    });
+    const cashValue = byBucket.Cash || 0;
+    return { total, byBucket, sorted, concentrated, costKnown, gainKnown, gainCount,
+             feeYearly, feeKnownValue, feeUnknown, cashValue, count: holdings.length };
+  }
+  function investSummaryText(sum) {
+    const parts = [];
+    parts.push(`Your investments total ${bm0(sum.total)} across ${sum.count} position${sum.count === 1 ? "" : "s"}.`);
+    if (sum.gainCount > 0) {
+      parts.push(sum.gainKnown >= 0
+        ? `You're up ${bm0(sum.gainKnown)} on the positions we know the cost of.`
+        : `You're down ${bm0(-sum.gainKnown)} on the positions we know the cost of.`);
+    }
+    const top = sum.sorted[0];
+    if (top && sum.total > 0) parts.push(`Biggest position: ${top.symbol}, ${bm0(top.value)} (${Math.round(top.value / sum.total * 100)}% of everything).`);
+    return parts.join(" ");
+  }
+  // Balance-only investment accounts from bank data (name heuristic).
+  const INV_ACCT_RE = /ira|401\s?k|403\s?b|roth|broker|invest|vanguard|fidelity|schwab|e.?trade|robinhood|merrill|401k/i;
+  function detectedInvestAccounts() {
+    try {
+      const { accounts } = loadTrackData();
+      return (accounts || []).filter(a => INV_ACCT_RE.test(a.name || "") && Number(a.balance) > 0);
+    } catch (e) { return []; }
+  }
+
+  // ---- Plaid wiring (edge function `plaid`; contract in SPEC 08 header) ----
+  async function plaidInvoke(body) {
+    const { data, error } = await supa.functions.invoke("plaid", { body });
+    if (error) throw new Error(error.message || "Plaid request failed");
+    return data;
+  }
+  function loadPlaidLinkSdk() {
+    return new Promise((res, rej) => {
+      if (window.Plaid) return res();
+      const s = document.createElement("script");
+      s.src = "https://cdn.plaid.com/link/v2/stable/link-initialize.js";
+      s.onload = res; s.onerror = () => rej(new Error("Plaid SDK failed to load"));
+      document.head.appendChild(s);
+    });
+  }
+  async function plaidConnectFlow() {
+    try {
+      const lt = await plaidInvoke({ action: "link_token" });
+      if (!lt || !lt.link_token) { toast("Couldn't start the connection. Try again."); return; }
+      await loadPlaidLinkSdk();
+      const handler = window.Plaid.create({
+        token: lt.link_token,
+        onSuccess: async (public_token) => {
+          try {
+            await plaidInvoke({ action: "exchange", public_token });
+            toast("Investments connected.");
+            await refreshPlaidHoldings();
+          } catch (e) { toast("Connection saved, but holdings didn't load. Try refresh."); renderInvestments(); }
+        },
+        onExit: () => {},
+      });
+      handler.open();
+    } catch (e) { toast("Couldn't start the connection. Try again."); }
+  }
+  async function refreshPlaidHoldings() {
+    try {
+      const data = await plaidInvoke({ action: "holdings" });
+      if (data && data.retry) { toast("Holdings are still being prepared — try again in a minute."); return; }
+      const holdings = normalizePlaidHoldings(data || {});
+      blsSet(HOLD_LS.plaid, { as_of: new Date().toISOString().slice(0, 10), holdings });
+      toast(`Loaded ${holdings.length} positions.`);
+    } catch (e) { toast("Couldn't refresh holdings. Try again."); }
+    renderInvestments();
+  }
+
+  // ---- Render ----
+  let plaidStatusCache = null;
+  async function renderInvestments() {
+    const body = $("investBody");
+    const signedIn = (typeof session !== "undefined" && !!session) && typeof supa !== "undefined" && supa;
+    let status = plaidStatusCache;
+    if (signedIn && !status) {
+      try { status = await plaidInvoke({ action: "status" }); plaidStatusCache = status; }
+      catch (e) { status = { plaid_configured: false, connected: false, error: true }; }
+    }
+    const manual = getManualHoldings();
+    const cache = getPlaidCache();
+    const holdings = allHoldings();
+    const sum = portfolioSummary(holdings);
+    const investAccts = detectedInvestAccounts();
+
+    // Connection card
+    let connHtml = "";
+    if (!signedIn) {
+      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px">Sign in to connect your brokerages automatically. You can still track positions manually below — no sign-in needed.</p></div>`;
+    } else if (!status || status.plaid_configured === false) {
+      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px"><b>Automatic brokerage connections need one setup step.</b> Upmore connects through Plaid (12,000+ institutions, read-only). The owner adds live Plaid keys once, then this button lights up for everyone.</p>
+        <p class="psub" style="margin-top:8px">Meanwhile, add your positions manually below — the X-ray works the same.</p></div>`;
+    } else if (!status.connected) {
+      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px"><b>Connect your brokerages.</b> Read-only — Upmore sees positions, never moves money, can't trade.</p>
+        <button class="cta" id="invPlaidConnect" style="margin-top:10px">Connect investments</button>
+        <p class="fine" style="margin-top:8px">Via Plaid. Your brokerage login goes to your brokerage, never to Upmore.</p></div>`;
+    } else {
+      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px"><b>Brokerages connected.</b>${cache && cache.as_of ? ` Positions as of ${esc(cache.as_of)}.` : ""}</p>
+        <div class="row" style="gap:8px;margin-top:10px">
+          <button class="ghostbtn" id="invRefresh" style="flex:1;margin:0">Refresh</button>
+          <button class="ghostbtn" id="invDisconnect" style="flex:1;margin:0">Disconnect</button>
+        </div></div>`;
+    }
+
+    // Summary + allocation
+    let mainHtml = "";
+    if (!holdings.length) {
+      mainHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees.</p>
+        <button class="cta" id="invAddFirst" style="margin-top:10px">Add a holding</button></div>`;
+    } else {
+      const allocRows = BUCKETS.filter(b => sum.byBucket[b] > 0.005).map(b => {
+        const v = sum.byBucket[b], pct = sum.total > 0 ? v / sum.total * 100 : 0;
+        return `<div class="brow"><div class="bt"><b>${b}</b><span>${bm0(v)} · ${pct.toFixed(0)}%</span></div>
+          <div class="bbar" role="img" aria-label="${b}: ${pct.toFixed(0)} percent"><i style="width:${Math.min(100, pct)}%"></i></div></div>`;
+      }).join("");
+      const concHtml = sum.concentrated.length
+        ? `<h2 class="sec">Concentration</h2><div class="bcard">` + sum.concentrated.map(h => {
+            const pct = Math.round(h.value / sum.total * 100);
+            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)}</i></div><span>${pct}% of everything</span></div>`;
+          }).join("") + `</div><p class="psub" style="margin-top:8px">${sum.concentrated.length === 1 ? "One position is a quarter or more of your investments — a lot riding on a single name." : "Several positions are a quarter or more each — worth knowing how concentrated this is."} This isn't advice; it's arithmetic.</p>`
+        : "";
+      const feeHtml = sum.feeKnownValue > 0 || sum.feeUnknown > 0
+        ? `<h2 class="sec">What it costs</h2><div class="pcard"><p class="bsum" style="font-size:14.5px">${
+            sum.feeKnownValue > 0 ? `About <b>${bm0(sum.feeYearly)}/year</b> goes to fund fees on the positions we know.` : `No fee data yet.`
+          }${sum.feeUnknown > 0 ? ` ${sum.feeUnknown} position${sum.feeUnknown === 1 ? "" : "s"} missing fee data — tap a holding to add its expense ratio.` : ""}</p></div>`
+        : "";
+      const cashHtml = sum.cashValue >= 1000
+        ? `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">${bm0(sum.cashValue)} is sitting in cash inside your investments. The Idle cash check prices what that's costing per year.</p><button class="ghostbtn" id="invIdle" style="margin-top:8px">Check idle cash →</button></div>`
+        : "";
+      const holdRows = sum.sorted.map(h => {
+        const f = feeFor(h);
+        const gain = h.cost_basis != null && h.cost_basis > 0 ? h.value - h.cost_basis : null;
+        const sub = h.source === "manual" ? "Added by you"
+          : esc(h.account_name || (h.source === "plaid" ? "Brokerage" : ""));
+        return `<div class="brow" data-hold="${esc(h.id)}" role="button" tabindex="0" style="cursor:pointer">
+          <div class="bt"><b>${esc(h.symbol)}</b><span>${bm0(h.value)}</span></div>
+          <div class="bs">${esc(h.name)} · ${h.quantity} @ ${bc2(h.price)}${gain != null ? ` · ${gain >= 0 ? "up" : "down"} ${bm0(Math.abs(gain))}` : ""}${f.known && (h.bucket === "Funds" || h.bucket === "Stocks") ? ` · ${(f.rate * 100).toFixed(2)}% fee` : ""}</div>
+          ${sub ? `<div class="bs" style="color:var(--dim)">${sub}</div>` : ""}</div>`;
+      }).join("");
+      mainHtml = `
+        <div class="pcard" style="margin-top:14px"><p class="bsum">${esc(investSummaryText(sum))}</p></div>
+        <h2 class="sec">Allocation</h2>
+        <div class="bcard">${allocRows}</div>
+        ${concHtml}${feeHtml}${cashHtml}
+        <h2 class="sec">Positions</h2>
+        <div class="bcard">${holdRows}</div>
+        <button class="ghostbtn" id="invAdd" style="margin-top:10px">+ Add a holding manually</button>`;
+    }
+
+    // Balance-only accounts
+    const balHtml = investAccts.length
+      ? `<h2 class="sec">Accounts we can see but not inside</h2><div class="bcard">` +
+        investAccts.map(a => `<div class="mrow"><div><b>${esc(a.name)}</b><i>balance only — holdings unavailable</i></div><span>${bm0(a.balance)}</span></div>`).join("") +
+        `</div><p class="psub" style="margin-top:8px">Connect Plaid or add positions manually to X-ray these.</p>` : "";
+
+    body.innerHTML = `${connHtml}${mainHtml}${balHtml}
+      <p class="fine" style="margin:18px 0 4px">Read-only X-ray. Upmore shows what you hold, what it costs, and where it's concentrated — it never tells you what to buy or sell.</p>`;
+
+    // wiring
+    const pc = $("invPlaidConnect"); if (pc) pc.onclick = plaidConnectFlow;
+    const rf = $("invRefresh"); if (rf) rf.onclick = () => { plaidStatusCache = null; refreshPlaidHoldings(); };
+    const dc = $("invDisconnect"); if (dc) dc.onclick = async () => {
+      try { await plaidInvoke({ action: "disconnect" }); } catch (e) {}
+      blsSet(HOLD_LS.plaid, null); plaidStatusCache = null; renderInvestments();
+    };
+    const ia = $("invAdd") || $("invAddFirst"); if (ia) ia.onclick = () => openHoldingSheet(null);
+    const ii = $("invIdle"); if (ii) ii.onclick = () => openCFO("cash");
+    body.querySelectorAll("[data-hold]").forEach(el => {
+      const open = () => openHoldingSheet(el.dataset.hold);
+      el.onclick = open;
+      el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } };
+    });
+  }
+
+  // Manual holding add/edit sheet (reuses the budget sheet).
+  function openHoldingSheet(holdId) {
+    const existing = holdId ? allHoldings().find(h => h.id === holdId) : null;
+    if (existing && existing.source !== "manual") {
+      const f = feeFor(existing);
+      openBudgetSheet(existing.symbol, `
+        <p class="psub">${esc(existing.name)} · ${esc(existing.account_name || "")}</p>
+        <div class="mrow"><div><b>Quantity</b></div><span>${existing.quantity}</span></div>
+        <div class="mrow"><div><b>Price</b></div><span>${bc2(existing.price)}</span></div>
+        <div class="mrow"><div><b>Value</b></div><span>${bm0(existing.value)}</span></div>
+        ${existing.cost_basis != null ? `<div class="mrow"><div><b>Cost basis</b></div><span>${bm0(existing.cost_basis)}</span></div>` : ``}
+        <div class="mrow"><div><b>Fee</b></div><span>${f.known ? (f.rate * 100).toFixed(2) + "%" : "unknown"}</span></div>
+        <p class="fine" style="margin-top:8px">Plaid-synced positions are read-only here.</p>`);
+      return;
+    }
+    const h = existing || {};
+    openBudgetSheet(existing ? `Edit ${h.symbol}` : `Add a holding`, `
+      <div class="svform">
+        <label class="f"><span>Symbol (e.g. VTI, AAPL)</span><input id="hdSym" placeholder="VTI" maxlength="12" autocomplete="off" value="${esc(h.symbol || "")}" ${existing ? "disabled" : ""}></label>
+        <label class="f"><span>Name (optional)</span><input id="hdName" placeholder="Vanguard Total Stock Market" autocomplete="off" value="${esc(h.name || "")}"></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>Type</span><div class="sel"><select id="hdBucket">${BUCKETS.map(b => `<option ${h.bucket === b ? "selected" : ""}>${b}</option>`).join("")}</select></div></label>
+          <label class="f"><span>Expense ratio % (optional)</span><input id="hdFee" inputmode="decimal" placeholder="0.03" autocomplete="off" value="${h.expense_ratio != null ? esc(String(h.expense_ratio * 100)) : ""}"></label>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>Shares / quantity</span><input id="hdQty" inputmode="decimal" placeholder="10" autocomplete="off" value="${h.quantity != null ? esc(String(h.quantity)) : ""}"></label>
+          <label class="f"><span>Price per share ($)</span><input id="hdPrice" inputmode="decimal" placeholder="280.50" autocomplete="off" value="${h.price != null ? esc(String(h.price)) : ""}"></label>
+        </div>
+        <label class="f"><span>Cost basis total $ (optional — for gains)</span><input id="hdCost" inputmode="decimal" placeholder="2500" autocomplete="off" value="${h.cost_basis != null ? esc(String(h.cost_basis)) : ""}"></label>
+        <div class="row" style="gap:8px;margin-top:10px">
+          ${existing ? `<button class="btn" id="hdDelete" style="flex:1">Delete</button>` : ``}
+          <button class="go" id="hdSave" style="flex:1;height:50px">Save</button>
+        </div>
+      </div>`);
+    $("hdSave").onclick = () => {
+      const sym = ($("hdSym").value || "").trim().toUpperCase();
+      const qty = parseFloat($("hdQty").value), price = parseFloat($("hdPrice").value);
+      if (!sym || !(qty > 0) || !(price >= 0)) { toast("Symbol, shares, and price are required."); return; }
+      const feePct = parseFloat($("hdFee").value);
+      const cost = parseFloat($("hdCost").value);
+      saveManualHolding({
+        id: existing ? existing.id : null,
+        account_id: "manual", account_name: "Added by you",
+        symbol: sym, name: ($("hdName").value || "").trim() || sym,
+        bucket: $("hdBucket").value,
+        quantity: qty, price,
+        cost_basis: !isNaN(cost) && cost > 0 ? cost : null,
+        expense_ratio: !isNaN(feePct) && feePct >= 0 ? feePct / 100 : (FUND_FEES[sym] != null ? FUND_FEES[sym] : null),
+        as_of: new Date().toISOString().slice(0, 10),
+      });
+      closeBudgetSheet(); renderInvestments(); toast(`${sym} saved.`);
+    };
+    const del = $("hdDelete");
+    if (del) del.onclick = () => { deleteManualHolding(existing.id); closeBudgetSheet(); renderInvestments(); };
+  }
+
+  function wireInvestments() {
+    const btn = $("investBtn");
+    if (btn) btn.onclick = () => show("investments");
   }
 
   // Seven deterministic monitors (spec 04). Each returns a card or null.

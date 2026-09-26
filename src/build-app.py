@@ -63,11 +63,14 @@ for m in re.finditer(r"<script>(.*?)</script>", out, re.S):
 assert script_hashes, "no inline script blocks found for CSP hashing"
 csp = (
     "default-src 'self'; "
-    "script-src " + " ".join(script_hashes) + "; "
+    # Plaid Link loads its SDK + iframe from cdn.plaid.com (SPEC 08). This is
+    # the only external script/frame source allowed; everything else stays hashed.
+    "script-src " + " ".join(script_hashes) + " https://cdn.plaid.com; "
+    "frame-src https://cdn.plaid.com; "
     "style-src 'self' 'unsafe-inline'; "
     "img-src 'self' data:; "
     "font-src 'self'; "
-    "connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co; "
+    "connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; "
     "object-src 'none'; base-uri 'self'; form-action 'self'"
 )
 out = out.replace("<head>", "<head>\n<meta http-equiv=\"Content-Security-Policy\" content=\"" + csp + "\">", 1)
