@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-8Dsp99WeT5U5WXG2/oxScXDb499GhYIOnh6eU4Jfwe0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-0OeaQxpGdyiU3NiHhyYB5pReIIWtw7QSa3nfXyahHpU=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -8656,30 +8656,48 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     rules[merchantId] = cat;
     txRulesSet(rules);
   }
-  // Open the rule picker: pick a category once, apply to every past + future
-  // transaction from this merchant.
+  // Open the rule picker: pick a category, preview what moves, then apply.
+  // Preview-before-apply (Monarch parity): nothing moves until confirmed.
+  function ruleAffectedTx(merchantId) {
+    const { transactions } = loadTrackData();
+    return (transactions || []).filter(t => {
+      const mid = t.merchant_id || (typeof normalizeMerchant === "function" ? normalizeMerchant(t.merchant_raw || "") : "");
+      return mid === merchantId && t.id != null;
+    });
+  }
   function openRuleSheet(merchantRaw, merchantId) {
     const cats = allCats();
     openBudgetSheet(`Rule: ${merchantRaw}`,
-      `<p class="psub">Pick a category. Every transaction from ${esc(merchantRaw)} — past and future — goes there automatically. You can still move single ones by hand.</p>
+      `<p class="psub">Pick a category. Future transactions from ${esc(merchantRaw)} go there automatically — you can still move single ones by hand.</p>
        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
         ${cats.map(c => `<button class="ghostbtn" data-rulecat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
        </div>`);
     $("budgetSheetBody").querySelectorAll("[data-rulecat]").forEach(b => b.onclick = () => {
       const cat = b.dataset.rulecat;
-      setTxRule(merchantRaw, merchantId, cat);
-      // Apply to all existing matching transactions via overrides.
-      const { transactions } = loadTrackData();
-      const ov = blsGet(BUDGET_LS.overrides, {}) || {};
-      let n = 0;
-      (transactions || []).forEach(t => {
-        const mid = t.merchant_id || (typeof normalizeMerchant === "function" ? normalizeMerchant(t.merchant_raw || "") : "");
-        if (mid === merchantId && t.id != null) { ov[t.id] = cat; n++; }
-      });
-      blsSet(BUDGET_LS.overrides, ov);
-      closeBudgetSheet();
-      if (typeof renderTxScreen === "function") renderTxScreen();
-      toast(`Rule saved — ${n} transaction${n === 1 ? "" : "s"} moved to ${cat}.`);
+      const affected = ruleAffectedTx(merchantId);
+      const examples = affected.slice(0, 3).map(t =>
+        `<div class="mrow"><div><b>${esc(t.merchant_raw)}</b><i>${bm0(t.amount)} · ${esc(t.posted_at)} · currently ${esc(t.category || "uncategorized")}</i></div></div>`).join("");
+      openBudgetSheet(`Apply to ${affected.length} past transaction${affected.length === 1 ? "" : "s"}?`,
+        `<p class="psub">This rule would also move ${affected.length} past transaction${affected.length === 1 ? "" : "s"} from ${esc(merchantRaw)} to <b>${esc(cat)}</b>. Nothing moves until you confirm.</p>
+         ${examples}
+         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+           <button class="primary" id="ruleApplyAll">Move all ${affected.length}</button>
+           <button class="ghostbtn" id="ruleFutureOnly" style="margin:0">Future only</button>
+         </div>`);
+      const finish = (movePast) => {
+        setTxRule(merchantRaw, merchantId, cat);
+        let n = 0;
+        if (movePast) {
+          const ov = blsGet(BUDGET_LS.overrides, {}) || {};
+          affected.forEach(t => { ov[t.id] = cat; n++; });
+          blsSet(BUDGET_LS.overrides, ov);
+        }
+        closeBudgetSheet();
+        if (typeof renderTxScreen === "function") renderTxScreen();
+        toast(movePast ? `Rule saved — ${n} transaction${n === 1 ? "" : "s"} moved to ${cat}.` : `Rule saved — future ${esc(merchantRaw)} transactions go to ${cat}.`);
+      };
+      $("ruleApplyAll").onclick = () => finish(true);
+      $("ruleFutureOnly").onclick = () => finish(false);
     });
   }
 
@@ -8772,13 +8790,23 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const body = $("nwBody"); if (!body) return;
     const nw = netWorthCalc();
     const snaps = nwSnapshot(nw);
+    const { accounts } = loadTrackData();
     const assets = nwListGet(NW_LS.assets), liabs = nwListGet(NW_LS.liabs);
-    const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}</span></div>
+    const addedOn = a => a.added ? new Date(a.added).toISOString().slice(0, 10) : null;
+    const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}${addedOn(a) ? ` · added ${addedOn(a)}` : ``}</span></div>
       <span>${bm0(a.value)} <button class="tgt" data-nwdel="${kind}:${a.id}" aria-label="Remove">✕</button></span></div>`;
+    const acctRows = (accounts || []).map(a => {
+      const nm = esc(a.name || a.official_name || "Account");
+      const mask = a.mask ? ` ••••${esc(a.mask)}` : ``;
+      return `<div class="nwrow"><div><b>${nm}${mask}</b><br><span class="dim" style="font-size:12px">Synced from your bank${a.last_sync ? ` · ${esc(String(a.last_sync).slice(0, 10))}` : ``}</span></div><span>${bm0(Number(a.balance) || 0)}</span></div>`;
+    }).join("");
+    const nowStamp = new Date().toISOString().slice(0, 10);
     body.innerHTML = `
       <p class="psub">Everything you own minus everything you owe. Bank balances come from your connected accounts; the rest you add once and update when it changes.</p>
       <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
-        <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p></div>
+        <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
+        <p class="fine" style="margin:6px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them.</p></div>
+      ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length})</h2><div class="bcard">${acctRows}</div>` : ``}
       <h2 class="sec">Trend</h2>
       <div class="pcard">${nwSparkSVG(snaps)}${nwChangeExplain(snaps)}</div>
       <h2 class="sec">Other assets (${assets.length})</h2>
@@ -8804,7 +8832,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         if (!name || !(val >= 0)) { toast("Name and value needed."); return; }
         const key = kind === "a" ? NW_LS.assets : NW_LS.liabs;
         const list = nwListGet(key);
-        list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val });
+        list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val, added: new Date().toISOString() });
         nwListSet(key, list); renderNetWorth(); toast("Saved.");
       };
     };
@@ -8829,7 +8857,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     "Proof of Social Security number",
     "Proof of address tying you to the address on record (old mail, lease, utility bill)",
     "Proof you owned it, if you have it (old statement, pay stub, policy)",
-    "Notarization: most states require it for larger claims — the state site says when",
+    "Notarization: some states ask for it on larger claims — the state site tells you if yours does",
     "Heir claim? You'll also need the death certificate and proof you're the heir",
   ];
   function claimChecklistHtml(state) {
@@ -8844,12 +8872,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // We never show or predict a score — only the factors lenders use and the
   // arithmetic on utilization. FICO + Vantage weights labeled.
   function cfoCredit(body) {
+    // FICO percentages are FICO-published. VantageScore publishes influence
+    // bands, not exact percentages — labeled honestly as bands.
     const factors = [
-      ["Payment history", "35% of FICO · 40% of VantageScore", "One on-time streak matters more than anything else."],
-      ["Amounts owed (utilization)", "30% of FICO · 21% of VantageScore", "Balance ÷ limit across cards. Under 30% is the common line; under 10% is better."],
-      ["Length of history", "15% of FICO · 20% of VantageScore", "Average age of accounts. Don't close your oldest card."],
-      ["New credit", "10% of FICO · 5% of VantageScore", "Hard inquiries from applications. A few is fine."],
-      ["Credit mix", "10% of FICO · 11% of VantageScore", "Cards + installment loans. Don't open accounts just for mix."],
+      ["Payment history", "35% of FICO · extremely influential in VantageScore", "One on-time streak matters more than anything else."],
+      ["Amounts owed (utilization)", "30% of FICO · highly influential in VantageScore", "Balance ÷ limit across cards. Under 30% is the common line; under 10% is better."],
+      ["Length of history", "15% of FICO · highly influential in VantageScore", "Average age of accounts. Don't close your oldest card."],
+      ["New credit", "10% of FICO · less influential in VantageScore", "Hard inquiries from applications. A few is fine."],
+      ["Credit mix", "10% of FICO · less influential in VantageScore", "Cards + installment loans. Don't open accounts just for mix."],
     ];
     body.innerHTML = `
       <p class="psub">Nobody can tell you your exact score without pulling it — but these are the five factors every lender's model uses, and the utilization math is exact.</p>
