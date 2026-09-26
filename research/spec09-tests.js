@@ -184,9 +184,10 @@ function approx(a, b, tol) { return Math.abs(a - b) <= tol; }
   store.delete("cfo_debt_debts");
   store.delete("upmore_nw_assets_v1");
   store.delete("upmore_nw_liabs_v1");
-  const snaps = nwSnapshot(12345);
+  const snaps = nwSnapshot({ total: 12345, bank: 8000, assets: 5000, liabs: 1000, debts: 655 });
   const ym = new Date().toISOString().slice(0, 7);
-  t("snapshot stores month", snaps[ym] === 12345);
+  t("snapshot stores month", snaps[ym].total === 12345);
+  t("snapshot stores breakdown", snaps[ym].bank === 8000 && snaps[ym].debts === 655);
   t("spark needs 2 months", nwSparkSVG({ [ym]: 1 }).includes("Two months"));
   t("spark draws line", nwSparkSVG({ "2026-07": 1000, "2026-08": 2000 }).includes("<path"));
 }

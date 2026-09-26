@@ -1007,6 +1007,7 @@
         <button class="ghostbtn" id="txCalBtn" style="margin:0">Bills calendar →</button>
       </div>
       <div id="txBulkHost"></div>
+      <div id="txReview"></div>
       <div id="txList"></div>
       <button class="ghostbtn" id="txMonthBtn" style="margin-top:12px">View month vs average →</button>
     </div>
@@ -1478,12 +1479,49 @@
     renderNav();
   }
 
+  // SPEC 09b: review queue (Monarch parity) — stale pending holds,
+  // unmatched credits, and refunds, with one-tap acknowledge. Never deletes.
+  const TX_REVIEWED_LS = "upmore_tx_reviewed_v1";
+  function txReviewedGet() { try { const v = JSON.parse(localStorage.getItem(TX_REVIEWED_LS) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function txReviewItems(transactions) {
+    const seen = new Set(txReviewedGet());
+    const now = Date.now();
+    const out = [];
+    (transactions || []).forEach(t => {
+      const id = String(t.id || t.provider_id || "");
+      if (!id || seen.has(id)) return;
+      if (t.is_pending) {
+        const age = (now - new Date(t.posted_at).getTime()) / 864e5;
+        if (age > 7) out.push({ id, kind: "pending", t, note: `Pending for ${Math.round(age)} days — a hold that never settled. Check it wasn't charged twice.` });
+      } else if (t.is_unmatched_credit) {
+        out.push({ id, kind: "credit", t, note: "Money in with no matching purchase found. Confirm it's really yours." });
+      } else if (t.is_refund) {
+        out.push({ id, kind: "refund", t, note: "Refund matched to the original charge. Nothing to do." });
+      }
+    });
+    return out.slice(0, 20);
+  }
+  function renderTxReview() {
+    const box = $("txReview"); if (!box) return;
+    const { transactions } = loadTrackData();
+    const items = txReviewItems(transactions);
+    if (!items.length) { box.innerHTML = ""; return; }
+    box.innerHTML = `<div class="pcard" style="margin:10px 0"><p class="bsum" style="font-size:14px">${items.length} transaction${items.length > 1 ? "s" : ""} worth a look</p>` +
+      items.map(it => `<div class="mrow"><div><b>${esc(it.t.merchant_raw)}</b><i>${bm0(it.t.amount)} · ${esc(it.t.posted_at)}<br>${esc(it.note)}</i></div>
+        <button class="tgt" data-txok="${esc(it.id)}">Looks good</button></div>`).join("") + `</div>`;
+    box.querySelectorAll("[data-txok]").forEach(b => b.onclick = () => {
+      const v = txReviewedGet(); v.push(b.dataset.txok);
+      try { localStorage.setItem(TX_REVIEWED_LS, JSON.stringify(v)); } catch (e) {}
+      renderTxReview();
+    });
+  }
   // SPEC 04: transaction list screen wiring
   function renderTxScreen() {
     // SPEC 09: bulk-recategorize bar (Monarch parity).
     const bh = $("txBulkHost");
     if (bh) { bh.innerHTML = txBulkBarHtml(); wireBulkBar(); }
     syncTxSelectBtn();
+    renderTxReview();
     $("txList").innerHTML = renderTxList($("txq").value || "");
     $("txList").querySelectorAll("[data-bulk]").forEach(cb => {
       cb.onclick = e => e.stopPropagation();
@@ -4462,12 +4500,18 @@
   // then offer the safe alternative (steps, or a draft the user sends).
   function guideMoneyMoveRefusals(t) {
     const has = (...kws) => kws.some(k => t.includes(k));
-    // "Just cancel Netflix for me"
+    // "Just cancel Netflix for me" — reconciled with the Tier 2 execution agent:
+    // the agent CAN cancel with per-action approval via Save tab; chat itself stays read-only.
     if (has("cancel") && has("for me", "do it for me", "cancel it", "on my behalf", "cancel this", "do it now", "just do it")) {
       const svc = has("netflix") ? "Netflix" : has("spotify") ? "Spotify" : has("hulu") ? "Hulu" : "that subscription";
+      const mkey = (typeof merchantKeyFor === "function") ? merchantKeyFor(svc) : null;
+      const agentPara = (mkey && typeof session !== "undefined" && session)
+        ? "Want me to do it? Open the Save tab, tap " + svc + ", then \u2018Cancel it for me\u2019 — I'll log in with a credential you vault, you approve the exact cancellation, and I capture proof. I watch for 60 days to make sure the charge is really gone."
+        : "I can't do it from this chat — but the Save tab can: tap the subscription there and use \u2018Cancel it for me\u2019, which runs the cancellation with your explicit approval and captures proof.";
       return { paras: [
-        CHAT_READONLY_LINE + " I can't cancel " + svc + " for you \u2014 the cancellation has to happen inside your own account.",
-        "It takes about a minute: open the " + svc + " app or site \u2192 Account \u2192 Membership (or Subscription) \u2192 Cancel. It stays active until the end of the billing period, so nothing stops today.",
+        "Upmore never moves money, by design — but cancellation is something I can do with your approval, not something you have to do alone.",
+        agentPara,
+        "Or do it yourself in about a minute: open the " + svc + " app or site \u2192 Account \u2192 Membership (or Subscription) \u2192 Cancel. It stays active until the end of the billing period, so nothing stops today.",
         "Confirmation watch: check your next statement and make sure the charge is gone. Tell me what the next bill shows and I'll confirm it's actually cancelled."
       ] };
     }
@@ -7230,6 +7274,27 @@
 
   // ---- Render ----
   let budgetReportMonth = null; // YYYY-MM; null = latest
+  // SPEC 09b: Month in Review builder (extracted for tests).
+  function monthReviewHtml(transactions, months, idx) {
+    const prevYm = months[idx + 1];
+    if (!prevYm) return ``;
+    const pm = budgetReportModel(transactions, prevYm);
+    const beforeYm = months[idx + 2];
+    const bm = beforeYm ? budgetReportModel(transactions, beforeYm) : null;
+    const topCat = pm.rows.slice().sort((a, b) => b.spent - a.spent)[0];
+    let mover = null;
+    if (bm) {
+      const bByCat = {}; bm.rows.forEach(r => bByCat[r.cat] = r.spent);
+      pm.rows.forEach(r => {
+        const d = r.spent - (bByCat[r.cat] || 0);
+        if (!mover || Math.abs(d) > Math.abs(mover.d)) mover = { cat: r.cat, d };
+      });
+    }
+    const sr = savingsRate(pm);
+    const keptTxt = pm.agg.kept >= 0 ? `kept ${bm0(pm.agg.kept)}` : `overspent by ${bm0(-pm.agg.kept)}`;
+    return `<h2 class="sec">${monthName(prevYm)} in review</h2>
+    <div class="pcard"><p class="bsum" style="font-size:14px">You spent ${bm0(pm.agg.out)} and ${keptTxt}.${topCat && topCat.spent > 0 ? ` Biggest category: ${esc(topCat.cat)} at ${bm0(topCat.spent)}.` : ``}${mover && Math.abs(mover.d) >= 1 ? ` ${esc(mover.cat)} ${mover.d > 0 ? "rose" : "fell"} ${bm0(Math.abs(mover.d))} vs the month before.` : ``}${sr != null ? ` Savings rate: ${sr}%.` : ``}</p></div>`;
+  }
   function renderBudgetReport() {
     const body = $("budgetReportBody");
     const { transactions, accounts, isLive, isDemo } = loadTrackData();
@@ -7274,6 +7339,21 @@
     } catch (e) {}
 
     const isCurMonth = ym === new Date().toISOString().slice(0, 7);
+    // SPEC 09b: committed upcoming bills per category (Monarch "upcoming" parity).
+    // Maps each recurring charge to its category via a same-merchant transaction lookup.
+    const committedByCat = (() => {
+      const out = {};
+      if (!isCurMonth) return out;
+      const byMerch = {};
+      transactions.forEach(t => { const m = normMerch(t.merchant_raw); if (m && !byMerch[m]) byMerch[m] = effCat(t); });
+      (model.rec.list || []).forEach(r => {
+        const days = projectDates(r, Number(ym.slice(0, 4)), Number(ym.slice(5, 7)) - 1);
+        if (!days.length) return;
+        const cat = byMerch[normMerch(r.merchant_raw)] || "Bills & Utilities";
+        out[cat] = (out[cat] || 0) + Number(r.amount || 0) * days.length;
+      });
+      return out;
+    })();
     const catRows = model.rows.map(r => {
       const pct = r.effective > 0 ? Math.min(100, (r.spent / r.effective) * 100) : (r.spent > 0 ? 100 : 0);
       // SPEC 09: projection coloring (Copilot parity, no-guilt palette).
@@ -7283,6 +7363,8 @@
       const projOver = !isOver && isCurMonth && r.effective > 0 && proj > r.effective * 1.02;
       const barCls = isOver ? "over" : (projOver ? "proj" : "");
       const outlineCls = projOver ? " outline" : "";
+      const committed = committedByCat[r.cat] || 0;
+      const committedTxt = committed > 0 ? ` · ${bm0(committed)} in upcoming bills` : ``;
       const projTxt = isCurMonth && !isOver && r.effective > 0
         ? (projOver ? ` · on pace for ${bm0(proj)}` : ` · on pace`) : ``;
       const status = r.left >= 0
@@ -7295,7 +7377,7 @@
       return `<div class="brow">
         <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)}</span></div>
         <div class="bbar${outlineCls}" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget${projOver ? ", projected over budget" : ""}"><i class="${barCls}" style="width:${pct}%"></i></div>
-        <div class="bstat">${status}${rollTxt}</div>
+        <div class="bstat">${status}${committedTxt}${rollTxt}</div>
         <div class="bs"><button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)} — change</button>${trendTxt}</div></div>`;
     }).join("");
 
@@ -7317,6 +7399,8 @@
         `</div><p class="psub" style="margin:-4px 0 8px">${aomVal != null ? `A dollar you earn sits about ${aomVal} days before it\u2019s spent \u2014 the longer, the calmer. ` : ""}${saveRate != null && saveRate < 20 ? `Under 20% is normal when you\u2019re starting out.` : ""}</p>`
       : ``;
 
+    // SPEC 09b: Month in Review (Copilot parity) — last completed month, plain words.
+    const reviewHtml = monthReviewHtml(transactions, months, idx);
     body.innerHTML = `
       ${sampleTag}
       <div class="bmonthnav">
@@ -7350,6 +7434,7 @@
       <div class="bcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
       <button class="ghostbtn" id="brCal" style="margin-top:10px">Bills calendar →</button>
       ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
+      ${reviewHtml}
       ${nudge}`;
 
     // ---- wiring ----
@@ -8563,18 +8648,38 @@
     try { debts = (JSON.parse(localStorage.getItem("cfo_debt_debts") || "[]") || []).reduce((s, x) => s + Number(x.balance || 0), 0); } catch (e) {}
     return { bank, assets, liabs, debts, total: bank + assets - liabs - debts };
   }
-  function nwSnapshot(total) {
+  function nwSnapNorm(v) {
+    // Backward compat: old snapshots stored a bare number.
+    if (typeof v === "number") return { total: v, bank: 0, assets: 0, liabs: 0, debts: 0, partial: true };
+    return v;
+  }
+  function nwSnapshot(nw) {
     const ym = new Date().toISOString().slice(0, 7);
     let snaps = {};
     try { snaps = JSON.parse(localStorage.getItem(NW_LS.snaps) || "{}"); } catch (e) {}
-    snaps[ym] = Math.round(total);
+    snaps[ym] = { total: Math.round(nw.total), bank: Math.round(nw.bank), assets: Math.round(nw.assets), liabs: Math.round(nw.liabs), debts: Math.round(nw.debts) };
     try { localStorage.setItem(NW_LS.snaps, JSON.stringify(snaps)); } catch (e) {}
     return snaps;
+  }
+  // SPEC 09b: explain the month-over-month change by component (Monarch parity).
+  function nwChangeExplain(snaps) {
+    const keys = Object.keys(snaps).sort();
+    if (keys.length < 2) return "";
+    const a = nwSnapNorm(snaps[keys[keys.length - 2]]), b = nwSnapNorm(snaps[keys[keys.length - 1]]);
+    if (a.partial) return "";
+    const parts = [];
+    const dBank = b.bank - a.bank, dAst = b.assets - a.assets, dOwe = (b.liabs + b.debts) - (a.liabs + a.debts);
+    if (dBank) parts.push(`accounts ${dBank > 0 ? "up" : "down"} ${bm0(Math.abs(dBank))}`);
+    if (dAst) parts.push(`other assets ${dAst > 0 ? "up" : "down"} ${bm0(Math.abs(dAst))}`);
+    if (dOwe) parts.push(`what you owe ${dOwe > 0 ? "up" : "down"} ${bm0(Math.abs(dOwe))}`);
+    if (!parts.length) return `<p class="psub">No change since ${esc(keys[keys.length - 2])}.</p>`;
+    const dTot = b.total - a.total;
+    return `<p class="psub">${dTot >= 0 ? "Up" : "Down"} ${bm0(Math.abs(dTot))} since ${esc(keys[keys.length - 2])} — ${esc(parts.join("; "))}.</p>`;
   }
   function nwSparkSVG(snaps) {
     const keys = Object.keys(snaps).sort().slice(-12);
     if (keys.length < 2) return `<p class="psub">Two months of history and the trend line appears here.</p>`;
-    const vals = keys.map(k => snaps[k]);
+    const vals = keys.map(k => nwSnapNorm(snaps[k]).total);
     const min = Math.min(...vals), max = Math.max(...vals), rng = Math.max(1, max - min);
     const W = 340, H = 90, P = 10;
     const X = i => P + i / (keys.length - 1) * (W - 2 * P);
@@ -8588,7 +8693,7 @@
   function renderNetWorth() {
     const body = $("nwBody"); if (!body) return;
     const nw = netWorthCalc();
-    const snaps = nwSnapshot(nw.total);
+    const snaps = nwSnapshot(nw);
     const assets = nwListGet(NW_LS.assets), liabs = nwListGet(NW_LS.liabs);
     const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}</span></div>
       <span>${bm0(a.value)} <button class="tgt" data-nwdel="${kind}:${a.id}" aria-label="Remove">✕</button></span></div>`;
@@ -8597,7 +8702,7 @@
       <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p></div>
       <h2 class="sec">Trend</h2>
-      <div class="pcard">${nwSparkSVG(snaps)}</div>
+      <div class="pcard">${nwSparkSVG(snaps)}${nwChangeExplain(snaps)}</div>
       <h2 class="sec">Other assets (${assets.length})</h2>
       <div class="bcard">${assets.length ? assets.map(a => row(a, "a")).join("") : `<p class="psub">None yet — home, car, crypto, anything with value.</p>`}</div>
       <button class="ghostbtn" id="nwAddA" style="margin-top:8px">+ Add asset</button>
