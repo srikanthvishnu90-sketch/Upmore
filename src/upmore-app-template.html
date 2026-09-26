@@ -7824,7 +7824,8 @@
       const feeHtml = sum.feeKnownValue > 0 || sum.feeUnknown > 0
         ? `<h2 class="sec">What it costs</h2><div class="pcard"><p class="bsum" style="font-size:14.5px">${
             sum.feeKnownValue > 0 ? `About <b>${bm0(sum.feeYearly)}/year</b> goes to fund fees on the positions we know.` : `No fee data yet.`
-          }${sum.feeUnknown > 0 ? ` ${sum.feeUnknown} position${sum.feeUnknown === 1 ? "" : "s"} missing fee data — tap a holding to add its expense ratio.` : ""}</p></div>`
+          }${sum.feeUnknown > 0 ? ` ${sum.feeUnknown} position${sum.feeUnknown === 1 ? "" : "s"} missing fee data — tap a holding to add its expense ratio.` : ""}</p>
+          ${sum.feeYearly > 0 ? `<p class="psub" style="margin-top:8px">Over 30 years that's roughly <b>${bm0(sum.feeYearly * 30)}</b> in fees at today's rates and balance (simple projection — no compounding, no growth assumptions; the real number moves with both).</p>` : ""}</div>`
         : "";
       const cashHtml = sum.cashValue >= 1000
         ? `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">${bm0(sum.cashValue)} is sitting in cash inside your investments. The Idle cash check prices what that's costing per year.</p><button class="ghostbtn" id="invIdle" style="margin-top:8px">Check idle cash →</button></div>`
@@ -8817,8 +8818,9 @@
     const { accounts } = loadTrackData();
     const assets = nwListGet(NW_LS.assets), liabs = nwListGet(NW_LS.liabs);
     const addedOn = a => a.added ? new Date(a.added).toISOString().slice(0, 10) : null;
-    const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}${addedOn(a) ? ` · added ${addedOn(a)}` : ``}</span></div>
-      <span>${bm0(a.value)} <button class="tgt" data-nwdel="${kind}:${a.id}" aria-label="Remove">✕</button></span></div>`;
+    const valuedOn = a => a.updated ? new Date(a.updated).toISOString().slice(0, 10) : addedOn(a);
+    const row = (a, kind) => `<div class="nwrow"><div><b>${esc(a.name)}</b><br><span class="dim" style="font-size:12px">${esc(a.kind || "")}${valuedOn(a) ? ` · valued ${valuedOn(a)}` : ``}</span></div>
+      <span>${bm0(a.value)} <button class="tgt" data-nwedit="${kind}:${a.id}" aria-label="Update value">✎</button> <button class="tgt" data-nwdel="${kind}:${a.id}" aria-label="Remove">✕</button></span></div>`;
     const acctRows = (accounts || []).map(a => {
       const nm = esc(a.name || a.official_name || "Account");
       const mask = a.mask ? ` ••••${esc(a.mask)}` : ``;
@@ -8829,7 +8831,7 @@
       <p class="psub">Everything you own minus everything you owe. Bank balances come from your connected accounts; the rest you add once and update when it changes.</p>
       <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
-        <p class="fine" style="margin:6px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them.</p></div>
+        <p class="fine" style="margin:6px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p></div>
       ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length})</h2><div class="bcard">${acctRows}</div>` : ``}
       <h2 class="sec">Trend</h2>
       <div class="pcard">${nwSparkSVG(snaps)}${nwChangeExplain(snaps)}</div>
@@ -8846,20 +8848,31 @@
       else nwListSet(NW_LS.liabs, nwListGet(NW_LS.liabs).filter(x => String(x.id) !== id));
       renderNetWorth();
     });
-    const form = (kind) => {
+    const form = (kind, existing) => {
       $("nwForm").innerHTML = `<div class="svform" style="margin-top:12px">
-        <label class="f"><span>Name</span><input id="nwName" placeholder="${kind === "a" ? "Car, crypto, home…" : "Loan, credit card…"}" autocomplete="off"></label>
-        <label class="f"><span>Value ($)</span><input id="nwVal" inputmode="decimal" placeholder="15000" autocomplete="off"></label>
-        <button class="go" id="nwSave" style="height:48px">Save</button></div>`;
+        <label class="f"><span>Name</span><input id="nwName" value="${esc(existing ? existing.name : "")}" placeholder="${kind === "a" ? "Car, crypto, home…" : "Loan, credit card…"}" autocomplete="off"></label>
+        <label class="f"><span>Value ($) — update this when the real value changes</span><input id="nwVal" value="${existing ? existing.value : ""}" inputmode="decimal" placeholder="15000" autocomplete="off"></label>
+        <button class="go" id="nwSave" style="height:48px">${existing ? "Update value" : "Save"}</button></div>`;
       $("nwSave").onclick = () => {
         const name = $("nwName").value.trim(), val = parseFloat($("nwVal").value);
         if (!name || !(val >= 0)) { toast("Name and value needed."); return; }
         const key = kind === "a" ? NW_LS.assets : NW_LS.liabs;
         const list = nwListGet(key);
-        list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val, added: new Date().toISOString() });
-        nwListSet(key, list); renderNetWorth(); toast("Saved.");
+        if (existing) {
+          const it = list.find(x => String(x.id) === String(existing.id));
+          if (it) { it.name = name; it.value = val; it.updated = new Date().toISOString(); }
+        } else {
+          list.push({ id: "nw" + Date.now(), name, kind: kind === "a" ? "Manual asset" : "Manual liability", value: val, added: new Date().toISOString() });
+        }
+        nwListSet(key, list); renderNetWorth(); toast(existing ? "Value updated." : "Saved.");
       };
     };
+    body.querySelectorAll("[data-nwedit]").forEach(b => b.onclick = () => {
+      const [kind, id] = b.dataset.nwedit.split(":");
+      const key = kind === "a" ? NW_LS.assets : NW_LS.liabs;
+      const it = nwListGet(key).find(x => String(x.id) === id);
+      if (it) form(kind, it);
+    });
     $("nwAddA").onclick = () => form("a");
     $("nwAddL").onclick = () => form("l");
   }
@@ -8917,7 +8930,8 @@
       </div>
       <button class="go" id="crRun" style="margin-top:10px;height:48px">Do the math</button>
       <div id="crOut" style="margin-top:10px"></div></div>
-      <p class="fine" style="margin-top:8px">Weights: FICO Score 35/30/15/10/10; VantageScore 4.0 40/21/20/11/5/3 (the last 3% is "available credit"). This is education, not a score prediction.</p>`;
+      <p class="fine" style="margin-top:8px">FICO weights 35/30/15/10/10 are FICO-published (<button class="linkbtn" id="crFicoSrc">myFICO</button>). VantageScore publishes influence bands, not exact percentages. Education, not a score prediction.</p>`;
+    const fs = $("crFicoSrc"); if (fs) fs.onclick = () => window.open("https://www.myfico.com/credit-education/whats-in-your-credit-score", "_blank", "noopener");
     $("crRun").onclick = () => {
       const g = id => { const v = parseFloat(($(id) || {}).value); return isNaN(v) ? 0 : v; };
       const bal = Math.max(0, g("crBal")), lim = Math.max(0, g("crLim")), pay = Math.max(0, g("crPay"));
