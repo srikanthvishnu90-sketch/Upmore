@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-xYVZeW3BaZ+XWUfiLLGGZOv1ODwOjUASiArmO+SWZQw=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-sLU8rFi3BWJGIHepokIznAhAQ77JNaJpAFVcHTkq/r4=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -7305,7 +7305,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     customCats: "upmore_custom_cats_v1",
     overrides: "upmore_tx_cat_overrides_v1",
     keepTarget: "upmore_keep_target_v1",
+    types: "upmore_budget_types_v1", // SPEC 09l: per-category budget type
   };
+  // SPEC 09l: budget types (Monarch/YNAB parity). "rollover" = unused carries
+  // forward (previous default); "fixed" = hard monthly number, no carry;
+  // "flex" = guideline target, no carry, softer wording.
+  const BUDGET_TYPES = { rollover: "Rollover", fixed: "Fixed", flex: "Flexible" };
+  function getBudgetType(cat) {
+    const t = blsGet(BUDGET_LS.types, {}) || {};
+    return BUDGET_TYPES[t[cat]] ? t[cat] : "rollover";
+  }
+  function setBudgetType(cat, type) {
+    if (!BUDGET_TYPES[type]) return;
+    const t = blsGet(BUDGET_LS.types, {}) || {};
+    t[cat] = type;
+    blsSet(BUDGET_LS.types, t);
+  }
   function blsGet(k, fb) { try { const v = localStorage.getItem(k); return v == null ? fb : JSON.parse(v); } catch (e) { return fb; } }
   function blsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   // Whole-dollar money, with sign: -$1,234 / $1,234
@@ -7402,6 +7417,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // Rollover: unspent budget carries forward, month by month, oldest first.
   // Only positive leftovers roll; overspend never borrows from next month.
   function rolloverFor(cat, ym, transactions, monthsAsc, targetsByCat) {
+    if (getBudgetType(cat) !== "rollover") return 0;
     let carry = 0;
     for (const m of monthsAsc) {
       if (m >= ym) break;
@@ -7428,7 +7444,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const prevAvg = prevMonths.length
         ? prevMonths.reduce((s, m) => s + (monthAgg(transactions, m).byCat[cat] || 0), 0) / prevMonths.length : 0;
       return { cat, target: tg.value, isCustomTarget: tg.custom, rollover: roll,
-               effective, spent, left: effective - spent, prevAvg };
+               effective, spent, left: effective - spent, prevAvg, btype: getBudgetType(cat) };
     }).filter(r => r.spent > 0.005 || r.target > 0 || r.isCustomTarget);
     rows.sort((a, b) => b.spent - a.spent);
     const topMerchants = Object.entries(agg.byMerchant).sort((a, b) => b[1] - a[1]).slice(0, 5);
@@ -7619,13 +7635,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         : `${bm0(-r.left)} over your ${bm0(r.effective)} budget`;
       const rollTxt = r.rollover > 0 ? ` · ${bm0(r.rollover)} rolled over from last month` : ``;
       const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested budget`;
+      const typeLbl = BUDGET_TYPES[r.btype] || "Rollover";
       const trendTxt = model.prevMonths.length && r.prevAvg > 0
         ? ` · usual ${bm0(r.prevAvg)}/mo` : ``;
       return `<div class="brow">
         <div class="bt"><b>${esc(r.cat)}</b><span>${bm0(r.spent)}</span></div>
         <div class="bbar${outlineCls}" role="img" aria-label="${esc(r.cat)}: spent ${bm0(r.spent)} of ${bm0(r.effective)} budget${projOver ? ", projected over budget" : ""}"><i class="${barCls}" style="width:${pct}%"></i></div>
         <div class="bstat">${status}${committedTxt}${rollTxt}</div>
-        <div class="bs"><button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)} — change</button>${trendTxt}</div></div>`;
+        <div class="bs"><button class="tgt" data-edittarget="${esc(r.cat)}" aria-label="Edit ${esc(r.cat)} budget">${tgtTxt}: ${bm0(r.target)} · ${typeLbl} — change</button>${trendTxt}</div></div>`;
     }).join("");
 
     const merchRows = model.topMerchants.map(([m, v]) =>
@@ -7708,14 +7725,24 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function openTargetSheet(cat) {
     const t = getBudgetTargets();
     const cur = t[cat] != null ? t[cat] : "";
+    const curType = getBudgetType(cat);
+    const typeCopy = {
+      rollover: "Unspent money rolls into next month automatically.",
+      fixed: "A hard monthly number — rent, insurance. Nothing carries over.",
+      flex: "A guideline, not a rule — dining out, fun money. Nothing carries over.",
+    };
     openBudgetSheet(`${cat} budget`, `
-      <p class="psub">Monthly spending target. Unspent money rolls into next month automatically.</p>
+      <p class="psub">Monthly spending target. <span id="bsTypeCopy">${esc(typeCopy[curType])}</span></p>
+      <label class="f"><span>Budget type</span><select id="bsTargetType">
+        ${Object.entries(BUDGET_TYPES).map(([k, lbl]) => `<option value="${k}"${k === curType ? " selected" : ""}>${lbl}</option>`).join("")}
+      </select></label>
       <label class="f"><span>Budget ($/month)</span><input id="bsTargetAmt" inputmode="decimal" placeholder="300" value="${esc(String(cur))}" autocomplete="off"></label>
       <div class="row" style="gap:8px;margin-top:10px">
         <button class="btn" id="bsTargetClear" style="flex:1">Use suggested</button>
         <button class="go" id="bsTargetSave" style="flex:1;height:50px">Save</button>
       </div>`);
-    $("bsTargetSave").onclick = () => { setBudgetTarget(cat, parseFloat($("bsTargetAmt").value)); closeBudgetSheet(); renderBudgetReport(); };
+    $("bsTargetType").onchange = e => { $("bsTypeCopy").textContent = typeCopy[e.target.value] || ""; };
+    $("bsTargetSave").onclick = () => { setBudgetTarget(cat, parseFloat($("bsTargetAmt").value)); setBudgetType(cat, $("bsTargetType").value); closeBudgetSheet(); renderBudgetReport(); };
     $("bsTargetClear").onclick = () => { setBudgetTarget(cat, null); closeBudgetSheet(); renderBudgetReport(); };
   }
   function openAddCatSheet() {
