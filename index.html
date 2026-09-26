@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-reQ5JEi3WBwwIY9S8oqlW/GSkjVA3mfNOGaqrF1kB/M=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-xYVZeW3BaZ+XWUfiLLGGZOv1ODwOjUASiArmO+SWZQw=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1523,7 +1523,28 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // SPEC 09b: review queue (Monarch parity) — stale pending holds,
   // unmatched credits, and refunds, with one-tap acknowledge. Never deletes.
   const TX_REVIEWED_LS = "upmore_tx_reviewed_v1";
+  const TX_FLAGS_LS = "upmore_tx_flags_v1"; // SPEC 09k: per-tx resolutions {excluded, asIncome}
   function txReviewedGet() { try { const v = JSON.parse(localStorage.getItem(TX_REVIEWED_LS) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function txFlagsGet() { try { const v = JSON.parse(localStorage.getItem(TX_FLAGS_LS) || "{}"); return (v && typeof v === "object") ? v : {}; } catch (e) { return {}; } }
+  function txFlagsSet(id, patch) {
+    const f = txFlagsGet(); const cur = f[id] || {};
+    f[id] = Object.assign({}, cur, patch);
+    if (!f[id].excluded && !f[id].asIncome) delete f[id];
+    try { localStorage.setItem(TX_FLAGS_LS, JSON.stringify(f)); } catch (e) {}
+    // Re-apply to the live in-memory set without dropping it (never null it —
+    // that would discard live SimpleFIN data and fall back to demo).
+    try {
+      const d = loadTrackData();
+      (d.transactions || []).forEach(t => {
+        if (String(t.id || t.provider_id || "") !== String(id)) return;
+        t.is_excluded = !!f[id] && !!f[id].excluded;
+        if (f[id] && f[id].asIncome && t.amount > 0) { t.is_unmatched_credit = false; t.counted_income = true; }
+        else if (!f[id] || !f[id].asIncome) { t.counted_income = false; }
+      });
+    } catch (e) {}
+  }
+  function txIsExcluded(t) { const id = String(t.id || t.provider_id || ""); return !!id && !!(txFlagsGet()[id] || {}).excluded; }
+  function txIsMarkedIncome(t) { const id = String(t.id || t.provider_id || ""); return !!id && !!(txFlagsGet()[id] || {}).asIncome; }
   function txReviewItems(transactions) {
     const seen = new Set(txReviewedGet());
     const now = Date.now();
@@ -1548,12 +1569,31 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const items = txReviewItems(transactions);
     if (!items.length) { box.innerHTML = ""; return; }
     box.innerHTML = `<div class="pcard" style="margin:10px 0"><p class="bsum" style="font-size:14px">${items.length} transaction${items.length > 1 ? "s" : ""} worth a look</p>` +
-      items.map(it => `<div class="mrow"><div><b>${esc(it.t.merchant_raw)}</b><i>${bm0(it.t.amount)} · ${esc(it.t.posted_at)}<br>${esc(it.note)}</i></div>
-        <button class="tgt" data-txok="${esc(it.id)}">Looks good</button></div>`).join("") + `</div>`;
-    box.querySelectorAll("[data-txok]").forEach(b => b.onclick = () => {
-      const v = txReviewedGet(); v.push(b.dataset.txok);
+      items.map(it => {
+        const acts = [`<button class="tgt" data-txok="${esc(it.id)}">Looks good</button>`];
+        if (it.kind === "pending") acts.push(`<button class="tgt" data-txx="${esc(it.id)}">Exclude from spending</button>`);
+        if (it.kind === "credit") {
+          acts.push(`<button class="tgt" data-txinc="${esc(it.id)}">Count as income</button>`);
+          acts.push(`<button class="tgt" data-txrecat="${esc(it.id)}">Recategorize</button>`);
+        }
+        return `<div class="mrow"><div><b>${esc(it.t.merchant_raw)}</b><i>${bm0(it.t.amount)} · ${esc(it.t.posted_at)}<br>${esc(it.note)}</i></div>
+        <span style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end">${acts.join("")}</span></div>`;
+      }).join("") + `</div>`;
+    const markReviewed = id => {
+      const v = txReviewedGet(); v.push(id);
       try { localStorage.setItem(TX_REVIEWED_LS, JSON.stringify(v)); } catch (e) {}
       renderTxReview();
+    };
+    box.querySelectorAll("[data-txok]").forEach(b => b.onclick = () => markReviewed(b.dataset.txok));
+    box.querySelectorAll("[data-txx]").forEach(b => b.onclick = () => { txFlagsSet(b.dataset.txx, { excluded: true }); markReviewed(b.dataset.txx); renderTxScreen(); });
+    box.querySelectorAll("[data-txinc]").forEach(b => b.onclick = () => { txFlagsSet(b.dataset.txinc, { asIncome: true }); markReviewed(b.dataset.txinc); renderTxScreen(); });
+    box.querySelectorAll("[data-txrecat]").forEach(b => b.onclick = () => {
+      const { transactions } = loadTrackData();
+      const t = (transactions || []).find(x => String(x.id || x.provider_id) === String(b.dataset.txrecat));
+      if (t && typeof openRecatSheet === "function") {
+        markReviewed(b.dataset.txrecat);
+        openRecatSheet(t.id, `${t.merchant_raw} — $${Math.abs(t.amount).toFixed(2)} on ${t.posted_at} (now: ${effCat(t)})`);
+      }
     });
   }
   // SPEC 04: transaction list screen wiring
@@ -3360,17 +3400,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const thisM = real.filter(t => inM(t.posted_at) === ym);
       // FIX (D1-028/1-029): refunds and unmatched credits are never income.
       const inflow = thisM.filter(t => isCountableInflow(t)).reduce((s, t) => s + t.amount, 0);
-      const outgo = thisM.filter(t => t.amount < 0).reduce((s, t) => s - t.amount, 0);
+      const outgo = thisM.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0);
       // trailing 3 full months average
       const avgs = [];
       for (let i = 1; i <= 3; i++) {
         const d = new Date(now.getFullYear(), now.getMonth() - i, 1).toISOString().slice(0, 7);
         const m = real.filter(t => inM(t.posted_at) === d);
-        avgs.push(m.filter(t => t.amount < 0).reduce((s, t) => s - t.amount, 0));
+        avgs.push(m.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0));
       }
       const avgOut = avgs.reduce((s, x) => s + x, 0) / 3;
       const byCat = {};
-      thisM.filter(t => t.amount < 0).forEach(t => { byCat[t.category] = (byCat[t.category] || 0) - t.amount; });
+      thisM.filter(t => isCountableSpend(t)).forEach(t => { byCat[t.category] = (byCat[t.category] || 0) - t.amount; });
       // FIX (D1-028): refunds net against their category's spending.
       thisM.filter(t => t.is_refund).forEach(t => { byCat[t.category] = (byCat[t.category] || 0) - t.amount; });
       const movers = Object.entries(byCat).sort((a, b) => b[1] - a[1]).slice(0, 3);
@@ -6672,6 +6712,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (!trackData) {
       trackData = TransactionSource.demo();
       trackData.isDemo = true;
+      // SPEC 09k: apply user resolutions (excluded / counted-as-income).
+      const flags = txFlagsGet();
+      (trackData.transactions || []).forEach(t => {
+        const f = flags[String(t.id || t.provider_id || "")];
+        if (f) {
+          if (f.excluded) t.is_excluded = true;
+          if (f.asIncome && t.amount > 0) { t.is_unmatched_credit = false; t.counted_income = true; }
+        }
+      });
     }
     return trackData;
   }
@@ -6823,7 +6872,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const committedCats = ["Groceries", "Utilities", "Transport"];
     const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
     const committedLast30 = (transactions || [])
-      .filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer &&
+      .filter(t => isCountableSpend(t) && !t.is_pending && !t.is_transfer &&
               committedCats.includes(t.category) &&
               t.posted_at >= thirtyDaysAgo)
       .reduce((s, t) => s + Math.abs(t.amount), 0);
@@ -6901,7 +6950,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       return `
       <div class="txrow${checked ? " sel" : ""}" data-tx="${esc(t.id)}" ${sel ? "" : `data-rect="${esc(t.id)}"`} role="button" tabindex="0" aria-label="${sel ? "Select" : "Recategorize"} ${esc(t.merchant_raw)}">
         ${sel ? `<input type="checkbox" data-bulk="${esc(t.id)}" ${checked ? "checked" : ""} aria-label="Select ${esc(t.merchant_raw)}" style="margin-right:8px;flex-shrink:0">` : ""}
-        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}${t.is_excluded ? ' <span class="review-badge">excluded</span>' : ''}${t.counted_income ? ' <span class="review-badge">income</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`; }).join("");
   }
@@ -6911,7 +6960,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function renderMonthView() {
     const { transactions } = loadTrackData();
     const byCatMonth = {};
-    transactions.filter(t => !t.is_pending && !t.is_transfer && t.amount < 0).forEach(t => {
+    transactions.filter(t => !t.is_pending && !t.is_transfer && isCountableSpend(t)).forEach(t => {
       const m = t.posted_at.slice(0, 7);
       byCatMonth[t.category] = byCatMonth[t.category] || {};
       byCatMonth[t.category][m] = (byCatMonth[t.category][m] || 0) + Math.abs(t.amount);
@@ -8140,7 +8189,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     categorySpike(transactions) {
       // Category >40% above 3-month average, min $50 absolute
       const byCat = {};
-      transactions.filter(t => !t.is_pending && !t.is_transfer && t.amount < 0).forEach(t => {
+      transactions.filter(t => !t.is_pending && !t.is_transfer && isCountableSpend(t)).forEach(t => {
         const m = t.posted_at.slice(0, 7);
         (byCat[t.category] = byCat[t.category] || {})[m] =
           ((byCat[t.category] || {})[m] || 0) + Math.abs(t.amount);
@@ -8245,8 +8294,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // FIX (D1-029): a credit is countable inflow only when it is real income —
   // refunds and unmatched credits are excluded (the latter is flagged for review).
   function isCountableInflow(t) {
+    if (!t || t.is_excluded) return false;
+    if (t.counted_income && t.amount > 0) return true; // SPEC 09k: user confirmed as income
     return !!t && t.amount > 0 && !t.is_refund && !t.is_unmatched_credit;
   }
+  // SPEC 09k: countable spending skips user-excluded transactions.
+  function isCountableSpend(t) { return !!t && t.amount < 0 && !t.is_excluded; }
 
   // FIX (D1-032/1-034): settlement pipeline. Dedupes on provider_id across
   // refreshes; matches pending holds to their posted settlement within tip
