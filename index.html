@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-tgGKIIXZnGx1PvN3cxJj0W6JV00pqaDD4zBT5JBARV0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-1ARHgerLCKFXoFrmfPLW/yeuHlx/ZLm7a7Ij8xdYgZY=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1517,6 +1517,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (id === "investments") renderInvestments();
     if (id === "networth") renderNetWorth();
     if (id === "reccal") renderRecCal();
+    if (id === "claimDetail") renderClaim();
     renderNav();
   }
 
@@ -3783,7 +3784,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       </div>
       <div id="claimChecklist"></div>
       <h3 class="sec" style="font-size:15px;margin-top:18px">My claims</h3>
-      <div class="list" id="claimList"><p class="psub">No claims tracked yet.</p></div>`;
+      <div class="list" id="claimList"><p class="psub">No claims tracked yet.</p></div>
+      <div id="claimPacketHost"></div>`;
     $("claimSearch").onclick = () => window.open(CLAIM_SEARCH_URL, "_blank", "noopener");
     body.querySelectorAll("#claimChips .chip").forEach(c => c.onclick = () => {
       const s = c.dataset.st; let cur = claimGet();
@@ -3856,11 +3858,59 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <p class="m num">${r.amount ? money$(r.amount) + " — " : ""}${open ? "check back " + qDueText(qDaysUntil(r.deadline)) : "claimed"}</p>
         ${idM ? `<p class="fine" style="margin:2px 0">Claim ID: ${esc(idM[1].trim())}</p>` : ``}
         ${open ? `<a href="${esc(portal)}" target="_blank" rel="noopener" class="linkbtn" style="margin-right:8px">Check status →</a>` : ``}
+        ${open ? `<button class="linkbtn" data-packet="${r.id}" style="margin-right:8px">Packet</button>` : ``}
       </div>${open ? `<button class="linkbtn" data-landed="${r.id}">Money landed</button>` : ""}</div>`;
     }).join("");
     box.querySelectorAll("[data-landed]").forEach(b => b.onclick = () => claimLanded(b.dataset.landed));
+    box.querySelectorAll("[data-packet]").forEach(b => b.onclick = async () => {
+      let rows = []; try { rows = await saveRows("save_claims", "deadline", true); } catch (e) {}
+      const r = rows.find(x => String(x.id) === String(b.dataset.packet)); if (!r) return;
+      const host = $("claimPacketHost");
+      if (host) {
+        host.innerHTML = claimPacketHtml(r);
+        host.scrollIntoView({ behavior: "smooth", block: "start" });
+        $("packetClose").onclick = () => { host.innerHTML = ""; };
+        $("packetPrint").onclick = () => window.print();
+      }
+    });
   }
 
+  // SPEC 09n: claim packet — a printable filing packet per claim with the
+  // claim facts, document checklist, prior addresses, and filing steps.
+  function claimPacketHtml(r) {
+    const idM = String(r.steps || "").match(/Claim ID: ([^·]+)/);
+    const claimId = idM ? idM[1].trim() : "—";
+    const filedM = String(r.steps || "").match(/Filed ([^—]+)/);
+    const filed = filedM ? filedM[1].trim() : "—";
+    let addrs = [];
+    try { addrs = JSON.parse(localStorage.getItem("claim_addrs") || "[]"); } catch (e) {}
+    const portal = CLAIM_PORTALS[r.merchant] || CLAIM_SEARCH_URL;
+    return `<div class="pcard" id="claimPacket" style="margin-top:12px">
+      <p class="bsum" style="font-size:15px"><b>Claim packet — ${esc(r.merchant || "")}</b></p>
+      <div class="mrow"><div><b>What</b></div><span>${esc(r.kind || "")}</span></div>
+      <div class="mrow"><div><b>Amount</b></div><span>${r.amount ? money$(r.amount) : "Unknown — the state lists it"}</span></div>
+      <div class="mrow"><div><b>Claim ID</b></div><span>${esc(claimId)}</span></div>
+      <div class="mrow"><div><b>Filed</b></div><span>${esc(filed)}</span></div>
+      <div class="mrow"><div><b>Check back</b></div><span>${esc(String(r.deadline || "").slice(0, 10))}</span></div>
+      <div class="mrow"><div><b>State portal</b></div><span style="max-width:60%;overflow:hidden;text-overflow:ellipsis">${esc(portal)}</span></div>
+      <h3 class="sec" style="font-size:14px;margin-top:12px">Documents to gather</h3>
+      <ul class="chklist">${CLAIM_DOCS.map(d => `<li>${esc(d)}</li>`).join("")}</ul>
+      ${addrs.length ? `<h3 class="sec" style="font-size:14px;margin-top:12px">Addresses on file</h3>` +
+        addrs.map(a => `<div class="mrow"><div>${esc([a.street, a.city, a.state].filter(Boolean).join(", "))}</div><span>${esc(a.years || "")}</span></div>`).join("") : ``}
+      <h3 class="sec" style="font-size:14px;margin-top:12px">Filing steps</h3>
+      <ol class="chklist" style="list-style:decimal;padding-left:20px">
+        <li>Gather the documents above — copies, never originals.</li>
+        <li>File at the state's official portal (link above). It's free — never pay a finder.</li>
+        <li>Save the Claim ID the state gives you and add it to this claim.</li>
+        <li>Check status at the portal; most states decide in 30–180 days.</li>
+      </ol>
+      <div class="row" style="gap:8px;margin-top:12px">
+        <button class="go" id="packetPrint" style="flex:1;height:48px">Print packet</button>
+        <button class="ghostbtn" id="packetClose" style="flex:1">Close</button>
+      </div>
+      <p class="fine">Print this and keep it with your documents until the money lands.</p>
+    </div>`;
+  }
   async function claimLanded(id) {
     let rows = []; try { rows = await saveRows("save_claims", "deadline", true); } catch (e) {}
     const r = rows.find(x => String(x.id) === String(id)); if (!r) return;
