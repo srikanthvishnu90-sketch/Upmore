@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-1pLcNeoQOBe/lAOqjoERMOoPH63iEGmjdjYtGddXETE=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-DYwx9NOZ/s79AGoKEQJyYzkFj8v1e+h8G8W3Tfezir0=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -3772,6 +3772,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <h3 class="sec" style="font-size:15px;margin-top:18px">Found something?</h3>
       <p class="psub">File it here and we'll count down to your check-in. Nothing counts until the money lands.</p>
       <div class="svform">
+      <label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" id="cfHeir" style="width:20px;height:20px"><span style="font-weight:600">Claiming for someone who passed away</span></label>
+      <div id="claimHeirBox"></div>
         <label class="f"><span>State holding it</span><div class="sel"><select id="cfState">${CLAIM_STATES.map(s => `<option>${esc(s)}</option>`).join("")}</select></div></label>
         <label class="f"><span>What is it (optional)</span><input id="cfWhat" placeholder="Old utility deposit" autocomplete="off"></label>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -3812,6 +3814,18 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (p) p.onclick = () => window.open(CLAIM_PORTALS[cfState.value] || CLAIM_SEARCH_URL, "_blank", "noopener");
     };
     if (cfState) { cfState.onchange = paintChecklist; paintChecklist(); }
+    const cfHeir = $("cfHeir");
+    const paintHeir = () => {
+      const box = $("claimHeirBox");
+      if (!box || !cfHeir) return;
+      if (cfHeir.checked) {
+        box.innerHTML = claimHeirHtml(cfState.value);
+        const hp = $("cfHeirPortal");
+        if (hp) hp.onclick = () => window.open(CLAIM_PORTALS[cfState.value] || CLAIM_SEARCH_URL, "_blank", "noopener");
+      } else box.innerHTML = "";
+    };
+    if (cfHeir) { cfHeir.onchange = paintHeir; }
+    if (cfState) { const _pc = cfState.onchange; cfState.onchange = () => { _pc(); paintHeir(); }; }
     renderClaimAddrs();
     $("caAdd").onclick = () => {
       const city = $("caCity").value.trim(), state = $("caState").value;
@@ -3834,8 +3848,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const dl = new Date(filed + "T12:00:00"); dl.setDate(dl.getDate() + 45);
     const deadline = dl.getFullYear() + "-" + String(dl.getMonth() + 1).padStart(2, "0") + "-" + String(dl.getDate()).padStart(2, "0");
     const claimId = ($("cfClaimId") && $("cfClaimId").value.trim()) || "";
+    const isHeir = $("cfHeir") && $("cfHeir").checked;
     const ok = await saveInsert("save_claims", {
-      merchant: state, kind: "Unclaimed property" + (what ? " — " + what : ""),
+      merchant: state, kind: (isHeir ? "Heir claim — " : "") + "Unclaimed property" + (what ? " — " + what : ""),
       amount: amt > 0 ? amt : null, deadline,
       steps: "Filed " + filed + " — check claim status" + (claimId ? " · Claim ID: " + claimId : ""), status: "open"
     });
@@ -3847,7 +3862,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   async function renderClaimList() {
     const box = $("claimList"); if (!box) return;
     let rows = [];
-    try { rows = (await saveRows("save_claims", "deadline", true)).filter(r => (r.kind || "").startsWith("Unclaimed property")); } catch (e) {}
+    try { rows = (await saveRows("save_claims", "deadline", true)).filter(r => { const k = r.kind || ""; return k.startsWith("Unclaimed property") || k.startsWith("Heir claim"); }); } catch (e) {}
     if (!rows.length) { box.innerHTML = `<p class="psub">No claims tracked yet.</p>`; return; }
     box.innerHTML = rows.map(r => {
       const open = r.status === "open";
@@ -9186,6 +9201,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     "Notarization: some states ask for it on larger claims — the state site tells you if yours does",
     "Heir claim? You'll also need the death certificate and proof you're the heir",
   ];
+  // SPEC 09p: heir/deceased-owner claim documents.
+  const CLAIM_HEIR_DOCS = [
+    "Certified death certificate of the owner",
+    "Your government photo ID",
+    "Proof of your relationship / right to claim — will naming you executor, letters testamentary, court order, or small-estate affidavit",
+    "Proof of the owner's address (old mail, tax record) if the state asks",
+    "If there's no will and no probate: the state's small-estate affidavit form, signed and often notarized",
+  ];
+  function claimHeirHtml(state) {
+    const portal = CLAIM_PORTALS[state] || CLAIM_SEARCH_URL;
+    return `<div class="pcard" style="margin-top:12px"><p class="bsum" style="font-size:14.5px"><b>Claiming for someone who passed away — ${esc(state)}</b></p>
+      <p class="psub">States pay heirs, but they verify harder. The person with legal authority — executor, administrator, or heir on a small-estate affidavit — files the claim.</p>
+      <ul class="chklist">${CLAIM_HEIR_DOCS.map(d => `<li>${esc(d)}</li>`).join("")}</ul>
+      <p class="psub" style="margin-top:10px">No probate and a small amount? Most states let heirs use a simplified affidavit instead of opening probate — the state claim site links its own form.</p>
+      <button class="ghostbtn" id="cfHeirPortal">Open ${esc(state)}'s official claim site →</button></div>`;
+  }
   function claimChecklistHtml(state) {
     const portal = CLAIM_PORTALS[state] || CLAIM_SEARCH_URL;
     return `<div class="pcard" style="margin-top:12px"><p class="bsum" style="font-size:14.5px"><b>Claiming in ${esc(state)}</b></p>
