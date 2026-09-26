@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-9j+vSEN08Y07LqCz22z4GBvsVCFdAEtlIXj040MZtFw=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-lLbpkcqwEudmSW2PuWOT06AYtp6XfaPGIscnwS6f0Ro=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -7882,7 +7882,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           </div>
           <button class="go" id="mcRun" style="margin-top:10px;height:48px">Run the scenarios</button>
           <div id="mcOut" style="margin-top:10px"></div>
-          <p class="fine" style="margin-top:8px">Assumes 7% average yearly return with 15% volatility, 2.5% inflation, 1,000 scenarios, same seed every run. Analysis only — not advice, not a prediction.</p></div>`;
+          <p class="fine" style="margin-top:8px">Assumes 7% average yearly return with 15% volatility, 2.5% inflation, 1,000 scenarios, same seed every run. Analysis only — not advice, not a prediction.</p></div>
+        ${rmdHtml()}`;
     }
 
     // Balance-only accounts
@@ -7906,6 +7907,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // SPEC 09: Monte Carlo retirement check (analysis only).
     const mcNowEl = $("mcNow");
     try { if (mcNowEl && !mcNowEl.value && typeof sum !== "undefined" && sum.total > 0) mcNowEl.value = Math.round(sum.total); } catch (e) {}
+    wireRmd();
     const mr = $("mcRun");
     if (mr) mr.onclick = () => {
       const g = id => { const el = $(id); const v = el ? parseFloat(el.value) : NaN; return isNaN(v) ? 0 : v; };
@@ -8287,6 +8289,38 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // ---- Monte Carlo retirement check (SPEC 08 depth, Empower parity) ----
   // Deterministic: mulberry32 seed → identical results every run. Assumptions
   // are disclosed next to the button; analysis only, never a promise.
+  // SPEC 09g: RMD check (Empower parity, arithmetic only). IRS Uniform
+  // Lifetime Table divisors; SECURE 2.0 start age 73. Never advice.
+  const RMD_TABLE = { 73: 26.5, 74: 25.5, 75: 24.6, 76: 23.7, 77: 22.9, 78: 22.0, 79: 21.1, 80: 20.2, 81: 19.4, 82: 18.5, 83: 17.7, 84: 16.8, 85: 16.0, 86: 15.2, 87: 14.4, 88: 13.7, 89: 12.9, 90: 12.2 };
+  function rmdFor(age, priorBalance) {
+    if (!(age >= 73) || !(priorBalance > 0)) return null;
+    const a = Math.min(90, Math.floor(age));
+    const d = RMD_TABLE[a];
+    if (!d) return null;
+    return Math.round(priorBalance / d);
+  }
+  function rmdHtml() {
+    return `<h2 class="sec">Required withdrawals (RMD)</h2>
+      <div class="pcard"><p class="bsum" style="font-size:14px">Turned 73+ with a traditional IRA/401(k)? The IRS makes you withdraw a slice each year. Here's the exact math.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+          <label class="f"><span>Your age</span><input id="rmdAge" inputmode="numeric" value="73"></label>
+          <label class="f"><span>Balance last Dec 31 ($)</span><input id="rmdBal" inputmode="decimal" placeholder="200000"></label>
+        </div>
+        <button class="go" id="rmdRun" style="margin-top:10px;height:44px">Calculate my RMD</button>
+        <div id="rmdOut" style="margin-top:10px"></div>
+        <p class="fine" style="margin-top:8px">IRS Uniform Lifetime Table. Miss it and the penalty is up to 25% of what you should have taken. This is arithmetic, not advice.</p></div>`;
+  }
+  function wireRmd() {
+    const b = $("rmdRun"); if (!b) return;
+    b.onclick = () => {
+      const age = parseInt(($("rmdAge") || {}).value, 10), bal = parseFloat(($("rmdBal") || {}).value);
+      const out = $("rmdOut");
+      if (!(age >= 73)) { out.innerHTML = `<p class="psub">RMDs start at 73 (SECURE 2.0). Nothing required yet.</p>`; return; }
+      if (!(bal > 0)) { out.innerHTML = `<p class="psub">Enter the account balance as of last December 31.</p>`; return; }
+      const r = rmdFor(age, bal);
+      out.innerHTML = `<div class="mrow"><div><b>${bm0(r)} this year</b><i>${bm0(bal)} ÷ ${RMD_TABLE[Math.min(90, age)]} (IRS divisor for age ${Math.min(90, age)})</i></div></div>`;
+    };
+  }
   function monteCarlo(o) {
     const years = Math.max(1, (o.ret || 65) - (o.age || 19));
     const MEAN = 0.07, SD = 0.15, INFL = 0.025, N = 1000;
