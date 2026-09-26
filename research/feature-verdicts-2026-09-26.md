@@ -41,9 +41,8 @@ Monarch/YNAB do budgeting and month review well; YNAB's method is arguably stron
 - Credit Karma's is free with proactive member alerts (claims 4.5M users, $800M+ identified).
 - Upmore's edge: it's one feature inside a full CFO product with 45-day check-in, 30–90-day timing language, and ledger logging when money lands — not a standalone tool. But on pure done-for-you-ness, DoNotPay leads.
 
-## 9. Investment/retirement analysis — COMPETITORS WIN (honest)
-
-Empower: Monte Carlo over real linked balances, RMD handling at 73, allocation-vs-target, fee analyzer. Monarch Plus: Morningstar-powered allocation and gains/losses, retirement scenarios. Upmore is not a portfolio product and must not claim parity. This is the deliberate boundary: Upmore shows your money like a CFO; it does not manage investments.
+## 9. Investment/retirement analysis — UPMORE AT PARITY ON TRACKING (2026-09-26 update)
+Upmore shipped a read-only Investments X-ray (SPEC 08): holdings with cost basis and gains, allocation by bucket, concentration flags, fee drag in $/year, idle cash in brokerage linked to the idle-cash tool. Three data tiers: Plaid Investments (12,000+ institutions, server-side, keys pending owner), manual positions (works today), balance-only detection from bank data. This matches Monarch's core investment tracking (allocation, gains/losses) and adds the CFO edge (fees as $/year, idle brokerage cash). Empower still leads on retirement-planning depth (Monte Carlo, RMD handling at 73, allocation-vs-target) — Upmore does not do retirement scenarios. Deliberate boundary: the X-ray is analysis only, never buy/sell advice (RIA registration Upmore lacks).
 
 ## 10. Conversational assistant — COMPETITOR LEADS ON UX PATTERN (honest)
 
@@ -55,7 +54,7 @@ Rocket Money's Rowan (Aug 2026, Premium+ $15/mo) cancels subscriptions, negotiat
 
 ## Overall verdict
 
-Upmore is the best app at finding you money and showing your money like a CFO. That claim is now evidence-backed across 7 head-to-head wins, with the losses honestly named (investments → Empower/Monarch; done-for-you claims → DoNotPay; conversational UX → Monarch AI; execution → Rowan).
+Upmore is the best app at finding you money and showing your money like a CFO. That claim is now evidence-backed across 6 head-to-head wins plus investment-tracking parity (2026-09-26), with the remaining gaps honestly named (retirement-planning depth → Empower; done-for-you claims → DoNotPay; conversational UX → Monarch AI; execution → Rowan; monthly close → spec only).
 
 What Upmore must NOT claim: "best investment advisor" (regulated activity, not registered, gives no securities advice — decided 2026-09-26), or unqualified "best finance app in the world" (no externally defensible scoring framework; loses on portfolio management, bank connectivity breadth, credit scores, bill pay).
 
