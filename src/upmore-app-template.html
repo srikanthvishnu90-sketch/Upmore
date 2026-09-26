@@ -904,16 +904,7 @@
         <p class="fine">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p>
       </div>
 
-      <div class="xsearch">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
-      </div>
-      <div class="xlist" id="xlist"></div>
-      <button class="ghostbtn" id="xmore" hidden></button>
-
-      <h2 class="sec">Up next</h2>
-      <p class="psub" style="margin:-6px 0 10px">One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.</p>
-      <div id="queue"></div>
+      
 
       <h2 class="sec">Find money you're owed</h2>
       <div class="list">
@@ -928,7 +919,29 @@
       <p class="psub" style="margin:-6px 0 10px">The biggest dollars in your financial life, in order. Tap any card to open the tool.</p>
       <div class="list" id="cfoList"></div>
 
-      <h2 class="sec">Track</h2>
+      <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
+    <section class="screen" id="explore" aria-label="Explore ways to earn">
+      <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+        <div class="head"><div class="brand">Explore</div></div>
+        <p class="psub" style="margin:-6px 0 10px">Every way to make extra money, researched and ranked. Biggest expected dollars first.</p>
+<div class="xsearch">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="xq" type="search" placeholder="Search ways to earn…" autocomplete="off" aria-label="Search offers">
+      </div>
+      <div class="xlist" id="xlist"></div>
+      <button class="ghostbtn" id="xmore" hidden></button>
+
+      <h2 class="sec">Up next</h2>
+      <p class="psub" style="margin:-6px 0 10px">One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.</p>
+      <div id="queue"></div>
+      </div>
+      <nav class="tabs" role="tablist" data-nav></nav>
+    </section>
+    <section class="screen" id="save" aria-label="Save on subscriptions">
+      <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+        <div class="head"><div class="brand">Save</div></div>
+<h2 class="sec">Track</h2>
       <div id="saveSignedOut" hidden>
         <div class="next" style="margin-top:4px">
           <h3>Stop the leaks, keep the cash</h3>
@@ -973,8 +986,10 @@
         </details>
       </div>
     </div>
-    <nav class="tabs" role="tablist" data-nav></nav>
-  </section>
+    
+      </div>
+      <nav class="tabs" role="tablist" data-nav></nav>
+    </section>
 
   
   
@@ -1419,10 +1434,12 @@
 
   /* ================= Router ================= */
   const order = ["splash","welcome","time","about","situation","plan","phone","home","guide","profile"];
-  const LEGACY_TABS = { money: "home", save: "home", explore: "home" };
+  const LEGACY_TABS = { money: "home" };
   const TABS = [
     { id: "home", label: "Home", icon: '<path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>' },
     { id: "guide", label: "Guide", icon: '<path d="M12 3l2.1 6.4L20.5 11l-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-1.6z"/>' },
+    { id: "explore", label: "Explore", icon: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>' },
+    { id: "save", label: "Save", icon: '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/>' },
     { id: "profile", label: "You", icon: '<circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.4-5.5 7.5-5.5s6.1 1.7 7.5 5.5"/>' }
   ];
   /* Single source of truth for the tab bar: every screen's <nav data-nav>
@@ -1448,6 +1465,8 @@
     document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === id ? "true" : "false"));
     if (id === "plan") buildPlan();
     if (id === "home") renderHome();
+    if (id === "explore") { renderExplore(); renderQueue(); }
+    if (id === "save") renderTracker();
     if (id === "guide") renderGuideEmpty();
     if (id === "profile") renderProfile();
     if (id === "transactions") renderTxScreen();
@@ -2600,12 +2619,9 @@
     const av = $("avatar");
     av.textContent = (displayName() || "V").charAt(0).toUpperCase();
     av.onclick = () => show("profile");
-    renderExplore();
     const cc = $("claimCard"); if (cc) cc.onclick = openClaim;
     renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend
-    renderQueue();
-    renderCFOList(); // SPEC 05: seven money-health tools
-    renderTracker();
+    renderCFOList(); // SPEC 05: money-health tools
   }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
@@ -5976,7 +5992,7 @@
         // The move has real steps: open the walkthrough right here instead of
         // bouncing the user back to Home to find the Start button again.
         if (r && r.steps && r.steps.length) { startWalkthrough(r.id); return; }
-        show("home");
+        show("explore");
         const q = $("xq");
         if (q && r) { q.value = r.provider || ""; q.dispatchEvent(new Event("input", { bubbles: true })); }
         if (card.id) setTimeout(() => {
