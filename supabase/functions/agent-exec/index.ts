@@ -114,11 +114,17 @@ async function playbookDevin(ctx: ExecContext): Promise<ExecResult> {
     const hasGoogle = /continue with google|accounts\.google\.com/i.test(html);
     const hasMagicLink = /magic link|send.*link.*email|check your email/i.test(html) && !hasPassword;
     const hasGithub = /continue with github|github\.com\/login\/oauth/i.test(html);
-    ev.auth_detected = { password_form: hasPassword, google_oauth: hasGoogle, magic_link: hasMagicLink, github_oauth: hasGithub };
+    // Devin ships a JS SPA shell: no server-rendered form. Their bundle
+    // (verified 2026-09-26) uses Auth0 SPA (loginWithRedirect) + a React
+    // billing UI with an interactive cancel dialog on private APIs.
+    const isSpaShell = /<div id=["']root["']><\/div>|__vite__|rolldown-runtime/i.test(html) && !hasPassword;
+    ev.auth_detected = { password_form: hasPassword, google_oauth: hasGoogle, magic_link: hasMagicLink, github_oauth: hasGithub, spa_shell: isSpaShell };
 
     if (!hasPassword) {
       ev.stage = "auth_unsupported";
-      const which = hasGoogle ? "Google OAuth" : hasMagicLink ? "email magic link" : hasGithub ? "GitHub OAuth" : "unknown";
+      const which = isSpaShell
+        ? "a JavaScript SPA login (Auth0 redirect flow — verified from their shipped bundle)"
+        : hasGoogle ? "Google OAuth" : hasMagicLink ? "email magic link" : hasGithub ? "GitHub OAuth" : "unknown";
       return { ok: false, evidence: ev, error: `Devin sign-in uses ${which} — needs a real browser session. (needs_browser)` };
     }
 
