@@ -1308,11 +1308,11 @@
         <p class="psub" style="margin-top:6px">Last updated: September 26, 2026</p>
         <div class="legalbody">
           <p><b>The short version.</b> We collect the minimum needed to run your account and your money plan: your name, email, onboarding answers, plan progress, things you save, and your Guide chats. We never sell your data. No ads, no third-party trackers. Your chat messages are processed by our AI provider to answer you. You can ask us to export or delete everything at any time.</p>
-          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences.</p>
+          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences. <i>If you connect your bank (SimpleFIN):</i> a read-only bank-access credential stored encrypted in our database vault so the app can sync your accounts — we never see or store your bank username or password.</p>
           <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. The optional bank connection (SimpleFIN) is read-only — we see account balances and transactions, we never move money, and we never see your bank password.</p>
-          <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it). Nobody else. We never sell your data.</p>
+          <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it), SimpleFIN (only if you connect your bank — your bank sign-in happens on SimpleFIN's site; they hand the app a read-only access credential). Nobody else. We never sell your data.</p>
           <p><b>Cookies &amp; tracking.</b> Your sign-in session lives in your browser's local storage so you stay signed in. No third-party analytics or ad trackers.</p>
-          <p><b>How long we keep it.</b> While your account is active. Ask us to delete your account and we delete your profile, chats, progress, and saved items.</p>
+          <p><b>How long we keep it.</b> While your account is active. Disconnecting your bank deletes your connection record and the stored bank credential. Deleting your account deletes your profile, chats, progress, saved items, and your bank connection including the stored bank credential.</p>
           <p><b>Your rights.</b> Ask us any time to see, correct, export, or delete your data: <a href="#" id="privacyEmail">support@upmore.app</a>.</p>
           <p><b>Children.</b> Upmore isn't for under-13s.</p>
           <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
@@ -4148,11 +4148,13 @@
     wireDeleteSheet();
     wireDisconnectBank();
   }
-  // FIX (R2 8-023): visible bank disconnect + data deletion. Best-effort
-  // deletes the owner's simplefin_connections row (the proxy then 403s for
-  // them), reports backend failure honestly instead of claiming success,
-  // clears local bank data, and confirms. The vaulted Access URL itself never
-  // reaches the client, so it cannot be logged or leaked here.
+  // FIX (R2 8-023): visible bank disconnect + data deletion. Deletes the
+  // user's simplefin_connections row (the proxy then 403s for them) AND the
+  // vaulted SimpleFIN Access URL via the simplefin_vault_delete RPC (which
+  // only ever deletes the caller's own secret), reports backend failure
+  // honestly instead of claiming success, clears local bank data, and
+  // confirms. The vaulted Access URL itself never reaches the client, so it
+  // cannot be logged or leaked here.
   let disconnectWired = false;
   function bankConnectedLive() { return !!(typeof trackData !== "undefined" && trackData && trackData.isLive); }
   function clearLocalBankData() {
@@ -4164,18 +4166,31 @@
     $("discBankConfirm").disabled = true;
     status.textContent = "Disconnecting…";
     let backendOk = true, backendErr = "";
+    let vaultOk = true, vaultErr = "";
     try {
       const uid = (session && session.user && session.user.id) || null;
       if (!uid) { backendOk = false; backendErr = "not signed in"; }
       else {
         const { error } = await supa.from("simplefin_connections").delete().eq("user_id", uid);
         if (error) { backendOk = false; backendErr = error.message || "request failed"; }
+        else {
+          // FIX (QA-B 2026-09-27): also delete the vaulted Access URL so the
+          // bank credential doesn't linger after disconnect. The RPC derives
+          // the secret name from the caller's own JWT — it can only delete
+          // this user's secret, never anyone else's.
+          try {
+            const { error: verr } = await supa.rpc("simplefin_vault_delete");
+            if (verr) { vaultOk = false; vaultErr = verr.message || "request failed"; }
+          } catch (e) { vaultOk = false; vaultErr = String((e && e.message) || e); }
+        }
       }
     } catch (e) { backendOk = false; backendErr = String((e && e.message) || e); }
     clearLocalBankData();
     if (typeof renderTrackStrip === "function") { try { renderTrackStrip(); } catch (e) {} }
-    if (backendOk) {
-      status.textContent = "Bank disconnected. Your connection record is deleted and your local bank data has been cleared from this device.";
+    if (backendOk && vaultOk) {
+      status.textContent = "Bank disconnected. Your connection record and stored bank credential are deleted, and your local bank data has been cleared from this device.";
+    } else if (backendOk) {
+      status.textContent = "Bank connection record deleted and local data cleared, but the stored bank credential may not have been removed (" + vaultErr + ") — please try disconnecting again.";
     } else {
       status.textContent = "Couldn't delete the bank connection on our servers (" + backendErr + ") — your local bank data was still cleared from this device. The connection may still be active; please try again.";
     }
@@ -4195,9 +4210,9 @@
   }
   async function exportUserData() {
     if (!saveUid()) { toast("Sign in to export"); return; }
-    const tables = ["save_subscriptions", "save_ledger", "save_renewals", "save_claims", "save_receipts"];
+    const tables = [["save_subscriptions", "created_at"], ["save_ledger", "created_at"], ["save_renewals", "created_at"], ["save_claims", "created_at"], ["save_receipts", "created_at"], ["simplefin_connections", "connected_at"]];
     const out = { exported_at: new Date().toISOString(), user_id: saveUid() };
-    for (const t of tables) out[t] = await saveRows(t, "created_at", false);
+    for (const [t, col] of tables) out[t] = await saveRows(t, col, false);
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);

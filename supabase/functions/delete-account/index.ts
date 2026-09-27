@@ -32,6 +32,22 @@ serve(async (req: Request) => {
     return new Response("confirmation mismatch", { status: 400 });
   }
 
+  // FIX (QA-B 2026-09-27): delete the user's vaulted SimpleFIN Access URL so
+  // the bank credential does not linger after account deletion. Connection
+  // rows cascade from profiles; the vault has no cascade, so this is the
+  // only cleanup path. service_role may pass an explicit name to the RPC.
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/rpc/simplefin_vault_delete`, {
+      method: "POST",
+      headers: {
+        apikey: SERVICE_KEY,
+        Authorization: `Bearer ${SERVICE_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_name: `simplefin_access_url_${uid}` }),
+    });
+  } catch { /* best-effort: account deletion proceeds regardless */ }
+
   // Delete the auth user (cascades to profiles, threads, messages, etc.)
   const delRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users/${uid}`, {
     method: "DELETE",
