@@ -48,6 +48,34 @@ serve(async (req: Request) => {
     });
   } catch { /* best-effort: account deletion proceeds regardless */ }
 
+  // FIX (QA-D 2026-09-27): also purge the user's vaulted merchant credentials
+  // (exec_cred_{uid}_{merchant_key}). exec_credential_refs rows cascade from
+  // auth.users, but the vault secrets have no cascade — without this they
+  // would linger after account deletion, contradicting the privacy policy.
+  try {
+    const refsRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/exec_credential_refs?user_id=eq.${uid}&select=vault_name`,
+      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } },
+    );
+    if (refsRes.ok) {
+      const refs = await refsRes.json();
+      for (const r of refs || []) {
+        if (!r.vault_name) continue;
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/rpc/exec_vault_delete`, {
+            method: "POST",
+            headers: {
+              apikey: SERVICE_KEY,
+              Authorization: `Bearer ${SERVICE_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ p_name: r.vault_name }),
+          });
+        } catch { /* per-secret best effort */ }
+      }
+    }
+  } catch { /* best-effort: account deletion proceeds regardless */ }
+
   // Delete the auth user (cascades to profiles, threads, messages, etc.)
   const delRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users/${uid}`, {
     method: "DELETE",

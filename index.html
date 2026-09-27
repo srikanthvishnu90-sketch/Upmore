@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-KzY24v2nall1DPn8nmfmRX6e1v/aCaMQE9fs4048e44=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-wG7J7uBMf19GEeKR0d+960FRUeZDgFsnWz2tEKZ6s0Y=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -29,7 +29,9 @@
     --line: #2C3D34;        /* dividers, borders */
     --text: #F4F5F2;        /* Primary — off-white, never pure white */
     --muted: #B9C2BB;       /* Secondary — labels, supporting copy */
-    --dim: #7E8A82;         /* Muted — timestamps, disabled */
+    --dim: #8A958F;         /* Muted — timestamps, disabled. FIX (QA-D 2026-09-27):
+                               was #7E8A82 (4.43:1 on --bg, failed WCAG 1.4.3);
+                               this passes 4.5:1 on both --bg and --surface. */
     --silver: #C9CFCA;      /* logo, icons, neutral accents */
     --silver-hi: #E8ECE8;   /* sheen top on the logo only */
     --mint: #6FE39B;        /* Confirmed: received, avoided, reduced, cash flow, completed, progress */
@@ -178,8 +180,8 @@
   .badge.warn { background: var(--amber-soft); color: var(--amber); }
   .step { font-size: 13px; color: var(--muted); }
   .move.first .step { color: rgba(255,255,255,.7); }
-  .move h3 { margin-top: 8px; font-size: 17px; line-height: 1.3; font-weight: 600; }
-  .move.first h3 { font-size: 20px; }
+  .move h2 { margin-top: 8px; font-size: 17px; line-height: 1.3; font-weight: 600; } /* FIX (QA-D): was h3 — skipped h2 after the screen h1 (WCAG 1.3.1) */
+  .move.first h2 { font-size: 20px; }
   .meta { margin-top: 8px; font-size: 13.5px; color: var(--muted); }
   .move.first .meta { color: rgba(255,255,255,.75); }
   .reason { margin-top: 10px; font-size: 13.5px; color: var(--mint); }
@@ -235,6 +237,22 @@
   .list { margin-top: 12px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
   .item { display: flex; gap: 12px; align-items: center; padding: 14px; }
   .item + .item { border-top: 1px solid var(--line); }
+  /* FIX (QA-D 2026-09-27): button.item cards (Budget report / Investments /
+     Net worth entries, claim card, CFO cards) had NO background rule, so the
+     browser's default light button face showed with light inherited text —
+     titles were invisible and contrast was ~1:1 (WCAG 1.4.3 fail). */
+  button.item { background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; color: var(--text); }
+  /* FIX (QA-D 2026-09-27): .btn had no base rule at all — buttons using only
+     class="btn" (Subscribe, Connect bank, Cancel…) rendered as the browser
+     default light face with light inherited text (WCAG 1.4.3 fail). Inline
+     styles on specific buttons still override this base. */
+  .btn { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    color: var(--text); padding: 12px 16px; font-size: 16px; font-weight: 600; cursor: pointer; }
+  /* FIX (QA-D 2026-09-27): .backbtn had no rule — "‹ You" rendered as light
+     text on the default light button face (WCAG 1.4.3 fail). */
+  .backbtn { background: none; border: 0; color: var(--text); font-size: 16px;
+    font-weight: 600; padding: 12px 8px; min-height: 44px; cursor: pointer; }
   .ico { flex: none; width: 38px; height: 38px; border-radius: 12px; background: var(--surface-2); display: grid; place-items: center; color: var(--silver); }
   .item .t { font-size: 15px; font-weight: 600; line-height: 1.3; }
   .item .m { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
@@ -409,7 +427,9 @@
   .xdetail .seven { display:grid; gap:6px; margin-top:4px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.02); }
   .xdetail .seven b { color:var(--text); }
   .xsearch { display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:0 14px; margin:14px 0 10px; color:var(--dim); }
-  .xsearch input { flex:1; background:none; border:0; outline:0; color:var(--ink); font-size:15px; padding:13px 0; font-family:inherit; }
+  .xsearch input { flex:1; background:none; border:0; outline:0; color:var(--text); font-size:15px; padding:13px 0; font-family:inherit; }
+  /* FIX (QA-D): was color:var(--ink) — --ink is undefined, so typed search
+     text fell back to the dim inherited color. */
   .xsearch input::placeholder { color:var(--dim); }
   /* SPEC 09 "Nobody should win" additions (2026-09-26): pace chart, calendar,
      net worth, checklists, bulk select. No red/green anywhere — no-guilt palette. */
@@ -479,7 +499,9 @@
   .brow .bt { display:flex; justify-content:space-between; align-items:baseline; }
   .brow .bt b { font-size:14.5px; }
   .brow .bs { font-size:12.5px; color:var(--dim); margin-top:3px; }
-  .brow .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px; }
+  .brow .tgt, .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px;
+    background:none; border:0; cursor:pointer; padding:6px 4px; } /* FIX (QA-D): .tgt had no base rule —
+    buttons outside .brow rendered as the default light button face with light inherited text (WCAG 1.4.3 fail) */
   .bcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:2px 16px; }
   .bstat { font-size:12.5px; color:var(--dim); margin-top:6px; }
   .bkv { display:flex; gap:10px; margin:10px 0; }
@@ -496,18 +518,18 @@
   .vbadge.v-confirmed { background:var(--mint-soft); color:var(--mint); }
   .vbadge.v-stale { background:var(--amber-soft); color:var(--amber); }
   .earn8 p { font-size:13px; margin:6px 0; line-height:1.4; }
-  .earn8 .ecatch { color:#666; }
+  .earn8 .ecatch { color:var(--dim); } /* FIX (QA-D): was #666, invisible on dark */
   .earn8 .emeta { color:var(--dim); font-size:12px; }
   /* SPEC 02: 7-element Cancel card */
   .cancel7 { margin:8px 0; padding:10px; background:rgba(179,38,30,.04); border-radius:10px; }
   .cancel7 p { font-size:13px; margin:6px 0; line-height:1.4; }
-  .cancel7 .cret { color:#666; font-style:italic; }
+  .cancel7 .cret { color:var(--dim); font-style:italic; } /* FIX (QA-D): was #666 */
   /* HOME 5 THINGS: Connect card — incredibly simple, one button */
   .connectcard { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; margin:12px 0; }
   .connectcard .cc-top b { font-size:16px; display:block; margin-bottom:4px; }
-  .connectcard .cc-top p { font-size:13px; color:#666; margin:0 0 12px; line-height:1.4; }
+  .connectcard .cc-top p { font-size:13px; color:var(--dim); margin:0 0 12px; line-height:1.4; } /* FIX (QA-D): was #666, unreadable on dark */
   .connectcard .cta { width:100%; margin:0 0 8px; }
-  .connectcard .fine { font-size:11px; color:#999; margin:0; text-align:center; }
+  .connectcard .fine { font-size:11px; color:var(--dim); margin:0; text-align:center; } /* FIX (QA-D): was #999, failed WCAG 1.4.3 on dark */
   /* FIX (T6): Pending badge for transaction list */
   .pending-badge { display:inline-block; font-size:10px; font-weight:600; background:var(--amber-soft); color:var(--amber); padding:2px 6px; border-radius:10px; margin-left:6px; text-transform:uppercase; letter-spacing:0.5px; }
   /* FIX (D1-029): badge for unmatched credits flagged for review */
@@ -633,7 +655,7 @@
   .qdismiss { position:absolute; top:8px; right:8px; width:28px; height:28px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--dim); font-size:14px; line-height:1; cursor:pointer; }
   .qdismiss:hover { color:var(--text); border-color:var(--dim); }
   .qcard.top { border:2px solid var(--silver); }
-  .qcard h4 { margin:0 0 4px; font-size:16px; }
+  .qcard h3 { margin:0 0 4px; font-size:16px; } /* FIX (QA-D): was h4 — skipped h3 under the "Up next" h2 (WCAG 1.3.1) */
   .qm { margin:0 0 6px; color:var(--dim); font-size:13.5px; }
   .qwhy { margin:0 0 10px; font-size:12.5px; color:var(--dim); font-style:italic; }
   .qtop { margin:0 0 6px; font-size:11.5px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
@@ -1329,11 +1351,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <p class="psub" style="margin-top:6px">Last updated: September 26, 2026</p>
         <div class="legalbody">
           <p><b>The short version.</b> We collect the minimum needed to run your account and your money plan: your name, email, onboarding answers, plan progress, things you save, and your Guide chats. We never sell your data. No ads, no third-party trackers. Your chat messages are processed by our AI provider to answer you. You can ask us to export or delete everything at any time.</p>
-          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences. <i>If you connect your bank (SimpleFIN):</i> a read-only bank-access credential stored encrypted in our database vault so the app can sync your accounts — we never see or store your bank username or password.</p>
+          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences. <i>If you connect your bank (SimpleFIN):</i> a read-only bank-access credential stored encrypted in our database vault so the app can sync your accounts — we never see or store your bank username or password. <i>If you use the subscription-cancellation agent:</i> the merchant logins you choose to save, stored encrypted in our database vault and used only to carry out cancellations you approve.</p>
           <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. The optional bank connection (SimpleFIN) is read-only — we see account balances and transactions, we never move money, and we never see your bank password.</p>
           <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it), SimpleFIN (only if you connect your bank — your bank sign-in happens on SimpleFIN's site; they hand the app a read-only access credential). Nobody else. We never sell your data.</p>
           <p><b>Cookies &amp; tracking.</b> Your sign-in session lives in your browser's local storage so you stay signed in. No third-party analytics or ad trackers.</p>
-          <p><b>How long we keep it.</b> While your account is active. Disconnecting your bank deletes your connection record and the stored bank credential. Deleting your account deletes your profile, chats, progress, saved items, and your bank connection including the stored bank credential.</p>
+          <p><b>How long we keep it.</b> While your account is active. Disconnecting your bank deletes your connection record and the stored bank credential. Deleting your account deletes your profile, chats, progress, saved items, your bank connection including the stored bank credential, and any merchant logins you saved for the cancellation agent.</p>
           <p><b>Your rights.</b> Ask us any time to see, correct, export, or delete your data: <a href="#" id="privacyEmail">support@upmore.app</a>.</p>
           <p><b>Children.</b> Upmore isn't for under-13s.</p>
           <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
@@ -2046,7 +2068,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("moves").innerHTML = moves.map((r, n) => `
       <div class="move${n === 0 ? " first" : ""}">
         <div class="top"><span class="step">Move ${n + 1}</span><span class="badge">${esc(r.tier)}</span></div>
-        <h3>${esc(routeTitle(r))}</h3>
+        <h2>${esc(routeTitle(r))}</h2>
         <p class="meta">${esc(routeMeta(r))}</p>
         <p class="reason">${esc(whyLine(r, d))}</p>
       </div>`).join("");
@@ -2779,7 +2801,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         data-eff="${+c.eff.toFixed(2)}" data-score="${c.score.toFixed(2)}">
         ${i === 0 ? `<p class="qtop">Up next</p>` : ""}
         <button class="qdismiss" data-dismiss="${esc(c.id)}" aria-label="Dismiss">✕</button>
-        <h4>${esc(c.title)}</h4>
+        <h3>${esc(c.title)}</h3>
         <p class="qm">${esc(c.sub)}</p>
         ${extra}
         <p class="qwhy">${esc(c.why)}</p>
@@ -4264,9 +4286,31 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   async function exportUserData() {
     if (!saveUid()) { toast("Sign in to export"); return; }
-    const tables = [["save_subscriptions", "created_at"], ["save_ledger", "created_at"], ["save_renewals", "created_at"], ["save_claims", "created_at"], ["save_receipts", "created_at"], ["simplefin_connections", "connected_at"]];
+    // FIX (QA-D 2026-09-27): export covered only 6 tables while the privacy
+    // policy promises "export everything". Now covers every user-owned table.
+    const tables = [["profiles", "created_at"], ["save_subscriptions", "created_at"],
+      ["save_ledger", "created_at"], ["save_renewals", "created_at"], ["save_claims", "created_at"],
+      ["save_receipts", "created_at"], ["simplefin_connections", "connected_at"],
+      ["simplefin_requests", "requested_at"], ["playbook_progress", "started_at"],
+      ["reminders", "created_at"], ["finance_accounts", "created_at"],
+      ["finance_alerts", "created_at"], ["finance_goals", "created_at"],
+      ["finance_snapshots", "created_at"], ["referrals", "created_at"],
+      ["referral_credits", "created_at"], ["user_subscriptions", "created_at"],
+      ["exec_approvals", "created_at"], ["exec_runs", "started_at"],
+      ["exec_credential_refs", "created_at"], ["plaid_requests", "requested_at"],
+      ["web_agent_jobs", "created_at"], ["agent_usage", "created_at"]];
     const out = { exported_at: new Date().toISOString(), user_id: saveUid() };
     for (const [t, col] of tables) out[t] = await saveRows(t, col, false);
+    // agent_threads + agent_messages (messages carry no user_id; export per thread)
+    try {
+      const { data: threads } = await supa.from("agent_threads").select("*").eq("user_id", saveUid()).order("created_at", { ascending: false });
+      out.agent_threads = threads || [];
+      out.agent_messages = [];
+      for (const th of (threads || [])) {
+        const { data: msgs } = await supa.from("agent_messages").select("*").eq("thread_id", th.id).order("created_at", { ascending: true });
+        (msgs || []).forEach(m => out.agent_messages.push(m));
+      }
+    } catch (e) { out.agent_threads = out.agent_threads || []; out.agent_messages = out.agent_messages || []; }
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -5002,11 +5046,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const has = (...kws) => kws.some(k => t.includes(k));
     const data = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
     const _sid = (typeof session !== "undefined" && !!session);
-    // QA 2026-09-27: never answer balance/spending questions from demo figures
-    // for signed-in users. Refuse honestly instead of quoting sample data.
-    if (_sid && !data.isLive) {
-      return { paras: ["I don't have your bank data yet, so I won't guess at balances or spending — the sample figures in the app aren't yours. Connect your bank (read-only, we never move money) and ask me again for answers from your real transactions."] };
-    }
+    // QA 2026-09-27: signed-in without a live bank connection -> data intents
+    // must refuse honestly rather than quote demo figures. Checked per intent
+    // below so non-data questions still flow through.
+    const dataNoLive = _sid && !data.isLive;
+    const noLiveRefusal = { paras: ["I don't have your bank data yet, so I won't guess at balances or spending — the sample figures in the app aren't yours. Connect your bank (read-only, we never move money) and ask me again for answers from your real transactions."] };
     const txs = (data.transactions || []).filter(x => !x.is_transfer);
     const posted = txs.filter(x => !x.is_pending && x.posted_at);
     const dates = posted.map(x => x.posted_at).sort();
@@ -5018,6 +5062,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // --- 3-013: balance with staleness guard ---
     if (!thirdParty && has("what is my balance", "what's my balance", "whats my balance",
       "my balance right now", "how much money do i have", "check my balance", "my current balance")) {
+      // QA 2026-09-27: no live connection at all beats the stale-data path —
+      // isDataStale() reports {stale:true, days:-1} with no sync, which would
+      // render as the confusing "stale (about -1 days old)".
+      if (dataNoLive) return { paras: ["No bank is connected, so I have no balance to read. Connect one in Track and I'll pull it."] };
       let st = null;
       try { st = (typeof isDataStale === "function") ? isDataStale() : null; } catch (e) { st = null; }
       const stale = st === true || !!(st && (st.stale === true || st.isStale === true));
@@ -5030,7 +5078,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           ", so any number I'd give you could be wrong. Reconnect your bank in Track, then ask me again and I'll read the fresh figure."
         ] };
       }
-      const acct = (data.accounts || [])[0];
+      const acct = dataNoLive ? null : (data.accounts || [])[0];
       if (!acct) return { paras: ["No bank is connected, so I have no balance to read. Connect one in Track and I'll pull it."] };
       return { paras: ["Your " + (acct.name || "account") + " balance is " + m$(acct.balance) + " (latest synced data)."] };
     }
@@ -5038,6 +5086,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // --- 3-003: "Where did the $340 come from?" -> actual ledger rows ---
     const amtM = t.match(/\$ ?([\d,]+(?:\.\d{1,2})?)/);
     if (amtM && has("where did", "come from", "what is this charge", "what's this charge", "whats this charge", "this charge")) {
+      if (dataNoLive) return noLiveRefusal;
       const target = parseFloat(amtM[1].replace(/,/g, ""));
       const rows = posted.filter(x => Math.abs(Math.abs(Number(x.amount)) - target) < 0.005)
         .sort((a, b) => String(b.posted_at).localeCompare(String(a.posted_at))).slice(0, 8);
@@ -5051,6 +5100,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // --- 3-001 / 3-002 / 3-004: spend by category with provenance ---
     const spendM = t.match(/how much did i (?:spend|spent) on ([a-z]+(?: [a-z]+)?)/);
     if (spendM && !has("credit card")) {
+      if (dataNoLive) return noLiveRefusal;
       const word = spendM[1].replace(/( last month| this month| recently| in the last.*)$/, "").trim().split(" ")[0];
       const CATS = { food: ["Groceries", "Dining"], dining: ["Dining"], groceries: ["Groceries"], grocery: ["Groceries"],
         transport: ["Transport"], transportation: ["Transport"], shopping: ["Shopping"], entertainment: ["Entertainment"],
@@ -5092,6 +5142,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // --- 3-006: monthly burn rate from coverage math, or an honest can't ---
     if (has("burn rate", "monthly burn", "spend per month", "spending per month", "average monthly spend", "average monthly spending")) {
+      if (dataNoLive) return noLiveRefusal;
       if (covDays < 30) return { paras: ["I can't compute a monthly rate from " + covDays + " days of data \u2014 that's not a month, and I won't estimate. Connect your bank for more history."] };
       const out = posted.filter(x => x.amount < 0 && !x.is_excluded).reduce((s, x) => s + Math.abs(Number(x.amount)), 0);
       const per30 = out / covDays * 30;
@@ -5110,10 +5161,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const data = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
     const _sip = (typeof session !== "undefined" && !!session);
     // QA 2026-09-27: projections from demo subscriptions would be fiction for
-    // a signed-in user. Refuse honestly until the bank is connected.
-    if (_sip && !data.isLive) {
-      return { paras: ["I can't project from your real subscriptions yet — no bank is connected, and I won't model your future on sample data. Connect your bank and I'll run the numbers on your actual bills."] };
-    }
+    // a signed-in user. Refuse honestly per intent below; non-data questions
+    // still flow through.
+    const projNoLive = _sip && !data.isLive;
+    const projRefusal = { paras: ["I can't project from your real subscriptions yet — no bank is connected, and I won't model your future on sample data. Connect your bank and I'll run the numbers on your actual bills."] };
     const txs = (data.transactions || []).filter(x => !x.is_transfer && !x.is_pending && x.posted_at);
     const today = new Date().toISOString().slice(0, 10);
     const m$ = v => "$" + Number(v).toFixed(2);
@@ -5122,6 +5173,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // --- 3-023: "if i cancel netflix spotify and hulu what happens" ---
     if (has("cancel") && has("what if", "if i cancel", "what happens") && !has("for me")) {
+      if (projNoLive) return projRefusal;
       const seen = {};
       txs.forEach(x => { const k = String(x.merchant_raw || "").toLowerCase(); if (k.length > 2 && t.includes(k)) seen[x.merchant_raw] = true; });
       const names = Object.keys(seen);
@@ -5155,6 +5207,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // --- 3-024: "At $50/month when do I reach $1000?" ---
     if (has("reach", "hit", "get to", "save up") && has("/month", "per month", "a month", "monthly") && /\$ ?[\d,]+/.test(t)) {
+      if (projNoLive) return projRefusal;
       const tgtM = t.match(/(?:reach|hit|get to|save up)\s+\$ ?([\d,]+(?:\.\d{1,2})?)/);
       const moM = t.match(/\$ ?([\d,]+(?:\.\d{1,2})?)\s*(?:\/|per |a )?month/);
       if (!tgtM || !moM) return null;
@@ -5171,6 +5224,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // --- 3-026: "Can I afford a $400 flight?" -> plain negative, date, warning ---
     if (has("can i afford", "afford a ", "afford the", "do i have enough for", "enough money for") && !has("credit card")) {
+      if (projNoLive) return projRefusal;
       const am = t.match(/\$ ?([\d,]+(?:\.\d{1,2})?)/);
       if (!am) return null;
       const amt = parseFloat(am[1].replace(/,/g, ""));
