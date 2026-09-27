@@ -15,7 +15,13 @@ assert ph in tpl, "placeholder missing from template"
 # Retired routes are never displayed anywhere in the app (both list paths
 # filter status !== "retired"), so drop them from the served bundle entirely.
 # They stay in the source JSON + DB as retired for audit.
+# FIX (finance-eval): keep a compact retired name->category lookup so the Guide
+# can answer "How do I start with <retired provider>?" honestly ("that's
+# retired") instead of pretending it never existed.
+retired = [(r.get("provider"), r.get("category")) for r in data.get("routes", [])
+           if r.get("status") == "retired" and r.get("provider")]
 data["routes"] = [r for r in data.get("routes", []) if r.get("status") != "retired"]
+data["retired_providers"] = retired
 
 # Normalize list-valued copy fields to display strings. The template renders
 # them inline; a raw JS array would stringify with bare commas ("a.,b").

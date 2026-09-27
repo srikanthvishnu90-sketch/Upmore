@@ -15,7 +15,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.0";
 
-const VAULT_KEY = "simplefin_access_url";
+const GLOBAL_VAULT_KEY = "simplefin_access_url"; // legacy: Vishnu's own connection
 const ALLOWED_ORIGINS = [
   "https://upmore-srikanthvishnu90-sketchs-projects.vercel.app",
   "http://localhost:8901",
@@ -35,13 +35,18 @@ function corsFor(req: Request) {
   };
 }
 
-async function getAccessUrl(supabaseUrl: string, serviceKey: string): Promise<string | null> {
-  const res = await fetch(`${supabaseUrl}/rest/v1/vault_secrets?select=secret&name=eq.${VAULT_KEY}`, {
-    headers: { "apikey": serviceKey, "Authorization": `Bearer ${serviceKey}` },
-  });
-  if (!res.ok) return null;
-  const rows = await res.json();
-  return rows?.[0]?.secret || null;
+async function getAccessUrl(supabaseUrl: string, serviceKey: string, userId: string): Promise<string | null> {
+  // Prefer the user-scoped secret; fall back to the legacy global one
+  // (Vishnu's own connection, claimed before per-user claiming existed).
+  for (const name of [`simplefin_access_url_${userId}`, GLOBAL_VAULT_KEY]) {
+    const res = await fetch(`${supabaseUrl}/rest/v1/vault_secrets?select=secret&name=eq.${encodeURIComponent(name)}`, {
+      headers: { "apikey": serviceKey, "Authorization": `Bearer ${serviceKey}` },
+    });
+    if (!res.ok) continue;
+    const rows = await res.json();
+    if (rows?.[0]?.secret) return rows[0].secret as string;
+  }
+  return null;
 }
 
 serve(async (req) => {
@@ -82,7 +87,7 @@ serve(async (req) => {
     }
     await admin.from("simplefin_requests").insert({ user_id: user.id });
 
-    const accessUrl = await getAccessUrl(supabaseUrl, serviceKey);
+    const accessUrl = await getAccessUrl(supabaseUrl, serviceKey, user.id);
     if (!accessUrl) return json({ error: "SimpleFIN not connected" }, 404);
 
     const url = new URL(accessUrl);

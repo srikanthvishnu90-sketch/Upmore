@@ -2,6 +2,8 @@
 // The single most important file in the product: this is what makes the agent
 // trustworthy instead of a confident liar.
 
+import { FINANCE_URL_ALLOWLIST, financeAllowedAmounts, financeAmountsFor } from "./finance_facts.ts";
+
 export const SYSTEM_PROMPT = `You are Upmore's money guide. You help regular people earn
 their first bit of extra money online. You talk like a patient friend texting —
 super basic, warm, never corporate, never AI-serious. Short messages. One idea
@@ -51,6 +53,29 @@ or any variation:
    ticker opinions, price predictions, or "educational" stock picks. Any securities
    recommendation, even framed as education, is forbidden.
 → You may discuss EARNING money (routes, gigs, bonuses) but never INVESTING money.
+
+FINANCE Q&A MODE — general money questions (not route requests):
+When the user asks a general finance question — taxes, deductions, retirement
+accounts, credit, banking, budgeting, debt payoff, insurance basics, how a
+financial concept works — answer it directly from your knowledge PLUS the
+FINANCE FACTS block below. This is the "research the why" path: explain the
+reasoning, not just the number.
+- Every figure, limit, threshold, rate, and official URL you state MUST come
+  from a FINANCE FACTS entry (quote or paraphrase it). If no fact covers the
+  number, DO NOT invent one: say plainly "I don't have a verified figure for
+  that — check [official source]" and give the official URL only if it is in
+  the allowlist.
+- End every finance-mode reply with the marker [FINANCE] on its own final
+  line (the app strips it; the user never sees it).
+- Style: short, plain words, one idea at a time — same voice as ever.
+- Taxes: you explain rules; you are not a tax advisor and you say so when the
+  question involves their specific situation.
+- The CAPITAL WALL still applies in finance mode: never recommend specific
+  securities, never say buy/sell/hold/invest-in about any stock, ETF, fund,
+  bond, crypto, or option. Explaining what an index fund IS is fine;
+  recommending one is forbidden.
+- Never promise outcomes. "Can save you $X" is forbidden unless the $X is a
+  FINANCE FACTS figure applied transparently to the user's own stated numbers.
 
 HOW YOU WORK
 - LEAD WITH SOMETHING USEFUL. When the user asks about a route, your first
@@ -195,8 +220,15 @@ export function isDebunkReply(reply: string): boolean {
 export function checkGrounding(
   reply: string,
   routes: RouteCard[],
-  userMessage = ""
+  userMessage = "",
+  financeMode = false,
+  financeIds: string[] = []
 ): string[] {
+  // Even if the model forgot the [FINANCE] marker, a question that matched
+  // finance facts is judged by finance grounding (scoped to the matched facts),
+  // never by route cards — so "credit score" advice can't be nuked for quoting
+  // a figure that route cards don't contain.
+  if (financeIds.length) financeMode = true;
   const violations: string[] = [];
   const lowered = reply.toLowerCase();
   // A reply that names the scam pattern is debunking, not promising. And quoting
@@ -224,11 +256,19 @@ export function checkGrounding(
   // message. Compared numerically ("$5,000" == "$5000") so reformatting
   // isn't "inventing". The whole card counts (steps, exclusions, catches):
   // quoting any verified fact is faithful, not invented.
+  // FINANCE MODE: amounts must come from FINANCE_FACTS (the finance source of
+  // truth) or the user's message instead of route cards.
   const normAmt = (m: string) => m.replace(/[^0-9.]/g, "");
   const allowedMoney = new Set<string>();
-  for (const r of routes) {
-    const t = JSON.stringify(r);
-    for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
+  if (financeMode) {
+    // Scoped: only amounts from the facts matched to THIS question (when known),
+    // so unrelated fact figures can't leak into the answer.
+    for (const a of financeIds.length ? financeAmountsFor(financeIds) : financeAllowedAmounts()) allowedMoney.add(a);
+  } else {
+    for (const r of routes) {
+      const t = JSON.stringify(r);
+      for (const m of t.match(/\$[\d,]+(\.\d+)?/g) ?? []) allowedMoney.add(normAmt(m));
+    }
   }
   for (const m of userMessage.match(/\$[\d,]+(\.\d+)?/g) ?? []) {
     allowedMoney.add(normAmt(m));
@@ -240,6 +280,8 @@ export function checkGrounding(
   // Trailing sentence punctuation ("at https://x.com.") is stripped before
   // comparing — the URL regex sweeps it in and it used to false-positive
   // every natural sentence ending in a link.
+  // FINANCE MODE: official .gov / consumer-protection domains are allowed
+  // (FINANCE_URL_ALLOWLIST) instead of card hosts.
   const cleanHost = (raw: string): string | null => {
     try {
       // Strip markdown bold/italic markers the model wraps around links
@@ -251,10 +293,14 @@ export function checkGrounding(
     }
   };
   const allowedHosts = new Set<string>();
-  for (const r of routes) {
-    for (const m of JSON.stringify(r).match(/https?:\/\/[^\s)"']+/g) ?? []) {
-      const h = cleanHost(m);
-      if (h) allowedHosts.add(h);
+  if (financeMode) {
+    for (const d of FINANCE_URL_ALLOWLIST) allowedHosts.add(d);
+  } else {
+    for (const r of routes) {
+      for (const m of JSON.stringify(r).match(/https?:\/\/[^\s)"']+/g) ?? []) {
+        const h = cleanHost(m);
+        if (h) allowedHosts.add(h);
+      }
     }
   }
   for (const m of userMessage.match(/https?:\/\/[^\s)"']+/g) ?? []) {
@@ -270,6 +316,14 @@ export function checkGrounding(
       violations.push(`unlisted_url:${host}`);
     }
   }
+  // 4. FINANCE MODE only: capital-wall post-check. The prompt forbids
+  // securities recommendations; this catches blatant ticker advice that
+  // slipped through ("buy AAPL", "invest in TSLA", "sell NVDA").
+  if (financeMode) {
+    if (/\b(buy|sell|short|invest in)\s+[A-Z]{2,5}\b/.test(reply)) {
+      violations.push("securities_advice");
+    }
+  }
   return violations;
 }
 
@@ -277,6 +331,13 @@ export const SAFE_FALLBACK =
   "I want to be careful here — I can't verify that claim right now, so I won't " +
   "state it as fact. Tell me which route you're asking about and I'll walk you " +
   "through exactly what's verified.";
+
+// Finance-mode fallback: same honesty, but points at official sources instead
+// of routes (a finance question has no route to ask about).
+export const FINANCE_SAFE_FALLBACK =
+  "I want to be careful here — I can't verify that figure right now, so I won't " +
+  "state it as fact. For the official number, check IRS.gov or consumerfinance.gov " +
+  "directly — and if you tell me your situation I'll help you think it through.";
 
 // Used when a debunk attempt trips the grounding check (usually because the
 // model invented an example amount/URL while warning about a scam). The user
