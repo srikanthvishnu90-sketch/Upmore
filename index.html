@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-A9N7+e+uquQRvaJYXWRNXaEKnEvQj+eD7hpU3tYgJ8Y=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-J7zJx0D4+dG38IKpineubKMnYydTwxvSrBya3iPhry4=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -5742,6 +5742,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const uwL = guideLeaderboardRefusal(t); if (uwL) return uwL;
     const uwM = guideNotifyFilerRefusal(t); if (uwM) return uwM;
     const uwS = guideSelfPositionRefusal(t); if (uwS) return uwS;
+    // FIX (invest-exec): "invest $500 in AAPL for me" is an EXECUTION request, not advice —
+    // but the ticker trips guideCapitalDeep first and answers the wrong question. Catch
+    // do-it-for-me invest/buy phrasings before the capital wall.
+    { const _x = " " + String(t).toLowerCase() + " ";
+      if (/\binvest\b[^.]{0,60}\bfor me\b/.test(_x) || /\bdo it for me\b/.test(_x) ||
+          (/\bbuy\b[^.]{0,40}\bfor me\b/.test(_x) && /(stock|share|etf|fund|crypto|\$|ticker)/.test(_x)))
+        return { paras: ["I can't move money for you — Upmore never touches your accounts. I can do the math and lay out the steps; you always make the final tap."] }; }
     const uwP = guideCapitalPlain(t); if (uwP) return uwP;
     const uwD = guideCapitalDeep(t); if (uwD) return uwD;
     { const _taxI = guideTaxInfo(t); if (_taxI) return _taxI; }

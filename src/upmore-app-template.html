@@ -5721,6 +5721,13 @@
     const uwL = guideLeaderboardRefusal(t); if (uwL) return uwL;
     const uwM = guideNotifyFilerRefusal(t); if (uwM) return uwM;
     const uwS = guideSelfPositionRefusal(t); if (uwS) return uwS;
+    // FIX (invest-exec): "invest $500 in AAPL for me" is an EXECUTION request, not advice —
+    // but the ticker trips guideCapitalDeep first and answers the wrong question. Catch
+    // do-it-for-me invest/buy phrasings before the capital wall.
+    { const _x = " " + String(t).toLowerCase() + " ";
+      if (/\binvest\b[^.]{0,60}\bfor me\b/.test(_x) || /\bdo it for me\b/.test(_x) ||
+          (/\bbuy\b[^.]{0,40}\bfor me\b/.test(_x) && /(stock|share|etf|fund|crypto|\$|ticker)/.test(_x)))
+        return { paras: ["I can't move money for you — Upmore never touches your accounts. I can do the math and lay out the steps; you always make the final tap."] }; }
     const uwP = guideCapitalPlain(t); if (uwP) return uwP;
     const uwD = guideCapitalDeep(t); if (uwD) return uwD;
     { const _taxI = guideTaxInfo(t); if (_taxI) return _taxI; }
