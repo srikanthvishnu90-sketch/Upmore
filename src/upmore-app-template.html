@@ -20,29 +20,47 @@
     src:url("fonts/schibsted-grotesk.woff2") format("woff2");
   }
   :root {
-    /* UPMORE COLOR SYSTEM (Vishnu 2026-09-25). Dark mode only.
-       Mint/amber/coral are STATE colors — never decorative. */
-    --bg: #17251E;          /* Base — app background */
-    --surface: #1E2F26;     /* Raised — cards, sheets */
-    --surface-2: #17251E;   /* recessed inputs */
-    --line: #2C3D34;        /* dividers, borders */
-    --text: #F4F5F2;        /* Primary — off-white, never pure white */
-    --muted: #B9C2BB;       /* Secondary — labels, supporting copy */
-    --dim: #8A958F;         /* Muted — timestamps, disabled. FIX (QA-D 2026-09-27):
-                               was #7E8A82 (4.43:1 on --bg, failed WCAG 1.4.3);
-                               this passes 4.5:1 on both --bg and --surface. */
+    /* UPMORE COLOR SYSTEM v2 (Vishnu 2026-09-27). Dark mode only.
+       ONE brand accent (orange) — strictly for CTAs, links, hero chart lines.
+       Green is a STATE color (pace/success), never the brand accent.
+       Category hues are identity-pinned (chart1-7) and reused consistently. */
+    --bg: #161614;          /* Base — warm near-black app background */
+    --surface: #1F1F1D;     /* Raised — cards, sheets */
+    --surface-2: #262624;   /* Recessed — inputs, tracks */
+    --line: rgba(255,255,255,.08); /* Hairline dividers, borders */
+    --text: #EDEEEC;        /* Primary — silver-hi, never pure white */
+    --text2: #C9CFCA;       /* Secondary — silver */
+    --muted: #979D97;       /* Tertiary — labels, supporting copy */
+    --dim: #8A958F;         /* Muted — timestamps, disabled (4.5:1+ on --bg) */
     --silver: #C9CFCA;      /* logo, icons, neutral accents */
-    --silver-hi: #E8ECE8;   /* sheen top on the logo only */
-    --mint: #6FE39B;        /* Confirmed: received, avoided, reduced, cash flow, completed, progress */
-    --mint-soft: rgba(111,227,155,.12);
-    --amber: #D4A04C;       /* Pending: claimed-not-confirmed, in progress, expiring soon */
-    --amber-soft: rgba(212,160,76,.12);
-    --coral: #E0705F;       /* Attention: failed, overdrawn, expired — sparingly, never for deadlines */
-    --coral-soft: rgba(224,112,95,.12);
-    --green: #6FE39B;       /* legacy alias → mint (each use audited) */
-    --green-deep: #1E2F26;
-    --green-soft: rgba(111,227,155,.12);
-    --sky: #C9CFCA;         /* legacy alias → silver (blue removed from system) */
+    --silver-hi: #E8ECE8;   /* hero gradient top */
+    --accent: #FF6A2D;      /* THE brand accent — CTAs, links, hero chart line only */
+    --accent-soft: rgba(255,106,45,.14);
+    --accent-ink: #1D1006;   /* text on accent */
+    --up: #2E9E6B;          /* Success / on-pace — green is DEMOTED from brand */
+    --up-soft: rgba(46,158,107,.14);
+    --down: #E14A4A;        /* Danger / over budget */
+    --down-soft: rgba(225,74,74,.12);
+    --warn: #E8A13D;        /* At-risk / projected overspend */
+    --warn-soft: rgba(232,161,61,.14);
+    --chart1: #F472B6;      /* identity-pinned category hues */
+    --chart2: #60A5FA;
+    --chart3: #FACC15;
+    --chart4: #FB923C;
+    --chart5: #2DD4BF;
+    --chart6: #A78BFA;
+    --chart7: #F87171;
+    /* Legacy aliases (visual remap — no logic change) */
+    --mint: #2E9E6B;
+    --mint-soft: rgba(46,158,107,.12);
+    --amber: #E8A13D;
+    --amber-soft: rgba(232,161,61,.12);
+    --coral: #E14A4A;
+    --coral-soft: rgba(225,74,74,.12);
+    --green: #2E9E6B;
+    --green-deep: #1F1F1D;
+    --green-soft: rgba(46,158,107,.12);
+    --sky: #C9CFCA;
     --sky-soft: rgba(201,207,202,.14);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; }
@@ -50,7 +68,7 @@
   html, body { height: 100%; }
   body {
     font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
-    color: var(--text); background: #17251E;
+    color: var(--text); background: #161614;
     -webkit-font-smoothing: antialiased; overflow: hidden;
   }
   button, input, select { font: inherit; color: inherit; }
@@ -120,10 +138,10 @@
   .body { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; }
   .spacer { flex: 1; min-height: 24px; }
 
-  .go { width: 100%; height: 56px; border: 0; border-radius: 16px; font-size: 17px; font-weight: 600; flex-shrink: 0;
-    background: #F4F5F2; color: #17251E; transition: opacity .2s; }
+  .go { width: 100%; height: 56px; border: 0; border-radius: 999px; font-size: 17px; font-weight: 700; flex-shrink: 0;
+    background: var(--accent); color: var(--accent-ink); transition: opacity .2s; }
   .go:disabled { opacity: .3; }
-  .go.light { background: transparent; color: #F4F5F2; border: 1.5px solid #2C3D34; box-shadow: none; }
+  .go.light { background: transparent; color: var(--text); border: 1.5px solid var(--line); box-shadow: none; }
   .ordiv { display: flex; align-items: center; gap: 12px; margin: 18px 0 14px; color: var(--dim); font-size: 13px; }
   .ordiv::before, .ordiv::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .pwform { display: flex; flex-direction: column; gap: 10px; }
@@ -157,7 +175,7 @@
   .hint.ok { color: var(--mint); font-weight: 600; }
   .hint.bad { color: var(--coral); font-weight: 600; }
   .code { letter-spacing: .5em; text-align: center; }
-  .link { background: none; border: 0; color: var(--silver); font-weight: 600; font-size: 15px; padding: 8px 0; align-self: flex-start; }
+  .link { background: none; border: 0; color: var(--accent); font-weight: 600; font-size: 15px; padding: 8px 0; align-self: flex-start; }
 
   .sel { position: relative; }
   .sel select { appearance: none; -webkit-appearance: none; width: 100%; height: 56px; padding: 0 34px 0 14px;
@@ -229,7 +247,7 @@
   .stepbtn[aria-pressed="true"] .box { background: var(--silver); border-color: var(--silver); }
   .stepbtn[aria-pressed="true"] .box svg { opacity: 1; }
   .stepbtn[aria-pressed="true"] .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--dim); }
-  .cta { margin-top: 14px; width: 100%; height: 50px; border: 0; border-radius: 14px; background: var(--text); color: #17251E; font-size: 16px; font-weight: 600; }
+  .cta { margin-top: 14px; width: 100%; height: 50px; border: 0; border-radius: 999px; background: var(--text); color: #161614; font-size: 16px; font-weight: 600; }
   .foot { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--dim); }
   .foot button { background: none; border: 0; padding: 12px 8px; min-height: 44px; color: var(--muted); font-size: 12.5px; font-weight: 600; }
 
@@ -265,13 +283,14 @@
   .tabs { position: absolute; left: 0; right: 0; bottom: 0; z-index: 30;
     display: flex; justify-content: center; gap: 64px;
     padding: 10px 0 calc(var(--tabbot, 10px) + 8px);
-    background: linear-gradient(180deg, rgba(10,15,12,0) 0%, rgba(10,15,12,.92) 30%, var(--bg) 100%); }
+    background: linear-gradient(180deg, rgba(22,22,20,0) 0%, rgba(22,22,20,.92) 30%, var(--bg) 100%); }
   body.framed .tabs { --tabbot: 26px; }
   .tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;
     font-size: 11.5px; font-weight: 600; color: var(--dim); padding: 4px 10px; min-height: 48px; min-width: 48px;
-    justify-content: center; }
+    justify-content: center; border-radius: 999px; }
   .tab svg { width: 24px; height: 24px; }
-  .tab[aria-selected="true"] { color: var(--text); }
+  /* Accent discipline: nav selection is a NEUTRAL pill — never the brand accent. */
+  .tab[aria-selected="true"] { color: var(--text); background: rgba(255,255,255,.09); }
 
   /* ---------- guide ---------- */
   #guide::before { content: ""; position: absolute; left: 50%; top: 90px; width: min(420px, 100vw); height: min(420px, 100vw); transform: translateX(-50%);
@@ -437,8 +456,8 @@
   .pacelegend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 4px; }
   .pacelegend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--ink); vertical-align: middle; margin-right: 4px; }
   .pacelegend i.dotted { border-top-style: dotted; }
-  .bbar i.proj { background: var(--amber, #C98A2B); }
-  .bbar i.over { background: var(--amberdeep, #A86A12); }
+  .bbar i.proj { background: var(--warn); }
+  .bbar i.over { background: var(--down); }
   .bbar.outline { outline: 1.5px dashed var(--muted); outline-offset: 2px; }
   .calgrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 10px; }
   .calgrid .dow { font-size: 10.5px; color: var(--muted); text-align: center; padding: 2px 0; }
@@ -491,8 +510,9 @@
   .bmonthnav button { border:1px solid var(--line); background:var(--surface); border-radius:10px; padding:8px 14px; font-size:15px; }
   .bmonthnav b { font-size:16px; }
   .bsum { font-size:15.5px; line-height:1.6; }
-  .bbar { height:8px; background:var(--line); border-radius:5px; overflow:hidden; margin-top:8px; }
-  .bbar > i { display:block; height:100%; background:var(--ink); border-radius:5px; }
+  .bbar { height:8px; background:var(--surface-2); border-radius:5px; overflow:hidden; margin-top:8px; }
+  /* Copilot pace encoding: green on-pace / amber projected-overspend / red over. */
+  .bbar > i { display:block; height:100%; background:var(--up); border-radius:5px; }
   .brow { padding:13px 0; border-bottom:1px solid var(--line); }
   .brow:last-child { border-bottom:none; }
   .brow .bt { display:flex; justify-content:space-between; align-items:baseline; }
@@ -658,7 +678,7 @@
   .qm { margin:0 0 6px; color:var(--dim); font-size:13.5px; }
   .qwhy { margin:0 0 10px; font-size:12.5px; color:var(--dim); font-style:italic; }
   .qtop { margin:0 0 6px; font-size:11.5px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
-  .qcta { width:100%; padding:12px; border-radius:10px; border:none; background:#F4F5F2; color:#17251E; font-size:15px; font-weight:600; }
+  .qcta { width:100%; padding:12px; border-radius:999px; border:none; background:var(--text); color:#161614; font-size:15px; font-weight:600; }
   .qcta:active { transform:scale(.99); }
   /* Ledger totals */
   .ledgertots { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 12px; }
@@ -667,6 +687,50 @@
   .ledgertot b { display:block; font-size:13.5px; }
   .ledgertot span { font-size:10px; color:var(--dim); }
   .lrev { opacity:.55; text-decoration:line-through; }
+
+  /* ================= UPMORE VISUAL v2 (2026-09-27) =================
+     Monarch/Copilot/Rocket Money patterns: one accent, silver-gradient
+     hero figures, value-first stat tiles, hairline cards, pill controls. */
+  .micro { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 6px; }
+  .hero-num { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; margin: 0;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--silver) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .conn-num { font-size: 24px; font-weight: 700; margin: 2px 0; font-variant-numeric: tabular-nums; color: var(--text); }
+  .conn-sub { font-size: 12.5px; color: var(--muted); margin: 0; }
+  .hero-card { display: block; width: 100%; text-align: left; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 12px; color: var(--text); }
+  .hero-card .hero-chart { margin-top: 10px; }
+  .delta-chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px;
+    border-radius: 999px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .delta-chip.up { background: var(--up-soft); color: var(--up); }
+  .delta-chip.down { background: var(--down-soft); color: var(--down); }
+  .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
+  .conn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+  .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 14px 16px; color: var(--text); }
+  .conn-card .cc-visual { flex: none; width: 76px; height: 76px; }
+  .conn-card .cc-body { flex: 1; min-width: 0; }
+  .conn-card .cc-go { flex: none; color: var(--dim); font-size: 20px; }
+  .stat-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 16px; }
+  .stat-tile .v { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); margin: 0 0 4px; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 18px; margin-top: 12px; }
+  .donut-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+  .donut-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+  .head.slim { display: flex; align-items: center; justify-content: space-between; height: auto;
+    padding: calc(var(--top) + 10px) 20px 4px; }
+  .head.slim .hello { font-size: 22px; margin: 0; }
+  .head.slim .sub { margin: 2px 0 0; }
+  .sample-badge { font-size: 10px; color: var(--muted); border: 1px solid var(--line);
+    border-radius: 6px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; white-space: nowrap; }
+  .buffer-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .buffer-row button { font-size: 12px; padding: 8px 14px; min-height: 36px; border: 1px solid var(--line);
+    border-radius: 999px; background: var(--surface-2); color: var(--text); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -889,61 +953,71 @@
     </div>
   </section>
 
-  <!-- ================= HOME ================= -->
+  <!-- ================= HOME (v2 2026-09-27) =================
+       Very short by design: slim greeting header, ONE net-worth hero card,
+       exactly three connector cards (each opens a short detail page), and the
+       connect-bank card (only when no live bank). The old tools grid moved to
+       Explore ("Money tools"); the Up next queue already lives in Explore. -->
   <section class="screen" id="home" aria-label="Home">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head">
-        <div class="brand">
-          <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#fff" mask="url(#logo)"/></svg>
-          Upmore
+      <div class="head slim">
+        <div>
+          <h1 class="hello" id="hello">Good evening, Friend</h1>
+          <p class="sub" id="homeSub">Your all-in-one finance agent.</p>
         </div>
-        <div class="avatar" id="avatar">V</div>
+        <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Profile">V</div>
       </div>
 
-      <h1 class="hello" id="hello">Good evening, Friend</h1>
-      <p class="sub" id="homeSub">Your all-in-one finance agent.</p>
-
-      <!-- MERGED: Track strip + Safe to Spend → one "money status" widget.
-           One number, one line. No duplication. -->
-      <div data-widget="money">
-      <button class="moneystatus" id="moneyStatus" hidden style="text-align:left;width:100%">
-        <div class="ms-top"><span>Safe to spend</span><b id="msTotal">—</b></div>
-        <div class="ms-sub" id="msSub">—</div>
-        <div class="ms-buffer" id="msBufferLine" style="margin-top:6px;font-size:12px;color:var(--muted);">
-          Buffer: <b id="msBufferAmt">$100</b>
-          <button id="msBufferEdit" style="margin-left:8px;font-size:12px;padding:8px 12px;min-height:32px;border:1px solid var(--line);border-radius:8px;background:var(--surface);">Change</button>
-        </div>
+      <!-- HERO: net worth. Taps to the net-worth detail page. -->
+      <div data-widget="hero">
+      <button class="hero-card" id="nwHero" style="text-align:left;width:100%">
+        <p class="micro">Net worth</p>
+        <p class="hero-num num" id="nwHeroNum">&mdash;</p>
+        <span class="delta-chip flat" id="nwHeroDelta"></span>
+        <div class="hero-chart" id="nwHeroChart"></div>
+        <p class="fine" id="nwHeroSample" hidden style="margin-top:8px;color:var(--warn)">Sample data &mdash; connect your bank for your real net worth.</p>
       </button>
       </div>
 
-      <!-- SPEC 07 Budget report entry: full-screen plain-language report.
-           Monarch parity (budgets, custom categories, rollover, trends, cash
-           flow, recurring, keep goal) plus the CFO edge. Nobody should win. -->
-      <div data-widget="budget">
-      <button class="item" id="budgetReportBtn" style="text-align:left;width:100%;margin-top:12px">
-        <div class="grow"><p class="t">Budget report</p><p class="m">Where your money went this month, in plain words — budgets, trends, cash flow.</p></div>
-        <span class="pv">›</span>
+      <!-- CONNECTOR 1: safe to spend. Ring color follows budget pace. Taps to budget report. -->
+      <div data-widget="spend">
+      <button class="conn-card" id="spendCard" style="text-align:left;width:100%">
+        <div class="cc-visual" id="spendRing"></div>
+        <div class="cc-body">
+          <p class="micro">Safe to spend<span class="sample-badge" id="spendSample" hidden>Sample data</span></p>
+          <p class="conn-num num" id="spendNum">&mdash;</p>
+          <p class="conn-sub" id="spendSub"></p>
+        </div>
+        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
       </button>
       </div>
 
-      <!-- SPEC 08 Investments X-ray entry: read-only holdings analysis. -->
+      <!-- CONNECTOR 2: investments. Mini allocation donut. Taps to investments X-ray. -->
       <div data-widget="invest">
-      <button class="item" id="investBtn" style="text-align:left;width:100%;margin-top:12px">
-        <div class="grow"><p class="t">Investments</p><p class="m">What you hold, what it costs, where it's concentrated — a read-only X-ray.</p></div>
-        <span class="pv">›</span>
+      <button class="conn-card" id="investCard" style="text-align:left;width:100%">
+        <div class="cc-visual" id="investDonut"></div>
+        <div class="cc-body">
+          <p class="micro">Investments</p>
+          <p class="conn-num num" id="investNum">&mdash;</p>
+          <p class="conn-sub" id="investSub"></p>
+        </div>
+        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
       </button>
       </div>
 
-      <!-- SPEC 09 Net worth entry: accounts + assets − liabilities, with trend. -->
-      <div data-widget="networth">
-      <button class="item" id="nwBtn" style="text-align:left;width:100%;margin-top:12px">
-        <div class="grow"><p class="t">Net worth</p><p class="m" id="nwHomeSub">Everything you own minus everything you owe — one number, tracked monthly.</p></div>
-        <span class="pv">›</span>
+      <!-- CONNECTOR 3: money you're owed. Value-first stat tile. Taps to the claim flow. -->
+      <div data-widget="owed">
+      <button class="conn-card" id="owedCard" style="text-align:left;width:100%">
+        <div class="cc-body">
+          <p class="micro">Money you&rsquo;re owed</p>
+          <p class="conn-num num" id="owedNum">&mdash;</p>
+          <p class="conn-sub" id="owedSub">Free search &mdash; states hold forgotten paychecks, deposits, and refunds.</p>
+        </div>
+        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
       </button>
       </div>
 
-      <!-- HOME 5 THINGS: Connect — one-tap bank connection, incredibly simple.
-           Shows when no bank is connected. One button, no forms, no friction. -->
+      <!-- Connect bank: read-only note, only when no live bank. -->
       <div data-widget="connect">
       <div class="connectcard" id="connectCard" hidden>
         <div class="cc-top">
@@ -961,7 +1035,7 @@
         <div class="cc-top">
           <div>
             <b>Your money picture</b>
-            <p>Budget, spending, profit &amp; loss — generated from your transactions.</p>
+            <p>Budget, spending, profit &amp; loss &mdash; generated from your transactions.</p>
           </div>
         </div>
         <button class="cta" id="pictureBtn">See your full picture</button>
@@ -969,26 +1043,8 @@
       </div>
       </div>
 
-      
-
-      <div data-widget="claims">
-      <h2 class="sec">Find money you're owed</h2>
-      <div class="list">
-        <button class="item" id="claimCard" style="text-align:left;width:100%">
-          <div class="grow"><p class="t">Unclaimed money</p><p class="m">States hold forgotten paychecks, deposits, and refunds. Free search — never pay anyone.</p></div>
-          <span class="pv">›</span>
-        </button>
-      </div>
-      </div>
-
-      <!-- SPEC 05 CFO: money tools, ranked by dollars. -->
-      <div data-widget="cfo">
-      <h2 class="sec">Be better at money</h2>
-      <p class="psub" style="margin:-6px 0 10px">The biggest dollars in your financial life, in order. Tap any card to open the tool.</p>
-      <div class="list" id="cfoList"></div>
-      </div>
-
       <nav class="tabs" role="tablist" data-nav></nav>
+    </div>
   </section>
     <section class="screen" id="explore" aria-label="Explore ways to earn">
       <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
@@ -1004,6 +1060,11 @@
       <h2 class="sec">Up next</h2>
       <p class="psub" style="margin:-6px 0 10px">One queue. Ranked by dollars × confidence × urgency ÷ effort — biggest score first.</p>
       <div id="queue"></div>
+
+      <!-- SPEC 05 CFO: money tools, ranked by dollars. Moved here from Home (v2 2026-09-27) — Home stays very short. -->
+      <h2 class="sec">Money tools</h2>
+      <p class="psub" style="margin:-6px 0 10px">The biggest dollars in your financial life, in order. Tap any card to open the tool.</p>
+      <div class="list" id="cfoList"></div>
       </div>
       <nav class="tabs" role="tablist" data-nav></nav>
     </section>
@@ -2878,14 +2939,13 @@
 
   // SPEC 09j: customizable Home widgets (Monarch parity). Order + visibility
   // stored in localStorage; applied on every renderHome.
+  // V2 (2026-09-27): Home is very short — hero + 3 connector cards + connect.
   const HOME_WIDGETS = [
-    { id: "money", label: "Money status" },
-    { id: "budget", label: "Budget report" },
+    { id: "hero", label: "Net worth hero" },
+    { id: "spend", label: "Safe to spend" },
     { id: "invest", label: "Investments" },
-    { id: "networth", label: "Net worth" },
+    { id: "owed", label: "Money you're owed" },
     { id: "connect", label: "Connect bank" },
-    { id: "claims", label: "Unclaimed money" },
-    { id: "cfo", label: "Money tools" },
   ];
   const homeWidgetState = () => {
     try {
@@ -2938,17 +2998,93 @@
     $("hwReset").onclick = () => { homeWidgetSave({ order: HOME_WIDGETS.map(w => w.id), hidden: [] }); applyHomeWidgets(); renderHomeCustomizeSheet(); };
   }
   function renderHome() {
-    const d = planData();
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
-    $("hello").textContent = `Good ${part}, ${displayName()}`;
+    const hello = $("hello");
+    if (hello) hello.textContent = `Good ${part}, ${displayName()}`;
     const av = $("avatar");
-    av.textContent = (displayName() || "V").charAt(0).toUpperCase();
-    av.onclick = () => show("profile");
-    const cc = $("claimCard"); if (cc) cc.onclick = openClaim;
-    renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend
-    renderCFOList(); // SPEC 05: money-health tools
+    if (av) {
+      av.textContent = (displayName() || "V").charAt(0).toUpperCase();
+      av.onclick = () => show("profile");
+      av.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show("profile"); } };
+    }
+    renderNetWorthHero(); // V2 hero card: net worth + delta chip + area chart
+    renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend (V2 connector card)
+    renderInvestCard(); // V2 connector: investments mini donut
+    renderOwedCard(); // V2 connector: money-you're-owed stat tile
+    renderCFOList(); // SPEC 05: money-health tools (grid lives in Explore now)
     applyHomeWidgets();
+  }
+
+  // V2 net-worth hero: one big silver-gradient figure, red/green delta chip,
+  // gradient area chart over a soft fill + flat grey prior-period line.
+  // Read-only snapshot read — renderNetWorth() owns the snapshot write.
+  function renderNetWorthHero() {
+    const num = $("nwHeroNum"); if (!num) return;
+    const nw = netWorthCalc();
+    num.textContent = fmt$(Math.round(nw.total));
+    const hero = $("nwHero");
+    if (hero) hero.onclick = () => show("networth");
+    // Delta chip + chart from stored monthly snapshots (no write here).
+    let snaps = {};
+    try { snaps = JSON.parse(localStorage.getItem(NW_LS.snaps) || "{}"); } catch (e) {}
+    const keys = Object.keys(snaps).sort().slice(-7);
+    const vals = keys.map(k => nwSnapNorm(snaps[k]).total);
+    const chip = $("nwHeroDelta");
+    if (chip && vals.length >= 2) {
+      const d = vals[vals.length - 1] - vals[0];
+      chip.className = "delta-chip " + (d > 0 ? "up" : d < 0 ? "down" : "flat");
+      chip.textContent = `${d >= 0 ? "+" : "−"}${fmt$(Math.abs(Math.round(d)))} since ${keys[0]}`;
+    } else if (chip) {
+      chip.className = "delta-chip flat";
+      chip.textContent = "tracked monthly";
+    }
+    const chart = $("nwHeroChart");
+    if (chart) {
+      const cur = vals.slice(-6), prior = vals.slice(0, Math.max(0, vals.length - 6)).slice(-6);
+      chart.innerHTML = areaChartSVG(cur, {
+        prior: prior.length >= 2 && cur.length >= 2 ? prior : [],
+        lineColor: "#FF6A2D", label: "Net worth trend",
+      });
+    }
+    // Demo-honesty: anonymous visitors see sample figures — label them.
+    const td = loadTrackData();
+    const signedIn = (typeof session !== "undefined" && !!session);
+    const sample = $("nwHeroSample");
+    if (sample) sample.hidden = !(!signedIn && td.isDemo);
+  }
+
+  // V2 investments connector: mini allocation donut + total. Taps to X-ray.
+  function renderInvestCard() {
+    const card = $("investCard"); if (!card) return;
+    card.onclick = () => show("investments");
+    let total = 0, segs = [], sub = "";
+    try {
+      const sum = portfolioSummary(allHoldings());
+      total = sum.total || 0;
+      const entries = Object.entries(sum.byBucket || {}).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+      segs = entries.map(([k, v]) => ({ value: v, color: bucketHue(k), label: k }));
+      if (entries.length) sub = entries.slice(0, 2).map(([k]) => k).join(" · ");
+    } catch (e) {}
+    const num = $("investNum");
+    if (num) num.textContent = total > 0 ? fmt$(Math.round(total)) : "—";
+    const dn = $("investDonut");
+    if (dn) dn.innerHTML = donutSVG(segs, 76, 12);
+    const s = $("investSub");
+    if (s) s.textContent = sub || (total > 0 ? "Read-only X-ray" : "Add holdings to see the X-ray");
+  }
+
+  // V2 money-owed connector: value-first stat tile. Taps to the claim flow.
+  function renderOwedCard() {
+    const card = $("owedCard"); if (!card) return;
+    card.onclick = openClaim;
+    const n = claimGet().length;
+    const num = $("owedNum");
+    if (num) num.textContent = n > 0 ? `${n} of ${CLAIM_STATES.length}` : `${CLAIM_STATES.length}`;
+    const sub = $("owedSub");
+    if (sub) sub.textContent = n > 0
+      ? "states searched — keep going, it's always free"
+      : "states to search — free forever, Upmore takes no fee";
   }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
@@ -3963,6 +4099,10 @@
         : `<b>${uName ? esc(uName) + " holds it." : "Your state holds it."}</b> Claim it yourself for free through your state's official unclaimed property office — start at <a href="https://www.missingmoney.com" target="_blank" rel="noopener">MissingMoney.com</a>, the states' official multi-state search.`;
     body.innerHTML = `
       <p class="psub">Every state holds money its owners forgot — old paychecks, utility deposits, bank accounts, refunds. Searching is always free.</p>
+      <div class="stat-grid">
+        <div class="stat-tile"><p class="v num">${searched.length}<span style="font-size:14px;color:var(--muted)">/${CLAIM_STATES.length}</span></p><p class="micro" style="margin:0">States searched</p></div>
+        <div class="stat-tile"><p class="v num">${addrGet().length}</p><p class="micro" style="margin:0">Addresses added</p></div>
+      </div>
       <div class="pcard" style="margin:10px 0"><p class="m" style="margin:0"><b>Free forever.</b> Searching and claiming cost nothing — Upmore takes no fee and never will. ${freeNote}</p></div>
       <button class="go" id="claimSearch" style="height:52px;margin:12px 0">Search MissingMoney.com</button>
       <p class="fine">The only search site endorsed by the state treasurers' association (NAUPA). It links you to each state's official claim site. Never pay to search or claim — anyone asking for a fee or a percentage is a scam.</p>
@@ -7833,7 +7973,7 @@
     // as their own money. No live connection -> connect-bank card, not numbers.
     if (signedIn && !isLive) {
       try {
-        $("moneyStatus").hidden = true;
+        const sc = $("spendCard"); if (sc) sc.hidden = true;
         $("connectCard").hidden = false;
         if (liveTrackError) {
           const t = $("ccTitle");
@@ -7847,9 +7987,7 @@
     // FIX (D1-044): stale connection — withhold free_cash/balance as current, prompt reconnect.
     const staleInfo = isDataStale();
     if (isLive && staleInfo.stale) {
-      $("moneyStatus").hidden = false;
-      $("msTotal").textContent = "\u2013";
-      $("moneyStatus").hidden = true;
+      const sc2 = $("spendCard"); if (sc2) sc2.hidden = true;
       $("connectCard").hidden = false;
       try { $("ccTitle").textContent = "Reconnect your bank \u2014 data is " + staleInfo.days + " days old"; } catch (e) {}
       $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
@@ -7873,25 +8011,15 @@
     // the safe-to-spend total: planning on the floor means the safe number
     // assumes the small paycheck arrived, not the average one.
     const incomeModel = pay.variable ? "floor" : "average";
-    try { $("moneyStatus").dataset.incomeModel = incomeModel; } catch (e) {}
+    try { const sc3 = $("spendCard"); if (sc3) sc3.dataset.incomeModel = incomeModel; } catch (e) {}
     const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
 
-    $("moneyStatus").hidden = false;
+    const spendCard = $("spendCard");
+    if (spendCard) spendCard.hidden = false;
     // LAUNCH FIX 2026-09-26: anonymous visitors see demo figures — label them
     // as sample data so nobody mistakes them for real money.
-    if (!signedIn && isDemo) {
-      try {
-        let badge = $("msSampleBadge");
-        if (!badge) {
-          badge = document.createElement("span");
-          badge.id = "msSampleBadge";
-          badge.textContent = "Sample data";
-          badge.setAttribute("style", "font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:8px;vertical-align:middle;");
-          const wrap = $("moneyStatus");
-          if (wrap) wrap.appendChild(badge);
-        }
-      } catch (_) {}
-    }
+    const spendSample = $("spendSample");
+    if (spendSample) spendSample.hidden = !( !signedIn && isDemo );
     // 2-021: no payday detected → suppress the daily figure ("—"), never divide by a guessed denominator.
 
     // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
@@ -7928,35 +8056,41 @@
       sts.total -= incomeReserve;
       sts.daily = sts.total / sts.days;
     }
-    $("moneyStatus").hidden = false;
-    $("msTotal").textContent = fmt$(Math.round(sts.total));
-    // Tapping the money status opens the transaction list.
-    $("moneyStatus").onclick = () => show("transactions");
-    // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate line below.
-    $("msSub").textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
-    // SPEC 09: committed-spending visibility — bills due + essentials estimate,
-    // the two numbers already subtracted above. Copilot shows "committed"; now we do too.
-    $("msSub").textContent += ` · ${fmt$(Math.round(fixedRem))} bills due, ${fmt$(Math.round(committedRem))} essentials est.`;
-    // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
-    if (pay.variable && pay.count >= 2) {
-      $("msSub").textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
-        (incomeReserve > 0 ? ` ${fmt$(incomeReserve)} held back for income variability.` : "");
+    const spendNum = $("spendNum");
+    if (spendNum) spendNum.textContent = fmt$(Math.round(sts.total));
+    // V2: the safe-to-spend card opens the budget detail page.
+    if (spendCard) spendCard.onclick = () => show("budgetReport");
+    // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate control on
+    // the budget report page (buffer-row), same localStorage source of truth.
+    const spendSub = $("spendSub");
+    if (spendSub) {
+      spendSub.textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
+      // SPEC 09: committed-spending visibility — bills due + essentials estimate,
+      // the two numbers already subtracted above. Copilot shows "committed"; now we do too.
+      spendSub.textContent += ` · ${fmt$(Math.round(fixedRem))} bills due, ${fmt$(Math.round(committedRem))} essentials est.`;
+      // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
+      if (pay.variable && pay.count >= 2) {
+        spendSub.textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
+          (incomeReserve > 0 ? ` ${fmt$(incomeReserve)} held back for income variability.` : "");
+      }
     }
-    $("msBufferAmt").textContent = fmt$(bufferAmt);
-    // Wire up Change button (once)
-    if (!$("msBufferEdit").dataset.wired) {
-      $("msBufferEdit").dataset.wired = "1";
-      $("msBufferEdit").onclick = (e) => {
-        if (e) e.stopPropagation();
-        const v = prompt("Set your safety buffer amount:", String(bufferAmt));
-        if (v !== null) {
-          const n = Math.max(0, parseInt(v.replace(/[^0-9]/g, ""), 10) || 0);
-          try { localStorage.setItem("upmore_buffer", String(n)); } catch (e) {}
-          // Re-render
-          if (typeof renderHome === "function") renderHome();
-        }
-      };
-    }
+    // V2 ring: month budget pace. Fraction = budget remaining; color shifts
+    // green→amber→red by pace; safe-to-spend amount centered.
+    try {
+      const ymNow = new Date().toISOString().slice(0, 7);
+      const daysInM = new Date(+ymNow.slice(0, 4), +ymNow.slice(5, 7), 0).getDate();
+      const elapsed = Math.min(new Date().getDate(), daysInM);
+      const m = budgetReportModel(transactions, ymNow);
+      const mBudget = m.rows.reduce((s, r) => s + (r.effective || 0), 0);
+      const mSpent = m.rows.reduce((s, r) => s + (r.spent || 0), 0);
+      const mProj = elapsed > 0 ? mSpent / elapsed * daysInM : mSpent;
+      const frac = mBudget > 0 ? Math.max(0, Math.min(1, 1 - mSpent / mBudget)) : 1;
+      const ringColor = paceColor(mSpent, mBudget, mProj);
+      const ringBox = $("spendRing");
+      if (ringBox) ringBox.innerHTML = ringSVG(frac, ringColor, 76, 9,
+        `<div><div class="num" style="font-size:14px;font-weight:700">${fmt$(Math.round(sts.total))}</div>` +
+        `<div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`);
+    } catch (e) {}
 
     // HOME: Connect card — show when no live bank is connected.
     // One button opens the connect sheet directly on Home.
@@ -8724,6 +8858,45 @@
     return `<h2 class="sec">${monthName(prevYm)} in review</h2>
     <div class="pcard"><p class="bsum" style="font-size:14px">You spent ${bm0(pm.agg.out)} and ${keptTxt}.${topCat && topCat.spent > 0 ? ` Biggest category: ${esc(topCat.cat)} at ${bm0(topCat.spent)}.` : ``}${mover && Math.abs(mover.d) >= 1 ? ` ${esc(mover.cat)} ${mover.d > 0 ? "rose" : "fell"} ${bm0(Math.abs(mover.d))} vs the month before.` : ``}${sr != null ? ` Savings rate: ${sr}%.` : ``}</p></div>`;
   }
+  // V2 budget hero (2026-09-27): big pace-colored budget ring + buffer control
+  // + spending-by-category donut (7 identity-pinned hues). Pure function of the
+  // report model — every number traces to a row.
+  function budgetHeroHtml(model, ym, isCurMonth) {
+    const rows = (model.rows || []).filter(r => r.spent > 0 || r.effective > 0);
+    const mBudget = rows.reduce((s, r) => s + (r.effective || 0), 0);
+    const mSpent = rows.reduce((s, r) => s + (r.spent || 0), 0);
+    const days = new Date(+ym.slice(0, 4), +ym.slice(5, 7), 0).getDate();
+    const elapsed = isCurMonth ? Math.min(new Date().getDate(), days) : days;
+    const mProj = elapsed > 0 ? mSpent / elapsed * days : mSpent;
+    const frac = mBudget > 0 ? Math.max(0, Math.min(1, 1 - mSpent / mBudget)) : 1;
+    const ringColor = paceColor(mSpent, mBudget, mProj);
+    const left = mBudget - mSpent;
+    let bufferAmt = 100;
+    try { const sv = localStorage.getItem("upmore_buffer"); if (sv !== null) bufferAmt = Math.max(0, parseInt(sv, 10) || 0); } catch (e) {}
+    const top = [...rows].sort((a, b) => b.spent - a.spent).slice(0, 7);
+    const topSum = top.reduce((s, r) => s + r.spent, 0);
+    const rest = mSpent - topSum;
+    const segs = top.map(r => ({ value: r.spent, color: catHue(r.cat), label: r.cat }));
+    if (rest > 0.005) segs.push({ value: rest, color: "rgba(255,255,255,.18)", label: "Other" });
+    const legend = top.map(r => `<span><i style="background:${catHue(r.cat)}"></i>${esc(r.cat)}</span>`).join("");
+    return `
+      <div class="chart-card">
+        <p class="micro">${isCurMonth ? "This month" : "That month"} budget</p>
+        <div style="display:flex;gap:18px;align-items:center">
+          ${ringSVG(frac, ringColor, 118, 13, `<div><div class="num" style="font-size:20px;font-weight:700">${bm0(Math.max(0, left))}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`)}
+          <div style="flex:1;min-width:0">
+            <p class="hero-num num" style="font-size:30px">${bm0(mSpent)}</p>
+            <p class="conn-sub">spent of ${bm0(mBudget)} budgeted</p>
+            <div class="buffer-row"><span>Buffer <b class="num">${fmt$(bufferAmt)}</b></span><button id="brBufferEdit">Change</button></div>
+          </div>
+        </div>
+      </div>
+      ${segs.length ? `<h2 class="sec">Spending by category</h2>
+      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
+        <div style="flex:1;min-width:0"><p class="conn-num num">${bm0(mSpent)}</p><p class="conn-sub">total spent</p></div></div>
+        <div class="donut-legend">${legend}</div></div>` : ``}`;
+  }
+
   function renderBudgetReport() {
     const body = $("budgetReportBody");
     const { transactions, accounts, isLive, isDemo } = loadTrackData();
@@ -8910,6 +9083,7 @@
         <button id="brNext" ${idx <= 0 ? "disabled" : ""} aria-label="Next month">›</button>
       </div>
       <p class="fine" style="margin:-6px 0 10px">${esc(cov)} Every number below comes from ${txnWord}.</p>
+      ${budgetHeroHtml(model, ym, isCurMonth)}
       <div class="pcard"><p class="bsum">${esc(budgetSummaryText(model))}</p>${paceChartSVG(transactions, ym)}</div>
       <h2 class="sec">Money in vs money out</h2>
       <div class="bkv">
@@ -8956,6 +9130,19 @@
     const bc2btn = $("brCal"); if (bc2btn) bc2btn.onclick = () => show("reccal");
     const brv = $("brReview"); if (brv) brv.onclick = openReviewQueue;
     const bnw = $("brNw"); if (bnw) bnw.onclick = () => show("networth");
+    // V2: buffer control lives on the budget page (moved off the old home strip).
+    const brbe = $("brBufferEdit");
+    if (brbe) brbe.onclick = (e) => {
+      if (e) e.stopPropagation();
+      let cur = 100;
+      try { const sv = localStorage.getItem("upmore_buffer"); if (sv !== null) cur = Math.max(0, parseInt(sv, 10) || 0); } catch (e2) {}
+      const v = prompt("Set your safety buffer amount:", String(cur));
+      if (v !== null) {
+        const n = Math.max(0, parseInt(String(v).replace(/[^0-9]/g, ""), 10) || 0);
+        try { localStorage.setItem("upmore_buffer", String(n)); } catch (e2) {}
+        renderBudgetReport();
+      }
+    };
   }
 
   // ---- Sheets: edit target, add category, set keep goal ----
@@ -9378,6 +9565,39 @@
 
   // ---- Render ----
   let plaidStatusCache = null;
+  // V2 investments hero (2026-09-27): allocation donut (identity-pinned hues) +
+  // cost-vs-value visual. We have no price history, so instead of inventing a
+  // performance line we show what you paid vs what it's worth on the positions
+  // whose cost we know — every bar traces to holding rows.
+  function bucketHue(b) {
+    const i = BUCKETS.indexOf(b);
+    return CHART_HUES[(i < 0 ? 0 : i) % CHART_HUES.length];
+  }
+  function investHeroHtml(sum) {
+    const buckets = BUCKETS.filter(b => (sum.byBucket[b] || 0) > 0.005);
+    const segs = buckets.map(b => ({ value: sum.byBucket[b], color: bucketHue(b), label: b }));
+    const legend = buckets.map(b => `<span><i style="background:${bucketHue(b)}"></i>${esc(b)}</span>`).join("");
+    let cvHtml = "";
+    if (sum.gainCount > 0) {
+      const worth = sum.costKnown + sum.gainKnown;
+      const maxV = Math.max(sum.costKnown, worth, 1);
+      const wCost = Math.max(2, sum.costKnown / maxV * 100), wVal = Math.max(2, worth / maxV * 100);
+      const up = sum.gainKnown >= 0;
+      cvHtml = `<div style="margin-top:14px">
+        <p class="micro">Paid vs worth</p>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:6px"><span style="width:52px;font-size:12px;color:var(--muted)">Paid</span><div class="bbar" style="flex:1;margin:0"><i style="width:${wCost.toFixed(1)}%;background:var(--muted)"></i></div><b class="num" style="font-size:13px">${bm0(sum.costKnown)}</b></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:6px"><span style="width:52px;font-size:12px;color:var(--muted)">Worth</span><div class="bbar" style="flex:1;margin:0"><i style="width:${wVal.toFixed(1)}%;background:${up ? "var(--up)" : "var(--down)"}"></i></div><b class="num" style="font-size:13px">${bm0(worth)}</b></div>
+        <p class="conn-sub" style="margin-top:6px">${up ? "Up" : "Down"} ${bm0(Math.abs(sum.gainKnown))} on the ${sum.gainCount} position${sum.gainCount === 1 ? "" : "s"} we know the cost of.</p>
+      </div>`;
+    }
+    return `<div class="chart-card" style="margin-top:14px">
+      <p class="micro">Allocation</p>
+      <div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
+        <div style="flex:1;min-width:0"><p class="hero-num num" style="font-size:30px">${bm0(sum.total)}</p>
+        <p class="conn-sub">${sum.count} position${sum.count === 1 ? "" : "s"}</p></div></div>
+      <div class="donut-legend">${legend}</div>${cvHtml}</div>`;
+  }
+
   async function renderInvestments() {
     const body = $("investBody");
     const signedIn = (typeof session !== "undefined" && !!session) && typeof supa !== "undefined" && supa;
@@ -9516,6 +9736,7 @@
           ${sub ? `<div class="bs" style="color:var(--dim)">${sub}</div>` : ""}</div>`;
       }).join("");
       mainHtml = `
+        ${investHeroHtml(sum)}
         <div class="pcard" style="margin-top:14px"><p class="bsum">${esc(investSummaryText(sum))}</p></div>
         <h2 class="sec">Allocation</h2>
         <div class="bcard">${allocRows}</div>
@@ -10224,6 +10445,92 @@
   }
 
   // ---- Budget: pace chart, projections, savings rate, age of money ----
+  /* ================= UPMORE VISUAL v2 chart primitives (2026-09-27) =================
+     Dependency-free SVG helpers: donut, progress ring, gradient area chart with
+     prior-period line, sparkline, pace color. Category hues are identity-pinned
+     (chart1-7) and reused consistently app-wide. */
+  const CHART_HUES = ["#F472B6", "#60A5FA", "#FACC15", "#FB923C", "#2DD4BF", "#A78BFA", "#F87171"];
+  let __svgUid = 0;
+  const svgUid = p => `${p}${++__svgUid}`;
+  function catHue(cat) {
+    const pinned = { Housing: "#FB923C", Groceries: "#2DD4BF", Dining: "#FACC15",
+      Transport: "#60A5FA", Shopping: "#F472B6", Subscriptions: "#A78BFA",
+      Utilities: "#60A5FA", Health: "#F87171", Entertainment: "#F472B6",
+      Travel: "#60A5FA", Income: "#2E9E6B" };
+    if (pinned[cat]) return pinned[cat];
+    let h = 0; const s = String(cat || "");
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    return CHART_HUES[h % CHART_HUES.length];
+  }
+  // Copilot pace encoding: green on-pace / amber projected-overspend / red over.
+  function paceColor(spent, budget, proj) {
+    if (budget > 0 && spent > budget) return "var(--down)";
+    if (budget > 0 && proj > budget * 1.02) return "var(--warn)";
+    return "var(--up)";
+  }
+  function donutSVG(segs, size, sw) {
+    size = size || 76; sw = sw || 11;
+    const total = (segs || []).reduce((s, x) => s + Math.max(0, Number(x.value) || 0), 0);
+    const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
+    const track = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>`;
+    if (!total) return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="No data yet">${track}</svg>`;
+    let off = 0;
+    const arcs = segs.map(s => {
+      const frac = Math.max(0, Number(s.value) || 0) / total;
+      const el = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label || "")}</title></circle>`;
+      off += frac; return el;
+    }).join("");
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${track}${arcs}</svg>`;
+  }
+  function ringSVG(frac, color, size, sw, centerHtml) {
+    const f = Math.max(0, Math.min(1, Number(frac) || 0));
+    size = size || 76; sw = sw || 9;
+    const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
+    return `<div style="position:relative;width:${size}px;height:${size}px;flex:none">
+      <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Progress ${Math.round(f * 100)} percent">
+        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>
+        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"
+          stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none">${centerHtml || ""}</div></div>`;
+  }
+  function areaChartSVG(vals, opts) {
+    opts = opts || {};
+    const W = opts.w || 340, H = opts.h || 110, P = 8;
+    const data = (vals || []).filter(v => typeof v === "number" && isFinite(v));
+    if (data.length < 2) return `<p class="psub">Not enough history yet — the chart appears as months add up.</p>`;
+    const prior = (opts.prior || []).filter(v => typeof v === "number" && isFinite(v));
+    const all = data.concat(prior.length >= 2 ? prior : []);
+    const min = Math.min.apply(null, all), max = Math.max.apply(null, all), rng = Math.max(1e-9, max - min);
+    const n = Math.max(data.length, prior.length >= 2 ? prior.length : data.length);
+    const X = i => P + i / (n - 1) * (W - 2 * P);
+    const Y = v => H - P - ((v - min) / rng) * (H - 2 * P);
+    const line = arr => arr.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+    const gid = svgUid("ag");
+    const lineColor = opts.lineColor || "#FF6A2D";
+    const d = line(data);
+    const area = `${d}L${X(data.length - 1).toFixed(1)},${(H - P).toFixed(1)}L${X(0).toFixed(1)},${(H - P).toFixed(1)}Z`;
+    const priorLine = prior.length >= 2
+      ? `<path d="${line(prior)}" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="1.5" stroke-dasharray="4,3"/>` : "";
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:auto;display:block" role="img" aria-label="${esc(opts.label || "Trend chart")}">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${lineColor}" stop-opacity=".32"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
+      </linearGradient></defs>
+      ${priorLine}<path d="${area}" fill="url(#${gid})"/>
+      <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>`;
+  }
+  function sparkSVG(vals, color, w, h) {
+    color = color || "#FF6A2D"; w = w || 64; h = h || 22;
+    const data = (vals || []).filter(v => typeof v === "number" && isFinite(v));
+    if (data.length < 2) return "";
+    const min = Math.min.apply(null, data), max = Math.max.apply(null, data), rng = Math.max(1e-9, max - min);
+    const X = i => 2 + i / (data.length - 1) * (w - 4);
+    const Y = v => h - 2 - ((v - min) / rng) * (h - 4);
+    const d = data.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+    return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+  }
+
   function paceChartSVG(transactions, ym) {
     const days = new Date(+ym.slice(0, 4), +ym.slice(5, 7), 0).getDate();
     const isCur = ym === new Date().toISOString().slice(0, 7);
@@ -10571,16 +10878,28 @@
       return `<div class="nwrow"><div><b>${nm}${mask}</b><br><span class="dim" style="font-size:12px">Synced from your bank${a.last_sync ? ` · ${esc(String(a.last_sync).slice(0, 10))}` : ``}</span></div><span>${bm0(Number(a.balance) || 0)}</span></div>`;
     }).join("");
     const nowStamp = new Date().toISOString().slice(0, 10);
+    // V2 hero: large gradient area chart (accent line, soft fill) over the
+    // monthly snapshots. No per-account history exists, so per-account rows
+    // keep their current form; the bank-component sparkline below is real.
+    const snapKeys = Object.keys(snaps).sort().slice(-12);
+    const snapVals = snapKeys.map(k => nwSnapNorm(snaps[k]).total);
+    const bankVals = snapKeys.map(k => nwSnapNorm(snaps[k]).bank);
+    const nwHeroHtml = `
+      <div class="chart-card" style="margin-top:10px">
+        <p class="micro">Net worth</p>
+        <p class="hero-num num">${bm0(nw.total)}</p>
+        <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
+        <div style="margin-top:10px">${areaChartSVG(snapVals, { lineColor: "#FF6A2D", label: "Net worth history", h: 130 })}</div>
+        <p class="fine" style="margin:8px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p>
+      </div>`;
     body.innerHTML = `
       <p class="psub">Everything you own minus everything you owe. Bank balances come from your connected accounts; the rest you add once and update when it changes.</p>
-      <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
-        <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
-        <p class="fine" style="margin:6px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p></div>
-      ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length})</h2><div class="bcard">${acctRows}</div>`
+      ${nwHeroHtml}
+      ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length}) ${sparkSVG(bankVals, "#2DD4BF")}</h2><div class="bcard">${acctRows}</div>`
         : (noLiveBank ? `<div class="pcard" style="margin-top:10px"><p class="bsum">Your bank balances appear here once connected — read-only, we never move money.</p><button class="cta" id="nwConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p></div>` : ``)}
       ${(!_si && _td.isDemo) ? `<p class="fine" style="margin:10px 0 0;color:var(--amber)">Sample data — connect your bank or add your numbers below for your real net worth.</p>` : ``}
       <h2 class="sec">Trend</h2>
-      <div class="pcard">${nwSparkSVG(snaps)}${nwChangeExplain(snaps)}</div>
+      <div class="pcard">${nwChangeExplain(snaps) || `<p class="psub">Month-over-month change appears here after two snapshots.</p>`}</div>
       <h2 class="sec">Other assets (${assets.length})</h2>
       <div class="bcard">${assets.length ? assets.map(a => row(a, "a")).join("") : `<p class="psub">None yet — home, car, crypto, anything with value.</p>`}</div>
       <button class="ghostbtn" id="nwAddA" style="margin-top:8px">+ Add asset</button>
