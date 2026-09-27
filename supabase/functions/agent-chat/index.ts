@@ -166,7 +166,7 @@ serve(async (req) => {
         .order("due_at", { ascending: true }).limit(3),
       routePagesPromise,
       supabase.from("agent_messages")
-        .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(30),
+        .select("role, content").eq("thread_id", tid).order("id", { ascending: false }).limit(15),
       // Full-thread user messages for payout-exclusion scanning ("no points"
       // etc.): the 30-message window ages standing exclusions out of long
       // threads (beta fix 2026-09-24). Content-only, no model prompt cost.
@@ -372,14 +372,41 @@ serve(async (req) => {
 
     const systemStatic = SYSTEM_PROMPT + // stable: cacheable
       "\n\nFINANCE FACTS (only source of truth for general finance questions — figures, limits, official URLs):\n" + renderFinanceFacts();
+    // COST OPT 2026-09-27: route cards are stable for the 5-min catalog cache
+    // window, so they get their own cache breakpoint. This turns ~10K tokens
+    // from $1.00/MTok into $0.10/MTok — the single biggest cost win.
+    const routeCardsBlock =
+      `\n${catalogLine}\n\n` +
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
     // Deterministic finance-intent nudge: if the question matches curated
     // finance facts, force FINANCE Q&A mode so route matching can't hijack it
     // ("how can I improve my credit score" must not return a bank bonus).
     const financeIds = financeFactMatch(message);
     const financeNudge = financeIds.length ? "\n\n" + financeModeNudge(financeIds) : "";
-    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine +
-      `\n${catalogLine}\n\n` +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes) + financeNudge;
+    const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine + financeNudge;
+
+    // COST OPT 2026-09-27: monthly AI quota — tail-risk protection for the
+    // $10/mo margin. 2,000 model calls/month is ~66/day, far above normal use;
+    // only a runaway script or abuse hits it. Counts actual model calls only
+    // (deterministic fast-path/capability replies cost $0 and don't count).
+    // Friendly message, not a hard error — the user can keep using the app.
+    const MONTHLY_AI_LIMIT = 2000;
+    try {
+      const monthStart = new Date();
+      monthStart.setUTCDate(1); monthStart.setUTCHours(0, 0, 0, 0);
+      const { count: monthCalls } = await supabase.from("agent_usage")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", user.id)
+        .gte("created_at", monthStart.toISOString());
+      if ((monthCalls ?? 0) >= MONTHLY_AI_LIMIT) {
+        const msg = "You've had a lot of deep chats this month — I've hit my monthly limit for AI replies. The rest of the app (routes, tools, tracking) still works fine, and I'll be back fresh next month.";
+        await supabase.from("agent_messages").insert([
+          { thread_id: tid, role: "user", content: message },
+          { thread_id: tid, role: "assistant", content: msg, meta: { capability: true, quota: true } },
+        ]);
+        return json(cors, { thread_id: tid, reply: msg, action: null });
+      }
+    } catch (_) { /* quota check must never break chat — fail open */ }
 
     // (rate limit was already enforced for every request at the top of the
     // handler, before any DB work)
@@ -395,6 +422,7 @@ serve(async (req) => {
         max_tokens: MAX_TOKENS,
         system: [
           { type: "text", text: systemStatic, cache_control: { type: "ephemeral" } },
+          { type: "text", text: routeCardsBlock, cache_control: { type: "ephemeral" } },
           { type: "text", text: systemDynamic },
         ],
         messages: [...hist.map((m: any) => ({ role: m.role, content: m.content })), { role: "user", content: message }],
@@ -407,6 +435,22 @@ serve(async (req) => {
     }
     const aj = await anthropicRes.json();
     let reply: string = aj.content?.map((b: any) => b.text ?? "").join("") ?? "";
+
+    // COST OPT 2026-09-27: log token usage per request for margin verification.
+    // Anthropic returns usage: {input_tokens, output_tokens, cache_read_input_tokens, cache_creation_input_tokens}.
+    // Fire-and-forget: never blocks the reply on a logging failure.
+    try {
+      const u = aj.usage ?? {};
+      supabase.from("agent_usage").insert({
+        user_id: user.id,
+        thread_id: tid,
+        model: MODEL,
+        input_tokens: u.input_tokens ?? 0,
+        output_tokens: u.output_tokens ?? 0,
+        cache_read_tokens: u.cache_read_input_tokens ?? 0,
+        cache_write_tokens: u.cache_creation_input_tokens ?? 0,
+      }).then(() => {}, () => {});
+    } catch (_) { /* usage logging must never break chat */ }
 
     // Grounding post-check: any violation → safe fallback.
     // Parse the ACTION line FIRST and strip it, so the check only sees the
