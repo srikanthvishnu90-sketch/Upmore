@@ -26,7 +26,7 @@ module.exports = {
       baseArgs: [[{ name: "Bakery loan", bal: 22000, apr: 11.5, min: 480 }], "avalanche", 400],
       perturb: { argIndex: 0, path: "0.bal", set: 30000 },
       outPath: "totalInt", expect: "up" },
-    { kind: "guide", prompt: "If I put an extra $400 a month toward my bakery loan, what happens to the rest of my budget?",
+    { kind: "guide", prompt: "i'm looking at a loan offer to pay my bakery loan off faster — extra $400 a month. what's the real cost?",
       expect: [{ t: "contains", re: "interest|payoff|month" },
                { t: "noGuarantee" }] },
     { kind: "static", file: "template", op: "contains", pattern: "payoff",
