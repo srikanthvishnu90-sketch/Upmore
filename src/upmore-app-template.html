@@ -2375,13 +2375,18 @@
   async function buildQueue() {
     const cards = [];
     const d = planData();
+    const _qtd = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
+    const _qsi = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: never derive "your" insights (free cash, repeating
+    // charges, spikes, duplicates) from demo figures for signed-in users.
+    const qNoLive = _qsi && !_qtd.isLive;
     // 2-020: Hardship — free cash negative on 2+ consecutive checks gets a
     // plain-stated card with dignity: no shame language, no trim suggestions.
     // "A user in genuine distress being shown a plan to cancel Netflix is being failed."
     const NEGCASH_KEY = "upmore_negcash_streak";
     let negStreak = 0;
     try { negStreak = parseInt(localStorage.getItem(NEGCASH_KEY) || "0", 10) || 0; } catch (e) {}
-    const freeCashNow = homeFreeCash();
+    const freeCashNow = qNoLive ? null : homeFreeCash();
     negStreak = (freeCashNow != null && freeCashNow < 0) ? negStreak + 1 : 0;
     try { localStorage.setItem(NEGCASH_KEY, String(negStreak)); } catch (e) {}
     const isDistressed = negStreak >= 2;
@@ -2416,7 +2421,7 @@
     // - accounts: from connected banks (SimpleFIN has 2 Chase accounts as of 2026-09-25)
     // - age/state: from profile if available, otherwise conservative defaults
     const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
-    const hasConnectedBank = trackData.accounts && trackData.accounts.length > 0;
+    const hasConnectedBank = trackData.isLive && trackData.accounts && trackData.accounts.length > 0;
     // TODO: Wire to real profile onboarding data when available
     const gateUser = {
       age: gateAge(), // FIX (redlines-8-020): stored birth year when known, else 19
@@ -2449,7 +2454,9 @@
     try {
     // FIX (B5): Skip cancel/trim cards if user is distressed.
     // A distressed user sees the hardship card (added above), not "cancel Netflix".
-    if (!isDistressed) {
+    // QA 2026-09-27: and a signed-in user without live bank data never sees
+    // cancel cards derived from demo transactions.
+    if (!isDistressed && !qNoLive) {
       const { transactions } = loadTrackData();
       const rec = detectRecurrence(transactions);
       // FIX (D1-023): dormant subscriptions are excluded from the queue.
@@ -2589,7 +2596,8 @@
     // FIX (T3-v2): Wire up TrackMonitors.categorySpike — it was defined but never called (dead code).
     // Category >40% above 3-month average (min $50) → spike card in queue.
     try {
-      if (typeof TrackMonitors !== "undefined" && TrackMonitors.categorySpike) {
+      // QA 2026-09-27: never surface demo-derived spikes as the user's own spending.
+      if (!qNoLive && typeof TrackMonitors !== "undefined" && TrackMonitors.categorySpike) {
         const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
         const spikeCards = TrackMonitors.categorySpike(trackData.transactions || []);
         spikeCards.forEach(sc => {
@@ -2602,7 +2610,8 @@
           });
         });
         // FIX (D1-035): duplicate-charge findings → queue cards.
-        if (TrackMonitors.duplicateCharge) {
+        // QA 2026-09-27: skip for signed-in users without live data (demo charges).
+        if (!qNoLive && TrackMonitors.duplicateCharge) {
           TrackMonitors.duplicateCharge(trackData.transactions || []).forEach(dc => {
             const dupId = "dup-" + dc.merchant.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + "-" + dc.detected_date;
             cards.push({
@@ -3362,17 +3371,22 @@
 
   /* ---- 2. Idle cash ---- */
   function cfoCash(body) {
-    let checking = 0;
+    let checking = 0, cashLive = false;
     try {
-      const { accounts } = loadTrackData();
-      checking = accounts.filter(a => /check/i.test(a.name || "") || !a.type).reduce((s, a) => s + (a.balance || 0), 0) || (accounts[0]?.balance || 0);
+      const { accounts, isLive } = loadTrackData();
+      cashLive = !!isLive;
+      const _sic = (typeof session !== "undefined" && !!session);
+      // QA 2026-09-27: signed-in users without a live connection must never
+      // see demo balances prefilled as "from your bank data".
+      const usable = (cashLive || !_sic) ? (accounts || []) : [];
+      checking = usable.filter(a => /check/i.test(a.name || "") || !a.type).reduce((s, a) => s + (a.balance || 0), 0) || (usable[0]?.balance || 0);
     } catch (e) {}
     const manual = cfoGet("idle_manual", null);
     const bal = manual !== null ? manual : Math.max(0, checking);
     const rate = cfoGet("hysa_rate", 4.2);
     const nowInt = bal * 0.0001, hysaInt = bal * rate / 100, gap = hysaInt - nowInt;
     body.innerHTML = `<p class="psub">Money in checking earns ~0.01%. Top high-yield savings paid ~4.2–4.5% as of Sept 25, 2026 (FDIC national average: 0.38%). The gap below is free money for doing nothing.</p>
-      <div class="svform"><label class="f"><span>Checking balance ($) — from your bank data or edit</span><input id="cBal" inputmode="decimal" value="${Math.round(bal)}"></label>
+      <div class="svform"><label class="f"><span>Checking balance ($) — ${cashLive ? "from your bank data" : "sample; enter your real number"}</span><input id="cBal" inputmode="decimal" value="${Math.round(bal)}"></label>
       <label class="f"><span>HYSA rate you can actually get (% APY — edit to today's rate)</span><input id="cRate" inputmode="decimal" value="${rate}"></label></div>
       <div class="pcard" style="margin-top:12px">
         <p><b>${cfo$(bal)}</b> in checking earns ~<b>${cfo2$(nowInt)}/yr</b>.</p>
@@ -3380,7 +3394,8 @@
         <p style="margin-top:6px;font-size:17px"><b>Left on the table: ${cfo$(gap)}/yr.</b></p>
         <p class="psub" style="margin-top:8px">Keep 3–6 months of essentials liquid (in the HYSA, not a CD) and one month of bills in checking. Only <i>above</i> that is idle cash. We never move money — opening and funding is your tap.</p>
       </div>
-      <p class="fine" style="margin-top:12px">HYSA rates are variable — verify today's APY on the bank's own page before acting. Interest is taxable income. If we ever show a rate we earn commission on, the best rate still comes first and the card says so.</p>`;
+      <p class="fine" style="margin-top:12px">HYSA rates are variable — verify today's APY on the bank's own page before acting. Interest is taxable income. If we ever show a rate we earn commission on, the best rate still comes first and the card says so.</p>
+      ${cashLive ? `` : `<p class="fine" style="margin-top:8px;color:var(--amber)">Sample data — connect your bank or enter your numbers above for your real idle-cash check.</p>`}`;
     const upd = () => { cfoSet("idle_manual", parseFloat($("cBal").value) || 0); cfoSet("hysa_rate", parseFloat($("cRate").value) || 0); cfoCash(body); };
     $("cBal").onchange = upd; $("cRate").onchange = upd;
   }
@@ -3507,7 +3522,7 @@
     if (a.rentins === "yes") verdicts.push(["Renters insurance", "You're fine — just confirm liability is ≥$100k and the deductible is affordable."]);
     if (a.auto === "yes" && a.autolim === "no") verdicts.push(["Auto insurance", "State minimums (often 25/50/25) leave you personally exposed past the limit. Expert consensus: 100/300/100 with matching uninsured-motorist coverage — higher limits cost only slightly more. In the worst state, 28% of drivers are uninsured (IRC), so UM should mirror your liability limits."]);
     if (a.autolim === "yes") verdicts.push(["Auto insurance", "You're fine — 100/300/100 or better with matching uninsured-motorist coverage."]);
-    if (a.assets === "yes" && a.umbrella === "no") verdicts.push(["Umbrella insurance", "You own a home or have meaningful assets and no umbrella policy. ~$150–300/yr buys $1M of extra liability on top of your auto/home — the first million is the cheapest coverage you'll ever buy. Worth a quote."]);
+    if (a.assets === "yes" && a.umbrella === "no") verdicts.push(["Umbrella insurance", "You own a home or have meaningful assets and no umbrella policy. ~$180–300/yr buys $1M of extra liability on top of your auto/home — the first million is the cheapest coverage you'll ever buy. Worth a quote."]);
     if (a.umbrella === "yes") verdicts.push(["Umbrella insurance", "You're fine — confirm the underlying auto/home limits meet the carrier's requirement (usually 100/300/100 or 250/500)."]);
     body.innerHTML = `<p class="psub">The opposite of "switch and save": are you actually covered? Answer honestly — we're happy to tell you you're fine.</p>
       <div class="svform" style="margin-bottom:10px"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
@@ -3612,9 +3627,23 @@
     // 401(k) personal gap
     const kGap = Math.max(0, 24500 - tk401);
     const kSave = kGap * rate / 100;
-    const iraNote = (tfs !== "mfj" && tinc >= 150000) || (tfs === "mfj" && tinc >= 236000)
-      ? ` At your income the traditional-IRA deduction phases out — Roth or backdoor Roth is the usual path; talk to a CPA.`
-      : ``;
+    // FIX (QA-C): 2026 figures per IRS Notice 2025-67. Old code used the 2025
+    // Roth phase-out floors ($150K/$236K) and wrongly said the *traditional-IRA*
+    // deduction phases out there. 2026: Roth IRA contribution phase-out is
+    // single/HoH $153K–$168K, MFJ $242K–$252K. Traditional-IRA deductibility
+    // phases out only when covered by a workplace plan: single/HoH $81K–$91K,
+    // MFJ $129K–$149K. Not covered at work → fully deductible at any income.
+    const iraNote = tfs === "mfj"
+      ? (tinc >= 242000
+        ? ` Your income is at/above the 2026 Roth IRA contribution phase-out (MFJ: $242K–$252K MAGI) — the backdoor Roth is the usual path; talk to a CPA.`
+        : tinc >= 129000
+        ? ` If you're covered by a workplace retirement plan, the traditional-IRA deduction phases out at $129K–$149K MAGI (MFJ, 2026). Not covered at work → fully deductible at any income.`
+        : ``)
+      : (tinc >= 153000
+        ? ` Your income is at/above the 2026 Roth IRA contribution phase-out (single: $153K–$168K MAGI) — the backdoor Roth is the usual path; talk to a CPA.`
+        : tinc >= 81000
+        ? ` If you're covered by a workplace retirement plan, the traditional-IRA deduction phases out at $81K–$91K MAGI (single, 2026). Not covered at work → fully deductible at any income.`
+        : ``);
     body.innerHTML = `<p class="psub">Forward-looking: keep more of what you earn <i>this</i> year. 2026 figures verified Sept 25, 2026 — confirm at irs.gov before acting. General information, not tax advice.</p>
       <h2 class="sec">Your situation</h2>
       <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -3660,7 +3689,7 @@
         </div>
       </div>
       <div class="pcard" style="margin-top:8px">
-        <p>Income tax on gig profit: <b>${cfo$(q * 4)}/yr</b> — set aside <b>${cfo$(q)}/quarter</b>.</p>
+        <p>Simple income-tax set-aside estimate at your marginal rate: <b>${cfo$(q * 4)}/yr</b> — set aside <b>${cfo$(q)}/quarter</b>. (Estimate, not your actual liability.)</p>
         <p style="margin-top:6px">Self-employment tax (15.3% on 92.35% of net): another <b>~${cfo$(se)}/yr</b>. Rule of thumb: park <b>25–30% of every freelance dollar</b> the day it arrives.</p>
         <p class="psub" style="margin-top:6px">2026 due dates: Apr 15 · Jun 15 · Sep 15 · Jan 15, 2027. Safe harbor: pay 100% of last year's tax (110% if AGI &gt; $150K) across the four quarters and there is no underpayment penalty.</p>
       </div>
@@ -3700,8 +3729,11 @@
   ];
   function cfoIncome(body) {
     const invs = cfoGet("invoices", []);
-    const sal = cfoGet("inc_sal", 70000), mult = cfoGet("inc_mult", 2.5);
-    const hr = sal / 2080 * mult;
+    // FIX (QA-C): salary-equivalent defaults to BLANK, never a prefilled $70K the
+    // user didn't enter. The rate card only renders once they type a number —
+    // same honesty pattern as the "Your pay" benchmark above.
+    const salRaw = cfoGet("inc_sal", ""), mult = cfoGet("inc_mult", 2.5);
+    const sal = parseFloat(salRaw) || 0, hr = sal / 2080 * mult;
     const now = Date.now();
     body.innerHTML = `<h2 class="sec">What your role pays</h2>
       <p class="psub">BLS median annual pay, May 2024 — check bls.gov for current. If you're 20%+ under median, that's raise-or-move data. BLS is the verifiable benchmark; treat Glassdoor/Blind as self-reported.</p>
@@ -3718,11 +3750,12 @@
       <div class="pcard"><p>2026 employer budgets: ~3.2% merit, ~8.7% average promotion raise (Mercer). Honest framing: 3% is normal, 5% is strong, 10%+ almost always means promotion, market correction, or an outside offer. Below the 25th percentile for your role/metro = a real underpaid case. Note: the old "job-hop for 20%" advice is stale — by Aug 2025 the switcher-vs-stayer premium had collapsed to ~0.1% (BofA/Fed data), so switch for the role, not the bump.</p></div>
       <h2 class="sec">Freelance rate calculator</h2>
       <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <label class="f"><span>Salary equivalent ($/yr)</span><input id="iSal" inputmode="decimal" value="${sal}"></label>
+        <label class="f"><span>Salary equivalent ($/yr)</span><input id="iSal" inputmode="decimal" value="${esc(String(salRaw))}" placeholder="75000"></label>
         <label class="f"><span>Multiplier (2–3× covers taxes, gaps, overhead)</span><input id="iMult" inputmode="decimal" value="${mult}"></label>
       </div></div>
-      <div class="pcard" style="margin-top:8px"><p>Charge at least <b>${cfo2$(hr)}/hr</b>. Below ${cfo2$(sal / 2080)}/hr you're earning less than the salary.</p>
-        <p style="margin-top:6px">Hard floor: <b>${cfo2$(sal / 1000)}/hr</b> (salary ÷ 1,000) — never bid below this. The 2× covers SE tax (15.3%), benefits, and the fact that only ~1,100 of your hours are billable. Most people underprice by dividing by 2,080 and forgetting taxes.</p></div>
+      ${sal > 0 ? `<div class="pcard" style="margin-top:8px"><p>Charge at least <b>${cfo2$(hr)}/hr</b>. Below ${cfo2$(sal / 2080)}/hr you're earning less than the salary.</p>
+        <p style="margin-top:6px">Hard floor: <b>${cfo2$(sal / 1000)}/hr</b> (salary ÷ 1,000) — never bid below this. The 2× covers SE tax (15.3%), benefits, and the fact that only ~1,100 of your hours are billable. Most people underprice by dividing by 2,080 and forgetting taxes.</p></div>`
+      : `<div class="pcard" style="margin-top:8px"><p class="psub">Enter your salary equivalent above to price your rate.</p></div>`}
       <h2 class="sec">Invoice tracker</h2>
       <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <label class="f"><span>Client</span><input id="vClient" placeholder="Acme Co" autocomplete="off"></label>
@@ -4947,6 +4980,12 @@
   function guideDataIntents(t) {
     const has = (...kws) => kws.some(k => t.includes(k));
     const data = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
+    const _sid = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: signed-in without a live bank connection -> data intents
+    // must refuse honestly rather than quote demo figures. Checked per intent
+    // below so non-data questions still flow through.
+    const dataNoLive = _sid && !data.isLive;
+    const noLiveRefusal = { paras: ["I don't have your bank data yet, so I won't guess at balances or spending — the sample figures in the app aren't yours. Connect your bank (read-only, we never move money) and ask me again for answers from your real transactions."] };
     const txs = (data.transactions || []).filter(x => !x.is_transfer);
     const posted = txs.filter(x => !x.is_pending && x.posted_at);
     const dates = posted.map(x => x.posted_at).sort();
@@ -4970,7 +5009,7 @@
           ", so any number I'd give you could be wrong. Reconnect your bank in Track, then ask me again and I'll read the fresh figure."
         ] };
       }
-      const acct = (data.accounts || [])[0];
+      const acct = dataNoLive ? null : (data.accounts || [])[0];
       if (!acct) return { paras: ["No bank is connected, so I have no balance to read. Connect one in Track and I'll pull it."] };
       return { paras: ["Your " + (acct.name || "account") + " balance is " + m$(acct.balance) + " (latest synced data)."] };
     }
@@ -4978,6 +5017,7 @@
     // --- 3-003: "Where did the $340 come from?" -> actual ledger rows ---
     const amtM = t.match(/\$ ?([\d,]+(?:\.\d{1,2})?)/);
     if (amtM && has("where did", "come from", "what is this charge", "what's this charge", "whats this charge", "this charge")) {
+      if (dataNoLive) return noLiveRefusal;
       const target = parseFloat(amtM[1].replace(/,/g, ""));
       const rows = posted.filter(x => Math.abs(Math.abs(Number(x.amount)) - target) < 0.005)
         .sort((a, b) => String(b.posted_at).localeCompare(String(a.posted_at))).slice(0, 8);
@@ -4991,6 +5031,7 @@
     // --- 3-001 / 3-002 / 3-004: spend by category with provenance ---
     const spendM = t.match(/how much did i (?:spend|spent) on ([a-z]+(?: [a-z]+)?)/);
     if (spendM && !has("credit card")) {
+      if (dataNoLive) return noLiveRefusal;
       const word = spendM[1].replace(/( last month| this month| recently| in the last.*)$/, "").trim().split(" ")[0];
       const CATS = { food: ["Groceries", "Dining"], dining: ["Dining"], groceries: ["Groceries"], grocery: ["Groceries"],
         transport: ["Transport"], transportation: ["Transport"], shopping: ["Shopping"], entertainment: ["Entertainment"],
@@ -5048,6 +5089,12 @@
   function guideProjectionIntents(t) {
     const has = (...kws) => kws.some(k => t.includes(k));
     const data = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
+    const _sip = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: projections from demo subscriptions would be fiction for
+    // a signed-in user. Refuse honestly until the bank is connected.
+    if (_sip && !data.isLive) {
+      return { paras: ["I can't project from your real subscriptions yet — no bank is connected, and I won't model your future on sample data. Connect your bank and I'll run the numbers on your actual bills."] };
+    }
     const txs = (data.transactions || []).filter(x => !x.is_transfer && !x.is_pending && x.posted_at);
     const today = new Date().toISOString().slice(0, 10);
     const m$ = v => "$" + Number(v).toFixed(2);
@@ -6650,7 +6697,8 @@
     // Use the same gateUser as buildQueue for consistency.
     try {
       const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
-      const hasConnectedBank = trackData.accounts && trackData.accounts.length > 0;
+      // QA 2026-09-27: demo accounts are not a connected bank — require live data.
+      const hasConnectedBank = trackData.isLive && trackData.accounts && trackData.accounts.length > 0;
       // FIX (50sweep-2/5): Explore gates use the real user state and real
       // user-stated cash — never hardcoded "IL" / 5000.
       const pd = (typeof planData === "function") ? planData() : {};
@@ -8116,7 +8164,12 @@
           agg.byCat[c] = (agg.byCat[c] || 0) + a;
           const mn = t.merchant_raw || "Unknown";
           agg.byMerchant[mn] = (agg.byMerchant[mn] || 0) + a;
-        } else { agg.in += a; }
+        } else if (isCountableInflow(t)) { agg.in += a; }
+        // FIX (QA-C): refunds and unmatched credits are never income — matches
+        // Monthly Close (D1-028). Refunds net against their category's spending
+        // AND reduce aggregate out, so kept cash flow stays correct:
+        // the $15.99 the user got back must not vanish from "kept".
+        else if (t.is_refund) { const c = effCat(t); agg.byCat[c] = (agg.byCat[c] || 0) - a; agg.out -= a; }
       });
     agg.kept = agg.in - agg.out;
     return agg;
@@ -8787,13 +8840,14 @@
         ? `<h2 class="sec">Concentration</h2><div class="bcard">` + sum.concentrated.map(h => {
             const pct = Math.round(h.value / sum.total * 100);
             const trim = Math.max(0, h.value - 0.25 * sum.total);
-            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)} \u00b7 trim ${bm0(trim)} to get back under 25%</i></div><span>${pct}% of everything</span></div>`;
+            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)} · ${bm0(trim)} above the 25% line</i></div><span>${pct}% of everything</span></div>`;
           }).join("") + `</div><p class="psub" style="margin-top:8px">${sum.concentrated.length === 1 ? "One position is a quarter or more of your investments — a lot riding on a single name." : "Several positions are a quarter or more each — worth knowing how concentrated this is."} This isn't advice; it's arithmetic.</p>`
         : "";
       const feeHtml = sum.feeKnownValue > 0 || sum.feeUnknown > 0
         ? `<h2 class="sec">What it costs</h2><div class="pcard"><p class="bsum" style="font-size:14.5px">${
             sum.feeKnownValue > 0 ? `About <b>${bm0(sum.feeYearly)}/year</b> goes to fund fees on the positions we know.` : `No fee data yet.`
           }${sum.feeUnknown > 0 ? ` ${sum.feeUnknown} position${sum.feeUnknown === 1 ? "" : "s"} missing fee data — tap a holding to add its expense ratio.` : ""}</p>
+          ${sum.feeKnownValue > 0 ? `<p class="psub" style="margin-top:6px">Known-fee rates come from a built-in reference table (or the number you entered). Fund companies change expense ratios — check the current prospectus before acting on this.</p>` : ""}
           ${sum.feeYearly > 0 ? `<p class="psub" style="margin-top:8px">Over 30 years that's roughly <b>${bm0(sum.feeYearly * 30)}</b> in fees at today's rates and balance (simple projection — no compounding, no growth assumptions; the real number moves with both).</p>` : ""}</div>`
         : "";
       const cashHtml = sum.cashValue >= 1000
@@ -9585,7 +9639,16 @@
   let recCalMonth = null; // YYYY-MM; null = current
   function renderRecCal() {
     const body = $("reccalBody"); if (!body) return;
-    const { transactions } = loadTrackData();
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: authenticated users must never see demo bills/paydays as
+    // their own. No live connection -> connect-bank card, not the demo grid.
+    if (_si && !_td.isLive) {
+      body.innerHTML = `<div class="pcard"><p class="bsum">Your bills calendar builds itself from real transactions. Connect your bank to see every bill and payday on one grid.</p><button class="cta" id="rcConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      const cb = $("rcConnect"); if (cb) cb.onclick = openConnectSheet;
+      return;
+    }
+    const { transactions } = _td;
     const now = new Date();
     if (!recCalMonth) recCalMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
     const [Y, M1] = recCalMonth.split("-").map(Number); const M = M1 - 1;
@@ -9625,6 +9688,7 @@
     const fmtM = dt => `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`;
     body.innerHTML = `
       <p class="psub">Every bill and every payday, on one grid. Tap a bill's merchant in the list to track it.</p>
+      ${_td.isLive ? `` : `<p class="fine" style="color:var(--amber)">Sample data — connect your bank for your real bills and paydays.</p>`}
       <div class="bmonthnav">
         <button id="rcPrev" aria-label="Previous month">‹</button>
         <b>${monthName(recCalMonth)}</b>
@@ -9734,8 +9798,11 @@
   function nwListGet(k) { try { const v = JSON.parse(localStorage.getItem(k) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
   function nwListSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function netWorthCalc() {
-    const { accounts } = loadTrackData();
-    const bank = (accounts || []).reduce((s, a) => s + (Number(a.balance) || 0), 0);
+    const { accounts, isLive } = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: demo accounts must never count as the user's own money.
+    const bankAccts = (_si && !isLive) ? [] : (accounts || []);
+    const bank = bankAccts.reduce((s, a) => s + (Number(a.balance) || 0), 0);
     const assets = nwListGet(NW_LS.assets).reduce((s, a) => s + Number(a.value || 0), 0);
     const liabs = nwListGet(NW_LS.liabs).reduce((s, a) => s + Number(a.value || 0), 0);
     let debts = 0;
@@ -9786,9 +9853,15 @@
   }
   function renderNetWorth() {
     const body = $("nwBody"); if (!body) return;
+    const _td = loadTrackData();
+    const _si = (typeof session !== "undefined" && !!session);
+    // QA 2026-09-27: authenticated users must never see demo figures as their
+    // own money. Demo bank accounts are excluded from the calc (netWorthCalc)
+    // and from the rows below; the connect-bank card takes their place.
+    const noLiveBank = _si && !_td.isLive;
     const nw = netWorthCalc();
     const snaps = nwSnapshot(nw);
-    const { accounts } = loadTrackData();
+    const accounts = noLiveBank ? [] : (_td.accounts || []);
     const assets = nwListGet(NW_LS.assets), liabs = nwListGet(NW_LS.liabs);
     const addedOn = a => a.added ? new Date(a.added).toISOString().slice(0, 10) : null;
     const valuedOn = a => a.updated ? new Date(a.updated).toISOString().slice(0, 10) : addedOn(a);
@@ -9805,7 +9878,9 @@
       <div class="pcard" style="margin-top:10px"><p class="bsum" style="font-size:22px"><b>${bm0(nw.total)}</b></p>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
         <p class="fine" style="margin:6px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p></div>
-      ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length})</h2><div class="bcard">${acctRows}</div>` : ``}
+      ${(accounts || []).length ? `<h2 class="sec">Bank accounts (${accounts.length})</h2><div class="bcard">${acctRows}</div>`
+        : (noLiveBank ? `<div class="pcard" style="margin-top:10px"><p class="bsum">Your bank balances appear here once connected — read-only, we never move money.</p><button class="cta" id="nwConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p></div>` : ``)}
+      ${(!_si && _td.isDemo) ? `<p class="fine" style="margin:10px 0 0;color:var(--amber)">Sample data — connect your bank or add your numbers below for your real net worth.</p>` : ``}
       <h2 class="sec">Trend</h2>
       <div class="pcard">${nwSparkSVG(snaps)}${nwChangeExplain(snaps)}</div>
       <h2 class="sec">Other assets (${assets.length})</h2>
@@ -9815,6 +9890,7 @@
       <div class="bcard">${liabs.length ? liabs.map(a => row(a, "l")).join("") : `<p class="psub">None added here. Balances from the Debt payoff plan count automatically.</p>`}</div>
       <button class="ghostbtn" id="nwAddL" style="margin-top:8px">+ Add liability</button>
       <div id="nwForm"></div>`;
+    const nwc = $("nwConnect"); if (nwc) nwc.onclick = openConnectSheet;
     body.querySelectorAll("[data-nwdel]").forEach(b => b.onclick = () => {
       const [kind, id] = b.dataset.nwdel.split(":");
       if (kind === "a") nwListSet(NW_LS.assets, nwListGet(NW_LS.assets).filter(x => String(x.id) !== id));
@@ -9975,9 +10051,14 @@
     renderHome = function() {
       _renderHome09();
       try {
-        const nw = netWorthCalc();
+        const _tdn = loadTrackData();
+        const _sin = (typeof session !== "undefined" && !!session);
         const el = $("nwHomeSub");
-        if (el) el.textContent = `Worth ${bm0(nw.total)} right now — accounts, assets, and debts in one place.`;
+        // QA 2026-09-27: never present a demo-derived net worth as the user's own.
+        if (el && !(_sin && !_tdn.isLive)) {
+          const nw = netWorthCalc();
+          el.textContent = `Worth ${bm0(nw.total)} right now — accounts, assets, and debts in one place.`;
+        }
       } catch (e) {}
     };
   } catch (e) {}

@@ -72,6 +72,10 @@ csp = (
     # Plaid Link loads its SDK + iframe from cdn.plaid.com (SPEC 08). This is
     # the only external script/frame source allowed; everything else stays hashed.
     "script-src " + " ".join(script_hashes) + " https://cdn.plaid.com; "
+    # Service worker (sw.js) registers from the same origin; worker-src falls
+    # back to script-src, whose hashes only cover inline scripts, so without
+    # this the SW registration is blocked by CSP (QA 2026-09-27).
+    "worker-src 'self'; "
     "frame-src https://cdn.plaid.com; "
     "style-src 'self' 'unsafe-inline'; "
     "img-src 'self' data:; "
