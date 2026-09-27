@@ -386,11 +386,12 @@ serve(async (req) => {
     const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine + financeNudge;
 
     // COST OPT 2026-09-27: monthly AI quota — tail-risk protection for the
-    // $10/mo margin. 2,000 model calls/month is ~66/day, far above normal use;
-    // only a runaway script or abuse hits it. Counts actual model calls only
-    // (deterministic fast-path/capability replies cost $0 and don't count).
+    // $10/mo margin. 900 model calls/month (~30/day) caps worst-case AI cost
+    // at ~$3.87/mo = 61% margin. Normal users never hit this; only a runaway
+    // script or abuse does. Counts actual model calls only (deterministic
+    // fast-path/capability replies cost $0 and don't count).
     // Friendly message, not a hard error — the user can keep using the app.
-    const MONTHLY_AI_LIMIT = 2000;
+    const MONTHLY_AI_LIMIT = 900;
     try {
       const monthStart = new Date();
       monthStart.setUTCDate(1); monthStart.setUTCHours(0, 0, 0, 0);
