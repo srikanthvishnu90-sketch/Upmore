@@ -13,10 +13,12 @@ import {
   isDebunkReply,
   findFalseNoRouteClaim,
   SAFE_FALLBACK,
+  FINANCE_SAFE_FALLBACK,
   SCAM_FALLBACK,
   RouteCard,
 } from "./_shared/agent.ts";
-import { tryCapabilities, tryReminderIntent, tryGamblingGuard, tryPrivacyGuard, tryScamGuard, trySyspromptGuard, tryGiftRewardSafe } from "./_shared/capabilities.ts";
+import { tryCapabilities, tryReminderIntent, tryGamblingGuard, tryFakeDocGuard, tryContestGuard, tryCryptoGuard, tryFakeReviewGuard, tryTaxFraudGuard, tryPrivacyGuard, tryScamGuard, trySyspromptGuard, tryGiftRewardSafe, tryServerGuards } from "./_shared/capabilities.ts";
+import { renderFinanceFacts, financeFactMatch, financeModeNudge, tryFinanceFact } from "./_shared/finance_facts.ts";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5-20251001";
@@ -126,7 +128,7 @@ serve(async (req) => {
     // (1500-route catalog in 5 pages). They need no DB data, so a gambling,
     // privacy, scam, or system-prompt question returns in ~500ms instead of
     // waiting for the full catalog. Persist like the other deterministic paths.
-    const earlyGuard = tryGiftRewardSafe(message) ?? tryGamblingGuard(message) ?? tryPrivacyGuard(message) ?? tryScamGuard(message) ?? trySyspromptGuard(message);
+    const earlyGuard = tryGiftRewardSafe(message) ?? tryGamblingGuard(message) ?? tryFakeDocGuard(message) ?? tryContestGuard(message) ?? tryCryptoGuard(message) ?? tryFakeReviewGuard(message) ?? tryTaxFraudGuard(message) ?? tryPrivacyGuard(message) ?? tryScamGuard(message) ?? tryServerGuards(message) ?? trySyspromptGuard(message) ?? tryFinanceFact(message);
     if (earlyGuard) {
       await supabase.from("agent_messages").insert([
         { thread_id: tid, role: "user", content: message },
@@ -245,8 +247,9 @@ serve(async (req) => {
     // for safe factual patterns; everything else goes to the model.
     // CAPABILITY PATHS: deterministic answers that never touch the model —
     // "make me $X" (honest time-to-cash math + full steps + exact links),
-    // quantitative stock screen (live market data, transparent factor model),
     // prediction-market/gambling guard (critical-thinking takedown).
+    // (The old quantitative stock screen was removed 2026-09-27: it violated
+    // the capital wall. Securities questions now hit the refusal guard.)
     // Deterministic output needs no grounding post-check; persist like fast path.
     const exclHist = [{ role: "user", content: message },
       ...((exclRes.data ?? []).map((m: any) => ({ role: "user", content: String(m.content ?? "") })))];
@@ -367,10 +370,16 @@ serve(async (req) => {
       `\n${catalogLine}\n\n` +
       "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
 
-    const systemStatic = SYSTEM_PROMPT; // stable: cacheable
+    const systemStatic = SYSTEM_PROMPT + // stable: cacheable
+      "\n\nFINANCE FACTS (only source of truth for general finance questions — figures, limits, official URLs):\n" + renderFinanceFacts();
+    // Deterministic finance-intent nudge: if the question matches curated
+    // finance facts, force FINANCE Q&A mode so route matching can't hijack it
+    // ("how can I improve my credit score" must not return a bank bonus).
+    const financeIds = financeFactMatch(message);
+    const financeNudge = financeIds.length ? "\n\n" + financeModeNudge(financeIds) : "";
     const systemDynamic = "\n\n" + profileLine + "\n" + playbookLine + "\n" + resumeLine + "\n" + reminderLine + "\n" + expiryLine + "\n" + listingLine +
       `\n${catalogLine}\n\n` +
-      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes);
+      "\n\nROUTE CARDS (only source of truth):\n" + renderRouteCards(promptRoutes) + financeNudge;
 
     // (rate limit was already enforced for every request at the top of the
     // handler, before any DB work)
@@ -408,14 +417,29 @@ serve(async (req) => {
       try { action = JSON.parse(m[1]); } catch { /* ignore */ }
       reply = reply.replace(/ACTION\s+\{.*\}\s*$/, "").trim();
     }
-    const violations = checkGrounding(reply, routes, message);
+    // FINANCE Q&A mode: the model ends finance answers with [FINANCE].
+    // Strip the marker and run the finance-aware grounding check instead
+    // of the route-card check (different source of truth).
+    let financeMode = false;
+    if (/\[FINANCE\]\s*$/.test(reply)) {
+      financeMode = true;
+      reply = reply.replace(/\s*\[FINANCE\]\s*$/, "").trim();
+      action = null; // finance answers carry no walkthrough actions
+    }
+    // A question that matched finance facts is finance-mode even if the model
+    // forgot the marker: finance grounding + finance fallback apply.
+    if (financeIds.length) financeMode = true;
+    const violations = checkGrounding(reply, routes, message, financeMode, financeIds);
     if (violations.length) {
       console.warn("grounding violations", violations);
       // A blocked debunk still warns: the user asked about a scam, and a
       // generic deflection would leave them unprotected. The scam fallback
       // names the pattern without inventing any amounts or URLs.
-      reply = isDebunkReply(reply) ? SCAM_FALLBACK : SAFE_FALLBACK;
+      // Finance-mode violations get the finance fallback (no route to ask about).
+      reply = isDebunkReply(reply) ? SCAM_FALLBACK : (financeMode ? FINANCE_SAFE_FALLBACK : SAFE_FALLBACK);
       action = null;
+    } else if (financeMode) {
+      // Finance answers skip the route-correction pass below (no route claim).
     } else {
       // False no-route claim: the model said "I don't have a verified route
       // for X" but the catalog does. Correct it with the real card instead of

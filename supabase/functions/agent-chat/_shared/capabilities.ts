@@ -5,17 +5,21 @@
 // only for model output).
 
 import type { RouteCard } from "./agent.ts";
-import { CANCEL_PATHS, CancelPath } from "./cancel_paths.ts";
+import { CANCEL_PATHS } from "./cancel_paths.ts";
+import type { CancelPath } from "./cancel_paths.ts";
 
 // ---------- shared ----------
 
 // Capability precedence (documented): gambling guard > privacy guard > scam
 // guard > sysprompt guard > make-me-$X > walkthrough > save-side five
 // (subscription audit, receipt check, claim deadlines, bill prep, savings
-// ledger) > quant stocks. The safety-critical guards always fire before any
-// money-planning path; a money request can never preempt a safety match.
+// ledger). The safety-critical guards always fire before any money-planning
+// path; a money request can never preempt a safety match.
 // Save-side paths are explicitly ordered AFTER earn-side paths so a
 // "save" keyword can never hijack an "earn" question.
+// NOTE: there is deliberately NO stock-screening capability. The capital wall
+// (SYSTEM_PROMPT) forbids securities recommendations; a ranked "top 5 stocks"
+// screen violated it, so the old tryQuantStocks was removed 2026-09-27.
 
 const fresh = (r: RouteCard): boolean =>
   r.status === "researched" &&
@@ -561,99 +565,74 @@ export function tryPlanStack(
   );
 }
 
-// ---------- 2. quantitative stock screen ----------
+// ---------- 2. server-side safety refusals (mirror the local chat walls) ----------
+// The app's local guideAnswer catches these before the server is ever called,
+// but the API must refuse on its own too — defense in depth. Deterministic:
+// no model call, no grounding check needed (fixed strings).
 
-const STOCK_RX = /\bstocks?\b/i;
-const STOCK_INTENT_RX = /\b(invest|buy|pick|recommend|good|best|should i|which|analyze|research|screen|worth)\b/i;
+const SECURITIES_REFUSAL =
+  "I can't recommend what to invest in — that's outside what I do. I help with earning extra money through verified routes, not investing. " +
+  "If you're looking to grow money you've already earned, that's a conversation for a fee-only financial advisor — they can match a strategy to your timeline and risk tolerance in ways I can't.";
 
-const UNIVERSE = ["AAPL","MSFT","NVDA","AMZN","GOOGL","META","TSLA","AVGO","JPM","V","XOM","UNH","WMT","MA","PG","JNJ","COST","HD","BAC","NFLX","AMD","CRM","ORCL","ABBV","KO"];
+const MONEY_MOVE_REFUSAL =
+  "I can't move money for you — Upmore never touches your accounts. I can do the math and lay out the exact steps; you always make the final tap yourself.";
 
-interface QRow { sym: string; name: string; px: number; mom: number; distHi: number; vol: number; trend: number; score: number }
+const CREDIT_CARD_REFUSAL =
+  "I can't help with credit cards — Upmore never recommends them, not for bonuses, not for points. If you want cash without a card, tell me what you're open to and I'll find a real route.";
 
-async function fetchFactors(sym: string): Promise<QRow | null> {
-  try {
-    const res = await fetch(
-      `https://query1.finance.yahoo.com/v8/finance/chart/${sym}?range=1y&interval=1d`,
-      { headers: { "User-Agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(9000) }
-    );
-    if (!res.ok) return null;
-    const j = await res.json();
-    const meta = j?.chart?.result?.[0]?.meta;
-    const closes: (number | null)[] = j?.chart?.result?.[0]?.indicators?.quote?.[0]?.close ?? [];
-    const c = closes.filter((x): x is number => typeof x === "number" && x > 0);
-    if (c.length < 120 || !meta) return null;
-    const px = c[c.length - 1];
-    const mom = c[c.length - 21] / c[Math.max(0, c.length - 252)] - 1;
-    const hi = Math.max(...c);
-    const distHi = px / hi - 1;
-    const rets: number[] = [];
-    for (let i = 1; i < c.length; i++) rets.push(Math.log(c[i] / c[i - 1]));
-    const w = rets.slice(-60);
-    const mean = w.reduce((a, b) => a + b, 0) / w.length;
-    const vol = Math.sqrt(w.reduce((a, b) => a + (b - mean) ** 2, 0) / w.length) * Math.sqrt(252);
-    const ma200 = c.slice(-200).reduce((a, b) => a + b, 0) / Math.min(200, c.length);
-    return { sym, name: String(meta.longName ?? sym), px, mom, distHi, vol, trend: px / ma200 - 1, score: 0 };
-  } catch {
-    return null;
-  }
-}
+// Securities advice: "should I buy AAPL", "is Tesla a good investment",
+// "best ETF to buy", "what stocks should I invest in", "buy 10 shares of X".
+const SECURITIES_RX = new RegExp(
+  "\\b(should i|should we|do you think i should)\\b.{0,40}\\b(buy|sell|short|invest in)\\b" +
+  "|\\b(buy|sell|short)\\s+[A-Z]{2,5}\\b" +
+  "|\\binvest\\s+\\$[\\d,]+\\s+in\\s+[A-Z]" +
+  "|\\bis\\s+[A-Z][a-zA-Z&., ]{1,40}\\s+a good investment\\b" +
+  "|\\b(are|is)\\b.{0,30}\\b(good investment|good buy|worth buying|worth investing in)\\b" +
+  "|\\bbest\\b.{0,25}\\b(stocks?|etfs?|crypto|mutual funds?|index funds?)\\b.{0,25}\\b(to buy|to invest|right now|today)\\b" +
+  "|\\bwhat\\b.{0,20}\\b(stocks?|etfs?|crypto|funds?)\\b.{0,20}\\bshould i\\b.{0,20}\\b(buy|invest)" +
+  "|\\bwhich\\b.{0,15}\\b(stock|etf|crypto)\\b.{0,20}\\b(buy|pick|choose)\\b" +
+  "|\\brecommend\\b.{0,20}\\b(stocks?|etfs?)\\b" +
+  "|\\bstocks?\\b.{0,20}\\bto buy\\b",
+  "i"
+);
 
-export async function tryQuantStocks(message: string): Promise<string | null> {
-  if (!STOCK_RX.test(message) || !STOCK_INTENT_RX.test(message)) return null;
-  // "free stock" promos are kind-D rewards, not investing questions.
-  if (/\bfree stocks?\b/i.test(message)) return null;
+// Money movement: "invest $500 for me", "buy X for me", "sell my shares",
+// "withdraw for me", "trade for me". (Cancellation requests are handled by
+// the execution agent in the Save tab, not by chat.)
+const MONEY_MOVE_RX = new RegExp(
+  "\\b(invest|buy|sell|trade|withdraw|transfer|move)\\b.{0,30}\\b(for me|on my behalf|my money)\\b" +
+  "|\\bfor me\\b.{0,20}\\b(invest|buy|sell|trade)\\b" +
+  "|^(buy|sell|invest|withdraw)\\b.{0,40}\\bfor me\\b" +
+  "|\\b(sell|buy)\\b.{0,20}\\bmy\\b",
+  "i"
+);
+// Credit-card recommendations are out of the product (owner rule 2026-09-23).
+const CREDIT_CARD_RX = /\b(which|what|best|recommend|suggest|should i get|need)\b.{0,30}\bcredit cards?\b|\b(chase sapphire|amex gold|citi double cash|capital one venture|discover it|wells fargo|bank of america)\b/i;
 
-  const rows = (await Promise.all(UNIVERSE.map(fetchFactors))).filter(
-    (r): r is QRow => r !== null
-  );
-  if (rows.length < 10) {
-    return (
-      `I tried to pull live market data for a quantitative screen, but the data feed didn't come through. ` +
-      `I won't guess at prices — ask me again in a bit, or ask about a verified earning route instead.`
-    );
-  }
-  const z = (vals: number[], v: number) => {
-    const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
-    const sd = Math.sqrt(vals.reduce((a, b) => a + (b - mean) ** 2, 0) / vals.length) || 1;
-    return (v - mean) / sd;
-  };
-  const moms = rows.map((r) => r.mom), dhs = rows.map((r) => r.distHi),
-        vols = rows.map((r) => r.vol), trs = rows.map((r) => r.trend);
-  for (const r of rows) {
-    // Equal-weighted 4-factor composite: momentum, value (below 52w high =
-    // cheaper), low volatility, trend above 200-day average.
-    r.score = (z(moms, r.mom) + z(dhs.map((x) => -x), -r.distHi) + z(vols.map((x) => -x), -r.vol) + z(trs, r.trend)) / 4;
-  }
-  rows.sort((a, b) => b.score - a.score);
-  const top = rows.slice(0, 5);
-  const fmtPct = (x: number) => `${(x * 100).toFixed(0)}%`;
-  const lines = top.map((r, i) =>
-    `${i + 1}. ${r.sym} (${r.name}) — $${r.px.toFixed(2)} — score ${r.score >= 0 ? "+" : ""}${r.score.toFixed(2)}\n` +
-    `   momentum ${fmtPct(r.mom)}, ${fmtPct(-r.distHi)} below 52w high, vol ${fmtPct(r.vol)}, ${r.trend >= 0 ? "above" : "below"} 200-day avg`
-  );
-  const asof = new Date().toISOString().slice(0, 10);
-  return (
-    `Straight talk first: stocks aren't fixed income — prices move both ways and you can lose money. ` +
-    `This is a quantitative screen, not financial advice and not a prediction.\n\n` +
-    `I screened ${rows.length} large-cap US stocks on 4 technical factors (data as of ${asof}):\n` +
-    `momentum (12–1 mo return), pullback (distance below 52-week high), low volatility (60-day), trend (vs 200-day avg). ` +
-    `Each factor z-scored across the group, equal-weighted into one composite. ` +
-    `Technical-only: this uses price history alone, no company fundamentals or true valuation.\n\n` +
-    `Top 5 by composite score:\n${lines.join("\n")}\n\n` +
-    `What the model is saying: these five currently combine the strongest recent momentum with the calmest price action ` +
-    `relative to their own highs. It is NOT saying they will go up — past patterns don't predict the future.\n\n` +
-    `If you want to act on any of this, do your own research on the company's actual business or talk to a fiduciary advisor — ` +
-    `I can't execute trades. And if the goal is a sure $20, my verified earning routes beat stock-picking every time.`
-  );
+// Live news/market questions: the agent has no live data feed. Answering from
+// the model risks hallucinated "today" numbers (seen in testing), and route
+// matching hijacks them ("market" → Back Market). Deterministic boundary.
+const NEWS_RX = /\bstock market\b.{0,25}\btoday\b|\bwhat did\b.{0,30}\b(the market|stocks?|the dow|nasdaq|s&p)\b.{0,20}\bdo today\b|\bhow is the market\b.{0,15}\btoday\b|\bwill the fed\b|\bfed\b.{0,25}\b(cut|raise|hike)\b.{0,25}\brates?\b|\bwho won\b.{0,40}\belection\b|\blatest\b.{0,20}\b(election|market)\b.{0,20}\b(results|news)\b/i;
+
+const NEWS_BOUNDARY =
+  "I don't have live market or news data, so I can't tell you what happened today — and I won't guess. " +
+  "For today's numbers, check your brokerage app or a market site directly. What I can do: explain what market moves mean for your money, or help you earn extra cash through a verified route.";
+
+export function tryServerGuards(message: string): string | null {
+  if (SECURITIES_RX.test(message)) return SECURITIES_REFUSAL;
+  if (MONEY_MOVE_RX.test(message)) return MONEY_MOVE_REFUSAL;
+  if (CREDIT_CARD_RX.test(message)) return CREDIT_CARD_REFUSAL;
+  if (NEWS_RX.test(message)) return NEWS_BOUNDARY;
+  return null;
 }
 
 // ---------- 3. gambling / prediction-market guard ----------
-
-const GAMBLE_RX = /\bpolymarket\b|\bkalshi\b|prediction markets?\b|\bpoly\s?market\b|\bsportsbook\b|\bparlay\b|\bfanduel\b|\bdraftkings\b/i;
+const GAMBLE_RX = /\bpolymarket\b|\bkalshi\b|prediction markets?\b|\bpoly\s?market\b|\bsportsbook\b|\bparlay\b|\bfanduel\b|\bdraftkings\b|\bsports betting\b|\bbetting\b|\bbet\b/i;
 
 export function tryGamblingGuard(message: string): string | null {
   if (!GAMBLE_RX.test(message)) return null;
   return (
+    `I can't help with betting — it's a way to lose money, not earn it. Upmore has a hard rule: no betting, no crypto, and no routes where you can lose your own money.\n\n` +
     `Critical thinking on this one, because the math matters:\n\n` +
     `A prediction market is betting, not earning. Every dollar you win is a dollar someone else lost — ` +
     `it's zero-sum before costs, and negative-sum after spreads and fees. That means the average trader loses money, ` +
@@ -664,6 +643,46 @@ export function tryGamblingGuard(message: string): string | null {
     `I'd never file this under fixed income — it's variable with a negative expected value for most people. ` +
     `If you want a real plan for extra cash, ask me to make you $20 and I'll show you the fastest honest path.`
   );
+}
+
+// Fake documents: pay stubs, etc. (client has this; server needs it too)
+const FAKE_DOC_RX = /\b(pay stub|paystub)\b|\b(fake|forged|falsified)\b.{0,20}\b(document|w-2|w2|bank statement|id)\b|\bforg(e|ing|ery)\b/i;
+const FAKE_DOC_REFUSAL = "I can't help with that — I won't help create fake documents. Forging a pay stub is fraud, and it can get your application denied plus legal trouble. If you need proof of income, use your real pay stubs, bank statements, or ask your employer for a verification letter.";
+export function tryFakeDocGuard(message: string): string | null {
+  if (!FAKE_DOC_RX.test(message)) return null;
+  return FAKE_DOC_REFUSAL;
+}
+
+// Contests/sweepstakes: standing owner rule — never contests.
+const CONTEST_RX = /\b(contests?|sweepstakes?)\b/i;
+const CONTEST_REFUSAL = "Upmore never does contests or sweepstakes \u2014 they're not a reliable way to earn, and I won't send you down that path. Want a route with a fixed, verified payout instead? Ask me about cashback, surveys, or bank bonuses.";
+export function tryContestGuard(message: string): string | null {
+  if (!CONTEST_RX.test(message)) return null;
+  return CONTEST_REFUSAL;
+}
+
+// Crypto: standing rule — no betting, no crypto.
+const CRYPTO_RX = /\b(crypto|bitcoin|ethereum|cryptocurrency)\b/i;
+const CRYPTO_REFUSAL = "I can't help with that — Upmore has a hard rule: no betting, no crypto, and no routes where you can lose your own money. If you want to earn extra cash, ask me about verified routes with fixed payouts.";
+export function tryCryptoGuard(message: string): string | null {
+  if (!CRYPTO_RX.test(message)) return null;
+  return CRYPTO_REFUSAL;
+}
+
+// Fake reviews: excluded topic
+const FAKE_REVIEW_RX = /\b(fake|paid)\b.{0,10}\breviews?\b|\breviews?\b.{0,10}\b(fake|paid)\b/i;
+const FAKE_REVIEW_REFUSAL = "We don't touch that one. Fake reviews are fraud — they violate consumer protection laws and platform terms. Want something legit? Ask me about cashback, surveys, or bank bonuses.";
+export function tryFakeReviewGuard(message: string): string | null {
+  if (!FAKE_REVIEW_RX.test(message)) return null;
+  return FAKE_REVIEW_REFUSAL;
+}
+
+// Tax fraud: won't help
+const TAX_FRAUD_RX = /\b(dodge taxes|evade taxes|tax evasion|not report income|hide income from irs)\b/i;
+const TAX_FRAUD_REFUSAL = "I won't help with that — dodging taxes is illegal and the penalties are serious. But I can help you understand what you owe and find legitimate deductions you might be missing.";
+export function tryTaxFraudGuard(message: string): string | null {
+  if (!TAX_FRAUD_RX.test(message)) return null;
+  return TAX_FRAUD_REFUSAL;
 }
 
 // ---------- 4. Deterministic full walkthrough (DB-driven) ----------
@@ -1599,7 +1618,5 @@ export async function tryCapabilities(
   if (bill) return { reply: bill };
   const ledger = await tryLedgerSummary(message, ctx);
   if (ledger) return { reply: ledger };
-  const stocks = await tryQuantStocks(message);
-  if (stocks) return { reply: stocks };
   return null;
 }
