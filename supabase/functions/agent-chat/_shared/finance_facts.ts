@@ -146,7 +146,7 @@ export const FINANCE_FACTS: FinanceFact[] = [
   {
     id: "credit-score-factors",
     match: ["credit score", "improve credit", "fico factors", "what affects credit score", "build credit"],
-    text: "FICO weighs five things: payment history (~35% — pay on time, every time), amounts owed / utilization (~30% — keep card balances under 30% of limits, under 10% is better), length of history (~15%), new credit (~10%), and credit mix (~10%). Fastest honest wins: autopay everything, pay down high-utilization cards first, don't close your oldest card.",
+    text: "FICO publishes its weights: payment history ~35%, amounts owed / utilization ~30% (balances ÷ limits — under 30% is the commonly cited line, under 10% is the lower band), length of history ~15%, new credit ~10%, credit mix ~10%. The mechanics: on-time payments build the history slice; lower balances lower the utilization slice; closing the oldest card shortens average account age, which is the mechanism behind the length-of-history effect. General education about how the models work — not steps for your situation.",
     source: "FICO / CFPB",
     as_of: "2026",
     amounts: ["35", "30", "15", "10"],
@@ -345,11 +345,11 @@ export function tryFinanceFact(message: string): string | null {
   if (t.includes("owe") && t.includes("credit card")) {
     const m = t.match(/(\d+(?:\.\d+)?)\s*%\s*(?:apr)?/);
     const aprBit = m ? ` At ${m[1]}% APR, every $1,000 of balance costs ~$${Math.round(parseFloat(m[1]) * 10)}/year in interest.` : "";
-    return `When you owe on a high-APR credit card, avalanche wins: pay minimums on everything, then throw every spare dollar at the HIGHEST-rate balance first.${aprBit} At 20%+ APR the interest snowballs faster than savings grow, so killing the card usually beats saving beyond a small buffer.`;
+    return `Two payoff methods, explained: avalanche puts extra payments toward the highest-rate balance first (minimizes total interest); snowball puts extra toward the smallest balance first (fastest account closed).${aprBit} People compare them because at 20%+ APR, interest compounds fast enough that the method choice changes the total paid. General education, not advice for your situation.`;
   }
   // Bonus split: emergency vs debt
   if (t.includes("bonus") && t.includes("emergency") && t.includes("debt")) {
-    return `Split the bonus: first top your emergency fund to 1 month of expenses (or $1,000 if you're starting from zero), then throw the rest at high-APR debt. Emergency fund prevents new debt; killing 20%+ APR debt is a guaranteed 20% return. If your debt is under 7% APR, favor the emergency fund up to 3 months first.`;
+    return `The general framework people use: a small starter buffer (one month of expenses, or $1,000 from zero, are the commonly cited figures) covers the surprise bill that would otherwise become new debt; high-APR balances get attention because 20%+ APR compounds faster than savings grow, while lower-rate debt (under ~7%) is often weighed against building the full 3–6 month fund. Which tradeoff fits depends on the numbers — general education, not a plan for your situation.`;
   }
   // Gig taxes: DoorDash
   if ((t.includes("doordash") || t.includes("gig") || t.includes("freelance")) && t.includes("tax")) {

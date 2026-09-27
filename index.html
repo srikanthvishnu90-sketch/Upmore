@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-Q2agX7ZtNyw+C5naZ3zXxY/q6LO8BUU5Xd11oowMfxw=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-xbsOjVUsqJ5jnF1Sp8gudY9M4E9KVCI1MNnTfwacn5M=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -757,7 +757,7 @@
     <div class="dock">
       <button class="go light" data-next>Get started</button>
       <p class="legal">Already have an account? <a href="#" id="welcomeLogin">Log in</a></p>
-      <p class="legal">By continuing you agree to the <a href="#" id="welcomeTerms">Terms</a> and <a href="#" id="welcomePrivacy">Privacy Policy</a>. No offers pay us anything right now — you get every dollar.</p>
+      <p class="legal">Upmore is for adults 18+. You'll accept the <a href="/terms" target="_blank" rel="noopener">Terms</a> and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> when you sign in. No offers pay us anything right now — you get every dollar.</p>
     </div>
   </section>
 
@@ -867,6 +867,29 @@
     <div class="dock"><button class="go" onclick="location.reload()">Close</button></div>
   </section>
 
+  <!-- Terms of Service clickwrap (2026-09-27): explicit acceptance, version-logged -->
+  <section class="screen" id="tos" aria-label="Terms of Service">
+    <div class="scroll">
+      <h1>The fine print, in plain English</h1>
+      <p class="why">Upmore is for adults 18 and older. Please read and accept our Terms to use the app.</p>
+      <div class="legalbody">
+        <p><b>The short version.</b> Upmore helps you find money and see your money clearly. It never moves your money, never buys or sells anything, and never gives personalized financial advice.</p>
+        <p><b>Your account.</b> You must be 18 or older and a US resident. You're responsible for keeping your sign-in private and for the information you enter.</p>
+        <p><b>What Upmore does.</b> Read-only connections (bank, brokerage) and facts about your own money: budgets, subscriptions, unclaimed-money search, and educational explainers. The cancellation agent only acts on merchant accounts you own, with credentials you save, and only after your explicit approval of each action.</p>
+        <p><b>What Upmore doesn't do.</b> No guarantees of earnings or payouts — third parties have their own terms. No personalized investment, credit, or tax advice.</p>
+        <p><b>Subscription.</b> Upmore costs $10/month when billing launches. Cancel anytime in Settings; you keep access until the end of the billing period.</p>
+        <p><b>Your data.</b> We never sell it. You can export or delete everything anytime.</p>
+        <p><b>Fair use.</b> Don't use Upmore for fraud, fake accounts, or anything illegal. We may suspend accounts that abuse the service.</p>
+        <p><b>Disputes.</b> The full Terms include a liability cap and binding arbitration with a class-action waiver — please read them before agreeing.</p>
+      </div>
+      <p class="fine" style="margin-top:10px">Full documents: <a href="/terms" target="_blank" rel="noopener">Terms of Service v1.0</a> · <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a></p>
+    </div>
+    <div class="dock">
+      <button class="go" id="tosAgree">I agree — I'm 18 or older</button>
+      <p style="margin-top:10px;text-align:center"><button id="tosDecline" style="background:none;border:0;color:#8a8f98;text-decoration:underline;font-size:14px">I don't agree</button></p>
+    </div>
+  </section>
+
   <!-- ================= HOME ================= -->
   <section class="screen" id="home" aria-label="Home">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
@@ -932,6 +955,18 @@
         </div>
         <button class="cta" id="connectBankBtn">Connect bank</button>
         <p class="fine">Secure bank connection via SimpleFIN. Your credentials go to your bank, never to us.</p>
+      </div>
+      <!-- TRACK G (2026-09-27): one-tap full picture. Shown when live bank
+           data exists; one tap opens the generated Budget Report. -->
+      <div class="connectcard" id="pictureCard" hidden>
+        <div class="cc-top">
+          <div>
+            <b>Your money picture</b>
+            <p>Budget, spending, profit &amp; loss — generated from your transactions.</p>
+          </div>
+        </div>
+        <button class="cta" id="pictureBtn">See your full picture</button>
+        <p class="fine">One tap. Every number comes from your transactions.</p>
       </div>
       </div>
 
@@ -1165,6 +1200,8 @@
       <button class="prow" id="subscriptionRow" style="margin-top:8px"><span class="pl" id="subscriptionRowLabel">Upmore subscription — $10/mo</span><span class="pv">›</span></button>
       <button class="prow" id="referralRow" style="margin-top:8px"><span class="pl">Refer &amp; earn — give $10, get $10</span><span class="pv">›</span></button>
       <button class="prow" id="homeCustomBtn2" style="margin-top:8px"><span class="pl">Customize home</span><span class="pv">›</span></button>
+      <button class="prow" id="privacyRow" style="margin-top:8px"><span class="pl">Privacy Policy</span><span class="pv">›</span></button>
+      <button class="prow" id="termsRow" style="margin-top:8px"><span class="pl">Terms of Service</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
       <div style="margin-top:24px;display:flex;gap:16px;justify-content:center">
         <button class="linkbtn" id="exportData">Export data</button>
@@ -1238,8 +1275,19 @@
         <p class="fine" style="margin-top:12px">Upmore never moves money for you — you always sign and click.</p>
       </div>
     </div>
+    <!-- TRACK G (2026-09-27): first-sync payoff moment. Honest syncing state
+         -> celebration -> one button into the full picture. -->
+    <div class="sheet" id="payoffSheet" hidden>
+      <div class="sheetcard">
+        <div style="text-align:center"><div style="font-size:40px" aria-hidden="true">🎉</div>
+        <b id="payoffTitle" style="font-size:18px">Your money picture is ready</b>
+        <p class="psub" id="payoffBody" style="margin:8px 0 14px"></p></div>
+        <button class="primary" id="payoffCta" style="width:100%">See my money</button>
+        <button class="ghostbtn" id="payoffClose" style="margin-top:8px">Later</button>
+      </div>
+    </div>
     <div class="chead">
-      <div class="title"><b>Guide</b><span>Knows your plan</span></div>
+      <div class="title"><b>Guide</b><span class="badge">AI</span><span>Knows your plan</span></div>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
     <div class="chat" id="chat"><div class="empty" id="empty"></div></div>
@@ -1348,19 +1396,27 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     <div class="sheet" id="privacySheet" hidden>
       <div class="sheetcard">
         <div class="row"><b style="font-size:18px">Privacy Policy</b><button class="iconbtn" id="privacyClose" aria-label="Close privacy policy">✕</button></div>
-        <p class="psub" style="margin-top:6px">Last updated: September 26, 2026</p>
+        <p class="psub" style="margin-top:6px">Last updated: September 27, 2026</p>
         <div class="legalbody">
           <p><b>The short version.</b> We collect the minimum needed to run your account and your money plan: your name, email, onboarding answers, plan progress, things you save, and your Guide chats. We never sell your data. No ads, no third-party trackers. Your chat messages are processed by our AI provider to answer you. You can ask us to export or delete everything at any time.</p>
-          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences. <i>If you connect your bank (SimpleFIN):</i> a read-only bank-access credential stored encrypted in our database vault so the app can sync your accounts — we never see or store your bank username or password. <i>If you use the subscription-cancellation agent:</i> the merchant logins you choose to save, stored encrypted in our database vault and used only to carry out cancellations you approve.</p>
-          <p><b>What we don't collect.</b> No payment details, no bank logins, no location tracking, no contacts, no ad IDs. The optional bank connection (SimpleFIN) is read-only — we see account balances and transactions, we never move money, and we never see your bank password.</p>
-          <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it), SimpleFIN (only if you connect your bank — your bank sign-in happens on SimpleFIN's site; they hand the app a read-only access credential). Nobody else. We never sell your data.</p>
+          <p><b>What we collect.</b> <i>Account info:</i> name and email, from Google sign-in or email + password (passwords are hashed — we never see them). <i>Date of birth:</i> to confirm you're 18 or older. <i>Onboarding answers:</i> name, US state, hours per week, paycheck status, cash you can park. <i>Your activity:</i> plan progress, subscriptions / receipts / ledger entries / renewals / claims you enter, Guide chat messages, payout proof you submit, reminders, notification preferences, and your records of Terms acceptance and connection consents. <i>If you connect your bank (SimpleFIN):</i> a read-only bank-access credential stored encrypted in our database vault so the app can sync your accounts — we never see or store your bank username or password. <i>If you connect your brokerage (Plaid):</i> a read-only brokerage-access credential stored encrypted in our database vault so the app can show your holdings — we never see or store your brokerage username or password. <i>If you use the subscription-cancellation agent:</i> the merchant logins you choose to save, stored encrypted in our database vault and used only to carry out cancellations you approve.</p>
+          <p><b>What we don't collect.</b> No payment details, no bank or brokerage logins, no location tracking, no contacts, no ad IDs. The optional bank connection (SimpleFIN) and brokerage connection (Plaid) are read-only — we see account balances, transactions, and holdings, we never move money, and we never see your bank or brokerage passwords.</p>
+          <p><b>Who processes your data.</b> Supabase (sign-in + database, US — your rows are isolated to you), Vercel (hosts the app), Anthropic (your Guide messages go to Claude so it can answer; chats aren't used for training), Google (sign-in only, if you choose it), SimpleFIN (only if you connect your bank — your bank sign-in happens on SimpleFIN's site; they hand the app a read-only access credential), Plaid (only if you connect your brokerage — your brokerage sign-in happens in Plaid's secure window; they hand the app a read-only access token). Nobody else. We never sell your data.</p>
           <p><b>Cookies &amp; tracking.</b> Your sign-in session lives in your browser's local storage so you stay signed in. No third-party analytics or ad trackers.</p>
           <p><b>How long we keep it.</b> While your account is active. Disconnecting your bank deletes your connection record and the stored bank credential. Deleting your account deletes your profile, chats, progress, saved items, your bank connection including the stored bank credential, and any merchant logins you saved for the cancellation agent.</p>
-          <p><b>Your rights.</b> Ask us any time to see, correct, export, or delete your data: <a href="#" id="privacyEmail">support@upmore.app</a>.</p>
-          <p><b>Children.</b> Upmore isn't for under-13s.</p>
+          <p><b>Your rights.</b> Ask us any time to see, correct, export, or delete your data: <a href="mailto:vishnusrikanth8@gmail.com" id="privacyEmail">vishnusrikanth8@gmail.com</a>.</p>
+          <p><b>Age.</b> Upmore is for adults 18 and older.</p>
           <p><b>Security.</b> Everything moves over encrypted connections; database access is restricted per user. If we ever learn of a breach affecting your data, we'll tell you.</p>
-          <p id="termsSection"><b>Terms of Service (plain English).</b> Upmore is a guide, not a guarantee — payouts come from third-party companies with their own terms. You're responsible for your own accounts and actions; never share passwords with anyone, including us. Don't use Upmore for fraud or fake accounts. Upmore is in beta and things may change; we may suspend accounts that abuse the service.</p>
+          <p id="termsSection"><b>Terms of Service.</b> The full Terms of Service (v1.0) are at <a href="/terms" target="_blank" rel="noopener">/terms</a> — please read them. The short version: Upmore is a guide, not a guarantee — payouts come from third-party companies with their own terms. You're responsible for your own accounts and actions; never share passwords with anyone, including us. Don't use Upmore for fraud or fake accounts. Upmore is in beta and things may change; we may suspend accounts that abuse the service.</p>
         </div>
+      </div>
+    </div>
+    <div class="sheet" id="consentSheet" hidden>
+      <div class="sheetcard">
+        <div class="row"><b style="font-size:18px" id="consentTitle">Before you connect</b><button class="iconbtn" id="consentClose" aria-label="Close">✕</button></div>
+        <div class="legalbody" id="consentBody" style="margin-top:8px"></div>
+        <button class="go" id="consentAgree" style="width:100%;margin-top:12px">I agree</button>
+        <p class="fine" style="margin-top:8px">You can disconnect anytime — disconnecting deletes the stored credential immediately. <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a></p>
       </div>
     </div>
     <div class="sheet" id="deleteSheet" hidden>
@@ -1784,13 +1840,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
     try { dobI.setSelectionRange(pos, pos); } catch (e) {}
     const h = $("dobHint"); h.textContent = ""; h.className = "hint";
-    data.minor = false;
+    data.minor = false; data.dobISO = null;
     if (d.length === 8) {
       const m = +d.slice(0,2), day = +d.slice(2,4), y = +d.slice(4);
       const born = new Date(y, m - 1, day);
       const valid = born.getMonth() === m - 1 && y > 1900 && born < new Date();
       if (!valid) { h.textContent = "Check that date."; h.className = "hint bad"; ok = false; }
       else {
+        data.dobISO = `${y}-${String(m).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
         const now = new Date(); let age = now.getFullYear() - y;
         if (now < new Date(now.getFullYear(), m - 1, day)) age--;
         data.minor = age < 18;
@@ -1812,6 +1869,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         const y = parseInt(dobI.value.replace(/\D/g, "").slice(4), 10);
         if (y > 1900 && y <= new Date().getFullYear()) localStorage.setItem("upmore_dob_year", String(y));
       } catch (e) {}
+    } else {
+      // Durable block: survives reload, so a blocked user can't just open the
+      // login screen afterward. A boolean flag — none of their typed answers.
+      try { localStorage.setItem("upmore_minor_block", "1"); } catch (e) {}
     }
     show(data.minor ? "blocked" : "situation");
   };
@@ -2129,6 +2190,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (!session) throw new Error("Signed in, but no session was created. Please try again.");
       await ensureProfile();
       await loadProgress();
+      if (minorBlocked()) { show("blocked"); return; }
+      if (!(await tosAccepted())) { show("tos"); return; }
       show("home");
     } catch (e) {
       err.textContent = (e && e.message) || "Couldn't log you in. Please try again.";
@@ -2843,7 +2906,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     { id: "networth", label: "Net worth" },
     { id: "connect", label: "Connect bank" },
     { id: "claims", label: "Unclaimed money" },
-    { id: "cfo", label: "CFO tools" },
+    { id: "cfo", label: "Money tools" },
   ];
   const homeWidgetState = () => {
     try {
@@ -3907,8 +3970,21 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function renderClaim() {
     const body = $("claimBody"); if (!body) return;
     const searched = claimGet();
+    // State-aware free-claim notice (2026-09-27): free forever, no Upmore fee.
+    // Illinois users get the I-Cash link; other users get their state office
+    // wording with MissingMoney/NAUPA routing. Never invent a state URL —
+    // only CLAIM_PORTALS (curated) and missingmoney.com are linked.
+    const uCode = (dbProfile && dbProfile.state) || data.state || null;
+    const uName = (uCode && NAMES[uCode]) || null;
+    const uPortal = (uName && CLAIM_PORTALS[uName]) || null;
+    const freeNote = uCode === "IL"
+      ? `<b>Illinois holds it.</b> Money found here is held by the Illinois State Treasurer — claim it yourself for free at <a href="https://icash.illinoistreasurer.gov" target="_blank" rel="noopener">I-Cash</a>.`
+      : uPortal
+        ? `<b>${esc(uName)} holds it.</b> Claim it yourself for free at your state's official site: <a href="${esc(uPortal)}" target="_blank" rel="noopener">${esc(uName)} unclaimed property</a>.`
+        : `<b>${uName ? esc(uName) + " holds it." : "Your state holds it."}</b> Claim it yourself for free through your state's official unclaimed property office — start at <a href="https://www.missingmoney.com" target="_blank" rel="noopener">MissingMoney.com</a>, the states' official multi-state search.`;
     body.innerHTML = `
       <p class="psub">Every state holds money its owners forgot — old paychecks, utility deposits, bank accounts, refunds. Searching is always free.</p>
+      <div class="pcard" style="margin:10px 0"><p class="m" style="margin:0"><b>Free forever.</b> Searching and claiming cost nothing — Upmore takes no fee and never will. ${freeNote}</p></div>
       <button class="go" id="claimSearch" style="height:52px;margin:12px 0">Search MissingMoney.com</button>
       <p class="fine">The only search site endorsed by the state treasurers' association (NAUPA). It links you to each state's official claim site. Never pay to search or claim — anyone asking for a fee or a percentage is a scam.</p>
       <h3 class="sec" style="font-size:15px;margin-top:18px">States I've searched <span class="dim">${searched.length} of ${CLAIM_STATES.length}</span></h3>
@@ -4376,6 +4452,34 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     toast("Downloaded");
   }
   let deleteWired = false;
+  /* ---- Terms clickwrap + privacy sheet wiring (2026-09-27) ---- */
+  $("privacyClose").onclick = () => { $("privacySheet").hidden = true; };
+  $("privacySheet").addEventListener("click", e => { if (e.target.id === "privacySheet") $("privacySheet").hidden = true; });
+  if ($("privacyRow")) $("privacyRow").onclick = () => { $("privacySheet").hidden = false; };
+  if ($("termsRow")) $("termsRow").onclick = () => window.open("/terms", "_blank", "noopener");
+  if ($("tosAgree")) $("tosAgree").onclick = async () => {
+    $("tosAgree").disabled = true;
+    // Fail closed: only proceed when the acceptance row is actually recorded.
+    if (await acceptTos()) { show("home"); }
+    else {
+      toast("Couldn't record your acceptance — check your connection and try again.");
+      $("tosAgree").disabled = false;
+    }
+  };
+  if ($("tosDecline")) $("tosDecline").onclick = async () => {
+    try { await supa.auth.signOut(); } catch (e) {}
+    session = null; dbProfile = null; location.hash = ""; location.reload();
+  };
+  /* ---- Connection consent sheet wiring (2026-09-27) ---- */
+  $("consentClose").onclick = () => { consentPending = null; $("consentSheet").hidden = true; };
+  $("consentSheet").addEventListener("click", e => { if (e.target.id === "consentSheet") { consentPending = null; $("consentSheet").hidden = true; } });
+  $("consentAgree").onclick = async () => {
+    const p = consentPending; consentPending = null;
+    if (!p) { $("consentSheet").hidden = true; return; }
+    // Fail closed: the connection only proceeds when consent is logged.
+    if (await logConsent(p.kind)) { $("consentSheet").hidden = true; p.onAgree(); }
+    else toast("Couldn't record your consent — check your connection and try again.");
+  };
   function wireDeleteSheet() {
     if (deleteWired) return; deleteWired = true;
     $("deleteData").onclick = () => {
@@ -4630,7 +4734,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const flow = cancelFlowFor(s.merchant);
     const link = $("subCancelLink"), stepsEl = $("subCancelSteps");
     if (flow && flow.url) { link.href = flow.url; link.style.display = "block"; } else { link.style.display = "none"; }
-    stepsEl.textContent = flow ? flow.steps : "";
+    // Fallback (2026-09-27): every recurring charge gets either a verified
+    // cancel path or honest guided steps — never a blank sheet, never a guess.
+    stepsEl.innerHTML = flow
+      ? esc(flow.steps)
+      : `We don't have a verified cancel path for <b>${esc(s.merchant)}</b> yet — no guessing. The usual route: sign in on the merchant's own site → Account or Subscription settings → Cancel. Billed through Apple? iPhone Settings → your name → Subscriptions. Through Google Play? Play Store → Payments &amp; subscriptions.`;
     $("subSheet").hidden = false;
     $("subCancelBtn").onclick = () => cancelSubById(s.id, $("subCancelBtn"));
     // Tier 2 agent: "Cancel it for me" — only signed-in, only merchants with a playbook.
@@ -4747,7 +4855,18 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         toast("Cancelled — proof logged");
       } else {
         $("agentRunStatus").textContent = "Couldn't complete it";
-        $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(run.error || ev.note || "The agent hit a wall — nothing was changed.")}</p>`;
+        // Guided fallback (2026-09-27): unverified merchants return a
+        // directory entry — show the account/cancellation link + steps.
+        const de = (ev && ev.directory_entry) || null;
+        if (de && (de.deep_link || (de.steps && de.steps.length))) {
+          $("agentRunEvidence").innerHTML =
+            `<p class="psub" style="text-align:left">Automatic cancellation isn't verified for ${esc(de.display_name || sub.merchant)} yet — nothing was changed. Here's the direct route:</p>` +
+            (de.deep_link ? `<a class="primary" href="${esc(de.deep_link)}" target="_blank" rel="noopener" style="display:block;text-decoration:none;text-align:center;margin:10px 0">Open ${esc(de.display_name || "account page")} →</a>` : "") +
+            `<ol class="psub" style="text-align:left;padding-left:20px;margin:8px 0">${(de.steps || []).slice(0, 6).map(s => `<li>${esc(s)}</li>`).join("")}</ol>` +
+            (de.billing_note ? `<p class="fine" style="text-align:left">${esc(de.billing_note)}</p>` : "");
+        } else {
+          $("agentRunEvidence").innerHTML = `<p class="psub" style="text-align:left">${esc(run.error || ev.note || "The agent hit a wall — nothing was changed.")}</p>`;
+        }
       }
     }
     try {
@@ -5851,6 +5970,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const a = upmoreAge();
     return a !== null && a < 18;
   }
+  // Product-level minor block (2026-09-27): the durable localStorage flag set
+  // when the onboarding DOB screen detects under-18, the session's DOB, or
+  // the persisted profiles.dob for returning users. The server also enforces
+  // dob >= 18 via CHECK constraint, so a profiles row can never hold a minor.
+  function dobIsoIsMinor(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (!m) return false;
+    const born = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (isNaN(born) || born.getMonth() !== +m[2] - 1) return false;
+    const now = new Date(); let age = now.getFullYear() - born.getFullYear();
+    if (now < new Date(now.getFullYear(), born.getMonth(), born.getDate())) age--;
+    return age < 18;
+  }
+  function minorBlocked() {
+    try { if (localStorage.getItem("upmore_minor_block") === "1") return true; } catch (e) {}
+    if (data.minor) return true;
+    const dob = (dbProfile && dbProfile.dob) || data.dobISO || null;
+    return !!(dob && dobIsoIsMinor(dob));
+  }
   // "i'm 15", "im 16", "i am 17", "my age is 15" — not "i'm 15 minutes late".
   // FIX (R2 8-020): third-person phrasings also count — "my kid is 14",
   // "my 14-year-old", "he is 16", "for my 15 year old". A minor is a minor
@@ -6027,6 +6165,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (/\binvest\b[^.]{0,60}\bfor me\b/.test(_x) || /\bdo it for me\b/.test(_x) ||
           (/\bbuy\b[^.]{0,40}\bfor me\b/.test(_x) && /(stock|share|etf|fund|crypto|\$|ticker)/.test(_x)))
         return { paras: ["I can't move money for you — Upmore never touches your accounts. I can do the math and lay out the steps; you always make the final tap."] }; }
+    // OWN-HOLDINGS WALL (2026-09-27): checked BEFORE the broad capital walls —
+    // the Guide never discusses the user's own holdings, so "is my portfolio
+    // OK?" reliably redirects to the Investments X-ray instead of a refusal.
+    { const _oh = " " + String(t).toLowerCase() + " ";
+      if (/\b(my|our)\b/.test(_oh) && /\b(portfolio|holdings|positions?|allocation)\b/.test(_oh)
+        && /\b(is|are|too|should|do i|am i|what about|review|look at|check|think|opinion|ok|okay|good|bad|fine|what's|what is|show me|tell me|how's|how is)\b/.test(_oh))
+        return { paras: [
+          "I can't discuss your own holdings or portfolio — I'm an AI explainer, not your advisor, and Upmore never gives personalized investment commentary.",
+          "The facts are on Home → Investments X-ray: your allocation, concentration, fees, dividends, and benchmark comparisons — computed from your data, no opinions attached." ] }; }
     const uwP = guideCapitalPlain(t); if (uwP) return uwP;
     const uwD = guideCapitalDeep(t); if (uwD) return uwD;
     { const _taxI = guideTaxInfo(t); if (_taxI) return _taxI; }
@@ -6083,7 +6230,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const av = debtSim(debts, "avalanche"), mo = debtSim(debts, "avalanche", 0);
       const saved = Math.max(0, mo.totalInt - av.totalInt);
       return { paras: [
-        `Attack order (highest APR first): ${order.map((d, i) => `${i + 1}. ${d.name} — ${cfo$(d.bal)} at ${d.apr}%`).join("; ")}.`,
+        `Here's the avalanche ordering the Debt payoff plan computes from your balances (highest APR first — the method's math, not advice): ${order.map((d, i) => `${i + 1}. ${d.name} — ${cfo$(d.bal)} at ${d.apr}%`).join("; ")}.`,
         `Avalanche: ${cfo$(av.totalInt)} total interest, debt-free in ~${av.months} months. Minimums only would cost ${cfo$(mo.totalInt)} — ${cfo$(saved)} more.`,
         "The full version with 0%-promo windows and refinance-vs-paydown math is on Home → Debt payoff plan."] };
     }
@@ -6475,10 +6622,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     { kAll: ["owe", "credit card"], fn: (t) => {
       const m = t.match(/(\d+(?:\.\d+)?)\s*%\s*(?:apr)?/);
       const apr = m ? ` At ${m[1]}% APR, every $1,000 of balance costs ~$${Math.round(parseFloat(m[1])*10)}/year in interest` : "";
-      return ["When you owe on a high-APR credit card, avalanche wins: pay minimums on everything, then throw every spare dollar at the HIGHEST-rate balance first." + apr + ". At 20%+ APR the interest snowballs faster than savings grow, so killing the card usually beats saving beyond a small buffer. Add your debts on Home \u2192 Debt payoff plan and I'll rank them to the dollar."];
+      return ["Two payoff methods, explained: avalanche puts extra payments toward the highest-rate balance first (minimizes total interest); snowball puts extra toward the smallest balance first (fastest account closed)." + apr + ". People compare them because at 20%+ APR, interest compounds fast enough that the method choice changes the total paid. General education, not advice for your situation. Want the math on your actual debts? Add them on Home \u2192 Debt payoff plan and the tool runs avalanche vs minimums to the dollar."];
     } },
     { kAll: ["emergency fund", "freelancer"], p: ["Freelancers should aim for the 6-month end of the 3\u20136 month emergency-fund range \u2014 irregular income means longer dry spells. Keep it in a high-yield savings account, separate from your business cash."] },
-    { kAll: ["emergency fund", "debt"], p: ["Split it: keep a $1,000 starter emergency buffer first, then throw the rest at the highest-APR debt (avalanche: minimums everywhere, everything extra at the top rate). Once high-APR debt is gone, build the emergency fund to 3-6 months of essentials. Add your debts on Home \u2192 Debt payoff plan and I'll rank them to the dollar."] },
+    { kAll: ["emergency fund", "debt"], p: ["The general framework people use: a small starter buffer ($1,000 is the commonly cited figure) covers the surprise bill that would otherwise become new debt, while the full 3\u20136 month fund waits until high-APR balances are handled — 20%+ APR compounds faster than savings grow. Two methods to know: avalanche (extra to the highest rate first, least total interest) and snowball (extra to the smallest balance first, fastest win). General education, not a plan for your situation — the Debt payoff plan on Home runs both methods on your actual numbers."] },
     { kAll: ["overdraft", "credit score"], p: ["Two separate problems, two fixes. **Overdraft fees:** call your bank and ask for a courtesy reversal — banks often waive the first one or two — then turn on low-balance alerts and link savings for overdraft transfer so it doesn't repeat. **Credit score:** a drop after overdrafts usually comes from the negative balance being reported — check your free report, keep every other payment on time, and keep card balances under 30% of limits; the score recovers as on-time payments stack up."] },
     { k: ["standard deduction"], p: ["For 2026 the standard deduction is $16,100 single or married filing separately, $32,200 married filing jointly, and $24,150 head of household — plus an additional $1,650 (married) or $2,050 (single) for each filer 65+ or blind. (IRS Rev. Proc. 2025-32)"] },
     { k: ["hsa", "health savings account"], p: ["2026 HSA limits: $4,400 self-only, $8,750 family (employer + employee combined), plus a $1,000 catch-up at 55+ if you're not on Medicare. Triple tax-advantaged: deductible in, tax-free growth, tax-free out for medical costs. (IRS Rev. Proc. 2025-19)"] },
@@ -6499,7 +6646,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     { k: ["w-4", "w4", "withholding", "withheld", "too much tax withheld", "two jobs"], p: ["IRS tables treat each job as if it were your only income, so with multiple jobs, withholding often comes up short. Fix: check Step 2(c) on BOTH W-4s, or run the free IRS Withholding Estimator at irs.gov/W4App — about 10 minutes with your latest pay stub."] },
     { k: ["apr", "apy"], p: ["APR (annual percentage rate) = yearly cost of borrowing WITHOUT compounding (compare loans with it). APY (annual percentage yield) = yearly return WITH compounding (compare savings accounts with it). Same number, different meaning."] },
     { k: ["emergency fund", "rainy day", "emergency savings", "emergency cash", "starter emergency"], late: true, p: ["Your emergency fund target: 3 to 6 months of essential expenses in a separate high-yield savings account. Can't get there yet? Even $500–$1,000 covers the emergencies that most often become credit-card debt."] },
-    { k: ["credit score", "improve credit", "fico", "credit utilization", "utilization", "30 percent", "utilization ratio", "pay down cards", "pay down"], p: ["FICO weighs payment history (~35%), utilization (~30% — keep balances under 30% of limits), length of history (~15%), new credit (~10%), and mix (~10%). Fastest honest wins: autopay everything and pay down high-utilization cards first."] },
+    { k: ["credit score", "improve credit", "fico", "credit utilization", "utilization", "30 percent", "utilization ratio", "pay down cards", "pay down"], p: ["How FICO scores break down (published weights): payment history ~35%, utilization ~30% (balances \u00f7 limits — under 30% is the commonly cited line), length of history ~15%, new credit ~10%, mix ~10%. The mechanics: on-time payments build the history slice; lower balances lower the utilization slice. This is how the models work — not steps for your situation. The Credit factors tool on Home shows the same five factors plus a utilization calculator."] },
     { k: ["overdraft"], p: ["Overdraft fees run ~$30+ per transaction at many banks. Turn on low-balance alerts, link savings for overdraft transfer, and if a fee already hit — call and ask for a courtesy reversal. Banks often waive the first one."] },
     { k: ["unclaimed money", "unclaimed property", "missing money", "escheatment", "state owe me money", "state holds my money", "does my state owe"], p: ["States hold billions in forgotten money. Search free at missingmoney.com (run by the states) or '[your state] unclaimed property'. Never pay a site to search — the real search is always free."] },
     { k: ["fdic", "bank fails", "bank failure", "bank goes under", "is my money safe", "deposit insurance"], p: ["FDIC insurance covers up to $250,000 per depositor, per bank, per ownership category. Checking + savings in your name at one bank combine toward that limit."] },
@@ -6546,6 +6693,88 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* ============ Supabase Auth (Google) + profile + progress sync ============ */
   const supa = window.supabase.createClient(UPMORE_BACKEND_URL, UPMORE_ANON_KEY);
   let session = null, dbProfile = null;
+  /* ============ Terms clickwrap + age enforcement (2026-09-27) ============ */
+  const TOS_VERSION = "v1.0"; // bump when terms.html changes materially; users re-accept
+  async function tosAccepted() {
+    if (!session) return true; // the gate is checked only when signed in
+    try {
+      const { data: row, error } = await supa.from("tos_acceptance")
+        .select("tos_version").eq("user_id", session.user.id).eq("tos_version", TOS_VERSION).maybeSingle();
+      if (error) throw error;
+      return !!(row && row.tos_version === TOS_VERSION);
+    } catch (e) { return false; } // fail closed: show the screen again, don't strand the user
+  }
+  // Append-only: one row per (user, version). Plain insert; a 23505
+  // duplicate just means this version was already accepted. Returns true
+  // only when a row exists for the current version.
+  async function acceptTos() {
+    if (!session) return false;
+    try {
+      const { error } = await supa.from("tos_acceptance")
+        .insert({ user_id: session.user.id, tos_version: TOS_VERSION });
+      if (error && error.code !== "23505") throw error;
+      return await tosAccepted();
+    } catch (e) { return false; }
+  }
+  /* ============ Connection consent sheets (2026-09-27) ============ */
+  // Pre-connection consent for SimpleFIN (bank) and Plaid (brokerage).
+  // Logged to consent_log per kind+version. Returning users who already
+  // consented to the current version skip the sheet (fewer taps, same record).
+  const CONSENT_VERSION = "v1.0"; // bump when copy changes; users re-consent
+  const CONSENT_COPY = {
+    simplefin: {
+      title: "Connect your bank — what you're agreeing to",
+      body: `
+        <p><b>What we collect:</b> your bank accounts, balances, and transactions. Read-only.</p>
+        <p><b>Why:</b> to show your money in one place and power budgets, the Budget Report, and recurring-charge detection.</p>
+        <p><b>Where it's stored:</b> a read-only access credential is kept encrypted in our database vault. Transactions are fetched to display to you — we don't stockpile them.</p>
+        <p><b>Your bank login:</b> you sign in on SimpleFIN's site. Upmore never sees or stores your bank username or password.</p>
+        <p><b>Retention:</b> until you disconnect. Disconnecting deletes the stored credential immediately.</p>
+        <p><b>Read-only:</b> we can never move your money.</p>`,
+    },
+    plaid: {
+      title: "Connect your brokerage — what you're agreeing to",
+      body: `
+        <p><b>What we collect:</b> your investment accounts, holdings, and balances. Read-only — analysis only, never trading.</p>
+        <p><b>Why:</b> to show allocation, concentration, fees, dividends, and other facts about your investments in the Investments X-ray.</p>
+        <p><b>Where it's stored:</b> a read-only access credential is kept encrypted in our database vault.</p>
+        <p><b>Your brokerage login:</b> you sign in inside Plaid's secure window. Upmore never sees or stores your brokerage username or password.</p>
+        <p><b>Retention:</b> until you disconnect. Disconnecting deletes the stored credential immediately.</p>
+        <p><b>Read-only:</b> we can never buy, sell, or move your money. Upmore shows facts only — never personalized investment advice.</p>`,
+    },
+  };
+  let consentPending = null; // { kind, onAgree }
+  function openConsent(kind, onAgree) {
+    const c = CONSENT_COPY[kind];
+    if (!c) { onAgree(); return; }
+    $("consentTitle").textContent = c.title;
+    $("consentBody").innerHTML = c.body;
+    consentPending = { kind, onAgree };
+    $("consentSheet").hidden = false;
+  }
+  async function logConsent(kind) {
+    try {
+      const uid = saveUid();
+      if (!uid) return false;
+      const { error } = await supa.from("consent_log").insert({ user_id: uid, kind, version: CONSENT_VERSION });
+      if (error) throw error;
+      return true;
+    } catch (e) { return false; }
+  }
+  async function hasConsented(kind) {
+    try {
+      const uid = saveUid();
+      if (!uid) return false;
+      const { data: row } = await supa.from("consent_log")
+        .select("id").eq("user_id", uid).eq("kind", kind).eq("version", CONSENT_VERSION)
+        .order("created_at", { ascending: false }).limit(1).maybeSingle();
+      return !!row;
+    } catch (e) { return false; }
+  }
+  async function maybeConsent(kind, onAgree) {
+    if (await hasConsented(kind)) { onAgree(); return; }
+    openConsent(kind, onAgree);
+  }
 
   async function refreshSession() {
     try {
@@ -6569,6 +6798,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   // First sign-in only: persist the onboarding answers. Never overwrites an existing profile.
   async function saveProfile() {
     if (!session) return;
+    if (data.minor) return; // blocked-screen promise: a minor's answers are never written to a profile
     const meta = session.user.user_metadata || {};
     // Fall back to the email prefix (real account identifier), never a placeholder name.
     const emailName = ((session.user.email || "").split("@")[0] || "").trim() || null;
@@ -6576,6 +6806,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       id: session.user.id,
       display_name: data.name || meta.full_name || meta.name || emailName || "Friend",
       state: data.state || null,
+      dob: data.dobISO || null,
       free_time_hours: data.time != null ? (+data.time) / 60 : null,
       paycheck_status: data.paycheck || null,
       cash_available: data.cash || null,
@@ -6758,6 +6989,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     $("guide").classList.remove("talking");
     chat.innerHTML = `<div class="empty" id="empty"><div class="orb"></div>
       <h2>Ask about any move, offer, or step.</h2>
+      <p class="fine" style="margin:6px 0 0">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
       <p class="ctx">${guideCtx()}</p>
       <div class="starters">${STARTERS.map(x =>
         `<button class="starter" data-q="${esc(x.q)}">${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
@@ -7641,7 +7873,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       $("moneyStatus").hidden = true;
       $("connectCard").hidden = false;
       try { $("ccTitle").textContent = "Reconnect your bank \u2014 data is " + staleInfo.days + " days old"; } catch (e) {}
-      $("connectBankBtn").onclick = openConnectSheet;
+      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
       return;
     }
     const balance = accounts[0]?.balance || 0;
@@ -7749,13 +7981,38 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     // HOME: Connect card — show when no live bank is connected.
     // One button opens the connect sheet directly on Home.
+    // TRACK G: picture card — one tap to the full generated report when live.
     const hasLiveBank = bankConnectedLive();
     $("connectCard").hidden = hasLiveBank;
+    const pc = $("pictureCard");
+    if (pc) pc.hidden = !hasLiveBank;
+    const pbb = $("pictureBtn");
+    if (pbb && !pbb.dataset.wired) { pbb.dataset.wired = "1"; pbb.onclick = () => show("budgetReport"); }
     if (!hasLiveBank) {
-      $("connectBankBtn").onclick = openConnectSheet;
+      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
     }
   }
 
+  // TRACK G: first-sync payoff moment. Honest syncing state -> celebration ->
+  // one button into the full picture. Shown after each successful connect.
+  function showPayoffSheet(title, body, ctaLabel, onCta) {
+    $("payoffTitle").textContent = title;
+    $("payoffBody").textContent = body;
+    const cta = $("payoffCta");
+    cta.textContent = ctaLabel;
+    cta.onclick = () => { $("payoffSheet").hidden = true; onCta(); };
+    $("payoffClose").onclick = () => { $("payoffSheet").hidden = true; };
+    $("payoffSheet").hidden = false;
+  }
+  // TRACK G: days of transaction history (thin-data honesty). Span of
+  // posted, non-transfer transaction dates, inclusive.
+  function dataDays(transactions) {
+    const ds = (transactions || [])
+      .filter(t => !t.is_pending && !t.is_transfer && t.posted_at)
+      .map(t => String(t.posted_at).slice(0, 10)).sort();
+    if (!ds.length) return 0;
+    return Math.max(1, Math.round((new Date(ds[ds.length - 1]).getTime() - new Date(ds[0]).getTime()) / 864e5) + 1);
+  }
   // SimpleFIN connect flow: token paste → claim → success.
   // Backend: POST /functions/v1/simplefin-claim {"setup_token"} → {ok, accounts} or {error}.
   function openConnectSheet() {
@@ -7793,9 +8050,23 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         if (res.error) throw new Error(res.error.message || "Connection failed");
         const data = res.data || {};
         if (data.error) throw new Error(data.error);
-        setStatus(`Connected! Found ${data.accounts || 0} account${data.accounts === 1 ? "" : "s"}. Loading your money…`);
-        try { $("connectCard").hidden = true; } catch (e) {}
-        setTimeout(() => { $("connectSheet").hidden = true; renderHome(); toast("Bank connected!"); }, 1200);
+        setStatus(`Connected! Found ${data.accounts || 0} account${data.accounts === 1 ? "" : "s"}. Reading your transactions…`);
+        // TRACK G: pull the fresh transactions now (honest syncing state),
+        // then the payoff moment — celebration + one button to the picture.
+        try { trackData = null; await initLiveTrackData(); } catch (e) {}
+        $("connectSheet").hidden = true;
+        renderHome();
+        const live = loadTrackData();
+        if (live && live.isLive) {
+          const txs = live.transactions || [];
+          const days = dataDays(txs);
+          const body = txs.length
+            ? `${txs.length} transactions${days >= 2 ? ` · ${days} days of history` : ""} — your budget, spending, and profit & loss are ready.`
+            : "Connected — your transactions will appear as they sync.";
+          showPayoffSheet("Your money picture is ready", body, "See my money", () => show("budgetReport"));
+        } else {
+          toast("Bank connected!");
+        }
       } catch (e) {
         setStatus("Couldn't connect: " + (e.message || "unknown error") + ". Check your token and try again.", true);
       } finally {
@@ -8487,6 +8758,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       return;
     }
     const months = budgetMonths(transactions);
+    // TRACK G: thin-data honesty (accuracy invariant 2). Suggested budgets
+    // must state their basis; <30 days -> rough-estimate banner.
+    const days = dataDays(transactions);
+    const thin = days > 0 && days < 30;
+    const thinBanner = thin
+      ? `<div class="pcard" style="margin-bottom:12px"><p class="bsum" style="font-size:14px">Only ${days} day${days === 1 ? "" : "s"} of data so far — budgets below are rough estimates and will sharpen as more of your history arrives.</p></div>`
+      : ``;
+    const suggBasis = thin ? `Suggested · rough estimate` : `Suggested · ${Math.min(3, months.length)}-mo avg`;
     if (!months.length) {
       body.innerHTML = `<div class="pcard"><p class="bsum">No transactions yet. Once your spending flows in, this becomes your full budget report — every category, trend, and dollar, in plain words.</p></div>`;
       return;
@@ -8520,6 +8799,46 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     try {
       const liquid = (accounts || []).reduce((s, a) => s + Math.max(0, Number(a.balance) || 0), 0);
       if (liquid >= 5000) nudge = `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">You have ${bm0(liquid)} sitting in your accounts. The Idle cash check shows what that's costing you per year.</p><button class="ghostbtn" id="brIdle" style="margin-top:8px">Check idle cash →</button></div>`;
+    } catch (e) {}
+
+    // TRACK G: multi-month profit/loss trend — explicit kept per month.
+    // Only months with real transactions; the current month is labeled "so far".
+    const curYm = new Date().toISOString().slice(0, 7);
+    const plMonths = months.slice(0, 6);
+    const plMax = Math.max(1, ...plMonths.map(m => { const a = monthAgg(transactions, m); return Math.max(a.in, a.out, 1); }));
+    const plRows = plMonths.map(m => {
+      const a = monthAgg(transactions, m);
+      const keptLine = a.kept >= 0 ? `kept ${bm0(a.kept)}` : `overspent ${bm0(-a.kept)}`;
+      return `<div style="margin-bottom:12px">
+        <div class="mrow" style="margin-bottom:4px"><div><b>${monthName(m)}${m === curYm ? " · so far" : ""}</b></div><span class="num"><b>${keptLine}</b></span></div>
+        <div class="bs" style="margin:0 0 2px">in ${bm0(a.in)}</div>
+        <div class="bbar" role="img" aria-label="${monthName(m)}: ${bm0(a.in)} in"><i style="width:${Math.max(2, Math.round(a.in / plMax * 100))}%"></i></div>
+        <div class="bs" style="margin:6px 0 2px">out ${bm0(a.out)}</div>
+        <div class="bbar" role="img" aria-label="${monthName(m)}: ${bm0(a.out)} out"><i style="width:${Math.max(2, Math.round(a.out / plMax * 100))}%"></i></div>
+      </div>`;
+    }).join("");
+    const plHtml = plRows
+      ? `<h2 class="sec">Profit &amp; loss by month</h2><div class="bcard">${plRows}</div><p class="fine" style="margin:-4px 0 8px">From your posted transactions — pending and transfers excluded.</p>`
+      : ``;
+
+    // TRACK G: "To Review" queue — uncategorized transactions as a habit loop.
+    const rqCount = reviewQueue(transactions).length;
+    const queueHtml = rqCount
+      ? `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px"><b>${rqCount}</b> transaction${rqCount === 1 ? "" : "s"} still need${rqCount === 1 ? "s" : ""} a category.</p><p class="psub" style="margin-top:4px">A couple of minutes here keeps every number on this page accurate.</p><button class="ghostbtn" id="brReview" style="margin-top:8px">Review them →</button></div>`
+      : ``;
+
+    // TRACK G: net-worth mini-trend (reads existing monthly snapshots only).
+    let nwMiniHtml = "";
+    try {
+      const snaps = JSON.parse(localStorage.getItem("upmore_nw_snaps_v1") || "{}") || {};
+      const keys = Object.keys(snaps).sort();
+      if (keys.length) {
+        const lastK = keys[keys.length - 1];
+        const last = snaps[lastK] || {};
+        const prev = keys.length >= 2 ? (snaps[keys[keys.length - 2]] || {}) : null;
+        const d = prev && prev.total != null && last.total != null ? last.total - prev.total : null;
+        nwMiniHtml = `<h2 class="sec">Net worth</h2><div class="pcard"><p class="bsum" style="font-size:14px"><b>${bm0(last.total || 0)}</b> <span class="dim">as of ${esc(lastK)}</span>${d != null && d !== 0 ? ` · ${d > 0 ? "up" : "down"} ${bm0(Math.abs(d))} since ${esc(keys[keys.length - 2])}` : ""}</p><button class="ghostbtn" id="brNw" style="margin-top:8px">Net worth →</button></div>`;
+      }
     } catch (e) {}
 
     // SPEC 09t: household per-person totals.
@@ -8568,7 +8887,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         ? `${bm0(r.left)} left of ${bm0(r.effective)}${projTxt}`
         : `${bm0(-r.left)} over your ${bm0(r.effective)} budget`;
       const rollTxt = r.rollover > 0 ? ` · ${bm0(r.rollover)} rolled over from last month` : ``;
-      const tgtTxt = r.isCustomTarget ? `Your budget` : `Suggested budget`;
+      const tgtTxt = r.isCustomTarget ? `Your budget` : suggBasis;
       const typeLbl = BUDGET_TYPES[r.btype] || "Rollover";
       const trendTxt = model.prevMonths.length && r.prevAvg > 0
         ? ` · usual ${bm0(r.prevAvg)}/mo` : ``;
@@ -8601,6 +8920,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const reviewHtml = monthReviewHtml(transactions, months, idx);
     body.innerHTML = `
       ${sampleTag}
+      ${thinBanner}
       <div class="bmonthnav">
         <button id="brPrev" ${idx >= months.length - 1 ? "disabled" : ""} aria-label="Previous month">‹</button>
         <b>${monthName(ym)}</b>
@@ -8615,6 +8935,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <div class="pcard"><b class="k">${bm0(model.agg.kept)}</b><span class="k">${kept >= 0 ? "you kept" : "overspent"}</span></div>
       </div>
       ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across your accounts right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
+      ${queueHtml}
+      ${plHtml}
       ${srAomHtml}
       <h2 class="sec">Your budgets</h2>
       <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
@@ -8633,6 +8955,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <p class="psub" style="margin:-6px 0 10px">${bm0(model.rec.total)}/month on autopilot across ${model.rec.list.length} subscriptions and bills.</p>
       <div class="bcard">${recRows || `<p class="psub">No recurring charges detected.</p>`}</div>
       <button class="ghostbtn" id="brCal" style="margin-top:10px">Bills calendar →</button>
+      ${nwMiniHtml}
       ${spikeHtml ? `<h2 class="sec">Worth a look</h2>${spikeHtml}` : ``}
       ${reviewHtml}
       ${hhHtml}
@@ -8648,6 +8971,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const bi = $("brIdle"); if (bi) bi.onclick = () => openCFO("cash");
     wireGoals(avgKept);
     const bc2btn = $("brCal"); if (bc2btn) bc2btn.onclick = () => show("reccal");
+    const brv = $("brReview"); if (brv) brv.onclick = openReviewQueue;
+    const bnw = $("brNw"); if (bnw) bnw.onclick = () => show("networth");
   }
 
   // ---- Sheets: edit target, add category, set keep goal ----
@@ -8746,6 +9071,52 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       toast(b.dataset.pickwho ? `Tagged: ${b.dataset.pickwho}.` : "Attribution cleared.");
     });
   }
+  // TRACK G: "To Review" queue — uncategorized posted transactions as a
+  // swipeable habit loop (Monarch-mobile/Copilot pattern). Accuracy compounds:
+  // every categorization sharpens budgets, trends, and the P&L bars.
+  function reviewQueue(transactions) {
+    return (transactions || [])
+      .filter(t => !t.is_pending && !t.is_transfer && !t.is_excluded && t.posted_at && effCat(t) === "Other")
+      .sort((a, b) => String(b.posted_at).localeCompare(String(a.posted_at)))
+      .slice(0, 50);
+  }
+  let rqList = [], rqIdx = 0, rqChanged = false;
+  function openReviewQueue() {
+    const { transactions } = loadTrackData();
+    rqList = reviewQueue(transactions);
+    rqIdx = 0;
+    rqChanged = false;
+    showReviewItem();
+  }
+  function showReviewItem() {
+    if (rqIdx >= rqList.length) {
+      closeBudgetSheet();
+      renderBudgetReport();
+      toast(!rqList.length ? "All categorized — nice."
+        : rqChanged ? "Reviewed — every number just got more accurate."
+        : "Come back anytime — uncategorized transactions are listed at the top of your report.");
+      return;
+    }
+    const t = rqList[rqIdx];
+    const left = rqList.length - rqIdx;
+    const cats = allCats();
+    openBudgetSheet(`Review · ${left} left`, `
+      <p class="bsum" style="font-size:16px">${esc(t.merchant_raw || "Unknown")}</p>
+      <p class="psub">${bm0(Math.abs(Number(t.amount) || 0))} · ${esc(String(t.posted_at).slice(0, 10))}</p>
+      <p class="psub" style="margin-top:8px">What category is this?</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+        ${cats.map(c => `<button class="ghostbtn" data-rqcat="${esc(c)}" style="margin:0">${esc(c)}</button>`).join("")}
+      </div>
+      <button class="ghostbtn" id="rqSkip" style="margin-top:10px">Skip →</button>`);
+    $("budgetSheetBody").querySelectorAll("[data-rqcat]").forEach(b => b.onclick = () => {
+      setTxCategory(String(t.id), b.dataset.rqcat);
+      rqChanged = true;
+      rqIdx++;
+      showReviewItem();
+    });
+    const sk = $("rqSkip");
+    if (sk) sk.onclick = () => { rqIdx++; showReviewItem(); };
+  }
   function renderBudgetReportMonthReset() { /* keep current month; no-op guard */ }
 
   // ---- Home wiring + show() hook ----
@@ -8768,6 +9139,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
      the model explains. */
 
   const HOLD_LS = { manual: "upmore_holdings_manual_v1", plaid: "upmore_plaid_holdings_v1" };
+  const INV_TARGETS_LS = "upmore_inv_targets_v1";
+  function getInvTargets() { try { return JSON.parse(localStorage.getItem(INV_TARGETS_LS) || "{}") || {}; } catch (e) { return {}; } }
+  function setInvTargets(t) { try { localStorage.setItem(INV_TARGETS_LS, JSON.stringify(t || {})); } catch (e) {} }
+  // GICS sectors for the sector breakdown (user-assigned; funds usually span sectors).
+  const SECTORS = ["—", "Technology", "Healthcare", "Financials", "Consumer Discretionary", "Consumer Staples", "Energy", "Industrials", "Materials", "Utilities", "Real Estate", "Communication Services"];
+  // S&P 500 reference context, facts only (not a target). Trailing dividend
+  // yield ~1.0% as of September 2026 reporting; typical S&P 500 index fund
+  // expense ratio 0.03%. Labeled with as-of; update when stale.
+  const SP500_DIV_YIELD_PCT = 1.0, SP500_DIV_ASOF = "Sept 2026", SP500_INDEX_FEE_PCT = 0.03;
   // Well-known fund expense ratios (2026). Unknown funds -> user-entered or "unknown", never guessed.
   const FUND_FEES = {
     VTI: 0.0003, VOO: 0.0003, IVV: 0.0003, SCHB: 0.0003, SPLG: 0.0002,
@@ -8830,9 +9210,31 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     blsSet(HOLD_LS.manual, getManualHoldings().filter(x => x.id !== id));
   }
   function getPlaidCache() { return blsGet(HOLD_LS.plaid, null); }
+  // Metadata notes for read-only (Plaid-synced) holdings (2026-09-27):
+  // sector + dividend yield the user adds themselves. Device-local, keyed by
+  // holding id; always labeled as the user's own notes, never broker data.
+  // The synced position itself stays read-only.
+  const INV_META_LS = "upmore_inv_meta_v1";
+  function getInvMeta() { try { return JSON.parse(localStorage.getItem(INV_META_LS) || "{}") || {}; } catch (e) { return {}; } }
+  function setInvMeta(id, meta) {
+    try {
+      const m = getInvMeta();
+      if (meta && Object.keys(meta).length) m[id] = meta; else delete m[id];
+      localStorage.setItem(INV_META_LS, JSON.stringify(m));
+    } catch (e) {}
+  }
   function allHoldings() {
     const c = getPlaidCache();
-    return (c && c.holdings ? c.holdings : []).concat(getManualHoldings());
+    const meta = getInvMeta();
+    const synced = (c && c.holdings ? c.holdings : []).map(h => {
+      const o = meta[h.id];
+      if (!o) return h;
+      return { ...h,
+        sector: o.sector || h.sector || null,
+        dividend_yield: o.dividend_yield != null ? o.dividend_yield : h.dividend_yield,
+        meta_note: true };
+    });
+    return synced.concat(getManualHoldings());
   }
   function feeFor(h) {
     if (h.expense_ratio != null) return { rate: h.expense_ratio, known: true };
@@ -8861,8 +9263,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       else if (!f.known && h.bucket !== "Cash") feeUnknown++;
     });
     const cashValue = byBucket.Cash || 0;
+    // Brokerage-max facts (2026-09-27): dividend income, sector mix, and
+    // below-cost-basis positions — all computed from user/plaid data, no advice.
+    let divAnnual = 0, divKnown = 0;
+    const bySector = {};
+    const losers = [];
+    holdings.forEach(h => {
+      const y = Number(h.dividend_yield);
+      if (y > 0) { divAnnual += (h.value || 0) * y; divKnown++; }
+      const sec = (h.sector && h.sector !== "—") ? h.sector : null;
+      if (sec) bySector[sec] = (bySector[sec] || 0) + (h.value || 0);
+      if (h.cost_basis != null && h.cost_basis > 0 && (h.value || 0) < h.cost_basis) losers.push(h);
+    });
+    losers.sort((a, b) => (a.value - a.cost_basis) - (b.value - b.cost_basis));
     return { total, byBucket, sorted, concentrated, costKnown, gainKnown, gainCount,
-             feeYearly, feeKnownValue, feeUnknown, cashValue, count: holdings.length };
+             feeYearly, feeKnownValue, feeUnknown, cashValue, count: holdings.length,
+             divAnnual, divKnown, bySector, losers };
   }
   function investSummaryText(sum) {
     const parts = [];
@@ -8874,6 +9290,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
     const top = sum.sorted[0];
     if (top && sum.total > 0) parts.push(`Biggest position: ${top.symbol}, ${bm0(top.value)} (${Math.round(top.value / sum.total * 100)}% of everything).`);
+    if (sum.divKnown > 0 && sum.total > 0) parts.push(`About ${bm0(sum.divAnnual)}/yr in dividends at the yields you entered (${(sum.divAnnual / sum.total * 100).toFixed(2)}% portfolio yield).`);
     return parts.join(" ");
   }
   // Balance-only investment accounts from bank data (name heuristic).
@@ -8934,8 +9351,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         onSuccess: async (public_token) => {
           try {
             await plaidInvoke({ action: "exchange", public_token });
-            toast("Investments connected.");
             await refreshPlaidHoldings();
+            renderInvestments();
+            // TRACK G: brokerage payoff moment — one button to the X-ray.
+            showPayoffSheet("Investments connected",
+              "Your holdings are in — see what you own, what it costs, and where it's concentrated.",
+              "See the X-ray", () => show("investments"));
           } catch (e) { toast("Connection saved, but holdings didn't load. Try refresh."); renderInvestments(); }
         },
         onExit: () => {},
@@ -9024,7 +9445,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // Summary + allocation
     let mainHtml = "";
     if (!holdings.length) {
-      mainHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees.</p>
+      mainHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees, dividends, sectors.</p>
         <button class="cta" id="invAddFirst" style="margin-top:10px">Add a holding</button></div>`;
     } else {
       const allocRows = BUCKETS.filter(b => sum.byBucket[b] > 0.005).map(b => {
@@ -9049,6 +9470,57 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const cashHtml = sum.cashValue >= 1000
         ? `<div class="pcard" style="margin-top:14px"><p class="bsum" style="font-size:14px">${bm0(sum.cashValue)} is sitting in cash inside your investments. The Idle cash check prices what that's costing per year.</p><button class="ghostbtn" id="invIdle" style="margin-top:8px">Check idle cash →</button></div>`
         : "";
+      // Dividends (2026-09-27): facts-only income tracking from user-entered yields.
+      const divYieldPct = sum.total > 0 ? sum.divAnnual / sum.total * 100 : 0;
+      const divHtml = sum.divKnown > 0
+        ? `<h2 class="sec">Dividends</h2><div class="pcard"><p class="bsum" style="font-size:14.5px">About <b>${bm0(sum.divAnnual)}/year</b> in dividends — a ${divYieldPct.toFixed(2)}% portfolio yield.</p>
+          <p class="psub" style="margin-top:6px">From the yields you entered on ${sum.divKnown} position${sum.divKnown === 1 ? "" : "s"}. ${sum.count - sum.divKnown > 0 ? `${sum.count - sum.divKnown} position${sum.count - sum.divKnown === 1 ? " has" : "s have"} no yield entered — tap a holding to add it.` : ""} Estimates from your inputs, not from your broker.</p></div>`
+        : "";
+      // Sectors (2026-09-27): from user-assigned sectors.
+      const secEntries = Object.entries(sum.bySector).sort((a, b) => b[1] - a[1]);
+      const sectorHtml = secEntries.length
+        ? `<h2 class="sec">Sectors</h2><div class="bcard">${secEntries.map(([s, v]) => {
+            const pct = sum.total > 0 ? v / sum.total * 100 : 0;
+            return `<div class="brow"><div class="bt"><b>${esc(s)}</b><span>${bm0(v)} · ${pct.toFixed(0)}%</span></div>
+              <div class="bbar" role="img" aria-label="${esc(s)}: ${pct.toFixed(0)} percent"><i style="width:${Math.min(100, pct)}%"></i></div></div>`;
+          }).join("")}</div><p class="psub" style="margin-top:8px">From the sectors you assigned. Funds usually span sectors — they're counted under Funds in Allocation unless you split them.</p>`
+        : "";
+      // Benchmark context (2026-09-27): facts only, not a target, not advice.
+      const fundFeeAvgPct = sum.feeKnownValue > 0 ? sum.feeYearly / sum.feeKnownValue * 100 : null;
+      const benchHtml = (sum.divKnown > 0 || fundFeeAvgPct != null)
+        ? `<h2 class="sec">Benchmark context</h2><div class="pcard">
+          ${sum.divKnown > 0 ? `<p class="bsum" style="font-size:14px">Your yield: <b>${divYieldPct.toFixed(2)}%</b> vs ~${SP500_DIV_YIELD_PCT.toFixed(1)}% for the S&amp;P 500 (as of ${SP500_DIV_ASOF}).</p>` : ""}
+          ${fundFeeAvgPct != null ? `<p class="bsum" style="font-size:14px;margin-top:6px">Your funds' average fee: <b>${fundFeeAvgPct.toFixed(2)}%</b> vs ${SP500_INDEX_FEE_PCT.toFixed(2)}% for a typical S&amp;P 500 index fund.</p>` : ""}
+          <p class="fine" style="margin-top:8px">Context, not a target — the S&amp;P 500 is 500 large US companies; your mix may differ on purpose. Not advice.</p></div>`
+        : "";
+      // Allocation targets + drift (2026-09-27): factual actual-vs-target.
+      const invTargets = getInvTargets();
+      const targetBuckets = BUCKETS.filter(b => invTargets[b] > 0);
+      const driftHtml = targetBuckets.length
+        ? `<h2 class="sec">Target drift</h2><div class="bcard">${targetBuckets.map(b => {
+            const actual = sum.total > 0 ? (sum.byBucket[b] || 0) / sum.total * 100 : 0;
+            const drift = actual - invTargets[b];
+            return `<div class="mrow"><div><b>${b}</b><i>actual ${actual.toFixed(1)}% · target ${invTargets[b]}%</i></div><span>${drift >= 0 ? "+" : ""}${drift.toFixed(1)}pp</span></div>`;
+          }).join("")}</div><p class="psub" style="margin-top:8px">How far each bucket sits from the target you set — arithmetic, not a rebalancing instruction.</p>`
+        : "";
+      const targetsFormHtml = `
+        <div id="invTargetsForm" hidden style="margin-top:8px"><div class="pcard">
+          <p class="bsum" style="font-size:14px">Your target mix (% per bucket)</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+            ${BUCKETS.map(b => `<label class="f"><span>${b} %</span><input id="tg_${b}" inputmode="decimal" placeholder="0" autocomplete="off" value="${invTargets[b] != null ? esc(String(invTargets[b])) : ""}"></label>`).join("")}
+          </div>
+          <button class="go" id="invTargetsSave" style="margin-top:10px;height:48px">Save targets</button>
+          <p class="fine" style="margin-top:8px">Your own plan, stored on this device. Buckets don't have to add to 100 — each is compared on its own.</p>
+        </div></div>`;
+      // Unrealized losses (2026-09-27): facts + educational tax wording.
+      const lossHtml = sum.losers.length
+        ? `<h2 class="sec">Below cost basis</h2><div class="bcard">${sum.losers.map(h => {
+            const loss = h.cost_basis - h.value;
+            const lpct = h.cost_basis > 0 ? loss / h.cost_basis * 100 : 0;
+            return `<div class="mrow"><div><b>${esc(h.symbol)}</b><i>${esc(h.name)} · paid ${bm0(h.cost_basis)}</i></div><span>−${bm0(loss)} (${lpct.toFixed(1)}%)</span></div>`;
+          }).join("")}</div>
+          <p class="psub" style="margin-top:8px">Educational note: selling an investment for less than you paid can create a capital loss, which tax rules may let you use to offset gains — with limits, and wash-sale rules can disallow the loss if you buy the same security back within 30 days. General information, not tax advice and not a suggestion to sell; a tax professional can say how it applies to you.</p>`
+        : "";
       const holdRows = sum.sorted.map(h => {
         const f = feeFor(h);
         const gain = h.cost_basis != null && h.cost_basis > 0 ? h.value - h.cost_basis : null;
@@ -9057,14 +9529,17 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           : esc(h.account_name || (h.source === "plaid" ? "Brokerage" : ""));
         return `<div class="brow" data-hold="${esc(h.id)}" role="button" tabindex="0" style="cursor:pointer">
           <div class="bt"><b>${esc(h.symbol)}</b><span>${bm0(h.value)}</span></div>
-          <div class="bs">${esc(h.name)} · ${h.quantity} @ ${bc2(h.price)}${gain != null ? ` · ${gain >= 0 ? "up" : "down"} ${bm0(Math.abs(gain))}${retPct != null ? ` (${retPct >= 0 ? "+" : ""}${retPct.toFixed(1)}%)` : ""}` : ""}${f.known && (h.bucket === "Funds" || h.bucket === "Stocks") ? ` · ${(f.rate * 100).toFixed(2)}% fee` : ""}</div>
+          <div class="bs">${esc(h.name)} · ${h.quantity} @ ${bc2(h.price)}${h.dividend_yield > 0 ? ` · ${(h.dividend_yield * 100).toFixed(2)}% yield` : ""}${gain != null ? ` · ${gain >= 0 ? "up" : "down"} ${bm0(Math.abs(gain))}${retPct != null ? ` (${retPct >= 0 ? "+" : ""}${retPct.toFixed(1)}%)` : ""}` : ""}${f.known && (h.bucket === "Funds" || h.bucket === "Stocks") ? ` · ${(f.rate * 100).toFixed(2)}% fee` : ""}</div>
           ${sub ? `<div class="bs" style="color:var(--dim)">${sub}</div>` : ""}</div>`;
       }).join("");
       mainHtml = `
         <div class="pcard" style="margin-top:14px"><p class="bsum">${esc(investSummaryText(sum))}</p></div>
         <h2 class="sec">Allocation</h2>
         <div class="bcard">${allocRows}</div>
-        ${concHtml}${feeHtml}${cashHtml}
+        ${driftHtml}
+        <button class="ghostbtn" id="invTargetsBtn" style="margin-top:8px">${targetBuckets.length ? "Edit allocation targets" : "Set allocation targets"}</button>
+        ${targetsFormHtml}
+        ${concHtml}${feeHtml}${divHtml}${sectorHtml}${benchHtml}${lossHtml}${cashHtml}
         <h2 class="sec">Positions</h2>
         <div class="bcard">${holdRows}</div>
         <button class="ghostbtn" id="invAdd" style="margin-top:10px">+ Add a holding manually</button>
@@ -9092,10 +9567,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         `</div><p class="psub" style="margin-top:8px">Connect Plaid or add positions manually to X-ray these.</p>` : "";
 
     body.innerHTML = `${connHtml}${mainHtml}${balHtml}
-      <p class="fine" style="margin:18px 0 4px">Read-only X-ray. Upmore shows what you hold, what it costs, and where it's concentrated — it never tells you what to buy or sell.</p>`;
+      <p class="fine" style="margin:18px 0 4px">Read-only X-ray. Upmore shows what you hold, what it costs, where it's concentrated, and what it pays — facts only, never buy/sell advice.</p>`;
 
     // wiring
-    const pc = $("invPlaidConnect"); if (pc) pc.onclick = plaidConnectFlow;
+    const pc = $("invPlaidConnect"); if (pc) pc.onclick = () => maybeConsent("plaid", plaidConnectFlow);
     const rf = $("invRefresh"); if (rf) rf.onclick = () => { plaidStatusCache = null; refreshPlaidHoldings(); };
     const dc = $("invDisconnect"); if (dc) dc.onclick = async () => {
       try { await plaidInvoke({ action: "disconnect" }); } catch (e) {}
@@ -9103,6 +9578,18 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     };
     const ia = $("invAdd") || $("invAddFirst"); if (ia) ia.onclick = () => openHoldingSheet(null);
     const ii = $("invIdle"); if (ii) ii.onclick = () => openCFO("cash");
+    // Allocation targets (2026-09-27): user-owned plan, device-local.
+    const itb = $("invTargetsBtn");
+    if (itb) itb.onclick = () => { const f = $("invTargetsForm"); if (f) f.hidden = !f.hidden; };
+    const its = $("invTargetsSave");
+    if (its) its.onclick = () => {
+      const t = {};
+      BUCKETS.forEach(b => {
+        const el = $("tg_" + b); const v = el ? parseFloat(el.value) : NaN;
+        if (!isNaN(v) && v > 0) t[b] = Math.min(100, Math.round(v * 10) / 10);
+      });
+      setInvTargets(t); renderInvestments(); toast("Targets saved.");
+    };
     // SPEC 09: Monte Carlo retirement check (analysis only).
     const mcNowEl = $("mcNow");
     try { if (mcNowEl && !mcNowEl.value && typeof sum !== "undefined" && sum.total > 0) mcNowEl.value = Math.round(sum.total); } catch (e) {}
@@ -9147,7 +9634,22 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <div class="mrow"><div><b>Value</b></div><span>${bm0(existing.value)}</span></div>
         ${existing.cost_basis != null ? `<div class="mrow"><div><b>Cost basis</b></div><span>${bm0(existing.cost_basis)}</span></div>` : ``}
         <div class="mrow"><div><b>Fee</b></div><span>${f.known ? (f.rate * 100).toFixed(2) + "%" : "unknown"}</span></div>
-        <p class="fine" style="margin-top:8px">Plaid-synced positions are read-only here.</p>`);
+        ${existing.meta_note ? `<div class="mrow"><div><b>Your notes</b></div><span>${esc(existing.sector || "—")}${existing.dividend_yield != null ? ` · ` + (existing.dividend_yield * 100).toFixed(2) + `% yield` : ``}</span></div>` : ``}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+          <label class="f"><span>Sector (your note)</span><div class="sel"><select id="hdmSector">${SECTORS.map(s => `<option ${existing.sector === s ? "selected" : ""}>${s}</option>`).join("")}</select></div></label>
+          <label class="f"><span>Dividend yield % (your note)</span><input id="hdmDiv" inputmode="decimal" placeholder="1.4" autocomplete="off" value="${existing.dividend_yield != null ? esc(String((existing.dividend_yield * 100).toFixed(2))) : ""}"></label>
+        </div>
+        <button class="go" id="hdmSave" style="margin-top:10px;height:48px">Save my notes</button>
+        <p class="fine" style="margin-top:8px">Plaid-synced positions are read-only here — the position itself can't change. Notes you add are stored on this device only and don't come from your broker.</p>`);
+      $("hdmSave").onclick = () => {
+        const secVal = $("hdmSector") ? $("hdmSector").value : "—";
+        const divPct = parseFloat((($("hdmDiv") || {}).value || "").trim());
+        const m = {};
+        if (secVal && secVal !== "—") m.sector = secVal;
+        if (!isNaN(divPct) && divPct > 0) m.dividend_yield = divPct / 100;
+        setInvMeta(existing.id, m);
+        closeBudgetSheet(); renderInvestments(); toast("Notes saved.");
+      };
       return;
     }
     const h = existing || {};
@@ -9158,6 +9660,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <label class="f"><span>Type</span><div class="sel"><select id="hdBucket">${BUCKETS.map(b => `<option ${h.bucket === b ? "selected" : ""}>${b}</option>`).join("")}</select></div></label>
           <label class="f"><span>Expense ratio % (optional)</span><input id="hdFee" inputmode="decimal" placeholder="0.03" autocomplete="off" value="${h.expense_ratio != null ? esc(String(h.expense_ratio * 100)) : ""}"></label>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label class="f"><span>Sector (stocks, optional)</span><div class="sel"><select id="hdSector">${SECTORS.map(s => `<option ${h.sector === s ? "selected" : ""}>${s}</option>`).join("")}</select></div></label>
+          <label class="f"><span>Dividend yield % (optional)</span><input id="hdDiv" inputmode="decimal" placeholder="1.4" autocomplete="off" value="${h.dividend_yield != null ? esc(String((h.dividend_yield * 100).toFixed(2))) : ""}"></label>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <label class="f"><span>Shares / quantity</span><input id="hdQty" inputmode="decimal" placeholder="10" autocomplete="off" value="${h.quantity != null ? esc(String(h.quantity)) : ""}"></label>
@@ -9175,11 +9681,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       if (!sym || !(qty > 0) || !(price >= 0)) { toast("Symbol, shares, and price are required."); return; }
       const feePct = parseFloat($("hdFee").value);
       const cost = parseFloat($("hdCost").value);
+      const divPct = parseFloat($("hdDiv").value);
+      const secVal = $("hdSector") ? $("hdSector").value : "—";
       saveManualHolding({
         id: existing ? existing.id : null,
         account_id: "manual", account_name: "Added by you",
         symbol: sym, name: ($("hdName").value || "").trim() || sym,
         bucket: $("hdBucket").value,
+        sector: secVal && secVal !== "—" ? secVal : null,
+        dividend_yield: !isNaN(divPct) && divPct > 0 ? divPct / 100 : null,
         quantity: qty, price,
         cost_basis: !isNaN(cost) && cost > 0 ? cost : null,
         expense_ratio: !isNaN(feePct) && feePct >= 0 ? feePct / 100 : (FUND_FEES[sym] != null ? FUND_FEES[sym] : null),
@@ -9458,6 +9968,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       } catch (e) {}
       await ensureProfile();
       await loadProgress();
+      if (minorBlocked()) { show("blocked"); return; }
+      if (!(await tosAccepted())) { show("tos"); return; }
       const hh0 = LEGACY_TABS[h] || h;
       const tab = order.includes(hh0) && ["home", "guide", "profile"].includes(hh0) ? hh0 : "home";
       show(tab);
@@ -10208,9 +10720,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const factors = [
       ["Payment history", "35% of FICO · extremely influential in VantageScore", "One on-time streak matters more than anything else."],
       ["Amounts owed (utilization)", "30% of FICO · highly influential in VantageScore", "Balance ÷ limit across cards. Under 30% is the common line; under 10% is better."],
-      ["Length of history", "15% of FICO · highly influential in VantageScore", "Average age of accounts. Don't close your oldest card."],
+      ["Length of history", "15% of FICO · highly influential in VantageScore", "Average age of accounts. Closing the oldest card shortens that average — that's the mechanism behind the length-of-history effect."],
       ["New credit", "10% of FICO · less influential in VantageScore", "Hard inquiries from applications. A few is fine."],
-      ["Credit mix", "10% of FICO · less influential in VantageScore", "Cards + installment loans. Don't open accounts just for mix."],
+      ["Credit mix", "10% of FICO · less influential in VantageScore", "Cards + installment loans. Opening accounts purely to change mix adds hard inquiries — the standard guidance is not to chase it."],
     ];
     body.innerHTML = `
       <p class="psub">Nobody can tell you your exact score without pulling it — but these are the five factors every lender's model uses, and the utilization math is exact.</p>

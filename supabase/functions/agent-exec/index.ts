@@ -23,6 +23,11 @@
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/+esm";
+import {
+  playbookRegistry, merchantDirectory, GENERIC_FALLBACK,
+  normalizeMerchant, resolveMerchant,
+  type MerchantPlaybook, type Resolution,
+} from "./merchant-catalog.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://upmore-srikanthvishnu90-sketchs-projects.vercel.app",
@@ -558,6 +563,146 @@ const browserPlaybooks: Record<string, BrowserPlaybookDef> = {
   "devin": { start: devinStart, resume: devinResume },
 };
 
+// ================= merchant catalog wiring =================
+// Hard gates (legal/product requirements):
+//   - unknown merchant or no playbook -> audited guided fallback
+//   - playbook.verified !== true -> executor REFUSES with
+//     { path: "guided", reason: "unverified_playbook" }; vaulted credentials
+//     and Browserbase are never touched for unverified playbooks.
+//   - missing Browserbase env -> audited needs_setup + fallback, never fake
+//     execution.
+//   - every attempt, including guided refusals, is audited in exec_runs.
+
+function bbEnvReady(): boolean {
+  return !!(Deno.env.get("BROWSERBASE_API_KEY") && Deno.env.get("BROWSERBASE_PROJECT_ID"));
+}
+
+// Audited guided refusal: writes an exec_runs row (status failed, structured
+// evidence) and reverts a claimed approval to approved so the user can retry
+// later. Returns the response body.
+async function recordGuidedRun(opts: {
+  admin: ReturnType<typeof createClient>;
+  approval: Record<string, unknown> | null;
+  userId: string;
+  reason: string;
+  note?: string;
+  directory_entry: unknown;
+}): Promise<{ ok: false; path: "guided"; reason: string; directory_entry: unknown }> {
+  const { admin, approval, userId, reason, note, directory_entry } = opts;
+  const evidence: Record<string, unknown> = { path: "guided", reason, directory_entry };
+  if (note) evidence.note = note;
+  if (approval) {
+    await admin.from("exec_runs").insert({
+      approval_id: approval.id, user_id: userId, status: "failed",
+      evidence, error: note || reason,
+      finished_at: new Date().toISOString(),
+    });
+    // Guided refusals are not terminal: revert the claim so a later retry
+    // (after setup / verification / manual cancellation) can proceed.
+    await admin.from("exec_approvals").update({ status: "approved" })
+      .eq("id", approval.id).eq("status", "executing");
+  }
+  return { ok: false, path: "guided", reason, directory_entry };
+}
+
+// Declarative runner: executes a VERIFIED catalog playbook using only the
+// existing BbPage capabilities. Unverified playbooks never reach this — the
+// gate in serve() refuses them before vault/Browserbase access.
+async function runDeclarative(
+  ctx: ExecContext, page: BbPage, pb: MerchantPlaybook,
+  ev: Record<string, unknown>, fromIndex: number, otp: string | null,
+): Promise<BrowserOutcome> {
+  const steps = pb.steps;
+  const fail = (error: string): BrowserOutcome => ({ ok: false, error });
+  for (let i = fromIndex; i < steps.length; i++) {
+    const a = steps[i];
+    switch (a.kind) {
+      case "goto":
+        await page.goto(a.url);
+        break;
+      case "waitFor": {
+        const ok = await page.waitFor(a.js, a.timeoutMs ?? 20000);
+        if (!ok && a.required !== false) {
+          return fail(`Timed out waiting for ${a.label ?? "the page"} — the site layout may have changed. Nothing was changed.`);
+        }
+        break;
+      }
+      case "clickText": {
+        const clicked = await page.clickText(a.pattern);
+        if (!clicked) return fail(`Could not find a control matching "${a.pattern}" — the site layout may have changed. Nothing was changed.`);
+        break;
+      }
+      case "clickFirst": {
+        const clicked = await page.clickFirst(a.selectors);
+        if (!clicked && a.required !== false) return fail("Could not find the expected control — the site layout may have changed. Nothing was changed.");
+        break;
+      }
+      case "clickDialogButton": {
+        const clicked = await page.clickDialogButton(a.pattern);
+        if (!clicked) return fail(`Could not click the confirmation control matching "${a.pattern}". Nothing was changed.`);
+        break;
+      }
+      case "typeInto": {
+        const text = a.credential === "username" ? ctx.username
+          : a.credential === "password" ? ctx.password
+          : a.text ?? "";
+        const typed = await page.typeInto(a.selectors, text);
+        if (!typed) return fail("Could not find the sign-in field — the site layout may have changed. Nothing was changed.");
+        break;
+      }
+      case "otpPause": {
+        // Pause for the user's one-time code; keep the session alive.
+        ev.resume = { stage: "otp", step_index: i + 1 };
+        pushShot(ev, await page.screenshot("otp-prompt"));
+        return {
+          awaitingOtp: true,
+          otpHint: a.hint,
+          resume: ev.resume as Record<string, unknown>,
+        };
+      }
+      case "fillOtp": {
+        const how = await page.fillOtp(otp ?? "");
+        ev.otp_entry = how || null;
+        if (!how) return fail("The code field disappeared — the session may have expired. Nothing was changed.");
+        break;
+      }
+      case "screenshot":
+        pushShot(ev, await page.screenshot(a.label));
+        break;
+      case "requireText": {
+        const pageText = ((await page.eval("document.body.innerText || \"\"").catch(() => "")) as string);
+        const m = new RegExp(a.patterns.join("|"), "i").exec(pageText);
+        if (m) {
+          const idx = pageText.indexOf(m[0]);
+          ev.confirmation_text = pageText.slice(Math.max(0, idx - 120), idx + 200);
+        } else {
+          return fail("Clicked cancel but no confirmation text appeared — check the merchant account before retrying.");
+        }
+        break;
+      }
+    }
+  }
+  // Success requires BOTH visible confirmation text AND a final screenshot.
+  const shots = ev.shots as Array<{ label: string; data: string }> | undefined;
+  if (!ev.confirmation_text || !shots || !shots.length) {
+    return fail("No visible confirmation captured — not reporting success. Check the merchant account.");
+  }
+  ev.note = `${pb.display_name} subscription cancellation confirmed in the browser.`;
+  return { ok: true };
+}
+
+// Build a browser playbook from a verified catalog entry. Only called for
+// verified:true playbooks; unverified entries are refused by the gate.
+function declarativeDef(pb: MerchantPlaybook): BrowserPlaybookDef {
+  return {
+    start: (ctx, page, ev) => runDeclarative(ctx, page, pb, ev, 0, null),
+    resume: (ctx, page, otp, ev, resumeState) => {
+      const idx = Number((resumeState as Record<string, unknown>).step_index ?? 0);
+      return runDeclarative(ctx, page, pb, ev, idx, otp);
+    },
+  };
+}
+
 // ================= serve =================
 serve(async (req) => {
   const cors = corsFor(req);
@@ -632,14 +777,31 @@ serve(async (req) => {
 
       const { data: approval } = await admin.from("exec_approvals")
         .select("*").eq("id", run.approval_id).maybeSingle();
-      const def = approval && browserPlaybooks[approval.merchant_key as string];
-      if (!approval || !def) {
+      // Revalidate the approval on resume: ownership, action, and that the
+      // run's merchant still resolves to a VERIFIED playbook. OTP codes are
+      // never stored — otp_code travels only into the page below.
+      if (!approval || approval.user_id !== user.id ||
+          approval.action !== "cancel_subscription" ||
+          !["approved", "executing"].includes(approval.status as string)) {
         await admin.from("exec_runs").update({
-          status: "failed", error: "No browser playbook for this run",
+          status: "failed", error: "Approval is not valid for resume",
           finished_at: new Date().toISOString(),
         }).eq("id", run.id);
-        return json({ error: "No browser playbook for this run" }, 400);
+        return json({ error: "Approval is not valid for resume" }, 409);
       }
+      const resumeKey = normalizeMerchant(String(approval.merchant_key || ""));
+      const resumePb = playbookRegistry[resumeKey];
+      if (!resumePb || resumePb.verified !== true) {
+        const directory_entry = merchantDirectory[resumeKey] ?? GENERIC_FALLBACK;
+        await admin.from("exec_runs").update({
+          status: "failed",
+          evidence: { path: "guided", reason: "unverified_playbook", directory_entry },
+          error: "unverified_playbook",
+          finished_at: new Date().toISOString(),
+        }).eq("id", run.id);
+        return json({ ok: false, path: "guided", reason: "unverified_playbook", directory_entry }, 409);
+      }
+      const def = browserPlaybooks[resumeKey] ?? declarativeDef(resumePb);
 
       const ev: Record<string, unknown> = {
         ...((run.evidence as Record<string, unknown>) || {}),
@@ -703,18 +865,66 @@ serve(async (req) => {
     if (approval.action !== "cancel_subscription") {
       return json({ error: `Unsupported action ${approval.action}` }, 400);
     }
-    const browserDef = browserPlaybooks[approval.merchant_key];
-    const httpPlaybook = playbooks[approval.merchant_key];
+    // Resolve the merchant through the catalog (statement descriptors are
+    // noisy: "SPOTIFY USA", "MICROSOFT*XBOX", ...). The executor gate:
+    //   - unknown / no playbook -> audited guided fallback
+    //   - playbook.verified !== true -> REFUSE: { path:"guided",
+    //     reason:"unverified_playbook" }. Vaulted credentials and Browserbase
+    //     are never touched for unverified playbooks.
+    const resolved: Resolution = resolveMerchant(String(approval.merchant_key || ""));
+    if (resolved.merchant_key === "unknown" || !resolved.playbook) {
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id,
+        reason: "no_playbook",
+        note: `Upmore has no cancellation path for "${approval.merchant_key}" yet — here is the guided self-serve flow.`,
+        directory_entry: resolved.directory,
+      });
+      return json(r, 400);
+    }
+    if (resolved.playbook.verified !== true) {
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id,
+        reason: "unverified_playbook",
+        note: `The ${resolved.playbook.display_name} cancellation path is not live-verified yet, so the agent will not attempt it — here is the guided self-serve flow.`,
+        directory_entry: resolved.directory,
+      });
+      return json(r, 400);
+    }
+    const merchantKey = resolved.merchant_key;
+    const browserDef = browserPlaybooks[merchantKey] ?? declarativeDef(resolved.playbook);
+    const httpPlaybook = playbooks[merchantKey];
     if (!browserDef && !httpPlaybook) {
-      return json({ error: `No playbook for ${approval.merchant_key}` }, 400);
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id, reason: "no_playbook",
+        directory_entry: resolved.directory,
+      });
+      return json(r, 400);
+    }
+
+    // Atomic claim: approved -> executing, only when the row is still
+    // approved and caller-owned. Two concurrent execute calls cannot both
+    // proceed — exactly one wins the claim.
+    const { data: claimed } = await admin.from("exec_approvals")
+      .update({ status: "executing" })
+      .eq("id", approval.id).eq("user_id", user.id)
+      .eq("action", "cancel_subscription").eq("status", "approved")
+      .select("id");
+    if (!claimed || !claimed.length) {
+      return json({ error: "Approval was already claimed or is no longer approved" }, 409);
     }
 
     // Load vaulted credential. Browser playbooks (passwordless OTP flows)
     // need only the username/email; HTTP playbooks need both.
     const { data: credRef } = await admin.from("exec_credential_refs")
-      .select("*").eq("user_id", user.id).eq("merchant_key", approval.merchant_key).maybeSingle();
+      .select("*").eq("user_id", user.id).eq("merchant_key", merchantKey).maybeSingle();
     if (!credRef) {
-      return json({ error: "No saved login for this merchant. Connect it in the app first." }, 409);
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id,
+        reason: "no_vault_credentials",
+        note: "No saved login for this merchant. Connect it in the app first — here is the guided self-serve flow in the meantime.",
+        directory_entry: resolved.directory,
+      });
+      return json(r, 409);
     }
     const vres = await fetch(
       `${supabaseUrl}/rest/v1/vault_secrets?select=secret&name=eq.${encodeURIComponent(credRef.vault_name)}`,
@@ -725,15 +935,33 @@ serve(async (req) => {
     let cred: { username?: string; password?: string } = {};
     try { cred = JSON.parse(vrows?.[0]?.secret || "{}"); } catch { /* ignore */ }
     if (!cred.username || (!browserDef && !cred.password)) {
-      return json({ error: "Saved login is incomplete. Reconnect it in the app." }, 409);
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id,
+        reason: "no_vault_credentials",
+        note: "Saved login is incomplete. Reconnect it in the app — here is the guided self-serve flow in the meantime.",
+        directory_entry: resolved.directory,
+      });
+      return json(r, 409);
     }
+
+    // Honest setup check: no Browserbase credentials -> audited needs_setup
+    // with the guided fallback, never a fake execution.
+    if (!bbEnvReady()) {
+      const r = await recordGuidedRun({
+        admin, approval, userId: user.id,
+        reason: "needs_setup",
+        note: "Browser automation is not configured yet (Browserbase credentials are missing), so the agent cannot run the browser. Here is the guided self-serve flow.",
+        directory_entry: resolved.directory,
+      });
+      return json(r, 503);
+    }
+
     const ctx: ExecContext = {
       username: cred.username, password: cred.password || "",
       approval, admin,
     };
 
-    // Mark executing + open run row.
-    await admin.from("exec_approvals").update({ status: "executing" }).eq("id", approval.id);
+    // Open run row (approval is already atomically claimed above).
     const { data: run } = await admin.from("exec_runs")
       .insert({ approval_id: approval.id, user_id: user.id, status: "started", evidence: {} })
       .select("id").single();
@@ -742,8 +970,9 @@ serve(async (req) => {
     if (browserDef) {
       let session: { id: string; connectUrl: string } | null = null;
       const ev: Record<string, unknown> = {
-        merchant: approval.merchant_key, driver: "browserbase",
+        merchant: merchantKey, driver: "browserbase",
       };
+      const directory_entry = resolved.directory;
       try {
         session = await bbCreateSession(true); // keepAlive: survives the OTP pause
         ev.session_id = session.id;
@@ -770,6 +999,7 @@ serve(async (req) => {
         session = null;
         const finalStatus = outcome.ok ? "done" : "failed";
         const err = outcome.ok ? null : (outcome as { error: string }).error;
+        if (finalStatus === "failed") ev.directory_entry = directory_entry;
         await admin.from("exec_runs").update({
           status: finalStatus, evidence: ev, error: err,
           finished_at: new Date().toISOString(),
@@ -777,10 +1007,13 @@ serve(async (req) => {
         await admin.from("exec_approvals").update({
           status: finalStatus, decided_at: new Date().toISOString(),
         }).eq("id", approval.id);
-        return json({ ok: outcome.ok, status: finalStatus, evidence: ev, error: err });
+        return json(outcome.ok
+          ? { ok: true, status: finalStatus, evidence: ev, error: err }
+          : { ok: false, status: finalStatus, evidence: ev, error: err, directory_entry });
       } catch (e) {
         if (session) await bbStopSession(session.id);
         const msg = String(e?.message || e);
+        ev.directory_entry = directory_entry;
         await admin.from("exec_runs").update({
           status: "failed", evidence: ev,
           error: "Browser run failed: " + msg,
@@ -789,7 +1022,7 @@ serve(async (req) => {
         await admin.from("exec_approvals").update({
           status: "failed", decided_at: new Date().toISOString(),
         }).eq("id", approval.id);
-        return json({ ok: false, status: "failed", error: "Browser run failed: " + msg }, 500);
+        return json({ ok: false, status: "failed", error: "Browser run failed: " + msg, directory_entry }, 500);
       }
     }
 
@@ -802,6 +1035,9 @@ serve(async (req) => {
     }
 
     const finalStatus = result.ok ? "done" : "failed";
+    if (!result.ok) {
+      (result.evidence as Record<string, unknown>).directory_entry = resolved.directory;
+    }
     await admin.from("exec_runs").update({
       status: finalStatus,
       evidence: result.evidence,
@@ -813,7 +1049,9 @@ serve(async (req) => {
       decided_at: new Date().toISOString(),
     }).eq("id", approval.id);
 
-    return json({ ok: result.ok, status: finalStatus, evidence: result.evidence, error: result.error || null });
+    return json(result.ok
+      ? { ok: true, status: finalStatus, evidence: result.evidence, error: result.error || null }
+      : { ok: false, status: finalStatus, evidence: result.evidence, error: result.error || null, directory_entry: resolved.directory });
   } catch (e) {
     return json({ error: String(e?.message || e) }, 500);
   }
