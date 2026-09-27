@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-DXVMSepRJ0fuyJqG46JpAFX2mS9MrrpBfMstcTciaQ8=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-zwpYH5fatqSOhXv5oyV8Lplxrds/PDVYbErVg3mxb78=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -357,7 +357,7 @@
   .tab { font-size:10.5px; padding:4px 6px; }
   .avatar { cursor:pointer; }
   .ptitle { margin-top:18px; font-size:29px; line-height:1.18; font-weight:600; letter-spacing:-0.01em; }
-  .psub { margin-top:6px; font-size:14.5px; color:var(--muted); }
+  .psub { margin-top: 8px; font-size: 15px; line-height: 1.45; color: var(--muted); }
 
   /* home hero: one clear action, tinted per move */
   .hero { margin-top:12px; border-radius:22px; border:1px solid var(--line); background:var(--surface-2); padding:18px; }
@@ -368,7 +368,7 @@
   .homerow .chev { color:var(--muted); font-size:20px; }
   .linkbtn { background:none; border:none; color:var(--muted); font-size:14px; text-decoration:underline; cursor:pointer; padding:8px; }
   /* Home: icon rows */
-  .sec { font-size:17px; font-weight:700; margin:22px 2px 10px; }
+  .sec { font-size:18px; font-weight:700; margin:24px 2px 12px; }
   .iconrow { display:flex; align-items:center; gap:12px; width:100%; background:var(--surface); border:1px solid var(--line);
     border-radius:14px; padding:10px 12px; margin-bottom:8px; text-align:left; cursor:pointer; color:var(--text); }
   .appicon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center;
@@ -432,11 +432,11 @@
   .hero .cta { margin-top:14px; }
 
   /* explore */
-  .chips { display:flex; gap:8px; overflow-x:auto; margin:0 -22px; padding:14px 22px 4px; scrollbar-width:none; }
+  .chips { display:flex; gap:12px; overflow-x:auto; margin:0 -22px; padding:14px 22px 4px; scrollbar-width:none; }
   .chips::-webkit-scrollbar { display:none; }
-  .chip { flex:none; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:8px 15px; font-size:13.5px; font-weight:600; }
+  .chip { flex:none; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:12px 18px; font-size:14px; font-weight:600; }
   .chip[aria-pressed="true"] { background:var(--text); color:#17251E; border-color:var(--text); }
-  .chipwrap { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .chipwrap { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
   .checkline { display:flex; align-items:center; gap:10px; padding:10px 2px; font-size:15px; font-weight:600; }
   .checkline input { width:20px; height:20px; accent-color:var(--mint); }
   .xlist { margin-top:12px; display:flex; flex-direction:column; gap:10px; }
@@ -533,7 +533,7 @@
   .brow .tgt, .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px;
     background:none; border:0; cursor:pointer; padding:6px 4px; } /* FIX (QA-D): .tgt had no base rule —
     buttons outside .brow rendered as the default light button face with light inherited text (WCAG 1.4.3 fail) */
-  .bcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:2px 16px; }
+  .bcard { margin-top: 16px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 4px 20px; }
   .bstat { font-size:12.5px; color:var(--dim); margin-top:6px; }
   .bkv { display:flex; gap:10px; margin:10px 0; }
   .bkv .pcard { flex:1; margin:0; }
@@ -559,7 +559,7 @@
   .connectcard { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; margin:12px 0; }
   .connectcard .cc-top b { font-size:16px; display:block; margin-bottom:4px; }
   .connectcard .cc-top p { font-size:13px; color:var(--dim); margin:0 0 12px; line-height:1.4; } /* FIX (QA-D): was #666, unreadable on dark */
-  .connectcard .cta { width:100%; margin:0 0 8px; }
+  .connectcard .cta { width:100%; margin:0 0 12px; }
   .connectcard .fine { font-size:11px; color:var(--dim); margin:0; text-align:center; } /* FIX (QA-D): was #999, failed WCAG 1.4.3 on dark */
   /* FIX (T6): Pending badge for transaction list */
   .pending-badge { display:inline-block; font-size:10px; font-weight:600; background:var(--amber-soft); color:var(--amber); padding:2px 6px; border-radius:10px; margin-left:6px; text-transform:uppercase; letter-spacing:0.5px; }
@@ -587,13 +587,13 @@
   .abadge { font-size:10.5px; font-weight:700; color:#17251E; background:var(--amber); border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .xfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; font-size:12.5px; color:var(--dim); }
   .xfoot a { color:var(--sky); font-weight:600; text-decoration:none; white-space:nowrap; }
-  .ghostbtn { width:100%; margin-top:12px; padding:14px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:14.5px; font-weight:600; cursor:pointer; }
+  .ghostbtn { width:100%; margin-top:12px; padding:14px 16px; min-height:48px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-weight:600; cursor:pointer; }
   .uptag { font-style:normal; color:var(--sky); font-size:12px; }
 
   .wsec { margin:24px 0 10px; font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
 
   /* profile */
-  .pcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:16px; display:flex; gap:14px; align-items:center; }
+  .pcard { margin-top: 16px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 20px; display: flex; gap: 16px; align-items: center; }
   .pava { flex:none; width:56px; height:56px; border-radius:50%; display:grid; place-items:center; font-size:22px; font-weight:600; color:var(--silver);
     background: rgba(201,207,202,.12); }
   .pcard b { font-size:17px; font-weight:600; }
@@ -704,35 +704,37 @@
      Monarch/Copilot/Rocket Money patterns: one accent, silver-gradient
      hero figures, value-first stat tiles, hairline cards, pill controls. */
   .micro { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 6px; }
+    color: var(--muted); margin: 0 0 8px; }
   .hero-num { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; margin: 0;
     font-variant-numeric: tabular-nums;
     background: linear-gradient(180deg, #FFFFFF 0%, var(--silver) 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .conn-num { font-size: 24px; font-weight: 700; margin: 2px 0; font-variant-numeric: tabular-nums; color: var(--text); }
-  .conn-sub { font-size: 12.5px; color: var(--muted); margin: 0; }
+  .conn-num { font-size: 24px; font-weight: 700; margin: 4px 0; font-variant-numeric: tabular-nums; color: var(--text); }
+  .conn-sub { font-size: 14px; line-height: 1.45; color: var(--muted); margin: 0; }
   .hero-card { display: block; width: 100%; text-align: left; background: var(--surface);
-    border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 12px; color: var(--text); }
-  .hero-card .hero-chart { margin-top: 10px; }
+    border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-top: 16px; color: var(--text); }
+  .hero-card .hero-chart { margin-top: 12px; }
   .delta-chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px;
     border-radius: 999px; margin-top: 8px; font-variant-numeric: tabular-nums; }
   .delta-chip.up { background: var(--up-soft); color: var(--up); }
   .delta-chip.down { background: var(--down-soft); color: var(--down); }
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
-  .conn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
-  .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
+  .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+  /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
+     connector cards — visual left, title + value, chevron right. */
+  .conn-card { display: flex; gap: 16px; align-items: center; width: 100%; text-align: left;
     background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-    padding: 14px 16px; color: var(--text); }
+    padding: 20px; color: var(--text); min-height: 116px; }
   .conn-card .cc-visual { flex: none; width: 76px; height: 76px; }
   .conn-card .cc-body { flex: 1; min-width: 0; }
   .conn-card .cc-go { flex: none; color: var(--dim); font-size: 20px; }
   .stat-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-    padding: 16px; }
+    padding: 20px; }
   .stat-tile .v { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); margin: 0 0 4px; }
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
   .chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
-    padding: 18px; margin-top: 12px; }
-  .donut-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+    padding: 20px; margin-top: 16px; }
+  .donut-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
   .donut-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
   .head.slim { display: flex; align-items: center; justify-content: space-between; height: auto;
     padding: calc(var(--top) + 10px) 20px 4px; }
@@ -740,23 +742,31 @@
   .head.slim .sub { margin: 2px 0 0; }
   .sample-badge { font-size: 10px; color: var(--muted); border: 1px solid var(--line);
     border-radius: 6px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; white-space: nowrap; }
-  .buffer-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
-  .buffer-row button { font-size: 12px; padding: 8px 14px; min-height: 36px; border: 1px solid var(--line);
+  .buffer-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .buffer-row button { font-size: 13px; padding: 12px 18px; min-height: 44px; border: 1px solid var(--line);
     border-radius: 999px; background: var(--surface-2); color: var(--text); font-weight: 600; }
 
   /* ================= UPMORE VISUAL v3 (2026-09-27) — aurora soul =================
      Ambient charcoal canvas, gradient-border layered cards, typography drama,
      the aurora flow ribbon signature, luminous charts, vibrant chips. */
-  /* Hero cards with depth: 1px gradient border, top inner highlight, 24px radius. */
+  /* Hero cards with depth: hairline border, top inner highlight, 24px radius.
+     v4: solid surface + simple highlight — the old triple-layer multi-box
+     background rendered pure black on some GPUs. No logic change. */
   .hero-card, .chart-card, .conn-card, .stat-tile {
-    border: 1px solid transparent;
+    border: 1px solid rgba(255,255,255,.10);
     border-radius: 24px;
     background:
-      linear-gradient(168deg, rgba(255,255,255,.055), rgba(255,255,255,.008) 52%) padding-box,
-      linear-gradient(var(--surface), var(--surface)) padding-box,
-      linear-gradient(158deg, rgba(255,255,255,.14), rgba(255,255,255,.02) 38%, rgba(255,255,255,.09)) border-box;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 18px 42px rgba(0,0,0,.42);
+      linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,0) 46%),
+      var(--surface);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 42px rgba(0,0,0,.42);
   }
+
+  /* ================= UPMORE SPACING v4 (2026-09-27) — 8pt grid =================
+     Card padding 20px · gaps between cards 16px · section margins 24px.
+     One rule owns the home widget rhythm so nothing doubles up. */
+  #home .hero-card { margin-top: 0; }
+  #home [data-widget] { margin-top: 16px; }
+  #home .conn-card .cc-go { font-size: 22px; line-height: 1; }
   /* Net-worth hero: soft orange outer glow. */
   #nwHero.hero-card {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.08),
@@ -1026,7 +1036,8 @@
        connect-bank card (only when no live bank). The old tools grid moved to
        Explore ("Money tools"); the Up next queue already lives in Explore. -->
   <section class="screen" id="home" aria-label="Home">
-    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+    <!-- v4: extra bottom clearance so the last card never slides under the tab bar. -->
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 170px)">
       <div class="head slim">
         <div>
           <h1 class="hello" id="hello">Good evening, Friend</h1>
@@ -1663,7 +1674,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const tileColor = r => r.tier === "Very Easy" ? XTILE.green : XTILE.sky;
   const routeTitle = r => `${r.provider} — ${r.method}`;
   const routeMeta = r => [r.reward, r.time_to_first].filter(Boolean).join(" · ");
-  const fmt$= v => v == null ? "—" : (Number.isInteger(v) ? "$" + v : "$" + v.toFixed(2));
+  // v4: hero/display amounts get locale thousands separators ($2,841 not $2841).
+  // Display-only — raw values untouched.
+  const fmt$= v => v == null ? "—" : "$" + (Number.isInteger(v) ? Math.round(v) : Number(v.toFixed(2))).toLocaleString("en-US");
   const earnLine = r => {
     if (r.payout_max == null || r.time_max_minutes == null) return "";
     const pm = (r.payout_min === 0 && r.payout_max === 0) ? "Varies"
@@ -8978,10 +8991,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return `
       <div class="chart-card">
         <p class="micro">${isCurMonth ? "This month" : "That month"} budget</p>
-        <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
-        <div style="display:flex;gap:18px;align-items:center">
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:12px 0 16px"></div>
+        <!-- v4: chart rows centered in the card (wide viewports left them stranded). -->
+        <div style="display:flex;gap:18px;align-items:center;justify-content:center">
           ${ringSVG(frac, ringColor, 118, 13, ringCenter, paceGrad(mSpent, mBudget, mProj))}
-          <div style="flex:1;min-width:0">
+          <div style="min-width:0;max-width:240px">
             <p class="hero-num num" style="font-size:34px">${bm0(mSpent)}</p>
             <p class="conn-sub">spent of ${bm0(mBudget)} budgeted</p>
             <div class="buffer-row"><span>Buffer <b class="num">${fmt$(bufferAmt)}</b></span><button id="brBufferEdit">Change</button></div>
@@ -8989,8 +9003,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         </div>
       </div>
       ${segs.length ? `<h2 class="sec">Spending by category</h2>
-      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(mSpent) + '</div><div class="l">spent</div></div>')}
-        <div style="flex:1;min-width:0"><p class="hero-num num" style="font-size:34px">${bm0(mBudget)}</p><p class="conn-sub">budgeted this month</p></div></div>
+      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center;justify-content:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(mSpent) + '</div><div class="l">spent</div></div>')}
+        <div style="min-width:0;max-width:240px"><p class="hero-num num" style="font-size:34px">${bm0(mBudget)}</p><p class="conn-sub">budgeted this month</p></div></div>
         <div class="donut-legend">${legend}</div></div>` : ``}`;
   }
 
@@ -9693,9 +9707,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
     return `<div class="chart-card" style="margin-top:14px">
       <p class="micro">Allocation</p>
-      <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
-      <div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
-        <div style="flex:1;min-width:0"><p class="conn-num num">${topPct}%</p>
+      <div class="aurora-ribbon" aria-hidden="true" style="margin:12px 0 16px"></div>
+      <!-- v4: allocation row centered in the card. -->
+      <div style="display:flex;gap:18px;align-items:center;justify-content:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
+        <div style="min-width:0;max-width:240px"><p class="conn-num num">${topPct}%</p>
         <p class="conn-sub">in ${esc(topB || "—")}${topPct >= 60 ? " — concentrated" : ""}</p></div></div>
       <div class="donut-legend">${legend}</div>${cvHtml}</div>`;
   }
@@ -10593,22 +10608,23 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     size = size || 76; sw = sw || 11;
     const total = (segs || []).reduce((s, x) => s + Math.max(0, Number(x.value) || 0), 0);
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
-    const gid = svgUid("dg");
     const track = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>`;
     if (!total) return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="No data yet">${track}</svg>`;
-    // v3: the largest segment gets a soft luminous halo — color everywhere it earns it.
+    // v4: the largest segment gets a soft luminous halo — filter-free
+    // (a wider translucent under-stroke; SVG filters rendered black boxes
+    // on some GPUs). No logic change.
     let maxI = 0;
     segs.forEach((s, i) => { if ((Number(s.value) || 0) > (Number(segs[maxI].value) || 0)) maxI = i; });
     let off = 0;
     const arcs = segs.map((s, i) => {
       const frac = Math.max(0, Number(s.value) || 0) / total;
-      const el = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"${i === maxI ? ` filter="url(#${gid})"` : ""}><title>${esc(s.label || "")}</title></circle>`;
+      const dash = `stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}"`;
+      const halo = i === maxI
+        ? `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw + 10}" opacity=".22" ${dash} transform="rotate(-90 ${cx} ${cx})"/>` : "";
+      const el = `${halo}<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" ${dash} transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label || "")}</title></circle>`;
       off += frac; return el;
     }).join("");
-    const defs = `<defs><filter id="${gid}" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter></defs>`;
-    const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${defs}${track}${arcs}</svg>`;
+    const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${track}${arcs}</svg>`;
     if (!center) return svg;
     return `<div class="donut-wrap" style="width:${size}px;height:${size}px">${svg}<div class="donut-center">${center}</div></div>`;
   }
@@ -10617,20 +10633,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     size = size || 76; sw = sw || 9;
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
     const gid = svgUid("rg");
-    // v3: optional gradient stroke (e.g. pace green→amber) with a soft glow.
+    // v4: optional gradient stroke (e.g. pace green→amber) with a filter-free
+    // glow (wider translucent under-arc; SVG filters rendered black boxes
+    // on some GPUs). No logic change.
     const stroke = grad ? `url(#${gid})` : color;
     const defs = grad ? `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="${grad[0]}"/><stop offset="1" stop-color="${grad[1]}"/></linearGradient>
-        <filter id="${gid}g" x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter></defs>` : "";
-    const filt = grad ? ` filter="url(#${gid}g)"` : "";
+        <stop offset="0" stop-color="${grad[0]}"/><stop offset="1" stop-color="${grad[1]}"/></linearGradient></defs>` : "";
+    const dash = `stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"`;
+    const glow = grad ? `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw + 8}" opacity=".25" stroke-linecap="round" ${dash}/>` : "";
     return `<div style="position:relative;width:${size}px;height:${size}px;flex:none">
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Progress ${Math.round(f * 100)} percent">
         ${defs}
         <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>
-        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"${filt}
-          stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"/>
+        ${glow}<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"
+          ${dash}/>
       </svg>
       <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none">${centerHtml || ""}</div></div>`;
   }
@@ -10661,12 +10677,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:auto;display:block" role="img" aria-label="${esc(opts.label || "Trend chart")}">
       <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="${lineColor}" stop-opacity=".35"/><stop offset=".55" stop-color="${lineColor}" stop-opacity=".10"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
-      </linearGradient>
-      <filter id="${fid}" x="-40%" y="-60%" width="180%" height="220%">
-        <feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter></defs>
+      </linearGradient></defs>
       ${grid}${priorLine}<path d="${area}" fill="url(#${gid})"/>
-      <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".22" filter="url(#${fid})"/>
+      <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".22"/>
       <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>`;
   }
