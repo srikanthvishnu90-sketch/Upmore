@@ -750,12 +750,14 @@
      the aurora flow ribbon signature, luminous charts, vibrant chips. */
   /* Hero cards with depth: hairline border, top inner highlight, 24px radius.
      v4: solid surface + simple highlight — the old triple-layer multi-box
-     background rendered pure black on some GPUs. No logic change. */
+     background rendered pure black on some GPUs. No logic change.
+     v5: sheen toned to a whisper (3.5% fading out by 32%) — the 5.5% wash
+     read glaring on some renders. Cards stay dark with just top light. */
   .hero-card, .chart-card, .conn-card, .stat-tile {
     border: 1px solid rgba(255,255,255,.10);
     border-radius: 24px;
     background:
-      linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,0) 46%),
+      linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0) 32%),
       var(--surface);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 42px rgba(0,0,0,.42);
   }
@@ -8970,8 +8972,7 @@
     return `
       <div class="chart-card">
         <p class="micro">${isCurMonth ? "This month" : "That month"} budget</p>
-        <div class="aurora-ribbon" aria-hidden="true" style="margin:12px 0 16px"></div>
-        <!-- v4: chart rows centered in the card (wide viewports left them stranded). -->
+        <!-- v5: aurora ribbon sits under the figure (Home pattern), not above it. -->
         <div style="display:flex;gap:18px;align-items:center;justify-content:center">
           ${ringSVG(frac, ringColor, 118, 13, ringCenter, paceGrad(mSpent, mBudget, mProj))}
           <div style="min-width:0;max-width:240px">
@@ -8980,6 +8981,7 @@
             <div class="buffer-row"><span>Buffer <b class="num">${fmt$(bufferAmt)}</b></span><button id="brBufferEdit">Change</button></div>
           </div>
         </div>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:16px 0 0"></div>
       </div>
       ${segs.length ? `<h2 class="sec">Spending by category</h2>
       <div class="chart-card"><div style="display:flex;gap:18px;align-items:center;justify-content:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(mSpent) + '</div><div class="l">spent</div></div>')}
@@ -9686,11 +9688,12 @@
     }
     return `<div class="chart-card" style="margin-top:14px">
       <p class="micro">Allocation</p>
-      <div class="aurora-ribbon" aria-hidden="true" style="margin:12px 0 16px"></div>
-      <!-- v4: allocation row centered in the card. -->
-      <div style="display:flex;gap:18px;align-items:center;justify-content:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
-        <div style="min-width:0;max-width:240px"><p class="conn-num num">${topPct}%</p>
+      <!-- v5: donut left, stat block right with real clearance, vertically centered;
+           aurora ribbon under the figure (Home pattern). -->
+      <div style="display:flex;gap:32px;align-items:center;justify-content:flex-start;padding:6px 8px 0">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
+        <div style="min-width:0;flex:1"><p class="conn-num num">${topPct}%</p>
         <p class="conn-sub">in ${esc(topB || "—")}${topPct >= 60 ? " — concentrated" : ""}</p></div></div>
+      <div class="aurora-ribbon" aria-hidden="true" style="margin:16px 0 0"></div>
       <div class="donut-legend">${legend}</div>${cvHtml}</div>`;
   }
 
@@ -11029,8 +11032,8 @@
     const nwHeroHtml = `
       <div class="chart-card" style="margin-top:10px">
         <p class="micro">Net worth</p>
-        <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
         <p class="hero-num num">${bm0(nw.total)}</p>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:14px 0 0"></div>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
         <div style="margin-top:10px">${areaChartSVG(snapVals, { lineColor: "#FF6A2D", label: "Net worth history", h: 130 })}</div>
         <p class="fine" style="margin:8px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p>
