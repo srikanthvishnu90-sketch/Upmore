@@ -71,17 +71,21 @@ const LOGIN_CLICK = "log ?in|sign ?in";
 
 export const playbookRegistry: Record<string, MerchantPlaybook> = {
   // ------------------------------------------------------------------
-  // Devin — the one LIVE-VERIFIED playbook. Implemented as the dedicated
-  // executor path in index.ts (not the declarative runner). Verified
-  // 2026-09-26 from Devin's shipped JS bundle: email-first + passwordless
-  // email OTP; cancel is a React dialog on private APIs.
+  // Devin — authored 2026-09-26 from Devin's shipped JS bundle (email-first +
+  // passwordless email OTP; cancel is a React dialog on private APIs) and
+  // implemented as the dedicated executor path in index.ts (not the
+  // declarative runner). Ships verified:false per the catalog hard rule: it
+  // graduates to verified:true only after one real, live, authenticated
+  // Browserbase run against Devin's production site (the founder's key
+  // install + first supervised run is that verification). Until then the
+  // executor returns the guided fallback — never a guessed live run.
   // ------------------------------------------------------------------
   devin: {
     merchant_key: "devin",
     display_name: "Devin",
-    verified: true,
+    verified: false,
     verification_note:
-      "Live-verified 2026-09-26 from Devin's shipped JS bundle (email-first + passwordless email OTP; cancel via React dialog on private APIs). Implemented as the dedicated executor path in index.ts.",
+      "Bundle-analysis authored 2026-09-26; needs one live authenticated run to graduate.",
     auth: "email_otp",
     account_url: "https://app.devin.ai/auth/login?redirect=/&reauth=true",
     steps: [], // dedicated implementation; the declarative runner is never used
