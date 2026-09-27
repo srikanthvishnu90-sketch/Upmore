@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-VDsRbI8ovWiVTB/4Yt9/WAckkRHHiQjB4Oc+EXJlCEE=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-wO73HhxKQoZ32mkYOC8Ti8mxHTuZ/b5XU0H3b5X/Uac=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1095,6 +1095,15 @@
     <nav class="tabs" role="tablist" data-nav></nav>
   </section>
 
+  <section class="screen" id="subscription" aria-label="Subscription">
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+      <button class="backbtn" onclick="show('profile')">‹ You</button>
+      <h1 class="ptitle">Subscription</h1>
+      <div id="subscriptionBody"></div>
+    </div>
+    <nav class="tabs" role="tablist" data-nav></nav>
+  </section>
+
   <!-- ================= PROFILE ================= -->
   <section class="screen" id="profile" aria-label="Profile">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
@@ -1131,6 +1140,7 @@
       </div></div>
       <button class="prow" id="bankBetaRow" style="margin-top:16px"><span class="pl">Bank sync — private beta</span><span class="pv">›</span></button>
       <button class="prow" id="bankDisconnectRow" hidden style="margin-top:8px"><span class="pl">Disconnect bank</span><span class="pv">›</span></button>
+      <button class="prow" id="subscriptionRow" style="margin-top:8px"><span class="pl" id="subscriptionRowLabel">Upmore subscription — $10/mo</span><span class="pv">›</span></button>
       <button class="prow" id="referralRow" style="margin-top:8px"><span class="pl">Refer &amp; earn — give $10, get $10</span><span class="pv">›</span></button>
       <button class="prow" id="homeCustomBtn2" style="margin-top:8px"><span class="pl">Customize home</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -1552,6 +1562,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (id === "networth") renderNetWorth();
     if (id === "reccal") renderRecCal();
     if (id === "referral") renderReferral();
+    if (id === "subscription") renderSubscription();
     if (id === "claimDetail") renderClaim();
     renderNav();
   }
@@ -6395,6 +6406,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     };
     const { error } = await supa.from("profiles").upsert(row, { onConflict: "id" });
     if (!error) dbProfile = row;
+    // Referral: if this is a brand-new profile (first save) and there's a
+    // pending ?ref= code, attempt to qualify it. qualify_referral() enforces
+    // all fraud guards server-side (new user, no self-referral, one per user,
+    // referrer must be subscriber, 5/month cap).
+    try {
+      const refCode = pendingReferralCode();
+      if (refCode && !localStorage.getItem("upmore-ref-done")) {
+        const { data: qdata, error: qerr } = await supa.rpc("qualify_referral", { p_referral_code: refCode });
+        if (!qerr && qdata && qdata.ok) {
+          // Credit issued. Push to Stripe balance if referrer has one.
+          // (stripe-credits is a no-op if no Stripe customer exists yet.)
+          try { await supa.functions.invoke("stripe-credits", {}); } catch (_) {}
+          toast("Referral applied! Your friend earned $10 credit.");
+        }
+        // Clear regardless — one attempt per signup.
+        localStorage.setItem("upmore-ref-done", "1");
+        localStorage.removeItem("upmore-ref");
+      }
+    } catch (_) {}
   }
   async function ensureProfile() {
     try { homeTz(); } catch (e) {} // FIX (6-005): capture home timezone at onboarding/first run
@@ -6770,6 +6800,24 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       show("welcome");
     };
     if ($("referralRow")) $("referralRow").onclick = () => show("referral");
+    // Subscription row: shows status, opens checkout or subscription detail.
+    if ($("subscriptionRow")) {
+      $("subscriptionRow").onclick = () => show("subscription");
+      // Async label update (non-blocking).
+      subscriptionStatus().then(st => {
+        const lbl = $("subscriptionRowLabel");
+        if (!lbl) return;
+        if (st.isActive) {
+          const months = Math.floor(st.creditsAvailable / 10);
+          lbl.textContent = "Upmore subscription — Active" +
+            (st.creditsAvailable >= 10 ? ` · $${st.creditsAvailable} credit (${months} mo${months === 1 ? "" : "s"} free)` : "");
+        } else if (st.creditsAvailable >= 10) {
+          lbl.textContent = `Upmore subscription — $${st.creditsAvailable} credit waiting`;
+        } else {
+          lbl.textContent = "Upmore subscription — $10/mo";
+        }
+      }).catch(() => {});
+    }
     // Customize home moved here from Home tab (simplicity: not on first view).
     if ($("homeCustomBtn2")) $("homeCustomBtn2").onclick = () => { show("home"); setTimeout(openHomeCustomize, 50); };
   }
@@ -6796,31 +6844,45 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     try { return JSON.parse(localStorage.getItem("upmore-referrals") || '{"earned":0,"count":0,"month":0}'); }
     catch (e) { return { earned: 0, count: 0, month: 0 }; }
   }
-  function renderReferral() {
+  async function renderReferral() {
     const body = $("referralBody");
     if (!body) return;
-    const eligible = isSubscriber();
-    const stats = referralStats();
-    const link = referralLink();
-    const capLeft = Math.max(0, 5 - stats.month);
-    const shareMsg = "I found money I didn't know I had with Upmore. Sign up with my link and we both get $10 credit: " + link;
+    // Load real stats from backend. Falls back to locked view on error.
+    let stats = null;
+    try {
+      if (session && session.user) {
+        const { data, error } = await supa.rpc("get_referral_stats", { p_user_id: session.user.id });
+        if (!error && data) stats = data;
+      }
+    } catch (_) {}
+    const eligible = !!(stats && stats.eligible_to_refer);
+    const link = stats && stats.referral_code
+      ? (location.origin + location.pathname + "?ref=" + stats.referral_code)
+      : referralLink();
+    const shareMsg = "Your all-in-one finance agent. Sign up with my link and I get $10 credit: " + link;
+    const earned = stats ? Number(stats.total_earned || 0) : 0;
+    const available = stats ? Number(stats.credits_available || 0) : 0;
+    const monthCount = stats ? Number(stats.this_month_count || 0) : 0;
+    const capLeft = stats ? Number(stats.this_month_remaining || 0) : 5;
     if (!eligible) {
       body.innerHTML = `
         <div class="bcard" style="text-align:center;padding:28px 20px">
           <div style="font-size:40px;margin-bottom:12px">🎁</div>
           <b style="font-size:18px">Referrals are for subscribers</b>
           <p class="psub" style="margin:10px 0 16px">Subscribe to Upmore ($10/mo) to unlock your referral link. Every friend who signs up and finishes setup earns you $10 in account credit.</p>
-          <button class="btn" onclick="show('profile')">Back to You</button>
+          <button class="btn" id="refGoSubscribe">Subscribe — $10/mo</button>
         </div>
         <div class="bcard" style="margin-top:12px">
           <b>How it works</b>
           <div style="margin-top:10px;display:grid;gap:10px">
             <div><b>1. Share your link.</b><br><span class="psub">One tap — send it to anyone.</span></div>
             <div><b>2. They sign up &amp; finish setup.</b><br><span class="psub">Not just an email — they complete onboarding.</span></div>
-            <div><b>3. You both get $10 credit.</b><br><span class="psub">Paid on signup. Your next month is on us.</span></div>
+            <div><b>3. You get $10 credit.</b><br><span class="psub">Paid on signup. Applies to your subscription automatically.</span></div>
           </div>
-          <p class="psub" style="margin-top:12px;font-size:12.5px">Up to 5 referral credits per month ($50 max). No self-referrals. Credits apply to your subscription — they're not cash.</p>
+          <p class="psub" style="margin-top:12px;font-size:12.5px">Up to 5 referral credits per month ($50 max). No self-referrals. Credits apply to your subscription — they're not cash and can't be withdrawn. They never expire.</p>
         </div>`;
+      const gs = $("refGoSubscribe");
+      if (gs) gs.onclick = () => startCheckout();
       return;
     }
     body.innerHTML = `
@@ -6833,18 +6895,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         </div>
       </div>
       <div class="row" style="gap:10px;margin-top:12px">
-        <div class="bcard" style="flex:1;text-align:center"><div style="font-size:24px;font-weight:800">$${stats.earned}</div><div class="psub" style="font-size:12px">earned</div></div>
-        <div class="bcard" style="flex:1;text-align:center"><div style="font-size:24px;font-weight:800">${stats.count}</div><div class="psub" style="font-size:12px">friends joined</div></div>
+        <div class="bcard" style="flex:1;text-align:center"><div style="font-size:24px;font-weight:800">$${earned}</div><div class="psub" style="font-size:12px">earned total</div></div>
+        <div class="bcard" style="flex:1;text-align:center"><div style="font-size:24px;font-weight:800">$${available}</div><div class="psub" style="font-size:12px">credit available</div></div>
         <div class="bcard" style="flex:1;text-align:center"><div style="font-size:24px;font-weight:800">${capLeft}</div><div class="psub" style="font-size:12px">left this month</div></div>
       </div>
+      ${available >= 10 ? `<p class="psub" style="margin-top:8px;text-align:center">Your $${available} credit covers your next ${Math.floor(available / 10)} month${Math.floor(available / 10) === 1 ? "" : "s"} — applied automatically at billing.</p>` : ""}
       <div class="bcard" style="margin-top:12px">
         <b>How it works</b>
         <div style="margin-top:10px;display:grid;gap:10px">
           <div><b>1. Share your link.</b><br><span class="psub">One tap — text it, post it, send it anywhere.</span></div>
-          <div><b>2. They sign up &amp; finish setup.</b><br><span class="psub">The moment they complete onboarding, your $10 unlocks. Paid on signup — no waiting for them to subscribe.</span></div>
-          <div><b>3. You both get $10 credit.</b><br><span class="psub">Applied to your Upmore subscription. Your next month is on us.</span></div>
+          <div><b>2. They sign up &amp; finish setup.</b><br><span class="psub">The moment they complete onboarding, your $10 unlocks. Paid on signup — no waiting.</span></div>
+          <div><b>3. You get $10 credit.</b><br><span class="psub">Applied to your subscription automatically. Not cash, can't be withdrawn, never expires.</span></div>
         </div>
-        <p class="psub" style="margin-top:12px;font-size:12.5px">Up to 5 referral credits per month ($50 max). No self-referrals. Credits apply to your subscription — they're not cash and can't be withdrawn.</p>
+        <p class="psub" style="margin-top:12px;font-size:12.5px">Up to 5 referral credits per month ($50 max). No self-referrals.</p>
       </div>`;
     $("refCopy").onclick = async () => {
       try { await navigator.clipboard.writeText(link); toast("Link copied!"); }
@@ -6868,6 +6931,84 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   function pendingReferralCode() {
     try { return localStorage.getItem("upmore-ref") || null; } catch (e) { return null; }
+  }
+  /* ================= SUBSCRIPTION ($10/mo via Stripe) ================= */
+  // startCheckout: creates a Stripe Checkout session, redirects to Stripe.
+  // Referral credits are applied to the Stripe Customer Balance automatically
+  // by stripe-webhook after checkout completes.
+  async function startCheckout() {
+    if (!session) { toast("Sign in first, then subscribe."); return; }
+    toast("Opening checkout…");
+    try {
+      const { data, error } = await supa.functions.invoke("stripe-checkout", {});
+      if (error) throw new Error(error.message || "Checkout failed");
+      if (data && data.error) throw new Error(data.error);
+      if (data && data.url) {
+        location.href = data.url;
+      } else {
+        throw new Error("No checkout URL returned");
+      }
+    } catch (e) {
+      toast("Couldn't open checkout: " + (e.message || "unknown error"));
+    }
+  }
+  // subscriptionStatus: reads the user's subscription row + credit balance.
+  // Returns { status, isActive, creditsAvailable }.
+  async function subscriptionStatus() {
+    const out = { status: "none", isActive: false, creditsAvailable: 0 };
+    if (!session || !session.user) return out;
+    try {
+      const { data: sub } = await supa.from("user_subscriptions")
+        .select("status").eq("user_id", session.user.id).maybeSingle();
+      if (sub) {
+        out.status = sub.status;
+        out.isActive = sub.status === "active";
+      }
+      const { data: stats } = await supa.rpc("get_referral_stats", { p_user_id: session.user.id });
+      if (stats) out.creditsAvailable = Number(stats.credits_available || 0);
+    } catch (_) {}
+    return out;
+  }
+  async function renderSubscription() {
+    const body = $("subscriptionBody");
+    if (!body) return;
+    body.innerHTML = `<p class="psub">Loading…</p>`;
+    const st = await subscriptionStatus();
+    if (st.isActive) {
+      const months = Math.floor(st.creditsAvailable / 10);
+      body.innerHTML = `
+        <div class="bcard" style="text-align:center;padding:28px 20px;background:linear-gradient(135deg,#1a3c2e,#0f241b);color:#fff;border:none">
+          <div style="font-size:13px;opacity:.75;letter-spacing:.5px">UPMORE SUBSCRIPTION</div>
+          <div style="font-size:28px;font-weight:800;margin:10px 0">Active</div>
+          <div style="font-size:14px;opacity:.85">$10/month · your all-in-one finance agent</div>
+        </div>
+        ${st.creditsAvailable > 0 ? `
+        <div class="bcard" style="margin-top:12px;text-align:center">
+          <div style="font-size:13px;color:var(--dim)">REFERRAL CREDIT</div>
+          <div style="font-size:24px;font-weight:800;margin:6px 0">$${st.creditsAvailable}</div>
+          <p class="psub">${months > 0 ? `Covers your next ${months} month${months === 1 ? "" : "s"} — applied automatically at billing.` : "Applied automatically at your next billing."} Never expires. Can't be withdrawn.</p>
+        </div>` : ""}
+        <div class="bcard" style="margin-top:12px">
+          <b>What's included</b>
+          <p class="psub" style="margin-top:8px">Bank sync, all 8 money tools, unlimited Guide chats, budget reports, investment X-ray, net worth tracking. Cancel anytime — you keep access until the period ends.</p>
+        </div>`;
+    } else {
+      body.innerHTML = `
+        <div class="bcard" style="text-align:center;padding:28px 20px">
+          <div style="font-size:40px;margin-bottom:12px">💳</div>
+          <b style="font-size:18px">Upmore — $10/month</b>
+          <p class="psub" style="margin:10px 0 16px">Your all-in-one finance agent. Bank sync, all 8 money tools, unlimited Guide chats, budget reports, investment X-ray, net worth. Cancel anytime.</p>
+          ${st.creditsAvailable >= 10 ? `<p class="psub" style="margin-bottom:12px"><b>You have $${st.creditsAvailable} in referral credit</b> — your first ${Math.floor(st.creditsAvailable / 10)} month${Math.floor(st.creditsAvailable / 10) === 1 ? " is" : "s are"} on us.</p>` : ""}
+          <button class="btn" id="subCheckoutBtn" style="width:100%;max-width:280px">Subscribe — $10/mo</button>
+          <p class="fine" style="margin-top:10px">Secure checkout via Stripe. Referral credits apply automatically.</p>
+        </div>
+        <div class="bcard" style="margin-top:12px">
+          <b>Referral credits</b>
+          <p class="psub" style="margin-top:8px">Earn $10 for every friend who signs up and finishes setup. Credits apply to your subscription automatically — they're not cash and can't be withdrawn. They never expire.</p>
+        </div>`;
+      const btn = $("subCheckoutBtn");
+      if (btn) btn.onclick = startCheckout;
+    }
   }
   /* Reminder/preference toggles: persist in localStorage, and in the signed-in
      profile's prefs when we have one. Restored on boot. */
