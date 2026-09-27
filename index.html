@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-QwB+ExNuPWtcmOn+5dlddRgR9n9OhUw38aJiREviy0c=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-DVPCGRSO1BOTfwGc3OxJ/0Wx/05cZaeibKmxelOJHMA=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-A9N7+e+uquQRvaJYXWRNXaEKnEvQj+eD7hpU3tYgJ8Y=' https://cdn.plaid.com; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -7155,8 +7155,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const byCatMonth = {};
     transactions.filter(t => !t.is_pending && !t.is_transfer && isCountableSpend(t)).forEach(t => {
       const m = t.posted_at.slice(0, 7);
-      byCatMonth[t.category] = byCatMonth[t.category] || {};
-      byCatMonth[t.category][m] = (byCatMonth[t.category][m] || 0) + Math.abs(t.amount);
+      const c = effCat(t); // FIX (T-track): group by effective category so recategorization reflects here
+      byCatMonth[c] = byCatMonth[c] || {};
+      byCatMonth[c][m] = (byCatMonth[c][m] || 0) + Math.abs(t.amount);
     });
     // FIX (T6): Derive month set from filtered (posted, non-transfer) transactions only.
     // Pending transactions must not shift the "current month" or comparison window.
@@ -7592,7 +7593,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function defaultTargetFor(cat, transactions, monthsDesc) {
     const ms = monthsDesc.slice(0, 3);
     let s = 0;
-    transactions.filter(t => !t.is_pending && !t.is_transfer && t.amount < 0 && effCat(t) === cat && ms.includes(String(t.posted_at || "").slice(0, 7)))
+    transactions.filter(t => !t.is_pending && !t.is_transfer && !t.is_excluded && t.amount < 0 && effCat(t) === cat && ms.includes(String(t.posted_at || "").slice(0, 7)))
       .forEach(t => { s += Math.abs(t.amount); });
     return Math.max(0, Math.round((s / Math.max(1, ms.length)) / 10) * 10);
   }
@@ -7615,7 +7616,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   function monthAgg(transactions, ym) {
     const agg = { in: 0, out: 0, kept: 0, byCat: {}, byMerchant: {}, count: 0 };
-    (transactions || []).filter(t => !t.is_pending && !t.is_transfer && t.posted_at && String(t.posted_at).slice(0, 7) === ym)
+    (transactions || []).filter(t => !t.is_pending && !t.is_transfer && !t.is_excluded && t.posted_at && String(t.posted_at).slice(0, 7) === ym)
       .forEach(t => {
         agg.count++;
         const a = Math.abs(Number(t.amount) || 0);
