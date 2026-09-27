@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-70kIDLbbpwTT/hDtU71efBPhTKr3N1z3iM2h4se1hss=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-DXVMSepRJ0fuyJqG46JpAFX2mS9MrrpBfMstcTciaQ8=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -21,11 +21,15 @@
     src:url("fonts/schibsted-grotesk.woff2") format("woff2");
   }
   :root {
-    /* UPMORE COLOR SYSTEM v2 (Vishnu 2026-09-27). Dark mode only.
+    /* UPMORE COLOR SYSTEM v3 (Vishnu 2026-09-27). Dark mode only.
        ONE brand accent (orange) — strictly for CTAs, links, hero chart lines.
        Green is a STATE color (pace/success), never the brand accent.
-       Category hues are identity-pinned (chart1-7) and reused consistently. */
-    --bg: #161614;          /* Base — warm near-black app background */
+       Category hues are identity-pinned (chart1-7) and reused consistently.
+       v3: deep charcoal canvas + ambient aurora glows + gradient-border cards. */
+    --bg: #0F0F11;          /* Base — deep charcoal, not flat black */
+    --ambient-orange: rgba(255,106,45,.10);
+    --ambient-violet: rgba(139,92,246,.10);
+    --ambient-teal: rgba(45,212,191,.05);
     --surface: #1F1F1D;     /* Raised — cards, sheets */
     --surface-2: #262624;   /* Recessed — inputs, tracks */
     --line: rgba(255,255,255,.08); /* Hairline dividers, borders */
@@ -69,7 +73,7 @@
   html, body { height: 100%; }
   body {
     font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
-    color: var(--text); background: #161614;
+    color: var(--text); background: var(--bg);
     -webkit-font-smoothing: antialiased; overflow: hidden;
   }
   button, input, select { font: inherit; color: inherit; }
@@ -88,9 +92,14 @@
   .num { font-variant-numeric: tabular-nums; }
 
   /* ---------- device frame (desktop preview) ---------- */
-  .device { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+  .device { position: relative; width: 100%; height: 100%; overflow: hidden;
+    background:
+      radial-gradient(60% 42% at 10% -4%, var(--ambient-orange), transparent 70%),
+      radial-gradient(52% 38% at 92% 104%, var(--ambient-violet), transparent 70%),
+      radial-gradient(38% 28% at 62% 58%, var(--ambient-teal), transparent 70%),
+      var(--bg); }
   .status, .island, .homebar { display: none; }
-  body.framed { background: radial-gradient(80% 70% at 50% 40%, #1E2F26 0%, #17251E 60%, #17251E 100%); }
+  body.framed { background: radial-gradient(80% 70% at 50% 40%, #141416 0%, #0F0F11 60%, #0B0B0D 100%); }
   body.framed .device {
     position: absolute; left: 50%; top: 50%; width: 390px; height: 844px; border-radius: 54px;
     box-shadow: 0 0 0 11px #0B0D0C, 0 0 0 12.5px #2C3D34, 0 40px 90px rgba(0,0,0,.7);
@@ -107,7 +116,7 @@
   /* ---------- screens ---------- */
   .screen {
     --top: env(safe-area-inset-top, 0px); --bot: env(safe-area-inset-bottom, 0px);
-    position: absolute; inset: 0; display: none; flex-direction: column; background: var(--bg);
+    position: absolute; inset: 0; display: none; flex-direction: column; background: transparent;
   }
   .screen.on { display: flex; animation: in .28s ease-out; }
   @keyframes in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
@@ -116,12 +125,14 @@
   .scroll { flex: 1; overflow-y: auto; padding: calc(var(--top) + 14px) 22px calc(var(--bot) + 40px); scroll-padding-bottom: 120px; }
   .scroll::-webkit-scrollbar { display: none; }
   .dock { padding: 14px 22px calc(var(--bot) + 18px);
-    background: linear-gradient(180deg, rgba(10,15,12,0) 0%, var(--bg) 42%); }
+    background: linear-gradient(180deg, rgba(15,15,17,0) 0%, var(--bg) 42%); }
 
   /* splash */
   #splash { align-items: center; justify-content: center;
     background:
-      radial-gradient(110% 70% at 50% 30%, #1E2F26 0%, #17251E 55%, #17251E 100%);
+      radial-gradient(70% 45% at 50% 22%, rgba(255,106,45,.14) 0%, transparent 70%),
+      radial-gradient(60% 40% at 50% 90%, rgba(139,92,246,.10) 0%, transparent 70%),
+      var(--bg);
   }
   #splash .mark { width: 132px; height: 132px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
     animation: arrive .8s cubic-bezier(.25,.8,.25,1) .15s both; }
@@ -284,7 +295,7 @@
   .tabs { position: absolute; left: 0; right: 0; bottom: 0; z-index: 30;
     display: flex; justify-content: center; gap: 64px;
     padding: 10px 0 calc(var(--tabbot, 10px) + 8px);
-    background: linear-gradient(180deg, rgba(22,22,20,0) 0%, rgba(22,22,20,.92) 30%, var(--bg) 100%); }
+    background: linear-gradient(180deg, rgba(15,15,17,0) 0%, rgba(15,15,17,.92) 30%, var(--bg) 100%); }
   body.framed .tabs { --tabbot: 26px; }
   .tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;
     font-size: 11.5px; font-weight: 600; color: var(--dim); padding: 4px 10px; min-height: 48px; min-width: 48px;
@@ -732,6 +743,61 @@
   .buffer-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
   .buffer-row button { font-size: 12px; padding: 8px 14px; min-height: 36px; border: 1px solid var(--line);
     border-radius: 999px; background: var(--surface-2); color: var(--text); font-weight: 600; }
+
+  /* ================= UPMORE VISUAL v3 (2026-09-27) — aurora soul =================
+     Ambient charcoal canvas, gradient-border layered cards, typography drama,
+     the aurora flow ribbon signature, luminous charts, vibrant chips. */
+  /* Hero cards with depth: 1px gradient border, top inner highlight, 24px radius. */
+  .hero-card, .chart-card, .conn-card, .stat-tile {
+    border: 1px solid transparent;
+    border-radius: 24px;
+    background:
+      linear-gradient(168deg, rgba(255,255,255,.055), rgba(255,255,255,.008) 52%) padding-box,
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(158deg, rgba(255,255,255,.14), rgba(255,255,255,.02) 38%, rgba(255,255,255,.09)) border-box;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 18px 42px rgba(0,0,0,.42);
+  }
+  /* Net-worth hero: soft orange outer glow. */
+  #nwHero.hero-card {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08),
+      0 0 54px rgba(255,106,45,.11), 0 20px 48px rgba(0,0,0,.45);
+  }
+  /* Typography drama: 48-56px silver-gradient hero numerals, tight headlines. */
+  .hero-num { font-size: 52px; letter-spacing: -0.02em; }
+  .head.slim .hello { font-size: 26px; letter-spacing: -0.02em; font-weight: 700; }
+  .sec { letter-spacing: -0.015em; }
+  /* Signature motif: the aurora flow ribbon. Thin multi-hue band under the home
+     hero figure; recurs as a divider on detail pages. */
+  .aurora-ribbon { height: 3px; border-radius: 999px; margin: 16px 0 2px; opacity: .95;
+    background: linear-gradient(90deg, #FF6A2D, #F472B6, #A78BFA, #2DD4BF, #60A5FA, #FF6A2D);
+    background-size: 220% 100%; animation: aurora-slide 9s linear infinite; }
+  .aurora-band { height: 20px; margin: 12px -6px -4px; border-radius: 50%;
+    filter: blur(16px); opacity: .45;
+    background: linear-gradient(90deg, #FF6A2D, #F472B6, #A78BFA, #2DD4BF, #FF6A2D);
+    background-size: 220% 100%; animation: aurora-slide 9s linear infinite; }
+  @keyframes aurora-slide { to { background-position: 220% 0; } }
+  @media (prefers-reduced-motion: reduce) { .aurora-ribbon, .aurora-band { animation: none; } }
+  /* Vibrant category chips: tinted pills (hue at 16% + hue text + emoji). */
+  .catchip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700;
+    line-height: 1; padding: 5px 10px; border-radius: 999px; white-space: nowrap;
+    background: color-mix(in srgb, var(--hc, #C9CFCA) 16%, transparent);
+    color: var(--hc, #C9CFCA);
+    border: 1px solid color-mix(in srgb, var(--hc, #C9CFCA) 32%, transparent); }
+  /* Rows with identity: 36px circular gradient initial-discs. */
+  .txava { width: 36px; height: 36px; border-radius: 50%; flex: none; display: flex;
+    align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 15px;
+    margin-right: 11px; box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 2px 8px rgba(0,0,0,.32); }
+  .txrow > div { flex: 1; min-width: 0; }
+  .txrow .out, .txrow .in { font-variant-numeric: tabular-nums; margin-left: 10px; white-space: nowrap; }
+  .txrow .catchip { margin-top: 4px; }
+  /* Luminous donut: thicker strokes get a soft halo via the .donut-glow filter. */
+  .donut-wrap { position: relative; flex: none; }
+  .donut-center { position: absolute; inset: 0; display: grid; place-items: center;
+    text-align: center; pointer-events: none; }
+  .donut-center .v { font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--silver) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .donut-center .l { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -974,6 +1040,7 @@
       <button class="hero-card" id="nwHero" style="text-align:left;width:100%">
         <p class="micro">Net worth</p>
         <p class="hero-num num" id="nwHeroNum">&mdash;</p>
+        <div class="aurora-ribbon" aria-hidden="true"></div>
         <span class="delta-chip flat" id="nwHeroDelta"></span>
         <div class="hero-chart" id="nwHeroChart"></div>
         <p class="fine" id="nwHeroSample" hidden style="margin-top:8px;color:var(--warn)">Sample data &mdash; connect your bank for your real net worth.</p>
@@ -8107,10 +8174,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       const mProj = elapsed > 0 ? mSpent / elapsed * daysInM : mSpent;
       const frac = mBudget > 0 ? Math.max(0, Math.min(1, 1 - mSpent / mBudget)) : 1;
       const ringColor = paceColor(mSpent, mBudget, mProj);
+      const ringGrad = paceGrad(mSpent, mBudget, mProj); // v3: gradient stroke + glow
       const ringBox = $("spendRing");
       if (ringBox) ringBox.innerHTML = ringSVG(frac, ringColor, 76, 9,
-        `<div><div class="num" style="font-size:14px;font-weight:700">${fmt$(Math.round(sts.total))}</div>` +
-        `<div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`);
+        `<div><div class="num" style="font-size:15px;font-weight:800;background:linear-gradient(180deg,#FFFFFF,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent">${fmt$(Math.round(sts.total))}</div>` +
+        `<div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`,
+        ringGrad);
     } catch (e) {}
 
     // HOME: Connect card — show when no live bank is connected.
@@ -8223,10 +8292,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return rows.map(t => {
       const sel = typeof txSelectMode !== "undefined" && txSelectMode;
       const checked = sel && typeof txBulkSel !== "undefined" && txBulkSel.has(String(t.id));
+      // v3: rows with identity — 36px gradient initial-disc avatar (hue by
+      // category identity) + vibrant emoji chip instead of grey "date · cat".
+      const cat = effCat(t), hue = catHue(cat);
+      const initial = (String(t.merchant_raw || "?").trim().charAt(0) || "?").toUpperCase();
       return `
       <div class="txrow${checked ? " sel" : ""}" data-tx="${esc(t.id)}" ${sel ? "" : `data-rect="${esc(t.id)}"`} role="button" tabindex="0" aria-label="${sel ? "Select" : "Recategorize"} ${esc(t.merchant_raw)}">
         ${sel ? `<input type="checkbox" data-bulk="${esc(t.id)}" ${checked ? "checked" : ""} aria-label="Select ${esc(t.merchant_raw)}" style="margin-right:8px;flex-shrink:0">` : ""}
-        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}${t.is_excluded ? ' <span class="review-badge">excluded</span>' : ''}${t.counted_income ? ' <span class="review-badge">income</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
+        <span class="txava" aria-hidden="true" style="background:linear-gradient(135deg,${hue},${hue}B3)">${esc(initial)}</span>
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}${t.is_excluded ? ' <span class="review-badge">excluded</span>' : ''}${t.counted_income ? ' <span class="review-badge">income</span>' : ''}<i>${esc(t.posted_at)}</i><br>${catchipHtml(cat)}</div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`; }).join("");
   }
@@ -8899,22 +8973,24 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const rest = mSpent - topSum;
     const segs = top.map(r => ({ value: r.spent, color: catHue(r.cat), label: r.cat }));
     if (rest > 0.005) segs.push({ value: rest, color: "rgba(255,255,255,.18)", label: "Other" });
-    const legend = top.map(r => `<span><i style="background:${catHue(r.cat)}"></i>${esc(r.cat)}</span>`).join("");
+    const legend = top.map(r => catchipHtml(r.cat)).join("");
+    const ringCenter = `<div><div class="num" style="font-size:22px;font-weight:800;background:linear-gradient(180deg,#FFFFFF,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent">${bm0(Math.max(0, left))}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`;
     return `
       <div class="chart-card">
         <p class="micro">${isCurMonth ? "This month" : "That month"} budget</p>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
         <div style="display:flex;gap:18px;align-items:center">
-          ${ringSVG(frac, ringColor, 118, 13, `<div><div class="num" style="font-size:20px;font-weight:700">${bm0(Math.max(0, left))}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`)}
+          ${ringSVG(frac, ringColor, 118, 13, ringCenter, paceGrad(mSpent, mBudget, mProj))}
           <div style="flex:1;min-width:0">
-            <p class="hero-num num" style="font-size:30px">${bm0(mSpent)}</p>
+            <p class="hero-num num" style="font-size:34px">${bm0(mSpent)}</p>
             <p class="conn-sub">spent of ${bm0(mBudget)} budgeted</p>
             <div class="buffer-row"><span>Buffer <b class="num">${fmt$(bufferAmt)}</b></span><button id="brBufferEdit">Change</button></div>
           </div>
         </div>
       </div>
       ${segs.length ? `<h2 class="sec">Spending by category</h2>
-      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
-        <div style="flex:1;min-width:0"><p class="conn-num num">${bm0(mSpent)}</p><p class="conn-sub">total spent</p></div></div>
+      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(mSpent) + '</div><div class="l">spent</div></div>')}
+        <div style="flex:1;min-width:0"><p class="hero-num num" style="font-size:34px">${bm0(mBudget)}</p><p class="conn-sub">budgeted this month</p></div></div>
         <div class="donut-legend">${legend}</div></div>` : ``}`;
   }
 
@@ -9597,7 +9673,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function investHeroHtml(sum) {
     const buckets = BUCKETS.filter(b => (sum.byBucket[b] || 0) > 0.005);
     const segs = buckets.map(b => ({ value: sum.byBucket[b], color: bucketHue(b), label: b }));
-    const legend = buckets.map(b => `<span><i style="background:${bucketHue(b)}"></i>${esc(b)}</span>`).join("");
+    const legend = buckets.map(b => catchipHtml(b)).join("");
+    // v3: side stat complements the centered donut total — top bucket concentration.
+    let topB = null, topV = 0;
+    buckets.forEach(b => { const v = sum.byBucket[b] || 0; if (v > topV) { topV = v; topB = b; } });
+    const topPct = sum.total > 0 ? Math.round(topV / sum.total * 100) : 0;
     let cvHtml = "";
     if (sum.gainCount > 0) {
       const worth = sum.costKnown + sum.gainKnown;
@@ -9613,9 +9693,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
     return `<div class="chart-card" style="margin-top:14px">
       <p class="micro">Allocation</p>
-      <div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
-        <div style="flex:1;min-width:0"><p class="hero-num num" style="font-size:30px">${bm0(sum.total)}</p>
-        <p class="conn-sub">${sum.count} position${sum.count === 1 ? "" : "s"}</p></div></div>
+      <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
+      <div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
+        <div style="flex:1;min-width:0"><p class="conn-num num">${topPct}%</p>
+        <p class="conn-sub">in ${esc(topB || "—")}${topPct >= 60 ? " — concentrated" : ""}</p></div></div>
       <div class="donut-legend">${legend}</div>${cvHtml}</div>`;
   }
 
@@ -10489,28 +10570,66 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (budget > 0 && proj > budget * 1.02) return "var(--warn)";
     return "var(--up)";
   }
-  function donutSVG(segs, size, sw) {
+  // v3: gradient pair for the luminous budget ring (pace color → lighter twin).
+  function paceGrad(spent, budget, proj) {
+    const pc = paceColor(spent, budget, proj);
+    if (pc === "var(--down)") return ["#E14A4A", "#F5A3A3"];
+    if (pc === "var(--warn)") return ["#E8A13D", "#F6CE7E"];
+    return ["#2E9E6B", "#8FE3B4"];
+  }
+  // v3: emoji per category for vibrant chips (Monarch-style identity).
+  function catEmoji(cat) {
+    const m = { Housing: "🏠", Groceries: "🛒", Dining: "🍽️", Transport: "🚗", Shopping: "🛍️",
+      Subscriptions: "🔁", Utilities: "💡", Health: "🏥", Entertainment: "🎬", Travel: "✈️",
+      Income: "💰", Transfers: "↔️", Other: "✨" };
+    return m[cat] || "✨";
+  }
+  // v3: vibrant tinted category pill.
+  function catchipHtml(cat) {
+    const c = String(cat || "Other"), h = catHue(c);
+    return `<span class="catchip" style="--hc:${h}">${catEmoji(c)} ${esc(c)}</span>`;
+  }
+  function donutSVG(segs, size, sw, center) {
     size = size || 76; sw = sw || 11;
     const total = (segs || []).reduce((s, x) => s + Math.max(0, Number(x.value) || 0), 0);
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
+    const gid = svgUid("dg");
     const track = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>`;
     if (!total) return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="No data yet">${track}</svg>`;
+    // v3: the largest segment gets a soft luminous halo — color everywhere it earns it.
+    let maxI = 0;
+    segs.forEach((s, i) => { if ((Number(s.value) || 0) > (Number(segs[maxI].value) || 0)) maxI = i; });
     let off = 0;
-    const arcs = segs.map(s => {
+    const arcs = segs.map((s, i) => {
       const frac = Math.max(0, Number(s.value) || 0) / total;
-      const el = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label || "")}</title></circle>`;
+      const el = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"${i === maxI ? ` filter="url(#${gid})"` : ""}><title>${esc(s.label || "")}</title></circle>`;
       off += frac; return el;
     }).join("");
-    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${track}${arcs}</svg>`;
+    const defs = `<defs><filter id="${gid}" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>`;
+    const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${defs}${track}${arcs}</svg>`;
+    if (!center) return svg;
+    return `<div class="donut-wrap" style="width:${size}px;height:${size}px">${svg}<div class="donut-center">${center}</div></div>`;
   }
-  function ringSVG(frac, color, size, sw, centerHtml) {
+  function ringSVG(frac, color, size, sw, centerHtml, grad) {
     const f = Math.max(0, Math.min(1, Number(frac) || 0));
     size = size || 76; sw = sw || 9;
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
+    const gid = svgUid("rg");
+    // v3: optional gradient stroke (e.g. pace green→amber) with a soft glow.
+    const stroke = grad ? `url(#${gid})` : color;
+    const defs = grad ? `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${grad[0]}"/><stop offset="1" stop-color="${grad[1]}"/></linearGradient>
+        <filter id="${gid}g" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter></defs>` : "";
+    const filt = grad ? ` filter="url(#${gid}g)"` : "";
     return `<div style="position:relative;width:${size}px;height:${size}px;flex:none">
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Progress ${Math.round(f * 100)} percent">
+        ${defs}
         <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>
-        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"
+        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"${filt}
           stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"/>
       </svg>
       <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none">${centerHtml || ""}</div></div>`;
@@ -10527,17 +10646,27 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const X = i => P + i / (n - 1) * (W - 2 * P);
     const Y = v => H - P - ((v - min) / rng) * (H - 2 * P);
     const line = arr => arr.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
-    const gid = svgUid("ag");
+    const gid = svgUid("ag"); const fid = svgUid("af");
     const lineColor = opts.lineColor || "#FF6A2D";
     const d = line(data);
     const area = `${d}L${X(data.length - 1).toFixed(1)},${(H - P).toFixed(1)}L${X(0).toFixed(1)},${(H - P).toFixed(1)}Z`;
+    // v3: subtle dotted grid + luminous line over a rich gradient fill.
+    let grid = "";
+    for (let g = 1; g <= 3; g++) {
+      const gy = (P + (H - 2 * P) * g / 4).toFixed(1);
+      grid += `<line x1="${P}" y1="${gy}" x2="${W - P}" y2="${gy}" stroke="rgba(255,255,255,.07)" stroke-width="1" stroke-dasharray="1,5"/>`;
+    }
     const priorLine = prior.length >= 2
       ? `<path d="${line(prior)}" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="1.5" stroke-dasharray="4,3"/>` : "";
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:auto;display:block" role="img" aria-label="${esc(opts.label || "Trend chart")}">
       <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="${lineColor}" stop-opacity=".32"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
-      </linearGradient></defs>
-      ${priorLine}<path d="${area}" fill="url(#${gid})"/>
+        <stop offset="0" stop-color="${lineColor}" stop-opacity=".35"/><stop offset=".55" stop-color="${lineColor}" stop-opacity=".10"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="${fid}" x="-40%" y="-60%" width="180%" height="220%">
+        <feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter></defs>
+      ${grid}${priorLine}<path d="${area}" fill="url(#${gid})"/>
+      <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".22" filter="url(#${fid})"/>
       <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>`;
   }
@@ -10908,6 +11037,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const nwHeroHtml = `
       <div class="chart-card" style="margin-top:10px">
         <p class="micro">Net worth</p>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:10px 0 14px"></div>
         <p class="hero-num num">${bm0(nw.total)}</p>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
         <div style="margin-top:10px">${areaChartSVG(snapVals, { lineColor: "#FF6A2D", label: "Net worth history", h: 130 })}</div>
