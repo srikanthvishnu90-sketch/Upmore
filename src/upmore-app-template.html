@@ -6508,10 +6508,11 @@
       if (refCode && !localStorage.getItem("upmore-ref-done")) {
         const { data: qdata, error: qerr } = await supa.rpc("qualify_referral", { p_referral_code: refCode });
         if (!qerr && qdata && qdata.ok) {
-          // Credit issued. Push to Stripe balance if referrer has one.
-          // (stripe-credits is a no-op if no Stripe customer exists yet.)
-          try { await supa.functions.invoke("stripe-credits", {}); } catch (_) {}
-          toast("Referral applied! Your friend earned $10 credit.");
+          // ANTI-GAMING 2026-09-27: qualify_referral() now records the
+          // referral as PENDING — no credit row exists yet. The $10 credit is
+          // created when this user's first paid charge clears (Stripe
+          // webhook). Nothing to push to Stripe here.
+          toast("Referral applied! Your friend gets $10 credit when you start your subscription.");
         }
         // Clear regardless — one attempt per signup.
         localStorage.setItem("upmore-ref-done", "1");
@@ -8798,6 +8799,30 @@
   }
 
   // ---- Plaid wiring (edge function `plaid`; contract in SPEC 08 header) ----
+  // COST ARMOR 2026-09-27: the server governs Plaid spend (weekly auto
+  // refresh, 1 manual refresh per 24h, $3.00/month hard cap). The UI mirrors
+  // the server's status response — never invents its own policy.
+  function plaidUpdatedLine(st, localCache) {
+    const iso = (st && st.last_updated) || (localCache && localCache.as_of) || null;
+    if (!iso) return "Auto-refreshes weekly";
+    const ms = Date.now() - new Date(iso).getTime();
+    if (isNaN(ms) || ms < 0) return "Auto-refreshes weekly";
+    const days = Math.round(ms / 864e5);
+    const ago = days <= 0 ? "today" : days === 1 ? "1d ago" : days + "d ago";
+    return "Updated " + ago + " · auto-refreshes weekly";
+  }
+  function nextMonthLabel() {
+    // Real month boundary, no hardcoded dates: first day of next month.
+    const d = new Date();
+    const m = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+    return m.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+  function countdownText(iso) {
+    const ms = new Date(iso).getTime() - Date.now();
+    if (isNaN(ms) || ms <= 0) return "soon";
+    const h = Math.floor(ms / 3600e3), m = Math.ceil((ms % 3600e3) / 60e3);
+    return h > 0 ? "in " + h + "h " + m + "m" : "in " + m + "m";
+  }
   async function plaidInvoke(body) {
     const { data, error } = await supa.functions.invoke("plaid", { body });
     if (error) throw new Error(error.message || "Plaid request failed");
@@ -8832,13 +8857,31 @@
     } catch (e) { toast("Couldn't start the connection. Try again."); }
   }
   async function refreshPlaidHoldings() {
+    // Manual refresh = server "refresh" action (on-demand Plaid refresh,
+    // max 1 per 24h, $3.00/month cap). Cost-guard failures are explained by
+    // re-reading status (always HTTP 200) rather than parsing error bodies.
     try {
-      const data = await plaidInvoke({ action: "holdings" });
+      const data = await plaidInvoke({ action: "refresh" });
       if (data && data.retry) { toast("Holdings are still being prepared — try again in a minute."); return; }
       const holdings = normalizePlaidHoldings(data || {});
       blsSet(HOLD_LS.plaid, { as_of: new Date().toISOString().slice(0, 10), holdings });
-      toast(`Loaded ${holdings.length} positions.`);
-    } catch (e) { toast("Couldn't refresh holdings. Try again."); }
+      try { plaidStatusCache = await plaidInvoke({ action: "status" }); } catch (_) {}
+      toast(data && data.refreshed
+        ? "Refresh requested — latest prices land shortly."
+        : `Loaded ${holdings.length} positions.`);
+    } catch (e) {
+      try {
+        const st = await plaidInvoke({ action: "status" });
+        plaidStatusCache = st;
+        if (st && st.capped) {
+          toast(`Refresh paused until ${nextMonthLabel()} — cost guard. Showing last synced positions.`);
+        } else if (st && st.next_manual_refresh_at) {
+          toast(`Next manual refresh ${countdownText(st.next_manual_refresh_at)}.`);
+        } else {
+          toast("Couldn't refresh holdings. Try again.");
+        }
+      } catch (_) { toast("Couldn't refresh holdings. Try again."); }
+    }
     renderInvestments();
   }
 
@@ -8870,9 +8913,23 @@
         <button class="cta" id="invPlaidConnect" style="margin-top:10px">Connect investments</button>
         <p class="fine" style="margin-top:8px">Via Plaid. Your brokerage login goes to your brokerage, never to Upmore.</p></div>`;
     } else {
-      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px"><b>Brokerages connected.</b>${cache && cache.as_of ? ` Positions as of ${esc(cache.as_of)}.` : ""}</p>
+      // COST ARMOR 2026-09-27: refresh button mirrors the server's cost
+      // governor — disabled with countdown inside the 24h window, paused
+      // with the real month boundary when the $3.00 cap is hit.
+      const capped = !!(status && status.capped);
+      const nextManual = status && status.next_manual_refresh_at;
+      const refreshBtn = capped
+        ? `<button class="ghostbtn" id="invRefresh" disabled style="flex:1;margin:0;opacity:.55">Refresh paused</button>`
+        : nextManual
+          ? `<button class="ghostbtn" id="invRefresh" disabled style="flex:1;margin:0;opacity:.55">Refresh ${esc(countdownText(nextManual))}</button>`
+          : `<button class="ghostbtn" id="invRefresh" style="flex:1;margin:0">Refresh</button>`;
+      const guardNote = capped
+        ? `<p class="fine" style="margin-top:8px">Refresh paused until ${esc(nextMonthLabel())} — cost guard. Your last synced positions are shown below.</p>`
+        : `<p class="fine" style="margin-top:8px">${esc(plaidUpdatedLine(status, cache))}</p>`;
+      connHtml = `<div class="pcard"><p class="bsum" style="font-size:14px"><b>Brokerages connected.</b></p>
+        ${guardNote}
         <div class="row" style="gap:8px;margin-top:10px">
-          <button class="ghostbtn" id="invRefresh" style="flex:1;margin:0">Refresh</button>
+          ${refreshBtn}
           <button class="ghostbtn" id="invDisconnect" style="flex:1;margin:0">Disconnect</button>
         </div></div>`;
     }

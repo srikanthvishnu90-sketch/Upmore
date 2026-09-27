@@ -1,10 +1,28 @@
 // Upmore plaid edge function — server-side Plaid integration (read-only).
 // Actions via POST JSON {action, ...}:
-//   status      -> {plaid_configured, connected}
+//   status      -> {plaid_configured, connected, month_spend_cents, cap_cents,
+//                   capped, last_updated, next_manual_refresh_at}
 //   link_token  -> {link_token} (503 honest error if PLAID_CLIENT_ID/PLAID_SECRET missing)
 //   exchange    -> {public_token} -> stores access token in Vault -> {connected: true}
-//   holdings    -> sanitized {accounts, holdings, securities}; 202 {retry:true} if PRODUCT_NOT_READY
+//   holdings    -> sanitized {accounts, holdings, securities} (+ cached flags);
+//                  202 {retry:true} if PRODUCT_NOT_READY
+//   refresh     -> on-demand /investments/refresh (add-on) + fresh holdings
 //   disconnect  -> deletes the vault token -> {connected: false}
+//
+// COST ARMOR 2026-09-27 (founder order): the server is the authority on Plaid
+// spend. Pricing (pay-as-you-go): Investments Holdings $0.18/item/month,
+// Investments Refresh $0.12/successful call. (Investments Transactions
+// $0.35/item/month is NOT consumed — Upmore only calls /investments/holdings/get.)
+// Policy:
+//   - Auto holdings refresh: at most weekly per item (cache served otherwise).
+//   - Manual refresh (action=refresh): max 1 per item per 24h -> 429
+//     {error:"refresh_cooldown", retry_after_seconds} otherwise.
+//   - Hard per-user cap: $3.00/month. Over cap -> 429 {error:"plaid_cap",
+//     cached:true} and last cached holdings are served.
+//   - Every billable event writes to plaid_spend_ledger. Monthly item fees
+//     accrue once per item per calendar month on the first holdings call.
+//   - Founder alert: any user crossing 80% of cap -> founder_alerts row
+//     (kind=plaid_cap_warning), once per user per month.
 //
 // Security model:
 // - Caller must present a valid Supabase JWT (401 otherwise).
@@ -31,6 +49,14 @@ const PLAID_HOSTS: Record<string, string> = {
   development: "https://development.plaid.com",
   sandbox: "https://sandbox.plaid.com",
 };
+
+// COST ARMOR 2026-09-27: Plaid spend governor policy numbers.
+const PLAID_MONTHLY_CAP_CENTS = 300;   // $3.00 hard cap per user per month
+const PLAID_CAP_WARN_CENTS = 240;      // 80% of cap -> founder_alerts row
+const HOLDINGS_ITEM_CENTS = 18;        // $0.18/item/month (Investments Holdings)
+const REFRESH_CALL_CENTS = 12;         // $0.12/successful on-demand refresh call
+const AUTO_REFRESH_MS = 7 * 864e5;     // auto holdings refresh at most weekly
+const MANUAL_REFRESH_MS = 24 * 3600e3; // manual refresh max 1 per 24h
 
 function corsFor(req: Request) {
   const origin = req.headers.get("origin") || "";
@@ -63,6 +89,98 @@ async function plaidCall(host: string, clientId: string, secret: string, path: s
   });
   const data = await res.json().catch(() => ({}));
   return { ok: res.ok, status: res.status, data };
+}
+
+// ---- COST ARMOR: spend ledger helpers (server is the authority) ----
+const periodMonth = () => new Date().toISOString().slice(0, 7); // YYYY-MM
+
+async function monthSpend(admin: any, userId: string): Promise<number> {
+  const { data } = await admin.rpc("plaid_month_spend", { p_user_id: userId });
+  return Number(data) || 0;
+}
+
+async function getCache(admin: any, userId: string) {
+  const { data } = await admin.from("plaid_holdings_cache")
+    .select("payload, fetched_at, item_id")
+    .eq("user_id", userId)
+    .maybeSingle();
+  return data || null;
+}
+
+// Monthly item fee: accrue once per item per calendar month (idempotent —
+// the partial unique index is the backstop against races).
+async function accrueItemMonth(admin: any, userId: string, itemId: string) {
+  const pm = periodMonth();
+  const { data: existing } = await admin.from("plaid_spend_ledger")
+    .select("id").eq("user_id", userId).eq("item_id", itemId)
+    .eq("kind", "item_month").eq("period_month", pm).limit(1);
+  if (existing && existing.length) return;
+  const { error } = await admin.from("plaid_spend_ledger").insert({
+    user_id: userId, item_id: itemId, kind: "item_month",
+    cost_cents: HOLDINGS_ITEM_CENTS, period_month: pm,
+  });
+  // Unique-violation means a concurrent call won the race — not an error.
+  if (error && !/duplicate|unique/i.test(error.message || "")) {
+    console.error("plaid: item_month accrual failed:", error.message);
+  }
+}
+
+// When the next manual refresh is allowed (ISO) or null if allowed now.
+async function nextManualRefreshAt(admin: any, userId: string): Promise<string | null> {
+  const { data } = await admin.from("plaid_spend_ledger")
+    .select("created_at").eq("user_id", userId).eq("kind", "refresh")
+    .order("created_at", { ascending: false }).limit(1).maybeSingle();
+  if (!data) return null;
+  const next = new Date(new Date(data.created_at).getTime() + MANUAL_REFRESH_MS);
+  return next.getTime() > Date.now() ? next.toISOString() : null;
+}
+
+// Founder alert at 80% of cap — once per user per month.
+async function maybePlaidCapAlert(admin: any, userId: string, spendCents: number) {
+  if (spendCents < PLAID_CAP_WARN_CENTS) return;
+  const monthStart = new Date();
+  monthStart.setUTCDate(1); monthStart.setUTCHours(0, 0, 0, 0);
+  const { count } = await admin.from("founder_alerts")
+    .select("id", { count: "exact", head: true })
+    .eq("kind", "plaid_cap_warning").eq("user_id", userId)
+    .gte("created_at", monthStart.toISOString());
+  if (!count) {
+    await admin.from("founder_alerts").insert({
+      kind: "plaid_cap_warning",
+      user_id: userId,
+      detail: { user_id: userId, month_spend_cents: spendCents, cap_cents: PLAID_MONTHLY_CAP_CENTS },
+    });
+  }
+}
+
+function sanitizeHoldings(data: any) {
+  const accounts = (data.accounts || []).map((a: any) => ({
+    id: a.account_id,
+    name: a.name,
+    type: a.type,
+    subtype: a.subtype ?? null,
+    balances: {
+      current: a.balances?.current ?? null,
+      available: a.balances?.available ?? null,
+      limit: a.balances?.limit ?? null,
+      iso_currency_code: a.balances?.iso_currency_code ?? null,
+    },
+  }));
+  const holdings = (data.holdings || []).map((h: any) => ({
+    account_id: h.account_id,
+    security_id: h.security_id,
+    quantity: h.quantity,
+    institution_price: h.institution_price,
+    institution_value: h.institution_value,
+    cost_basis: h.cost_basis ?? null,
+  }));
+  const securities = (data.securities || []).map((s: any) => ({
+    security_id: s.security_id,
+    ticker_symbol: s.ticker_symbol ?? null,
+    name: s.name ?? null,
+    type: s.type ?? null,
+  }));
+  return { accounts, holdings, securities };
 }
 
 serve(async (req) => {
@@ -107,7 +225,18 @@ serve(async (req) => {
 
     if (action === "status") {
       const token = await getVaultSecret(supabaseUrl, serviceKey, name);
-      return json({ plaid_configured: plaidConfigured, connected: !!token });
+      const spend = await monthSpend(admin, user.id);
+      const cache = await getCache(admin, user.id);
+      const nextManual = await nextManualRefreshAt(admin, user.id);
+      return json({
+        plaid_configured: plaidConfigured,
+        connected: !!token,
+        month_spend_cents: spend,
+        cap_cents: PLAID_MONTHLY_CAP_CENTS,
+        capped: spend >= PLAID_MONTHLY_CAP_CENTS,
+        last_updated: cache?.fetched_at || null,
+        next_manual_refresh_at: nextManual,
+      });
     }
 
     if (action === "link_token") {
@@ -140,13 +269,57 @@ serve(async (req) => {
         p_secret: String(data.access_token),
       });
       if (verr) return json({ error: "Could not save connection" }, 500);
+      // Remember the Plaid item_id for spend-ledger granularity (one item per
+      // user in the current vault scheme; "default" for legacy connections).
+      try {
+        const itemId = String(data.item_id || "default");
+        const { data: existingCache } = await admin.from("plaid_holdings_cache")
+          .select("payload").eq("user_id", user.id).maybeSingle();
+        await admin.from("plaid_holdings_cache").upsert({
+          user_id: user.id,
+          item_id: itemId,
+          payload: existingCache?.payload || { accounts: [], holdings: [], securities: [] },
+          ...(existingCache ? {} : { fetched_at: new Date(0).toISOString() }),
+        }, { onConflict: "user_id" });
+      } catch (_) { /* item tracking must never break connect */ }
       return json({ connected: true });
     }
 
+    // Auto path: governed by the weekly policy. Manual on-demand refresh is
+    // the separate "refresh" action below.
     if (action === "holdings") {
       if (!plaidConfigured) return json({ error: "Plaid not configured yet", plaid_configured: false }, 503);
       const accessToken = await getVaultSecret(supabaseUrl, serviceKey, name);
       if (!accessToken) return json({ error: "Plaid not connected" }, 404);
+      const cache = await getCache(admin, user.id);
+      const itemId = cache?.item_id || "default";
+
+      // Monthly item fee accrues once per item per calendar month, on the
+      // first holdings call of the month (even if we serve cache below).
+      await accrueItemMonth(admin, user.id, itemId);
+
+      // Hard cap: serve last cached holdings, never hit Plaid.
+      const spend = await monthSpend(admin, user.id);
+      if (spend >= PLAID_MONTHLY_CAP_CENTS) {
+        const p = cache?.payload || { accounts: [], holdings: [], securities: [] };
+        return json({
+          error: "plaid_cap", cached: true,
+          accounts: p.accounts || [], holdings: p.holdings || [], securities: p.securities || [],
+          last_updated: cache?.fetched_at || null,
+          month_spend_cents: spend, cap_cents: PLAID_MONTHLY_CAP_CENTS,
+        }, 429);
+      }
+
+      // Weekly auto policy: serve cache if fresh.
+      if (cache && cache.fetched_at &&
+          Date.now() - new Date(cache.fetched_at).getTime() < AUTO_REFRESH_MS) {
+        const p = cache.payload || { accounts: [], holdings: [], securities: [] };
+        return json({
+          accounts: p.accounts || [], holdings: p.holdings || [], securities: p.securities || [],
+          cached: true, last_updated: cache.fetched_at,
+        });
+      }
+
       const { ok, data } = await plaidCall(host, clientId, plaidSecret, "/investments/holdings/get", {
         access_token: accessToken,
       });
@@ -155,33 +328,78 @@ serve(async (req) => {
         if (data?.error_code === "PRODUCT_NOT_READY") return json({ retry: true }, 202);
         return json({ error: data?.error_message || data?.error_code || "Holdings fetch failed" }, 502);
       }
-      const accounts = (data.accounts || []).map((a: any) => ({
-        id: a.account_id,
-        name: a.name,
-        type: a.type,
-        subtype: a.subtype ?? null,
-        balances: {
-          current: a.balances?.current ?? null,
-          available: a.balances?.available ?? null,
-          limit: a.balances?.limit ?? null,
-          iso_currency_code: a.balances?.iso_currency_code ?? null,
-        },
-      }));
-      const holdings = (data.holdings || []).map((h: any) => ({
-        account_id: h.account_id,
-        security_id: h.security_id,
-        quantity: h.quantity,
-        institution_price: h.institution_price,
-        institution_value: h.institution_value,
-        cost_basis: h.cost_basis ?? null,
-      }));
-      const securities = (data.securities || []).map((s: any) => ({
-        security_id: s.security_id,
-        ticker_symbol: s.ticker_symbol ?? null,
-        name: s.name ?? null,
-        type: s.type ?? null,
-      }));
-      return json({ accounts, holdings, securities });
+      const clean = sanitizeHoldings(data);
+      const nowIso = new Date().toISOString();
+      await admin.from("plaid_holdings_cache").upsert({
+        user_id: user.id, item_id: itemId, payload: clean, fetched_at: nowIso,
+      }, { onConflict: "user_id" });
+      return json({ ...clean, cached: false, last_updated: nowIso });
+    }
+
+    // Manual on-demand refresh: Plaid's /investments/refresh add-on
+    // ($0.12/successful call). Max 1 per item per 24h. The refresh itself is
+    // asynchronous — we return the latest holdings right away with
+    // refreshed:true; Plaid lands new prices shortly after.
+    if (action === "refresh") {
+      if (!plaidConfigured) return json({ error: "Plaid not configured yet", plaid_configured: false }, 503);
+      const accessToken = await getVaultSecret(supabaseUrl, serviceKey, name);
+      if (!accessToken) return json({ error: "Plaid not connected" }, 404);
+      const cache = await getCache(admin, user.id);
+      const itemId = cache?.item_id || "default";
+      const emptyPayload = { accounts: [], holdings: [], securities: [] };
+      const cachedPayload = cache?.payload || emptyPayload;
+
+      // Hard cap: no billable calls; serve cache.
+      const spend = await monthSpend(admin, user.id);
+      if (spend >= PLAID_MONTHLY_CAP_CENTS) {
+        return json({
+          error: "plaid_cap", cached: true,
+          accounts: cachedPayload.accounts || [], holdings: cachedPayload.holdings || [],
+          securities: cachedPayload.securities || [],
+          last_updated: cache?.fetched_at || null,
+          month_spend_cents: spend, cap_cents: PLAID_MONTHLY_CAP_CENTS,
+        }, 429);
+      }
+
+      // 24h manual cooldown.
+      const nextAt = await nextManualRefreshAt(admin, user.id);
+      if (nextAt) {
+        const retryAfter = Math.max(1, Math.ceil((new Date(nextAt).getTime() - Date.now()) / 1000));
+        return json({
+          error: "refresh_cooldown",
+          retry_after_seconds: retryAfter,
+          next_refresh_at: nextAt,
+        }, 429);
+      }
+
+      const r = await plaidCall(host, clientId, plaidSecret, "/investments/refresh", {
+        access_token: accessToken,
+      });
+      if (!r.ok) {
+        return json({ error: r.data?.error_message || r.data?.error_code || "Refresh request failed" }, 502);
+      }
+
+      // Successful call = billable. Record BEFORE fetching holdings so the
+      // spend is never lost if the fetch below fails.
+      await admin.from("plaid_spend_ledger").insert({
+        user_id: user.id, item_id: itemId, kind: "refresh",
+        cost_cents: REFRESH_CALL_CENTS, period_month: periodMonth(),
+      });
+      await maybePlaidCapAlert(admin, user.id, spend + REFRESH_CALL_CENTS);
+
+      const { ok, data } = await plaidCall(host, clientId, plaidSecret, "/investments/holdings/get", {
+        access_token: accessToken,
+      });
+      if (!ok) {
+        if (data?.error_code === "PRODUCT_NOT_READY") return json({ retry: true, refreshed: true }, 202);
+        return json({ error: data?.error_message || data?.error_code || "Holdings fetch failed", refreshed: true }, 502);
+      }
+      const clean = sanitizeHoldings(data);
+      const nowIso = new Date().toISOString();
+      await admin.from("plaid_holdings_cache").upsert({
+        user_id: user.id, item_id: itemId, payload: clean, fetched_at: nowIso,
+      }, { onConflict: "user_id" });
+      return json({ ...clean, refreshed: true, cached: false, last_updated: nowIso });
     }
 
     if (action === "disconnect") {

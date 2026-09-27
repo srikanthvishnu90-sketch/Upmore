@@ -409,6 +409,27 @@ serve(async (req) => {
       }
     } catch (_) { /* quota check must never break chat — fail open */ }
 
+    // COST ARMOR 2026-09-27: AI anomaly tripwire. The 900-call/month hard cap
+    // bounds worst-case AI cost at ~$3.87, but a runaway client or leaked
+    // session should page the founder early. No behavior change for users —
+    // just a founder_alerts row (once per user per day, enforced inside the
+    // RPC). Never breaks chat.
+    try {
+      const dayStart = new Date(); dayStart.setUTCHours(0, 0, 0, 0);
+      const mStart = new Date(); mStart.setUTCDate(1); mStart.setUTCHours(0, 0, 0, 0);
+      const [{ count: mCalls }, { count: dCalls }] = await Promise.all([
+        supabase.from("agent_usage").select("id", { count: "exact", head: true })
+          .eq("user_id", user.id).gte("created_at", mStart.toISOString()),
+        supabase.from("agent_usage").select("id", { count: "exact", head: true })
+          .eq("user_id", user.id).gte("created_at", dayStart.toISOString()),
+      ]);
+      if ((mCalls ?? 0) >= 450 || (dCalls ?? 0) >= 100) {
+        await supabase.rpc("report_ai_anomaly", {
+          p_user_id: user.id, p_month_calls: mCalls ?? 0, p_day_calls: dCalls ?? 0,
+        });
+      }
+    } catch (_) { /* tripwire must never break chat */ }
+
     // (rate limit was already enforced for every request at the top of the
     // handler, before any DB work)
     const anthropicRes = await fetch(ANTHROPIC_URL, {

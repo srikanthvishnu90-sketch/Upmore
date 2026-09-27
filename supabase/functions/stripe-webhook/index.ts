@@ -2,15 +2,19 @@
 // Handles Stripe webhook events for the $10/mo subscription.
 //
 // Events:
-// - checkout.session.completed → mark subscription active, apply pending credits
+// - checkout.session.completed → mark subscription active, apply pending credits,
+//   credit the referee's referrer (first paid charge)
 // - customer.subscription.updated → sync status to user_subscriptions
 // - customer.subscription.deleted → mark canceled
-// - invoice.payment_succeeded → confirm active, log
+// - invoice.payment_succeeded → confirm active, log, credit the referee's
+//   referrer (idempotent — only acts on pending referrals)
 //
 // Security: verifies Stripe webhook signature. No JWT (Stripe calls this).
-// Referral credits: when a subscription becomes active, any unapplied credits
-// for the user are added to their Stripe Customer Balance (negative = credit)
-// and marked applied=true in our DB. Stripe auto-applies balance to invoices.
+// Referral credits: ANTI-GAMING 2026-09-27 — the $10 credit row is created ONLY
+// when the referee's first paid charge clears (credit_pending_referral,
+// idempotent). When a subscription becomes active, any unapplied credits for
+// the user are added to their Stripe Customer Balance (negative = credit) and
+// marked applied=true in our DB. Stripe auto-applies balance to invoices.
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.0";
 import Stripe from "https://esm.sh/stripe@14.25.0?target=deno";
@@ -70,7 +74,8 @@ serve(async (req) => {
     }
 
     // 3. Helper: upsert subscription status from a Stripe subscription object.
-    async function syncSubscription(sub: Stripe.Subscription) {
+    // Returns the resolved Supabase user id (or null).
+    async function syncSubscription(sub: Stripe.Subscription): Promise<string | null> {
       const userId = sub.metadata?.supabase_user_id || null;
       // Fall back to customer metadata if subscription metadata is empty.
       let resolvedUserId = userId;
@@ -80,7 +85,7 @@ serve(async (req) => {
       }
       if (!resolvedUserId) {
         console.error("stripe-webhook: no supabase_user_id for subscription", sub.id);
-        return;
+        return null;
       }
       const statusMap: Record<string, string> = {
         active: "active",
@@ -106,6 +111,29 @@ serve(async (req) => {
       if (sub.status === "active" && typeof sub.customer === "string") {
         await applyPendingCredits(resolvedUserId, sub.customer);
       }
+      return resolvedUserId;
+    }
+
+    // 3b. Helper: ANTI-GAMING 2026-09-27 — when the referee's first paid
+    // charge clears, create the referrer's $10 credit row. Idempotent: the
+    // DB function only acts on status='pending' referrals and the credit
+    // insert is ON CONFLICT DO NOTHING, so every invoice.payment_succeeded
+    // can safely call this.
+    async function creditReferrerOnFirstPayment(userId: string) {
+      try {
+        const { data, error } = await admin.rpc("credit_pending_referral", {
+          p_referee_id: userId,
+        });
+        if (error) {
+          console.error("stripe-webhook: credit_pending_referral failed:", error.message);
+          return;
+        }
+        if (data && (data as any).ok) {
+          console.log(`stripe-webhook: referrer credited $10 for referee ${userId}`);
+        }
+      } catch (e) {
+        console.error("stripe-webhook: creditReferrer error:", (e as Error).message);
+      }
     }
 
     // 4. Route events.
@@ -114,7 +142,9 @@ serve(async (req) => {
         const session = event.data.object as Stripe.Checkout.Session;
         if (session.subscription && typeof session.subscription === "string") {
           const sub = await stripe.subscriptions.retrieve(session.subscription);
-          await syncSubscription(sub);
+          const uid = await syncSubscription(sub);
+          // First paid charge path: credit the referee's referrer (idempotent).
+          if (uid) await creditReferrerOnFirstPayment(uid);
         }
         break;
       }
@@ -131,6 +161,22 @@ serve(async (req) => {
       case "invoice.payment_succeeded": {
         const invoice = event.data.object as Stripe.Invoice;
         console.log(`stripe-webhook: invoice ${invoice.id} paid ($${((invoice.amount_paid||0)/100).toFixed(2)})`);
+        // First-paid-charge path (idempotent): resolve the paying user and
+        // credit their referrer if the referral is still pending.
+        let payUid: string | null = null;
+        try {
+          if (invoice.subscription && typeof invoice.subscription === "string") {
+            const sub = await stripe.subscriptions.retrieve(invoice.subscription);
+            payUid = sub.metadata?.supabase_user_id || null;
+          }
+          if (!payUid && typeof invoice.customer === "string") {
+            const cust = await stripe.customers.retrieve(invoice.customer) as Stripe.Customer;
+            payUid = cust.metadata?.supabase_user_id || null;
+          }
+        } catch (e) {
+          console.error("stripe-webhook: payer resolve failed:", (e as Error).message);
+        }
+        if (payUid) await creditReferrerOnFirstPayment(payUid);
         break;
       }
       default:
