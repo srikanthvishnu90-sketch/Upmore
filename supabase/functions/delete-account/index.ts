@@ -76,6 +76,31 @@ serve(async (req: Request) => {
     }
   } catch { /* best-effort: account deletion proceeds regardless */ }
 
+  // FIX (QA-D2 2026-09-27): purge the vaulted Plaid access token.
+  // The plaid edge function stores it as exec_cred_{uid}_plaid WITHOUT an
+  // exec_credential_refs row, so the refs-iteration above would miss it —
+  // the token would survive account deletion. Name it explicitly.
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/rpc/exec_vault_delete`, {
+      method: "POST",
+      headers: {
+        apikey: SERVICE_KEY,
+        Authorization: `Bearer ${SERVICE_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_name: `exec_cred_${uid}_plaid` }),
+    });
+  } catch { /* best-effort: account deletion proceeds regardless */ }
+
+  // FIX (QA-D2 2026-09-27): plaid_requests has no FK to profiles/auth.users,
+  // so its rows do NOT cascade — delete them explicitly or they orphan.
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/plaid_requests?user_id=eq.${uid}`, {
+      method: "DELETE",
+      headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` },
+    });
+  } catch { /* best-effort: account deletion proceeds regardless */ }
+
   // Delete the auth user (cascades to profiles, threads, messages, etc.)
   const delRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users/${uid}`, {
     method: "DELETE",

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-6+WTUE8CBO/GgsB4shMWYq1dGyGkX2/WCaKnEQ23Fns=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-Q2agX7ZtNyw+C5naZ3zXxY/q6LO8BUU5Xd11oowMfxw=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -1034,7 +1034,7 @@
   <!-- SPEC 04 Track: transaction list (tap strip) + month view (tap month label) -->
   <section class="screen" id="transactions" aria-label="Transactions">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Transactions</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Transactions</div></div>
       <div class="xsearch">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input id="txq" type="search" placeholder="Search transactions…" autocomplete="off" aria-label="Search transactions">
@@ -1052,7 +1052,7 @@
   </section>
   <section class="screen" id="monthview" aria-label="Month view">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">This month vs average</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">This month vs average</div></div>
       <p class="psub" id="monthCov" style="margin:8px 0 12px"></p>
       <div id="monthRows"></div>
     </div>
@@ -1065,7 +1065,7 @@
        terms, with the CFO edge on top. -->
   <section class="screen" id="budgetReport" aria-label="Budget report">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Budget report</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Budget report</div></div>
       <div id="budgetReportBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -1081,7 +1081,7 @@
        never buy/sell advice. Every number traces to holding rows. -->
   <section class="screen" id="investments" aria-label="Investments">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Investments</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Investments</div></div>
       <div id="investBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -1091,7 +1091,7 @@
        traces to a row; monthly snapshots for the trend. -->
   <section class="screen" id="networth" aria-label="Net worth">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Net worth</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Net worth</div></div>
       <div id="nwBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -1100,7 +1100,7 @@
   <!-- SPEC 09 Recurring calendar: bills + payday on one grid. -->
   <section class="screen" id="reccal" aria-label="Bills calendar">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Bills calendar</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Bills calendar</div></div>
       <div id="reccalBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -1190,7 +1190,7 @@
   <!-- SPEC 05 CFO: detail screen for the seven money-health tools. -->
   <section class="screen" id="cfoDetail" aria-label="Money tool">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand" id="cfoTitle">Money tool</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand" id="cfoTitle">Money tool</div></div>
       <div id="cfoBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -1199,7 +1199,7 @@
   <!-- ================= CLAIM (unclaimed property) ================= -->
   <section class="screen" id="claimDetail" aria-label="Unclaimed money">
     <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
-      <div class="head"><button class="backbtn" data-back>‹</button><div class="brand">Unclaimed money</div></div>
+      <div class="head"><button class="backbtn" data-back aria-label="Back">‹</button><div class="brand">Unclaimed money</div></div>
       <div id="claimBody"></div>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
@@ -3191,7 +3191,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     let gapHtml = "";
     try {
       const td = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
-      gapHtml = annualCoverageGaps(td.transactions || []).map(g =>
+      // QA 2026-09-27: gap merchants come from transaction history — a
+      // signed-in user without live data must not see sample merchants here.
+      const dlNoLive = (typeof session !== "undefined" && !!session) && !td.isLive;
+      gapHtml = (dlNoLive ? [] : annualCoverageGaps(td.transactions || [])).map(g =>
         `<div class="item"><div class="grow"><p class="m" style="color:var(--muted)">Not enough history to set an annual renewal for ${esc(g.merchant)} — needs ~12 months of history, so we're not guessing. We'll set it automatically once the pattern is clear.</p></div></div>`
       ).join("");
     } catch (e) {}
@@ -3445,10 +3448,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   /* ---- 5. Runway ---- */
   function cfoRunway(body) {
-    let weeks = null, liquid = 0, burn = 0, detail = "", isLive = false;
+    let weeks = null, liquid = 0, burn = 0, detail = "", isLive = false, rwNoLive = false;
     try {
       const { accounts, transactions, isLive: live } = loadTrackData();
       isLive = !!live;
+      // QA 2026-09-27: a signed-in user without live data never gets an
+      // auto-computed headline from sample data — the manual inputs and
+      // connect prompt below are their path, not demo figures as their own.
+      rwNoLive = (typeof session !== "undefined" && !!session) && !isLive;
       liquid = accounts.reduce((s, a) => s + Math.max(0, a.balance || 0), 0);
       const cutoff = Date.now() - 90 * 864e5;
       const spend = transactions.filter(t => t.amount < 0 && !t.is_pending && !t.is_transfer && !t.is_excluded &&
@@ -3460,13 +3467,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       detail = `${spend.length} spending transactions, last 90 days`;
     } catch (e) { detail = "No transaction data yet."; }
     body.innerHTML = `<div class="pcard" style="margin-top:4px">
-        ${weeks === null ? `<p><b>Can't compute runway yet</b> — connect your bank or wait for transaction data.</p><p class="psub" style="margin-top:6px">${esc(detail)}</p>`
+        ${rwNoLive ? `<p><b>Your real runway needs your numbers.</b></p><p class="psub" style="margin-top:6px">Connect your bank for an automatic runway — read-only, takes a minute — or enter your numbers below.</p><button class="cta" id="rwConnect" style="margin-top:12px">Connect bank</button>`
+        : weeks === null ? `<p><b>Can't compute runway yet</b> — connect your bank or wait for transaction data.</p><p class="psub" style="margin-top:6px">${esc(detail)}</p>`
         : `<p style="font-size:15px">If your income stopped today, you have</p>
            <p style="font-size:42px;font-weight:700;margin:6px 0">${weeks < 52 ? weeks.toFixed(1) + " weeks" : (weeks / 52).toFixed(1) + " years"}</p>
            <p class="psub">${cfo$(liquid)} liquid ÷ ${cfo$(burn)}/week burn.</p>
-           <p class="psub" style="margin-top:6px">${esc(detail)}. Excludes transfers and pending.</p>`}
+           <p class="psub" style="margin-top:6px">${esc(detail)}. Excludes transfers, pending, and uncategorized spend (labeled “Other”) — categorize it in Track for a truer runway.</p>`}
       </div>
-      ${isLive ? "" : `<p class="fine" style="margin-top:10px;color:var(--amber)">Sample data — connect your bank or enter your numbers below for your real runway.</p>`}
+      ${isLive ? "" : `<p class="fine" style="margin-top:10px;color:var(--amber)">${rwNoLive ? "Showing your manual inputs below — sample figures are hidden until your bank is connected." : "Sample data — connect your bank or enter your numbers below for your real runway."}</p>`}
       <h2 class="sec">Or enter your numbers</h2>
       <div class="svform"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <label class="f"><span>Cash + savings you could spend ($)</span><input id="rwLiquid" inputmode="decimal" value="${cfoGet("rw_liquid", "")}" placeholder="8000"></label>
@@ -3481,6 +3489,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       cfoRunway(body);
     };
     ["rwLiquid", "rwBurn"].forEach(id => { const el = $(id); if (el) el.onchange = rwUpd; });
+    const rwCb = $("rwConnect");
+    if (rwCb) rwCb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
     (() => {
       const liq = cfoGet("rw_liquid", 0), brn = cfoGet("rw_burn", 0);
       const el = $("rwManual");
@@ -3500,21 +3510,35 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* ---- 6. Monthly close ---- */
   function cfoClose(body) {
     let html = "";
+    // QA 2026-09-27: a signed-in user without live data never sees a monthly
+    // close computed from sample transactions — connect card instead.
+    const _clTd = loadTrackData();
+    const _clSi = (typeof session !== "undefined" && !!session);
+    if (_clSi && !_clTd.isLive) {
+      body.innerHTML = `<div class="pcard"><p class="bsum">Your monthly close builds itself from real transactions. Connect your bank to see your money in, money out, and your net for the month.</p><button class="cta" id="clConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      const cb = $("clConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
+      return;
+    }
     try {
-      const { transactions, isLive } = loadTrackData();
+      const { transactions, isLive } = _clTd;
       const now = new Date(), ym = now.toISOString().slice(0, 7);
       const inM = d => (d || "").slice(0, 7);
       const real = transactions.filter(t => !t.is_pending && !t.is_transfer);
       const thisM = real.filter(t => inM(t.posted_at) === ym);
       // FIX (D1-028/1-029): refunds and unmatched credits are never income.
       const inflow = thisM.filter(t => isCountableInflow(t)).reduce((s, t) => s + t.amount, 0);
-      const outgo = thisM.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0);
-      // trailing 3 full months average
+      // QA 2026-09-27: net refunds out of Out so the headline "Net" matches the
+      // Budget Report "kept" for the same month (monthAgg nets refunds into both
+      // category spending and aggregate out; the category breakdown below also
+      // nets them — without this, the two numbers on this screen disagree).
+      const refundOut = arr => arr.filter(t => t.is_refund).reduce((s, t) => s + (t.amount || 0), 0);
+      const outgo = thisM.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0) - refundOut(thisM);
+      // trailing 3 full months average (same netting)
       const avgs = [];
       for (let i = 1; i <= 3; i++) {
         const d = new Date(now.getFullYear(), now.getMonth() - i, 1).toISOString().slice(0, 7);
         const m = real.filter(t => inM(t.posted_at) === d);
-        avgs.push(m.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0));
+        avgs.push(m.filter(t => isCountableSpend(t)).reduce((s, t) => s - t.amount, 0) - refundOut(m));
       }
       const avgOut = avgs.reduce((s, x) => s + x, 0) / 3;
       const byCat = {};
@@ -4090,6 +4114,21 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     updateSharePreview();
     $("shareSheet").hidden = false;
   }
+  // FIX (QA-D2 2026-09-27): bottom sheets are dialogs — expose dialog
+  // semantics to assistive tech and let Escape dismiss any open sheet
+  // (WCAG 2.1.2 / 4.1.2). The close path is the same `hidden = true` every
+  // sheet's own close buttons already use, so no sheet gains new behavior.
+  document.querySelectorAll(".sheet").forEach(s => {
+    s.setAttribute("role", "dialog");
+    s.setAttribute("aria-modal", "true");
+    if (!s.getAttribute("aria-label")) {
+      const t = s.querySelector(".sheetcard b, .sheetcard h2, .sheetcard h3");
+      if (t && t.textContent.trim()) s.setAttribute("aria-label", t.textContent.trim().slice(0, 80));
+    }
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") document.querySelectorAll(".sheet:not([hidden])").forEach(s => { s.hidden = true; });
+  });
   function wireShare() {
     $("shareClose").onclick = () => { $("shareSheet").hidden = true; };
     $("shareAmt").onchange = updateSharePreview;
@@ -4288,19 +4327,34 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (!saveUid()) { toast("Sign in to export"); return; }
     // FIX (QA-D 2026-09-27): export covered only 6 tables while the privacy
     // policy promises "export everything". Now covers every user-owned table.
+    // FIX (QA-D2 2026-09-27): added the four tables the first pass missed —
+    // plaid_spend_ledger + plaid_holdings_cache (cost-armor tables, hold the
+    // user's financial data), finance_waitlist, listings. referrals is NOT in
+    // this list on purpose: it has no user_id column (referrer_id/referee_id),
+    // so saveRows() silently returned [] — it is exported separately below.
     const tables = [["profiles", "created_at"], ["save_subscriptions", "created_at"],
       ["save_ledger", "created_at"], ["save_renewals", "created_at"], ["save_claims", "created_at"],
       ["save_receipts", "created_at"], ["simplefin_connections", "connected_at"],
       ["simplefin_requests", "requested_at"], ["playbook_progress", "started_at"],
       ["reminders", "created_at"], ["finance_accounts", "created_at"],
       ["finance_alerts", "created_at"], ["finance_goals", "created_at"],
-      ["finance_snapshots", "created_at"], ["referrals", "created_at"],
+      ["finance_snapshots", "created_at"],
       ["referral_credits", "created_at"], ["user_subscriptions", "created_at"],
       ["exec_approvals", "created_at"], ["exec_runs", "started_at"],
       ["exec_credential_refs", "created_at"], ["plaid_requests", "requested_at"],
-      ["web_agent_jobs", "created_at"], ["agent_usage", "created_at"]];
+      ["web_agent_jobs", "created_at"], ["agent_usage", "created_at"],
+      ["plaid_spend_ledger", "created_at"], ["plaid_holdings_cache", "fetched_at"],
+      ["finance_waitlist", "created_at"], ["listings", "created_at"]];
     const out = { exported_at: new Date().toISOString(), user_id: saveUid() };
     for (const [t, col] of tables) out[t] = await saveRows(t, col, false);
+    // referrals: no user_id column — the user is either the referrer or the referee
+    try {
+      const uid = saveUid();
+      const { data: refs } = await supa.from("referrals").select("*")
+        .or("referrer_id.eq." + uid + ",referee_id.eq." + uid)
+        .order("created_at", { ascending: false });
+      out.referrals = refs || [];
+    } catch (e) { out.referrals = out.referrals || []; }
     // agent_threads + agent_messages (messages carry no user_id; export per thread)
     try {
       const { data: threads } = await supa.from("agent_threads").select("*").eq("user_id", saveUid()).order("created_at", { ascending: false });
@@ -6354,6 +6408,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       try {
         const trackData = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [] };
         const { transactions } = trackData;
+        // QA 2026-09-27: never build a "budget plan" from sample data for a
+        // signed-in user — the recurrences and fees would be demo merchants
+        // presented as their own. Anonymous users may explore on sample data.
+        const _siBP = (typeof session !== "undefined" && !!session);
+        if (_siBP && !trackData.isLive) {
+          return { paras: ["I can't build a budget plan from your real numbers yet — no bank is connected, and I won't plan your budget on sample data. Connect your bank on Home (read-only, takes a minute) and ask me again."] };
+        }
         const rec = (typeof detectRecurrence === "function") ? detectRecurrence(transactions) : [];
         // FIX (B3-v2 F4): Build fact pack from real data, not fabricated.
         // Was: freeCash: 5000 (fake), fees: [], goals: [].
@@ -6368,7 +6429,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         })();
         // Compute free cash from recent transactions (income minus spending, last 30 days)
         const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-        const recent = (transactions || []).filter(t => new Date(t.date).getTime() > thirtyDaysAgo);
+        // QA 2026-09-27: transactions carry posted_at, not date — the old field
+        // name made income/spending (and thus freeCash/monthlyDelta) always $0.
+        const recent = (transactions || []).filter(t => new Date(t.posted_at).getTime() > thirtyDaysAgo);
         const income = recent.filter(t => t.amount > 0).reduce((s, t) => s + t.amount, 0);
         const spending = recent.filter(t => t.amount < 0 && !t.is_excluded).reduce((s, t) => s + Math.abs(t.amount), 0);
         const factPack = {
@@ -6636,9 +6699,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           // biweekly); $100 buffer. No track data => null (unknown):
           // capitalSuppressed(null, …) must NOT suppress — never gate the
           // user on a guess.
+          // QA 2026-09-27: sample data counts as no-signal for a signed-in
+          // user without live data — never gate behavior on demo figures.
+          const capNoLive = (typeof session !== "undefined" && !!session) && !trackData.isLive;
           let freeCash = null;
           try {
-            const txns = trackData.transactions || [];
+            const txns = capNoLive ? [] : (trackData.transactions || []);
             if (typeof calcFreeCash === "function" && txns.length > 0) {
               const accts = trackData.accounts || [];
               const balance = (accts[0] && accts[0].balance) || 0;
@@ -6651,7 +6717,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
               freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
             }
           } catch (e2) { freeCash = null; }
-          const overdrafts = (trackData.transactions || []).filter(t =>
+          const overdrafts = capNoLive ? 0 : (trackData.transactions || []).filter(t =>
             t.amount < 0 && /overdraft|insufficient/i.test(t.merchant_raw || "") &&
             new Date(t.posted_at) > new Date(Date.now() - 60 * 864e5)
           ).length;
@@ -9498,7 +9564,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   async function subDefenseCards() {
     const cards = [];
     try {
-      const { transactions } = loadTrackData();
+      const _td0 = loadTrackData();
+      const { transactions } = _td0;
+      // QA 2026-09-27: parts (b)/(c) below detect repeating charges and bank
+      // fees from transactions. A signed-in user without a live bank connection
+      // must never see cards derived from sample data as their own.
+      const txNoLive = (typeof session !== "undefined" && !!session) && !_td0.isLive;
       const signed = (typeof getSessionToken === "function") ? !!(await getSessionToken()) : false;
       const rows = signed && typeof saveRows === "function"
         ? await saveRows("save_subscriptions", "created_at", false) : localSubsGet();
@@ -9522,8 +9593,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       });
       // (b) Recurring-charge approval queue: detected but not tracked yet.
       // Monarch prompts to verify new recurring charges — same idea, one card.
+      // QA 2026-09-27: skip for signed-in/no-live (demo-derived merchants).
       let recs = [];
-      try { recs = (detectRecurrence(transactions || []) || []).filter(r => !r.dormant); } catch (e) {}
+      try { recs = txNoLive ? [] : (detectRecurrence(transactions || []) || []).filter(r => !r.dormant); } catch (e) {}
       const trackedMids = new Set(act.map(s => normalizeMerchant(s.merchant || "")));
       let dismissed = new Set();
       try { dismissed = new Set(JSON.parse(localStorage.getItem("upmore_rec_dismissed") || "[]")); } catch (e) {}
@@ -9539,7 +9611,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         });
       }
       // (c) Bank-fee waiver script from detected fee transactions.
-      const fees = detectFees(transactions);
+      // QA 2026-09-27: skip for signed-in/no-live (demo-derived fees).
+      const fees = txNoLive ? [] : detectFees(transactions);
       if (fees.length) {
         const f = fees[0];
         cards.push({
