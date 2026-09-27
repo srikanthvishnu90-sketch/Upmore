@@ -1,0 +1,31 @@
+// Transaction review: near-retiree walks through recent transactions, flags a mystery charge.
+module.exports = {
+  id: "a034",
+  lane: "tracking",
+  title: "Near-retiree reviews transactions and questions a mystery charge",
+  persona: {
+    name: "Tom W.",
+    age: 55,
+    state: "OH",
+    incomeMonthly: 7300,
+    debts: [{ name: "Auto loan", bal: 11000, apr: 7.0, min: 330 }],
+    employment: "full-time plant supervisor",
+    goals: ["retire in 7 years", "no surprises in my accounts"],
+    tech: "med",
+    bankConnected: true,
+    dataTier: "full",
+    notes: "married; checks statements line by line; worried about fraud",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "Walk me through my recent transactions and flag anything that looks unusual.",
+      expect: [{ t: "contains", re: "transaction|review" }] },
+    { kind: "guide", prompt: "I don't recognize a $40 charge from 'SQ *COFFEE'. What should I do about it?",
+      expect: [{ t: "contains", re: "merchant|dispute|bank" },
+               { t: "noAdvice" }] },
+    { kind: "guide", prompt: "If I review everything like this, will it catch every fraud charge?",
+      expect: [{ t: "noGuarantee" }] },
+    { kind: "static", file: "privacy", op: "contains", pattern: "delete",
+      desc: "user data deletion rights present in the privacy copy" },
+  ],
+};

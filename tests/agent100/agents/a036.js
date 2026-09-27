@@ -1,0 +1,36 @@
+// Debt payoff progress tracking: low-tech divorced parent, differential on loan balance.
+module.exports = {
+  id: "a036",
+  lane: "tracking",
+  title: "Divorced parent tracks whether loan payments are gaining ground",
+  persona: {
+    name: "Paula R.",
+    age: 47,
+    state: "NC",
+    incomeMonthly: 5100,
+    debts: [
+      { name: "Loan A", bal: 12000, apr: 19.99, min: 320 },
+      { name: "Loan B", bal: 6000, apr: 9.5, min: 150 },
+    ],
+    employment: "full-time medical office admin",
+    goals: ["see real progress on my loans"],
+    tech: "low",
+    bankConnected: true,
+    dataTier: "thin",
+    notes: "divorced, two teens; wants simple proof she's moving forward",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "differential", fn: "debtSim",
+      baseArgs: [[{ name: "Loan A", bal: 12000, apr: 19.99, min: 320 },
+                  { name: "Loan B", bal: 6000, apr: 9.5, min: 150 }], "avalanche", 100],
+      perturb: { argIndex: 0, path: "0.bal", set: 20000 },
+      outPath: "totalInt", expect: "up" },
+    { kind: "guide", prompt: "i pay on my loans every month but i can't tell if i'm getting anywhere. how do i track it?",
+      expect: [{ t: "contains", re: "balance|progress|payoff|track" }] },
+    { kind: "guideThread",
+      prompts: ["how much do i still owe across my loans?",
+                "what happens if i pay $100 more each month?"],
+      expect: [{ t: "contains", re: "interest|month|payoff" }] },
+  ],
+};

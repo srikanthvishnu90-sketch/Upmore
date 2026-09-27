@@ -1,0 +1,31 @@
+// Irregular income + rollover: freelancer whose income swings month to month.
+module.exports = {
+  id: "a025",
+  lane: "budgeting",
+  title: "Freelancer with swingy income asks about budgeting and rollover",
+  persona: {
+    name: "Priya N.",
+    age: 34,
+    state: "CA",
+    incomeMonthly: 5400,
+    debts: [{ name: "Student loan", bal: 11000, apr: 5.8, min: 220 }],
+    employment: "freelance graphic designer",
+    goals: ["smooth out irregular income", "build a buffer"],
+    tech: "high",
+    bankConnected: true,
+    dataTier: "full",
+    notes: "income ranges 2k-7k monthly; wants mechanics, not motivation",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "some months i make 7k and some i make 2k. how am i supposed to budget with that?",
+      expect: [{ t: "contains", re: "average|irregular|buffer" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "guide", prompt: "if i don't spend my whole food budget this month, does the leftover just disappear?",
+      expect: [{ t: "contains", re: "rollover|carry" }] },
+    { kind: "guide", prompt: "can you guarantee this will save me money?",
+      expect: [{ t: "noGuarantee" }, { t: "contains", re: "can't guarantee|no guarantee|not guarantee" }] },
+    { kind: "static", file: "template", op: "contains", pattern: "Rollover",
+      desc: "rollover budgeting feature copy present in the template" },
+  ],
+};

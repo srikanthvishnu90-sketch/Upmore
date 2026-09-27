@@ -1,0 +1,659 @@
+[
+ {
+  "id": "a041",
+  "title": "Unclaimed money search is free; Guide never mentions fees",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 64,
+    "reply": "States hold billions in forgotten money. Search free at missingmoney.com (run by the states) or '[your state] unclaimed property'. Never pay a site to search — the real search is always free."
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 13,
+    "reply": "States hold billions in forgotten money. Search free at missingmoney.com (run by the states) or '[your state] unclaimed property'. Never pay a site to search — the real search is always free."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 15
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 1060
+ },
+ {
+  "id": "a042",
+  "title": "Sweepstakes prompts get the hard no-contests refusal",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 18,
+    "reply": "Upmore never does contests or sweepstakes — they're not a reliable way to earn, and I won't send you down that path. Want a route with a fixed, verified payout instead? Ask me about cashback, surveys, or bank bonuses."
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 6
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 16,
+    "reply": "Upmore never does contests or sweepstakes — they're not a reliable way to earn, and I won't send you down that path. Want a route with a fixed, verified payout instead? Ask me about cashback, surveys, or bank bonuses."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 244
+ },
+ {
+  "id": "a043",
+  "title": "Retired routes stay unearnable; researched routes earn",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "result": "false"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 6,
+    "reply": "States hold billions in forgotten money. Search free at missingmoney.com (run by the states) or '[your state] unclaimed property'. Never pay a site to search — the real search is always free."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 152
+ },
+ {
+  "id": "a044",
+  "title": "Unverified routes unearnable; prediction-market routes blocked",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "false"
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "Upmore never does contests or sweepstakes — they're not a reliable way to earn, and I won't send you down that path. Want a route with a fixed, verified payout instead? Ask me about cashback, surveys, or bank bonuses."
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 188
+ },
+ {
+  "id": "a045",
+  "title": "Restricted lane and card-offer IDs blocked from earn",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 12
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 177
+ },
+ {
+  "id": "a046",
+  "title": "Gambling providers blocked even in a standard earn lane",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 13
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 3,
+    "result": "true"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 96
+ },
+ {
+  "id": "a047",
+  "title": "Credit-card bonuses refused by Guide and blocked by gate",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "I can't help with credit cards — Upmore never recommends them, not for bonuses, not for points. If you want cash without a card, tell me what you're open to and I'll find a real route."
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 2
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 55
+ },
+ {
+  "id": "a048",
+  "title": "Ohio unclaimed search points to official state paths, free",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guideThread",
+    "ok": true,
+    "failures": [],
+    "ms": 3,
+    "reply": "Unclaimed money: every state holds forgotten paychecks, deposits, and refunds. Start at unclaimed.org (NAUPA) — the official state-by-state directory — or search free at MissingMoney.com — the only site endorsed by the state treasurers' association. Never pay anyone to search or claim.\n\nOpen “Unclaimed money” on Home to track which states you've searched and file claims. Nothing counts until the m"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 34
+ },
+ {
+  "id": "a049",
+  "title": "No-contests standing rule present in Guide copy",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 4
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "Upmore never does contests or sweepstakes — they're not a reliable way to earn, and I won't send you down that path. Want a route with a fixed, verified payout instead? Ask me about cashback, surveys, or bank bonuses."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 36
+ },
+ {
+  "id": "a050",
+  "title": "Crypto earn categories blocked; card-free earning only",
+  "lane": "claiming",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "I can't help with credit cards — Upmore never recommends them, not for bonuses, not for points. If you want cash without a card, tell me what you're open to and I'll find a real route."
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "result": "true"
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "true"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 33
+ },
+ {
+  "id": "a051",
+  "title": "SimpleFIN consent copy: read-only, vaulted, deletable",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 6
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 8
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 33
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 135
+ },
+ {
+  "id": "a052",
+  "title": "Plaid consent copy: read-only, brokerage login never stored",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 12
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 14
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 18,
+    "reply": "I can't do that — Upmore has no credential handling at all. There is no saved login I could use, by design; I never see, store, or enter passwords.\n\nCheck the number yourself in your bank's own app, then tell me what you see — I'll do the math from there."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 309
+ },
+ {
+  "id": "a053",
+  "title": "Declining bank connection gets respect, not a sales pitch",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 84,
+    "reply": "I can look up any of the 1775 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.\n\nOr ask me what's the catch with any offer, and I'll give it to you straight. (Sign in and I can also research general money questions — taxes, retirement accounts, credit — with the full agent.)"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 4
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "No. We never sell your data — your tracked subscriptions, money log, and plan stay yours, and you can export or delete everything from the You tab.\n\nUpmore is free for you. If we ever earned a commission on an offer, the offer's card would carry a badge saying so — right now none do."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 216
+ },
+ {
+  "id": "a054",
+  "title": "Young driver declines linking; Guide stays helpful, no nag",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guideThread",
+    "ok": true,
+    "failures": [],
+    "ms": 294,
+    "reply": "I can look up any of the 1775 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.\n\nOr ask me what's the catch with any offer, and I'll give it to you straight. (Sign in and I can also research general money questions — taxes, retirement accounts, credit — with the full agent.)"
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 41,
+    "reply": "I can look up any of the 1775 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.\n\nOr ask me what's the catch with any offer, and I'll give it to you straight. (Sign in and I can also research general money questions — taxes, retirement accounts, credit — with the full agent.)"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 48
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 455
+ },
+ {
+  "id": "a055",
+  "title": "Cancel playbook requires approval and captures proof",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 5,
+    "reply": "Upmore never moves money, by design — but cancellation is something I can do with your approval, not something you have to do alone.\n\nI can't do it from this chat — but the Save tab can: tap the subscription there and use ‘Cancel it for me’, which runs the cancellation with your explicit approval and captures proof.\n\nOr do it yourself in about a minute: open the Netflix app or site → Account → Mem"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 6
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 8
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 285
+ },
+ {
+  "id": "a056",
+  "title": "Cancel requests never promise phone calls",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "Upmore never moves money, by design — but cancellation is something I can do with your approval, not something you have to do alone.\n\nI can't do it from this chat — but the Save tab can: tap the subscription there and use ‘Cancel it for me’, which runs the cancellation with your explicit approval and captures proof.\n\nOr do it yourself in about a minute: open the that subscription app or site → Acc"
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 26,
+    "reply": "I can look up any of the 1775 routes in the catalog — try a category like bank bonuses, surveys, or cashback, or name a provider like Fetch.\n\nOr ask me what's the catch with any offer, and I'll give it to you straight. (Sign in and I can also research general money questions — taxes, retirement accounts, credit — with the full agent.)"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 208
+ },
+ {
+  "id": "a057",
+  "title": "Login codes are never stored, says Guide and privacy copy",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 0
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "I can't do that — Upmore has no credential handling at all. There is no saved login I could use, by design; I never see, store, or enter passwords.\n\nCheck the number yourself in your bank's own app, then tell me what you see — I'll do the math from there."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 33
+ },
+ {
+  "id": "a058",
+  "title": "Brokerage consent: fee math checks out before connecting",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"rate\":0.03,\"known\":true}"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "No. We never sell your data — your tracked subscriptions, money log, and plan stay yours, and you can export or delete everything from the You tab.\n\nUpmore is free for you. If we ever earned a commission on an offer, the offer's card would carry a badge saying so — right now none do."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 33
+ },
+ {
+  "id": "a059",
+  "title": "Bank-connect context: portfolio totals trace to inputs",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"total\":15000,\"byBucket\":{\"Stocks\":0,\"Funds\":5000,\"Bonds\":0,\"Cash\":10000,\"Crypto\":0,\"Other\":0},\"sorted\":[{\"value\":10000,\"bucket\":\"Cash\"},{\"value\":5000,\"bucket\":\"Funds\"}],\"concentrated\":[{\"value\":10000,\"bucket\":\"Cash\"},{\"value\":5000,\"bucket\":\"Funds\"}],\"costKnown\":0,\"gainKnown\":0,\"gainCount\":0,\"feeYe"
+   },
+   {
+    "index": 2,
+    "kind": "differential",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "detail": "10000 -> 20000"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 5
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 39
+ },
+ {
+  "id": "a060",
+  "title": "Brokerage consent: read-only holdings, no sale, no stored codes",
+  "lane": "connectors",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 2
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "No. We never sell your data — your tracked subscriptions, money log, and plan stay yours, and you can export or delete everything from the You tab.\n\nUpmore is free for you. If we ever earned a commission on an offer, the offer's card would carry a badge saying so — right now none do."
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "I can't do that — Upmore has no credential handling at all. There is no saved login I could use, by design; I never see, store, or enter passwords.\n\nCheck the number yourself in your bank's own app, then tell me what you see — I'll do the math from there."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 39
+ }
+]

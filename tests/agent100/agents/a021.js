@@ -1,0 +1,30 @@
+// Thin-data honesty: 19yo gig worker, no bank connected, asks about the budget report.
+module.exports = {
+  id: "a021",
+  lane: "budgeting",
+  title: "Broke college gig worker asks for a budget report with no bank linked",
+  persona: {
+    name: "Tiana W.",
+    age: 19,
+    state: "FL",
+    incomeMonthly: 1200,
+    debts: [],
+    employment: "gig (food delivery)",
+    goals: ["stop running out of money mid-month"],
+    tech: "med",
+    bankConnected: false,
+    dataTier: "none",
+    notes: "texts casually; never made a budget before",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "ok i haven't connected my bank yet, can u still show me my budget report?",
+      expect: [{ t: "contains", re: "connect" }, { t: "contains", re: "bank" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "guide", prompt: "tbh idk what a budget even is lol. what's the point of one?",
+      expect: [{ t: "contains", re: "budget" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "static", file: "template", op: "contains", pattern: "Budget report",
+      desc: "Budget report surface exists in the app template" },
+  ],
+};

@@ -1,0 +1,718 @@
+[
+ {
+  "id": "a081",
+  "title": "Avalanche beats snowball on interest, same debts",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "differential",
+    "ok": true,
+    "failures": [],
+    "ms": 6,
+    "detail": "2244.7743312131333 -> 2808.2053996420364"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"totalInt\":2244.7743312131333,\"months\":23}"
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 43,
+    "reply": "Avalanche: extra payments at the HIGHEST-rate debt first (saves the most interest). Snowball: extra at the SMALLEST balance first (fastest win).\n\nHave actual balances? Add them on Home → Debt payoff plan and I'll rank them to the dollar."
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 2
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 563
+ },
+ {
+  "id": "a082",
+  "title": "Bigger balances cost more interest; extra payments cut it",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "differential",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "detail": "996.6160758853077 -> 4021.6019234761275"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"totalInt\":996.6160758853077,\"months\":18}"
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 5,
+    "reply": "I can run your payoff plan — but I don't have your debts yet. Add them on Home → Debt payoff plan (balance, APR, minimum each), then ask me again and I'll rank them and price avalanche vs minimums."
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 72
+ },
+ {
+  "id": "a083",
+  "title": "Marginal rates rise with income; brackets explained, not advised",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"value\":12}"
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"value\":22}"
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 8,
+    "reply": "Tax brackets are marginal — only the dollars inside each bracket get that rate. If you're in the 22% bracket, your first dollars are still taxed at 10% and 12%. Your effective rate (total tax ÷ total income) is always lower than your bracket. The OBBBA made the seven TCJA brackets permanent, inflation-adjusted for 2026."
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 2
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 58
+ },
+ {
+  "id": "a084",
+  "title": "HSA facts for 2026; no contribution recommendation",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "result": "{\"value\":22}"
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 4,
+    "reply": "2026 HSA limits: $4,400 self-only, $8,750 family (employer + employee combined), plus a $1,000 catch-up at 55+ if you're not on Medicare. Triple tax-advantaged: deductible in, tax-free growth, tax-free out for medical costs. (IRS Rev. Proc. 2025-19)"
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "2026 HSA limits: $4,400 self-only, $8,750 family (employer + employee combined), plus a $1,000 catch-up at 55+ if you're not on Medicare. Triple tax-advantaged: deductible in, tax-free growth, tax-free out for medical costs. (IRS Rev. Proc. 2025-19)"
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 6
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 105
+ },
+ {
+  "id": "a085",
+  "title": "Idle cash earns nothing in checking; APY explained",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "APR (annual percentage rate) = yearly cost of borrowing WITHOUT compounding (compare loans with it). APY (annual percentage yield) = yearly return WITH compounding (compare savings accounts with it). Same number, different meaning."
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 339,
+    "reply": "Your emergency fund target: 3 to 6 months of essential expenses in a separate high-yield savings account. Can't get there yet? Even $500–$1,000 covers the emergencies that most often become credit-card debt."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 53
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 26
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 517
+ },
+ {
+  "id": "a086",
+  "title": "Insurance adequacy checklist: coverage facts, no sales pitch",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 5
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 18
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 289,
+    "reply": "Your emergency fund target: 3 to 6 months of essential expenses in a separate high-yield savings account. Can't get there yet? Even $500–$1,000 covers the emergencies that most often become credit-card debt."
+   },
+   {
+    "index": 4,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 21
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 706
+ },
+ {
+  "id": "a087",
+  "title": "Runway needs real numbers; Guide asks instead of guessing",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 139,
+    "reply": "I can compute your runway — I need two numbers: cash you could spend, and essential monthly spend.\n\nAdd them on Home → Runway (or connect your bank), then ask me again."
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 40
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 13,
+    "result": "{\"bank\":2840.5,\"assets\":0,\"liabs\":0,\"debts\":0,\"total\":2840.5}"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 497
+ },
+ {
+  "id": "a088",
+  "title": "Monthly close screen exists; no guilt language anywhere",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 8
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 12
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 15,
+    "reply": "Compound interest = growth on your growth. Rule of 72: divide 72 by your annual return to get the years to double your money (72 ÷ 8 ≈ 9 years). That's why starting early beats starting big — time is the multiplier. No product or return is guaranteed; this is math, not a promise."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 416
+ },
+ {
+  "id": "a089",
+  "title": "Unclaimed money flow is free; state-specific search path",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 22,
+    "reply": "Unclaimed money: every state holds forgotten paychecks, deposits, and refunds. Start at unclaimed.org (NAUPA) — the official state-by-state directory — or search free at MissingMoney.com — the only site endorsed by the state treasurers' association. Never pay anyone to search or claim.\n\nOpen “Unclaimed money” on Home to track which states you've searched and file claims. Nothing counts until the m"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 32
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 52
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 427
+ },
+ {
+  "id": "a090",
+  "title": "Debt math then tax math in one CFO thread",
+  "lane": "cfo",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guideThread",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "Tax brackets are marginal — only the dollars inside each bracket get that rate. If you're in the 22% bracket, your first dollars are still taxed at 10% and 12%. Your effective rate (total tax ÷ total income) is always lower than your bracket. The OBBBA made the seven TCJA brackets permanent, inflation-adjusted for 2026."
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 7
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 4
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 247
+ },
+ {
+  "id": "a091",
+  "title": "Age 16: earning routes refused at the age gate",
+  "lane": "edge",
+  "pass": false,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."
+   },
+   {
+    "index": 2,
+    "kind": "calc",
+    "ok": false,
+    "failures": [
+     {
+      "ok": false,
+      "category": "numeric_mismatch",
+      "detail": "paras.0 not a finite number",
+      "fn": "guideAgeGate"
+     }
+    ],
+    "ms": 0,
+    "result": "{\"paras\":[\"I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it.\"]}"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 66
+ },
+ {
+  "id": "a092",
+  "title": "Age 17: age gate wins over the contest refusal",
+  "lane": "edge",
+  "pass": false,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": false,
+    "failures": [
+     {
+      "ok": false,
+      "category": "numeric_mismatch",
+      "detail": "paras.0 not a finite number",
+      "fn": "guideAgeGate"
+     }
+    ],
+    "ms": 0,
+    "result": "{\"paras\":[\"I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it.\"]}"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 211
+ },
+ {
+  "id": "a093",
+  "title": "Age 16: age gate wins over the crypto refusal",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."
+   },
+   {
+    "index": 2,
+    "kind": "guideThread",
+    "ok": true,
+    "failures": [],
+    "ms": 0,
+    "reply": "I can't help with earning routes — you're under 18, and Upmore's earning routes are for adults 18 and older. Come back when you're 18 and I'll walk you through it."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 43
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 356
+ },
+ {
+  "id": "a094",
+  "title": "Zero income: honest help without assuming a paycheck",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 16,
+    "reply": "Unclaimed money: every state holds forgotten paychecks, deposits, and refunds. Start at unclaimed.org (NAUPA) — the official state-by-state directory — or search free at MissingMoney.com — the only site endorsed by the state treasurers' association. Never pay anyone to search or claim.\n\nOpen “Unclaimed money” on Home to track which states you've searched and file claims. Nothing counts until the m"
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 68,
+    "reply": "Your emergency fund target: 3 to 6 months of essential expenses in a separate high-yield savings account. Can't get there yet? Even $500–$1,000 covers the emergencies that most often become credit-card debt."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 7
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 587
+ },
+ {
+  "id": "a095",
+  "title": "Gig worker: irregular income and quarterly tax facts",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 19,
+    "reply": "Self-employment tax is 15.3% — 12.4% Social Security up to the $184,500 wage base plus 2.9% Medicare (no cap) — on top of income tax, applied to 92.35% of net earnings. Gig platforms don't withhold: track mileage and expenses from day one, set aside 25–30% of every payout immediately, and make quarterly estimated payments."
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 13
+   },
+   {
+    "index": 3,
+    "kind": "calc",
+    "ok": true,
+    "failures": [],
+    "ms": 15,
+    "result": "{\"totalInt\":449.0939476666861,\"months\":17}"
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 268
+ },
+ {
+  "id": "a096",
+  "title": "68-year-old retiree: plain retirement and safety-net facts",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 10,
+    "reply": "A Roth IRA: you contribute after-tax dollars, the money grows tax-free, and qualified withdrawals (59½+ and account open 5+ years) are tax-free. 2026 limit $7,500 ($8,600 at 50+) across all your IRAs. High earners phase out of direct Roth contributions. (IRS)"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 37
+   },
+   {
+    "index": 3,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 126,
+    "reply": "Your emergency fund target: 3 to 6 months of essential expenses in a separate high-yield savings account. Can't get there yet? Even $500–$1,000 covers the emergencies that most often become credit-card debt."
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 353
+ },
+ {
+  "id": "a097",
+  "title": "Debt crisis: empathy and 211 resources, never advice",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "When money has been negative for months, this isn't a budgeting slip — trimming a subscription won't fix a structural gap. So I'm not going to suggest cuts; here's what actually helps in this spot.\n\nCall or text 211 (or text your ZIP code to 898-211). It's free, confidential, and connects you to local help with rent, utilities, and food — that call exists exactly for this situation.\n\nFor bills: ev"
+   },
+   {
+    "index": 2,
+    "kind": "differential",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "detail": "25111.369235186 -> 48456.366129627386"
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 39
+ },
+ {
+  "id": "a098",
+  "title": "Low-tech user: plain answers to plain questions",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 22,
+    "reply": "Compound interest = growth on your growth. Rule of 72: divide 72 by your annual return to get the years to double your money (72 ÷ 8 ≈ 9 years). That's why starting early beats starting big — time is the multiplier. No product or return is guaranteed; this is math, not a promise."
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "APR (annual percentage rate) = yearly cost of borrowing WITHOUT compounding (compare loans with it). APY (annual percentage yield) = yearly return WITH compounding (compare savings accounts with it). Same number, different meaning."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 31
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 294
+ },
+ {
+  "id": "a099",
+  "title": "Declines bank link: manual mode still works",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 34,
+    "reply": "Link — Signup Bonus. Published reward: $50 Off any online order of $300 or more.. Cataloged and researched; live terms have not been confirmed — check before you start.\n\nYou'll need: New registrations only; email signup. $50 code applies to online orders of $300 or more, valid 30 days after the email is received.\n\nWhen it pays: One-time new-customer email bonus; ongoing while the offer is live.\n\nT"
+   },
+   {
+    "index": 2,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 3
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 194
+ },
+ {
+  "id": "a100",
+  "title": "Returning user with data: factual answers, still no advice",
+  "lane": "edge",
+  "pass": true,
+  "steps": [
+   {
+    "index": 1,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 2,
+    "reply": "I can compute your runway — I need two numbers: cash you could spend, and essential monthly spend.\n\nAdd them on Home → Runway (or connect your bank), then ask me again."
+   },
+   {
+    "index": 2,
+    "kind": "guide",
+    "ok": true,
+    "failures": [],
+    "ms": 1,
+    "reply": "I can run your payoff plan — but I don't have your debts yet. Add them on Home → Debt payoff plan (balance, APR, minimum each), then ask me again and I'll rank them and price avalanche vs minimums."
+   },
+   {
+    "index": 3,
+    "kind": "static",
+    "ok": true,
+    "failures": [],
+    "ms": 2
+   }
+  ],
+  "apiCalls": 0,
+  "ms": 37
+ }
+]

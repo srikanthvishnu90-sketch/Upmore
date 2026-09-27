@@ -1,0 +1,30 @@
+// Recurring detection: landlord wants repeating charges found across accounts.
+module.exports = {
+  id: "a032",
+  lane: "tracking",
+  title: "Landlord hunts repeating charges across personal and rental accounts",
+  persona: {
+    name: "Angela F.",
+    age: 38,
+    state: "TX",
+    incomeMonthly: 8600,
+    debts: [{ name: "Rental mortgage", bal: 96000, apr: 6.1, min: 780 }],
+    employment: "landlord (2 rentals) + part-time bookkeeper",
+    goals: ["catch every recurring charge", "separate rental expenses"],
+    tech: "med",
+    bankConnected: true,
+    dataTier: "full",
+    notes: "rental and personal money mix; duplicates and price hikes are the enemy",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "Go through my accounts and find every charge that repeats each month.",
+      expect: [{ t: "contains", re: "recurring" }] },
+    { kind: "guideThread",
+      prompts: ["what recurring charges do i have right now?",
+                "flag any that went up in price recently"],
+      expect: [{ t: "contains", re: "recurring|increase|price" }] },
+    { kind: "static", file: "privacy", op: "contains", pattern: "read-only",
+      desc: "bank connections are read-only per the privacy copy" },
+  ],
+};

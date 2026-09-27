@@ -8754,6 +8754,10 @@
     const idx = months.indexOf(ym);
     const model = budgetReportModel(transactions, ym);
     const sampleTag = (isDemo && !signedIn) ? `<p class="fine" style="margin:0 0 8px">Sample data — connect your bank for your real numbers.</p>` : ``;
+    const demoMode = isDemo && !signedIn;
+    const txnWord = demoMode ? "sample transactions" : "your transactions";
+    const spendWord = demoMode ? "sample spending" : "your actual spending";
+    const acctWord = demoMode ? "the sample accounts" : "your accounts";
     const cov = (() => { const ds = transactions.map(t => t.posted_at).sort(); return `Covers ${ds[0]} to ${ds[ds.length - 1]}.`; })();
 
     // Keep goal
@@ -8905,7 +8909,7 @@
         <b>${monthName(ym)}</b>
         <button id="brNext" ${idx <= 0 ? "disabled" : ""} aria-label="Next month">›</button>
       </div>
-      <p class="fine" style="margin:-6px 0 10px">${esc(cov)} Every number below comes from your transactions.</p>
+      <p class="fine" style="margin:-6px 0 10px">${esc(cov)} Every number below comes from ${txnWord}.</p>
       <div class="pcard"><p class="bsum">${esc(budgetSummaryText(model))}</p>${paceChartSVG(transactions, ym)}</div>
       <h2 class="sec">Money in vs money out</h2>
       <div class="bkv">
@@ -8913,12 +8917,12 @@
         <div class="pcard"><b class="k">${bm0(model.agg.out)}</b><span class="k">went out</span></div>
         <div class="pcard"><b class="k">${bm0(model.agg.kept)}</b><span class="k">${kept >= 0 ? "you kept" : "overspent"}</span></div>
       </div>
-      ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across your accounts right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
+      ${netWorth != null && (accounts || []).length ? `<p class="psub" style="margin:2px 0 4px">Across ${acctWord} right now: <b>${bm0(netWorth)}</b>.</p>` : ``}
       ${queueHtml}
       ${plHtml}
       ${srAomHtml}
       <h2 class="sec">Your budgets</h2>
-      <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from your actual spending — unspent money rolls into next month.</p>
+      <p class="psub" style="margin:-6px 0 10px">Tap any budget to set your own. Suggested ones come from ${spendWord} — unspent money rolls into next month.</p>
       <div class="bcard">${catRows || `<p class="psub">No spending this month.</p>`}</div>
       <button class="ghostbtn" id="brAddCat" style="margin-top:10px">+ Add your own category</button>
       <h2 class="sec">Goals</h2>

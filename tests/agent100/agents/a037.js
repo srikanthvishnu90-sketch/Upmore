@@ -1,0 +1,30 @@
+// Duplicate subscriptions: married couple hunts overlaps across shared accounts.
+module.exports = {
+  id: "a037",
+  lane: "tracking",
+  title: "Married couple hunts duplicate subscriptions across shared accounts",
+  persona: {
+    name: "Rob C.",
+    age: 36,
+    state: "OR",
+    incomeMonthly: 10500,
+    debts: [],
+    employment: "salaried logistics coordinator (wife also salaried)",
+    goals: ["stop paying twice for the same thing"],
+    tech: "med",
+    bankConnected: true,
+    dataTier: "full",
+    notes: "shared accounts with his wife; suspects they double-pay streaming and apps",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "My wife and I share accounts. Can you spot subscriptions we're both paying for?",
+      expect: [{ t: "contains", re: "recurring|subscription|duplicat" }] },
+    { kind: "guideThread",
+      prompts: ["list all my recurring charges",
+                "which ones look like duplicates we could cut?"],
+      expect: [{ t: "contains", re: "duplicat" }] },
+    { kind: "static", file: "privacy", op: "contains", pattern: "disconnect",
+      desc: "bank disconnect/delete rights present in the privacy copy" },
+  ],
+};

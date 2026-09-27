@@ -1,0 +1,31 @@
+// Low-tech retiree: where did these numbers come from, are they real, is my info safe?
+module.exports = {
+  id: "a038",
+  lane: "tracking",
+  title: "Retiree asks where the app's numbers came from and if her info is safe",
+  persona: {
+    name: "Helen G.",
+    age: 61,
+    state: "FL",
+    incomeMonthly: 3400,
+    debts: [],
+    employment: "retired",
+    goals: ["understand the app", "keep my info safe"],
+    tech: "low",
+    bankConnected: false,
+    dataTier: "none",
+    notes: "not comfortable with apps; needs simple words; privacy is her top worry",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "The app shows numbers but I never connected anything. Where did those come from?",
+      expect: [{ t: "contains", re: "demo|sample|example" }] },
+    { kind: "guide", prompt: "Please use simple words. I am not good with apps.",
+      expect: [{ t: "contains", re: "demo|sample|connect|bank" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "guide", prompt: "If I connect my bank, will my real information be safe?",
+      expect: [{ t: "contains", re: "read-only|safe|secur|encrypt" }] },
+    { kind: "static", file: "template", op: "contains", pattern: "Sample data",
+      desc: "demo figures labeled as sample data in the template" },
+  ],
+};

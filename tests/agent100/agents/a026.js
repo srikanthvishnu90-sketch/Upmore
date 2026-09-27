@@ -1,0 +1,32 @@
+// Budgets vs actual: 26yo new grad on his first real salary.
+module.exports = {
+  id: "a026",
+  lane: "budgeting",
+  title: "New grad checks how he's doing against his first budgets",
+  persona: {
+    name: "Jamal H.",
+    age: 26,
+    state: "IL",
+    incomeMonthly: 5600,
+    debts: [],
+    employment: "salaried (first job out of college)",
+    goals: ["learn to budget", "save a down payment"],
+    tech: "med",
+    bankConnected: true,
+    dataTier: "full",
+    notes: "first real salary; set budgets last month; wants a scorecard, not a scolding",
+  },
+  modes: ["dry"],
+  steps: [
+    { kind: "guide", prompt: "i set budgets last month but i have no idea how i'm doing against them. am i on track?",
+      expect: [{ t: "contains", re: "actual|on track|target" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "guideThread",
+      prompts: ["how do i set a budget for eating out?",
+                "what should i do if i go over one week?"],
+      expect: [{ t: "contains", re: "adjust|average|flexib" },
+               { t: "notContains", re: "wasted|bad habit|shame|guilty" }] },
+    { kind: "static", file: "template", op: "contains", pattern: "vs actual",
+      desc: "budgets-vs-actual comparison copy present in the template" },
+  ],
+};
