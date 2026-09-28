@@ -1197,10 +1197,7 @@
         </details>
       </div>
     </div>
-    
-      </div>
-      </div>
-      </div>
+
       <nav class="tabs" role="tablist" data-nav></nav>
     </section>
 
@@ -1849,7 +1846,7 @@
     const _td = loadTrackData();
     const _si = (typeof session !== "undefined" && !!session);
     if (_si && !_td.isLive) {
-      $("txList").innerHTML = `<div class="pcard"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      $("txList").innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
       const cb = $("txConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
     }
@@ -1884,7 +1881,7 @@
     const _td = loadTrackData();
     const _si = (typeof session !== "undefined" && !!session);
     if (_si && !_td.isLive) {
-      $("monthRows").innerHTML = `<div class="pcard"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
+      $("monthRows").innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
       $("monthCov").textContent = "";
       const cb = $("moConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
@@ -3776,7 +3773,7 @@
     const _clTd = loadTrackData();
     const _clSi = (typeof session !== "undefined" && !!session);
     if (_clSi && !_clTd.isLive) {
-      body.innerHTML = `<div class="pcard"><p class="bsum">Your monthly close builds itself from real transactions. Connect your bank to see your money in, money out, and your net for the month.</p><button class="cta" id="clConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      body.innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your monthly close builds itself from real transactions. Connect your bank to see your money in, money out, and your net for the month.</p><button class="cta" id="clConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
       const cb = $("clConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
     }
@@ -9748,7 +9745,7 @@
     // Summary + allocation
     let mainHtml = "";
     if (!holdings.length) {
-      mainHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees, dividends, sectors.</p>
+      mainHtml = `<div class="pcard" style="margin-top:14px;flex-direction:column;align-items:stretch"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees, dividends, sectors.</p>
         <button class="cta" id="invAddFirst" style="margin-top:10px">Add a holding</button></div>`;
     } else {
       const allocRows = BUCKETS.filter(b => sum.byBucket[b] > 0.005).map(b => {
