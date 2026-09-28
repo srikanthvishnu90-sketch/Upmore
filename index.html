@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-6AQcLY9EByhar4VTUGDnEFKcBYAF6bUTjVIMxOq4P8M=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-3xQ4hdZStCKLG7iVhT+ddTz6xu3mlJ6TeayE2E7KyvU=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -317,22 +317,24 @@
   .iconbtn { width: 38px; height: 38px; border-radius: 12px; border: 0; background: none; display: grid; place-items: center; color: var(--muted); }
   .chat { position: relative; z-index: 1; flex: 1; overflow-y: auto; padding: 8px 20px 16px; display: flex; flex-direction: column; }
   .chat::-webkit-scrollbar { display: none; }
-  .empty { margin-top: auto; }
-  .orb { width: 44px; height: 44px; border-radius: 50%;
+  /* v6: GPT-style empty state — centered logo, headline, 2-up suggestion grid. */
+  .empty { margin: auto; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+  .orb { width: 56px; height: 56px; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #E8ECE8 0%, #C9CFCA 45%, #7E8A82 100%);
     box-shadow: 0 0 28px rgba(201,207,202,.25); }
-  .empty h2 { margin-top: 18px; font-size: 27px; line-height: 1.2; font-weight: 600; letter-spacing: -0.015em; max-width: 17ch; }
+  .empty h2 { margin-top: 18px; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; max-width: 20ch; text-align: center; }
+  .empty .fine { text-align: center; }
   .ctx { margin-top: 12px; font-size: 13px; color: var(--muted); }
-  .starters { margin-top: 22px; display: grid; gap: 8px; }
-  .starter { text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); font-size: 15px; font-weight: 500; }
+  .starters { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+  .starter { text-align: left; padding: 13px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); font-size: 14.5px; font-weight: 500; }
+  .starter.wide { grid-column: 1 / -1; }
   .starter span { display: block; margin-top: 2px; font-size: 12.5px; color: var(--muted); font-weight: 400; }
   .msg { margin-top: 18px; animation: rise .25s ease-out; min-width: 0; overflow-wrap: break-word; }
   @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .msg.me { align-self: flex-end; max-width: 80%; padding: 11px 15px; border-radius: 20px 20px 6px 20px; background: var(--surface); font-size: 15.5px; line-height: 1.4; }
-  .msg.ai { font-size: 17px; line-height: 1.5; color: var(--text); }
+  /* v6: GPT-style bubbles — user right in a soft bubble, assistant plain text. */
+  .msg.me { align-self: flex-end; max-width: 80%; padding: 11px 16px; border-radius: 20px; background: var(--surface-2); font-size: 15.5px; line-height: 1.45; }
+  .msg.ai { font-size: 16px; line-height: 1.65; color: var(--text); }
   .msg.ai p + p { margin-top: 10px; }
-  .who { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
-  .who .orb { width: 16px; height: 16px; box-shadow: none; }
   .typing { display: flex; gap: 5px; padding: 6px 0; }
   .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--dim); animation: blink 1s infinite; }
   .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
@@ -720,6 +722,18 @@
   .delta-chip.down { background: var(--down-soft); color: var(--down); }
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
   .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+  /* v6: home menu — five simple named rows, one grouped card. */
+  .homemenu { margin-top: 16px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
+    border-radius: 24px; overflow: hidden; }
+  .hrow { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 66px;
+    padding: 13px 18px; background: none; border: 0; color: var(--text);
+    font-size: 17px; font-weight: 600; letter-spacing: -0.01em; text-align: left; cursor: pointer; }
+  .hrow + .hrow { border-top: 1px solid var(--line); }
+  .hrow:active { background: rgba(255,255,255,.04); }
+  .hicon { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+    font-size: 21px; flex: none; }
+  .hname { flex: 1; min-width: 0; }
+  .hgo { color: var(--dim); font-size: 22px; font-weight: 400; flex: none; }
   /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
      connector cards — visual left, title + value, chevron right. */
   .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
@@ -1050,75 +1064,33 @@
         <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Profile">V</div>
       </div>
 
-      <!-- HERO: net worth. Taps to the net-worth detail page. -->
-      <div data-widget="hero">
-      <button class="hero-card" id="nwHero" style="text-align:left;width:100%">
-        <p class="micro">Net worth</p>
-        <p class="hero-num num" id="nwHeroNum">&mdash;</p>
-        <div class="aurora-ribbon" aria-hidden="true"></div>
-        <span class="delta-chip flat" id="nwHeroDelta"></span>
-        <div class="hero-chart" id="nwHeroChart"></div>
-        <p class="fine" id="nwHeroSample" hidden style="margin-top:8px;color:var(--warn)">Sample data &mdash; connect your bank for your real net worth.</p>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 1: safe to spend. Ring color follows budget pace. Taps to budget report. -->
-      <div data-widget="spend">
-      <button class="conn-card" id="spendCard" style="text-align:left;width:100%">
-        <div class="cc-visual" id="spendRing"></div>
-        <div class="cc-body">
-          <p class="micro">Safe to spend<span class="sample-badge" id="spendSample" hidden>Sample data</span></p>
-          <p class="conn-num num" id="spendNum">&mdash;</p>
-          <p class="conn-sub" id="spendSub"></p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 2: investments. Mini allocation donut. Taps to investments X-ray. -->
-      <div data-widget="invest">
-      <button class="conn-card" id="investCard" style="text-align:left;width:100%">
-        <div class="cc-visual" id="investDonut"></div>
-        <div class="cc-body">
-          <p class="micro">Investments</p>
-          <p class="conn-num num" id="investNum">&mdash;</p>
-          <p class="conn-sub" id="investSub"></p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 3: money you're owed. Value-first stat tile. Taps to the claim flow. -->
-      <div data-widget="owed">
-      <button class="conn-card" id="owedCard" style="text-align:left;width:100%">
-        <div class="cc-body">
-          <p class="micro">Money you&rsquo;re owed</p>
-          <p class="conn-num num" id="owedNum">&mdash;</p>
-          <p class="conn-sub" id="owedSub">Free search &mdash; states hold forgotten paychecks, deposits, and refunds.</p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 4: bills & subscriptions. Taps to the Save page. -->
-      <div data-widget="bills">
-      <button class="conn-card" id="billsCard" style="text-align:left;width:100%">
-        <div class="cc-visual" id="billsIcon" aria-hidden="true">
-          <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
-            <rect x="14" y="18" width="48" height="44" rx="10" stroke="#8A94A6" stroke-width="3"/>
-            <path d="M14 32h48" stroke="#8A94A6" stroke-width="3"/>
-            <path d="M26 12v10M50 12v10" stroke="#8A94A6" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="38" cy="47" r="9" fill="#2DD4BF" opacity="0.9"/>
-            <path d="M34.5 47l2.5 2.5 4.5-5" stroke="#0B0D0C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="cc-body">
-          <p class="micro">Bills &amp; subscriptions</p>
-          <p class="conn-num num" id="billsNum">&mdash;</p>
-          <p class="conn-sub" id="billsSub">Track every recurring charge, catch renewals before they hit.</p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
+      <!-- HOME MENU: five simple tabs. Each opens its own page. -->
+      <div class="homemenu" id="homeMenu" role="list">
+        <button class="hrow" data-go="networth" role="listitem">
+          <span class="hicon" style="background:rgba(96,165,250,.16)">📊</span>
+          <span class="hname">Net Worth</span>
+          <span class="hgo" aria-hidden="true">›</span>
+        </button>
+        <button class="hrow" data-go="budgetReport" role="listitem">
+          <span class="hicon" style="background:rgba(45,212,191,.16)">💵</span>
+          <span class="hname">Safe to Spend</span>
+          <span class="hgo" aria-hidden="true">›</span>
+        </button>
+        <button class="hrow" data-go="investments" role="listitem">
+          <span class="hicon" style="background:rgba(167,139,250,.16)">📈</span>
+          <span class="hname">Investments</span>
+          <span class="hgo" aria-hidden="true">›</span>
+        </button>
+        <button class="hrow" data-go="claim" role="listitem">
+          <span class="hicon" style="background:rgba(244,114,182,.16)">🎁</span>
+          <span class="hname">Money You’re Owed</span>
+          <span class="hgo" aria-hidden="true">›</span>
+        </button>
+        <button class="hrow" data-go="save" role="listitem">
+          <span class="hicon" style="background:rgba(255,106,45,.16)">🧾</span>
+          <span class="hname">Bills &amp; Subscriptions</span>
+          <span class="hgo" aria-hidden="true">›</span>
+        </button>
       </div>
 
       <!-- Connect bank: read-only note, only when no live bank. -->
@@ -1360,7 +1332,6 @@
       <button class="prow" id="bankDisconnectRow" hidden style="margin-top:8px"><span class="pl">Disconnect bank</span><span class="pv">›</span></button>
       <button class="prow" id="subscriptionRow" style="margin-top:8px"><span class="pl" id="subscriptionRowLabel">Upmore subscription — $10/mo</span><span class="pv">›</span></button>
       <button class="prow" id="referralRow" style="margin-top:8px"><span class="pl">Refer &amp; earn — give $10, get $10</span><span class="pv">›</span></button>
-      <button class="prow" id="homeCustomBtn2" style="margin-top:8px"><span class="pl">Customize home</span><span class="pv">›</span></button>
       <button class="prow" id="privacyRow" style="margin-top:8px"><span class="pl">Privacy Policy</span><span class="pv">›</span></button>
       <button class="prow" id="termsRow" style="margin-top:8px"><span class="pl">Terms of Service</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -1448,7 +1419,8 @@
       </div>
     </div>
     <div class="chead">
-      <div class="title"><b>Guide</b><span class="badge">AI</span><span>Knows your plan</span></div>
+      <span style="width:38px;flex:none" aria-hidden="true"></span>
+      <div class="title"><b>Upmore</b></div>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
     <div class="chat" id="chat"><div class="empty" id="empty"></div></div>
@@ -1457,6 +1429,7 @@
         <input id="input" placeholder="Ask anything" autocomplete="off" aria-label="Message">
         <button class="send" id="send" disabled aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
+      <p class="fine" style="text-align:center;margin:8px 4px 0;font-size:11px;color:var(--dim)">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
   </section>
@@ -2625,7 +2598,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const qEffort = r => { const t = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2; return t > 0 ? t : 30; };
 
   // 2-020: shared free-cash computation for the Home queue. Same inputs as
-  // renderTrackStrip: balance, detected recurrence, next payday, $100 buffer.
+  // Shared free-cash computation: balance, detected recurrence, next payday, $100 buffer.
   function homeFreeCash() {
     try {
       const td = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
@@ -3063,73 +3036,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     renderQueue(); renderDeadlines();
   }
 
-  // SPEC 09j: customizable Home widgets (Monarch parity). Order + visibility
-  // stored in localStorage; applied on every renderHome.
-  // V2 (2026-09-27): Home is very short — hero + 3 connector cards + connect.
-  const HOME_WIDGETS = [
-    { id: "hero", label: "Net worth hero" },
-    { id: "spend", label: "Safe to spend" },
-    { id: "invest", label: "Investments" },
-    { id: "owed", label: "Money you're owed" },
-    { id: "bills", label: "Bills & subscriptions" },
-    { id: "connect", label: "Connect bank" },
-  ];
-  const homeWidgetState = () => {
-    try {
-      const raw = JSON.parse(localStorage.getItem("upmore_home_widgets") || "null");
-      if (raw && Array.isArray(raw.order)) {
-        // Merge in widgets added after the order was saved (e.g. "bills").
-        const ids = HOME_WIDGETS.map(w => w.id);
-        const missing = ids.filter(id => !raw.order.includes(id));
-        if (missing.length) raw.order = raw.order.concat(missing);
-        return raw;
-      }
-    } catch (e) {}
-    return { order: HOME_WIDGETS.map(w => w.id), hidden: [] };
-  };
-  const homeWidgetSave = st => { try { localStorage.setItem("upmore_home_widgets", JSON.stringify(st)); } catch (e) {} };
-  function applyHomeWidgets() {
-    const st = homeWidgetState();
-    const first = document.querySelector("#home [data-widget]"); if (!first) return;
-    const parent = first.parentElement; if (!parent) return;
-    const els = {};
-    parent.querySelectorAll(":scope > [data-widget]").forEach(el => { els[el.dataset.widget] = el; });
-    st.order.forEach(id => {
-      const el = els[id]; if (!el) return;
-      el.style.display = (st.hidden || []).includes(id) ? "none" : "";
-      parent.appendChild(el); // append in order = reorder; moves existing nodes
-    });
-  }
-  function openHomeCustomize() {
-    const sheet = $("homeCustomSheet"); if (!sheet) return;
-    sheet.hidden = !sheet.hidden;
-    if (!sheet.hidden) renderHomeCustomizeSheet();
-  }
-  function renderHomeCustomizeSheet() {
-    const sheet = $("homeCustomSheet"); if (!sheet) return;
-    const st = homeWidgetState();
-    const lbl = id => (HOME_WIDGETS.find(w => w.id === id) || {}).label || id;
-    sheet.innerHTML = `<div class="pcard" style="margin:8px 0"><p class="bsum" style="font-size:14px">Choose what shows on Home, in what order.</p>` +
-      st.order.map((id, i) =>
-        `<div class="mrow"><div><b>${esc(lbl(id))}</b></div><span style="display:flex;gap:4px">
-          <button class="tgt" data-hw="up:${i}" aria-label="Move up" ${i === 0 ? "disabled" : ""}>↑</button>
-          <button class="tgt" data-hw="dn:${i}" aria-label="Move down" ${i === st.order.length - 1 ? "disabled" : ""}>↓</button>
-          <button class="tgt" data-hw="tg:${i}" aria-label="Show or hide">${(st.hidden || []).includes(id) ? "show" : "hide"}</button>
-        </span></div>`).join("") +
-      `<button class="ghostbtn" id="hwReset" style="margin-top:8px">Reset to default</button></div>`;
-    sheet.querySelectorAll("[data-hw]").forEach(b => b.onclick = () => {
-      const [op, ix] = b.dataset.hw.split(":"); const i = Number(ix);
-      if (op === "up" && i > 0) [st.order[i - 1], st.order[i]] = [st.order[i], st.order[i - 1]];
-      if (op === "dn" && i < st.order.length - 1) [st.order[i + 1], st.order[i]] = [st.order[i], st.order[i + 1]];
-      if (op === "tg") {
-        st.hidden = st.hidden || [];
-        const id = st.order[i];
-        st.hidden = st.hidden.includes(id) ? st.hidden.filter(x => x !== id) : st.hidden.concat([id]);
-      }
-      homeWidgetSave(st); applyHomeWidgets(); renderHomeCustomizeSheet();
-    });
-    $("hwReset").onclick = () => { homeWidgetSave({ order: HOME_WIDGETS.map(w => w.id), hidden: [] }); applyHomeWidgets(); renderHomeCustomizeSheet(); };
-  }
+  // v6: Home is five simple named rows. Each opens its own page.
   function renderHome() {
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
@@ -3141,104 +3048,53 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       av.onclick = () => show("profile");
       av.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show("profile"); } };
     }
-    renderNetWorthHero(); // V2 hero card: net worth + delta chip + area chart
-    renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend (V2 connector card)
-    renderInvestCard(); // V2 connector: investments mini donut
-    renderOwedCard(); // V2 connector: money-you're-owed stat tile
-    renderBillsCard(); // V2 connector: bills & subscriptions -> Save page
+    document.querySelectorAll("#homeMenu .hrow").forEach(b => {
+      b.onclick = () => {
+        const g = b.dataset.go;
+        if (g === "claim") openClaim();
+        else if (g) show(g);
+      };
+    });
     renderCFOList(); // SPEC 05: money-health tools (grid lives in Explore now)
-    applyHomeWidgets();
+    renderHomeConnect(); // connect-bank / picture banners
   }
 
-  // V2 net-worth hero: one big silver-gradient figure, red/green delta chip,
-  // gradient area chart over a soft fill + flat grey prior-period line.
-  // Read-only snapshot read — renderNetWorth() owns the snapshot write.
-  function renderNetWorthHero() {
-    const num = $("nwHeroNum"); if (!num) return;
-    const nw = netWorthCalc();
-    num.textContent = fmt$(Math.round(nw.total));
-    const hero = $("nwHero");
-    if (hero) hero.onclick = () => show("networth");
-    // Delta chip + chart from stored monthly snapshots (no write here).
-    let snaps = {};
-    try { snaps = JSON.parse(localStorage.getItem(NW_LS.snaps) || "{}"); } catch (e) {}
-    const keys = Object.keys(snaps).sort().slice(-7);
-    const vals = keys.map(k => nwSnapNorm(snaps[k]).total);
-    const chip = $("nwHeroDelta");
-    if (chip && vals.length >= 2) {
-      const d = vals[vals.length - 1] - vals[0];
-      chip.className = "delta-chip " + (d > 0 ? "up" : d < 0 ? "down" : "flat");
-      chip.textContent = `${d >= 0 ? "+" : "−"}${fmt$(Math.abs(Math.round(d)))} since ${keys[0]}`;
-    } else if (chip) {
-      chip.className = "delta-chip flat";
-      chip.textContent = "tracked monthly";
-    }
-    const chart = $("nwHeroChart");
-    if (chart) {
-      const cur = vals.slice(-6), prior = vals.slice(0, Math.max(0, vals.length - 6)).slice(-6);
-      chart.innerHTML = areaChartSVG(cur, {
-        prior: prior.length >= 2 && cur.length >= 2 ? prior : [],
-        lineColor: "#FF6A2D", label: "Net worth trend",
-      });
-    }
-    // Demo-honesty: anonymous visitors see sample figures — label them.
-    const td = loadTrackData();
+  // HOME: connect-bank + picture banners. No live bank -> connect card (with
+  // reconnect prompt when data is stale or sync failed); live bank -> one-tap
+  // picture card. Extracted from the old renderTrackStrip when Home became
+  // five simple rows — the detail pages own their own data rendering now.
+  function renderHomeConnect() {
     const signedIn = (typeof session !== "undefined" && !!session);
-    const sample = $("nwHeroSample");
-    if (sample) sample.hidden = !(!signedIn && td.isDemo);
+    const hasLiveBank = bankConnectedLive();
+    const cc = $("connectCard"), pc = $("pictureCard");
+    const cbb = $("connectBankBtn"), cct = $("ccTitle");
+    let showConnect = !hasLiveBank, title = null, wire = null;
+    if (signedIn && !hasLiveBank) {
+      // LAUNCH FIX 2026-09-26: authenticated users must never see demo figures
+      // as their own money. No live connection -> connect-bank card, not numbers.
+      if (typeof liveTrackError !== "undefined" && liveTrackError && cct)
+        title = "Bank sync failed — try again";
+      wire = openConnectSheet;
+    } else if (hasLiveBank) {
+      // FIX (D1-044): stale connection — prompt reconnect instead of
+      // presenting old data as current.
+      try {
+        const staleInfo = isDataStale();
+        if (staleInfo && staleInfo.stale) {
+          showConnect = true;
+          title = `Reconnect your bank — data is ${staleInfo.days} days old`;
+          wire = () => maybeConsent("simplefin", openConnectSheet);
+        }
+      } catch (e) {}
+    }
+    if (cc) cc.hidden = !showConnect;
+    if (cct && title) cct.textContent = title;
+    if (cbb) cbb.onclick = wire || (() => maybeConsent("simplefin", openConnectSheet));
+    if (pc) pc.hidden = !hasLiveBank || showConnect;
+    const pbb = $("pictureBtn");
+    if (pbb && !pbb.dataset.wired) { pbb.dataset.wired = "1"; pbb.onclick = () => show("budgetReport"); }
   }
 
-  // V2 investments connector: mini allocation donut + total. Taps to X-ray.
-  function renderInvestCard() {
-    const card = $("investCard"); if (!card) return;
-    card.onclick = () => show("investments");
-    let total = 0, segs = [], sub = "";
-    try {
-      const sum = portfolioSummary(allHoldings());
-      total = sum.total || 0;
-      const entries = Object.entries(sum.byBucket || {}).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
-      segs = entries.map(([k, v]) => ({ value: v, color: bucketHue(k), label: k }));
-      if (entries.length) sub = entries.slice(0, 2).map(([k]) => k).join(" · ");
-    } catch (e) {}
-    const num = $("investNum");
-    if (num) num.textContent = total > 0 ? fmt$(Math.round(total)) : "—";
-    const dn = $("investDonut");
-    if (dn) dn.innerHTML = donutSVG(segs, 76, 12);
-    const s = $("investSub");
-    if (s) s.textContent = sub || (total > 0 ? "Read-only X-ray" : "Add holdings to see the X-ray");
-  }
-
-  // V2 money-owed connector: value-first stat tile. Taps to the claim flow.
-  function renderOwedCard() {
-    const card = $("owedCard"); if (!card) return;
-    card.onclick = openClaim;
-    const n = claimGet().length;
-    const num = $("owedNum");
-    if (num) num.textContent = n > 0 ? `${n} of ${CLAIM_STATES.length}` : `${CLAIM_STATES.length}`;
-    const sub = $("owedSub");
-    if (sub) sub.textContent = n > 0
-      ? "states searched — keep going, it's always free"
-      : "states to search — free forever, Upmore takes no fee";
-  }
-
-  // V2 bills connector: subscriptions & upcoming bills. Taps to the Save page.
-  async function renderBillsCard() {
-    const card = $("billsCard"); if (!card) return;
-    card.onclick = () => show("save");
-    let rows = [];
-    try {
-      rows = localSubsGet();
-      if (await getSessionToken()) rows = await saveRows("save_subscriptions", "created_at", false);
-    } catch (e) {}
-    const act = (rows || []).filter(r => r.status !== "cancelled");
-    const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
-    const num = $("billsNum");
-    if (num) num.textContent = act.length ? `\u2248${money$(monthly)}/mo` : "—";
-    const s = $("billsSub");
-    if (s) s.textContent = act.length
-      ? `${act.length} active subscription${act.length > 1 ? "s" : ""} — tap to review, cancel, or catch renewals`
-      : "Track every recurring charge, catch renewals before they hit.";
-  }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
      Deterministic deadline plumbing. detectRecurrence is Detection-owned and is
@@ -4649,7 +4505,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       }
     } catch (e) { backendOk = false; backendErr = String((e && e.message) || e); }
     clearLocalBankData();
-    if (typeof renderTrackStrip === "function") { try { renderTrackStrip(); } catch (e) {} }
+    if (typeof renderHomeConnect === "function") { try { renderHomeConnect(); } catch (e) {} }
     if (backendOk && vaultOk) {
       status.textContent = "Bank disconnected. Your connection record and stored bank credential are deleted, and your local bank data has been cleared from this device.";
     } else if (backendOk) {
@@ -7281,10 +7137,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     chat.innerHTML = `<div class="empty" id="empty"><div class="orb"></div>
       <h2>${h2}</h2>
       ${intro}
-      <p class="fine" style="margin:6px 0 0">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
       ${ctxHtml}
       <div class="starters">${starters.map(x =>
-        `<button class="starter" data-q="${esc(x.q)}"${x.go ? ` data-go="${x.go}"` : ""}>${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
+        `<button class="starter${x.go ? " wide" : ""}" data-q="${esc(x.q)}"${x.go ? ` data-go="${x.go}"` : ""}>${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
       </div></div>`;
     chat.querySelectorAll(".starter").forEach(b => b.onclick = () => {
       if (b.dataset.go) { show(b.dataset.go); return; }
@@ -7303,7 +7158,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     .replace(/\n/g, "<br>");
   function addAI(paras, card) {
     const m = document.createElement("div"); m.className = "msg ai";
-    m.innerHTML = `<div class="who"><span class="orb"></span>Guide</div><div class="typing"><i></i><i></i><i></i></div>`;
+    m.innerHTML = `<div class="typing"><i></i><i></i><i></i></div>`;
     chat.appendChild(m); chat.scrollTop = chat.scrollHeight;
     setTimeout(() => {
       m.querySelector(".typing").remove();
@@ -7527,8 +7382,6 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         }
       }).catch(() => {});
     }
-    // Customize home moved here from Home tab (simplicity: not on first view).
-    if ($("homeCustomBtn2")) $("homeCustomBtn2").onclick = () => { show("home"); setTimeout(openHomeCustomize, 50); };
   }
   /* ================= REFERRAL PROGRAM =================
      Pay-on-signup: subscriber shares link, friend completes onboarding,
@@ -8082,7 +7935,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   // FIX (X1-F1): Try live SimpleFIN data first. If the proxy returns data,
   // use it instead of demo. The demo is a fallback, not the default.
-  // This runs async on app load; renderTrackStrip etc. re-render when done.
+  // This runs async on app load; renderHomeConnect etc. re-render when done.
   async function initLiveTrackData() {
     try {
       // Only fetch if user is signed in (proxy requires JWT)
@@ -8123,7 +7976,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       // reconciled silently (6-022).
       try { await recomputeDeadlines(trackData.transactions); } catch (e) {}
       // Re-render the track UI with live data
-      if (typeof renderTrackStrip === "function") renderTrackStrip();
+      if (typeof renderHomeConnect === "function") renderHomeConnect();
     } catch (e) {
       // Live data unavailable — record WHY so the UI can say so honestly.
       // Authenticated users see the connect card with the failure reason,
@@ -8142,148 +7995,6 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
 
   // Home strip: free cash, days to payday, left to spend/day.
-  function renderTrackStrip() {
-    const { accounts, transactions, isLive, isDemo } = loadTrackData();
-    const signedIn = (typeof session !== "undefined" && !!session);
-    // LAUNCH FIX 2026-09-26: authenticated users must never see demo figures
-    // as their own money. No live connection -> connect-bank card, not numbers.
-    if (signedIn && !isLive) {
-      try {
-        const sc = $("spendCard"); if (sc) sc.hidden = true;
-        $("connectCard").hidden = false;
-        if (liveTrackError) {
-          const t = $("ccTitle");
-          if (t) t.textContent = "Bank sync failed — try again";
-        }
-        const btn = $("connectBankBtn");
-        if (btn) btn.onclick = openConnectSheet;
-      } catch (_) {}
-      return;
-    }
-    // FIX (D1-044): stale connection — withhold free_cash/balance as current, prompt reconnect.
-    const staleInfo = isDataStale();
-    if (isLive && staleInfo.stale) {
-      const sc2 = $("spendCard"); if (sc2) sc2.hidden = true;
-      $("connectCard").hidden = false;
-      try { $("ccTitle").textContent = "Reconnect your bank \u2014 data is " + staleInfo.days + " days old"; } catch (e) {}
-      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
-      return;
-    }
-    const balance = accounts[0]?.balance || 0;
-    const rec = detectRecurrence(transactions);
-    // Next payday: detect from inflows (demo: biweekly from last paycheck)
-    // FIX (T6): Exclude pending and transfers from payday detection.
-    // A pending paycheck must not shift nextPay, days-to-payday, or free cash.
-    // FIX (D1-038): variable-income model via analyzeIncome (variance >25%
-    // switches to the floor = min of recent deposits).
-    const pay = analyzeIncome(transactions);
-    const nextPay = pay.nextPay;
-    const daysToPay = nextPay ? Math.max(0, Math.round((new Date(nextPay) - new Date()) / 864e5)) : 30;
-    // FIX (R2 1-038): variance >25% switches the income model to the floor.
-    // When paychecks vary wildly, the strip plans on the lowest recent
-    // paycheck — never the average — and says so on screen.
-    // FIX (R3 1-038): the floor is CONSUMED, not just displayed. Variable
-    // income holds back (avg − floor) as an income-variability reserve from
-    // the safe-to-spend total: planning on the floor means the safe number
-    // assumes the small paycheck arrived, not the average one.
-    const incomeModel = pay.variable ? "floor" : "average";
-    try { const sc3 = $("spendCard"); if (sc3) sc3.dataset.incomeModel = incomeModel; } catch (e) {}
-    const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
-
-    const spendCard = $("spendCard");
-    if (spendCard) spendCard.hidden = false;
-    // LAUNCH FIX 2026-09-26: anonymous visitors see demo figures — label them
-    // as sample data so nobody mistakes them for real money.
-    const spendSample = $("spendSample");
-    if (spendSample) spendSample.hidden = !( !signedIn && isDemo );
-    // 2-021: no payday detected → suppress the daily figure ("—"), never divide by a guessed denominator.
-
-    // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
-    const cycleEnd = nextPay || new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
-    // FIX (D1-023): dormant subscriptions are excluded from totals.
-    const fixedRem = rec.filter(r => r.next_date <= cycleEnd && !r.dormant).reduce((s, r) => s + r.amount, 0);
-    // FIX (B1-v2 DEFECT 3): committed_estimate_remaining was hardcoded to 0.
-    // Spec formula: safe_to_spend = balance - fixed_remaining - committed_estimate_remaining - buffer.
-    // Committed = variable-but-essential: Groceries, Utilities, Transport.
-    // Estimate from last 30 days of transactions, prorated to remaining cycle days.
-    const committedCats = ["Groceries", "Utilities", "Transport"];
-    const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-    const committedLast30 = (transactions || [])
-      .filter(t => isCountableSpend(t) && !t.is_pending && !t.is_transfer &&
-              committedCats.includes(t.category) &&
-              t.posted_at >= thirtyDaysAgo)
-      .reduce((s, t) => s + Math.abs(t.amount), 0);
-    const daysRemaining = Math.max(1, Math.round((new Date(cycleEnd) - new Date()) / 864e5));
-    const committedRem = Math.round((committedLast30 / 30) * daysRemaining);
-    // FIX (B1-v2): Buffer from localStorage (adjustable), default $100.
-    // Spec rule 3: buffer as separate line, user can change it.
-    let bufferAmt = 100;
-    try {
-      const saved = localStorage.getItem("upmore_buffer");
-      if (saved !== null) bufferAmt = Math.max(0, parseInt(saved, 10) || 0);
-    } catch (e) {}
-    // FIX (B1-v2 DEFECT 3): Pass real committed estimate, not 0.
-    const sts = calcSafeToSpend(balance, fixedRem, committedRem, bufferAmt, cycleEnd);
-    // FIX (R3 1-038): income-variability reserve — the floor model changes the
-    // number, not just the copy. Variable income → hold back (avg − floor).
-    let incomeReserve = 0;
-    if (pay.variable && pay.count >= 2 && pay.avg > pay.floor) {
-      incomeReserve = Math.round(pay.avg - pay.floor);
-      sts.total -= incomeReserve;
-      sts.daily = sts.total / sts.days;
-    }
-    const spendNum = $("spendNum");
-    if (spendNum) spendNum.textContent = fmt$(Math.round(sts.total));
-    // V2: the safe-to-spend card opens the budget detail page.
-    if (spendCard) spendCard.onclick = () => show("budgetReport");
-    // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate control on
-    // the budget report page (buffer-row), same localStorage source of truth.
-    const spendSub = $("spendSub");
-    if (spendSub) {
-      spendSub.textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
-      // SPEC 09: committed-spending visibility — bills due + essentials estimate,
-      // the two numbers already subtracted above. Copilot shows "committed"; now we do too.
-      spendSub.textContent += ` · ${fmt$(Math.round(fixedRem))} bills due, ${fmt$(Math.round(committedRem))} essentials est.`;
-      // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
-      if (pay.variable && pay.count >= 2) {
-        spendSub.textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
-          (incomeReserve > 0 ? ` ${fmt$(incomeReserve)} held back for income variability.` : "");
-      }
-    }
-    // V2 ring: month budget pace. Fraction = budget remaining; color shifts
-    // green→amber→red by pace; safe-to-spend amount centered.
-    try {
-      const ymNow = new Date().toISOString().slice(0, 7);
-      const daysInM = new Date(+ymNow.slice(0, 4), +ymNow.slice(5, 7), 0).getDate();
-      const elapsed = Math.min(new Date().getDate(), daysInM);
-      const m = budgetReportModel(transactions, ymNow);
-      const mBudget = m.rows.reduce((s, r) => s + (r.effective || 0), 0);
-      const mSpent = m.rows.reduce((s, r) => s + (r.spent || 0), 0);
-      const mProj = elapsed > 0 ? mSpent / elapsed * daysInM : mSpent;
-      const frac = mBudget > 0 ? Math.max(0, Math.min(1, 1 - mSpent / mBudget)) : 1;
-      const ringColor = paceColor(mSpent, mBudget, mProj);
-      const ringGrad = paceGrad(mSpent, mBudget, mProj); // v3: gradient stroke + glow
-      const ringBox = $("spendRing");
-      if (ringBox) ringBox.innerHTML = ringSVG(frac, ringColor, 76, 9,
-        `<div><div class="num" style="font-size:15px;font-weight:800;background:linear-gradient(180deg,#FFFFFF,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent">${fmt$(Math.round(sts.total))}</div>` +
-        `<div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`,
-        ringGrad);
-    } catch (e) {}
-
-    // HOME: Connect card — show when no live bank is connected.
-    // One button opens the connect sheet directly on Home.
-    // TRACK G: picture card — one tap to the full generated report when live.
-    const hasLiveBank = bankConnectedLive();
-    $("connectCard").hidden = hasLiveBank;
-    const pc = $("pictureCard");
-    if (pc) pc.hidden = !hasLiveBank;
-    const pbb = $("pictureBtn");
-    if (pbb && !pbb.dataset.wired) { pbb.dataset.wired = "1"; pbb.onclick = () => show("budgetReport"); }
-    if (!hasLiveBank) {
-      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
-    }
-  }
-
   // TRACK G: first-sync payoff moment. Honest syncing state -> celebration ->
   // one button into the full picture. Shown after each successful connect.
   function showPayoffSheet(title, body, ctaLabel, onCta) {
