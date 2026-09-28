@@ -295,7 +295,7 @@
   .tabs { position: absolute; left: 0; right: 0; bottom: 0; z-index: 30;
     display: flex; justify-content: center; gap: 64px;
     padding: 10px 0 calc(var(--tabbot, 10px) + 8px);
-    background: linear-gradient(180deg, rgba(15,15,17,0) 0%, rgba(15,15,17,.92) 30%, var(--bg) 100%); }
+    background: var(--bg); border-top: 1px solid var(--line); }
   body.framed .tabs { --tabbot: 26px; }
   .tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;
     font-size: 11.5px; font-weight: 600; color: var(--dim); padding: 4px 10px; min-height: 48px; min-width: 48px;
