@@ -22,7 +22,8 @@
   :root {
     /* UPMORE COLOR SYSTEM v3 (Vishnu 2026-09-27). Dark mode only.
        ONE brand accent (orange) — strictly for CTAs, links, hero chart lines.
-       Green is a STATE color (pace/success), never the brand accent.
+       Green is a STATE color (money/success/pace): home money figures, income,
+       on-pace states, success confirmations — never the brand accent.
        Category hues are identity-pinned (chart1-7) and reused consistently.
        v3: deep charcoal canvas + ambient aurora glows + gradient-border cards. */
     --bg: #0F0F11;          /* Base — deep charcoal, not flat black */
@@ -723,7 +724,9 @@
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
   .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
   /* v7: home tabs — five vague tabs, STACK-list style. No icons anywhere:
-     the headline figure sits where the icon used to be. */
+     the headline figure sits where the icon used to be.
+     v7.1: real money figures render in --up (green = money/success state);
+     "—" (no data) stays dim. */
   .htabs { margin-top: 16px; display: grid; gap: 12px; }
   .htab { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 84px;
     padding: 16px 18px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
@@ -731,7 +734,7 @@
     letter-spacing: -0.01em; text-align: left; cursor: pointer; }
   .htab:active { transform: scale(.99); }
   .htab-fig { flex: none; min-width: 96px; font-size: 26px; font-weight: 700;
-    letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--up); }
   .htab-fig.dim { color: var(--dim); }
   .htab-name { flex: 1; min-width: 0; }
   .htab-name small { display: block; margin-top: 3px; font-size: 13px; font-weight: 500; color: var(--muted); }
