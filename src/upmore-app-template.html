@@ -722,16 +722,19 @@
   .delta-chip.down { background: var(--down-soft); color: var(--down); }
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
   .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-  /* v6: home tabs — five simple cards with icons, spaced out, each tappable. */
+  /* v7: home tabs — five vague tabs, STACK-list style. No icons anywhere:
+     the headline figure sits where the icon used to be. */
   .htabs { margin-top: 16px; display: grid; gap: 12px; }
-  .htab { display: flex; align-items: center; gap: 15px; width: 100%; min-height: 84px;
+  .htab { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 84px;
     padding: 16px 18px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
     border-radius: 20px; color: var(--text); font-size: 17px; font-weight: 600;
     letter-spacing: -0.01em; text-align: left; cursor: pointer; }
   .htab:active { transform: scale(.99); }
-  .htab-icon { flex: none; width: 56px; height: 56px; display: grid; place-items: center; }
-  .htab-icon svg { display: block; }
+  .htab-fig { flex: none; min-width: 96px; font-size: 26px; font-weight: 700;
+    letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .htab-fig.dim { color: var(--dim); }
   .htab-name { flex: 1; min-width: 0; }
+  .htab-name small { display: block; margin-top: 3px; font-size: 13px; font-weight: 500; color: var(--muted); }
   .htab-go { color: var(--dim); font-size: 22px; font-weight: 400; flex: none; }
   /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
      connector cards — visual left, title + value, chevron right. */
@@ -1063,31 +1066,32 @@
         <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Profile">V</div>
       </div>
 
-      <!-- HOME TABS: five simple cards with icons, spaced out. Each opens its own page. -->
+      <!-- HOME TABS: five vague tabs, STACK-list style. No icons — the
+           headline figure sits where the icon used to be. Each opens its page. -->
       <div class="htabs" id="homeMenu" role="list">
-        <button class="htab" data-go="networth" role="listitem">
-          <span class="htab-icon"><svg width="56" height="56" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M9 45h34" stroke="#8A94A6" stroke-width="3" stroke-linecap="round"/><rect x="13" y="30" width="7" height="15" rx="2" fill="#60A5FA"/><rect x="22.5" y="23" width="7" height="22" rx="2" fill="#60A5FA"/><rect x="32" y="15" width="7" height="30" rx="2" fill="#60A5FA"/><path d="M13 27l9.5-6 8 4L39 13" stroke="#8A94A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M33.5 13H39v5.5" stroke="#8A94A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="htab-name">Net Worth</span>
-          <span class="htab-go" aria-hidden="true">›</span>
-        </button>
         <button class="htab" data-go="budgetReport" role="listitem">
-          <span class="htab-icon"><svg width="56" height="56" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="17" stroke="#8A94A6" stroke-width="5" opacity="0.3"/><circle cx="26" cy="26" r="17" stroke="#2DD4BF" stroke-width="5" stroke-linecap="round" stroke-dasharray="78 107" transform="rotate(-90 26 26)"/></svg></span>
-          <span class="htab-name">Safe to Spend</span>
+          <span class="htab-fig num" data-fig="budget">—</span>
+          <span class="htab-name">Budget<small data-sub="budget">safe to spend</small></span>
           <span class="htab-go" aria-hidden="true">›</span>
         </button>
         <button class="htab" data-go="investments" role="listitem">
-          <span class="htab-icon"><svg width="56" height="56" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="16" stroke="#8A94A6" stroke-width="8" opacity="0.3"/><circle cx="26" cy="26" r="16" stroke="#A78BFA" stroke-width="8" stroke-dasharray="58 101" stroke-linecap="round" transform="rotate(-90 26 26)"/><circle cx="26" cy="26" r="16" stroke="#F472B6" stroke-width="8" stroke-dasharray="24 101" stroke-linecap="round" transform="rotate(117 26 26)"/></svg></span>
-          <span class="htab-name">Investments</span>
+          <span class="htab-fig num" data-fig="invest">—</span>
+          <span class="htab-name">Invest<small data-sub="invest">investments</small></span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
+        <button class="htab" data-go="networth" role="listitem">
+          <span class="htab-fig num" data-fig="track">—</span>
+          <span class="htab-name">Track<small data-sub="track">net worth</small></span>
           <span class="htab-go" aria-hidden="true">›</span>
         </button>
         <button class="htab" data-go="claim" role="listitem">
-          <span class="htab-icon"><svg width="56" height="56" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="12" y="23" width="28" height="19" rx="4" stroke="#8A94A6" stroke-width="3"/><rect x="9" y="15" width="34" height="9" rx="3.5" stroke="#8A94A6" stroke-width="3"/><path d="M26 15v27" stroke="#F472B6" stroke-width="3"/><path d="M20.5 13.5c-3-1-5-3-5-5.5 0-2 1.5-3.2 3.2-3.2 2.4 0 3.4 4.6 3.9 8.7M31.5 13.5c3-1 5-3 5-5.5 0-2-1.5-3.2-3.2-3.2-2.4 0-3.4 4.6-3.9 8.7" stroke="#F472B6" stroke-width="2.5" stroke-linecap="round"/></svg></span>
-          <span class="htab-name">Money You’re Owed</span>
+          <span class="htab-fig num" data-fig="earn">—</span>
+          <span class="htab-name">Earn<small data-sub="earn">money you're owed</small></span>
           <span class="htab-go" aria-hidden="true">›</span>
         </button>
         <button class="htab" data-go="save" role="listitem">
-          <span class="htab-icon"><svg width="56" height="56" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="10" y="13" width="32" height="30" rx="7" stroke="#8A94A6" stroke-width="3"/><path d="M10 23h32" stroke="#8A94A6" stroke-width="3"/><path d="M18 8v7M34 8v7" stroke="#8A94A6" stroke-width="3" stroke-linecap="round"/><circle cx="26" cy="33" r="6.5" fill="#FF6A2D"/><path d="M23.4 33l1.9 1.9 3.3-3.7" stroke="#0B0D0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="htab-name">Bills &amp; Subscriptions</span>
+          <span class="htab-fig num" data-fig="save">—</span>
+          <span class="htab-name">Save<small data-sub="save">bills &amp; subscriptions</small></span>
           <span class="htab-go" aria-hidden="true">›</span>
         </button>
       </div>
@@ -3016,6 +3020,70 @@
   }
 
   // v6: Home is five simple named rows. Each opens its own page.
+  // HOME FIGURES (v7): each vague tab shows its headline figure where the
+  // icon used to be. Figures come from the same sources the detail pages
+  // use, so home and detail pages always agree. "—" when there's nothing
+  // honest to show (never a guessed number).
+  function homeFigures() {
+    const out = {};
+    const dash = sub => ({ fig: "—", sub });
+    const signedIn = (typeof session !== "undefined" && !!session);
+    let td = {};
+    try { td = (typeof loadTrackData === "function") ? loadTrackData() : {}; } catch (e) {}
+    const live = !!(td && td.isLive);
+
+    // TRACK → net worth. netWorthCalc() is demo-safe by construction
+    // (signed-in without a live bank excludes demo accounts).
+    try {
+      const nw = netWorthCalc();
+      out.track = { fig: bm0(nw.total), sub: "net worth" };
+    } catch (e) { out.track = dash("net worth"); }
+
+    // BUDGET → safe to spend = budgeted − spent, current month.
+    // Same computation as the budget report hero.
+    try {
+      if (signedIn && !live) out.budget = dash("connect your bank");
+      else {
+        const tx = (td.transactions || []);
+        const months = (typeof budgetMonths === "function") ? budgetMonths(tx) : [];
+        if (!months.length) out.budget = dash("no spending data yet");
+        else {
+          const ym = months[0];
+          const model = budgetReportModel(tx, ym);
+          const rows = (model && model.rows) || [];
+          const mBudget = rows.reduce((s, r) => s + (r.effective || 0), 0);
+          const mSpent = rows.reduce((s, r) => s + (r.spent || 0), 0);
+          const left = Math.max(0, mBudget - mSpent);
+          const mName = new Date(ym + "-01T12:00:00").toLocaleString("en-US", { month: "short" });
+          out.budget = { fig: bm0(left), sub: `safe to spend · ${mName}` };
+        }
+      }
+    } catch (e) { out.budget = dash("safe to spend"); }
+
+    // INVEST → portfolio total. Holdings load async (Plaid), so there is no
+    // synchronously-available total — "—" rather than a stale number.
+    out.invest = dash("connect your brokerage");
+
+    // EARN → claim progress (the claim page's honest headline).
+    try {
+      const n = (typeof claimGet === "function") ? claimGet().length : 0;
+      const total = (typeof CLAIM_STATES !== "undefined" && CLAIM_STATES) ? CLAIM_STATES.length : 50;
+      out.earn = { fig: `${n}/${total}`, sub: "states searched" };
+    } catch (e) { out.earn = dash("states searched"); }
+
+    // SAVE → subscriptions monthly run-rate from the local store.
+    try {
+      const subs = (typeof localSubsGet === "function") ? localSubsGet() : [];
+      const act = subs.filter(s => (s.status || "active") === "active");
+      if (!act.length) out.save = dash("add a subscription");
+      else {
+        const mo = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
+        out.save = { fig: `≈${money$(mo)}/mo`, sub: `${act.length} subscription${act.length === 1 ? "" : "s"}` };
+      }
+    } catch (e) { out.save = dash("subscriptions"); }
+    return out;
+  }
+
   function renderHome() {
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
@@ -3034,6 +3102,20 @@
         else if (g) show(g);
       };
     });
+    // v7: vague-tab figures — real data where the icons used to be.
+    try {
+      const figs = homeFigures();
+      document.querySelectorAll("#homeMenu [data-fig]").forEach(el => {
+        const f = figs[el.dataset.fig];
+        if (!f) return;
+        el.textContent = f.fig;
+        el.classList.toggle("dim", f.fig === "—");
+      });
+      document.querySelectorAll("#homeMenu [data-sub]").forEach(el => {
+        const f = figs[el.dataset.sub];
+        if (f && f.sub) el.textContent = f.sub;
+      });
+    } catch (e) {}
     renderCFOList(); // SPEC 05: money-health tools (grid lives in Explore now)
     renderHomeConnect(); // connect-bank / picture banners
   }
