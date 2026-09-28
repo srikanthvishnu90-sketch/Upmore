@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-9yyNUU/vfPxWFwHUnLshlQbmnH1axoXdsU9AXjwh6PQ=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-6AQcLY9EByhar4VTUGDnEFKcBYAF6bUTjVIMxOq4P8M=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -722,9 +722,9 @@
   .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
   /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
      connector cards — visual left, title + value, chevron right. */
-  .conn-card { display: flex; gap: 16px; align-items: center; width: 100%; text-align: left;
+  .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
     background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-    padding: 20px; color: var(--text); min-height: 116px; }
+    padding: 18px; color: var(--text); min-height: 108px; }
   .conn-card .cc-visual { flex: none; width: 76px; height: 76px; }
   .conn-card .cc-body { flex: 1; min-width: 0; }
   .conn-card .cc-go { flex: none; color: var(--dim); font-size: 20px; }
@@ -768,16 +768,17 @@
      Card padding 20px · gaps between cards 16px · section margins 24px.
      One rule owns the home widget rhythm so nothing doubles up. */
   #home .hero-card { margin-top: 0; }
-  #home [data-widget] { margin-top: 16px; }
+  #home [data-widget] { margin-top: 12px; }
   #home .conn-card .cc-go { font-size: 22px; line-height: 1; }
   /* Net-worth hero: soft orange outer glow. */
   #nwHero.hero-card {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.08),
       0 0 54px rgba(255,106,45,.11), 0 20px 48px rgba(0,0,0,.45);
   }
-  /* Typography drama: 48-56px silver-gradient hero numerals, tight headlines. */
-  .hero-num { font-size: 52px; letter-spacing: -0.02em; }
-  .head.slim .hello { font-size: 26px; letter-spacing: -0.02em; font-weight: 700; }
+  /* Mobile-first type scale: compact headlines, hero numerals with presence
+     but never billboard size. */
+  .hero-num { font-size: 40px; letter-spacing: -0.02em; }
+  .head.slim .hello { font-size: 20px; letter-spacing: -0.01em; font-weight: 600; }
   .sec { letter-spacing: -0.015em; }
   /* Signature motif: the aurora flow ribbon. Thin multi-hue band under the home
      hero figure; recurs as a divider on detail pages. */
@@ -1094,6 +1095,27 @@
           <p class="micro">Money you&rsquo;re owed</p>
           <p class="conn-num num" id="owedNum">&mdash;</p>
           <p class="conn-sub" id="owedSub">Free search &mdash; states hold forgotten paychecks, deposits, and refunds.</p>
+        </div>
+        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
+      </button>
+      </div>
+
+      <!-- CONNECTOR 4: bills & subscriptions. Taps to the Save page. -->
+      <div data-widget="bills">
+      <button class="conn-card" id="billsCard" style="text-align:left;width:100%">
+        <div class="cc-visual" id="billsIcon" aria-hidden="true">
+          <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+            <rect x="14" y="18" width="48" height="44" rx="10" stroke="#8A94A6" stroke-width="3"/>
+            <path d="M14 32h48" stroke="#8A94A6" stroke-width="3"/>
+            <path d="M26 12v10M50 12v10" stroke="#8A94A6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="38" cy="47" r="9" fill="#2DD4BF" opacity="0.9"/>
+            <path d="M34.5 47l2.5 2.5 4.5-5" stroke="#0B0D0C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <p class="micro">Bills &amp; subscriptions</p>
+          <p class="conn-num num" id="billsNum">&mdash;</p>
+          <p class="conn-sub" id="billsSub">Track every recurring charge, catch renewals before they hit.</p>
         </div>
         <span class="cc-go" aria-hidden="true">&rsaquo;</span>
       </button>
@@ -1936,10 +1958,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   });
 
   /* splash: tap, or auto-advance once boot leaves a fresh user on splash.
-     Timer stands down when boot chose any other screen (session -> home, etc.) */
+     Brand-new users land on the Guide (chatbox) with a personal greeting —
+     not the marketing splash. Timer stands down when boot chose any other
+     screen (session -> home, etc.) */
   let bootDone = false;
-  $("splash").onclick = () => { if (current === "splash") show("welcome"); };
-  setTimeout(() => { if (!bootDone && current === "splash") show("welcome"); }, 1800);
+  const splashToGuide = () => { guideFirstRun = true; show("guide"); };
+  $("splash").onclick = () => { if (current === "splash") splashToGuide(); };
+  setTimeout(() => { if (!bootDone && current === "splash") splashToGuide(); }, 1800);
 
   /* ================= Signup: choices ================= */
   document.querySelectorAll("[data-pick]").forEach(g => {
@@ -3046,12 +3071,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     { id: "spend", label: "Safe to spend" },
     { id: "invest", label: "Investments" },
     { id: "owed", label: "Money you're owed" },
+    { id: "bills", label: "Bills & subscriptions" },
     { id: "connect", label: "Connect bank" },
   ];
   const homeWidgetState = () => {
     try {
       const raw = JSON.parse(localStorage.getItem("upmore_home_widgets") || "null");
-      if (raw && Array.isArray(raw.order)) return raw;
+      if (raw && Array.isArray(raw.order)) {
+        // Merge in widgets added after the order was saved (e.g. "bills").
+        const ids = HOME_WIDGETS.map(w => w.id);
+        const missing = ids.filter(id => !raw.order.includes(id));
+        if (missing.length) raw.order = raw.order.concat(missing);
+        return raw;
+      }
     } catch (e) {}
     return { order: HOME_WIDGETS.map(w => w.id), hidden: [] };
   };
@@ -3113,6 +3145,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend (V2 connector card)
     renderInvestCard(); // V2 connector: investments mini donut
     renderOwedCard(); // V2 connector: money-you're-owed stat tile
+    renderBillsCard(); // V2 connector: bills & subscriptions -> Save page
     renderCFOList(); // SPEC 05: money-health tools (grid lives in Explore now)
     applyHomeWidgets();
   }
@@ -3186,6 +3219,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (sub) sub.textContent = n > 0
       ? "states searched — keep going, it's always free"
       : "states to search — free forever, Upmore takes no fee";
+  }
+
+  // V2 bills connector: subscriptions & upcoming bills. Taps to the Save page.
+  async function renderBillsCard() {
+    const card = $("billsCard"); if (!card) return;
+    card.onclick = () => show("save");
+    let rows = [];
+    try {
+      rows = localSubsGet();
+      if (await getSessionToken()) rows = await saveRows("save_subscriptions", "created_at", false);
+    } catch (e) {}
+    const act = (rows || []).filter(r => r.status !== "cancelled");
+    const monthly = act.reduce((t, r) => t + Number(r.amount || 0) * (INT2MO[r.billing_interval] || 1), 0);
+    const num = $("billsNum");
+    if (num) num.textContent = act.length ? `\u2248${money$(monthly)}/mo` : "—";
+    const s = $("billsSub");
+    if (s) s.textContent = act.length
+      ? `${act.length} active subscription${act.length > 1 ? "s" : ""} — tap to review, cancel, or catch renewals`
+      : "Track every recurring charge, catch renewals before they hit.";
   }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
@@ -5172,6 +5224,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* ================= Guide ================= */
   /* ================= Guide: answers from the real catalog ================= */
   let guideInit = false, busy = false;
+  // First-run: brand-new users land on the Guide (chatbox) straight from the
+  // splash, greeted by name when we know it. Set by the splash/boot path.
+  let guideFirstRun = false;
   const chat = $("chat"), input = $("input"), send = $("send");
   const STARTERS = [
     { q: "What should I do first?", sub: "Based on your plan" },
@@ -7207,14 +7262,34 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (guideInit && $("empty")) return;
     guideInit = true;
     $("guide").classList.remove("talking");
+    // First-run: the chatbox greets by name when we know it, and offers a
+    // "Get started" path into signup (welcome keeps the 18+/terms disclosure).
+    let h2 = "Ask about any move, offer, or step.";
+    let intro = "";
+    let ctxHtml = `<p class="ctx">${guideCtx()}</p>`;
+    let starters = STARTERS;
+    if (guideFirstRun) {
+      guideFirstRun = false;
+      const nm = (typeof displayName === "function") ? displayName() : "Friend";
+      const first = (nm && nm !== "Friend") ? String(nm).split(" ")[0] : null;
+      h2 = first ? `Hey ${esc(first)}, I'm Upmore — your personal finance agent.`
+                 : `Hey, I'm Upmore — your personal finance agent.`;
+      intro = `<p class="fine">I find you extra money and show you your money like a CFO. Ask me anything, or tap below to set up your account.</p>`;
+      ctxHtml = "";
+      starters = [{ q: "Get started", sub: "Set up your account", go: "welcome" }].concat(STARTERS);
+    }
     chat.innerHTML = `<div class="empty" id="empty"><div class="orb"></div>
-      <h2>Ask about any move, offer, or step.</h2>
+      <h2>${h2}</h2>
+      ${intro}
       <p class="fine" style="margin:6px 0 0">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
-      <p class="ctx">${guideCtx()}</p>
-      <div class="starters">${STARTERS.map(x =>
-        `<button class="starter" data-q="${esc(x.q)}">${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
+      ${ctxHtml}
+      <div class="starters">${starters.map(x =>
+        `<button class="starter" data-q="${esc(x.q)}"${x.go ? ` data-go="${x.go}"` : ""}>${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
       </div></div>`;
-    chat.querySelectorAll(".starter").forEach(b => b.onclick = () => guideAsk(b.dataset.q));
+    chat.querySelectorAll(".starter").forEach(b => b.onclick = () => {
+      if (b.dataset.go) { show(b.dataset.go); return; }
+      guideAsk(b.dataset.q);
+    });
   }
   function addMe(text) {
     const e = $("empty"); if (e) e.remove();
