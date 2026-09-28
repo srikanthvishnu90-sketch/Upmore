@@ -324,10 +324,11 @@
   .empty h2 { margin-top: 18px; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; max-width: 20ch; text-align: center; }
   .empty .fine { text-align: center; }
   .ctx { margin-top: 12px; font-size: 13px; color: var(--muted); }
-  .starters { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
-  .starter { text-align: left; padding: 13px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); font-size: 14.5px; font-weight: 500; }
-  .starter.wide { grid-column: 1 / -1; }
-  .starter span { display: block; margin-top: 2px; font-size: 12.5px; color: var(--muted); font-weight: 400; }
+  /* v6: GPT-style auth — first-run Log in / Sign up, no starter cards. */
+  .authrow { margin-top: 26px; display: flex; gap: 10px; width: 100%; max-width: 340px; }
+  .abtn { flex: 1; height: 50px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font-size: 15.5px; font-weight: 600; cursor: pointer; }
+  .abtn.primary { background: var(--text); border-color: transparent; color: #17251E; }
   .msg { margin-top: 18px; animation: rise .25s ease-out; min-width: 0; overflow-wrap: break-word; }
   @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   /* v6: GPT-style bubbles — user right in a soft bubble, assistant plain text. */
@@ -721,18 +722,17 @@
   .delta-chip.down { background: var(--down-soft); color: var(--down); }
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
   .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-  /* v6: home menu — five simple named rows, one grouped card. */
-  .homemenu { margin-top: 16px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
-    border-radius: 24px; overflow: hidden; }
-  .hrow { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 66px;
-    padding: 13px 18px; background: none; border: 0; color: var(--text);
-    font-size: 17px; font-weight: 600; letter-spacing: -0.01em; text-align: left; cursor: pointer; }
-  .hrow + .hrow { border-top: 1px solid var(--line); }
-  .hrow:active { background: rgba(255,255,255,.04); }
-  .hicon { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
-    font-size: 21px; flex: none; }
-  .hname { flex: 1; min-width: 0; }
-  .hgo { color: var(--dim); font-size: 22px; font-weight: 400; flex: none; }
+  /* v6: home tabs — five simple cards with icons, spaced out, each tappable. */
+  .htabs { margin-top: 16px; display: grid; gap: 12px; }
+  .htab { display: flex; align-items: center; gap: 15px; width: 100%; min-height: 84px;
+    padding: 16px 18px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px; color: var(--text); font-size: 17px; font-weight: 600;
+    letter-spacing: -0.01em; text-align: left; cursor: pointer; }
+  .htab:active { transform: scale(.99); }
+  .htab-icon { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center;
+    font-size: 25px; flex: none; }
+  .htab-name { flex: 1; min-width: 0; }
+  .htab-go { color: var(--dim); font-size: 22px; font-weight: 400; flex: none; }
   /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
      connector cards — visual left, title + value, chevron right. */
   .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
@@ -1063,32 +1063,32 @@
         <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Profile">V</div>
       </div>
 
-      <!-- HOME MENU: five simple tabs. Each opens its own page. -->
-      <div class="homemenu" id="homeMenu" role="list">
-        <button class="hrow" data-go="networth" role="listitem">
-          <span class="hicon" style="background:rgba(96,165,250,.16)">📊</span>
-          <span class="hname">Net Worth</span>
-          <span class="hgo" aria-hidden="true">›</span>
+      <!-- HOME TABS: five simple cards with icons, spaced out. Each opens its own page. -->
+      <div class="htabs" id="homeMenu" role="list">
+        <button class="htab" data-go="networth" role="listitem">
+          <span class="htab-icon" style="background:rgba(96,165,250,.16)">📊</span>
+          <span class="htab-name">Net Worth</span>
+          <span class="htab-go" aria-hidden="true">›</span>
         </button>
-        <button class="hrow" data-go="budgetReport" role="listitem">
-          <span class="hicon" style="background:rgba(45,212,191,.16)">💵</span>
-          <span class="hname">Safe to Spend</span>
-          <span class="hgo" aria-hidden="true">›</span>
+        <button class="htab" data-go="budgetReport" role="listitem">
+          <span class="htab-icon" style="background:rgba(45,212,191,.16)">💵</span>
+          <span class="htab-name">Safe to Spend</span>
+          <span class="htab-go" aria-hidden="true">›</span>
         </button>
-        <button class="hrow" data-go="investments" role="listitem">
-          <span class="hicon" style="background:rgba(167,139,250,.16)">📈</span>
-          <span class="hname">Investments</span>
-          <span class="hgo" aria-hidden="true">›</span>
+        <button class="htab" data-go="investments" role="listitem">
+          <span class="htab-icon" style="background:rgba(167,139,250,.16)">📈</span>
+          <span class="htab-name">Investments</span>
+          <span class="htab-go" aria-hidden="true">›</span>
         </button>
-        <button class="hrow" data-go="claim" role="listitem">
-          <span class="hicon" style="background:rgba(244,114,182,.16)">🎁</span>
-          <span class="hname">Money You’re Owed</span>
-          <span class="hgo" aria-hidden="true">›</span>
+        <button class="htab" data-go="claim" role="listitem">
+          <span class="htab-icon" style="background:rgba(244,114,182,.16)">🎁</span>
+          <span class="htab-name">Money You’re Owed</span>
+          <span class="htab-go" aria-hidden="true">›</span>
         </button>
-        <button class="hrow" data-go="save" role="listitem">
-          <span class="hicon" style="background:rgba(255,106,45,.16)">🧾</span>
-          <span class="hname">Bills &amp; Subscriptions</span>
-          <span class="hgo" aria-hidden="true">›</span>
+        <button class="htab" data-go="save" role="listitem">
+          <span class="htab-icon" style="background:rgba(255,106,45,.16)">🧾</span>
+          <span class="htab-name">Bills &amp; Subscriptions</span>
+          <span class="htab-go" aria-hidden="true">›</span>
         </button>
       </div>
 
@@ -3027,7 +3027,7 @@
       av.onclick = () => show("profile");
       av.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show("profile"); } };
     }
-    document.querySelectorAll("#homeMenu .hrow").forEach(b => {
+    document.querySelectorAll("#homeMenu .htab").forEach(b => {
       b.onclick = () => {
         const g = b.dataset.go;
         if (g === "claim") openClaim();
@@ -5063,12 +5063,6 @@
   // splash, greeted by name when we know it. Set by the splash/boot path.
   let guideFirstRun = false;
   const chat = $("chat"), input = $("input"), send = $("send");
-  const STARTERS = [
-    { q: "What should I do first?", sub: "Based on your plan" },
-    { q: "Show me bank bonuses", sub: "Real offers in the catalog" },
-    { q: "What's the catch with these offers?", sub: "The honest version" },
-    { q: "How does Upmore make money?", sub: "How we're paid" }
-  ];
 
   function guideCtx() {
     const d = planData();
@@ -7097,32 +7091,33 @@
     if (guideInit && $("empty")) return;
     guideInit = true;
     $("guide").classList.remove("talking");
-    // First-run: the chatbox greets by name when we know it, and offers a
-    // "Get started" path into signup (welcome keeps the 18+/terms disclosure).
-    let h2 = "Ask about any move, offer, or step.";
+    // First-run: the chatbox greets by name when we know it. GPT-style:
+    // no starter-question cards — the chatbox is the interface. First-run
+    // gets Log in / Sign up buttons (welcome keeps the 18+/terms disclosure).
+    let h2 = "What should we look at first?";
     let intro = "";
     let ctxHtml = `<p class="ctx">${guideCtx()}</p>`;
-    let starters = STARTERS;
+    let authHtml = "";
     if (guideFirstRun) {
       guideFirstRun = false;
       const nm = (typeof displayName === "function") ? displayName() : "Friend";
       const first = (nm && nm !== "Friend") ? String(nm).split(" ")[0] : null;
       h2 = first ? `Hey ${esc(first)}, I'm Upmore — your personal finance agent.`
                  : `Hey, I'm Upmore — your personal finance agent.`;
-      intro = `<p class="fine">I find you extra money and show you your money like a CFO. Ask me anything, or tap below to set up your account.</p>`;
+      intro = `<p class="fine">I find you extra money and show you your money like a CFO. Ask me anything below.</p>`;
       ctxHtml = "";
-      starters = [{ q: "Get started", sub: "Set up your account", go: "welcome" }].concat(STARTERS);
+      authHtml = `<div class="authrow">
+        <button class="abtn primary" data-auth="signup">Sign up</button>
+        <button class="abtn" data-auth="login">Log in</button>
+      </div>`;
     }
     chat.innerHTML = `<div class="empty" id="empty"><div class="orb"></div>
       <h2>${h2}</h2>
       ${intro}
       ${ctxHtml}
-      <div class="starters">${starters.map(x =>
-        `<button class="starter${x.go ? " wide" : ""}" data-q="${esc(x.q)}"${x.go ? ` data-go="${x.go}"` : ""}>${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
-      </div></div>`;
-    chat.querySelectorAll(".starter").forEach(b => b.onclick = () => {
-      if (b.dataset.go) { show(b.dataset.go); return; }
-      guideAsk(b.dataset.q);
+      ${authHtml}</div>`;
+    chat.querySelectorAll(".abtn").forEach(b => b.onclick = () => {
+      show(b.dataset.auth === "login" ? "login" : "welcome");
     });
   }
   function addMe(text) {

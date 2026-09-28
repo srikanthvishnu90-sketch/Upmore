@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-70kIDLbbpwTT/hDtU71efBPhTKr3N1z3iM2h4se1hss=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Bhpygge7mW4AT8k3cLbDt9dQoGH9FiRg5eouAqqrFOE=' 'sha256-lghDd+PAHS1L2VkynL1KFc8u22yXaz38nPhN+b8r1dc=' 'sha256-BJJGs0Brvfqs0hQKkw7kO6vb7xyewrQxMK09B/bZpP4=' https://cdn.plaid.com; worker-src 'self'; frame-src https://cdn.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://mrwngntwmnaqrqhupvlt.supabase.co wss://mrwngntwmnaqrqhupvlt.supabase.co https://cdn.plaid.com https://*.plaid.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17251E">
@@ -21,11 +21,15 @@
     src:url("fonts/schibsted-grotesk.woff2") format("woff2");
   }
   :root {
-    /* UPMORE COLOR SYSTEM v2 (Vishnu 2026-09-27). Dark mode only.
+    /* UPMORE COLOR SYSTEM v3 (Vishnu 2026-09-27). Dark mode only.
        ONE brand accent (orange) — strictly for CTAs, links, hero chart lines.
        Green is a STATE color (pace/success), never the brand accent.
-       Category hues are identity-pinned (chart1-7) and reused consistently. */
-    --bg: #161614;          /* Base — warm near-black app background */
+       Category hues are identity-pinned (chart1-7) and reused consistently.
+       v3: deep charcoal canvas + ambient aurora glows + gradient-border cards. */
+    --bg: #0F0F11;          /* Base — deep charcoal, not flat black */
+    --ambient-orange: rgba(255,106,45,.10);
+    --ambient-violet: rgba(139,92,246,.10);
+    --ambient-teal: rgba(45,212,191,.05);
     --surface: #1F1F1D;     /* Raised — cards, sheets */
     --surface-2: #262624;   /* Recessed — inputs, tracks */
     --line: rgba(255,255,255,.08); /* Hairline dividers, borders */
@@ -69,7 +73,7 @@
   html, body { height: 100%; }
   body {
     font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
-    color: var(--text); background: #161614;
+    color: var(--text); background: var(--bg);
     -webkit-font-smoothing: antialiased; overflow: hidden;
   }
   button, input, select { font: inherit; color: inherit; }
@@ -88,9 +92,14 @@
   .num { font-variant-numeric: tabular-nums; }
 
   /* ---------- device frame (desktop preview) ---------- */
-  .device { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+  .device { position: relative; width: 100%; height: 100%; overflow: hidden;
+    background:
+      radial-gradient(60% 42% at 10% -4%, var(--ambient-orange), transparent 70%),
+      radial-gradient(52% 38% at 92% 104%, var(--ambient-violet), transparent 70%),
+      radial-gradient(38% 28% at 62% 58%, var(--ambient-teal), transparent 70%),
+      var(--bg); }
   .status, .island, .homebar { display: none; }
-  body.framed { background: radial-gradient(80% 70% at 50% 40%, #1E2F26 0%, #17251E 60%, #17251E 100%); }
+  body.framed { background: radial-gradient(80% 70% at 50% 40%, #141416 0%, #0F0F11 60%, #0B0B0D 100%); }
   body.framed .device {
     position: absolute; left: 50%; top: 50%; width: 390px; height: 844px; border-radius: 54px;
     box-shadow: 0 0 0 11px #0B0D0C, 0 0 0 12.5px #2C3D34, 0 40px 90px rgba(0,0,0,.7);
@@ -107,7 +116,7 @@
   /* ---------- screens ---------- */
   .screen {
     --top: env(safe-area-inset-top, 0px); --bot: env(safe-area-inset-bottom, 0px);
-    position: absolute; inset: 0; display: none; flex-direction: column; background: var(--bg);
+    position: absolute; inset: 0; display: none; flex-direction: column; background: transparent;
   }
   .screen.on { display: flex; animation: in .28s ease-out; }
   @keyframes in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
@@ -116,12 +125,14 @@
   .scroll { flex: 1; overflow-y: auto; padding: calc(var(--top) + 14px) 22px calc(var(--bot) + 40px); scroll-padding-bottom: 120px; }
   .scroll::-webkit-scrollbar { display: none; }
   .dock { padding: 14px 22px calc(var(--bot) + 18px);
-    background: linear-gradient(180deg, rgba(10,15,12,0) 0%, var(--bg) 42%); }
+    background: linear-gradient(180deg, rgba(15,15,17,0) 0%, var(--bg) 42%); }
 
   /* splash */
   #splash { align-items: center; justify-content: center;
     background:
-      radial-gradient(110% 70% at 50% 30%, #1E2F26 0%, #17251E 55%, #17251E 100%);
+      radial-gradient(70% 45% at 50% 22%, rgba(255,106,45,.14) 0%, transparent 70%),
+      radial-gradient(60% 40% at 50% 90%, rgba(139,92,246,.10) 0%, transparent 70%),
+      var(--bg);
   }
   #splash .mark { width: 132px; height: 132px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
     animation: arrive .8s cubic-bezier(.25,.8,.25,1) .15s both; }
@@ -284,7 +295,7 @@
   .tabs { position: absolute; left: 0; right: 0; bottom: 0; z-index: 30;
     display: flex; justify-content: center; gap: 64px;
     padding: 10px 0 calc(var(--tabbot, 10px) + 8px);
-    background: linear-gradient(180deg, rgba(22,22,20,0) 0%, rgba(22,22,20,.92) 30%, var(--bg) 100%); }
+    background: linear-gradient(180deg, rgba(15,15,17,0) 0%, rgba(15,15,17,.92) 30%, var(--bg) 100%); }
   body.framed .tabs { --tabbot: 26px; }
   .tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;
     font-size: 11.5px; font-weight: 600; color: var(--dim); padding: 4px 10px; min-height: 48px; min-width: 48px;
@@ -306,22 +317,25 @@
   .iconbtn { width: 38px; height: 38px; border-radius: 12px; border: 0; background: none; display: grid; place-items: center; color: var(--muted); }
   .chat { position: relative; z-index: 1; flex: 1; overflow-y: auto; padding: 8px 20px 16px; display: flex; flex-direction: column; }
   .chat::-webkit-scrollbar { display: none; }
-  .empty { margin-top: auto; }
-  .orb { width: 44px; height: 44px; border-radius: 50%;
+  /* v6: GPT-style empty state — centered logo, headline, 2-up suggestion grid. */
+  .empty { margin: auto; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+  .orb { width: 56px; height: 56px; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #E8ECE8 0%, #C9CFCA 45%, #7E8A82 100%);
     box-shadow: 0 0 28px rgba(201,207,202,.25); }
-  .empty h2 { margin-top: 18px; font-size: 27px; line-height: 1.2; font-weight: 600; letter-spacing: -0.015em; max-width: 17ch; }
+  .empty h2 { margin-top: 18px; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; max-width: 20ch; text-align: center; }
+  .empty .fine { text-align: center; }
   .ctx { margin-top: 12px; font-size: 13px; color: var(--muted); }
-  .starters { margin-top: 22px; display: grid; gap: 8px; }
-  .starter { text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); font-size: 15px; font-weight: 500; }
-  .starter span { display: block; margin-top: 2px; font-size: 12.5px; color: var(--muted); font-weight: 400; }
+  /* v6: GPT-style auth — first-run Log in / Sign up, no starter cards. */
+  .authrow { margin-top: 26px; display: flex; gap: 10px; width: 100%; max-width: 340px; }
+  .abtn { flex: 1; height: 50px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font-size: 15.5px; font-weight: 600; cursor: pointer; }
+  .abtn.primary { background: var(--text); border-color: transparent; color: #17251E; }
   .msg { margin-top: 18px; animation: rise .25s ease-out; min-width: 0; overflow-wrap: break-word; }
   @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .msg.me { align-self: flex-end; max-width: 80%; padding: 11px 15px; border-radius: 20px 20px 6px 20px; background: var(--surface); font-size: 15.5px; line-height: 1.4; }
-  .msg.ai { font-size: 17px; line-height: 1.5; color: var(--text); }
+  /* v6: GPT-style bubbles — user right in a soft bubble, assistant plain text. */
+  .msg.me { align-self: flex-end; max-width: 80%; padding: 11px 16px; border-radius: 20px; background: var(--surface-2); font-size: 15.5px; line-height: 1.45; }
+  .msg.ai { font-size: 16px; line-height: 1.65; color: var(--text); }
   .msg.ai p + p { margin-top: 10px; }
-  .who { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
-  .who .orb { width: 16px; height: 16px; box-shadow: none; }
   .typing { display: flex; gap: 5px; padding: 6px 0; }
   .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--dim); animation: blink 1s infinite; }
   .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
@@ -346,7 +360,7 @@
   .tab { font-size:10.5px; padding:4px 6px; }
   .avatar { cursor:pointer; }
   .ptitle { margin-top:18px; font-size:29px; line-height:1.18; font-weight:600; letter-spacing:-0.01em; }
-  .psub { margin-top:6px; font-size:14.5px; color:var(--muted); }
+  .psub { margin-top: 8px; font-size: 15px; line-height: 1.45; color: var(--muted); }
 
   /* home hero: one clear action, tinted per move */
   .hero { margin-top:12px; border-radius:22px; border:1px solid var(--line); background:var(--surface-2); padding:18px; }
@@ -357,7 +371,7 @@
   .homerow .chev { color:var(--muted); font-size:20px; }
   .linkbtn { background:none; border:none; color:var(--muted); font-size:14px; text-decoration:underline; cursor:pointer; padding:8px; }
   /* Home: icon rows */
-  .sec { font-size:17px; font-weight:700; margin:22px 2px 10px; }
+  .sec { font-size:18px; font-weight:700; margin:24px 2px 12px; }
   .iconrow { display:flex; align-items:center; gap:12px; width:100%; background:var(--surface); border:1px solid var(--line);
     border-radius:14px; padding:10px 12px; margin-bottom:8px; text-align:left; cursor:pointer; color:var(--text); }
   .appicon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center;
@@ -421,11 +435,11 @@
   .hero .cta { margin-top:14px; }
 
   /* explore */
-  .chips { display:flex; gap:8px; overflow-x:auto; margin:0 -22px; padding:14px 22px 4px; scrollbar-width:none; }
+  .chips { display:flex; gap:12px; overflow-x:auto; margin:0 -22px; padding:14px 22px 4px; scrollbar-width:none; }
   .chips::-webkit-scrollbar { display:none; }
-  .chip { flex:none; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:8px 15px; font-size:13.5px; font-weight:600; }
+  .chip { flex:none; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:12px 18px; font-size:14px; font-weight:600; }
   .chip[aria-pressed="true"] { background:var(--text); color:#17251E; border-color:var(--text); }
-  .chipwrap { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .chipwrap { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
   .checkline { display:flex; align-items:center; gap:10px; padding:10px 2px; font-size:15px; font-weight:600; }
   .checkline input { width:20px; height:20px; accent-color:var(--mint); }
   .xlist { margin-top:12px; display:flex; flex-direction:column; gap:10px; }
@@ -522,7 +536,7 @@
   .brow .tgt, .tgt { font-size:12.5px; color:var(--dim); text-decoration:underline; text-underline-offset:2px;
     background:none; border:0; cursor:pointer; padding:6px 4px; } /* FIX (QA-D): .tgt had no base rule —
     buttons outside .brow rendered as the default light button face with light inherited text (WCAG 1.4.3 fail) */
-  .bcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:2px 16px; }
+  .bcard { margin-top: 16px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 4px 20px; }
   .bstat { font-size:12.5px; color:var(--dim); margin-top:6px; }
   .bkv { display:flex; gap:10px; margin:10px 0; }
   .bkv .pcard { flex:1; margin:0; }
@@ -548,7 +562,7 @@
   .connectcard { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; margin:12px 0; }
   .connectcard .cc-top b { font-size:16px; display:block; margin-bottom:4px; }
   .connectcard .cc-top p { font-size:13px; color:var(--dim); margin:0 0 12px; line-height:1.4; } /* FIX (QA-D): was #666, unreadable on dark */
-  .connectcard .cta { width:100%; margin:0 0 8px; }
+  .connectcard .cta { width:100%; margin:0 0 12px; }
   .connectcard .fine { font-size:11px; color:var(--dim); margin:0; text-align:center; } /* FIX (QA-D): was #999, failed WCAG 1.4.3 on dark */
   /* FIX (T6): Pending badge for transaction list */
   .pending-badge { display:inline-block; font-size:10px; font-weight:600; background:var(--amber-soft); color:var(--amber); padding:2px 6px; border-radius:10px; margin-left:6px; text-transform:uppercase; letter-spacing:0.5px; }
@@ -576,13 +590,13 @@
   .abadge { font-size:10.5px; font-weight:700; color:#17251E; background:var(--amber); border-radius:6px; padding:2px 6px; margin-left:6px; vertical-align:1px; }
   .xfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; font-size:12.5px; color:var(--dim); }
   .xfoot a { color:var(--sky); font-weight:600; text-decoration:none; white-space:nowrap; }
-  .ghostbtn { width:100%; margin-top:12px; padding:14px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:14.5px; font-weight:600; cursor:pointer; }
+  .ghostbtn { width:100%; margin-top:12px; padding:14px 16px; min-height:48px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-weight:600; cursor:pointer; }
   .uptag { font-style:normal; color:var(--sky); font-size:12px; }
 
   .wsec { margin:24px 0 10px; font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
 
   /* profile */
-  .pcard { margin-top:14px; border:1px solid var(--line); border-radius:18px; background:var(--surface); padding:16px; display:flex; gap:14px; align-items:center; }
+  .pcard { margin-top: 16px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 20px; display: flex; gap: 16px; align-items: center; }
   .pava { flex:none; width:56px; height:56px; border-radius:50%; display:grid; place-items:center; font-size:22px; font-weight:600; color:var(--silver);
     background: rgba(201,207,202,.12); }
   .pcard b { font-size:17px; font-weight:600; }
@@ -693,35 +707,48 @@
      Monarch/Copilot/Rocket Money patterns: one accent, silver-gradient
      hero figures, value-first stat tiles, hairline cards, pill controls. */
   .micro { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 6px; }
+    color: var(--muted); margin: 0 0 8px; }
   .hero-num { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; margin: 0;
     font-variant-numeric: tabular-nums;
     background: linear-gradient(180deg, #FFFFFF 0%, var(--silver) 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .conn-num { font-size: 24px; font-weight: 700; margin: 2px 0; font-variant-numeric: tabular-nums; color: var(--text); }
-  .conn-sub { font-size: 12.5px; color: var(--muted); margin: 0; }
+  .conn-num { font-size: 24px; font-weight: 700; margin: 4px 0; font-variant-numeric: tabular-nums; color: var(--text); }
+  .conn-sub { font-size: 14px; line-height: 1.45; color: var(--muted); margin: 0; }
   .hero-card { display: block; width: 100%; text-align: left; background: var(--surface);
-    border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-top: 12px; color: var(--text); }
-  .hero-card .hero-chart { margin-top: 10px; }
+    border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-top: 16px; color: var(--text); }
+  .hero-card .hero-chart { margin-top: 12px; }
   .delta-chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px;
     border-radius: 999px; margin-top: 8px; font-variant-numeric: tabular-nums; }
   .delta-chip.up { background: var(--up-soft); color: var(--up); }
   .delta-chip.down { background: var(--down-soft); color: var(--down); }
   .delta-chip.flat { background: rgba(255,255,255,.07); color: var(--muted); }
-  .conn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+  .conn-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+  /* v6: home tabs — five simple cards with icons, spaced out, each tappable. */
+  .htabs { margin-top: 16px; display: grid; gap: 12px; }
+  .htab { display: flex; align-items: center; gap: 15px; width: 100%; min-height: 84px;
+    padding: 16px 18px; background: var(--surface); border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px; color: var(--text); font-size: 17px; font-weight: 600;
+    letter-spacing: -0.01em; text-align: left; cursor: pointer; }
+  .htab:active { transform: scale(.99); }
+  .htab-icon { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center;
+    font-size: 25px; flex: none; }
+  .htab-name { flex: 1; min-width: 0; }
+  .htab-go { color: var(--dim); font-size: 22px; font-weight: 400; flex: none; }
+  /* v4 spacing: 20px internal padding, 16px visual gap, even rhythm across
+     connector cards — visual left, title + value, chevron right. */
   .conn-card { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
     background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-    padding: 14px 16px; color: var(--text); }
+    padding: 18px; color: var(--text); min-height: 108px; }
   .conn-card .cc-visual { flex: none; width: 76px; height: 76px; }
   .conn-card .cc-body { flex: 1; min-width: 0; }
   .conn-card .cc-go { flex: none; color: var(--dim); font-size: 20px; }
   .stat-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-    padding: 16px; }
+    padding: 20px; }
   .stat-tile .v { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); margin: 0 0 4px; }
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
   .chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
-    padding: 18px; margin-top: 12px; }
-  .donut-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+    padding: 20px; margin-top: 16px; }
+  .donut-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
   .donut-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
   .head.slim { display: flex; align-items: center; justify-content: space-between; height: auto;
     padding: calc(var(--top) + 10px) 20px 4px; }
@@ -729,9 +756,76 @@
   .head.slim .sub { margin: 2px 0 0; }
   .sample-badge { font-size: 10px; color: var(--muted); border: 1px solid var(--line);
     border-radius: 6px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; white-space: nowrap; }
-  .buffer-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
-  .buffer-row button { font-size: 12px; padding: 8px 14px; min-height: 36px; border: 1px solid var(--line);
+  .buffer-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .buffer-row button { font-size: 13px; padding: 12px 18px; min-height: 44px; border: 1px solid var(--line);
     border-radius: 999px; background: var(--surface-2); color: var(--text); font-weight: 600; }
+
+  /* ================= UPMORE VISUAL v3 (2026-09-27) — aurora soul =================
+     Ambient charcoal canvas, gradient-border layered cards, typography drama,
+     the aurora flow ribbon signature, luminous charts, vibrant chips. */
+  /* Hero cards with depth: hairline border, 24px radius, flat dark surface.
+     v4: solid surface + simple highlight — the old triple-layer multi-box
+     background rendered pure black on some GPUs. No logic change.
+     v5: sheen toned to a whisper — still banded on GPU-composited renders.
+     v6: sheen layer REMOVED entirely. The white overlay gradient produced
+     visible banding (striped white/grey wash) in real GPU-composited browsers
+     even at 3.5%; headless Chromium never reproduces it. Flat dark surface +
+     border + aurora ribbon only. No white/grey overlay gradients on cards. */
+  .hero-card, .chart-card, .conn-card, .stat-tile {
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 42px rgba(0,0,0,.42);
+  }
+
+  /* ================= UPMORE SPACING v4 (2026-09-27) — 8pt grid =================
+     Card padding 20px · gaps between cards 16px · section margins 24px.
+     One rule owns the home widget rhythm so nothing doubles up. */
+  #home .hero-card { margin-top: 0; }
+  #home [data-widget] { margin-top: 12px; }
+  #home .conn-card .cc-go { font-size: 22px; line-height: 1; }
+  /* Net-worth hero: soft orange outer glow. */
+  #nwHero.hero-card {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08),
+      0 0 54px rgba(255,106,45,.11), 0 20px 48px rgba(0,0,0,.45);
+  }
+  /* Mobile-first type scale: compact headlines, hero numerals with presence
+     but never billboard size. */
+  .hero-num { font-size: 40px; letter-spacing: -0.02em; }
+  .head.slim .hello { font-size: 20px; letter-spacing: -0.01em; font-weight: 600; }
+  .sec { letter-spacing: -0.015em; }
+  /* Signature motif: the aurora flow ribbon. Thin multi-hue band under the home
+     hero figure; recurs as a divider on detail pages. */
+  .aurora-ribbon { height: 3px; border-radius: 999px; margin: 16px 0 2px; opacity: .95;
+    background: linear-gradient(90deg, #FF6A2D, #F472B6, #A78BFA, #2DD4BF, #60A5FA, #FF6A2D);
+    background-size: 220% 100%; animation: aurora-slide 9s linear infinite; }
+  .aurora-band { height: 20px; margin: 12px -6px -4px; border-radius: 50%;
+    filter: blur(16px); opacity: .45;
+    background: linear-gradient(90deg, #FF6A2D, #F472B6, #A78BFA, #2DD4BF, #FF6A2D);
+    background-size: 220% 100%; animation: aurora-slide 9s linear infinite; }
+  @keyframes aurora-slide { to { background-position: 220% 0; } }
+  @media (prefers-reduced-motion: reduce) { .aurora-ribbon, .aurora-band { animation: none; } }
+  /* Vibrant category chips: tinted pills (hue at 16% + hue text + emoji). */
+  .catchip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700;
+    line-height: 1; padding: 5px 10px; border-radius: 999px; white-space: nowrap;
+    background: color-mix(in srgb, var(--hc, #C9CFCA) 16%, transparent);
+    color: var(--hc, #C9CFCA);
+    border: 1px solid color-mix(in srgb, var(--hc, #C9CFCA) 32%, transparent); }
+  /* Rows with identity: 36px circular gradient initial-discs. */
+  .txava { width: 36px; height: 36px; border-radius: 50%; flex: none; display: flex;
+    align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 15px;
+    margin-right: 11px; box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 2px 8px rgba(0,0,0,.32); }
+  .txrow > div { flex: 1; min-width: 0; }
+  .txrow .out, .txrow .in { font-variant-numeric: tabular-nums; margin-left: 10px; white-space: nowrap; }
+  .txrow .catchip { margin-top: 4px; }
+  /* Luminous donut: thicker strokes get a soft halo via the .donut-glow filter. */
+  .donut-wrap { position: relative; flex: none; }
+  .donut-center { position: absolute; inset: 0; display: grid; place-items: center;
+    text-align: center; pointer-events: none; }
+  .donut-center .v { font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--silver) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .donut-center .l { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -960,7 +1054,8 @@
        connect-bank card (only when no live bank). The old tools grid moved to
        Explore ("Money tools"); the Up next queue already lives in Explore. -->
   <section class="screen" id="home" aria-label="Home">
-    <div class="scroll" style="padding-bottom:calc(var(--bot) + 110px)">
+    <!-- v4: extra bottom clearance so the last card never slides under the tab bar. -->
+    <div class="scroll" style="padding-bottom:calc(var(--bot) + 170px)">
       <div class="head slim">
         <div>
           <h1 class="hello" id="hello">Good evening, Friend</h1>
@@ -969,53 +1064,33 @@
         <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Profile">V</div>
       </div>
 
-      <!-- HERO: net worth. Taps to the net-worth detail page. -->
-      <div data-widget="hero">
-      <button class="hero-card" id="nwHero" style="text-align:left;width:100%">
-        <p class="micro">Net worth</p>
-        <p class="hero-num num" id="nwHeroNum">&mdash;</p>
-        <span class="delta-chip flat" id="nwHeroDelta"></span>
-        <div class="hero-chart" id="nwHeroChart"></div>
-        <p class="fine" id="nwHeroSample" hidden style="margin-top:8px;color:var(--warn)">Sample data &mdash; connect your bank for your real net worth.</p>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 1: safe to spend. Ring color follows budget pace. Taps to budget report. -->
-      <div data-widget="spend">
-      <button class="conn-card" id="spendCard" style="text-align:left;width:100%">
-        <div class="cc-visual" id="spendRing"></div>
-        <div class="cc-body">
-          <p class="micro">Safe to spend<span class="sample-badge" id="spendSample" hidden>Sample data</span></p>
-          <p class="conn-num num" id="spendNum">&mdash;</p>
-          <p class="conn-sub" id="spendSub"></p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 2: investments. Mini allocation donut. Taps to investments X-ray. -->
-      <div data-widget="invest">
-      <button class="conn-card" id="investCard" style="text-align:left;width:100%">
-        <div class="cc-visual" id="investDonut"></div>
-        <div class="cc-body">
-          <p class="micro">Investments</p>
-          <p class="conn-num num" id="investNum">&mdash;</p>
-          <p class="conn-sub" id="investSub"></p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
-      </div>
-
-      <!-- CONNECTOR 3: money you're owed. Value-first stat tile. Taps to the claim flow. -->
-      <div data-widget="owed">
-      <button class="conn-card" id="owedCard" style="text-align:left;width:100%">
-        <div class="cc-body">
-          <p class="micro">Money you&rsquo;re owed</p>
-          <p class="conn-num num" id="owedNum">&mdash;</p>
-          <p class="conn-sub" id="owedSub">Free search &mdash; states hold forgotten paychecks, deposits, and refunds.</p>
-        </div>
-        <span class="cc-go" aria-hidden="true">&rsaquo;</span>
-      </button>
+      <!-- HOME TABS: five simple cards with icons, spaced out. Each opens its own page. -->
+      <div class="htabs" id="homeMenu" role="list">
+        <button class="htab" data-go="networth" role="listitem">
+          <span class="htab-icon" style="background:rgba(96,165,250,.16)">📊</span>
+          <span class="htab-name">Net Worth</span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
+        <button class="htab" data-go="budgetReport" role="listitem">
+          <span class="htab-icon" style="background:rgba(45,212,191,.16)">💵</span>
+          <span class="htab-name">Safe to Spend</span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
+        <button class="htab" data-go="investments" role="listitem">
+          <span class="htab-icon" style="background:rgba(167,139,250,.16)">📈</span>
+          <span class="htab-name">Investments</span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
+        <button class="htab" data-go="claim" role="listitem">
+          <span class="htab-icon" style="background:rgba(244,114,182,.16)">🎁</span>
+          <span class="htab-name">Money You’re Owed</span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
+        <button class="htab" data-go="save" role="listitem">
+          <span class="htab-icon" style="background:rgba(255,106,45,.16)">🧾</span>
+          <span class="htab-name">Bills &amp; Subscriptions</span>
+          <span class="htab-go" aria-hidden="true">›</span>
+        </button>
       </div>
 
       <!-- Connect bank: read-only note, only when no live bank. -->
@@ -1117,10 +1192,7 @@
         </details>
       </div>
     </div>
-    
-      </div>
-      </div>
-      </div>
+
       <nav class="tabs" role="tablist" data-nav></nav>
     </section>
 
@@ -1260,7 +1332,6 @@
       <button class="prow" id="bankDisconnectRow" hidden style="margin-top:8px"><span class="pl">Disconnect bank</span><span class="pv">›</span></button>
       <button class="prow" id="subscriptionRow" style="margin-top:8px"><span class="pl" id="subscriptionRowLabel">Upmore subscription — $10/mo</span><span class="pv">›</span></button>
       <button class="prow" id="referralRow" style="margin-top:8px"><span class="pl">Refer &amp; earn — give $10, get $10</span><span class="pv">›</span></button>
-      <button class="prow" id="homeCustomBtn2" style="margin-top:8px"><span class="pl">Customize home</span><span class="pv">›</span></button>
       <button class="prow" id="privacyRow" style="margin-top:8px"><span class="pl">Privacy Policy</span><span class="pv">›</span></button>
       <button class="prow" id="termsRow" style="margin-top:8px"><span class="pl">Terms of Service</span><span class="pv">›</span></button>
       <button class="prow" id="signOut"><span class="pl">Sign out</span><span class="pv"></span></button>
@@ -1348,7 +1419,8 @@
       </div>
     </div>
     <div class="chead">
-      <div class="title"><b>Guide</b><span class="badge">AI</span><span>Knows your plan</span></div>
+      <span style="width:38px;flex:none" aria-hidden="true"></span>
+      <div class="title"><b>Upmore</b></div>
       <button class="iconbtn" id="newchat" aria-label="New chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
     </div>
     <div class="chat" id="chat"><div class="empty" id="empty"></div></div>
@@ -1357,6 +1429,7 @@
         <input id="input" placeholder="Ask anything" autocomplete="off" aria-label="Message">
         <button class="send" id="send" disabled aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
+      <p class="fine" style="text-align:center;margin:8px 4px 0;font-size:11px;color:var(--dim)">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
     </div>
     <nav class="tabs" role="tablist" data-nav></nav>
   </section>
@@ -1596,7 +1669,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const tileColor = r => r.tier === "Very Easy" ? XTILE.green : XTILE.sky;
   const routeTitle = r => `${r.provider} — ${r.method}`;
   const routeMeta = r => [r.reward, r.time_to_first].filter(Boolean).join(" · ");
-  const fmt$= v => v == null ? "—" : (Number.isInteger(v) ? "$" + v : "$" + v.toFixed(2));
+  // v4: hero/display amounts get locale thousands separators ($2,841 not $2841).
+  // Display-only — raw values untouched.
+  const fmt$= v => v == null ? "—" : "$" + (Number.isInteger(v) ? Math.round(v) : Number(v.toFixed(2))).toLocaleString("en-US");
   const earnLine = r => {
     if (r.payout_max == null || r.time_max_minutes == null) return "";
     const pm = (r.payout_min === 0 && r.payout_max === 0) ? "Varies"
@@ -1787,7 +1862,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const _td = loadTrackData();
     const _si = (typeof session !== "undefined" && !!session);
     if (_si && !_td.isLive) {
-      $("txList").innerHTML = `<div class="pcard"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      $("txList").innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your transactions live here once your bank is connected.</p><button class="cta" id="txConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
       const cb = $("txConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
     }
@@ -1822,7 +1897,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const _td = loadTrackData();
     const _si = (typeof session !== "undefined" && !!session);
     if (_si && !_td.isLive) {
-      $("monthRows").innerHTML = `<div class="pcard"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
+      $("monthRows").innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your month view builds itself from real transactions. Connect your bank to see it.</p><button class="cta" id="moConnect" style="margin-top:12px">Connect bank</button></div>`;
       $("monthCov").textContent = "";
       const cb = $("moConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
@@ -1856,10 +1931,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   });
 
   /* splash: tap, or auto-advance once boot leaves a fresh user on splash.
-     Timer stands down when boot chose any other screen (session -> home, etc.) */
+     Brand-new users land on the Guide (chatbox) with a personal greeting —
+     not the marketing splash. Timer stands down when boot chose any other
+     screen (session -> home, etc.) */
   let bootDone = false;
-  $("splash").onclick = () => { if (current === "splash") show("welcome"); };
-  setTimeout(() => { if (!bootDone && current === "splash") show("welcome"); }, 1800);
+  const splashToGuide = () => { guideFirstRun = true; show("guide"); };
+  $("splash").onclick = () => { if (current === "splash") splashToGuide(); };
+  setTimeout(() => { if (!bootDone && current === "splash") splashToGuide(); }, 1800);
 
   /* ================= Signup: choices ================= */
   document.querySelectorAll("[data-pick]").forEach(g => {
@@ -2520,7 +2598,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const qEffort = r => { const t = ((r.time_min_minutes ?? 0) + (r.time_max_minutes ?? 0)) / 2; return t > 0 ? t : 30; };
 
   // 2-020: shared free-cash computation for the Home queue. Same inputs as
-  // renderTrackStrip: balance, detected recurrence, next payday, $100 buffer.
+  // Shared free-cash computation: balance, detected recurrence, next payday, $100 buffer.
   function homeFreeCash() {
     try {
       const td = (typeof loadTrackData === "function") ? loadTrackData() : { transactions: [], accounts: [] };
@@ -2958,66 +3036,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     renderQueue(); renderDeadlines();
   }
 
-  // SPEC 09j: customizable Home widgets (Monarch parity). Order + visibility
-  // stored in localStorage; applied on every renderHome.
-  // V2 (2026-09-27): Home is very short — hero + 3 connector cards + connect.
-  const HOME_WIDGETS = [
-    { id: "hero", label: "Net worth hero" },
-    { id: "spend", label: "Safe to spend" },
-    { id: "invest", label: "Investments" },
-    { id: "owed", label: "Money you're owed" },
-    { id: "connect", label: "Connect bank" },
-  ];
-  const homeWidgetState = () => {
-    try {
-      const raw = JSON.parse(localStorage.getItem("upmore_home_widgets") || "null");
-      if (raw && Array.isArray(raw.order)) return raw;
-    } catch (e) {}
-    return { order: HOME_WIDGETS.map(w => w.id), hidden: [] };
-  };
-  const homeWidgetSave = st => { try { localStorage.setItem("upmore_home_widgets", JSON.stringify(st)); } catch (e) {} };
-  function applyHomeWidgets() {
-    const st = homeWidgetState();
-    const first = document.querySelector("#home [data-widget]"); if (!first) return;
-    const parent = first.parentElement; if (!parent) return;
-    const els = {};
-    parent.querySelectorAll(":scope > [data-widget]").forEach(el => { els[el.dataset.widget] = el; });
-    st.order.forEach(id => {
-      const el = els[id]; if (!el) return;
-      el.style.display = (st.hidden || []).includes(id) ? "none" : "";
-      parent.appendChild(el); // append in order = reorder; moves existing nodes
-    });
-  }
-  function openHomeCustomize() {
-    const sheet = $("homeCustomSheet"); if (!sheet) return;
-    sheet.hidden = !sheet.hidden;
-    if (!sheet.hidden) renderHomeCustomizeSheet();
-  }
-  function renderHomeCustomizeSheet() {
-    const sheet = $("homeCustomSheet"); if (!sheet) return;
-    const st = homeWidgetState();
-    const lbl = id => (HOME_WIDGETS.find(w => w.id === id) || {}).label || id;
-    sheet.innerHTML = `<div class="pcard" style="margin:8px 0"><p class="bsum" style="font-size:14px">Choose what shows on Home, in what order.</p>` +
-      st.order.map((id, i) =>
-        `<div class="mrow"><div><b>${esc(lbl(id))}</b></div><span style="display:flex;gap:4px">
-          <button class="tgt" data-hw="up:${i}" aria-label="Move up" ${i === 0 ? "disabled" : ""}>↑</button>
-          <button class="tgt" data-hw="dn:${i}" aria-label="Move down" ${i === st.order.length - 1 ? "disabled" : ""}>↓</button>
-          <button class="tgt" data-hw="tg:${i}" aria-label="Show or hide">${(st.hidden || []).includes(id) ? "show" : "hide"}</button>
-        </span></div>`).join("") +
-      `<button class="ghostbtn" id="hwReset" style="margin-top:8px">Reset to default</button></div>`;
-    sheet.querySelectorAll("[data-hw]").forEach(b => b.onclick = () => {
-      const [op, ix] = b.dataset.hw.split(":"); const i = Number(ix);
-      if (op === "up" && i > 0) [st.order[i - 1], st.order[i]] = [st.order[i], st.order[i - 1]];
-      if (op === "dn" && i < st.order.length - 1) [st.order[i + 1], st.order[i]] = [st.order[i], st.order[i + 1]];
-      if (op === "tg") {
-        st.hidden = st.hidden || [];
-        const id = st.order[i];
-        st.hidden = st.hidden.includes(id) ? st.hidden.filter(x => x !== id) : st.hidden.concat([id]);
-      }
-      homeWidgetSave(st); applyHomeWidgets(); renderHomeCustomizeSheet();
-    });
-    $("hwReset").onclick = () => { homeWidgetSave({ order: HOME_WIDGETS.map(w => w.id), hidden: [] }); applyHomeWidgets(); renderHomeCustomizeSheet(); };
-  }
+  // v6: Home is five simple named rows. Each opens its own page.
   function renderHome() {
     const hr = new Date().getHours();
     const part = hr < 12 ? "morning" : hr < 18 ? "afternoon" : "evening";
@@ -3029,84 +3048,53 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       av.onclick = () => show("profile");
       av.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show("profile"); } };
     }
-    renderNetWorthHero(); // V2 hero card: net worth + delta chip + area chart
-    renderTrackStrip(); // SPEC 04: Home strip + SPEC 03: Safe to Spend (V2 connector card)
-    renderInvestCard(); // V2 connector: investments mini donut
-    renderOwedCard(); // V2 connector: money-you're-owed stat tile
+    document.querySelectorAll("#homeMenu .htab").forEach(b => {
+      b.onclick = () => {
+        const g = b.dataset.go;
+        if (g === "claim") openClaim();
+        else if (g) show(g);
+      };
+    });
     renderCFOList(); // SPEC 05: money-health tools (grid lives in Explore now)
-    applyHomeWidgets();
+    renderHomeConnect(); // connect-bank / picture banners
   }
 
-  // V2 net-worth hero: one big silver-gradient figure, red/green delta chip,
-  // gradient area chart over a soft fill + flat grey prior-period line.
-  // Read-only snapshot read — renderNetWorth() owns the snapshot write.
-  function renderNetWorthHero() {
-    const num = $("nwHeroNum"); if (!num) return;
-    const nw = netWorthCalc();
-    num.textContent = fmt$(Math.round(nw.total));
-    const hero = $("nwHero");
-    if (hero) hero.onclick = () => show("networth");
-    // Delta chip + chart from stored monthly snapshots (no write here).
-    let snaps = {};
-    try { snaps = JSON.parse(localStorage.getItem(NW_LS.snaps) || "{}"); } catch (e) {}
-    const keys = Object.keys(snaps).sort().slice(-7);
-    const vals = keys.map(k => nwSnapNorm(snaps[k]).total);
-    const chip = $("nwHeroDelta");
-    if (chip && vals.length >= 2) {
-      const d = vals[vals.length - 1] - vals[0];
-      chip.className = "delta-chip " + (d > 0 ? "up" : d < 0 ? "down" : "flat");
-      chip.textContent = `${d >= 0 ? "+" : "−"}${fmt$(Math.abs(Math.round(d)))} since ${keys[0]}`;
-    } else if (chip) {
-      chip.className = "delta-chip flat";
-      chip.textContent = "tracked monthly";
-    }
-    const chart = $("nwHeroChart");
-    if (chart) {
-      const cur = vals.slice(-6), prior = vals.slice(0, Math.max(0, vals.length - 6)).slice(-6);
-      chart.innerHTML = areaChartSVG(cur, {
-        prior: prior.length >= 2 && cur.length >= 2 ? prior : [],
-        lineColor: "#FF6A2D", label: "Net worth trend",
-      });
-    }
-    // Demo-honesty: anonymous visitors see sample figures — label them.
-    const td = loadTrackData();
+  // HOME: connect-bank + picture banners. No live bank -> connect card (with
+  // reconnect prompt when data is stale or sync failed); live bank -> one-tap
+  // picture card. Extracted from the old renderTrackStrip when Home became
+  // five simple rows — the detail pages own their own data rendering now.
+  function renderHomeConnect() {
     const signedIn = (typeof session !== "undefined" && !!session);
-    const sample = $("nwHeroSample");
-    if (sample) sample.hidden = !(!signedIn && td.isDemo);
+    const hasLiveBank = bankConnectedLive();
+    const cc = $("connectCard"), pc = $("pictureCard");
+    const cbb = $("connectBankBtn"), cct = $("ccTitle");
+    let showConnect = !hasLiveBank, title = null, wire = null;
+    if (signedIn && !hasLiveBank) {
+      // LAUNCH FIX 2026-09-26: authenticated users must never see demo figures
+      // as their own money. No live connection -> connect-bank card, not numbers.
+      if (typeof liveTrackError !== "undefined" && liveTrackError && cct)
+        title = "Bank sync failed — try again";
+      wire = openConnectSheet;
+    } else if (hasLiveBank) {
+      // FIX (D1-044): stale connection — prompt reconnect instead of
+      // presenting old data as current.
+      try {
+        const staleInfo = isDataStale();
+        if (staleInfo && staleInfo.stale) {
+          showConnect = true;
+          title = `Reconnect your bank — data is ${staleInfo.days} days old`;
+          wire = () => maybeConsent("simplefin", openConnectSheet);
+        }
+      } catch (e) {}
+    }
+    if (cc) cc.hidden = !showConnect;
+    if (cct && title) cct.textContent = title;
+    if (cbb) cbb.onclick = wire || (() => maybeConsent("simplefin", openConnectSheet));
+    if (pc) pc.hidden = !hasLiveBank || showConnect;
+    const pbb = $("pictureBtn");
+    if (pbb && !pbb.dataset.wired) { pbb.dataset.wired = "1"; pbb.onclick = () => show("budgetReport"); }
   }
 
-  // V2 investments connector: mini allocation donut + total. Taps to X-ray.
-  function renderInvestCard() {
-    const card = $("investCard"); if (!card) return;
-    card.onclick = () => show("investments");
-    let total = 0, segs = [], sub = "";
-    try {
-      const sum = portfolioSummary(allHoldings());
-      total = sum.total || 0;
-      const entries = Object.entries(sum.byBucket || {}).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
-      segs = entries.map(([k, v]) => ({ value: v, color: bucketHue(k), label: k }));
-      if (entries.length) sub = entries.slice(0, 2).map(([k]) => k).join(" · ");
-    } catch (e) {}
-    const num = $("investNum");
-    if (num) num.textContent = total > 0 ? fmt$(Math.round(total)) : "—";
-    const dn = $("investDonut");
-    if (dn) dn.innerHTML = donutSVG(segs, 76, 12);
-    const s = $("investSub");
-    if (s) s.textContent = sub || (total > 0 ? "Read-only X-ray" : "Add holdings to see the X-ray");
-  }
-
-  // V2 money-owed connector: value-first stat tile. Taps to the claim flow.
-  function renderOwedCard() {
-    const card = $("owedCard"); if (!card) return;
-    card.onclick = openClaim;
-    const n = claimGet().length;
-    const num = $("owedNum");
-    if (num) num.textContent = n > 0 ? `${n} of ${CLAIM_STATES.length}` : `${CLAIM_STATES.length}`;
-    const sub = $("owedSub");
-    if (sub) sub.textContent = n > 0
-      ? "states searched — keep going, it's always free"
-      : "states to search — free forever, Upmore takes no fee";
-  }
 
   /* ================= DUE cluster fix pack (6-005/6-006/6-008/6-012/6-015/6-021/6-022/6-023/6-024/6-025/6-042) =================
      Deterministic deadline plumbing. detectRecurrence is Detection-owned and is
@@ -3714,7 +3702,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const _clTd = loadTrackData();
     const _clSi = (typeof session !== "undefined" && !!session);
     if (_clSi && !_clTd.isLive) {
-      body.innerHTML = `<div class="pcard"><p class="bsum">Your monthly close builds itself from real transactions. Connect your bank to see your money in, money out, and your net for the month.</p><button class="cta" id="clConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
+      body.innerHTML = `<div class="pcard" style="flex-direction:column;align-items:stretch"><p class="bsum">Your monthly close builds itself from real transactions. Connect your bank to see your money in, money out, and your net for the month.</p><button class="cta" id="clConnect" style="margin-top:12px">Connect bank</button><p class="fine" style="margin-top:8px">Read-only. We see transactions, never move money.</p></div>`;
       const cb = $("clConnect"); if (cb) cb.onclick = () => { show("home"); setTimeout(() => { const c = $("connectBankBtn"); if (c) c.click(); }, 150); };
       return;
     }
@@ -4517,7 +4505,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       }
     } catch (e) { backendOk = false; backendErr = String((e && e.message) || e); }
     clearLocalBankData();
-    if (typeof renderTrackStrip === "function") { try { renderTrackStrip(); } catch (e) {} }
+    if (typeof renderHomeConnect === "function") { try { renderHomeConnect(); } catch (e) {} }
     if (backendOk && vaultOk) {
       status.textContent = "Bank disconnected. Your connection record and stored bank credential are deleted, and your local bank data has been cleared from this device.";
     } else if (backendOk) {
@@ -5092,13 +5080,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* ================= Guide ================= */
   /* ================= Guide: answers from the real catalog ================= */
   let guideInit = false, busy = false;
+  // First-run: brand-new users land on the Guide (chatbox) straight from the
+  // splash, greeted by name when we know it. Set by the splash/boot path.
+  let guideFirstRun = false;
   const chat = $("chat"), input = $("input"), send = $("send");
-  const STARTERS = [
-    { q: "What should I do first?", sub: "Based on your plan" },
-    { q: "Show me bank bonuses", sub: "Real offers in the catalog" },
-    { q: "What's the catch with these offers?", sub: "The honest version" },
-    { q: "How does Upmore make money?", sub: "How we're paid" }
-  ];
 
   function guideCtx() {
     const d = planData();
@@ -7127,14 +7112,34 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (guideInit && $("empty")) return;
     guideInit = true;
     $("guide").classList.remove("talking");
+    // First-run: the chatbox greets by name when we know it. GPT-style:
+    // no starter-question cards — the chatbox is the interface. First-run
+    // gets Log in / Sign up buttons (welcome keeps the 18+/terms disclosure).
+    let h2 = "What should we look at first?";
+    let intro = "";
+    let ctxHtml = `<p class="ctx">${guideCtx()}</p>`;
+    let authHtml = "";
+    if (guideFirstRun) {
+      guideFirstRun = false;
+      const nm = (typeof displayName === "function") ? displayName() : "Friend";
+      const first = (nm && nm !== "Friend") ? String(nm).split(" ")[0] : null;
+      h2 = first ? `Hey ${esc(first)}, I'm Upmore — your personal finance agent.`
+                 : `Hey, I'm Upmore — your personal finance agent.`;
+      intro = `<p class="fine">I find you extra money and show you your money like a CFO. Ask me anything below.</p>`;
+      ctxHtml = "";
+      authHtml = `<div class="authrow">
+        <button class="abtn primary" data-auth="signup">Sign up</button>
+        <button class="abtn" data-auth="login">Log in</button>
+      </div>`;
+    }
     chat.innerHTML = `<div class="empty" id="empty"><div class="orb"></div>
-      <h2>Ask about any move, offer, or step.</h2>
-      <p class="fine" style="margin:6px 0 0">The Guide is an AI assistant — it explains and educates, but it's not a human advisor and never gives personalized financial advice.</p>
-      <p class="ctx">${guideCtx()}</p>
-      <div class="starters">${STARTERS.map(x =>
-        `<button class="starter" data-q="${esc(x.q)}">${esc(x.q)}<span>${esc(x.sub)}</span></button>`).join("")}
-      </div></div>`;
-    chat.querySelectorAll(".starter").forEach(b => b.onclick = () => guideAsk(b.dataset.q));
+      <h2>${h2}</h2>
+      ${intro}
+      ${ctxHtml}
+      ${authHtml}</div>`;
+    chat.querySelectorAll(".abtn").forEach(b => b.onclick = () => {
+      show(b.dataset.auth === "login" ? "login" : "welcome");
+    });
   }
   function addMe(text) {
     const e = $("empty"); if (e) e.remove();
@@ -7148,7 +7153,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     .replace(/\n/g, "<br>");
   function addAI(paras, card) {
     const m = document.createElement("div"); m.className = "msg ai";
-    m.innerHTML = `<div class="who"><span class="orb"></span>Guide</div><div class="typing"><i></i><i></i><i></i></div>`;
+    m.innerHTML = `<div class="typing"><i></i><i></i><i></i></div>`;
     chat.appendChild(m); chat.scrollTop = chat.scrollHeight;
     setTimeout(() => {
       m.querySelector(".typing").remove();
@@ -7372,8 +7377,6 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         }
       }).catch(() => {});
     }
-    // Customize home moved here from Home tab (simplicity: not on first view).
-    if ($("homeCustomBtn2")) $("homeCustomBtn2").onclick = () => { show("home"); setTimeout(openHomeCustomize, 50); };
   }
   /* ================= REFERRAL PROGRAM =================
      Pay-on-signup: subscriber shares link, friend completes onboarding,
@@ -7927,7 +7930,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   // FIX (X1-F1): Try live SimpleFIN data first. If the proxy returns data,
   // use it instead of demo. The demo is a fallback, not the default.
-  // This runs async on app load; renderTrackStrip etc. re-render when done.
+  // This runs async on app load; renderHomeConnect etc. re-render when done.
   async function initLiveTrackData() {
     try {
       // Only fetch if user is signed in (proxy requires JWT)
@@ -7968,7 +7971,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       // reconciled silently (6-022).
       try { await recomputeDeadlines(trackData.transactions); } catch (e) {}
       // Re-render the track UI with live data
-      if (typeof renderTrackStrip === "function") renderTrackStrip();
+      if (typeof renderHomeConnect === "function") renderHomeConnect();
     } catch (e) {
       // Live data unavailable — record WHY so the UI can say so honestly.
       // Authenticated users see the connect card with the failure reason,
@@ -7987,146 +7990,6 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
 
   // Home strip: free cash, days to payday, left to spend/day.
-  function renderTrackStrip() {
-    const { accounts, transactions, isLive, isDemo } = loadTrackData();
-    const signedIn = (typeof session !== "undefined" && !!session);
-    // LAUNCH FIX 2026-09-26: authenticated users must never see demo figures
-    // as their own money. No live connection -> connect-bank card, not numbers.
-    if (signedIn && !isLive) {
-      try {
-        const sc = $("spendCard"); if (sc) sc.hidden = true;
-        $("connectCard").hidden = false;
-        if (liveTrackError) {
-          const t = $("ccTitle");
-          if (t) t.textContent = "Bank sync failed — try again";
-        }
-        const btn = $("connectBankBtn");
-        if (btn) btn.onclick = openConnectSheet;
-      } catch (_) {}
-      return;
-    }
-    // FIX (D1-044): stale connection — withhold free_cash/balance as current, prompt reconnect.
-    const staleInfo = isDataStale();
-    if (isLive && staleInfo.stale) {
-      const sc2 = $("spendCard"); if (sc2) sc2.hidden = true;
-      $("connectCard").hidden = false;
-      try { $("ccTitle").textContent = "Reconnect your bank \u2014 data is " + staleInfo.days + " days old"; } catch (e) {}
-      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
-      return;
-    }
-    const balance = accounts[0]?.balance || 0;
-    const rec = detectRecurrence(transactions);
-    // Next payday: detect from inflows (demo: biweekly from last paycheck)
-    // FIX (T6): Exclude pending and transfers from payday detection.
-    // A pending paycheck must not shift nextPay, days-to-payday, or free cash.
-    // FIX (D1-038): variable-income model via analyzeIncome (variance >25%
-    // switches to the floor = min of recent deposits).
-    const pay = analyzeIncome(transactions);
-    const nextPay = pay.nextPay;
-    const daysToPay = nextPay ? Math.max(0, Math.round((new Date(nextPay) - new Date()) / 864e5)) : 30;
-    // FIX (R2 1-038): variance >25% switches the income model to the floor.
-    // When paychecks vary wildly, the strip plans on the lowest recent
-    // paycheck — never the average — and says so on screen.
-    // FIX (R3 1-038): the floor is CONSUMED, not just displayed. Variable
-    // income holds back (avg − floor) as an income-variability reserve from
-    // the safe-to-spend total: planning on the floor means the safe number
-    // assumes the small paycheck arrived, not the average one.
-    const incomeModel = pay.variable ? "floor" : "average";
-    try { const sc3 = $("spendCard"); if (sc3) sc3.dataset.incomeModel = incomeModel; } catch (e) {}
-    const freeCash = calcFreeCash(balance, rec, nextPay || "2099-01-01", 100);
-
-    const spendCard = $("spendCard");
-    if (spendCard) spendCard.hidden = false;
-    // LAUNCH FIX 2026-09-26: anonymous visitors see demo figures — label them
-    // as sample data so nobody mistakes them for real money.
-    const spendSample = $("spendSample");
-    if (spendSample) spendSample.hidden = !( !signedIn && isDemo );
-    // 2-021: no payday detected → suppress the daily figure ("—"), never divide by a guessed denominator.
-
-    // Safe to spend (Budget spec): total, daily pace, buffer, cycle-end date.
-    const cycleEnd = nextPay || new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10);
-    // FIX (D1-023): dormant subscriptions are excluded from totals.
-    const fixedRem = rec.filter(r => r.next_date <= cycleEnd && !r.dormant).reduce((s, r) => s + r.amount, 0);
-    // FIX (B1-v2 DEFECT 3): committed_estimate_remaining was hardcoded to 0.
-    // Spec formula: safe_to_spend = balance - fixed_remaining - committed_estimate_remaining - buffer.
-    // Committed = variable-but-essential: Groceries, Utilities, Transport.
-    // Estimate from last 30 days of transactions, prorated to remaining cycle days.
-    const committedCats = ["Groceries", "Utilities", "Transport"];
-    const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-    const committedLast30 = (transactions || [])
-      .filter(t => isCountableSpend(t) && !t.is_pending && !t.is_transfer &&
-              committedCats.includes(t.category) &&
-              t.posted_at >= thirtyDaysAgo)
-      .reduce((s, t) => s + Math.abs(t.amount), 0);
-    const daysRemaining = Math.max(1, Math.round((new Date(cycleEnd) - new Date()) / 864e5));
-    const committedRem = Math.round((committedLast30 / 30) * daysRemaining);
-    // FIX (B1-v2): Buffer from localStorage (adjustable), default $100.
-    // Spec rule 3: buffer as separate line, user can change it.
-    let bufferAmt = 100;
-    try {
-      const saved = localStorage.getItem("upmore_buffer");
-      if (saved !== null) bufferAmt = Math.max(0, parseInt(saved, 10) || 0);
-    } catch (e) {}
-    // FIX (B1-v2 DEFECT 3): Pass real committed estimate, not 0.
-    const sts = calcSafeToSpend(balance, fixedRem, committedRem, bufferAmt, cycleEnd);
-    // FIX (R3 1-038): income-variability reserve — the floor model changes the
-    // number, not just the copy. Variable income → hold back (avg − floor).
-    let incomeReserve = 0;
-    if (pay.variable && pay.count >= 2 && pay.avg > pay.floor) {
-      incomeReserve = Math.round(pay.avg - pay.floor);
-      sts.total -= incomeReserve;
-      sts.daily = sts.total / sts.days;
-    }
-    const spendNum = $("spendNum");
-    if (spendNum) spendNum.textContent = fmt$(Math.round(sts.total));
-    // V2: the safe-to-spend card opens the budget detail page.
-    if (spendCard) spendCard.onclick = () => show("budgetReport");
-    // FIX (B1-v2): Buffer NOT in sub-line anymore; it's a separate control on
-    // the budget report page (buffer-row), same localStorage source of truth.
-    const spendSub = $("spendSub");
-    if (spendSub) {
-      spendSub.textContent = `≈${fmt$(Math.round(sts.daily))}/day until ${sts.cycleEnd}`;
-      // SPEC 09: committed-spending visibility — bills due + essentials estimate,
-      // the two numbers already subtracted above. Copilot shows "committed"; now we do too.
-      spendSub.textContent += ` · ${fmt$(Math.round(fixedRem))} bills due, ${fmt$(Math.round(committedRem))} essentials est.`;
-      // FIX (R2 1-038): the floor-model switch is user-visible, not silent.
-      if (pay.variable && pay.count >= 2) {
-        spendSub.textContent += ` · Variable income — planning on your lowest recent paycheck (${fmt$(pay.floor)}), not the average.` +
-          (incomeReserve > 0 ? ` ${fmt$(incomeReserve)} held back for income variability.` : "");
-      }
-    }
-    // V2 ring: month budget pace. Fraction = budget remaining; color shifts
-    // green→amber→red by pace; safe-to-spend amount centered.
-    try {
-      const ymNow = new Date().toISOString().slice(0, 7);
-      const daysInM = new Date(+ymNow.slice(0, 4), +ymNow.slice(5, 7), 0).getDate();
-      const elapsed = Math.min(new Date().getDate(), daysInM);
-      const m = budgetReportModel(transactions, ymNow);
-      const mBudget = m.rows.reduce((s, r) => s + (r.effective || 0), 0);
-      const mSpent = m.rows.reduce((s, r) => s + (r.spent || 0), 0);
-      const mProj = elapsed > 0 ? mSpent / elapsed * daysInM : mSpent;
-      const frac = mBudget > 0 ? Math.max(0, Math.min(1, 1 - mSpent / mBudget)) : 1;
-      const ringColor = paceColor(mSpent, mBudget, mProj);
-      const ringBox = $("spendRing");
-      if (ringBox) ringBox.innerHTML = ringSVG(frac, ringColor, 76, 9,
-        `<div><div class="num" style="font-size:14px;font-weight:700">${fmt$(Math.round(sts.total))}</div>` +
-        `<div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`);
-    } catch (e) {}
-
-    // HOME: Connect card — show when no live bank is connected.
-    // One button opens the connect sheet directly on Home.
-    // TRACK G: picture card — one tap to the full generated report when live.
-    const hasLiveBank = bankConnectedLive();
-    $("connectCard").hidden = hasLiveBank;
-    const pc = $("pictureCard");
-    if (pc) pc.hidden = !hasLiveBank;
-    const pbb = $("pictureBtn");
-    if (pbb && !pbb.dataset.wired) { pbb.dataset.wired = "1"; pbb.onclick = () => show("budgetReport"); }
-    if (!hasLiveBank) {
-      $("connectBankBtn").onclick = () => maybeConsent("simplefin", openConnectSheet);
-    }
-  }
-
   // TRACK G: first-sync payoff moment. Honest syncing state -> celebration ->
   // one button into the full picture. Shown after each successful connect.
   function showPayoffSheet(title, body, ctaLabel, onCta) {
@@ -8223,10 +8086,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     return rows.map(t => {
       const sel = typeof txSelectMode !== "undefined" && txSelectMode;
       const checked = sel && typeof txBulkSel !== "undefined" && txBulkSel.has(String(t.id));
+      // v3: rows with identity — 36px gradient initial-disc avatar (hue by
+      // category identity) + vibrant emoji chip instead of grey "date · cat".
+      const cat = effCat(t), hue = catHue(cat);
+      const initial = (String(t.merchant_raw || "?").trim().charAt(0) || "?").toUpperCase();
       return `
       <div class="txrow${checked ? " sel" : ""}" data-tx="${esc(t.id)}" ${sel ? "" : `data-rect="${esc(t.id)}"`} role="button" tabindex="0" aria-label="${sel ? "Select" : "Recategorize"} ${esc(t.merchant_raw)}">
         ${sel ? `<input type="checkbox" data-bulk="${esc(t.id)}" ${checked ? "checked" : ""} aria-label="Select ${esc(t.merchant_raw)}" style="margin-right:8px;flex-shrink:0">` : ""}
-        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}${t.is_excluded ? ' <span class="review-badge">excluded</span>' : ''}${t.counted_income ? ' <span class="review-badge">income</span>' : ''}<i>${esc(t.posted_at)} · ${esc(effCat(t))}</i></div>
+        <span class="txava" aria-hidden="true" style="background:linear-gradient(135deg,${hue},${hue}B3)">${esc(initial)}</span>
+        <div><b>${esc(t.merchant_raw)}</b>${t.is_pending ? ' <span class="pending-badge">pending</span>' : ''}${t.is_unmatched_credit ? ' <span class="review-badge">review</span>' : ''}${t.is_refund ? ' <span class="review-badge">refund</span>' : ''}${t.is_excluded ? ' <span class="review-badge">excluded</span>' : ''}${t.counted_income ? ' <span class="review-badge">income</span>' : ''}<i>${esc(t.posted_at)}</i><br>${catchipHtml(cat)}</div>
         <span class="${t.amount < 0 ? "out" : "in"}">${t.amount < 0 ? "−" : "+"}$${Math.abs(t.amount).toFixed(2)}</span>
       </div>`; }).join("");
   }
@@ -8899,22 +8767,25 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const rest = mSpent - topSum;
     const segs = top.map(r => ({ value: r.spent, color: catHue(r.cat), label: r.cat }));
     if (rest > 0.005) segs.push({ value: rest, color: "rgba(255,255,255,.18)", label: "Other" });
-    const legend = top.map(r => `<span><i style="background:${catHue(r.cat)}"></i>${esc(r.cat)}</span>`).join("");
+    const legend = top.map(r => catchipHtml(r.cat)).join("");
+    const ringCenter = `<div><div class="num" style="font-size:22px;font-weight:800;background:linear-gradient(180deg,#FFFFFF,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent">${bm0(Math.max(0, left))}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`;
     return `
       <div class="chart-card">
         <p class="micro">${isCurMonth ? "This month" : "That month"} budget</p>
-        <div style="display:flex;gap:18px;align-items:center">
-          ${ringSVG(frac, ringColor, 118, 13, `<div><div class="num" style="font-size:20px;font-weight:700">${bm0(Math.max(0, left))}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">left</div></div>`)}
-          <div style="flex:1;min-width:0">
-            <p class="hero-num num" style="font-size:30px">${bm0(mSpent)}</p>
+        <!-- v5: aurora ribbon sits under the figure (Home pattern), not above it. -->
+        <div style="display:flex;gap:18px;align-items:center;justify-content:center">
+          ${ringSVG(frac, ringColor, 118, 13, ringCenter, paceGrad(mSpent, mBudget, mProj))}
+          <div style="min-width:0;max-width:240px">
+            <p class="hero-num num" style="font-size:34px">${bm0(mSpent)}</p>
             <p class="conn-sub">spent of ${bm0(mBudget)} budgeted</p>
             <div class="buffer-row"><span>Buffer <b class="num">${fmt$(bufferAmt)}</b></span><button id="brBufferEdit">Change</button></div>
           </div>
         </div>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:16px 0 0"></div>
       </div>
       ${segs.length ? `<h2 class="sec">Spending by category</h2>
-      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
-        <div style="flex:1;min-width:0"><p class="conn-num num">${bm0(mSpent)}</p><p class="conn-sub">total spent</p></div></div>
+      <div class="chart-card"><div style="display:flex;gap:18px;align-items:center;justify-content:center">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(mSpent) + '</div><div class="l">spent</div></div>')}
+        <div style="min-width:0;max-width:240px"><p class="hero-num num" style="font-size:34px">${bm0(mBudget)}</p><p class="conn-sub">budgeted this month</p></div></div>
         <div class="donut-legend">${legend}</div></div>` : ``}`;
   }
 
@@ -9597,7 +9468,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function investHeroHtml(sum) {
     const buckets = BUCKETS.filter(b => (sum.byBucket[b] || 0) > 0.005);
     const segs = buckets.map(b => ({ value: sum.byBucket[b], color: bucketHue(b), label: b }));
-    const legend = buckets.map(b => `<span><i style="background:${bucketHue(b)}"></i>${esc(b)}</span>`).join("");
+    const legend = buckets.map(b => catchipHtml(b)).join("");
+    // v3: side stat complements the centered donut total — top bucket concentration.
+    let topB = null, topV = 0;
+    buckets.forEach(b => { const v = sum.byBucket[b] || 0; if (v > topV) { topV = v; topB = b; } });
+    const topPct = sum.total > 0 ? Math.round(topV / sum.total * 100) : 0;
     let cvHtml = "";
     if (sum.gainCount > 0) {
       const worth = sum.costKnown + sum.gainKnown;
@@ -9613,9 +9488,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     }
     return `<div class="chart-card" style="margin-top:14px">
       <p class="micro">Allocation</p>
-      <div style="display:flex;gap:18px;align-items:center">${donutSVG(segs, 118, 20)}
-        <div style="flex:1;min-width:0"><p class="hero-num num" style="font-size:30px">${bm0(sum.total)}</p>
-        <p class="conn-sub">${sum.count} position${sum.count === 1 ? "" : "s"}</p></div></div>
+      <!-- v5: donut left, stat block right with real clearance, vertically centered;
+           aurora ribbon under the figure (Home pattern). -->
+      <div style="display:flex;gap:32px;align-items:center;justify-content:flex-start;padding:6px 8px 0">${donutSVG(segs, 124, 22, '<div><div class="v">' + bm0(sum.total) + '</div><div class="l">invested</div></div>')}
+        <div style="min-width:0;flex:1"><p class="conn-num num">${topPct}%</p>
+        <p class="conn-sub">in ${esc(topB || "—")}${topPct >= 60 ? " — concentrated" : ""}</p></div></div>
+      <div class="aurora-ribbon" aria-hidden="true" style="margin:16px 0 0"></div>
       <div class="donut-legend">${legend}</div>${cvHtml}</div>`;
   }
 
@@ -9669,7 +9547,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     // Summary + allocation
     let mainHtml = "";
     if (!holdings.length) {
-      mainHtml = `<div class="pcard" style="margin-top:14px"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees, dividends, sectors.</p>
+      mainHtml = `<div class="pcard" style="margin-top:14px;flex-direction:column;align-items:stretch"><p class="bsum">Nothing tracked yet. Add your first position below — symbol, shares, price — and the X-ray builds itself: allocation, concentration, fees, dividends, sectors.</p>
         <button class="cta" id="invAddFirst" style="margin-top:10px">Add a holding</button></div>`;
     } else {
       const allocRows = BUCKETS.filter(b => sum.byBucket[b] > 0.005).map(b => {
@@ -10489,29 +10367,68 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     if (budget > 0 && proj > budget * 1.02) return "var(--warn)";
     return "var(--up)";
   }
-  function donutSVG(segs, size, sw) {
+  // v3: gradient pair for the luminous budget ring (pace color → lighter twin).
+  function paceGrad(spent, budget, proj) {
+    const pc = paceColor(spent, budget, proj);
+    if (pc === "var(--down)") return ["#E14A4A", "#F5A3A3"];
+    if (pc === "var(--warn)") return ["#E8A13D", "#F6CE7E"];
+    return ["#2E9E6B", "#8FE3B4"];
+  }
+  // v3: emoji per category for vibrant chips (Monarch-style identity).
+  function catEmoji(cat) {
+    const m = { Housing: "🏠", Groceries: "🛒", Dining: "🍽️", Transport: "🚗", Shopping: "🛍️",
+      Subscriptions: "🔁", Utilities: "💡", Health: "🏥", Entertainment: "🎬", Travel: "✈️",
+      Income: "💰", Transfers: "↔️", Other: "✨" };
+    return m[cat] || "✨";
+  }
+  // v3: vibrant tinted category pill.
+  function catchipHtml(cat) {
+    const c = String(cat || "Other"), h = catHue(c);
+    return `<span class="catchip" style="--hc:${h}">${catEmoji(c)} ${esc(c)}</span>`;
+  }
+  function donutSVG(segs, size, sw, center) {
     size = size || 76; sw = sw || 11;
     const total = (segs || []).reduce((s, x) => s + Math.max(0, Number(x.value) || 0), 0);
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
     const track = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>`;
     if (!total) return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="No data yet">${track}</svg>`;
+    // v4: the largest segment gets a soft luminous halo — filter-free
+    // (a wider translucent under-stroke; SVG filters rendered black boxes
+    // on some GPUs). No logic change.
+    let maxI = 0;
+    segs.forEach((s, i) => { if ((Number(s.value) || 0) > (Number(segs[maxI].value) || 0)) maxI = i; });
     let off = 0;
-    const arcs = segs.map(s => {
+    const arcs = segs.map((s, i) => {
       const frac = Math.max(0, Number(s.value) || 0) / total;
-      const el = `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label || "")}</title></circle>`;
+      const dash = `stroke-dasharray="${(frac * c).toFixed(2)} ${c.toFixed(2)}" stroke-dashoffset="${(-off * c).toFixed(2)}"`;
+      const halo = i === maxI
+        ? `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw + 10}" opacity=".22" ${dash} transform="rotate(-90 ${cx} ${cx})"/>` : "";
+      const el = `${halo}<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${s.color}" stroke-width="${sw}" ${dash} transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label || "")}</title></circle>`;
       off += frac; return el;
     }).join("");
-    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${track}${arcs}</svg>`;
+    const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Allocation chart">${track}${arcs}</svg>`;
+    if (!center) return svg;
+    return `<div class="donut-wrap" style="width:${size}px;height:${size}px">${svg}<div class="donut-center">${center}</div></div>`;
   }
-  function ringSVG(frac, color, size, sw, centerHtml) {
+  function ringSVG(frac, color, size, sw, centerHtml, grad) {
     const f = Math.max(0, Math.min(1, Number(frac) || 0));
     size = size || 76; sw = sw || 9;
     const r = (size - sw) / 2, c = 2 * Math.PI * r, cx = size / 2;
+    const gid = svgUid("rg");
+    // v4: optional gradient stroke (e.g. pace green→amber) with a filter-free
+    // glow (wider translucent under-arc; SVG filters rendered black boxes
+    // on some GPUs). No logic change.
+    const stroke = grad ? `url(#${gid})` : color;
+    const defs = grad ? `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${grad[0]}"/><stop offset="1" stop-color="${grad[1]}"/></linearGradient></defs>` : "";
+    const dash = `stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"`;
+    const glow = grad ? `<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw + 8}" opacity=".25" stroke-linecap="round" ${dash}/>` : "";
     return `<div style="position:relative;width:${size}px;height:${size}px;flex:none">
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Progress ${Math.round(f * 100)} percent">
+        ${defs}
         <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>
-        <circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"
-          stroke-dasharray="${(f * c).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"/>
+        ${glow}<circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"
+          ${dash}/>
       </svg>
       <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none">${centerHtml || ""}</div></div>`;
   }
@@ -10527,17 +10444,24 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     const X = i => P + i / (n - 1) * (W - 2 * P);
     const Y = v => H - P - ((v - min) / rng) * (H - 2 * P);
     const line = arr => arr.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
-    const gid = svgUid("ag");
+    const gid = svgUid("ag"); const fid = svgUid("af");
     const lineColor = opts.lineColor || "#FF6A2D";
     const d = line(data);
     const area = `${d}L${X(data.length - 1).toFixed(1)},${(H - P).toFixed(1)}L${X(0).toFixed(1)},${(H - P).toFixed(1)}Z`;
+    // v3: subtle dotted grid + luminous line over a rich gradient fill.
+    let grid = "";
+    for (let g = 1; g <= 3; g++) {
+      const gy = (P + (H - 2 * P) * g / 4).toFixed(1);
+      grid += `<line x1="${P}" y1="${gy}" x2="${W - P}" y2="${gy}" stroke="rgba(255,255,255,.07)" stroke-width="1" stroke-dasharray="1,5"/>`;
+    }
     const priorLine = prior.length >= 2
       ? `<path d="${line(prior)}" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="1.5" stroke-dasharray="4,3"/>` : "";
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:auto;display:block" role="img" aria-label="${esc(opts.label || "Trend chart")}">
       <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="${lineColor}" stop-opacity=".32"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
+        <stop offset="0" stop-color="${lineColor}" stop-opacity=".35"/><stop offset=".55" stop-color="${lineColor}" stop-opacity=".10"/><stop offset="1" stop-color="${lineColor}" stop-opacity="0"/>
       </linearGradient></defs>
-      ${priorLine}<path d="${area}" fill="url(#${gid})"/>
+      ${grid}${priorLine}<path d="${area}" fill="url(#${gid})"/>
+      <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".22"/>
       <path d="${d}" fill="none" stroke="${lineColor}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>`;
   }
@@ -10909,6 +10833,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       <div class="chart-card" style="margin-top:10px">
         <p class="micro">Net worth</p>
         <p class="hero-num num">${bm0(nw.total)}</p>
+        <div class="aurora-ribbon" aria-hidden="true" style="margin:14px 0 0"></div>
         <p class="psub" style="margin:6px 0 0">${bm0(nw.bank)} in accounts · ${bm0(nw.assets)} other assets · ${bm0(nw.liabs + nw.debts)} owed</p>
         <div style="margin-top:10px">${areaChartSVG(snapVals, { lineColor: "#FF6A2D", label: "Net worth history", h: 130 })}</div>
         <p class="fine" style="margin:8px 0 0">Snapshot taken ${nowStamp}. Bank balances update when you sync; manual items only change when you edit them. Revalue big items yearly (home, car) and volatile ones (crypto) whenever you check — the "valued" date on each row is your freshness signal.</p>
